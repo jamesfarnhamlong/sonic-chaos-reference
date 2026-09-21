@@ -1,0 +1,646 @@
+; loop_states: ROM $03C1B..$03EFC (end exclusive $03EFD).
+; Original Sonic Chaos instructions/data. See docs/provenance.md.
+; Generated deterministically by tools/recover.py. Semantic coverage varies.
+
+SC_03C1B:
+    LD A,13
+SC_03C1D:
+    CALL $1C6F
+SC_03C20:
+    LD L,(IX+$16)
+SC_03C23:
+    LD H,(IX+$17)
+SC_03C26:
+    LD DE,($D39D)
+SC_03C2A:
+    LD A,($D39F)
+SC_03C2D:
+    ADD HL,DE
+SC_03C2E:
+    JR nc,SC_03C31
+SC_03C30:
+    INC A
+SC_03C31:
+    LD ($D39D),HL
+SC_03C34:
+    LD ($D39F),A
+SC_03C37:
+    LD HL,($D39E)
+SC_03C3A:
+    ADD HL,HL
+SC_03C3B:
+    LD DE,$8000
+SC_03C3E:
+    ADD HL,DE
+SC_03C3F:
+    LD E,(HL)
+SC_03C40:
+    INC HL
+SC_03C41:
+    LD D,(HL)
+SC_03C42:
+    LD L,(IX+$3C)
+SC_03C45:
+    LD H,(IX+$3D)
+SC_03C48:
+    ADD HL,DE
+SC_03C49:
+    LD (IX+$14),L
+SC_03C4C:
+    LD (IX+$15),H
+SC_03C4F:
+    LD HL,($D39E)
+SC_03C52:
+    ADD HL,HL
+SC_03C53:
+    LD DE,$8398
+SC_03C56:
+    ADD HL,DE
+SC_03C57:
+    LD E,(HL)
+SC_03C58:
+    INC HL
+SC_03C59:
+    LD D,(HL)
+SC_03C5A:
+    LD L,(IX+$3A)
+SC_03C5D:
+    LD H,(IX+$3B)
+SC_03C60:
+    ADD HL,DE
+SC_03C61:
+    LD (IX+$11),L
+SC_03C64:
+    LD (IX+$12),H
+SC_03C67:
+    LD HL,($D39E)
+SC_03C6A:
+    XOR A
+SC_03C6B:
+    LD DE,$90
+SC_03C6E:
+    SBC HL,DE
+SC_03C70:
+    JR nc,SC_03C88
+SC_03C72:
+    LD L,(IX+$16)
+SC_03C75:
+    LD H,(IX+$17)
+SC_03C78:
+    LD DE,10
+SC_03C7B:
+    XOR A
+SC_03C7C:
+    SBC HL,DE
+SC_03C7E:
+    JR c,SC_03CC5
+SC_03C80:
+    LD (IX+$16),L
+SC_03C83:
+    LD (IX+$17),H
+SC_03C86:
+    JR SC_03C9C
+SC_03C88:
+    LD (IX+$25),1
+SC_03C8C:
+    LD L,(IX+$16)
+SC_03C8F:
+    LD H,(IX+$17)
+SC_03C92:
+    LD DE,12
+SC_03C95:
+    ADD HL,DE
+SC_03C96:
+    LD (IX+$16),L
+SC_03C99:
+    LD (IX+$17),H
+SC_03C9C:
+    CALL $48BC
+SC_03C9F:
+    LD HL,($D39E)
+SC_03CA2:
+    LD DE,$180
+SC_03CA5:
+    XOR A
+SC_03CA6:
+    SBC HL,DE
+SC_03CA8:
+    RET c
+SC_03CA9:
+    LD A,6
+SC_03CAB:
+    BIT 1,(IX+3)
+SC_03CAF:
+    JR z,SC_03CB3
+SC_03CB1:
+    LD A,9
+SC_03CB3:
+    LD (IX+2),A
+SC_03CB6:
+    LD HL,($D373)
+SC_03CB9:
+    LD (IX+$16),L
+SC_03CBC:
+    LD (IX+$17),H
+SC_03CBF:
+    LD A,$10
+SC_03CC1:
+    LD ($D3A0),A
+SC_03CC4:
+    RET
+SC_03CC5:
+    LD L,(IX+$3A)
+SC_03CC8:
+    LD H,(IX+$3B)
+SC_03CCB:
+    LD E,(IX+$11)
+SC_03CCE:
+    LD D,(IX+$12)
+SC_03CD1:
+    XOR A
+SC_03CD2:
+    SBC HL,DE
+SC_03CD4:
+    JR c,SC_03CE9
+SC_03CD6:
+    LD L,(IX+$11)
+SC_03CD9:
+    LD H,(IX+$12)
+SC_03CDC:
+    LD DE,8
+SC_03CDF:
+    ADD HL,DE
+SC_03CE0:
+    LD (IX+$11),L
+SC_03CE3:
+    LD (IX+$12),H
+SC_03CE6:
+    JP $4680
+SC_03CE9:
+    LD L,(IX+$11)
+SC_03CEC:
+    LD H,(IX+$12)
+SC_03CEF:
+    LD DE,$FFFE
+SC_03CF2:
+    ADD HL,DE
+SC_03CF3:
+    LD (IX+$11),L
+SC_03CF6:
+    LD (IX+$12),H
+SC_03CF9:
+    JP $4680
+SC_03CFC:
+    LD A,13
+SC_03CFE:
+    CALL $1C6F
+SC_03D01:
+    LD L,(IX+$16)
+SC_03D04:
+    LD H,(IX+$17)
+SC_03D07:
+    LD DE,($D39D)
+SC_03D0B:
+    LD A,($D39F)
+SC_03D0E:
+    ADD HL,DE
+SC_03D0F:
+    JR nc,SC_03D12
+SC_03D11:
+    INC A
+SC_03D12:
+    LD ($D39D),HL
+SC_03D15:
+    LD ($D39F),A
+SC_03D18:
+    LD HL,($D39E)
+SC_03D1B:
+    ADD HL,HL
+SC_03D1C:
+    LD DE,$8DDC
+SC_03D1F:
+    ADD HL,DE
+SC_03D20:
+    LD E,(HL)
+SC_03D21:
+    INC HL
+SC_03D22:
+    LD D,(HL)
+SC_03D23:
+    LD L,(IX+$3C)
+SC_03D26:
+    LD H,(IX+$3D)
+SC_03D29:
+    ADD HL,DE
+SC_03D2A:
+    LD (IX+$14),L
+SC_03D2D:
+    LD (IX+$15),H
+SC_03D30:
+    LD HL,($D39E)
+SC_03D33:
+    ADD HL,HL
+SC_03D34:
+    LD DE,$9140
+SC_03D37:
+    ADD HL,DE
+SC_03D38:
+    LD E,(HL)
+SC_03D39:
+    INC HL
+SC_03D3A:
+    LD D,(HL)
+SC_03D3B:
+    LD L,(IX+$3A)
+SC_03D3E:
+    LD H,(IX+$3B)
+SC_03D41:
+    ADD HL,DE
+SC_03D42:
+    LD (IX+$11),L
+SC_03D45:
+    LD (IX+$12),H
+SC_03D48:
+    LD HL,($D39E)
+SC_03D4B:
+    XOR A
+SC_03D4C:
+    LD DE,$90
+SC_03D4F:
+    SBC HL,DE
+SC_03D51:
+    JR nc,SC_03D6A
+SC_03D53:
+    LD L,(IX+$16)
+SC_03D56:
+    LD H,(IX+$17)
+SC_03D59:
+    LD DE,10
+SC_03D5C:
+    XOR A
+SC_03D5D:
+    SBC HL,DE
+SC_03D5F:
+    JP c,$3CC5
+SC_03D62:
+    LD (IX+$16),L
+SC_03D65:
+    LD (IX+$17),H
+SC_03D68:
+    JR SC_03D7E
+SC_03D6A:
+    LD (IX+$25),1
+SC_03D6E:
+    LD L,(IX+$16)
+SC_03D71:
+    LD H,(IX+$17)
+SC_03D74:
+    LD DE,12
+SC_03D77:
+    ADD HL,DE
+SC_03D78:
+    LD (IX+$16),L
+SC_03D7B:
+    LD (IX+$17),H
+SC_03D7E:
+    CALL $48BC
+SC_03D81:
+    LD HL,($D39E)
+SC_03D84:
+    LD DE,$1A0
+SC_03D87:
+    XOR A
+SC_03D88:
+    SBC HL,DE
+SC_03D8A:
+    RET c
+SC_03D8B:
+    LD A,10
+SC_03D8D:
+    LD (IX+2),A
+SC_03D90:
+    LD HL,($D373)
+SC_03D93:
+    LD (IX+$18),L
+SC_03D96:
+    LD (IX+$19),H
+SC_03D99:
+    LD (IX+$16),0
+SC_03D9D:
+    LD (IX+$17),0
+SC_03DA1:
+    SET 0,(IX+3)
+SC_03DA5:
+    SET 1,(IX+3)
+SC_03DA9:
+    RES 1,(IX+$22)
+SC_03DAD:
+    RET
+SC_03DAE:
+    LD A,13
+SC_03DB0:
+    CALL $1C6F
+SC_03DB3:
+    LD L,(IX+$16)
+SC_03DB6:
+    LD H,(IX+$17)
+SC_03DB9:
+    DEC HL
+SC_03DBA:
+    LD A,H
+SC_03DBB:
+    CPL
+SC_03DBC:
+    LD H,A
+SC_03DBD:
+    LD A,L
+SC_03DBE:
+    CPL
+SC_03DBF:
+    LD L,A
+SC_03DC0:
+    LD DE,($D39D)
+SC_03DC4:
+    LD A,($D39F)
+SC_03DC7:
+    ADD HL,DE
+SC_03DC8:
+    JR nc,SC_03DCB
+SC_03DCA:
+    INC A
+SC_03DCB:
+    LD ($D39D),HL
+SC_03DCE:
+    LD ($D39F),A
+SC_03DD1:
+    LD HL,($D39E)
+SC_03DD4:
+    ADD HL,HL
+SC_03DD5:
+    LD DE,$86AE
+SC_03DD8:
+    ADD HL,DE
+SC_03DD9:
+    LD E,(HL)
+SC_03DDA:
+    INC HL
+SC_03DDB:
+    LD D,(HL)
+SC_03DDC:
+    LD L,(IX+$3C)
+SC_03DDF:
+    LD H,(IX+$3D)
+SC_03DE2:
+    ADD HL,DE
+SC_03DE3:
+    LD (IX+$14),L
+SC_03DE6:
+    LD (IX+$15),H
+SC_03DE9:
+    LD HL,($D39E)
+SC_03DEC:
+    ADD HL,HL
+SC_03DED:
+    LD DE,$8A46
+SC_03DF0:
+    ADD HL,DE
+SC_03DF1:
+    LD E,(HL)
+SC_03DF2:
+    INC HL
+SC_03DF3:
+    LD D,(HL)
+SC_03DF4:
+    LD L,(IX+$3A)
+SC_03DF7:
+    LD H,(IX+$3B)
+SC_03DFA:
+    ADD HL,DE
+SC_03DFB:
+    LD (IX+$11),L
+SC_03DFE:
+    LD (IX+$12),H
+SC_03E01:
+    LD HL,($D39E)
+SC_03E04:
+    XOR A
+SC_03E05:
+    LD DE,$90
+SC_03E08:
+    SBC HL,DE
+SC_03E0A:
+    JR nc,SC_03E30
+SC_03E0C:
+    LD L,(IX+$16)
+SC_03E0F:
+    LD H,(IX+$17)
+SC_03E12:
+    DEC HL
+SC_03E13:
+    LD A,H
+SC_03E14:
+    CPL
+SC_03E15:
+    LD H,A
+SC_03E16:
+    LD A,L
+SC_03E17:
+    CPL
+SC_03E18:
+    LD L,A
+SC_03E19:
+    LD DE,10
+SC_03E1C:
+    XOR A
+SC_03E1D:
+    SBC HL,DE
+SC_03E1F:
+    JR c,SC_03E74
+SC_03E21:
+    DEC HL
+SC_03E22:
+    LD A,H
+SC_03E23:
+    CPL
+SC_03E24:
+    LD H,A
+SC_03E25:
+    LD A,L
+SC_03E26:
+    CPL
+SC_03E27:
+    LD L,A
+SC_03E28:
+    LD (IX+$16),L
+SC_03E2B:
+    LD (IX+$17),H
+SC_03E2E:
+    JR SC_03E44
+SC_03E30:
+    LD (IX+$25),0
+SC_03E34:
+    LD L,(IX+$16)
+SC_03E37:
+    LD H,(IX+$17)
+SC_03E3A:
+    LD DE,$FFF4
+SC_03E3D:
+    ADD HL,DE
+SC_03E3E:
+    LD (IX+$16),L
+SC_03E41:
+    LD (IX+$17),H
+SC_03E44:
+    CALL $48BC
+SC_03E47:
+    LD HL,($D39E)
+SC_03E4A:
+    LD DE,$180
+SC_03E4D:
+    XOR A
+SC_03E4E:
+    SBC HL,DE
+SC_03E50:
+    RET c
+SC_03E51:
+    LD A,6
+SC_03E53:
+    BIT 1,(IX+3)
+SC_03E57:
+    JR z,SC_03E5B
+SC_03E59:
+    LD A,9
+SC_03E5B:
+    LD (IX+2),A
+SC_03E5E:
+    LD HL,($D373)
+SC_03E61:
+    DEC HL
+SC_03E62:
+    LD A,H
+SC_03E63:
+    CPL
+SC_03E64:
+    LD H,A
+SC_03E65:
+    LD A,L
+SC_03E66:
+    CPL
+SC_03E67:
+    LD L,A
+SC_03E68:
+    LD (IX+$16),L
+SC_03E6B:
+    LD (IX+$17),H
+SC_03E6E:
+    LD A,$10
+SC_03E70:
+    LD ($D3A0),A
+SC_03E73:
+    RET
+SC_03E74:
+    LD L,(IX+$3A)
+SC_03E77:
+    LD H,(IX+$3B)
+SC_03E7A:
+    LD E,(IX+$11)
+SC_03E7D:
+    LD D,(IX+$12)
+SC_03E80:
+    XOR A
+SC_03E81:
+    SBC HL,DE
+SC_03E83:
+    JR c,SC_03E98
+SC_03E85:
+    LD L,(IX+$11)
+SC_03E88:
+    LD H,(IX+$12)
+SC_03E8B:
+    LD DE,8
+SC_03E8E:
+    ADD HL,DE
+SC_03E8F:
+    LD (IX+$11),L
+SC_03E92:
+    LD (IX+$12),H
+SC_03E95:
+    JP $4680
+SC_03E98:
+    LD L,(IX+$11)
+SC_03E9B:
+    LD H,(IX+$12)
+SC_03E9E:
+    LD DE,$FFFE
+SC_03EA1:
+    ADD HL,DE
+SC_03EA2:
+    LD (IX+$11),L
+SC_03EA5:
+    LD (IX+$12),H
+SC_03EA8:
+    JP $4680
+SC_03EAB:
+    LD (IX+2),12
+SC_03EAF:
+    LD A,(IX+$11)
+SC_03EB2:
+    AND $E0
+SC_03EB4:
+    LD (IX+$11),A
+SC_03EB7:
+    LD L,A
+SC_03EB8:
+    LD H,(IX+$12)
+SC_03EBB:
+    LD (IX+$3A),L
+SC_03EBE:
+    LD (IX+$3B),H
+SC_03EC1:
+    LD A,(IX+$14)
+SC_03EC4:
+    AND $E0
+SC_03EC6:
+    ADD A,4
+SC_03EC8:
+    LD L,A
+SC_03EC9:
+    LD (IX+$14),A
+SC_03ECC:
+    LD H,(IX+$15)
+SC_03ECF:
+    LD (IX+$3C),L
+SC_03ED2:
+    LD (IX+$3D),H
+SC_03ED5:
+    XOR A
+SC_03ED6:
+    LD ($D39D),A
+SC_03ED9:
+    LD ($D39E),A
+SC_03EDC:
+    LD ($D39F),A
+SC_03EDF:
+    POP AF
+SC_03EE0:
+    RET
+SC_03EE1:
+    LD (IX+2),13
+SC_03EE5:
+    LD L,(IX+$11)
+SC_03EE8:
+    LD H,(IX+$12)
+SC_03EEB:
+    LD BC,$20
+SC_03EEE:
+    ADD HL,BC
+SC_03EEF:
+    LD (IX+$11),L
+SC_03EF2:
+    LD (IX+$12),H
+SC_03EF5:
+    JR SC_03EAF
+SC_03EF7:
+    LD (IX+2),$13
+SC_03EFB:
+    JR SC_03EAF

@@ -1,0 +1,850 @@
+; platform_code: ROM $78577..$78946 (end exclusive $78947).
+; Original Sonic Chaos instructions/data. See docs/provenance.md.
+; Generated deterministically by tools/recover.py. Semantic coverage varies.
+
+SC_78577:
+    XOR A
+SC_78578:
+    LD (IX+$39),A
+SC_7857B:
+    LD (IX+$38),A
+SC_7857E:
+    LD (IX+$24),A
+SC_78581:
+    LD (IX+$23),A
+SC_78584:
+    RET
+SC_78585:
+    SET 7,(IX+3)
+SC_78589:
+    LD (IX+$25),0
+SC_7858D:
+    LD A,(IX+$3F)
+SC_78590:
+    BIT 7,A
+SC_78592:
+    JR z,SC_78598
+SC_78594:
+    LD (IX+$25),$FF
+SC_78598:
+    LD (IX+$26),0
+SC_7859C:
+    BIT 6,A
+SC_7859E:
+    JR z,SC_785A4
+SC_785A0:
+    LD (IX+$26),$FF
+SC_785A4:
+    AND $3F
+SC_785A6:
+    INC A
+SC_785A7:
+    LD (IX+2),A
+SC_785AA:
+    LD (IX+$36),A
+SC_785AD:
+    LD A,(IX+$3F)
+SC_785B0:
+    AND $7F
+SC_785B2:
+    CP 11
+SC_785B4:
+    JR z,SC_785BC
+SC_785B6:
+    CP 5
+SC_785B8:
+    JR z,SC_785BC
+SC_785BA:
+    JR SC_785C0
+SC_785BC:
+    LD (IX+2),13
+SC_785C0:
+    LD A,(IX+9)
+SC_785C3:
+    LD (IX+$34),A
+SC_785C6:
+    LD (IX+$37),A
+SC_785C9:
+    LD (IX+$30),$10
+SC_785CD:
+    XOR A
+SC_785CE:
+    LD (IX+$35),A
+SC_785D1:
+    LD (IX+$39),A
+SC_785D4:
+    LD (IX+$38),A
+SC_785D7:
+    LD (IX+$24),A
+SC_785DA:
+    LD (IX+$23),A
+SC_785DD:
+    LD (IX+$1F),A
+SC_785E0:
+    LD (IX+$27),A
+SC_785E3:
+    LD (IX+$1E),A
+SC_785E6:
+    LD (IX+$31),A
+SC_785E9:
+    LD (IX+$33),A
+SC_785EC:
+    LD (IX+10),$C0
+SC_785F0:
+    LD (IX+11),2
+SC_785F4:
+    PUSH IX
+SC_785F6:
+    POP HL
+SC_785F7:
+    CALL $0332
+SC_785FA:
+    LD (IX+$32),A
+SC_785FD:
+    RET
+SC_785FE:
+    BIT 6,(IX+4)
+SC_78602:
+    RET nz
+SC_78603:
+    LD A,($D519)
+SC_78606:
+    RLCA
+SC_78607:
+    RET c
+SC_78608:
+    CALL $033B
+SC_7860B:
+    LD A,(IX+$21)
+SC_7860E:
+    BIT 0,A
+SC_78610:
+    RET z
+SC_78611:
+    LD A,(IX+$36)
+SC_78614:
+    LD (IX+2),A
+SC_78617:
+    LD A,($D297)
+SC_7861A:
+    CP 4
+SC_7861C:
+    RET nz
+SC_7861D:
+    LD A,($D298)
+SC_78620:
+    CP 1
+SC_78622:
+    RET nz
+SC_78623:
+    LD (IX+2),14
+SC_78627:
+    RET
+SC_78628:
+    BIT 6,(IX+4)
+SC_7862C:
+    JR z,SC_78631
+SC_7862E:
+    CALL $0338
+SC_78631:
+    LD A,($D519)
+SC_78634:
+    BIT 7,A
+SC_78636:
+    JR z,SC_78644
+SC_78638:
+    LD (IX+$21),0
+SC_7863C:
+    CALL $0338
+SC_7863F:
+    CALL $8843
+SC_78642:
+    JR SC_78661
+SC_78644:
+    LD D,(IX+$12)
+SC_78647:
+    LD E,(IX+$11)
+SC_7864A:
+    PUSH DE
+SC_7864B:
+    CALL $0338
+SC_7864E:
+    POP DE
+SC_7864F:
+    LD H,(IX+$12)
+SC_78652:
+    LD L,(IX+$11)
+SC_78655:
+    XOR A
+SC_78656:
+    SBC HL,DE
+SC_78658:
+    LD (IX+$24),H
+SC_7865B:
+    LD (IX+$23),L
+SC_7865E:
+    CALL $8814
+SC_78661:
+    RET
+SC_78662:
+    CALL $8908
+SC_78665:
+    LD A,($D519)
+SC_78668:
+    BIT 7,A
+SC_7866A:
+    JR z,SC_78678
+SC_7866C:
+    LD (IX+$21),0
+SC_78670:
+    CALL $0338
+SC_78673:
+    CALL $8843
+SC_78676:
+    JR SC_78695
+SC_78678:
+    LD D,(IX+$12)
+SC_7867B:
+    LD E,(IX+$11)
+SC_7867E:
+    PUSH DE
+SC_7867F:
+    CALL $0338
+SC_78682:
+    POP DE
+SC_78683:
+    LD H,(IX+$12)
+SC_78686:
+    LD L,(IX+$11)
+SC_78689:
+    XOR A
+SC_7868A:
+    SBC HL,DE
+SC_7868C:
+    LD (IX+$24),H
+SC_7868F:
+    LD (IX+$23),L
+SC_78692:
+    CALL $8814
+SC_78695:
+    LD B,$10
+SC_78697:
+    CALL $8925
+SC_7869A:
+    CP 0
+SC_7869C:
+    RET z
+SC_7869D:
+    CALL $0437
+SC_786A0:
+    RET
+SC_786A1:
+    BIT 6,(IX+4)
+SC_786A5:
+    JR z,SC_786AA
+SC_786A7:
+    CALL $0338
+SC_786AA:
+    CALL $8866
+SC_786AD:
+    OR A
+SC_786AE:
+    JR z,SC_786BC
+SC_786B0:
+    LD (IX+$21),0
+SC_786B4:
+    CALL $0338
+SC_786B7:
+    CALL $8843
+SC_786BA:
+    JR SC_786D9
+SC_786BC:
+    LD D,(IX+$15)
+SC_786BF:
+    LD E,(IX+$14)
+SC_786C2:
+    PUSH DE
+SC_786C3:
+    CALL $0338
+SC_786C6:
+    POP DE
+SC_786C7:
+    LD H,(IX+$15)
+SC_786CA:
+    LD L,(IX+$14)
+SC_786CD:
+    XOR A
+SC_786CE:
+    SBC HL,DE
+SC_786D0:
+    LD (IX+$39),H
+SC_786D3:
+    LD (IX+$38),L
+SC_786D6:
+    CALL $8814
+SC_786D9:
+    RET
+SC_786DA:
+    CALL $8908
+SC_786DD:
+    CALL $8866
+SC_786E0:
+    OR A
+SC_786E1:
+    JR z,SC_786EF
+SC_786E3:
+    LD (IX+$21),0
+SC_786E7:
+    CALL $0338
+SC_786EA:
+    CALL $8843
+SC_786ED:
+    JR SC_7870C
+SC_786EF:
+    LD D,(IX+$15)
+SC_786F2:
+    LD E,(IX+$14)
+SC_786F5:
+    PUSH DE
+SC_786F6:
+    CALL $0338
+SC_786F9:
+    POP DE
+SC_786FA:
+    LD H,(IX+$15)
+SC_786FD:
+    LD L,(IX+$14)
+SC_78700:
+    XOR A
+SC_78701:
+    SBC HL,DE
+SC_78703:
+    LD (IX+$39),H
+SC_78706:
+    LD (IX+$38),L
+SC_78709:
+    CALL $8814
+SC_7870C:
+    LD B,$10
+SC_7870E:
+    CALL $8925
+SC_78711:
+    CP 0
+SC_78713:
+    RET z
+SC_78714:
+    CALL $80F1
+SC_78717:
+    RET
+SC_78718:
+    RET
+SC_78719:
+    BIT 6,(IX+4)
+SC_7871D:
+    JR nz,SC_78788
+SC_7871F:
+    LD A,(IX+$27)
+SC_78722:
+    CP $FF
+SC_78724:
+    JR z,SC_7873D
+SC_78726:
+    CP 0
+SC_78728:
+    JR z,SC_78767
+SC_7872A:
+    LD A,(IX+$1E)
+SC_7872D:
+    OR A
+SC_7872E:
+    JR z,SC_78737
+SC_78730:
+    SUB 1
+SC_78732:
+    LD (IX+$1E),A
+SC_78735:
+    JR SC_78767
+SC_78737:
+    LD (IX+$27),$FF
+SC_7873B:
+    JR SC_78767
+SC_7873D:
+    LD H,(IX+$19)
+SC_78740:
+    LD L,(IX+$18)
+SC_78743:
+    LD DE,$30
+SC_78746:
+    ADD HL,DE
+SC_78747:
+    LD (IX+$19),H
+SC_7874A:
+    LD (IX+$18),L
+SC_7874D:
+    LD D,(IX+$15)
+SC_78750:
+    LD E,(IX+$14)
+SC_78753:
+    PUSH DE
+SC_78754:
+    CALL $0338
+SC_78757:
+    POP DE
+SC_78758:
+    LD H,(IX+$15)
+SC_7875B:
+    LD L,(IX+$14)
+SC_7875E:
+    XOR A
+SC_7875F:
+    SBC HL,DE
+SC_78761:
+    LD (IX+$39),H
+SC_78764:
+    LD (IX+$38),L
+SC_78767:
+    LD A,($D519)
+SC_7876A:
+    BIT 7,A
+SC_7876C:
+    JR z,SC_78775
+SC_7876E:
+    LD (IX+$21),0
+SC_78772:
+    JP $8843
+SC_78775:
+    CALL $8814
+SC_78778:
+    LD A,(IX+$27)
+SC_7877B:
+    OR A
+SC_7877C:
+    RET nz
+SC_7877D:
+    LD A,(IX+$21)
+SC_78780:
+    BIT 0,A
+SC_78782:
+    RET z
+SC_78783:
+    LD (IX+$27),$80
+SC_78787:
+    RET
+SC_78788:
+    LD A,(IX+$27)
+SC_7878B:
+    OR A
+SC_7878C:
+    RET z
+SC_7878D:
+    LD (IX+$3F),$80
+SC_78791:
+    LD (IX+$3E),0
+SC_78795:
+    LD (IX+0),$FE
+SC_78799:
+    RET
+SC_7879A:
+    BIT 6,(IX+4)
+SC_7879E:
+    RET nz
+SC_7879F:
+    CALL $8866
+SC_787A2:
+    OR A
+SC_787A3:
+    JR z,SC_787AE
+SC_787A5:
+    LD (IX+$21),0
+SC_787A9:
+    CALL $8843
+SC_787AC:
+    JR SC_787B1
+SC_787AE:
+    CALL $8814
+SC_787B1:
+    RET
+SC_787B2:
+    CALL $8908
+SC_787B5:
+    LD A,(IX+$31)
+SC_787B8:
+    CP 0
+SC_787BA:
+    JR nz,SC_787C9
+SC_787BC:
+    CALL $033B
+SC_787BF:
+    LD A,(IX+$21)
+SC_787C2:
+    AND 15
+SC_787C4:
+    RET z
+SC_787C5:
+    LD (IX+$31),1
+SC_787C9:
+    CALL $86DA
+SC_787CC:
+    BIT 7,(IX+$19)
+SC_787D0:
+    JR z,SC_787DD
+SC_787D2:
+    LD A,(IX+$31)
+SC_787D5:
+    CP 1
+SC_787D7:
+    RET z
+SC_787D8:
+    LD (IX+$31),0
+SC_787DC:
+    RET
+SC_787DD:
+    LD (IX+$31),2
+SC_787E1:
+    RET
+SC_787E2:
+    CALL $8908
+SC_787E5:
+    LD A,(IX+$31)
+SC_787E8:
+    CP 0
+SC_787EA:
+    JR nz,SC_787F9
+SC_787EC:
+    CALL $033B
+SC_787EF:
+    LD A,(IX+$21)
+SC_787F2:
+    AND 15
+SC_787F4:
+    RET z
+SC_787F5:
+    LD (IX+$31),1
+SC_787F9:
+    CALL $8662
+SC_787FC:
+    BIT 7,(IX+$17)
+SC_78800:
+    JR nz,SC_7880D
+SC_78802:
+    LD A,(IX+$31)
+SC_78805:
+    CP 1
+SC_78807:
+    RET z
+SC_78808:
+    LD (IX+$31),0
+SC_7880C:
+    RET
+SC_7880D:
+    LD (IX+$31),2
+SC_78811:
+    RET
+SC_78812:
+    RET
+SC_78813:
+    RET
+SC_78814:
+    LD A,($D3C0)
+SC_78817:
+    LD C,A
+SC_78818:
+    OR A
+SC_78819:
+    JR z,SC_78822
+SC_7881B:
+    LD B,(IX+$32)
+SC_7881E:
+    LD A,C
+SC_7881F:
+    CP B
+SC_78820:
+    JR nz,SC_78843
+SC_78822:
+    CALL $033B
+SC_78825:
+    LD A,(IX+$21)
+SC_78828:
+    BIT 0,A
+SC_7882A:
+    JP z,$8843
+SC_7882D:
+    LD B,(IX+$32)
+SC_78830:
+    LD A,($D3C0)
+SC_78833:
+    OR A
+SC_78834:
+    JR z,SC_78838
+SC_78836:
+    CP B
+SC_78837:
+    RET nz
+SC_78838:
+    LD A,B
+SC_78839:
+    LD ($D3C0),A
+SC_7883C:
+    CALL $88FB
+SC_7883F:
+    CALL $88A0
+SC_78842:
+    RET
+SC_78843:
+    LD (IX+$33),0
+SC_78847:
+    LD A,(IX+$21)
+SC_7884A:
+    AND 12
+SC_7884C:
+    JR z,SC_78856
+SC_7884E:
+    LD A,($D521)
+SC_78851:
+    AND $33
+SC_78853:
+    LD ($D521),A
+SC_78856:
+    CALL $88E1
+SC_78859:
+    LD A,($D3C0)
+SC_7885C:
+    LD B,(IX+$32)
+SC_7885F:
+    CP B
+SC_78860:
+    RET nz
+SC_78861:
+    XOR A
+SC_78862:
+    LD ($D3C0),A
+SC_78865:
+    RET
+SC_78866:
+    LD H,(IX+$19)
+SC_78869:
+    LD L,(IX+$18)
+SC_7886C:
+    LD DE,($D518)
+SC_78870:
+    LD A,H
+SC_78871:
+    AND D
+SC_78872:
+    BIT 7,A
+SC_78874:
+    JR z,SC_7888B
+SC_78876:
+    DEC HL
+SC_78877:
+    LD A,H
+SC_78878:
+    CPL
+SC_78879:
+    LD H,A
+SC_7887A:
+    LD A,L
+SC_7887B:
+    CPL
+SC_7887C:
+    LD L,A
+SC_7887D:
+    DEC DE
+SC_7887E:
+    LD A,D
+SC_7887F:
+    CPL
+SC_78880:
+    LD D,A
+SC_78881:
+    LD A,E
+SC_78882:
+    CPL
+SC_78883:
+    LD E,A
+SC_78884:
+    LD A,$FF
+SC_78886:
+    LD ($D4A5),A
+SC_78889:
+    JR SC_78891
+SC_7888B:
+    LD A,H
+SC_7888C:
+    XOR D
+SC_7888D:
+    BIT 7,A
+SC_7888F:
+    JR z,SC_78898
+SC_78891:
+    XOR A
+SC_78892:
+    SBC HL,DE
+SC_78894:
+    RET nc
+SC_78895:
+    LD A,$FF
+SC_78897:
+    RET
+SC_78898:
+    XOR A
+SC_78899:
+    SBC HL,DE
+SC_7889B:
+    RET z
+SC_7889C:
+    RET c
+SC_7889D:
+    LD A,$FF
+SC_7889F:
+    RET
+SC_788A0:
+    LD H,(IX+$15)
+SC_788A3:
+    LD L,(IX+$14)
+SC_788A6:
+    LD D,0
+SC_788A8:
+    LD E,(IX+$2D)
+SC_788AB:
+    DEC E
+SC_788AC:
+    DEC E
+SC_788AD:
+    XOR A
+SC_788AE:
+    SBC HL,DE
+SC_788B0:
+    LD ($D514),HL
+SC_788B3:
+    LD HL,($D511)
+SC_788B6:
+    LD D,(IX+$24)
+SC_788B9:
+    LD E,(IX+$23)
+SC_788BC:
+    ADD HL,DE
+SC_788BD:
+    LD ($D511),HL
+SC_788C0:
+    RET
+SC_788C1:
+    LD A,(IX+$35)
+SC_788C4:
+    CP 8
+SC_788C6:
+    JR z,SC_788DC
+SC_788C8:
+    INC (IX+$35)
+SC_788CB:
+    LD H,(IX+$15)
+SC_788CE:
+    LD L,(IX+$14)
+SC_788D1:
+    LD DE,1
+SC_788D4:
+    ADD HL,DE
+SC_788D5:
+    LD (IX+$15),H
+SC_788D8:
+    LD (IX+$14),L
+SC_788DB:
+    RET
+SC_788DC:
+    LD (IX+$33),$FF
+SC_788E0:
+    RET
+SC_788E1:
+    LD A,(IX+$35)
+SC_788E4:
+    CP 0
+SC_788E6:
+    RET z
+SC_788E7:
+    DEC (IX+$35)
+SC_788EA:
+    LD H,(IX+$15)
+SC_788ED:
+    LD L,(IX+$14)
+SC_788F0:
+    LD DE,$FFFF
+SC_788F3:
+    ADD HL,DE
+SC_788F4:
+    LD (IX+$15),H
+SC_788F7:
+    LD (IX+$14),L
+SC_788FA:
+    RET
+SC_788FB:
+    BIT 7,(IX+$25)
+SC_788FF:
+    RET z
+SC_78900:
+    LD A,(IX+$33)
+SC_78903:
+    OR A
+SC_78904:
+    JR z,SC_788C1
+SC_78906:
+    JR SC_788E1
+SC_78908:
+    BIT 1,(IX+4)
+SC_7890C:
+    RET z
+SC_7890D:
+    LD BC,$280
+SC_78910:
+    CALL $0383
+SC_78913:
+    OR A
+SC_78914:
+    JR z,SC_78920
+SC_78916:
+    LD BC,$2A0
+SC_78919:
+    CALL $0386
+SC_7891C:
+    OR A
+SC_7891D:
+    JR z,SC_78920
+SC_7891F:
+    RET
+SC_78920:
+    LD (IX+0),$FE
+SC_78924:
+    RET
+SC_78925:
+    LD A,(IX+$30)
+SC_78928:
+    DEC A
+SC_78929:
+    JR z,SC_78930
+SC_7892B:
+    LD (IX+$30),A
+SC_7892E:
+    XOR A
+SC_7892F:
+    RET
+SC_78930:
+    LD (IX+$30),B
+SC_78933:
+    LD A,(IX+$37)
+SC_78936:
+    DEC A
+SC_78937:
+    JR z,SC_7893E
+SC_78939:
+    LD (IX+$37),A
+SC_7893C:
+    XOR A
+SC_7893D:
+    RET
+SC_7893E:
+    LD A,(IX+$34)
+SC_78941:
+    LD (IX+$37),A
+SC_78944:
+    LD A,$FF
+SC_78946:
+    RET

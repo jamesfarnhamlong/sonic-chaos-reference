@@ -1,0 +1,230 @@
+; twist_entry: ROM $06E56..$06F60 (end exclusive $06F61).
+; Original Sonic Chaos instructions/data. See docs/provenance.md.
+; Generated deterministically by tools/recover.py. Semantic coverage varies.
+
+SC_06E56:
+    LD A,($D36B)
+SC_06E59:
+    LD ($D36D),A
+SC_06E5C:
+    CP $59
+SC_06E5E:
+    JR z,SC_06E74
+SC_06E60:
+    CP $5C
+SC_06E62:
+    JR z,SC_06E74
+SC_06E64:
+    CP $73
+SC_06E66:
+    JP z,$6EF7
+SC_06E69:
+    CP $72
+SC_06E6B:
+    JP z,$6EF7
+SC_06E6E:
+    CP $6B
+SC_06E70:
+    JP z,$6EF7
+SC_06E73:
+    RET
+SC_06E74:
+    LD A,$A5
+SC_06E76:
+    LD ($DE04),A
+SC_06E79:
+    BIT 7,(IX+$17)
+SC_06E7D:
+    JR nz,SC_06E73
+SC_06E7F:
+    LD A,($D297)
+SC_06E82:
+    CP 3
+SC_06E84:
+    JR nz,SC_06EA1
+SC_06E86:
+    LD L,(IX+$16)
+SC_06E89:
+    LD H,(IX+$17)
+SC_06E8C:
+    LD DE,$500
+SC_06E8F:
+    XOR A
+SC_06E90:
+    SBC HL,DE
+SC_06E92:
+    JP nc,$6EB0
+SC_06E95:
+    LD HL,$500
+SC_06E98:
+    LD (IX+$16),L
+SC_06E9B:
+    LD (IX+$17),H
+SC_06E9E:
+    JP $6EB0
+SC_06EA1:
+    LD L,(IX+$16)
+SC_06EA4:
+    LD H,(IX+$17)
+SC_06EA7:
+    LD DE,$300
+SC_06EAA:
+    XOR A
+SC_06EAB:
+    SBC HL,DE
+SC_06EAD:
+    JP c,$6E73
+SC_06EB0:
+    LD A,(IX+1)
+SC_06EB3:
+    CP $22
+SC_06EB5:
+    JR z,SC_06E73
+SC_06EB7:
+    CP 5
+SC_06EB9:
+    JR z,SC_06ECE
+SC_06EBB:
+    CP 6
+SC_06EBD:
+    JR z,SC_06ECE
+SC_06EBF:
+    CP 9
+SC_06EC1:
+    JR z,SC_06ECE
+SC_06EC3:
+    CP $10
+SC_06EC5:
+    JR z,SC_06ECE
+SC_06EC7:
+    CP $1A
+SC_06EC9:
+    JR z,SC_06ECE
+SC_06ECB:
+    JP $6E73
+SC_06ECE:
+    LD (IX+2),$22
+SC_06ED2:
+    LD L,(IX+$16)
+SC_06ED5:
+    LD H,(IX+$17)
+SC_06ED8:
+    ADD HL,HL
+SC_06ED9:
+    ADD HL,HL
+SC_06EDA:
+    ADD HL,HL
+SC_06EDB:
+    ADD HL,HL
+SC_06EDC:
+    ADD HL,HL
+SC_06EDD:
+    LD (IX+11),H
+SC_06EE0:
+    LD (IX+10),$40
+SC_06EE4:
+    LD (IX+$38),0
+SC_06EE8:
+    LD A,($D297)
+SC_06EEB:
+    CP 3
+SC_06EED:
+    JP nz,$6E73
+SC_06EF0:
+    LD (IX+$38),2
+SC_06EF4:
+    JP $6E73
+SC_06EF7:
+    LD A,$A5
+SC_06EF9:
+    LD ($DE04),A
+SC_06EFC:
+    BIT 7,(IX+$17)
+SC_06F00:
+    JP z,$6E73
+SC_06F03:
+    LD L,(IX+$16)
+SC_06F06:
+    LD H,(IX+$17)
+SC_06F09:
+    LD DE,$FD00
+SC_06F0C:
+    XOR A
+SC_06F0D:
+    SBC HL,DE
+SC_06F0F:
+    JP nc,$6E73
+SC_06F12:
+    LD A,(IX+1)
+SC_06F15:
+    CP $22
+SC_06F17:
+    JP z,$6E73
+SC_06F1A:
+    CP 5
+SC_06F1C:
+    JR z,SC_06F31
+SC_06F1E:
+    CP 6
+SC_06F20:
+    JR z,SC_06F31
+SC_06F22:
+    CP 9
+SC_06F24:
+    JR z,SC_06F31
+SC_06F26:
+    CP $10
+SC_06F28:
+    JR z,SC_06F31
+SC_06F2A:
+    CP $1A
+SC_06F2C:
+    JR z,SC_06F31
+SC_06F2E:
+    JP $6E73
+SC_06F31:
+    LD (IX+2),$22
+SC_06F35:
+    LD L,(IX+$16)
+SC_06F38:
+    LD H,(IX+$17)
+SC_06F3B:
+    DEC HL
+SC_06F3C:
+    LD A,H
+SC_06F3D:
+    CPL
+SC_06F3E:
+    LD H,A
+SC_06F3F:
+    LD A,L
+SC_06F40:
+    CPL
+SC_06F41:
+    LD L,A
+SC_06F42:
+    ADD HL,HL
+SC_06F43:
+    ADD HL,HL
+SC_06F44:
+    ADD HL,HL
+SC_06F45:
+    ADD HL,HL
+SC_06F46:
+    ADD HL,HL
+SC_06F47:
+    LD (IX+11),H
+SC_06F4A:
+    LD (IX+10),$C0
+SC_06F4E:
+    LD (IX+$38),1
+SC_06F52:
+    LD A,($D297)
+SC_06F55:
+    CP 3
+SC_06F57:
+    JP nz,$6E73
+SC_06F5A:
+    LD (IX+$38),3
+SC_06F5E:
+    JP $6E73

@@ -1,0 +1,37 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "counts": {
+    "lookup": 16384,
+    "floor": 2400,
+    "side": 16384,
+    "angle_velocity": 2048,
+    "gravity": 8,
+    "ramp_launch": 8,
+    "layout_decoder": 1
+  },
+  "total": 37233,
+  "first_ramp_launch": {
+    "frame": 16,
+    "x": 386,
+    "y": 643,
+    "vx_8_8": 952,
+    "vy_8_8": -1428,
+    "state": 5,
+    "requested_state": 27,
+    "contact_flags": 0,
+    "previous_surface": 146,
+    "modifier": 10
+  },
+  "vertical_spring_fixture": {
+    "initial_y": 800,
+    "rise_pixels": 296.25,
+    "first_falling_request_tick": 80,
+    "falling_initial_velocity": 1
+  },
+  "limitations": [
+    "Subroutine RAM fixtures, not a full SMS emulator.",
+    "No GameMaker compilation or gameplay validation.",
+    "Floor translation excludes IX+$24 special branches.",
+    "Side tests cover ordinary projection cores, not all special tile handlers."
+  ]
+}

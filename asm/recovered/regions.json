@@ -1,0 +1,322 @@
+[
+  {
+    "name": "side_sensors",
+    "start": 13958,
+    "end": 14022,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 64,
+    "instructions": 21,
+    "file": "side_sensors.asm"
+  },
+  {
+    "name": "rolling_and_ramp_states",
+    "start": 14533,
+    "end": 14593,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 60,
+    "instructions": 30,
+    "file": "rolling_and_ramp_states.asm"
+  },
+  {
+    "name": "spring_state_updates",
+    "start": 14651,
+    "end": 14701,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 50,
+    "instructions": 18,
+    "file": "spring_state_updates.asm"
+  },
+  {
+    "name": "loop_states",
+    "start": 15387,
+    "end": 16125,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 738,
+    "instructions": 321,
+    "file": "loop_states.asm"
+  },
+  {
+    "name": "movement_core",
+    "start": 16410,
+    "end": 17053,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 643,
+    "instructions": 310,
+    "file": "movement_core.asm"
+  },
+  {
+    "name": "movement_tables",
+    "start": 17053,
+    "end": 17843,
+    "bank": 1,
+    "kind": "data",
+    "bytes": 790,
+    "instructions": 0,
+    "file": "movement_tables.asm"
+  },
+  {
+    "name": "standing_walk_setters",
+    "start": 17843,
+    "end": 17901,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 58,
+    "instructions": 18,
+    "file": "standing_walk_setters.asm"
+  },
+  {
+    "name": "player_state_setters",
+    "start": 17901,
+    "end": 18293,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 392,
+    "instructions": 136,
+    "file": "player_state_setters.asm"
+  },
+  {
+    "name": "ramp_state_setters",
+    "start": 18396,
+    "end": 18444,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 48,
+    "instructions": 16,
+    "file": "ramp_state_setters.asm"
+  },
+  {
+    "name": "spring_setters",
+    "start": 18444,
+    "end": 18578,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 134,
+    "instructions": 49,
+    "file": "spring_setters.asm"
+  },
+  {
+    "name": "bounded_layout_decoder",
+    "start": 19908,
+    "end": 19964,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 56,
+    "instructions": 28,
+    "file": "bounded_layout_decoder.asm"
+  },
+  {
+    "name": "angle_and_position",
+    "start": 24713,
+    "end": 24892,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 179,
+    "instructions": 94,
+    "file": "angle_and_position.asm"
+  },
+  {
+    "name": "merge_collision_flags",
+    "start": 25803,
+    "end": 25840,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 37,
+    "instructions": 19,
+    "file": "merge_collision_flags.asm"
+  },
+  {
+    "name": "terrain_update",
+    "start": 26891,
+    "end": 26995,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 104,
+    "instructions": 43,
+    "file": "terrain_update.asm"
+  },
+  {
+    "name": "floor_dispatch_table",
+    "start": 26995,
+    "end": 27057,
+    "bank": 1,
+    "kind": "data",
+    "bytes": 62,
+    "instructions": 0,
+    "file": "floor_dispatch_table.asm"
+  },
+  {
+    "name": "ramp_contact",
+    "start": 27057,
+    "end": 27227,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 170,
+    "instructions": 86,
+    "file": "ramp_contact.asm"
+  },
+  {
+    "name": "spring_contacts",
+    "start": 27253,
+    "end": 27342,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 89,
+    "instructions": 36,
+    "file": "spring_contacts.asm"
+  },
+  {
+    "name": "loop_contacts",
+    "start": 27834,
+    "end": 27877,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 43,
+    "instructions": 20,
+    "file": "loop_contacts.asm"
+  },
+  {
+    "name": "twist_entry",
+    "start": 28246,
+    "end": 28513,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 267,
+    "instructions": 113,
+    "file": "twist_entry.asm"
+  },
+  {
+    "name": "floor_projection",
+    "start": 28513,
+    "end": 29022,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 509,
+    "instructions": 250,
+    "file": "floor_projection.asm"
+  },
+  {
+    "name": "side_collision",
+    "start": 29022,
+    "end": 29641,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 619,
+    "instructions": 276,
+    "file": "side_collision.asm"
+  },
+  {
+    "name": "ceiling_collision",
+    "start": 29641,
+    "end": 30014,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 373,
+    "instructions": 168,
+    "file": "ceiling_collision.asm"
+  },
+  {
+    "name": "collision_lookup",
+    "start": 30310,
+    "end": 30667,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 357,
+    "instructions": 188,
+    "file": "collision_lookup.asm"
+  },
+  {
+    "name": "object_floor_update",
+    "start": 30667,
+    "end": 30701,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 34,
+    "instructions": 17,
+    "file": "object_floor_update.asm"
+  },
+  {
+    "name": "object_floor_dispatch",
+    "start": 30701,
+    "end": 30763,
+    "bank": 1,
+    "kind": "data",
+    "bytes": 62,
+    "instructions": 0,
+    "file": "object_floor_dispatch.asm"
+  },
+  {
+    "name": "object_floor_handlers",
+    "start": 30763,
+    "end": 30807,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 44,
+    "instructions": 19,
+    "file": "object_floor_handlers.asm"
+  },
+  {
+    "name": "breakable_handlers",
+    "start": 30807,
+    "end": 30945,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 138,
+    "instructions": 70,
+    "file": "breakable_handlers.asm"
+  },
+  {
+    "name": "twist_dispatch",
+    "start": 201921,
+    "end": 201973,
+    "bank": 12,
+    "kind": "code",
+    "bytes": 52,
+    "instructions": 30,
+    "file": "twist_dispatch.asm"
+  },
+  {
+    "name": "twist_tables",
+    "start": 201973,
+    "end": 202205,
+    "bank": 12,
+    "kind": "data",
+    "bytes": 232,
+    "instructions": 0,
+    "file": "twist_tables.asm"
+  },
+  {
+    "name": "twist_handlers",
+    "start": 202205,
+    "end": 202794,
+    "bank": 12,
+    "kind": "code",
+    "bytes": 589,
+    "instructions": 239,
+    "file": "twist_handlers.asm"
+  },
+  {
+    "name": "platform_reverse",
+    "start": 491761,
+    "end": 491781,
+    "bank": 30,
+    "kind": "code",
+    "bytes": 20,
+    "instructions": 12,
+    "file": "platform_reverse.asm"
+  },
+  {
+    "name": "platform_code",
+    "start": 492919,
+    "end": 493895,
+    "bank": 30,
+    "kind": "code",
+    "bytes": 976,
+    "instructions": 423,
+    "file": "platform_code.asm"
+  }
+]
