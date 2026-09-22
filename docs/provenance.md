@@ -14,7 +14,7 @@ ROM size: 524,288 bytes. SHA-256:
 eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607
 ```
 
-No ROM, binary bank, commercial artwork, or audio recording is included. The generated assembly contains recovered original instructions; decoded data and annotations are identified as such. See [NOTICE.md](../NOTICE.md) for attribution scope.
+No ROM, binary bank, commercial artwork, or audio recording is included. The metadata-only cache under `data/rom-cache/` contains coordinates, type bytes, source offsets, and hashes so placements can be regenerated without inventing objects. The generated assembly contains recovered original instructions; decoded data and annotations are identified as such. See [NOTICE.md](../NOTICE.md) for attribution scope.
 
 ## Verification levels
 

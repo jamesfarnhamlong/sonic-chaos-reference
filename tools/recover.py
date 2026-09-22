@@ -32,6 +32,8 @@ REGIONS = [
  ('twist_dispatch',0x314c1,0x314f5,'code'),
  ('twist_tables',0x314f5,0x315dd,'data'),
  ('twist_handlers',0x315dd,0x3182a,'code'),
+ ('spike_object_scripts',0x32c4a,0x32c7d,'data'),
+ ('spike_object_handlers',0x32c7d,0x32d59,'code'),
  # Previously recovered regions retained where they do not overlap the above.
  ('loop_states',0x3c1b,0x3efd,'code'),
  ('spring_setters',0x480c,0x4892,'code'),
@@ -39,6 +41,10 @@ REGIONS = [
  ('loop_contacts',0x6cba,0x6ce5,'code'),
  ('twist_entry',0x6e56,0x6f61,'code'),
  ('platform_reverse',0x780f1,0x78105,'code'),
+ ('object_26_scripts',0x78212,0x7825a,'data'),
+ ('object_26_handlers',0x7825a,0x783b3,'code'),
+ ('object_26_span_scripts',0x783b3,0x783bf,'data'),
+ ('object_26_span_handlers',0x783bf,0x78439,'code'),
  ('platform_code',0x78577,0x78947,'code'),
 ]
 
@@ -123,6 +129,21 @@ COMMENTS = {
 0x3179f:'Y alignment using (Y-16)&~31, then +46.',
 0x317b8:'Sonic Y alignment: ((Y-32)&~31)+46; alternate character branch differs.',
 0x31812:'X low-byte alignment to tile boundary +22; high byte is preserved.',
+0x32c4a:'Object type $1B has five state-script pointers; THZ1 places four parameter-zero instances.',
+0x32c7d:'Initialize retracting spikes: request state 1 and clear the hit cooldown.',
+0x32c8b:'Rising state: damage/contact helper, then move Y up six pixels to an 18-pixel limit.',
+0x32ccc:'Retracting state: move Y down six pixels to the saved base, then request hidden state 4.',
+0x32cfd:'Spike contact helper; hit cooldown is object+$1F.',
+0x78212:'Object type $26 state-script table and scripts for fixed and span variants.',
+0x7825a:'Initialize object $26; parameter bit 7 selects a low-seven-bit times 16 trigger span.',
+0x782af:'Fixed concealed spring contact: top contact selects -7.375 or -5.0 and states 1/3.',
+0x78312:'Strong spring extension: counter -7 and Y -7; hold state 2 starts at 32.',
+0x7833a:'Strong extended-state counter requests retract state 5.',
+0x78349:'Shared spring retraction: Y +7 to saved base, then restore saved rest state.',
+0x7837c:'Weak spring extension; hold state 4 starts at 10.',
+0x783a4:'Weak extended-state counter requests retract state 6.',
+0x783bf:'Span state 8: check a saved X interval before requesting activation state 9.',
+0x78401:'Span activation aligns object X to the player on a 16-pixel boundary and launches.',
 }
 
 def generate(rom_path, output):

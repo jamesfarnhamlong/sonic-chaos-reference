@@ -40,10 +40,16 @@ Our previous floor logic neither implements that order nor the ramp state transi
 
 ## Other useful results
 
-- The exact assembly for 32 recovered regions rebuilds correctly. Source-byte identity does not prove every annotation.
+- The exact assembly for 38 recovered regions rebuilds correctly. Source-byte identity does not prove every annotation.
 - The collision table has 16 alternate headers selected through object field `+$25`. Side contacts with tiles `$A1/$A2` can switch this field.
 - The twist contains two helper entry points that immediately `RET`. Translating the unreachable arithmetic following those entry points would introduce behavior absent from this ROM.
 - The supplied 68 sound offsets are verified against the pointer table at file `$090E1`. We have an index, not converted audio.
 - The original 53 object records, six platforms, and three loop-path exports remain included and reproducible.
+- Type `$26` is a concealed multi-state spring object. Parameter `$8A` creates a
+  160-pixel trigger span; fixed and span variants share decoded strong/weak launch,
+  extension, hold and retraction states.
+- Type `$1B` is the timed retracting spike object used four times on the THZ1 lower
+  route. It moves 18 pixels in six-pixel steps and runs damage checks only while
+  rising or raised.
 
 The Windows prototype should next use the recovered rules in original units, checked against these fixtures. [The porting plan](porting.md) gives the order.

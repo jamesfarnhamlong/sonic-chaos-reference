@@ -1,5 +1,7 @@
 # Porting plan and open questions
 
+This is the original research-stage plan. For the subsequent v14 source audit and current priorities, read [the 21 September audit](audit-2026-09-21.md).
+
 ## Next Windows prototype
 
 The immediate goal remains a reliable first act on Windows. The reference work supports a systematic replacement of the overlapping sample-engine and Chaos collision rules.

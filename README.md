@@ -2,14 +2,18 @@
 
 A research reference for the original Sonic Chaos Master System engine, developed while building a Windows proof of concept in GameMaker. It continues work begun with RF / Ravenfreak / Amber Davis's partial disassembly and the supplied SMS ROM.
 
-Companion project: [Sonic Chaos Windows proof of concept](https://github.com/jamesfarnhamlong/SonicChaos_POC).
-
 This first reference release documents collision, the first Turquoise Hill curve, movement parameters, spring states, loops, the twisting strip, placements, and sound pointers. **It is a reference package, not a new GameMaker build or a complete decompilation.**
 
 The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserved byte for byte under [`archive/continuation-01/`](archive/continuation-01/). You only need this reference package for a new repository; its current build and tests use `asm/recovered/`, `tools/` and `tests/`, not the archived overlay.
 
 ## Start here
 
+- [Full research and POC audit — 21 September 2026](docs/audit-2026-09-21.md): measured coverage, fresh verification results, remaining unknowns and concrete v14 integration gaps.
+- [Windows Act 1 POC roadmap after 14.5](docs/windows-poc-roadmap.md): the next spring/object, twisting-strip and completion passes with acceptance checks.
+- [Act 1 emulator observations, 21 September 2026](reports/emulator-observations-2026-09-21.md): retracting spikes, the concealed contact spring and the validated opening red-spring height.
+- [Act 1 concealed springs and retracting spikes](docs/act1-objects.md): decoded type `$26` and `$1B` state machines used by Windows POC 15.
+- [Act 1 canon-layout policy](docs/canon-layout.md): ROM-only placement sources, the metadata cache, and the POC 15.1 placement audit.
+- [POC 15.1 layout result](reports/windows-poc-15.1-layout.json): the machine-readable canon-placement totals and removals.
 - [Findings and corrections](docs/findings.md): what the investigation established and why the prototype got stuck.
 - [Terrain collision](docs/collision.md): sensors, profiles, previous-frame state, projection and planes.
 - [Player movement and springs](docs/movement.md): original units, gravity, input/friction tables and spring flight.
@@ -23,7 +27,7 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 
 | Check | Result |
 |---|---|
-| Recovered assembly | 32 regions, 7,989 bytes, 3,050 decoded instructions; explicit tables counted separately |
+| Recovered assembly | 38 regions, 8,811 bytes, 3,353 decoded instructions; explicit tables counted separately |
 | Assembly reconstruction | All 524,288 ROM bytes match; unrecovered gaps are preserved from the supplied ROM |
 | Differential checks | 37,233 comparisons against original Z80 subroutines pass |
 | THZ collision data | 256 base headers plus 16 alternate-plane headers |
@@ -41,8 +45,10 @@ Use Python 3.10 or newer. Supply your own matching ROM; this repository contains
 ```sh
 python -m pip install -r requirements.txt
 python tools/export_reference.py path/to/SonicChaos.sms --output data
+python tools/cache_game_data.py path/to/SonicChaos.sms
 python tools/recover.py path/to/SonicChaos.sms --output asm/recovered
 python tests/verify_rom.py path/to/SonicChaos.sms --output reports
+python tests/verify_cache.py path/to/SonicChaos.sms
 ```
 
 For assembly verification, install WLA-DX with `wla-z80` and `wlalink` on PATH:

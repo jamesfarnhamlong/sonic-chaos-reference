@@ -1,0 +1,22 @@
+{
+  "status_date": "2026-09-21",
+  "build": "SonicChaos_Act1_POC_14_5",
+  "numerical_verification": {
+    "actual_shipped_gml_executed": true,
+    "subroutine_and_state_fixtures_passed": 15660,
+    "first_ramp_trace_updates_passed": 48,
+    "upright_spring_trace_updates_passed": 160,
+    "game_maker_compiled_by_reference_environment": false
+  },
+  "windows_playtest_observations": {
+    "general_physics": "large improvement; feels substantially more accurate",
+    "first_curved_ramp": "triggers rolling, carries Sonic upward, and unrolls correctly",
+    "moving_platforms": "working in tested section",
+    "loops": "both working in tested section",
+    "red_terrain_springs": "feel good in tested section",
+    "orange_object_springs": "one middle placement appears underpowered; original comparison pending",
+    "twisting_strip": "special behavior not yet implemented"
+  },
+  "interpretation_limit": "The orange spring observation does not establish an incorrect impulse. Nonzero object type $26 records use a weaker -5.0 raw Y impulse in the recovered handler; the complete object/player state contract remains to be traced.",
+  "next_plan": "docs/windows-poc-roadmap.md"
+}
