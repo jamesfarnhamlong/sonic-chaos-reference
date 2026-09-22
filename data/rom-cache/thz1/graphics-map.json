@@ -1,0 +1,150 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "policy": "metadata only; no ROM, graphics, or audio bytes",
+  "level_art": {
+    "table_cpu_address": "0x7CED",
+    "table_rom_offset": "0x07CED",
+    "thz1_entry_raw": "10 00 18 9E 8F 13 7E",
+    "primary_stream": {
+      "id": "thz1_primary",
+      "bank_byte": "0x10",
+      "vram_destination": "0x1800",
+      "base_tile": "0xC0",
+      "stream_cpu_address": "0x8F9E",
+      "stream_rom_offset": "0x40F9E",
+      "transform_remap": false,
+      "expected_tile_count": 251
+    },
+    "supplemental_list_cpu_address": "0x7E13",
+    "supplemental_list_rom_offset": "0x07E13"
+  },
+  "supplemental_list": {
+    "cpu_address": "0x7E13",
+    "rom_offset": "0x07E13",
+    "terminator": "0xFF",
+    "entries": [
+      {
+        "id": "thz1_common_base_10",
+        "raw": "08 00 02 40 B3",
+        "bank_byte": "0x08",
+        "vram_destination": "0x0200",
+        "base_tile": "0x10",
+        "stream_cpu_address": "0xB340",
+        "stream_rom_offset": "0x23340",
+        "transform_remap": false,
+        "expected_tile_count": null
+      },
+      {
+        "id": "thz1_base_6A",
+        "raw": "09 40 0D C0 A1",
+        "bank_byte": "0x09",
+        "vram_destination": "0x0D40",
+        "base_tile": "0x6A",
+        "stream_cpu_address": "0xA1C0",
+        "stream_rom_offset": "0x261C0",
+        "transform_remap": false,
+        "expected_tile_count": 8
+      },
+      {
+        "id": "thz1_base_72",
+        "raw": "09 40 0E 30 A0",
+        "bank_byte": "0x09",
+        "vram_destination": "0x0E40",
+        "base_tile": "0x72",
+        "stream_cpu_address": "0xA030",
+        "stream_rom_offset": "0x26030",
+        "transform_remap": false,
+        "expected_tile_count": 20
+      },
+      {
+        "id": "thz1_base_86",
+        "raw": "09 C0 10 B0 9A",
+        "bank_byte": "0x09",
+        "vram_destination": "0x10C0",
+        "base_tile": "0x86",
+        "stream_cpu_address": "0x9AB0",
+        "stream_rom_offset": "0x25AB0",
+        "transform_remap": false,
+        "expected_tile_count": 18
+      },
+      {
+        "id": "thz1_base_98_remap",
+        "raw": "89 00 13 B0 9A",
+        "bank_byte": "0x89",
+        "vram_destination": "0x1300",
+        "base_tile": "0x98",
+        "stream_cpu_address": "0x9AB0",
+        "stream_rom_offset": "0x25AB0",
+        "transform_remap": true,
+        "expected_tile_count": 18
+      },
+      {
+        "id": "thz1_base_AA_remap",
+        "raw": "89 40 15 A0 95",
+        "bank_byte": "0x89",
+        "vram_destination": "0x1540",
+        "base_tile": "0xAA",
+        "stream_cpu_address": "0x95A0",
+        "stream_rom_offset": "0x255A0",
+        "transform_remap": true,
+        "expected_tile_count": 10
+      }
+    ]
+  },
+  "object_sprite_mappings": [
+    {
+      "type_id": "0x21",
+      "decoded_kind": null,
+      "art_bases": [
+        "0x86",
+        "0x98"
+      ],
+      "mapping_cpu_address": "0x911B",
+      "mapping_rom_offset": "0x3D11B",
+      "frame_records": [
+        "0x9121",
+        "0x912C"
+      ]
+    },
+    {
+      "type_id": "0x26",
+      "decoded_kind": "concealed_spring",
+      "art_bases": [
+        "0x72"
+      ],
+      "mapping_cpu_address": "0x91C0",
+      "mapping_rom_offset": "0x3D1C0",
+      "frame_records": [
+        "0x91C8",
+        "0x91D3",
+        "0x91DE"
+      ]
+    },
+    {
+      "type_id": "0x27",
+      "decoded_kind": null,
+      "art_bases": [
+        "0xAA"
+      ],
+      "mapping_cpu_address": "0x91F5",
+      "mapping_rom_offset": "0x3D1F5",
+      "frame_records": [
+        "0x91FB",
+        "0x9206"
+      ]
+    },
+    {
+      "type_id": "0x28",
+      "decoded_kind": "moving_platform",
+      "art_bases": [
+        "0x6A"
+      ],
+      "mapping_cpu_address": "0x9217",
+      "mapping_rom_offset": "0x3D217",
+      "frame_records": [
+        "0x921B"
+      ]
+    }
+  ]
+}
