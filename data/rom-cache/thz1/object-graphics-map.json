@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "scope": "Turquoise Hill Act 1 object graphics and animation reachability",
+  "objects": [
+    {
+      "type_id": "0x09",
+      "mapping_cpu": "0x8C71",
+      "mapping_rom": "0x3CC71",
+      "animation_table_cpu": "0x9BC8",
+      "animation_bank": "0x0C",
+      "state_count": 4,
+      "reachable_mapping_frames": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06"],
+      "visual_identity": "ring",
+      "identity_basis": "reachable reconstructed frames show the rotating ring and sparkle family"
+    },
+    {
+      "type_id": "0x10",
+      "mapping_cpu": "0x8C71",
+      "mapping_rom": "0x3CC71",
+      "animation_table_cpu": "0xA101",
+      "animation_bank": "0x0C",
+      "state_count": 4,
+      "reachable_mapping_frames": ["0x00", "0x0B", "0x0C"],
+      "visual_identity": "monitor",
+      "identity_basis": "reachable reconstructed frames show monitor/item-box graphics"
+    },
+    {
+      "type_id": "0x18",
+      "mapping_cpu": "0x8EAE",
+      "mapping_rom": "0x3CEAE",
+      "animation_table_cpu": "0xA7BC",
+      "animation_bank": "0x0C",
+      "state_count": 7,
+      "reachable_mapping_frames": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05"],
+      "visual_identity": "goal_sign",
+      "identity_basis": "dynamic VRAM reconstruction yields the rotating end-of-act goal sign/signpost",
+      "dynamic_graphics": {
+        "selector_ram": "0xD3B3",
+        "selector": "0x12",
+        "list_pointer_table": "0x7BA6",
+        "list_cpu": "0x7BCB",
+        "loads": [
+          {
+            "bank": "0x0D",
+            "source_cpu": "0x96BC",
+            "source_rom": "0x356BC",
+            "vram_destination": "0x0D40",
+            "tile_range": "0x6A-0x79",
+            "tile_count": 16
+          },
+          {
+            "bank": "0x09",
+            "source_cpu": "0x8640",
+            "source_rom": "0x24640",
+            "vram_destination": "0x0F40",
+            "tile_range": "0x7A-0xA9",
+            "tile_count": 48
+          }
+        ]
+      }
+    },
+    {
+      "type_id": "0x1B",
+      "mapping_cpu": "0x8C71",
+      "mapping_rom": "0x3CC71",
+      "animation_table_cpu": "0xAC4A",
+      "animation_bank": "0x0C",
+      "state_count": 5,
+      "reachable_mapping_frames": ["0x0E"],
+      "semantic_identity": "retracting_spikes",
+      "identity_basis": "recovered spike state handlers plus frame-reachability validation"
+    }
+  ],
+  "animation_commands": {
+    "0x00": "restart current state animation script",
+    "0x01": "call absolute routine and resume parser",
+    "0x03": "request another object/animation state",
+    "0x06": "write sound request byte to PlaySound ($DE04)",
+    "0x07": "jump to absolute animation-script address",
+    "0x0E": "set animation loop counter at IX+$33",
+    "0x0F": "decrement IX+$33 and jump while nonzero"
+  }
+}
