@@ -1,0 +1,569 @@
+; animation_command_handlers: ROM $066B6..$068F7 (end exclusive $068F8).
+; Original Sonic Chaos instructions/data. See docs/provenance.md.
+; Generated deterministically by tools/recover.py. Semantic coverage varies.
+
+SC_066B6:
+    JP $653D
+SC_066B9:
+    LD A,(IX+1)
+SC_066BC:
+    CP (IX+2)
+SC_066BF:
+    JP z,$651D
+SC_066C2:
+    JP $6517
+SC_066C5:
+    LD L,(IX+14)
+SC_066C8:
+    LD H,(IX+15)
+SC_066CB:
+    LD E,(HL)
+SC_066CC:
+    INC HL
+SC_066CD:
+    LD D,(HL)
+SC_066CE:
+    INC HL
+SC_066CF:
+    LD (IX+14),L
+SC_066D2:
+    LD (IX+15),H
+SC_066D5:
+    LD HL,$653D
+SC_066D8:
+    PUSH HL
+SC_066D9:
+    EX DE,HL
+SC_066DA:
+    JP (HL)
+; FF 02: set signed 8.8 X/Y velocities; object+$04 bit 4 negates X.
+SC_066DB:
+    LD L,(IX+14)
+SC_066DE:
+    LD H,(IX+15)
+SC_066E1:
+    LD E,(HL)
+SC_066E2:
+    INC HL
+SC_066E3:
+    LD D,(HL)
+SC_066E4:
+    INC HL
+SC_066E5:
+    LD C,(HL)
+SC_066E6:
+    INC HL
+SC_066E7:
+    LD B,(HL)
+SC_066E8:
+    INC HL
+SC_066E9:
+    LD (IX+14),L
+SC_066EC:
+    LD (IX+15),H
+SC_066EF:
+    BIT 4,(IX+4)
+SC_066F3:
+    JR z,SC_066FC
+SC_066F5:
+    LD HL,0
+SC_066F8:
+    XOR A
+SC_066F9:
+    SBC HL,DE
+SC_066FB:
+    EX DE,HL
+SC_066FC:
+    LD (IX+$16),E
+SC_066FF:
+    LD (IX+$17),D
+SC_06702:
+    LD (IX+$18),C
+SC_06705:
+    LD (IX+$19),B
+SC_06708:
+    JP $653D
+SC_0670B:
+    LD L,(IX+14)
+SC_0670E:
+    LD H,(IX+15)
+SC_06711:
+    LD A,(HL)
+SC_06712:
+    INC HL
+SC_06713:
+    LD (IX+14),L
+SC_06716:
+    LD (IX+15),H
+SC_06719:
+    LD (IX+2),A
+SC_0671C:
+    JP $653D
+SC_0671F:
+    CALL $5EE1
+SC_06722:
+    JR c,SC_0678C
+SC_06724:
+    LD L,(IX+14)
+SC_06727:
+    LD H,(IX+15)
+SC_0672A:
+    LD A,(HL)
+SC_0672B:
+    LD (IY+0),A
+SC_0672E:
+    INC HL
+SC_0672F:
+    LD E,(HL)
+SC_06730:
+    INC HL
+SC_06731:
+    LD D,(HL)
+SC_06732:
+    INC HL
+SC_06733:
+    LD C,(HL)
+SC_06734:
+    INC HL
+SC_06735:
+    LD B,(HL)
+SC_06736:
+    INC HL
+SC_06737:
+    LD A,(HL)
+SC_06738:
+    LD (IY+$3F),A
+SC_0673B:
+    INC HL
+SC_0673C:
+    LD (IX+14),L
+SC_0673F:
+    LD (IX+15),H
+SC_06742:
+    BIT 4,(IX+4)
+SC_06746:
+    JR z,SC_0674F
+SC_06748:
+    LD HL,0
+SC_0674B:
+    XOR A
+SC_0674C:
+    SBC HL,DE
+SC_0674E:
+    EX DE,HL
+SC_0674F:
+    LD L,(IX+$11)
+SC_06752:
+    LD H,(IX+$12)
+SC_06755:
+    ADD HL,DE
+SC_06756:
+    LD (IY+$11),L
+SC_06759:
+    LD (IY+$12),H
+SC_0675C:
+    LD (IY+$3A),L
+SC_0675F:
+    LD (IY+$3B),H
+SC_06762:
+    LD L,(IX+$14)
+SC_06765:
+    LD H,(IX+$15)
+SC_06768:
+    ADD HL,BC
+SC_06769:
+    LD (IY+$14),L
+SC_0676C:
+    LD (IY+$15),H
+SC_0676F:
+    LD (IY+$3C),L
+SC_06772:
+    LD (IY+$3D),H
+SC_06775:
+    LD A,(IX+4)
+SC_06778:
+    AND $10
+SC_0677A:
+    LD (IY+4),A
+SC_0677D:
+    LD A,(IX+8)
+SC_06780:
+    LD (IY+8),A
+SC_06783:
+    LD A,(IX+9)
+SC_06786:
+    LD (IY+9),A
+SC_06789:
+    JP $653D
+SC_0678C:
+    LD L,(IX+14)
+SC_0678F:
+    LD H,(IX+15)
+SC_06792:
+    INC HL
+SC_06793:
+    INC HL
+SC_06794:
+    INC HL
+SC_06795:
+    INC HL
+SC_06796:
+    INC HL
+SC_06797:
+    INC HL
+SC_06798:
+    LD (IX+14),L
+SC_0679B:
+    LD (IX+15),H
+SC_0679E:
+    JP $653D
+SC_067A1:
+    LD L,(IX+14)
+SC_067A4:
+    LD H,(IX+15)
+SC_067A7:
+    LD E,(HL)
+SC_067A8:
+    INC HL
+SC_067A9:
+    LD D,(HL)
+SC_067AA:
+    INC HL
+SC_067AB:
+    LD A,(HL)
+SC_067AC:
+    LD (IX+12),A
+SC_067AF:
+    INC HL
+SC_067B0:
+    LD A,(HL)
+SC_067B1:
+    LD (IX+13),A
+SC_067B4:
+    INC HL
+SC_067B5:
+    LD (IX+14),L
+SC_067B8:
+    LD (IX+15),H
+SC_067BB:
+    LD HL,$6562
+SC_067BE:
+    PUSH HL
+SC_067BF:
+    EX DE,HL
+SC_067C0:
+    JP (HL)
+SC_067C1:
+    LD L,(IX+14)
+SC_067C4:
+    LD H,(IX+15)
+SC_067C7:
+    LD A,(HL)
+SC_067C8:
+    INC HL
+SC_067C9:
+    LD (IX+14),L
+SC_067CC:
+    LD (IX+15),H
+SC_067CF:
+    LD ($D3B3),A
+SC_067D2:
+    JP $653D
+SC_067D5:
+    LD L,(IX+14)
+SC_067D8:
+    LD H,(IX+15)
+SC_067DB:
+    LD A,(HL)
+SC_067DC:
+    INC HL
+SC_067DD:
+    LD (IX+14),L
+SC_067E0:
+    LD (IX+15),H
+SC_067E3:
+    LD ($DE04),A
+SC_067E6:
+    LD ($DE04),A
+SC_067E9:
+    JP $653D
+SC_067EC:
+    LD L,(IX+14)
+SC_067EF:
+    LD H,(IX+15)
+SC_067F2:
+    LD A,(HL)
+SC_067F3:
+    INC HL
+SC_067F4:
+    LD H,(HL)
+SC_067F5:
+    LD L,A
+SC_067F6:
+    LD (IX+14),L
+SC_067F9:
+    LD (IX+15),H
+SC_067FC:
+    JP $653D
+SC_067FF:
+    LD L,(IX+14)
+SC_06802:
+    LD H,(IX+15)
+SC_06805:
+    LD E,(HL)
+SC_06806:
+    INC HL
+SC_06807:
+    LD D,(HL)
+SC_06808:
+    INC HL
+SC_06809:
+    LD C,(HL)
+SC_0680A:
+    INC HL
+SC_0680B:
+    LD B,(HL)
+SC_0680C:
+    INC HL
+SC_0680D:
+    LD (IX+14),L
+SC_06810:
+    LD (IX+15),H
+SC_06813:
+    PUSH BC
+SC_06814:
+    LD BC,$681A
+SC_06817:
+    PUSH BC
+SC_06818:
+    EX DE,HL
+SC_06819:
+    JP (HL)
+SC_0681A:
+    POP BC
+SC_0681B:
+    JP nc,$653D
+SC_0681E:
+    LD (IX+14),C
+SC_06821:
+    LD (IX+15),B
+SC_06824:
+    JP $653D
+SC_06827:
+    LD L,(IX+14)
+SC_0682A:
+    LD H,(IX+15)
+SC_0682D:
+    LD C,(HL)
+SC_0682E:
+    INC HL
+SC_0682F:
+    LD A,(HL)
+SC_06830:
+    INC HL
+SC_06831:
+    LD (IX+14),L
+SC_06834:
+    LD (IX+15),H
+SC_06837:
+    PUSH IX
+SC_06839:
+    POP HL
+SC_0683A:
+    LD B,0
+SC_0683C:
+    ADD HL,BC
+SC_0683D:
+    LD (HL),A
+SC_0683E:
+    JP $653D
+SC_06841:
+    LD L,(IX+14)
+SC_06844:
+    LD H,(IX+15)
+SC_06847:
+    LD E,(HL)
+SC_06848:
+    INC HL
+SC_06849:
+    LD D,(HL)
+SC_0684A:
+    INC HL
+SC_0684B:
+    LD A,(HL)
+SC_0684C:
+    INC HL
+SC_0684D:
+    LD (IX+14),L
+SC_06850:
+    LD (IX+15),H
+SC_06853:
+    LD (DE),A
+SC_06854:
+    JP $653D
+; FF 0B: AND an object field with a mask.
+SC_06857:
+    LD L,(IX+14)
+SC_0685A:
+    LD H,(IX+15)
+SC_0685D:
+    LD C,(HL)
+SC_0685E:
+    INC HL
+SC_0685F:
+    LD E,(HL)
+SC_06860:
+    INC HL
+SC_06861:
+    LD (IX+14),L
+SC_06864:
+    LD (IX+15),H
+SC_06867:
+    PUSH IX
+SC_06869:
+    POP HL
+SC_0686A:
+    LD B,0
+SC_0686C:
+    ADD HL,BC
+SC_0686D:
+    LD A,(HL)
+SC_0686E:
+    AND E
+SC_0686F:
+    LD (HL),A
+SC_06870:
+    JP $653D
+; FF 0C: OR an object field with a mask.
+SC_06873:
+    LD L,(IX+14)
+SC_06876:
+    LD H,(IX+15)
+SC_06879:
+    LD C,(HL)
+SC_0687A:
+    INC HL
+SC_0687B:
+    LD E,(HL)
+SC_0687C:
+    INC HL
+SC_0687D:
+    LD (IX+14),L
+SC_06880:
+    LD (IX+15),H
+SC_06883:
+    PUSH IX
+SC_06885:
+    POP HL
+SC_06886:
+    LD B,0
+SC_06888:
+    ADD HL,BC
+SC_06889:
+    LD A,(HL)
+SC_0688A:
+    OR E
+SC_0688B:
+    LD (HL),A
+SC_0688C:
+    JP $653D
+SC_0688F:
+    LD L,(IX+14)
+SC_06892:
+    LD H,(IX+15)
+SC_06895:
+    LD C,(HL)
+SC_06896:
+    INC HL
+SC_06897:
+    LD E,(HL)
+SC_06898:
+    INC HL
+SC_06899:
+    LD D,(HL)
+SC_0689A:
+    INC HL
+SC_0689B:
+    LD A,(HL)
+SC_0689C:
+    LD (IX+12),A
+SC_0689F:
+    INC HL
+SC_068A0:
+    LD A,(HL)
+SC_068A1:
+    LD (IX+13),A
+SC_068A4:
+    INC HL
+SC_068A5:
+    LD (IX+14),L
+SC_068A8:
+    LD (IX+15),H
+SC_068AB:
+    LD (IX+7),C
+SC_068AE:
+    BIT 4,(IX+10)
+SC_068B2:
+    JR z,SC_068B5
+SC_068B4:
+    LD E,D
+SC_068B5:
+    LD (IX+6),E
+SC_068B8:
+    JP $6562
+SC_068BB:
+    LD L,(IX+14)
+SC_068BE:
+    LD H,(IX+15)
+SC_068C1:
+    LD A,(HL)
+SC_068C2:
+    INC HL
+SC_068C3:
+    LD (IX+14),L
+SC_068C6:
+    LD (IX+15),H
+SC_068C9:
+    LD (IX+$33),A
+SC_068CC:
+    JP $653D
+SC_068CF:
+    LD L,(IX+14)
+SC_068D2:
+    LD H,(IX+15)
+SC_068D5:
+    LD A,(IX+$33)
+SC_068D8:
+    DEC A
+SC_068D9:
+    LD (IX+$33),A
+SC_068DC:
+    JR z,SC_068EB
+SC_068DE:
+    LD A,(HL)
+SC_068DF:
+    INC HL
+SC_068E0:
+    LD H,(HL)
+SC_068E1:
+    LD L,A
+SC_068E2:
+    LD (IX+14),L
+SC_068E5:
+    LD (IX+15),H
+SC_068E8:
+    JP $653D
+SC_068EB:
+    LD A,(HL)
+SC_068EC:
+    INC HL
+SC_068ED:
+    LD A,(HL)
+SC_068EE:
+    INC HL
+SC_068EF:
+    LD (IX+14),L
+SC_068F2:
+    LD (IX+15),H
+SC_068F5:
+    JP $653D

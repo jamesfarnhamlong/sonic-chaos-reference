@@ -14,8 +14,8 @@ Evidence chain reproduced by this tool:
       -> structural PNG preview
 
 The engine maps bank $0C before calling the animation routine for object types
-below $26, and bank $1E for types $26 and above. The four THZ1 unknown/partly
-known targets ($09/$10/$18/$1B) are therefore decoded from bank $0C.
+below $26, and bank $1E for types $26 and above. The THZ1 targets
+($09/$10/$18/$1B/$21) are therefore decoded from bank $0C.
 
 ROM-derived output stays under build/.
 
@@ -46,7 +46,7 @@ GRAPHICS_MAP = ROOT / "data" / "rom-cache" / "thz1" / "graphics-map.json"
 OBJECT_RECORDS = ROOT / "data" / "rom-cache" / "thz1" / "object-records.json"
 
 ANIM_TYPE_TABLE_ROM = 0x65BA
-TARGET_TYPES = (0x09, 0x10, 0x18, 0x1B)
+TARGET_TYPES = (0x09, 0x10, 0x18, 0x1B, 0x21)
 
 # Hard anchors from recovered ROM regions already in the reference repository.
 SPIKE_STATE_TABLE_CPU = 0xAC4A
@@ -62,12 +62,18 @@ SPRING_STATE_POINTERS = (
 #
 # FF 00            restart current state's script
 # FF 01 <lo> <hi>  call absolute routine, then resume parser
+# FF 02 <xlo> <xhi> <ylo> <yhi>
+#                    set signed 8.8 velocity (runtime may negate X for bit 4)
 # FF 03 <state>    request another animation/object state
 # FF 06 <sound>    write sound request byte to PlaySound ($DE04)
 # FF 07 <lo> <hi>  jump to absolute script CPU address
+# FF 0B <offset> <mask>  object[offset] &= mask
+# FF 0C <offset> <mask>  object[offset] |= mask
 # FF 0E <count>    set loop counter at IX+$33
 # FF 0F <lo> <hi>  decrement loop counter; jump while nonzero
-SUPPORTED_COMMANDS = {0x00, 0x01, 0x03, 0x06, 0x07, 0x0E, 0x0F}
+SUPPORTED_COMMANDS = {
+    0x00, 0x01, 0x02, 0x03, 0x06, 0x07, 0x0B, 0x0C, 0x0E, 0x0F
+}
 
 
 def u16(data: bytes, pos: int) -> int:
@@ -206,6 +212,19 @@ def parse_state_script(
             pc += 4
             continue
 
+        if cmd == 0x02:
+            x_velocity = u16(rom, rom_pos + 2)
+            y_velocity = u16(rom, rom_pos + 4)
+            cmd_record["meaning"] = "set_velocity_8_8"
+            cmd_record["x_velocity_raw"] = f"0x{x_velocity:04X}"
+            cmd_record["y_velocity_raw"] = f"0x{y_velocity:04X}"
+            cmd_record["x_runtime_note"] = (
+                "negated when object flags byte +0x04 bit 4 is set"
+            )
+            commands.append(cmd_record)
+            pc += 6
+            continue
+
         if cmd == 0x03:
             target_state = rom[rom_pos + 2]
             cmd_record["meaning"] = "request_state"
@@ -228,6 +247,18 @@ def parse_state_script(
             cmd_record["target_cpu"] = f"0x{target:04X}"
             commands.append(cmd_record)
             pc = target
+            continue
+
+        if cmd in (0x0B, 0x0C):
+            offset = rom[rom_pos + 2]
+            mask = rom[rom_pos + 3]
+            cmd_record["meaning"] = (
+                "and_object_field" if cmd == 0x0B else "or_object_field"
+            )
+            cmd_record["offset"] = f"0x{offset:02X}"
+            cmd_record["mask"] = f"0x{mask:02X}"
+            commands.append(cmd_record)
+            pc += 4
             continue
 
         if cmd == 0x0E:
@@ -460,8 +491,9 @@ def report_text(summary: dict) -> str:
         "- This report establishes which mapping frame indices are reachable from "
         "the per-type animation state scripts under the supported control commands.",
         "- It does not assign semantic names to `$09`, `$10` or `$18`.",
-        "- `FF 00`, `FF 03`, `FF 06` and `FF 07` are the only control forms "
-        "interpreted. If another command is encountered, that state is marked "
+        "- `FF 00`, `FF 01`, `FF 02`, `FF 03`, `FF 06`, `FF 07`, `FF 0B`, "
+        "`FF 0C`, `FF 0E` and `FF 0F` are interpreted. If another command is "
+        "encountered, that state is marked "
         "unresolved rather than guessed.",
         "- PNGs are structural grayscale previews using the same THZ1 VRAM load "
         "reconstruction as v2; they are not CRAM-accurate.",
@@ -550,7 +582,10 @@ def main() -> None:
         "rom_sha256": digest,
         "mapping_anchor_validation": "pass",
         "animation_anchor_validation": anim_validation,
-        "supported_control_commands": ["0x00", "0x03", "0x06", "0x07"],
+        "supported_control_commands": [
+            "0x00", "0x01", "0x02", "0x03", "0x06", "0x07",
+            "0x0B", "0x0C", "0x0E", "0x0F",
+        ],
         "objects": persisted,
     }
 

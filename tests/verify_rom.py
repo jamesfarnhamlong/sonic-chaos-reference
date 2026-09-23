@@ -8,7 +8,9 @@ from reference import lookup, project_floor, project_side, angle_velocity
 
 def verify(path, output):
     rom = load(path); tiles = layout(rom); o = Oracle(rom)
-    counts = dict(lookup=0, floor=0, side=0, angle_velocity=0, gravity=0, ramp_launch=0, layout_decoder=0)
+    counts = dict(lookup=0, floor=0, side=0, angle_velocity=0,
+                  gravity=0, ramp_launch=0, layout_decoder=0,
+                  object21_init=0, object21_patrol=0, object21_contact=0)
     loader=Oracle(rom);loader.bank(2,18)
     loader.mem[0xc001:0xd000]=bytes(4095);loader.mem[0xd000]=0xa5
     loader.cpu.iy=0x8000;loader.cpu.de=0xc001;loader.cpu.pc=0x4dc4
@@ -120,10 +122,73 @@ def verify(path, output):
     assert apex==503.75 and flight[79]['requested_state']==14 and flight[79]['vy']==1
     with (output/'vertical-spring-trace.csv').open('w',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=flight[0]);writer.writeheader();writer.writerows(flight)
+
+    # Type $21 initialization and two real-placement patrols. These execute the
+    # original bank-$0C callbacks plus the original THZ floor routines.
+    object21_init=[]
+    for parameter,expected_bound in ((2,968),(8,872)):
+        obj=Oracle(rom);obj.bank(2,12);obj.mem[0xd12b]=12;obj.cpu.ix=0xd700
+        obj.word(0xd711,1000);obj.mem[0xd73f]=parameter;obj.mem[0xd704]=0
+        obj.call(0xb210)
+        actual=(obj.mem[0xd702],s16(obj.word(0xd716)),
+                s16(obj.word(0xd718)),obj.word(0xd737),obj.mem[0xd73f])
+        assert actual==(3,-128,512,expected_bound,0),('object21_init',parameter,actual)
+        object21_init.append(dict(parameter=parameter,left_bound=actual[3]))
+        counts['object21_init']+=1
+
+    object21_patrol=[]
+    for x,y,parameter,expected_ticks in ((2400,254,2,(65,132)),
+                                          (800,606,8,(257,516))):
+        obj=Oracle(rom);obj.bank(2,12);obj.mem[0xd12b]=12;obj.cpu.ix=0xd700
+        obj.mem[0xd700]=0x21;obj.word(0xd711,x);obj.word(0xd714,y)
+        obj.word(0xd73a,x);obj.word(0xd73c,y);obj.mem[0xd73f]=parameter
+        obj.call(0xb210);transitions=[]
+        for tick in range(1,1025):
+            before=obj.mem[0xd702]
+            obj.call(0xb264 if before in (4,5) else 0xb268)
+            after=obj.mem[0xd702]
+            if after!=before:
+                transitions.append(dict(tick=tick,from_state=before,to_state=after,
+                                        x=obj.word(0xd711),x_fraction=obj.mem[0xd710],
+                                        vx_8_8=s16(obj.word(0xd716))))
+                if len(transitions)==2:break
+        assert tuple(row['tick'] for row in transitions)==expected_ticks
+        assert [(row['from_state'],row['to_state']) for row in transitions]==[(3,4),(4,3)]
+        object21_patrol.append(dict(parameter=parameter,transitions=transitions))
+        counts['object21_patrol']+=1
+
+    def object21_contact_fixture(object_y,player_flags=0,power_up=0):
+        obj=Oracle(rom);obj.bank(2,12);obj.mem[0xd12b]=12;obj.cpu.ix=0xd700
+        obj.mem[0xd700]=0x21;obj.word(0xd711,500);obj.word(0xd714,object_y)
+        obj.mem[0xd72c]=0x0b;obj.mem[0xd72d]=0x1a
+        obj.word(0xd511,500);obj.word(0xd514,500)
+        obj.mem[0xd52c]=9;obj.mem[0xd52d]=18
+        obj.mem[0xd503]=player_flags;obj.mem[0xd532]=power_up
+        obj.word(0xd518,0);obj.call(0xb2af)
+        return obj
+
+    top=object21_contact_fixture(504)
+    assert (top.mem[0xd502],s16(top.word(0xd518)),top.mem[0xd448],
+            top.mem[0xde04],top.mem[0xd700])==(11,-1728,255,0xa6,0x21)
+    side=object21_contact_fixture(500)
+    assert side.mem[0xd3b0]==0xff and side.mem[0xd700]==0x21
+    attack=object21_contact_fixture(500,player_flags=2)
+    assert attack.mem[0xd700]==0x0f and attack.mem[0xd73e]==0
+    assert bytes(attack.mem[0xd29d:0xd2a0])==bytes.fromhex('10 00 00')
+    invincible=object21_contact_fixture(500,power_up=6)
+    assert invincible.mem[0xd700]==0x0f and invincible.mem[0xd3b0]==0
+    counts['object21_contact']+=4
+
     report=dict(rom_sha256=SHA256,counts=counts,total=sum(counts.values()),
                 first_ramp_launch=launch,
                 vertical_spring_fixture=dict(initial_y=800,rise_pixels=800-apex,
                     first_falling_request_tick=80,falling_initial_velocity=1),
+                object21_fixture=dict(initialization=object21_init,
+                    patrol=object21_patrol,
+                    contact=dict(top_bounce_velocity_8_8=-1728,
+                        ordinary_side_damage_request='0xFF',
+                        defeated_replacement_type='0x0F',
+                        score_bytes='10 00 00')),
                 limitations=['Subroutine RAM fixtures, not a full SMS emulator.',
                   'No GameMaker compilation or gameplay validation.',
                   'Floor translation excludes IX+$24 special branches.',

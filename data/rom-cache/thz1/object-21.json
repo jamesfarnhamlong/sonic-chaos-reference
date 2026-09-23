@@ -1,0 +1,410 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "object_type": "0x21",
+  "identity": {
+    "verified": null,
+    "likely": "Boing-o-Bot / Bane Motora",
+    "basis": "reconstructed spring-backed wheeled sprite, patrol, top bounce, attack response, and THZ1 placements"
+  },
+  "placements": [
+    {
+      "record_index": 27,
+      "rom_offset": "0x70698",
+      "world_x": 800,
+      "world_y": 606,
+      "flags": "0x00",
+      "parameter": "0x08",
+      "aux0": "0x86",
+      "aux1": "0x98"
+    },
+    {
+      "record_index": 28,
+      "rom_offset": "0x706A1",
+      "world_x": 1248,
+      "world_y": 862,
+      "flags": "0x00",
+      "parameter": "0x06",
+      "aux0": "0x86",
+      "aux1": "0x98"
+    },
+    {
+      "record_index": 29,
+      "rom_offset": "0x706AA",
+      "world_x": 2048,
+      "world_y": 318,
+      "flags": "0x00",
+      "parameter": "0x06",
+      "aux0": "0x86",
+      "aux1": "0x98"
+    },
+    {
+      "record_index": 30,
+      "rom_offset": "0x706B3",
+      "world_x": 3152,
+      "world_y": 894,
+      "flags": "0x00",
+      "parameter": "0x03",
+      "aux0": "0x86",
+      "aux1": "0x98"
+    },
+    {
+      "record_index": 31,
+      "rom_offset": "0x706BC",
+      "world_x": 3296,
+      "world_y": 286,
+      "flags": "0x00",
+      "parameter": "0x04",
+      "aux0": "0x86",
+      "aux1": "0x98"
+    },
+    {
+      "record_index": 32,
+      "rom_offset": "0x706C5",
+      "world_x": 2400,
+      "world_y": 254,
+      "flags": "0x00",
+      "parameter": "0x02",
+      "aux0": "0x86",
+      "aux1": "0x98"
+    }
+  ],
+  "animation": {
+    "type_table_entry_rom": "0x065FA",
+    "bank": "0x0C",
+    "state_table_cpu": "0xB1B6",
+    "state_table_rom": "0x331B6",
+    "state_count": 7,
+    "state_script_cpus": [
+      "0xB1C4",
+      "0xB1CA",
+      "0xB1D6",
+      "0xB1D8",
+      "0xB1E6",
+      "0xB1F4",
+      "0xB202"
+    ],
+    "reachable_mapping_frame_indices": [
+      "0x00",
+      "0x01",
+      "0x02"
+    ],
+    "unresolved_states": [],
+    "states": [
+      {
+        "state_index": 0,
+        "script_cpu": "0xB1C4",
+        "script_rom": "0x331C4",
+        "frame_indices": [
+          0
+        ],
+        "callbacks": [
+          "0xB210"
+        ],
+        "commands": [
+          {
+            "cpu": "0xB1C8",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xB1C4"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 1,
+        "script_cpu": "0xB1CA",
+        "script_rom": "0x331CA",
+        "frame_indices": [
+          1
+        ],
+        "callbacks": [
+          "0xB2F0"
+        ],
+        "commands": [
+          {
+            "cpu": "0xB1CA",
+            "command": "0x02",
+            "meaning": "set_velocity_8_8",
+            "x_velocity_raw": "0x0000",
+            "y_velocity_raw": "0x0200",
+            "x_runtime_note": "negated when object flags byte +0x04 bit 4 is set"
+          },
+          {
+            "cpu": "0xB1D4",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xB1CA"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 2,
+        "script_cpu": "0xB1D6",
+        "script_rom": "0x331D6",
+        "frame_indices": [],
+        "callbacks": [],
+        "commands": [
+          {
+            "cpu": "0xB1D6",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xB1D6"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 3,
+        "script_cpu": "0xB1D8",
+        "script_rom": "0x331D8",
+        "frame_indices": [
+          1,
+          2
+        ],
+        "callbacks": [
+          "0xB268"
+        ],
+        "commands": [
+          {
+            "cpu": "0xB1D8",
+            "command": "0x0C",
+            "meaning": "or_object_field",
+            "offset": "0x04",
+            "mask": "0x10"
+          },
+          {
+            "cpu": "0xB1E4",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xB1D8"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 4,
+        "script_cpu": "0xB1E6",
+        "script_rom": "0x331E6",
+        "frame_indices": [
+          1,
+          2
+        ],
+        "callbacks": [
+          "0xB264"
+        ],
+        "commands": [
+          {
+            "cpu": "0xB1E6",
+            "command": "0x0B",
+            "meaning": "and_object_field",
+            "offset": "0x04",
+            "mask": "0xEF"
+          },
+          {
+            "cpu": "0xB1F2",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xB1E6"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 5,
+        "script_cpu": "0xB1F4",
+        "script_rom": "0x331F4",
+        "frame_indices": [
+          1,
+          2
+        ],
+        "callbacks": [
+          "0xB264"
+        ],
+        "commands": [
+          {
+            "cpu": "0xB1F4",
+            "command": "0x0B",
+            "meaning": "and_object_field",
+            "offset": "0x04",
+            "mask": "0xEF"
+          },
+          {
+            "cpu": "0xB200",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xB1F4"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 6,
+        "script_cpu": "0xB202",
+        "script_rom": "0x33202",
+        "frame_indices": [
+          1,
+          2
+        ],
+        "callbacks": [
+          "0xB268"
+        ],
+        "commands": [
+          {
+            "cpu": "0xB202",
+            "command": "0x0C",
+            "meaning": "or_object_field",
+            "offset": "0x04",
+            "mask": "0x10"
+          },
+          {
+            "cpu": "0xB20E",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xB202"
+          }
+        ],
+        "unresolved": null
+      }
+    ]
+  },
+  "handlers": {
+    "initialization": {
+      "cpu": "0xB210",
+      "rom": "0x33210"
+    },
+    "left_orientation_patrol": {
+      "cpu": "0xB264",
+      "rom": "0x33264"
+    },
+    "shared_patrol": {
+      "cpu": "0xB268",
+      "rom": "0x33268"
+    },
+    "contact": {
+      "cpu": "0xB2AF",
+      "rom": "0x332AF"
+    },
+    "falling": {
+      "cpu": "0xB2F0",
+      "rom": "0x332F0"
+    }
+  },
+  "parameter": {
+    "meaning": "leftward patrol span in units of 16 integer pixels",
+    "left_bound_expression": "saved_origin_x - (parameter << 4)",
+    "consumed_on_initialization": true
+  },
+  "controlled_original_routine_fixtures": {
+    "evidence": "controlled trace",
+    "initialization": [
+      {
+        "origin_x": 1000,
+        "parameter": 2,
+        "input_flags": "0x00",
+        "requested_state": 3,
+        "x_velocity_8_8": -128,
+        "y_velocity_8_8": 512,
+        "left_bound": 968,
+        "parameter_after": 0,
+        "object_flags_03": "0x80",
+        "variant_latch": 0
+      },
+      {
+        "origin_x": 1000,
+        "parameter": 8,
+        "input_flags": "0x00",
+        "requested_state": 3,
+        "x_velocity_8_8": -128,
+        "y_velocity_8_8": 512,
+        "left_bound": 872,
+        "parameter_after": 0,
+        "object_flags_03": "0x80",
+        "variant_latch": 0
+      }
+    ],
+    "patrol": [
+      {
+        "placement": {
+          "world_x": 2400,
+          "world_y": 254,
+          "parameter": 2
+        },
+        "left_bound": 2368,
+        "predicted_first_reversal_tick": 65,
+        "transitions": [
+          {
+            "tick": 65,
+            "from_state": 3,
+            "to_state": 4,
+            "x_integer": 2367,
+            "x_fraction": 128,
+            "y_integer": 238,
+            "x_velocity_8_8": 128
+          },
+          {
+            "tick": 132,
+            "from_state": 4,
+            "to_state": 3,
+            "x_integer": 2401,
+            "x_fraction": 0,
+            "y_integer": 238,
+            "x_velocity_8_8": -128
+          }
+        ]
+      },
+      {
+        "placement": {
+          "world_x": 800,
+          "world_y": 606,
+          "parameter": 8
+        },
+        "left_bound": 672,
+        "predicted_first_reversal_tick": 257,
+        "transitions": [
+          {
+            "tick": 257,
+            "from_state": 3,
+            "to_state": 4,
+            "x_integer": 671,
+            "x_fraction": 128,
+            "y_integer": 590,
+            "x_velocity_8_8": 128
+          },
+          {
+            "tick": 516,
+            "from_state": 4,
+            "to_state": 3,
+            "x_integer": 801,
+            "x_fraction": 0,
+            "y_integer": 590,
+            "x_velocity_8_8": -128
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "top_contact": {
+        "requested_player_state": 11,
+        "player_y_velocity_8_8": -1728,
+        "d448": "0xFF",
+        "sound_request": "0xA6",
+        "object_type_after": "0x21"
+      },
+      "ordinary_side_contact": {
+        "damage_request_d3b0": "0xFF",
+        "object_type_after": "0x21"
+      },
+      "rolling_attack": {
+        "object_type_after": "0x0F",
+        "placement_token_after": 0,
+        "score_bytes_after": "10 00 00"
+      },
+      "power_up_06_contact": {
+        "object_type_after": "0x0F",
+        "damage_request_d3b0": "0x00"
+      }
+    }
+  }
+}

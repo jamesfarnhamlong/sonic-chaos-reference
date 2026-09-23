@@ -11,9 +11,13 @@ python tools/cache_game_data.py /path/to/SonicChaos.sms
 ```
 
 `thz1/object-records.json` preserves all 53 raw nine-byte records as hexadecimal
-metadata. Only types `$1B`, `$26`, and `$28` receive gameplay names because their
-handlers have been decoded. Unknown types remain unnamed rather than being
-assigned a guessed enemy or item.
+metadata. Only types `$1B`, `$26`, and `$28` receive verified gameplay names.
+Unknown types remain unnamed rather than being assigned a guessed enemy or item.
+
+`thz1/object-21.json` records the decoded type-`$21` state table, placement-
+parameter rule, reachable animation frames, and controlled original-routine
+fixtures. Its possible Boing-o-Bot identity remains explicitly likely rather
+than verified, so the primary identifier remains type `$21`.
 
 `thz1/layout-interactions.json` records interaction-bearing layout cells and the
 ring positions visible within the decoded ring blocks. Coordinates are direct

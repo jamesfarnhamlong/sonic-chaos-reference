@@ -56,6 +56,30 @@ class AnimationTests(unittest.TestCase):
         self.assertEqual(got["frame_indices"], [0x0E])
         self.assertIsNone(got["unresolved"])
 
+    def test_velocity_and_orientation_field_commands(self):
+        rom = self.make_rom()
+        self.put_cpu(rom, 0x0C, 0x9250, bytes([
+            0xFF,0x02,0x00,0x00,0x00,0x02,
+            0xFF,0x0C,0x04,0x10,
+            0x08,0x01,0x68,0xB2,
+            0xFF,0x0B,0x04,0xEF,
+            0x08,0x02,0x64,0xB2,
+            0xFF,0x00,
+        ]))
+        got = m.parse_state_script(bytes(rom),0x0C,0x9250,0)
+        self.assertEqual(got["frame_indices"], [1, 2])
+        self.assertIsNone(got["unresolved"])
+        commands = [x.get("meaning") for x in got["commands"]]
+        self.assertIn("set_velocity_8_8", commands)
+        self.assertIn("or_object_field", commands)
+        self.assertIn("and_object_field", commands)
+        velocity = next(
+            x for x in got["commands"]
+            if x.get("meaning") == "set_velocity_8_8"
+        )
+        self.assertEqual(velocity["x_velocity_raw"], "0x0000")
+        self.assertEqual(velocity["y_velocity_raw"], "0x0200")
+
     def test_command3_state_transition(self):
         rom = self.make_rom()
         self.put_cpu(rom, 0x0C, 0x9300, bytes([

@@ -55,7 +55,7 @@ have been source-traced and used to reconstruct coherent sprite frames:
 
 | Type | Existing role status | Art base(s) | Mapping CPU | Mapping ROM | Frame records |
 |---:|---|---:|---:|---:|---|
-| `$21` | semantic identity still open | `$86`, `$98` | `$911B` | `$3D11B` | `$9121`, `$912C` |
+| `$21` | likely Boing-o-Bot; verified name still open ([behavior trace](object-21.md)) | `$86`, `$98` | `$911B` | `$3D11B` | `$9121`, `$912C` |
 | `$26` | concealed spring | `$72` | `$91C0` | `$3D1C0` | `$91C8`, `$91D3`, `$91DE` |
 | `$27` | semantic identity still open | `$AA` | `$91F5` | `$3D1F5` | `$91FB`, `$9206` |
 | `$28` | moving platform | `$6A` | `$9217` | `$3D217` | `$921B` |

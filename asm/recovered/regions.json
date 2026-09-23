@@ -1,5 +1,15 @@
 [
   {
+    "name": "object_sprite_orientation_renderer",
+    "start": 8886,
+    "end": 9013,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 127,
+    "instructions": 70,
+    "file": "object_sprite_orientation_renderer.asm"
+  },
+  {
     "name": "side_sensors",
     "start": 13958,
     "end": 14022,
@@ -110,6 +120,46 @@
     "file": "bounded_layout_decoder.asm"
   },
   {
+    "name": "object_update_scheduler",
+    "start": 24017,
+    "end": 24176,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 159,
+    "instructions": 74,
+    "file": "object_update_scheduler.asm"
+  },
+  {
+    "name": "object_lifecycle_dispatch",
+    "start": 24176,
+    "end": 24208,
+    "bank": 1,
+    "kind": "data",
+    "bytes": 32,
+    "instructions": 0,
+    "file": "object_lifecycle_dispatch.asm"
+  },
+  {
+    "name": "object_slot_cleanup",
+    "start": 24312,
+    "end": 24343,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 31,
+    "instructions": 18,
+    "file": "object_slot_cleanup.asm"
+  },
+  {
+    "name": "enemy_destroy_conversion",
+    "start": 24404,
+    "end": 24452,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 48,
+    "instructions": 18,
+    "file": "enemy_destroy_conversion.asm"
+  },
+  {
     "name": "angle_and_position",
     "start": 24713,
     "end": 24892,
@@ -120,6 +170,16 @@
     "file": "angle_and_position.asm"
   },
   {
+    "name": "object_visibility_lifetime",
+    "start": 25057,
+    "end": 25206,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 149,
+    "instructions": 69,
+    "file": "object_visibility_lifetime.asm"
+  },
+  {
     "name": "merge_collision_flags",
     "start": 25803,
     "end": 25840,
@@ -128,6 +188,46 @@
     "bytes": 37,
     "instructions": 19,
     "file": "merge_collision_flags.asm"
+  },
+  {
+    "name": "object_animation_engine",
+    "start": 25850,
+    "end": 26031,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 181,
+    "instructions": 96,
+    "file": "object_animation_engine.asm"
+  },
+  {
+    "name": "animation_command_dispatch",
+    "start": 26240,
+    "end": 26262,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 22,
+    "instructions": 15,
+    "file": "animation_command_dispatch.asm"
+  },
+  {
+    "name": "animation_command_table",
+    "start": 26262,
+    "end": 26294,
+    "bank": 1,
+    "kind": "data",
+    "bytes": 32,
+    "instructions": 0,
+    "file": "animation_command_table.asm"
+  },
+  {
+    "name": "animation_command_handlers",
+    "start": 26294,
+    "end": 26872,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 578,
+    "instructions": 281,
+    "file": "animation_command_handlers.asm"
   },
   {
     "name": "terrain_update",
@@ -318,6 +418,36 @@
     "bytes": 220,
     "instructions": 98,
     "file": "spike_object_handlers.asm"
+  },
+  {
+    "name": "object_21_scripts",
+    "start": 209334,
+    "end": 209424,
+    "bank": 12,
+    "kind": "data",
+    "bytes": 90,
+    "instructions": 0,
+    "file": "object_21_scripts.asm"
+  },
+  {
+    "name": "object_21_handlers",
+    "start": 209424,
+    "end": 209657,
+    "bank": 12,
+    "kind": "code",
+    "bytes": 233,
+    "instructions": 93,
+    "file": "object_21_handlers.asm"
+  },
+  {
+    "name": "object_placement_create",
+    "start": 458987,
+    "end": 459070,
+    "bank": 28,
+    "kind": "code",
+    "bytes": 83,
+    "instructions": 48,
+    "file": "object_placement_create.asm"
   },
   {
     "name": "platform_reverse",
