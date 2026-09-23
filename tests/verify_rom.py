@@ -5,12 +5,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
 from rom import load, layout, SHA256, s16
 from oracle import Oracle
 from reference import lookup, project_floor, project_side, angle_velocity
+import thz1_object_27 as object27
 
 def verify(path, output):
     rom = load(path); tiles = layout(rom); o = Oracle(rom)
     counts = dict(lookup=0, floor=0, side=0, angle_velocity=0,
                   gravity=0, ramp_launch=0, layout_decoder=0,
-                  object21_init=0, object21_patrol=0, object21_contact=0)
+                  object21_init=0, object21_patrol=0, object21_contact=0,
+                  object27_create=0, object27_init=0, object27_proximity=0,
+                  object27_oscillation=0, object27_removal=0,
+                  object27_contact=0, object27_lifetime=0)
     loader=Oracle(rom);loader.bank(2,18)
     loader.mem[0xc001:0xd000]=bytes(4095);loader.mem[0xd000]=0xa5
     loader.cpu.iy=0x8000;loader.cpu.de=0xc001;loader.cpu.pc=0x4dc4
@@ -179,6 +183,73 @@ def verify(path, output):
     assert invincible.mem[0xd700]==0x0f and invincible.mem[0xd3b0]==0
     counts['object21_contact']+=4
 
+    # Type $27 source-level state scripts plus controlled original callbacks.
+    # The dedicated tool also emits the committed ROM-cache report.
+    object27_report=object27.build_report(rom)
+    object27_fixtures=object27_report['controlled_original_routine_fixtures']
+
+    created=object27_fixtures['placement_creation']
+    assert (created['object_type'],created['current_x'],created['current_y'],
+            created['saved_x'],created['saved_y'],created['object_flags_04'],
+            created['parameter_3f'],created['art_base_08'],created['art_base_09'],
+            created['placement_token_3e'],created['occupancy_value']) == (
+                '0x27',3504,224,3504,224,'0x50','0x00','0xAA','0xAA',25,'0x27')
+    counts['object27_create']+=1
+
+    init_zero,init_nonzero=object27_fixtures['initialization']
+    assert (init_zero['requested_state'],init_zero['x_velocity_8_8'],
+            init_zero['y_velocity_8_8'],init_zero['object_flags_04']) == (1,-640,0,'0x10')
+    assert (init_nonzero['requested_state'],init_nonzero['x_velocity_8_8'],
+            init_nonzero['y_velocity_8_8'],init_nonzero['field_1e'],
+            init_nonzero['field_1f']) == (2,0,0x5678,'0x80','0x01')
+    counts['object27_init']+=2
+
+    proximity=object27_fixtures['proximity']
+    assert [row['distance_at_compare'] for row in proximity] == [65,64,63]
+    assert [row['requested_state'] for row in proximity] == [1,1,2]
+    assert proximity[2]['object_flags_04']=='0x12'
+    assert proximity[2]['x_velocity_8_8']==0 and proximity[2]['counter_1e']=='0x80'
+    counts['object27_proximity']+=3
+
+    oscillation=object27_fixtures['oscillation']
+    assert (oscillation['updates_to_counter_underflow'],oscillation['add_callbacks'],
+            oscillation['subtract_callbacks']) == (129,65,64)
+    assert oscillation['underflow_update']['requested_state']==3
+    assert oscillation['underflow_update']['counter_1e']=='0xFF'
+    assert oscillation['underflow_update']['y_displacement_8_8']==3
+    assert oscillation['horizontal_resume_update']['current_state']==3
+    assert oscillation['horizontal_resume_update']['callback_cpu']=='0x8A29'
+    assert oscillation['horizontal_resume_update']['x_velocity_8_8']==-640
+    assert oscillation['horizontal_resume_update']['y_velocity_8_8']==0
+    assert object27_report['independent_translation']=={
+        'updates':129,'add_callbacks':65,'subtract_callbacks':64,
+        'displacement_8_8':3,'velocity_before_reset_8_8':3,'counter_after':255}
+    counts['object27_oscillation']+=130
+
+    removal=object27_fixtures['removal']
+    assert [row['distance'] for row in removal] == [383,384,385]
+    assert [row['object_type_after'] for row in removal] == ['0x27','0xFE','0xFE']
+    assert all(row['placement_token_after']==25 for row in removal)
+    counts['object27_removal']+=3
+
+    contact=object27_fixtures['contact']
+    assert contact['ordinary']['object_type_after']=='0x27'
+    assert contact['ordinary']['damage_request_d3b0']=='0x00'
+    assert contact['ordinary']['x_displacement_8_8']==0
+    for name in ('rolling_attack','power_up_06'):
+        assert contact[name]['object_type_after']=='0x0F'
+        assert contact[name]['placement_token_after']==0
+        assert contact[name]['score_bytes_after']=='10 00 00'
+    counts['object27_contact']+=3
+
+    lifetime=object27_fixtures['lifetime']
+    assert lifetime['before_trigger']['object_type_after']=='0xFE'
+    assert lifetime['after_trigger']['object_type_after']=='0x27'
+    assert lifetime['after_trigger']['object_flags_04']=='0x52'
+    assert lifetime['type_fe_cleanup']['occupancy_value_after']=='0x00'
+    assert lifetime['type_fe_cleanup']['slot_is_zero']
+    counts['object27_lifetime']+=3
+
     report=dict(rom_sha256=SHA256,counts=counts,total=sum(counts.values()),
                 first_ramp_launch=launch,
                 vertical_spring_fixture=dict(initial_y=800,rise_pixels=800-apex,
@@ -189,6 +260,15 @@ def verify(path, output):
                         ordinary_side_damage_request='0xFF',
                         defeated_replacement_type='0x0F',
                         score_bytes='10 00 00')),
+                object27_fixture=dict(
+                    proximity_boundary='distance < 64',
+                    oscillation_updates=129,
+                    oscillation_displacement_8_8=3,
+                    removal_boundary='distance >= 384',
+                    ordinary_contact_damage_request='0x00',
+                    defeated_replacement_type='0x0F',
+                    score_bytes='10 00 00',
+                    type_fe_cleanup_releases_occupancy=True),
                 limitations=['Subroutine RAM fixtures, not a full SMS emulator.',
                   'No GameMaker compilation or gameplay validation.',
                   'Floor translation excludes IX+$24 special branches.',

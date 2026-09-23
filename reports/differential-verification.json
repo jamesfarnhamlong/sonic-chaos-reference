@@ -10,9 +10,16 @@
     "layout_decoder": 1,
     "object21_init": 2,
     "object21_patrol": 2,
-    "object21_contact": 4
+    "object21_contact": 4,
+    "object27_create": 1,
+    "object27_init": 2,
+    "object27_proximity": 3,
+    "object27_oscillation": 130,
+    "object27_removal": 3,
+    "object27_contact": 3,
+    "object27_lifetime": 3
   },
-  "total": 37241,
+  "total": 37386,
   "first_ramp_launch": {
     "frame": 16,
     "x": 386,
@@ -92,6 +99,16 @@
       "defeated_replacement_type": "0x0F",
       "score_bytes": "10 00 00"
     }
+  },
+  "object27_fixture": {
+    "proximity_boundary": "distance < 64",
+    "oscillation_updates": 129,
+    "oscillation_displacement_8_8": 3,
+    "removal_boundary": "distance >= 384",
+    "ordinary_contact_damage_request": "0x00",
+    "defeated_replacement_type": "0x0F",
+    "score_bytes": "10 00 00",
+    "type_fe_cleanup_releases_occupancy": true
   },
   "limitations": [
     "Subroutine RAM fixtures, not a full SMS emulator.",

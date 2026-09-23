@@ -19,6 +19,11 @@ parameter rule, reachable animation frames, and controlled original-routine
 fixtures. Its possible Boing-o-Bot identity remains explicitly likely rather
 than verified, so the primary identifier remains type `$21`.
 
+`thz1/object-27.json` records the complete source-level type-`$27` state table,
+strict 64/384-pixel boundaries, controlled 129-update vertical trajectory,
+contact outcomes, and placement lifetime/cleanup fixtures. No semantic identity
+is assigned.
+
 `thz1/layout-interactions.json` records interaction-bearing layout cells and the
 ring positions visible within the decoded ring blocks. Coordinates are direct
 world coordinates after applying the established object-table `$0100` bias where

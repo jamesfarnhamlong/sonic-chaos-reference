@@ -14,6 +14,8 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 - [Act 1 concealed springs and retracting spikes](docs/act1-objects.md): decoded type `$26` and `$1B` state machines used by Windows POC 15.
 - [THZ1 object type `$21`](docs/object-21.md): complete placement, patrol,
   contact, animation, orientation and lifetime chain, with controlled original-ROM traces.
+- [THZ1 object type `$27`](docs/object-27.md): complete state scripts,
+  proximity, oscillation, contact, orientation and respawn chain, with strict boundary traces.
 - [Act 1 canon-layout policy](docs/canon-layout.md): ROM-only placement sources, the metadata cache, and the POC 15.1 placement audit.
 - [POC 15.1 layout result](reports/windows-poc-15.1-layout.json): the machine-readable canon-placement totals and removals.
 - [Findings and corrections](docs/findings.md): what the investigation established and why the prototype got stuck.
@@ -31,8 +33,9 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 |---|---|
 | Recovered assembly | 53 regions, 10,830 bytes, 4,206 decoded instructions; explicit tables counted separately |
 | Assembly reconstruction | All 524,288 ROM bytes match; unrecovered gaps are preserved from the supplied ROM |
-| Differential checks | 37,241 comparisons against original Z80 subroutines pass |
+| Differential checks | 37,386 comparisons against original Z80 subroutines pass |
 | THZ1 type `$21` | Seven animation states resolved; parameter `$02/$08` patrol and four contact fixtures pass |
+| THZ1 type `$27` | Four states resolved; 64/384-pixel boundaries, 129-update oscillation and contact/lifetime fixtures pass |
 | THZ collision data | 256 base headers plus 16 alternate-plane headers |
 | First curve | Reproducible movement-core fixture requests ramp-launch state `$1B` |
 | Upright spring | Empty-map fixture rises 296.25 pixels; requests falling on update 80 |
@@ -50,6 +53,7 @@ python -m pip install -r requirements.txt
 python tools/export_reference.py path/to/SonicChaos.sms --output data
 python tools/cache_game_data.py path/to/SonicChaos.sms
 python tools/thz1_object_21.py path/to/SonicChaos.sms
+python tools/thz1_object_27.py path/to/SonicChaos.sms
 python tools/recover.py path/to/SonicChaos.sms --output asm/recovered
 python tests/verify_rom.py path/to/SonicChaos.sms --output reports
 python tests/verify_cache.py path/to/SonicChaos.sms

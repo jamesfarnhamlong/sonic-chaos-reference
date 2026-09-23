@@ -1,0 +1,570 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "object_type": "0x27",
+  "identity": {
+    "verified": null,
+    "status": "UNRESOLVED",
+    "basis": "No semantic identity is established by the recovered ROM/source evidence."
+  },
+  "placements": [
+    {
+      "record_index": 24,
+      "rom_offset": "0x7067D",
+      "world_x": 3504,
+      "world_y": 224,
+      "flags": "0x10",
+      "parameter": "0x00",
+      "aux0": "0xAA",
+      "aux1": "0xAA"
+    },
+    {
+      "record_index": 25,
+      "rom_offset": "0x70686",
+      "world_x": 2288,
+      "world_y": 768,
+      "flags": "0x10",
+      "parameter": "0x00",
+      "aux0": "0xAA",
+      "aux1": "0xAA"
+    },
+    {
+      "record_index": 26,
+      "rom_offset": "0x7068F",
+      "world_x": 2240,
+      "world_y": 112,
+      "flags": "0x10",
+      "parameter": "0x00",
+      "aux0": "0xAA",
+      "aux1": "0xAA"
+    }
+  ],
+  "animation": {
+    "type_table_entry_rom": "0x06606",
+    "bank": "0x1E",
+    "state_table_cpu": "0x8947",
+    "state_table_rom": "0x78947",
+    "state_count": 4,
+    "state_script_cpus": [
+      "0x894F",
+      "0x8955",
+      "0x895F",
+      "0x8984"
+    ],
+    "reachable_mapping_frame_indices": [
+      "0x00",
+      "0x01",
+      "0x02"
+    ],
+    "unresolved_states": [],
+    "states": [
+      {
+        "state_index": 0,
+        "script_cpu": "0x894F",
+        "script_rom": "0x7894F",
+        "frame_indices": [
+          0
+        ],
+        "records": [
+          {
+            "cpu": "0x894F",
+            "duration": "0xE0",
+            "frame_index": 0,
+            "callback_cpu": "0x898E",
+            "raw": "E0 00 8E 89"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0x8953",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0x894F"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 1,
+        "script_cpu": "0x8955",
+        "script_rom": "0x78955",
+        "frame_indices": [
+          1,
+          2
+        ],
+        "records": [
+          {
+            "cpu": "0x8955",
+            "duration": "0x02",
+            "frame_index": 1,
+            "callback_cpu": "0x89AC",
+            "raw": "02 01 AC 89"
+          },
+          {
+            "cpu": "0x8959",
+            "duration": "0x02",
+            "frame_index": 2,
+            "callback_cpu": "0x89AC",
+            "raw": "02 02 AC 89"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0x895D",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0x8955"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 2,
+        "script_cpu": "0x895F",
+        "script_rom": "0x7895F",
+        "frame_indices": [
+          1,
+          2
+        ],
+        "records": [
+          {
+            "cpu": "0x8962",
+            "duration": "0x02",
+            "frame_index": 1,
+            "callback_cpu": "0x89DF",
+            "raw": "02 01 DF 89"
+          },
+          {
+            "cpu": "0x8966",
+            "duration": "0x02",
+            "frame_index": 2,
+            "callback_cpu": "0x89DF",
+            "raw": "02 02 DF 89"
+          },
+          {
+            "cpu": "0x8971",
+            "duration": "0x02",
+            "frame_index": 1,
+            "callback_cpu": "0x89F3",
+            "raw": "02 01 F3 89"
+          },
+          {
+            "cpu": "0x8975",
+            "duration": "0x02",
+            "frame_index": 2,
+            "callback_cpu": "0x89F3",
+            "raw": "02 02 F3 89"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0x895F",
+            "command": "0x0E",
+            "meaning": "set_loop_counter",
+            "count": 8
+          },
+          {
+            "cpu": "0x896A",
+            "command": "0x0F",
+            "meaning": "decrement_loop_and_jump",
+            "counter_after": 7,
+            "target_cpu": "0x8962"
+          },
+          {
+            "cpu": "0x896E",
+            "command": "0x0E",
+            "meaning": "set_loop_counter",
+            "count": 16
+          },
+          {
+            "cpu": "0x8979",
+            "command": "0x0F",
+            "meaning": "decrement_loop_and_jump",
+            "counter_after": 15,
+            "target_cpu": "0x8971"
+          },
+          {
+            "cpu": "0x897D",
+            "command": "0x0E",
+            "meaning": "set_loop_counter",
+            "count": 16
+          },
+          {
+            "cpu": "0x8980",
+            "command": "0x07",
+            "meaning": "jump",
+            "target_cpu": "0x8962"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 3,
+        "script_cpu": "0x8984",
+        "script_rom": "0x78984",
+        "frame_indices": [
+          1,
+          2
+        ],
+        "records": [
+          {
+            "cpu": "0x8984",
+            "duration": "0x02",
+            "frame_index": 1,
+            "callback_cpu": "0x8A29",
+            "raw": "02 01 29 8A"
+          },
+          {
+            "cpu": "0x8988",
+            "duration": "0x02",
+            "frame_index": 2,
+            "callback_cpu": "0x8A29",
+            "raw": "02 02 29 8A"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0x898C",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0x8984"
+          }
+        ],
+        "unresolved": null
+      }
+    ]
+  },
+  "mapping": {
+    "pointer_entry_rom": "0x3C04E",
+    "table_cpu": "0x91F5",
+    "table_rom": "0x3D1F5",
+    "object_specific_frames": [
+      {
+        "index": "0x01",
+        "cpu": "0x91FB",
+        "rom": "0x3D1FB"
+      },
+      {
+        "index": "0x02",
+        "cpu": "0x9206",
+        "rom": "0x3D206"
+      }
+    ],
+    "collision_extents_from_frames": {
+      "horizontal_2c": 9,
+      "vertical_2d": 14
+    }
+  },
+  "handlers": {
+    "initialization": {
+      "cpu": "0x898E",
+      "rom": "0x7898E"
+    },
+    "horizontal_and_trigger": {
+      "cpu": "0x89AC",
+      "rom": "0x789AC"
+    },
+    "vertical_add": {
+      "cpu": "0x89DF",
+      "rom": "0x789DF"
+    },
+    "vertical_subtract": {
+      "cpu": "0x89F3",
+      "rom": "0x789F3"
+    },
+    "vertical_shared_tail": {
+      "cpu": "0x8A06",
+      "rom": "0x78A06"
+    },
+    "horizontal_resume_and_removal": {
+      "cpu": "0x8A29",
+      "rom": "0x78A29"
+    }
+  },
+  "comparisons": {
+    "horizontal_proximity": {
+      "helper_cpu": "0x61A5",
+      "vector_cpu": "0x0383",
+      "player_coordinate": "integer X word $D511",
+      "object_coordinate": "integer X word IX+$11/+$12 after movement",
+      "expression": "abs(object_x - player_x) < 0x0040",
+      "boundary": "63 triggers; 64 and greater do not"
+    },
+    "state_3_removal": {
+      "helper_cpu": "0x61A5",
+      "vector_cpu": "0x0383",
+      "expression": "abs(object_x - player_x) >= 0x0180",
+      "boundary": "383 survives; 384 and greater set type 0xFE"
+    }
+  },
+  "orientation": {
+    "placement_flag_bit_4": true,
+    "object_field": "IX+0x04 bit 4",
+    "renderer_cpu": "0x22B6",
+    "effect": "mirrored coordinate stream, negated frame X origin, art base IX+0x09",
+    "thz1_art_bases": "0xAA/0xAA"
+  },
+  "interaction": {
+    "overlap_helper_cpu": "0x6328",
+    "generic_attack_check_cpu": "0x5F3D",
+    "ordinary_contact_damage_request": false,
+    "ordinary_contact_stalls_callback": true,
+    "rolling_or_attack_destroys": true,
+    "power_up_06_destroys": true,
+    "replacement_type": "0x0F",
+    "score_bytes": "10 00 00"
+  },
+  "lifetime": {
+    "pre_trigger": "generic off-range type 0xFE; cleanup releases occupancy",
+    "trigger_change": "set IX+0x04 bit 1, suppressing generic off-range deletion",
+    "post_trigger": "state 3 sets type 0xFE at horizontal separation >= 0x0180",
+    "object_specific_removal_can_respawn": true,
+    "defeated_replacement_can_respawn": false
+  },
+  "controlled_original_routine_fixtures": {
+    "evidence": "controlled trace",
+    "placement_creation": {
+      "record_cpu": "0x867D",
+      "occupancy_address": "0xD418",
+      "occupancy_value": "0x27",
+      "object_type": "0x27",
+      "current_x": 3504,
+      "current_y": 224,
+      "saved_x": 3504,
+      "saved_y": 224,
+      "object_flags_04": "0x50",
+      "parameter_3f": "0x00",
+      "art_base_08": "0xAA",
+      "art_base_09": "0xAA",
+      "placement_token_3e": 25
+    },
+    "initialization": [
+      {
+        "parameter": "0x00",
+        "requested_state": 1,
+        "object_flags_04": "0x10",
+        "x_velocity_8_8": -640,
+        "y_velocity_8_8": 0,
+        "field_1e": "0xA5",
+        "field_1f": "0x5A"
+      },
+      {
+        "parameter": "0x01",
+        "requested_state": 2,
+        "object_flags_04": "0x10",
+        "x_velocity_8_8": 0,
+        "y_velocity_8_8": 22136,
+        "field_1e": "0x80",
+        "field_1f": "0x01"
+      }
+    ],
+    "proximity": [
+      {
+        "distance_at_compare": 65,
+        "object_x_16_8_after": 255360,
+        "player_integer_x": 932,
+        "requested_state": 1,
+        "object_flags_04": "0x10",
+        "x_velocity_8_8": -640,
+        "counter_1e": "0x00"
+      },
+      {
+        "distance_at_compare": 64,
+        "object_x_16_8_after": 255360,
+        "player_integer_x": 933,
+        "requested_state": 1,
+        "object_flags_04": "0x10",
+        "x_velocity_8_8": -640,
+        "counter_1e": "0x00"
+      },
+      {
+        "distance_at_compare": 63,
+        "object_x_16_8_after": 255360,
+        "player_integer_x": 934,
+        "requested_state": 2,
+        "object_flags_04": "0x12",
+        "x_velocity_8_8": 0,
+        "counter_1e": "0x80"
+      }
+    ],
+    "oscillation": {
+      "updates_to_counter_underflow": 129,
+      "add_callbacks": 65,
+      "subtract_callbacks": 64,
+      "underflow_update": {
+        "update": 129,
+        "callback_cpu": "0x89DF",
+        "current_state": 2,
+        "requested_state": 3,
+        "counter_1e": "0xFF",
+        "loop_counter_33": "0x08",
+        "y_velocity_8_8": 0,
+        "y_displacement_8_8": 3
+      },
+      "horizontal_resume_update": {
+        "update": 130,
+        "callback_cpu": "0x8A29",
+        "current_state": 3,
+        "requested_state": 3,
+        "x_velocity_8_8": -640,
+        "y_velocity_8_8": 0,
+        "x_16_8": 255360,
+        "y_displacement_8_8": 3
+      },
+      "checkpoints": [
+        {
+          "update": 1,
+          "callback_cpu": "0x89DF",
+          "current_state": 2,
+          "requested_state": 2,
+          "counter_1e": "0x7F",
+          "loop_counter_33": "0x08",
+          "y_velocity_8_8": 3,
+          "y_displacement_8_8": 3
+        },
+        {
+          "update": 32,
+          "callback_cpu": "0x89DF",
+          "current_state": 2,
+          "requested_state": 2,
+          "counter_1e": "0x60",
+          "loop_counter_33": "0x01",
+          "y_velocity_8_8": 96,
+          "y_displacement_8_8": 1584
+        },
+        {
+          "update": 33,
+          "callback_cpu": "0x89F3",
+          "current_state": 2,
+          "requested_state": 2,
+          "counter_1e": "0x5F",
+          "loop_counter_33": "0x10",
+          "y_velocity_8_8": 93,
+          "y_displacement_8_8": 1677
+        },
+        {
+          "update": 96,
+          "callback_cpu": "0x89F3",
+          "current_state": 2,
+          "requested_state": 2,
+          "counter_1e": "0x20",
+          "loop_counter_33": "0x01",
+          "y_velocity_8_8": -96,
+          "y_displacement_8_8": 1488
+        },
+        {
+          "update": 97,
+          "callback_cpu": "0x89DF",
+          "current_state": 2,
+          "requested_state": 2,
+          "counter_1e": "0x1F",
+          "loop_counter_33": "0x10",
+          "y_velocity_8_8": -93,
+          "y_displacement_8_8": 1395
+        },
+        {
+          "update": 128,
+          "callback_cpu": "0x89DF",
+          "current_state": 2,
+          "requested_state": 2,
+          "counter_1e": "0x00",
+          "loop_counter_33": "0x09",
+          "y_velocity_8_8": 0,
+          "y_displacement_8_8": 0
+        },
+        {
+          "update": 129,
+          "callback_cpu": "0x89DF",
+          "current_state": 2,
+          "requested_state": 3,
+          "counter_1e": "0xFF",
+          "loop_counter_33": "0x08",
+          "y_velocity_8_8": 0,
+          "y_displacement_8_8": 3
+        }
+      ]
+    },
+    "removal": [
+      {
+        "distance": 383,
+        "object_type_after": "0x27",
+        "placement_token_after": 25,
+        "x_16_8_after": 255360
+      },
+      {
+        "distance": 384,
+        "object_type_after": "0xFE",
+        "placement_token_after": 25,
+        "x_16_8_after": 256000
+      },
+      {
+        "distance": 385,
+        "object_type_after": "0xFE",
+        "placement_token_after": 25,
+        "x_16_8_after": 256000
+      }
+    ],
+    "contact": {
+      "ordinary": {
+        "contact_bits_21": "0x02",
+        "damage_request_d3b0": "0x00",
+        "object_type_after": "0x27",
+        "placement_token_after": 25,
+        "score_bytes_after": "00 00 00",
+        "x_displacement_8_8": 0
+      },
+      "rolling_attack": {
+        "contact_bits_21": "0x02",
+        "damage_request_d3b0": "0x00",
+        "object_type_after": "0x0F",
+        "placement_token_after": 0,
+        "score_bytes_after": "10 00 00",
+        "x_displacement_8_8": 0
+      },
+      "power_up_06": {
+        "contact_bits_21": "0x02",
+        "damage_request_d3b0": "0x00",
+        "object_type_after": "0x0F",
+        "placement_token_after": 0,
+        "score_bytes_after": "10 00 00",
+        "x_displacement_8_8": 0
+      }
+    },
+    "lifetime": {
+      "before_trigger": {
+        "object_type_after": "0xFE",
+        "current_state_after": 0,
+        "object_flags_04": "0x50",
+        "placement_token_after": 25
+      },
+      "after_trigger": {
+        "object_type_after": "0x27",
+        "current_state_after": 3,
+        "object_flags_04": "0x52",
+        "placement_token_after": 25
+      },
+      "type_fe_cleanup": {
+        "occupancy_address": "0xD418",
+        "occupancy_value_after": "0x00",
+        "object_type_after": "0x00",
+        "slot_is_zero": true
+      }
+    }
+  },
+  "independent_translation": {
+    "updates": 129,
+    "add_callbacks": 65,
+    "subtract_callbacks": 64,
+    "displacement_8_8": 3,
+    "velocity_before_reset_8_8": 3,
+    "counter_after": 255
+  },
+  "unresolved": [
+    "semantic identity and canonical name",
+    "meaning of a nonzero placement parameter and object field IX+0x1F",
+    "downstream gameplay significance of ordinary generic contact bookkeeping",
+    "semantic names of placement-scan map-cell eligibility values",
+    "complete lifetime and presentation of replacement type 0x0F",
+    "hardware-frame timing and emulator-observed encounter"
+  ]
+}
