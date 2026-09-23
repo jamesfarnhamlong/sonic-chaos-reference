@@ -29,7 +29,7 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 
 | Check | Result |
 |---|---|
-| Recovered assembly | 51 regions, 10,576 bytes, 4,135 decoded instructions; explicit tables counted separately |
+| Recovered assembly | 53 regions, 10,830 bytes, 4,206 decoded instructions; explicit tables counted separately |
 | Assembly reconstruction | All 524,288 ROM bytes match; unrecovered gaps are preserved from the supplied ROM |
 | Differential checks | 37,241 comparisons against original Z80 subroutines pass |
 | THZ1 type `$21` | Seven animation states resolved; parameter `$02/$08` patrol and four contact fixtures pass |

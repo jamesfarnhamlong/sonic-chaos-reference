@@ -80,6 +80,21 @@ class ParserTests(unittest.TestCase):
         pix = m.decode_mode4_tile(bytes(raw))
         self.assertEqual(pix[0], [1,2,4,8,0,0,0,0])
 
+    def test_sms_cram_decode(self):
+        self.assertEqual(m.sms_color(0x00), (0, 0, 0, 255))
+        self.assertEqual(m.sms_color(0x3F), (255, 255, 255, 255))
+        self.assertEqual(m.sms_color(0x1B), (255, 170, 85, 255))
+        self.assertEqual(m.sms_color(0x38, transparent=True), (0, 170, 255, 0))
+
+    def test_thz1_sprite_palette_selection(self):
+        rom = bytearray(m.PALETTE_DATA_ROM + 0x200)
+        rom[m.LEVEL_PALETTE_INDEX_ROM:m.LEVEL_PALETTE_INDEX_ROM+2] = bytes([0x15,0x06])
+        start = m.PALETTE_DATA_ROM + 0x06 * 16
+        rom[start:start+16] = bytes(range(16))
+        got = m.thz1_sprite_palette(bytes(rom))
+        self.assertEqual(got[0][3], 0)
+        self.assertEqual(got[1], m.sms_color(1))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

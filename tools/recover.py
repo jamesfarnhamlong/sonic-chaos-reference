@@ -59,7 +59,9 @@ REGIONS = [
  ('object_26_span_scripts',0x783b3,0x783bf,'data'),
  ('object_26_span_handlers',0x783bf,0x78439,'code'),
  ('platform_code',0x78577,0x78947,'code'),
-]
+ ('object_27_scripts',0x78947,0x7898e,'data'),
+ ('object_27_handlers',0x7898e,0x78a45,'code'),
+ ]
 
 COMMENTS = {
 0x22b6:'Sprite renderer; object+$04 bit 4 selects mirrored coordinates and art base object+$09 instead of +$08.',
@@ -175,6 +177,8 @@ COMMENTS = {
 0x783a4:'Weak extended-state counter requests retract state 6.',
 0x783bf:'Span state 8: check a saved X interval before requesting activation state 9.',
 0x78401:'Span activation aligns object X to the player on a 16-pixel boundary and launches.',
+0x78947:'Object type $27 has four states; active animation alternates mapping frames 1 and 2.',
+0x7898e:'Initialize object $27: parameter zero requests state 1 and sets X velocity to -2.5.',
 }
 
 def generate(rom_path, output):

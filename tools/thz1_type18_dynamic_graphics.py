@@ -188,6 +188,7 @@ def main() -> None:
         raise AssertionError(f"unexpected selector-$12 tile ranges: {ranges!r}")
 
     args.output.mkdir(parents=True, exist_ok=True)
+    palette = v2.thz1_sprite_palette(rom)
 
     mapping = v2.object_mapping(rom, TYPE_ID)
     rendered_sheet = []
@@ -207,7 +208,9 @@ def main() -> None:
             "tile_offsets": [f"0x{x:02X}" for x in frame["tile_offsets"]],
         }
 
-        result = v2.render_frame(vram, frame, 0, scale=args.scale)
+        result = v2.render_frame(
+            vram, frame, 0, scale=args.scale, palette=palette
+        )
         if result is not None:
             w, h, rgba, meta = result
             name = f"frame_{frame_index:02X}_{frame_cpu:04X}.png"

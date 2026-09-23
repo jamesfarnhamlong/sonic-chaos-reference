@@ -40,6 +40,14 @@ BANK15_ROM_BASE = 0x3C000
 CPU_SLOT_START = 0x8000
 CPU_SLOT_END = 0xBFFF
 
+# _LABEL_794F_293 selects two 16-colour palettes for each level/act from the
+# table at $7F3C. _LABEL_3B63E_81 resolves a palette number as
+# $3B64D + number * 16. THZ1 is entry zero: background $15, sprite $06.
+LEVEL_PALETTE_INDEX_ROM = 0x07F3C
+PALETTE_DATA_ROM = 0x3B64D
+THZ1_BACKGROUND_PALETTE = 0x15
+THZ1_SPRITE_PALETTE = 0x06
+
 # Frame index zero is shared by the known object mappings. We preserve it in
 # metadata but exclude it from the known object-specific frame-anchor check.
 KNOWN_SHARED_FRAME = 0xA0E4
@@ -307,7 +315,42 @@ def tile_pixels(vram: bytes, tile_id: int) -> List[List[int]]:
     return decode_mode4_tile(vram[pos:pos + 32])
 
 
-def rgba_for_index(index: int) -> Tuple[int, int, int, int]:
+def sms_color(value: int, transparent: bool = False) -> Tuple[int, int, int, int]:
+    """Decode one Master System 6-bit CRAM colour byte."""
+    return (
+        (value & 0x03) * 85,
+        ((value >> 2) & 0x03) * 85,
+        ((value >> 4) & 0x03) * 85,
+        0 if transparent else 255,
+    )
+
+
+def palette_rgba(rom: bytes, palette_index: int) -> List[Tuple[int, int, int, int]]:
+    start = PALETTE_DATA_ROM + palette_index * 16
+    raw = rom[start:start + 16]
+    if len(raw) != 16:
+        raise ValueError(f"palette ${palette_index:02X} outside ROM")
+    return [sms_color(value, transparent=(i == 0)) for i, value in enumerate(raw)]
+
+
+def thz1_sprite_palette(rom: bytes) -> List[Tuple[int, int, int, int]]:
+    selected = tuple(rom[LEVEL_PALETTE_INDEX_ROM:LEVEL_PALETTE_INDEX_ROM + 2])
+    expected = (THZ1_BACKGROUND_PALETTE, THZ1_SPRITE_PALETTE)
+    if selected != expected:
+        raise AssertionError(
+            f"THZ1 palette selectors {selected!r}, expected {expected!r}"
+        )
+    return palette_rgba(rom, THZ1_SPRITE_PALETTE)
+
+
+def rgba_for_index(
+    index: int,
+    palette: Optional[Sequence[Tuple[int, int, int, int]]] = None,
+) -> Tuple[int, int, int, int]:
+    if palette is not None:
+        if len(palette) != 16:
+            raise ValueError("SMS palette must contain 16 colours")
+        return palette[index]
     if index == 0:
         return (0, 0, 0, 0)
     # Neutral preview only; this is not an attempt to reconstruct CRAM.
@@ -332,7 +375,9 @@ def set_pixel(buf: bytearray, width: int, height: int, x: int, y: int,
 
 
 def render_frame(vram: bytes, frame: dict, tile_base: int,
-                 scale: int = 4, margin: int = 4) -> Optional[Tuple[int, int, bytes, dict]]:
+                 scale: int = 4, margin: int = 4,
+                 palette: Optional[Sequence[Tuple[int, int, int, int]]] = None,
+                 ) -> Optional[Tuple[int, int, bytes, dict]]:
     pieces = frame["pieces"]
     if not pieces:
         return None
@@ -366,7 +411,7 @@ def render_frame(vram: bytes, frame: dict, tile_base: int,
             for px, pal in enumerate(row):
                 if pal:
                     nonzero += 1
-                rgba = rgba_for_index(pal)
+                rgba = rgba_for_index(pal, palette)
                 for sy in range(scale):
                     for sx in range(scale):
                         set_pixel(
@@ -498,8 +543,8 @@ def build_report(summary: dict) -> str:
         "- The names `x_origin` and `y_origin` describe how the renderer uses the "
         "signed words at frame-record offsets +7 and +5. Unknown/raw fields are "
         "not assigned semantic names beyond what the code proves.",
-        "- Preview PNGs use the normal tile base (`aux0`) and neutral grayscale "
-        "palette indices. They are structural previews, not CRAM-accurate art.",
+        "- Preview PNGs use the normal tile base (`aux0`) and the THZ1 sprite "
+        "palette selected by the level palette table.",
         "",
         "## VISUAL / OUTPUT CHECKS",
         "",
@@ -521,7 +566,8 @@ def build_report(summary: dict) -> str:
         "",
         "- Semantic identities for object types remain unchanged; this extractor "
         "does not name unknown objects from appearance.",
-        "- CRAM/palette selection is not decoded here.",
+        "- THZ1 selects background palette `$15` and sprite palette `$06`; "
+        "object previews use `$06` from the ROM palette table at `$3B64D`.",
         "- X-flipped rendering is not emitted yet. The game switches to `aux1` "
         "and mirrors X coordinates when object flag bit 4 is set.",
         "- A shared frame pointer (commonly `$A0E4`) is preserved in metadata. "
@@ -561,6 +607,7 @@ def main() -> None:
     print("Known-anchor validation: PASS ($21 $26 $27 $28)")
 
     vram, vram_manifest = build_vram(rom, graphics_map)
+    sprite_palette = thz1_sprite_palette(rom)
 
     args.output.mkdir(parents=True, exist_ok=True)
     objects = []
@@ -582,7 +629,10 @@ def main() -> None:
             serial["frame_index"] = index
             serial["shared_frame"] = frame_cpu == KNOWN_SHARED_FRAME
 
-            rendered = render_frame(vram, frame, tile_base, scale=args.scale)
+            rendered = render_frame(
+                vram, frame, tile_base, scale=args.scale,
+                palette=sprite_palette,
+            )
             if rendered is not None:
                 w, h, rgba, render_meta = rendered
                 name = f"frame_{index:02d}_{frame_cpu:04X}.png"
@@ -640,6 +690,14 @@ def main() -> None:
             "_LABEL_22B6_113",
         ],
         "vram_loads": vram_manifest,
+        "palette": {
+            "selector_table_rom": fmt_rom(LEVEL_PALETTE_INDEX_ROM),
+            "background_index": f"0x{THZ1_BACKGROUND_PALETTE:02X}",
+            "sprite_index": f"0x{THZ1_SPRITE_PALETTE:02X}",
+            "sprite_palette_rom": fmt_rom(
+                PALETTE_DATA_ROM + THZ1_SPRITE_PALETTE * 16
+            ),
+        },
         "objects": objects,
     }
 

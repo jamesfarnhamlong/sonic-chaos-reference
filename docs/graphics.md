@@ -27,6 +27,15 @@ They resolve to:
 
 The primary stream header reports 251 decompressed tiles.
 
+## THZ1 palette selection
+
+The level/act palette-selector table at ROM `$07F3C` starts with bytes
+`15 06` for THZ1. `_LABEL_794F_293` stores those as the background and sprite
+palette numbers. The palette resolver `_LABEL_3B63E_81` indexes 16-byte records
+at ROM `$3B64D`, so THZ1 object sprites use palette `$06` at ROM `$3B6AD`.
+Each Master System CRAM byte is decoded as two bits each of red, green and blue;
+sprite colour index zero is transparent.
+
 ## Supplemental THZ1 graphics list
 
 The list at `$7E13` contains six five-byte entries followed by `$FF`.

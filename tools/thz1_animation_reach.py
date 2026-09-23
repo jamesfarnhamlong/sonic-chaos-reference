@@ -46,7 +46,7 @@ GRAPHICS_MAP = ROOT / "data" / "rom-cache" / "thz1" / "graphics-map.json"
 OBJECT_RECORDS = ROOT / "data" / "rom-cache" / "thz1" / "object-records.json"
 
 ANIM_TYPE_TABLE_ROM = 0x65BA
-TARGET_TYPES = (0x09, 0x10, 0x18, 0x1B, 0x21)
+TARGET_TYPES = (0x09, 0x10, 0x18, 0x1B, 0x21, 0x27)
 
 # Hard anchors from recovered ROM regions already in the reference repository.
 SPIKE_STATE_TABLE_CPU = 0xAC4A
@@ -408,6 +408,7 @@ def render_reachable(
     scale: int,
 ) -> List[dict]:
     vram, _ = v2.build_vram(rom, graphics_map)
+    palette = v2.thz1_sprite_palette(rom)
     type_id = type_trace["type_id"]
     bases = object_bases(object_records, type_id)
     tile_base = bases[0][0] if bases else 0
@@ -419,7 +420,9 @@ def render_reachable(
     for frame_index in type_trace["reachable_frame_indices"]:
         frame_cpu = mapping_frame_cpu(rom, type_id, frame_index)
         frame = v2.parse_frame_record(rom, frame_cpu)
-        result = v2.render_frame(vram, frame, tile_base, scale=scale)
+        result = v2.render_frame(
+    vram, frame, tile_base, scale=scale, palette=palette
+)
 
         item = {
             "frame_index": frame_index,
@@ -490,13 +493,15 @@ def report_text(summary: dict) -> str:
         "",
         "- This report establishes which mapping frame indices are reachable from "
         "the per-type animation state scripts under the supported control commands.",
+	"- It does not assign a semantic name to `$27`; the recovered handler "
+	"and coherent flying-object frames establish behavior without requiring one.",
         "- It does not assign semantic names to `$09`, `$10` or `$18`.",
         "- `FF 00`, `FF 01`, `FF 02`, `FF 03`, `FF 06`, `FF 07`, `FF 0B`, "
         "`FF 0C`, `FF 0E` and `FF 0F` are interpreted. If another command is "
         "encountered, that state is marked "
         "unresolved rather than guessed.",
-        "- PNGs are structural grayscale previews using the same THZ1 VRAM load "
-        "reconstruction as v2; they are not CRAM-accurate.",
+	"- PNGs use the same THZ1 VRAM load reconstruction and ROM-selected "
+	"sprite palette as the object-graphics extractor.",
         "",
         "## PER-TYPE STATES",
         "",
