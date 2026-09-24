@@ -1,0 +1,2366 @@
+{
+  "format": 1,
+  "scope": "Every raw nine-byte object record directly placed in Turquoise Hill Zone Act 1",
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "source_object_records": "data/rom-cache/thz1/object-records.json",
+  "record_start": "0x705AE",
+  "terminator": "0x7078B",
+  "coordinate_bias": 256,
+  "raw_record_count": 53,
+  "placed_type_count": 8,
+  "placed_type_ids": [
+    "0x09",
+    "0x10",
+    "0x18",
+    "0x1B",
+    "0x21",
+    "0x26",
+    "0x27",
+    "0x28"
+  ],
+  "type_counts": {
+    "0x09": 24,
+    "0x10": 5,
+    "0x18": 1,
+    "0x1B": 4,
+    "0x21": 6,
+    "0x26": 4,
+    "0x27": 3,
+    "0x28": 6
+  },
+  "record_order": [
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x26",
+    "0x26",
+    "0x10",
+    "0x10",
+    "0x10",
+    "0x10",
+    "0x10",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x21",
+    "0x21",
+    "0x21",
+    "0x21",
+    "0x21",
+    "0x21",
+    "0x1B",
+    "0x1B",
+    "0x1B",
+    "0x1B",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x09",
+    "0x18"
+  ],
+  "separate_layout_ring_position_count": 142,
+  "ring_count_note": "The 24 raw type-0x09 records and the 142 ring positions decoded from THZ1 layout blocks are different populations; this census does not claim that either count is an expansion of the other.",
+  "validation": {
+    "object_records_match_rom": true,
+    "mapping_anchor_types": [
+      "0x21",
+      "0x26",
+      "0x27",
+      "0x28"
+    ],
+    "animation_anchor_types": [
+      "0x1B",
+      "0x26"
+    ],
+    "dedicated_placement_caches": [
+      "0x21",
+      "0x27"
+    ],
+    "total_unresolved_animation_states": 3
+  },
+  "objects": [
+    {
+      "type_id": "0x09",
+      "record_count": 24,
+      "record_indices": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "records": [
+        {
+          "record_index": 14,
+          "rom_offset": "0x70623",
+          "world_x": 3124,
+          "world_y": 548,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 15,
+          "rom_offset": "0x7062C",
+          "world_x": 3160,
+          "world_y": 522,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 16,
+          "rom_offset": "0x70635",
+          "world_x": 3208,
+          "world_y": 512,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 17,
+          "rom_offset": "0x7063E",
+          "world_x": 2880,
+          "world_y": 384,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 18,
+          "rom_offset": "0x70647",
+          "world_x": 2832,
+          "world_y": 448,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 19,
+          "rom_offset": "0x70650",
+          "world_x": 2840,
+          "world_y": 408,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 20,
+          "rom_offset": "0x70659",
+          "world_x": 2928,
+          "world_y": 448,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 21,
+          "rom_offset": "0x70662",
+          "world_x": 2920,
+          "world_y": 408,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 37,
+          "rom_offset": "0x706F2",
+          "world_x": 3367,
+          "world_y": 830,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 38,
+          "rom_offset": "0x706FB",
+          "world_x": 3394,
+          "world_y": 798,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 39,
+          "rom_offset": "0x70704",
+          "world_x": 3422,
+          "world_y": 774,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 40,
+          "rom_offset": "0x7070D",
+          "world_x": 816,
+          "world_y": 844,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 41,
+          "rom_offset": "0x70716",
+          "world_x": 864,
+          "world_y": 844,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 42,
+          "rom_offset": "0x7071F",
+          "world_x": 944,
+          "world_y": 844,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 43,
+          "rom_offset": "0x70728",
+          "world_x": 1040,
+          "world_y": 844,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 44,
+          "rom_offset": "0x70731",
+          "world_x": 1728,
+          "world_y": 588,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 45,
+          "rom_offset": "0x7073A",
+          "world_x": 1760,
+          "world_y": 588,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 46,
+          "rom_offset": "0x70743",
+          "world_x": 1856,
+          "world_y": 588,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 47,
+          "rom_offset": "0x7074C",
+          "world_x": 1968,
+          "world_y": 588,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 48,
+          "rom_offset": "0x70755",
+          "world_x": 2048,
+          "world_y": 588,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 49,
+          "rom_offset": "0x7075E",
+          "world_x": 2080,
+          "world_y": 588,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 50,
+          "rom_offset": "0x70767",
+          "world_x": 2400,
+          "world_y": 684,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 51,
+          "rom_offset": "0x70770",
+          "world_x": 2512,
+          "world_y": 684,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 52,
+          "rom_offset": "0x70779",
+          "world_x": 2640,
+          "world_y": 684,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 11,
+          "record_indices": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            37,
+            38,
+            39
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 13,
+          "record_indices": [
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x065CA",
+        "bank": "0x0C",
+        "state_table_cpu": "0x9BC8",
+        "state_table_rom": "0x31BC8",
+        "state_count": 4,
+        "state_script_cpus": [
+          "0x9BD0",
+          "0x9BD6",
+          "0x9BE8",
+          "0x9C0A"
+        ],
+        "reachable_mapping_frames": [
+          "0x00",
+          "0x01",
+          "0x02",
+          "0x03",
+          "0x04",
+          "0x05",
+          "0x06"
+        ],
+        "unresolved_states": [],
+        "unresolved_commands": []
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C012",
+        "mapping_cpu": "0x8C71",
+        "mapping_rom": "0x3CC71",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x00",
+            "frame_cpu": "0xA0E4",
+            "frame_rom": "0x3E0E4",
+            "shared_empty_frame": true,
+            "piece_count": 0,
+            "raw_word_1": "0x0000",
+            "coordinate_table_cpu": null,
+            "coordinate_table_rom": null,
+            "tile_list_cpu": null,
+            "tile_list_rom": null,
+            "tile_offsets": []
+          },
+          {
+            "frame_index": "0x01",
+            "frame_cpu": "0x8CE3",
+            "frame_rom": "0x3CCE3",
+            "shared_empty_frame": false,
+            "piece_count": 2,
+            "raw_word_1": "0x1008",
+            "coordinate_table_cpu": "0xA23B",
+            "coordinate_table_rom": "0x3E23B",
+            "tile_list_cpu": "0x8D91",
+            "tile_list_rom": "0x3CD91",
+            "tile_offsets": [
+              "0x10",
+              "0x12"
+            ]
+          },
+          {
+            "frame_index": "0x02",
+            "frame_cpu": "0x8CEE",
+            "frame_rom": "0x3CCEE",
+            "shared_empty_frame": false,
+            "piece_count": 2,
+            "raw_word_1": "0x1008",
+            "coordinate_table_cpu": "0xA23B",
+            "coordinate_table_rom": "0x3E23B",
+            "tile_list_cpu": "0x8D93",
+            "tile_list_rom": "0x3CD93",
+            "tile_offsets": [
+              "0x14",
+              "0x16"
+            ]
+          },
+          {
+            "frame_index": "0x03",
+            "frame_cpu": "0x8CF9",
+            "frame_rom": "0x3CCF9",
+            "shared_empty_frame": false,
+            "piece_count": 2,
+            "raw_word_1": "0x1008",
+            "coordinate_table_cpu": "0xA23B",
+            "coordinate_table_rom": "0x3E23B",
+            "tile_list_cpu": "0x8D95",
+            "tile_list_rom": "0x3CD95",
+            "tile_offsets": [
+              "0x18",
+              "0x1A"
+            ]
+          },
+          {
+            "frame_index": "0x04",
+            "frame_cpu": "0x8D04",
+            "frame_rom": "0x3CD04",
+            "shared_empty_frame": false,
+            "piece_count": 2,
+            "raw_word_1": "0x1008",
+            "coordinate_table_cpu": "0xA23B",
+            "coordinate_table_rom": "0x3E23B",
+            "tile_list_cpu": "0x8D97",
+            "tile_list_rom": "0x3CD97",
+            "tile_offsets": [
+              "0x1C",
+              "0x1E"
+            ]
+          },
+          {
+            "frame_index": "0x05",
+            "frame_cpu": "0x8CAC",
+            "frame_rom": "0x3CCAC",
+            "shared_empty_frame": false,
+            "piece_count": 1,
+            "raw_word_1": "0x1004",
+            "coordinate_table_cpu": "0xA303",
+            "coordinate_table_rom": "0x3E303",
+            "tile_list_cpu": "0x8D8A",
+            "tile_list_rom": "0x3CD8A",
+            "tile_offsets": [
+              "0x20"
+            ]
+          },
+          {
+            "frame_index": "0x06",
+            "frame_cpu": "0x8CB7",
+            "frame_rom": "0x3CCB7",
+            "shared_empty_frame": false,
+            "piece_count": 1,
+            "raw_word_1": "0x1004",
+            "coordinate_table_cpu": "0xA303",
+            "coordinate_table_rom": "0x3E303",
+            "tile_list_cpu": "0x8D8B",
+            "tile_list_rom": "0x3CD8B",
+            "tile_offsets": [
+              "0x22"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0x00",
+            "aux1": "0x00"
+          }
+        ],
+        "classification": "static THZ1 VRAM",
+        "load_paths": [
+          {
+            "id": "thz1_common_base_10",
+            "bank_byte": "0x08",
+            "source_cpu": "0xB340",
+            "source_rom": "0x23340",
+            "vram_destination": "0x0200",
+            "base_tile": "0x10",
+            "transform_remap": false
+          }
+        ],
+        "note": "The shared mapping uses absolute tile offsets 0x10-0x22 with placement art bases 0x00/0x00."
+      },
+      "renderer_orientation": "All THZ1 placement flags are 0x00; no placement-requested X mirror is present.",
+      "collision": null,
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "LIKELY / SUPPORTED BUT NOT CANONICAL",
+          "role": "ring / sparkle graphics family",
+          "basis": "Reachable reconstructed frames show ring and sparkle graphics; the ROM evidence cited here does not establish a canonical name for every state."
+        },
+        "graphics_completeness": "VERIFIED for statically reachable frames 0x00-0x06",
+        "animation_script_completeness": "VERIFIED for all four statically decoded states",
+        "behavior_completeness": "UNRESOLVED",
+        "lifetime_contact_completeness": "UNRESOLVED",
+        "evidence_levels": [
+          "decoded data",
+          "decoded graphics/mapping metadata"
+        ],
+        "poc_research_readiness": "PLACEMENT DATA READY; ORIGINAL OBJECT EXPANSION/BEHAVIOR NOT READY",
+        "recovered_regions": [],
+        "artifacts": [
+          "tools/thz1_object_assets.py",
+          "tools/thz1_animation_reach.py",
+          "data/rom-cache/thz1/object-graphics-map.json",
+          "docs/thz1-object-graphics.md"
+        ],
+        "major_remaining_questions": [
+          "Trace what parameter 0x00 versus 0x01 means for the 24 raw records.",
+          "Establish how the object stream relates to generated game entities; do not equate 24 records with the separately decoded 142 layout-ring positions.",
+          "Trace collection, sparkle-state selection, persistence, and respawn behavior."
+        ]
+      }
+    },
+    {
+      "type_id": "0x10",
+      "record_count": 5,
+      "record_indices": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "records": [
+        {
+          "record_index": 9,
+          "rom_offset": "0x705F6",
+          "world_x": 656,
+          "world_y": 846,
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 10,
+          "rom_offset": "0x705FF",
+          "world_x": 1712,
+          "world_y": 494,
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 11,
+          "rom_offset": "0x70608",
+          "world_x": 336,
+          "world_y": 270,
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 12,
+          "rom_offset": "0x70611",
+          "world_x": 1472,
+          "world_y": 110,
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 13,
+          "rom_offset": "0x7061A",
+          "world_x": 2688,
+          "world_y": 686,
+          "flags": "0x00",
+          "parameter": "0x02",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 2,
+          "record_indices": [
+            9,
+            10
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 2,
+          "record_indices": [
+            11,
+            12
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x02",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "record_indices": [
+            13
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x065D8",
+        "bank": "0x0C",
+        "state_table_cpu": "0xA101",
+        "state_table_rom": "0x32101",
+        "state_count": 4,
+        "state_script_cpus": [
+          "0xA109",
+          "0xA10F",
+          "0xA115",
+          "0xA12F"
+        ],
+        "reachable_mapping_frames": [
+          "0x00",
+          "0x0B",
+          "0x0C"
+        ],
+        "unresolved_states": [],
+        "unresolved_commands": []
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C020",
+        "mapping_cpu": "0x8C71",
+        "mapping_rom": "0x3CC71",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x00",
+            "frame_cpu": "0xA0E4",
+            "frame_rom": "0x3E0E4",
+            "shared_empty_frame": true,
+            "piece_count": 0,
+            "raw_word_1": "0x0000",
+            "coordinate_table_cpu": null,
+            "coordinate_table_rom": null,
+            "tile_list_cpu": null,
+            "tile_list_rom": null,
+            "tile_offsets": []
+          },
+          {
+            "frame_index": "0x0B",
+            "frame_cpu": "0x8D0F",
+            "frame_rom": "0x3CD0F",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x180A",
+            "coordinate_table_cpu": "0xA10B",
+            "coordinate_table_rom": "0x3E10B",
+            "tile_list_cpu": "0x8D99",
+            "tile_list_rom": "0x3CD99",
+            "tile_offsets": [
+              "0x4C",
+              "0x4E",
+              "0x50",
+              "0x52",
+              "0x54",
+              "0x56"
+            ]
+          },
+          {
+            "frame_index": "0x0C",
+            "frame_cpu": "0x8D1A",
+            "frame_rom": "0x3CD1A",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x180A",
+            "coordinate_table_cpu": "0xA10B",
+            "coordinate_table_rom": "0x3E10B",
+            "tile_list_cpu": "0x8D9F",
+            "tile_list_rom": "0x3CD9F",
+            "tile_offsets": [
+              "0x58",
+              "0x5A",
+              "0x5C",
+              "0x52",
+              "0x54",
+              "0x56"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0x00",
+            "aux1": "0x00"
+          }
+        ],
+        "classification": "static THZ1 VRAM",
+        "load_paths": [
+          {
+            "id": "thz1_common_base_10",
+            "bank_byte": "0x08",
+            "source_cpu": "0xB340",
+            "source_rom": "0x23340",
+            "vram_destination": "0x0200",
+            "base_tile": "0x10",
+            "transform_remap": false
+          }
+        ],
+        "note": "The shared mapping uses absolute tile offsets 0x4C-0x5C with placement art bases 0x00/0x00."
+      },
+      "renderer_orientation": "All THZ1 placement flags are 0x00; no placement-requested X mirror is present.",
+      "collision": null,
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "LIKELY / SUPPORTED BUT NOT CANONICAL",
+          "role": "monitor / item-box presentation",
+          "basis": "Reachable reconstructed frames show monitor/item-box graphics; placement parameters and awarded contents are not formally traced."
+        },
+        "graphics_completeness": "VERIFIED for statically reachable frames 0x00, 0x0B, 0x0C",
+        "animation_script_completeness": "VERIFIED for all four statically decoded states",
+        "behavior_completeness": "UNRESOLVED",
+        "lifetime_contact_completeness": "UNRESOLVED",
+        "evidence_levels": [
+          "decoded data",
+          "decoded graphics/mapping metadata"
+        ],
+        "poc_research_readiness": "PLACEMENT/PRESENTATION DATA READY; BEHAVIOR NOT READY",
+        "recovered_regions": [],
+        "artifacts": [
+          "tools/thz1_object_assets.py",
+          "tools/thz1_animation_reach.py",
+          "data/rom-cache/thz1/object-graphics-map.json",
+          "docs/thz1-object-graphics.md"
+        ],
+        "major_remaining_questions": [
+          "Trace parameter values 0x02, 0x04, and 0x06 to verified contents/behavior.",
+          "Recover contact, break/open, reward, persistence, and lifetime paths.",
+          "Determine the semantic roles of reachable frames 0x0B and 0x0C from source behavior, not appearance alone."
+        ]
+      }
+    },
+    {
+      "type_id": "0x18",
+      "record_count": 1,
+      "record_indices": [
+        53
+      ],
+      "records": [
+        {
+          "record_index": 53,
+          "rom_offset": "0x70782",
+          "world_x": 3960,
+          "world_y": 558,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "record_indices": [
+            53
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x065E8",
+        "bank": "0x0C",
+        "state_table_cpu": "0xA7BC",
+        "state_table_rom": "0x327BC",
+        "state_count": 7,
+        "state_script_cpus": [
+          "0xA7CA",
+          "0xA7D3",
+          "0xA7D9",
+          "0xA7E2",
+          "0xA7E8",
+          "0xA81F",
+          "0xA82E"
+        ],
+        "reachable_mapping_frames": [
+          "0x00",
+          "0x01",
+          "0x02",
+          "0x03",
+          "0x04",
+          "0x05"
+        ],
+        "unresolved_states": [],
+        "unresolved_commands": []
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C030",
+        "mapping_cpu": "0x8EAE",
+        "mapping_rom": "0x3CEAE",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x00",
+            "frame_cpu": "0xA0E4",
+            "frame_rom": "0x3E0E4",
+            "shared_empty_frame": true,
+            "piece_count": 0,
+            "raw_word_1": "0x0000",
+            "coordinate_table_cpu": null,
+            "coordinate_table_rom": null,
+            "tile_list_cpu": null,
+            "tile_list_rom": null,
+            "tile_offsets": []
+          },
+          {
+            "frame_index": "0x01",
+            "frame_cpu": "0x8EBA",
+            "frame_rom": "0x3CEBA",
+            "shared_empty_frame": false,
+            "piece_count": 10,
+            "raw_word_1": "0x2A0C",
+            "coordinate_table_cpu": "0xA31B",
+            "coordinate_table_rom": "0x3E31B",
+            "tile_list_cpu": "0x8EF1",
+            "tile_list_rom": "0x3CEF1",
+            "tile_offsets": [
+              "0x6A",
+              "0x6C",
+              "0x6E",
+              "0x70",
+              "0x72",
+              "0x74",
+              "0x76",
+              "0x78",
+              "0x7A",
+              "0x7C"
+            ]
+          },
+          {
+            "frame_index": "0x02",
+            "frame_cpu": "0x8EC5",
+            "frame_rom": "0x3CEC5",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x3008",
+            "coordinate_table_cpu": "0xA343",
+            "coordinate_table_rom": "0x3E343",
+            "tile_list_cpu": "0x8EFB",
+            "tile_list_rom": "0x3CEFB",
+            "tile_offsets": [
+              "0x7E",
+              "0x80",
+              "0x82",
+              "0x84",
+              "0x86",
+              "0x88"
+            ]
+          },
+          {
+            "frame_index": "0x03",
+            "frame_cpu": "0x8ED0",
+            "frame_rom": "0x3CED0",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x3008",
+            "coordinate_table_cpu": "0xA343",
+            "coordinate_table_rom": "0x3E343",
+            "tile_list_cpu": "0x8F01",
+            "tile_list_rom": "0x3CF01",
+            "tile_offsets": [
+              "0x8A",
+              "0x8C",
+              "0x8E",
+              "0x90",
+              "0x7A",
+              "0x7C"
+            ]
+          },
+          {
+            "frame_index": "0x04",
+            "frame_cpu": "0x8EDB",
+            "frame_rom": "0x3CEDB",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x3008",
+            "coordinate_table_cpu": "0xA343",
+            "coordinate_table_rom": "0x3E343",
+            "tile_list_cpu": "0x8F07",
+            "tile_list_rom": "0x3CF07",
+            "tile_offsets": [
+              "0x92",
+              "0x94",
+              "0x96",
+              "0x98",
+              "0x86",
+              "0x88"
+            ]
+          },
+          {
+            "frame_index": "0x05",
+            "frame_cpu": "0x8EE6",
+            "frame_rom": "0x3CEE6",
+            "shared_empty_frame": false,
+            "piece_count": 10,
+            "raw_word_1": "0x2A0D",
+            "coordinate_table_cpu": "0xA31B",
+            "coordinate_table_rom": "0x3E31B",
+            "tile_list_cpu": "0x8F0D",
+            "tile_list_rom": "0x3CF0D",
+            "tile_offsets": [
+              "0x9A",
+              "0x9C",
+              "0x9E",
+              "0xA0",
+              "0xA2",
+              "0xA4",
+              "0xA6",
+              "0xA8",
+              "0x7A",
+              "0x7C"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0x00",
+            "aux1": "0x00"
+          }
+        ],
+        "classification": "dynamically loaded",
+        "load_paths": [
+          {
+            "id": "dynamic_selector_0x12",
+            "selector_ram": "0xD3B3",
+            "selector": "0x12",
+            "list_pointer_table_rom": "0x07BA6",
+            "list_cpu": "0x7BCB",
+            "loads": [
+              {
+                "bank": "0x0D",
+                "source_cpu": "0x96BC",
+                "source_rom": "0x356BC",
+                "vram_destination": "0x0D40",
+                "tile_range": "0x6A-0x79",
+                "tile_count": 16
+              },
+              {
+                "bank": "0x09",
+                "source_cpu": "0x8640",
+                "source_rom": "0x24640",
+                "vram_destination": "0x0F40",
+                "tile_range": "0x7A-0xA9",
+                "tile_count": 48
+              }
+            ]
+          }
+        ],
+        "note": "Selector RAM 0xD3B3 receives 0x12; loads replace tiles 0x6A-0xA9 from ROM 0x356BC and 0x24640."
+      },
+      "renderer_orientation": "The sole THZ1 placement has flags 0x00 and art bases 0x00/0x00; mapping tile values are supplied by the dynamic load.",
+      "collision": null,
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "LIKELY / SUPPORTED BUT NOT CANONICAL",
+          "role": "end-of-act goal-sign/signpost presentation",
+          "basis": "The verified dynamic VRAM loads reconstruct a coherent rotating goal sign; completion logic has not received a dedicated behavior study."
+        },
+        "graphics_completeness": "VERIFIED dynamic load path and reachable frames 0x00-0x05",
+        "animation_script_completeness": "VERIFIED for all seven statically decoded states",
+        "behavior_completeness": "PARTIALLY ESTABLISHED",
+        "lifetime_contact_completeness": "UNRESOLVED",
+        "evidence_levels": [
+          "decoded data",
+          "decoded graphics/mapping metadata",
+          "source-traced dynamic graphics path"
+        ],
+        "poc_research_readiness": "GRAPHICS READY; COMPLETION BEHAVIOR NOT READY",
+        "recovered_regions": [],
+        "artifacts": [
+          "tools/thz1_type18_dynamic_graphics.py",
+          "tools/thz1_animation_reach.py",
+          "data/rom-cache/thz1/object-graphics-map.json",
+          "docs/thz1-object-graphics.md"
+        ],
+        "major_remaining_questions": [
+          "Formally trace trigger/contact and end-of-act completion logic.",
+          "Trace lifetime, state timing, and any stage-results transition.",
+          "Assign semantic meanings to animation states/frames only where behavior proves them."
+        ]
+      }
+    },
+    {
+      "type_id": "0x1B",
+      "record_count": 4,
+      "record_indices": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "records": [
+        {
+          "record_index": 33,
+          "rom_offset": "0x706CE",
+          "world_x": 1344,
+          "world_y": 864,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 34,
+          "rom_offset": "0x706D7",
+          "world_x": 1936,
+          "world_y": 864,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 35,
+          "rom_offset": "0x706E0",
+          "world_x": 2464,
+          "world_y": 864,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 36,
+          "rom_offset": "0x706E9",
+          "world_x": 2912,
+          "world_y": 864,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 4,
+          "record_indices": [
+            33,
+            34,
+            35,
+            36
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x065EE",
+        "bank": "0x0C",
+        "state_table_cpu": "0xAC4A",
+        "state_table_rom": "0x32C4A",
+        "state_count": 5,
+        "state_script_cpus": [
+          "0xAC54",
+          "0xAC5A",
+          "0xAC65",
+          "0xAC6E",
+          "0xAC74"
+        ],
+        "reachable_mapping_frames": [
+          "0x0E"
+        ],
+        "unresolved_states": [],
+        "unresolved_commands": []
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C036",
+        "mapping_cpu": "0x8C71",
+        "mapping_rom": "0x3CC71",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x0E",
+            "frame_cpu": "0x8D30",
+            "frame_rom": "0x3CD30",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x1810",
+            "coordinate_table_cpu": "0xA10B",
+            "coordinate_table_rom": "0x3E10B",
+            "tile_list_cpu": "0x8DA7",
+            "tile_list_rom": "0x3CDA7",
+            "tile_offsets": [
+              "0x62",
+              "0x62",
+              "0x62",
+              "0x64",
+              "0x64",
+              "0x64"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0x00",
+            "aux1": "0x00"
+          }
+        ],
+        "classification": "static THZ1 VRAM",
+        "load_paths": [
+          {
+            "id": "thz1_common_base_10",
+            "bank_byte": "0x08",
+            "source_cpu": "0xB340",
+            "source_rom": "0x23340",
+            "vram_destination": "0x0200",
+            "base_tile": "0x10",
+            "transform_remap": false
+          }
+        ],
+        "note": "Shared mapping frame 0x0E uses absolute tile offsets 0x62/0x64 with art bases 0x00/0x00."
+      },
+      "renderer_orientation": "All THZ1 placement flags are 0x00; no placement-requested X mirror is present.",
+      "collision": {
+        "status": "PARTIAL",
+        "facts": [
+          "Damage/contact helper runs in rising state 1 and raised state 2, not retracting/hidden states 3/4."
+        ]
+      },
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "VERIFIED",
+          "role": "retracting/moving spikes",
+          "basis": "Recovered handlers and scripts establish the rise, active damage, retract, and hidden phases."
+        },
+        "graphics_completeness": "VERIFIED reachable frame 0x0E",
+        "animation_script_completeness": "VERIFIED for all five states",
+        "behavior_completeness": "SUBSTANTIALLY VERIFIED",
+        "lifetime_contact_completeness": "PARTIAL: active damage phases verified; camera activation/despawn not formally studied",
+        "evidence_levels": [
+          "decoded data",
+          "byte-verified assembly",
+          "source-traced behavior",
+          "controlled original-Z80 trace (selected handlers)"
+        ],
+        "poc_research_readiness": "CORE STATE MACHINE READY; LIFETIME/INTEGRATION CHECKS REMAIN",
+        "recovered_regions": [
+          {
+            "name": "spike_object_scripts",
+            "file": "asm/recovered/spike_object_scripts.asm",
+            "rom_start": "0x32C4A",
+            "rom_end_exclusive": "0x32C7D",
+            "kind": "data"
+          },
+          {
+            "name": "spike_object_handlers",
+            "file": "asm/recovered/spike_object_handlers.asm",
+            "rom_start": "0x32C7D",
+            "rom_end_exclusive": "0x32D59",
+            "kind": "code"
+          }
+        ],
+        "artifacts": [
+          "docs/act1-objects.md",
+          "reports/windows-poc-15-objects.json",
+          "asm/recovered/spike_object_handlers.asm",
+          "asm/recovered/spike_object_scripts.asm"
+        ],
+        "major_remaining_questions": [
+          "Formally trace camera activation, removal, occupancy release, and respawn.",
+          "Verify complete damage aftermath and gameplay scheduling beyond selected handler comparisons."
+        ]
+      }
+    },
+    {
+      "type_id": "0x21",
+      "record_count": 6,
+      "record_indices": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "records": [
+        {
+          "record_index": 27,
+          "rom_offset": "0x70698",
+          "world_x": 800,
+          "world_y": 606,
+          "flags": "0x00",
+          "parameter": "0x08",
+          "aux0": "0x86",
+          "aux1": "0x98"
+        },
+        {
+          "record_index": 28,
+          "rom_offset": "0x706A1",
+          "world_x": 1248,
+          "world_y": 862,
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x86",
+          "aux1": "0x98"
+        },
+        {
+          "record_index": 29,
+          "rom_offset": "0x706AA",
+          "world_x": 2048,
+          "world_y": 318,
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x86",
+          "aux1": "0x98"
+        },
+        {
+          "record_index": 30,
+          "rom_offset": "0x706B3",
+          "world_x": 3152,
+          "world_y": 894,
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x86",
+          "aux1": "0x98"
+        },
+        {
+          "record_index": 31,
+          "rom_offset": "0x706BC",
+          "world_x": 3296,
+          "world_y": 286,
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x86",
+          "aux1": "0x98"
+        },
+        {
+          "record_index": 32,
+          "rom_offset": "0x706C5",
+          "world_x": 2400,
+          "world_y": 254,
+          "flags": "0x00",
+          "parameter": "0x02",
+          "aux0": "0x86",
+          "aux1": "0x98"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x00",
+          "parameter": "0x08",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "record_indices": [
+            27
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 2,
+          "record_indices": [
+            28,
+            29
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "record_indices": [
+            30
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "record_indices": [
+            31
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x02",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "record_indices": [
+            32
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x065FA",
+        "bank": "0x0C",
+        "state_table_cpu": "0xB1B6",
+        "state_table_rom": "0x331B6",
+        "state_count": 7,
+        "state_script_cpus": [
+          "0xB1C4",
+          "0xB1CA",
+          "0xB1D6",
+          "0xB1D8",
+          "0xB1E6",
+          "0xB1F4",
+          "0xB202"
+        ],
+        "reachable_mapping_frames": [
+          "0x00",
+          "0x01",
+          "0x02"
+        ],
+        "unresolved_states": [],
+        "unresolved_commands": []
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C042",
+        "mapping_cpu": "0x911B",
+        "mapping_rom": "0x3D11B",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x00",
+            "frame_cpu": "0xA0E4",
+            "frame_rom": "0x3E0E4",
+            "shared_empty_frame": true,
+            "piece_count": 0,
+            "raw_word_1": "0x0000",
+            "coordinate_table_cpu": null,
+            "coordinate_table_rom": null,
+            "tile_list_cpu": null,
+            "tile_list_rom": null,
+            "tile_offsets": []
+          },
+          {
+            "frame_index": "0x01",
+            "frame_cpu": "0x9121",
+            "frame_rom": "0x3D121",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x1A0B",
+            "coordinate_table_cpu": "0xA10B",
+            "coordinate_table_rom": "0x3E10B",
+            "tile_list_cpu": "0x9137",
+            "tile_list_rom": "0x3D137",
+            "tile_offsets": [
+              "0x00",
+              "0x02",
+              "0x04",
+              "0x06",
+              "0x08",
+              "0x0A"
+            ]
+          },
+          {
+            "frame_index": "0x02",
+            "frame_cpu": "0x912C",
+            "frame_rom": "0x3D12C",
+            "shared_empty_frame": false,
+            "piece_count": 6,
+            "raw_word_1": "0x1A0B",
+            "coordinate_table_cpu": "0xA10B",
+            "coordinate_table_rom": "0x3E10B",
+            "tile_list_cpu": "0x913D",
+            "tile_list_rom": "0x3D13D",
+            "tile_offsets": [
+              "0x00",
+              "0x02",
+              "0x04",
+              "0x0C",
+              "0x0E",
+              "0x10"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0x86",
+            "aux1": "0x98"
+          }
+        ],
+        "classification": "static THZ1 VRAM plus remapped supplemental graphics",
+        "load_paths": [
+          {
+            "id": "thz1_base_86",
+            "bank_byte": "0x09",
+            "source_cpu": "0x9AB0",
+            "source_rom": "0x25AB0",
+            "vram_destination": "0x10C0",
+            "base_tile": "0x86",
+            "transform_remap": false
+          },
+          {
+            "id": "thz1_base_98_remap",
+            "bank_byte": "0x89",
+            "source_cpu": "0x9AB0",
+            "source_rom": "0x25AB0",
+            "vram_destination": "0x1300",
+            "base_tile": "0x98",
+            "transform_remap": true
+          }
+        ],
+        "note": "Renderer selects aux0 0x86 normally and remapped aux1 0x98 while X-mirrored."
+      },
+      "renderer_orientation": "Patrol scripts set bit 4 for negative-X orientation and clear it for positive-X orientation; bit 4 selects aux1 and mirrors piece coordinates.",
+      "collision": {
+        "status": "VERIFIED",
+        "horizontal_extent": 11,
+        "vertical_extent": 26,
+        "facts": [
+          "Top-contact comparison uses object_y - 4 against player integer Y."
+        ]
+      },
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "LIKELY / SUPPORTED BUT NOT CANONICAL",
+          "role": "ground patrol with spring-like top contact",
+          "basis": "Behavior, sprite structure, and contact response are verified, but the possible canonical identity remains explicitly non-verified."
+        },
+        "graphics_completeness": "VERIFIED reachable frames 0x00-0x02 and both art bases",
+        "animation_script_completeness": "VERIFIED for all seven states",
+        "behavior_completeness": "VERIFIED for THZ1-reachable behavior",
+        "lifetime_contact_completeness": "VERIFIED",
+        "evidence_levels": [
+          "decoded data",
+          "byte-verified assembly",
+          "source-traced behavior",
+          "controlled original-Z80 trace"
+        ],
+        "poc_research_readiness": "RESEARCH READY FOR IMPLEMENTATION",
+        "recovered_regions": [
+          {
+            "name": "object_21_scripts",
+            "file": "asm/recovered/object_21_scripts.asm",
+            "rom_start": "0x331B6",
+            "rom_end_exclusive": "0x33210",
+            "kind": "data"
+          },
+          {
+            "name": "object_21_handlers",
+            "file": "asm/recovered/object_21_handlers.asm",
+            "rom_start": "0x33210",
+            "rom_end_exclusive": "0x332F9",
+            "kind": "code"
+          }
+        ],
+        "artifacts": [
+          "docs/object-21.md",
+          "tools/thz1_object_21.py",
+          "tests/test_thz1_object_21.py",
+          "data/rom-cache/thz1/object-21.json"
+        ],
+        "major_remaining_questions": [
+          "Canonical semantic identity remains unverified.",
+          "Full-emulator/gameplay observation is absent; the formal study uses source tracing and controlled original-routine fixtures."
+        ]
+      }
+    },
+    {
+      "type_id": "0x26",
+      "record_count": 4,
+      "record_indices": [
+        7,
+        8,
+        22,
+        23
+      ],
+      "records": [
+        {
+          "record_index": 7,
+          "rom_offset": "0x705E4",
+          "world_x": 688,
+          "world_y": 864,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x72",
+          "aux1": "0x72"
+        },
+        {
+          "record_index": 8,
+          "rom_offset": "0x705ED",
+          "world_x": 3568,
+          "world_y": 768,
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x72",
+          "aux1": "0x72"
+        },
+        {
+          "record_index": 22,
+          "rom_offset": "0x7066B",
+          "world_x": 1296,
+          "world_y": 608,
+          "flags": "0x00",
+          "parameter": "0x8A",
+          "aux0": "0x72",
+          "aux1": "0x72"
+        },
+        {
+          "record_index": 23,
+          "rom_offset": "0x70674",
+          "world_x": 1912,
+          "world_y": 864,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x72",
+          "aux1": "0x72"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 2,
+          "record_indices": [
+            7,
+            8
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x8A",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 1,
+          "record_indices": [
+            22
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 1,
+          "record_indices": [
+            23
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x06604",
+        "bank": "0x1E",
+        "state_table_cpu": "0x8212",
+        "state_table_rom": "0x78212",
+        "state_count": 10,
+        "state_script_cpus": [
+          "0x8226",
+          "0x822C",
+          "0x8232",
+          "0x823C",
+          "0x8242",
+          "0x8248",
+          "0x824E",
+          "0x8254",
+          "0x83B3",
+          "0x83B9"
+        ],
+        "reachable_mapping_frames": [
+          "0x00",
+          "0x01",
+          "0x02",
+          "0x03"
+        ],
+        "unresolved_states": [],
+        "unresolved_commands": []
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C04C",
+        "mapping_cpu": "0x91C0",
+        "mapping_rom": "0x3D1C0",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x00",
+            "frame_cpu": "0xA0E4",
+            "frame_rom": "0x3E0E4",
+            "shared_empty_frame": true,
+            "piece_count": 0,
+            "raw_word_1": "0x0000",
+            "coordinate_table_cpu": null,
+            "coordinate_table_rom": null,
+            "tile_list_cpu": null,
+            "tile_list_rom": null,
+            "tile_offsets": []
+          },
+          {
+            "frame_index": "0x01",
+            "frame_cpu": "0x91C8",
+            "frame_rom": "0x3D1C8",
+            "shared_empty_frame": false,
+            "piece_count": 4,
+            "raw_word_1": "0x2008",
+            "coordinate_table_cpu": "0xA277",
+            "coordinate_table_rom": "0x3E277",
+            "tile_list_cpu": "0x91E9",
+            "tile_list_rom": "0x3D1E9",
+            "tile_offsets": [
+              "0x00",
+              "0x02",
+              "0x04",
+              "0x06"
+            ]
+          },
+          {
+            "frame_index": "0x02",
+            "frame_cpu": "0x91D3",
+            "frame_rom": "0x3D1D3",
+            "shared_empty_frame": false,
+            "piece_count": 4,
+            "raw_word_1": "0x2008",
+            "coordinate_table_cpu": "0xA277",
+            "coordinate_table_rom": "0x3E277",
+            "tile_list_cpu": "0x91ED",
+            "tile_list_rom": "0x3D1ED",
+            "tile_offsets": [
+              "0x08",
+              "0x0A",
+              "0x0C",
+              "0x0E"
+            ]
+          },
+          {
+            "frame_index": "0x03",
+            "frame_cpu": "0x91DE",
+            "frame_rom": "0x3D1DE",
+            "shared_empty_frame": false,
+            "piece_count": 4,
+            "raw_word_1": "0x2008",
+            "coordinate_table_cpu": "0xA277",
+            "coordinate_table_rom": "0x3E277",
+            "tile_list_cpu": "0x91F1",
+            "tile_list_rom": "0x3D1F1",
+            "tile_offsets": [
+              "0x10",
+              "0x12",
+              "0x0C",
+              "0x0E"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0x72",
+            "aux1": "0x72"
+          }
+        ],
+        "classification": "static THZ1 VRAM supplemental graphics",
+        "load_paths": [
+          {
+            "id": "thz1_base_72",
+            "bank_byte": "0x09",
+            "source_cpu": "0xA030",
+            "source_rom": "0x26030",
+            "vram_destination": "0x0E40",
+            "base_tile": "0x72",
+            "transform_remap": false
+          }
+        ],
+        "note": "All four records use aux0/aux1 0x72 from the THZ1 supplemental stream."
+      },
+      "renderer_orientation": "All THZ1 placement flags are 0x00; no placement-requested X mirror is present.",
+      "collision": {
+        "status": "PARTIAL",
+        "facts": [
+          "Fixed contact rejects upward motion, missing floor/object contact, and player state 0x21.",
+          "Vertical contact is measured against object_y - 28."
+        ]
+      },
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "VERIFIED",
+          "role": "concealed/contact spring",
+          "basis": "Recovered fixed and span handlers establish the spring contacts, impulses, extension, hold, and retraction paths."
+        },
+        "graphics_completeness": "VERIFIED reachable frames 0x00-0x03",
+        "animation_script_completeness": "VERIFIED for all ten states",
+        "behavior_completeness": "SUBSTANTIALLY VERIFIED",
+        "lifetime_contact_completeness": "PARTIAL: contact/state machine verified; camera lifetime not formally studied",
+        "evidence_levels": [
+          "decoded data",
+          "byte-verified assembly",
+          "source-traced behavior",
+          "controlled original-Z80 trace (selected handlers)"
+        ],
+        "poc_research_readiness": "CORE STATE MACHINE READY; INTEGRATION CHECKS REMAIN",
+        "recovered_regions": [
+          {
+            "name": "object_26_scripts",
+            "file": "asm/recovered/object_26_scripts.asm",
+            "rom_start": "0x78212",
+            "rom_end_exclusive": "0x7825A",
+            "kind": "data"
+          },
+          {
+            "name": "object_26_handlers",
+            "file": "asm/recovered/object_26_handlers.asm",
+            "rom_start": "0x7825A",
+            "rom_end_exclusive": "0x783B3",
+            "kind": "code"
+          },
+          {
+            "name": "object_26_span_scripts",
+            "file": "asm/recovered/object_26_span_scripts.asm",
+            "rom_start": "0x783B3",
+            "rom_end_exclusive": "0x783BF",
+            "kind": "data"
+          },
+          {
+            "name": "object_26_span_handlers",
+            "file": "asm/recovered/object_26_span_handlers.asm",
+            "rom_start": "0x783BF",
+            "rom_end_exclusive": "0x78439",
+            "kind": "code"
+          }
+        ],
+        "artifacts": [
+          "docs/act1-objects.md",
+          "reports/windows-poc-15-objects.json",
+          "asm/recovered/object_26_handlers.asm",
+          "asm/recovered/object_26_span_handlers.asm"
+        ],
+        "major_remaining_questions": [
+          "Formally trace camera activation, removal, occupancy release, and respawn.",
+          "Verify complete scheduler/animation timing and gameplay contacts for all four placements."
+        ]
+      }
+    },
+    {
+      "type_id": "0x27",
+      "record_count": 3,
+      "record_indices": [
+        24,
+        25,
+        26
+      ],
+      "records": [
+        {
+          "record_index": 24,
+          "rom_offset": "0x7067D",
+          "world_x": 3504,
+          "world_y": 224,
+          "flags": "0x10",
+          "parameter": "0x00",
+          "aux0": "0xAA",
+          "aux1": "0xAA"
+        },
+        {
+          "record_index": 25,
+          "rom_offset": "0x70686",
+          "world_x": 2288,
+          "world_y": 768,
+          "flags": "0x10",
+          "parameter": "0x00",
+          "aux0": "0xAA",
+          "aux1": "0xAA"
+        },
+        {
+          "record_index": 26,
+          "rom_offset": "0x7068F",
+          "world_x": 2240,
+          "world_y": 112,
+          "flags": "0x10",
+          "parameter": "0x00",
+          "aux0": "0xAA",
+          "aux1": "0xAA"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x10",
+          "parameter": "0x00",
+          "aux0": "0xAA",
+          "aux1": "0xAA",
+          "count": 3,
+          "record_indices": [
+            24,
+            25,
+            26
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x06606",
+        "bank": "0x1E",
+        "state_table_cpu": "0x8947",
+        "state_table_rom": "0x78947",
+        "state_count": 4,
+        "state_script_cpus": [
+          "0x894F",
+          "0x8955",
+          "0x895F",
+          "0x8984"
+        ],
+        "reachable_mapping_frames": [
+          "0x00",
+          "0x01",
+          "0x02"
+        ],
+        "unresolved_states": [],
+        "unresolved_commands": []
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C04E",
+        "mapping_cpu": "0x91F5",
+        "mapping_rom": "0x3D1F5",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x00",
+            "frame_cpu": "0xA0E4",
+            "frame_rom": "0x3E0E4",
+            "shared_empty_frame": true,
+            "piece_count": 0,
+            "raw_word_1": "0x0000",
+            "coordinate_table_cpu": null,
+            "coordinate_table_rom": null,
+            "tile_list_cpu": null,
+            "tile_list_rom": null,
+            "tile_offsets": []
+          },
+          {
+            "frame_index": "0x01",
+            "frame_cpu": "0x91FB",
+            "frame_rom": "0x3D1FB",
+            "shared_empty_frame": false,
+            "piece_count": 3,
+            "raw_word_1": "0x0E09",
+            "coordinate_table_cpu": "0xA26B",
+            "coordinate_table_rom": "0x3E26B",
+            "tile_list_cpu": "0x9211",
+            "tile_list_rom": "0x3D211",
+            "tile_offsets": [
+              "0x00",
+              "0x02",
+              "0x04"
+            ]
+          },
+          {
+            "frame_index": "0x02",
+            "frame_cpu": "0x9206",
+            "frame_rom": "0x3D206",
+            "shared_empty_frame": false,
+            "piece_count": 3,
+            "raw_word_1": "0x0E09",
+            "coordinate_table_cpu": "0xA26B",
+            "coordinate_table_rom": "0x3E26B",
+            "tile_list_cpu": "0x9214",
+            "tile_list_rom": "0x3D214",
+            "tile_offsets": [
+              "0x06",
+              "0x08",
+              "0x04"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0xAA",
+            "aux1": "0xAA"
+          }
+        ],
+        "classification": "remapped supplemental graphics",
+        "load_paths": [
+          {
+            "id": "thz1_base_AA_remap",
+            "bank_byte": "0x89",
+            "source_cpu": "0x95A0",
+            "source_rom": "0x255A0",
+            "vram_destination": "0x1540",
+            "base_tile": "0xAA",
+            "transform_remap": true
+          }
+        ],
+        "note": "All placements use aux0/aux1 0xAA from the remapped supplemental stream."
+      },
+      "renderer_orientation": "Placement bit 4 is set for all records; it selects mirrored X coordinates and aux1 (also 0xAA), and causes FF 02 to negate X velocity.",
+      "collision": {
+        "status": "VERIFIED",
+        "horizontal_extent": 9,
+        "vertical_extent": 14,
+        "facts": [
+          "Ordinary overlap records generic contact but the tested callback does not request damage."
+        ]
+      },
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "UNRESOLVED",
+          "role": null,
+          "basis": "No semantic identity is established by the recovered ROM/source evidence."
+        },
+        "graphics_completeness": "VERIFIED reachable frames 0x00-0x02",
+        "animation_script_completeness": "VERIFIED for all four states",
+        "behavior_completeness": "VERIFIED for THZ1-reachable behavior",
+        "lifetime_contact_completeness": "VERIFIED, except broader downstream interpretation of ordinary overlap bookkeeping",
+        "evidence_levels": [
+          "decoded data",
+          "byte-verified assembly",
+          "source-traced behavior",
+          "controlled original-Z80 trace"
+        ],
+        "poc_research_readiness": "RESEARCH READY FOR NUMERIC-TYPE IMPLEMENTATION",
+        "recovered_regions": [
+          {
+            "name": "object_27_scripts",
+            "file": "asm/recovered/object_27_scripts.asm",
+            "rom_start": "0x78947",
+            "rom_end_exclusive": "0x7898E",
+            "kind": "data"
+          },
+          {
+            "name": "object_27_handlers",
+            "file": "asm/recovered/object_27_handlers.asm",
+            "rom_start": "0x7898E",
+            "rom_end_exclusive": "0x78A45",
+            "kind": "code"
+          }
+        ],
+        "artifacts": [
+          "docs/object-27.md",
+          "tools/thz1_object_27.py",
+          "tests/test_thz1_object_27.py",
+          "data/rom-cache/thz1/object-27.json"
+        ],
+        "major_remaining_questions": [
+          "Semantic identity remains unresolved.",
+          "Broader downstream meaning of generic contact bookkeeping on ordinary overlap is unresolved.",
+          "No full-emulator gameplay observation exists for the formal trace."
+        ]
+      }
+    },
+    {
+      "type_id": "0x28",
+      "record_count": 6,
+      "record_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "records": [
+        {
+          "record_index": 1,
+          "rom_offset": "0x705AE",
+          "world_x": 592,
+          "world_y": 464,
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x09"
+        },
+        {
+          "record_index": 2,
+          "rom_offset": "0x705B7",
+          "world_x": 3664,
+          "world_y": 512,
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x0D"
+        },
+        {
+          "record_index": 3,
+          "rom_offset": "0x705C0",
+          "world_x": 1040,
+          "world_y": 384,
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 4,
+          "rom_offset": "0x705C9",
+          "world_x": 1136,
+          "world_y": 320,
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 5,
+          "rom_offset": "0x705D2",
+          "world_x": 1232,
+          "world_y": 256,
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00"
+        },
+        {
+          "record_index": 6,
+          "rom_offset": "0x705DB",
+          "world_x": 1328,
+          "world_y": 208,
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00"
+        }
+      ],
+      "field_variants": [
+        {
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x09",
+          "count": 1,
+          "record_indices": [
+            1
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x0D",
+          "count": 1,
+          "record_indices": [
+            2
+          ]
+        },
+        {
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00",
+          "count": 4,
+          "record_indices": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "animation": {
+        "type_table_entry_rom": "0x06608",
+        "bank": "0x1E",
+        "state_table_cpu": "0x8439",
+        "state_table_rom": "0x78439",
+        "state_count": 15,
+        "state_script_cpus": [
+          "0x8457",
+          "0x845D",
+          "0x846B",
+          "0x8479",
+          "0x847F",
+          "0x8491",
+          "0x8497",
+          "0x84A9",
+          "0x84BB",
+          "0x84C1",
+          "0x84C7",
+          "0x84D9",
+          "0x84EB",
+          "0x856B",
+          "0x851D"
+        ],
+        "reachable_mapping_frames": [
+          "0x00",
+          "0x01"
+        ],
+        "unresolved_states": [
+          4,
+          12,
+          14
+        ],
+        "unresolved_commands": [
+          {
+            "cpu": "0x8485",
+            "rom": "0x78485",
+            "command": "0x09",
+            "status": "unsupported"
+          },
+          {
+            "cpu": "0x850B",
+            "rom": "0x7850B",
+            "command": "0x09",
+            "status": "unsupported"
+          },
+          {
+            "cpu": "0x8559",
+            "rom": "0x78559",
+            "command": "0x09",
+            "status": "unsupported"
+          }
+        ]
+      },
+      "mapping": {
+        "pointer_table_rom": "0x3C050",
+        "mapping_cpu": "0x9217",
+        "mapping_rom": "0x3D217",
+        "reachable_frame_records": [
+          {
+            "frame_index": "0x00",
+            "frame_cpu": "0xA0E4",
+            "frame_rom": "0x3E0E4",
+            "shared_empty_frame": true,
+            "piece_count": 0,
+            "raw_word_1": "0x0000",
+            "coordinate_table_cpu": null,
+            "coordinate_table_rom": null,
+            "tile_list_cpu": null,
+            "tile_list_rom": null,
+            "tile_offsets": []
+          },
+          {
+            "frame_index": "0x01",
+            "frame_cpu": "0x921B",
+            "frame_rom": "0x3D21B",
+            "shared_empty_frame": false,
+            "piece_count": 4,
+            "raw_word_1": "0x1010",
+            "coordinate_table_cpu": "0xA6E7",
+            "coordinate_table_rom": "0x3E6E7",
+            "tile_list_cpu": "0x9226",
+            "tile_list_rom": "0x3D226",
+            "tile_offsets": [
+              "0x00",
+              "0x02",
+              "0x04",
+              "0x06"
+            ]
+          }
+        ]
+      },
+      "graphics": {
+        "placement_aux_pairs": [
+          {
+            "aux0": "0x6A",
+            "aux1": "0x00"
+          },
+          {
+            "aux0": "0x6A",
+            "aux1": "0x09"
+          },
+          {
+            "aux0": "0x6A",
+            "aux1": "0x0D"
+          }
+        ],
+        "classification": "static THZ1 VRAM supplemental graphics",
+        "load_paths": [
+          {
+            "id": "thz1_base_6A",
+            "bank_byte": "0x09",
+            "source_cpu": "0xA1C0",
+            "source_rom": "0x261C0",
+            "vram_destination": "0x0D40",
+            "base_tile": "0x6A",
+            "transform_remap": false
+          }
+        ],
+        "note": "All placements use aux0 0x6A; aux1 varies by record and is consumed by platform initialization as object-specific data, so it must not be treated uniformly as a second art base."
+      },
+      "renderer_orientation": "All placement flags are 0x00. Do not infer later orientation changes solely from the state table.",
+      "collision": {
+        "status": "PARTIAL",
+        "facts": [
+          "Recovered code includes rider/contact paths, but the census does not claim complete platform edge extents."
+        ]
+      },
+      "research": {
+        "placement_completeness": "VERIFIED",
+        "semantic_identity": {
+          "status": "VERIFIED",
+          "role": "moving platforms",
+          "basis": "Decoded placements and recovered platform code establish two lift records and four parameter-0x84 sag/bob platform records."
+        },
+        "graphics_completeness": "VERIFIED reachable decoded frames 0x00-0x01",
+        "animation_script_completeness": "PARTIAL: 15 states are statically inferred; states 4, 12, and 14 contain unsupported command forms",
+        "behavior_completeness": "PARTIALLY ESTABLISHED",
+        "lifetime_contact_completeness": "PARTIAL: rider paths recovered; activation/despawn and edge cases remain",
+        "evidence_levels": [
+          "decoded data",
+          "byte-verified assembly",
+          "source-traced behavior",
+          "gameplay observation (earlier first-lift video; limited scope)"
+        ],
+        "poc_research_readiness": "PARTIAL ADAPTER EVIDENCE; FORMAL PLATFORM STUDY STILL NEEDED",
+        "recovered_regions": [
+          {
+            "name": "platform_reverse",
+            "file": "asm/recovered/platform_reverse.asm",
+            "rom_start": "0x780F1",
+            "rom_end_exclusive": "0x78105",
+            "kind": "code"
+          },
+          {
+            "name": "platform_code",
+            "file": "asm/recovered/platform_code.asm",
+            "rom_start": "0x78577",
+            "rom_end_exclusive": "0x78947",
+            "kind": "code"
+          }
+        ],
+        "artifacts": [
+          "docs/audit-2026-09-21.md",
+          "data/legacy/thz1_platforms.json",
+          "asm/recovered/platform_code.asm",
+          "asm/recovered/platform_reverse.asm"
+        ],
+        "major_remaining_questions": [
+          "Decode unsupported animation commands/states 4, 12, and 14.",
+          "Formally trace subtype parameters 0x0A and 0x84, including activation, rider edges, removal, occupancy, and respawn.",
+          "Separate verified original behavior from earlier adapter/video observations."
+        ]
+      }
+    }
+  ],
+  "prioritized_research_backlog": {
+    "object_behavior_needing_formal_trace": [
+      "0x10 parameter/reward/contact/lifetime study",
+      "0x18 completion/lifetime study",
+      "0x09 parameter/entity-generation/collection study",
+      "0x28 formal platform subtype/lifetime study"
+    ],
+    "graphics_palette_mapping_gaps": [
+      "0x28 unsupported animation command forms in states 4, 12, and 14"
+    ],
+    "placement_entity_expansion_gaps": [
+      "Explain type-0x09 runtime entity generation and its relationship, if any, to the separate 142 layout-derived ring positions"
+    ],
+    "generic_engine_dependencies": [
+      "Camera activation/removal, occupancy release, and respawn studies for 0x1B, 0x26, and 0x28",
+      "Full scheduler/gameplay validation beyond controlled subroutine fixtures"
+    ],
+    "poc_integration_ready": [
+      "0x21",
+      "0x27",
+      "0x26 core state machine",
+      "0x1B core state machine"
+    ],
+    "recommended_next_independent_task": {
+      "type_id": "0x10",
+      "reason": "It has only five placements, fully decoded four-state animation reachability, and verified mapping frames, while parameter values 0x02/0x04/0x06 and all contact/reward/lifetime semantics remain untraced. The bounded scope can close a large behavior gap without depending on unresolved type-0x09 entity expansion or type-0x28's broader rider engine."
+    }
+  }
+}

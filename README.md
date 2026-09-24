@@ -16,6 +16,8 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
   contact, animation, orientation and lifetime chain, with controlled original-ROM traces.
 - [THZ1 object type `$27`](docs/object-27.md): complete state scripts,
   proximity, oscillation, contact, orientation and respawn chain, with strict boundary traces.
+- [THZ1 placed-object census](docs/thz1-object-census.md): all 53 raw records,
+  eight placed types, graphics/animation entry points, research status, and prioritized gaps.
 - [Act 1 canon-layout policy](docs/canon-layout.md): ROM-only placement sources, the metadata cache, and the POC 15.1 placement audit.
 - [POC 15.1 layout result](reports/windows-poc-15.1-layout.json): the machine-readable canon-placement totals and removals.
 - [Findings and corrections](docs/findings.md): what the investigation established and why the prototype got stuck.
@@ -54,6 +56,7 @@ python tools/export_reference.py path/to/SonicChaos.sms --output data
 python tools/cache_game_data.py path/to/SonicChaos.sms
 python tools/thz1_object_21.py path/to/SonicChaos.sms
 python tools/thz1_object_27.py path/to/SonicChaos.sms
+python tools/thz1_object_census.py path/to/SonicChaos.sms
 python tools/recover.py path/to/SonicChaos.sms --output asm/recovered
 python tests/verify_rom.py path/to/SonicChaos.sms --output reports
 python tests/verify_cache.py path/to/SonicChaos.sms
