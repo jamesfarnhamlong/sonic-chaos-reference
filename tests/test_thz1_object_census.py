@@ -90,8 +90,8 @@ class CensusCacheTests(unittest.TestCase):
                 },
             )
 
-    def test_known_21_and_27_placements_match_dedicated_caches(self):
-        for type_id in ("0x21", "0x27"):
+    def test_known_10_21_and_27_placements_match_dedicated_caches(self):
+        for type_id in ("0x10", "0x21", "0x27"):
             dedicated = load(ROOT / "data" / "rom-cache" / "thz1" / f"object-{type_id[2:]}.json")
             self.assertEqual(self.objects[type_id]["records"], dedicated["placements"])
 

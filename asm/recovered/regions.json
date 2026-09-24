@@ -10,6 +10,16 @@
     "file": "object_sprite_orientation_renderer.asm"
   },
   {
+    "name": "numeric_reward_counter",
+    "start": 12548,
+    "end": 12600,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 52,
+    "instructions": 26,
+    "file": "numeric_reward_counter.asm"
+  },
+  {
     "name": "side_sensors",
     "start": 13958,
     "end": 14022,
@@ -82,11 +92,11 @@
   {
     "name": "player_state_setters",
     "start": 17901,
-    "end": 18293,
+    "end": 18345,
     "bank": 1,
     "kind": "code",
-    "bytes": 392,
-    "instructions": 136,
+    "bytes": 444,
+    "instructions": 154,
     "file": "player_state_setters.asm"
   },
   {
@@ -108,6 +118,16 @@
     "bytes": 134,
     "instructions": 49,
     "file": "spring_setters.asm"
+  },
+  {
+    "name": "object_reward_dispatch",
+    "start": 19107,
+    "end": 19270,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 163,
+    "instructions": 71,
+    "file": "object_reward_dispatch.asm"
   },
   {
     "name": "bounded_layout_decoder",
@@ -398,6 +418,66 @@
     "bytes": 589,
     "instructions": 239,
     "file": "twist_handlers.asm"
+  },
+  {
+    "name": "object_0f_scripts",
+    "start": 204745,
+    "end": 204887,
+    "bank": 12,
+    "kind": "data",
+    "bytes": 142,
+    "instructions": 0,
+    "file": "object_0f_scripts.asm"
+  },
+  {
+    "name": "object_0f_handlers",
+    "start": 204887,
+    "end": 205057,
+    "bank": 12,
+    "kind": "code",
+    "bytes": 170,
+    "instructions": 70,
+    "file": "object_0f_handlers.asm"
+  },
+  {
+    "name": "object_10_scripts",
+    "start": 205057,
+    "end": 205129,
+    "bank": 12,
+    "kind": "data",
+    "bytes": 72,
+    "instructions": 0,
+    "file": "object_10_scripts.asm"
+  },
+  {
+    "name": "object_10_handlers",
+    "start": 205129,
+    "end": 205296,
+    "bank": 12,
+    "kind": "code",
+    "bytes": 167,
+    "instructions": 73,
+    "file": "object_10_handlers.asm"
+  },
+  {
+    "name": "object_10_reward_masks",
+    "start": 205296,
+    "end": 205305,
+    "bank": 12,
+    "kind": "data",
+    "bytes": 9,
+    "instructions": 0,
+    "file": "object_10_reward_masks.asm"
+  },
+  {
+    "name": "object_10_tail_handlers",
+    "start": 205305,
+    "end": 205357,
+    "bank": 12,
+    "kind": "code",
+    "bytes": 52,
+    "instructions": 23,
+    "file": "object_10_tail_handlers.asm"
   },
   {
     "name": "spike_object_scripts",

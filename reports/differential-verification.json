@@ -8,6 +8,14 @@
     "gravity": 8,
     "ramp_launch": 8,
     "layout_decoder": 1,
+    "object10_create": 5,
+    "object10_init": 5,
+    "object10_state_entry": 3,
+    "object10_non_contact": 1,
+    "object10_contact": 20,
+    "object10_reward": 6,
+    "object10_airborne": 18,
+    "object10_lifetime": 7,
     "object21_init": 2,
     "object21_patrol": 2,
     "object21_contact": 4,
@@ -19,7 +27,7 @@
     "object27_contact": 3,
     "object27_lifetime": 3
   },
-  "total": 37386,
+  "total": 37451,
   "first_ramp_launch": {
     "frame": 16,
     "x": 386,
@@ -109,6 +117,21 @@
     "defeated_replacement_type": "0x0F",
     "score_bytes": "10 00 00",
     "type_fe_cleanup_releases_occupancy": true
+  },
+  "object10_fixture": {
+    "parameters": {
+      "value_02": "D3A3 bit 1 -> D299 BCD +1, sound A9",
+      "value_04": "D3A3 bit 3 -> D532=04, timer 300, player state 11",
+      "value_06": "D3A3 bit 5 -> D532=06, timer 600, type-05 child"
+    },
+    "active_contact_extents": {
+      "horizontal": 10,
+      "vertical": 24
+    },
+    "successful_replacement_type": "0x0F",
+    "score_bytes": "10 00 00",
+    "untouched_can_respawn": true,
+    "consumed_can_respawn_same_loaded_act": false
   },
   "limitations": [
     "Subroutine RAM fixtures, not a full SMS emulator.",

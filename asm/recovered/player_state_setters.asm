@@ -1,4 +1,4 @@
-; player_state_setters: ROM $045ED..$04774 (end exclusive $04775).
+; player_state_setters: ROM $045ED..$047A8 (end exclusive $047A9).
 ; Original Sonic Chaos instructions/data. See docs/provenance.md.
 ; Generated deterministically by tools/recover.py. Semantic coverage varies.
 
@@ -275,4 +275,41 @@ SC_0476D:
 SC_04770:
     LD (IX+2),$18
 SC_04774:
+    RET
+; Numeric reward bit 3 player setup: zero velocity, set max X to 7, request sound $85 and state $11.
+SC_04775:
+    LD HL,0
+SC_04778:
+    LD ($D516),HL
+SC_0477B:
+    LD ($D518),HL
+SC_0477E:
+    LD HL,$700
+SC_04781:
+    LD ($D373),HL
+SC_04784:
+    LD HL,$1770
+SC_04787:
+    LD A,($D297)
+SC_0478A:
+    CP 8
+SC_0478C:
+    JR z,SC_04799
+SC_0478E:
+    LD A,$85
+SC_04790:
+    LD ($DE04),A
+SC_04793:
+    CALL $062D
+SC_04796:
+    LD HL,$12C
+SC_04799:
+    LD ($D3A1),HL
+SC_0479C:
+    RES 1,(IX+3)
+SC_047A0:
+    RES 6,(IX+3)
+SC_047A4:
+    LD (IX+2),$11
+SC_047A8:
     RET

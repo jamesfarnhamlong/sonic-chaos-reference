@@ -10,7 +10,7 @@ and regenerates with `tools/thz1_object_census.py`.
 | Type | Records | Coordinates / distribution | Parameter variants | Graphics | Animation | Verified role/status | Behavior status | Next research need |
 |---:|---:|---|---|---|---|---|---|---|
 | `$09` | 24 | records 14-21, 37-52; routes across X 816-3422 | `$00` ×11, `$01` ×13 | static shared catalogue | 4 states; frames `$00-$06`; decoded | ring/sparkle family supported, not canonical | unresolved | parameter/entity expansion and collection/lifetime study |
-| `$10` | 5 | `(336,270)` to `(2688,686)` | `$02` ×1, `$04` ×2, `$06` ×2 | static shared catalogue | 4 states; `$00/$0B/$0C`; decoded | monitor/item-box presentation supported, not canonical | unresolved | parameter/reward/contact study |
+| `$10` | 5 | `(336,270)` to `(2688,686)` | `$02` ×1, `$04` ×2, `$06` ×2 | static plus parameter-selected icon load | 4 states; `$00/$0B/$0C`; decoded | monitor/item-box presentation supported, not canonical | complete for THZ1 reachability | canonical identity and type-`$05` child semantics |
 | `$18` | 1 | `(3960,558)` | `$00` | dynamic tiles `$6A-$A9` | 7 states; `$00-$05`; decoded | goal-sign presentation supported, not canonical | partial | completion/lifetime study |
 | `$1B` | 4 | lower route, Y 864 | `$00` | static shared frame `$0E` | 5 states; decoded | retracting/moving spikes verified | substantial | camera lifetime and complete gameplay damage |
 | `$21` | 6 | X 800-3296; Y 254-894 | `$02/$03/$04/$06/$08` | bases `$86/$98` | 7 states; `$00-$02`; decoded | patrol/spring-contact role verified; canonical identity open | complete for THZ1 reachability | semantic identity only; full-emulator observation |
@@ -23,8 +23,8 @@ and regenerates with `tools/thz1_object_census.py`.
 The counts above are derived from `object-records.json`, then every cached raw
 record is checked byte-for-byte against the matching ROM. The census also runs
 the existing mapping anchors for `$21/$26/$27/$28`, animation anchors for
-`$1B/$26`, and exact placement comparisons against the dedicated `$21` and
-`$27` caches.
+`$1B/$26`, and exact placement comparisons against the dedicated `$10`, `$21`
+and `$27` caches.
 
 The evidence labels mean:
 
@@ -119,18 +119,33 @@ supplies tile offsets `$4C-$5C`.
 | 12 | `$70611` | `(1472,110)` | `$00` | `$04` | `$00` | `$00` |
 | 13 | `$7061A` | `(2688,686)` | `$00` | `$02` | `$00` | `$00` |
 
-### What is partially established
+### What behavior is verified
 
-The reachable graphics support monitor/item-box presentation. This does not
-yet prove the contents represented by parameters `$02/$04/$06`, nor the
-semantic purpose of frames `$0B/$0C`.
+Recovered scripts and controlled original-routine traces establish all four
+states, 10×24 runtime extents, strict overlap boundaries, required player flag
+`$D503.1`, top/side downward-motion checks, bottom-hit launch, parameter-to-
+`$D3A3` masks, numeric reward dispatch, type-`$0F` replacement, score addition,
+and placement occupancy behavior. Frames `$0B/$0C` alternate in both active
+state 2 and airborne state 3; destruction presentation is type `$0F` frames
+`$07/$08/$09`, not `$0B/$0C`.
+
+Parameter `$02` queues bit 1 and increments BCD `$D299` with sound `$A9`.
+Parameter `$04` queues bit 3 and, for player type `$01`, sets `$D532=$04`, a
+300-count timer, sound `$85`, and player state `$11`. Parameter `$06` queues
+bit 5, sets `$D532=$06`, a 600-count timer, flags `$D503.1/.7`, sound `$84`,
+and allocates type `$05` parameter zero when newly selected. These numeric
+effects are not assigned conventional item names.
+
+Untouched or bottom-hit-only instances retain their placement token; tracked
+off-range cleanup releases occupancy and permits respawn. Successful conversion
+clears the token while leaving occupancy nonzero, so a consumed placement does
+not respawn during the same loaded act.
 
 ### What remains unresolved
 
-Contact, breaking/opening, reward selection, persistence, removal, and respawn
-are untraced. This is the best next bounded independent study: it has only five
-placements and complete mapping/animation reachability, while all meaningful
-behavior and parameter semantics remain open.
+The canonical name, user-facing names for `$02/$04/$06`, semantic names for the
+numeric sound/RAM effects, complete type-`$05` child behavior, and full-emulator
+gameplay timing remain unresolved. See `docs/object-10.md`.
 
 ## `$18`
 
@@ -320,16 +335,12 @@ earlier adapter.
 
 ### Object behavior still needing formal trace
 
-1. **Type `$10` parameter/reward/contact/lifetime study.** Five placements and
-   complete animation/mapping evidence make this the best independent next
-   task; it closes behavior semantics for three parameter values without a
-   dependency on the unresolved `$09` expansion or the broader platform engine.
-2. **Type `$18` completion/lifetime study.** Dynamic graphics are already
+1. **Type `$18` completion/lifetime study.** Dynamic graphics are already
    complete, isolating the remaining end-of-act behavior question.
-3. **Type `$09` parameter/entity-generation/collection study.** This must
+2. **Type `$09` parameter/entity-generation/collection study.** This must
    explain the 24 raw records without assuming a relationship to the separate
    142 layout-derived positions.
-4. **Type `$28` formal platform study.** Its larger rider/lifetime dependency
+3. **Type `$28` formal platform study.** Its larger rider/lifetime dependency
    and three unsupported animation states make it less isolated than `$10`.
 
 ### Graphics, palette, and mapping gaps
@@ -353,7 +364,7 @@ for all results currently based on subroutine fixtures.
 
 ### POC integration-ready research
 
-Types `$21` and `$27` have complete formal THZ1 behavior studies. The `$26`
+Types `$10`, `$21` and `$27` have complete formal THZ1 behavior studies. The `$26`
 and `$1B` core state machines are substantially recovered, but their generic
 lifetime and integration checks remain explicit prerequisites. No conclusion
 in this census uses the current POC as evidence for original-ROM behavior.

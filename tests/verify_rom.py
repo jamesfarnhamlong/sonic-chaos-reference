@@ -6,11 +6,16 @@ from rom import load, layout, SHA256, s16
 from oracle import Oracle
 from reference import lookup, project_floor, project_side, angle_velocity
 import thz1_object_27 as object27
+import thz1_object_10 as object10
 
 def verify(path, output):
     rom = load(path); tiles = layout(rom); o = Oracle(rom)
     counts = dict(lookup=0, floor=0, side=0, angle_velocity=0,
                   gravity=0, ramp_launch=0, layout_decoder=0,
+                  object10_create=0, object10_init=0,
+                  object10_state_entry=0, object10_non_contact=0,
+                  object10_contact=0, object10_reward=0,
+                  object10_airborne=0, object10_lifetime=0,
                   object21_init=0, object21_patrol=0, object21_contact=0,
                   object27_create=0, object27_init=0, object27_proximity=0,
                   object27_oscillation=0, object27_removal=0,
@@ -250,6 +255,99 @@ def verify(path, output):
     assert lifetime['type_fe_cleanup']['slot_is_zero']
     counts['object27_lifetime']+=3
 
+    # Type $10 full placement, state, contact, numeric reward, replacement,
+    # and occupancy chain. Each count is an original routine execution or a
+    # controlled comparison, not a metadata-only assertion.
+    object10_report=object10.build_report(rom)
+    object10_fixtures=object10_report['controlled_original_routine_fixtures']
+
+    created=object10_fixtures['placement_creation']
+    assert len(created)==5
+    assert [(row['current_x'],row['current_y']) for row in created]==[
+        (656,846),(1712,494),(336,270),(1472,110),(2688,686)]
+    assert [row['parameter_3f'] for row in created]==[
+        '0x06','0x06','0x04','0x04','0x02']
+    assert all(row['object_type']=='0x10' and row['object_flags_04']=='0x40'
+               and row['art_base_08']=='0x00' and row['art_base_09']=='0x00'
+               for row in created)
+    counts['object10_create']+=5
+
+    init=object10_fixtures['initialization']
+    assert [row['parameter_after'] for row in init]==['0x02','0x04','0x06']
+    assert all(row['requested_state']==1 and row['object_flags_03']=='0x81'
+               for row in init)
+    alternate=object10_fixtures['alternate_player_parameter_04']
+    assert alternate['initialization']['parameter_after']=='0x01'
+    assert alternate['reward_bits_d3a3']=='0x01'
+    counts['object10_init']+=5  # three ordinary calls plus alternate init/contact
+
+    entry=object10_fixtures['state_1_entry']
+    assert [row['graphics_selector_d3b3'] for row in entry]==[
+        '0x02','0x04','0x06']
+    assert all(row['requested_state']==2 for row in entry)
+    counts['object10_state_entry']+=3
+
+    non_contact=object10_fixtures['ordinary_non_contact_update']
+    assert non_contact['contact_bits_21']=='0x00'
+    assert non_contact['object_type_after']=='0x10'
+    assert non_contact['damage_request_d3b0']=='0x00'
+    counts['object10_non_contact']+=1
+
+    contact=object10_fixtures['contact']
+    assert contact['ordinary_top_contact']['object_type_after']=='0x10'
+    assert contact['power_up_06_without_attack']['object_type_after']=='0x10'
+    assert contact['top_attack_downward']['object_type_after']=='0x0F'
+    assert contact['side_attack_downward']['object_type_after']=='0x0F'
+    assert contact['top_attack_zero_velocity']['object_type_after']=='0x10'
+    assert contact['top_attack_upward']['object_type_after']=='0x10'
+    bottom=contact['bottom_attack_upward']
+    assert (bottom['object_type_after'],bottom['requested_object_state'],
+            bottom['player_y_velocity_8_8'],bottom['object_y_velocity_8_8']) == (
+                '0x10',3,512,-512)
+    assert all(row['object_type_after']=='0x10'
+               for row in contact['top_blocked_player_states'].values())
+    boundaries=contact['overlap_boundaries']
+    assert [row['contact_bits_21'] for row in boundaries]==[
+        '0x04','0x04','0x00','0x01','0x01','0x00','0x02','0x02','0x00']
+    assert all(row['contact_bits_21']==row['translated_contact'] for row in boundaries)
+    counts['object10_contact']+=20
+
+    rewards=object10_fixtures['reward']
+    assert [row['table_mask'] for row in rewards]==['0x02','0x08','0x20']
+    assert all(row['after_contact']['object_type_after']=='0x0F'
+               and row['after_contact']['placement_token_after']==0
+               and row['after_contact']['occupancy_value_after']=='0x10'
+               and row['after_contact']['score_bytes_after']=='10 00 00'
+               for row in rewards)
+    dispatched=[row['after_reward_dispatch'] for row in rewards]
+    assert (dispatched[0]['counter_d299_bcd'],
+            dispatched[0]['sound_request_de04'])==('0x10','0xA9')
+    assert (dispatched[1]['power_up_d532'],dispatched[1]['timer_d44c'],
+            dispatched[1]['player_requested_state_d502'],
+            dispatched[1]['sound_request_de04'])==('0x04',300,'0x11','0x85')
+    assert (dispatched[2]['power_up_d532'],dispatched[2]['timer_d44c'],
+            dispatched[2]['player_flags_d503'],
+            dispatched[2]['sound_request_de04'],
+            dispatched[2]['child']['type'])==('0x06',600,'0x82','0x84','0x05')
+    counts['object10_reward']+=6  # contact plus reward-dispatch call per parameter
+
+    airborne=object10_fixtures['airborne']
+    assert airborne['empty_map_first_update']['y_velocity_8_8_after']==-448
+    assert airborne['empty_map_first_update']['requested_state']==3
+    assert airborne['first_thz1_placement_landing']['updates']==17
+    assert airborne['first_thz1_placement_landing']['requested_state']==2
+    counts['object10_airborne']+=18
+
+    object10_lifetime=object10_fixtures['lifetime']
+    assert object10_lifetime['untouched_off_range_before_cleanup']['object_type']=='0xFE'
+    assert object10_lifetime['untouched_after_cleanup']['occupancy_value']=='0x00'
+    assert object10_lifetime['untouched_after_cleanup']['can_respawn']
+    assert object10_lifetime['consumed_after_conversion']['object_type']=='0x0F'
+    assert object10_lifetime['consumed_after_conversion']['placement_token']==0
+    assert object10_lifetime['consumed_after_replacement_cleanup']['occupancy_value']=='0x10'
+    assert not object10_lifetime['consumed_after_replacement_cleanup']['can_respawn_same_loaded_act']
+    counts['object10_lifetime']+=7
+
     report=dict(rom_sha256=SHA256,counts=counts,total=sum(counts.values()),
                 first_ramp_launch=launch,
                 vertical_spring_fixture=dict(initial_y=800,rise_pixels=800-apex,
@@ -269,6 +367,15 @@ def verify(path, output):
                     defeated_replacement_type='0x0F',
                     score_bytes='10 00 00',
                     type_fe_cleanup_releases_occupancy=True),
+                object10_fixture=dict(
+                    parameters=dict(value_02='D3A3 bit 1 -> D299 BCD +1, sound A9',
+                        value_04='D3A3 bit 3 -> D532=04, timer 300, player state 11',
+                        value_06='D3A3 bit 5 -> D532=06, timer 600, type-05 child'),
+                    active_contact_extents=dict(horizontal=10,vertical=24),
+                    successful_replacement_type='0x0F',
+                    score_bytes='10 00 00',
+                    untouched_can_respawn=True,
+                    consumed_can_respawn_same_loaded_act=False),
                 limitations=['Subroutine RAM fixtures, not a full SMS emulator.',
                   'No GameMaker compilation or gameplay validation.',
                   'Floor translation excludes IX+$24 special branches.',

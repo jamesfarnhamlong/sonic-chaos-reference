@@ -1,0 +1,928 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "object_type": "0x10",
+  "placement_bytes_verified": true,
+  "identity": {
+    "status": "SUPPORTED BUT NOT CANONICAL",
+    "description": "type $10, monitor/item-box presentation supported",
+    "basis": "reachable reconstructed graphics plus verified container/reward behavior; no ROM string establishes a canonical name"
+  },
+  "placements": [
+    {
+      "record_index": 9,
+      "rom_offset": "0x705F6",
+      "world_x": 656,
+      "world_y": 846,
+      "flags": "0x00",
+      "parameter": "0x06",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "record_index": 10,
+      "rom_offset": "0x705FF",
+      "world_x": 1712,
+      "world_y": 494,
+      "flags": "0x00",
+      "parameter": "0x06",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "record_index": 11,
+      "rom_offset": "0x70608",
+      "world_x": 336,
+      "world_y": 270,
+      "flags": "0x00",
+      "parameter": "0x04",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "record_index": 12,
+      "rom_offset": "0x70611",
+      "world_x": 1472,
+      "world_y": 110,
+      "flags": "0x00",
+      "parameter": "0x04",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "record_index": 13,
+      "rom_offset": "0x7061A",
+      "world_x": 2688,
+      "world_y": 686,
+      "flags": "0x00",
+      "parameter": "0x02",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    }
+  ],
+  "parameter_distribution": {
+    "0x02": 1,
+    "0x04": 2,
+    "0x06": 2
+  },
+  "animation": {
+    "type_table_entry_rom": "0x065D8",
+    "bank": "0x0C",
+    "state_table_cpu": "0xA101",
+    "state_table_rom": "0x32101",
+    "state_count": 4,
+    "state_script_cpus": [
+      "0xA109",
+      "0xA10F",
+      "0xA115",
+      "0xA12F"
+    ],
+    "reachable_mapping_frame_indices": [
+      "0x00",
+      "0x0B",
+      "0x0C"
+    ],
+    "unresolved_states": [],
+    "states": [
+      {
+        "state_index": 0,
+        "script_cpu": "0xA109",
+        "script_rom": "0x32109",
+        "frame_indices": [
+          0
+        ],
+        "records": [
+          {
+            "cpu": "0xA109",
+            "duration": "0x01",
+            "frame_index": 0,
+            "callback_cpu": "0xA149",
+            "raw": "01 00 49 A1"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0xA10D",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xA109"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 1,
+        "script_cpu": "0xA10F",
+        "script_rom": "0x3210F",
+        "frame_indices": [
+          0
+        ],
+        "records": [
+          {
+            "cpu": "0xA10F",
+            "duration": "0x01",
+            "frame_index": 0,
+            "callback_cpu": "0xA161",
+            "raw": "01 00 61 A1"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0xA113",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xA10F"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 2,
+        "script_cpu": "0xA115",
+        "script_rom": "0x32115",
+        "frame_indices": [
+          11,
+          12
+        ],
+        "records": [
+          {
+            "cpu": "0xA115",
+            "duration": "0x05",
+            "frame_index": 11,
+            "callback_cpu": "0xA16C",
+            "raw": "05 0B 6C A1"
+          },
+          {
+            "cpu": "0xA119",
+            "duration": "0x05",
+            "frame_index": 12,
+            "callback_cpu": "0xA16C",
+            "raw": "05 0C 6C A1"
+          },
+          {
+            "cpu": "0xA11D",
+            "duration": "0x04",
+            "frame_index": 11,
+            "callback_cpu": "0xA16C",
+            "raw": "04 0B 6C A1"
+          },
+          {
+            "cpu": "0xA121",
+            "duration": "0x04",
+            "frame_index": 12,
+            "callback_cpu": "0xA16C",
+            "raw": "04 0C 6C A1"
+          },
+          {
+            "cpu": "0xA125",
+            "duration": "0x03",
+            "frame_index": 11,
+            "callback_cpu": "0xA16C",
+            "raw": "03 0B 6C A1"
+          },
+          {
+            "cpu": "0xA129",
+            "duration": "0x03",
+            "frame_index": 12,
+            "callback_cpu": "0xA16C",
+            "raw": "03 0C 6C A1"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0xA12D",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xA115"
+          }
+        ],
+        "unresolved": null
+      },
+      {
+        "state_index": 3,
+        "script_cpu": "0xA12F",
+        "script_rom": "0x3212F",
+        "frame_indices": [
+          11,
+          12
+        ],
+        "records": [
+          {
+            "cpu": "0xA12F",
+            "duration": "0x05",
+            "frame_index": 11,
+            "callback_cpu": "0xA20D",
+            "raw": "05 0B 0D A2"
+          },
+          {
+            "cpu": "0xA133",
+            "duration": "0x05",
+            "frame_index": 12,
+            "callback_cpu": "0xA20D",
+            "raw": "05 0C 0D A2"
+          },
+          {
+            "cpu": "0xA137",
+            "duration": "0x04",
+            "frame_index": 11,
+            "callback_cpu": "0xA20D",
+            "raw": "04 0B 0D A2"
+          },
+          {
+            "cpu": "0xA13B",
+            "duration": "0x04",
+            "frame_index": 12,
+            "callback_cpu": "0xA20D",
+            "raw": "04 0C 0D A2"
+          },
+          {
+            "cpu": "0xA13F",
+            "duration": "0x03",
+            "frame_index": 11,
+            "callback_cpu": "0xA20D",
+            "raw": "03 0B 0D A2"
+          },
+          {
+            "cpu": "0xA143",
+            "duration": "0x03",
+            "frame_index": 12,
+            "callback_cpu": "0xA20D",
+            "raw": "03 0C 0D A2"
+          }
+        ],
+        "commands": [
+          {
+            "cpu": "0xA147",
+            "command": "0x00",
+            "meaning": "restart_state_script",
+            "target_cpu": "0xA12F"
+          }
+        ],
+        "unresolved": null
+      }
+    ]
+  },
+  "mapping": {
+    "table_cpu": "0x8C71",
+    "table_rom": "0x3CC71",
+    "active_frames": [
+      {
+        "index": "0x0B",
+        "cpu": "0x8D0F",
+        "rom": "0x3CD0F"
+      },
+      {
+        "index": "0x0C",
+        "cpu": "0x8D1A",
+        "rom": "0x3CD1A"
+      }
+    ],
+    "collision_extents_from_both_active_frames": {
+      "horizontal_2c": 10,
+      "vertical_2d": 24
+    }
+  },
+  "handlers": {
+    "initialization": {
+      "cpu": "0xA149",
+      "rom": "0x32149"
+    },
+    "state_1_entry": {
+      "cpu": "0xA161",
+      "rom": "0x32161"
+    },
+    "active_contact": {
+      "cpu": "0xA16C",
+      "rom": "0x3216C"
+    },
+    "reward_bit_selection": {
+      "cpu": "0xA1D3",
+      "rom": "0x321D3"
+    },
+    "graphics_visibility_latch": {
+      "cpu": "0xA1F9",
+      "rom": "0x321F9"
+    },
+    "airborne_after_bottom_hit": {
+      "cpu": "0xA20D",
+      "rom": "0x3220D"
+    },
+    "reward_dispatch": {
+      "cpu": "0x4AA3",
+      "rom": "0x04AA3"
+    }
+  },
+  "interaction": {
+    "overlap_and_resolution_helper_cpu": "0x5FA0",
+    "requires_player_flag_d503_bit_1": true,
+    "power_up_06_alone_substitutes_for_attack": false,
+    "bottom_contact_bit": "0x02",
+    "top_contact_bit": "0x01",
+    "side_contact_bits": [
+      "0x04",
+      "0x08"
+    ],
+    "top_blocked_requested_player_states": [
+      "0x0F",
+      "0x10",
+      "0x15",
+      "0x1A"
+    ],
+    "top_or_side_requires_nonzero_downward_y_velocity": true,
+    "bottom_hit_requires_y_direction": false,
+    "bottom_hit_result": "player Y velocity +0x0200; object Y velocity -0x0200; request object state 3",
+    "successful_top_or_side_result": "queue numeric reward bit, convert same slot to type 0x0F, clear placement token",
+    "damage_request": false
+  },
+  "parameter_semantics": {
+    "0x02": "queues $D3A3 bit 1; dispatcher clears it, increments BCD byte $D299 up to $99, and requests sound $A9",
+    "0x04": "queues $D3A3 bit 3 for player type 1; dispatcher sets $D532=$04, $D44C=$012C (or $1770 at level $08), and enters player state setup at $4775",
+    "0x06": "queues $D3A3 bit 5; dispatcher sets $D503 bits 1/7, sound $84, $D44C=$0258, $D532=$06, and allocates type $05 with parameter zero unless already $06",
+    "alternate_player_parameter_0x04": "initialization rewrites it to $01 when $D500 != $01; the resulting bit-0 dispatcher adds BCD $10 to $D29A before shared display/update calls"
+  },
+  "dynamic_graphics": {
+    "selector_ram": "0xD3B3",
+    "loader_cpu": "0x7AC2",
+    "low_selector_path_cpu": "0x7C71",
+    "source_bank": "0x0E",
+    "vram_destinations": [
+      "0x0980 (6 tiles)",
+      "0x0BC0 (4 tiles)"
+    ],
+    "parameters": [
+      {
+        "parameter": "0x02",
+        "selector": "0x02",
+        "sonic_layer_1_cpu": "0x9A60",
+        "alternate_layer_1_cpu": "0xA1E0",
+        "sonic_layer_2_cpu": "0x9F60",
+        "alternate_layer_2_cpu": "0xA320"
+      },
+      {
+        "parameter": "0x04",
+        "selector": "0x04",
+        "sonic_layer_1_cpu": "0x9D60",
+        "alternate_layer_1_cpu": "0x9D60",
+        "sonic_layer_2_cpu": "0xA160",
+        "alternate_layer_2_cpu": "0xA060"
+      },
+      {
+        "parameter": "0x06",
+        "selector": "0x06",
+        "sonic_layer_1_cpu": "0x9BE0",
+        "alternate_layer_1_cpu": "0x9BE0",
+        "sonic_layer_2_cpu": "0xA060",
+        "alternate_layer_2_cpu": "0xA060"
+      }
+    ]
+  },
+  "replacement": {
+    "type": "0x0F",
+    "conversion_cpu": "0x5F54",
+    "score_bytes_added": "10 00 00",
+    "placement_token_cleared": true,
+    "initial_state": 1,
+    "presentation_frames": [
+      "0x07",
+      "0x08",
+      "0x09"
+    ],
+    "eventual_removal": "type 0xFF with token zero; placement occupancy is not released"
+  },
+  "lifetime": {
+    "untouched_off_range": "type 0xFE then tracked cleanup; occupancy released; can respawn",
+    "bottom_hit_only_off_range": "still placement-backed; tracked cleanup releases occupancy; can respawn",
+    "successfully_consumed": "conversion clears token but leaves occupancy nonzero; cannot respawn in the same loaded act"
+  },
+  "controlled_original_routine_fixtures": {
+    "evidence": "controlled trace",
+    "placement_creation": [
+      {
+        "record_rom": "0x705F6",
+        "record_cpu": "0x85F6",
+        "occupancy_address": "0xD409",
+        "occupancy_value": "0x10",
+        "object_type": "0x10",
+        "current_x": 656,
+        "current_y": 846,
+        "saved_x": 656,
+        "saved_y": 846,
+        "object_flags_04": "0x40",
+        "parameter_3f": "0x06",
+        "art_base_08": "0x00",
+        "art_base_09": "0x00",
+        "placement_token_3e": 10
+      },
+      {
+        "record_rom": "0x705FF",
+        "record_cpu": "0x85FF",
+        "occupancy_address": "0xD40A",
+        "occupancy_value": "0x10",
+        "object_type": "0x10",
+        "current_x": 1712,
+        "current_y": 494,
+        "saved_x": 1712,
+        "saved_y": 494,
+        "object_flags_04": "0x40",
+        "parameter_3f": "0x06",
+        "art_base_08": "0x00",
+        "art_base_09": "0x00",
+        "placement_token_3e": 11
+      },
+      {
+        "record_rom": "0x70608",
+        "record_cpu": "0x8608",
+        "occupancy_address": "0xD40B",
+        "occupancy_value": "0x10",
+        "object_type": "0x10",
+        "current_x": 336,
+        "current_y": 270,
+        "saved_x": 336,
+        "saved_y": 270,
+        "object_flags_04": "0x40",
+        "parameter_3f": "0x04",
+        "art_base_08": "0x00",
+        "art_base_09": "0x00",
+        "placement_token_3e": 12
+      },
+      {
+        "record_rom": "0x70611",
+        "record_cpu": "0x8611",
+        "occupancy_address": "0xD40C",
+        "occupancy_value": "0x10",
+        "object_type": "0x10",
+        "current_x": 1472,
+        "current_y": 110,
+        "saved_x": 1472,
+        "saved_y": 110,
+        "object_flags_04": "0x40",
+        "parameter_3f": "0x04",
+        "art_base_08": "0x00",
+        "art_base_09": "0x00",
+        "placement_token_3e": 13
+      },
+      {
+        "record_rom": "0x7061A",
+        "record_cpu": "0x861A",
+        "occupancy_address": "0xD40D",
+        "occupancy_value": "0x10",
+        "object_type": "0x10",
+        "current_x": 2688,
+        "current_y": 686,
+        "saved_x": 2688,
+        "saved_y": 686,
+        "object_flags_04": "0x40",
+        "parameter_3f": "0x02",
+        "art_base_08": "0x00",
+        "art_base_09": "0x00",
+        "placement_token_3e": 14
+      }
+    ],
+    "initialization": [
+      {
+        "parameter_before": "0x02",
+        "player_type_d500": "0x01",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x02"
+      },
+      {
+        "parameter_before": "0x04",
+        "player_type_d500": "0x01",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x04"
+      },
+      {
+        "parameter_before": "0x06",
+        "player_type_d500": "0x01",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x06"
+      }
+    ],
+    "alternate_player_parameter_04": {
+      "initialization": {
+        "parameter_before": "0x04",
+        "player_type_d500": "0x02",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x01"
+      },
+      "effective_parameter": "0x01",
+      "reward_bits_d3a3": "0x01",
+      "dispatch_entry": "0x4AC0",
+      "direct_numeric_effect": "BCD byte $D29A += $10 before shared display/update calls"
+    },
+    "state_1_entry": [
+      {
+        "parameter": "0x02",
+        "requested_state": 2,
+        "previous_visibility_26": "0x00",
+        "graphics_selector_d3b3": "0x02"
+      },
+      {
+        "parameter": "0x04",
+        "requested_state": 2,
+        "previous_visibility_26": "0x00",
+        "graphics_selector_d3b3": "0x04"
+      },
+      {
+        "parameter": "0x06",
+        "requested_state": 2,
+        "previous_visibility_26": "0x00",
+        "graphics_selector_d3b3": "0x06"
+      }
+    ],
+    "ordinary_non_contact_update": {
+      "contact_bits_21": "0x00",
+      "object_type_after": "0x10",
+      "requested_object_state": 0,
+      "object_y_velocity_8_8": 0,
+      "player_y_velocity_8_8": 256,
+      "requested_player_state": 5,
+      "damage_request_d3b0": "0x00",
+      "reward_bits_d3a3": "0x00",
+      "parameter_after": "0x02",
+      "placement_token_after": 10,
+      "occupancy_value_after": "0x10",
+      "score_bytes_after": "00 00 00"
+    },
+    "contact": {
+      "ordinary_top_contact": {
+        "contact_bits_21": "0x01",
+        "object_type_after": "0x10",
+        "requested_object_state": 0,
+        "object_y_velocity_8_8": 0,
+        "player_y_velocity_8_8": 256,
+        "requested_player_state": 5,
+        "damage_request_d3b0": "0x00",
+        "reward_bits_d3a3": "0x00",
+        "parameter_after": "0x02",
+        "placement_token_after": 10,
+        "occupancy_value_after": "0x10",
+        "score_bytes_after": "00 00 00"
+      },
+      "power_up_06_without_attack": {
+        "contact_bits_21": "0x01",
+        "object_type_after": "0x10",
+        "requested_object_state": 0,
+        "object_y_velocity_8_8": 0,
+        "player_y_velocity_8_8": 256,
+        "requested_player_state": 5,
+        "damage_request_d3b0": "0x00",
+        "reward_bits_d3a3": "0x00",
+        "parameter_after": "0x02",
+        "placement_token_after": 10,
+        "occupancy_value_after": "0x10",
+        "score_bytes_after": "00 00 00"
+      },
+      "top_attack_downward": {
+        "contact_bits_21": "0x01",
+        "object_type_after": "0x0F",
+        "requested_object_state": 0,
+        "object_y_velocity_8_8": 0,
+        "player_y_velocity_8_8": -1024,
+        "requested_player_state": 5,
+        "damage_request_d3b0": "0x00",
+        "reward_bits_d3a3": "0x02",
+        "parameter_after": "0x00",
+        "placement_token_after": 0,
+        "occupancy_value_after": "0x10",
+        "score_bytes_after": "10 00 00"
+      },
+      "top_attack_zero_velocity": {
+        "contact_bits_21": "0x01",
+        "object_type_after": "0x10",
+        "requested_object_state": 0,
+        "object_y_velocity_8_8": 0,
+        "player_y_velocity_8_8": 0,
+        "requested_player_state": 5,
+        "damage_request_d3b0": "0x00",
+        "reward_bits_d3a3": "0x00",
+        "parameter_after": "0x02",
+        "placement_token_after": 10,
+        "occupancy_value_after": "0x10",
+        "score_bytes_after": "00 00 00"
+      },
+      "top_attack_upward": {
+        "contact_bits_21": "0x01",
+        "object_type_after": "0x10",
+        "requested_object_state": 0,
+        "object_y_velocity_8_8": 0,
+        "player_y_velocity_8_8": -256,
+        "requested_player_state": 5,
+        "damage_request_d3b0": "0x00",
+        "reward_bits_d3a3": "0x00",
+        "parameter_after": "0x02",
+        "placement_token_after": 10,
+        "occupancy_value_after": "0x10",
+        "score_bytes_after": "00 00 00"
+      },
+      "side_attack_downward": {
+        "contact_bits_21": "0x04",
+        "object_type_after": "0x0F",
+        "requested_object_state": 0,
+        "object_y_velocity_8_8": 0,
+        "player_y_velocity_8_8": -1024,
+        "requested_player_state": 5,
+        "damage_request_d3b0": "0x00",
+        "reward_bits_d3a3": "0x02",
+        "parameter_after": "0x00",
+        "placement_token_after": 0,
+        "occupancy_value_after": "0x10",
+        "score_bytes_after": "10 00 00"
+      },
+      "bottom_attack_upward": {
+        "contact_bits_21": "0x02",
+        "object_type_after": "0x10",
+        "requested_object_state": 3,
+        "object_y_velocity_8_8": -512,
+        "player_y_velocity_8_8": 512,
+        "requested_player_state": 5,
+        "damage_request_d3b0": "0x00",
+        "reward_bits_d3a3": "0x00",
+        "parameter_after": "0x02",
+        "placement_token_after": 10,
+        "occupancy_value_after": "0x10",
+        "score_bytes_after": "00 00 00"
+      },
+      "top_blocked_player_states": {
+        "0x0F": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 15,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        },
+        "0x10": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 16,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        },
+        "0x15": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 21,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        },
+        "0x1A": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 26,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      "overlap_boundaries": [
+        {
+          "axis": "horizontal_right",
+          "delta": 18,
+          "contact_bits_21": "0x04",
+          "translated_contact": "0x04"
+        },
+        {
+          "axis": "horizontal_right",
+          "delta": 19,
+          "contact_bits_21": "0x04",
+          "translated_contact": "0x04"
+        },
+        {
+          "axis": "horizontal_right",
+          "delta": 20,
+          "contact_bits_21": "0x00",
+          "translated_contact": "0x00"
+        },
+        {
+          "axis": "top",
+          "delta": -23,
+          "contact_bits_21": "0x01",
+          "translated_contact": "0x01"
+        },
+        {
+          "axis": "top",
+          "delta": -24,
+          "contact_bits_21": "0x01",
+          "translated_contact": "0x01"
+        },
+        {
+          "axis": "top",
+          "delta": -25,
+          "contact_bits_21": "0x00",
+          "translated_contact": "0x00"
+        },
+        {
+          "axis": "bottom",
+          "delta": 17,
+          "contact_bits_21": "0x02",
+          "translated_contact": "0x02"
+        },
+        {
+          "axis": "bottom",
+          "delta": 18,
+          "contact_bits_21": "0x02",
+          "translated_contact": "0x02"
+        },
+        {
+          "axis": "bottom",
+          "delta": 19,
+          "contact_bits_21": "0x00",
+          "translated_contact": "0x00"
+        }
+      ]
+    },
+    "reward": [
+      {
+        "parameter": "0x02",
+        "table_mask": "0x02",
+        "after_contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x02",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_reward_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299_bcd": "0x10",
+          "counter_d29a_bcd": "0x00",
+          "power_up_d532": "0x00",
+          "timer_d44c": 0,
+          "player_flags_d503": "0x02",
+          "player_requested_state_d502": "0x05",
+          "player_x_velocity_8_8": 291,
+          "player_y_velocity_8_8": -1024,
+          "player_max_x_d373": "0x0400",
+          "timer_d3a1": 0,
+          "sound_request_de04": "0xA9",
+          "child": {
+            "slot": "0xD540",
+            "type": "0x00",
+            "parameter_3f": "0x00"
+          }
+        }
+      },
+      {
+        "parameter": "0x04",
+        "table_mask": "0x08",
+        "after_contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x08",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_reward_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299_bcd": "0x09",
+          "counter_d29a_bcd": "0x00",
+          "power_up_d532": "0x04",
+          "timer_d44c": 300,
+          "player_flags_d503": "0x00",
+          "player_requested_state_d502": "0x11",
+          "player_x_velocity_8_8": 0,
+          "player_y_velocity_8_8": 0,
+          "player_max_x_d373": "0x0700",
+          "timer_d3a1": 300,
+          "sound_request_de04": "0x85",
+          "child": {
+            "slot": "0xD540",
+            "type": "0x00",
+            "parameter_3f": "0x00"
+          }
+        }
+      },
+      {
+        "parameter": "0x06",
+        "table_mask": "0x20",
+        "after_contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x20",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_reward_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299_bcd": "0x09",
+          "counter_d29a_bcd": "0x00",
+          "power_up_d532": "0x06",
+          "timer_d44c": 600,
+          "player_flags_d503": "0x82",
+          "player_requested_state_d502": "0x05",
+          "player_x_velocity_8_8": 291,
+          "player_y_velocity_8_8": -1024,
+          "player_max_x_d373": "0x0400",
+          "timer_d3a1": 0,
+          "sound_request_de04": "0x84",
+          "child": {
+            "slot": "0xD540",
+            "type": "0x05",
+            "parameter_3f": "0x00"
+          }
+        }
+      }
+    ],
+    "airborne": {
+      "empty_map_first_update": {
+        "requested_state": 3,
+        "y_integer_after": 498,
+        "y_fraction_after": 0,
+        "y_velocity_8_8_after": -448
+      },
+      "first_thz1_placement_landing": {
+        "updates": 17,
+        "requested_state": 2,
+        "y_integer": 846,
+        "y_fraction": 0,
+        "y_velocity_8_8": 576
+      }
+    },
+    "lifetime": {
+      "untouched_off_range_before_cleanup": {
+        "object_type": "0xFE",
+        "placement_token": 10,
+        "occupancy_value": "0x10"
+      },
+      "untouched_after_cleanup": {
+        "occupancy_value": "0x00",
+        "slot_is_zero": true,
+        "can_respawn": true
+      },
+      "consumed_after_conversion": {
+        "object_type": "0x0F",
+        "placement_token": 0,
+        "occupancy_value": "0x10"
+      },
+      "consumed_after_replacement_cleanup": {
+        "occupancy_value": "0x10",
+        "slot_is_zero": true,
+        "can_respawn_same_loaded_act": false
+      }
+    }
+  },
+  "unresolved": [
+    "canonical semantic name; the ROM-backed status remains supported but not canonical",
+    "user-facing names for parameter values 0x02/0x04/0x06",
+    "semantic names of sound IDs 0x84, 0x85, and 0xA9",
+    "semantic label for BCD counter $D299 and score/display byte $D29A",
+    "full lifetime and presentation semantics of the parameter-0x06 child type 0x05 beyond its allocation contract",
+    "hardware-frame timing and emulator-observed gameplay"
+  ]
+}

@@ -8,6 +8,7 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from cache_game_data import EXPECTED_SHA256, decode_layout, decode_objects, layout_interactions
+import thz1_object_10 as object10
 
 
 def main(rom_path):
@@ -22,9 +23,16 @@ def main(rom_path):
     assert stored_layout["compressed_read_end"] == f"0x{layout_end:05X}"
     assert stored_layout["terrain"] == interactions["terrain"]
     assert stored_layout["rings"] == interactions["rings"]
+    stored_object10 = json.loads(
+        (ROOT / "data/rom-cache/thz1/object-10.json").read_text(encoding="utf-8")
+    )
+    assert stored_object10 == object10.build_report(rom)
     assert len(records) == 53
     assert sum(r["decoded_kind"] is not None for r in records) == 14
-    print("ROM cache: 53 records, 14 decoded placements, 17 terrain interactions, 142 rings")
+    print(
+        "ROM cache: 53 records, 14 decoded placements, 17 terrain interactions, "
+        "142 rings; type-$10 metadata deterministic"
+    )
 
 
 if __name__ == "__main__":

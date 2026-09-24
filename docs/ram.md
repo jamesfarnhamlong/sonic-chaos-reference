@@ -11,6 +11,8 @@ Little-endian words unless stated otherwise. Addresses are absolute RAM addresse
 | `$D16A` | 2 | Negative map row width | `$7066` |
 | `$D174` | 2 | Horizontal camera offset used by movement bounds | `$4148` |
 | `$D297/$D298` | 1 each | Level/act index | `LoadRingArtPointers`, `$4B46` |
+| `$D299` | 1 | BCD counter incremented by type-`$10` parameter `$02`; semantic name unresolved | `$3104`, `$4ADA` |
+| `$D29A` | 1 | BCD byte increased by `$10` on the alternate-player form of type-`$10` parameter `$04`; semantic name unresolved | `$4AC0` |
 | `$D2E0` | 2 | Collision-header pointer table address | `$76D2` |
 | `$D353` | 1 | Most recently queried tile ID | `$76CA` |
 | `$D354` | 2 | Address of queried tile in decoded layout | `$76C7` |
@@ -27,7 +29,11 @@ Little-endian words unless stated otherwise. Addresses are absolute RAM addresse
 | `$D375` | 2 | Input/friction velocity increment | `$41B4`, `$402D` |
 | `$D377` | 2 | Surface velocity increment | `$41C5`, `$4032` |
 | `$D39D..$D39F` | 3 | Loop path cursor, eight fractional bits | previous `loop_states.asm` |
+| `$D3A1` | 2 | Timer copy written by numeric reward bit 3 player setup | `$4775` |
+| `$D3A3` | 1 | Queued numeric reward/effect bits; type `$10` parameters `$02/$04/$06` queue bits 1/3/5 | `$A1D3` bank `$0C`, `$4AA3` |
+| `$D3B3` | 1 | Dynamic graphics selector; type `$10` writes its parameter on an off-screen-to-visible transition | `$A1F9` bank `$0C`, `$7AC2` |
 | `$D443` | 1 | Water condition used by movement | `$40C1`, `$4BC0` |
+| `$D44C` | 2 | Numeric effect timer; type-`$10` branches write `$012C`, `$0258`, or level-8 `$1770` | `$4ADF`, `$4B1D` |
 | `$D498/$D49A` | 2 each | Left side probe X/Y offsets | `$3686`, `$7210` |
 | `$D49C/$D49E` | 2 each | Right side probe X/Y offsets | `$3686`, `$716B` |
 | `$D500` | 1 | Object type; Sonic=1 | `$3686` |
@@ -47,6 +53,7 @@ Little-endian words unless stated otherwise. Addresses are absolute RAM addresse
 | `$D523` | 1 | Combined contact flags | `$64EC` |
 | `$D524` | 1 | Special terrain flags; interpretation incomplete | `$6FBB` |
 | `$D525` | 1 | Collision plane / alternate-header selection | `$76E3`, `$73A7/$73B8` |
+| `$D532` | 1 | Numeric player effect selector used by interaction code; type `$10` writes `$04` or `$06` | `$4ADF`, `$4B34` |
 | `$D538` | 1 | Twist dispatch variant | bank 12 `$94D1` |
 
 `$D3C0`, several `+$24` paths, animation counters, and object-contact field details need further tracing. Numeric addresses are not evidence of equivalent meanings in Sonic 2 or Game Gear Chaos.

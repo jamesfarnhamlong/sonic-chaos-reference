@@ -30,6 +30,7 @@ LAYOUT_PATH = ROOT / "data" / "rom-cache" / "thz1" / "layout-interactions.json"
 REGIONS_PATH = ROOT / "asm" / "recovered" / "regions.json"
 OBJECT_21_PATH = ROOT / "data" / "rom-cache" / "thz1" / "object-21.json"
 OBJECT_27_PATH = ROOT / "data" / "rom-cache" / "thz1" / "object-27.json"
+OBJECT_10_PATH = ROOT / "data" / "rom-cache" / "thz1" / "object-10.json"
 DEFAULT_OUTPUT = ROOT / "data" / "rom-cache" / "thz1" / "object-census.json"
 
 
@@ -59,23 +60,24 @@ PROFILES = {
     0x10: {
         "role": "monitor / item-box presentation",
         "semantic_status": "LIKELY / SUPPORTED BUT NOT CANONICAL",
-        "semantic_basis": "Reachable reconstructed frames show monitor/item-box graphics; placement parameters and awarded contents are not formally traced.",
+        "semantic_basis": "Reachable reconstructed frames support monitor/item-box presentation; recovered handlers establish a breakable numeric-reward container, but no ROM string establishes a canonical name.",
         "graphics_completeness": "VERIFIED for statically reachable frames 0x00, 0x0B, 0x0C",
         "animation_completeness": "VERIFIED for all four statically decoded states",
-        "behavior_completeness": "UNRESOLVED",
-        "lifetime_contact_completeness": "UNRESOLVED",
-        "poc_readiness": "PLACEMENT/PRESENTATION DATA READY; BEHAVIOR NOT READY",
+        "behavior_completeness": "VERIFIED for THZ1-reachable behavior",
+        "lifetime_contact_completeness": "VERIFIED",
+        "poc_readiness": "RESEARCH READY FOR NUMERIC-TYPE IMPLEMENTATION",
         "graphics_class": "static THZ1 VRAM",
         "graphics_load_ids": ["thz1_common_base_10"],
-        "graphics_note": "The shared mapping uses absolute tile offsets 0x4C-0x5C with placement art bases 0x00/0x00.",
+        "graphics_note": "Active frames 0x0B/0x0C use absolute tile offsets 0x4C-0x5C with placement art bases 0x00/0x00; the placement parameter also drives the low dynamic selector path at $D3B3.",
         "renderer_note": "All THZ1 placement flags are 0x00; no placement-requested X mirror is present.",
-        "collision": None,
-        "handlers": [],
-        "artifacts": ["tools/thz1_object_assets.py", "tools/thz1_animation_reach.py", "data/rom-cache/thz1/object-graphics-map.json", "docs/thz1-object-graphics.md"],
+        "collision": {"status": "VERIFIED", "horizontal_extent": 10, "vertical_extent": 24, "facts": ["Interaction requires player movement flag $D503 bit 1.", "Top/side success requires nonzero downward Y velocity; bottom contact instead launches the object and player apart."]},
+        "handlers": ["object_10_scripts.asm", "object_10_handlers.asm", "object_10_reward_masks.asm", "object_10_tail_handlers.asm", "object_0f_scripts.asm", "object_0f_handlers.asm", "object_reward_dispatch.asm", "numeric_reward_counter.asm"],
+        "artifacts": ["docs/object-10.md", "tools/thz1_object_10.py", "tests/test_thz1_object_10.py", "data/rom-cache/thz1/object-10.json"],
         "gaps": [
-            "Trace parameter values 0x02, 0x04, and 0x06 to verified contents/behavior.",
-            "Recover contact, break/open, reward, persistence, and lifetime paths.",
-            "Determine the semantic roles of reachable frames 0x0B and 0x0C from source behavior, not appearance alone."
+            "Canonical semantic name remains unverified; monitor/item-box presentation is supported but not canonical.",
+            "User-facing names for numeric parameters 0x02/0x04/0x06 and affected RAM fields remain deliberately unassigned.",
+            "The complete presentation/lifetime semantics of the parameter-0x06 child type 0x05 remain outside this focused study.",
+            "No full-emulator gameplay observation exists; verification uses source tracing and controlled original-routine fixtures."
         ],
     },
     0x18: {
@@ -194,7 +196,7 @@ PROFILES = {
 
 EVIDENCE_LEVELS = {
     0x09: ["decoded data", "decoded graphics/mapping metadata"],
-    0x10: ["decoded data", "decoded graphics/mapping metadata"],
+    0x10: ["decoded data", "decoded graphics/mapping metadata", "byte-verified assembly", "source-traced behavior", "controlled original-Z80 trace"],
     0x18: ["decoded data", "decoded graphics/mapping metadata", "source-traced dynamic graphics path"],
     0x1B: ["decoded data", "byte-verified assembly", "source-traced behavior", "controlled original-Z80 trace (selected handlers)"],
     0x21: ["decoded data", "byte-verified assembly", "source-traced behavior", "controlled original-Z80 trace"],
@@ -326,6 +328,7 @@ def build_census(rom: bytes) -> dict:
     records = validate_records(rom, record_cache)
     validate_dedicated_placements(records, 0x21, OBJECT_21_PATH)
     validate_dedicated_placements(records, 0x27, OBJECT_27_PATH)
+    validate_dedicated_placements(records, 0x10, OBJECT_10_PATH)
     assets.validate_known_anchors(rom, graphics_map)
     animation.validate_animation_anchors(rom)
 
@@ -432,17 +435,17 @@ def build_census(rom: bytes) -> dict:
             "object_records_match_rom": True,
             "mapping_anchor_types": ["0x21", "0x26", "0x27", "0x28"],
             "animation_anchor_types": ["0x1B", "0x26"],
-            "dedicated_placement_caches": ["0x21", "0x27"],
+            "dedicated_placement_caches": ["0x10", "0x21", "0x27"],
             "total_unresolved_animation_states": all_unresolved,
         },
         "objects": objects,
         "prioritized_research_backlog": {
-            "object_behavior_needing_formal_trace": ["0x10 parameter/reward/contact/lifetime study", "0x18 completion/lifetime study", "0x09 parameter/entity-generation/collection study", "0x28 formal platform subtype/lifetime study"],
+            "object_behavior_needing_formal_trace": ["0x18 completion/lifetime study", "0x09 parameter/entity-generation/collection study", "0x28 formal platform subtype/lifetime study"],
             "graphics_palette_mapping_gaps": ["0x28 unsupported animation command forms in states 4, 12, and 14"],
             "placement_entity_expansion_gaps": ["Explain type-0x09 runtime entity generation and its relationship, if any, to the separate 142 layout-derived ring positions"],
             "generic_engine_dependencies": ["Camera activation/removal, occupancy release, and respawn studies for 0x1B, 0x26, and 0x28", "Full scheduler/gameplay validation beyond controlled subroutine fixtures"],
-            "poc_integration_ready": ["0x21", "0x27", "0x26 core state machine", "0x1B core state machine"],
-            "recommended_next_independent_task": {"type_id": "0x10", "reason": "It has only five placements, fully decoded four-state animation reachability, and verified mapping frames, while parameter values 0x02/0x04/0x06 and all contact/reward/lifetime semantics remain untraced. The bounded scope can close a large behavior gap without depending on unresolved type-0x09 entity expansion or type-0x28's broader rider engine."},
+            "poc_integration_ready": ["0x10", "0x21", "0x27", "0x26 core state machine", "0x1B core state machine"],
+            "recommended_next_independent_task": {"type_id": "0x18", "reason": "Type 0x10 now has a complete formal THZ1 behavior study. Type 0x18 retains a bounded completion/lifetime gap with its dynamic graphics path already verified."},
         },
     }
 
