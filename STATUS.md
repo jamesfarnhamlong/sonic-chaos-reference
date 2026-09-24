@@ -24,10 +24,10 @@ Rules:
 
 Current `main` baseline:
 
-- 53 recovered ROM regions
-- 10,830 recovered bytes
-- 4,206 decoded instructions
-- 37,386 controlled original-Z80 comparisons
+- 61 recovered ROM regions
+- 11,709 recovered bytes
+- 4,487 decoded instructions
+- 37,451 controlled original-Z80 comparisons
 - 524,288-byte byte-identical reconstruction
 - SHA-256 matches the canonical ROM above
 
@@ -36,7 +36,7 @@ The current THZ1 census contains exactly 53 raw nine-byte object records across 
 | Type | Records | Current research status |
 |---|---:|---|
 | `$09` | 24 | graphics/animation decoded; behavior and relationship to layout-derived rings unresolved |
-| `$10` | 5 | graphics/animation decoded; parameter/reward/contact/lifetime study is Task 04 and is currently in progress, not merged |
+| `$10` | 5 | THZ1-reachable behavior formally complete; numeric parameter/reward effects verified; canonical identity remains non-verified |
 | `$18` | 1 | dynamic goal-sign graphics verified; completion/lifetime behavior partial |
 | `$1B` | 4 | retracting spikes; core state machine substantially verified |
 | `$21` | 6 | THZ1-reachable behavior formally complete; canonical identity remains non-verified |
@@ -108,11 +108,46 @@ The census records every THZ1 placement, field combination, animation/mapping en
 
 Additional correction: type `$28` placement aux1 values `$09/$0D/$00` are consumed as object-specific initialization data; they are not uniformly a second graphics art base.
 
-### Task 04 — type `$10`: IN PROGRESS / NOT YET CANONICAL
+### Task 04 — type `$10`: COMPLETE
 
-Assigned as a formal parameter/reward/contact/lifetime study. Until its branch is reviewed and merged, do not use unmerged Task 04 findings in the POC.
+Formal placement, state, contact, numeric reward, replacement and lifetime study.
 
-Current canonical `main` knows only that THZ1 has five type-`$10` placements with parameters `$02/$04/$06`, fully decoded four-state animation reachability to frames `$00/$0B/$0C`, and monitor/item-box-like presentation supported by graphics.
+Five THZ1 records:
+
+- `(656,846,$06)`
+- `(1712,494,$06)`
+- `(336,270,$04)`
+- `(1472,110,$04)`
+- `(2688,686,$02)`
+
+All records use flags/aux fields `$00`. Creation produces flags `$40` and one-based placement occupancy tokens 10–14.
+
+Key verified behavior:
+
+- four states are fully decoded; active and bottom-hit-airborne states alternate mapping frames `$0B/$0C`;
+- runtime contact extents are horizontal 10 and vertical 24;
+- player flag `$D503` bit 1 is mandatory for interaction; `$D532=$06` alone does not substitute;
+- successful top/side interaction requires nonzero downward player Y velocity;
+- top contact rejects requested player states `$0F/$10/$15/$1A`;
+- bottom contact is independent of player Y direction: player Y becomes `+$0200`, object Y becomes `-$0200`, and object state 3 is requested without reward or consumption;
+- successful top/side interaction queues the parameter-selected effect, adds score bytes `10 00 00`, converts the same slot to type `$0F`, and clears the placement token;
+- no type-`$10` contact branch requests player damage;
+- parameter `$02` queues `$D3A3` bit 1; dispatch increments BCD `$D299` up to `$99` and requests sound `$A9`;
+- parameter `$04` queues bit 3; for player type `$01`, dispatch sets `$D532=$04`, timer `$012C` (or `$1770` at level `$08`), zeroes velocity, sets `$D373=$0700`, requests sound `$85`, and requests player state `$11`;
+- for non-`$01` player type, initialization rewrites parameter `$04` to `$01`; that path queues bit 0 and adds BCD `$10` to `$D29A` before shared display/update calls;
+- parameter `$06` queues bit 5; dispatch sets `$D532=$06`, timer `$0258`, `$D503` bits 1/7, requests sound `$84`, and allocates type `$05` parameter zero when newly selected;
+- the parameter is also copied to dynamic graphics selector `$D3B3` on an off-screen-to-visible transition;
+- type `$0F` supplies the direct replacement presentation using frames `$07/$08/$09`;
+- untouched or bottom-hit-only objects retain their token; tracked off-range cleanup releases occupancy and allows respawn;
+- successfully consumed objects clear the token while leaving the placement occupancy byte nonzero, so they do not respawn during the same loaded act.
+
+Strict controlled overlap boundaries are verified at horizontal 18/19/20, top -23/-24/-25, and bottom 17/18/19.
+
+Semantic status remains **SUPPORTED BUT NOT CANONICAL**. Do not assign user-facing names to parameters `$02/$04/$06`, sounds `$84/$85/$A9`, `$D299`, or `$D29A` without stronger evidence. Complete type-`$05` child behavior remains unresolved.
+
+Task 04 added eight bounded recovered regions plus an extension of the existing player-state region. Current recovery totals are 61 regions, 11,709 bytes and 4,487 decoded instructions.
+
+Primary study: `docs/object-10.md`.
 
 ## Shared engine research status
 
@@ -130,7 +165,8 @@ Substantially recovered/verified:
 - object sprite orientation renderer;
 - object animation engine and command dispatcher;
 - animation commands `00,01,02,03,06,07,0B,0C,0E,0F`;
-- type `$21`, `$26`, `$27`, `$1B` relevant regions;
+- type `$10`, `$21`, `$26`, `$27`, `$1B` relevant regions;
+- direct type `$0F` replacement scripts/handlers and the type-`$10` numeric reward dispatcher;
 - moving-platform code is recovered but not yet a complete formal object study.
 
 Animation command semantics still not formally complete for commands `04,05,08,09,0A,0D`. Under the current THZ1 static reachability pass, only type `$28` has unresolved states: 4, 12 and 14, each stopping at unsupported command `$09`.
@@ -206,7 +242,7 @@ The thin lime rectangle visible with F3 is a separate debug overlay and should r
 - POC 17.4's type-`$27` implementation predates the completed formal Task 02 audit. POC 18 should reconcile its implementation with the verified strict 64/384 boundaries, 129-update sequence, contact, orientation, and respawn behavior.
 - Types `$1B` and `$26` have strong core state-machine evidence but incomplete formal generic lifetime/scheduler audits.
 - Type `$18` goal-sign graphics are verified, but original completion/lifetime behavior is still partial. Do not replace completion logic with guessed signpost behavior.
-- Type `$10` Task 04 is in progress; do not implement unmerged parameter/reward conclusions yet.
+- Type `$10` Task 04 is complete and merged. Its numeric parameter effects, contact rules, `$0F` replacement, and same-act respawn behavior are canonical research and may now be integrated. Canonical/user-facing item names remain unresolved.
 
 ## POC 18 recommended scope
 
@@ -220,8 +256,8 @@ Recommended order:
 4. Re-test moving and static spikes after the terrain regeneration.
 5. Integrate type `$21` from the completed formal study using all six exact placements, parameters, graphics, animation reachability, contact, orientation and lifetime behavior.
 6. Reconcile the existing type-`$27` POC code against the completed formal Task 02 study. Do not preserve earlier approximations where the research now gives exact behavior.
-7. Preserve existing verified movement, loops, twist, springs and placements unless a change is directly required by the new research or Windows feedback.
-8. Do not integrate Task 04 type-`$10` findings until that research has been reviewed and merged.
+7. Reconcile the existing monitor/type-`$10` POC implementation with the completed Task 04 study, preserving numeric parameter identities `$02/$04/$06` rather than guessing item names.
+8. Preserve existing verified movement, loops, twist, springs and placements unless a change is directly required by the new research or Windows feedback.
 9. Do not guess type-`$18` completion behavior.
 
 Prefer one coherent POC 18 archive over unrelated feature expansion.
@@ -240,14 +276,17 @@ At minimum, Windows testing should verify:
 - Type `$21` patrol bounds, reversal, top-bounce/side-contact and defeat behavior agree with the reference fixtures.
 - All three type-`$27` placements remain exact.
 - Type `$27` uses strict <64 activation and >=384 removal behavior and does not acquire invented damage behavior.
-- Existing first-ramp, loops, twist, springs, platforms, rings and monitors show no obvious regression.
+- All five type-`$10` placements remain exact with parameters `$06/$06/$04/$04/$02`.
+- Type `$10` ordinary overlap alone does nothing; successful top/side interaction requires `$D503.1` plus downward Y velocity, while bottom attack launches the object/player apart without consuming the placement.
+- Type `$10` successful top/side interaction converts to `$0F`, adds `10 00 00`, and does not same-act respawn.
+- Existing first-ramp, loops, twist, springs, platforms and rings show no obvious regression.
 - No fabricated objects, placements, graphics or completion marker are introduced.
 
 If the pass is too large to diagnose cleanly, split the implementation into test archives while keeping POC 18 as the eventual accepted source milestone.
 
-## Research queue after Task 04
+## Current research queue
 
-Current census ordering, subject to Task 04 results:
+With Task 04 complete:
 
 1. type `$18` completion/lifetime study;
 2. type `$09` parameter/entity-generation/collection study;
