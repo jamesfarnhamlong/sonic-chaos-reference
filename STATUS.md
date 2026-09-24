@@ -175,114 +175,63 @@ Animation command semantics still not formally complete for commands `04,05,08,0
 
 POC repository `main` currently points to commit:
 
-`a3b03825e600bc71279a0386b8c1d5f9bce81441`
+`231aeaf6d898ec572ee803609ac9a4f9bf97f392`
 
 Commit title:
 
-`SonicChaos_Act1_POC_17_4`
+`Sonic Chaos Act 1 POC 18.3`
 
-This is the source baseline for POC 18. Do not start POC 18 from an older local archive or older branch if the GitHub `main` above is available.
+POC 18.3 is the current Windows regression baseline. It is the first post-research integration milestone after POC 17.4.
 
-Playable milestones represented by the current POC lineage:
+Reference commits recorded by the POC 18.3 handover:
 
-### POC 14.5
+- starting reference baseline: `7d3efe86128eacd97ace4b6bc87b1fb247f8e9ad`;
+- refreshed after Task 04: `232ca2c47772c39d15929ebb8979d3965a497e32`.
 
-- Integer/fixed-point movement and collision path substantially replaced inherited sample-engine physics for THZ1.
-- First curved ramp rolls, launches and returns to ordinary movement.
-- Both loops and six canonical moving platforms function through bounded adapters.
-- Opening upright red spring reaches the tested ROM height.
+### POC 18.3 integrated state
 
-### POC 15 / 15.1
+Verified/research-backed integrations now present:
 
-- Type `$26` concealed springs added from recovered behavior.
-- Type `$1B` confirmed and ported as four retracting spike sets.
-- Object, terrain-spring, platform, ring and monitor placement data regenerated from ROM-derived caches.
-- Fabricated badniks and fabricated finish marker removed.
+- type `$10`: five exact placements, ROM-derived active frames `$0B/$0C`, type-`$0F` replacement frames `$07/$08/$09`, numeric parameter effects, verified contact rules, and bounded occupancy/respawn behavior;
+- type `$21`: all six exact placements, ROM-derived frames, signed 8.8 patrol movement, floor following, reversal, orientation, bounce/damage/defeat and bounded placement recreation;
+- type `$27`: all three exact mirrored placements, strict <64 activation, exact 129-callback oscillation, strict >=384 removal, ordinary-contact stall and verified defeat/recreation behavior;
+- type `$18`: five verified ROM-derived dynamic presentation frames at canonical room placement `(3960,558)`; the POC still uses a bounded pre-existing completion adapter rather than claiming original completion logic.
 
-### POC 16
+Terrain/presentation fixes now confirmed in the accepted POC:
 
-- Player state `$22` twisting/Mobius traversal implemented.
-- Four 28-entry dispatch tables (112 entries), entry rules, angle/magnitude motion, tile alignment and rolling exit ported.
-- Windows test confirmed traversal; rolling presentation remains overused relative to the ROM.
+- spring blocks `$30/$31/$33/$36/$38` are composed with contextual background rather than opaque cyan/black cells;
+- the `$31` spring at world `(2112,832)` no longer shows the filled rectangle;
+- ring-bearing layout blocks `$40/$41/$42/$43` no longer leave permanent flat ring artwork baked into terrain;
+- all 142 separately decoded collectible ring objects remain present with their existing animation;
+- type `$18` presentation is floor-aligned with a 22-pixel draw offset while preserving canonical room coordinates;
+- F4-F7 debug warp shortcuts were removed; R restart and F3 diagnostics remain.
 
-### POC 17 / 17.4
+POC 18.3 automated verification reports:
 
-- Three canonical type-`$27` placements added with ROM-derived frames and initial behavior.
-- Static spike block type-5 floor-contact hazard condition ported.
-- Moving spikes use ROM mapping frame `$0E` and floor-aligned presentation.
-- Terrain-spring standalone PNG transparency was corrected, but the lower-route `$31` spring rectangle remained visible.
-- POC 17.4 is the current regression baseline.
+- 15,660 movement-core fixture cases;
+- all 112 twist dispatch entries;
+- 1,078 twist entry/boundary cases;
+- selected original-Z80 type `$26/$1B` checks;
+- type `$27` initialization, acceleration, underflow and strict 383/384 removal checks;
+- 21 canonical reference unit tests for `$10/$21/$27` plus animation reachability;
+- canonical layout counts: 5 type-`$10`, 6 type-`$21`, 3 type-`$27`, 4 moving spikes, 4 static spikes, 6 platforms, 9 terrain springs and 142 separate layout rings;
+- no legacy layout-monitor instances and no ROM file packaged.
 
-## Current POC limitations and handover corrections
+Windows gameplay feedback for 18.3 is broadly positive. The remaining obvious visual/integration issue is type `$10` presentation: the monitor/container body is ROM-derived, but the parameter-selected dynamic icon/content layer is not yet reproduced, and the parameter-`$06` allocated type-`$05` presentation remains deliberately absent pending research.
 
-### Lower-route `$31` spring rectangle
+### Current THZ1 POC limitations
 
-The unresolved visible rectangle is at world `(2112,832)`, object `OBJ_chaos_spring_49`.
+These should be separated into possible stage blockers versus accepted future-fidelity work:
 
-The standalone `$31` spring PNG is already transparent. The stronger diagnosis is that the same layout cell is baked into the fully opaque terrain quadrant:
+- type `$10` dynamic parameter-selected graphics are not yet decoded/rendered in the POC;
+- full presentation/lifetime semantics of type `$05`, allocated by type-`$10` parameter `$06`, remain unresolved;
+- original type `$18` completion/contact/lifetime logic remains partial; the POC completion trigger is explicitly an adapter;
+- type `$09` raw records remain intentionally separate from the 142 layout-derived collectible positions until source evidence establishes a relationship;
+- type `$28` retains a bounded platform adapter and has unresolved animation states 4/12/14 at command `$09`;
+- full original animation/state scheduling remains absent, including some spring-flight and post-loop/twist presentation differences;
+- generic lifetime/scheduler auditing for `$1B/$26/$28` is not as complete as the dedicated `$10/$21/$27` studies.
 
-- terrain sprite: `SPR_chaos_terrain_2`
-- world location: `(2112,832)`
-- corresponding local terrain coordinate: `(64,832)`
-
-The next fix must trace/regenerate the terrain/map composition so the block background follows the original background/transparent-plane rule. Do not manually paint over the rectangle, delete the canonical spring cell, or add a placement-specific cover object.
-
-The thin lime rectangle visible with F3 is a separate debug overlay and should remain only when F3 is enabled.
-
-### Animation/presentation limitations
-
-- Spring and player roll animations remain visibly different from the ROM.
-- Loop/twist traversal works, but the inherited presentation keeps Sonic rolling too often.
-- The full original animation/state scheduler is not yet ported.
-- Per-update physics must not be retuned to compensate for unverified PAL/NTSC or real-time cadence.
-
-### Object/lifetime limitations
-
-- Type `$21` was absent from POC 17.4 because its formal research was unfinished at the time. That blocker is now removed.
-- POC 17.4's type-`$27` implementation predates the completed formal Task 02 audit. POC 18 should reconcile its implementation with the verified strict 64/384 boundaries, 129-update sequence, contact, orientation, and respawn behavior.
-- Types `$1B` and `$26` have strong core state-machine evidence but incomplete formal generic lifetime/scheduler audits.
-- Type `$18` goal-sign graphics are verified, but original completion/lifetime behavior is still partial. Do not replace completion logic with guessed signpost behavior.
-- Type `$10` Task 04 is complete and merged. Its numeric parameter effects, contact rules, `$0F` replacement, and same-act respawn behavior are canonical research and may now be integrated. Canonical/user-facing item names remain unresolved.
-
-## POC 18 recommended scope
-
-POC 18 should start from the current POC GitHub `main` and current reference GitHub `main`, then make a bounded integration pass.
-
-Recommended order:
-
-1. Synchronize both repositories and record both starting commit SHAs.
-2. Treat POC 17.4 as the implementation baseline.
-3. Fix the `$31` spring rectangle at the terrain-generation/compositing source, not in the standalone spring sprite.
-4. Re-test moving and static spikes after the terrain regeneration.
-5. Integrate type `$21` from the completed formal study using all six exact placements, parameters, graphics, animation reachability, contact, orientation and lifetime behavior.
-6. Reconcile the existing type-`$27` POC code against the completed formal Task 02 study. Do not preserve earlier approximations where the research now gives exact behavior.
-7. Reconcile the existing monitor/type-`$10` POC implementation with the completed Task 04 study, preserving numeric parameter identities `$02/$04/$06` rather than guessing item names.
-8. Preserve existing verified movement, loops, twist, springs and placements unless a change is directly required by the new research or Windows feedback.
-9. Do not guess type-`$18` completion behavior.
-
-Prefer one coherent POC 18 archive over unrelated feature expansion.
-
-## POC 18 acceptance checks
-
-At minimum, Windows testing should verify:
-
-- POC builds and reaches THZ1 from a fresh extraction.
-- No cyan/green filled rectangle around the `$31` spring at `(2112,832)` with F3 off.
-- With F3 on, only the expected thin sampled-tile debug outline appears.
-- `$31` spring artwork, placement, launch direction and verified launch height remain unchanged.
-- Adjacent canonical static spike cells still damage on floor contact.
-- Moving spikes remain floor-aligned through their rise/retract cycle.
-- All six type-`$21` placements appear at their exact ROM coordinates and use their exact parameters.
-- Type `$21` patrol bounds, reversal, top-bounce/side-contact and defeat behavior agree with the reference fixtures.
-- All three type-`$27` placements remain exact.
-- Type `$27` uses strict <64 activation and >=384 removal behavior and does not acquire invented damage behavior.
-- All five type-`$10` placements remain exact with parameters `$06/$06/$04/$04/$02`.
-- Type `$10` ordinary overlap alone does nothing; successful top/side interaction requires `$D503.1` plus downward Y velocity, while bottom attack launches the object/player apart without consuming the placement.
-- Type `$10` successful top/side interaction converts to `$0F`, adds `10 00 00`, and does not same-act respawn.
-- Existing first-ramp, loops, twist, springs, platforms and rings show no obvious regression.
-- No fabricated objects, placements, graphics or completion marker are introduced.
-
-If the pass is too large to diagnose cleanly, split the implementation into test archives while keeping POC 18 as the eventual accepted source milestone.
+A final THZ1 closure audit should decide which of these are actual blockers for declaring the THZ1 POC milestone complete and which are documented future-fidelity items.
 
 ## Current research queue
 
