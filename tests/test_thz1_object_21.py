@@ -31,6 +31,15 @@ class Object21Tests(unittest.TestCase):
         self.assertTrue(all(row["aux0"] == "0x86" for row in placements))
         self.assertTrue(all(row["aux1"] == "0x98" for row in placements))
 
+    def test_grounding_probe_and_combined_side_contact(self):
+        rom = (ROOT.parent / "Sonic Chaos (Europe).sms").read_bytes()
+        rows = [m.run_grounding_fixture(rom, row) for row in m.load_placements()]
+        self.assertEqual([x["final_object_anchor_y"] for x in rows],
+                         [590, 846, 302, 878, 270, 238])
+        self.assertTrue(all(x["lookup_probe"]["y"] == x["first_integrated_y"] + 18 for x in rows))
+        self.assertTrue(all(x["collision_surface_y"] == x["ordinary_standing_sonic_anchor_y"] + 18 for x in rows))
+        self.assertTrue(all(x["ordinary_level_side_contact"] == "DAMAGE" for x in rows))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

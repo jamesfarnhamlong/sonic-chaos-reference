@@ -291,6 +291,17 @@
       "rom": "0x332F0"
     }
   },
+  "grounding_path": {
+    "callback_cpu": "0xB268",
+    "fixed_vector": "0x0320",
+    "object_floor_wrapper_cpu": "0x77CB",
+    "collision_lookup_cpu": "0x7666",
+    "probe_adjustment_cpu": "0x7690",
+    "probe_adjustment": 18,
+    "floor_projection_cpu": "0x70E7",
+    "handler_table_cpu": "0x77ED",
+    "anchor_contract": "object +$14/+$15 remains the integer world anchor; +18 is a temporary collision probe and the floor correction is subtracted from the anchor"
+  },
   "parameter": {
     "meaning": "leftward patrol span in units of 16 integer pixels",
     "left_bound_expression": "saved_origin_x - (parameter << 4)",
@@ -384,6 +395,230 @@
         ]
       }
     ],
+    "grounding": [
+      {
+        "placement": {
+          "world_x": 800,
+          "world_y": 606,
+          "parameter": "0x08"
+        },
+        "first_integrated_y": 608,
+        "lookup_probe": {
+          "x": 799,
+          "y": 626,
+          "expression": "first_integrated_y + 18"
+        },
+        "terrain_tile": "0x0B",
+        "terrain_map_address": "0xC999",
+        "collision_flags": "0x81",
+        "vertical_profile_value": 32,
+        "collision_surface_y": 608,
+        "final_object_anchor_y": 590,
+        "placement_to_anchor_delta": -16,
+        "mapping_piece_y_bounds": [
+          558,
+          589
+        ],
+        "top_bounce_threshold_y": 586,
+        "ordinary_standing_sonic_anchor_y": 590,
+        "ordinary_level_side_contact": "DAMAGE"
+      },
+      {
+        "placement": {
+          "world_x": 1248,
+          "world_y": 862,
+          "parameter": "0x06"
+        },
+        "first_integrated_y": 864,
+        "lookup_probe": {
+          "x": 1247,
+          "y": 882,
+          "expression": "first_integrated_y + 18"
+        },
+        "terrain_tile": "0x0B",
+        "terrain_map_address": "0xCDA7",
+        "collision_flags": "0x81",
+        "vertical_profile_value": 32,
+        "collision_surface_y": 864,
+        "final_object_anchor_y": 846,
+        "placement_to_anchor_delta": -16,
+        "mapping_piece_y_bounds": [
+          814,
+          845
+        ],
+        "top_bounce_threshold_y": 842,
+        "ordinary_standing_sonic_anchor_y": 846,
+        "ordinary_level_side_contact": "DAMAGE"
+      },
+      {
+        "placement": {
+          "world_x": 2048,
+          "world_y": 318,
+          "parameter": "0x06"
+        },
+        "first_integrated_y": 320,
+        "lookup_probe": {
+          "x": 2047,
+          "y": 338,
+          "expression": "first_integrated_y + 18"
+        },
+        "terrain_tile": "0x01",
+        "terrain_map_address": "0xC540",
+        "collision_flags": "0x81",
+        "vertical_profile_value": 32,
+        "collision_surface_y": 320,
+        "final_object_anchor_y": 302,
+        "placement_to_anchor_delta": -16,
+        "mapping_piece_y_bounds": [
+          270,
+          301
+        ],
+        "top_bounce_threshold_y": 298,
+        "ordinary_standing_sonic_anchor_y": 302,
+        "ordinary_level_side_contact": "DAMAGE"
+      },
+      {
+        "placement": {
+          "world_x": 3152,
+          "world_y": 894,
+          "parameter": "0x03"
+        },
+        "first_integrated_y": 896,
+        "lookup_probe": {
+          "x": 3151,
+          "y": 914,
+          "expression": "first_integrated_y + 18"
+        },
+        "terrain_tile": "0x01",
+        "terrain_map_address": "0xCE63",
+        "collision_flags": "0x81",
+        "vertical_profile_value": 32,
+        "collision_surface_y": 896,
+        "final_object_anchor_y": 878,
+        "placement_to_anchor_delta": -16,
+        "mapping_piece_y_bounds": [
+          846,
+          877
+        ],
+        "top_bounce_threshold_y": 874,
+        "ordinary_standing_sonic_anchor_y": 878,
+        "ordinary_level_side_contact": "DAMAGE"
+      },
+      {
+        "placement": {
+          "world_x": 3296,
+          "world_y": 286,
+          "parameter": "0x04"
+        },
+        "first_integrated_y": 288,
+        "lookup_probe": {
+          "x": 3295,
+          "y": 306,
+          "expression": "first_integrated_y + 18"
+        },
+        "terrain_tile": "0x01",
+        "terrain_map_address": "0xC4E7",
+        "collision_flags": "0x81",
+        "vertical_profile_value": 32,
+        "collision_surface_y": 288,
+        "final_object_anchor_y": 270,
+        "placement_to_anchor_delta": -16,
+        "mapping_piece_y_bounds": [
+          238,
+          269
+        ],
+        "top_bounce_threshold_y": 266,
+        "ordinary_standing_sonic_anchor_y": 270,
+        "ordinary_level_side_contact": "DAMAGE"
+      },
+      {
+        "placement": {
+          "world_x": 2400,
+          "world_y": 254,
+          "parameter": "0x02"
+        },
+        "first_integrated_y": 256,
+        "lookup_probe": {
+          "x": 2399,
+          "y": 274,
+          "expression": "first_integrated_y + 18"
+        },
+        "terrain_tile": "0xA3",
+        "terrain_map_address": "0xC44B",
+        "collision_flags": "0x84",
+        "vertical_profile_value": 32,
+        "collision_surface_y": 256,
+        "final_object_anchor_y": 238,
+        "placement_to_anchor_delta": -16,
+        "mapping_piece_y_bounds": [
+          206,
+          237
+        ],
+        "top_bounce_threshold_y": 234,
+        "ordinary_standing_sonic_anchor_y": 238,
+        "ordinary_level_side_contact": "DAMAGE"
+      }
+    ],
+    "combined_grounding_contact": {
+      "fixtures": [
+        {
+          "placement": {
+            "world_x": 800,
+            "world_y": 606,
+            "parameter": "0x08"
+          },
+          "first_integrated_y": 608,
+          "lookup_probe": {
+            "x": 799,
+            "y": 626,
+            "expression": "first_integrated_y + 18"
+          },
+          "terrain_tile": "0x0B",
+          "terrain_map_address": "0xC999",
+          "collision_flags": "0x81",
+          "vertical_profile_value": 32,
+          "collision_surface_y": 608,
+          "final_object_anchor_y": 590,
+          "placement_to_anchor_delta": -16,
+          "mapping_piece_y_bounds": [
+            558,
+            589
+          ],
+          "top_bounce_threshold_y": 586,
+          "ordinary_standing_sonic_anchor_y": 590,
+          "ordinary_level_side_contact": "DAMAGE"
+        },
+        {
+          "placement": {
+            "world_x": 2400,
+            "world_y": 254,
+            "parameter": "0x02"
+          },
+          "first_integrated_y": 256,
+          "lookup_probe": {
+            "x": 2399,
+            "y": 274,
+            "expression": "first_integrated_y + 18"
+          },
+          "terrain_tile": "0xA3",
+          "terrain_map_address": "0xC44B",
+          "collision_flags": "0x84",
+          "vertical_profile_value": 32,
+          "collision_surface_y": 256,
+          "final_object_anchor_y": 238,
+          "placement_to_anchor_delta": -16,
+          "mapping_piece_y_bounds": [
+            206,
+            237
+          ],
+          "top_bounce_threshold_y": 234,
+          "ordinary_standing_sonic_anchor_y": 238,
+          "ordinary_level_side_contact": "DAMAGE"
+        }
+      ],
+      "contract": "ground the object with $B268, derive ordinary Sonic anchor as surface_y-18, retain horizontal overlap inside +/-20, then apply the $B2AF split",
+      "expected": "ordinary lower-side contact -> DAMAGE"
+    },
     "contact": {
       "top_contact": {
         "requested_player_state": 11,

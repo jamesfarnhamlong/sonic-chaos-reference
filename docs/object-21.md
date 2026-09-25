@@ -122,6 +122,13 @@ onto terrain each patrol update. In the two fixtures above, the stored Y settled
 from 254 to 238 and from 606 to 590 respectively. This is original integer/fixed-
 point behavior, not a request to pre-adjust the placement by 16 pixels.
 
+Task 07 closes the anchor ambiguity: `$7666` adds 18 only to the lookup probe.
+The stored/rendered object anchor remains `+$14/+$15`; `$70E7` applies its
+profile correction back to that unshifted field. All six THZ1 placements settle
+on their first active patrol update to Y `590, 846, 302, 878, 270, 238` in
+placement order. See [the visual/anchor closure](thz1-visual-anchor-closure.md)
+for the full probe, surface, visible-piece and combined contact table.
+
 ## State machine and animation
 
 The type entry at ROM `$065FA` is CPU pointer `$B1B6`. Because `$21 < $26`, the

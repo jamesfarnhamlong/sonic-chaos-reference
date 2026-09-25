@@ -27,7 +27,7 @@ Current `main` baseline:
 - 64 recovered ROM regions
 - 12,240 recovered bytes
 - 4,731 decoded instructions
-- 37,622 controlled original-Z80 comparisons
+- 37,630 controlled original-Z80 comparisons
 - 524,288-byte byte-identical reconstruction
 - SHA-256 matches the canonical ROM above
 
@@ -64,6 +64,10 @@ is specified in `docs/player-state-11.md` and deterministic fixtures are in
 Task 06 adds three bounded regions (generic Y/X renderer, state `$11`, and
 shared overlap), for 64 regions, 12,240 bytes, 4,731 instructions, and 37,622
 controlled comparisons. POC 18.4 was inspected read-only at `acf154b7`.
+
+Task 07 adds no recovered regions and eight controlled comparisons. It closes
+the type-`$21` floor anchor, reconstructs normal-Sonic state-`$11` graphics,
+and proves the two type-`$10` platform regions pixel-identical to POC 18.5.
 
 ### Task 01 — type `$21`: COMPLETE
 

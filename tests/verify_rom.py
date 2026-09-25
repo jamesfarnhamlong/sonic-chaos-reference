@@ -7,6 +7,7 @@ from oracle import Oracle
 from reference import lookup, project_floor, project_side, angle_velocity
 import thz1_object_27 as object27
 import thz1_object_10 as object10
+import thz1_object_21 as object21
 import player_state_11 as task06
 
 def verify(path, output):
@@ -18,6 +19,7 @@ def verify(path, output):
                   object10_contact=0, object10_reward=0,
                   object10_airborne=0, object10_lifetime=0,
                   object21_init=0, object21_patrol=0, object21_contact=0,
+                  object21_grounding=0, object21_ground_contact=0,
                   object27_create=0, object27_init=0, object27_proximity=0,
                   object27_oscillation=0, object27_removal=0,
                   object27_contact=0, object27_lifetime=0,
@@ -357,6 +359,19 @@ def verify(path, output):
     assert task06_report['static_spikes']['header_flags']=='0x85'
     assert task06_report['type_21_contact']['player_extents']=={'x':9,'y':18}
     counts['windows_discrepancies']=171
+
+    grounding = [object21.run_grounding_fixture(rom, row)
+                 for row in object21.load_placements()]
+    assert [row['final_object_anchor_y'] for row in grounding] == [590,846,302,878,270,238]
+    assert all(row['lookup_probe']['y'] == row['first_integrated_y'] + 18 for row in grounding)
+    counts['object21_grounding'] += 6
+    for row in (grounding[0], grounding[-1]):
+        combined = object21._contact_oracle(rom, row['final_object_anchor_y'])
+        combined.word(0xD514, row['ordinary_standing_sonic_anchor_y'])
+        combined.call(0xB2AF)
+        assert combined.mem[0xD3B0] == 0xFF
+        assert combined.mem[0xD502] != 0x0B
+        counts['object21_ground_contact'] += 1
 
     report=dict(rom_sha256=SHA256,counts=counts,total=sum(counts.values()),
                 first_ramp_launch=launch,

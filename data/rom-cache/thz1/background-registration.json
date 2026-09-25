@@ -1,0 +1,3939 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "evidence": "deterministic ROM background reconstruction and POC read-only pixel comparison",
+  "source": {
+    "layout_stream_rom": "0x48000",
+    "layout_dimensions_blocks": [
+      128,
+      32
+    ],
+    "block_pointer_table_rom": "0x44000",
+    "primary_tile_stream_rom": "0x40F9E",
+    "vram_base_tile": "0x0C0",
+    "palette_selector": "0x15"
+  },
+  "blocks": [
+    {
+      "block_id": "0x01",
+      "pointer_entry_rom": "0x44002",
+      "mapping_cpu": "0x8220",
+      "mapping_rom": "0x44220",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00C1",
+          "vram_tile": "0x0C1",
+          "source_tile_index": 1,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00C1",
+          "vram_tile": "0x0C1",
+          "source_tile_index": 1,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00C1",
+          "vram_tile": "0x0C1",
+          "source_tile_index": 1,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00C1",
+          "vram_tile": "0x0C1",
+          "source_tile_index": 1,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00C2",
+          "vram_tile": "0x0C2",
+          "source_tile_index": 2,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00C3",
+          "vram_tile": "0x0C3",
+          "source_tile_index": 3,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00C2",
+          "vram_tile": "0x0C2",
+          "source_tile_index": 2,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00C3",
+          "vram_tile": "0x0C3",
+          "source_tile_index": 3,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00C4",
+          "vram_tile": "0x0C4",
+          "source_tile_index": 4,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00C5",
+          "vram_tile": "0x0C5",
+          "source_tile_index": 5,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00C6",
+          "vram_tile": "0x0C6",
+          "source_tile_index": 6,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00C7",
+          "vram_tile": "0x0C7",
+          "source_tile_index": 7,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C8",
+          "vram_tile": "0x0C8",
+          "source_tile_index": 8,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00C9",
+          "vram_tile": "0x0C9",
+          "source_tile_index": 9,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00CA",
+          "vram_tile": "0x0CA",
+          "source_tile_index": 10,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00CB",
+          "vram_tile": "0x0CB",
+          "source_tile_index": 11,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x03",
+      "pointer_entry_rom": "0x44006",
+      "mapping_cpu": "0x8260",
+      "mapping_rom": "0x44260",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00D4",
+          "vram_tile": "0x0D4",
+          "source_tile_index": 20,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00D5",
+          "vram_tile": "0x0D5",
+          "source_tile_index": 21,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00D6",
+          "vram_tile": "0x0D6",
+          "source_tile_index": 22,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00D7",
+          "vram_tile": "0x0D7",
+          "source_tile_index": 23,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00D8",
+          "vram_tile": "0x0D8",
+          "source_tile_index": 24,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00DB",
+          "vram_tile": "0x0DB",
+          "source_tile_index": 27,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x02DB",
+          "vram_tile": "0x0DB",
+          "source_tile_index": 27,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x02D8",
+          "vram_tile": "0x0D8",
+          "source_tile_index": 24,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C8",
+          "vram_tile": "0x0C8",
+          "source_tile_index": 8,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00C9",
+          "vram_tile": "0x0C9",
+          "source_tile_index": 9,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00CA",
+          "vram_tile": "0x0CA",
+          "source_tile_index": 10,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00CB",
+          "vram_tile": "0x0CB",
+          "source_tile_index": 11,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x04",
+      "pointer_entry_rom": "0x44008",
+      "mapping_cpu": "0x8280",
+      "mapping_rom": "0x44280",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00D4",
+          "vram_tile": "0x0D4",
+          "source_tile_index": 20,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00D5",
+          "vram_tile": "0x0D5",
+          "source_tile_index": 21,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00D6",
+          "vram_tile": "0x0D6",
+          "source_tile_index": 22,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00D7",
+          "vram_tile": "0x0D7",
+          "source_tile_index": 23,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00D8",
+          "vram_tile": "0x0D8",
+          "source_tile_index": 24,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00DB",
+          "vram_tile": "0x0DB",
+          "source_tile_index": 27,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x02DB",
+          "vram_tile": "0x0DB",
+          "source_tile_index": 27,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x02D8",
+          "vram_tile": "0x0D8",
+          "source_tile_index": 24,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00D8",
+          "vram_tile": "0x0D8",
+          "source_tile_index": 24,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00DB",
+          "vram_tile": "0x0DB",
+          "source_tile_index": 27,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x06",
+      "pointer_entry_rom": "0x4400C",
+      "mapping_cpu": "0x82C0",
+      "mapping_rom": "0x442C0",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00D4",
+          "vram_tile": "0x0D4",
+          "source_tile_index": 20,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00D5",
+          "vram_tile": "0x0D5",
+          "source_tile_index": 21,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00D6",
+          "vram_tile": "0x0D6",
+          "source_tile_index": 22,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00D5",
+          "vram_tile": "0x0D5",
+          "source_tile_index": 21,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00D8",
+          "vram_tile": "0x0D8",
+          "source_tile_index": 24,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x02DB",
+          "vram_tile": "0x0DB",
+          "source_tile_index": 27,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C8",
+          "vram_tile": "0x0C8",
+          "source_tile_index": 8,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00C9",
+          "vram_tile": "0x0C9",
+          "source_tile_index": 9,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00CA",
+          "vram_tile": "0x0CA",
+          "source_tile_index": 10,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00C9",
+          "vram_tile": "0x0C9",
+          "source_tile_index": 9,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x07",
+      "pointer_entry_rom": "0x4400E",
+      "mapping_cpu": "0x82E0",
+      "mapping_rom": "0x442E0",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00D6",
+          "vram_tile": "0x0D6",
+          "source_tile_index": 22,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00D5",
+          "vram_tile": "0x0D5",
+          "source_tile_index": 21,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00D6",
+          "vram_tile": "0x0D6",
+          "source_tile_index": 22,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00D7",
+          "vram_tile": "0x0D7",
+          "source_tile_index": 23,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00DB",
+          "vram_tile": "0x0DB",
+          "source_tile_index": 27,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00DA",
+          "vram_tile": "0x0DA",
+          "source_tile_index": 26,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00D9",
+          "vram_tile": "0x0D9",
+          "source_tile_index": 25,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x02D8",
+          "vram_tile": "0x0D8",
+          "source_tile_index": 24,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00CA",
+          "vram_tile": "0x0CA",
+          "source_tile_index": 10,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00C9",
+          "vram_tile": "0x0C9",
+          "source_tile_index": 9,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00CA",
+          "vram_tile": "0x0CA",
+          "source_tile_index": 10,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00CB",
+          "vram_tile": "0x0CB",
+          "source_tile_index": 11,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x0B",
+      "pointer_entry_rom": "0x44016",
+      "mapping_cpu": "0x8360",
+      "mapping_rom": "0x44360",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00DD",
+          "vram_tile": "0x0DD",
+          "source_tile_index": 29,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00DC",
+          "vram_tile": "0x0DC",
+          "source_tile_index": 28,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00DD",
+          "vram_tile": "0x0DD",
+          "source_tile_index": 29,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00DC",
+          "vram_tile": "0x0DC",
+          "source_tile_index": 28,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00C2",
+          "vram_tile": "0x0C2",
+          "source_tile_index": 2,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00C3",
+          "vram_tile": "0x0C3",
+          "source_tile_index": 3,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00C2",
+          "vram_tile": "0x0C2",
+          "source_tile_index": 2,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00C3",
+          "vram_tile": "0x0C3",
+          "source_tile_index": 3,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00C4",
+          "vram_tile": "0x0C4",
+          "source_tile_index": 4,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00C5",
+          "vram_tile": "0x0C5",
+          "source_tile_index": 5,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00C6",
+          "vram_tile": "0x0C6",
+          "source_tile_index": 6,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00C7",
+          "vram_tile": "0x0C7",
+          "source_tile_index": 7,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C8",
+          "vram_tile": "0x0C8",
+          "source_tile_index": 8,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00C9",
+          "vram_tile": "0x0C9",
+          "source_tile_index": 9,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00CA",
+          "vram_tile": "0x0CA",
+          "source_tile_index": 10,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00CB",
+          "vram_tile": "0x0CB",
+          "source_tile_index": 11,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x12",
+      "pointer_entry_rom": "0x44024",
+      "mapping_cpu": "0x8400",
+      "mapping_rom": "0x44400",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00CE",
+          "vram_tile": "0x0CE",
+          "source_tile_index": 14,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00CF",
+          "vram_tile": "0x0CF",
+          "source_tile_index": 15,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00CE",
+          "vram_tile": "0x0CE",
+          "source_tile_index": 14,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00CF",
+          "vram_tile": "0x0CF",
+          "source_tile_index": 15,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00D0",
+          "vram_tile": "0x0D0",
+          "source_tile_index": 16,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00D1",
+          "vram_tile": "0x0D1",
+          "source_tile_index": 17,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00D0",
+          "vram_tile": "0x0D0",
+          "source_tile_index": 16,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00D1",
+          "vram_tile": "0x0D1",
+          "source_tile_index": 17,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00E1",
+          "vram_tile": "0x0E1",
+          "source_tile_index": 33,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00D3",
+          "vram_tile": "0x0D3",
+          "source_tile_index": 19,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00DF",
+          "vram_tile": "0x0DF",
+          "source_tile_index": 31,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00DF",
+          "vram_tile": "0x0DF",
+          "source_tile_index": 31,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00C8",
+          "vram_tile": "0x0C8",
+          "source_tile_index": 8,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00CB",
+          "vram_tile": "0x0CB",
+          "source_tile_index": 11,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x40",
+      "pointer_entry_rom": "0x44080",
+      "mapping_cpu": "0x8960",
+      "mapping_rom": "0x44960",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x0913",
+          "vram_tile": "0x113",
+          "source_tile_index": 83,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x0914",
+          "vram_tile": "0x114",
+          "source_tile_index": 84,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x0913",
+          "vram_tile": "0x113",
+          "source_tile_index": 83,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x0914",
+          "vram_tile": "0x114",
+          "source_tile_index": 84,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x0915",
+          "vram_tile": "0x115",
+          "source_tile_index": 85,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x0916",
+          "vram_tile": "0x116",
+          "source_tile_index": 86,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x0915",
+          "vram_tile": "0x115",
+          "source_tile_index": 85,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x0916",
+          "vram_tile": "0x116",
+          "source_tile_index": 86,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0x41",
+      "pointer_entry_rom": "0x44082",
+      "mapping_cpu": "0x8980",
+      "mapping_rom": "0x44980",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x0913",
+          "vram_tile": "0x113",
+          "source_tile_index": 83,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x0914",
+          "vram_tile": "0x114",
+          "source_tile_index": 84,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x0913",
+          "vram_tile": "0x113",
+          "source_tile_index": 83,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x0914",
+          "vram_tile": "0x114",
+          "source_tile_index": 84,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x0915",
+          "vram_tile": "0x115",
+          "source_tile_index": 85,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x0916",
+          "vram_tile": "0x116",
+          "source_tile_index": 86,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x0915",
+          "vram_tile": "0x115",
+          "source_tile_index": 85,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x0916",
+          "vram_tile": "0x116",
+          "source_tile_index": 86,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": true,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0xC6",
+      "pointer_entry_rom": "0x4418C",
+      "mapping_cpu": "0x9080",
+      "mapping_rom": "0x45080",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x0173",
+          "vram_tile": "0x173",
+          "source_tile_index": 179,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x0174",
+          "vram_tile": "0x174",
+          "source_tile_index": 180,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x0175",
+          "vram_tile": "0x175",
+          "source_tile_index": 181,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x0176",
+          "vram_tile": "0x176",
+          "source_tile_index": 182,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x0177",
+          "vram_tile": "0x177",
+          "source_tile_index": 183,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x0178",
+          "vram_tile": "0x178",
+          "source_tile_index": 184,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x0179",
+          "vram_tile": "0x179",
+          "source_tile_index": 185,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x017A",
+          "vram_tile": "0x17A",
+          "source_tile_index": 186,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x017B",
+          "vram_tile": "0x17B",
+          "source_tile_index": 187,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x017C",
+          "vram_tile": "0x17C",
+          "source_tile_index": 188,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x017D",
+          "vram_tile": "0x17D",
+          "source_tile_index": 189,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x017E",
+          "vram_tile": "0x17E",
+          "source_tile_index": 190,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x017F",
+          "vram_tile": "0x17F",
+          "source_tile_index": 191,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0xC8",
+      "pointer_entry_rom": "0x44190",
+      "mapping_cpu": "0x90C0",
+      "mapping_rom": "0x450C0",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x017E",
+          "vram_tile": "0x17E",
+          "source_tile_index": 190,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x017F",
+          "vram_tile": "0x17F",
+          "source_tile_index": 191,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x017E",
+          "vram_tile": "0x17E",
+          "source_tile_index": 190,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x017F",
+          "vram_tile": "0x17F",
+          "source_tile_index": 191,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x017E",
+          "vram_tile": "0x17E",
+          "source_tile_index": 190,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x017F",
+          "vram_tile": "0x17F",
+          "source_tile_index": 191,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x017E",
+          "vram_tile": "0x17E",
+          "source_tile_index": 190,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x017F",
+          "vram_tile": "0x17F",
+          "source_tile_index": 191,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0xC9",
+      "pointer_entry_rom": "0x44192",
+      "mapping_cpu": "0x90E0",
+      "mapping_rom": "0x450E0",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x0189",
+          "vram_tile": "0x189",
+          "source_tile_index": 201,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x018A",
+          "vram_tile": "0x18A",
+          "source_tile_index": 202,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x038A",
+          "vram_tile": "0x18A",
+          "source_tile_index": 202,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x0389",
+          "vram_tile": "0x189",
+          "source_tile_index": 201,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x018B",
+          "vram_tile": "0x18B",
+          "source_tile_index": 203,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x018C",
+          "vram_tile": "0x18C",
+          "source_tile_index": 204,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x018D",
+          "vram_tile": "0x18D",
+          "source_tile_index": 205,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x018E",
+          "vram_tile": "0x18E",
+          "source_tile_index": 206,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x018F",
+          "vram_tile": "0x18F",
+          "source_tile_index": 207,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x0190",
+          "vram_tile": "0x190",
+          "source_tile_index": 208,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x0191",
+          "vram_tile": "0x191",
+          "source_tile_index": 209,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x038F",
+          "vram_tile": "0x18F",
+          "source_tile_index": 207,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x0192",
+          "vram_tile": "0x192",
+          "source_tile_index": 210,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x0193",
+          "vram_tile": "0x193",
+          "source_tile_index": 211,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x0194",
+          "vram_tile": "0x194",
+          "source_tile_index": 212,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x0392",
+          "vram_tile": "0x192",
+          "source_tile_index": 210,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0xD4",
+      "pointer_entry_rom": "0x441A8",
+      "mapping_cpu": "0x9220",
+      "mapping_rom": "0x45220",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x01A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x03A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x01A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x03A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x019E",
+          "vram_tile": "0x19E",
+          "source_tile_index": 222,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x019F",
+          "vram_tile": "0x19F",
+          "source_tile_index": 223,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x019E",
+          "vram_tile": "0x19E",
+          "source_tile_index": 222,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x019F",
+          "vram_tile": "0x19F",
+          "source_tile_index": 223,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x019E",
+          "vram_tile": "0x19E",
+          "source_tile_index": 222,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x019F",
+          "vram_tile": "0x19F",
+          "source_tile_index": 223,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0xD6",
+      "pointer_entry_rom": "0x441AC",
+      "mapping_cpu": "0x9260",
+      "mapping_rom": "0x45260",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 1,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 2,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 3,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 4,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 5,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 6,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 7,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 8,
+          "attribute": "0x11A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 9,
+          "attribute": "0x13A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 10,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 11,
+          "attribute": "0x10C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 12,
+          "attribute": "0x119E",
+          "vram_tile": "0x19E",
+          "source_tile_index": 222,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 13,
+          "attribute": "0x119F",
+          "vram_tile": "0x19F",
+          "source_tile_index": 223,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 14,
+          "attribute": "0x11A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        },
+        {
+          "piece": 15,
+          "attribute": "0x13A2",
+          "vram_tile": "0x1A2",
+          "source_tile_index": 226,
+          "x_flip": true,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": true
+        }
+      ]
+    },
+    {
+      "block_id": "0xE8",
+      "pointer_entry_rom": "0x441D0",
+      "mapping_cpu": "0x94A0",
+      "mapping_rom": "0x454A0",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x01B4",
+          "vram_tile": "0x1B4",
+          "source_tile_index": 244,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x0182",
+          "vram_tile": "0x182",
+          "source_tile_index": 194,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x01B4",
+          "vram_tile": "0x1B4",
+          "source_tile_index": 244,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x01B5",
+          "vram_tile": "0x1B5",
+          "source_tile_index": 245,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x0185",
+          "vram_tile": "0x185",
+          "source_tile_index": 197,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x0182",
+          "vram_tile": "0x182",
+          "source_tile_index": 194,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x01B6",
+          "vram_tile": "0x1B6",
+          "source_tile_index": 246,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x01B5",
+          "vram_tile": "0x1B5",
+          "source_tile_index": 245,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x0187",
+          "vram_tile": "0x187",
+          "source_tile_index": 199,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x0188",
+          "vram_tile": "0x188",
+          "source_tile_index": 200,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x01B7",
+          "vram_tile": "0x1B7",
+          "source_tile_index": 247,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x01B5",
+          "vram_tile": "0x1B5",
+          "source_tile_index": 245,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x0186",
+          "vram_tile": "0x186",
+          "source_tile_index": 198,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0xE9",
+      "pointer_entry_rom": "0x441D2",
+      "mapping_cpu": "0x94C0",
+      "mapping_rom": "0x454C0",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x01B8",
+          "vram_tile": "0x1B8",
+          "source_tile_index": 248,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x01B5",
+          "vram_tile": "0x1B5",
+          "source_tile_index": 245,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x01B6",
+          "vram_tile": "0x1B6",
+          "source_tile_index": 246,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x01B7",
+          "vram_tile": "0x1B7",
+          "source_tile_index": 247,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x01B8",
+          "vram_tile": "0x1B8",
+          "source_tile_index": 248,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    },
+    {
+      "block_id": "0xFE",
+      "pointer_entry_rom": "0x441FC",
+      "mapping_cpu": "0x9620",
+      "mapping_rom": "0x45620",
+      "pieces": [
+        {
+          "piece": 0,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 1,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 2,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 3,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 4,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 5,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 6,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 7,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 8,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 9,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 10,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 11,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 12,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 13,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 14,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        },
+        {
+          "piece": 15,
+          "attribute": "0x00C0",
+          "vram_tile": "0x0C0",
+          "source_tile_index": 0,
+          "x_flip": false,
+          "y_flip": false,
+          "palette_1": false,
+          "priority": false
+        }
+      ]
+    }
+  ],
+  "patches": [
+    {
+      "name": "type10-04-336-270",
+      "object": [
+        336,
+        270
+      ],
+      "surface_y": 288,
+      "box": [
+        288,
+        64,
+        384,
+        336
+      ],
+      "layout_cells": [
+        {
+          "cell": [
+            9,
+            2
+          ],
+          "world_origin": [
+            288,
+            64
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            10,
+            2
+          ],
+          "world_origin": [
+            320,
+            64
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            11,
+            2
+          ],
+          "world_origin": [
+            352,
+            64
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            9,
+            3
+          ],
+          "world_origin": [
+            288,
+            96
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            10,
+            3
+          ],
+          "world_origin": [
+            320,
+            96
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            11,
+            3
+          ],
+          "world_origin": [
+            352,
+            96
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            9,
+            4
+          ],
+          "world_origin": [
+            288,
+            128
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            10,
+            4
+          ],
+          "world_origin": [
+            320,
+            128
+          ],
+          "block_id": "0xE8",
+          "block_mapping_cpu": "0x94A0",
+          "block_mapping_rom": "0x454A0"
+        },
+        {
+          "cell": [
+            11,
+            4
+          ],
+          "world_origin": [
+            352,
+            128
+          ],
+          "block_id": "0xC9",
+          "block_mapping_cpu": "0x90E0",
+          "block_mapping_rom": "0x450E0"
+        },
+        {
+          "cell": [
+            9,
+            5
+          ],
+          "world_origin": [
+            288,
+            160
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            10,
+            5
+          ],
+          "world_origin": [
+            320,
+            160
+          ],
+          "block_id": "0xE9",
+          "block_mapping_cpu": "0x94C0",
+          "block_mapping_rom": "0x454C0"
+        },
+        {
+          "cell": [
+            11,
+            5
+          ],
+          "world_origin": [
+            352,
+            160
+          ],
+          "block_id": "0xC6",
+          "block_mapping_cpu": "0x9080",
+          "block_mapping_rom": "0x45080"
+        },
+        {
+          "cell": [
+            9,
+            6
+          ],
+          "world_origin": [
+            288,
+            192
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            10,
+            6
+          ],
+          "world_origin": [
+            320,
+            192
+          ],
+          "block_id": "0x41",
+          "block_mapping_cpu": "0x8980",
+          "block_mapping_rom": "0x44980"
+        },
+        {
+          "cell": [
+            11,
+            6
+          ],
+          "world_origin": [
+            352,
+            192
+          ],
+          "block_id": "0xC8",
+          "block_mapping_cpu": "0x90C0",
+          "block_mapping_rom": "0x450C0"
+        },
+        {
+          "cell": [
+            9,
+            7
+          ],
+          "world_origin": [
+            288,
+            224
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            10,
+            7
+          ],
+          "world_origin": [
+            320,
+            224
+          ],
+          "block_id": "0x40",
+          "block_mapping_cpu": "0x8960",
+          "block_mapping_rom": "0x44960"
+        },
+        {
+          "cell": [
+            11,
+            7
+          ],
+          "world_origin": [
+            352,
+            224
+          ],
+          "block_id": "0xC8",
+          "block_mapping_cpu": "0x90C0",
+          "block_mapping_rom": "0x450C0"
+        },
+        {
+          "cell": [
+            9,
+            8
+          ],
+          "world_origin": [
+            288,
+            256
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            10,
+            8
+          ],
+          "world_origin": [
+            320,
+            256
+          ],
+          "block_id": "0xD4",
+          "block_mapping_cpu": "0x9220",
+          "block_mapping_rom": "0x45220"
+        },
+        {
+          "cell": [
+            11,
+            8
+          ],
+          "world_origin": [
+            352,
+            256
+          ],
+          "block_id": "0xC8",
+          "block_mapping_cpu": "0x90C0",
+          "block_mapping_rom": "0x450C0"
+        },
+        {
+          "cell": [
+            9,
+            9
+          ],
+          "world_origin": [
+            288,
+            288
+          ],
+          "block_id": "0x12",
+          "block_mapping_cpu": "0x8400",
+          "block_mapping_rom": "0x44400"
+        },
+        {
+          "cell": [
+            10,
+            9
+          ],
+          "world_origin": [
+            320,
+            288
+          ],
+          "block_id": "0x01",
+          "block_mapping_cpu": "0x8220",
+          "block_mapping_rom": "0x44220"
+        },
+        {
+          "cell": [
+            11,
+            9
+          ],
+          "world_origin": [
+            352,
+            288
+          ],
+          "block_id": "0x0B",
+          "block_mapping_cpu": "0x8360",
+          "block_mapping_rom": "0x44360"
+        },
+        {
+          "cell": [
+            9,
+            10
+          ],
+          "world_origin": [
+            288,
+            320
+          ],
+          "block_id": "0x03",
+          "block_mapping_cpu": "0x8260",
+          "block_mapping_rom": "0x44260"
+        },
+        {
+          "cell": [
+            10,
+            10
+          ],
+          "world_origin": [
+            320,
+            320
+          ],
+          "block_id": "0x04",
+          "block_mapping_cpu": "0x8280",
+          "block_mapping_rom": "0x44280"
+        },
+        {
+          "cell": [
+            11,
+            10
+          ],
+          "world_origin": [
+            352,
+            320
+          ],
+          "block_id": "0x03",
+          "block_mapping_cpu": "0x8260",
+          "block_mapping_rom": "0x44260"
+        }
+      ],
+      "sample_x_palette_transitions": [
+        {
+          "y": 64,
+          "palette_index": 0
+        },
+        {
+          "y": 128,
+          "palette_index": 1
+        },
+        {
+          "y": 130,
+          "palette_index": 2
+        },
+        {
+          "y": 138,
+          "palette_index": 3
+        },
+        {
+          "y": 148,
+          "palette_index": 0
+        },
+        {
+          "y": 288,
+          "palette_index": 1
+        },
+        {
+          "y": 297,
+          "palette_index": 9
+        },
+        {
+          "y": 300,
+          "palette_index": 4
+        },
+        {
+          "y": 308,
+          "palette_index": 8
+        },
+        {
+          "y": 312,
+          "palette_index": 14
+        },
+        {
+          "y": 316,
+          "palette_index": 15
+        },
+        {
+          "y": 317,
+          "palette_index": 4
+        },
+        {
+          "y": 320,
+          "palette_index": 8
+        },
+        {
+          "y": 321,
+          "palette_index": 13
+        },
+        {
+          "y": 323,
+          "palette_index": 8
+        },
+        {
+          "y": 328,
+          "palette_index": 14
+        }
+      ],
+      "canonical_indexed_crop_sha256": "be75d6164980b45c9f5ca3d1dd8f1ff33dfd28e72767ff2b7af0bca9055a2cc1",
+      "canonical_rgba_crop_sha256": "55335341562d9f98a53aca40496f4428a6d52fa82c6565a66f12e59ab6953372",
+      "platform_visual_rows": {
+        "background_palette_index": 0,
+        "first_non_background_y_at_object_x": 288,
+        "top_block_world_y_bounds": [
+          288,
+          319
+        ],
+        "top_block_row_non_background_counts": [
+          {
+            "y": 288,
+            "non_background_index_pixels": 64
+          },
+          {
+            "y": 289,
+            "non_background_index_pixels": 67
+          },
+          {
+            "y": 290,
+            "non_background_index_pixels": 69
+          },
+          {
+            "y": 291,
+            "non_background_index_pixels": 69
+          },
+          {
+            "y": 292,
+            "non_background_index_pixels": 71
+          },
+          {
+            "y": 293,
+            "non_background_index_pixels": 75
+          },
+          {
+            "y": 294,
+            "non_background_index_pixels": 79
+          },
+          {
+            "y": 295,
+            "non_background_index_pixels": 80
+          },
+          {
+            "y": 296,
+            "non_background_index_pixels": 80
+          },
+          {
+            "y": 297,
+            "non_background_index_pixels": 83
+          },
+          {
+            "y": 298,
+            "non_background_index_pixels": 85
+          },
+          {
+            "y": 299,
+            "non_background_index_pixels": 85
+          },
+          {
+            "y": 300,
+            "non_background_index_pixels": 87
+          },
+          {
+            "y": 301,
+            "non_background_index_pixels": 91
+          },
+          {
+            "y": 302,
+            "non_background_index_pixels": 95
+          },
+          {
+            "y": 303,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 304,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 305,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 306,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 307,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 308,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 309,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 310,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 311,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 312,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 313,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 314,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 315,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 316,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 317,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 318,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 319,
+            "non_background_index_pixels": 96
+          }
+        ],
+        "empty_16_rows_below_collision_surface": false
+      },
+      "poc_18_5": {
+        "commit": "726b16eafbc92d4240fa182bb6ef699cfbcf923a",
+        "asset": "sprites/SPR_chaos_terrain_0/00a33cb5-8582-4ca3-899e-1d3b0d810dca.png",
+        "asset_manifest_sha256": "35d8f6ea37ed9d83cb114011af7603b568eb353bac0d12270a2570e1b30932f2",
+        "rgba_crop_sha256": "91b7e0a10cd773a67cfbad0b7348ba945815ecdbad4acc9323d79df0d2d68316",
+        "exact_rgba_match": false,
+        "first_mismatch": 13862,
+        "mismatch_world_rows": [
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239
+        ],
+        "platform_registration_box": [
+          288,
+          256,
+          384,
+          336
+        ],
+        "canonical_platform_rgba_sha256": "bec00c782efa5af7dfab5e866cf05e3a85b846d916ea670473e3db89341916c0",
+        "poc_platform_rgba_sha256": "bec00c782efa5af7dfab5e866cf05e3a85b846d916ea670473e3db89341916c0",
+        "platform_exact_rgba_match": true
+      }
+    },
+    {
+      "name": "type10-04-1472-110",
+      "object": [
+        1472,
+        110
+      ],
+      "surface_y": 128,
+      "box": [
+        1424,
+        64,
+        1520,
+        176
+      ],
+      "layout_cells": [
+        {
+          "cell": [
+            44,
+            2
+          ],
+          "world_origin": [
+            1408,
+            64
+          ],
+          "block_id": "0x41",
+          "block_mapping_cpu": "0x8980",
+          "block_mapping_rom": "0x44980"
+        },
+        {
+          "cell": [
+            45,
+            2
+          ],
+          "world_origin": [
+            1440,
+            64
+          ],
+          "block_id": "0x41",
+          "block_mapping_cpu": "0x8980",
+          "block_mapping_rom": "0x44980"
+        },
+        {
+          "cell": [
+            46,
+            2
+          ],
+          "world_origin": [
+            1472,
+            64
+          ],
+          "block_id": "0x41",
+          "block_mapping_cpu": "0x8980",
+          "block_mapping_rom": "0x44980"
+        },
+        {
+          "cell": [
+            47,
+            2
+          ],
+          "world_origin": [
+            1504,
+            64
+          ],
+          "block_id": "0x41",
+          "block_mapping_cpu": "0x8980",
+          "block_mapping_rom": "0x44980"
+        },
+        {
+          "cell": [
+            44,
+            3
+          ],
+          "world_origin": [
+            1408,
+            96
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            45,
+            3
+          ],
+          "world_origin": [
+            1440,
+            96
+          ],
+          "block_id": "0xD4",
+          "block_mapping_cpu": "0x9220",
+          "block_mapping_rom": "0x45220"
+        },
+        {
+          "cell": [
+            46,
+            3
+          ],
+          "world_origin": [
+            1472,
+            96
+          ],
+          "block_id": "0xFE",
+          "block_mapping_cpu": "0x9620",
+          "block_mapping_rom": "0x45620"
+        },
+        {
+          "cell": [
+            47,
+            3
+          ],
+          "world_origin": [
+            1504,
+            96
+          ],
+          "block_id": "0xD6",
+          "block_mapping_cpu": "0x9260",
+          "block_mapping_rom": "0x45260"
+        },
+        {
+          "cell": [
+            44,
+            4
+          ],
+          "world_origin": [
+            1408,
+            128
+          ],
+          "block_id": "0x01",
+          "block_mapping_cpu": "0x8220",
+          "block_mapping_rom": "0x44220"
+        },
+        {
+          "cell": [
+            45,
+            4
+          ],
+          "world_origin": [
+            1440,
+            128
+          ],
+          "block_id": "0x0B",
+          "block_mapping_cpu": "0x8360",
+          "block_mapping_rom": "0x44360"
+        },
+        {
+          "cell": [
+            46,
+            4
+          ],
+          "world_origin": [
+            1472,
+            128
+          ],
+          "block_id": "0x01",
+          "block_mapping_cpu": "0x8220",
+          "block_mapping_rom": "0x44220"
+        },
+        {
+          "cell": [
+            47,
+            4
+          ],
+          "world_origin": [
+            1504,
+            128
+          ],
+          "block_id": "0x0B",
+          "block_mapping_cpu": "0x8360",
+          "block_mapping_rom": "0x44360"
+        },
+        {
+          "cell": [
+            44,
+            5
+          ],
+          "world_origin": [
+            1408,
+            160
+          ],
+          "block_id": "0x06",
+          "block_mapping_cpu": "0x82C0",
+          "block_mapping_rom": "0x442C0"
+        },
+        {
+          "cell": [
+            45,
+            5
+          ],
+          "world_origin": [
+            1440,
+            160
+          ],
+          "block_id": "0x07",
+          "block_mapping_cpu": "0x82E0",
+          "block_mapping_rom": "0x442E0"
+        },
+        {
+          "cell": [
+            46,
+            5
+          ],
+          "world_origin": [
+            1472,
+            160
+          ],
+          "block_id": "0x03",
+          "block_mapping_cpu": "0x8260",
+          "block_mapping_rom": "0x44260"
+        },
+        {
+          "cell": [
+            47,
+            5
+          ],
+          "world_origin": [
+            1504,
+            160
+          ],
+          "block_id": "0x03",
+          "block_mapping_cpu": "0x8260",
+          "block_mapping_rom": "0x44260"
+        }
+      ],
+      "sample_x_palette_transitions": [
+        {
+          "y": 64,
+          "palette_index": 0
+        },
+        {
+          "y": 128,
+          "palette_index": 1
+        },
+        {
+          "y": 137,
+          "palette_index": 9
+        },
+        {
+          "y": 140,
+          "palette_index": 4
+        },
+        {
+          "y": 148,
+          "palette_index": 9
+        },
+        {
+          "y": 152,
+          "palette_index": 15
+        },
+        {
+          "y": 160,
+          "palette_index": 8
+        },
+        {
+          "y": 161,
+          "palette_index": 9
+        },
+        {
+          "y": 168,
+          "palette_index": 15
+        }
+      ],
+      "canonical_indexed_crop_sha256": "6ca30e78f1f23d2f32527a3547d3b94d38a96dc10e9c415767676cc26538ee83",
+      "canonical_rgba_crop_sha256": "688296eb590f1e84203a4752ccf949e57743a0ea2574bd69908da0b462738ca5",
+      "platform_visual_rows": {
+        "background_palette_index": 0,
+        "first_non_background_y_at_object_x": 128,
+        "top_block_world_y_bounds": [
+          128,
+          159
+        ],
+        "top_block_row_non_background_counts": [
+          {
+            "y": 128,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 129,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 130,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 131,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 132,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 133,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 134,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 135,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 136,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 137,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 138,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 139,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 140,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 141,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 142,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 143,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 144,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 145,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 146,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 147,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 148,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 149,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 150,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 151,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 152,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 153,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 154,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 155,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 156,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 157,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 158,
+            "non_background_index_pixels": 96
+          },
+          {
+            "y": 159,
+            "non_background_index_pixels": 96
+          }
+        ],
+        "empty_16_rows_below_collision_surface": false
+      },
+      "poc_18_5": {
+        "commit": "726b16eafbc92d4240fa182bb6ef699cfbcf923a",
+        "asset": "sprites/SPR_chaos_terrain_1/0c0d0d0b-b531-4b4c-a967-3dc1a04f3eba.png",
+        "asset_manifest_sha256": "6e1ae3c7a9cc95e370fcd224e8b7fadae8d509d13d04d96b6945439da7f56f99",
+        "rgba_crop_sha256": "e466adcb52b8fd07bd77d253f5175acddf8b79df086c455cdb8136a535cc80c8",
+        "exact_rgba_match": false,
+        "first_mismatch": 1542,
+        "mismatch_world_rows": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95
+        ],
+        "platform_registration_box": [
+          1424,
+          96,
+          1520,
+          176
+        ],
+        "canonical_platform_rgba_sha256": "9c4c42947e5bd6d57849617f8bbf7f81b130d1025dc815dd9101a99199db236e",
+        "poc_platform_rgba_sha256": "9c4c42947e5bd6d57849617f8bbf7f81b130d1025dc815dd9101a99199db236e",
+        "platform_exact_rgba_match": true
+      }
+    }
+  ]
+}

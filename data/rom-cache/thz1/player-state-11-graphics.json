@@ -1,0 +1,546 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "evidence": "byte-verified mapping plus deterministic graphics reconstruction",
+  "player_type": "0x01",
+  "animation_script": {
+    "cpu": "0x8334",
+    "rom": "0x30334",
+    "cadence": [
+      {
+        "updates": 8,
+        "frame": "0x38"
+      },
+      {
+        "updates": 4,
+        "frame": "0x39"
+      },
+      {
+        "updates": 8,
+        "frame": "0x3A"
+      },
+      {
+        "updates": 4,
+        "frame": "0x39"
+      }
+    ]
+  },
+  "renderer": {
+    "animation_mapping_resolver_cpu": "0x64FA",
+    "sat_y_cpu": "0x226A",
+    "sat_x_tile_cpu": "0x22B6",
+    "dynamic_tile_loader_cpu": "0x0D15",
+    "change_detector_cpu": "0x1027",
+    "mapping_table_cpu": "0x80C8",
+    "mapping_table_rom": "0x3C0C8",
+    "tile_base": "0x00",
+    "horizontal_mirroring": "object +$04 bit 4 mirrors piece X coordinates; LoadPlayerTiles uses the ROM $0100 bit-reversal table to mirror tile bytes into the same VRAM destination"
+  },
+  "palette": {
+    "level_palette_table_rom": "0x07F3C",
+    "selector": "0x06",
+    "palette_rom": "0x3B6AD",
+    "raw": "38 20 35 1B 06 3A 00 3F 07 01 15 2A 1F 0C 08 04",
+    "raw_sha256": "c6715cef80884efccdc74a30c6c85023858169524ded2be963e16badb1f677e2",
+    "rgba": [
+      [
+        0,
+        170,
+        255,
+        0
+      ],
+      [
+        0,
+        0,
+        170,
+        255
+      ],
+      [
+        85,
+        85,
+        255,
+        255
+      ],
+      [
+        255,
+        170,
+        85,
+        255
+      ],
+      [
+        170,
+        85,
+        0,
+        255
+      ],
+      [
+        170,
+        170,
+        255,
+        255
+      ],
+      [
+        0,
+        0,
+        0,
+        255
+      ],
+      [
+        255,
+        255,
+        255,
+        255
+      ],
+      [
+        255,
+        85,
+        0,
+        255
+      ],
+      [
+        85,
+        0,
+        0,
+        255
+      ],
+      [
+        85,
+        85,
+        85,
+        255
+      ],
+      [
+        170,
+        170,
+        170,
+        255
+      ],
+      [
+        255,
+        255,
+        85,
+        255
+      ],
+      [
+        0,
+        255,
+        0,
+        255
+      ],
+      [
+        0,
+        170,
+        0,
+        255
+      ],
+      [
+        0,
+        85,
+        0,
+        255
+      ]
+    ],
+    "index_zero": "transparent"
+  },
+  "frames": [
+    {
+      "animation_frame_index": "0x38",
+      "mapping_pointer_entry_rom": "0x3C138",
+      "mapping_frame_cpu": "0x83E9",
+      "mapping_frame_rom": "0x3C3E9",
+      "mapping_record": {
+        "frame_cpu": "0x83E9",
+        "frame_rom": "0x3C3E9",
+        "piece_count": 6,
+        "raw_word_1": "0x1808",
+        "coords_cpu": "0xA10B",
+        "coords_rom": "0x3E10B",
+        "y_origin": 0,
+        "x_origin": -4,
+        "tile_list_cpu": "0x85B7",
+        "tile_list_rom": "0x3C5B7",
+        "tile_offsets": [
+          "0x00",
+          "0x02",
+          "0x04",
+          "0x06",
+          "0x08",
+          "0x0A"
+        ],
+        "pieces": [
+          {
+            "index": 0,
+            "y_offset": -32,
+            "x_offset": -12,
+            "relative_y": -32,
+            "relative_x": -16,
+            "tile_offset": "0x00"
+          },
+          {
+            "index": 1,
+            "y_offset": -32,
+            "x_offset": -4,
+            "relative_y": -32,
+            "relative_x": -8,
+            "tile_offset": "0x02"
+          },
+          {
+            "index": 2,
+            "y_offset": -32,
+            "x_offset": 4,
+            "relative_y": -32,
+            "relative_x": 0,
+            "tile_offset": "0x04"
+          },
+          {
+            "index": 3,
+            "y_offset": -16,
+            "x_offset": -12,
+            "relative_y": -16,
+            "relative_x": -16,
+            "tile_offset": "0x06"
+          },
+          {
+            "index": 4,
+            "y_offset": -16,
+            "x_offset": -4,
+            "relative_y": -16,
+            "relative_x": -8,
+            "tile_offset": "0x08"
+          },
+          {
+            "index": 5,
+            "y_offset": -16,
+            "x_offset": 4,
+            "relative_y": -16,
+            "relative_x": 0,
+            "tile_offset": "0x0A"
+          }
+        ],
+        "raw_11": "06 08 18 0B A1 00 00 FC FF B7 85"
+      },
+      "graphics_transfer": {
+        "table_entry_rom": "0x0112B",
+        "raw_entry": "05 80 99 06",
+        "bank": "0x05",
+        "source_cpu": "0x9980",
+        "source_rom": "0x15980",
+        "transfer_blocks_64_bytes": 6,
+        "tile_count": 12,
+        "vram_destination": "0x0000",
+        "resulting_tile_indices": [
+          "0x00",
+          "0x01",
+          "0x02",
+          "0x03",
+          "0x04",
+          "0x05",
+          "0x06",
+          "0x07",
+          "0x08",
+          "0x09",
+          "0x0A",
+          "0x0B"
+        ],
+        "tile_bytes_sha256": "a8770f3fc6d2f5b39c13581c2da4822047a5a2ed33c13a23afe958c59a9ec313"
+      },
+      "render": {
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "tile_base": 0,
+        "used_tiles": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "nonzero_source_pixels": 402,
+        "canvas_width": 24,
+        "canvas_height": 32,
+        "gamemaker_origin_x": 16,
+        "gamemaker_origin_y": 32,
+        "rgba_sha256": "39007e36a7ec3e9888df5919d824667da84a4c0fdbf79cca6971ba03b7976c41"
+      }
+    },
+    {
+      "animation_frame_index": "0x39",
+      "mapping_pointer_entry_rom": "0x3C13A",
+      "mapping_frame_cpu": "0x83F4",
+      "mapping_frame_rom": "0x3C3F4",
+      "mapping_record": {
+        "frame_cpu": "0x83F4",
+        "frame_rom": "0x3C3F4",
+        "piece_count": 6,
+        "raw_word_1": "0x1808",
+        "coords_cpu": "0xA10B",
+        "coords_rom": "0x3E10B",
+        "y_origin": 0,
+        "x_origin": -4,
+        "tile_list_cpu": "0x85B7",
+        "tile_list_rom": "0x3C5B7",
+        "tile_offsets": [
+          "0x00",
+          "0x02",
+          "0x04",
+          "0x06",
+          "0x08",
+          "0x0A"
+        ],
+        "pieces": [
+          {
+            "index": 0,
+            "y_offset": -32,
+            "x_offset": -12,
+            "relative_y": -32,
+            "relative_x": -16,
+            "tile_offset": "0x00"
+          },
+          {
+            "index": 1,
+            "y_offset": -32,
+            "x_offset": -4,
+            "relative_y": -32,
+            "relative_x": -8,
+            "tile_offset": "0x02"
+          },
+          {
+            "index": 2,
+            "y_offset": -32,
+            "x_offset": 4,
+            "relative_y": -32,
+            "relative_x": 0,
+            "tile_offset": "0x04"
+          },
+          {
+            "index": 3,
+            "y_offset": -16,
+            "x_offset": -12,
+            "relative_y": -16,
+            "relative_x": -16,
+            "tile_offset": "0x06"
+          },
+          {
+            "index": 4,
+            "y_offset": -16,
+            "x_offset": -4,
+            "relative_y": -16,
+            "relative_x": -8,
+            "tile_offset": "0x08"
+          },
+          {
+            "index": 5,
+            "y_offset": -16,
+            "x_offset": 4,
+            "relative_y": -16,
+            "relative_x": 0,
+            "tile_offset": "0x0A"
+          }
+        ],
+        "raw_11": "06 08 18 0B A1 00 00 FC FF B7 85"
+      },
+      "graphics_transfer": {
+        "table_entry_rom": "0x0112F",
+        "raw_entry": "05 00 9B 06",
+        "bank": "0x05",
+        "source_cpu": "0x9B00",
+        "source_rom": "0x15B00",
+        "transfer_blocks_64_bytes": 6,
+        "tile_count": 12,
+        "vram_destination": "0x0000",
+        "resulting_tile_indices": [
+          "0x00",
+          "0x01",
+          "0x02",
+          "0x03",
+          "0x04",
+          "0x05",
+          "0x06",
+          "0x07",
+          "0x08",
+          "0x09",
+          "0x0A",
+          "0x0B"
+        ],
+        "tile_bytes_sha256": "416dccc8fb7022b2af0a6645d3a9ec051fb1e42a5a72bdf9fea75a1f7dfc1de2"
+      },
+      "render": {
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "tile_base": 0,
+        "used_tiles": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "nonzero_source_pixels": 402,
+        "canvas_width": 24,
+        "canvas_height": 32,
+        "gamemaker_origin_x": 16,
+        "gamemaker_origin_y": 32,
+        "rgba_sha256": "22364cea9bd4190b07c28aad386f011699577e3d6fd105e851ed6980be05fc45"
+      }
+    },
+    {
+      "animation_frame_index": "0x3A",
+      "mapping_pointer_entry_rom": "0x3C13C",
+      "mapping_frame_cpu": "0x83FF",
+      "mapping_frame_rom": "0x3C3FF",
+      "mapping_record": {
+        "frame_cpu": "0x83FF",
+        "frame_rom": "0x3C3FF",
+        "piece_count": 6,
+        "raw_word_1": "0x1808",
+        "coords_cpu": "0xA10B",
+        "coords_rom": "0x3E10B",
+        "y_origin": 0,
+        "x_origin": -4,
+        "tile_list_cpu": "0x85B7",
+        "tile_list_rom": "0x3C5B7",
+        "tile_offsets": [
+          "0x00",
+          "0x02",
+          "0x04",
+          "0x06",
+          "0x08",
+          "0x0A"
+        ],
+        "pieces": [
+          {
+            "index": 0,
+            "y_offset": -32,
+            "x_offset": -12,
+            "relative_y": -32,
+            "relative_x": -16,
+            "tile_offset": "0x00"
+          },
+          {
+            "index": 1,
+            "y_offset": -32,
+            "x_offset": -4,
+            "relative_y": -32,
+            "relative_x": -8,
+            "tile_offset": "0x02"
+          },
+          {
+            "index": 2,
+            "y_offset": -32,
+            "x_offset": 4,
+            "relative_y": -32,
+            "relative_x": 0,
+            "tile_offset": "0x04"
+          },
+          {
+            "index": 3,
+            "y_offset": -16,
+            "x_offset": -12,
+            "relative_y": -16,
+            "relative_x": -16,
+            "tile_offset": "0x06"
+          },
+          {
+            "index": 4,
+            "y_offset": -16,
+            "x_offset": -4,
+            "relative_y": -16,
+            "relative_x": -8,
+            "tile_offset": "0x08"
+          },
+          {
+            "index": 5,
+            "y_offset": -16,
+            "x_offset": 4,
+            "relative_y": -16,
+            "relative_x": 0,
+            "tile_offset": "0x0A"
+          }
+        ],
+        "raw_11": "06 08 18 0B A1 00 00 FC FF B7 85"
+      },
+      "graphics_transfer": {
+        "table_entry_rom": "0x01133",
+        "raw_entry": "05 80 9C 06",
+        "bank": "0x05",
+        "source_cpu": "0x9C80",
+        "source_rom": "0x15C80",
+        "transfer_blocks_64_bytes": 6,
+        "tile_count": 12,
+        "vram_destination": "0x0000",
+        "resulting_tile_indices": [
+          "0x00",
+          "0x01",
+          "0x02",
+          "0x03",
+          "0x04",
+          "0x05",
+          "0x06",
+          "0x07",
+          "0x08",
+          "0x09",
+          "0x0A",
+          "0x0B"
+        ],
+        "tile_bytes_sha256": "804f6802d5507929eccac4a4bc378c15ea7be56619633293b59ee71761503f56"
+      },
+      "render": {
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "tile_base": 0,
+        "used_tiles": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "nonzero_source_pixels": 392,
+        "canvas_width": 24,
+        "canvas_height": 32,
+        "gamemaker_origin_x": 16,
+        "gamemaker_origin_y": 32,
+        "rgba_sha256": "da066dd9609909a66e41b12048eae0b361460a1deb1e11d2f2dd181c05f6029e"
+      }
+    }
+  ]
+}

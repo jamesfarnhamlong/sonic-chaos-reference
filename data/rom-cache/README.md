@@ -19,6 +19,12 @@ parameter rule, reachable animation frames, and controlled original-routine
 fixtures. Its possible Boing-o-Bot identity remains explicitly likely rather
 than verified, so the primary identifier remains type `$21`.
 
+`thz1/player-state-11-graphics.json` records normal-Sonic frames
+`$38/$39/$3A`: mapping records, runtime tile sources, palette, anchor geometry
+and stable render hashes. `thz1/background-registration.json` records the
+bounded THZ1 layout/block/tile chains and exact POC 18.5 platform-pixel
+comparisons used by Task 07. Neither cache contains ROM bytes or image pixels.
+
 `thz1/object-27.json` records the complete source-level type-`$27` state table,
 strict 64/384-pixel boundaries, controlled 129-update vertical trajectory,
 contact outcomes, and placement lifetime/cleanup fixtures. No semantic identity

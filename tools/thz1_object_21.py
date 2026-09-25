@@ -138,6 +138,44 @@ def run_patrol_fixture(rom: bytes, x: int, y: int, parameter: int) -> dict:
     }
 
 
+def run_grounding_fixture(rom: bytes, placement: dict) -> dict:
+    """Run initialization and the first patrol update through the original code."""
+    x, y = placement["world_x"], placement["world_y"]
+    oracle = _new_object_oracle(rom)
+    oracle.mem[0xD700] = 0x21
+    oracle.word(0xD711, x)
+    oracle.word(0xD714, y)
+    oracle.word(0xD73A, x)
+    oracle.word(0xD73C, y)
+    oracle.mem[0xD73F] = int(placement["parameter"], 16)
+    oracle.mem[0xD704] = 0
+    oracle.call(0xB210)
+    # The placement loader's bit 6 is cleared when activation becomes live.
+    oracle.mem[0xD704] &= ~0x40
+    oracle.call(0xB268)
+    anchor = oracle.word(0xD714)
+    probe_y = oracle.word(0xD35A)
+    surface = anchor + 18
+    standing = surface - 18
+    return {
+        "placement": {"world_x": x, "world_y": y, "parameter": placement["parameter"]},
+        "first_integrated_y": y + 2,
+        "lookup_probe": {"x": oracle.word(0xD358), "y": probe_y,
+                         "expression": "first_integrated_y + 18"},
+        "terrain_tile": f"0x{oracle.mem[0xD353]:02X}",
+        "terrain_map_address": f"0x{oracle.word(0xD354):04X}",
+        "collision_flags": f"0x{oracle.mem[0xD364]:02X}",
+        "vertical_profile_value": oracle.mem[0xD368],
+        "collision_surface_y": surface,
+        "final_object_anchor_y": anchor,
+        "placement_to_anchor_delta": anchor - y,
+        "mapping_piece_y_bounds": [anchor - 32, anchor - 1],
+        "top_bounce_threshold_y": anchor - 4,
+        "ordinary_standing_sonic_anchor_y": standing,
+        "ordinary_level_side_contact": "DAMAGE" if standing > anchor - 4 else "TOP_BOUNCE",
+    }
+
+
 def _contact_oracle(rom: bytes, object_y: int, player_flags: int = 0,
                     power_up: int = 0):
     oracle = _new_object_oracle(rom)
@@ -250,6 +288,17 @@ def build_report(rom: bytes) -> dict:
             "contact": {"cpu": "0xB2AF", "rom": "0x332AF"},
             "falling": {"cpu": "0xB2F0", "rom": "0x332F0"},
         },
+        "grounding_path": {
+            "callback_cpu": "0xB268",
+            "fixed_vector": "0x0320",
+            "object_floor_wrapper_cpu": "0x77CB",
+            "collision_lookup_cpu": "0x7666",
+            "probe_adjustment_cpu": "0x7690",
+            "probe_adjustment": 18,
+            "floor_projection_cpu": "0x70E7",
+            "handler_table_cpu": "0x77ED",
+            "anchor_contract": "object +$14/+$15 remains the integer world anchor; +18 is a temporary collision probe and the floor correction is subtracted from the anchor",
+        },
         "parameter": {
             "meaning": "leftward patrol span in units of 16 integer pixels",
             "left_bound_expression": "saved_origin_x - (parameter << 4)",
@@ -265,6 +314,13 @@ def build_report(rom: bytes) -> dict:
                 run_patrol_fixture(rom, 2400, 254, 2),
                 run_patrol_fixture(rom, 800, 606, 8),
             ],
+            "grounding": [run_grounding_fixture(rom, row) for row in placements],
+            "combined_grounding_contact": {
+                "fixtures": [run_grounding_fixture(rom, row) for row in placements
+                             if (row["world_x"], row["world_y"]) in ((800, 606), (2400, 254))],
+                "contract": "ground the object with $B268, derive ordinary Sonic anchor as surface_y-18, retain horizontal overlap inside +/-20, then apply the $B2AF split",
+                "expected": "ordinary lower-side contact -> DAMAGE",
+            },
             "contact": run_contact_fixtures(rom),
         },
     }
