@@ -1,0 +1,1075 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "evidence": "BYTE-VERIFIED ASSEMBLY plus deterministic ROM decoding",
+  "loader": {
+    "entry_cpu": "0x7AC2",
+    "low_selector_cpu": "0x7C71",
+    "selector_ram": "0xD3B3",
+    "player_type_ram": "0xD500",
+    "source_bank": "0x0E",
+    "index_rule": "pointer = word[table_cpu + selector * 2]",
+    "transfer_rule": "raw bytes copied directly to VDP data port by CPU 0x1D9C",
+    "timing": "once when type 0x10 crosses off-screen to visible and copies its parameter to 0xD3B3; loader clears selector after both transfers",
+    "simultaneous_requirement": "both transfers execute synchronously for every low selector"
+  },
+  "palette": {
+    "level_palette_table_rom": "0x07F3C",
+    "thz1_selectors": [
+      "0x15",
+      "0x06"
+    ],
+    "sprite_palette_selector": "0x06",
+    "palette_rom": "0x3B6AD",
+    "raw_sha256": "c6715cef80884efccdc74a30c6c85023858169524ded2be963e16badb1f677e2",
+    "index_zero": "transparent for sprite rendering",
+    "relationship": "dynamic tiles and shell pieces are sprites and use the same THZ1 sprite palette"
+  },
+  "static_thz1_load_count": 7,
+  "overwrites": {
+    "0x0980": "overwrites preloaded common tiles 0x4C-0x51",
+    "0x0BC0": "overwrites preloaded common tiles 0x5E-0x61"
+  },
+  "composition": {
+    "mapping_table_cpu": "0x8C71",
+    "frame_0B_cpu": "0x8D0F",
+    "frame_0C_cpu": "0x8D1A",
+    "frame_0B": "top three 8x16 pieces use dynamic tiles 0x4C-0x51; bottom pieces use unchanged tiles 0x52-0x57",
+    "frame_0C": "uses unchanged tiles 0x58-0x5D and 0x52-0x57; it does not reference either dynamic range",
+    "second_transfer": "tiles 0x5E-0x61 are referenced by shared mapping frame 0x0D, not type-0x10 frames 0x0B/0x0C; no placed THZ1 type reaches frame 0x0D",
+    "type_05_relationship": "type 0x05 uses its own mapping 0x8A57 and tile offsets 0x20/0x22; the second transfer is not its presentation"
+  },
+  "type_05_bounded": {
+    "evidence": "STATIC DATA and BYTE-VERIFIED ASSEMBLY; no semantic identity assigned",
+    "allocation": "type 0x10 selector 0x06 allocates a zeroed type-0x05 slot with parameter 0",
+    "state_table_cpu": "0x993D",
+    "state_scripts_cpu": [
+      "0x9943",
+      "0x9949",
+      "0x9951"
+    ],
+    "parameter_0_initialization_cpu": "0x9959",
+    "initialization": "parameter 0 selects frame 0, sets object flags +0x04 bits 0/1, and requests state 1",
+    "state_1": "FF 05 calls CPU 0x99EA and installs CPU 0x998A in object fields +0x0C/+0x0D; 0x99EA advances frame 1..32 and wraps",
+    "lifetime": "CPU 0x998A retains the object while player selector 0xD532 equals 0x06 and changes type to 0xFF after it no longer equals 0x06",
+    "mapping_cpu": "0x8A57",
+    "mapping_rom": "0x3CA57",
+    "visible_frame_count": 32,
+    "tile_offsets": [
+      "0x20",
+      "0x22"
+    ],
+    "graphics_source": "preloaded THZ1 common sprite tiles; not either low-selector dynamic transfer",
+    "spawn_position": "the reward allocator and parameter-0 initializer do not copy type-0x10 world coordinates; the 32 frame records move one visible 8x16 piece around their rendering anchor, but the exact special-render anchor path remains outside this bounded trace",
+    "relationship": "a bounded visible presentation associated with player selector 0x06; no traced write places it at the consumed type-0x10 world coordinates",
+    "poc_significance": "POC 18.3 omits a ROM-backed 32-frame visible effect while selector 0x06 is active; numeric reward mechanics remain independently implemented",
+    "preview": "type-05-contact.png",
+    "frames": [
+      {
+        "frame_index": "0x01",
+        "frame_cpu": "0x8A99",
+        "frame_rom": "0x3CA99",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -3,
+          "min_y": -41,
+          "max_x": 5,
+          "max_y": -25,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x02",
+        "frame_cpu": "0x8AA4",
+        "frame_rom": "0x3CAA4",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": 7,
+          "min_y": -37,
+          "max_x": 15,
+          "max_y": -21,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x03",
+        "frame_cpu": "0x8AAF",
+        "frame_rom": "0x3CAAF",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": 11,
+          "min_y": -26,
+          "max_x": 19,
+          "max_y": -10,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x04",
+        "frame_cpu": "0x8ABA",
+        "frame_rom": "0x3CABA",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": 7,
+          "min_y": -15,
+          "max_x": 15,
+          "max_y": 1,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x05",
+        "frame_cpu": "0x8AC5",
+        "frame_rom": "0x3CAC5",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -4,
+          "min_y": -11,
+          "max_x": 4,
+          "max_y": 5,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x06",
+        "frame_cpu": "0x8AD0",
+        "frame_rom": "0x3CAD0",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -15,
+          "min_y": -16,
+          "max_x": -7,
+          "max_y": 0,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x07",
+        "frame_cpu": "0x8ADB",
+        "frame_rom": "0x3CADB",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -19,
+          "min_y": -26,
+          "max_x": -11,
+          "max_y": -10,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x08",
+        "frame_cpu": "0x8AE6",
+        "frame_rom": "0x3CAE6",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -14,
+          "min_y": -37,
+          "max_x": -6,
+          "max_y": -21,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x09",
+        "frame_cpu": "0x8AF1",
+        "frame_rom": "0x3CAF1",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -1,
+          "min_y": -41,
+          "max_x": 7,
+          "max_y": -25,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x0A",
+        "frame_cpu": "0x8AFC",
+        "frame_rom": "0x3CAFC",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": 9,
+          "min_y": -35,
+          "max_x": 17,
+          "max_y": -19,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x0B",
+        "frame_cpu": "0x8B07",
+        "frame_rom": "0x3CB07",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": 11,
+          "min_y": -23,
+          "max_x": 19,
+          "max_y": -7,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x0C",
+        "frame_cpu": "0x8B12",
+        "frame_rom": "0x3CB12",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": 5,
+          "min_y": -13,
+          "max_x": 13,
+          "max_y": 3,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x0D",
+        "frame_cpu": "0x8B1D",
+        "frame_rom": "0x3CB1D",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -7,
+          "min_y": -11,
+          "max_x": 1,
+          "max_y": 5,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x0E",
+        "frame_cpu": "0x8B28",
+        "frame_rom": "0x3CB28",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -17,
+          "min_y": -18,
+          "max_x": -9,
+          "max_y": -2,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x0F",
+        "frame_cpu": "0x8B33",
+        "frame_rom": "0x3CB33",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -19,
+          "min_y": -29,
+          "max_x": -11,
+          "max_y": -13,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x10",
+        "frame_cpu": "0x8B3E",
+        "frame_rom": "0x3CB3E",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -12,
+          "min_y": -39,
+          "max_x": -4,
+          "max_y": -23,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x11",
+        "frame_cpu": "0x8B49",
+        "frame_rom": "0x3CB49",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": 2,
+          "min_y": -40,
+          "max_x": 10,
+          "max_y": -24,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x12",
+        "frame_cpu": "0x8B54",
+        "frame_rom": "0x3CB54",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": 10,
+          "min_y": -31,
+          "max_x": 18,
+          "max_y": -15,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x13",
+        "frame_cpu": "0x8B5F",
+        "frame_rom": "0x3CB5F",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": 10,
+          "min_y": -20,
+          "max_x": 18,
+          "max_y": -4,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x14",
+        "frame_cpu": "0x8B6A",
+        "frame_rom": "0x3CB6A",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": 1,
+          "min_y": -12,
+          "max_x": 9,
+          "max_y": 4,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x15",
+        "frame_cpu": "0x8B75",
+        "frame_rom": "0x3CB75",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -10,
+          "min_y": -12,
+          "max_x": -2,
+          "max_y": 4,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x16",
+        "frame_cpu": "0x8B80",
+        "frame_rom": "0x3CB80",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -18,
+          "min_y": -21,
+          "max_x": -10,
+          "max_y": -5,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x17",
+        "frame_cpu": "0x8B8B",
+        "frame_rom": "0x3CB8B",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -18,
+          "min_y": -32,
+          "max_x": -10,
+          "max_y": -16,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x18",
+        "frame_cpu": "0x8B96",
+        "frame_rom": "0x3CB96",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -9,
+          "min_y": -40,
+          "max_x": -1,
+          "max_y": -24,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x19",
+        "frame_cpu": "0x8BA1",
+        "frame_rom": "0x3CBA1",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": 5,
+          "min_y": -38,
+          "max_x": 13,
+          "max_y": -22,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x1A",
+        "frame_cpu": "0x8BAC",
+        "frame_rom": "0x3CBAC",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": 11,
+          "min_y": -28,
+          "max_x": 19,
+          "max_y": -12,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x1B",
+        "frame_cpu": "0x8BB7",
+        "frame_rom": "0x3CBB7",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": 8,
+          "min_y": -17,
+          "max_x": 16,
+          "max_y": -1,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x1C",
+        "frame_cpu": "0x8BC2",
+        "frame_rom": "0x3CBC2",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -2,
+          "min_y": -11,
+          "max_x": 6,
+          "max_y": 5,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x1D",
+        "frame_cpu": "0x8BCD",
+        "frame_rom": "0x3CBCD",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -13,
+          "min_y": -14,
+          "max_x": -5,
+          "max_y": 2,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x1E",
+        "frame_cpu": "0x8BD8",
+        "frame_rom": "0x3CBD8",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -19,
+          "min_y": -24,
+          "max_x": -11,
+          "max_y": -8,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      },
+      {
+        "frame_index": "0x1F",
+        "frame_cpu": "0x8BE3",
+        "frame_rom": "0x3CBE3",
+        "tile_offsets": [
+          "0x20"
+        ],
+        "bounds": {
+          "min_x": -16,
+          "min_y": -35,
+          "max_x": -8,
+          "max_y": -19,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "5779c3191fb7bc354a5fc296e8668e8dd50b626c30597a4765cf7883616ccdd6"
+      },
+      {
+        "frame_index": "0x20",
+        "frame_cpu": "0x8BEE",
+        "frame_rom": "0x3CBEE",
+        "tile_offsets": [
+          "0x22"
+        ],
+        "bounds": {
+          "min_x": -6,
+          "min_y": -41,
+          "max_x": 2,
+          "max_y": -25,
+          "width": 8,
+          "height": 16
+        },
+        "rgba_sha256": "384777533cc54d64a9ab33c2e557a62c7d933b8881d792aa976b0f4852baf5c5"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "selector": "0x02",
+      "player_type": "0x01",
+      "streams": [
+        {
+          "pointer_table_cpu": "0x7CBB",
+          "pointer_entry_rom": "0x07CBF",
+          "source_cpu": "0x9A60",
+          "source_rom": "0x39A60",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 192,
+          "tile_count": 6,
+          "vram_destination": "0x0980",
+          "resulting_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51"
+          ],
+          "tile_bytes_sha256": "f55ed4545fe648ba2c0365d55a2b3cd5593706437edcdea4ea48da2ced40d4a5",
+          "decoded_pixel_indices_sha256": "ff1443d45eb0ec665db391e31f8fdd0523bfe29e16b89fabc8e853148b19ebb4"
+        },
+        {
+          "pointer_table_cpu": "0x7CD3",
+          "pointer_entry_rom": "0x07CD7",
+          "source_cpu": "0x9F60",
+          "source_rom": "0x39F60",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 128,
+          "tile_count": 4,
+          "vram_destination": "0x0BC0",
+          "resulting_tile_indices": [
+            "0x5E",
+            "0x5F",
+            "0x60",
+            "0x61"
+          ],
+          "tile_bytes_sha256": "9110ea61003f6dc48b174905183b836e151e0bc3e18371de134d4f9bb6644fbf",
+          "decoded_pixel_indices_sha256": "62c5971df868916318e6679e9a3d542c4b5f39fda0e68cdef3743a008f2753fc"
+        }
+      ],
+      "frames": [
+        {
+          "frame_index": "0x0B",
+          "frame_cpu": "0x8D0F",
+          "frame_rom": "0x3CD0F",
+          "tile_offsets": [
+            "0x4C",
+            "0x4E",
+            "0x50",
+            "0x52",
+            "0x54",
+            "0x56"
+          ],
+          "used_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51",
+            "0x52",
+            "0x53",
+            "0x54",
+            "0x55",
+            "0x56",
+            "0x57"
+          ],
+          "rgba_sha256": "2bb087b4bcc265ee2ba8b8ba038772b6615d7d5fe1f4aeb43625d694900b3b6d",
+          "png": "selector-02-frame-0B.png"
+        },
+        {
+          "frame_index": "0x0C",
+          "frame_cpu": "0x8D1A",
+          "frame_rom": "0x3CD1A",
+          "tile_offsets": [
+            "0x58",
+            "0x5A",
+            "0x5C",
+            "0x52",
+            "0x54",
+            "0x56"
+          ],
+          "used_tile_indices": [
+            "0x58",
+            "0x59",
+            "0x5A",
+            "0x5B",
+            "0x5C",
+            "0x5D",
+            "0x52",
+            "0x53",
+            "0x54",
+            "0x55",
+            "0x56",
+            "0x57"
+          ],
+          "rgba_sha256": "9571cc57547acfb52bf993cea93cfece3a0c3b0a31ace0f79e71ffe5f795a3a7",
+          "png": "selector-02-frame-0C.png"
+        }
+      ],
+      "preview": "selector-02.png"
+    },
+    {
+      "selector": "0x04",
+      "player_type": "0x01",
+      "streams": [
+        {
+          "pointer_table_cpu": "0x7CBB",
+          "pointer_entry_rom": "0x07CC3",
+          "source_cpu": "0x9D60",
+          "source_rom": "0x39D60",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 192,
+          "tile_count": 6,
+          "vram_destination": "0x0980",
+          "resulting_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51"
+          ],
+          "tile_bytes_sha256": "0a90b35b41e64896bb4447f5a670fa92c2cc2f9acad67fa589e9890595a7c0f0",
+          "decoded_pixel_indices_sha256": "948f44f6a2713b67a42a50fdc84c7b6f874f14091251132bd37af1ca5946520a"
+        },
+        {
+          "pointer_table_cpu": "0x7CD3",
+          "pointer_entry_rom": "0x07CDB",
+          "source_cpu": "0xA160",
+          "source_rom": "0x3A160",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 128,
+          "tile_count": 4,
+          "vram_destination": "0x0BC0",
+          "resulting_tile_indices": [
+            "0x5E",
+            "0x5F",
+            "0x60",
+            "0x61"
+          ],
+          "tile_bytes_sha256": "206beca018dc9a3c7ae3c4cf76bb906e48966e6e17ca00510ac61cbe16a09640",
+          "decoded_pixel_indices_sha256": "17a9e6fd3d11d94be82de8cb22b25130030d7c3c880cb7fb6cc4d6fe9a46010d"
+        }
+      ],
+      "frames": [
+        {
+          "frame_index": "0x0B",
+          "frame_cpu": "0x8D0F",
+          "frame_rom": "0x3CD0F",
+          "tile_offsets": [
+            "0x4C",
+            "0x4E",
+            "0x50",
+            "0x52",
+            "0x54",
+            "0x56"
+          ],
+          "used_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51",
+            "0x52",
+            "0x53",
+            "0x54",
+            "0x55",
+            "0x56",
+            "0x57"
+          ],
+          "rgba_sha256": "4e142bbe120b2f47d5f9dea69c1f414240ff4543d3796004cc933c66cf63abc4",
+          "png": "selector-04-frame-0B.png"
+        },
+        {
+          "frame_index": "0x0C",
+          "frame_cpu": "0x8D1A",
+          "frame_rom": "0x3CD1A",
+          "tile_offsets": [
+            "0x58",
+            "0x5A",
+            "0x5C",
+            "0x52",
+            "0x54",
+            "0x56"
+          ],
+          "used_tile_indices": [
+            "0x58",
+            "0x59",
+            "0x5A",
+            "0x5B",
+            "0x5C",
+            "0x5D",
+            "0x52",
+            "0x53",
+            "0x54",
+            "0x55",
+            "0x56",
+            "0x57"
+          ],
+          "rgba_sha256": "9571cc57547acfb52bf993cea93cfece3a0c3b0a31ace0f79e71ffe5f795a3a7",
+          "png": "selector-04-frame-0C.png"
+        }
+      ],
+      "preview": "selector-04.png"
+    },
+    {
+      "selector": "0x06",
+      "player_type": "0x01",
+      "streams": [
+        {
+          "pointer_table_cpu": "0x7CBB",
+          "pointer_entry_rom": "0x07CC7",
+          "source_cpu": "0x9BE0",
+          "source_rom": "0x39BE0",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 192,
+          "tile_count": 6,
+          "vram_destination": "0x0980",
+          "resulting_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51"
+          ],
+          "tile_bytes_sha256": "a523f7a53d4f35b7ba6101062b1fb0e4f6d8171a42ecdcb7f9fac19bde01411d",
+          "decoded_pixel_indices_sha256": "856ee737e7e742ef633a53e911643a0a94c6e18a204bcd7ee3ac3bef6bb33985"
+        },
+        {
+          "pointer_table_cpu": "0x7CD3",
+          "pointer_entry_rom": "0x07CDF",
+          "source_cpu": "0xA060",
+          "source_rom": "0x3A060",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 128,
+          "tile_count": 4,
+          "vram_destination": "0x0BC0",
+          "resulting_tile_indices": [
+            "0x5E",
+            "0x5F",
+            "0x60",
+            "0x61"
+          ],
+          "tile_bytes_sha256": "ab8072c07acc1b359ddcd78083a004f3b117242dc8f2d5b4351156486b42c000",
+          "decoded_pixel_indices_sha256": "b978c04478868cad9284315dc36091fefee356e5c49d11f7c802d4aeb0189482"
+        }
+      ],
+      "frames": [
+        {
+          "frame_index": "0x0B",
+          "frame_cpu": "0x8D0F",
+          "frame_rom": "0x3CD0F",
+          "tile_offsets": [
+            "0x4C",
+            "0x4E",
+            "0x50",
+            "0x52",
+            "0x54",
+            "0x56"
+          ],
+          "used_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51",
+            "0x52",
+            "0x53",
+            "0x54",
+            "0x55",
+            "0x56",
+            "0x57"
+          ],
+          "rgba_sha256": "3790c8bee0dd4f9d53a803616ac75123f346a55b11b7a80a87c1ab80247f24f0",
+          "png": "selector-06-frame-0B.png"
+        },
+        {
+          "frame_index": "0x0C",
+          "frame_cpu": "0x8D1A",
+          "frame_rom": "0x3CD1A",
+          "tile_offsets": [
+            "0x58",
+            "0x5A",
+            "0x5C",
+            "0x52",
+            "0x54",
+            "0x56"
+          ],
+          "used_tile_indices": [
+            "0x58",
+            "0x59",
+            "0x5A",
+            "0x5B",
+            "0x5C",
+            "0x5D",
+            "0x52",
+            "0x53",
+            "0x54",
+            "0x55",
+            "0x56",
+            "0x57"
+          ],
+          "rgba_sha256": "9571cc57547acfb52bf993cea93cfece3a0c3b0a31ace0f79e71ffe5f795a3a7",
+          "png": "selector-06-frame-0C.png"
+        }
+      ],
+      "preview": "selector-06.png"
+    },
+    {
+      "selector": "0x02",
+      "player_type": "alternate",
+      "streams": [
+        {
+          "pointer_table_cpu": "0x7CC7",
+          "pointer_entry_rom": "0x07CCB",
+          "source_cpu": "0xA1E0",
+          "source_rom": "0x3A1E0",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 192,
+          "tile_count": 6,
+          "vram_destination": "0x0980",
+          "resulting_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51"
+          ],
+          "tile_bytes_sha256": "31e8b5a1827cecea8ed6e4b898b1f1c362ed3b57dd34b86138c34c22d02af0c9",
+          "decoded_pixel_indices_sha256": "b899194552303989041679eeb5937fe9a6df82945ce9d2d0856cd3e681a0127e"
+        },
+        {
+          "pointer_table_cpu": "0x7CDF",
+          "pointer_entry_rom": "0x07CE3",
+          "source_cpu": "0xA320",
+          "source_rom": "0x3A320",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 128,
+          "tile_count": 4,
+          "vram_destination": "0x0BC0",
+          "resulting_tile_indices": [
+            "0x5E",
+            "0x5F",
+            "0x60",
+            "0x61"
+          ],
+          "tile_bytes_sha256": "112bc43ae6db2ee705aa18c834f59fee300093a38c18721a7e34ec8932542960",
+          "decoded_pixel_indices_sha256": "3a019890cb90f9320dd7544494627b546faec6668647642473ef474f6fa9851b"
+        }
+      ]
+    },
+    {
+      "selector": "0x04",
+      "player_type": "alternate",
+      "streams": [
+        {
+          "pointer_table_cpu": "0x7CC7",
+          "pointer_entry_rom": "0x07CCF",
+          "source_cpu": "0x9D60",
+          "source_rom": "0x39D60",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 192,
+          "tile_count": 6,
+          "vram_destination": "0x0980",
+          "resulting_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51"
+          ],
+          "tile_bytes_sha256": "0a90b35b41e64896bb4447f5a670fa92c2cc2f9acad67fa589e9890595a7c0f0",
+          "decoded_pixel_indices_sha256": "948f44f6a2713b67a42a50fdc84c7b6f874f14091251132bd37af1ca5946520a"
+        },
+        {
+          "pointer_table_cpu": "0x7CDF",
+          "pointer_entry_rom": "0x07CE7",
+          "source_cpu": "0xA060",
+          "source_rom": "0x3A060",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 128,
+          "tile_count": 4,
+          "vram_destination": "0x0BC0",
+          "resulting_tile_indices": [
+            "0x5E",
+            "0x5F",
+            "0x60",
+            "0x61"
+          ],
+          "tile_bytes_sha256": "ab8072c07acc1b359ddcd78083a004f3b117242dc8f2d5b4351156486b42c000",
+          "decoded_pixel_indices_sha256": "b978c04478868cad9284315dc36091fefee356e5c49d11f7c802d4aeb0189482"
+        }
+      ]
+    },
+    {
+      "selector": "0x06",
+      "player_type": "alternate",
+      "streams": [
+        {
+          "pointer_table_cpu": "0x7CC7",
+          "pointer_entry_rom": "0x07CD3",
+          "source_cpu": "0x9BE0",
+          "source_rom": "0x39BE0",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 192,
+          "tile_count": 6,
+          "vram_destination": "0x0980",
+          "resulting_tile_indices": [
+            "0x4C",
+            "0x4D",
+            "0x4E",
+            "0x4F",
+            "0x50",
+            "0x51"
+          ],
+          "tile_bytes_sha256": "a523f7a53d4f35b7ba6101062b1fb0e4f6d8171a42ecdcb7f9fac19bde01411d",
+          "decoded_pixel_indices_sha256": "856ee737e7e742ef633a53e911643a0a94c6e18a204bcd7ee3ac3bef6bb33985"
+        },
+        {
+          "pointer_table_cpu": "0x7CDF",
+          "pointer_entry_rom": "0x07CEB",
+          "source_cpu": "0xA060",
+          "source_rom": "0x3A060",
+          "encoding": "raw_sms_mode4_planar_4bpp",
+          "transform": "none; direct ROM-to-VRAM copy",
+          "byte_count": 128,
+          "tile_count": 4,
+          "vram_destination": "0x0BC0",
+          "resulting_tile_indices": [
+            "0x5E",
+            "0x5F",
+            "0x60",
+            "0x61"
+          ],
+          "tile_bytes_sha256": "ab8072c07acc1b359ddcd78083a004f3b117242dc8f2d5b4351156486b42c000",
+          "decoded_pixel_indices_sha256": "b978c04478868cad9284315dc36091fefee356e5c49d11f7c802d4aeb0189482"
+        }
+      ]
+    }
+  ]
+}

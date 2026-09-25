@@ -16,7 +16,7 @@ and regenerates with `tools/thz1_object_census.py`.
 | `$21` | 6 | X 800-3296; Y 254-894 | `$02/$03/$04/$06/$08` | bases `$86/$98` | 7 states; `$00-$02`; decoded | patrol/spring-contact role verified; canonical identity open | complete for THZ1 reachability | semantic identity only; full-emulator observation |
 | `$26` | 4 | `(688,864)`, `(3568,768)`, `(1296,608)`, `(1912,864)` | `$00` ×2, `$01`, `$8A` | base `$72` | 10 states; `$00-$03`; decoded | concealed/contact spring verified | substantial | camera lifetime and scheduler integration |
 | `$27` | 3 | `(3504,224)`, `(2288,768)`, `(2240,112)` | `$00` | remapped base `$AA` | 4 states; `$00-$02`; decoded | semantic identity unresolved | complete for THZ1 reachability | semantic identity and downstream ordinary-contact meaning |
-| `$28` | 6 | two lifts; four diagonal-positioned platforms | `$0A` ×2, `$84` ×4 | base `$6A` | 15 inferred states; `$00/$01`; states 4/12/14 unresolved | moving-platform role verified | partial | formal subtype/rider/lifetime study and three commands |
+| `$28` | 6 | two lifts; four diagonal-positioned platforms | `$0A` ×2, `$84` ×4 | base `$6A` | 15 states; `$00/$01`; command `$09` resolved | moving-platform role verified | partial | formal subtype/rider/lifetime study |
 
 ## Scope and evidence rules
 
@@ -326,7 +326,8 @@ graphics art base.
 
 ### What remains unresolved
 
-Animation states 4, 12, and 14 stop at unsupported command forms. A formal
+Animation states 4, 12, and 14 use command `$09`, now byte-verified as a
+four-byte `object[offset] = immediate` operation. A formal
 study must cover subtype initialization, rider/contact edges, activation,
 despawn, occupancy/respawn, and distinguish source-traced behavior from the
 earlier adapter.
@@ -340,14 +341,13 @@ earlier adapter.
 2. **Type `$09` parameter/entity-generation/collection study.** This must
    explain the 24 raw records without assuming a relationship to the separate
    142 layout-derived positions.
-3. **Type `$28` formal platform study.** Its larger rider/lifetime dependency
-   and three unsupported animation states make it less isolated than `$10`.
+3. **Type `$28` formal platform study.** Its larger rider/lifetime dependencies
+   make it less isolated than `$10`.
 
 ### Graphics, palette, and mapping gaps
 
-Only `$28` has a current static animation-reachability gap: unsupported command
-forms in states 4, 12, and 14. The other seven types have no unresolved states
-under the currently verified animation-command set. This does not imply their
+All eight placed types now have no unresolved states under the currently
+verified animation-command set. This does not imply their
 behaviors are complete.
 
 ### Placement/entity expansion gaps

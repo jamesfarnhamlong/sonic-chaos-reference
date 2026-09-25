@@ -179,7 +179,7 @@ PROFILES = {
         "semantic_status": "VERIFIED",
         "semantic_basis": "Decoded placements and recovered platform code establish two lift records and four parameter-0x84 sag/bob platform records.",
         "graphics_completeness": "VERIFIED reachable decoded frames 0x00-0x01",
-        "animation_completeness": "PARTIAL: 15 states are statically inferred; states 4, 12, and 14 contain unsupported command forms",
+        "animation_completeness": "VERIFIED static reachability for all 15 states; command 0x09 is object[offset] = immediate and states 4/12/14 resolve to frame 0x01",
         "behavior_completeness": "PARTIALLY ESTABLISHED",
         "lifetime_contact_completeness": "PARTIAL: rider paths recovered; activation/despawn and edge cases remain",
         "poc_readiness": "PARTIAL ADAPTER EVIDENCE; FORMAL PLATFORM STUDY STILL NEEDED",
@@ -190,7 +190,7 @@ PROFILES = {
         "collision": {"status": "PARTIAL", "facts": ["Recovered code includes rider/contact paths, but the census does not claim complete platform edge extents."]},
         "handlers": ["platform_code.asm", "platform_reverse.asm"],
         "artifacts": ["docs/audit-2026-09-21.md", "data/legacy/thz1_platforms.json", "asm/recovered/platform_code.asm", "asm/recovered/platform_reverse.asm"],
-        "gaps": ["Decode unsupported animation commands/states 4, 12, and 14.", "Formally trace subtype parameters 0x0A and 0x84, including activation, rider edges, removal, occupancy, and respawn.", "Separate verified original behavior from earlier adapter/video observations."],
+        "gaps": ["Formally trace subtype parameters 0x0A and 0x84, including activation, rider edges, removal, occupancy, and respawn.", "Separate verified original behavior from earlier adapter/video observations."],
     },
 }
 
@@ -441,7 +441,7 @@ def build_census(rom: bytes) -> dict:
         "objects": objects,
         "prioritized_research_backlog": {
             "object_behavior_needing_formal_trace": ["0x18 completion/lifetime study", "0x09 parameter/entity-generation/collection study", "0x28 formal platform subtype/lifetime study"],
-            "graphics_palette_mapping_gaps": ["0x28 unsupported animation command forms in states 4, 12, and 14"],
+            "graphics_palette_mapping_gaps": [],
             "placement_entity_expansion_gaps": ["Explain type-0x09 runtime entity generation and its relationship, if any, to the separate 142 layout-derived ring positions"],
             "generic_engine_dependencies": ["Camera activation/removal, occupancy release, and respawn studies for 0x1B, 0x26, and 0x28", "Full scheduler/gameplay validation beyond controlled subroutine fixtures"],
             "poc_integration_ready": ["0x10", "0x21", "0x27", "0x26 core state machine", "0x1B core state machine"],

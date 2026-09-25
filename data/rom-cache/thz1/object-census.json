@@ -102,7 +102,7 @@
       "0x21",
       "0x27"
     ],
-    "total_unresolved_animation_states": 3
+    "total_unresolved_animation_states": 0
   },
   "objects": [
     {
@@ -2257,31 +2257,8 @@
           "0x00",
           "0x01"
         ],
-        "unresolved_states": [
-          4,
-          12,
-          14
-        ],
-        "unresolved_commands": [
-          {
-            "cpu": "0x8485",
-            "rom": "0x78485",
-            "command": "0x09",
-            "status": "unsupported"
-          },
-          {
-            "cpu": "0x850B",
-            "rom": "0x7850B",
-            "command": "0x09",
-            "status": "unsupported"
-          },
-          {
-            "cpu": "0x8559",
-            "rom": "0x78559",
-            "command": "0x09",
-            "status": "unsupported"
-          }
-        ]
+        "unresolved_states": [],
+        "unresolved_commands": []
       },
       "mapping": {
         "pointer_table_rom": "0x3C050",
@@ -2365,7 +2342,7 @@
           "basis": "Decoded placements and recovered platform code establish two lift records and four parameter-0x84 sag/bob platform records."
         },
         "graphics_completeness": "VERIFIED reachable decoded frames 0x00-0x01",
-        "animation_script_completeness": "PARTIAL: 15 states are statically inferred; states 4, 12, and 14 contain unsupported command forms",
+        "animation_script_completeness": "VERIFIED static reachability for all 15 states; command 0x09 is object[offset] = immediate and states 4/12/14 resolve to frame 0x01",
         "behavior_completeness": "PARTIALLY ESTABLISHED",
         "lifetime_contact_completeness": "PARTIAL: rider paths recovered; activation/despawn and edge cases remain",
         "evidence_levels": [
@@ -2398,7 +2375,6 @@
           "asm/recovered/platform_reverse.asm"
         ],
         "major_remaining_questions": [
-          "Decode unsupported animation commands/states 4, 12, and 14.",
           "Formally trace subtype parameters 0x0A and 0x84, including activation, rider edges, removal, occupancy, and respawn.",
           "Separate verified original behavior from earlier adapter/video observations."
         ]
@@ -2411,9 +2387,7 @@
       "0x09 parameter/entity-generation/collection study",
       "0x28 formal platform subtype/lifetime study"
     ],
-    "graphics_palette_mapping_gaps": [
-      "0x28 unsupported animation command forms in states 4, 12, and 14"
-    ],
+    "graphics_palette_mapping_gaps": [],
     "placement_entity_expansion_gaps": [
       "Explain type-0x09 runtime entity generation and its relationship, if any, to the separate 142 layout-derived ring positions"
     ],

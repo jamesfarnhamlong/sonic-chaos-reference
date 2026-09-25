@@ -42,7 +42,7 @@ The current THZ1 census contains exactly 53 raw nine-byte object records across 
 | `$21` | 6 | THZ1-reachable behavior formally complete; canonical identity remains non-verified |
 | `$26` | 4 | concealed/contact spring state machines substantially verified |
 | `$27` | 3 | THZ1-reachable behavior formally complete; semantic identity unresolved |
-| `$28` | 6 | moving-platform role verified; behavior partial; animation states 4/12/14 currently stop at unsupported command `$09` |
+| `$28` | 6 | moving-platform role verified; behavior partial; command `$09` decoded and all 15 animation states statically reachable |
 
 Important census correction: the 24 raw type-`$09` placement records and the 142 separately decoded ring positions from THZ1 layout blocks are different source populations. No current evidence proves that one expands into the other.
 
@@ -149,6 +149,39 @@ Task 04 added eight bounded recovered regions plus an extension of the existing 
 
 Primary study: `docs/object-10.md`.
 
+### Task 05 — final THZ1 closure audit: COMPLETE (POC integration blockers remain)
+
+The bounded audit is in `docs/thz1-closure-audit.md` with deterministic caches
+`object-10-graphics.json` and `closure-audit.json`.
+
+Key results:
+
+- low selectors `$02/$04/$06` copy raw bank-`$0E` SMS tiles to `$0980`
+  (six tiles, `$4C-$51`) and `$0BC0` (four tiles, `$5E-$61`);
+- type `$10` frame `$0B` uses the first dynamic range in its top three pieces;
+  frame `$0C` is fixed and neither active frame uses the second range;
+- THZ1 sprite palette `$06` at ROM `$3B6AD` applies to both dynamic content
+  and shell pieces, with index zero transparent;
+- type `$05` parameter zero has 32 visible frames and persists while player
+  selector `$D532` equals `$06`; POC 18.3 omits this visible effect;
+- animation command `$09` is the four-byte form
+  `FF 09 <offset> <value>` and performs `object[offset] = value`; type `$28`
+  now has zero unresolved static animation states;
+- census and recovery totals remain 53 records, eight placed types, 61 regions,
+  11,709 bytes, 4,487 instructions and 37,451 controlled comparisons.
+
+The audit conclusion is **THZ1 POC BLOCKED** for POC 18.3 as-is: the POC still
+needs the now-reconstructed type-`$10` selected content and the bounded visible
+type-`$05` selector-`$06` effect. No other established THZ1 discrepancy is a
+blocker; remaining type `$18/$28` behavior and shared traversal scheduling are
+documented adapters or future-fidelity work.
+
+POC commit `231aeaf` also contains a non-ROM-backed custom ring Draw event while
+its own verifier asserts that event file is absent. The rest of that verifier
+passes when the contradictory absence assertion is isolated. Treat the custom
+draw path as a documented POC presentation adapter and correct the POC verifier
+during the next integration pass.
+
 ## Shared engine research status
 
 Substantially recovered/verified:
@@ -169,7 +202,7 @@ Substantially recovered/verified:
 - direct type `$0F` replacement scripts/handlers and the type-`$10` numeric reward dispatcher;
 - moving-platform code is recovered but not yet a complete formal object study.
 
-Animation command semantics still not formally complete for commands `04,05,08,09,0A,0D`. Under the current THZ1 static reachability pass, only type `$28` has unresolved states: 4, 12 and 14, each stopping at unsupported command `$09`.
+Animation command semantics still not formally complete for commands `04,05,08,0A,0D`. Command `$09` is now verified as `object[offset] = immediate`; all eight placed THZ1 types have zero unresolved states under the supported static reachability pass.
 
 ## Current POC baseline
 
@@ -223,25 +256,26 @@ Windows gameplay feedback for 18.3 is broadly positive. The remaining obvious vi
 
 These should be separated into possible stage blockers versus accepted future-fidelity work:
 
-- type `$10` dynamic parameter-selected graphics are not yet decoded/rendered in the POC;
-- full presentation/lifetime semantics of type `$05`, allocated by type-`$10` parameter `$06`, remain unresolved;
+- type `$10` dynamic parameter-selected graphics are decoded but not yet rendered in the POC;
+- the bounded 32-frame type `$05` presentation allocated by type-`$10` parameter `$06` is decoded but absent from the POC; its exact special-render anchor remains future fidelity;
 - original type `$18` completion/contact/lifetime logic remains partial; the POC completion trigger is explicitly an adapter;
 - type `$09` raw records remain intentionally separate from the 142 layout-derived collectible positions until source evidence establishes a relationship;
-- type `$28` retains a bounded platform adapter and has unresolved animation states 4/12/14 at command `$09`;
+- type `$28` retains a bounded platform adapter, although its former command-`$09` animation gaps are closed;
 - full original animation/state scheduling remains absent, including some spring-flight and post-loop/twist presentation differences;
 - generic lifetime/scheduler auditing for `$1B/$26/$28` is not as complete as the dedicated `$10/$21/$27` studies.
 
-A final THZ1 closure audit should decide which of these are actual blockers for declaring the THZ1 POC milestone complete and which are documented future-fidelity items.
+The final audit classifies the two missing visible integrations above as blockers for POC 18.3 as-is. The remaining items are documented adapters or future-fidelity work.
 
 ## Current research queue
 
-With Task 04 complete:
+With Task 05 complete:
 
-1. type `$18` completion/lifetime study;
-2. type `$09` parameter/entity-generation/collection study;
-3. type `$28` formal platform subtype/rider/lifetime study, including command `$09`;
-4. formal generic lifetime/scheduler completion for `$1B/$26/$28`;
-5. broader animation-command interpreter completion;
-6. later all-stage placement/layout/graphics expansion.
+1. integrate type `$10` selector graphics and the bounded type `$05` effect into the POC, then rerun the closure gate;
+2. type `$18` completion/lifetime study;
+3. type `$09` parameter/entity-generation/collection study;
+4. type `$28` formal platform subtype/rider/lifetime study;
+5. formal generic lifetime/scheduler completion for `$1B/$26/$28`;
+6. broader animation-command interpreter completion;
+7. later all-stage placement/layout/graphics expansion.
 
 Update this file after reviewed research is merged or after an accepted POC milestone materially changes the integration state.

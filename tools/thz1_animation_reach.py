@@ -67,12 +67,13 @@ SPRING_STATE_POINTERS = (
 # FF 03 <state>    request another animation/object state
 # FF 06 <sound>    write sound request byte to PlaySound ($DE04)
 # FF 07 <lo> <hi>  jump to absolute script CPU address
+# FF 09 <offset> <value> object[offset] = value
 # FF 0B <offset> <mask>  object[offset] &= mask
 # FF 0C <offset> <mask>  object[offset] |= mask
 # FF 0E <count>    set loop counter at IX+$33
 # FF 0F <lo> <hi>  decrement loop counter; jump while nonzero
 SUPPORTED_COMMANDS = {
-    0x00, 0x01, 0x02, 0x03, 0x06, 0x07, 0x0B, 0x0C, 0x0E, 0x0F
+    0x00, 0x01, 0x02, 0x03, 0x06, 0x07, 0x09, 0x0B, 0x0C, 0x0E, 0x0F
 }
 
 
@@ -247,6 +248,16 @@ def parse_state_script(
             cmd_record["target_cpu"] = f"0x{target:04X}"
             commands.append(cmd_record)
             pc = target
+            continue
+
+        if cmd == 0x09:
+            offset = rom[rom_pos + 2]
+            value = rom[rom_pos + 3]
+            cmd_record["meaning"] = "set_object_field"
+            cmd_record["offset"] = f"0x{offset:02X}"
+            cmd_record["value"] = f"0x{value:02X}"
+            commands.append(cmd_record)
+            pc += 4
             continue
 
         if cmd in (0x0B, 0x0C):
@@ -496,7 +507,7 @@ def report_text(summary: dict) -> str:
 	"- It does not assign a semantic name to `$27`; the recovered handler "
 	"and coherent flying-object frames establish behavior without requiring one.",
         "- It does not assign semantic names to `$09`, `$10` or `$18`.",
-        "- `FF 00`, `FF 01`, `FF 02`, `FF 03`, `FF 06`, `FF 07`, `FF 0B`, "
+        "- `FF 00`, `FF 01`, `FF 02`, `FF 03`, `FF 06`, `FF 07`, `FF 09`, `FF 0B`, "
         "`FF 0C`, `FF 0E` and `FF 0F` are interpreted. If another command is "
         "encountered, that state is marked "
         "unresolved rather than guessed.",

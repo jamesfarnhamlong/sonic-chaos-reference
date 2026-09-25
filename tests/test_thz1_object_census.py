@@ -104,7 +104,7 @@ class CensusCacheTests(unittest.TestCase):
             "0x21": (["0x00", "0x01", "0x02"], []),
             "0x26": (["0x00", "0x01", "0x02", "0x03"], []),
             "0x27": (["0x00", "0x01", "0x02"], []),
-            "0x28": (["0x00", "0x01"], [4, 12, 14]),
+            "0x28": (["0x00", "0x01"], []),
         }
         for type_id, (frames, unresolved) in expected.items():
             animation = self.objects[type_id]["animation"]

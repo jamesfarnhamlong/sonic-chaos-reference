@@ -90,6 +90,21 @@ class AnimationTests(unittest.TestCase):
         self.assertEqual(got["commands"][-1]["target_state"], 3)
         self.assertIsNone(got["unresolved"])
 
+    def test_command9_sets_object_field_and_continues(self):
+        rom = self.make_rom()
+        self.put_cpu(rom, 0x1E, 0x9300, bytes([
+            0xFF,0x09,0x3F,0x84,
+            0x08,0x01,0x68,0xB2,
+            0xFF,0x00,
+        ]))
+        got = m.parse_state_script(bytes(rom),0x1E,0x9300,0)
+        self.assertEqual(got["frame_indices"], [1])
+        command = got["commands"][0]
+        self.assertEqual(command["meaning"], "set_object_field")
+        self.assertEqual(command["offset"], "0x3F")
+        self.assertEqual(command["value"], "0x84")
+        self.assertIsNone(got["unresolved"])
+
     def test_command1_call_then_continue(self):
         rom = self.make_rom()
         self.put_cpu(rom, 0x0C, 0x9500, bytes([
