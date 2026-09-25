@@ -1,13 +1,13 @@
 [
   {
-    "name": "object_sprite_orientation_renderer",
-    "start": 8886,
+    "name": "object_sprite_coordinate_renderer",
+    "start": 8810,
     "end": 9013,
     "bank": 0,
     "kind": "code",
-    "bytes": 127,
-    "instructions": 70,
-    "file": "object_sprite_orientation_renderer.asm"
+    "bytes": 203,
+    "instructions": 114,
+    "file": "object_sprite_coordinate_renderer.asm"
   },
   {
     "name": "numeric_reward_counter",
@@ -48,6 +48,16 @@
     "bytes": 50,
     "instructions": 18,
     "file": "spring_state_updates.asm"
+  },
+  {
+    "name": "player_state_11_handler",
+    "start": 14972,
+    "end": 15182,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 210,
+    "instructions": 91,
+    "file": "player_state_11_handler.asm"
   },
   {
     "name": "loop_states",
@@ -198,6 +208,16 @@
     "bytes": 149,
     "instructions": 69,
     "file": "object_visibility_lifetime.asm"
+  },
+  {
+    "name": "object_player_overlap",
+    "start": 25384,
+    "end": 25611,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 227,
+    "instructions": 109,
+    "file": "object_player_overlap.asm"
   },
   {
     "name": "merge_collision_flags",
@@ -388,6 +408,16 @@
     "bytes": 138,
     "instructions": 70,
     "file": "breakable_handlers.asm"
+  },
+  {
+    "name": "player_state_11_script",
+    "start": 197428,
+    "end": 197446,
+    "bank": 12,
+    "kind": "data",
+    "bytes": 18,
+    "instructions": 0,
+    "file": "player_state_11_script.asm"
   },
   {
     "name": "twist_dispatch",

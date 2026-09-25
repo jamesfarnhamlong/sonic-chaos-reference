@@ -1,6 +1,6 @@
 # Sonic Chaos — project status
 
-Updated: 24 September 2026
+Updated: 25 September 2026
 
 This is the coordination status for the Sonic Chaos SMS research/reference work and the Windows GameMaker proof of concept. Read this before starting a new research or POC pass. The ROM and the reference repository remain authoritative for original-game behavior; the POC is an implementation target, not evidence for the ROM.
 
@@ -24,10 +24,10 @@ Rules:
 
 Current `main` baseline:
 
-- 61 recovered ROM regions
-- 11,709 recovered bytes
-- 4,487 decoded instructions
-- 37,451 controlled original-Z80 comparisons
+- 64 recovered ROM regions
+- 12,240 recovered bytes
+- 4,731 decoded instructions
+- 37,622 controlled original-Z80 comparisons
 - 524,288-byte byte-identical reconstruction
 - SHA-256 matches the canonical ROM above
 
@@ -47,6 +47,23 @@ The current THZ1 census contains exactly 53 raw nine-byte object records across 
 Important census correction: the 24 raw type-`$09` placement records and the 142 separately decoded ring positions from THZ1 layout blocks are different source populations. No current evidence proves that one expands into the other.
 
 ## Research task tracker
+
+### Task 06 — THZ1 Windows discrepancies: COMPLETE (POC 18.5 changes required)
+
+The bounded audit is `docs/thz1-windows-discrepancies.md`; player state `$11`
+is specified in `docs/player-state-11.md` and deterministic fixtures are in
+`data/rom-cache/thz1/windows-discrepancies.json`.
+
+- type `$10` uses placement Y directly and the reported gaps are canonical;
+- parameter `$04` state `$11` is now implementation-ready;
+- static block `$3D` is side-solid only in its lower 16 pixels and damages
+  through its floor-contact handler, so POC's full-cell mask is incorrect;
+- type `$21` is non-solid and uses fixed anchor extents, not animated bboxes;
+  its shallow-top bounce ordering is canonical.
+
+Task 06 adds three bounded regions (generic Y/X renderer, state `$11`, and
+shared overlap), for 64 regions, 12,240 bytes, 4,731 instructions, and 37,622
+controlled comparisons. POC 18.4 was inspected read-only at `acf154b7`.
 
 ### Task 01 — type `$21`: COMPLETE
 

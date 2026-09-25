@@ -7,6 +7,7 @@ from oracle import Oracle
 from reference import lookup, project_floor, project_side, angle_velocity
 import thz1_object_27 as object27
 import thz1_object_10 as object10
+import player_state_11 as task06
 
 def verify(path, output):
     rom = load(path); tiles = layout(rom); o = Oracle(rom)
@@ -19,7 +20,8 @@ def verify(path, output):
                   object21_init=0, object21_patrol=0, object21_contact=0,
                   object27_create=0, object27_init=0, object27_proximity=0,
                   object27_oscillation=0, object27_removal=0,
-                  object27_contact=0, object27_lifetime=0)
+                  object27_contact=0, object27_lifetime=0,
+                  windows_discrepancies=0)
     loader=Oracle(rom);loader.bank(2,18)
     loader.mem[0xc001:0xd000]=bytes(4095);loader.mem[0xd000]=0xa5
     loader.cpu.iy=0x8000;loader.cpu.de=0xc001;loader.cpu.pc=0x4dc4
@@ -347,6 +349,14 @@ def verify(path, output):
     assert object10_lifetime['consumed_after_replacement_cleanup']['occupancy_value']=='0x10'
     assert not object10_lifetime['consumed_after_replacement_cleanup']['can_respawn_same_loaded_act']
     counts['object10_lifetime']+=7
+
+    # Task 06: 11 state-$11 calls, 16 exact overlap boundaries, and 144
+    # collision-header samples around the four canonical spike cells.
+    task06_report=task06.build(rom)
+    assert task06_report['player_state_11']['fixtures']['expiry']['requested_state']=='0x0E'
+    assert task06_report['static_spikes']['header_flags']=='0x85'
+    assert task06_report['type_21_contact']['player_extents']=={'x':9,'y':18}
+    counts['windows_discrepancies']=171
 
     report=dict(rom_sha256=SHA256,counts=counts,total=sum(counts.values()),
                 first_ramp_launch=launch,

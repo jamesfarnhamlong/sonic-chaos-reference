@@ -1,7 +1,96 @@
-; object_sprite_orientation_renderer: ROM $022B6..$02334 (end exclusive $02335).
+; object_sprite_coordinate_renderer: ROM $0226A..$02334 (end exclusive $02335).
 ; Original Sonic Chaos instructions/data. See docs/provenance.md.
 ; Generated deterministically by tools/recover.py. Semantic coverage varies.
 
+; Generic Y renderer: screen anchor object+$14 minus camera Y, then add each signed mapping-piece Y offset and write the raw VDP SAT Y byte.
+SC_0226A:
+    LD IY,($D36F)
+SC_0226E:
+    LD H,(IX+$2B)
+SC_02271:
+    LD L,(IX+$2A)
+SC_02274:
+    LD E,(HL)
+SC_02275:
+    INC HL
+SC_02276:
+    LD D,(HL)
+SC_02277:
+    LD L,(IX+$1C)
+SC_0227A:
+    LD H,(IX+$1D)
+SC_0227D:
+    ADD HL,DE
+SC_0227E:
+    PUSH HL
+SC_0227F:
+    EXX
+SC_02280:
+    LD D,(IX+$29)
+SC_02283:
+    LD E,(IX+$28)
+SC_02286:
+    POP BC
+SC_02287:
+    EXX
+SC_02288:
+    LD B,(IX+5)
+SC_0228B:
+    EXX
+SC_0228C:
+    LD A,(DE)
+SC_0228D:
+    LD L,A
+SC_0228E:
+    INC DE
+SC_0228F:
+    LD A,(DE)
+SC_02290:
+    LD H,A
+SC_02291:
+    INC DE
+SC_02292:
+    ADD HL,BC
+SC_02293:
+    LD (IY+0),L
+SC_02296:
+    LD A,$40
+SC_02298:
+    ADD A,L
+SC_02299:
+    LD L,A
+SC_0229A:
+    JR nc,SC_0229D
+SC_0229C:
+    INC H
+SC_0229D:
+    LD A,H
+SC_0229E:
+    OR A
+SC_0229F:
+    JR nz,SC_022A6
+SC_022A1:
+    LD A,L
+SC_022A2:
+    CP $30
+SC_022A4:
+    JR nc,SC_022AA
+SC_022A6:
+    LD (IY+0),$E0
+SC_022AA:
+    INC DE
+SC_022AB:
+    INC DE
+SC_022AC:
+    INC IY
+SC_022AE:
+    EXX
+SC_022AF:
+    DJNZ SC_0228B
+SC_022B1:
+    LD ($D36F),IY
+SC_022B5:
+    RET
 ; Sprite renderer; object+$04 bit 4 selects mirrored coordinates and art base object+$09 instead of +$08.
 SC_022B6:
     LD IY,($D371)

@@ -7,11 +7,12 @@ from rom import load
 # End offsets are exclusive. Code/data are classified explicitly: exploratory
 # linear-disassembly output is deliberately not treated as annotated source.
 REGIONS = [
- ('object_sprite_orientation_renderer',0x22b6,0x2335,'code'),
+ ('object_sprite_coordinate_renderer',0x226a,0x2335,'code'),
  ('numeric_reward_counter',0x3104,0x3138,'code'),
  ('side_sensors',0x3686,0x36c6,'code'),
  ('rolling_and_ramp_states',0x38c5,0x3901,'code'),
  ('spring_state_updates',0x393b,0x396d,'code'),
+ ('player_state_11_handler',0x3a7c,0x3b4e,'code'),
  ('movement_core',0x401a,0x429d,'code'),
  ('movement_tables',0x429d,0x45b3,'data'),
  ('standing_walk_setters',0x45b3,0x45ed,'code'),
@@ -25,6 +26,7 @@ REGIONS = [
  ('enemy_destroy_conversion',0x5f54,0x5f84,'code'),
  ('angle_and_position',0x6089,0x613c,'code'),
  ('object_visibility_lifetime',0x61e1,0x6276,'code'),
+ ('object_player_overlap',0x6328,0x640b,'code'),
  ('merge_collision_flags',0x64cb,0x64f0,'code'),
  ('object_animation_engine',0x64fa,0x65af,'code'),
  ('animation_command_dispatch',0x6680,0x6696,'code'),
@@ -61,6 +63,7 @@ REGIONS = [
  ('spring_contacts',0x6a75,0x6ace,'code'),
  ('loop_contacts',0x6cba,0x6ce5,'code'),
  ('twist_entry',0x6e56,0x6f61,'code'),
+ ('player_state_11_script',0x30334,0x30346,'data'),
  ('platform_reverse',0x780f1,0x78105,'code'),
  ('object_26_scripts',0x78212,0x7825a,'data'),
  ('object_26_handlers',0x7825a,0x783b3,'code'),
@@ -72,11 +75,13 @@ REGIONS = [
  ]
 
 COMMENTS = {
+0x226a:'Generic Y renderer: screen anchor object+$14 minus camera Y, then add each signed mapping-piece Y offset and write the raw VDP SAT Y byte.',
 0x22b6:'Sprite renderer; object+$04 bit 4 selects mirrored coordinates and art base object+$09 instead of +$08.',
 0x3104:'Numeric reward bit 1 path: request sound $A9 and increment BCD byte $D299 up to $99.',
 0x3686:'Default side probes: (-9,-12) and (+9,-12); lookup adds +18 to Y.',
 0x38d1:'Ramp-launch state $1B update wrapper; state scripts use vector $03C8.',
 0x393b:'Vertical spring update: shared movement, then landing/apex state decisions.',
+0x3a7c:'Player state $11 callback: directional acceleration, vertical wrap/clamp, damage check, shared movement/collision, and timer-expiry exit.',
 0x3955:'Diagonal spring update: shared movement; on apex requests falling.',
 0x402a:'Integrate signed 8.8 horizontal velocity, input delta and surface delta into 16.8 X.',
 0x403b:'Combined contact bit 2 blocks movement to the right.',
@@ -109,6 +114,7 @@ COMMENTS = {
 0x60c8:'Y uses the same table with angle+$C0, wrapping to 8 bits.',
 0x60fb:'Integrate velocities into object 16.8 positions; preserve subpixels.',
 0x61e1:'Post-update visibility/lifetime check. Off-range placed objects become $FE for tracked cleanup and later respawn.',
+0x6328:'Shared object/player overlap: fixed player/object anchor extents, minimum-penetration directional bits, and no physical projection.',
 0x64fa:'Generic object animation/state-script engine.',
 0x6680:'Animation command dispatcher after the FF prefix.',
 0x6696:'Sixteen animation command-handler pointers, indexed by command byte.',
@@ -159,6 +165,7 @@ COMMENTS = {
 0x7857:'Changes the collided map block to $46, refreshes mapping and spawns debris.',
 0x7898:'Changes the collided map block to $9D, refreshes mapping and spawns four fragments.',
 0x314c1:'Twist state $22: damage check, floor update, validate type, table dispatch.',
+0x30334:'Player state $11 script: frames $38,$39,$3A,$39 with callback vector $03C2 -> fixed $3A7C.',
 0x314f5:'Four table pointers, then four tables of 28 handler pointers for tiles $58..$73.',
 0x315dd:'After tile handler: angle-to-velocity conversion then position integration.',
 0x315f1:'Original LD ($0000),A falls through. ROM write has no effect on an SMS.',
