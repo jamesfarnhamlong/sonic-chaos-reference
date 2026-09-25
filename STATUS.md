@@ -225,20 +225,20 @@ Animation command semantics still not formally complete for commands `04,05,08,0
 
 POC repository `main` currently points to commit:
 
-`231aeaf6d898ec572ee803609ac9a4f9bf97f392`
+`acf154b76b2145099c7c9155c280b660b96299ca`
 
 Commit title:
 
 `Sonic Chaos Act 1 POC 18.3`
 
-POC 18.3 is the current Windows regression baseline. It is the first post-research integration milestone after POC 17.4.
+The commit message was accidentally left as POC 18.3, but this commit contains
+**Sonic Chaos Act 1 POC 18.4** and is the current Windows regression baseline.
 
-Reference commits recorded by the POC 18.3 handover:
+Reference baseline recorded by the POC 18.4 handover:
 
-- starting reference baseline: `7d3efe86128eacd97ace4b6bc87b1fb247f8e9ad`;
-- refreshed after Task 04: `232ca2c47772c39d15929ebb8979d3965a497e32`.
+- Task 05 reference `main`: `918b39b5f996ff9bfd553415e1319e5cb8c88d59`.
 
-### POC 18.3 integrated state
+### POC 18.4 integrated state
 
 Verified/research-backed integrations now present:
 
@@ -246,6 +246,12 @@ Verified/research-backed integrations now present:
 - type `$21`: all six exact placements, ROM-derived frames, signed 8.8 patrol movement, floor following, reversal, orientation, bounce/damage/defeat and bounded placement recreation;
 - type `$27`: all three exact mirrored placements, strict <64 activation, exact 129-callback oscillation, strict >=384 removal, ordinary-contact stall and verified defeat/recreation behavior;
 - type `$18`: five verified ROM-derived dynamic presentation frames at canonical room placement `(3960,558)`; the POC still uses a bounded pre-existing completion adapter rather than claiming original completion logic.
+- Task 05 selector-dependent type-`$10` frame `$0B` graphics are integrated
+  for parameters `$02/$04/$06`; frame `$0C` remains the shared fixed frame;
+- the bounded 32-frame type-`$05` selector-`$06` presentation is integrated
+  using the documented player-relative POC adapter;
+- the contradictory ring-verifier assertion is corrected while retaining the
+  accepted ring Draw adapter.
 
 Terrain/presentation fixes now confirmed in the accepted POC:
 
@@ -256,7 +262,7 @@ Terrain/presentation fixes now confirmed in the accepted POC:
 - type `$18` presentation is floor-aligned with a 22-pixel draw offset while preserving canonical room coordinates;
 - F4-F7 debug warp shortcuts were removed; R restart and F3 diagnostics remain.
 
-POC 18.3 automated verification reports:
+POC 18.4 automated verification reports:
 
 - 15,660 movement-core fixture cases;
 - all 112 twist dispatch entries;
@@ -265,34 +271,51 @@ POC 18.3 automated verification reports:
 - type `$27` initialization, acceleration, underflow and strict 383/384 removal checks;
 - 21 canonical reference unit tests for `$10/$21/$27` plus animation reachability;
 - canonical layout counts: 5 type-`$10`, 6 type-`$21`, 3 type-`$27`, 4 moving spikes, 4 static spikes, 6 platforms, 9 terrain springs and 142 separate layout rings;
-- no legacy layout-monitor instances and no ROM file packaged.
+- no legacy layout-monitor instances and no ROM file packaged;
+- exact selector-dependent type-`$10` hashes, all 32 type-`$05` frames,
+  selector-`$06`-only activation, and the corrected ring verifier all pass.
 
-Windows gameplay feedback for 18.3 is broadly positive. The remaining obvious visual/integration issue is type `$10` presentation: the monitor/container body is ROM-derived, but the parameter-selected dynamic icon/content layer is not yet reproduced, and the parameter-`$06` allocated type-`$05` presentation remains deliberately absent pending research.
+Windows testing confirms that the selector-dependent type-`$10` graphics and
+selector-`$06` type-`$05` reward presentation function. Subsequent testing
+exposed the Task 06 discrepancies: player state `$11` is missing, static
+spikes retain a noncanonical full-cell collision approximation, and type `$21`
+uses a GameMaker bbox/anchor approximation. The reported type-`$10` floating
+placement is now verified canonical and must not be adjusted.
 
 ### Current THZ1 POC limitations
 
-These should be separated into possible stage blockers versus accepted future-fidelity work:
+Immediate POC 18.5 blockers are:
 
-- type `$10` dynamic parameter-selected graphics are decoded but not yet rendered in the POC;
-- the bounded 32-frame type `$05` presentation allocated by type-`$10` parameter `$06` is decoded but absent from the POC; its exact special-render anchor remains future fidelity;
+- implement recovered player state `$11` for type-`$10` parameter `$04`;
+- remove or bypass the full-cell THZ1 static-spike mask and use the decoded
+  floor/side profiles and floor-hazard contract;
+- replace type-`$21` animated GameMaker bbox contact with the recovered fixed
+  player/object anchor and extent contract.
+
+Accepted adapters or future-fidelity work remain:
+
+- the type-`$05` player-relative presentation anchor is a documented POC adapter;
 - original type `$18` completion/contact/lifetime logic remains partial; the POC completion trigger is explicitly an adapter;
 - type `$09` raw records remain intentionally separate from the 142 layout-derived collectible positions until source evidence establishes a relationship;
 - type `$28` retains a bounded platform adapter, although its former command-`$09` animation gaps are closed;
 - full original animation/state scheduling remains absent, including some spring-flight and post-loop/twist presentation differences;
 - generic lifetime/scheduler auditing for `$1B/$26/$28` is not as complete as the dedicated `$10/$21/$27` studies.
 
-The final audit classifies the two missing visible integrations above as blockers for POC 18.3 as-is. The remaining items are documented adapters or future-fidelity work.
+Task 06 is independently audited and accepted. Its totals remain 64 recovered
+regions, 12,240 recovered bytes, 4,731 decoded instructions, 37,622 controlled
+comparisons, and a 524,288-byte byte-identical reconstruction.
 
 ## Current research queue
 
-With Task 05 complete:
+With Task 06 accepted:
 
-1. integrate type `$10` selector graphics and the bounded type `$05` effect into the POC, then rerun the closure gate;
-2. type `$18` completion/lifetime study;
-3. type `$09` parameter/entity-generation/collection study;
-4. type `$28` formal platform subtype/rider/lifetime study;
-5. formal generic lifetime/scheduler completion for `$1B/$26/$28`;
-6. broader animation-command interpreter completion;
-7. later all-stage placement/layout/graphics expansion.
+1. POC 18.5: implement recovered player state `$11`, remove or bypass the
+   noncanonical full-cell THZ1 static-spike mask in favour of decoded collision
+   profiles, and replace type-`$21` GameMaker bbox contact with the recovered
+   fixed-anchor overlap contract.
+2. Windows regression-test THZ1 and rerun the closure gate.
+3. Resume non-blocking future-fidelity research: type `$18` completion,
+   type `$09`, type `$28`, generic lifetime/scheduler work, remaining animation
+   commands, and later stage expansion.
 
 Update this file after reviewed research is merged or after an accepted POC milestone materially changes the integration state.
