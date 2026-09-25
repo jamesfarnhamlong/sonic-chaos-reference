@@ -48,7 +48,23 @@ Important census correction: the 24 raw type-`$09` placement records and the 142
 
 ## Research task tracker
 
-### Task 06 — THZ1 Windows discrepancies: COMPLETE (POC 18.5 changes required)
+### Task 07 — THZ1 final visual / anchor closure: COMPLETE
+
+Task 07 is independently audited and accepted. It adds no recovered regions
+and eight controlled comparisons. The final conclusions are:
+
+- type `$21` side-bounce root cause **proven**: the POC object-floor adapter
+  omitted the original `+18` lookup probe;
+- state `$11` graphics **implementation ready**: exact normal-Sonic frames
+  `$38/$39/$3A` are reconstructed;
+- type `$10` visible floating **canonical**: POC 18.5 background pixels match
+  the ROM exactly at both parameter-`$04` placements.
+
+Final accepted totals are 64 regions, 12,240 recovered bytes, 4,731 decoded
+instructions, 37,630 controlled comparisons, and a 524,288-byte byte-identical
+reconstruction.
+
+### Task 06 — THZ1 Windows discrepancies: COMPLETE
 
 The bounded audit is `docs/thz1-windows-discrepancies.md`; player state `$11`
 is specified in `docs/player-state-11.md` and deterministic fixtures are in
@@ -64,10 +80,6 @@ is specified in `docs/player-state-11.md` and deterministic fixtures are in
 Task 06 adds three bounded regions (generic Y/X renderer, state `$11`, and
 shared overlap), for 64 regions, 12,240 bytes, 4,731 instructions, and 37,622
 controlled comparisons. POC 18.4 was inspected read-only at `acf154b7`.
-
-Task 07 adds no recovered regions and eight controlled comparisons. It closes
-the type-`$21` floor anchor, reconstructs normal-Sonic state-`$11` graphics,
-and proves the two type-`$10` platform regions pixel-identical to POC 18.5.
 
 ### Task 01 — type `$21`: COMPLETE
 
@@ -229,20 +241,17 @@ Animation command semantics still not formally complete for commands `04,05,08,0
 
 POC repository `main` currently points to commit:
 
-`acf154b76b2145099c7c9155c280b660b96299ca`
+`726b16eafbc92d4240fa182bb6ef699cfbcf923a`
 
 Commit title:
 
-`Sonic Chaos Act 1 POC 18.3`
+`Sonic Chaos Act 1 POC 18.5`
 
-The commit message was accidentally left as POC 18.3, but this commit contains
-**Sonic Chaos Act 1 POC 18.4** and is the current Windows regression baseline.
+Reference baseline recorded by the POC 18.5 handover:
 
-Reference baseline recorded by the POC 18.4 handover:
+- Task 06 reference `main`: `479990227e48543a853cdd36f52365cb5cc1536a`.
 
-- Task 05 reference `main`: `918b39b5f996ff9bfd553415e1319e5cb8c88d59`.
-
-### POC 18.4 integrated state
+### POC 18.5 integrated state
 
 Verified/research-backed integrations now present:
 
@@ -256,6 +265,12 @@ Verified/research-backed integrations now present:
   using the documented player-relative POC adapter;
 - the contradictory ring-verifier assertion is corrected while retaining the
   accepted ring Draw adapter.
+- player state `$11` behavior is integrated with the verified `8/4/8/4`
+  numeric frame cadence; presentation currently uses `SPR_player_falling` as a
+  documented adapter because the exact frames were not yet present in POC 18.5;
+- type `$21` contact uses fixed integer player/object anchors and the verified
+  extents and inequalities; its object-floor adapter still omits the original
+  `+18` lookup probe identified by Task 07.
 
 Terrain/presentation fixes now confirmed in the accepted POC:
 
@@ -266,7 +281,7 @@ Terrain/presentation fixes now confirmed in the accepted POC:
 - type `$18` presentation is floor-aligned with a 22-pixel draw offset while preserving canonical room coordinates;
 - F4-F7 debug warp shortcuts were removed; R restart and F3 diagnostics remain.
 
-POC 18.4 automated verification reports:
+POC 18.5 automated verification retains the established checks below:
 
 - 15,660 movement-core fixture cases;
 - all 112 twist dispatch entries;
@@ -279,22 +294,29 @@ POC 18.4 automated verification reports:
 - exact selector-dependent type-`$10` hashes, all 32 type-`$05` frames,
   selector-`$06`-only activation, and the corrected ring verifier all pass.
 
-Windows testing confirms that the selector-dependent type-`$10` graphics and
-selector-`$06` type-`$05` reward presentation function. Subsequent testing
-exposed the Task 06 discrepancies: player state `$11` is missing, static
-spikes retain a noncanonical full-cell collision approximation, and type `$21`
-uses a GameMaker bbox/anchor approximation. The reported type-`$10` floating
-placement is now verified canonical and must not be adjusted.
+Windows 18.5 testing confirms that player state `$11` behavior is integrated.
+The four static block-`$3D` full-cell masks are removed; fixed spikes now
+side-block correctly in the lower half and damage from floor contact. Type
+`$21` uses fixed integer anchor contact, but ordinary side approach exposed the
+missing original `+18` object-floor lookup probe. State `$11` still uses
+`SPR_player_falling` as its documented presentation adapter. The type-`$10`
+floating appearance remained in question after that run; Task 07 now proves
+that the POC background pixels match the ROM exactly and the appearance is
+canonical. No obvious regressions were reported elsewhere in the Windows 18.5
+run.
 
 ### Current THZ1 POC limitations
 
-Immediate POC 18.5 blockers are:
+Immediate POC 18.6 work is:
 
-- implement recovered player state `$11` for type-`$10` parameter `$04`;
-- remove or bypass the full-cell THZ1 static-spike mask and use the decoded
-  floor/side profiles and floor-hazard contract;
-- replace type-`$21` animated GameMaker bbox contact with the recovered fixed
-  player/object anchor and extent contract.
+1. Add `+18` only to lookup Y in `SCR_chaos_object_floor_project`, preserving
+   the unshifted object anchor and existing type-`$21` inequalities.
+2. Replace the state-`$11` falling-sprite presentation adapter with exact ROM-
+   derived frames `$38/$39/$3A` at 24×32, origin `(16,32)`, using the verified
+   `8/4/8/4` cadence and ordinary horizontal mirroring.
+3. Make no type-`$10` coordinate or THZ1 background change.
+4. Windows-regression-test type `$21` side contact and state `$11`
+   presentation.
 
 Accepted adapters or future-fidelity work remain:
 
@@ -309,15 +331,18 @@ Task 06 is independently audited and accepted. Its totals remain 64 recovered
 regions, 12,240 recovered bytes, 4,731 decoded instructions, 37,622 controlled
 comparisons, and a 524,288-byte byte-identical reconstruction.
 
+Task 07 is independently audited and accepted. Current totals are 64 recovered
+regions, 12,240 recovered bytes, 4,731 decoded instructions, 37,630 controlled
+comparisons, and a 524,288-byte byte-identical reconstruction.
+
 ## Current research queue
 
-With Task 06 accepted:
+With Task 07 accepted:
 
-1. POC 18.5: implement recovered player state `$11`, remove or bypass the
-   noncanonical full-cell THZ1 static-spike mask in favour of decoded collision
-   profiles, and replace type-`$21` GameMaker bbox contact with the recovered
-   fixed-anchor overlap contract.
-2. Windows regression-test THZ1 and rerun the closure gate.
+1. POC 18.6: apply the bounded object-floor probe and exact state-`$11`
+   presentation changes listed above; do not move type `$10` or its background.
+2. Windows-regression-test type `$21` side contact and state `$11`
+   presentation, then rerun the closure gate.
 3. Resume non-blocking future-fidelity research: type `$18` completion,
    type `$09`, type `$28`, generic lifetime/scheduler work, remaining animation
    commands, and later stage expansion.
