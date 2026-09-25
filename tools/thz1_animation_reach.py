@@ -75,6 +75,7 @@ SPRING_STATE_POINTERS = (
 SUPPORTED_COMMANDS = {
     0x00, 0x01, 0x02, 0x03, 0x06, 0x07, 0x09, 0x0B, 0x0C, 0x0E, 0x0F
 }
+SUPPORTED_CONTROL_COMMANDS = tuple(sorted(SUPPORTED_COMMANDS))
 
 
 def u16(data: bytes, pos: int) -> int:
@@ -599,8 +600,7 @@ def main() -> None:
         "mapping_anchor_validation": "pass",
         "animation_anchor_validation": anim_validation,
         "supported_control_commands": [
-            "0x00", "0x01", "0x02", "0x03", "0x06", "0x07",
-            "0x0B", "0x0C", "0x0E", "0x0F",
+            f"0x{command:02X}" for command in SUPPORTED_CONTROL_COMMANDS
         ],
         "objects": persisted,
     }

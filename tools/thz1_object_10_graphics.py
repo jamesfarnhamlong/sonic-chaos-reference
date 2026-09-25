@@ -139,7 +139,7 @@ def type05_bounded(rom: bytes, output: Path | None, base_vram: bytearray,
     if output is not None:
         assets.make_contact_sheet(sheet, output / "type-05-contact.png")
     return {
-        "evidence": "STATIC DATA and BYTE-VERIFIED ASSEMBLY; no semantic identity assigned",
+        "evidence": "STATIC DATA / SOURCE-TRACED original code; no semantic identity assigned",
         "allocation": "type 0x10 selector 0x06 allocates a zeroed type-0x05 slot with parameter 0",
         "state_table_cpu": "0x993D",
         "state_scripts_cpu": ["0x9943", "0x9949", "0x9951"],
@@ -202,7 +202,7 @@ def build_metadata(rom: bytes, output: Path | None = None) -> dict:
     return {
         "format": 1,
         "rom_sha256": digest,
-        "evidence": "BYTE-VERIFIED ASSEMBLY plus deterministic ROM decoding",
+        "evidence": "SOURCE-TRACED original code / deterministic ROM decoding",
         "loader": {
             "entry_cpu": "0x7AC2",
             "low_selector_cpu": "0x7C71",

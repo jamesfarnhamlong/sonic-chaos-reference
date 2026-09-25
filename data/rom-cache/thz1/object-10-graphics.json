@@ -1,7 +1,7 @@
 {
   "format": 1,
   "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
-  "evidence": "BYTE-VERIFIED ASSEMBLY plus deterministic ROM decoding",
+  "evidence": "SOURCE-TRACED original code / deterministic ROM decoding",
   "loader": {
     "entry_cpu": "0x7AC2",
     "low_selector_cpu": "0x7C71",
@@ -40,7 +40,7 @@
     "type_05_relationship": "type 0x05 uses its own mapping 0x8A57 and tile offsets 0x20/0x22; the second transfer is not its presentation"
   },
   "type_05_bounded": {
-    "evidence": "STATIC DATA and BYTE-VERIFIED ASSEMBLY; no semantic identity assigned",
+    "evidence": "STATIC DATA / SOURCE-TRACED original code; no semantic identity assigned",
     "allocation": "type 0x10 selector 0x06 allocates a zeroed type-0x05 slot with parameter 0",
     "state_table_cpu": "0x993D",
     "state_scripts_cpu": [

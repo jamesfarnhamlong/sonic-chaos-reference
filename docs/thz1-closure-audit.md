@@ -17,8 +17,8 @@ unresolved behavior. Appearance is not used to assign semantic item names.
 
 ## 3. Type `$10` dynamic graphics
 
-**BYTE-VERIFIED ASSEMBLY.** `$7AC2` dispatches nonzero `$D3B3`; selectors below
-`$10` enter `$7C71`. The loader maps bank `$0E`, indexes a player-specific
+**SOURCE-TRACED / deterministic ROM decoding.** `$7AC2` dispatches nonzero
+`$D3B3`; selectors below `$10` enter `$7C71`. The loader maps bank `$0E`, indexes a player-specific
 pointer table as `table + selector*2`, and directly copies uncompressed SMS
 Mode-4 planar bytes. Both transfers run synchronously, then the selector and
 loader state are cleared.
@@ -63,7 +63,7 @@ Deterministic non-committed previews are generated under
 
 ## 5. Type `$05` bounded child
 
-**STATIC DATA / BYTE-VERIFIED ASSEMBLY.** Type `$05` has state table `$993D`
+**STATIC DATA / SOURCE-TRACED.** Type `$05` has state table `$993D`
 and mapping table `$8A57`. Parameter zero initializes state 1, sets object flag
 bits 0/1, and begins with empty frame zero. State 1 calls `$99EA`, which cycles
 frames `$01-$20`; all 32 frames contain one visible 8×16 piece using preloaded

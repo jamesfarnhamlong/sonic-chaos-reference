@@ -18,6 +18,13 @@ class AnimationTests(unittest.TestCase):
     def make_rom(self):
         return bytearray(0x80000)
 
+    def test_supported_command_metadata_includes_command9_in_numeric_order(self):
+        self.assertEqual(
+            [f"0x{x:02X}" for x in m.SUPPORTED_CONTROL_COMMANDS],
+            ["0x00", "0x01", "0x02", "0x03", "0x06", "0x07", "0x09",
+             "0x0B", "0x0C", "0x0E", "0x0F"],
+        )
+
     def put_cpu(self, rom, bank, cpu, data):
         pos = bank * 0x4000 + (cpu - 0x8000)
         rom[pos:pos+len(data)] = data
