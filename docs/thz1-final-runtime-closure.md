@@ -8,9 +8,12 @@ is not repository evidence.
 
 ## Five closure conclusions
 
-1. **TYPE `$21` VISUAL HOVER — POC RENDERING BUG.** The conspicuous gap is
-   overwhelmingly canonical: the ROM leaves 17 blank scanlines. POC 18.5 is
-   additionally one pixel too high because it omits the SMS SAT Y+1 convention.
+1. **TYPE `$21` VISUAL HOVER — ROM/POC TARGETS MUST BE DISTINGUISHED.** The ROM
+   renderer leaves 17 blank scanlines and POC 18.5 also omitted SMS SAT Y+1.
+   Task 09 establishes that POC 19's visually grounded `+18` is a noncanonical
+   render-anchor policy, not evidence of another ROM renderer offset. See
+   `task09-thz1-engine-poc-reconciliation.md`; do not present `+1` and `+18` as
+   interchangeable fixes.
 2. **TYPE `$09` — IMPLEMENTATION READY.** There are 24 raw records and exactly
    24 runtime entities: 11 visible rotating collectibles and 13 invisible,
    even-frame collectible triggers.
