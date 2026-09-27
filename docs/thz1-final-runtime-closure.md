@@ -8,12 +8,13 @@ is not repository evidence.
 
 ## Five closure conclusions
 
-1. **TYPE `$21` VISUAL HOVER — ROM/POC TARGETS MUST BE DISTINGUISHED.** The ROM
-   renderer leaves 17 blank scanlines and POC 18.5 also omitted SMS SAT Y+1.
-   Task 09 establishes that POC 19's visually grounded `+18` is a noncanonical
-   render-anchor policy, not evidence of another ROM renderer offset. See
-   `task09-thz1-engine-poc-reconciliation.md`; do not present `+1` and `+18` as
-   interchangeable fixes.
+1. **TYPE `$21` VISUAL HOVER — FINAL REGISTRATION UNRESOLVED.** The currently
+   recovered object-floor + mapping + SAT path predicts 17 blank scanlines,
+   and POC 18.5 also omitted SMS SAT Y+1. Original-game/reference observation
+   disagrees with that conspicuous hover. The current ROM model is internally
+   consistent, but final original-game visual registration is unresolved.
+   POC 19's visually grounded `+18` may remain as a documented temporary
+   presentation policy. See `task09-thz1-engine-poc-reconciliation.md`.
 2. **TYPE `$09` — IMPLEMENTATION READY.** There are 24 raw records and exactly
    24 runtime entities: 11 visible rotating collectibles and 13 invisible,
    even-frame collectible triggers.
@@ -29,6 +30,14 @@ is not repository evidence.
    raw records. All 24 type-`$09` records—indices 14–21 and 37–52—are missing.
    It also renders block `$47` artwork without its separate terrain behavior.
 
+Task 09 also amends the earlier type-`$10` presentation conclusion. Its five
+raw coordinates and the bounds predicted by the recovered mapping/SAT path are
+proven and are closely reproduced by the POC, but original-game/reference
+observation places those power-up boxes lower. This is **CURRENT ROM MODEL
+INTERNALLY CONSISTENT; FINAL ORIGINAL-GAME VISUAL REGISTRATION UNRESOLVED**.
+The separate block-`$47` ten-ring boxes are vertically correct. Do not move the
+canonical type-`$10` placement records.
+
 ## Type `$21`: anchor to SAT
 
 The fixed physics result remains unchanged: floor lookup samples anchor Y+18
@@ -39,8 +48,9 @@ stream and art base, not Y. `$226A` adds screen anchor, origin and piece Y,
 writes the raw SAT byte, and writes `$E0` only for clipped pieces. The SMS
 displays SAT Y on scanline Y+1.
 
-Nonzero source pixels occupy raw relative Y -32..-1, so displayed pixels occupy
-world `anchor-31..anchor`. All placements therefore have the same 17-row gap:
+Nonzero source pixels occupy raw relative Y -32..-1, so the currently recovered
+path predicts displayed pixels at world `anchor-31..anchor`. All placements
+therefore produce the same 17-row gap in this model:
 
 | Placement | Stable anchor | Surface | Visible top..bottom | Blank rows |
 |---|---:|---:|---:|---:|
@@ -54,8 +64,9 @@ world `anchor-31..anchor`. All placements therefore have the same 17-row gap:
 Controlled `$3FC8/$226A` fixtures for X=800, 3296 and 2400 place screen anchor
 at 100 and produce SAT bytes `68,68,68,84,84,84`; displayed piece tops are
 69/85. POC's 32×40 image has nontransparent rows 4..35 and yorigin 36, yielding
-relative -32..-1 without SAT bias. The exact render-only correction is draw Y+1
-or yorigin 35. Do not change anchor, +18 probe, contacts or room placements.
+relative -32..-1 without SAT bias. Draw Y+1 or yorigin 35 reproduces the
+currently recovered model, but final original-game visual registration remains
+unresolved. Do not change anchor, +18 probe, contacts or room placements.
 
 ## Type `$09`
 
@@ -141,8 +152,10 @@ RECORDS/ENTITIES.**
 
 1. Add exactly 24 one-to-one numeric type-`$09` instances with the parameter,
    overlap, counter, presentation, occupancy and respawn behavior above.
-2. Move only type-`$21` rendering down one scanline (draw Y+1 or yorigin 35).
-   Preserve its physics anchor, +18 probe, contacts and room coordinates.
+2. Preserve type-`$21`'s physics anchor, +18 probe, contacts and room
+   coordinates. POC 20 may retain the grounded +18 render adapter as a
+   documented temporary policy; do not claim that draw Y+1 alone proves final
+   original-game registration.
 3. Regenerate `$47` pixels with per-piece palette bit 11 (`$06` for its nonzero
    art), then implement it as collision-driven breakable terrain: eligibility
    from `$6AE3`, replacement `$46`, type-`$0F`/parameter-`$40` transient, and

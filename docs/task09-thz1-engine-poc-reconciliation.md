@@ -22,11 +22,11 @@ POC 19 violates that procedure in three ways. It uses room-instance `y` as
 both canonical anchor and GameMaker draw origin; it keeps legacy sprite origins
 for terrain-derived rings; and it compensates type `$21` with a `+18` Draw
 event. The last change looks good because it places the sprite bottom at the
-collision surface, but it is not the ROM renderer. The ROM really renders the
-type `$21` pixels above its `+18` floor probe. Therefore the Task 08 statement
-that the ROM has a 17-row visible gap is source-correct; its POC recommendation
-(`+1` only) is not sufficient to match the user's desired visually grounded
-POC presentation. Those are two different targets and must not be conflated.
+collision surface. The currently recovered object-floor, mapping and SAT path
+instead predicts a 17-row gap. Because original-game/reference observation
+does not show that conspicuous floating presentation, the final presentation
+stage is not reconciled. The current ROM model is internally consistent; final
+original-game visual registration is unresolved.
 
 The serious terrain failure has a separate, concrete cause. On damage POC 19
 changes the player into `OBJ_player_lost_a`. That object no longer executes the
@@ -130,12 +130,18 @@ padding correctly. An exact SMS presentation uses draw Y `A+1` (or origin Y
 27), producing the hardware `+1` scanline. It does **not** move the placement,
 settle the box, or apply the `$21` `+18` probe.
 
-Windows' impression that all five are high is real feedback about the desired
-POC composition, but it does not establish a ROM transform: four have a proved
-10-row ROM gap and the `$02` record is intentionally suspended. If POC 20 is
-intended to mimic the original, implement SAT `+1` only. A separate
-"visually grounded" mode would be a noncanonical presentation policy and must
-be labelled as such; do not encode it as per-placement data.
+The raw placements are proven. The recovered mapping/SAT model predicts the
+bounds above, and POC 19 reproduces that model closely. Original-game/reference
+observation nevertheless shows the five type-`$10` power-up boxes lower than
+the POC, while the four unrelated block-`$47` ten-ring boxes are vertically
+correct. Therefore the type-`$10` result is **CURRENT ROM MODEL INTERNALLY
+CONSISTENT; FINAL ORIGINAL-GAME VISUAL REGISTRATION UNRESOLVED**. A
+presentation-stage detail outside the currently recovered calculation remains
+missing or misunderstood.
+
+POC 20 must not move the canonical type-`$10` placement records. It may test a
+shared render-stage correction only after measuring it against original-game
+or reference footage; it must not infer separate offsets by eye.
 
 ## 3. Type `$21` reconciliation
 
@@ -152,20 +158,22 @@ POC 19's sprite has visible rows `4..35`, origin 36, hence relative
 That explains why it looks grounded. It is not a missing canvas-origin or SAT
 rule: it deliberately renders the physics probe, not the ROM anchor.
 
-Implementation contracts:
+Implementation status and temporary contracts:
 
-- **Exact ROM:** retain the canonical instance/data anchor; draw at `A+1` or
-  use origin 35; visible bottom is `A`; preserve probe `A+18` and all contact
-  thresholds.
+- **Current recovered model:** retain the canonical instance/data anchor; draw
+  at `A+1` or use origin 35; predicted visible bottom is `A`; preserve probe
+  `A+18` and all contact thresholds. This proves the model's arithmetic, not
+  the final original-game screen registration.
 - **POC grounded-presentation adapter:** keep physics/contact at `A`, expose a
   named shared `render_anchor_y = A+18`, draw the mapping canvas from that
-  render anchor, and declare it noncanonical. Never hide this in the object
-  placement or floor projector.
+  render anchor, and declare it a temporary unresolved presentation policy.
+  POC 20 may retain it because it matches the observed original presentation
+  better. Never hide it in the object placement or floor projector.
 
-Task 08's “17 blank rows” remains the exact ROM result. What is corrected here
-is the earlier implication that this result must also be accepted as the POC's
-visual-ground contract. The present `+18` is a POC policy, not newly discovered
-ROM behavior.
+Task 08's “17 blank rows” is the prediction of the currently recovered
+object-floor + mapping + SAT path. It is not proven as the final visible
+original-game presentation. Type `$21` is therefore **CURRENT ROM MODEL
+INTERNALLY CONSISTENT; FINAL ORIGINAL-GAME VISUAL REGISTRATION UNRESOLVED**.
 
 ## 4. Layout-derived ring registration
 
@@ -289,8 +297,9 @@ resulting object-class split makes the symptom appear immunity-related.
 | Finding | Classification |
 |---|---|
 | no explicit canonical/render-anchor API | generic POC adapter bug |
-| type `$21` Draw `+18` presented as ROM correction | object-specific POC policy/hack |
-| type `$10` canvas origin 28 | correct for mapping rows; missing SAT +1 |
+| type `$21` recovered path predicts 17-row gap but observation disagrees | current ROM model internally consistent; final original-game visual registration unresolved |
+| type `$21` Draw `+18` | documented temporary presentation policy; may remain until final registration is recovered |
+| type `$10` recovered bounds closely reproduced by POC but observation disagrees | current ROM model internally consistent; final original-game visual registration unresolved |
 | `SPR_ring` origin `(7,9)` used for terrain quadrants | generic terrain-entity adapter bug |
 | ring coordinates themselves | correct source data |
 | `$47` response dispatched only from floor approximation | generic collision-dispatch bug |
@@ -323,11 +332,14 @@ resulting object-class split makes the symptom appear immunity-related.
    the SMS SAT `+1` once in the mapped-object draw path.
 2. Add a canonical terrain-quadrant representation and regenerate/verify all
    142 rings without changing their source block/quadrant coordinates.
-3. Remove type `$21`'s private Draw event. Select explicitly between exact-ROM
-   rendering (`A+1`) and the labelled grounded POC adapter (`A+18`); tests must
-   state which target they assert.
-4. Keep type `$10` room placements and physics untouched; route frames `$0B/$0C`
-   through the shared mapped-object draw helper.
+3. Retain the type `$21` grounded `+18` adapter as an explicitly temporary
+   presentation policy until original final registration is reconciled. Keep
+   physics, floor probe and contact at the canonical anchor.
+4. Keep type `$10` room placements and physics untouched. Compare the
+   extra-life/parameter-`$02`, rocket-shoes/`$04`, and invincibility/`$06`
+   boxes visually against original-game/reference footage. If they remain
+   displaced, record the exact pixel delta and stop: do not claim canonical
+   correctness and do not alter placement data by eye.
 5. Replace the floor-only `$47` branch with post-sensor response dispatch;
    atomically install `$46` art/collision and spawn the parameter-`$40` transient.
 6. Replace hurt `instance_change` with a Chaos-core hurt state. Keep terrain
@@ -339,4 +351,3 @@ resulting object-class split makes the symptom appear immunity-related.
    `$47` top/side/ceiling entries, all player-state matrix rows, type `$27`
    steady scroll and camera jumps, occupancy release/recreation, and all 142
    ring quadrant rectangles.
-
