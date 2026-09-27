@@ -1,0 +1,768 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "type_21": {
+    "screen_coordinate_preparation": "object integer +$14/+$15 minus camera $D176 -> object+$1C/+$1D",
+    "frame_y_origin": 0,
+    "piece_y_offsets": [
+      -32,
+      -16
+    ],
+    "raw_nonzero_relative_y": [
+      -32,
+      -1
+    ],
+    "sms_sat_display_bias_y": 1,
+    "visible_nonzero_relative_y": [
+      -31,
+      0
+    ],
+    "mirrored_y_stream_is_identical": true,
+    "clip_rule": "pieces outside the renderer's SAT range receive Y=$E0; clipping does not translate retained pieces",
+    "placements": [
+      {
+        "world_x": 800,
+        "placement_y": 606,
+        "stable_anchor_y": 590,
+        "floor_surface_y": 608,
+        "raw_sat_piece_y": [
+          558,
+          574
+        ],
+        "visible_top": 559,
+        "visible_bottom": 590,
+        "blank_rows_between_sprite_and_terrain": 17
+      },
+      {
+        "world_x": 1248,
+        "placement_y": 862,
+        "stable_anchor_y": 846,
+        "floor_surface_y": 864,
+        "raw_sat_piece_y": [
+          814,
+          830
+        ],
+        "visible_top": 815,
+        "visible_bottom": 846,
+        "blank_rows_between_sprite_and_terrain": 17
+      },
+      {
+        "world_x": 2048,
+        "placement_y": 318,
+        "stable_anchor_y": 302,
+        "floor_surface_y": 320,
+        "raw_sat_piece_y": [
+          270,
+          286
+        ],
+        "visible_top": 271,
+        "visible_bottom": 302,
+        "blank_rows_between_sprite_and_terrain": 17
+      },
+      {
+        "world_x": 3152,
+        "placement_y": 894,
+        "stable_anchor_y": 878,
+        "floor_surface_y": 896,
+        "raw_sat_piece_y": [
+          846,
+          862
+        ],
+        "visible_top": 847,
+        "visible_bottom": 878,
+        "blank_rows_between_sprite_and_terrain": 17
+      },
+      {
+        "world_x": 3296,
+        "placement_y": 286,
+        "stable_anchor_y": 270,
+        "floor_surface_y": 288,
+        "raw_sat_piece_y": [
+          238,
+          254
+        ],
+        "visible_top": 239,
+        "visible_bottom": 270,
+        "blank_rows_between_sprite_and_terrain": 17
+      },
+      {
+        "world_x": 2400,
+        "placement_y": 254,
+        "stable_anchor_y": 238,
+        "floor_surface_y": 256,
+        "raw_sat_piece_y": [
+          206,
+          222
+        ],
+        "visible_top": 207,
+        "visible_bottom": 238,
+        "blank_rows_between_sprite_and_terrain": 17
+      }
+    ],
+    "controlled_fixture_world_x": [
+      800,
+      3296,
+      2400
+    ],
+    "controlled_original_renderer_fixtures": [
+      {
+        "world_x": 800,
+        "anchor_y": 590,
+        "camera_y": 490,
+        "prepared_screen_anchor_y": 100,
+        "original_sat_y_bytes": [
+          68,
+          68,
+          68,
+          84,
+          84,
+          84
+        ],
+        "displayed_piece_top_scanlines": [
+          69,
+          69,
+          69,
+          85,
+          85,
+          85
+        ],
+        "final_visible_world_bounds": [
+          559,
+          590
+        ]
+      },
+      {
+        "world_x": 3296,
+        "anchor_y": 270,
+        "camera_y": 170,
+        "prepared_screen_anchor_y": 100,
+        "original_sat_y_bytes": [
+          68,
+          68,
+          68,
+          84,
+          84,
+          84
+        ],
+        "displayed_piece_top_scanlines": [
+          69,
+          69,
+          69,
+          85,
+          85,
+          85
+        ],
+        "final_visible_world_bounds": [
+          239,
+          270
+        ]
+      },
+      {
+        "world_x": 2400,
+        "anchor_y": 238,
+        "camera_y": 138,
+        "prepared_screen_anchor_y": 100,
+        "original_sat_y_bytes": [
+          68,
+          68,
+          68,
+          84,
+          84,
+          84
+        ],
+        "displayed_piece_top_scanlines": [
+          69,
+          69,
+          69,
+          85,
+          85,
+          85
+        ],
+        "final_visible_world_bounds": [
+          207,
+          238
+        ]
+      }
+    ],
+    "poc_18_5": {
+      "sprite_yorigin": 36,
+      "nontransparent_canvas_rows": [
+        4,
+        35
+      ],
+      "visible_relative_y": [
+        -32,
+        -1
+      ],
+      "difference": "one pixel above original because the SMS SAT Y+1 convention is absent",
+      "render_only_correction": "add +1 to draw Y, equivalently change SPR_chaos_object_21 yorigin from 36 to 35"
+    },
+    "classification": "POC RENDERING BUG",
+    "qualification": "the original still has 17 blank scanlines; the conspicuous hover is canonical apart from one POC scanline"
+  },
+  "block_47": {
+    "cells": [
+      {
+        "world": [
+          3328,
+          256
+        ],
+        "cell": [
+          104,
+          8
+        ],
+        "block_id": "0x47"
+      },
+      {
+        "world": [
+          3360,
+          256
+        ],
+        "cell": [
+          105,
+          8
+        ],
+        "block_id": "0x47"
+      },
+      {
+        "world": [
+          3392,
+          256
+        ],
+        "cell": [
+          106,
+          8
+        ],
+        "block_id": "0x47"
+      },
+      {
+        "world": [
+          3424,
+          256
+        ],
+        "cell": [
+          107,
+          8
+        ],
+        "block_id": "0x47"
+      }
+    ],
+    "all_four_cells_verified": true,
+    "block_pointer_entry_rom": "0x4408E",
+    "mapping_cpu": "0x8A20",
+    "mapping_rom": "0x44A20",
+    "pieces": [
+      {
+        "piece": 0,
+        "attribute": "0x00C0",
+        "vram_tile": "0x0C0",
+        "source_tile_index": 0,
+        "palette": 0,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": false
+      },
+      {
+        "piece": 1,
+        "attribute": "0x00C0",
+        "vram_tile": "0x0C0",
+        "source_tile_index": 0,
+        "palette": 0,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": false
+      },
+      {
+        "piece": 2,
+        "attribute": "0x00C0",
+        "vram_tile": "0x0C0",
+        "source_tile_index": 0,
+        "palette": 0,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": false
+      },
+      {
+        "piece": 3,
+        "attribute": "0x00C0",
+        "vram_tile": "0x0C0",
+        "source_tile_index": 0,
+        "palette": 0,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": false
+      },
+      {
+        "piece": 4,
+        "attribute": "0x1917",
+        "vram_tile": "0x117",
+        "source_tile_index": 87,
+        "palette": 1,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 5,
+        "attribute": "0x1918",
+        "vram_tile": "0x118",
+        "source_tile_index": 88,
+        "palette": 1,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 6,
+        "attribute": "0x1B17",
+        "vram_tile": "0x117",
+        "source_tile_index": 87,
+        "palette": 1,
+        "x_flip": true,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 7,
+        "attribute": "0x00C0",
+        "vram_tile": "0x0C0",
+        "source_tile_index": 0,
+        "palette": 0,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": false
+      },
+      {
+        "piece": 8,
+        "attribute": "0x1919",
+        "vram_tile": "0x119",
+        "source_tile_index": 89,
+        "palette": 1,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 9,
+        "attribute": "0x191A",
+        "vram_tile": "0x11A",
+        "source_tile_index": 90,
+        "palette": 1,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 10,
+        "attribute": "0x1B19",
+        "vram_tile": "0x119",
+        "source_tile_index": 89,
+        "palette": 1,
+        "x_flip": true,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 11,
+        "attribute": "0x00C0",
+        "vram_tile": "0x0C0",
+        "source_tile_index": 0,
+        "palette": 0,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": false
+      },
+      {
+        "piece": 12,
+        "attribute": "0x191B",
+        "vram_tile": "0x11B",
+        "source_tile_index": 91,
+        "palette": 1,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 13,
+        "attribute": "0x191C",
+        "vram_tile": "0x11C",
+        "source_tile_index": 92,
+        "palette": 1,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 14,
+        "attribute": "0x191D",
+        "vram_tile": "0x11D",
+        "source_tile_index": 93,
+        "palette": 1,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": true
+      },
+      {
+        "piece": 15,
+        "attribute": "0x00C0",
+        "vram_tile": "0x0C0",
+        "source_tile_index": 0,
+        "palette": 0,
+        "x_flip": false,
+        "y_flip": false,
+        "priority": false
+      }
+    ],
+    "palette_selectors": {
+      "palette_0": "0x15",
+      "palette_1": "0x06"
+    },
+    "palette_aware_index_sha256": "37263cc9997115e75dfe92aba87e8bbcf5fe2ed45af01a93aaac77859377df2a",
+    "rgba_sha256": "ec9e7afdafe3b1494082e1900e271643a651b19755cf23904211a3ecb42b4e3d",
+    "rendered_pixel_dimensions": [
+      32,
+      32
+    ],
+    "canonical_red_magenta": false,
+    "poc_18_5_colour_comparison": {
+      "asset": "sprites/SPR_chaos_terrain_3/dd57e33b-ad36-48d4-8c15-56334af88da0.png",
+      "poc_block_rgba_sha256": "2be2a042d43ba29d7b3317628eb522d027ae4723b131ff2dcdddb823778c72ed",
+      "exact_match": false,
+      "cause": "POC terrain was generated as palette 0; block $47 nonzero artwork attributes select palette 1 ($06)"
+    },
+    "collision_pointer_entry_rom": "0x3808E",
+    "collision_header_cpu": "0x83F1",
+    "collision_header_rom": "0x383F1",
+    "collision_headers": [
+      {
+        "plane": "base",
+        "raw": "96 00 D0 8C 10 95 FF",
+        "flags": "0x96",
+        "surface_type": "0x16",
+        "modifier": "0x00",
+        "vertical_profile_cpu": "0x8CD0",
+        "vertical_profile": [
+          "0x17",
+          "0x17",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x18",
+          "0x17",
+          "0x17"
+        ],
+        "horizontal_profile_cpu": "0x9510",
+        "horizontal_profile": [
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C",
+          "0x1C"
+        ],
+        "floor_dispatch": "0x6AE3"
+      },
+      {
+        "plane": "alternate",
+        "raw": "B0 00 F0 8C 30 95 FF",
+        "flags": "0xB0",
+        "surface_type": "0x10",
+        "modifier": "0x00",
+        "vertical_profile_cpu": "0x8CF0",
+        "vertical_profile": [
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00"
+        ],
+        "horizontal_profile_cpu": "0x9530",
+        "horizontal_profile": [
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00",
+          "0x00"
+        ],
+        "floor_dispatch": "0x6C82"
+      }
+    ],
+    "terrain_behavior": {
+      "base_surface_handler_cpu": "0x6AE3",
+      "meaning": "qualifying airborne/rolling contact routes to $7857: replace the cell with block $46, refresh it, allocate one transient type-$0F parameter-$40 object, and add BCD $10 (ten) to $D29A",
+      "excluded_player_states": [
+        "0x0F",
+        "0x10",
+        "0x15",
+        "0x1A"
+      ],
+      "replacement_handler_cpu": "0x7857",
+      "replacement_block": "0x46",
+      "spawned_object_type": "0x0F",
+      "spawned_object_parameter": "0x40",
+      "ring_counter_effect": "$D29A packed BCD +0x10 (ten)",
+      "has_collision": true,
+      "is_layout_scanner_entity_generator": false,
+      "creates_transient_object_on_break": true
+    },
+    "population_relationship": {
+      "type_09": "none",
+      "type_10": "none",
+      "layout_rings_40_43": "distinct handler and population",
+      "runtime_entities_created_initially": 0,
+      "runtime_entities_created_on_break": 1
+    },
+    "classification": "INTERACTIVE TERRAIN"
+  },
+  "type_27": {
+    "placement_scan_period_updates": 4,
+    "accepted_relative_rectangle": {
+      "x": [
+        -96,
+        351
+      ],
+      "y": [
+        -96,
+        351
+      ]
+    },
+    "active_relative_rectangle": {
+      "x": [
+        -32,
+        287
+      ],
+      "y": [
+        -32,
+        287
+      ]
+    },
+    "frame_1_2_nonzero_relative_pixels_after_sat_bias": {
+      "x": [
+        -12,
+        11
+      ],
+      "y": [
+        -14,
+        0
+      ]
+    },
+    "creation_frame": "after the object scheduler; piece count remains zero",
+    "next_update": "state 0 requests state 1; piece count remains zero",
+    "second_update": "state 1 loads nonempty frame 1; SAT output is allowed if lifetime clears visibility bit 6",
+    "can_first_display_inside_visible_viewport": true,
+    "geometry_explanation": "a late placement scan or camera jump may create in the active rectangle; its first nonempty frame is two object updates later and can already intersect 256x192",
+    "normal_scroll_explanation": "steady left-to-right scrolling accepts the placement in the hidden margin, enables SAT by relative X=287, and pixels enter at relative X=267",
+    "cleanup": "pre-trigger exit from accepted rectangle -> type FE -> occupancy release; post-trigger state 3 removes at abs(player X-object X)>=384 and can recreate",
+    "placements": [
+      {
+        "world": [
+          3504,
+          224
+        ],
+        "creation_camera_x_inclusive": [
+          3153,
+          3600
+        ],
+        "creation_camera_y_inclusive": [
+          -127,
+          320
+        ],
+        "active_callback_and_sat_camera_x_inclusive": [
+          3217,
+          3536
+        ],
+        "active_callback_and_sat_camera_y_inclusive": [
+          -63,
+          256
+        ],
+        "actual_nonzero_pixel_camera_x_inclusive": [
+          3237,
+          3515
+        ],
+        "actual_nonzero_pixel_camera_y_inclusive": [
+          19,
+          224
+        ],
+        "creation_to_first_nonempty_frame_updates": 2
+      },
+      {
+        "world": [
+          2288,
+          768
+        ],
+        "creation_camera_x_inclusive": [
+          1937,
+          2384
+        ],
+        "creation_camera_y_inclusive": [
+          417,
+          864
+        ],
+        "active_callback_and_sat_camera_x_inclusive": [
+          2001,
+          2320
+        ],
+        "active_callback_and_sat_camera_y_inclusive": [
+          481,
+          800
+        ],
+        "actual_nonzero_pixel_camera_x_inclusive": [
+          2021,
+          2299
+        ],
+        "actual_nonzero_pixel_camera_y_inclusive": [
+          563,
+          768
+        ],
+        "creation_to_first_nonempty_frame_updates": 2
+      },
+      {
+        "world": [
+          2240,
+          112
+        ],
+        "creation_camera_x_inclusive": [
+          1889,
+          2336
+        ],
+        "creation_camera_y_inclusive": [
+          -239,
+          208
+        ],
+        "active_callback_and_sat_camera_x_inclusive": [
+          1953,
+          2272
+        ],
+        "active_callback_and_sat_camera_y_inclusive": [
+          -175,
+          144
+        ],
+        "actual_nonzero_pixel_camera_x_inclusive": [
+          1973,
+          2251
+        ],
+        "actual_nonzero_pixel_camera_y_inclusive": [
+          -93,
+          112
+        ],
+        "creation_to_first_nonempty_frame_updates": 2
+      }
+    ],
+    "poc_18_5": {
+      "commit": "726b16eafbc92d4240fa182bb6ef699cfbcf923a",
+      "behavior": "uses only X camera range [-128, viewport+384], creates state 1 and sets visible immediately",
+      "difference": "omits ROM 32x32 visibility grid, Y eligibility, empty state-0 update, and first-frame delay",
+      "required_change": "apply the ROM creation/active rectangles in both axes and preserve the two-update empty-to-frame-1 sequence"
+    },
+    "classification": "POC LIFETIME/PRESENTATION BUG"
+  },
+  "poc_coverage_summary": {
+    "raw_records": 53,
+    "represented": 29,
+    "missing": 24
+  }
+}

@@ -1,6 +1,6 @@
 # Sonic Chaos — project status
 
-Updated: 25 September 2026
+Updated: 27 September 2026
 
 This is the coordination status for the Sonic Chaos SMS research/reference work and the Windows GameMaker proof of concept. Read this before starting a new research or POC pass. The ROM and the reference repository remain authoritative for original-game behavior; the POC is an implementation target, not evidence for the ROM.
 
@@ -24,10 +24,10 @@ Rules:
 
 Current `main` baseline:
 
-- 64 recovered ROM regions
-- 12,240 recovered bytes
-- 4,731 decoded instructions
-- 37,630 controlled original-Z80 comparisons
+- 70 recovered ROM regions
+- 12,678 recovered bytes
+- 4,878 decoded instructions
+- 37,649 controlled original-Z80 comparisons
 - 524,288-byte byte-identical reconstruction
 - SHA-256 matches the canonical ROM above
 
@@ -35,7 +35,7 @@ The current THZ1 census contains exactly 53 raw nine-byte object records across 
 
 | Type | Records | Current research status |
 |---|---:|---|
-| `$09` | 24 | graphics/animation decoded; behavior and relationship to layout-derived rings unresolved |
+| `$09` | 24 | implementation-ready; 24 one-to-one runtime collectibles, distinct from 142 terrain rings |
 | `$10` | 5 | THZ1-reachable behavior formally complete; numeric parameter/reward effects verified; canonical identity remains non-verified |
 | `$18` | 1 | dynamic goal-sign graphics verified; completion/lifetime behavior partial |
 | `$1B` | 4 | retracting spikes; core state machine substantially verified |
@@ -47,6 +47,28 @@ The current THZ1 census contains exactly 53 raw nine-byte object records across 
 Important census correction: the 24 raw type-`$09` placement records and the 142 separately decoded ring positions from THZ1 layout blocks are different source populations. No current evidence proves that one expands into the other.
 
 ## Research task tracker
+
+### Task 08 — THZ1 final runtime / entity closure: COMPLETE
+
+The final report is `docs/thz1-final-runtime-closure.md`; type `$09` is in
+`docs/object-09.md`, and the complete record matrix is
+`data/rom-cache/thz1/poc-coverage.json`.
+
+- Type `$21`'s 17 blank rows are canonical, but POC 18.5 renders one scanline
+  too high by omitting SMS SAT Y+1.
+- Type `$09` maps 24 raw records to exactly 24 entities; POC 18.5 omits all of
+  record indices 14–21 and 37–52.
+- Block `$47` is interactive breakable terrain: it becomes `$46`, grants ten
+  rings and creates a transient type `$0F`. POC's red/magenta palette is not
+  canonical; it is unrelated to type `$09`, type `$10`, and blocks `$40-$43`.
+- Original type `$27` can first appear inside the viewport after a two-update
+  empty-frame sequence; POC's immediate, X-only visibility is not equivalent.
+- Overall THZ1 POC coverage is incomplete. The 142 terrain-derived ring
+  positions remain a separate correctly represented source population.
+
+Task 08 adds six recovered regions, 438 bytes, 147 decoded instructions and 19
+controlled comparisons. Current totals are 70 regions, 12,678 bytes, 4,878
+instructions and 37,649 comparisons; reconstruction remains byte-identical.
 
 ### Task 07 — THZ1 final visual / anchor closure: COMPLETE
 

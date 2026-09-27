@@ -9,7 +9,7 @@ and regenerates with `tools/thz1_object_census.py`.
 
 | Type | Records | Coordinates / distribution | Parameter variants | Graphics | Animation | Verified role/status | Behavior status | Next research need |
 |---:|---:|---|---|---|---|---|---|---|
-| `$09` | 24 | records 14-21, 37-52; routes across X 816-3422 | `$00` ×11, `$01` ×13 | static shared catalogue | 4 states; frames `$00-$06`; decoded | ring/sparkle family supported, not canonical | unresolved | parameter/entity expansion and collection/lifetime study |
+| `$09` | 24 | records 14-21, 37-52; routes across X 816-3422 | `$00` ×11, `$01` ×13 | static shared catalogue | 4 states; frames `$00-$06`; decoded | ring-counter collectible; canonical display name unassigned | complete for THZ1 reachability | POC integration; full-emulator observation |
 | `$10` | 5 | `(336,270)` to `(2688,686)` | `$02` ×1, `$04` ×2, `$06` ×2 | static plus parameter-selected icon load | 4 states; `$00/$0B/$0C`; decoded | monitor/item-box presentation supported, not canonical | complete for THZ1 reachability | canonical identity and type-`$05` child semantics |
 | `$18` | 1 | `(3960,558)` | `$00` | dynamic tiles `$6A-$A9` | 7 states; `$00-$05`; decoded | goal-sign presentation supported, not canonical | partial | completion/lifetime study |
 | `$1B` | 4 | lower route, Y 864 | `$00` | static shared frame `$0E` | 5 states; decoded | retracting/moving spikes verified | substantial | camera lifetime and complete gameplay damage |
@@ -42,11 +42,10 @@ object behavior. The complete per-frame mapping records, state-script pointers,
 graphics load records, field variants, artifact links, and research-status
 facets are retained in the JSON rather than repeated here.
 
-The separately cached **142 ring positions** are decoded from ring pixels in
-THZ1 layout blocks `$40..$43`. They are a different source population from the
-24 raw type-`$09` object records. Current evidence does **not** establish that
-one is an expansion of the other, so neither count is substituted for the
-other.
+The separately cached **142 ring positions** come from THZ1 layout blocks
+`$40..$43` and their surface-type-7 handler. They are a different source
+population from the 24 raw type-`$09` records: type `$09` maps one record to one
+runtime slot and neither population expands into the other.
 
 ## `$09`
 
@@ -88,18 +87,20 @@ range `$10-$22`.
 | 51 | `$70770` | `(2512,684)` | `$00` | `$01` | `$00` | `$00` |
 | 52 | `$70779` | `(2640,684)` | `$00` | `$01` | `$00` | `$00` |
 
-### What is partially established
+### What behavior is verified
 
-Reconstructed reachable graphics support a ring/sparkle-family description,
-but that visual result is not evidence that every frame or state has the same
-semantic role. Placement completeness and animation reachability are complete;
-object behavior is not.
+Every record creates exactly one runtime slot: 24 records produce 24 entities.
+Parameter `$00` is visible, rotates through frames `$01/$02/$04/$03`, and on
+collection requests a 32-update `$05/$06` sparkle. Parameter `$01` is invisible,
+uses empty state 3, and checks collection only on even global frames. Both use
+strict `abs(dx)<12 && abs(dy)<12`, request sound `$BF`, increment packed-BCD ring
+counter `$D29A` by one, and clear the placement token. Uncollected off-screen
+instances can recreate; collected instances do not respawn during the loaded
+act. They create no child or pattern entities.
 
-### What remains unresolved
-
-Parameter `$00` versus `$01`, runtime entity generation, collection, sparkle
-selection, persistence, and respawn need a dedicated source/trace study. The
-relationship—if any—to the 142 layout-derived ring positions is unresolved.
+The separately decoded 142 positions are handled by `$753E` through layout
+blocks `$40-$43`. They share the ring counter but have no generation or
+placement relationship to type `$09`. See `docs/object-09.md`.
 
 ## `$10`
 
@@ -338,10 +339,7 @@ earlier adapter.
 
 1. **Type `$18` completion/lifetime study.** Dynamic graphics are already
    complete, isolating the remaining end-of-act behavior question.
-2. **Type `$09` parameter/entity-generation/collection study.** This must
-   explain the 24 raw records without assuming a relationship to the separate
-   142 layout-derived positions.
-3. **Type `$28` formal platform study.** Its larger rider/lifetime dependencies
+2. **Type `$28` formal platform study.** Its larger rider/lifetime dependencies
    make it less isolated than `$10`.
 
 ### Graphics, palette, and mapping gaps
@@ -352,9 +350,9 @@ behaviors are complete.
 
 ### Placement/entity expansion gaps
 
-Determine the runtime meaning of type-`$09` parameter `$00/$01` and whether its
-records generate multiple entities. Preserve the independent 142-position
-layout-ring cache until source evidence proves a relationship.
+No placed-record expansion gap remains: type `$09` is one record to one runtime
+slot, and the independent 142-position terrain-ring cache is a proved separate
+population.
 
 ### Generic engine dependencies
 
@@ -364,7 +362,7 @@ for all results currently based on subroutine fixtures.
 
 ### POC integration-ready research
 
-Types `$10`, `$21` and `$27` have complete formal THZ1 behavior studies. The `$26`
+Types `$09`, `$10`, `$21` and `$27` have complete formal THZ1 behavior studies. The `$26`
 and `$1B` core state machines are substantially recovered, but their generic
 lifetime and integration checks remain explicit prerequisites. No conclusion
 in this census uses the current POC as evidence for original-ROM behavior.

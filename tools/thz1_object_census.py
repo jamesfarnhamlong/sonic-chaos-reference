@@ -31,30 +31,30 @@ REGIONS_PATH = ROOT / "asm" / "recovered" / "regions.json"
 OBJECT_21_PATH = ROOT / "data" / "rom-cache" / "thz1" / "object-21.json"
 OBJECT_27_PATH = ROOT / "data" / "rom-cache" / "thz1" / "object-27.json"
 OBJECT_10_PATH = ROOT / "data" / "rom-cache" / "thz1" / "object-10.json"
+OBJECT_09_PATH = ROOT / "data" / "rom-cache" / "thz1" / "object-09.json"
 DEFAULT_OUTPUT = ROOT / "data" / "rom-cache" / "thz1" / "object-census.json"
 
 
 PROFILES = {
     0x09: {
-        "role": "ring / sparkle graphics family",
-        "semantic_status": "LIKELY / SUPPORTED BUT NOT CANONICAL",
-        "semantic_basis": "Reachable reconstructed frames show ring and sparkle graphics; the ROM evidence cited here does not establish a canonical name for every state.",
+        "role": "placed ring-counter collectible; ring / sparkle graphics family",
+        "semantic_status": "VERIFIED NUMERIC RESOURCE EFFECT; CANONICAL DISPLAY NAME UNASSIGNED",
+        "semantic_basis": "Original callbacks use strict 12-pixel overlap, sound $BF, and increment the packed-BCD ring counter $D29A by one.",
         "graphics_completeness": "VERIFIED for statically reachable frames 0x00-0x06",
         "animation_completeness": "VERIFIED for all four statically decoded states",
-        "behavior_completeness": "UNRESOLVED",
-        "lifetime_contact_completeness": "UNRESOLVED",
-        "poc_readiness": "PLACEMENT DATA READY; ORIGINAL OBJECT EXPANSION/BEHAVIOR NOT READY",
+        "behavior_completeness": "VERIFIED for all THZ1 parameters",
+        "lifetime_contact_completeness": "VERIFIED",
+        "poc_readiness": "IMPLEMENTATION READY; 24 ONE-TO-ONE ENTITIES MISSING FROM POC 18.5",
         "graphics_class": "static THZ1 VRAM",
         "graphics_load_ids": ["thz1_common_base_10"],
         "graphics_note": "The shared mapping uses absolute tile offsets 0x10-0x22 with placement art bases 0x00/0x00.",
         "renderer_note": "All THZ1 placement flags are 0x00; no placement-requested X mirror is present.",
-        "collision": None,
-        "handlers": [],
-        "artifacts": ["tools/thz1_object_assets.py", "tools/thz1_animation_reach.py", "data/rom-cache/thz1/object-graphics-map.json", "docs/thz1-object-graphics.md"],
+        "collision": {"status": "VERIFIED", "facts": ["Strict abs(dx)<12 and abs(dy)<12.", "Parameter 1 is hidden and checks overlap only on even global frames."]},
+        "handlers": ["object_09_scripts.asm", "object_09_handlers.asm"],
+        "artifacts": ["docs/object-09.md", "tools/thz1_object_09.py", "tests/test_thz1_object_09.py", "data/rom-cache/thz1/object-09.json"],
         "gaps": [
-            "Trace what parameter 0x00 versus 0x01 means for the 24 raw records.",
-            "Establish how the object stream relates to generated game entities; do not equate 24 records with the separately decoded 142 layout-ring positions.",
-            "Trace collection, sparkle-state selection, persistence, and respawn behavior."
+            "A canonical user-facing name beyond numeric type 0x09 is deliberately not assigned.",
+            "Full-emulator observation remains separate from the controlled original-routine fixtures."
         ],
     },
     0x10: {
@@ -195,7 +195,7 @@ PROFILES = {
 }
 
 EVIDENCE_LEVELS = {
-    0x09: ["decoded data", "decoded graphics/mapping metadata"],
+    0x09: ["decoded data", "decoded graphics/mapping metadata", "byte-verified assembly", "source-traced behavior", "controlled original-Z80 trace"],
     0x10: ["decoded data", "decoded graphics/mapping metadata", "byte-verified assembly", "source-traced behavior", "controlled original-Z80 trace"],
     0x18: ["decoded data", "decoded graphics/mapping metadata", "source-traced dynamic graphics path"],
     0x1B: ["decoded data", "byte-verified assembly", "source-traced behavior", "controlled original-Z80 trace (selected handlers)"],
@@ -430,21 +430,21 @@ def build_census(rom: bytes) -> dict:
         "type_counts": {hx(value, 2): counts[value] for value in PLACED_TYPES},
         "record_order": [hx(int(row["type_id"], 16), 2) for row in records],
         "separate_layout_ring_position_count": len(layout["rings"]),
-        "ring_count_note": "The 24 raw type-0x09 records and the 142 ring positions decoded from THZ1 layout blocks are different populations; this census does not claim that either count is an expansion of the other.",
+        "ring_count_note": "The 24 raw type-0x09 records and the 142 positions decoded from layout blocks 0x40-0x43 are different populations: the former are one-to-one placed runtime entities and the latter use a terrain handler; neither expands into the other.",
         "validation": {
             "object_records_match_rom": True,
             "mapping_anchor_types": ["0x21", "0x26", "0x27", "0x28"],
             "animation_anchor_types": ["0x1B", "0x26"],
-            "dedicated_placement_caches": ["0x10", "0x21", "0x27"],
+            "dedicated_placement_caches": ["0x09", "0x10", "0x21", "0x27"],
             "total_unresolved_animation_states": all_unresolved,
         },
         "objects": objects,
         "prioritized_research_backlog": {
-            "object_behavior_needing_formal_trace": ["0x18 completion/lifetime study", "0x09 parameter/entity-generation/collection study", "0x28 formal platform subtype/lifetime study"],
+            "object_behavior_needing_formal_trace": ["0x18 completion/lifetime study", "0x28 formal platform subtype/lifetime study"],
             "graphics_palette_mapping_gaps": [],
-            "placement_entity_expansion_gaps": ["Explain type-0x09 runtime entity generation and its relationship, if any, to the separate 142 layout-derived ring positions"],
+            "placement_entity_expansion_gaps": [],
             "generic_engine_dependencies": ["Camera activation/removal, occupancy release, and respawn studies for 0x1B, 0x26, and 0x28", "Full scheduler/gameplay validation beyond controlled subroutine fixtures"],
-            "poc_integration_ready": ["0x10", "0x21", "0x27", "0x26 core state machine", "0x1B core state machine"],
+            "poc_integration_ready": ["0x09", "0x10", "0x21", "0x27", "0x26 core state machine", "0x1B core state machine"],
             "recommended_next_independent_task": {"type_id": "0x18", "reason": "Type 0x10 now has a complete formal THZ1 behavior study. Type 0x18 retains a bounded completion/lifetime gap with its dynamic graphics path already verified."},
         },
     }

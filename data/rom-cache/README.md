@@ -19,6 +19,15 @@ parameter rule, reachable animation frames, and controlled original-routine
 fixtures. Its possible Boing-o-Bot identity remains explicitly likely rather
 than verified, so the primary identifier remains type `$21`.
 
+`thz1/object-09.json` records all 24 one-to-one runtime entities, parameter
+`$00/$01` behavior, strict collection boundaries, numeric ring-counter effect,
+sparkle timing, occupancy and the proved separation from 142 layout rings.
+
+`thz1/final-runtime-closure.json` records type-`$21` SAT bounds, block `$47`
+tiles/palettes/collision and type-`$27` creation/display boundaries.
+`thz1/poc-coverage.json` audits all 53 raw records exactly once against pushed
+POC 18.5 and keeps object, layout-ring and terrain populations separate.
+
 `thz1/player-state-11-graphics.json` records normal-Sonic frames
 `$38/$39/$3A`: mapping records, runtime tile sources, palette, anchor geometry
 and stable render hashes. `thz1/background-registration.json` records the

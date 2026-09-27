@@ -18,6 +18,10 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
   proximity, oscillation, contact, orientation and respawn chain, with strict boundary traces.
 - [THZ1 object type `$10`](docs/object-10.md): complete placement, state,
   contact, numeric parameter-effect, replacement and occupancy/respawn chain.
+- [THZ1 object type `$09`](docs/object-09.md): all 24 one-to-one entities,
+  visible/hidden parameters, collection, sparkle and occupancy behavior.
+- [THZ1 final runtime closure](docs/thz1-final-runtime-closure.md): type `$21`
+  SAT presentation, block `$47`, type `$27` visibility timing and complete POC coverage.
 - [THZ1 placed-object census](docs/thz1-object-census.md): all 53 raw records,
   eight placed types, graphics/animation entry points, research status, and prioritized gaps.
 - [Act 1 canon-layout policy](docs/canon-layout.md): ROM-only placement sources, the metadata cache, and the POC 15.1 placement audit.
@@ -35,9 +39,10 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 
 | Check | Result |
 |---|---|
-| Recovered assembly | 64 regions, 12,240 bytes, 4,731 decoded instructions; explicit tables counted separately |
+| Recovered assembly | 70 regions, 12,678 bytes, 4,878 decoded instructions; explicit tables counted separately |
 | Assembly reconstruction | All 524,288 ROM bytes match; unrecovered gaps are preserved from the supplied ROM |
-| Differential checks | 37,630 comparisons against original Z80 subroutines pass |
+| Differential checks | 37,649 comparisons against original Z80 subroutines pass |
+| THZ1 type `$09` | 24 raw records produce 24 runtime entities; parameters, collection, sparkle and lifetime pass |
 | THZ1 type `$10` | Four states and five placements resolved; `$02/$04/$06`, contact boundaries, replacement and respawn distinction pass |
 | THZ1 type `$21` | Seven animation states resolved; parameter `$02/$08` patrol and four contact fixtures pass |
 | THZ1 type `$27` | Four states resolved; 64/384-pixel boundaries, 129-update oscillation and contact/lifetime fixtures pass |
@@ -60,6 +65,8 @@ python tools/cache_game_data.py path/to/SonicChaos.sms
 python tools/thz1_object_21.py path/to/SonicChaos.sms
 python tools/thz1_object_27.py path/to/SonicChaos.sms
 python tools/thz1_object_10.py path/to/SonicChaos.sms
+python tools/thz1_object_09.py path/to/SonicChaos.sms
+python tools/thz1_final_runtime_closure.py path/to/SonicChaos.sms
 python tools/thz1_object_census.py path/to/SonicChaos.sms
 python tools/recover.py path/to/SonicChaos.sms --output asm/recovered
 python tests/verify_rom.py path/to/SonicChaos.sms --output reports

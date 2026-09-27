@@ -10,6 +10,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 from cache_game_data import EXPECTED_SHA256, decode_layout, decode_objects, layout_interactions
 import thz1_object_10 as object10
 import thz1_object_21 as object21
+import thz1_object_09 as object09
+import thz1_final_runtime_closure as final_closure
 import player_state_11_graphics as player_graphics
 import thz1_background_registration as background
 
@@ -34,6 +36,18 @@ def main(rom_path):
         (ROOT / "data/rom-cache/thz1/object-21.json").read_text(encoding="utf-8")
     )
     assert stored_object21 == object21.build_report(rom)
+    stored_object09 = json.loads(
+        (ROOT / "data/rom-cache/thz1/object-09.json").read_text(encoding="utf-8")
+    )
+    assert stored_object09 == object09.build_report(rom)
+    stored_final = json.loads(
+        (ROOT / "data/rom-cache/thz1/final-runtime-closure.json").read_text(encoding="utf-8")
+    )
+    assert stored_final == final_closure.build(rom)
+    stored_coverage = json.loads(
+        (ROOT / "data/rom-cache/thz1/poc-coverage.json").read_text(encoding="utf-8")
+    )
+    assert stored_coverage == final_closure.coverage()
     stored_player = json.loads(
         (ROOT / "data/rom-cache/thz1/player-state-11-graphics.json").read_text(encoding="utf-8")
     )
@@ -55,7 +69,7 @@ def main(rom_path):
     assert sum(r["decoded_kind"] is not None for r in records) == 14
     print(
         "ROM cache: 53 records, 14 decoded placements, 17 terrain interactions, "
-        "142 rings; type-$10/$21, player-$11 graphics, and background metadata deterministic"
+        "142 rings; type-$09/$10/$21, final closure, coverage, player-$11 graphics, and background metadata deterministic"
     )
 
 

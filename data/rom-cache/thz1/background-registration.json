@@ -11,7 +11,10 @@
     "block_pointer_table_rom": "0x44000",
     "primary_tile_stream_rom": "0x40F9E",
     "vram_base_tile": "0x0C0",
-    "palette_selector": "0x15"
+    "palette_selector": "0x15",
+    "palette_0_selector": "0x15",
+    "palette_1_selector": "0x06",
+    "palette_attribute_bit": "VDP name-table bit 11; nonzero pixels only"
   },
   "blocks": [
     {
@@ -3304,8 +3307,8 @@
           "palette_index": 14
         }
       ],
-      "canonical_indexed_crop_sha256": "be75d6164980b45c9f5ca3d1dd8f1ff33dfd28e72767ff2b7af0bca9055a2cc1",
-      "canonical_rgba_crop_sha256": "55335341562d9f98a53aca40496f4428a6d52fa82c6565a66f12e59ab6953372",
+      "canonical_indexed_crop_sha256": "a92fe07fe462549161b193cb46c93fc7c1677c23aa2ba20c333d31939d7147dd",
+      "canonical_rgba_crop_sha256": "f23afe97bc63b9ef837309f3d3df26b39d67a1ac7eea36a1ba61c7f23b56bf7c",
       "platform_visual_rows": {
         "background_palette_index": 0,
         "first_non_background_y_at_object_x": 288,
@@ -3758,8 +3761,8 @@
           "palette_index": 15
         }
       ],
-      "canonical_indexed_crop_sha256": "6ca30e78f1f23d2f32527a3547d3b94d38a96dc10e9c415767676cc26538ee83",
-      "canonical_rgba_crop_sha256": "688296eb590f1e84203a4752ccf949e57743a0ea2574bd69908da0b462738ca5",
+      "canonical_indexed_crop_sha256": "0a497782c2ce70b859d4061f9f0b35c2cc363d59039fe1cfd06858b5db913624",
+      "canonical_rgba_crop_sha256": "c3ae2f66aad0140b834c748a219427b676d3f14d3c4b3e41d28e5322fd9a4cd1",
       "platform_visual_rows": {
         "background_palette_index": 0,
         "first_non_background_y_at_object_x": 128,

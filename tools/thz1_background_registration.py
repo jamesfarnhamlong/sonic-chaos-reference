@@ -56,7 +56,12 @@ def render_indices(rom: bytes) -> tuple[bytearray, list[int], list[dict]]:
                 for px in range(8):
                     sx = 7 - px if attr & 0x0200 else px
                     sy = 7 - py if attr & 0x0400 else py
-                    pixels[(piece // 4) * 8 + py][(piece % 4) * 8 + px] = tile[sy][sx]
+                    colour = tile[sy][sx]
+                    # Encode the selected CRAM half for nonzero pixels. Colour
+                    # zero exposes the backdrop regardless of palette bit.
+                    pixels[(piece // 4) * 8 + py][(piece % 4) * 8 + px] = (
+                        0 if colour == 0 else colour | (0x10 if attr & 0x0800 else 0)
+                    )
         blocks.append(pixels)
         block_meta.append({
             "block_id": f"0x{block_id:02X}", "pointer_entry_rom": f"0x{ptr_entry:05X}",
@@ -79,11 +84,12 @@ def crop_bytes(world: bytes, box: list[int]) -> bytes:
 
 
 def rgba_world(rom: bytes, world: bytes) -> bytes:
-    palette = assets.palette_rgba(rom, assets.THZ1_BACKGROUND_PALETTE)
+    palettes = (assets.palette_rgba(rom, assets.THZ1_BACKGROUND_PALETTE),
+                assets.palette_rgba(rom, assets.THZ1_SPRITE_PALETTE))
     out = bytearray(len(world) * 4)
     for i, value in enumerate(world):
         # Background colour zero is opaque on the background plane.
-        r, g, b, _ = palette[value]
+        r, g, b, _ = palettes[1 if value & 0x10 else 0][value & 0x0F]
         out[i * 4:i * 4 + 4] = bytes((r, g, b, 255))
     return bytes(out)
 
@@ -248,6 +254,8 @@ def build(rom: bytes, output: Path | None = None, poc_repo: Path | None = None) 
             "layout_stream_rom": "0x48000", "layout_dimensions_blocks": [128, 32],
             "block_pointer_table_rom": "0x44000", "primary_tile_stream_rom": "0x40F9E",
             "vram_base_tile": "0x0C0", "palette_selector": "0x15",
+            "palette_0_selector": "0x15", "palette_1_selector": "0x06",
+            "palette_attribute_bit": "VDP name-table bit 11; nonzero pixels only",
         },
         "blocks": [block_meta[x] for x in used_blocks],
         "patches": results,

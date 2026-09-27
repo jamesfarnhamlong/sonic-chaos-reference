@@ -84,7 +84,7 @@
     "0x18"
   ],
   "separate_layout_ring_position_count": 142,
-  "ring_count_note": "The 24 raw type-0x09 records and the 142 ring positions decoded from THZ1 layout blocks are different populations; this census does not claim that either count is an expansion of the other.",
+  "ring_count_note": "The 24 raw type-0x09 records and the 142 positions decoded from layout blocks 0x40-0x43 are different populations: the former are one-to-one placed runtime entities and the latter use a terrain handler; neither expands into the other.",
   "validation": {
     "object_records_match_rom": true,
     "mapping_anchor_types": [
@@ -98,6 +98,7 @@
       "0x26"
     ],
     "dedicated_placement_caches": [
+      "0x09",
       "0x10",
       "0x21",
       "0x27"
@@ -580,34 +581,57 @@
         "note": "The shared mapping uses absolute tile offsets 0x10-0x22 with placement art bases 0x00/0x00."
       },
       "renderer_orientation": "All THZ1 placement flags are 0x00; no placement-requested X mirror is present.",
-      "collision": null,
+      "collision": {
+        "status": "VERIFIED",
+        "facts": [
+          "Strict abs(dx)<12 and abs(dy)<12.",
+          "Parameter 1 is hidden and checks overlap only on even global frames."
+        ]
+      },
       "research": {
         "placement_completeness": "VERIFIED",
         "semantic_identity": {
-          "status": "LIKELY / SUPPORTED BUT NOT CANONICAL",
-          "role": "ring / sparkle graphics family",
-          "basis": "Reachable reconstructed frames show ring and sparkle graphics; the ROM evidence cited here does not establish a canonical name for every state."
+          "status": "VERIFIED NUMERIC RESOURCE EFFECT; CANONICAL DISPLAY NAME UNASSIGNED",
+          "role": "placed ring-counter collectible; ring / sparkle graphics family",
+          "basis": "Original callbacks use strict 12-pixel overlap, sound $BF, and increment the packed-BCD ring counter $D29A by one."
         },
         "graphics_completeness": "VERIFIED for statically reachable frames 0x00-0x06",
         "animation_script_completeness": "VERIFIED for all four statically decoded states",
-        "behavior_completeness": "UNRESOLVED",
-        "lifetime_contact_completeness": "UNRESOLVED",
+        "behavior_completeness": "VERIFIED for all THZ1 parameters",
+        "lifetime_contact_completeness": "VERIFIED",
         "evidence_levels": [
           "decoded data",
-          "decoded graphics/mapping metadata"
+          "decoded graphics/mapping metadata",
+          "byte-verified assembly",
+          "source-traced behavior",
+          "controlled original-Z80 trace"
         ],
-        "poc_research_readiness": "PLACEMENT DATA READY; ORIGINAL OBJECT EXPANSION/BEHAVIOR NOT READY",
-        "recovered_regions": [],
+        "poc_research_readiness": "IMPLEMENTATION READY; 24 ONE-TO-ONE ENTITIES MISSING FROM POC 18.5",
+        "recovered_regions": [
+          {
+            "name": "object_09_scripts",
+            "file": "asm/recovered/object_09_scripts.asm",
+            "rom_start": "0x31BC8",
+            "rom_end_exclusive": "0x31C10",
+            "kind": "data"
+          },
+          {
+            "name": "object_09_handlers",
+            "file": "asm/recovered/object_09_handlers.asm",
+            "rom_start": "0x31C10",
+            "rom_end_exclusive": "0x31C58",
+            "kind": "code"
+          }
+        ],
         "artifacts": [
-          "tools/thz1_object_assets.py",
-          "tools/thz1_animation_reach.py",
-          "data/rom-cache/thz1/object-graphics-map.json",
-          "docs/thz1-object-graphics.md"
+          "docs/object-09.md",
+          "tools/thz1_object_09.py",
+          "tests/test_thz1_object_09.py",
+          "data/rom-cache/thz1/object-09.json"
         ],
         "major_remaining_questions": [
-          "Trace what parameter 0x00 versus 0x01 means for the 24 raw records.",
-          "Establish how the object stream relates to generated game entities; do not equate 24 records with the separately decoded 142 layout-ring positions.",
-          "Trace collection, sparkle-state selection, persistence, and respawn behavior."
+          "A canonical user-facing name beyond numeric type 0x09 is deliberately not assigned.",
+          "Full-emulator observation remains separate from the controlled original-routine fixtures."
         ]
       }
     },
@@ -2384,18 +2408,16 @@
   "prioritized_research_backlog": {
     "object_behavior_needing_formal_trace": [
       "0x18 completion/lifetime study",
-      "0x09 parameter/entity-generation/collection study",
       "0x28 formal platform subtype/lifetime study"
     ],
     "graphics_palette_mapping_gaps": [],
-    "placement_entity_expansion_gaps": [
-      "Explain type-0x09 runtime entity generation and its relationship, if any, to the separate 142 layout-derived ring positions"
-    ],
+    "placement_entity_expansion_gaps": [],
     "generic_engine_dependencies": [
       "Camera activation/removal, occupancy release, and respawn studies for 0x1B, 0x26, and 0x28",
       "Full scheduler/gameplay validation beyond controlled subroutine fixtures"
     ],
     "poc_integration_ready": [
+      "0x09",
       "0x10",
       "0x21",
       "0x27",

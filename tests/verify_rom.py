@@ -8,6 +8,8 @@ from reference import lookup, project_floor, project_side, angle_velocity
 import thz1_object_27 as object27
 import thz1_object_10 as object10
 import thz1_object_21 as object21
+import thz1_object_09 as object09
+import thz1_final_runtime_closure as final_closure
 import player_state_11 as task06
 
 def verify(path, output):
@@ -23,6 +25,9 @@ def verify(path, output):
                   object27_create=0, object27_init=0, object27_proximity=0,
                   object27_oscillation=0, object27_removal=0,
                   object27_contact=0, object27_lifetime=0,
+                  object09_init=0, object09_interaction=0,
+                  object09_lifetime=0, object21_sat_renderer=0,
+                  block47_reward=0,
                   windows_discrepancies=0)
     loader=Oracle(rom);loader.bank(2,18)
     loader.mem[0xc001:0xd000]=bytes(4095);loader.mem[0xd000]=0xa5
@@ -371,7 +376,34 @@ def verify(path, output):
         combined.call(0xB2AF)
         assert combined.mem[0xD3B0] == 0xFF
         assert combined.mem[0xD502] != 0x0B
-        counts['object21_ground_contact'] += 1
+    counts['object21_ground_contact'] += 2
+
+    # Task 08: type-$09 initialization/collection/lifetime callbacks, the
+    # original type-$21 SAT Y renderer, and block-$47's ten-ring reward tail.
+    object09_report = object09.build_report(rom)
+    fixtures09 = object09_report['controlled_original_routine_fixtures']
+    assert [(x['requested_state'], x['renderer_flags_04'])
+            for x in fixtures09['initialization']] == [(1, '0x00'), (3, '0x80')]
+    counts['object09_init'] += 2
+    assert [x['collected'] for x in fixtures09['overlap_boundaries']] == [
+        True, False, True, False, True, False, True, False]
+    assert [x['collected'] for x in fixtures09['hidden_frame_phase']] == [True, False]
+    assert fixtures09['counter_increment']['ring_counter_d29a_bcd'] == '0x10'
+    counts['object09_interaction'] += 11
+    assert fixtures09['lifetime']['offscreen']['object_type_after'] == '0xFE'
+    assert fixtures09['lifetime']['cleanup']['occupancy_after'] == '0x00'
+    counts['object09_lifetime'] += 2
+
+    rendered21 = final_closure.type21_render(rom)['controlled_original_renderer_fixtures']
+    assert [x['original_sat_y_bytes'] for x in rendered21] == [[68, 68, 68, 84, 84, 84]] * 3
+    assert [x['final_visible_world_bounds'] for x in rendered21] == [[559, 590], [239, 270], [207, 238]]
+    counts['object21_sat_renderer'] += 3
+
+    reward47 = Oracle(rom)
+    reward47.mem[0xD29A] = 0x09
+    reward47.call(0x4AC2)
+    assert reward47.mem[0xD29A] == 0x19
+    counts['block47_reward'] += 1
 
     report=dict(rom_sha256=SHA256,counts=counts,total=sum(counts.values()),
                 first_ramp_launch=launch,

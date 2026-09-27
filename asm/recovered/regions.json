@@ -70,6 +70,16 @@
     "file": "loop_states.asm"
   },
   {
+    "name": "object_screen_coordinate_preparation",
+    "start": 16328,
+    "end": 16367,
+    "bank": 0,
+    "kind": "code",
+    "bytes": 39,
+    "instructions": 15,
+    "file": "object_screen_coordinate_preparation.asm"
+  },
+  {
     "name": "movement_core",
     "start": 16410,
     "end": 17053,
@@ -310,6 +320,16 @@
     "file": "spring_contacts.asm"
   },
   {
+    "name": "block_47_surface_handler",
+    "start": 27363,
+    "end": 27412,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 49,
+    "instructions": 22,
+    "file": "block_47_surface_handler.asm"
+  },
+  {
     "name": "loop_contacts",
     "start": 27834,
     "end": 27877,
@@ -358,6 +378,26 @@
     "bytes": 373,
     "instructions": 168,
     "file": "ceiling_collision.asm"
+  },
+  {
+    "name": "layout_ring_handler",
+    "start": 30014,
+    "end": 30172,
+    "bank": 1,
+    "kind": "code",
+    "bytes": 158,
+    "instructions": 80,
+    "file": "layout_ring_handler.asm"
+  },
+  {
+    "name": "layout_ring_tables",
+    "start": 30172,
+    "end": 30220,
+    "bank": 1,
+    "kind": "data",
+    "bytes": 48,
+    "instructions": 0,
+    "file": "layout_ring_tables.asm"
   },
   {
     "name": "collision_lookup",
@@ -448,6 +488,26 @@
     "bytes": 589,
     "instructions": 239,
     "file": "twist_handlers.asm"
+  },
+  {
+    "name": "object_09_scripts",
+    "start": 203720,
+    "end": 203792,
+    "bank": 12,
+    "kind": "data",
+    "bytes": 72,
+    "instructions": 0,
+    "file": "object_09_scripts.asm"
+  },
+  {
+    "name": "object_09_handlers",
+    "start": 203792,
+    "end": 203864,
+    "bank": 12,
+    "kind": "code",
+    "bytes": 72,
+    "instructions": 30,
+    "file": "object_09_handlers.asm"
   },
   {
     "name": "object_0f_scripts",
