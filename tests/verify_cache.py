@@ -16,6 +16,7 @@ import player_state_11_graphics as player_graphics
 import thz1_background_registration as background
 import mapped_object_registration as registration
 import object_50
+import object_18
 
 
 def main(rom_path):
@@ -75,6 +76,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/thz3/object-50.json").read_text(encoding="utf-8")
     )
     assert stored_object50 == object_50.build(rom)
+    # THZ1/THZ2 type $18 and act-clear study: static, controlled-routine and emulated sections are regenerated (~20 s).
+    stored_object18 = json.loads(
+        (ROOT / "data/rom-cache/object-18-act-clear.json").read_text(encoding="utf-8")
+    )
+    assert stored_object18 == json.loads(json.dumps(object_18.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
@@ -86,7 +92,7 @@ def main(rom_path):
     assert sum(r["decoded_kind"] is not None for r in records) == 14
     print(
         "ROM cache: 53 records, 14 decoded placements, 17 terrain interactions, "
-        "142 rings; type-$09/$10/$21, final closure, coverage, player-$11 graphics, background metadata and THZ3 type-$50 study deterministic"
+        "142 rings; type-$09/$10/$21, final closure, coverage, player-$11 graphics, background metadata, THZ3 type-$50 and type-$18 act-clear studies deterministic"
     )
 
 

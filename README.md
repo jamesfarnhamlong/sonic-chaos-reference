@@ -12,6 +12,7 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 - [Windows Act 1 POC roadmap after 14.5](docs/windows-poc-roadmap.md): the next spring/object, twisting-strip and completion passes with acceptance checks.
 - [Act 1 emulator observations, 21 September 2026](reports/emulator-observations-2026-09-21.md): retracting spikes, the concealed contact spring and the validated opening red-spring height.
 - [Act 1 concealed springs and retracting spikes](docs/act1-objects.md): decoded type `$26` and `$1B` state machines used by Windows POC 15.
+- [THZ1/THZ2 object type `$18` and the act-clear chain](docs/object-18-act-clear.md): the goal sign's exact contact box and gate, timer stop, hop, ring-count prize, the `$19` child, player state `$20`, the `$D293` act-complete flag and the results sequence, with controlled and emulated original-ROM traces.
 - [THZ3 object type `$50`](docs/object-50.md): the THZ boss — placement, 19-state machine, patrol, 8-hit damage, art source (dynamic selector `$13`), defeat, camera lock and act-completion chain, with controlled and emulated original-ROM traces.
 - [THZ1 object type `$21`](docs/object-21.md): complete placement, patrol,
   contact, animation, orientation and lifetime chain, with controlled original-ROM traces.

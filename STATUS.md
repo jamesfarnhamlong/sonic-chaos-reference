@@ -57,6 +57,16 @@ Branch `research/thz2-thz3-object-deltas`. Study `docs/thz2-thz3-object-deltas.m
 - `$10` `$01` (THZ3): ring counter `$D29A` += `$10` with the ring-pickup carry; `$03` (THZ2 x2): power code 3, 900-update timer, X speed cap `$0600`.
 - `$28` aux1 `$19`/`$13` (THZ2): reversal period = 16 x aux1 updates (400 / 304).
 
+### THZ1/THZ2 type `$18` goal sign and act-clear chain: COMPLETE
+
+Branch `research/object-18-act-clear`. Primary study: `docs/object-18-act-clear.md`; data:
+`data/rom-cache/object-18-act-clear.json`; tool/tests: `tools/object_18.py`, `tests/test_object_18.py`.
+
+- Exact contact recovered from `$A88E` + shared overlap `$6328`: `|dx| <= playerExtX + 12`, `-42 <= dy <= playerExtY` (inclusive, both directions), gated on the player's X speed being non-zero or requested state `$18`. Sonic's extents are `(8,24)`.
+- Contact stops the level timer (`$D2BE := 0`) and starts a 130-update hop; it does not touch the player. Type `$19` then asks for player state `$20` (`$4892`), whose handler `$83A6` sets `$D293` bit 5 (THZ1/2) / bit 4 (THZ3) when the player is 289 px right of the camera.
+- THZ1 and THZ2 are identical (only Y differs). `$50` converges on the same `$4892` / `$83A6` tail but not on the sign/child stage or the timer stop.
+- The POC adapter's `x >= signX + 10`, `y > signY - 108` is not ROM behavior.
+
 ### THZ3 type `$50` (the THZ boss): COMPLETE
 
 Branch `research/object-50`. Full placement, dispatch, 19-state, movement, animation, art-source, contact, damage,
