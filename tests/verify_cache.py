@@ -14,6 +14,7 @@ import thz1_object_09 as object09
 import thz1_final_runtime_closure as final_closure
 import player_state_11_graphics as player_graphics
 import thz1_background_registration as background
+import mapped_object_registration as registration
 
 
 def main(rom_path):
@@ -58,6 +59,16 @@ def main(rom_path):
     for patch in stored_background["patches"]:
         patch.pop("poc_18_5", None)
     assert stored_background == background.build(rom)
+    stored_registration = json.loads(
+        (ROOT / "data/rom-cache/mapped-object-registration.json").read_text(encoding="utf-8")
+    )
+    # Static (byte checks, mapping tables, controlled routine fixtures, rule) part is regenerated here;
+    # the emulated-frame part is checked by `tools/mapped_object_registration.py ROM --check ...` (~60 s).
+    static = registration.build(rom, static_only=True)
+    assert stored_registration["source_facts"]["routine_byte_checks"] == static["source_facts"]["routine_byte_checks"]
+    assert stored_registration["source_facts"]["mapping_tables"] == static["source_facts"]["mapping_tables"]
+    assert stored_registration["source_facts"]["controlled_routine_fixtures"] == static["source_facts"]["controlled_routine_fixtures"]
+    assert stored_registration["interpretation"]["registration_rule"] == static["interpretation"]["registration_rule"]
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
