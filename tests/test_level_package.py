@@ -192,9 +192,13 @@ class RomRegenerationTests(unittest.TestCase):
             for act in EXPECTED:
                 for name in files:
                     self.assertEqual((Path(tmp) / act / name).read_bytes(),
-                                     (LEVELS / act / name).read_bytes(), f"{act}/{name}")
+                                     (LEVELS / act / name).read_bytes().replace(b"
+", b"
+"), f"{act}/{name}")
             self.assertEqual((Path(tmp) / "object-census.json").read_bytes(),
-                             (LEVELS / "object-census.json").read_bytes())
+                             (LEVELS / "object-census.json").read_bytes().replace(b"
+", b"
+"))
 
     def test_rom_hash_unchanged(self):
         self.assertEqual(hashlib.sha256(self.rom).hexdigest(), L.ROM_SHA256)
