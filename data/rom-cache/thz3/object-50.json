@@ -1,0 +1,7113 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "subject": "THZ3 object type $50",
+  "research_only": true,
+  "poc_untouched": true,
+  "evidence_classes": {
+    "DECODED DATA": "ROM tables/records decoded by a parser",
+    "BYTE-VERIFIED ASSEMBLY": "routine bytes compared literally and disassembled by hand",
+    "SOURCE-TRACED BEHAVIOR": "behavior read from the disassembly, not executed",
+    "CONTROLLED ROUTINE RESULT": "original routine executed on a Z80 core with explicit RAM",
+    "EMULATED ORIGINAL FRAME": "whole original game run in the approximate SMS harness",
+    "UNRESOLVED": "not established"
+  },
+  "identity": {
+    "verdict": "THZ boss object (proved from ROM behavior, see evidence list)",
+    "machine_facing_label": "object_50 (numeric only; the word boss is used in prose after the evidence below)",
+    "evidence": [
+      "state machine with 8 hit points (+$26 = 8), 4 reaction pairs, contact routine that decrements health only on attack contact",
+      "state 0 requests sound $8C (music class in data/sound-index-sms.csv) and sets flag $D44E",
+      "state 1/2 lock the camera right/left limits and pan the camera to a fixed arena target",
+      "state 3 loads act-specific art (selector $13) and a dedicated sprite palette $0C",
+      "state 4 spawns explosion children and flickers; state 5 releases the camera, restores the saved right limit, requests player state $20 with the clear jingle, spawns type $0A and converts the slot to type $0F",
+      "the score gate at $5F77 excludes types >= $50, so no points are awarded",
+      "the act-complete flag $D293 bit 4 is set by the player's state $20 handler 181 frames after the slot conversion and the next zone loads about 1041 frames after it (emulated run)",
+      "music request changes from the level music $81 (level start) to $8C when the object starts (emulated run), and $97 is requested on defeat"
+    ],
+    "classification": "boss (arena controller and fighter are the same object; there is no separate controller)"
+  },
+  "placement": {
+    "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY (creator $700EB)",
+    "act": "thz3",
+    "record_index_1_based": 1,
+    "count_in_all_acts": 1,
+    "rom_offset": "0x708FE",
+    "bank": "0x1C",
+    "cpu": "0x88FE",
+    "raw_bytes": "50 90 08 EE 01 00 00 00 00",
+    "type_id": "0x50",
+    "stored_x": 2192,
+    "stored_y": 494,
+    "world_x": 1936,
+    "world_y": 238,
+    "flags": "0x00",
+    "parameter": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00",
+    "object_list_start": "0x708FE",
+    "record_matches_level_package": true,
+    "occupancy": {
+      "byte_address": "0xD400",
+      "token_plus_3E": 1,
+      "rule": "occupancy byte $D400 + index holds the type ($50) after creation; the creator only creates while that byte is 0; token = index + 1 is stored in +$3E",
+      "cleanup": "$5EF8 clears the occupancy byte only when +$3E is non-zero; the defeat path clears +$3E first, so the byte stays $50 and the boss is never re-created in this level session"
+    },
+    "act_context": {
+      "zone_index": 0,
+      "act_index": 2,
+      "camera_limits_from_act_header": {
+        "D280_left": 0,
+        "D27C_top": 8,
+        "D282_right": 2304,
+        "D27E_bottom": 272
+      }
+    }
+  },
+  "dispatch": {
+    "evidence": "BYTE-VERIFIED ASSEMBLY + DECODED DATA",
+    "chain": [
+      "placement creator $80EB (bank $1C) writes type $50 into slot +$00, state 0",
+      "scheduler $5DF1: slot type >= $26 and < $F0 -> map bank $1E, CALL $64FA (animation engine), CALL $5E91 (callback), then $61E1 (visibility)",
+      "animation engine $64FA: state table = word at $65BA + (type-1)*2",
+      "state script pointer = word at state_table + 2*state; records set +$0C/+$0D callback; $5E91 jumps to it every update"
+    ],
+    "type_table_entry_rom": "0x06658",
+    "type_table_entry_value": "0x958B",
+    "state_table_bank": "0x1E",
+    "state_table_cpu": "0x958B",
+    "state_table_rom": "0x7958B",
+    "state_count": 19,
+    "state_script_cpus": [
+      "0x95B1",
+      "0x95BA",
+      "0x95C0",
+      "0x95C6",
+      "0x95CC",
+      "0x961E",
+      "0x9632",
+      "0x9640",
+      "0x967A",
+      "0x9688",
+      "0x9694",
+      "0x96B6",
+      "0x96C0",
+      "0x96CE",
+      "0x9708",
+      "0x9716",
+      "0x9720",
+      "0x9742",
+      "0x9624"
+    ],
+    "shares_state_table_with_types": [
+      "0x33",
+      "0x40",
+      "0x41",
+      "0x42",
+      "0x43",
+      "0x44",
+      "0x45",
+      "0x46",
+      "0x47",
+      "0x48",
+      "0x49",
+      "0x4A",
+      "0x4B",
+      "0x4C",
+      "0x4D",
+      "0x4E",
+      "0x4F",
+      "0x50"
+    ],
+    "scheduler": {
+      "cpu": "0x5DF1",
+      "type_ge_26_branch": "0x5E31",
+      "engine": "0x64FA",
+      "callback_dispatch": "0x5E91",
+      "slot_stride": 64,
+      "slots_from": "0xD540",
+      "slot_count": 19
+    },
+    "jump_table_path": "no per-type jump table: dispatch is data-driven (type -> $65BA word -> state word -> script record -> callback word)",
+    "mapping_table": {
+      "pointer_entry_rom": "0x3C0A0",
+      "pointer_value": "0x94C6",
+      "bank": "0x0F",
+      "cpu": "0x94C6",
+      "rom": "0x3D4C6"
+    }
+  },
+  "object_fields": {
+    "+$00": "type ($50)",
+    "+$01": "current state",
+    "+$02": "requested state (writing it changes state)",
+    "+$03": "flags (bit 7: overlap ignores player bit-6 gate; set by state 3)",
+    "+$04": "render/lifetime flags (bit 1 keep alive; bit 4 mirror; bit 6 offscreen; placement flags | $40)",
+    "+$05": "piece count (from frame record)",
+    "+$06": "mapping frame",
+    "+$07": "update timer for the current script record",
+    "+$08": "tile base, unmirrored (placement aux0)",
+    "+$09": "tile base, mirrored (placement aux1 until state 3 writes $48)",
+    "+$0B": "saved state while in a reaction state",
+    "+$0C/+$0D": "callback",
+    "+$0E/+$0F": "script cursor",
+    "+$10/+$13": "sub-pixel X/Y",
+    "+$11/+$12": "world X",
+    "+$14/+$15": "world Y",
+    "+$16/+$17": "X velocity (8.8)",
+    "+$18/+$19": "Y velocity (8.8; never set, stays 0)",
+    "+$1A/+$1B": "screen X",
+    "+$1C/+$1D": "screen Y",
+    "+$1E": "contact cooldown (2 after harmful contact)",
+    "+$1F": "reaction timer (20)",
+    "+$21": "contact bits (0 above, 1 below, 2 right, 3 left; low nibble)",
+    "+$25/+$27": "saved camera right limit",
+    "+$26": "health",
+    "+$28/+$29": "coordinate table pointer",
+    "+$2A/+$2B": "frame record cursor",
+    "+$2C": "contact extent X",
+    "+$2D": "contact extent Y",
+    "+$32": "patrol phase (0 cruise, $FF decelerate, 1 accelerate)",
+    "+$34/+$35": "type-$12 child pointer",
+    "+$38": "saved frame for the defeat flicker",
+    "+$3A..+$3D": "saved X/Y (placement)",
+    "+$3E": "placement token",
+    "+$3F": "parameter (0 from placement; state 3 writes 1)",
+    "evidence": "SOURCE-TRACED BEHAVIOR"
+  },
+  "routines": [
+    {
+      "name": "placement_creator_loop",
+      "kind": "code",
+      "purpose": "walk object list, window/spawn-map test, dispatch",
+      "bank": "0x1C",
+      "cpu": "0x8000",
+      "cpu_end_exclusive": "0x80EB",
+      "rom_offset": "0x70000",
+      "length": 235,
+      "first_16_bytes": "3a97d2875f1600214685197e23666f3a",
+      "sha256": "bacad4ae3395ca7197643c735e056ec3d40564f1000d488228f0015c9f0ff2c3",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "placement_create",
+      "kind": "code",
+      "purpose": "allocate slot, copy record fields, occupancy token",
+      "bank": "0x1C",
+      "cpu": "0x80EB",
+      "cpu_end_exclusive": "0x813C",
+      "rom_offset": "0x700EB",
+      "length": 81,
+      "first_16_bytes": "c5cd2903c138497efd770002237efd77",
+      "sha256": "8c968654275084a173bb31a98ea66bc7c45d6ab301e3c047e186ce69880e91de",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "spawn_window_map",
+      "kind": "data",
+      "purpose": "32x32 spawn-map (0/1 inner, 2 edge ring, 3 outside)",
+      "bank": "0x1C",
+      "cpu": "0x8146",
+      "cpu_end_exclusive": "0x8546",
+      "rom_offset": "0x70146",
+      "length": 1024,
+      "first_16_bytes": "03030303030303030303030303030303",
+      "sha256": "7c54d2c921367d64d0a3b28fdfa7d072b9077cf67cca43083c05c7c64c4b352b",
+      "evidence": "DECODED DATA"
+    },
+    {
+      "name": "object_scheduler",
+      "kind": "code",
+      "purpose": "per-slot update; types >= $26 use bank $1E",
+      "bank": "0x00",
+      "cpu": "0x5DF1",
+      "cpu_end_exclusive": "0x5E70",
+      "rom_offset": "0x05DF1",
+      "length": 127,
+      "first_16_bytes": "dd7e00b7c8fef03067dd7e00fe263030",
+      "sha256": "df48d06df4d32a277e310b078452269c5b262505756d16a71e1721cd8ddf9e7f",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "callback_dispatch",
+      "kind": "code",
+      "purpose": "JP (IX+$0C/$0D)",
+      "bank": "0x00",
+      "cpu": "0x5E91",
+      "cpu_end_exclusive": "0x5E9B",
+      "rom_offset": "0x05E91",
+      "length": 10,
+      "first_16_bytes": "dd6e0cdd660d7cb5c8e9",
+      "sha256": "083a7c309df42458314685f3cc28bcb3cc3b39dc8239cdff797fb80cb863ea74",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "animation_engine",
+      "kind": "code",
+      "purpose": "state script interpreter, frame record select",
+      "bank": "0x01",
+      "cpu": "0x64FA",
+      "cpu_end_exclusive": "0x65AF",
+      "rom_offset": "0x064FA",
+      "length": 181,
+      "first_16_bytes": "dd7e0eddb60f281bddcb035e2008dd7e",
+      "sha256": "57d8489ce18be12b5b1baa860b1f1f10a9546740f7af72ed3d2ad223d36dcd96",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "anim_cmd_dispatch",
+      "kind": "code",
+      "purpose": "FF xx command dispatcher and pointer table",
+      "bank": "0x01",
+      "cpu": "0x6680",
+      "cpu_end_exclusive": "0x66B6",
+      "rom_offset": "0x06680",
+      "length": 54,
+      "first_16_bytes": "237e23dd750edd740f876f2600119666",
+      "sha256": "5aef535c072eb69bb3ec357dfdb2ff8488f699e5813fc2b18adbeb23f6f15224",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "anim_cmd_spawn",
+      "kind": "code",
+      "purpose": "FF 04 spawn child via allocator $5EE1",
+      "bank": "0x01",
+      "cpu": "0x671F",
+      "cpu_end_exclusive": "0x67A1",
+      "rom_offset": "0x0671F",
+      "length": 130,
+      "first_16_bytes": "cde15e3868dd6e0edd660f7efd770023",
+      "sha256": "c5aa94309cf303f2fad2fb0e6d5a9af3ace5d3036e13afac993e4e6e3225ca4c",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "anim_cmd_call_callback",
+      "kind": "code",
+      "purpose": "FF 05 call routine, set callback, select frame",
+      "bank": "0x01",
+      "cpu": "0x67A1",
+      "cpu_end_exclusive": "0x67C1",
+      "rom_offset": "0x067A1",
+      "length": 32,
+      "first_16_bytes": "dd6e0edd660f5e2356237edd770c237e",
+      "sha256": "93e0aa66bbc79f6cdf159c79e6897947728865b6a284b3adb9bf6369c36c840b",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "anim_cmd_sound",
+      "kind": "code",
+      "purpose": "FF 06 write sound request to $DE04",
+      "bank": "0x01",
+      "cpu": "0x67D5",
+      "cpu_end_exclusive": "0x67EC",
+      "rom_offset": "0x067D5",
+      "length": 23,
+      "first_16_bytes": "dd6e0edd660f7e23dd750edd740f3204",
+      "sha256": "86a1a9b966e29d548cdc571b6a9b3a5c827a37076caf9ccdf1cdc525318a5e61",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "move_by_velocity",
+      "kind": "code",
+      "purpose": "vector $0338: position += 8.8 velocity",
+      "bank": "0x01",
+      "cpu": "0x60FB",
+      "cpu_end_exclusive": "0x613C",
+      "rom_offset": "0x060FB",
+      "length": 65,
+      "first_16_bytes": "dd6e10dd6611dd5e16dd5617dd46127a",
+      "sha256": "c1ed6572d53ef32f2bba2f8692bc9a64ddb2d5b231eb5e75414bf6106a444c73",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "player_type_fix",
+      "kind": "code",
+      "purpose": "vector $037D",
+      "bank": "0x01",
+      "cpu": "0x613C",
+      "cpu_end_exclusive": "0x614E",
+      "rom_offset": "0x0613C",
+      "length": 18,
+      "first_16_bytes": "3a00d5fe01c83a02d5fe18c03e0e3202",
+      "sha256": "e86a61bb5e6f991d3462ba114757c0cafd0190f5b8dd2bffcb1a628ba8334f6e",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "proximity_tests",
+      "kind": "code",
+      "purpose": "vectors $0383/$0386: |object - player| < BC",
+      "bank": "0x01",
+      "cpu": "0x61A5",
+      "cpu_end_exclusive": "0x61D6",
+      "rom_offset": "0x061A5",
+      "length": 49,
+      "first_16_bytes": "dd6612dd6e11ed5b11d5180add6615dd",
+      "sha256": "118599b7fc8c3e255da21efcaf5b285f701d8917d467b3b167b9e09004eb0343",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "visibility_lifetime",
+      "kind": "code",
+      "purpose": "offscreen flag, $FE/$FF removal",
+      "bank": "0x01",
+      "cpu": "0x61E1",
+      "cpu_end_exclusive": "0x6276",
+      "rom_offset": "0x061E1",
+      "length": 149,
+      "first_16_bytes": "ddcb04b6dd6e11dd661201800009ed4b",
+      "sha256": "76ce45f7830850f7e9e7515e1812135dc84e9746e9e7ef00404fd53c04a5430d",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "overlap_helper",
+      "kind": "code",
+      "purpose": "vector $033B: contact bits in +$21",
+      "bank": "0x01",
+      "cpu": "0x6328",
+      "cpu_end_exclusive": "0x640B",
+      "rom_offset": "0x06328",
+      "length": 227,
+      "first_16_bytes": "afdd7720dd7e21e6f0dd7721ddcb0376",
+      "sha256": "b0d2bd1f0d033b982561cdd7b2542123270a21d173a943122ddd021cf8077c0f",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "solid_dispatch",
+      "kind": "code",
+      "purpose": "vector $034D: overlap + solid push by contact bit",
+      "bank": "0x01",
+      "cpu": "0x5FA0",
+      "cpu_end_exclusive": "0x6065",
+      "rom_offset": "0x05FA0",
+      "length": 197,
+      "first_16_bytes": "cd2863c3a65fdd7e21e60fc8875f1600",
+      "sha256": "53cea74ff1add53efc5ad2f54ca7be4ebd788de3d86ec085b6df44eaef3dba1c",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "slot_cleanup",
+      "kind": "code",
+      "purpose": "vector $0344: clear occupancy byte and slot",
+      "bank": "0x01",
+      "cpu": "0x5EF8",
+      "cpu_end_exclusive": "0x5F17",
+      "rom_offset": "0x05EF8",
+      "length": 31,
+      "first_16_bytes": "dd7e3eb7ca095f3d5f16002100d41936",
+      "sha256": "83be206e1627d072ff3a2581297a6ba4bf4a3082bd345ff897813d0c90a1cf19",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "player_bounce_setter",
+      "kind": "code",
+      "purpose": "vector $035F -> $480C spring setter",
+      "bank": "0x01",
+      "cpu": "0x5F17",
+      "cpu_end_exclusive": "0x5F27",
+      "rom_offset": "0x05F17",
+      "length": 16,
+      "first_16_bytes": "dde5dd2100d5dd362100cd0c48dde1c9",
+      "sha256": "af96989f3ba4601dfa5096dd416e69ea85ad7d292454be452f0cc48aedf964d9",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "enemy_destroy_conversion",
+      "kind": "code",
+      "purpose": "vector $033E: score gate then slot becomes type $0F",
+      "bank": "0x01",
+      "cpu": "0x5F54",
+      "cpu_end_exclusive": "0x5F84",
+      "rom_offset": "0x05F54",
+      "length": 48,
+      "first_16_bytes": "cd775fdd36000fafdd7701dd7702dd77",
+      "sha256": "08329888554c8a5c5cd58ca2a7adda348d5e0870120f1dfaf440fbbb1fcd8567",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "spring_setter_480C",
+      "kind": "code",
+      "purpose": "player state $0B, vy from HL, sound $A6",
+      "bank": "0x01",
+      "cpu": "0x480C",
+      "cpu_end_exclusive": "0x482D",
+      "rom_offset": "0x0480C",
+      "length": 33,
+      "first_16_bytes": "ddcb197ec0dd36020bdd7518dd7419dd",
+      "sha256": "5902fdf295191b43ebbbe35ae8f38a13c623dc3cc993202365edf03b5b7984ba",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "level_complete_setter",
+      "kind": "code",
+      "purpose": "vector $03F5: player state $20 and clear jingle",
+      "bank": "0x01",
+      "cpu": "0x4892",
+      "cpu_end_exclusive": "0x48A7",
+      "rom_offset": "0x04892",
+      "length": 21,
+      "first_16_bytes": "3e203202d50e893a98d2fe0220020e97",
+      "sha256": "ad096870119cd9ba85752ef79e929464752fe25e3208d07812cbb1ef106e0e3f",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "camera_left_lock",
+      "kind": "code",
+      "purpose": "vector $0353: D280 = max(D280, camX)",
+      "bank": "0x01",
+      "cpu": "0x59E3",
+      "cpu_end_exclusive": "0x59F3",
+      "rom_offset": "0x059E3",
+      "length": 16,
+      "first_16_bytes": "2a80d2ed5b74d1afed52d0ed5380d2c9",
+      "sha256": "60ab6a71df2c203fec5fe92cd4574eeacb22d8e82e15409b777b7ca4ac672b70",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "camera_right_lock",
+      "kind": "code",
+      "purpose": "vector $0356: D282 = min(D282, camX)",
+      "bank": "0x01",
+      "cpu": "0x59F3",
+      "cpu_end_exclusive": "0x5A03",
+      "rom_offset": "0x059F3",
+      "length": 16,
+      "first_16_bytes": "2a82d2ed5b74d1afed52d8ed5382d2c9",
+      "sha256": "0b48cbb2ccdd8c4c7cf8fb2098a051f81c89e091368ebb038ad6c8ed4131aa8c",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "camera_scroll_request",
+      "kind": "code",
+      "purpose": "vector $0359: pan target BC (x), DE (y)",
+      "bank": "0x01",
+      "cpu": "0x59C5",
+      "cpu_end_exclusive": "0x59D8",
+      "rom_offset": "0x059C5",
+      "length": 19,
+      "first_16_bytes": "215ed1cbfe215fd1cbc6ed43dad2ed53",
+      "sha256": "90298c7137908f2b57b8df3cc0b4754a9e0ba6c1b6f1674b4ac9736060eb9c3f",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "camera_scroll_release",
+      "kind": "code",
+      "purpose": "vector $035C",
+      "bank": "0x01",
+      "cpu": "0x59D8",
+      "cpu_end_exclusive": "0x59E3",
+      "rom_offset": "0x059D8",
+      "length": 11,
+      "first_16_bytes": "215ed1cbfe215fd1cb86c9",
+      "sha256": "7a2479c61be94d9a9aec0127fe6a1ff7ec2810394bf8264f0bc83ff023aebdc0",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "camera_scroll_step",
+      "kind": "code",
+      "purpose": "per-frame 1 px pan toward D2DA/D2DC",
+      "bank": "0x01",
+      "cpu": "0x5956",
+      "cpu_end_exclusive": "0x59B3",
+      "rom_offset": "0x05956",
+      "length": 93,
+      "first_16_bytes": "2adad2ed5b74d1afed522830381813ed",
+      "sha256": "1457c345ebd208b05ad4fbf1ae5bd49c9782b4549cb0828a565ab213e6626767",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "dynamic_graphics_loader",
+      "kind": "code",
+      "purpose": "streams selector $D3B3 lists, 4 tiles per call",
+      "bank": "0x01",
+      "cpu": "0x7AC2",
+      "cpu_end_exclusive": "0x7BA6",
+      "rom_offset": "0x07AC2",
+      "length": 228,
+      "first_16_bytes": "3ab3d3b7c83ab4d3b7cc517b3ab3d3b7",
+      "sha256": "4e38aedf882d0dfc9a08b07ed4501d02659b936e2aedf5cb628c98168d18d6d4",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "dynamic_graphics_pointers",
+      "kind": "data",
+      "purpose": "selector $10.. list pointers",
+      "bank": "0x01",
+      "cpu": "0x7BA6",
+      "cpu_end_exclusive": "0x7BCB",
+      "rom_offset": "0x07BA6",
+      "length": 37,
+      "first_16_bytes": "ca7bca7bcb7bd87beb7bf87b057c127c",
+      "sha256": "1954ee896148eee96b95a609294a981e9d7f90ceee53b66eb8b0171f33cfec4c",
+      "evidence": "DECODED DATA"
+    },
+    {
+      "name": "queue_command_add",
+      "kind": "code",
+      "purpose": "vector $0374: add background/palette command C",
+      "bank": "0x00",
+      "cpu": "0x1CD3",
+      "cpu_end_exclusive": "0x1CEB",
+      "rom_offset": "0x01CD3",
+      "length": 24,
+      "first_16_bytes": "fd2152d40604110800fd7e00b72805fd",
+      "sha256": "753aaefeb42ac5fa5fccdc628857d18d8994dcf6bd8f3d42449fcbdcac7cf08d",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "palette_flash_command_7",
+      "kind": "code",
+      "purpose": "queue command 7: CRAM colours 29/30 from table $9979",
+      "bank": "0x1D",
+      "cpu": "0x83C6",
+      "cpu_end_exclusive": "0x8442",
+      "rom_offset": "0x743C6",
+      "length": 124,
+      "first_16_bytes": "fd3403fd7e03fe04d8fd360300fd7e02",
+      "sha256": "d1adc8432838d762175e20b9062adda1922120d1e03f31a82a645c281d0fabd7",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_init_state0",
+      "kind": "code",
+      "purpose": "state 0 callback",
+      "bank": "0x1E",
+      "cpu": "0x974C",
+      "cpu_end_exclusive": "0x9771",
+      "rom_offset": "0x7974C",
+      "length": 37,
+      "first_16_bytes": "ddcb04ce3a97d23c324ed4af32a5d4cd",
+      "sha256": "dd1b16d7ec3d98a2cccb80f78fc4ee35d145bacb864c09a807bd588ca84828f9",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_wait_player_state1",
+      "kind": "code",
+      "purpose": "state 1 callback",
+      "bank": "0x1E",
+      "cpu": "0x9771",
+      "cpu_end_exclusive": "0x97A1",
+      "rom_offset": "0x79771",
+      "length": 48,
+      "first_16_bytes": "cd998121a1973a97d2473aa5d480cda1",
+      "sha256": "b9f826e289a49a3abd0d8249141479f0f3818568522ca14c0316234abad5e92c",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_trigger_table",
+      "kind": "data",
+      "purpose": "8 zones x (dx word, dy word) proximity limits",
+      "bank": "0x1E",
+      "cpu": "0x97A1",
+      "cpu_end_exclusive": "0x97C1",
+      "rom_offset": "0x797A1",
+      "length": 32,
+      "first_16_bytes": "a000000180003001a0003001a0003001",
+      "sha256": "d105182a200ae1b25700ca8d71bf776e54026fc3861250e5fcc6e7757f6d8a0d",
+      "evidence": "DECODED DATA"
+    },
+    {
+      "name": "boss_wait_child_state2",
+      "kind": "code",
+      "purpose": "state 2 callback",
+      "bank": "0x1E",
+      "cpu": "0x97C1",
+      "cpu_end_exclusive": "0x9808",
+      "rom_offset": "0x797C1",
+      "length": 71,
+      "first_16_bytes": "cdb581b7c02108983a97d2473aa5d480",
+      "sha256": "db4e4e945c2c70641b742203313bbcaa318ab9a8967b7243afb6e6d823968b33",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_camera_target_table",
+      "kind": "data",
+      "purpose": "8 zones x (dx word, dy word) camera target",
+      "bank": "0x1E",
+      "cpu": "0x9808",
+      "cpu_end_exclusive": "0x9828",
+      "rom_offset": "0x79808",
+      "length": 32,
+      "first_16_bytes": "00ff60ff40ff60ff20ff60ff30ffe0ff",
+      "sha256": "53738246ebec5af08296d4636883495907d96897e4c29b8272b64c42a9c87484",
+      "evidence": "DECODED DATA"
+    },
+    {
+      "name": "boss_setup_state3",
+      "kind": "code",
+      "purpose": "state 3 callback",
+      "bank": "0x1E",
+      "cpu": "0x9828",
+      "cpu_end_exclusive": "0x985B",
+      "rom_offset": "0x79828",
+      "length": 51,
+      "first_16_bytes": "3e1332b3d32194d4cbee23360cdd3609",
+      "sha256": "67efc86490a68f92b7eafb4b2ecb5d3a90bb1a6add6286de551fbdd80f25a219",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_patrol_states_6_12",
+      "kind": "code",
+      "purpose": "states 6/12 callback (both directions)",
+      "bank": "0x1E",
+      "cpu": "0x985B",
+      "cpu_end_exclusive": "0x9903",
+      "rom_offset": "0x7985B",
+      "length": 168,
+      "first_16_bytes": "cdae99fe00c26199cd3803dd7e32feff",
+      "sha256": "3022876452ae137bdcc0ec8ee578d165ab2a622163f9b436c36970acc9c63006",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_turn_state9",
+      "kind": "code",
+      "purpose": "state 9 callback",
+      "bank": "0x1E",
+      "cpu": "0x9903",
+      "cpu_end_exclusive": "0x9931",
+      "rom_offset": "0x79903",
+      "length": 46,
+      "first_16_bytes": "cdae99fe00c26199cd3803dd6617dd6e",
+      "sha256": "d05e5ebe2e7b2a9db2ab5d8c2ce8289f8eeee635e6eded178eb4a0d0de71e3e8",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_turn_state15",
+      "kind": "code",
+      "purpose": "state 15 callback",
+      "bank": "0x1E",
+      "cpu": "0x9931",
+      "cpu_end_exclusive": "0x9961",
+      "rom_offset": "0x79931",
+      "length": 48,
+      "first_16_bytes": "cdae99fe00c26199cd3803dd6617dd6e",
+      "sha256": "e2362a7636463f2deb727b4bf05946207495b637fb039aa8ca445fab30d2af64",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_reaction_select",
+      "kind": "code",
+      "purpose": "contact result -> reaction state",
+      "bank": "0x1E",
+      "cpu": "0x9961",
+      "cpu_end_exclusive": "0x9989",
+      "rom_offset": "0x79961",
+      "length": 40,
+      "first_16_bytes": "fe01c27699dd7e02dd770bc601dd7702",
+      "sha256": "4ed1ec1c8d5ba62b78ae80255fb231dbb0f5b54e5933c8f9079c24403614b4c9",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_reaction_top",
+      "kind": "code",
+      "purpose": "states 7/10/13/16 callback",
+      "bank": "0x1E",
+      "cpu": "0x9989",
+      "cpu_end_exclusive": "0x9997",
+      "rom_offset": "0x79989",
+      "length": 14,
+      "first_16_bytes": "cd3803dd351fc0dd7e0bdd7702c9",
+      "sha256": "3cd1276449c756371bf41544c0ae0f9f029f5841b889d07759b4a31cd63c645b",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_reaction_hit",
+      "kind": "code",
+      "purpose": "states 8/11/14/17 callback",
+      "bank": "0x1E",
+      "cpu": "0x9997",
+      "cpu_end_exclusive": "0x99AE",
+      "rom_offset": "0x79997",
+      "length": 23,
+      "first_16_bytes": "dd351fc0dd7e0bdd7702dd361700dd36",
+      "sha256": "5f5cdace9fea19849eeb6ada32e7d26897c2c3c3e45ec005d0d9f39426c06cf3",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_contact_damage",
+      "kind": "code",
+      "purpose": "solid contact, bounce, damage, health",
+      "bank": "0x1E",
+      "cpu": "0x99AE",
+      "cpu_end_exclusive": "0x9A09",
+      "rom_offset": "0x799AE",
+      "length": 91,
+      "first_16_bytes": "dd7e1efe0028073ddd771e3e00c9cd4d",
+      "sha256": "3d7656e6fc41d2342a0e9841c4cb1535c80de1e924db6d319105d4157d8313c4",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_entry_state18",
+      "kind": "code",
+      "purpose": "state 18 callback",
+      "bank": "0x1E",
+      "cpu": "0x9A09",
+      "cpu_end_exclusive": "0x9A1E",
+      "rom_offset": "0x79A09",
+      "length": 21,
+      "first_16_bytes": "cd3803cd4d81dd7e1acb7fc8fee0d0dd",
+      "sha256": "f3ae3b723d38b9fb390f1fbe452baef5b4d5783a8e2d2c71a509c81d73b211cb",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_flicker_helpers",
+      "kind": "code",
+      "purpose": "state 4 frame save/restore",
+      "bank": "0x1E",
+      "cpu": "0x9A1E",
+      "cpu_end_exclusive": "0x9A3A",
+      "rom_offset": "0x79A1E",
+      "length": 28,
+      "first_16_bytes": "dd360701dd7e06dd7738c9dd36070118",
+      "sha256": "845d958e05eb7111cca3fd40ee360afbe4d04002854212464aaa57b91749b015",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_state_table_and_scripts",
+      "kind": "data",
+      "purpose": "19-entry state table + scripts",
+      "bank": "0x1E",
+      "cpu": "0x958B",
+      "cpu_end_exclusive": "0x974C",
+      "rom_offset": "0x7958B",
+      "length": 449,
+      "first_16_bytes": "b195ba95c095c695cc951e9632964096",
+      "sha256": "778fbbab189ff0bc508f4b4d485707a94ca5fe9ed933629d180c5701e2a11e54",
+      "evidence": "DECODED DATA"
+    },
+    {
+      "name": "boss_player_bounce_8105",
+      "kind": "code",
+      "purpose": "attack-contact knockback of the player",
+      "bank": "0x1E",
+      "cpu": "0x8105",
+      "cpu_end_exclusive": "0x814D",
+      "rom_offset": "0x78105",
+      "length": 72,
+      "first_16_bytes": "3a03d5cb4fc8dd7e2147e60fc82a16d5",
+      "sha256": "31864d3eb5af6f54879507845200dc3cc9863b6500b5f170ac7e38ab09f7b3b3",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_contact_814D",
+      "kind": "code",
+      "purpose": "state 18 contact helper",
+      "bank": "0x1E",
+      "cpu": "0x814D",
+      "cpu_end_exclusive": "0x8168",
+      "rom_offset": "0x7814D",
+      "length": 27,
+      "first_16_bytes": "cd4d031803cd3b03dd7e21e60fc83a03",
+      "sha256": "1bc50815e7325e173bccd53a65a19c72912102513127f9f0f960b9027c45d668",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_camera_save_8199",
+      "kind": "code",
+      "purpose": "left lock + save right limit in +$25/+$27",
+      "bank": "0x1E",
+      "cpu": "0x8199",
+      "cpu_end_exclusive": "0x81A6",
+      "rom_offset": "0x78199",
+      "length": 13,
+      "first_16_bytes": "cd53032a82d2dd7425dd7527c9",
+      "sha256": "9dae88b5ae9cc89b1e235a91d7eb641b91fe07ec93fa3c2ef42071b1dc3f9942",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_child_handle_81A6",
+      "kind": "code",
+      "purpose": "allocate type $12, keep pointer in +$34/+$35",
+      "bank": "0x1E",
+      "cpu": "0x81A6",
+      "cpu_end_exclusive": "0x81BD",
+      "rom_offset": "0x781A6",
+      "length": 23,
+      "first_16_bytes": "0e12cd2c03fde5e1dd7435dd7534c9dd",
+      "sha256": "a747b99fc134ecba46947bc9551441a881f048d959f062a6a9a522cf79d2d7a7",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "boss_defeat_complete_state5",
+      "kind": "code",
+      "purpose": "state 5 callback",
+      "bank": "0x1E",
+      "cpu": "0x81BD",
+      "cpu_end_exclusive": "0x8212",
+      "rom_offset": "0x781BD",
+      "length": 85,
+      "first_16_bytes": "dd7e00fe562830cd7d033a22d5cb4fc8",
+      "sha256": "3414b6424c067ac3925823e6d73f1d3f5631840e92ff39ee583050f276efdfe0",
+      "evidence": "BYTE-VERIFIED ASSEMBLY"
+    }
+  ],
+  "states": [
+    {
+      "entry": "object creation (placement creator writes state 0/requested 0)",
+      "callback": "0x974C",
+      "action": [
+        "sound request $8C when the script starts (FF 06 8C)",
+        "set +$04 bit 1 (keep alive while offscreen)",
+        "$D44E = $D297 + 1; $D4A5 = 0",
+        "allocate child type $12 (pool $D540..) with parameter = high byte of the callback address ($97); keep slot pointer in +$34/+$35",
+        "camera left limit $D280 = max($D280, cameraX); save right limit $D282 into +$25 (high) / +$27 (low)",
+        "if player requested state ($D502) == $12 then $D502 = $0E"
+      ],
+      "movement": "none",
+      "contact": "none",
+      "frame": 0,
+      "state": 0,
+      "script_cpu": "0x95B1",
+      "script_rom": "0x795B1",
+      "script_bytes": "ff06",
+      "script": [
+        {
+          "cpu": "0x95B1",
+          "cmd": "0x06",
+          "op": "sound",
+          "sound": "0x8C"
+        },
+        {
+          "cpu": "0x95B4",
+          "op": "record",
+          "duration": 224,
+          "frame": 0,
+          "callback": "0x974C"
+        },
+        {
+          "cpu": "0x95B8",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        0
+      ],
+      "callbacks_in_script": [
+        "0x974C"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "from state 0",
+      "callback": "0x9771",
+      "action": [
+        "every update: same camera left lock/save as state 0",
+        "trigger: |objectX - playerX| < W and |objectY - playerY| < H, (W,H) from table $97A1[$D297+$D4A5] (zone 0: 160, 256)",
+        "on trigger: camera right limit $D282 = min($D282, cameraX) and request state 2"
+      ],
+      "movement": "none",
+      "contact": "none",
+      "frame": 0,
+      "state": 1,
+      "script_cpu": "0x95BA",
+      "script_rom": "0x795BA",
+      "script_bytes": "e000",
+      "script": [
+        {
+          "cpu": "0x95BA",
+          "op": "record",
+          "duration": 224,
+          "frame": 0,
+          "callback": "0x9771"
+        },
+        {
+          "cpu": "0x95BE",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        0
+      ],
+      "callbacks_in_script": [
+        "0x9771"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "from state 1",
+      "callback": "0x97C1",
+      "action": [
+        "wait while the type-$12 child's type byte is non-zero",
+        "then $D27E = objectY + dy and camera pan target (objectX + dx, objectY + dy) with (dx,dy) from table $9808[$D297+$D4A5] (zone 0: -256, -160)",
+        "request state 3"
+      ],
+      "movement": "none",
+      "contact": "none",
+      "frame": 0,
+      "state": 2,
+      "script_cpu": "0x95C0",
+      "script_rom": "0x795C0",
+      "script_bytes": "e000",
+      "script": [
+        {
+          "cpu": "0x95C0",
+          "op": "record",
+          "duration": 224,
+          "frame": 0,
+          "callback": "0x97C1"
+        },
+        {
+          "cpu": "0x95C4",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        0
+      ],
+      "callbacks_in_script": [
+        "0x97C1"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "from state 2",
+      "callback": "0x9828",
+      "action": [
+        "$D3B3 = $13 (dynamic graphics selector: boss art)",
+        "$D494 bit 5 set and $D495 = $0C (sprite palette $0C request)",
+        "+$09 = $48 (mirrored art tile base); +$26 = 8 (health); +$3F = 1; +$1E = 0; +$32 = 0",
+        "X velocity = -$0080 (8.8) = -0.5 px/update; set +$03 bit 7",
+        "request state 18"
+      ],
+      "movement": "vx = -0.5 px/update set here; applied from state 18",
+      "contact": "none",
+      "frame": 0,
+      "state": 3,
+      "script_cpu": "0x95C6",
+      "script_rom": "0x795C6",
+      "script_bytes": "e000",
+      "script": [
+        {
+          "cpu": "0x95C6",
+          "op": "record",
+          "duration": 224,
+          "frame": 0,
+          "callback": "0x9828"
+        },
+        {
+          "cpu": "0x95CA",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        0
+      ],
+      "callbacks_in_script": [
+        "0x9828"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "health reached 0 in contact routine $99AE",
+      "callback": "0x032F (idle RET)",
+      "action": [
+        "script spawns 5 type-$34 children (param $04) at offsets (-8,0) (8,0) (0,-16) (-8,-24) (-8,-24)",
+        "saves the current frame in +$38 (FF 05 $9A1E) and alternates saved frame / blank frame 0 for 24 loops (4+2 updates each)",
+        "no movement, no contact, no callback logic",
+        "after the loop requests state 5"
+      ],
+      "movement": "none",
+      "contact": "none",
+      "frame": "saved frame / 0 flicker",
+      "state": 4,
+      "script_cpu": "0x95CC",
+      "script_rom": "0x795CC",
+      "script_bytes": "ff04",
+      "script": [
+        {
+          "cpu": "0x95CC",
+          "cmd": "0x04",
+          "op": "spawn",
+          "type": "0x34",
+          "dx": -8,
+          "dy": 0,
+          "parameter": "0x04"
+        },
+        {
+          "cpu": "0x95D4",
+          "cmd": "0x05",
+          "op": "call_and_set_callback",
+          "target": "0x9A1E",
+          "callback": "0x032F"
+        },
+        {
+          "cpu": "0x95DA",
+          "cmd": "0x04",
+          "op": "spawn",
+          "type": "0x34",
+          "dx": 8,
+          "dy": 0,
+          "parameter": "0x04"
+        },
+        {
+          "cpu": "0x95E2",
+          "op": "record",
+          "duration": 1,
+          "frame": 0,
+          "callback": "0x032F"
+        },
+        {
+          "cpu": "0x95E6",
+          "cmd": "0x04",
+          "op": "spawn",
+          "type": "0x34",
+          "dx": 0,
+          "dy": -16,
+          "parameter": "0x04"
+        },
+        {
+          "cpu": "0x95EE",
+          "cmd": "0x05",
+          "op": "call_and_set_callback",
+          "target": "0x9A29",
+          "callback": "0x032F"
+        },
+        {
+          "cpu": "0x95F4",
+          "cmd": "0x04",
+          "op": "spawn",
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter": "0x04"
+        },
+        {
+          "cpu": "0x95FC",
+          "op": "record",
+          "duration": 1,
+          "frame": 0,
+          "callback": "0x032F"
+        },
+        {
+          "cpu": "0x9600",
+          "cmd": "0x04",
+          "op": "spawn",
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter": "0x04"
+        },
+        {
+          "cpu": "0x9608",
+          "cmd": "0x0E",
+          "op": "set_loop_counter",
+          "count": 24
+        },
+        {
+          "cpu": "0x960B",
+          "cmd": "0x05",
+          "op": "call_and_set_callback",
+          "target": "0x9A2F",
+          "callback": "0x032F"
+        },
+        {
+          "cpu": "0x9611",
+          "op": "record",
+          "duration": 2,
+          "frame": 0,
+          "callback": "0x032F"
+        },
+        {
+          "cpu": "0x9615",
+          "cmd": "0x0F",
+          "op": "loop_jump",
+          "target": "0x960B"
+        },
+        {
+          "cpu": "0x9619",
+          "cmd": "0x03",
+          "op": "request_state",
+          "state": 5
+        }
+      ],
+      "frames_reached": [
+        0
+      ],
+      "callbacks_in_script": [
+        "0x032F"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "from state 4",
+      "callback": "0x81BD",
+      "action": [
+        "wait for player background contact bit 1 ($D522 bit 1, floor)",
+        "camera: $D280 = cameraX; scroll release ($035C); $D282 restored from +$25/+$27",
+        "player: requested state $20 and sound $89 ($97 when $D298 == 2) via $03F5/$4892",
+        "allocate child type $0A parameter 0 (pool $D540..)",
+        "+$3F = $80, +$3E = 0, then $033E: no score for type >= $50, slot becomes type $0F with all state fields cleared"
+      ],
+      "movement": "none",
+      "contact": "none",
+      "frame": 0,
+      "state": 5,
+      "script_cpu": "0x961E",
+      "script_rom": "0x7961E",
+      "script_bytes": "e000",
+      "script": [
+        {
+          "cpu": "0x961E",
+          "op": "record",
+          "duration": 224,
+          "frame": 0,
+          "callback": "0x81BD"
+        },
+        {
+          "cpu": "0x9622",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        0
+      ],
+      "callbacks_in_script": [
+        "0x81BD"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "from state 18 (screen X in $80..$DF), from state 15, from reactions",
+      "callback": "0x985B",
+      "action": [
+        "leftward patrol; +$04 = 0 (unmirrored); phases in +$32 (see transitions)"
+      ],
+      "movement": "cruise -128/256 px/update on the first sweep, -130/256 after a turn (phase 1 stops once vx < -$0080)",
+      "contact": "solid + damage (routine $99AE)",
+      "frame": "1/2 alternate, 16 updates each",
+      "state": 6,
+      "script_cpu": "0x9632",
+      "script_rom": "0x79632",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9632",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x9636",
+          "op": "record",
+          "duration": 16,
+          "frame": 1,
+          "callback": "0x985B"
+        },
+        {
+          "cpu": "0x963A",
+          "op": "record",
+          "duration": 16,
+          "frame": 2,
+          "callback": "0x985B"
+        },
+        {
+          "cpu": "0x963E",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        1,
+        2
+      ],
+      "callbacks_in_script": [
+        "0x985B"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "player top contact while in state 6",
+      "callback": "0x9989",
+      "action": [
+        "20-update timer +$1F; keeps moving by current velocity; returns to +$0B"
+      ],
+      "movement": "continues",
+      "contact": "none",
+      "frame": "3,1 (2 updates each), 3,1 (3 each), then loops 4,2,4,2,3,1,3,1 (4 each)",
+      "state": 7,
+      "script_cpu": "0x9640",
+      "script_rom": "0x79640",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9640",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x9644",
+          "op": "record",
+          "duration": 2,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9648",
+          "op": "record",
+          "duration": 2,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x964C",
+          "op": "record",
+          "duration": 3,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9650",
+          "op": "record",
+          "duration": 3,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9654",
+          "op": "record",
+          "duration": 4,
+          "frame": 4,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9658",
+          "op": "record",
+          "duration": 4,
+          "frame": 2,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x965C",
+          "op": "record",
+          "duration": 4,
+          "frame": 4,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9660",
+          "op": "record",
+          "duration": 4,
+          "frame": 2,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9664",
+          "op": "record",
+          "duration": 4,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9668",
+          "op": "record",
+          "duration": 4,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x966C",
+          "op": "record",
+          "duration": 4,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9670",
+          "op": "record",
+          "duration": 4,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9674",
+          "cmd": "0x07",
+          "op": "jump",
+          "target": "0x9654"
+        },
+        {
+          "cpu": "0x9654",
+          "op": "loops_back",
+          "target": "0x9654"
+        }
+      ],
+      "frames_reached": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "callbacks_in_script": [
+        "0x9989"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "attack hit while in state 6",
+      "callback": "0x9997",
+      "action": [
+        "20-update timer; NO movement; at 0: return to +$0B, velocity 0, +$32 = 1"
+      ],
+      "movement": "frozen",
+      "contact": "none",
+      "frame": "1,2 alternate, 4 updates each",
+      "state": 8,
+      "script_cpu": "0x967A",
+      "script_rom": "0x7967A",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x967A",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x967E",
+          "op": "record",
+          "duration": 4,
+          "frame": 1,
+          "callback": "0x9997"
+        },
+        {
+          "cpu": "0x9682",
+          "op": "record",
+          "duration": 4,
+          "frame": 2,
+          "callback": "0x9997"
+        },
+        {
+          "cpu": "0x9686",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        1,
+        2
+      ],
+      "callbacks_in_script": [
+        "0x9997"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "deceleration of state 6 finished (velocity >= -8/256)",
+      "callback": "0x9903",
+      "action": [
+        "turn left->right: X velocity += 2/256 per update while negative",
+        "when velocity >= $0020: +$32 = 1, request state 12"
+      ],
+      "movement": "accelerates from ~0",
+      "contact": "solid + damage",
+      "frame": "5 (8-update record)",
+      "state": 9,
+      "script_cpu": "0x9688",
+      "script_rom": "0x79688",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9688",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x968C",
+          "op": "record",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x9903"
+        },
+        {
+          "cpu": "0x9690",
+          "cmd": "0x07",
+          "op": "jump",
+          "target": "0x968C"
+        },
+        {
+          "cpu": "0x968C",
+          "op": "loops_back",
+          "target": "0x968C"
+        }
+      ],
+      "frames_reached": [
+        5
+      ],
+      "callbacks_in_script": [
+        "0x9903"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "player top contact while in state 9",
+      "callback": "0x9989",
+      "action": [
+        "as state 7"
+      ],
+      "movement": "continues",
+      "contact": "none",
+      "frame": "5,6 (2,2,3,3 updates) then loops 5,6 at 4 updates",
+      "state": 10,
+      "script_cpu": "0x9694",
+      "script_rom": "0x79694",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9694",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x9698",
+          "op": "record",
+          "duration": 2,
+          "frame": 5,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x969C",
+          "op": "record",
+          "duration": 2,
+          "frame": 6,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96A0",
+          "op": "record",
+          "duration": 3,
+          "frame": 5,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96A4",
+          "op": "record",
+          "duration": 3,
+          "frame": 6,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96A8",
+          "op": "record",
+          "duration": 4,
+          "frame": 5,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96AC",
+          "op": "record",
+          "duration": 4,
+          "frame": 6,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96B0",
+          "cmd": "0x07",
+          "op": "jump",
+          "target": "0x96A8"
+        },
+        {
+          "cpu": "0x96A8",
+          "op": "loops_back",
+          "target": "0x96A8"
+        }
+      ],
+      "frames_reached": [
+        5,
+        6
+      ],
+      "callbacks_in_script": [
+        "0x9989"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "attack hit while in state 9",
+      "callback": "0x9997",
+      "action": [
+        "as state 8"
+      ],
+      "movement": "frozen",
+      "contact": "none",
+      "frame": "5 (8-update record)",
+      "state": 11,
+      "script_cpu": "0x96B6",
+      "script_rom": "0x796B6",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x96B6",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x96BA",
+          "op": "record",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x9997"
+        },
+        {
+          "cpu": "0x96BE",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        5
+      ],
+      "callbacks_in_script": [
+        "0x9997"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "from state 9",
+      "callback": "0x985B",
+      "action": [
+        "rightward patrol; +$04 = $10 (mirrored art via +$09); phases in +$32"
+      ],
+      "movement": "cruise +128/256 px/update (phase 1 stops once vx >= $0080)",
+      "contact": "solid + damage",
+      "frame": "1/2 alternate, 16 updates each",
+      "state": 12,
+      "script_cpu": "0x96C0",
+      "script_rom": "0x796C0",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x96C0",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x10"
+        },
+        {
+          "cpu": "0x96C4",
+          "op": "record",
+          "duration": 16,
+          "frame": 1,
+          "callback": "0x985B"
+        },
+        {
+          "cpu": "0x96C8",
+          "op": "record",
+          "duration": 16,
+          "frame": 2,
+          "callback": "0x985B"
+        },
+        {
+          "cpu": "0x96CC",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        1,
+        2
+      ],
+      "callbacks_in_script": [
+        "0x985B"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "player top contact while in state 12",
+      "callback": "0x9989",
+      "action": [
+        "as state 7"
+      ],
+      "movement": "continues",
+      "contact": "none",
+      "frame": "mirrored: 1,3 (2 each), 1,3 (3 each), then loops 2,4,2,4,1,3,1,3 (4 each)",
+      "state": 13,
+      "script_cpu": "0x96CE",
+      "script_rom": "0x796CE",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x96CE",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x10"
+        },
+        {
+          "cpu": "0x96D2",
+          "op": "record",
+          "duration": 2,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96D6",
+          "op": "record",
+          "duration": 2,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96DA",
+          "op": "record",
+          "duration": 3,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96DE",
+          "op": "record",
+          "duration": 3,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96E2",
+          "op": "record",
+          "duration": 4,
+          "frame": 2,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96E6",
+          "op": "record",
+          "duration": 4,
+          "frame": 4,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96EA",
+          "op": "record",
+          "duration": 4,
+          "frame": 2,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96EE",
+          "op": "record",
+          "duration": 4,
+          "frame": 4,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96F2",
+          "op": "record",
+          "duration": 4,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96F6",
+          "op": "record",
+          "duration": 4,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96FA",
+          "op": "record",
+          "duration": 4,
+          "frame": 1,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x96FE",
+          "op": "record",
+          "duration": 4,
+          "frame": 3,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9702",
+          "cmd": "0x07",
+          "op": "jump",
+          "target": "0x96E2"
+        },
+        {
+          "cpu": "0x96E2",
+          "op": "loops_back",
+          "target": "0x96E2"
+        }
+      ],
+      "frames_reached": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "callbacks_in_script": [
+        "0x9989"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "attack hit while in state 12",
+      "callback": "0x9997",
+      "action": [
+        "as state 8"
+      ],
+      "movement": "frozen",
+      "contact": "none",
+      "frame": "mirrored 1,2 alternate, 4 updates each",
+      "state": 14,
+      "script_cpu": "0x9708",
+      "script_rom": "0x79708",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9708",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x10"
+        },
+        {
+          "cpu": "0x970C",
+          "op": "record",
+          "duration": 4,
+          "frame": 1,
+          "callback": "0x9997"
+        },
+        {
+          "cpu": "0x9710",
+          "op": "record",
+          "duration": 4,
+          "frame": 2,
+          "callback": "0x9997"
+        },
+        {
+          "cpu": "0x9714",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        1,
+        2
+      ],
+      "callbacks_in_script": [
+        "0x9997"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "deceleration of state 12 finished (velocity < 0 after subtract)",
+      "callback": "0x9931",
+      "action": [
+        "turn right->left: X velocity -= 2/256 per update while positive",
+        "when velocity < -$0020: +$32 = 1, request state 6"
+      ],
+      "movement": "accelerates from ~0",
+      "contact": "solid + damage",
+      "frame": "5 (8-update record), unmirrored",
+      "state": 15,
+      "script_cpu": "0x9716",
+      "script_rom": "0x79716",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9716",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x971A",
+          "op": "record",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x9931"
+        },
+        {
+          "cpu": "0x971E",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        5
+      ],
+      "callbacks_in_script": [
+        "0x9931"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "player top contact while in state 15",
+      "callback": "0x9989",
+      "action": [
+        "as state 7"
+      ],
+      "movement": "continues",
+      "contact": "none",
+      "frame": "6,5 (2,2,3,3 updates) then loops 6,5 at 4 updates",
+      "state": 16,
+      "script_cpu": "0x9720",
+      "script_rom": "0x79720",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9720",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x9724",
+          "op": "record",
+          "duration": 2,
+          "frame": 6,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9728",
+          "op": "record",
+          "duration": 2,
+          "frame": 5,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x972C",
+          "op": "record",
+          "duration": 3,
+          "frame": 6,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9730",
+          "op": "record",
+          "duration": 3,
+          "frame": 5,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9734",
+          "op": "record",
+          "duration": 4,
+          "frame": 6,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x9738",
+          "op": "record",
+          "duration": 4,
+          "frame": 5,
+          "callback": "0x9989"
+        },
+        {
+          "cpu": "0x973C",
+          "cmd": "0x07",
+          "op": "jump",
+          "target": "0x9734"
+        },
+        {
+          "cpu": "0x9734",
+          "op": "loops_back",
+          "target": "0x9734"
+        }
+      ],
+      "frames_reached": [
+        5,
+        6
+      ],
+      "callbacks_in_script": [
+        "0x9989"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "attack hit while in state 15",
+      "callback": "0x9997",
+      "action": [
+        "as state 8"
+      ],
+      "movement": "frozen",
+      "contact": "none",
+      "frame": "5 (16-update record)",
+      "state": 17,
+      "script_cpu": "0x9742",
+      "script_rom": "0x79742",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9742",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x9746",
+          "op": "record",
+          "duration": 16,
+          "frame": 5,
+          "callback": "0x9997"
+        },
+        {
+          "cpu": "0x974A",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        5
+      ],
+      "callbacks_in_script": [
+        "0x9997"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    },
+    {
+      "entry": "from state 3",
+      "callback": "0x9A09",
+      "action": [
+        "move by velocity; solid contact helper $814D (damage to non-attacking player, knockback for attacking player, no boss damage)",
+        "when screen X (+$1A low byte) is in $80..$DF: request state 6"
+      ],
+      "movement": "vx = -0.5 px/update",
+      "contact": "solid, no damage to boss",
+      "frame": "1/2 alternate, 16 updates each",
+      "state": 18,
+      "script_cpu": "0x9624",
+      "script_rom": "0x79624",
+      "script_bytes": "ff09",
+      "script": [
+        {
+          "cpu": "0x9624",
+          "cmd": "0x09",
+          "op": "set_field",
+          "offset": "0x04",
+          "value": "0x00"
+        },
+        {
+          "cpu": "0x9628",
+          "op": "record",
+          "duration": 16,
+          "frame": 1,
+          "callback": "0x9A09"
+        },
+        {
+          "cpu": "0x962C",
+          "op": "record",
+          "duration": 16,
+          "frame": 2,
+          "callback": "0x9A09"
+        },
+        {
+          "cpu": "0x9630",
+          "cmd": "0x00",
+          "op": "restart_state"
+        }
+      ],
+      "frames_reached": [
+        1,
+        2
+      ],
+      "callbacks_in_script": [
+        "0x9A09"
+      ],
+      "evidence": "DECODED DATA (script) + SOURCE-TRACED BEHAVIOR (callback)"
+    }
+  ],
+  "transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "condition": "first update after init",
+      "via": "$974C LD (IX+2),1",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "condition": "player within (W,H) of the object",
+      "via": "$9771..$979C",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "condition": "type-$12 child slot type byte becomes 0",
+      "via": "$97C1..$9803",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 3,
+      "to": 18,
+      "condition": "unconditional next update",
+      "via": "$9839",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 18,
+      "to": 6,
+      "condition": "screen X low byte in $80..$DF",
+      "via": "$9A18",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 6,
+      "to": 9,
+      "condition": "+$32 = $FF and velocity + 8/256 carries (velocity >= -8/256)",
+      "via": "$98B8",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 9,
+      "to": 12,
+      "condition": "velocity >= $0020 (sets +$32 = 1)",
+      "via": "$9928/$992C",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 12,
+      "to": 15,
+      "condition": "+$32 = $FF and velocity + 8/256 carries (velocity < 0)",
+      "via": "$98BD",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 15,
+      "to": 6,
+      "condition": "velocity < -$0020 (sets +$32 = 1)",
+      "via": "$9958/$995C",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "condition": "contact result 1 (player above)",
+      "via": "$9961..$996E",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 6,
+      "to": 8,
+      "condition": "contact result $FF (attack hit)",
+      "via": "$9976..$9981",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "condition": "contact result 1",
+      "via": "$9961",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 9,
+      "to": 11,
+      "condition": "contact result $FF",
+      "via": "$9976",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "condition": "contact result 1",
+      "via": "$9961",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 12,
+      "to": 14,
+      "condition": "contact result $FF",
+      "via": "$9976",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 15,
+      "to": 16,
+      "condition": "contact result 1",
+      "via": "$9961",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 15,
+      "to": 17,
+      "condition": "contact result $FF",
+      "via": "$9976",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 7,
+      "to": 6,
+      "condition": "20 updates elapsed, return to saved state (+$0B)",
+      "via": "$9990",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 10,
+      "to": 9,
+      "condition": "as above",
+      "via": "$9990",
+      "evidence": "SOURCE-TRACED BEHAVIOR"
+    },
+    {
+      "from": 13,
+      "to": 12,
+      "condition": "as above",
+      "via": "$9990",
+      "evidence": "SOURCE-TRACED BEHAVIOR"
+    },
+    {
+      "from": 16,
+      "to": 15,
+      "condition": "as above",
+      "via": "$9990",
+      "evidence": "SOURCE-TRACED BEHAVIOR"
+    },
+    {
+      "from": 8,
+      "to": 6,
+      "condition": "20 updates elapsed, velocity cleared, +$32 = 1",
+      "via": "$999B..$99AD",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 11,
+      "to": 9,
+      "condition": "as above",
+      "via": "$999B",
+      "evidence": "SOURCE-TRACED BEHAVIOR"
+    },
+    {
+      "from": 14,
+      "to": 12,
+      "condition": "as above",
+      "via": "$999B",
+      "evidence": "SOURCE-TRACED BEHAVIOR"
+    },
+    {
+      "from": 17,
+      "to": 15,
+      "condition": "as above",
+      "via": "$999B",
+      "evidence": "SOURCE-TRACED BEHAVIOR"
+    },
+    {
+      "from": "6/9/12/15/18",
+      "to": 4,
+      "condition": "health (+$26) decrements to 0 in an attack hit (states 6,9,12,15 only)",
+      "via": "$99F6",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "condition": "24-iteration flicker loop finished",
+      "via": "script FF 03 05 at $9619",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    },
+    {
+      "from": 5,
+      "to": "type $0F",
+      "condition": "player on floor: slot converted by $033E",
+      "via": "$81E9..$81F1",
+      "evidence": "CONTROLLED ROUTINE RESULT"
+    }
+  ],
+  "camera_and_level_control": {
+    "evidence": "SOURCE-TRACED BEHAVIOR + CONTROLLED ROUTINE RESULT + EMULATED ORIGINAL FRAME",
+    "camera_bounds": "state 0/1 raise the left limit ($D280) to the camera X every update; the trigger lowers the right limit ($D282) to camera X; state 2 sets bottom limit $D27E and the pan target (objectX-256, objectY-160) for zone 0; the pan then raises the right limit to 1680 and the camera settles at X 1679/1680, Y 78",
+    "player_lockout": "none: the player is never frozen; only the type-$12 wait and the camera lock gate the fight",
+    "music": "sound request $8C at state 0; no other music request from this object; defeat requests the act-3 clear jingle $97 (or $89)",
+    "level_timer": "not touched by any $50 routine (no writes to timer variables found)",
+    "act_complete": "indirect: state 5 requests player state $20, whose handler sets $D293 bit 4 (bit 5 for acts < 3)",
+    "goal_end_object": "state 5 spawns type $0A (parameter 0); it is not the goal sign (type $18)",
+    "terrain_mutation": "none found",
+    "boss_flag": "$D44E = $D297 + 1 from state 0 onward; bank $1D background animations skip while non-zero; never cleared by this object",
+    "player_state_writes": [
+      "$D502 = $0E if it was $12 (states 0 and via $037D)",
+      "$D3B0 = $FF damage request on non-attacking contact",
+      "player state $0B via spring setter on top contact",
+      "player state $1B via $8105 on attack contact",
+      "player state $20 on defeat"
+    ]
+  },
+  "collision_and_damage": {
+    "evidence": "SOURCE-TRACED BEHAVIOR + CONTROLLED ROUTINE RESULT",
+    "contact_box": "contact extents X/Y come from the current frame record (+$2C/+$2D): 20/48 for frames 1-2, see frames[]",
+    "overlap_rule": "$6328: |dx| <= playerExtX + extX and dy in [-extY, playerExtY]; least-penetration axis keeps bit pair (0/1) or (2/3); no contact when object +$03 bit 6 is set, or when player $D503 bit 6 is set and object +$03 bit 7 is clear",
+    "solid": "$034D pushes the player out along the contact axis; used in states 6, 9, 12, 15 and 18 only",
+    "top_contact": "player above: player bounce (state $0B, Y velocity $FC00, $D448 = 0); boss unaffected; boss enters state S+1",
+    "attack_contact": "side/below with $D503 bit 1 set: $8105 knockback (+-6.0 px/update on the contact axis), palette command 7, sound $B6, health -1; health > 0 -> boss enters state S+2; health = 0 -> state 4 (no reaction state)",
+    "plain_contact": "side/below without $D503 bit 1: $D3B0 = $FF (shared player damage) and +$1E = 2 (two-update cooldown)",
+    "invulnerability": "after a hit the boss is in a reaction state for 20 updates in which no overlap routine runs",
+    "power_up_note": "$D532 == 6 is NOT tested by this object (only $D503 bit 1)",
+    "health": {
+      "initial": 8,
+      "decrement": 1,
+      "storage": "+$26",
+      "zero_action": "request state 4",
+      "hits_required": 8,
+      "damage_by_top_contact": 0
+    },
+    "palette_flash": "sprite colours 13/14 flash white for 4 updates then return (command 7, zone 0 table)",
+    "state_18_contact": "solid; damages a non-attacking player; knocks back an attacking player; never damages the boss"
+  },
+  "attack_and_spawns": {
+    "evidence": "SOURCE-TRACED BEHAVIOR + CONTROLLED ROUTINE RESULT",
+    "attacks": "no projectiles; the only offense is body contact while patrolling (about +-0.5 px/update sweeps)",
+    "children": [
+      {
+        "type": "0x12",
+        "by": "state 0 callback ($81A6)",
+        "position": "slot pool $D540.. (not positioned)",
+        "parameter": "0x97 (high byte of callback address)",
+        "lifetime": "until it removes itself (about 94 updates in the emulated run)",
+        "purpose": "gates state 2; SAT Y-buffer effect (UNRESOLVED)"
+      },
+      {
+        "type": "0x34",
+        "by": "state 4 script FF 04 x5 (allocator $5EE1)",
+        "offsets": [
+          [
+            -8,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            0,
+            -16
+          ],
+          [
+            -8,
+            -24
+          ],
+          [
+            -8,
+            -24
+          ]
+        ],
+        "parameter": "0x04",
+        "purpose": "explosion puffs (art base $A2)"
+      },
+      {
+        "type": "0x0A",
+        "by": "state 5 callback",
+        "parameter": "0x00",
+        "position": "slot pool $D540.. (own script positions it)",
+        "purpose": "UNRESOLVED (follow-up)"
+      },
+      {
+        "type": "0x0F",
+        "by": "$033E conversion of the boss slot itself",
+        "purpose": "defeated-object effect (follow-up)"
+      }
+    ]
+  },
+  "graphics": {
+    "evidence": "DECODED DATA + CONTROLLED ROUTINE RESULT (dynamic load reproduced) + EMULATED ORIGINAL FRAME (VRAM identical)",
+    "art_source": {
+      "resolved": true,
+      "mechanism": "state 3 writes selector $13 to $D3B3; loader $7AC2 resolves it through the pointer table at $7BA6 (word index selector-$10) to a 6-byte-per-entry list; 4 tiles are copied per call",
+      "dynamic_load": {
+        "selector": "0x13",
+        "pointer_table": "0x7BA6",
+        "list_cpu": "0x7BD8",
+        "loads": [
+          {
+            "list_entry_rom": "0x07BD8",
+            "bank": "0x0A",
+            "source_cpu": "0x8940",
+            "source_rom": "0x28940",
+            "tile_count": 72,
+            "vram_destination": "0x05C0",
+            "first_tile": "0x2E",
+            "last_tile": "0x75",
+            "bit_reversed_copy": false,
+            "source_sha256": "be62830ccd8c821603179170ea371de6e202eca42de1fe10ecd8389136c17cff"
+          },
+          {
+            "list_entry_rom": "0x07BDE",
+            "bank": "0x0A",
+            "source_cpu": "0x8940",
+            "source_rom": "0x28940",
+            "tile_count": 44,
+            "vram_destination": "0x0EC0",
+            "first_tile": "0x76",
+            "last_tile": "0xA1",
+            "bit_reversed_copy": true,
+            "source_sha256": "917b45b0337858c057b41fcc1853d51ba6e5a50db6d076d41e6c0f81101a7a6a"
+          },
+          {
+            "list_entry_rom": "0x07BE4",
+            "bank": "0x09",
+            "source_cpu": "0xABA0",
+            "source_rom": "0x26BA0",
+            "tile_count": 12,
+            "vram_destination": "0x1440",
+            "first_tile": "0xA2",
+            "last_tile": "0xAD",
+            "bit_reversed_copy": false,
+            "source_sha256": "d3bc7be147568f9a248e5b96529385357b5f27b6c741eeb2ef490949efb1c026"
+          }
+        ],
+        "list_terminator": "0xFF"
+      },
+      "tile_base_unmirrored_plus_08": "0x00 (placement aux0)",
+      "tile_base_mirrored_plus_09": "0x48 (state 3 writes +$09)",
+      "mirrored_art": "second load applies the byte table at ROM $0100 (bit reversal) to the first 44 tiles; mirrored frames therefore use tile ids offset + $48",
+      "third_load_note": "12 tiles at tile $A2 (bank $09 $ABA0) are used by the type-$34 explosion children (art base $A2 in zone 0), not by any type-$50 frame",
+      "vram_tiles_first_last": [
+        "0x2E",
+        "0xAD"
+      ],
+      "vram_image_sha256_tiles_2E_AD": "3abe49294d54108a1aa444e65348270d7f3dcdb974e8006ad36d54f732bcff85"
+    },
+    "palette": {
+      "level_sprite_palette_index": "0x06",
+      "level_sprite_palette_rom": "0x3B6AD",
+      "boss_sprite_palette_index": "0x0C",
+      "boss_sprite_palette_rom": "0x3B70D",
+      "boss_sprite_palette_sha256": "369a958804863fcb627f21f06da85e48ec55b6814eba0a879276b66d2291b823",
+      "level_sprite_palette_sha256": "c6715cef80884efccdc74a30c6c85023858169524ded2be963e16badb1f677e2",
+      "differs_at_colors": {
+        "13": {
+          "level_palette_06": "0x0C",
+          "boss_palette_0C": "0x35"
+        },
+        "14": {
+          "level_palette_06": "0x08",
+          "boss_palette_0C": "0x20"
+        },
+        "15": {
+          "level_palette_06": "0x04",
+          "boss_palette_0C": "0x3F"
+        }
+      },
+      "request": "state 3: $D494 bit 5 set, $D495 = $0C (consumer sets CRAM 16..31 = palette $0C; observed in the emulated run)",
+      "hit_flash": "attack hit queues background/palette command 7; it writes CRAM colours 13 and 14 of the sprite palette (shadow bytes $D48F/$D490) from table $1D:$9979 + zone*4 + step*2, 4 updates per step, 2 steps"
+    },
+    "mapping": {
+      "bank": "0x0F",
+      "cpu": "0x94C6",
+      "rom": "0x3D4C6",
+      "pointer_entry_rom": "0x3C0A0",
+      "frame_count": 7
+    },
+    "frames": [
+      {
+        "frame": 0,
+        "record_cpu": "0xA0E4",
+        "record_rom": "0x3E0E4",
+        "raw_record": "00 00 00 F3 AD 00 00 00 00 00 00",
+        "piece_count": 0,
+        "contact_extent_x_plus_2C": 0,
+        "contact_extent_y_plus_2D": 0,
+        "y_origin": 0,
+        "x_origin": 0,
+        "coordinate_table_cpu": null,
+        "tile_list_cpu": null,
+        "pieces": [],
+        "reachable": true,
+        "bounds_unmirrored": null,
+        "bounds_mirrored": null
+      },
+      {
+        "frame": 1,
+        "record_cpu": "0x94D4",
+        "record_rom": "0x3D4D4",
+        "raw_record": "0D 14 30 F7 A4 00 00 00 00 16 95",
+        "piece_count": 13,
+        "contact_extent_x_plus_2C": 20,
+        "contact_extent_y_plus_2D": 48,
+        "y_origin": 0,
+        "x_origin": 0,
+        "coordinate_table_cpu": "0xA4F7",
+        "tile_list_cpu": "0x9516",
+        "pieces": [
+          {
+            "y": -48,
+            "x": -12,
+            "tile_offset": 46
+          },
+          {
+            "y": -48,
+            "x": -4,
+            "tile_offset": 48
+          },
+          {
+            "y": -48,
+            "x": 4,
+            "tile_offset": 50
+          },
+          {
+            "y": -32,
+            "x": -20,
+            "tile_offset": 52
+          },
+          {
+            "y": -32,
+            "x": -12,
+            "tile_offset": 54
+          },
+          {
+            "y": -32,
+            "x": -4,
+            "tile_offset": 56
+          },
+          {
+            "y": -32,
+            "x": 4,
+            "tile_offset": 58
+          },
+          {
+            "y": -32,
+            "x": 12,
+            "tile_offset": 60
+          },
+          {
+            "y": -16,
+            "x": -20,
+            "tile_offset": 62
+          },
+          {
+            "y": -16,
+            "x": -12,
+            "tile_offset": 64
+          },
+          {
+            "y": -16,
+            "x": -4,
+            "tile_offset": 66
+          },
+          {
+            "y": -16,
+            "x": 4,
+            "tile_offset": 68
+          },
+          {
+            "y": -16,
+            "x": 12,
+            "tile_offset": 70
+          }
+        ],
+        "reachable": true,
+        "bounds_unmirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        },
+        "bounds_mirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        }
+      },
+      {
+        "frame": 2,
+        "record_cpu": "0x94DF",
+        "record_rom": "0x3D4DF",
+        "raw_record": "0D 14 30 F7 A4 00 00 00 00 23 95",
+        "piece_count": 13,
+        "contact_extent_x_plus_2C": 20,
+        "contact_extent_y_plus_2D": 48,
+        "y_origin": 0,
+        "x_origin": 0,
+        "coordinate_table_cpu": "0xA4F7",
+        "tile_list_cpu": "0x9523",
+        "pieces": [
+          {
+            "y": -48,
+            "x": -12,
+            "tile_offset": 46
+          },
+          {
+            "y": -48,
+            "x": -4,
+            "tile_offset": 48
+          },
+          {
+            "y": -48,
+            "x": 4,
+            "tile_offset": 50
+          },
+          {
+            "y": -32,
+            "x": -20,
+            "tile_offset": 52
+          },
+          {
+            "y": -32,
+            "x": -12,
+            "tile_offset": 54
+          },
+          {
+            "y": -32,
+            "x": -4,
+            "tile_offset": 56
+          },
+          {
+            "y": -32,
+            "x": 4,
+            "tile_offset": 58
+          },
+          {
+            "y": -32,
+            "x": 12,
+            "tile_offset": 60
+          },
+          {
+            "y": -16,
+            "x": -20,
+            "tile_offset": 72
+          },
+          {
+            "y": -16,
+            "x": -12,
+            "tile_offset": 74
+          },
+          {
+            "y": -16,
+            "x": -4,
+            "tile_offset": 76
+          },
+          {
+            "y": -16,
+            "x": 4,
+            "tile_offset": 78
+          },
+          {
+            "y": -16,
+            "x": 12,
+            "tile_offset": 80
+          }
+        ],
+        "reachable": true,
+        "bounds_unmirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        },
+        "bounds_mirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        }
+      },
+      {
+        "frame": 3,
+        "record_cpu": "0x94EA",
+        "record_rom": "0x3D4EA",
+        "raw_record": "0D 14 30 F7 A4 00 00 00 00 30 95",
+        "piece_count": 13,
+        "contact_extent_x_plus_2C": 20,
+        "contact_extent_y_plus_2D": 48,
+        "y_origin": 0,
+        "x_origin": 0,
+        "coordinate_table_cpu": "0xA4F7",
+        "tile_list_cpu": "0x9530",
+        "pieces": [
+          {
+            "y": -48,
+            "x": -12,
+            "tile_offset": 82
+          },
+          {
+            "y": -48,
+            "x": -4,
+            "tile_offset": 84
+          },
+          {
+            "y": -48,
+            "x": 4,
+            "tile_offset": 86
+          },
+          {
+            "y": -32,
+            "x": -20,
+            "tile_offset": 52
+          },
+          {
+            "y": -32,
+            "x": -12,
+            "tile_offset": 54
+          },
+          {
+            "y": -32,
+            "x": -4,
+            "tile_offset": 56
+          },
+          {
+            "y": -32,
+            "x": 4,
+            "tile_offset": 58
+          },
+          {
+            "y": -32,
+            "x": 12,
+            "tile_offset": 60
+          },
+          {
+            "y": -16,
+            "x": -20,
+            "tile_offset": 62
+          },
+          {
+            "y": -16,
+            "x": -12,
+            "tile_offset": 64
+          },
+          {
+            "y": -16,
+            "x": -4,
+            "tile_offset": 66
+          },
+          {
+            "y": -16,
+            "x": 4,
+            "tile_offset": 68
+          },
+          {
+            "y": -16,
+            "x": 12,
+            "tile_offset": 70
+          }
+        ],
+        "reachable": true,
+        "bounds_unmirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        },
+        "bounds_mirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        }
+      },
+      {
+        "frame": 4,
+        "record_cpu": "0x94F5",
+        "record_rom": "0x3D4F5",
+        "raw_record": "0D 14 30 F7 A4 00 00 00 00 3D 95",
+        "piece_count": 13,
+        "contact_extent_x_plus_2C": 20,
+        "contact_extent_y_plus_2D": 48,
+        "y_origin": 0,
+        "x_origin": 0,
+        "coordinate_table_cpu": "0xA4F7",
+        "tile_list_cpu": "0x953D",
+        "pieces": [
+          {
+            "y": -48,
+            "x": -12,
+            "tile_offset": 82
+          },
+          {
+            "y": -48,
+            "x": -4,
+            "tile_offset": 84
+          },
+          {
+            "y": -48,
+            "x": 4,
+            "tile_offset": 86
+          },
+          {
+            "y": -32,
+            "x": -20,
+            "tile_offset": 52
+          },
+          {
+            "y": -32,
+            "x": -12,
+            "tile_offset": 54
+          },
+          {
+            "y": -32,
+            "x": -4,
+            "tile_offset": 56
+          },
+          {
+            "y": -32,
+            "x": 4,
+            "tile_offset": 58
+          },
+          {
+            "y": -32,
+            "x": 12,
+            "tile_offset": 60
+          },
+          {
+            "y": -16,
+            "x": -20,
+            "tile_offset": 72
+          },
+          {
+            "y": -16,
+            "x": -12,
+            "tile_offset": 74
+          },
+          {
+            "y": -16,
+            "x": -4,
+            "tile_offset": 76
+          },
+          {
+            "y": -16,
+            "x": 4,
+            "tile_offset": 78
+          },
+          {
+            "y": -16,
+            "x": 12,
+            "tile_offset": 88
+          }
+        ],
+        "reachable": true,
+        "bounds_unmirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        },
+        "bounds_mirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        }
+      },
+      {
+        "frame": 5,
+        "record_cpu": "0x9500",
+        "record_rom": "0x3D500",
+        "raw_record": "0D 14 30 F7 A4 00 00 00 00 4A 95",
+        "piece_count": 13,
+        "contact_extent_x_plus_2C": 20,
+        "contact_extent_y_plus_2D": 48,
+        "y_origin": 0,
+        "x_origin": 0,
+        "coordinate_table_cpu": "0xA4F7",
+        "tile_list_cpu": "0x954A",
+        "pieces": [
+          {
+            "y": -48,
+            "x": -12,
+            "tile_offset": 46
+          },
+          {
+            "y": -48,
+            "x": -4,
+            "tile_offset": 48
+          },
+          {
+            "y": -48,
+            "x": 4,
+            "tile_offset": 50
+          },
+          {
+            "y": -32,
+            "x": -20,
+            "tile_offset": 90
+          },
+          {
+            "y": -32,
+            "x": -12,
+            "tile_offset": 92
+          },
+          {
+            "y": -32,
+            "x": -4,
+            "tile_offset": 94
+          },
+          {
+            "y": -32,
+            "x": 4,
+            "tile_offset": 96
+          },
+          {
+            "y": -32,
+            "x": 12,
+            "tile_offset": 98
+          },
+          {
+            "y": -16,
+            "x": -20,
+            "tile_offset": 100
+          },
+          {
+            "y": -16,
+            "x": -12,
+            "tile_offset": 102
+          },
+          {
+            "y": -16,
+            "x": -4,
+            "tile_offset": 104
+          },
+          {
+            "y": -16,
+            "x": 4,
+            "tile_offset": 106
+          },
+          {
+            "y": -16,
+            "x": 12,
+            "tile_offset": 108
+          }
+        ],
+        "reachable": true,
+        "bounds_unmirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        },
+        "bounds_mirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        }
+      },
+      {
+        "frame": 6,
+        "record_cpu": "0x950B",
+        "record_rom": "0x3D50B",
+        "raw_record": "0D 14 30 F7 A4 00 00 00 00 57 95",
+        "piece_count": 13,
+        "contact_extent_x_plus_2C": 20,
+        "contact_extent_y_plus_2D": 48,
+        "y_origin": 0,
+        "x_origin": 0,
+        "coordinate_table_cpu": "0xA4F7",
+        "tile_list_cpu": "0x9557",
+        "pieces": [
+          {
+            "y": -48,
+            "x": -12,
+            "tile_offset": 82
+          },
+          {
+            "y": -48,
+            "x": -4,
+            "tile_offset": 84
+          },
+          {
+            "y": -48,
+            "x": 4,
+            "tile_offset": 86
+          },
+          {
+            "y": -32,
+            "x": -20,
+            "tile_offset": 90
+          },
+          {
+            "y": -32,
+            "x": -12,
+            "tile_offset": 92
+          },
+          {
+            "y": -32,
+            "x": -4,
+            "tile_offset": 110
+          },
+          {
+            "y": -32,
+            "x": 4,
+            "tile_offset": 96
+          },
+          {
+            "y": -32,
+            "x": 12,
+            "tile_offset": 98
+          },
+          {
+            "y": -16,
+            "x": -20,
+            "tile_offset": 112
+          },
+          {
+            "y": -16,
+            "x": -12,
+            "tile_offset": 114
+          },
+          {
+            "y": -16,
+            "x": -4,
+            "tile_offset": 104
+          },
+          {
+            "y": -16,
+            "x": 4,
+            "tile_offset": 116
+          },
+          {
+            "y": -16,
+            "x": 12,
+            "tile_offset": 118
+          }
+        ],
+        "reachable": true,
+        "bounds_unmirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        },
+        "bounds_mirrored": {
+          "min_x": -20,
+          "max_x_exclusive": 20,
+          "min_y": -48,
+          "max_y_exclusive": 0
+        }
+      }
+    ],
+    "reachable_frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "frames_by_orientation": {
+      "normal_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "mirrored_frames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "per_state": {
+        "0": {
+          "orientation": "inherited",
+          "frames": [
+            0
+          ]
+        },
+        "1": {
+          "orientation": "inherited",
+          "frames": [
+            0
+          ]
+        },
+        "2": {
+          "orientation": "inherited",
+          "frames": [
+            0
+          ]
+        },
+        "3": {
+          "orientation": "inherited",
+          "frames": [
+            0
+          ]
+        },
+        "4": {
+          "orientation": "inherited",
+          "frames": [
+            0
+          ]
+        },
+        "5": {
+          "orientation": "inherited",
+          "frames": [
+            0
+          ]
+        },
+        "6": {
+          "orientation": "normal",
+          "frames": [
+            1,
+            2
+          ]
+        },
+        "7": {
+          "orientation": "normal",
+          "frames": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "8": {
+          "orientation": "normal",
+          "frames": [
+            1,
+            2
+          ]
+        },
+        "9": {
+          "orientation": "normal",
+          "frames": [
+            5
+          ]
+        },
+        "10": {
+          "orientation": "normal",
+          "frames": [
+            5,
+            6
+          ]
+        },
+        "11": {
+          "orientation": "normal",
+          "frames": [
+            5
+          ]
+        },
+        "12": {
+          "orientation": "mirrored",
+          "frames": [
+            1,
+            2
+          ]
+        },
+        "13": {
+          "orientation": "mirrored",
+          "frames": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "14": {
+          "orientation": "mirrored",
+          "frames": [
+            1,
+            2
+          ]
+        },
+        "15": {
+          "orientation": "normal",
+          "frames": [
+            5
+          ]
+        },
+        "16": {
+          "orientation": "normal",
+          "frames": [
+            5,
+            6
+          ]
+        },
+        "17": {
+          "orientation": "normal",
+          "frames": [
+            5
+          ]
+        },
+        "18": {
+          "orientation": "normal",
+          "frames": [
+            1,
+            2
+          ]
+        }
+      },
+      "note": "states 0-5 do not write +$04 (state 4/5 keep the orientation of the state that ended); frames 5/6 are only used unmirrored and do not fit the 44-tile mirrored copy"
+    },
+    "tile_usage": {
+      "1": {
+        "first_tile_id_unmirrored": 46,
+        "last_tile_id_unmirrored": 71,
+        "first_tile_id_mirrored": 118,
+        "last_tile_id_mirrored": 143,
+        "fits_mirrored_copy_46_to_89": true
+      },
+      "2": {
+        "first_tile_id_unmirrored": 46,
+        "last_tile_id_unmirrored": 81,
+        "first_tile_id_mirrored": 118,
+        "last_tile_id_mirrored": 153,
+        "fits_mirrored_copy_46_to_89": true
+      },
+      "3": {
+        "first_tile_id_unmirrored": 52,
+        "last_tile_id_unmirrored": 87,
+        "first_tile_id_mirrored": 124,
+        "last_tile_id_mirrored": 159,
+        "fits_mirrored_copy_46_to_89": true
+      },
+      "4": {
+        "first_tile_id_unmirrored": 52,
+        "last_tile_id_unmirrored": 89,
+        "first_tile_id_mirrored": 124,
+        "last_tile_id_mirrored": 161,
+        "fits_mirrored_copy_46_to_89": true
+      },
+      "5": {
+        "first_tile_id_unmirrored": 46,
+        "last_tile_id_unmirrored": 109,
+        "first_tile_id_mirrored": 118,
+        "last_tile_id_mirrored": 181,
+        "fits_mirrored_copy_46_to_89": false
+      },
+      "6": {
+        "first_tile_id_unmirrored": 82,
+        "last_tile_id_unmirrored": 119,
+        "first_tile_id_mirrored": 154,
+        "last_tile_id_mirrored": 191,
+        "fits_mirrored_copy_46_to_89": false
+      }
+    },
+    "composed_frame_hashes": {
+      "frame_0_normal": null,
+      "frame_1_normal": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "aea04ace760933467fd58d8b86463b5e61b1d54502ff27304352e932fd713b6c",
+        "opaque_pixels": 1175
+      },
+      "frame_1_mirrored": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "80c2ce213f41d75c8435627534029518f275a7c6faf63c84d9dc0e61859f62d0",
+        "opaque_pixels": 1175
+      },
+      "frame_2_normal": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "4a8493ed032fa792a9cc1eed26a8da214d26498d6d17ba6ef9459fdc0826748c",
+        "opaque_pixels": 1171
+      },
+      "frame_2_mirrored": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "46629dc79c98f102b2ab03c98f2e93b27cb86c2b830ec2de50abb79697bdae8f",
+        "opaque_pixels": 1171
+      },
+      "frame_3_normal": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "2877f22e799c8c61535c30a3fcc5491ba77c39dfe70a6a868e533fa9621b7283",
+        "opaque_pixels": 1229
+      },
+      "frame_3_mirrored": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "96983b54697b62bab43374624e9dd8a4937a99d796adce1af37dda39aaac3d50",
+        "opaque_pixels": 1229
+      },
+      "frame_4_normal": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "f190d5affaee61fd25f55bc32820a4146c65052989c598ec0c86c45117ec2dcb",
+        "opaque_pixels": 1225
+      },
+      "frame_4_mirrored": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "cdeddb897dd159c1de63e78d29378b5a1e08b79351b48dddce7410ccaf465a11",
+        "opaque_pixels": 1225
+      },
+      "frame_5_normal": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "d5f07e2cf633a474309bce7f3c69d989c01c27dc93f626ee66ef9206a90d75ec",
+        "opaque_pixels": 1099
+      },
+      "frame_6_normal": {
+        "width": 40,
+        "height": 48,
+        "origin_x": -20,
+        "origin_y": -48,
+        "index_sha256": "5477625a06623e01a1ad58219b16d14aa61674081946bc92c44148be7cc05004",
+        "opaque_pixels": 1061
+      }
+    },
+    "registration": {
+      "canonical_anchor": "(world_x, world_y) = (+$11, +$14); no per-type offset exists",
+      "rule": "screen = anchor - camera; SAT_Y = screen_y + y_origin + piece_y; SAT_X = screen_x + x_origin' + piece_x'; terrain_row = anchor_y + y_origin + piece_y + 18; terrain_col = anchor_x + x_origin' + piece_x + 1 (shared registration pipeline, docs/mapped-object-screen-registration.md)",
+      "mirroring": "+$04 bit 4: x_origin negated, piece x = -x-8, tile base +$09 instead of +$08",
+      "rom_visible_bounds_rel_anchor": "see frames[].bounds_*; canonical anchor and bounds are stored separately",
+      "visible_rows_rel_anchor_for_frames_1_2": [
+        -30,
+        17
+      ]
+    },
+    "animation_timing": "see states[].script: durations are update counts (1 update per game frame)"
+  },
+  "unresolved": [
+    "Type $12 child (spawned by state 0, pool $D540): only its observable role is recorded (removes itself; state 2 waits for that). Its 12-byte SAT Y-buffer manipulation ($DB34..$DB3F) and purpose are not fully resolved (follow-up).",
+    "Type $34 explosion child and type $0A (spawned by state 5) and type $0F (slot conversion) are not studied beyond what is recorded here (follow-ups).",
+    "Palette command consumer for $D494/$D495 was identified by observed CRAM only, not fully traced.",
+    "Player state $20 handler ($83A6) is only traced as far as its act-complete flag; the act-clear screen and next-level load are out of scope.",
+    "Meaning of sound $8C beyond its 'music' class in the sound index; sound $C4 (explosions) and $B6 (hit) are named only by class.",
+    "Screen X thresholds are compared on the low byte of +$1A; behavior for objects outside -128..383 screen X is not used by this boss.",
+    "Zones other than 0 (table rows 1..7) are decoded as data only; types $33/$40-$4F share the same state table but are never placed in THZ.",
+    "No Windows/GameMaker run was made; POC adapter values are not part of this study."
+  ],
+  "follow_up_tasks": [
+    {
+      "task": "object type $12",
+      "why": "state 2 waits for it; SAT Y-buffer manipulation and lifetime"
+    },
+    {
+      "task": "object type $34",
+      "why": "explosion child, art base $A2, lifetime from parameter and +$1E"
+    },
+    {
+      "task": "object type $0A",
+      "why": "spawned after defeat; multiple instances appear (released animals?)"
+    },
+    {
+      "task": "object type $0F",
+      "why": "slot conversion target for defeated enemies and this boss"
+    },
+    {
+      "task": "player state $20 and act-clear transition",
+      "why": "sets $D293 bit 4 in act 3"
+    }
+  ],
+  "controlled_execution": {
+    "evidence": "CONTROLLED ROUTINE RESULT",
+    "creation": {
+      "fields": {
+        "type": "0x50",
+        "state": 0,
+        "requested": 0,
+        "flags_04": "0x40",
+        "x": 1936,
+        "y": 238,
+        "saved_x_3A": 1936,
+        "saved_y_3C": 238,
+        "parameter_3F": 0,
+        "aux0_08": 0,
+        "aux1_09": 0,
+        "token_3E": 1
+      },
+      "occupancy_byte_D400": "0x50"
+    },
+    "placement_window": {
+      "rule": "created when (x - camX + 128)/2 and (y - camY + 128)/2 both fit a byte, then spawn-map cell = map[(((y-camY+128)/2) & $F8)*4 + (((x-camX+128)/2)>>3 & $1F)]: cell 2 always creates; cells 0/1 create only while $D440 == 0 (initial fill); cell 3 never",
+      "samples": [
+        {
+          "camera": [
+            1600,
+            0
+          ],
+          "initial_fill": 0,
+          "created": true
+        },
+        {
+          "camera": [
+            1600,
+            0
+          ],
+          "initial_fill": 1,
+          "created": true
+        },
+        {
+          "camera": [
+            1552,
+            0
+          ],
+          "initial_fill": 0,
+          "created": false
+        },
+        {
+          "camera": [
+            1553,
+            0
+          ],
+          "initial_fill": 0,
+          "created": false
+        },
+        {
+          "camera": [
+            1500,
+            0
+          ],
+          "initial_fill": 0,
+          "created": false
+        },
+        {
+          "camera": [
+            1836,
+            100
+          ],
+          "initial_fill": 0,
+          "created": true
+        },
+        {
+          "camera": [
+            2064,
+            0
+          ],
+          "initial_fill": 0,
+          "created": false
+        },
+        {
+          "camera": [
+            2065,
+            0
+          ],
+          "initial_fill": 0,
+          "created": false
+        },
+        {
+          "camera": [
+            2200,
+            0
+          ],
+          "initial_fill": 0,
+          "created": false
+        }
+      ]
+    },
+    "state_0_init": {
+      "after": {
+        "state": 0,
+        "requested": 1,
+        "frame": 0,
+        "timer": 224,
+        "callback": "0x974C",
+        "x": 1936,
+        "y": 238,
+        "vx": 0,
+        "vy": 0,
+        "health": 0,
+        "cooldown_1E": 0,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x42",
+        "flags_03": "0x00"
+      },
+      "sound_request_DE04": "0x8C",
+      "D44E": 1,
+      "D4A5": 0,
+      "left_limit_D280": 1600,
+      "saved_right_limit_25_27": 2304,
+      "child_slot_D540": {
+        "type": "0x12",
+        "parameter_3F": "0x97"
+      },
+      "child_pointer_34_35": "0xD540",
+      "player_requested_state_D502": "0x0E"
+    },
+    "state_1_trigger": {
+      "table_cpu": "0x97A1",
+      "zone0_words": [
+        160,
+        256
+      ],
+      "cases": [
+        {
+          "dx": 159,
+          "dy": 255,
+          "requested_after": 2,
+          "right_limit_D282": 1600
+        },
+        {
+          "dx": 160,
+          "dy": 255,
+          "requested_after": 1,
+          "right_limit_D282": 2304
+        },
+        {
+          "dx": 159,
+          "dy": 256,
+          "requested_after": 1,
+          "right_limit_D282": 2304
+        },
+        {
+          "dx": -159,
+          "dy": -255,
+          "requested_after": 2,
+          "right_limit_D282": 1600
+        },
+        {
+          "dx": -160,
+          "dy": 0,
+          "requested_after": 1,
+          "right_limit_D282": 2304
+        },
+        {
+          "dx": 0,
+          "dy": -256,
+          "requested_after": 1,
+          "right_limit_D282": 2304
+        }
+      ]
+    },
+    "state_2_wait_and_camera_target": {
+      "while_child_present": {
+        "state": 2,
+        "requested": 2,
+        "frame": 0,
+        "timer": 224,
+        "callback": "0x97C1",
+        "x": 1936,
+        "y": 238,
+        "vx": 0,
+        "vy": 0,
+        "health": 0,
+        "cooldown_1E": 0,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x42",
+        "flags_03": "0x00"
+      },
+      "after_child_gone": {
+        "state": 2,
+        "requested": 3,
+        "frame": 0,
+        "timer": 223,
+        "callback": "0x97C1",
+        "x": 1936,
+        "y": 238,
+        "vx": 0,
+        "vy": 0,
+        "health": 0,
+        "cooldown_1E": 0,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x42",
+        "flags_03": "0x00"
+      },
+      "bottom_limit_D27E": 78,
+      "pan_target_x_D2DA": 1680,
+      "pan_target_y_D2DC": 78,
+      "D15E": "0x80",
+      "D15F": "0x01"
+    },
+    "state_3_setup": {
+      "after": {
+        "state": 3,
+        "requested": 18,
+        "frame": 0,
+        "timer": 224,
+        "callback": "0x9828",
+        "x": 1936,
+        "y": 238,
+        "vx": -128,
+        "vy": 0,
+        "health": 8,
+        "cooldown_1E": 0,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x42",
+        "flags_03": "0x80"
+      },
+      "D3B3": "0x13",
+      "D494": "0x20",
+      "D495": "0x0C",
+      "aux1_09": "0x48",
+      "param_3F": 1,
+      "flags_03": "0x80"
+    },
+    "state_18_exit": {
+      "note": "screen X is recomputed from anchor - camera by $3FC8 before the callback",
+      "cases": [
+        {
+          "screen_x_low": 127,
+          "requested_after": 18
+        },
+        {
+          "screen_x_low": 128,
+          "requested_after": 6
+        },
+        {
+          "screen_x_low": 223,
+          "requested_after": 6
+        },
+        {
+          "screen_x_low": 224,
+          "requested_after": 18
+        },
+        {
+          "screen_x_low": 225,
+          "requested_after": 18
+        }
+      ]
+    },
+    "patrol_cycle": {
+      "note": "camera fixed at X=1680, player parked far away; updates counted from state 3 entry",
+      "events": [
+        {
+          "update": 0,
+          "state": 18,
+          "requested": 18,
+          "phase_32": 0,
+          "x": 1935,
+          "vx": -128,
+          "screen_x_low": 0,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 65,
+          "state": 18,
+          "requested": 6,
+          "phase_32": 0,
+          "x": 1903,
+          "vx": -128,
+          "screen_x_low": 223,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 66,
+          "state": 6,
+          "requested": 6,
+          "phase_32": 0,
+          "x": 1902,
+          "vx": -128,
+          "screen_x_low": 223,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 401,
+          "state": 6,
+          "requested": 6,
+          "phase_32": 255,
+          "x": 1735,
+          "vx": -124,
+          "screen_x_low": 55,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 430,
+          "state": 6,
+          "requested": 9,
+          "phase_32": 255,
+          "x": 1727,
+          "vx": -8,
+          "screen_x_low": 47,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 431,
+          "state": 9,
+          "requested": 9,
+          "phase_32": 255,
+          "x": 1727,
+          "vx": -6,
+          "screen_x_low": 47,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 450,
+          "state": 9,
+          "requested": 12,
+          "phase_32": 1,
+          "x": 1728,
+          "vx": 32,
+          "screen_x_low": 48,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 451,
+          "state": 12,
+          "requested": 12,
+          "phase_32": 1,
+          "x": 1728,
+          "vx": 36,
+          "screen_x_low": 48,
+          "flags_04": "0x10"
+        },
+        {
+          "update": 474,
+          "state": 12,
+          "requested": 12,
+          "phase_32": 0,
+          "x": 1735,
+          "vx": 128,
+          "screen_x_low": 54,
+          "flags_04": "0x10"
+        },
+        {
+          "update": 765,
+          "state": 12,
+          "requested": 12,
+          "phase_32": 255,
+          "x": 1880,
+          "vx": 124,
+          "screen_x_low": 200,
+          "flags_04": "0x10"
+        },
+        {
+          "update": 797,
+          "state": 12,
+          "requested": 15,
+          "phase_32": 255,
+          "x": 1888,
+          "vx": -4,
+          "screen_x_low": 208,
+          "flags_04": "0x10"
+        },
+        {
+          "update": 798,
+          "state": 15,
+          "requested": 15,
+          "phase_32": 255,
+          "x": 1888,
+          "vx": -6,
+          "screen_x_low": 208,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 812,
+          "state": 15,
+          "requested": 6,
+          "phase_32": 1,
+          "x": 1887,
+          "vx": -34,
+          "screen_x_low": 207,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 813,
+          "state": 6,
+          "requested": 6,
+          "phase_32": 1,
+          "x": 1887,
+          "vx": -38,
+          "screen_x_low": 207,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 836,
+          "state": 6,
+          "requested": 6,
+          "phase_32": 0,
+          "x": 1880,
+          "vx": -130,
+          "screen_x_low": 200,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 1121,
+          "state": 6,
+          "requested": 6,
+          "phase_32": 255,
+          "x": 1735,
+          "vx": -126,
+          "screen_x_low": 55,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 1151,
+          "state": 6,
+          "requested": 9,
+          "phase_32": 255,
+          "x": 1727,
+          "vx": -6,
+          "screen_x_low": 47,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 1152,
+          "state": 9,
+          "requested": 9,
+          "phase_32": 255,
+          "x": 1727,
+          "vx": -4,
+          "screen_x_low": 47,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 1170,
+          "state": 9,
+          "requested": 12,
+          "phase_32": 1,
+          "x": 1728,
+          "vx": 32,
+          "screen_x_low": 48,
+          "flags_04": "0x00"
+        },
+        {
+          "update": 1171,
+          "state": 12,
+          "requested": 12,
+          "phase_32": 1,
+          "x": 1728,
+          "vx": 36,
+          "screen_x_low": 48,
+          "flags_04": "0x10"
+        },
+        {
+          "update": 1194,
+          "state": 12,
+          "requested": 12,
+          "phase_32": 0,
+          "x": 1735,
+          "vx": 128,
+          "screen_x_low": 55,
+          "flags_04": "0x10"
+        }
+      ]
+    },
+    "contact_matrix": {
+      "geometry": "boss frame 1/2 contact extents X 20, Y 48; player extents X 9, Y 18 (fixture values); penetration axis rule of $6328",
+      "cases": [
+        {
+          "start_state": 6,
+          "case": "attack_from_left_side",
+          "result": {
+            "state": 6,
+            "requested": 8,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": -128,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 6,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": -1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 6,
+          "case": "attack_from_right_side",
+          "result": {
+            "state": 6,
+            "requested": 8,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": -128,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 6,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x04",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1962
+          }
+        },
+        {
+          "start_state": 6,
+          "case": "attack_from_below",
+          "result": {
+            "state": 6,
+            "requested": 8,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": -128,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 6,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x02",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 0,
+            "player_vy": 1536,
+            "D448": 0,
+            "player_y_after": 256,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 6,
+          "case": "plain_side_contact",
+          "result": {
+            "state": 6,
+            "requested": 6,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1935,
+            "y": 238,
+            "vx": -128,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 2,
+            "timer_1F": 0,
+            "phase_32": 0,
+            "saved_state_0B": 0,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0xFF",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 6,
+          "case": "top_contact_attacking",
+          "result": {
+            "state": 6,
+            "requested": 7,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": -128,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 6,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 6,
+          "case": "top_contact_plain",
+          "result": {
+            "state": 6,
+            "requested": 7,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": -128,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 6,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 6,
+          "case": "no_contact",
+          "result": {
+            "state": 6,
+            "requested": 6,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1935,
+            "y": 238,
+            "vx": -128,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 0,
+            "phase_32": 0,
+            "saved_state_0B": 0,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x00",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1736
+          }
+        },
+        {
+          "start_state": 9,
+          "case": "attack_from_left_side",
+          "result": {
+            "state": 9,
+            "requested": 11,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9903",
+            "x": 1936,
+            "y": 238,
+            "vx": -6,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 9,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": -1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 9,
+          "case": "attack_from_right_side",
+          "result": {
+            "state": 9,
+            "requested": 11,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9903",
+            "x": 1936,
+            "y": 238,
+            "vx": -6,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 9,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x04",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1962
+          }
+        },
+        {
+          "start_state": 9,
+          "case": "attack_from_below",
+          "result": {
+            "state": 9,
+            "requested": 11,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9903",
+            "x": 1936,
+            "y": 238,
+            "vx": -6,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 9,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x02",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 0,
+            "player_vy": 1536,
+            "D448": 0,
+            "player_y_after": 256,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 9,
+          "case": "plain_side_contact",
+          "result": {
+            "state": 9,
+            "requested": 9,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9903",
+            "x": 1935,
+            "y": 238,
+            "vx": -4,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 2,
+            "timer_1F": 0,
+            "phase_32": 0,
+            "saved_state_0B": 0,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0xFF",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 9,
+          "case": "top_contact_attacking",
+          "result": {
+            "state": 9,
+            "requested": 10,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9903",
+            "x": 1936,
+            "y": 238,
+            "vx": -6,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 9,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 9,
+          "case": "top_contact_plain",
+          "result": {
+            "state": 9,
+            "requested": 10,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9903",
+            "x": 1936,
+            "y": 238,
+            "vx": -6,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 9,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 9,
+          "case": "no_contact",
+          "result": {
+            "state": 9,
+            "requested": 9,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9903",
+            "x": 1935,
+            "y": 238,
+            "vx": -4,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 0,
+            "phase_32": 0,
+            "saved_state_0B": 0,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x00",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1736
+          }
+        },
+        {
+          "start_state": 12,
+          "case": "attack_from_left_side",
+          "result": {
+            "state": 12,
+            "requested": 14,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": 128,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 12,
+            "flags_04": "0x10",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": -1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 12,
+          "case": "attack_from_right_side",
+          "result": {
+            "state": 12,
+            "requested": 14,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": 128,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 12,
+            "flags_04": "0x10",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x04",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1962
+          }
+        },
+        {
+          "start_state": 12,
+          "case": "attack_from_below",
+          "result": {
+            "state": 12,
+            "requested": 14,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": 128,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 12,
+            "flags_04": "0x10",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x02",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 0,
+            "player_vy": 1536,
+            "D448": 0,
+            "player_y_after": 256,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 12,
+          "case": "plain_side_contact",
+          "result": {
+            "state": 12,
+            "requested": 12,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": 124,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 2,
+            "timer_1F": 0,
+            "phase_32": 255,
+            "saved_state_0B": 0,
+            "flags_04": "0x10",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0xFF",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 12,
+          "case": "top_contact_attacking",
+          "result": {
+            "state": 12,
+            "requested": 13,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": 128,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 12,
+            "flags_04": "0x10",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 12,
+          "case": "top_contact_plain",
+          "result": {
+            "state": 12,
+            "requested": 13,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": 128,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 12,
+            "flags_04": "0x10",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 12,
+          "case": "no_contact",
+          "result": {
+            "state": 12,
+            "requested": 12,
+            "frame": 1,
+            "timer": 16,
+            "callback": "0x985B",
+            "x": 1936,
+            "y": 238,
+            "vx": 124,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 0,
+            "phase_32": 255,
+            "saved_state_0B": 0,
+            "flags_04": "0x10",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x00",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1736
+          }
+        },
+        {
+          "start_state": 15,
+          "case": "attack_from_left_side",
+          "result": {
+            "state": 15,
+            "requested": 17,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9931",
+            "x": 1936,
+            "y": 238,
+            "vx": 6,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 15,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": -1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 15,
+          "case": "attack_from_right_side",
+          "result": {
+            "state": 15,
+            "requested": 17,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9931",
+            "x": 1936,
+            "y": 238,
+            "vx": 6,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 15,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x04",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 1536,
+            "player_vy": -256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1962
+          }
+        },
+        {
+          "start_state": 15,
+          "case": "attack_from_below",
+          "result": {
+            "state": 15,
+            "requested": 17,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9931",
+            "x": 1936,
+            "y": 238,
+            "vx": 6,
+            "vy": 0,
+            "health": 7,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 15,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x02",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x1B",
+            "sound_DE04": "0xB6",
+            "palette_command_slot_D452": 7,
+            "player_vx": 0,
+            "player_vy": 1536,
+            "D448": 0,
+            "player_y_after": 256,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 15,
+          "case": "plain_side_contact",
+          "result": {
+            "state": 15,
+            "requested": 15,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9931",
+            "x": 1936,
+            "y": 238,
+            "vx": 4,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 2,
+            "timer_1F": 0,
+            "phase_32": 0,
+            "saved_state_0B": 0,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x08",
+            "damage_request_D3B0": "0xFF",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1907
+          }
+        },
+        {
+          "start_state": 15,
+          "case": "top_contact_attacking",
+          "result": {
+            "state": 15,
+            "requested": 16,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9931",
+            "x": 1936,
+            "y": 238,
+            "vx": 6,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 15,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 15,
+          "case": "top_contact_plain",
+          "result": {
+            "state": 15,
+            "requested": 16,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9931",
+            "x": 1936,
+            "y": 238,
+            "vx": 6,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 20,
+            "phase_32": 0,
+            "saved_state_0B": 15,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x01",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x0B",
+            "sound_DE04": "0xA6",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": -1024,
+            "D448": 0,
+            "player_y_after": 190,
+            "player_x_after": 1936
+          }
+        },
+        {
+          "start_state": 15,
+          "case": "no_contact",
+          "result": {
+            "state": 15,
+            "requested": 15,
+            "frame": 5,
+            "timer": 8,
+            "callback": "0x9931",
+            "x": 1936,
+            "y": 238,
+            "vx": 4,
+            "vy": 0,
+            "health": 8,
+            "cooldown_1E": 0,
+            "timer_1F": 0,
+            "phase_32": 0,
+            "saved_state_0B": 0,
+            "flags_04": "0x00",
+            "flags_03": "0x80",
+            "contact_bits_21": "0x00",
+            "damage_request_D3B0": "0x00",
+            "player_requested_state_D502": "0x00",
+            "sound_DE04": "0x00",
+            "palette_command_slot_D452": 0,
+            "player_vx": 0,
+            "player_vy": 256,
+            "D448": 0,
+            "player_y_after": 238,
+            "player_x_after": 1736
+          }
+        }
+      ]
+    },
+    "contact_state_18": [
+      {
+        "case": "attack_from_left_side",
+        "result": {
+          "state": 18,
+          "requested": 18,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x9A09",
+          "x": 1935,
+          "y": 238,
+          "vx": -128,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 0,
+          "saved_state_0B": 0,
+          "flags_04": "0x00",
+          "flags_03": "0x80",
+          "contact_bits_21": "0x08",
+          "damage_request_D3B0": "0x00",
+          "player_requested_state_D502": "0x1B",
+          "sound_DE04": "0x00",
+          "palette_command_slot_D452": 0,
+          "player_vx": -1536,
+          "player_vy": 0,
+          "D448": 0,
+          "player_y_after": 238,
+          "player_x_after": 1906
+        }
+      },
+      {
+        "case": "attack_from_right_side",
+        "result": {
+          "state": 18,
+          "requested": 18,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x9A09",
+          "x": 1935,
+          "y": 238,
+          "vx": -128,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 0,
+          "saved_state_0B": 0,
+          "flags_04": "0x00",
+          "flags_03": "0x80",
+          "contact_bits_21": "0x04",
+          "damage_request_D3B0": "0x00",
+          "player_requested_state_D502": "0x1B",
+          "sound_DE04": "0x00",
+          "palette_command_slot_D452": 0,
+          "player_vx": 1536,
+          "player_vy": 0,
+          "D448": 0,
+          "player_y_after": 238,
+          "player_x_after": 1962
+        }
+      },
+      {
+        "case": "attack_from_below",
+        "result": {
+          "state": 18,
+          "requested": 18,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x9A09",
+          "x": 1935,
+          "y": 238,
+          "vx": -128,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 0,
+          "saved_state_0B": 0,
+          "flags_04": "0x00",
+          "flags_03": "0x80",
+          "contact_bits_21": "0x02",
+          "damage_request_D3B0": "0x00",
+          "player_requested_state_D502": "0x1B",
+          "sound_DE04": "0x00",
+          "palette_command_slot_D452": 0,
+          "player_vx": 0,
+          "player_vy": 1536,
+          "D448": 0,
+          "player_y_after": 256,
+          "player_x_after": 1936
+        }
+      },
+      {
+        "case": "plain_side_contact",
+        "result": {
+          "state": 18,
+          "requested": 18,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x9A09",
+          "x": 1935,
+          "y": 238,
+          "vx": -128,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 0,
+          "saved_state_0B": 0,
+          "flags_04": "0x00",
+          "flags_03": "0x80",
+          "contact_bits_21": "0x08",
+          "damage_request_D3B0": "0xFF",
+          "player_requested_state_D502": "0x00",
+          "sound_DE04": "0x00",
+          "palette_command_slot_D452": 0,
+          "player_vx": 0,
+          "player_vy": 0,
+          "D448": 0,
+          "player_y_after": 238,
+          "player_x_after": 1906
+        }
+      }
+    ],
+    "cooldown": {
+      "plain_contact_sets_cooldown_1E_2": {
+        "state": 6,
+        "requested": 6,
+        "frame": 1,
+        "timer": 16,
+        "callback": "0x985B",
+        "x": 1935,
+        "y": 238,
+        "vx": -128,
+        "vy": 0,
+        "health": 8,
+        "cooldown_1E": 2,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x00",
+        "flags_03": "0x80",
+        "contact_bits_21": "0x08",
+        "damage_request_D3B0": "0xFF",
+        "player_requested_state_D502": "0x00",
+        "sound_DE04": "0x00",
+        "palette_command_slot_D452": 0,
+        "player_vx": 0,
+        "player_vy": 0,
+        "D448": 0,
+        "player_y_after": 238,
+        "player_x_after": 1907
+      },
+      "contact_ignored_while_cooldown_active": {
+        "state": 6,
+        "requested": 6,
+        "frame": 1,
+        "timer": 16,
+        "callback": "0x985B",
+        "x": 1935,
+        "y": 238,
+        "vx": -128,
+        "vy": 0,
+        "health": 8,
+        "cooldown_1E": 1,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x00",
+        "flags_03": "0x80",
+        "contact_bits_21": "0x00",
+        "damage_request_D3B0": "0x00",
+        "player_requested_state_D502": "0x00",
+        "sound_DE04": "0x00",
+        "palette_command_slot_D452": 0,
+        "player_vx": 0,
+        "player_vy": 0,
+        "D448": 0,
+        "player_y_after": 238,
+        "player_x_after": 1910
+      },
+      "attack_ignored_while_cooldown_active": {
+        "state": 6,
+        "requested": 6,
+        "frame": 1,
+        "timer": 16,
+        "callback": "0x985B",
+        "x": 1935,
+        "y": 238,
+        "vx": -128,
+        "vy": 0,
+        "health": 8,
+        "cooldown_1E": 0,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x00",
+        "flags_03": "0x80",
+        "contact_bits_21": "0x00",
+        "damage_request_D3B0": "0x00",
+        "player_requested_state_D502": "0x00",
+        "sound_DE04": "0x00",
+        "palette_command_slot_D452": 0,
+        "player_vx": 0,
+        "player_vy": 0,
+        "D448": 0,
+        "player_y_after": 238,
+        "player_x_after": 1910
+      }
+    },
+    "health": {
+      "initial_value_state_3": 8,
+      "countdown": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "last_hit_from_1": {
+        "state": 6,
+        "requested": 4,
+        "frame": 1,
+        "timer": 16,
+        "callback": "0x985B",
+        "x": 1935,
+        "y": 238,
+        "vx": -128,
+        "vy": 0,
+        "health": 0,
+        "cooldown_1E": 0,
+        "timer_1F": 0,
+        "phase_32": 0,
+        "saved_state_0B": 0,
+        "flags_04": "0x00",
+        "flags_03": "0x80",
+        "contact_bits_21": "0x08",
+        "damage_request_D3B0": "0x00",
+        "player_requested_state_D502": "0x1B",
+        "sound_DE04": "0xB6",
+        "palette_command_slot_D452": 7,
+        "player_vx": -1536,
+        "player_vy": 0,
+        "D448": 0,
+        "player_y_after": 238,
+        "player_x_after": 1907
+      },
+      "hit_in_state_18_does_not_change_health": 8
+    },
+    "reaction_states": [
+      {
+        "state": 7,
+        "saved_state": 6,
+        "x_moved_from": 1936,
+        "x_end": 1925,
+        "updates_until_return": 20,
+        "end": {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1925,
+          "y": 238,
+          "vx": -120,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 255,
+          "saved_state_0B": 6,
+          "flags_04": "0x00",
+          "flags_03": "0x80"
+        }
+      },
+      {
+        "state": 8,
+        "saved_state": 6,
+        "x_moved_from": 1936,
+        "x_end": 1935,
+        "updates_until_return": 20,
+        "end": {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1935,
+          "y": 238,
+          "vx": -8,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 1,
+          "saved_state_0B": 6,
+          "flags_04": "0x00",
+          "flags_03": "0x80"
+        }
+      },
+      {
+        "state": 10,
+        "saved_state": 9,
+        "x_moved_from": 1936,
+        "x_end": 1925,
+        "updates_until_return": 20,
+        "end": {
+          "state": 9,
+          "requested": 9,
+          "frame": 5,
+          "timer": 7,
+          "callback": "0x9903",
+          "x": 1925,
+          "y": 238,
+          "vx": -124,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 0,
+          "saved_state_0B": 9,
+          "flags_04": "0x00",
+          "flags_03": "0x80"
+        }
+      },
+      {
+        "state": 11,
+        "saved_state": 9,
+        "x_moved_from": 1936,
+        "x_end": 1936,
+        "updates_until_return": 20,
+        "end": {
+          "state": 9,
+          "requested": 9,
+          "frame": 5,
+          "timer": 7,
+          "callback": "0x9903",
+          "x": 1936,
+          "y": 238,
+          "vx": 4,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 1,
+          "saved_state_0B": 9,
+          "flags_04": "0x00",
+          "flags_03": "0x80"
+        }
+      },
+      {
+        "state": 13,
+        "saved_state": 12,
+        "x_moved_from": 1936,
+        "x_end": 1947,
+        "updates_until_return": 20,
+        "end": {
+          "state": 12,
+          "requested": 12,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1947,
+          "y": 238,
+          "vx": 128,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 0,
+          "saved_state_0B": 12,
+          "flags_04": "0x10",
+          "flags_03": "0x80"
+        }
+      },
+      {
+        "state": 14,
+        "saved_state": 12,
+        "x_moved_from": 1936,
+        "x_end": 1936,
+        "updates_until_return": 20,
+        "end": {
+          "state": 12,
+          "requested": 12,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1936,
+          "y": 238,
+          "vx": 8,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 1,
+          "saved_state_0B": 12,
+          "flags_04": "0x10",
+          "flags_03": "0x80"
+        }
+      },
+      {
+        "state": 16,
+        "saved_state": 15,
+        "x_moved_from": 1936,
+        "x_end": 1946,
+        "updates_until_return": 20,
+        "end": {
+          "state": 15,
+          "requested": 15,
+          "frame": 5,
+          "timer": 7,
+          "callback": "0x9931",
+          "x": 1946,
+          "y": 238,
+          "vx": 124,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 0,
+          "saved_state_0B": 15,
+          "flags_04": "0x00",
+          "flags_03": "0x80"
+        }
+      },
+      {
+        "state": 17,
+        "saved_state": 15,
+        "x_moved_from": 1936,
+        "x_end": 1935,
+        "updates_until_return": 20,
+        "end": {
+          "state": 15,
+          "requested": 15,
+          "frame": 5,
+          "timer": 7,
+          "callback": "0x9931",
+          "x": 1935,
+          "y": 238,
+          "vx": -4,
+          "vy": 0,
+          "health": 8,
+          "cooldown_1E": 0,
+          "timer_1F": 0,
+          "phase_32": 1,
+          "saved_state_0B": 15,
+          "flags_04": "0x00",
+          "flags_03": "0x80"
+        }
+      }
+    ],
+    "state_4_defeat": {
+      "spawn_events": [
+        {
+          "update": 1,
+          "slot": "0xD740",
+          "type": "0x34",
+          "dx": -8,
+          "dy": 0,
+          "parameter_3F": "0x04",
+          "flags_04": "0x00"
+        },
+        {
+          "update": 1,
+          "slot": "0xD780",
+          "type": "0x34",
+          "dx": 8,
+          "dy": 0,
+          "parameter_3F": "0x04",
+          "flags_04": "0x00"
+        },
+        {
+          "update": 2,
+          "slot": "0xD7C0",
+          "type": "0x34",
+          "dx": 0,
+          "dy": -16,
+          "parameter_3F": "0x04",
+          "flags_04": "0x00"
+        },
+        {
+          "update": 3,
+          "slot": "0xD800",
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter_3F": "0x04",
+          "flags_04": "0x00"
+        },
+        {
+          "update": 4,
+          "slot": "0xD840",
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter_3F": "0x04",
+          "flags_04": "0x00"
+        }
+      ],
+      "update_state_5_reached": 148,
+      "saved_frame_38": 2,
+      "note": "boss update counter starts at the update that loads state 4 (frame 2 was saved); spawned children run their own scripts and are not stepped here"
+    },
+    "state_5_completion": [
+      {
+        "player_on_floor": false,
+        "slot_type": "0x50",
+        "slot_state": 5,
+        "slot_token_3E": 1,
+        "slot_param_3F": 1,
+        "score_gate": "type >= $50: no score",
+        "child_type_0A_slots": [],
+        "player_requested_state_D502": "0x05",
+        "sound_DE04": "0x00",
+        "left_limit_D280": 1600,
+        "right_limit_D282": 1680,
+        "D15E": "0x00",
+        "D15F": "0x00",
+        "occupancy_byte_D400": "0x50"
+      },
+      {
+        "player_on_floor": true,
+        "slot_type": "0x0F",
+        "slot_state": 0,
+        "slot_token_3E": 0,
+        "slot_param_3F": 0,
+        "score_gate": "type >= $50: no score",
+        "child_type_0A_slots": [
+          [
+            "0xD580",
+            0
+          ]
+        ],
+        "player_requested_state_D502": "0x20",
+        "sound_DE04": "0x97",
+        "left_limit_D280": 1679,
+        "right_limit_D282": 2304,
+        "D15E": "0x80",
+        "D15F": "0x00",
+        "occupancy_byte_D400": "0x50"
+      },
+      {
+        "case": "act index D298=1",
+        "sound_DE04": "0x89"
+      }
+    ],
+    "score_gate_5F54": [
+      {
+        "type": "0x50",
+        "slot_type_after": "0x0F",
+        "ram_changed_outside_slot": [
+          "0xD12B"
+        ]
+      },
+      {
+        "type": "0x21",
+        "slot_type_after": "0x0F",
+        "ram_changed_outside_slot": [
+          "0xD12B",
+          "0xD29D",
+          "0xD2BB"
+        ]
+      }
+    ],
+    "offscreen_removal": [
+      {
+        "state": 6,
+        "flags_04_keep_alive_bit1": false,
+        "type_after": "0xFE",
+        "state_after": 0
+      },
+      {
+        "state": 6,
+        "flags_04_keep_alive_bit1": true,
+        "type_after": "0x50",
+        "state_after": 6
+      }
+    ],
+    "palette_flash_command_7": {
+      "zone": 0,
+      "table_cpu": "0x9979",
+      "bank": "0x1D",
+      "per_call_D48F_D490_step_counter": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          63,
+          63,
+          1,
+          0
+        ],
+        [
+          63,
+          63,
+          1,
+          1
+        ],
+        [
+          63,
+          63,
+          1,
+          2
+        ],
+        [
+          63,
+          63,
+          1,
+          3
+        ],
+        [
+          53,
+          32,
+          0,
+          0
+        ],
+        [
+          53,
+          32,
+          0,
+          1
+        ],
+        [
+          53,
+          32,
+          0,
+          2
+        ]
+      ]
+    }
+  },
+  "emulated_original_frames": {
+    "evidence": "EMULATED ORIGINAL FRAME",
+    "method": "original ROM booted in tools/sms_frame_harness.py; the new-game init ($07D5) is patched to zone 0 / act index 2 (THZ3); at the start-position loader return the camera is set to (1600,80) and the player to (1700,230). Frame numbers count harness frames after gameplay begins.",
+    "unattended_intro_and_patrol": {
+      "events": [
+        {
+          "state": 0,
+          "requested": 0,
+          "frame": 0,
+          "timer": 0,
+          "callback": "0x0000",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x40",
+          "frame_index": 4,
+          "camera": [
+            1600,
+            96
+          ],
+          "limits_left_right_bottom": [
+            0,
+            2304,
+            272
+          ],
+          "scroll_flags": [
+            "0x82",
+            "0x00"
+          ],
+          "D44E": 0,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 0,
+          "requested": 1,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x974C",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 5,
+          "camera": [
+            1600,
+            97
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            2304,
+            272
+          ],
+          "scroll_flags": [
+            "0x82",
+            "0x00"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": [
+            "0x12"
+          ]
+        },
+        {
+          "state": 1,
+          "requested": 1,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x9771",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 6,
+          "camera": [
+            1600,
+            98
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            2304,
+            272
+          ],
+          "scroll_flags": [
+            "0x82",
+            "0x00"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": [
+            "0x12"
+          ]
+        },
+        {
+          "state": 1,
+          "requested": 2,
+          "frame": 0,
+          "timer": 220,
+          "callback": "0x9771",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 10,
+          "camera": [
+            1607,
+            102
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1600,
+            272
+          ],
+          "scroll_flags": [
+            "0x8A",
+            "0x00"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": [
+            "0x12"
+          ]
+        },
+        {
+          "state": 2,
+          "requested": 2,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x97C1",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 11,
+          "camera": [
+            1607,
+            103
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1600,
+            272
+          ],
+          "scroll_flags": [
+            "0x8A",
+            "0x00"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": [
+            "0x12"
+          ]
+        },
+        {
+          "state": 2,
+          "requested": 3,
+          "frame": 0,
+          "timer": 130,
+          "callback": "0x97C1",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 105,
+          "camera": [
+            1607,
+            125
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x89",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 3,
+          "requested": 18,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x9828",
+          "x": 1936,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 106,
+          "camera": [
+            1608,
+            124
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x89",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x13",
+          "child_types": []
+        },
+        {
+          "state": 18,
+          "requested": 18,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x9A09",
+          "x": 1935,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 0,
+          "flags_04": "0x40",
+          "frame_index": 107,
+          "camera": [
+            1609,
+            123
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x89",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x13",
+          "child_types": []
+        },
+        {
+          "state": 18,
+          "requested": 6,
+          "frame": 1,
+          "timer": 10,
+          "callback": "0x9A09",
+          "x": 1900,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 221,
+          "flags_04": "0x00",
+          "frame_index": 177,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1900,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 221,
+          "flags_04": "0x00",
+          "frame_index": 178,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x985B",
+          "x": 1734,
+          "y": 238,
+          "vx": -124,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 55,
+          "flags_04": "0x00",
+          "frame_index": 510,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 6,
+          "requested": 9,
+          "frame": 1,
+          "timer": 7,
+          "callback": "0x985B",
+          "x": 1726,
+          "y": 238,
+          "vx": -8,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 47,
+          "flags_04": "0x00",
+          "frame_index": 539,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 9,
+          "requested": 9,
+          "frame": 5,
+          "timer": 8,
+          "callback": "0x9903",
+          "x": 1726,
+          "y": 238,
+          "vx": -6,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 47,
+          "flags_04": "0x00",
+          "frame_index": 540,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 9,
+          "requested": 12,
+          "frame": 5,
+          "timer": 5,
+          "callback": "0x9903",
+          "x": 1727,
+          "y": 238,
+          "vx": 32,
+          "phase_32": 1,
+          "health": 8,
+          "screen_x": 48,
+          "flags_04": "0x00",
+          "frame_index": 559,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 12,
+          "requested": 12,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1727,
+          "y": 238,
+          "vx": 36,
+          "phase_32": 1,
+          "health": 8,
+          "screen_x": 48,
+          "flags_04": "0x10",
+          "frame_index": 560,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 12,
+          "requested": 12,
+          "frame": 2,
+          "timer": 9,
+          "callback": "0x985B",
+          "x": 1734,
+          "y": 238,
+          "vx": 128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 55,
+          "flags_04": "0x10",
+          "frame_index": 583,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 12,
+          "requested": 12,
+          "frame": 2,
+          "timer": 6,
+          "callback": "0x985B",
+          "x": 1879,
+          "y": 238,
+          "vx": 124,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 200,
+          "flags_04": "0x10",
+          "frame_index": 874,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 12,
+          "requested": 15,
+          "frame": 2,
+          "timer": 6,
+          "callback": "0x985B",
+          "x": 1887,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 208,
+          "flags_04": "0x10",
+          "frame_index": 906,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 15,
+          "requested": 15,
+          "frame": 5,
+          "timer": 8,
+          "callback": "0x9931",
+          "x": 1887,
+          "y": 238,
+          "vx": -6,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 208,
+          "flags_04": "0x00",
+          "frame_index": 907,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 15,
+          "requested": 6,
+          "frame": 5,
+          "timer": 2,
+          "callback": "0x9931",
+          "x": 1886,
+          "y": 238,
+          "vx": -34,
+          "phase_32": 1,
+          "health": 8,
+          "screen_x": 207,
+          "flags_04": "0x00",
+          "frame_index": 921,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1886,
+          "y": 238,
+          "vx": -38,
+          "phase_32": 1,
+          "health": 8,
+          "screen_x": 207,
+          "flags_04": "0x00",
+          "frame_index": 922,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 2,
+          "timer": 9,
+          "callback": "0x985B",
+          "x": 1879,
+          "y": 238,
+          "vx": -130,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 200,
+          "flags_04": "0x00",
+          "frame_index": 945,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 2,
+          "timer": 12,
+          "callback": "0x985B",
+          "x": 1734,
+          "y": 238,
+          "vx": -126,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 55,
+          "flags_04": "0x00",
+          "frame_index": 1230,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 6,
+          "requested": 9,
+          "frame": 2,
+          "timer": 14,
+          "callback": "0x985B",
+          "x": 1726,
+          "y": 238,
+          "vx": -6,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 47,
+          "flags_04": "0x00",
+          "frame_index": 1260,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 9,
+          "requested": 9,
+          "frame": 5,
+          "timer": 8,
+          "callback": "0x9903",
+          "x": 1726,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 255,
+          "health": 8,
+          "screen_x": 47,
+          "flags_04": "0x00",
+          "frame_index": 1261,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 9,
+          "requested": 12,
+          "frame": 5,
+          "timer": 6,
+          "callback": "0x9903",
+          "x": 1727,
+          "y": 238,
+          "vx": 32,
+          "phase_32": 1,
+          "health": 8,
+          "screen_x": 48,
+          "flags_04": "0x00",
+          "frame_index": 1279,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 12,
+          "requested": 12,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1727,
+          "y": 238,
+          "vx": 36,
+          "phase_32": 1,
+          "health": 8,
+          "screen_x": 48,
+          "flags_04": "0x10",
+          "frame_index": 1280,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        },
+        {
+          "state": 12,
+          "requested": 12,
+          "frame": 2,
+          "timer": 9,
+          "callback": "0x985B",
+          "x": 1734,
+          "y": 238,
+          "vx": 128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 55,
+          "flags_04": "0x10",
+          "frame_index": 1303,
+          "camera": [
+            1679,
+            78
+          ],
+          "limits_left_right_bottom": [
+            1600,
+            1680,
+            78
+          ],
+          "scroll_flags": [
+            "0x88",
+            "0x01"
+          ],
+          "D44E": 1,
+          "D3B3": "0x00",
+          "child_types": []
+        }
+      ],
+      "sound_requests": [
+        [
+          0,
+          "0x81"
+        ],
+        [
+          5,
+          "0x8C"
+        ]
+      ],
+      "dynamic_art_requested_at_frame": 106,
+      "dynamic_art_finished_at_frame": 138,
+      "sprite_cram_after_state_3_equals_palette_0C": true
+    },
+    "sat_comparison_state_6": {
+      "frame_index": 2,
+      "mirrored": false,
+      "screen_x": 210,
+      "screen_y": 160,
+      "expected_entries": 13,
+      "found_in_game_sat": 13,
+      "all_found": true
+    },
+    "eight_hit_defeat": {
+      "attacker": "scripted: while the boss is in a patrol/entry state (6, 9, 12, 15, 18) after frame 200 and its cooldown +$1E is 0 the player is placed 20 px left of the boss anchor at the same Y with $D503 bit 1 (attack) set and X velocity 0",
+      "events": [
+        {
+          "state": 0,
+          "requested": 0,
+          "frame": 0,
+          "timer": 0,
+          "callback": "0x0000",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x40",
+          "frame_index": 4
+        },
+        {
+          "state": 0,
+          "requested": 1,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x974C",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 5
+        },
+        {
+          "state": 1,
+          "requested": 1,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x9771",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 6
+        },
+        {
+          "state": 1,
+          "requested": 2,
+          "frame": 0,
+          "timer": 220,
+          "callback": "0x9771",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 10
+        },
+        {
+          "state": 2,
+          "requested": 2,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x97C1",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 11
+        },
+        {
+          "state": 2,
+          "requested": 3,
+          "frame": 0,
+          "timer": 130,
+          "callback": "0x97C1",
+          "x": 1936,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 0,
+          "health": 0,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 105
+        },
+        {
+          "state": 3,
+          "requested": 18,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x9828",
+          "x": 1936,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 0,
+          "flags_04": "0x42",
+          "frame_index": 106
+        },
+        {
+          "state": 18,
+          "requested": 18,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x9A09",
+          "x": 1935,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 0,
+          "flags_04": "0x40",
+          "frame_index": 107
+        },
+        {
+          "state": 18,
+          "requested": 6,
+          "frame": 1,
+          "timer": 10,
+          "callback": "0x9A09",
+          "x": 1900,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 221,
+          "flags_04": "0x00",
+          "frame_index": 177
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1900,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 8,
+          "screen_x": 221,
+          "flags_04": "0x00",
+          "frame_index": 178
+        },
+        {
+          "state": 6,
+          "requested": 8,
+          "frame": 2,
+          "timer": 9,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 7,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 201
+        },
+        {
+          "state": 8,
+          "requested": 8,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": -128,
+          "phase_32": 0,
+          "health": 7,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 202
+        },
+        {
+          "state": 8,
+          "requested": 6,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 1,
+          "health": 7,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 221
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 7,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 222
+        },
+        {
+          "state": 6,
+          "requested": 8,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 6,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 223
+        },
+        {
+          "state": 8,
+          "requested": 8,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 6,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 224
+        },
+        {
+          "state": 8,
+          "requested": 6,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 1,
+          "health": 6,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 243
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 6,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 244
+        },
+        {
+          "state": 6,
+          "requested": 8,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 5,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 245
+        },
+        {
+          "state": 8,
+          "requested": 8,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 5,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 246
+        },
+        {
+          "state": 8,
+          "requested": 6,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 1,
+          "health": 5,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 265
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 5,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 266
+        },
+        {
+          "state": 6,
+          "requested": 8,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 4,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 267
+        },
+        {
+          "state": 8,
+          "requested": 8,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 4,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 268
+        },
+        {
+          "state": 8,
+          "requested": 6,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 1,
+          "health": 4,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 287
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 4,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 288
+        },
+        {
+          "state": 6,
+          "requested": 8,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 3,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 289
+        },
+        {
+          "state": 8,
+          "requested": 8,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 3,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 290
+        },
+        {
+          "state": 8,
+          "requested": 6,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 1,
+          "health": 3,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 309
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 3,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 310
+        },
+        {
+          "state": 6,
+          "requested": 8,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 2,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 311
+        },
+        {
+          "state": 8,
+          "requested": 8,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 2,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 312
+        },
+        {
+          "state": 8,
+          "requested": 6,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 1,
+          "health": 2,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 331
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 2,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 332
+        },
+        {
+          "state": 6,
+          "requested": 8,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 1,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 333
+        },
+        {
+          "state": 8,
+          "requested": 8,
+          "frame": 1,
+          "timer": 4,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 1,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 334
+        },
+        {
+          "state": 8,
+          "requested": 6,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x9997",
+          "x": 1889,
+          "y": 238,
+          "vx": 0,
+          "phase_32": 1,
+          "health": 1,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 353
+        },
+        {
+          "state": 6,
+          "requested": 6,
+          "frame": 1,
+          "timer": 16,
+          "callback": "0x985B",
+          "x": 1889,
+          "y": 238,
+          "vx": -4,
+          "phase_32": 1,
+          "health": 1,
+          "screen_x": 210,
+          "flags_04": "0x00",
+          "frame_index": 354
+        },
+        {
+          "state": 6,
+          "requested": 4,
+          "frame": 1,
+          "timer": 15,
+          "callback": "0x985B",
+          "x": 1888,
+          "y": 238,
+          "vx": -8,
+          "phase_32": 1,
+          "health": 0,
+          "screen_x": 209,
+          "flags_04": "0x00",
+          "frame_index": 355
+        },
+        {
+          "state": 4,
+          "requested": 4,
+          "frame": 1,
+          "timer": 1,
+          "callback": "0x032F",
+          "x": 1888,
+          "y": 238,
+          "vx": -8,
+          "phase_32": 1,
+          "health": 0,
+          "screen_x": 209,
+          "flags_04": "0x00",
+          "frame_index": 356,
+          "children": [
+            [
+              "0xD740",
+              "0x34",
+              1880,
+              238
+            ]
+          ]
+        },
+        {
+          "state": 5,
+          "requested": 5,
+          "frame": 0,
+          "timer": 224,
+          "callback": "0x81BD",
+          "x": 1888,
+          "y": 238,
+          "vx": -8,
+          "phase_32": 1,
+          "health": 0,
+          "screen_x": 209,
+          "flags_04": "0x00",
+          "frame_index": 504,
+          "children": [
+            [
+              "0xD780",
+              "0x34",
+              1889,
+              223
+            ],
+            [
+              "0xD800",
+              "0x34",
+              1887,
+              199
+            ]
+          ]
+        }
+      ],
+      "state_4_frame": 356,
+      "state_5_frame": 504,
+      "children_type_34_first_seen": [
+        [
+          "0xD740",
+          356,
+          1880,
+          238
+        ],
+        [
+          "0xD780",
+          357,
+          1896,
+          238
+        ],
+        [
+          "0xD7C0",
+          358,
+          1888,
+          222
+        ],
+        [
+          "0xD800",
+          359,
+          1880,
+          214
+        ],
+        [
+          "0xD840",
+          360,
+          1880,
+          214
+        ]
+      ],
+      "sound_requests": [
+        [
+          0,
+          "0x81"
+        ],
+        [
+          5,
+          "0x8C"
+        ],
+        [
+          201,
+          "0xB6"
+        ],
+        [
+          357,
+          "0xC4"
+        ],
+        [
+          506,
+          "0x97"
+        ],
+        [
+          508,
+          "0xC4"
+        ],
+        [
+          964,
+          "0xB4"
+        ]
+      ],
+      "sprite_palette_colors_13_14_changes": [
+        [
+          7,
+          4,
+          0
+        ],
+        [
+          12,
+          8,
+          4
+        ],
+        [
+          17,
+          12,
+          8
+        ],
+        [
+          107,
+          53,
+          32
+        ],
+        [
+          205,
+          63,
+          63
+        ],
+        [
+          209,
+          53,
+          32
+        ],
+        [
+          227,
+          63,
+          63
+        ],
+        [
+          231,
+          53,
+          32
+        ],
+        [
+          249,
+          63,
+          63
+        ],
+        [
+          253,
+          53,
+          32
+        ],
+        [
+          271,
+          63,
+          63
+        ],
+        [
+          275,
+          53,
+          32
+        ],
+        [
+          293,
+          63,
+          63
+        ],
+        [
+          297,
+          53,
+          32
+        ],
+        [
+          315,
+          63,
+          63
+        ],
+        [
+          319,
+          53,
+          32
+        ],
+        [
+          337,
+          63,
+          63
+        ],
+        [
+          341,
+          53,
+          32
+        ],
+        [
+          359,
+          63,
+          63
+        ],
+        [
+          363,
+          53,
+          32
+        ]
+      ],
+      "after_defeat": {
+        "player_at_first_hit": {
+          "frame_index": 202,
+          "D501_state": 27,
+          "D503_flags": "0x03",
+          "extent_x_D52C": 8,
+          "extent_y_D52D": 24,
+          "note": "the attacker is teleported and only flagged as attacking; extents are those of the player's current frame"
+        },
+        "frame_index": 506,
+        "slot_D700_type": "0x0F",
+        "objects": [
+          [
+            "0xD540",
+            "0x0A"
+          ],
+          [
+            "0xD700",
+            "0x0F"
+          ],
+          [
+            "0xD780",
+            "0x34"
+          ],
+          [
+            "0xD800",
+            "0x34"
+          ]
+        ],
+        "player_requested_state": 32,
+        "camera": [
+          1679,
+          78
+        ],
+        "limits_left_right_bottom": [
+          1679,
+          2304,
+          78
+        ],
+        "D15E_D15F": [
+          "0x88",
+          "0x00"
+        ],
+        "occupancy_D400": "0x50",
+        "act_complete_flag_set_at_frame": 687,
+        "act_complete_flag_bit": 4,
+        "player_x_at_flag": 2595,
+        "camera_x_at_flag": 2303,
+        "next_zone_act_after_completion": [
+          1,
+          0
+        ],
+        "next_zone_first_seen_frame": 1547,
+        "player_state_20_first_frame": 507,
+        "frames_defeat_to_flag": 181,
+        "frames_defeat_to_next_zone": 1041
+      }
+    }
+  }
+}

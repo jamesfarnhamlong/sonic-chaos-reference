@@ -12,6 +12,7 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 - [Windows Act 1 POC roadmap after 14.5](docs/windows-poc-roadmap.md): the next spring/object, twisting-strip and completion passes with acceptance checks.
 - [Act 1 emulator observations, 21 September 2026](reports/emulator-observations-2026-09-21.md): retracting spikes, the concealed contact spring and the validated opening red-spring height.
 - [Act 1 concealed springs and retracting spikes](docs/act1-objects.md): decoded type `$26` and `$1B` state machines used by Windows POC 15.
+- [THZ3 object type `$50`](docs/object-50.md): the THZ boss — placement, 19-state machine, patrol, 8-hit damage, art source (dynamic selector `$13`), defeat, camera lock and act-completion chain, with controlled and emulated original-ROM traces.
 - [THZ1 object type `$21`](docs/object-21.md): complete placement, patrol,
   contact, animation, orientation and lifetime chain, with controlled original-ROM traces.
 - [THZ1 object type `$27`](docs/object-27.md): complete state scripts,
@@ -66,6 +67,7 @@ python tools/thz1_object_21.py path/to/SonicChaos.sms
 python tools/thz1_object_27.py path/to/SonicChaos.sms
 python tools/thz1_object_10.py path/to/SonicChaos.sms
 python tools/thz1_object_09.py path/to/SonicChaos.sms
+python tools/object_50.py path/to/SonicChaos.sms
 python tools/thz1_final_runtime_closure.py path/to/SonicChaos.sms
 python tools/thz1_object_census.py path/to/SonicChaos.sms
 python tools/recover.py path/to/SonicChaos.sms --output asm/recovered

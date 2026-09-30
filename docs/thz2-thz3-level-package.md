@@ -127,6 +127,8 @@ act VRAM (plus the verified `$18` dynamic list) into `build/level-object-sheets/
 Type `$50`: mapping `$94C6` (file `$3D4C6`), 7 frame pointers, 19 states at bank `$1E:$958B`, frames `$00-$06`
 reachable, state 4 unresolved by the static tracer. Its **art source is UNRESOLVED**: a trial render from the static
 VRAM shows other objects' tiles, so geometry only is exported and no image is produced.
+**Update:** state 4 and the art source are resolved in `docs/object-50.md` (dynamic selector `$13`, palette `$0C`); this package's
+`assets.json` is intentionally left as generated (geometry only).
 
 ## 7. Presentation
 
@@ -144,7 +146,7 @@ magenta boxed X = hidden `$09`, white crosshair + `$NN` label = object anchor. P
 
 ## 9. Unresolved / follow-ups
 
-* Type `$50`: identity, behaviour, art source (likely act-specific dynamic load), state 4 script.
+* Type `$50`: **resolved** — the THZ boss; see `docs/object-50.md` (identity, behaviour, art source, state 4 script).
 * New parameter variants: `$10` (`$03`/`$01`), `$26` (`$88`), `$28` aux values; run the THZ1 behaviour studies against them.
 * `$18` completion behaviour, `$1B/$26/$28` lifetime work (inherited from THZ1).
 * Player-start record words are exported raw; their field meanings are not named.

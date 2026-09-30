@@ -48,6 +48,17 @@ Important census correction: the 24 raw type-`$09` placement records and the 142
 
 ## Research task tracker
 
+### THZ3 type `$50` (the THZ boss): COMPLETE
+
+Branch `research/object-50`. Full placement, dispatch, 19-state, movement, animation, art-source, contact, damage,
+health, spawn, camera, defeat and act-completion study. Primary study: `docs/object-50.md`; data:
+`data/rom-cache/thz3/object-50.json`; tool/tests: `tools/object_50.py`, `tests/test_object_50.py`.
+
+- Sole placement `(1936,238)`, ROM `0x708FE`; state table `1E:$958B`; mapping `$94C6`.
+- Proved to be the boss from ROM behavior: 8 hit points, camera lock/pan, own art and palette, defeat sequence, no score, act completion through player state `$20`.
+- Art source resolved: dynamic selector `$13` (three loads; mirrored copy through the `$0100` bit-reverse table), palette `$0C`.
+- Follow-up tasks (not started): objects `$12`, `$34`, `$0A`, `$0F`; player state `$20` / act-clear transition.
+
 ### Task 08 — THZ1 final runtime / entity closure: COMPLETE
 
 The final report is `docs/thz1-final-runtime-closure.md`; type `$09` is in
