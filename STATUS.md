@@ -48,6 +48,15 @@ Important census correction: the 24 raw type-`$09` placement records and the 142
 
 ## Research task tracker
 
+### THZ2/THZ3 object parameter deltas ($26 `$88`, $10 `$01`/`$03`, $28 aux1): COMPLETE
+
+Branch `research/thz2-thz3-object-deltas`. Study `docs/thz2-thz3-object-deltas.md`; data
+`data/rom-cache/levels/object-deltas.json`; tool/tests `tools/thz2_thz3_object_deltas.py`, `tests/test_thz2_thz3_object_deltas.py`.
+
+- `$26` `$88` (only placement THZ2 `(1504,896)`): bit 7 = span mode, low 7 bits x 16 = 128 px trigger width; weak launch as THZ1 `$8A`. No new launch logic.
+- `$10` `$01` (THZ3): ring counter `$D29A` += `$10` with the ring-pickup carry; `$03` (THZ2 x2): power code 3, 900-update timer, X speed cap `$0600`.
+- `$28` aux1 `$19`/`$13` (THZ2): reversal period = 16 x aux1 updates (400 / 304).
+
 ### THZ3 type `$50` (the THZ boss): COMPLETE
 
 Branch `research/object-50`. Full placement, dispatch, 19-state, movement, animation, art-source, contact, damage,

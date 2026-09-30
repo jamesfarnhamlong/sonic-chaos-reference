@@ -1,0 +1,1755 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "scope": "THZ2/THZ3 parameter deltas of types $26, $10, $28",
+  "evidence_classes": [
+    "DECODED DATA",
+    "BYTE-VERIFIED ASSEMBLY",
+    "SOURCE-TRACED BEHAVIOR",
+    "CONTROLLED ROUTINE RESULT",
+    "ORIGINAL-GAME OBSERVATION",
+    "UNRESOLVED"
+  ],
+  "variants": [
+    {
+      "type": "0x26",
+      "parameter": "0x88",
+      "aux": {
+        "aux0": "0x72",
+        "aux1": "0x72"
+      },
+      "placements": [
+        {
+          "act": "thz2",
+          "record_index": 26,
+          "rom_offset": "0x7086D",
+          "bank": "0x1C",
+          "cpu": "0x886D",
+          "raw_bytes": "26 E0 06 80 04 00 88 72 72",
+          "world_x": 1504,
+          "world_y": 896,
+          "flags": "0x00",
+          "parameter": "0x88",
+          "aux0": "0x72",
+          "aux1": "0x72"
+        }
+      ],
+      "routine": "init $7825A (bank $1E, ROM $7825A); span idle state 8 -> $783BF; activation state 9 -> $78401; shared launch $035F -> $5F17 -> $480C",
+      "behavior_delta": "Same code path as THZ1 span $8A; only the trigger width differs: (0x88 & 0x7F) * 16 = 128 px (THZ1 $8A: 160 px). Active for object.X <= player.X < object.X + 128 and |object.Y+12 - player.Y| < 48; launch is weak ($FB00 = -5.0, object state 3) because aux1 = $72 is nonzero.",
+      "graphics_delta": "none proven; same mapping base $72 as every $26",
+      "evidence": [
+        "BYTE-VERIFIED ASSEMBLY",
+        "CONTROLLED ROUTINE RESULT",
+        "DECODED DATA"
+      ],
+      "poc_requirement": "Decode bit7 + low7*16 as the span width; feed 128 into the existing THZ1 span logic. No new launch, state or animation logic.",
+      "unresolved": [
+        "camera activation/removal, occupancy/respawn (inherited from THZ1 $26 study)"
+      ]
+    },
+    {
+      "type": "0x10",
+      "parameter": "0x01",
+      "aux": {
+        "aux0": "0x00",
+        "aux1": "0x00"
+      },
+      "placements": [
+        {
+          "act": "thz3",
+          "record_index": 6,
+          "rom_offset": "0x7092B",
+          "bank": "0x1C",
+          "cpu": "0x892B",
+          "raw_bytes": "10 B0 06 6E 02 00 01 00 00",
+          "world_x": 1456,
+          "world_y": 366,
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        }
+      ],
+      "routine": "mask lookup $A1D3 (table ROM $321F0) -> dispatcher $4AA3 bit 0 -> $4AC0; carry path $3104 + $178F",
+      "behavior_delta": "Queues bit 0 ($D3A3 |= $01). Dispatcher: $D29A = BCD($D29A + $10); refreshes the two-digit display; if the sum wrapped below $10 it also runs $3104 (sound $A9, $D299 +1 capped at $99) and $178F. $D29A is proven to be the same byte the terrain-ring handler increments by 1 and the damage scatter consumes.",
+      "graphics_delta": "low selector $01 -> tile sources ROM $399A0 (6 tiles @VRAM $0980) and $39EE0 (4 tiles @$0BC0); frame hashes differ from selectors $02/$04/$06 (see graphics_selectors)",
+      "evidence": [
+        "BYTE-VERIFIED ASSEMBLY",
+        "CONTROLLED ROUTINE RESULT",
+        "SOURCE-TRACED BEHAVIOR"
+      ],
+      "poc_requirement": "Add reward branch only: ring counter += 10 with the existing 100-ring carry (extra award, sound $A9); reuse type-$10 contact, bottom-hit, conversion to $0F, score 10 00 00.",
+      "unresolved": [
+        "semantic/user-facing name (numeric only)",
+        "meaning of $178F"
+      ]
+    },
+    {
+      "type": "0x10",
+      "parameter": "0x03",
+      "aux": {
+        "aux0": "0x00",
+        "aux1": "0x00"
+      },
+      "placements": [
+        {
+          "act": "thz2",
+          "record_index": 13,
+          "rom_offset": "0x707F8",
+          "bank": "0x1C",
+          "cpu": "0x87F8",
+          "raw_bytes": "10 50 02 2E 02 00 03 00 00",
+          "world_x": 336,
+          "world_y": 302,
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        },
+        {
+          "act": "thz2",
+          "record_index": 14,
+          "rom_offset": "0x70801",
+          "bank": "0x1C",
+          "cpu": "0x8801",
+          "raw_bytes": "10 E0 0B 0E 02 00 03 00 00",
+          "world_x": 2784,
+          "world_y": 270,
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x00",
+          "aux1": "0x00"
+        }
+      ],
+      "routine": "mask lookup $A1D3 -> dispatcher $4AA3 bit 2 -> $4B0F; per-update timer $4A74 (JP from $3654)",
+      "behavior_delta": "Queues bit 2 ($04). Dispatcher: $D532 = 3, timer $D44C = $0384 (900). No sound, no player state request, no velocity change. While $D532 == 3 the per-update routine $4A74 writes $D373 = $0600 (maximum X speed field; walking states otherwise reset it to $0400) and decrements $D44C. At zero the routine does NOT clear code 3 (it only clears codes 4 and 6), so the timer wraps to $FFFF in the isolated routine.",
+      "graphics_delta": "low selector $03 -> tile sources ROM $39B20/$39FE0 for the alternate player; player-type $01 sources and frame hashes in graphics_selectors",
+      "evidence": [
+        "BYTE-VERIFIED ASSEMBLY",
+        "CONTROLLED ROUTINE RESULT"
+      ],
+      "poc_requirement": "Add power code 3: set code and 900-update timer on consumption; while active force the horizontal speed cap to $0600. Do not add sound/state effects. Expiry/clear behavior is unresolved (see unresolved).",
+      "unresolved": [
+        "whether anything else clears $D532 == 3 (no explicit writer found in a static scan)",
+        "type $04 history-follower objects (state table $986E, init $98EC keeps them only while $D532 == 3): allocator not located",
+        "semantic/user-facing name (numeric only)"
+      ]
+    },
+    {
+      "type": "0x28",
+      "parameter": "0x0A",
+      "aux": {
+        "aux0": "0x6A",
+        "aux1": "0x19 / 0x13"
+      },
+      "placements": [
+        {
+          "act": "thz2",
+          "record_index": 1,
+          "rom_offset": "0x7078C",
+          "bank": "0x1C",
+          "cpu": "0x878C",
+          "raw_bytes": "28 28 03 D0 03 00 0A 6A 19",
+          "world_x": 552,
+          "world_y": 720,
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x19"
+        },
+        {
+          "act": "thz2",
+          "record_index": 2,
+          "rom_offset": "0x70795",
+          "bank": "0x1C",
+          "cpu": "0x8795",
+          "raw_bytes": "28 58 0F 60 03 00 0A 6A 13",
+          "world_x": 3672,
+          "world_y": 608,
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x13"
+        }
+      ],
+      "routine": "init $78585 (aux1 -> +$34/+$37 at $785C0); vertical mover state 11 -> $786DA; reversal counter $78925 (B = $10)",
+      "behavior_delta": "aux1 sets the reversal period: 16 * aux1 updates ($19 -> 400, $13 -> 304; THZ1 $09 -> 144, $0D -> 208). Confirmed by executing $8925 until it returns $FF. Parameter $0A, state 11, axis flags 0/0 and every other field are identical to THZ1.",
+      "graphics_delta": "none (aux0 $6A unchanged)",
+      "evidence": [
+        "BYTE-VERIFIED ASSEMBLY",
+        "CONTROLLED ROUTINE RESULT",
+        "DECODED DATA"
+      ],
+      "poc_requirement": "Feed canonical aux1 into the existing lift logic as period = 16 * aux1 updates; no other change.",
+      "unresolved": [
+        "per-update speed and initial direction are inherited from the THZ1 lift study, not re-executed here"
+      ]
+    },
+    {
+      "type": "0x28",
+      "parameter": "0x84",
+      "aux": {
+        "aux0": "0x6A",
+        "aux1": "0x00"
+      },
+      "placements": [
+        {
+          "act": "thz2",
+          "record_index": 3,
+          "rom_offset": "0x7079E",
+          "bank": "0x1C",
+          "cpu": "0x879E",
+          "raw_bytes": "28 10 07 30 02 00 84 6A 00",
+          "world_x": 1552,
+          "world_y": 304,
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00"
+        }
+      ],
+      "routine": "init $78585 -> state 5 (sag/bob) - unchanged",
+      "behavior_delta": "none: identical parameter, flags and aux to the four THZ1 records",
+      "graphics_delta": "none",
+      "evidence": [
+        "DECODED DATA",
+        "CONTROLLED ROUTINE RESULT"
+      ],
+      "poc_requirement": "Reuse the THZ1 sag platform unchanged.",
+      "unresolved": []
+    }
+  ],
+  "type_26": {
+    "placements": [
+      {
+        "act": "thz1",
+        "record_index": 7,
+        "rom_offset": "0x705E4",
+        "bank": "0x1C",
+        "cpu": "0x85E4",
+        "raw_bytes": "26 B0 03 60 04 00 00 72 72",
+        "world_x": 688,
+        "world_y": 864,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 8,
+        "rom_offset": "0x705ED",
+        "bank": "0x1C",
+        "cpu": "0x85ED",
+        "raw_bytes": "26 F0 0E 00 04 00 00 72 72",
+        "world_x": 3568,
+        "world_y": 768,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 22,
+        "rom_offset": "0x7066B",
+        "bank": "0x1C",
+        "cpu": "0x866B",
+        "raw_bytes": "26 10 06 60 03 00 8A 72 72",
+        "world_x": 1296,
+        "world_y": 608,
+        "flags": "0x00",
+        "parameter": "0x8A",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "span (bit7): trigger width (p&0x7F)*16 px",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 23,
+        "rom_offset": "0x70674",
+        "bank": "0x1C",
+        "cpu": "0x8674",
+        "raw_bytes": "26 78 08 60 04 00 01 72 72",
+        "world_x": 1912,
+        "world_y": 864,
+        "flags": "0x00",
+        "parameter": "0x01",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed weak",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 4,
+        "rom_offset": "0x707A7",
+        "bank": "0x1C",
+        "cpu": "0x87A7",
+        "raw_bytes": "26 60 04 80 04 00 00 72 72",
+        "world_x": 864,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 5,
+        "rom_offset": "0x707B0",
+        "bank": "0x1C",
+        "cpu": "0x87B0",
+        "raw_bytes": "26 C0 04 80 04 00 00 72 72",
+        "world_x": 960,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 6,
+        "rom_offset": "0x707B9",
+        "bank": "0x1C",
+        "cpu": "0x87B9",
+        "raw_bytes": "26 20 05 80 04 00 00 72 72",
+        "world_x": 1056,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 7,
+        "rom_offset": "0x707C2",
+        "bank": "0x1C",
+        "cpu": "0x87C2",
+        "raw_bytes": "26 10 09 20 03 00 00 72 72",
+        "world_x": 2064,
+        "world_y": 544,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 8,
+        "rom_offset": "0x707CB",
+        "bank": "0x1C",
+        "cpu": "0x87CB",
+        "raw_bytes": "26 80 0D 80 04 00 00 72 72",
+        "world_x": 3200,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 9,
+        "rom_offset": "0x707D4",
+        "bank": "0x1C",
+        "cpu": "0x87D4",
+        "raw_bytes": "26 E0 0D 80 04 00 00 72 72",
+        "world_x": 3296,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 10,
+        "rom_offset": "0x707DD",
+        "bank": "0x1C",
+        "cpu": "0x87DD",
+        "raw_bytes": "26 40 0E 80 04 00 00 72 72",
+        "world_x": 3392,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 11,
+        "rom_offset": "0x707E6",
+        "bank": "0x1C",
+        "cpu": "0x87E6",
+        "raw_bytes": "26 F0 0E 80 04 00 00 72 72",
+        "world_x": 3568,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 26,
+        "rom_offset": "0x7086D",
+        "bank": "0x1C",
+        "cpu": "0x886D",
+        "raw_bytes": "26 E0 06 80 04 00 88 72 72",
+        "world_x": 1504,
+        "world_y": 896,
+        "flags": "0x00",
+        "parameter": "0x88",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "span (bit7): trigger width (p&0x7F)*16 px",
+        "in_thz1_research": false
+      },
+      {
+        "act": "thz2",
+        "record_index": 27,
+        "rom_offset": "0x70876",
+        "bank": "0x1C",
+        "cpu": "0x8876",
+        "raw_bytes": "26 90 0E 20 02 00 01 72 72",
+        "world_x": 3472,
+        "world_y": 288,
+        "flags": "0x00",
+        "parameter": "0x01",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed weak",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz3",
+        "record_index": 2,
+        "rom_offset": "0x70907",
+        "bank": "0x1C",
+        "cpu": "0x8907",
+        "raw_bytes": "26 90 03 80 02 00 00 72 72",
+        "world_x": 656,
+        "world_y": 384,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz3",
+        "record_index": 3,
+        "rom_offset": "0x70910",
+        "bank": "0x1C",
+        "cpu": "0x8910",
+        "raw_bytes": "26 D0 03 80 02 00 00 72 72",
+        "world_x": 720,
+        "world_y": 384,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz3",
+        "record_index": 4,
+        "rom_offset": "0x70919",
+        "bank": "0x1C",
+        "cpu": "0x8919",
+        "raw_bytes": "26 10 04 80 02 00 00 72 72",
+        "world_x": 784,
+        "world_y": 384,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz3",
+        "record_index": 5,
+        "rom_offset": "0x70922",
+        "bank": "0x1C",
+        "cpu": "0x8922",
+        "raw_bytes": "26 B0 06 80 02 00 00 72 72",
+        "world_x": 1456,
+        "world_y": 384,
+        "flags": "0x00",
+        "parameter": "0x00",
+        "aux0": "0x72",
+        "aux1": "0x72",
+        "variant": "fixed strong",
+        "in_thz1_research": true
+      }
+    ],
+    "parameter_decode": {
+      "evidence": "BYTE-VERIFIED ASSEMBLY $7825A..$782AE + CONTROLLED ROUTINE RESULT",
+      "bit7": "span/concealed mode; when clear the low seven bits are not read (fixed springs use only 0/1 via the strength byte)",
+      "low7": "trigger width in pixels = low7 * 16 (four SLA/RL steps; stored at object +$34/+$35)",
+      "strength": "object +$3F is rewritten to 1 (weak) and then to 0 (strong) only when placement aux1 (object +$09) is zero; both span records have aux1 $72, so spans are weak",
+      "fixed_param_00": "strong: launch $F8A0 (-7.375), extension state 1",
+      "fixed_param_01": "weak: launch $FB00 (-5.0), extension state 3",
+      "packing": "$88 = bit7 + low7 $08 -> 128 px; $8A = bit7 + low7 $0A -> 160 px. No other bit is tested by the initializer, contact or launch code."
+    },
+    "init_fixtures": {
+      "thz1_00_control": {
+        "created": {
+          "type": "0x26",
+          "x": 688,
+          "y": 864,
+          "flags_04": "0x40",
+          "parameter_3f": "0x00",
+          "field_08_aux0": "0x72",
+          "field_09_aux1": "0x72"
+        },
+        "after_init_825A": {
+          "requested_state_02": 7,
+          "rest_state_0a": 7,
+          "parameter_3f_after": "0x00",
+          "span_pixels_34": 0,
+          "y_14_after": 876,
+          "saved_y_3c": 876,
+          "y_added_by_init": 12
+        }
+      },
+      "thz1_01_control": {
+        "created": {
+          "type": "0x26",
+          "x": 1912,
+          "y": 864,
+          "flags_04": "0x40",
+          "parameter_3f": "0x01",
+          "field_08_aux0": "0x72",
+          "field_09_aux1": "0x72"
+        },
+        "after_init_825A": {
+          "requested_state_02": 7,
+          "rest_state_0a": 7,
+          "parameter_3f_after": "0x01",
+          "span_pixels_34": 0,
+          "y_14_after": 876,
+          "saved_y_3c": 876,
+          "y_added_by_init": 12
+        }
+      },
+      "thz1_8A_control": {
+        "created": {
+          "type": "0x26",
+          "x": 1296,
+          "y": 608,
+          "flags_04": "0x40",
+          "parameter_3f": "0x8A",
+          "field_08_aux0": "0x72",
+          "field_09_aux1": "0x72"
+        },
+        "after_init_825A": {
+          "requested_state_02": 8,
+          "rest_state_0a": 8,
+          "parameter_3f_after": "0x01",
+          "span_pixels_34": 160,
+          "y_14_after": 620,
+          "saved_y_3c": 620,
+          "y_added_by_init": 12
+        }
+      },
+      "thz2_88": {
+        "created": {
+          "type": "0x26",
+          "x": 1504,
+          "y": 896,
+          "flags_04": "0x40",
+          "parameter_3f": "0x88",
+          "field_08_aux0": "0x72",
+          "field_09_aux1": "0x72"
+        },
+        "after_init_825A": {
+          "requested_state_02": 8,
+          "rest_state_0a": 8,
+          "parameter_3f_after": "0x01",
+          "span_pixels_34": 128,
+          "y_14_after": 908,
+          "saved_y_3c": 908,
+          "y_added_by_init": 12
+        }
+      }
+    },
+    "span_x_boundaries": {
+      "thz1_8A_control": [
+        {
+          "player_x_minus_object_x": -1,
+          "state_after_83BF": 8
+        },
+        {
+          "player_x_minus_object_x": 0,
+          "state_after_83BF": 9
+        },
+        {
+          "player_x_minus_object_x": 1,
+          "state_after_83BF": 9
+        },
+        {
+          "player_x_minus_object_x": 159,
+          "state_after_83BF": 9
+        },
+        {
+          "player_x_minus_object_x": 160,
+          "state_after_83BF": 8
+        }
+      ],
+      "thz2_88": [
+        {
+          "player_x_minus_object_x": -1,
+          "state_after_83BF": 8
+        },
+        {
+          "player_x_minus_object_x": 0,
+          "state_after_83BF": 9
+        },
+        {
+          "player_x_minus_object_x": 1,
+          "state_after_83BF": 9
+        },
+        {
+          "player_x_minus_object_x": 127,
+          "state_after_83BF": 9
+        },
+        {
+          "player_x_minus_object_x": 128,
+          "state_after_83BF": 8
+        },
+        {
+          "player_x_minus_object_x": 159,
+          "state_after_83BF": 8
+        },
+        {
+          "player_x_minus_object_x": 160,
+          "state_after_83BF": 8
+        }
+      ]
+    },
+    "span_y_window": {
+      "thz1_8A_control": [
+        {
+          "player_y_minus_object_y": -60,
+          "state_after_83BF": 8
+        },
+        {
+          "player_y_minus_object_y": -48,
+          "state_after_83BF": 8
+        },
+        {
+          "player_y_minus_object_y": -47,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": -20,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": 0,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": 47,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": 48,
+          "state_after_83BF": 8
+        }
+      ],
+      "thz2_88": [
+        {
+          "player_y_minus_object_y": -60,
+          "state_after_83BF": 8
+        },
+        {
+          "player_y_minus_object_y": -48,
+          "state_after_83BF": 8
+        },
+        {
+          "player_y_minus_object_y": -47,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": -20,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": 0,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": 47,
+          "state_after_83BF": 9
+        },
+        {
+          "player_y_minus_object_y": 48,
+          "state_after_83BF": 8
+        }
+      ]
+    },
+    "launch_fixtures": {
+      "thz1_8A_control": {
+        "before": {
+          "player_vy": 256,
+          "player_state_d502": 1,
+          "object_x": 1296
+        },
+        "object_x_after": 1328,
+        "object_x_expected_player_x_and_F0": 1328,
+        "requested_object_state_02": 3,
+        "counter_1e": "0x1C",
+        "sign_extension_d448": "0x00",
+        "player_requested_state_d502": 11,
+        "player_y_velocity_8_8": -1280,
+        "player_flags_d503": "0x01"
+      },
+      "thz2_88": {
+        "before": {
+          "player_vy": 256,
+          "player_state_d502": 1,
+          "object_x": 1504
+        },
+        "object_x_after": 1536,
+        "object_x_expected_player_x_and_F0": 1536,
+        "requested_object_state_02": 3,
+        "counter_1e": "0x1C",
+        "sign_extension_d448": "0x00",
+        "player_requested_state_d502": 11,
+        "player_y_velocity_8_8": -1280,
+        "player_flags_d503": "0x01"
+      },
+      "thz1_00_fixed_strong_control": {
+        "requested_object_state_02": 1,
+        "counter_1e": "0x1C",
+        "player_requested_state_d502": 11,
+        "player_y_velocity_8_8": -1888,
+        "sign_extension_d448": "0xFF"
+      },
+      "thz1_01_fixed_weak_control": {
+        "requested_object_state_02": 3,
+        "counter_1e": "0x1C",
+        "player_requested_state_d502": 11,
+        "player_y_velocity_8_8": -1280,
+        "sign_extension_d448": "0x00"
+      }
+    },
+    "rise_model": {
+      "strong_F8A0": {
+        "launch_8_8": -1888,
+        "updates_rising": 78,
+        "rise_pixels": 286.41,
+        "basis": "DERIVED: $480C launch + upright ascent gravity $18; excludes ceilings and the apex wrapper"
+      },
+      "weak_FB00": {
+        "launch_8_8": -1280,
+        "updates_rising": 53,
+        "rise_pixels": 130.84,
+        "basis": "DERIVED: $480C launch + upright ascent gravity $18; excludes ceilings and the apex wrapper"
+      }
+    },
+    "thz2_88_layout_context": {
+      "object_cell": [
+        47,
+        28
+      ],
+      "span_end_exclusive_x": 1632,
+      "nearest_ceiling_top_y_per_column": [
+        [
+          1504,
+          608
+        ],
+        [
+          1536,
+          608
+        ],
+        [
+          1568,
+          608
+        ],
+        [
+          1600,
+          608
+        ]
+      ],
+      "spike_cells_within_192_px_of_span": [
+        [
+          1312,
+          864
+        ],
+        [
+          1632,
+          864
+        ]
+      ]
+    }
+  },
+  "type_10": {
+    "placements": [
+      {
+        "act": "thz1",
+        "record_index": 9,
+        "rom_offset": "0x705F6",
+        "bank": "0x1C",
+        "cpu": "0x85F6",
+        "raw_bytes": "10 90 03 4E 04 00 06 00 00",
+        "world_x": 656,
+        "world_y": 846,
+        "flags": "0x00",
+        "parameter": "0x06",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x20",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 10,
+        "rom_offset": "0x705FF",
+        "bank": "0x1C",
+        "cpu": "0x85FF",
+        "raw_bytes": "10 B0 07 EE 02 00 06 00 00",
+        "world_x": 1712,
+        "world_y": 494,
+        "flags": "0x00",
+        "parameter": "0x06",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x20",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 11,
+        "rom_offset": "0x70608",
+        "bank": "0x1C",
+        "cpu": "0x8608",
+        "raw_bytes": "10 50 02 0E 02 00 04 00 00",
+        "world_x": 336,
+        "world_y": 270,
+        "flags": "0x00",
+        "parameter": "0x04",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x08",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 12,
+        "rom_offset": "0x70611",
+        "bank": "0x1C",
+        "cpu": "0x8611",
+        "raw_bytes": "10 C0 06 6E 01 00 04 00 00",
+        "world_x": 1472,
+        "world_y": 110,
+        "flags": "0x00",
+        "parameter": "0x04",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x08",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 13,
+        "rom_offset": "0x7061A",
+        "bank": "0x1C",
+        "cpu": "0x861A",
+        "raw_bytes": "10 80 0B AE 03 00 02 00 00",
+        "world_x": 2688,
+        "world_y": 686,
+        "flags": "0x00",
+        "parameter": "0x02",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x02",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 12,
+        "rom_offset": "0x707EF",
+        "bank": "0x1C",
+        "cpu": "0x87EF",
+        "raw_bytes": "10 40 05 CE 01 00 06 00 00",
+        "world_x": 1088,
+        "world_y": 206,
+        "flags": "0x00",
+        "parameter": "0x06",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x20",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 13,
+        "rom_offset": "0x707F8",
+        "bank": "0x1C",
+        "cpu": "0x87F8",
+        "raw_bytes": "10 50 02 2E 02 00 03 00 00",
+        "world_x": 336,
+        "world_y": 302,
+        "flags": "0x00",
+        "parameter": "0x03",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x04",
+        "in_thz1_research": false
+      },
+      {
+        "act": "thz2",
+        "record_index": 14,
+        "rom_offset": "0x70801",
+        "bank": "0x1C",
+        "cpu": "0x8801",
+        "raw_bytes": "10 E0 0B 0E 02 00 03 00 00",
+        "world_x": 2784,
+        "world_y": 270,
+        "flags": "0x00",
+        "parameter": "0x03",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x04",
+        "in_thz1_research": false
+      },
+      {
+        "act": "thz2",
+        "record_index": 15,
+        "rom_offset": "0x7080A",
+        "bank": "0x1C",
+        "cpu": "0x880A",
+        "raw_bytes": "10 F0 0A EE 02 00 04 00 00",
+        "world_x": 2544,
+        "world_y": 494,
+        "flags": "0x00",
+        "parameter": "0x04",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x08",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 16,
+        "rom_offset": "0x70813",
+        "bank": "0x1C",
+        "cpu": "0x8813",
+        "raw_bytes": "10 40 01 CE 03 00 02 00 00",
+        "world_x": 64,
+        "world_y": 718,
+        "flags": "0x00",
+        "parameter": "0x02",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x02",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz3",
+        "record_index": 6,
+        "rom_offset": "0x7092B",
+        "bank": "0x1C",
+        "cpu": "0x892B",
+        "raw_bytes": "10 B0 06 6E 02 00 01 00 00",
+        "world_x": 1456,
+        "world_y": 366,
+        "flags": "0x00",
+        "parameter": "0x01",
+        "aux0": "0x00",
+        "aux1": "0x00",
+        "queued_mask_d3a3": "0x01",
+        "in_thz1_research": false
+      }
+    ],
+    "mask_table_bank_0C_A1F0": {
+      "0x00": "0x00",
+      "0x01": "0x01",
+      "0x02": "0x02",
+      "0x03": "0x04",
+      "0x04": "0x08",
+      "0x05": "0x10",
+      "0x06": "0x20",
+      "0x07": "0x40",
+      "0x08": "0x00"
+    },
+    "init_callback_A149": {
+      "0x01": {
+        "parameter_before": "0x01",
+        "player_type_d500": "0x01",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x01"
+      },
+      "0x03": {
+        "parameter_before": "0x03",
+        "player_type_d500": "0x01",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x03"
+      },
+      "0x04": {
+        "parameter_before": "0x04",
+        "player_type_d500": "0x01",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x04"
+      }
+    },
+    "init_callback_A149_alternate_player_type": {
+      "0x01": {
+        "parameter_before": "0x01",
+        "player_type_d500": "0x02",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x01"
+      },
+      "0x03": {
+        "parameter_before": "0x03",
+        "player_type_d500": "0x02",
+        "requested_state": 1,
+        "object_flags_03": "0x81",
+        "object_flags_04": "0x40",
+        "parameter_after": "0x03"
+      }
+    },
+    "state_entry_A161_graphics_selector": {
+      "0x01": {
+        "parameter": "0x01",
+        "requested_state": 2,
+        "previous_visibility_26": "0x00",
+        "graphics_selector_d3b3": "0x01"
+      },
+      "0x03": {
+        "parameter": "0x03",
+        "requested_state": 2,
+        "previous_visibility_26": "0x00",
+        "graphics_selector_d3b3": "0x03"
+      },
+      "0x02": {
+        "parameter": "0x02",
+        "requested_state": 2,
+        "previous_visibility_26": "0x00",
+        "graphics_selector_d3b3": "0x02"
+      }
+    },
+    "reward_dispatch": {
+      "param_01_ring_counter_add": {
+        "parameter": "0x01",
+        "d299_before": "0x09",
+        "d29a_before": "0x05",
+        "after_contact": {
+          "reward_bits_d3a3": "0x01",
+          "parameter_after": "0x00",
+          "object_type_after": "0x0F",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299": "0x09",
+          "counter_d29a": "0x15",
+          "power_code_d532": "0x00",
+          "timer_d44c": 0,
+          "player_flags_d503": "0x02",
+          "player_requested_state_d502": "0x05",
+          "player_max_x_d373": "0x0400",
+          "sound_request_de04": "0x00",
+          "player_x_velocity_8_8": 291,
+          "player_y_velocity_8_8": -1024
+        }
+      },
+      "param_01_ring_counter_carry": {
+        "parameter": "0x01",
+        "d299_before": "0x09",
+        "d29a_before": "0x95",
+        "after_contact": {
+          "reward_bits_d3a3": "0x01",
+          "parameter_after": "0x00",
+          "object_type_after": "0x0F",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299": "0x10",
+          "counter_d29a": "0x05",
+          "power_code_d532": "0x00",
+          "timer_d44c": 0,
+          "player_flags_d503": "0x02",
+          "player_requested_state_d502": "0x05",
+          "player_max_x_d373": "0x0400",
+          "sound_request_de04": "0xA9",
+          "player_x_velocity_8_8": 291,
+          "player_y_velocity_8_8": -1024
+        }
+      },
+      "param_03_power_code": {
+        "parameter": "0x03",
+        "d299_before": "0x09",
+        "d29a_before": "0x00",
+        "after_contact": {
+          "reward_bits_d3a3": "0x04",
+          "parameter_after": "0x00",
+          "object_type_after": "0x0F",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299": "0x09",
+          "counter_d29a": "0x00",
+          "power_code_d532": "0x03",
+          "timer_d44c": 900,
+          "player_flags_d503": "0x02",
+          "player_requested_state_d502": "0x05",
+          "player_max_x_d373": "0x0400",
+          "sound_request_de04": "0x00",
+          "player_x_velocity_8_8": 291,
+          "player_y_velocity_8_8": -1024
+        }
+      },
+      "param_02_control": {
+        "parameter": "0x02",
+        "d299_before": "0x09",
+        "d29a_before": "0x00",
+        "after_contact": {
+          "reward_bits_d3a3": "0x02",
+          "parameter_after": "0x00",
+          "object_type_after": "0x0F",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299": "0x10",
+          "counter_d29a": "0x00",
+          "power_code_d532": "0x00",
+          "timer_d44c": 0,
+          "player_flags_d503": "0x02",
+          "player_requested_state_d502": "0x05",
+          "player_max_x_d373": "0x0400",
+          "sound_request_de04": "0xA9",
+          "player_x_velocity_8_8": 291,
+          "player_y_velocity_8_8": -1024
+        }
+      },
+      "param_04_control": {
+        "parameter": "0x04",
+        "d299_before": "0x09",
+        "d29a_before": "0x00",
+        "after_contact": {
+          "reward_bits_d3a3": "0x08",
+          "parameter_after": "0x00",
+          "object_type_after": "0x0F",
+          "score_bytes_after": "10 00 00"
+        },
+        "after_dispatch": {
+          "reward_bits_d3a3": "0x00",
+          "counter_d299": "0x09",
+          "counter_d29a": "0x00",
+          "power_code_d532": "0x04",
+          "timer_d44c": 300,
+          "player_flags_d503": "0x00",
+          "player_requested_state_d502": "0x11",
+          "player_max_x_d373": "0x0700",
+          "sound_request_de04": "0x85",
+          "player_x_velocity_8_8": 0,
+          "player_y_velocity_8_8": 0
+        }
+      }
+    },
+    "ring_counter_identity_proof": {
+      "terrain_ring_pickup_plus_one": {
+        "d29a_before": "0x05",
+        "d29a_after": "0x06",
+        "d299_after": "0x09"
+      },
+      "terrain_ring_pickup_carry": {
+        "d29a_before": "0x99",
+        "d29a_after": "0x00",
+        "d299_after": "0x10"
+      },
+      "note": "The terrain-ring handler (asm/recovered/layout_ring_handler.asm, tail JP $3138) increments the same BCD byte $D29A by 1 and, on wrap to $00, runs the same $3104/$178F pair that type $10 parameter $01 runs on carry. Damage scatter ($0492A, C=6 objects) consumes the tens digit of $D29A and clears it."
+    },
+    "power_code_3_per_update_4A74": [
+      {
+        "update": 1,
+        "power_code_d532": 3,
+        "timer_d44c": 2,
+        "player_max_x_d373": "0x0600"
+      },
+      {
+        "update": 2,
+        "power_code_d532": 3,
+        "timer_d44c": 1,
+        "player_max_x_d373": "0x0600"
+      },
+      {
+        "update": 3,
+        "power_code_d532": 3,
+        "timer_d44c": 0,
+        "player_max_x_d373": "0x0600"
+      },
+      {
+        "update": 4,
+        "power_code_d532": 3,
+        "timer_d44c": 65535,
+        "player_max_x_d373": "0x0600"
+      },
+      {
+        "update": 5,
+        "power_code_d532": 3,
+        "timer_d44c": 65534,
+        "player_max_x_d373": "0x0600"
+      }
+    ],
+    "power_code_4_per_update_4A74_control": [
+      {
+        "update": 1,
+        "power_code_d532": 4,
+        "timer_d44c": 1,
+        "player_max_x_d373": "0x0400"
+      },
+      {
+        "update": 2,
+        "power_code_d532": 0,
+        "timer_d44c": 0,
+        "player_max_x_d373": "0x0400"
+      },
+      {
+        "update": 3,
+        "power_code_d532": 0,
+        "timer_d44c": 0,
+        "player_max_x_d373": "0x0400"
+      }
+    ],
+    "graphics_selectors": {
+      "0x01": {
+        "alternate_player_sources": [
+          {
+            "source_cpu": "0x99A0",
+            "source_rom": "0x399A0",
+            "tile_bytes_sha256": "63250c665a4ad7720dfebc607b3e57dfee47ef21ce7b31f3183e3e4174769e0c"
+          },
+          {
+            "source_cpu": "0x9EE0",
+            "source_rom": "0x39EE0",
+            "tile_bytes_sha256": "9b8d61e20249afd511490aa386c7dc78ff4c2bf0ee6e707eb4a77aff26da9794"
+          }
+        ],
+        "sources": [
+          {
+            "pointer_table_cpu": "0x7CBB",
+            "source_cpu": "0x99A0",
+            "source_rom": "0x399A0",
+            "byte_count": 192,
+            "vram_destination": "0x0980",
+            "tile_bytes_sha256": "63250c665a4ad7720dfebc607b3e57dfee47ef21ce7b31f3183e3e4174769e0c"
+          },
+          {
+            "pointer_table_cpu": "0x7CD3",
+            "source_cpu": "0x9EE0",
+            "source_rom": "0x39EE0",
+            "byte_count": 128,
+            "vram_destination": "0x0BC0",
+            "tile_bytes_sha256": "9b8d61e20249afd511490aa386c7dc78ff4c2bf0ee6e707eb4a77aff26da9794"
+          }
+        ],
+        "frames": [
+          {
+            "frame_index": "0x0B",
+            "rgba_sha256": "37704a2e5727ff6a3a0453428828f222e781a3339f73a184aee1b7af156c0e78",
+            "used_tile_indices": [
+              "0x4C",
+              "0x4D",
+              "0x4E",
+              "0x4F",
+              "0x50",
+              "0x51",
+              "0x52",
+              "0x53",
+              "0x54",
+              "0x55",
+              "0x56",
+              "0x57"
+            ]
+          },
+          {
+            "frame_index": "0x0C",
+            "rgba_sha256": "9571cc57547acfb52bf993cea93cfece3a0c3b0a31ace0f79e71ffe5f795a3a7",
+            "used_tile_indices": [
+              "0x58",
+              "0x59",
+              "0x5A",
+              "0x5B",
+              "0x5C",
+              "0x5D",
+              "0x52",
+              "0x53",
+              "0x54",
+              "0x55",
+              "0x56",
+              "0x57"
+            ]
+          }
+        ]
+      },
+      "0x03": {
+        "alternate_player_sources": [
+          {
+            "source_cpu": "0x9B20",
+            "source_rom": "0x39B20",
+            "tile_bytes_sha256": "6c606ae365290869e3d5a68ad110a370f5c38380851ec1a3105eb8fed736e498"
+          },
+          {
+            "source_cpu": "0x9FE0",
+            "source_rom": "0x39FE0",
+            "tile_bytes_sha256": "f59e82d2786664cf645c933c19d4b72e27cdc349b07968e2506bed8a60df3d7f"
+          }
+        ],
+        "sources": [
+          {
+            "pointer_table_cpu": "0x7CBB",
+            "source_cpu": "0x9B20",
+            "source_rom": "0x39B20",
+            "byte_count": 192,
+            "vram_destination": "0x0980",
+            "tile_bytes_sha256": "6c606ae365290869e3d5a68ad110a370f5c38380851ec1a3105eb8fed736e498"
+          },
+          {
+            "pointer_table_cpu": "0x7CD3",
+            "source_cpu": "0x9FE0",
+            "source_rom": "0x39FE0",
+            "byte_count": 128,
+            "vram_destination": "0x0BC0",
+            "tile_bytes_sha256": "f59e82d2786664cf645c933c19d4b72e27cdc349b07968e2506bed8a60df3d7f"
+          }
+        ],
+        "frames": [
+          {
+            "frame_index": "0x0B",
+            "rgba_sha256": "3dba1680e0f38a268e5c596878ade9d3310ee6de950dc989bbeb02b0a4c69802",
+            "used_tile_indices": [
+              "0x4C",
+              "0x4D",
+              "0x4E",
+              "0x4F",
+              "0x50",
+              "0x51",
+              "0x52",
+              "0x53",
+              "0x54",
+              "0x55",
+              "0x56",
+              "0x57"
+            ]
+          },
+          {
+            "frame_index": "0x0C",
+            "rgba_sha256": "9571cc57547acfb52bf993cea93cfece3a0c3b0a31ace0f79e71ffe5f795a3a7",
+            "used_tile_indices": [
+              "0x58",
+              "0x59",
+              "0x5A",
+              "0x5B",
+              "0x5C",
+              "0x5D",
+              "0x52",
+              "0x53",
+              "0x54",
+              "0x55",
+              "0x56",
+              "0x57"
+            ]
+          }
+        ]
+      },
+      "0x02": {
+        "alternate_player_sources": [
+          {
+            "source_cpu": "0xA1E0",
+            "source_rom": "0x3A1E0",
+            "tile_bytes_sha256": "31e8b5a1827cecea8ed6e4b898b1f1c362ed3b57dd34b86138c34c22d02af0c9"
+          },
+          {
+            "source_cpu": "0xA320",
+            "source_rom": "0x3A320",
+            "tile_bytes_sha256": "112bc43ae6db2ee705aa18c834f59fee300093a38c18721a7e34ec8932542960"
+          }
+        ],
+        "sources": [
+          {
+            "pointer_table_cpu": "0x7CBB",
+            "source_cpu": "0x9A60",
+            "source_rom": "0x39A60",
+            "byte_count": 192,
+            "vram_destination": "0x0980",
+            "tile_bytes_sha256": "f55ed4545fe648ba2c0365d55a2b3cd5593706437edcdea4ea48da2ced40d4a5"
+          },
+          {
+            "pointer_table_cpu": "0x7CD3",
+            "source_cpu": "0x9F60",
+            "source_rom": "0x39F60",
+            "byte_count": 128,
+            "vram_destination": "0x0BC0",
+            "tile_bytes_sha256": "9110ea61003f6dc48b174905183b836e151e0bc3e18371de134d4f9bb6644fbf"
+          }
+        ],
+        "frames": [
+          {
+            "frame_index": "0x0B",
+            "rgba_sha256": "2bb087b4bcc265ee2ba8b8ba038772b6615d7d5fe1f4aeb43625d694900b3b6d",
+            "used_tile_indices": [
+              "0x4C",
+              "0x4D",
+              "0x4E",
+              "0x4F",
+              "0x50",
+              "0x51",
+              "0x52",
+              "0x53",
+              "0x54",
+              "0x55",
+              "0x56",
+              "0x57"
+            ]
+          },
+          {
+            "frame_index": "0x0C",
+            "rgba_sha256": "9571cc57547acfb52bf993cea93cfece3a0c3b0a31ace0f79e71ffe5f795a3a7",
+            "used_tile_indices": [
+              "0x58",
+              "0x59",
+              "0x5A",
+              "0x5B",
+              "0x5C",
+              "0x5D",
+              "0x52",
+              "0x53",
+              "0x54",
+              "0x55",
+              "0x56",
+              "0x57"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "type_28": {
+    "placements": [
+      {
+        "act": "thz1",
+        "record_index": 1,
+        "rom_offset": "0x705AE",
+        "bank": "0x1C",
+        "cpu": "0x85AE",
+        "raw_bytes": "28 50 03 D0 02 00 0A 6A 09",
+        "world_x": 592,
+        "world_y": 464,
+        "flags": "0x00",
+        "parameter": "0x0A",
+        "aux0": "0x6A",
+        "aux1": "0x09",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 2,
+        "rom_offset": "0x705B7",
+        "bank": "0x1C",
+        "cpu": "0x85B7",
+        "raw_bytes": "28 50 0F 00 03 00 0A 6A 0D",
+        "world_x": 3664,
+        "world_y": 512,
+        "flags": "0x00",
+        "parameter": "0x0A",
+        "aux0": "0x6A",
+        "aux1": "0x0D",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 3,
+        "rom_offset": "0x705C0",
+        "bank": "0x1C",
+        "cpu": "0x85C0",
+        "raw_bytes": "28 10 05 80 02 00 84 6A 00",
+        "world_x": 1040,
+        "world_y": 384,
+        "flags": "0x00",
+        "parameter": "0x84",
+        "aux0": "0x6A",
+        "aux1": "0x00",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 4,
+        "rom_offset": "0x705C9",
+        "bank": "0x1C",
+        "cpu": "0x85C9",
+        "raw_bytes": "28 70 05 40 02 00 84 6A 00",
+        "world_x": 1136,
+        "world_y": 320,
+        "flags": "0x00",
+        "parameter": "0x84",
+        "aux0": "0x6A",
+        "aux1": "0x00",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 5,
+        "rom_offset": "0x705D2",
+        "bank": "0x1C",
+        "cpu": "0x85D2",
+        "raw_bytes": "28 D0 05 00 02 00 84 6A 00",
+        "world_x": 1232,
+        "world_y": 256,
+        "flags": "0x00",
+        "parameter": "0x84",
+        "aux0": "0x6A",
+        "aux1": "0x00",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz1",
+        "record_index": 6,
+        "rom_offset": "0x705DB",
+        "bank": "0x1C",
+        "cpu": "0x85DB",
+        "raw_bytes": "28 30 06 D0 01 00 84 6A 00",
+        "world_x": 1328,
+        "world_y": 208,
+        "flags": "0x00",
+        "parameter": "0x84",
+        "aux0": "0x6A",
+        "aux1": "0x00",
+        "in_thz1_research": true
+      },
+      {
+        "act": "thz2",
+        "record_index": 1,
+        "rom_offset": "0x7078C",
+        "bank": "0x1C",
+        "cpu": "0x878C",
+        "raw_bytes": "28 28 03 D0 03 00 0A 6A 19",
+        "world_x": 552,
+        "world_y": 720,
+        "flags": "0x00",
+        "parameter": "0x0A",
+        "aux0": "0x6A",
+        "aux1": "0x19",
+        "in_thz1_research": false
+      },
+      {
+        "act": "thz2",
+        "record_index": 2,
+        "rom_offset": "0x70795",
+        "bank": "0x1C",
+        "cpu": "0x8795",
+        "raw_bytes": "28 58 0F 60 03 00 0A 6A 13",
+        "world_x": 3672,
+        "world_y": 608,
+        "flags": "0x00",
+        "parameter": "0x0A",
+        "aux0": "0x6A",
+        "aux1": "0x13",
+        "in_thz1_research": false
+      },
+      {
+        "act": "thz2",
+        "record_index": 3,
+        "rom_offset": "0x7079E",
+        "bank": "0x1C",
+        "cpu": "0x879E",
+        "raw_bytes": "28 10 07 30 02 00 84 6A 00",
+        "world_x": 1552,
+        "world_y": 304,
+        "flags": "0x00",
+        "parameter": "0x84",
+        "aux0": "0x6A",
+        "aux1": "0x00",
+        "in_thz1_research": true
+      }
+    ],
+    "parameter_aux1_combinations_seen": [
+      {
+        "parameter": "0x0A",
+        "aux1": "0x09"
+      },
+      {
+        "parameter": "0x0A",
+        "aux1": "0x0D"
+      },
+      {
+        "parameter": "0x0A",
+        "aux1": "0x13"
+      },
+      {
+        "parameter": "0x0A",
+        "aux1": "0x19"
+      },
+      {
+        "parameter": "0x84",
+        "aux1": "0x00"
+      }
+    ],
+    "init_8585_fixtures": {
+      "thz1:1": {
+        "parameter": "0x0A",
+        "aux1": "0x09",
+        "requested_state_02": 11,
+        "state_copy_36": 11,
+        "counter_34": 9,
+        "counter_37": 9,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0x00",
+        "axis_flag_26": "0x00"
+      },
+      "thz1:2": {
+        "parameter": "0x0A",
+        "aux1": "0x0D",
+        "requested_state_02": 11,
+        "state_copy_36": 11,
+        "counter_34": 13,
+        "counter_37": 13,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0x00",
+        "axis_flag_26": "0x00"
+      },
+      "thz1:3": {
+        "parameter": "0x84",
+        "aux1": "0x00",
+        "requested_state_02": 5,
+        "state_copy_36": 5,
+        "counter_34": 0,
+        "counter_37": 0,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0xFF",
+        "axis_flag_26": "0x00"
+      },
+      "thz1:4": {
+        "parameter": "0x84",
+        "aux1": "0x00",
+        "requested_state_02": 5,
+        "state_copy_36": 5,
+        "counter_34": 0,
+        "counter_37": 0,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0xFF",
+        "axis_flag_26": "0x00"
+      },
+      "thz1:5": {
+        "parameter": "0x84",
+        "aux1": "0x00",
+        "requested_state_02": 5,
+        "state_copy_36": 5,
+        "counter_34": 0,
+        "counter_37": 0,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0xFF",
+        "axis_flag_26": "0x00"
+      },
+      "thz1:6": {
+        "parameter": "0x84",
+        "aux1": "0x00",
+        "requested_state_02": 5,
+        "state_copy_36": 5,
+        "counter_34": 0,
+        "counter_37": 0,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0xFF",
+        "axis_flag_26": "0x00"
+      },
+      "thz2:1": {
+        "parameter": "0x0A",
+        "aux1": "0x19",
+        "requested_state_02": 11,
+        "state_copy_36": 11,
+        "counter_34": 25,
+        "counter_37": 25,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0x00",
+        "axis_flag_26": "0x00"
+      },
+      "thz2:2": {
+        "parameter": "0x0A",
+        "aux1": "0x13",
+        "requested_state_02": 11,
+        "state_copy_36": 11,
+        "counter_34": 19,
+        "counter_37": 19,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0x00",
+        "axis_flag_26": "0x00"
+      },
+      "thz2:3": {
+        "parameter": "0x84",
+        "aux1": "0x00",
+        "requested_state_02": 5,
+        "state_copy_36": 5,
+        "counter_34": 0,
+        "counter_37": 0,
+        "step_counter_30": "0x10",
+        "axis_flag_25": "0xFF",
+        "axis_flag_26": "0x00"
+      }
+    },
+    "reversal_period_fixtures": {
+      "0x09": {
+        "aux1": 9,
+        "updates_until_reverse": 144,
+        "formula_16_x_aux1": 144
+      },
+      "0x0D": {
+        "aux1": 13,
+        "updates_until_reverse": 208,
+        "formula_16_x_aux1": 208
+      },
+      "0x13": {
+        "aux1": 19,
+        "updates_until_reverse": 304,
+        "formula_16_x_aux1": 304
+      },
+      "0x19": {
+        "aux1": 25,
+        "updates_until_reverse": 400,
+        "formula_16_x_aux1": 400
+      }
+    },
+    "aux1_consumers": "only initializer $85C0 (object +$09 -> +$34/+$37); reversal counter $8925 reloads +$37 from +$34"
+  }
+}

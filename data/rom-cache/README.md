@@ -76,3 +76,8 @@ dispatch chain, all 19 states with scripts and transitions, contact/damage/healt
 completion behavior, controlled Z80 results and emulated original-frame timelines. It stores routine regions by
 offset, length, SHA-256 and a 16-byte prefix (no code dumps), the boss art by dynamic-load list and hashes (no tile
 pixels), and the boss palette by index, ROM offset, SHA-256 and the three colour values that differ from the level palette.
+
+`levels/object-deltas.json` records the THZ2/THZ3 parameter and auxiliary-field deltas of
+types `$26`, `$10` and `$28` (every placement, decoded flag bits, executed original-routine
+fixtures, graphics-selector sources and the POC implementation delta list). Regenerate with
+`python tools/thz2_thz3_object_deltas.py /path/to/SonicChaos.sms`.
