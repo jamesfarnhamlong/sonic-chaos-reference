@@ -38,6 +38,11 @@ def load(*parts):
     return json.loads(LEVELS.joinpath(*parts).read_text(encoding="utf-8"))
 
 
+def text(path):
+    """File text with universal newlines (CRLF checkouts compare equal)."""
+    return path.read_text(encoding="utf-8")
+
+
 def matching_rom():
     candidates = []
     if os.environ.get("SONIC_CHAOS_ROM"):
@@ -191,14 +196,8 @@ class RomRegenerationTests(unittest.TestCase):
             files = ["layout.json", "rings.json", "objects.json", "assets.json", "manifest.json"]
             for act in EXPECTED:
                 for name in files:
-                    self.assertEqual((Path(tmp) / act / name).read_bytes(),
-                                     (LEVELS / act / name).read_bytes().replace(b"
-", b"
-"), f"{act}/{name}")
-            self.assertEqual((Path(tmp) / "object-census.json").read_bytes(),
-                             (LEVELS / "object-census.json").read_bytes().replace(b"
-", b"
-"))
+                    self.assertEqual(text(Path(tmp) / act / name), text(LEVELS / act / name), f"{act}/{name}")
+            self.assertEqual(text(Path(tmp) / "object-census.json"), text(LEVELS / "object-census.json"))
 
     def test_rom_hash_unchanged(self):
         self.assertEqual(hashlib.sha256(self.rom).hexdigest(), L.ROM_SHA256)
