@@ -57,6 +57,15 @@ Branch `research/thz2-thz3-object-deltas`. Study `docs/thz2-thz3-object-deltas.m
 - `$10` `$01` (THZ3): ring counter `$D29A` += `$10` with the ring-pickup carry; `$03` (THZ2 x2): power code 3, 900-update timer, X speed cap `$0600`.
 - `$28` aux1 `$19`/`$13` (THZ2): reversal period = 16 x aux1 updates (400 / 304).
 
+### Collision geometry audit: COMPLETE
+
+Branch `research/collision-geometry-audit`. Primary study: `docs/collision-geometry-audit.md`; data:
+`data/rom-cache/collision-geometry.json`; tool/tests: `tools/collision_geometry.py`, `tests/test_collision_geometry.py`.
+
+- Sonic's collision extents are 8x24 in every state except `$0F` (9x24); only the animation engine writes them and only `$6328`/`$5FA0` read them.
+- `$6328` and `$5FA0` are reproduced exactly (62,400 and 20,000 controlled cases, 0 mismatches). Terrain (`+18` foot, side probes -9/+9 at -12) never uses the extents.
+- Research fixtures that used 9x18 are TEST-ONLY discrepancies (type `$10` boundary table is the only one with wrong expectations); the POC uses sprite masks, with CRITICAL differences for rings, monitors and the goal-sign adapter.
+
 ### THZ1/THZ2 type `$18` goal sign and act-clear chain: COMPLETE
 
 Branch `research/object-18-act-clear`. Primary study: `docs/object-18-act-clear.md`; data:

@@ -17,6 +17,7 @@ import thz1_background_registration as background
 import mapped_object_registration as registration
 import object_50
 import object_18
+import collision_geometry
 
 
 def main(rom_path):
@@ -81,6 +82,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/object-18-act-clear.json").read_text(encoding="utf-8")
     )
     assert stored_object18 == json.loads(json.dumps(object_18.build(rom)))
+    # Collision-geometry audit: extents, helper models, grids and sweeps are regenerated (~30 s).
+    stored_geometry = json.loads(
+        (ROOT / "data/rom-cache/collision-geometry.json").read_text(encoding="utf-8")
+    )
+    assert stored_geometry == json.loads(json.dumps(collision_geometry.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
@@ -92,7 +98,7 @@ def main(rom_path):
     assert sum(r["decoded_kind"] is not None for r in records) == 14
     print(
         "ROM cache: 53 records, 14 decoded placements, 17 terrain interactions, "
-        "142 rings; type-$09/$10/$21, final closure, coverage, player-$11 graphics, background metadata, THZ3 type-$50 and type-$18 act-clear studies deterministic"
+        "142 rings; type-$09/$10/$21, final closure, coverage, player-$11 graphics, background metadata, THZ3 type-$50, type-$18 act-clear and collision-geometry studies deterministic"
     )
 
 

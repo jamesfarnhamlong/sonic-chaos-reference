@@ -1,0 +1,3968 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "subject": "player/object collision geometry audit",
+  "research_only": true,
+  "poc_untouched": true,
+  "evidence_classes": {
+    "DECODED DATA": "ROM tables/records decoded by a parser",
+    "BYTE-VERIFIED ASSEMBLY": "routine bytes compared literally and disassembled by hand",
+    "SOURCE-TRACED BEHAVIOR": "behavior read from the disassembly, not executed",
+    "CONTROLLED ROUTINE RESULT": "original routine executed on a Z80 core with explicit RAM",
+    "EMULATED ORIGINAL FRAME": "whole original game run in the approximate SMS harness",
+    "POC SOURCE (READ-ONLY)": "value read from the Windows POC project files; never executed, never modified",
+    "UNRESOLVED": "not established"
+  },
+  "machine_facing_label": "collision_geometry",
+  "extent_fields": {
+    "evidence": "BYTE-VERIFIED (opcode scan of the whole ROM)",
+    "absolute_reads_of_D52C_D52D": [
+      {
+        "field": "D52C",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x6023"
+      },
+      {
+        "field": "D52C",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x6052"
+      },
+      {
+        "field": "D52C",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x6358"
+      },
+      {
+        "field": "D52C",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x6376"
+      },
+      {
+        "field": "D52C",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x643B"
+      },
+      {
+        "field": "D52C",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x6458"
+      },
+      {
+        "field": "D52D",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x5FE0"
+      },
+      {
+        "field": "D52D",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x6397"
+      },
+      {
+        "field": "D52D",
+        "opcode": "0x3A",
+        "bank": "0x01",
+        "cpu": "0x6478"
+      }
+    ],
+    "absolute_writes_of_D52C_D52D": [],
+    "index_register_writes_of_extent_fields": [
+      {
+        "target": "IX+$2C",
+        "bank": "0x01",
+        "cpu": "0x6595",
+        "bytes": "dd 77 2c"
+      },
+      {
+        "target": "IX+$2C",
+        "bank": "0x00",
+        "cpu": "0x3266",
+        "bytes": "dd 36 2c"
+      },
+      {
+        "target": "IX+$2C",
+        "bank": "0x1E",
+        "cpu": "0xA4A4",
+        "bytes": "dd 36 2c"
+      },
+      {
+        "target": "IX+$2D",
+        "bank": "0x01",
+        "cpu": "0x659A",
+        "bytes": "dd 77 2d"
+      },
+      {
+        "target": "IX+$2D",
+        "bank": "0x1E",
+        "cpu": "0xA4A8",
+        "bytes": "dd 36 2d"
+      },
+      {
+        "target": "IY+$2C",
+        "bank": "0x00",
+        "cpu": "0x1B83",
+        "bytes": "fd 36 2c"
+      },
+      {
+        "target": "IY+$2C",
+        "bank": "0x00",
+        "cpu": "0x1BC6",
+        "bytes": "fd 36 2c"
+      }
+    ],
+    "conclusion": "$D52C/$D52D are read only by the overlap helpers ($6328 at $6359/$6377/$6398, the unused variant at $643B/$6459/$6478) and by the solid helper $5FA0 ($5FE1, $6024, $6053); they are written only by the animation engine ($6595/$659A) for the player slot. No player state setter, terrain routine or object routine writes them. The other IX/IY writes ($3266, $1B83, $1BC6, $7A4A4/$7A4A8) belong to other objects (HUD/effects and the bank-$1E small projectile)."
+  },
+  "overlap_6328": {
+    "evidence": "BYTE-VERIFIED ASSEMBLY + CONTROLLED ROUTINE RESULT (grid in `overlap_grid`)",
+    "address": "0x6328 (fixed bank 1, vector $033B); variants: $630B (+ damage request, vector $0434), $640B (no direct caller)",
+    "inputs": {
+      "object": "IX: +$11/+$12 X, +$14/+$15 Y (16-bit world anchors), +$2C X extent, +$2D Y extent, +$03 flags",
+      "player": "$D511 X, $D514 Y (16-bit anchors), $D52C X extent, $D52D Y extent, $D503 flags"
+    },
+    "gates": [
+      "+$03 bit 6 set: no test",
+      "+$03 bit 7 clear and $D503 bit 6 set: no test",
+      "(the sign, and the boss state 3, set +$03 bit 7 to ignore the player's bit-6 gate)"
+    ],
+    "rule": {
+      "dx": "dx = playerX - objectX as an UNSIGNED 16-bit subtraction. No borrow: need dx <= 255 and dx <= (playerExtX + objectExtX) & $FF. Borrow: need objectX - playerX in 1..255 (256 fails because NEG 0 = 0) and objectX - playerX <= (playerExtX + objectExtX) & $FF.",
+      "dy": "dy = playerY - objectY, same unsigned scheme. No borrow (player at/below the object anchor): dy <= 255 and dy <= playerExtY ($D52D) ONLY. Borrow (player above): objectY - playerY in 1..255 and <= objectExtY (+$2D) ONLY.",
+      "edges": "all comparisons are inclusive (<=). A player exactly at dx = 0 or dy = 0 takes the no-borrow branch.",
+      "interval_form": "equivalent to overlap of the closed intervals player X [px-ExtX, px+ExtX] x Y [py-ExtY, py] with object X [ox-oExtX, ox+oExtX] x Y [oy-oExtY, oy]; i.e. both boxes hang ABOVE their anchors, the player box is 2*ExtX+1 wide and ExtY+1 tall, the anchor is the bottom edge of both boxes",
+      "wrap": "sums are 8-bit: ExtX + objectExtX wraps modulo 256 (no real extent reaches that); any |d| >= 256 fails; positions compare as unsigned 16-bit, so a wrapped world coordinate near $FFFF/0 behaves as a huge distance"
+    },
+    "outputs": {
+      "+$20": "1 when $D503 bit 7 is clear and the test passed, else 0 (always cleared at entry)",
+      "+$21": "low nibble: bit0 player above, bit1 player below, bit2 player right (dx >= 0), bit3 player left; on success only the axis of minimum penetration survives (horizontal if hPen < vPen, vertical on ties) and the HIGH nibble is cleared; on failure the high nibble is kept and the low nibble is 0",
+      "$D520": "slot id ((IX - $D500) >> 6) + 1 when +$03 bit 7 is clear and the test passed",
+      "$D521": "low nibble kept; high nibble = (+$21 low nibble) XOR (12 if the surviving axis is horizontal else 3): the mirrored contact from the object's side",
+      "return_convention": "none: callers test (IX+$21) & $0F. Registers are not a convention (A holds the last byte written)."
+    },
+    "penetration": "hPen = (playerExtX + objectExtX) - |dx|; vPen = (playerExtY - dy) for dy >= 0 else (objectExtY - |dy|). Bit choice: horizontal iff hPen < vPen.",
+    "grid": {
+      "evidence": "CONTROLLED ROUTINE RESULT (original $6328 vs reference model)",
+      "cases_compared": 62400,
+      "random_cases": 30000,
+      "structured_sweep_cases": 32400,
+      "mismatches": 0,
+      "first_mismatches": [],
+      "contact_cases": 11107,
+      "no_contact_cases": 51293,
+      "outputs_compared": [
+        "+$20",
+        "+$21 (all 8 bits)",
+        "$D520",
+        "$D521"
+      ]
+    }
+  },
+  "solid_5FA0": {
+    "evidence": "BYTE-VERIFIED ASSEMBLY + CONTROLLED ROUTINE RESULT (grid in `solid_grid`)",
+    "address": "0x5FA0 (fixed bank 1, vector $034D): CALL $6328, then a 16-entry jump table at $5FB9 indexed by the +$21 low nibble",
+    "dispatch": {
+      "nibble 1 (player above)": "$5FF1",
+      "nibble 2 (player below)": "$5FDA",
+      "nibble 4 (player right)": "$6038",
+      "nibble 8 (player left)": "$6009",
+      "0 / combined bits": "RET (the overlap helper leaves exactly one bit, so combinations do not occur)"
+    },
+    "actions": {
+      "player_above": "unless $D523 bit 0 is set: playerY = objectY - objectExtY (+$2D): the player's anchor is placed ON the object's top edge",
+      "player_below": "unless $D523 bit 1 is set: playerY = objectY + playerExtY ($D52D)",
+      "player_right": "unless $D523 bit 2 is set and only while playerX <= cameraX + $E0: playerX = objectX + objectExtX + playerExtX",
+      "player_left": "unless $D523 bit 3 is set and only while playerX > cameraX + $20: playerX = objectX - (objectExtX + playerExtX)"
+    },
+    "consumes": {
+      "player_extents": "$D52C in both side pushes, $D52D only in the 'below' push (and, through $6328, in the dy >= 0 test)",
+      "object_extents": "+$2C in both side pushes, +$2D in the 'above' push (and in the dy < 0 test)",
+      "camera": "$D174 (side pushes are suppressed near the screen edges)",
+      "flags": "$D523 (combined player contact flags: a push is skipped when the player is already blocked on that side)"
+    },
+    "tie_behavior": "inherited from $6328: horizontal wins only when hPen < vPen; an exact tie selects the vertical axis",
+    "velocity_and_state": "NONE. $5FA0 writes no velocity, no player state, no floor flag and does not set the player's grounded bit; callers (type $10 at $A177) handle bounces, rewards and state themselves. Standing on a solid object therefore depends on the caller and on the next terrain update.",
+    "also_from_6328": "+$20, +$21, $D520 and $D521 (see overlap_spec)",
+    "grid": {
+      "evidence": "CONTROLLED ROUTINE RESULT (original $5FA0 vs reference model)",
+      "cases_compared": 20000,
+      "mismatches": 0,
+      "first_mismatches": [],
+      "classification_counts": {
+        "no_contact": 18083,
+        "player_above": 490,
+        "player_below": 405,
+        "player_left": 508,
+        "player_right": 514,
+        "position_not_pushed": 1272,
+        "position_pushed": 645
+      },
+      "also_verified_per_case": "player X/Y velocity ($D516/$D518), player current/requested state ($D501/$D502) and floor flags ($D522) are never modified"
+    }
+  },
+  "terrain_constants": {
+    "evidence": "BYTE-VERIFIED ASSEMBLY ($3686 side-sensor initializer) + opcode scan",
+    "side_probe_offsets": {
+      "left_x": -9,
+      "right_x": 9,
+      "y_both": -12,
+      "bytes_at_3686": "dd 7e 00 3d 20 1d 01 f7 ff 11 f4 ff ed 43 98 d4 ed 53 9a d4 01 09 00 11 f4 ff ed 43 9c d4 ed 53 9e d4 c9 01 f7 ff 11 f4 ff ed 43 98 d4 ed 53 9a d4 01 09 00 11 f4 ff ed 43 9c d4 ed 53 9e d4",
+      "rule": "$D498/$D49A (left X/Y) = ($FFF7, $FFF4), $D49C/$D49E (right X/Y) = ($0009, $FFF4); the ground/side lookup adds +18 to the probe Y ($7666 caller), so the side probes sample at anchorY + 6 and anchorX -9 / +9"
+    },
+    "floor_anchor_correction": "the terrain lookup used for the floor adds +18 to the anchor Y (docs/ram.md $D35A); this constant is independent of $D52D",
+    "state_dependence": "no state-dependent side-probe values exist: the only writes of $D498..$D49E are the initializer ($3686, for both player types) and the Y-offset reset at $3F50/$3F54 (value $FFF4); $7212/$716D only read them",
+    "probe_field_references": [
+      {
+        "field": "D498",
+        "opcode_byte_before": "0x43",
+        "bank": "0x00",
+        "cpu": "0x3693"
+      },
+      {
+        "field": "D498",
+        "opcode_byte_before": "0x43",
+        "bank": "0x00",
+        "cpu": "0x36B0"
+      },
+      {
+        "field": "D498",
+        "opcode_byte_before": "0x4B",
+        "bank": "0x01",
+        "cpu": "0x7211"
+      },
+      {
+        "field": "D49A",
+        "opcode_byte_before": "0x53",
+        "bank": "0x00",
+        "cpu": "0x3697"
+      },
+      {
+        "field": "D49A",
+        "opcode_byte_before": "0x53",
+        "bank": "0x00",
+        "cpu": "0x36B4"
+      },
+      {
+        "field": "D49A",
+        "opcode_byte_before": "0x53",
+        "bank": "0x00",
+        "cpu": "0x3F51"
+      },
+      {
+        "field": "D49A",
+        "opcode_byte_before": "0x5B",
+        "bank": "0x01",
+        "cpu": "0x7215"
+      },
+      {
+        "field": "D49A",
+        "opcode_byte_before": "0x60",
+        "bank": "0x19",
+        "cpu": "0xA096"
+      },
+      {
+        "field": "D49C",
+        "opcode_byte_before": "0x43",
+        "bank": "0x00",
+        "cpu": "0x36A1"
+      },
+      {
+        "field": "D49C",
+        "opcode_byte_before": "0x43",
+        "bank": "0x00",
+        "cpu": "0x36BE"
+      },
+      {
+        "field": "D49C",
+        "opcode_byte_before": "0x4B",
+        "bank": "0x01",
+        "cpu": "0x716C"
+      },
+      {
+        "field": "D49E",
+        "opcode_byte_before": "0x53",
+        "bank": "0x00",
+        "cpu": "0x36A5"
+      },
+      {
+        "field": "D49E",
+        "opcode_byte_before": "0x53",
+        "bank": "0x00",
+        "cpu": "0x36C2"
+      },
+      {
+        "field": "D49E",
+        "opcode_byte_before": "0x53",
+        "bank": "0x00",
+        "cpu": "0x3F55"
+      },
+      {
+        "field": "D49E",
+        "opcode_byte_before": "0x5B",
+        "bank": "0x01",
+        "cpu": "0x7170"
+      }
+    ],
+    "terrain_never_reads_extents": "see extent_fields.absolute_reads_of_D52C_D52D: no terrain routine reads $D52C/$D52D",
+    "layout_ring_probe": {
+      "evidence": "SOURCE-TRACED (asm/recovered/layout_ring_handler.asm $753E)",
+      "rule": "terrain-ring pickup samples one terrain cell at player X + 0 and Y - 26 (Y - 16 when the animation timer +$07 bit 0 is set) through $7725; it does not use $D52C/$D52D or any object box"
+    },
+    "placed_rings_type_09": "type $09 uses the $617E box: |dx| < 12 and |dy| < 12 between the two anchors (strict), no extents"
+  },
+  "assumption_audit": [
+    {
+      "where": "tools/thz1_object_10.py:200-201 and overlap_contact() defaults",
+      "repo": "research",
+      "assumed": "player extents (9,18)",
+      "rom": "(8,24)",
+      "class": "TEST-ONLY",
+      "effect": "cached type-$10 boundary fixtures: right edge 19 -> really 18; bottom edge 18 -> really 24 (top edge 24 unchanged)",
+      "evidence": "CONTROLLED (collision_geometry.solid_grid, callback_sweeps '0x10')"
+    },
+    {
+      "where": "data/rom-cache/thz1/object-10.json overlap_boundaries (horizontal 18/19/20, bottom 17/18/19)",
+      "repo": "research",
+      "assumed": "derived from (9,18)",
+      "rom": "contact at right <= 18 and bottom <= 24",
+      "class": "TEST-ONLY",
+      "effect": "the recorded 'no contact at 19 right' and 'no contact at 19 bottom' are wrong for Sonic",
+      "evidence": "same"
+    },
+    {
+      "where": "docs/object-10.md (overlap/solid description)",
+      "repo": "research",
+      "assumed": "strict-overlap boundary values of the (9,18) fixtures",
+      "rom": "see above",
+      "class": "TEST-ONLY",
+      "effect": "documentation numbers only",
+      "evidence": "same"
+    },
+    {
+      "where": "tools/thz1_object_21.py:189-190",
+      "repo": "research",
+      "assumed": "(9,18)",
+      "rom": "(8,24)",
+      "class": "TEST-ONLY",
+      "effect": "fixtures sit at dx = 0 and |dy| <= 4 (inside both boxes); results unchanged. Box edges were not exercised.",
+      "evidence": "CONTROLLED (callback_sweeps '0x21')"
+    },
+    {
+      "where": "tools/thz1_object_27.py:255-256",
+      "repo": "research",
+      "assumed": "(9,18) for $27 contact",
+      "rom": "(8,24)",
+      "class": "TEST-ONLY",
+      "effect": "fixtures at dx = dy = 0; results unchanged. Proximity/removal fixtures use no extents.",
+      "evidence": "CONTROLLED (callback_sweeps '0x27')"
+    },
+    {
+      "where": "tools/object_50.py:652 and contact matrix",
+      "repo": "research",
+      "assumed": "(9,18) 'fixture values'",
+      "rom": "(8,24)",
+      "class": "TEST-ONLY",
+      "effect": "all matrix cases (dx +-26, dy +10 / -40) are inside both boxes; results unchanged; the documented geometry sentence is wrong",
+      "evidence": "derived: boss extents (20,48)"
+    },
+    {
+      "where": "tools/player_state_11.py:23,49",
+      "repo": "research",
+      "assumed": "(9,18)",
+      "rom": "(8,24)",
+      "class": "TEST-ONLY",
+      "effect": "player-state-$11 fixtures use the extents only as inputs to the shared helpers",
+      "evidence": "CONTROLLED"
+    },
+    {
+      "where": "tools/thz2_thz3_object_deltas.py:94-95",
+      "repo": "research",
+      "assumed": "(9,18)",
+      "rom": "(8,24)",
+      "class": "TEST-ONLY",
+      "effect": "delta fixtures; same reasoning",
+      "evidence": "CONTROLLED"
+    },
+    {
+      "where": "docs/object-50.md section 8 ('contact extents X 20, Y 48; player extents X 9, Y 18')",
+      "repo": "research",
+      "assumed": "(9,18)",
+      "rom": "(8,24)",
+      "class": "TEST-ONLY",
+      "effect": "documentation",
+      "evidence": "CONTROLLED"
+    },
+    {
+      "where": "SCR_chaos_adapter.gml SCR_chaos_object_spring_contact: abs(player.x - trigger_x) <= 12",
+      "repo": "poc",
+      "assumed": "inclusive 12",
+      "rom": "|dx| < 12 (strict), i.e. <= 11 ($82AF via $61A5, BC = 12)",
+      "class": "EDGE",
+      "effect": "a player exactly 12 px from the concealed spring triggers in the POC but not in the original",
+      "evidence": "CONTROLLED (spring_26_sweep)"
+    },
+    {
+      "where": "SCR_chaos_object_spring_contact: no floor-contact test",
+      "repo": "poc",
+      "assumed": "trigger in the Y window regardless of floor contact",
+      "rom": "requires $D522 bit 1 (floor), not moving up, requested state != $21",
+      "class": "EDGE",
+      "effect": "an airborne player crossing the 6-pixel window (anchor 28..33 above the spring anchor) launches the POC spring but not the original",
+      "evidence": "CONTROLLED (spring_26_sweep gates)"
+    },
+    {
+      "where": "SCR_chaos_object_spring_contact: foot = chaosCore.yu/256 + 18 in [layoutY-3, layoutY+2]",
+      "repo": "poc",
+      "assumed": "6-pixel window expressed in foot coordinates",
+      "rom": "playerY anchor in [objectY-33, objectY-28] where objectY is the runtime object Y",
+      "class": "NOT A BUG (window width and +18 anchor match; offset from layoutY not re-derived here)",
+      "effect": "window width 6 matches",
+      "evidence": "CONTROLLED"
+    },
+    {
+      "where": "SCR_chaos_spike_step: player bbox vs spike x +-16 and y range",
+      "repo": "poc",
+      "assumed": "GameMaker mask bbox (11 x 31 px, x -4..+6, y -12..+18 in ROM anchor coordinates) against +-16 / visible height",
+      "rom": "overlap with spike extents (16,24): |dx| <= 24, -24 <= dy <= 24 (relative to the moving spike anchor), plus cooldown and downward-velocity gates",
+      "class": "EDGE",
+      "effect": "POC horizontal window -22..+20 vs ROM -24..+24; vertical window differs by the mask placement",
+      "evidence": "POC SOURCE (READ-ONLY) + CONTROLLED"
+    },
+    {
+      "where": "SCR_chaos_platform_overlap: bbox_right >= x-16 and bbox_left < x+16",
+      "repo": "poc",
+      "assumed": "mask width 11, platform +-16",
+      "rom": "type $28 overlap extents (16,16): |dx| <= 24 for Sonic",
+      "class": "EDGE",
+      "effect": "the POC platform support interval is narrower than the original landing interval (POC -22..+15 vs ROM -24..+24 in anchor coordinates)",
+      "evidence": "POC SOURCE (READ-ONLY) + CONTROLLED"
+    },
+    {
+      "where": "OBJ_ring Step_0: place_meeting(x, y, OBJ_player)",
+      "repo": "poc",
+      "assumed": "mask overlap (11 x 31 player mask vs ring sprite mask)",
+      "rom": "placed rings: |dx| < 12 and |dy| < 12 between anchors ($617E); layout rings: terrain probe at (0, -26/-16)",
+      "class": "CRITICAL",
+      "effect": "ring pickup reach differs in every direction; the POC reach depends on sprite masks, the ROM reach is a 23 x 23 anchor box",
+      "evidence": "POC SOURCE (READ-ONLY) + CONTROLLED (proximity_spec)"
+    },
+    {
+      "where": "SCR_monitor_collisions / OBJ_monitor_* Collision_OBJ_player (solid = true, destroy on jump/spin)",
+      "repo": "poc",
+      "assumed": "GameMaker solid collision with sprite masks; destroy on any overlap while jumping/spinning",
+      "rom": "type $10: solid helper $5FA0 (extents (8+10, 24) box) then attack/velocity gates: top hit needs downward Y speed and requested state not in {$0F,$10,$15,$1A}; bottom hit launches the monitor; side hit needs downward speed",
+      "class": "CRITICAL",
+      "effect": "which side/velocity breaks a monitor, and the solid push positions, come from different rules",
+      "evidence": "SOURCE-TRACED ($A16C) + CONTROLLED (solid_grid)"
+    },
+    {
+      "where": "player mask SPR_player_mask (bbox x 16..26, y 3..33, origin (20,20)) and chaosAnchorOffset",
+      "repo": "poc",
+      "assumed": "one fixed 11 x 31 mask for every player state",
+      "rom": "ROM extents are (8,24) in every Sonic state (state $0F: 9,24), equivalent to a 17-wide box hanging 24 above the anchor",
+      "class": "NOT A BUG (intentional adapter)",
+      "effect": "a constant mask is consistent with the constant ROM extents; only its numeric size and offset differ",
+      "evidence": "POC SOURCE (READ-ONLY) + CONTROLLED"
+    },
+    {
+      "where": "POC terrain probes (SCR_chaos_core SCR_cc_lookup +18, side sensors)",
+      "repo": "poc",
+      "assumed": "anchor + 18 foot probe; +-9 side probes",
+      "rom": "$D35A +18 and side probes (-9,-12)/(+9,-12) (+18 added): constants independent of extents",
+      "class": "NOT A BUG",
+      "effect": "none found",
+      "evidence": "BYTE-VERIFIED ($3686)"
+    },
+    {
+      "where": "OBJ_chaos_object_27 (parent OBJ_badniks; Step_0 only moves/animates; contact comes from the generic badnik collision and SCR_chaos_sample_damage)",
+      "repo": "poc",
+      "assumed": "GameMaker mask collision with SPR_chaos_object_27",
+      "rom": "type $27: overlap $6328 with extents (9,14) (x +-17, y -14..+24 for Sonic), then attack check $5F3D ($D503 bit 1 or $D532 == 6 converts the object, otherwise no damage request is issued by the object)",
+      "class": "EDGE",
+      "effect": "contact reach and the damage/attack decision use different rules; the ROM $27 callback itself never writes the damage request (research: docs/object-27.md)",
+      "evidence": "POC SOURCE (READ-ONLY) + CONTROLLED (callback_sweeps '0x27')"
+    },
+    {
+      "where": "type $21 enemy",
+      "repo": "poc",
+      "assumed": "not implemented in the POC (no OBJ_chaos_object_21)",
+      "rom": "$B2AF: overlap (11,26): x +-19, y -26..+24; top contact bounces ($5F17), attack/power-up converts, else damage",
+      "class": "NOT A BUG",
+      "effect": "nothing to compare yet",
+      "evidence": "CONTROLLED (callback_sweeps '0x21')"
+    },
+    {
+      "where": "POC goal sign geometry (x >= signX + 10, y > signY - 108)",
+      "repo": "poc",
+      "assumed": "adapter constants",
+      "rom": "see docs/object-18-act-clear.md",
+      "class": "CRITICAL",
+      "effect": "trigger region differs (one-sided, open-ended, no movement gate)",
+      "evidence": "CONTROLLED (previous task)"
+    }
+  ],
+  "poc_player_mask": {
+    "evidence": "POC SOURCE (READ-ONLY)",
+    "poc_commit": "a3b0382 (SonicChaos_Act1_POC_17_4)",
+    "sprite": {
+      "name": "SPR_player_mask",
+      "bbox_left": 16,
+      "bbox_right": 26,
+      "bbox_top": 3,
+      "bbox_bottom": 33,
+      "origin": [
+        20,
+        20
+      ],
+      "used_by": "OBJ_player_char, OBJ_player_char_spin and the other player objects (one constant mask)"
+    },
+    "chaosAnchorOffset": 5,
+    "formula": "chaosAnchorOffset = 18 - (bbox_bottom - yorigin); ROM anchor Y = POC y - chaosAnchorOffset; foot = ROM anchor + 18 = bbox_bottom",
+    "mask_relative_to_poc_position": {
+      "x": [
+        -4,
+        6
+      ],
+      "y": [
+        -17,
+        13
+      ]
+    },
+    "mask_relative_to_rom_anchor": {
+      "x": [
+        -4,
+        6
+      ],
+      "y": [
+        -12,
+        18
+      ]
+    },
+    "rom_overlap_box_relative_to_rom_anchor_sonic": {
+      "x": [
+        -8,
+        8
+      ],
+      "y": [
+        -24,
+        0
+      ]
+    },
+    "note": "The ROM overlap helpers treat the player as the closed box x [-8,+8], y [-24,0] around the anchor (object boxes hang above the object anchor in the same way); the POC mask is 11 px wide and reaches from 12 px above to 18 px below the ROM anchor. The two are not the same region, so a mask overlap is not equivalent to the ROM test even where the dimensions look similar."
+  },
+  "unresolved": [
+    "player states above $33 and player types other than 1/2 were not enumerated",
+    "frames chosen by callbacks (not by the state script) are covered only through the emulated random-play sample",
+    "the variant overlap helper at $640B has no direct caller; whether a computed jump can reach it was not proven",
+    "type $28 and $26 full contact-side behaviour (riding, carrying, launch) was not re-derived here; only their contact geometry",
+    "how the player's D523 combined contact flags are produced was not re-derived (the solid helper consumes them)",
+    "POC runtime mask behaviour (GameMaker bbox rounding, sprite subimage masks) was not executed",
+    "the layout-ring probe parity rule uses the player's animation timer +$07 bit 0; its purpose is not established"
+  ],
+  "player_extents": {
+    "evidence": "CONTROLLED ROUTINE RESULT (original animation engine $64FA)",
+    "method": "for every player state 0..$33 the state script is run through the real engine with the player slot ($D500); $D52C/$D52D are read after each record load. Run-frame selectors see speeds 0, $0100, $0300, $0600 and -$0300.",
+    "sonic_type_1": [
+      {
+        "state": 0,
+        "frames": [
+          11
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          1
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 1,
+        "frames": [
+          11,
+          12,
+          13,
+          14
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0395",
+          "0x03E0"
+        ]
+      },
+      {
+        "state": 2,
+        "frames": [
+          12,
+          13,
+          14
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E0"
+        ]
+      },
+      {
+        "state": 3,
+        "frames": [
+          19
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03BC"
+        ]
+      },
+      {
+        "state": 4,
+        "frames": [
+          20
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B9"
+        ]
+      },
+      {
+        "state": 5,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E9"
+        ]
+      },
+      {
+        "state": 6,
+        "frames": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03D4"
+        ]
+      },
+      {
+        "state": 7,
+        "frames": [
+          21,
+          22
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E3"
+        ]
+      },
+      {
+        "state": 8,
+        "frames": [
+          21,
+          22
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E6"
+        ]
+      },
+      {
+        "state": 9,
+        "frames": [
+          38,
+          39,
+          40,
+          41
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03C5"
+        ]
+      },
+      {
+        "state": 10,
+        "frames": [
+          38,
+          39,
+          40,
+          41
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B3"
+        ]
+      },
+      {
+        "state": 11,
+        "frames": [
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x039E"
+        ]
+      },
+      {
+        "state": 12,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03CB"
+        ]
+      },
+      {
+        "state": 13,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03D1"
+        ]
+      },
+      {
+        "state": 14,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03AD"
+        ]
+      },
+      {
+        "state": 15,
+        "frames": [
+          34,
+          35,
+          36
+        ],
+        "extents_x_y": [
+          [
+            9,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03DD"
+        ]
+      },
+      {
+        "state": 16,
+        "frames": [
+          38,
+          39,
+          40,
+          41
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03A4"
+        ]
+      },
+      {
+        "state": 17,
+        "frames": [
+          56,
+          57,
+          58
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03C2"
+        ]
+      },
+      {
+        "state": 18,
+        "frames": [
+          11
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B0"
+        ]
+      },
+      {
+        "state": 19,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03CE"
+        ]
+      },
+      {
+        "state": 20,
+        "frames": [
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03F8"
+        ]
+      },
+      {
+        "state": 21,
+        "frames": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x043D"
+        ]
+      },
+      {
+        "state": 22,
+        "frames": [
+          95,
+          96
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0449",
+          "0x044C"
+        ]
+      },
+      {
+        "state": 23,
+        "frames": [
+          95,
+          96
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x044C"
+        ]
+      },
+      {
+        "state": 24,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 25,
+        "frames": [
+          25,
+          26,
+          27
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0392"
+        ]
+      },
+      {
+        "state": 26,
+        "frames": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0440"
+        ]
+      },
+      {
+        "state": 27,
+        "frames": [
+          38,
+          39,
+          40,
+          41
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03C8"
+        ]
+      },
+      {
+        "state": 28,
+        "frames": [
+          28,
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B6"
+        ]
+      },
+      {
+        "state": 29,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03DA"
+        ]
+      },
+      {
+        "state": 30,
+        "frames": [
+          23
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03AA"
+        ]
+      },
+      {
+        "state": 31,
+        "frames": [
+          24
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03A7"
+        ]
+      },
+      {
+        "state": 32,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x83A6"
+        ]
+      },
+      {
+        "state": 33,
+        "frames": [
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x916B"
+        ]
+      },
+      {
+        "state": 34,
+        "frames": [
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x94C1"
+        ]
+      },
+      {
+        "state": 35,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 36,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 37,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          54
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x836F",
+          "0x03AD"
+        ]
+      },
+      {
+        "state": 38,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 39,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 40,
+        "frames": [
+          55
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0443"
+        ]
+      },
+      {
+        "state": 41,
+        "frames": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0338"
+        ]
+      },
+      {
+        "state": 42,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 43,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 44,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 45,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 46,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 47,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 48,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x032F"
+        ]
+      },
+      {
+        "state": 49,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x032F"
+        ]
+      },
+      {
+        "state": 50,
+        "frames": [
+          95,
+          96,
+          97
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x807C"
+        ]
+      },
+      {
+        "state": 51,
+        "frames": [
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0338"
+        ]
+      }
+    ],
+    "type_2": [
+      {
+        "state": 0,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          1
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 1,
+        "frames": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0395",
+          "0x03E0"
+        ]
+      },
+      {
+        "state": 2,
+        "frames": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E0"
+        ]
+      },
+      {
+        "state": 3,
+        "frames": [
+          13
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03BC"
+        ]
+      },
+      {
+        "state": 4,
+        "frames": [
+          17
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B9"
+        ]
+      },
+      {
+        "state": 5,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E9"
+        ]
+      },
+      {
+        "state": 6,
+        "frames": [
+          7,
+          8,
+          9
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03D4"
+        ]
+      },
+      {
+        "state": 7,
+        "frames": [
+          21,
+          22
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E3"
+        ]
+      },
+      {
+        "state": 8,
+        "frames": [
+          21,
+          22
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03E6"
+        ]
+      },
+      {
+        "state": 9,
+        "frames": [
+          36,
+          37,
+          38
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03C5"
+        ]
+      },
+      {
+        "state": 10,
+        "frames": [
+          36,
+          37,
+          38
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B3"
+        ]
+      },
+      {
+        "state": 11,
+        "frames": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x039E"
+        ]
+      },
+      {
+        "state": 12,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03CB"
+        ]
+      },
+      {
+        "state": 13,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03D1"
+        ]
+      },
+      {
+        "state": 14,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03AD"
+        ]
+      },
+      {
+        "state": 15,
+        "frames": [
+          33,
+          34,
+          35
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03DD"
+        ]
+      },
+      {
+        "state": 16,
+        "frames": [
+          36,
+          37,
+          38
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03A4"
+        ]
+      },
+      {
+        "state": 17,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          18
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 18,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B0"
+        ]
+      },
+      {
+        "state": 19,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03CE"
+        ]
+      },
+      {
+        "state": 20,
+        "frames": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03F8"
+        ]
+      },
+      {
+        "state": 21,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          22
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 22,
+        "frames": [
+          86,
+          87
+        ],
+        "extents_x_y": [
+          [
+            12,
+            32
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0449",
+          "0x044C"
+        ]
+      },
+      {
+        "state": 23,
+        "frames": [
+          86,
+          87
+        ],
+        "extents_x_y": [
+          [
+            12,
+            32
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x044C"
+        ]
+      },
+      {
+        "state": 24,
+        "frames": [
+          18,
+          19,
+          20
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03EC"
+        ]
+      },
+      {
+        "state": 25,
+        "frames": [
+          25,
+          26
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0392"
+        ]
+      },
+      {
+        "state": 26,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          27
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 27,
+        "frames": [
+          36,
+          37,
+          38
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03C8"
+        ]
+      },
+      {
+        "state": 28,
+        "frames": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03B6"
+        ]
+      },
+      {
+        "state": 29,
+        "frames": [
+          1,
+          2
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03DA"
+        ]
+      },
+      {
+        "state": 30,
+        "frames": [
+          23
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03AA"
+        ]
+      },
+      {
+        "state": 31,
+        "frames": [
+          24
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x03A7"
+        ]
+      },
+      {
+        "state": 32,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x83A6"
+        ]
+      },
+      {
+        "state": 33,
+        "frames": [
+          36,
+          37,
+          38
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x916B"
+        ]
+      },
+      {
+        "state": 34,
+        "frames": [
+          36,
+          37,
+          38
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x94C1"
+        ]
+      },
+      {
+        "state": 35,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          36
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 36,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          37
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 37,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          51
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x836F",
+          "0x03AD"
+        ]
+      },
+      {
+        "state": 38,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          39
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 39,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          40
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 40,
+        "frames": [
+          24
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0443"
+        ]
+      },
+      {
+        "state": 41,
+        "frames": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x0338"
+        ]
+      },
+      {
+        "state": 42,
+        "frames": [
+          86,
+          87,
+          88
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ],
+          [
+            12,
+            32
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x8A35"
+        ]
+      },
+      {
+        "state": 43,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          44
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 44,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          45
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 45,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          46
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 46,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          47
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 47,
+        "frames": [
+          10
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [
+          48
+        ],
+        "callbacks": [
+          "0x0395"
+        ]
+      },
+      {
+        "state": 48,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x032F"
+        ]
+      },
+      {
+        "state": 49,
+        "frames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x8D82"
+        ]
+      },
+      {
+        "state": 50,
+        "frames": [
+          7,
+          8,
+          9
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x032F"
+        ]
+      },
+      {
+        "state": 51,
+        "frames": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "extents_x_y": [
+          [
+            8,
+            24
+          ]
+        ],
+        "script_requests_state": [],
+        "callbacks": [
+          "0x8E06"
+        ]
+      }
+    ],
+    "sonic_summary": {
+      "distinct_extent_pairs": [
+        [
+          8,
+          24
+        ],
+        [
+          9,
+          24
+        ]
+      ],
+      "states_with_8_24_only": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "states_with_other_extents": {
+        "15": [
+          [
+            9,
+            24
+          ]
+        ]
+      }
+    }
+  },
+  "emulated_player_extents": {
+    "evidence": "EMULATED ORIGINAL FRAME",
+    "frames": 8000,
+    "seed": 1,
+    "method": "THZ1 from the start, pseudo-random input every 20 frames; ($D501, $D52C, $D52D) sampled after every frame",
+    "observed_by_current_state": {
+      "0x00": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          24
+        ]
+      ],
+      "0x01": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x03": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x04": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x05": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x06": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x07": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x08": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x09": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x0A": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x0B": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x0E": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x0F": [
+        [
+          9,
+          24
+        ]
+      ],
+      "0x10": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x15": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x1A": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x1B": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x1E": [
+        [
+          8,
+          24
+        ]
+      ],
+      "0x1F": [
+        [
+          8,
+          24
+        ]
+      ]
+    }
+  },
+  "helper_matrix": {
+    "evidence": "SOURCE-TRACED BEHAVIOR (recursive descent over the real state-script callbacks; the animation engine is executed to obtain them)",
+    "helper_names": {
+      "0x0323": "attack_check_5F3D",
+      "0x0329": "spawn_child_5EE1",
+      "0x032C": "spawn_child_pool",
+      "0x0338": "move_60FB",
+      "0x033B": "overlap_6328",
+      "0x033E": "destroy_convert_5F54",
+      "0x0347": "ring_counter_3138",
+      "0x034D": "solid_5FA0",
+      "0x0350": "accelerate_5F84",
+      "0x0353": "camera_left_lock",
+      "0x0359": "camera_pan",
+      "0x035F": "vertical_spring_setter_5F17",
+      "0x0365": "set_position_5F27",
+      "0x037D": "player_type_fix_613C",
+      "0x0380": "ring_pickup_box_617E",
+      "0x0383": "proximity_x_61A5",
+      "0x0386": "proximity_y_61B1",
+      "0x0389": "proximity_61BB",
+      "0x03F2": "reward_3104",
+      "0x03F5": "level_complete_4892",
+      "0x0434": "overlap_damage_630B"
+    },
+    "types": {
+      "0x09": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0x9C10",
+          "0x9C22",
+          "0x9C3D"
+        ],
+        "reachable_instructions": 30,
+        "helpers": {
+          "ring_counter_3138": 2,
+          "ring_pickup_box_617E": 2
+        },
+        "player_and_related_ram": {},
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              8,
+              16
+            ]
+          ],
+          "2": [
+            [
+              4,
+              16
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "0x0A": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0x9C86"
+        ],
+        "reachable_instructions": 14,
+        "helpers": {},
+        "player_and_related_ram": {
+          "0xD511": "R",
+          "0xD514": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              4,
+              16
+            ]
+          ],
+          "2": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "0x0F": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0xA057",
+          "0xA060",
+          "0xA0C6"
+        ],
+        "reachable_instructions": 53,
+        "helpers": {
+          "move_60FB": 1
+        },
+        "player_and_related_ram": {
+          "0xD511": "R",
+          "0xD514": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              16
+            ],
+            [
+              8,
+              16
+            ]
+          ],
+          "2": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              16
+            ],
+            [
+              8,
+              16
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              16
+            ],
+            [
+              8,
+              16
+            ]
+          ],
+          "4": [
+            [
+              4,
+              16
+            ],
+            [
+              8,
+              16
+            ]
+          ]
+        }
+      },
+      "0x10": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0xA149",
+          "0xA161",
+          "0xA16C",
+          "0xA20D"
+        ],
+        "reachable_instructions": 96,
+        "helpers": {
+          "move_60FB": 1,
+          "destroy_convert_5F54": 2,
+          "solid_5FA0": 1
+        },
+        "player_and_related_ram": {
+          "0xD3A3": "RW",
+          "0xD3B3": "W",
+          "0xD500": "R",
+          "0xD501": "R",
+          "0xD502": "R",
+          "0xD503": "R",
+          "0xD518": "RW"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              0,
+              0
+            ]
+          ],
+          "2": [
+            [
+              10,
+              24
+            ]
+          ],
+          "3": [
+            [
+              10,
+              24
+            ]
+          ]
+        }
+      },
+      "0x12": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0xA265",
+          "0xA26E"
+        ],
+        "reachable_instructions": 17,
+        "helpers": {},
+        "player_and_related_ram": {},
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "0x18": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0xA867",
+          "0xA873",
+          "0xA87D",
+          "0xA88E",
+          "0xA8C8",
+          "0xA8CE"
+        ],
+        "reachable_instructions": 156,
+        "helpers": {
+          "move_60FB": 1,
+          "overlap_6328": 1,
+          "accelerate_5F84": 1,
+          "camera_left_lock": 1,
+          "camera_pan": 1,
+          "reward_3104": 1
+        },
+        "player_and_related_ram": {
+          "0xD29A": "RW",
+          "0xD3B3": "W",
+          "0xD500": "R",
+          "0xD502": "RW",
+          "0xD516": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              0,
+              0
+            ]
+          ],
+          "2": [
+            [
+              0,
+              0
+            ],
+            [
+              12,
+              42
+            ]
+          ],
+          "3": [
+            [
+              12,
+              42
+            ]
+          ],
+          "4": [
+            [
+              8,
+              48
+            ],
+            [
+              12,
+              42
+            ],
+            [
+              13,
+              42
+            ]
+          ],
+          "5": [
+            [
+              12,
+              42
+            ]
+          ],
+          "6": [
+            [
+              8,
+              48
+            ],
+            [
+              12,
+              42
+            ],
+            [
+              13,
+              42
+            ]
+          ]
+        }
+      },
+      "0x19": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0xAA87",
+          "0xAAE4",
+          "0xAB0A",
+          "0xAB48",
+          "0xAB8C"
+        ],
+        "reachable_instructions": 108,
+        "helpers": {
+          "player_type_fix_613C": 1,
+          "reward_3104": 1,
+          "level_complete_4892": 1
+        },
+        "player_and_related_ram": {
+          "0xD501": "R",
+          "0xD522": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              0,
+              0
+            ]
+          ],
+          "2": [
+            [
+              0,
+              0
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ]
+          ],
+          "4": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "0x1B": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0xAC7D",
+          "0xAC8B",
+          "0xACC3",
+          "0xACCC",
+          "0xACFC"
+        ],
+        "reachable_instructions": 98,
+        "helpers": {
+          "overlap_6328": 1
+        },
+        "player_and_related_ram": {
+          "0xD3B0": "W",
+          "0xD502": "W",
+          "0xD503": "R",
+          "0xD511": "W",
+          "0xD516": "W",
+          "0xD518": "W",
+          "0xD519": "R",
+          "0xD522": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              16,
+              24
+            ]
+          ],
+          "1": [
+            [
+              16,
+              24
+            ]
+          ],
+          "2": [
+            [
+              16,
+              24
+            ]
+          ],
+          "3": [
+            [
+              16,
+              24
+            ]
+          ],
+          "4": [
+            [
+              16,
+              24
+            ]
+          ]
+        }
+      },
+      "0x21": {
+        "bank": "0x0C",
+        "callbacks": [
+          "0xB210",
+          "0xB264",
+          "0xB268",
+          "0xB2F0"
+        ],
+        "reachable_instructions": 91,
+        "helpers": {
+          "move_60FB": 2,
+          "overlap_6328": 1,
+          "destroy_convert_5F54": 2,
+          "vertical_spring_setter_5F17": 1
+        },
+        "player_and_related_ram": {
+          "0xD3B0": "W",
+          "0xD448": "W",
+          "0xD503": "R",
+          "0xD514": "R",
+          "0xD532": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              11,
+              26
+            ]
+          ],
+          "2": [],
+          "3": [
+            [
+              11,
+              26
+            ]
+          ],
+          "4": [
+            [
+              11,
+              26
+            ]
+          ],
+          "5": [
+            [
+              11,
+              26
+            ]
+          ],
+          "6": [
+            [
+              11,
+              26
+            ]
+          ]
+        }
+      },
+      "0x26": {
+        "bank": "0x1E",
+        "callbacks": [
+          "0x825A",
+          "0x82AF",
+          "0x8312",
+          "0x833A",
+          "0x8349",
+          "0x837C",
+          "0x83A4",
+          "0x83BF",
+          "0x8401"
+        ],
+        "reachable_instructions": 205,
+        "helpers": {
+          "vertical_spring_setter_5F17": 2,
+          "proximity_x_61A5": 1,
+          "proximity_y_61B1": 1
+        },
+        "player_and_related_ram": {
+          "0xD448": "W",
+          "0xD502": "R",
+          "0xD511": "R",
+          "0xD512": "R",
+          "0xD514": "R",
+          "0xD519": "R",
+          "0xD522": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              8,
+              32
+            ]
+          ],
+          "2": [
+            [
+              8,
+              32
+            ]
+          ],
+          "3": [
+            [
+              8,
+              32
+            ]
+          ],
+          "4": [
+            [
+              8,
+              32
+            ]
+          ],
+          "5": [
+            [
+              8,
+              32
+            ]
+          ],
+          "6": [
+            [
+              8,
+              32
+            ]
+          ],
+          "7": [
+            [
+              0,
+              0
+            ]
+          ],
+          "8": [
+            [
+              0,
+              0
+            ]
+          ],
+          "9": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "0x27": {
+        "bank": "0x1E",
+        "callbacks": [
+          "0x898E",
+          "0x89AC",
+          "0x89DF",
+          "0x8A29"
+        ],
+        "reachable_instructions": 63,
+        "helpers": {
+          "attack_check_5F3D": 3,
+          "move_60FB": 3,
+          "overlap_6328": 3,
+          "proximity_x_61A5": 2
+        },
+        "player_and_related_ram": {},
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              9,
+              14
+            ]
+          ],
+          "2": [
+            [
+              9,
+              14
+            ]
+          ],
+          "3": [
+            [
+              9,
+              14
+            ]
+          ]
+        }
+      },
+      "0x28": {
+        "bank": "0x1E",
+        "callbacks": [
+          "0x8585",
+          "0x85FE",
+          "0x8628",
+          "0x8662",
+          "0x86A1",
+          "0x86DA",
+          "0x8718",
+          "0x8719",
+          "0x879A",
+          "0x87B2",
+          "0x87E2",
+          "0x8812",
+          "0x8813"
+        ],
+        "reachable_instructions": 429,
+        "helpers": {
+          "move_60FB": 11,
+          "overlap_6328": 4,
+          "proximity_x_61A5": 1,
+          "proximity_y_61B1": 1
+        },
+        "player_and_related_ram": {
+          "0xD511": "RW",
+          "0xD514": "W",
+          "0xD518": "R",
+          "0xD519": "R",
+          "0xD521": "RW"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              16,
+              16
+            ]
+          ],
+          "2": [
+            [
+              16,
+              16
+            ]
+          ],
+          "3": [
+            [
+              16,
+              16
+            ]
+          ],
+          "4": [
+            [
+              16,
+              16
+            ]
+          ],
+          "5": [
+            [
+              16,
+              16
+            ]
+          ],
+          "6": [
+            [
+              16,
+              16
+            ]
+          ],
+          "7": [
+            [
+              16,
+              16
+            ]
+          ],
+          "8": [
+            [
+              16,
+              16
+            ]
+          ],
+          "9": [
+            [
+              16,
+              16
+            ]
+          ],
+          "10": [
+            [
+              16,
+              16
+            ]
+          ],
+          "11": [
+            [
+              16,
+              16
+            ]
+          ],
+          "12": [
+            [
+              16,
+              16
+            ]
+          ],
+          "13": [
+            [
+              16,
+              16
+            ]
+          ],
+          "14": [
+            [
+              16,
+              16
+            ]
+          ]
+        }
+      },
+      "0x34": {
+        "bank": "0x1E",
+        "callbacks": [
+          "0x8C41",
+          "0x8C9F",
+          "0x8CA3",
+          "0x8CFD"
+        ],
+        "reachable_instructions": 88,
+        "helpers": {},
+        "player_and_related_ram": {},
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              16
+            ],
+            [
+              8,
+              16
+            ]
+          ],
+          "2": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              16
+            ],
+            [
+              8,
+              16
+            ]
+          ]
+        }
+      },
+      "0x50": {
+        "bank": "0x1E",
+        "callbacks": [
+          "0x81BD",
+          "0x974C",
+          "0x9771",
+          "0x97C1",
+          "0x9828",
+          "0x985B",
+          "0x9903",
+          "0x9931",
+          "0x9989",
+          "0x9997",
+          "0x9A09"
+        ],
+        "reachable_instructions": 392,
+        "helpers": {
+          "spawn_child_pool": 2,
+          "move_60FB": 5,
+          "destroy_convert_5F54": 1,
+          "solid_5FA0": 2,
+          "camera_left_lock": 1,
+          "camera_pan": 1,
+          "vertical_spring_setter_5F17": 1,
+          "player_type_fix_613C": 2,
+          "proximity_x_61A5": 1,
+          "proximity_y_61B1": 1,
+          "level_complete_4892": 1
+        },
+        "player_and_related_ram": {
+          "0xD3B0": "W",
+          "0xD3B3": "W",
+          "0xD448": "W",
+          "0xD502": "RW",
+          "0xD503": "R",
+          "0xD511": "R",
+          "0xD516": "RW",
+          "0xD518": "RW",
+          "0xD522": "R"
+        },
+        "extents_by_state": {
+          "0": [
+            [
+              0,
+              0
+            ]
+          ],
+          "1": [
+            [
+              0,
+              0
+            ]
+          ],
+          "2": [
+            [
+              0,
+              0
+            ]
+          ],
+          "3": [
+            [
+              0,
+              0
+            ]
+          ],
+          "4": [
+            [
+              0,
+              0
+            ]
+          ],
+          "5": [
+            [
+              0,
+              0
+            ]
+          ],
+          "6": [
+            [
+              20,
+              48
+            ]
+          ],
+          "7": [
+            [
+              20,
+              48
+            ]
+          ],
+          "8": [
+            [
+              20,
+              48
+            ]
+          ],
+          "9": [
+            [
+              20,
+              48
+            ]
+          ],
+          "10": [
+            [
+              20,
+              48
+            ]
+          ],
+          "11": [
+            [
+              20,
+              48
+            ]
+          ],
+          "12": [
+            [
+              20,
+              48
+            ]
+          ],
+          "13": [
+            [
+              20,
+              48
+            ]
+          ],
+          "14": [
+            [
+              20,
+              48
+            ]
+          ],
+          "15": [
+            [
+              20,
+              48
+            ]
+          ],
+          "16": [
+            [
+              20,
+              48
+            ]
+          ],
+          "17": [
+            [
+              20,
+              48
+            ]
+          ],
+          "18": [
+            [
+              20,
+              48
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "callback_sweeps": {
+    "evidence": "CONTROLLED ROUTINE RESULT (real callbacks, Sonic extents (8,24), velocity set so the object does not move first)",
+    "rows": [
+      {
+        "type": "0x10",
+        "state": 2,
+        "callback": "0xA16C",
+        "note": "monitor, solid via $5FA0",
+        "object_extents": [
+          10,
+          24
+        ],
+        "player_extents": [
+          8,
+          24
+        ],
+        "contact_dx": [
+          -18,
+          18
+        ],
+        "contact_dy": [
+          -24,
+          24
+        ],
+        "rectangular": true,
+        "cells": 1813,
+        "cells_matching_formula": 1813,
+        "cells_only_in_formula": 0,
+        "cells_only_in_callback": 0
+      },
+      {
+        "type": "0x1B",
+        "state": 2,
+        "callback": "0xACC3",
+        "note": "spike, overlap via $ACFD",
+        "object_extents": [
+          16,
+          24
+        ],
+        "player_extents": [
+          8,
+          24
+        ],
+        "contact_dx": [
+          -24,
+          24
+        ],
+        "contact_dy": [
+          -24,
+          24
+        ],
+        "rectangular": true,
+        "cells": 2401,
+        "cells_matching_formula": 2401,
+        "cells_only_in_formula": 0,
+        "cells_only_in_callback": 0
+      },
+      {
+        "type": "0x27",
+        "state": 1,
+        "callback": "0x89AC",
+        "note": "object $27 state 1",
+        "object_extents": [
+          9,
+          14
+        ],
+        "player_extents": [
+          8,
+          24
+        ],
+        "contact_dx": [
+          -17,
+          17
+        ],
+        "contact_dy": [
+          -14,
+          24
+        ],
+        "rectangular": true,
+        "cells": 1365,
+        "cells_matching_formula": 1365,
+        "cells_only_in_formula": 0,
+        "cells_only_in_callback": 0
+      },
+      {
+        "type": "0x27",
+        "state": 2,
+        "callback": "0x89DF",
+        "note": "object $27 state 2",
+        "object_extents": [
+          9,
+          14
+        ],
+        "player_extents": [
+          8,
+          24
+        ],
+        "contact_dx": [
+          -17,
+          17
+        ],
+        "contact_dy": [
+          -14,
+          24
+        ],
+        "rectangular": true,
+        "cells": 1365,
+        "cells_matching_formula": 1365,
+        "cells_only_in_formula": 0,
+        "cells_only_in_callback": 0
+      },
+      {
+        "type": "0x28",
+        "state": 5,
+        "callback": "0x879A",
+        "note": "platform state 5",
+        "object_extents": [
+          16,
+          16
+        ],
+        "player_extents": [
+          8,
+          24
+        ],
+        "contact_dx": [
+          -24,
+          24
+        ],
+        "contact_dy": [
+          -16,
+          24
+        ],
+        "rectangular": true,
+        "cells": 2009,
+        "cells_matching_formula": 2009,
+        "cells_only_in_formula": 0,
+        "cells_only_in_callback": 0
+      },
+      {
+        "type": "0x28",
+        "state": 2,
+        "callback": "0x86A1",
+        "note": "platform state 2",
+        "object_extents": [
+          16,
+          16
+        ],
+        "player_extents": [
+          8,
+          24
+        ],
+        "contact_dx": [
+          -24,
+          24
+        ],
+        "contact_dy": [
+          -17,
+          23
+        ],
+        "rectangular": true,
+        "cells": 2009,
+        "cells_matching_formula": 1960,
+        "cells_only_in_formula": 49,
+        "cells_only_in_callback": 49
+      },
+      {
+        "type": "0x21",
+        "state": 3,
+        "callback": "0xB2AF",
+        "note": "enemy contact routine $B2AF",
+        "object_extents": [
+          11,
+          26
+        ],
+        "player_extents": [
+          8,
+          24
+        ],
+        "contact_dx": [
+          -19,
+          19
+        ],
+        "contact_dy": [
+          -26,
+          24
+        ],
+        "rectangular": true,
+        "cells": 1989,
+        "cells_matching_formula": 1989,
+        "cells_only_in_formula": 0,
+        "cells_only_in_callback": 0
+      }
+    ],
+    "note": "Rows whose callback first moves the object (type $28) differ from the formula by that one-pixel move; all others match exactly."
+  },
+  "spring_26": {
+    "evidence": "CONTROLLED ROUTINE RESULT (original $82AF)",
+    "contact_dx": [
+      -11,
+      11
+    ],
+    "contact_dy_relative_to_object_Y": [
+      -33,
+      -28
+    ],
+    "cells": 138,
+    "rectangular": true,
+    "gates_at_dx0_dy_minus_30": {
+      "baseline": true,
+      "player_moving_up_D519_bit7": false,
+      "no_floor_contact_D522_bit1": false,
+      "requested_state_21": false,
+      "object_offscreen_bit6": false
+    },
+    "rule": "after $82AF requires: +$04 bit 6 clear, $D519 bit 7 clear (not moving up), $D522 bit 1 set (floor contact), requested state != $21; |playerX - objectX| < 12 (STRICT, vector $0383 -> $61A5 with BC = 12); 0 <= (objectY - 28) - playerY < 6, i.e. playerY in [objectY-33, objectY-28]. Object X/Y are the runtime anchor (+$11/+$14)."
+  },
+  "proximity": {
+    "evidence": "CONTROLLED ROUTINE RESULT",
+    "x_proximity_61A5_bc_12": [
+      {
+        "dx": 10,
+        "result_A": 255
+      },
+      {
+        "dx": 11,
+        "result_A": 255
+      },
+      {
+        "dx": 12,
+        "result_A": 0
+      },
+      {
+        "dx": 13,
+        "result_A": 0
+      },
+      {
+        "dx": -10,
+        "result_A": 255
+      },
+      {
+        "dx": -11,
+        "result_A": 255
+      },
+      {
+        "dx": -12,
+        "result_A": 0
+      },
+      {
+        "dx": -13,
+        "result_A": 0
+      }
+    ],
+    "ring_box_617E": [
+      {
+        "dx": 11,
+        "dy": 0,
+        "hit": true
+      },
+      {
+        "dx": 12,
+        "dy": 0,
+        "hit": false
+      },
+      {
+        "dx": 0,
+        "dy": 11,
+        "hit": true
+      },
+      {
+        "dx": 0,
+        "dy": 12,
+        "hit": false
+      },
+      {
+        "dx": 11,
+        "dy": 11,
+        "hit": true
+      },
+      {
+        "dx": -11,
+        "dy": -11,
+        "hit": true
+      },
+      {
+        "dx": -12,
+        "dy": 0,
+        "hit": false
+      },
+      {
+        "dx": 0,
+        "dy": -12,
+        "hit": false
+      }
+    ],
+    "rule": "$61A5/$61B1/$61BB: hit (A = $FF) iff |d| < BC (strict). $617E: |dx| < 12 and |dy| < 12 on the two anchors, no extents."
+  }
+}
