@@ -1,0 +1,311 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "act": "thz3",
+  "counts": {
+    "terrain": 6,
+    "object_09_raw_records": 3,
+    "object_09_visible": 3,
+    "object_09_hidden": 0,
+    "initial_visible_population": 9
+  },
+  "hashes": {
+    "terrain_coordinates_sha256": "53525821d99c0cfedbf96a97a7627feb3809664e21f1a005a2be1f0a9710cddb",
+    "object_09_coordinates_sha256": "e60af9ca4c33edc99f67e78be87409bc52a122e7a05ec39c4c21a6033739e37e",
+    "all_rings_sha256": "bbbffbf210311549cb92e98b226871c981de3fff77594022dd4bc69e52eab521"
+  },
+  "terrain_ring_semantics": {
+    "evidence": "BYTE-VERIFIED ASSEMBLY (handler $753E, tables $75DC..$760B) + DECODED DATA (collision headers $38000)",
+    "rule": "A layout cell is a terrain-ring block iff its collision surface type is 7 (handler gate AND $1F / CP 7) AND the presence table $75DC has a nonzero entry; quadrant = (x bit 4) + 2*(y bit 4). Derived from shared ROM tables, not per act.",
+    "surface_type_7_blocks": ["0x40", "0x41", "0x42", "0x43", "0x44", "0x45"],
+    "ring_blocks": ["0x40", "0x41", "0x42", "0x43", "0x44", "0x45"],
+    "quadrants_by_block": {
+      "0x40": ["top_left", "top_right"],
+      "0x41": ["bottom_left", "bottom_right"],
+      "0x42": ["top_left"],
+      "0x43": ["top_right"],
+      "0x44": ["bottom_left"],
+      "0x45": ["bottom_right"]
+    },
+    "replacement_blocks_after_collect": {
+      "0x40": ["0x43", "0x42", "0x46", "0x46"],
+      "0x41": ["0x46", "0x46", "0x45", "0x44"],
+      "0x42": ["0x46", "0x46", "0x46", "0x46"],
+      "0x43": ["0x46", "0x46", "0x46", "0x46"],
+      "0x44": ["0x46", "0x46", "0x46", "0x46"],
+      "0x45": ["0x46", "0x46", "0x46", "0x46"]
+    },
+    "coordinate_convention": "world = cell * 32 + quadrant origin (0/16) + 8; quadrant centre. Art check below shows each ring occupies bbox [1,0,14,15] of its 16x16 quadrant.",
+    "art_check_opaque_pixels_by_quadrant": {
+      "0x40": {
+        "top_left": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        },
+        "top_right": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        },
+        "bottom_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        }
+      },
+      "0x41": {
+        "top_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "top_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_left": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        },
+        "bottom_right": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        }
+      },
+      "0x42": {
+        "top_left": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        },
+        "top_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        }
+      },
+      "0x43": {
+        "top_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "top_right": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        },
+        "bottom_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        }
+      },
+      "0x44": {
+        "top_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "top_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_left": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        },
+        "bottom_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        }
+      },
+      "0x45": {
+        "top_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "top_right": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_left": {
+          "opaque_pixels": 0,
+          "bbox": null
+        },
+        "bottom_right": {
+          "opaque_pixels": 116,
+          "bbox": [1, 0, 14, 15]
+        }
+      }
+    },
+    "runtime_cell_bound": "cells at index >= 4095 are never written by the loader and are excluded",
+    "ring_block_cells_in_this_act": {
+      "0x40": 3,
+      "0x41": 0,
+      "0x42": 0,
+      "0x43": 0,
+      "0x44": 0,
+      "0x45": 0
+    }
+  },
+  "object_09_semantics": {
+    "parameters_present": ["0x00"],
+    "runtime_checks": [
+      {
+        "parameter": "0x00",
+        "init_routine": "0x9C10 (bank 0x0C)",
+        "requested_state": 1,
+        "renderer_flags_04": "0x00",
+        "interpretation": "visible rotating collectible (state 1, renderer not skipped)",
+        "evidence": "CONTROLLED ROUTINE RESULT"
+      },
+      {
+        "parameter": "0x01",
+        "init_routine": "0x9C10 (bank 0x0C)",
+        "requested_state": 3,
+        "renderer_flags_04": "0x80",
+        "interpretation": "invisible collectible trigger (state 3, renderer-skip bit 7)",
+        "evidence": "CONTROLLED ROUTINE RESULT"
+      }
+    ],
+    "collection": "both parameters use $617E: abs(dx) < 12 and abs(dy) < 12 (SOURCE-TRACED, docs/object-09.md)",
+    "note": "Only parameters $00 and $01 occur in THZ1/2/3. No unfamiliar parameter was assigned a meaning."
+  },
+  "source_classes": ["terrain", "object_09_visible", "object_09_hidden"],
+  "rings": [
+    {
+      "act": "thz3",
+      "source_class": "terrain",
+      "layout_cell_index": 485,
+      "cell_x": 5,
+      "cell_y": 6,
+      "block_id": "0x40",
+      "quadrant": "top_left",
+      "quadrant_origin": [0, 0],
+      "block_offset": [8, 8],
+      "world_x": 168,
+      "world_y": 200,
+      "evidence": "DECODED DATA (cell) + BYTE-VERIFIED ASSEMBLY (presence table $75DC)",
+      "id": "thz3:terrain:0001"
+    },
+    {
+      "act": "thz3",
+      "source_class": "terrain",
+      "layout_cell_index": 485,
+      "cell_x": 5,
+      "cell_y": 6,
+      "block_id": "0x40",
+      "quadrant": "top_right",
+      "quadrant_origin": [16, 0],
+      "block_offset": [24, 8],
+      "world_x": 184,
+      "world_y": 200,
+      "evidence": "DECODED DATA (cell) + BYTE-VERIFIED ASSEMBLY (presence table $75DC)",
+      "id": "thz3:terrain:0002"
+    },
+    {
+      "act": "thz3",
+      "source_class": "terrain",
+      "layout_cell_index": 486,
+      "cell_x": 6,
+      "cell_y": 6,
+      "block_id": "0x40",
+      "quadrant": "top_left",
+      "quadrant_origin": [0, 0],
+      "block_offset": [8, 8],
+      "world_x": 200,
+      "world_y": 200,
+      "evidence": "DECODED DATA (cell) + BYTE-VERIFIED ASSEMBLY (presence table $75DC)",
+      "id": "thz3:terrain:0003"
+    },
+    {
+      "act": "thz3",
+      "source_class": "terrain",
+      "layout_cell_index": 486,
+      "cell_x": 6,
+      "cell_y": 6,
+      "block_id": "0x40",
+      "quadrant": "top_right",
+      "quadrant_origin": [16, 0],
+      "block_offset": [24, 8],
+      "world_x": 216,
+      "world_y": 200,
+      "evidence": "DECODED DATA (cell) + BYTE-VERIFIED ASSEMBLY (presence table $75DC)",
+      "id": "thz3:terrain:0004"
+    },
+    {
+      "act": "thz3",
+      "source_class": "terrain",
+      "layout_cell_index": 487,
+      "cell_x": 7,
+      "cell_y": 6,
+      "block_id": "0x40",
+      "quadrant": "top_left",
+      "quadrant_origin": [0, 0],
+      "block_offset": [8, 8],
+      "world_x": 232,
+      "world_y": 200,
+      "evidence": "DECODED DATA (cell) + BYTE-VERIFIED ASSEMBLY (presence table $75DC)",
+      "id": "thz3:terrain:0005"
+    },
+    {
+      "act": "thz3",
+      "source_class": "terrain",
+      "layout_cell_index": 487,
+      "cell_x": 7,
+      "cell_y": 6,
+      "block_id": "0x40",
+      "quadrant": "top_right",
+      "quadrant_origin": [16, 0],
+      "block_offset": [24, 8],
+      "world_x": 248,
+      "world_y": 200,
+      "evidence": "DECODED DATA (cell) + BYTE-VERIFIED ASSEMBLY (presence table $75DC)",
+      "id": "thz3:terrain:0006"
+    },
+    {
+      "act": "thz3",
+      "source_class": "object_09_visible",
+      "object_index": 8,
+      "rom_offset": "0x7093D",
+      "raw_bytes": "09 B4 04 64 01 00 00 00 00",
+      "parameter": "0x00",
+      "world_x": 948,
+      "world_y": 100,
+      "evidence": "DECODED DATA (record) + CONTROLLED ROUTINE RESULT (init $9C10, param semantics)",
+      "id": "thz3:type09:008"
+    },
+    {
+      "act": "thz3",
+      "source_class": "object_09_visible",
+      "object_index": 9,
+      "rom_offset": "0x70946",
+      "raw_bytes": "09 D8 04 4A 01 00 00 00 00",
+      "parameter": "0x00",
+      "world_x": 984,
+      "world_y": 74,
+      "evidence": "DECODED DATA (record) + CONTROLLED ROUTINE RESULT (init $9C10, param semantics)",
+      "id": "thz3:type09:009"
+    },
+    {
+      "act": "thz3",
+      "source_class": "object_09_visible",
+      "object_index": 10,
+      "rom_offset": "0x7094F",
+      "raw_bytes": "09 08 05 40 01 00 00 00 00",
+      "parameter": "0x00",
+      "world_x": 1032,
+      "world_y": 64,
+      "evidence": "DECODED DATA (record) + CONTROLLED ROUTINE RESULT (init $9C10, param semantics)",
+      "id": "thz3:type09:010"
+    }
+  ]
+}

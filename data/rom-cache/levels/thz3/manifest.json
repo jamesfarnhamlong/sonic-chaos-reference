@@ -1,0 +1,155 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "act": "thz3",
+  "name": "Turquoise Hill Zone Act 3",
+  "zone_index": 0,
+  "act_index": 2,
+  "evidence_classes": ["DECODED DATA", "BYTE-VERIFIED ASSEMBLY", "SOURCE-TRACED", "CONTROLLED ROUTINE RESULT", "HISTORICAL REFERENCE ONLY", "UNRESOLVED"],
+  "verified_offsets": {
+    "act_header": {
+      "rom": "0x05116",
+      "raw": "1100801215985000B0FF30020000080000091001675B",
+      "evidence": "BYTE-VERIFIED ASSEMBLY (loader $4FDC)"
+    },
+    "layout": {
+      "rom": "0x49815",
+      "end_exclusive": "0x49C25",
+      "bank": "0x12",
+      "cpu": "0x9815"
+    },
+    "object_list": {
+      "rom": "0x708FE",
+      "terminator": "0x70958",
+      "bank": "0x1C",
+      "cpu": "0x88FE"
+    },
+    "block_mapping": {
+      "rom": "0x44000",
+      "bank": "0x11",
+      "cpu": "0x8000"
+    },
+    "tiles_primary": {
+      "rom": "0x40F9E",
+      "vram": "0x1800"
+    },
+    "palette_selector": {
+      "rom": "0x07F40"
+    },
+    "background_palette": {
+      "rom": "0x3B79D",
+      "index": "0x15"
+    },
+    "sprite_palette": {
+      "rom": "0x3B6AD",
+      "index": "0x06"
+    }
+  },
+  "historical_reference_comparison": {
+    "status": "HISTORICAL REFERENCE ONLY; ROM-derived values are canonical",
+    "fields": {
+      "object_list": {
+        "historical": 461054,
+        "rom_derived": 461054,
+        "agrees": true
+      },
+      "layout": {
+        "historical": 301077,
+        "rom_derived": 301077,
+        "agrees": true
+      },
+      "width": {
+        "historical": 80,
+        "rom_derived": 80,
+        "agrees": true
+      },
+      "height": {
+        "historical": 16,
+        "rom_derived": 16,
+        "agrees": true
+      },
+      "mapping": {
+        "historical": 278528,
+        "rom_derived": 278528,
+        "agrees": true
+      },
+      "tiles": {
+        "historical": 266142,
+        "rom_derived": 266142,
+        "agrees": true
+      },
+      "fg_palette": {
+        "historical": 243373,
+        "rom_derived": 243373,
+        "agrees": true
+      },
+      "bg_palette": {
+        "historical": 243613,
+        "rom_derived": 243613,
+        "agrees": true
+      }
+    }
+  },
+  "player_start": {
+    "record_rom": 20246,
+    "raw": "000070006E00E000",
+    "ram_d2d6": 0,
+    "ram_d2d8": 112,
+    "ram_d511": 110,
+    "ram_d514": 224,
+    "note": "Loader $4E57 copies these words to $D2D6/$D2D8/$D511/$D514; field meanings are not named here (UNRESOLVED)"
+  },
+  "dimensions": {
+    "width_cells": 80,
+    "height_cells": 16,
+    "width_pixels": 2560,
+    "height_pixels": 512
+  },
+  "counts": {
+    "raw_objects": 10,
+    "unique_object_types": 5,
+    "terrain": 6,
+    "object_09_raw_records": 3,
+    "object_09_visible": 3,
+    "object_09_hidden": 0,
+    "initial_visible_population": 9
+  },
+  "hashes": {
+    "layout_cells_sha256": "ed8d7ccc54cf372580edd678750bb8cf01a3772141562d0ee61f8f78bc8f1923",
+    "runtime_cells_sha256": "ed8d7ccc54cf372580edd678750bb8cf01a3772141562d0ee61f8f78bc8f1923",
+    "objects_raw_sha256": "504ce852bb0f26b54c8954b3ffc0af82562f4aa57582745c0b5ccd5fb4072d4a",
+    "terrain_coordinates_sha256": "53525821d99c0cfedbf96a97a7627feb3809664e21f1a005a2be1f0a9710cddb",
+    "object_09_coordinates_sha256": "e60af9ca4c33edc99f67e78be87409bc52a122e7a05ec39c4c21a6033739e37e",
+    "all_rings_sha256": "bbbffbf210311549cb92e98b226871c981de3fff77594022dd4bc69e52eab521",
+    "vram_image_sha256": "d26902fa9fc1b2869845e1d89124f620b4ac8bae21ff3168816d239ff0c2eed9"
+  },
+  "art_shared_with_thz1": true,
+  "presentation_model": {
+    "status": "SOURCE-TRACED / BYTE-VERIFIED (see docs/mapped-object-screen-registration.md, data/rom-cache/mapped-object-registration.json)",
+    "R8_hscroll": "-(camera_x + 1) mod 256",
+    "R9_vscroll": "(camera_y + 17) mod 224",
+    "sms_sprite_y": "sprite drawn one line below its SAT Y",
+    "object_terrain_relation": "terrain_row = anchor_y + y_origin + piece_y + 18 ; terrain_col = anchor_x + x_origin' + piece_x + 1",
+    "applied_to_canonical_data": false,
+    "note": "Canonical anchors (objects.json/rings.json world_x/world_y) and mapping geometry (assets.json frames) are stored separately and unmodified; no GameMaker offset is baked in."
+  },
+  "reference_maps": {
+    "directory": "build/level-maps/thz3",
+    "files": {
+      "terrain": "thz3_terrain.png",
+      "rings": "thz3_rings.png",
+      "objects": "thz3_objects.png",
+      "combined": "thz3_combined.png"
+    },
+    "image_size": [2560, 542],
+    "legend_band_px": 30,
+    "note": "generated research aids (git-ignored); JSON is authoritative"
+  },
+  "files": {
+    "layout.json": "0def9f08633b54b7e410e7744ee9b1e25daf8c7917537da8ca834983804bea95",
+    "rings.json": "b5dbd806fa3e95d18bccef94ba4f522ccf1e664be2c8a2c5a5d2fd5ca1177742",
+    "objects.json": "acd7843bc204c07cccec6de6d17ef76ee438c20d3523c9c45cb7d7376ac2fcd5",
+    "assets.json": "40110654bd6f3fa91976230305a647bfe8b55634e630aa79dc8df2372022895b"
+  },
+  "regenerate": "python tools/level_export.py <SonicChaos.sms> --output data/rom-cache/levels --maps build/level-maps --sheets build/level-object-sheets"
+}

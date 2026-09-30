@@ -1,0 +1,575 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "class_legend": {
+    "A": "already covered by THZ1 research (behaviour verified for THZ1-reachable use)",
+    "B": "present in THZ1 but research incomplete",
+    "C": "new to THZ2/3",
+    "D": "identity unresolved"
+  },
+  "policy": "Numeric type ids only; no names inferred from appearance.",
+  "acts": {
+    "thz1": {
+      "raw_objects": 53,
+      "unique_types": 8,
+      "new_types_vs_thz1": []
+    },
+    "thz2": {
+      "raw_objects": 41,
+      "unique_types": 7,
+      "new_types_vs_thz1": []
+    },
+    "thz3": {
+      "raw_objects": 10,
+      "unique_types": 5,
+      "new_types_vs_thz1": ["0x50"]
+    }
+  },
+  "types": [
+    {
+      "type_id": "0x09",
+      "counts": {
+        "thz1": 24,
+        "thz2": 13,
+        "thz3": 3
+      },
+      "total": 40,
+      "classes": ["A"],
+      "notes": ["THZ1 behavior: VERIFIED for all THZ1 parameters", "THZ1 identity: VERIFIED NUMERIC RESOURCE EFFECT; CANONICAL DISPLAY NAME UNASSIGNED"],
+      "new_variants_vs_thz1": [],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 11,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 13,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 9,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 4,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz3",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 3,
+          "seen_in_thz1": true
+        }
+      ]
+    },
+    {
+      "type_id": "0x10",
+      "counts": {
+        "thz1": 5,
+        "thz2": 5,
+        "thz3": 1
+      },
+      "total": 11,
+      "classes": ["A"],
+      "notes": ["THZ1 behavior: VERIFIED for THZ1-reachable behavior", "THZ1 identity: LIKELY / SUPPORTED BUT NOT CANONICAL"],
+      "new_variants_vs_thz1": [
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 2,
+          "seen_in_thz1": false
+        },
+        {
+          "act": "thz3",
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": false
+        }
+      ],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x02",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 2,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 2,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x02",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 2,
+          "seen_in_thz1": false
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz3",
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": false
+        }
+      ]
+    },
+    {
+      "type_id": "0x18",
+      "counts": {
+        "thz1": 1,
+        "thz2": 1,
+        "thz3": 0
+      },
+      "total": 2,
+      "classes": ["B"],
+      "notes": ["THZ1 behavior: PARTIALLY ESTABLISHED", "THZ1 identity: LIKELY / SUPPORTED BUT NOT CANONICAL"],
+      "new_variants_vs_thz1": [],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        }
+      ]
+    },
+    {
+      "type_id": "0x1B",
+      "counts": {
+        "thz1": 4,
+        "thz2": 0,
+        "thz3": 1
+      },
+      "total": 5,
+      "classes": ["B"],
+      "notes": ["THZ1 behavior: SUBSTANTIALLY VERIFIED", "THZ1 identity: VERIFIED"],
+      "new_variants_vs_thz1": [],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 4,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz3",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        }
+      ]
+    },
+    {
+      "type_id": "0x21",
+      "counts": {
+        "thz1": 6,
+        "thz2": 5,
+        "thz3": 0
+      },
+      "total": 11,
+      "classes": ["A"],
+      "notes": ["THZ1 behavior: VERIFIED for THZ1-reachable behavior", "THZ1 identity: LIKELY / SUPPORTED BUT NOT CANONICAL"],
+      "new_variants_vs_thz1": [],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x02",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x06",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 2,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x08",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x03",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 2,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x04",
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 3,
+          "seen_in_thz1": true
+        }
+      ]
+    },
+    {
+      "type_id": "0x26",
+      "counts": {
+        "thz1": 4,
+        "thz2": 10,
+        "thz3": 4
+      },
+      "total": 18,
+      "classes": ["B"],
+      "notes": ["THZ1 behavior: SUBSTANTIALLY VERIFIED", "THZ1 identity: VERIFIED"],
+      "new_variants_vs_thz1": [
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x88",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 1,
+          "seen_in_thz1": false
+        }
+      ],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 2,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x8A",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 8,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x01",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x88",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 1,
+          "seen_in_thz1": false
+        },
+        {
+          "act": "thz3",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 4,
+          "seen_in_thz1": true
+        }
+      ]
+    },
+    {
+      "type_id": "0x27",
+      "counts": {
+        "thz1": 3,
+        "thz2": 4,
+        "thz3": 0
+      },
+      "total": 7,
+      "classes": ["A", "D"],
+      "notes": ["THZ1 behavior: VERIFIED for THZ1-reachable behavior", "THZ1 identity: UNRESOLVED"],
+      "new_variants_vs_thz1": [],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x10",
+          "parameter": "0x00",
+          "aux0": "0xAA",
+          "aux1": "0xAA",
+          "count": 3,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x10",
+          "parameter": "0x00",
+          "aux0": "0xAA",
+          "aux1": "0xAA",
+          "count": 4,
+          "seen_in_thz1": true
+        }
+      ]
+    },
+    {
+      "type_id": "0x28",
+      "counts": {
+        "thz1": 6,
+        "thz2": 3,
+        "thz3": 0
+      },
+      "total": 9,
+      "classes": ["B"],
+      "notes": ["THZ1 behavior: PARTIALLY ESTABLISHED", "THZ1 identity: VERIFIED"],
+      "new_variants_vs_thz1": [
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x13",
+          "count": 1,
+          "seen_in_thz1": false
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x19",
+          "count": 1,
+          "seen_in_thz1": false
+        }
+      ],
+      "variants": [
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x09",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x0D",
+          "count": 1,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz1",
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00",
+          "count": 4,
+          "seen_in_thz1": true
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x13",
+          "count": 1,
+          "seen_in_thz1": false
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x0A",
+          "aux0": "0x6A",
+          "aux1": "0x19",
+          "count": 1,
+          "seen_in_thz1": false
+        },
+        {
+          "act": "thz2",
+          "flags": "0x00",
+          "parameter": "0x84",
+          "aux0": "0x6A",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": true
+        }
+      ]
+    },
+    {
+      "type_id": "0x50",
+      "counts": {
+        "thz1": 0,
+        "thz2": 0,
+        "thz3": 1
+      },
+      "total": 1,
+      "classes": ["C", "D"],
+      "notes": ["new to THZ2/3; not present in THZ1", "identity unresolved (numeric id only)"],
+      "new_variants_vs_thz1": [
+        {
+          "act": "thz3",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": false
+        }
+      ],
+      "variants": [
+        {
+          "act": "thz3",
+          "flags": "0x00",
+          "parameter": "0x00",
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1,
+          "seen_in_thz1": false
+        }
+      ],
+      "follow_up": "Recommended research task: state table, handler, contact/lifetime behaviour, and art source for numeric type 0x50."
+    }
+  ]
+}

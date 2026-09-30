@@ -1,0 +1,1690 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "act": "thz1",
+  "level_art": {
+    "entry_rom": "0x07CED",
+    "entry_raw": "1000189E8F137E",
+    "primary_stream": {
+      "id": "primary",
+      "bank_byte": 16,
+      "vram_destination": "0x1800",
+      "stream_cpu": "0x8F9E",
+      "stream_rom": "0x40F9E",
+      "transform_remap": false
+    },
+    "supplemental_list_rom": "0x07E13",
+    "supplemental_streams": [
+      {
+        "id": "supplemental_0",
+        "raw": "08000240B3",
+        "bank_byte": 8,
+        "vram_destination": "0x0200",
+        "stream_cpu": "0xB340",
+        "stream_rom": "0x23340",
+        "transform_remap": false
+      },
+      {
+        "id": "supplemental_1",
+        "raw": "09400DC0A1",
+        "bank_byte": 9,
+        "vram_destination": "0x0D40",
+        "stream_cpu": "0xA1C0",
+        "stream_rom": "0x261C0",
+        "transform_remap": false
+      },
+      {
+        "id": "supplemental_2",
+        "raw": "09400E30A0",
+        "bank_byte": 9,
+        "vram_destination": "0x0E40",
+        "stream_cpu": "0xA030",
+        "stream_rom": "0x26030",
+        "transform_remap": false
+      },
+      {
+        "id": "supplemental_3",
+        "raw": "09C010B09A",
+        "bank_byte": 9,
+        "vram_destination": "0x10C0",
+        "stream_cpu": "0x9AB0",
+        "stream_rom": "0x25AB0",
+        "transform_remap": false
+      },
+      {
+        "id": "supplemental_4",
+        "raw": "890013B09A",
+        "bank_byte": 137,
+        "vram_destination": "0x1300",
+        "stream_cpu": "0x9AB0",
+        "stream_rom": "0x25AB0",
+        "transform_remap": true
+      },
+      {
+        "id": "supplemental_5",
+        "raw": "894015A095",
+        "bank_byte": 137,
+        "vram_destination": "0x1540",
+        "stream_cpu": "0x95A0",
+        "stream_rom": "0x255A0",
+        "transform_remap": true
+      }
+    ],
+    "vram_loads": [
+      {
+        "id": "primary",
+        "vram_destination": "0x1800",
+        "tile_base": "0xC0",
+        "tile_count": 251,
+        "stream_rom": "0x40F9E",
+        "stream_bank_cpu": "0x10:0x8F9E",
+        "transform_remap": false,
+        "decoded_sha256": "87f4959c1b936903179908e553f8eb5e6f9b9ea32c9b8e8e5f9474739b48ce83"
+      },
+      {
+        "id": "supplemental_0",
+        "vram_destination": "0x0200",
+        "tile_base": "0x10",
+        "tile_count": 90,
+        "stream_rom": "0x23340",
+        "stream_bank_cpu": "0x08:0xB340",
+        "transform_remap": false,
+        "decoded_sha256": "1b1dd45f785e26dfac714f82de7b42483780db210703c14804b8baef241e040f"
+      },
+      {
+        "id": "supplemental_1",
+        "vram_destination": "0x0D40",
+        "tile_base": "0x6A",
+        "tile_count": 8,
+        "stream_rom": "0x261C0",
+        "stream_bank_cpu": "0x09:0xA1C0",
+        "transform_remap": false,
+        "decoded_sha256": "49a04a180208aa072d35867478d0b8b3ebf3c88451a14979337bd3bfe993b7f7"
+      },
+      {
+        "id": "supplemental_2",
+        "vram_destination": "0x0E40",
+        "tile_base": "0x72",
+        "tile_count": 20,
+        "stream_rom": "0x26030",
+        "stream_bank_cpu": "0x09:0xA030",
+        "transform_remap": false,
+        "decoded_sha256": "93500fd573a46eb75dba3b5e6f7ac66efefae35d208a9cb374b0bf3619dc8efc"
+      },
+      {
+        "id": "supplemental_3",
+        "vram_destination": "0x10C0",
+        "tile_base": "0x86",
+        "tile_count": 18,
+        "stream_rom": "0x25AB0",
+        "stream_bank_cpu": "0x09:0x9AB0",
+        "transform_remap": false,
+        "decoded_sha256": "c7ceead5d8868e80bfcdde54a063f22a4e56cd89d9fda46141ab82ce0036661c"
+      },
+      {
+        "id": "supplemental_4",
+        "vram_destination": "0x1300",
+        "tile_base": "0x98",
+        "tile_count": 18,
+        "stream_rom": "0x25AB0",
+        "stream_bank_cpu": "0x09:0x9AB0",
+        "transform_remap": true,
+        "decoded_sha256": "12622f00d82794edadc5b722c5ebe741cea118dd05b7f502968ae73f76137eaf"
+      },
+      {
+        "id": "supplemental_5",
+        "vram_destination": "0x1540",
+        "tile_base": "0xAA",
+        "tile_count": 10,
+        "stream_rom": "0x255A0",
+        "stream_bank_cpu": "0x09:0x95A0",
+        "transform_remap": true,
+        "decoded_sha256": "5ad50d0b57efa416826b775efc1ad3ddee55ddd305ff2d59ecc81eab39ea3d9c"
+      }
+    ],
+    "vram_image_sha256": "d26902fa9fc1b2869845e1d89124f620b4ac8bae21ff3168816d239ff0c2eed9",
+    "evidence": "BYTE-VERIFIED ASSEMBLY (loader $78E1) + DECODED DATA (tile streams)"
+  },
+  "block_mapping": {
+    "rom": "0x44000",
+    "bank": "0x11",
+    "cpu": "0x8000"
+  },
+  "palettes": {
+    "selector_rom": "0x07F3C",
+    "background": {
+      "index": "0x15",
+      "rom": "0x3B79D",
+      "cram_bytes": "381C0804012713122B16303D3F2F1A05"
+    },
+    "sprite": {
+      "index": "0x06",
+      "rom": "0x3B6AD",
+      "cram_bytes": "3820351B063A003F0701152A1F0C0804"
+    },
+    "evidence": "BYTE-VERIFIED ASSEMBLY (loader $794F, resolver $3B63E) + DECODED DATA",
+    "note": "Background half is CRAM 0-15; tile-attribute palette-1 and sprites use the sprite half (renderer assumption shared with the THZ1 tools). Runtime palette animation is not modelled."
+  },
+  "object_types": [
+    {
+      "type_id": "0x09",
+      "placed_count": 24,
+      "placement_bases": [
+        {
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 24
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C012",
+        "pointer_raw": "718C",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x8C71",
+        "mapping_rom": "0x3CC71",
+        "frame_pointer_count": 24,
+        "frame_pointers": ["0xA0E4", "0x8CE3", "0x8CEE", "0x8CF9", "0x8D04", "0x8CAC", "0x8CB7", "0x8CC2", "0x8CCD", "0x8CD8", "0x8CA1", "0x8D0F", "0x8D1A", "0x8D25", "0x8D30", "0x8D3B", "0x8D46", "0x8D51", "0x8D5C", "0x8D67", "0x8D72", "0x8D7D", "0x8DB5", "0x8DB5"],
+        "shared_mapping_types": ["0x10", "0x1B"],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x065CA",
+        "bank": "0x0C",
+        "state_table_cpu": "0x9BC8",
+        "state_table_rom": "0x31BC8",
+        "state_count": 4,
+        "state_script_cpus": ["0x9BD0", "0x9BD6", "0x9BE8", "0x9C0A"],
+        "reachable_frame_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "tile_base_normal": "0x00",
+      "frames": [
+        {
+          "frame_index": 0,
+          "frame_cpu": "0xA0E4",
+          "frame_rom": "0x3E0E4",
+          "piece_count": 0,
+          "raw_11": "00 00 00 F3 AD 00 00 00 00 00 00",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": null,
+          "tile_list_cpu": null,
+          "pieces": [],
+          "tile_ids_normal_base": [],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": null
+        },
+        {
+          "frame_index": 1,
+          "frame_cpu": "0x8CE3",
+          "frame_rom": "0x3CCE3",
+          "piece_count": 2,
+          "raw_11": "02 08 10 3B A2 00 00 00 00 91 8D",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA23B",
+          "tile_list_cpu": "0x8D91",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 16
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 18
+            }
+          ],
+          "tile_ids_normal_base": ["0x10", "0x11", "0x12", "0x13"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -16,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 16
+          },
+          "nonzero_source_pixels": 116
+        },
+        {
+          "frame_index": 2,
+          "frame_cpu": "0x8CEE",
+          "frame_rom": "0x3CCEE",
+          "piece_count": 2,
+          "raw_11": "02 08 10 3B A2 00 00 00 00 93 8D",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA23B",
+          "tile_list_cpu": "0x8D93",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 20
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 22
+            }
+          ],
+          "tile_ids_normal_base": ["0x14", "0x15", "0x16", "0x17"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -16,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 16
+          },
+          "nonzero_source_pixels": 110
+        },
+        {
+          "frame_index": 3,
+          "frame_cpu": "0x8CF9",
+          "frame_rom": "0x3CCF9",
+          "piece_count": 2,
+          "raw_11": "02 08 10 3B A2 00 00 00 00 95 8D",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA23B",
+          "tile_list_cpu": "0x8D95",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 24
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 26
+            }
+          ],
+          "tile_ids_normal_base": ["0x18", "0x19", "0x1A", "0x1B"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -16,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 16
+          },
+          "nonzero_source_pixels": 110
+        },
+        {
+          "frame_index": 4,
+          "frame_cpu": "0x8D04",
+          "frame_rom": "0x3CD04",
+          "piece_count": 2,
+          "raw_11": "02 08 10 3B A2 00 00 00 00 97 8D",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA23B",
+          "tile_list_cpu": "0x8D97",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 28
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 30
+            }
+          ],
+          "tile_ids_normal_base": ["0x1C", "0x1D", "0x1E", "0x1F"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -16,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 16
+          },
+          "nonzero_source_pixels": 60
+        },
+        {
+          "frame_index": 5,
+          "frame_cpu": "0x8CAC",
+          "frame_rom": "0x3CCAC",
+          "piece_count": 1,
+          "raw_11": "01 04 10 03 A3 00 00 00 00 8A 8D",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA303",
+          "tile_list_cpu": "0x8D8A",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -4,
+              "tile_offset": 32
+            }
+          ],
+          "tile_ids_normal_base": ["0x20", "0x21"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -4,
+            "min_y": -16,
+            "max_x": 4,
+            "max_y": 0,
+            "width": 8,
+            "height": 16
+          },
+          "nonzero_source_pixels": 19
+        },
+        {
+          "frame_index": 6,
+          "frame_cpu": "0x8CB7",
+          "frame_rom": "0x3CCB7",
+          "piece_count": 1,
+          "raw_11": "01 04 10 03 A3 00 00 00 00 8B 8D",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA303",
+          "tile_list_cpu": "0x8D8B",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -4,
+              "tile_offset": 34
+            }
+          ],
+          "tile_ids_normal_base": ["0x22", "0x23"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -4,
+            "min_y": -16,
+            "max_x": 4,
+            "max_y": 0,
+            "width": 8,
+            "height": 16
+          },
+          "nonzero_source_pixels": 14
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type09.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    },
+    {
+      "type_id": "0x10",
+      "placed_count": 5,
+      "placement_bases": [
+        {
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 5
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C020",
+        "pointer_raw": "718C",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x8C71",
+        "mapping_rom": "0x3CC71",
+        "frame_pointer_count": 24,
+        "frame_pointers": ["0xA0E4", "0x8CE3", "0x8CEE", "0x8CF9", "0x8D04", "0x8CAC", "0x8CB7", "0x8CC2", "0x8CCD", "0x8CD8", "0x8CA1", "0x8D0F", "0x8D1A", "0x8D25", "0x8D30", "0x8D3B", "0x8D46", "0x8D51", "0x8D5C", "0x8D67", "0x8D72", "0x8D7D", "0x8DB5", "0x8DB5"],
+        "shared_mapping_types": ["0x09", "0x1B"],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x065D8",
+        "bank": "0x0C",
+        "state_table_cpu": "0xA101",
+        "state_table_rom": "0x32101",
+        "state_count": 4,
+        "state_script_cpus": ["0xA109", "0xA10F", "0xA115", "0xA12F"],
+        "reachable_frame_indices": ["0x00", "0x0B", "0x0C"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "tile_base_normal": "0x00",
+      "frames": [
+        {
+          "frame_index": 0,
+          "frame_cpu": "0xA0E4",
+          "frame_rom": "0x3E0E4",
+          "piece_count": 0,
+          "raw_11": "00 00 00 F3 AD 00 00 00 00 00 00",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": null,
+          "tile_list_cpu": null,
+          "pieces": [],
+          "tile_ids_normal_base": [],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": null
+        },
+        {
+          "frame_index": 11,
+          "frame_cpu": "0x8D0F",
+          "frame_rom": "0x3CD0F",
+          "piece_count": 6,
+          "raw_11": "06 0A 18 0B A1 08 00 00 00 99 8D",
+          "y_origin": 8,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA10B",
+          "tile_list_cpu": "0x8D99",
+          "pieces": [
+            {
+              "y": -24,
+              "x": -12,
+              "tile_offset": 76
+            },
+            {
+              "y": -24,
+              "x": -4,
+              "tile_offset": 78
+            },
+            {
+              "y": -24,
+              "x": 4,
+              "tile_offset": 80
+            },
+            {
+              "y": -8,
+              "x": -12,
+              "tile_offset": 82
+            },
+            {
+              "y": -8,
+              "x": -4,
+              "tile_offset": 84
+            },
+            {
+              "y": -8,
+              "x": 4,
+              "tile_offset": 86
+            }
+          ],
+          "tile_ids_normal_base": ["0x4C", "0x4D", "0x4E", "0x4F", "0x50", "0x51", "0x52", "0x53", "0x54", "0x55", "0x56", "0x57"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -12,
+            "min_y": -24,
+            "max_x": 12,
+            "max_y": 8,
+            "width": 24,
+            "height": 32
+          },
+          "nonzero_source_pixels": 475
+        },
+        {
+          "frame_index": 12,
+          "frame_cpu": "0x8D1A",
+          "frame_rom": "0x3CD1A",
+          "piece_count": 6,
+          "raw_11": "06 0A 18 0B A1 08 00 00 00 9F 8D",
+          "y_origin": 8,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA10B",
+          "tile_list_cpu": "0x8D9F",
+          "pieces": [
+            {
+              "y": -24,
+              "x": -12,
+              "tile_offset": 88
+            },
+            {
+              "y": -24,
+              "x": -4,
+              "tile_offset": 90
+            },
+            {
+              "y": -24,
+              "x": 4,
+              "tile_offset": 92
+            },
+            {
+              "y": -8,
+              "x": -12,
+              "tile_offset": 82
+            },
+            {
+              "y": -8,
+              "x": -4,
+              "tile_offset": 84
+            },
+            {
+              "y": -8,
+              "x": 4,
+              "tile_offset": 86
+            }
+          ],
+          "tile_ids_normal_base": ["0x52", "0x53", "0x54", "0x55", "0x56", "0x57", "0x58", "0x59", "0x5A", "0x5B", "0x5C", "0x5D"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -12,
+            "min_y": -24,
+            "max_x": 12,
+            "max_y": 8,
+            "width": 24,
+            "height": 32
+          },
+          "nonzero_source_pixels": 475
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type10.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    },
+    {
+      "type_id": "0x18",
+      "placed_count": 1,
+      "placement_bases": [
+        {
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 1
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C030",
+        "pointer_raw": "AE8E",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x8EAE",
+        "mapping_rom": "0x3CEAE",
+        "frame_pointer_count": 6,
+        "frame_pointers": ["0xA0E4", "0x8EBA", "0x8EC5", "0x8ED0", "0x8EDB", "0x8EE6"],
+        "shared_mapping_types": [],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x065E8",
+        "bank": "0x0C",
+        "state_table_cpu": "0xA7BC",
+        "state_table_rom": "0x327BC",
+        "state_count": 7,
+        "state_script_cpus": ["0xA7CA", "0xA7D3", "0xA7D9", "0xA7E2", "0xA7E8", "0xA81F", "0xA82E"],
+        "reachable_frame_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "dynamic_graphics": {
+        "selector": "0x12",
+        "list_cpu": "0x7BCB",
+        "entries": [
+          {
+            "tile_base": "0x6A",
+            "tile_count": 16,
+            "source_rom": "0x356BC"
+          },
+          {
+            "tile_base": "0x7A",
+            "tile_count": 48,
+            "source_rom": "0x24640"
+          }
+        ],
+        "evidence": "SOURCE-TRACED (THZ1 type-$18 study; shared object code)"
+      },
+      "tile_base_normal": "0x00",
+      "frames": [
+        {
+          "frame_index": 0,
+          "frame_cpu": "0xA0E4",
+          "frame_rom": "0x3E0E4",
+          "piece_count": 0,
+          "raw_11": "00 00 00 F3 AD 00 00 00 00 00 00",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": null,
+          "tile_list_cpu": null,
+          "pieces": [],
+          "tile_ids_normal_base": [],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": null
+        },
+        {
+          "frame_index": 1,
+          "frame_cpu": "0x8EBA",
+          "frame_rom": "0x3CEBA",
+          "piece_count": 10,
+          "raw_11": "0A 0C 2A 1B A3 00 00 00 00 F1 8E",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA31B",
+          "tile_list_cpu": "0x8EF1",
+          "pieces": [
+            {
+              "y": -48,
+              "x": -16,
+              "tile_offset": 106
+            },
+            {
+              "y": -48,
+              "x": -8,
+              "tile_offset": 108
+            },
+            {
+              "y": -48,
+              "x": 0,
+              "tile_offset": 110
+            },
+            {
+              "y": -48,
+              "x": 8,
+              "tile_offset": 112
+            },
+            {
+              "y": -32,
+              "x": -16,
+              "tile_offset": 114
+            },
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 116
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 118
+            },
+            {
+              "y": -32,
+              "x": 8,
+              "tile_offset": 120
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 122
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 124
+            }
+          ],
+          "tile_ids_normal_base": ["0x6A", "0x6B", "0x6C", "0x6D", "0x6E", "0x6F", "0x70", "0x71", "0x72", "0x73", "0x74", "0x75", "0x76", "0x77", "0x78", "0x79", "0x7A", "0x7B", "0x7C", "0x7D"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -16,
+            "min_y": -48,
+            "max_x": 16,
+            "max_y": 0,
+            "width": 32,
+            "height": 48
+          },
+          "nonzero_source_pixels": 1038
+        },
+        {
+          "frame_index": 2,
+          "frame_cpu": "0x8EC5",
+          "frame_rom": "0x3CEC5",
+          "piece_count": 6,
+          "raw_11": "06 08 30 43 A3 00 00 00 00 FB 8E",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA343",
+          "tile_list_cpu": "0x8EFB",
+          "pieces": [
+            {
+              "y": -48,
+              "x": -8,
+              "tile_offset": 126
+            },
+            {
+              "y": -48,
+              "x": 0,
+              "tile_offset": 128
+            },
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 130
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 132
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 134
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 136
+            }
+          ],
+          "tile_ids_normal_base": ["0x7E", "0x7F", "0x80", "0x81", "0x82", "0x83", "0x84", "0x85", "0x86", "0x87", "0x88", "0x89"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -48,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 48
+          },
+          "nonzero_source_pixels": 574
+        },
+        {
+          "frame_index": 3,
+          "frame_cpu": "0x8ED0",
+          "frame_rom": "0x3CED0",
+          "piece_count": 6,
+          "raw_11": "06 08 30 43 A3 00 00 00 00 01 8F",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA343",
+          "tile_list_cpu": "0x8F01",
+          "pieces": [
+            {
+              "y": -48,
+              "x": -8,
+              "tile_offset": 138
+            },
+            {
+              "y": -48,
+              "x": 0,
+              "tile_offset": 140
+            },
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 142
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 144
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 122
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 124
+            }
+          ],
+          "tile_ids_normal_base": ["0x7A", "0x7B", "0x7C", "0x7D", "0x8A", "0x8B", "0x8C", "0x8D", "0x8E", "0x8F", "0x90", "0x91"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -48,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 48
+          },
+          "nonzero_source_pixels": 344
+        },
+        {
+          "frame_index": 4,
+          "frame_cpu": "0x8EDB",
+          "frame_rom": "0x3CEDB",
+          "piece_count": 6,
+          "raw_11": "06 08 30 43 A3 00 00 00 00 07 8F",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA343",
+          "tile_list_cpu": "0x8F07",
+          "pieces": [
+            {
+              "y": -48,
+              "x": -8,
+              "tile_offset": 146
+            },
+            {
+              "y": -48,
+              "x": 0,
+              "tile_offset": 148
+            },
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 150
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 152
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 134
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 136
+            }
+          ],
+          "tile_ids_normal_base": ["0x86", "0x87", "0x88", "0x89", "0x92", "0x93", "0x94", "0x95", "0x96", "0x97", "0x98", "0x99"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -48,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 48
+          },
+          "nonzero_source_pixels": 574
+        },
+        {
+          "frame_index": 5,
+          "frame_cpu": "0x8EE6",
+          "frame_rom": "0x3CEE6",
+          "piece_count": 10,
+          "raw_11": "0A 0D 2A 1B A3 00 00 00 00 0D 8F",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA31B",
+          "tile_list_cpu": "0x8F0D",
+          "pieces": [
+            {
+              "y": -48,
+              "x": -16,
+              "tile_offset": 154
+            },
+            {
+              "y": -48,
+              "x": -8,
+              "tile_offset": 156
+            },
+            {
+              "y": -48,
+              "x": 0,
+              "tile_offset": 158
+            },
+            {
+              "y": -48,
+              "x": 8,
+              "tile_offset": 160
+            },
+            {
+              "y": -32,
+              "x": -16,
+              "tile_offset": 162
+            },
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 164
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 166
+            },
+            {
+              "y": -32,
+              "x": 8,
+              "tile_offset": 168
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 122
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 124
+            }
+          ],
+          "tile_ids_normal_base": ["0x7A", "0x7B", "0x7C", "0x7D", "0x9A", "0x9B", "0x9C", "0x9D", "0x9E", "0x9F", "0xA0", "0xA1", "0xA2", "0xA3", "0xA4", "0xA5", "0xA6", "0xA7", "0xA8", "0xA9"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -16,
+            "min_y": -48,
+            "max_x": 16,
+            "max_y": 0,
+            "width": 32,
+            "height": 48
+          },
+          "nonzero_source_pixels": 1038
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type18.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    },
+    {
+      "type_id": "0x1B",
+      "placed_count": 4,
+      "placement_bases": [
+        {
+          "aux0": "0x00",
+          "aux1": "0x00",
+          "count": 4
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C036",
+        "pointer_raw": "718C",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x8C71",
+        "mapping_rom": "0x3CC71",
+        "frame_pointer_count": 24,
+        "frame_pointers": ["0xA0E4", "0x8CE3", "0x8CEE", "0x8CF9", "0x8D04", "0x8CAC", "0x8CB7", "0x8CC2", "0x8CCD", "0x8CD8", "0x8CA1", "0x8D0F", "0x8D1A", "0x8D25", "0x8D30", "0x8D3B", "0x8D46", "0x8D51", "0x8D5C", "0x8D67", "0x8D72", "0x8D7D", "0x8DB5", "0x8DB5"],
+        "shared_mapping_types": ["0x09", "0x10"],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x065EE",
+        "bank": "0x0C",
+        "state_table_cpu": "0xAC4A",
+        "state_table_rom": "0x32C4A",
+        "state_count": 5,
+        "state_script_cpus": ["0xAC54", "0xAC5A", "0xAC65", "0xAC6E", "0xAC74"],
+        "reachable_frame_indices": ["0x0E"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "tile_base_normal": "0x00",
+      "frames": [
+        {
+          "frame_index": 14,
+          "frame_cpu": "0x8D30",
+          "frame_rom": "0x3CD30",
+          "piece_count": 6,
+          "raw_11": "06 10 18 0B A1 00 00 00 00 A7 8D",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA10B",
+          "tile_list_cpu": "0x8DA7",
+          "pieces": [
+            {
+              "y": -32,
+              "x": -12,
+              "tile_offset": 98
+            },
+            {
+              "y": -32,
+              "x": -4,
+              "tile_offset": 98
+            },
+            {
+              "y": -32,
+              "x": 4,
+              "tile_offset": 98
+            },
+            {
+              "y": -16,
+              "x": -12,
+              "tile_offset": 100
+            },
+            {
+              "y": -16,
+              "x": -4,
+              "tile_offset": 100
+            },
+            {
+              "y": -16,
+              "x": 4,
+              "tile_offset": 100
+            }
+          ],
+          "tile_ids_normal_base": ["0x62", "0x63", "0x64", "0x65"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -12,
+            "min_y": -32,
+            "max_x": 12,
+            "max_y": 0,
+            "width": 24,
+            "height": 32
+          },
+          "nonzero_source_pixels": 330
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type1B.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    },
+    {
+      "type_id": "0x21",
+      "placed_count": 6,
+      "placement_bases": [
+        {
+          "aux0": "0x86",
+          "aux1": "0x98",
+          "count": 6
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C042",
+        "pointer_raw": "1B91",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x911B",
+        "mapping_rom": "0x3D11B",
+        "frame_pointer_count": 3,
+        "frame_pointers": ["0xA0E4", "0x9121", "0x912C"],
+        "shared_mapping_types": [],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x065FA",
+        "bank": "0x0C",
+        "state_table_cpu": "0xB1B6",
+        "state_table_rom": "0x331B6",
+        "state_count": 7,
+        "state_script_cpus": ["0xB1C4", "0xB1CA", "0xB1D6", "0xB1D8", "0xB1E6", "0xB1F4", "0xB202"],
+        "reachable_frame_indices": ["0x00", "0x01", "0x02"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "tile_base_normal": "0x86",
+      "frames": [
+        {
+          "frame_index": 0,
+          "frame_cpu": "0xA0E4",
+          "frame_rom": "0x3E0E4",
+          "piece_count": 0,
+          "raw_11": "00 00 00 F3 AD 00 00 00 00 00 00",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": null,
+          "tile_list_cpu": null,
+          "pieces": [],
+          "tile_ids_normal_base": [],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": null
+        },
+        {
+          "frame_index": 1,
+          "frame_cpu": "0x9121",
+          "frame_rom": "0x3D121",
+          "piece_count": 6,
+          "raw_11": "06 0B 1A 0B A1 00 00 00 00 37 91",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA10B",
+          "tile_list_cpu": "0x9137",
+          "pieces": [
+            {
+              "y": -32,
+              "x": -12,
+              "tile_offset": 0
+            },
+            {
+              "y": -32,
+              "x": -4,
+              "tile_offset": 2
+            },
+            {
+              "y": -32,
+              "x": 4,
+              "tile_offset": 4
+            },
+            {
+              "y": -16,
+              "x": -12,
+              "tile_offset": 6
+            },
+            {
+              "y": -16,
+              "x": -4,
+              "tile_offset": 8
+            },
+            {
+              "y": -16,
+              "x": 4,
+              "tile_offset": 10
+            }
+          ],
+          "tile_ids_normal_base": ["0x86", "0x87", "0x88", "0x89", "0x8A", "0x8B", "0x8C", "0x8D", "0x8E", "0x8F", "0x90", "0x91"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -12,
+            "min_y": -32,
+            "max_x": 12,
+            "max_y": 0,
+            "width": 24,
+            "height": 32
+          },
+          "nonzero_source_pixels": 498
+        },
+        {
+          "frame_index": 2,
+          "frame_cpu": "0x912C",
+          "frame_rom": "0x3D12C",
+          "piece_count": 6,
+          "raw_11": "06 0B 1A 0B A1 00 00 00 00 3D 91",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA10B",
+          "tile_list_cpu": "0x913D",
+          "pieces": [
+            {
+              "y": -32,
+              "x": -12,
+              "tile_offset": 0
+            },
+            {
+              "y": -32,
+              "x": -4,
+              "tile_offset": 2
+            },
+            {
+              "y": -32,
+              "x": 4,
+              "tile_offset": 4
+            },
+            {
+              "y": -16,
+              "x": -12,
+              "tile_offset": 12
+            },
+            {
+              "y": -16,
+              "x": -4,
+              "tile_offset": 14
+            },
+            {
+              "y": -16,
+              "x": 4,
+              "tile_offset": 16
+            }
+          ],
+          "tile_ids_normal_base": ["0x86", "0x87", "0x88", "0x89", "0x8A", "0x8B", "0x92", "0x93", "0x94", "0x95", "0x96", "0x97"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -12,
+            "min_y": -32,
+            "max_x": 12,
+            "max_y": 0,
+            "width": 24,
+            "height": 32
+          },
+          "nonzero_source_pixels": 504
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type21.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    },
+    {
+      "type_id": "0x26",
+      "placed_count": 4,
+      "placement_bases": [
+        {
+          "aux0": "0x72",
+          "aux1": "0x72",
+          "count": 4
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C04C",
+        "pointer_raw": "C091",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x91C0",
+        "mapping_rom": "0x3D1C0",
+        "frame_pointer_count": 4,
+        "frame_pointers": ["0xA0E4", "0x91C8", "0x91D3", "0x91DE"],
+        "shared_mapping_types": [],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x06604",
+        "bank": "0x1E",
+        "state_table_cpu": "0x8212",
+        "state_table_rom": "0x78212",
+        "state_count": 10,
+        "state_script_cpus": ["0x8226", "0x822C", "0x8232", "0x823C", "0x8242", "0x8248", "0x824E", "0x8254", "0x83B3", "0x83B9"],
+        "reachable_frame_indices": ["0x00", "0x01", "0x02", "0x03"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "tile_base_normal": "0x72",
+      "frames": [
+        {
+          "frame_index": 0,
+          "frame_cpu": "0xA0E4",
+          "frame_rom": "0x3E0E4",
+          "piece_count": 0,
+          "raw_11": "00 00 00 F3 AD 00 00 00 00 00 00",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": null,
+          "tile_list_cpu": null,
+          "pieces": [],
+          "tile_ids_normal_base": [],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": null
+        },
+        {
+          "frame_index": 1,
+          "frame_cpu": "0x91C8",
+          "frame_rom": "0x3D1C8",
+          "piece_count": 4,
+          "raw_11": "04 08 20 77 A2 00 00 00 00 E9 91",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA277",
+          "tile_list_cpu": "0x91E9",
+          "pieces": [
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 0
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 2
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 4
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 6
+            }
+          ],
+          "tile_ids_normal_base": ["0x72", "0x73", "0x74", "0x75", "0x76", "0x77", "0x78", "0x79"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -32,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 32
+          },
+          "nonzero_source_pixels": 193
+        },
+        {
+          "frame_index": 2,
+          "frame_cpu": "0x91D3",
+          "frame_rom": "0x3D1D3",
+          "piece_count": 4,
+          "raw_11": "04 08 20 77 A2 00 00 00 00 ED 91",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA277",
+          "tile_list_cpu": "0x91ED",
+          "pieces": [
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 8
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 10
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 12
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 14
+            }
+          ],
+          "tile_ids_normal_base": ["0x7A", "0x7B", "0x7C", "0x7D", "0x7E", "0x7F", "0x80", "0x81"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -32,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 32
+          },
+          "nonzero_source_pixels": 175
+        },
+        {
+          "frame_index": 3,
+          "frame_cpu": "0x91DE",
+          "frame_rom": "0x3D1DE",
+          "piece_count": 4,
+          "raw_11": "04 08 20 77 A2 00 00 00 00 F1 91",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA277",
+          "tile_list_cpu": "0x91F1",
+          "pieces": [
+            {
+              "y": -32,
+              "x": -8,
+              "tile_offset": 16
+            },
+            {
+              "y": -32,
+              "x": 0,
+              "tile_offset": 18
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 12
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 14
+            }
+          ],
+          "tile_ids_normal_base": ["0x7E", "0x7F", "0x80", "0x81", "0x82", "0x83", "0x84", "0x85"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -8,
+            "min_y": -32,
+            "max_x": 8,
+            "max_y": 0,
+            "width": 16,
+            "height": 32
+          },
+          "nonzero_source_pixels": 175
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type26.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    },
+    {
+      "type_id": "0x27",
+      "placed_count": 3,
+      "placement_bases": [
+        {
+          "aux0": "0xAA",
+          "aux1": "0xAA",
+          "count": 3
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C04E",
+        "pointer_raw": "F591",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x91F5",
+        "mapping_rom": "0x3D1F5",
+        "frame_pointer_count": 3,
+        "frame_pointers": ["0xA0E4", "0x91FB", "0x9206"],
+        "shared_mapping_types": [],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x06606",
+        "bank": "0x1E",
+        "state_table_cpu": "0x8947",
+        "state_table_rom": "0x78947",
+        "state_count": 4,
+        "state_script_cpus": ["0x894F", "0x8955", "0x895F", "0x8984"],
+        "reachable_frame_indices": ["0x00", "0x01", "0x02"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "tile_base_normal": "0xAA",
+      "frames": [
+        {
+          "frame_index": 0,
+          "frame_cpu": "0xA0E4",
+          "frame_rom": "0x3E0E4",
+          "piece_count": 0,
+          "raw_11": "00 00 00 F3 AD 00 00 00 00 00 00",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": null,
+          "tile_list_cpu": null,
+          "pieces": [],
+          "tile_ids_normal_base": [],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": null
+        },
+        {
+          "frame_index": 1,
+          "frame_cpu": "0x91FB",
+          "frame_rom": "0x3D1FB",
+          "piece_count": 3,
+          "raw_11": "03 09 0E 6B A2 00 00 00 00 11 92",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA26B",
+          "tile_list_cpu": "0x9211",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -12,
+              "tile_offset": 0
+            },
+            {
+              "y": -16,
+              "x": -4,
+              "tile_offset": 2
+            },
+            {
+              "y": -16,
+              "x": 4,
+              "tile_offset": 4
+            }
+          ],
+          "tile_ids_normal_base": ["0xAA", "0xAB", "0xAC", "0xAD", "0xAE", "0xAF"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -12,
+            "min_y": -16,
+            "max_x": 12,
+            "max_y": 0,
+            "width": 24,
+            "height": 16
+          },
+          "nonzero_source_pixels": 217
+        },
+        {
+          "frame_index": 2,
+          "frame_cpu": "0x9206",
+          "frame_rom": "0x3D206",
+          "piece_count": 3,
+          "raw_11": "03 09 0E 6B A2 00 00 00 00 14 92",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA26B",
+          "tile_list_cpu": "0x9214",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -12,
+              "tile_offset": 6
+            },
+            {
+              "y": -16,
+              "x": -4,
+              "tile_offset": 8
+            },
+            {
+              "y": -16,
+              "x": 4,
+              "tile_offset": 4
+            }
+          ],
+          "tile_ids_normal_base": ["0xAE", "0xAF", "0xB0", "0xB1", "0xB2", "0xB3"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -12,
+            "min_y": -16,
+            "max_x": 12,
+            "max_y": 0,
+            "width": 24,
+            "height": 16
+          },
+          "nonzero_source_pixels": 221
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type27.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    },
+    {
+      "type_id": "0x28",
+      "placed_count": 6,
+      "placement_bases": [
+        {
+          "aux0": "0x6A",
+          "aux1": "0x00",
+          "count": 4
+        },
+        {
+          "aux0": "0x6A",
+          "aux1": "0x09",
+          "count": 1
+        },
+        {
+          "aux0": "0x6A",
+          "aux1": "0x0D",
+          "count": 1
+        }
+      ],
+      "in_thz1_extraction_set": true,
+      "placement_bases_all_seen_in_thz1": true,
+      "art_status": "VERIFIED IN THZ1 STUDY: same type, same aux0 tile base, art from the shared level art load",
+      "mapping": {
+        "pointer_table_rom": "0x3C050",
+        "pointer_raw": "1792",
+        "mapping_bank": "0x0F",
+        "mapping_cpu": "0x9217",
+        "mapping_rom": "0x3D217",
+        "frame_pointer_count": 2,
+        "frame_pointers": ["0xA0E4", "0x921B"],
+        "shared_mapping_types": [],
+        "evidence": "DECODED DATA (bank $0F table at $3C000, engine $64FA)"
+      },
+      "animation": {
+        "type_table_entry_rom": "0x06608",
+        "bank": "0x1E",
+        "state_table_cpu": "0x8439",
+        "state_table_rom": "0x78439",
+        "state_count": 15,
+        "state_script_cpus": ["0x8457", "0x845D", "0x846B", "0x8479", "0x847F", "0x8491", "0x8497", "0x84A9", "0x84BB", "0x84C1", "0x84C7", "0x84D9", "0x84EB", "0x856B", "0x851D"],
+        "reachable_frame_indices": ["0x00", "0x01"],
+        "unresolved_states": [],
+        "evidence": "SOURCE-TRACED (static trace, tools/thz1_animation_reach.py); states with unsupported commands are listed as unresolved"
+      },
+      "tile_base_normal": "0x6A",
+      "frames": [
+        {
+          "frame_index": 0,
+          "frame_cpu": "0xA0E4",
+          "frame_rom": "0x3E0E4",
+          "piece_count": 0,
+          "raw_11": "00 00 00 F3 AD 00 00 00 00 00 00",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": null,
+          "tile_list_cpu": null,
+          "pieces": [],
+          "tile_ids_normal_base": [],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": null
+        },
+        {
+          "frame_index": 1,
+          "frame_cpu": "0x921B",
+          "frame_rom": "0x3D21B",
+          "piece_count": 4,
+          "raw_11": "04 10 10 E7 A6 00 00 00 00 26 92",
+          "y_origin": 0,
+          "x_origin": 0,
+          "coordinate_table_cpu": "0xA6E7",
+          "tile_list_cpu": "0x9226",
+          "pieces": [
+            {
+              "y": -16,
+              "x": -16,
+              "tile_offset": 0
+            },
+            {
+              "y": -16,
+              "x": -8,
+              "tile_offset": 2
+            },
+            {
+              "y": -16,
+              "x": 0,
+              "tile_offset": 4
+            },
+            {
+              "y": -16,
+              "x": 8,
+              "tile_offset": 6
+            }
+          ],
+          "tile_ids_normal_base": ["0x6A", "0x6B", "0x6C", "0x6D", "0x6E", "0x6F", "0x70", "0x71"],
+          "tile_ids_not_in_static_art_load": [],
+          "bounds": {
+            "min_x": -16,
+            "min_y": -16,
+            "max_x": 16,
+            "max_y": 0,
+            "width": 32,
+            "height": 16
+          },
+          "nonzero_source_pixels": 500
+        }
+      ],
+      "tiles_missing_from_static_art_load": [],
+      "graphics_status": "verified",
+      "reference_sheet": {
+        "file": "build/level-object-sheets/thz1_type28.png",
+        "note": "generated, git-ignored; tile base = aux0, sprite palette of the act"
+      }
+    }
+  ]
+}
