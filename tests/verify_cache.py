@@ -20,6 +20,7 @@ import object_18
 import collision_geometry
 import viewport_semantics
 import terrain_ring_collection
+import player_animation_counter
 
 
 def main(rom_path):
@@ -99,6 +100,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/terrain-ring-collection.json").read_text(encoding="utf-8")
     )
     assert stored_rings == json.loads(json.dumps(terrain_ring_collection.build(rom)))
+    # Player animation counter study: engine fixtures, differential sweeps and emulated play are regenerated (~20 s).
+    stored_counter = json.loads(
+        (ROOT / "data/rom-cache/player-animation-counter.json").read_text(encoding="utf-8")
+    )
+    assert stored_counter == json.loads(json.dumps(player_animation_counter.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

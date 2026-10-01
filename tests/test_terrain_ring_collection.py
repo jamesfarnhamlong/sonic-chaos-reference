@@ -174,6 +174,15 @@ class CacheTests(unittest.TestCase):
             self.assertGreater(rows[st]["frames_in_state"], 0)
             self.assertEqual(rows[st]["probe_calls_in_state"], 0, st)
 
+    def test_dynamic_eligibility_corrects_the_static_list(self):
+        a = D["emulated_all_states"]
+        expected = ["0x%02X" % x for x in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 20, 21, 23, 25, 26, 27, 28, 29, 30)]
+        self.assertEqual(a["observed_probing"], expected)
+        self.assertEqual(a["never_held"], [])
+        for st in ("0x21", "0x34"):
+            self.assertIn(st, a["observed_not_probing"])
+            self.assertIn(st, D["state_reach"]["states_that_may_probe"])     # static over-approximation
+
     def test_timer_bit_is_the_animation_countdown(self):
         frac = {r["state"]: r["bit0_set_fraction"] for r in D["timer_fixture"]["states"]}
         self.assertEqual(frac["0x09"], 0.68)        # rolling: durations 3,2,1 -> bit 0 set 2/3 of the updates

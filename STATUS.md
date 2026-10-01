@@ -76,6 +76,15 @@ Branch `research/viewport-semantics-audit`. Primary study: `docs/viewport-semant
 - Player edge clamp `[cam+16, cam+247]` uses the low byte of `playerX - cam` (wraps for `d >= 256`).
 - 384 is two unrelated values: the lifetime window bound and a player-distance radius for `$27`.
 
+### Player animation counter `+$07`: COMPLETE (awaiting review)
+
+Branch `research/player-animation-counter`. Primary study: `docs/player-animation-counter.md`; data: `data/rom-cache/player-animation-counter.json`;
+tool/tests: `tools/player_animation_counter.py`, `tests/test_player_animation_counter.py`.
+
+- Only the engine (`$6510` DEC, `$6549` load) and the `FF 05` selectors write the player's `+$07`; the engine runs before the state callback and the probe in every update.
+- Shadow model: counter, state, script position and one loop counter; only `$05/$09/$0A/$10/$1B` (speed, floor, side contact) and `$0B` (`$D448` bit 0) depend on inputs.
+- Ring-eligible states are 26 (observed); `$21` and `$34` from the static list do not probe.
+
 ### Terrain-ring collection (`$753E`): COMPLETE (awaiting review)
 
 Branch `research/terrain-ring-collection`. Primary study: `docs/terrain-ring-collection.md`; data:

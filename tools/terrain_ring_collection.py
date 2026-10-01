@@ -615,6 +615,47 @@ def emulated_forced_states(rom: bytes) -> dict:
             "twist_block_cell": [tcx, tcy], "twist_block": h(tb, 2), "rows": out}
 
 
+def emulated_all_states(rom: bytes) -> dict:
+    """Request every real state in turn (30-frame holds are not needed: one frame in the state suffices) and record whether the probe ran."""
+    o18 = _load("object_18")
+    from sms_frame_harness import BTN_RIGHT
+    s = o18._boot(rom, 0, lambda m: None)
+    m = s.mem
+    for _ in range(120):
+        s.pad = 0
+        s.run_frame()
+    x0, y0 = s.u16(0xD511), s.u16(0xD514)
+    calls: list = []
+    s.add_pc_hook(0x753E, lambda mm: calls.append(m[0xD501]) if s.cpu.ix == 0xD500 else None)
+    rows = []
+    for st in range(0, LAST_REAL_STATE + 1):
+        for a in (0xD174, 0xD284):
+            s.w16(a, max(x0 - 104, 0))
+        for a in (0xD176, 0xD286):
+            s.w16(a, y0 - 100)
+        s.w16(0xD511, x0)
+        s.w16(0xD514, y0)
+        s.w16(0xD516, 0x0500)
+        s.w16(0xD518, 0)
+        for _ in range(4):
+            s.pad = 0
+            s.run_frame()
+        calls.clear()
+        cur = []
+        for _ in range(12):
+            if m[0xD501] != st:
+                m[0xD502] = st
+            s.pad = BTN_RIGHT
+            s.run_frame()
+            cur.append(m[0xD501])
+        rows.append({"state": h(st, 2), "frames_in_state": cur.count(st), "probe_calls_in_state": calls.count(st)})
+    return {"evidence": "EMULATED ORIGINAL FRAME", "method": "each real state requested every frame for 12 frames near the THZ1 start; counts probe calls made while that state is current",
+            "rows": rows, "observed_probing": [r["state"] for r in rows if r["probe_calls_in_state"]],
+            "observed_not_probing": [r["state"] for r in rows if not r["probe_calls_in_state"] and r["frames_in_state"]],
+            "never_held": [r["state"] for r in rows if not r["frames_in_state"]],
+            "correction": "static reachability listed $21 and $34 as possible callers; neither probes when held, so the static list over-approximates"}
+
+
 def emulated_play(rom: bytes) -> dict:
     o18 = _load("object_18")
     from sms_frame_harness import BTN_RIGHT, BTN_LEFT, BTN_DOWN, BTN_1
@@ -726,6 +767,7 @@ def build(rom: bytes, static_only: bool = False) -> dict:
         out["timer_fixture"] = timer_fixture(rom)
         out["emulated_play"] = emulated_play(rom)
         out["emulated_forced_states"] = emulated_forced_states(rom)
+        out["emulated_all_states"] = emulated_all_states(rom)
     return out
 
 

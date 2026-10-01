@@ -77,12 +77,12 @@ Controlled engine runs for every state (`timer_fixture`) and 6,000 emulated fram
 |---|---|---|
 | `$05` walking | 10,9,...,1,10,... | 48 % |
 | `$06` running | 4,3,2,1,... | 48 % |
-| `$09` rolling | 3,2,1,... | **68 %** |
-| `$0A` jump | 3,2,1,... | **68 %** |
+| `$09` rolling (airborne, no floor bit) | 3,2,1,... | **68 %** |
+| `$0A` jump (airborne) | 3,2,1,... | **68 %** |
 | `$0B` spring | 4,3,2,1,... | 48 % |
 | `$01` standing | 180,179,... | alternates every update |
 
-Played: state `$0A` 701 even vs 1,399 odd probes; `$05` 564 / 523. The longest same-parity runs are 1-8 updates. Frame-selector routines (`FF 05`) write `+$07`
+On the floor `$09/$10/$1B` use a speed-dependent table instead (`docs/player-animation-counter.md`). Played: state `$0A` 701 even vs 1,399 odd probes; `$05` 564 / 523. The longest same-parity runs are 1-8 updates. Frame-selector routines (`FF 05`) write `+$07`
 themselves (speed-dependent run/jump animation), so these fractions are typical values, not constants.
 
 ## 5. Frame timing (EMULATED + SOURCE-TRACED)
@@ -96,8 +96,9 @@ Per update: `$361D` -> engine `$64FA` -> callback `$5E91` -> `$3FEF` (clamp -> X
 
 Static reachability over CALL/JP/JR from every state-script callback (indirect jumps not followed), plus emulated forcing:
 
-* **Probe may be called**: states `$00-$0B, $0E, $0F, $10, $11, $12, $14, $15, $17, $19, $1A, $1B, $1C, $1D, $1E, $21, $34`.
-* **Not called**: loop states `$0C`, `$0D`, `$13` (callbacks `$03CB/$03D1/$03CE` -> `$3C1B..$3EFD`), twist `$22`, act-clear `$20`, `$16`, `$18`, `$1F`, `$23-$33`, `$35`, `$36`.
+* **Static reachability (over-approximation)**: `$00-$0B, $0E, $0F, $10, $11, $12, $14, $15, $17, $19, $1A, $1B, $1C, $1D, $1E, $21, $34`.
+* **Observed to probe (emulated, every real state forced, `emulated_all_states`)**: `$00-$0B, $0E, $0F, $10, $11, $12, $14, $15, $17, $19, $1A, $1B, $1C, $1D, $1E` (26 states). `$21` and `$34` do **not** probe when held: the static list over-approximates them (corrected 2026-10; see `docs/player-animation-counter.md`).
+* **Not called** (static; confirmed dynamically for all of these except where noted): loop states `$0C`, `$0D`, `$13` (callbacks `$03CB/$03D1/$03CE` -> `$3C1B..$3EFD`), twist `$22`, act-clear `$20`, `$16`, `$18`, `$1F`, `$21`, `$23-$36` (all observed not to probe).
 * Emulated (state requested every frame, 30 frames): standing, walking, running, rolling, jump, spring ascent, falling, ramp launch and diagonal spring probed on every
   frame in the state; `$0C`, `$0D`, `$13` and `$22` on **no** frame (the twist was tested on a real THZ1 twist block).
 * States `$37-$3C` point at non-script data and are excluded.
