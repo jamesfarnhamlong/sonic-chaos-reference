@@ -72,7 +72,10 @@ The rise is **296.25 original pixels** in this controlled fixture. See [the comp
 
 The diagonal terrain spring requests `$1C` and uses the ordinary gravity branch while in that state. Its THZ launch is X=±4, Y=-7; other levels use Y=-5.5 in the recovered contact handler. Its wrapper `$3955` also requests falling at the apex. Horizontal springs request rolling `$09` and update the speed-cap field as well as velocity.
 
-Object type `$26` spring variants are a separate research target; the terrain spring's launch values must not be assigned to them merely because the artwork looks similar.
+Object type `$26` spring variants have their own launch values; the terrain spring's launch values must not be assigned to them merely because the artwork looks similar.
+The complete spring model (type `$26`, terrain upright/diagonal/horizontal/ceiling, gates, `$D448`, attack posture, top-of-screen rule) is in
+[spring-interaction-audit.md](spring-interaction-audit.md). Two corrections to the summary above: the upright launch request `$480C` clears `$D503` bit 1
+(upright spring flight is **not** an attack posture), while the diagonal setter `$482D` sets it; and horizontal springs do **not** have a Y-speed gate.
 
 ## The first curve's state transition
 

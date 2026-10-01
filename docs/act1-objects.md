@@ -20,8 +20,11 @@ therefore means a 160-pixel concealed span, not merely a weak spring.
 
 ### Fixed contact state 7
 
-Handler `$82AF` rejects upward-moving Sonic, missing floor/object contact and
-player state `$21`. Its vertical contact window is measured against object Y-28.
+Handler `$82AF` rejects upward-moving Sonic (negative Y speed; zero passes), a clear floor flag
+(`$D522` bit 1) and **requested** state `$D502 == $21` (the current state is not read). Its vertical contact window is
+measured against object Y-28 (player Y in `[objY-33, objY-28]`) and the horizontal test is `abs(dx) < 12` strict.
+All boundaries, the span-state geometry, gates and launch values are swept in
+[the spring interaction audit](spring-interaction-audit.md); that document supersedes the summary here.
 
 | Parameter | Player Y impulse | Extension state | Hold |
 |---:|---:|---:|---:|

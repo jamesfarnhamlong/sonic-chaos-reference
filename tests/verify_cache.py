@@ -21,6 +21,7 @@ import collision_geometry
 import viewport_semantics
 import terrain_ring_collection
 import player_animation_counter
+import spring_interaction
 
 
 def main(rom_path):
@@ -105,6 +106,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/player-animation-counter.json").read_text(encoding="utf-8")
     )
     assert stored_counter == json.loads(json.dumps(player_animation_counter.build(rom)))
+    # Spring interaction audit: controlled sweeps and emulated launches are regenerated (~2 min).
+    stored_springs = json.loads(
+        (ROOT / "data/rom-cache/spring-interaction.json").read_text(encoding="utf-8")
+    )
+    assert stored_springs == json.loads(json.dumps(spring_interaction.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
