@@ -19,6 +19,7 @@ import object_50
 import object_18
 import collision_geometry
 import viewport_semantics
+import terrain_ring_collection
 
 
 def main(rom_path):
@@ -93,6 +94,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/viewport-semantics.json").read_text(encoding="utf-8")
     )
     assert stored_viewport == json.loads(json.dumps(viewport_semantics.build(rom)))
+    # Terrain-ring collection study: probe, sweeps, state reach and emulated runs are regenerated (~35 s).
+    stored_rings = json.loads(
+        (ROOT / "data/rom-cache/terrain-ring-collection.json").read_text(encoding="utf-8")
+    )
+    assert stored_rings == json.loads(json.dumps(terrain_ring_collection.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

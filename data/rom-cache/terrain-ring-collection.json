@@ -1,0 +1,3708 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_only": true,
+ "poc_untouched": true,
+ "machine_facing_label": "terrain_ring_collection",
+ "evidence_classes": {
+  "DECODED DATA": "ROM tables/records decoded by a parser",
+  "BYTE-VERIFIED ASSEMBLY": "routine bytes compared literally and disassembled by hand",
+  "SOURCE-TRACED BEHAVIOR": "behavior read from the disassembly, not executed",
+  "CONTROLLED ROUTINE RESULT": "original routine executed on a Z80 core with explicit RAM",
+  "EMULATED ORIGINAL FRAME": "whole original game run in the approximate SMS harness",
+  "UNRESOLVED": "not established"
+ },
+ "routines": [
+  {
+   "name": "surface_probe_dispatch",
+   "bank": 1,
+   "cpu_start": "0x753E",
+   "cpu_end_exclusive": "0x75DC",
+   "rom_offset": "0x0753E",
+   "length": 158,
+   "sha256": "e0b2a4abffeead1237d146ad74c8f8d427ac21dc689d0c7ce4ffc8cace7fc89a",
+   "first_16_bytes": "01000011e6ffddcb0746280311f0ff3a",
+   "purpose": "$753E: choose probe offset from +$07 bit 0, call $7725, dispatch on surface type (7 ring, $1D, $1A, $14)"
+  },
+  {
+   "name": "ring_quadrant_tables",
+   "bank": 1,
+   "cpu_start": "0x75DC",
+   "cpu_end_exclusive": "0x760C",
+   "rom_offset": "0x075DC",
+   "length": 48,
+   "sha256": "1adecff63a05f75533d6437a9cadb006a150e3735629f28eab07819c5c10bb0e",
+   "first_16_bytes": "ffff00000000ffffff00000000ff0000",
+   "purpose": "presence table (6 blocks x 4 quadrants) and replacement-block table"
+  },
+  {
+   "name": "surface_type_1d_handler",
+   "bank": 1,
+   "cpu_start": "0x760C",
+   "cpu_end_exclusive": "0x7646",
+   "rom_offset": "0x0760C",
+   "length": 58,
+   "sha256": "524ae5c4fb1c025672da6dbbfbf3c4cf255c3750f0cdf741d88ab824a30a5631",
+   "first_16_bytes": "3a62d1cd6f1c3e462a54d3776f260029",
+   "purpose": "type $1D: block := $46, +$10 rings, sound $BF"
+  },
+  {
+   "name": "surface_type_1a_handler",
+   "bank": 1,
+   "cpu_start": "0x7646",
+   "cpu_end_exclusive": "0x7666",
+   "rom_offset": "0x07646",
+   "length": 32,
+   "sha256": "dfa8b1cb208fd4ed9c06b63141b1d47b419215f5c260f8cd3905ce6564df3ff1",
+   "first_16_bytes": "ddcb224ec82100072273d32216d5ddcb",
+   "purpose": "type $1A: needs floor bit, X speed $0700, state $10, sound $BD"
+  },
+  {
+   "name": "surface_type_14_handler",
+   "bank": 1,
+   "cpu_start": "0x749D",
+   "cpu_end_exclusive": "0x7500",
+   "rom_offset": "0x0749D",
+   "length": 99,
+   "sha256": "4e7ce0d527726523a96a2a7443ae7d8516289cfbfbdcb2773efc61abc99082e6",
+   "first_16_bytes": "3a53d3e6fefe3ac03a5ad3e61f4f3a68",
+   "purpose": "type $14 blocks $3A/$3B: depth correction and bounce"
+  },
+  {
+   "name": "light_lookup_7725",
+   "bank": 1,
+   "cpu_start": "0x7725",
+   "cpu_end_exclusive": "0x77B0",
+   "rom_offset": "0x07725",
+   "length": 139,
+   "sha256": "1903a177319a3d31957796fd41c0288f1c3d0af8308212a83adb0d7964220e5e",
+   "first_16_bytes": "3a2bd1f53e0e322bd132ffffdd6612dd",
+   "purpose": "light surface lookup: probe point -> layout cell -> header byte 0"
+  },
+  {
+   "name": "lookup_out_of_range",
+   "bank": 1,
+   "cpu_start": "0x77B0",
+   "cpu_end_exclusive": "0x77CB",
+   "rom_offset": "0x077B0",
+   "length": 27,
+   "sha256": "e2dfbec97fbd3c98e0f01153f6dea4735bdc139cb4d2860ea33292d10f6d7b16",
+   "first_16_bytes": "21ffcf2254d33eff3253d33e003264d3",
+   "purpose": "cell pointer outside $C000..$CFFF: block $FF, type 0"
+  },
+  {
+   "name": "ring_counter_3138",
+   "bank": 0,
+   "cpu_start": "0x3138",
+   "cpu_end_exclusive": "0x314A",
+   "rom_offset": "0x03138",
+   "length": 18,
+   "sha256": "63869a773d95af6df440c5e68dfbe79e6dabba7589a871edf351e667ce8900db",
+   "first_16_bytes": "3a9ad2c60127329ad2b72006cd0431cd",
+   "purpose": "$D29A += 1 (BCD) and carry handling"
+  },
+  {
+   "name": "probe_wrapper_690b",
+   "bank": 1,
+   "cpu_start": "0x690B",
+   "cpu_end_exclusive": "0x691A",
+   "rom_offset": "0x0690B",
+   "length": 15,
+   "sha256": "99a138560281d9adb2bff1fd9cf6b84925f63d17a8001504aba075dca903252b",
+   "first_16_bytes": "cd1a69cd5e71cdc973cd3e75c3cb643a",
+   "purpose": "$691A, $715E, $73C9, then $753E, then $64CB"
+  },
+  {
+   "name": "player_step_3fef",
+   "bank": 0,
+   "cpu_start": "0x3FEF",
+   "cpu_end_exclusive": "0x4010",
+   "rom_offset": "0x03FEF",
+   "length": 33,
+   "sha256": "c52a92ca7d1077bbc5595f9cda6fb84bc59e0e36b36936f9da424a46a4dd5b5d",
+   "first_16_bytes": "cd464bcd1a40cd4141dd7e01fe053006",
+   "purpose": "shared player step: clamp $4141 ... $690B then movement $48BC"
+  },
+  {
+   "name": "state_probe_caller_4c12",
+   "bank": 1,
+   "cpu_start": "0x4C12",
+   "cpu_end_exclusive": "0x4C37",
+   "rom_offset": "0x04C12",
+   "length": 37,
+   "sha256": "1178f5e4e0db3940afcb97cf8dcb64f3cd0be488c4edc26fe8d8c52c4def67fa",
+   "first_16_bytes": "fd2aa6d3cd564ccd3e75cdbc48cd1a40",
+   "purpose": "state routine that calls $753E before movement"
+  },
+  {
+   "name": "animation_engine",
+   "bank": 1,
+   "cpu_start": "0x64FA",
+   "cpu_end_exclusive": "0x65AF",
+   "rom_offset": "0x064FA",
+   "length": 181,
+   "sha256": "57d8489ce18be12b5b1baa860b1f1f10a9546740f7af72ed3d2ad223d36dcd96",
+   "first_16_bytes": "dd7e0eddb60f281bddcb035e2008dd7e",
+   "purpose": "per-update: DEC +$07, reload record at zero"
+  },
+  {
+   "name": "player_update_361d",
+   "bank": 0,
+   "cpu_start": "0x361D",
+   "cpu_end_exclusive": "0x3657",
+   "rom_offset": "0x0361D",
+   "length": 58,
+   "sha256": "394729c8763aaab5b5265514f23fb20f3784a884d52b92e2aa176eb1f0fb0b69",
+   "first_16_bytes": "dd2100d53a00d5b7c8ddcb04be3a4bd4",
+   "purpose": "player slot: engine $64FA, then callback $5E91, then $4A74"
+  }
+ ],
+ "probe_callers": {
+  "$3FEF (shared step, 22 CALL sites + JP at vector $0404)": "CALL $690B at $400B, before movement $48BC at $400E",
+  "$396D / $39E6 handlers": "CALL $690B at $3976 / $39EF, before $48BC",
+  "$3F17.. state routine": "CALL $690B at $3F58, before $48BC at $3F5B",
+  "$4C12 (vector $044C)": "CALL $753E at $4C19, before $48BC at $4C1C",
+  "bank $0C JP $038C (vector -> $690B) at $91DF": "object-side caller, not a player state routine"
+ },
+ "header_types": {
+  "evidence": "DECODED DATA",
+  "table_rom": "0x38000 (bank 14 $8000, selected by $D2E0)",
+  "all_zones_use_table_cpu": [
+   "8000"
+  ],
+  "blocks_of_type_7": [
+   "0x40",
+   "0x41",
+   "0x42",
+   "0x43",
+   "0x44",
+   "0x45"
+  ],
+  "blocks_of_type_1d": [
+   "0xB8"
+  ],
+  "blocks_of_type_1a": [
+   "0xA7"
+  ],
+  "blocks_of_type_14": [
+   "0x36",
+   "0x37",
+   "0x38",
+   "0x39",
+   "0x3A",
+   "0x3B"
+  ]
+ },
+ "quadrant_tables": {
+  "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY",
+  "presence_rom": "0x075DC",
+  "replacement_rom": "0x075F4",
+  "index": "(block-$40)*4 + ((probeX>>4)&1) + 2*((probeY>>4)&1)",
+  "rows": [
+   {
+    "block": "0x40",
+    "quadrants_with_ring": [
+     "top_left",
+     "top_right"
+    ],
+    "replacement_after_collect": {
+     "top_left": "0x43",
+     "top_right": "0x42"
+    }
+   },
+   {
+    "block": "0x41",
+    "quadrants_with_ring": [
+     "bottom_left",
+     "bottom_right"
+    ],
+    "replacement_after_collect": {
+     "bottom_left": "0x45",
+     "bottom_right": "0x44"
+    }
+   },
+   {
+    "block": "0x42",
+    "quadrants_with_ring": [
+     "top_left"
+    ],
+    "replacement_after_collect": {
+     "top_left": "0x46"
+    }
+   },
+   {
+    "block": "0x43",
+    "quadrants_with_ring": [
+     "top_right"
+    ],
+    "replacement_after_collect": {
+     "top_right": "0x46"
+    }
+   },
+   {
+    "block": "0x44",
+    "quadrants_with_ring": [
+     "bottom_left"
+    ],
+    "replacement_after_collect": {
+     "bottom_left": "0x46"
+    }
+   },
+   {
+    "block": "0x45",
+    "quadrants_with_ring": [
+     "bottom_right"
+    ],
+    "replacement_after_collect": {
+     "bottom_right": "0x46"
+    }
+   }
+  ],
+  "presence_values": [
+   0,
+   255
+  ],
+  "replacement_values": [
+   "0x42",
+   "0x43",
+   "0x44",
+   "0x45",
+   "0x46"
+  ]
+ },
+ "act_rings": {
+  "thz1": {
+   "width_cells": 128,
+   "ring_quadrants": 142,
+   "cache_terrain_ring_count": 142,
+   "equal": true,
+   "blocks": [
+    "0x40",
+    "0x41",
+    "0x42",
+    "0x43"
+   ]
+  },
+  "thz2": {
+   "width_cells": 128,
+   "ring_quadrants": 133,
+   "cache_terrain_ring_count": 133,
+   "equal": true,
+   "blocks": [
+    "0x40",
+    "0x41",
+    "0x42",
+    "0x43"
+   ]
+  },
+  "thz3": {
+   "width_cells": 80,
+   "ring_quadrants": 6,
+   "cache_terrain_ring_count": 6,
+   "equal": true,
+   "blocks": [
+    "0x40"
+   ]
+  }
+ },
+ "model": {
+  "probe_dy_by_bit0": {
+   "0": -26,
+   "1": -16
+  },
+  "anchor_bias": 18,
+  "effective_probe_y_from_anchor": {
+   "0": -8,
+   "1": 2
+  },
+  "probe_x": "anchor X",
+  "cell": "32x32 layout block",
+  "quadrant": "16x16, index ((x>>4)&1) + 2*((y>>4)&1)"
+ },
+ "unresolved": [
+  "Why the original alternates the probe height: the code only reads +$07 bit 0; whether this is intended dithering or an accident of reusing the animation counter is not established.",
+  "Semantic names of surface types $1D, $1A and $14 (the same probe handles them).",
+  "Exact per-frame +$07 values for states whose durations are set by frame-selector routines (e.g. run/jump speed-dependent animation) were only measured statistically in play.",
+  "A complete census of which player states call the probe at runtime: static reachability is complete but may over-approximate (conditional paths); only states reached in play were observed dynamically.",
+  "Rings are removed by writing the layout cell; no ROM evidence was gathered on respawn after re-entering the zone (outside this study).",
+  "Pixel-exact visual position of the collected-ring effect (type $03) was not measured; only its logical position (probe point) is established."
+ ],
+ "static_only": false,
+ "state_reach": {
+  "evidence": "SOURCE-TRACED BEHAVIOR (static reachability over CALL/JP/JR; indirect jumps are not followed)",
+  "rows": [
+   {
+    "state": "0x00",
+    "script_cpu": "807D",
+    "callbacks": [
+     "0x0395"
+    ],
+    "callback_targets": [
+     "0x36C6"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x0395"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x01",
+    "script_cpu": "8081",
+    "callbacks": [
+     "0x0395"
+    ],
+    "callback_targets": [
+     "0x36C6"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x0395"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x02",
+    "script_cpu": "8098",
+    "callbacks": [
+     "0x03E0"
+    ],
+    "callback_targets": [
+     "0x36F0"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03E0"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x03",
+    "script_cpu": "80BF",
+    "callbacks": [
+     "0x03BC"
+    ],
+    "callback_targets": [
+     "0x3713"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03BC"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x04",
+    "script_cpu": "80C5",
+    "callbacks": [
+     "0x03B9"
+    ],
+    "callback_targets": [
+     "0x3759"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03B9"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x05",
+    "script_cpu": "810E",
+    "callbacks": [
+     "0x03E9"
+    ],
+    "callback_targets": [
+     "0x3783"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03E9"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x06",
+    "script_cpu": "8116",
+    "callbacks": [
+     "0x03D4"
+    ],
+    "callback_targets": [
+     "0x384D"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03D4"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x07",
+    "script_cpu": "811E",
+    "callbacks": [
+     "0x03E3"
+    ],
+    "callback_targets": [
+     "0x386F"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03E3"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x08",
+    "script_cpu": "8128",
+    "callbacks": [
+     "0x03E6"
+    ],
+    "callback_targets": [
+     "0x389A"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03E6"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x09",
+    "script_cpu": "8132",
+    "callbacks": [
+     "0x03C5"
+    ],
+    "callback_targets": [
+     "0x38C5"
+    ],
+    "region_categories": [
+     "rolling_ramp"
+    ],
+    "callbacks_reaching_753E": [
+     "0x03C5"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x0A",
+    "script_cpu": "8142",
+    "callbacks": [
+     "0x03B3"
+    ],
+    "callback_targets": [
+     "0x3901"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03B3"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x0B",
+    "script_cpu": "814A",
+    "callbacks": [
+     "0x039E"
+    ],
+    "callback_targets": [
+     "0x393B"
+    ],
+    "region_categories": [
+     "spring"
+    ],
+    "callbacks_reaching_753E": [
+     "0x039E"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x0C",
+    "script_cpu": "81AE",
+    "callbacks": [
+     "0x03CB"
+    ],
+    "callback_targets": [
+     "0x3C1B"
+    ],
+    "region_categories": [
+     "loop"
+    ],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x0D",
+    "script_cpu": "81B6",
+    "callbacks": [
+     "0x03D1"
+    ],
+    "callback_targets": [
+     "0x3DAE"
+    ],
+    "region_categories": [
+     "loop"
+    ],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x0E",
+    "script_cpu": "81E0",
+    "callbacks": [
+     "0x03AD"
+    ],
+    "callback_targets": [
+     "0x3A37"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03AD"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x0F",
+    "script_cpu": "831E",
+    "callbacks": [
+     "0x03DD"
+    ],
+    "callback_targets": [
+     "0x39E6"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03DD"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x10",
+    "script_cpu": "832C",
+    "callbacks": [
+     "0x03A4"
+    ],
+    "callback_targets": [
+     "0x3A23"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03A4"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x11",
+    "script_cpu": "8334",
+    "callbacks": [
+     "0x03C2"
+    ],
+    "callback_targets": [
+     "0x3A7C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03C2"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x12",
+    "script_cpu": "8346",
+    "callbacks": [
+     "0x03B0"
+    ],
+    "callback_targets": [
+     "0x3B4E"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03B0"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x13",
+    "script_cpu": "81BE",
+    "callbacks": [
+     "0x03CE"
+    ],
+    "callback_targets": [
+     "0x3CFC"
+    ],
+    "region_categories": [
+     "loop"
+    ],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x14",
+    "script_cpu": "81C6",
+    "callbacks": [
+     "0x03F8"
+    ],
+    "callback_targets": [
+     "0x3A48"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03F8"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x15",
+    "script_cpu": "8256",
+    "callbacks": [
+     "0x043D"
+    ],
+    "callback_targets": [
+     "0x396D"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x043D"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x16",
+    "script_cpu": "834C",
+    "callbacks": [
+     "0x0449"
+    ],
+    "callback_targets": [
+     "0x4C02"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x17",
+    "script_cpu": "8356",
+    "callbacks": [
+     "0x044C"
+    ],
+    "callback_targets": [
+     "0x4C12"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x044C"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x18",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x19",
+    "script_cpu": "808A",
+    "callbacks": [
+     "0x0392"
+    ],
+    "callback_targets": [
+     "0x3BC6"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x0392"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x1A",
+    "script_cpu": "82D9",
+    "callbacks": [
+     "0x0440"
+    ],
+    "callback_targets": [
+     "0x39B6"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x0440"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x1B",
+    "script_cpu": "813A",
+    "callbacks": [
+     "0x03C8"
+    ],
+    "callback_targets": [
+     "0x38D1"
+    ],
+    "region_categories": [
+     "rolling_ramp"
+    ],
+    "callbacks_reaching_753E": [
+     "0x03C8"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x1C",
+    "script_cpu": "8194",
+    "callbacks": [
+     "0x03B6"
+    ],
+    "callback_targets": [
+     "0x3955"
+    ],
+    "region_categories": [
+     "spring"
+    ],
+    "callbacks_reaching_753E": [
+     "0x03B6"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x1D",
+    "script_cpu": "8374",
+    "callbacks": [
+     "0x03DA"
+    ],
+    "callback_targets": [
+     "0x3A59"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03DA"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x1E",
+    "script_cpu": "837C",
+    "callbacks": [
+     "0x03AA"
+    ],
+    "callback_targets": [
+     "0x3A71"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x03AA"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 1
+   },
+   {
+    "state": "0x1F",
+    "script_cpu": "838A",
+    "callbacks": [
+     "0x03A7"
+    ],
+    "callback_targets": [
+     "0x3BF0"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x20",
+    "script_cpu": "839E",
+    "callbacks": [
+     "0x83A6"
+    ],
+    "callback_targets": [
+     "0x83A6"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x21",
+    "script_cpu": "840F",
+    "callbacks": [
+     "0x916B"
+    ],
+    "callback_targets": [
+     "0x916B"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x916B"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 2
+   },
+   {
+    "state": "0x22",
+    "script_cpu": "8425",
+    "callbacks": [
+     "0x94C1"
+    ],
+    "callback_targets": [
+     "0x94C1"
+    ],
+    "region_categories": [
+     "twist"
+    ],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 2
+   },
+   {
+    "state": "0x23",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x24",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x25",
+    "script_cpu": "8363",
+    "callbacks": [
+     "0x836F"
+    ],
+    "callback_targets": [
+     "0x836F"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x26",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x27",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x28",
+    "script_cpu": "8390",
+    "callbacks": [
+     "0x0443"
+    ],
+    "callback_targets": [
+     "0x3BFB"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x29",
+    "script_cpu": "8480",
+    "callbacks": [
+     "0x0338"
+    ],
+    "callback_targets": [
+     "0x60FB"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x2A",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x2B",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x2C",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x2D",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x2E",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x2F",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x30",
+    "script_cpu": "843B",
+    "callbacks": [
+     "0x032F"
+    ],
+    "callback_targets": [
+     "0x6065"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x31",
+    "script_cpu": "84D4",
+    "callbacks": [
+     "0x032F",
+     "0x0338",
+     "0x87E4"
+    ],
+    "callback_targets": [
+     "0x6065",
+     "0x60FB",
+     "0x87E4"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x32",
+    "script_cpu": "806E",
+    "callbacks": [
+     "0x807C"
+    ],
+    "callback_targets": [
+     "0x807C"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x33",
+    "script_cpu": "86FB",
+    "callbacks": [
+     "0x0338",
+     "0x87E4",
+     "0x87F2"
+    ],
+    "callback_targets": [
+     "0x60FB",
+     "0x87E4",
+     "0x87F2"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x34",
+    "script_cpu": "880A",
+    "callbacks": [
+     "0x032F",
+     "0x0338",
+     "0x88C6"
+    ],
+    "callback_targets": [
+     "0x6065",
+     "0x60FB",
+     "0x88C6"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [
+     "0x88C6"
+    ],
+    "may_probe": true,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x35",
+    "script_cpu": "8913",
+    "callbacks": [
+     "0x8933"
+    ],
+    "callback_targets": [
+     "0x8933"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x36",
+    "script_cpu": "895A",
+    "callbacks": [
+     "0x8986"
+    ],
+    "callback_targets": [
+     "0x8986"
+    ],
+    "region_categories": [],
+    "callbacks_reaching_753E": [],
+    "may_probe": false,
+    "indirect_jumps_not_followed": 0
+   },
+   {
+    "state": "0x37",
+    "script_cpu": "5F20",
+    "excluded": "pointer is not a plausible state script (points into fixed code, zero fill or a shared tail)"
+   },
+   {
+    "state": "0x38",
+    "script_cpu": "807C",
+    "excluded": "pointer is not a plausible state script (points into fixed code, zero fill or a shared tail)"
+   },
+   {
+    "state": "0x39",
+    "script_cpu": "6020",
+    "excluded": "pointer is not a plausible state script (points into fixed code, zero fill or a shared tail)"
+   },
+   {
+    "state": "0x3A",
+    "script_cpu": "807C",
+    "excluded": "pointer is not a plausible state script (points into fixed code, zero fill or a shared tail)"
+   },
+   {
+    "state": "0x3B",
+    "script_cpu": "6120",
+    "excluded": "pointer is not a plausible state script (points into fixed code, zero fill or a shared tail)"
+   },
+   {
+    "state": "0x3C",
+    "script_cpu": "807C",
+    "excluded": "pointer is not a plausible state script (points into fixed code, zero fill or a shared tail)"
+   }
+  ],
+  "states_that_may_probe": [
+   "0x00",
+   "0x01",
+   "0x02",
+   "0x03",
+   "0x04",
+   "0x05",
+   "0x06",
+   "0x07",
+   "0x08",
+   "0x09",
+   "0x0A",
+   "0x0B",
+   "0x0E",
+   "0x0F",
+   "0x10",
+   "0x11",
+   "0x12",
+   "0x14",
+   "0x15",
+   "0x17",
+   "0x19",
+   "0x1A",
+   "0x1B",
+   "0x1C",
+   "0x1D",
+   "0x1E",
+   "0x21",
+   "0x34"
+  ],
+  "states_that_do_not": [
+   "0x0C",
+   "0x0D",
+   "0x13",
+   "0x16",
+   "0x18",
+   "0x1F",
+   "0x20",
+   "0x22",
+   "0x23",
+   "0x24",
+   "0x25",
+   "0x26",
+   "0x27",
+   "0x28",
+   "0x29",
+   "0x2A",
+   "0x2B",
+   "0x2C",
+   "0x2D",
+   "0x2E",
+   "0x2F",
+   "0x30",
+   "0x31",
+   "0x32",
+   "0x33",
+   "0x35",
+   "0x36"
+  ],
+  "excluded_states": [
+   "0x37",
+   "0x38",
+   "0x39",
+   "0x3A",
+   "0x3B",
+   "0x3C"
+  ]
+ },
+ "probe_coordinate_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$7725 as called by $753E (BC=0)",
+  "cases": 814,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "rule": "probeX = anchorX (BC=0); probeY = anchorY + (-26 | -16) + 18, negative -> 0; column = probeX >> 5, row = probeY >> 5 (32x32 layout cells)",
+  "effective_probe_offsets_from_anchor_y": {
+   "bit0_clear": -8,
+   "bit0_set": 2
+  }
+ },
+ "collection_fixture": {
+  "thz1": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "act": "thz1",
+   "ring_quadrants": 142,
+   "cases": 113600,
+   "mismatches": 0,
+   "first_mismatch": null,
+   "collected_cases": 91552,
+   "accepted_anchor_x_span_over_all_rings": [
+    176,
+    3455
+   ],
+   "model": "collect iff block(probe cell) in $40..$45, presence[block][quadrant(probe)] != 0; quadrant = ((probeX>>4)&1) + 2*((probeY>>4)&1)"
+  },
+  "thz2": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "act": "thz2",
+   "ring_quadrants": 133,
+   "cases": 106400,
+   "mismatches": 0,
+   "first_mismatch": null,
+   "collected_cases": 82608,
+   "accepted_anchor_x_span_over_all_rings": [
+    192,
+    3679
+   ],
+   "model": "collect iff block(probe cell) in $40..$45, presence[block][quadrant(probe)] != 0; quadrant = ((probeX>>4)&1) + 2*((probeY>>4)&1)"
+  },
+  "thz3": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "act": "thz3",
+   "ring_quadrants": 6,
+   "cases": 4800,
+   "mismatches": 0,
+   "first_mismatch": null,
+   "collected_cases": 3712,
+   "accepted_anchor_x_span_over_all_rings": [
+    160,
+    255
+   ],
+   "model": "collect iff block(probe cell) in $40..$45, presence[block][quadrant(probe)] != 0; quadrant = ((probeX>>4)&1) + 2*((probeY>>4)&1)"
+  }
+ },
+ "region_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "quadrant_pixels": {
+   "left": 1408,
+   "top": 64,
+   "right_inclusive": 1423,
+   "bottom_inclusive": 79
+  },
+  "rows": [
+   {
+    "bit0": 0,
+    "anchor_x_accepted": [
+     1408,
+     1423
+    ],
+    "anchor_y_accepted": [
+     72,
+     87
+    ],
+    "width": 16,
+    "height": 16,
+    "expected": {
+     "x": [
+      1408,
+      1423
+     ],
+     "y": [
+      72,
+      87
+     ]
+    }
+   },
+   {
+    "bit0": 1,
+    "anchor_x_accepted": [
+     1408,
+     1423
+    ],
+    "anchor_y_accepted": [
+     62,
+     77
+    ],
+    "width": 16,
+    "height": 16,
+    "expected": {
+     "x": [
+      1408,
+      1423
+     ],
+     "y": [
+      62,
+      77
+     ]
+    }
+   }
+  ],
+  "union_anchor_y_either_parity": [
+   62,
+   87
+  ],
+  "overlap_anchor_y_both_parities": [
+   72,
+   77
+  ],
+  "edges": "all four edges inclusive at integer-pixel resolution; the fractional position bytes (+$10, +$13) are not used"
+ },
+ "direction_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "cases": 1600,
+  "not_collected": 0,
+  "conclusion": "the routine reads only +$07 bit 0, X, Y (and +$22 for type $1A): velocity direction, requested state and contact flags do not matter; 'from below' or 'from the side' collects exactly when the single probe point lies in the quadrant"
+ },
+ "effects_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "samples": [
+   {
+    "d29a_before": "00",
+    "d29a_after": "01",
+    "d299_after": 0,
+    "cell_after": "0x45",
+    "slot0_type": 3,
+    "effect_xy": [
+     1416,
+     88
+    ],
+    "sound": "0xBF"
+   },
+   {
+    "d29a_before": "09",
+    "d29a_after": "10",
+    "d299_after": 0,
+    "cell_after": "0x45",
+    "slot0_type": 3,
+    "effect_xy": [
+     1416,
+     88
+    ],
+    "sound": "0xBF"
+   },
+   {
+    "d29a_before": "19",
+    "d29a_after": "20",
+    "d299_after": 0,
+    "cell_after": "0x45",
+    "slot0_type": 3,
+    "effect_xy": [
+     1416,
+     88
+    ],
+    "sound": "0xBF"
+   },
+   {
+    "d29a_before": "98",
+    "d29a_after": "99",
+    "d299_after": 0,
+    "cell_after": "0x45",
+    "slot0_type": 3,
+    "effect_xy": [
+     1416,
+     88
+    ],
+    "sound": "0xBF"
+   },
+   {
+    "d29a_before": "99",
+    "d29a_after": "00",
+    "d299_after": 1,
+    "cell_after": "0x45",
+    "slot0_type": 3,
+    "effect_xy": [
+     1416,
+     88
+    ],
+    "sound": "0xA9"
+   }
+  ],
+  "replacement_chain": [
+   {
+    "block": "0x40",
+    "quadrant": 0,
+    "collected": true,
+    "cell_after": "0x43",
+    "expected_cell_after": "0x43"
+   },
+   {
+    "block": "0x40",
+    "quadrant": 1,
+    "collected": true,
+    "cell_after": "0x42",
+    "expected_cell_after": "0x42"
+   },
+   {
+    "block": "0x41",
+    "quadrant": 2,
+    "collected": true,
+    "cell_after": "0x45",
+    "expected_cell_after": "0x45"
+   },
+   {
+    "block": "0x41",
+    "quadrant": 3,
+    "collected": true,
+    "cell_after": "0x44",
+    "expected_cell_after": "0x44"
+   },
+   {
+    "block": "0x42",
+    "quadrant": 0,
+    "collected": true,
+    "cell_after": "0x46",
+    "expected_cell_after": "0x46"
+   },
+   {
+    "block": "0x43",
+    "quadrant": 1,
+    "collected": true,
+    "cell_after": "0x46",
+    "expected_cell_after": "0x46"
+   },
+   {
+    "block": "0x44",
+    "quadrant": 2,
+    "collected": true,
+    "cell_after": "0x46",
+    "expected_cell_after": "0x46"
+   },
+   {
+    "block": "0x45",
+    "quadrant": 3,
+    "collected": true,
+    "cell_after": "0x46",
+    "expected_cell_after": "0x46"
+   }
+  ],
+  "side_effects": "BCD +1 on $D29A (carry past $99 runs $3104 + $178F), block write to the layout cell (D354), tile redraw $23F9, type $03 effect via $5E9C at the probe point (D35C/D35E = probeX, probeY), sound $BF, $3138"
+ },
+ "other_types_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "rows": [
+   {
+    "block": "0xB8",
+    "label": "type_1d",
+    "plus22": 0,
+    "counter": 16,
+    "cell_after": "0x46",
+    "d29a": "0x10",
+    "x_speed": 0,
+    "requested_state": 1,
+    "sound": "0xBF"
+   },
+   {
+    "block": "0xB8",
+    "label": "type_1d",
+    "plus22": 2,
+    "counter": 16,
+    "cell_after": "0x46",
+    "d29a": "0x10",
+    "x_speed": 0,
+    "requested_state": 1,
+    "sound": "0xBF"
+   },
+   {
+    "block": "0xA7",
+    "label": "type_1a",
+    "plus22": 0,
+    "counter": 0,
+    "cell_after": "0xA7",
+    "d29a": "0x00",
+    "x_speed": 0,
+    "requested_state": 1,
+    "sound": "0x00"
+   },
+   {
+    "block": "0xA7",
+    "label": "type_1a",
+    "plus22": 2,
+    "counter": 0,
+    "cell_after": "0xA7",
+    "d29a": "0x00",
+    "x_speed": 1792,
+    "requested_state": 16,
+    "sound": "0xBD"
+   },
+   {
+    "block": "0x3A",
+    "label": "type_14",
+    "plus22": 0,
+    "counter": 0,
+    "cell_after": "0x3A",
+    "d29a": "0x00",
+    "x_speed": 0,
+    "requested_state": 1,
+    "sound": "0x00"
+   },
+   {
+    "block": "0x3A",
+    "label": "type_14",
+    "plus22": 2,
+    "counter": 0,
+    "cell_after": "0x3A",
+    "d29a": "0x00",
+    "x_speed": 0,
+    "requested_state": 1,
+    "sound": "0x00"
+   }
+  ],
+  "note": "type $1D: block -> $46 and +10 rings; type $1A: needs +$22 bit 1, sets X speed $0700 and requests state $10; type $14: depth correction path. Semantic names are UNRESOLVED; they are listed only because they share the probe."
+ },
+ "timer_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$64FA with the player slot, bank $0C re-paged before each call (as $361D does)",
+  "rule": "records load +$07 = duration; every update without a reload does DEC (IX+7) at $6510; FF 05 / frame-selector routines may set +$07 themselves; +$07 bit 0 is therefore the parity of the remaining animation ticks, not a posture flag",
+  "states": [
+   {
+    "state": "0x00",
+    "plus07_after_each_engine_update_first_26": [
+     180,
+     180,
+     179,
+     178,
+     177,
+     176,
+     175,
+     174,
+     173,
+     172,
+     171,
+     170,
+     169,
+     168,
+     167,
+     166,
+     165,
+     164,
+     163,
+     162,
+     161,
+     160,
+     159,
+     158,
+     157
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x01",
+    "plus07_after_each_engine_update_first_26": [
+     180,
+     179,
+     178,
+     177,
+     176,
+     175,
+     174,
+     173,
+     172,
+     171,
+     170,
+     169,
+     168,
+     167,
+     166,
+     165,
+     164,
+     163,
+     162,
+     161,
+     160,
+     159,
+     158,
+     157,
+     156
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x02",
+    "plus07_after_each_engine_update_first_26": [
+     64,
+     63,
+     62,
+     61,
+     60,
+     59,
+     58,
+     57,
+     56,
+     55,
+     54,
+     53,
+     52,
+     51,
+     50,
+     49,
+     48,
+     47,
+     46,
+     45,
+     44,
+     43,
+     42,
+     41,
+     40
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x03",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x04",
+    "plus07_after_each_engine_update_first_26": [
+     224,
+     223,
+     222,
+     221,
+     220,
+     219,
+     218,
+     217,
+     216,
+     215,
+     214,
+     213,
+     212,
+     211,
+     210,
+     209,
+     208,
+     207,
+     206,
+     205,
+     204,
+     203,
+     202,
+     201,
+     200
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x05",
+    "plus07_after_each_engine_update_first_26": [
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     10,
+     9,
+     8,
+     7,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x06",
+    "plus07_after_each_engine_update_first_26": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x07",
+    "plus07_after_each_engine_update_first_26": [
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     224,
+     223,
+     222,
+     221,
+     220,
+     219,
+     218,
+     217,
+     216,
+     215,
+     214,
+     213,
+     212,
+     211,
+     210,
+     209,
+     208
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x08",
+    "plus07_after_each_engine_update_first_26": [
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     224,
+     223,
+     222,
+     221,
+     220,
+     219,
+     218,
+     217,
+     216,
+     215,
+     214,
+     213,
+     212,
+     211,
+     210,
+     209,
+     208
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x09",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x0A",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x0B",
+    "plus07_after_each_engine_update_first_26": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x0C",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x0D",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x0E",
+    "plus07_after_each_engine_update_first_26": [
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x0F",
+    "plus07_after_each_engine_update_first_26": [
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x10",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x11",
+    "plus07_after_each_engine_update_first_26": [
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x12",
+    "plus07_after_each_engine_update_first_26": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x13",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x14",
+    "plus07_after_each_engine_update_first_26": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x15",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     5
+    ],
+    "bit0_set_fraction": 0.52
+   },
+   {
+    "state": "0x16",
+    "plus07_after_each_engine_update_first_26": [
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x17",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x18",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x19",
+    "plus07_after_each_engine_update_first_26": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x1A",
+    "plus07_after_each_engine_update_first_26": [
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2,
+     1,
+     2
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x1B",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x1C",
+    "plus07_after_each_engine_update_first_26": [
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x1D",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x1E",
+    "plus07_after_each_engine_update_first_26": [
+     1,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     1,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     1,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     1,
+     2,
+     1,
+     4
+    ],
+    "bit0_set_fraction": 0.56
+   },
+   {
+    "state": "0x1F",
+    "plus07_after_each_engine_update_first_26": [
+     128,
+     127,
+     126,
+     125,
+     124,
+     123,
+     122,
+     121,
+     120,
+     119,
+     118,
+     117,
+     116,
+     115,
+     114,
+     113,
+     112,
+     111,
+     110,
+     109,
+     108,
+     107,
+     106,
+     105,
+     104
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x20",
+    "plus07_after_each_engine_update_first_26": [
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     10,
+     9,
+     8,
+     7,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x21",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x22",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x23",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x24",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x25",
+    "plus07_after_each_engine_update_first_26": [
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x26",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x27",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x28",
+    "plus07_after_each_engine_update_first_26": [
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     24
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x29",
+    "plus07_after_each_engine_update_first_26": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x2A",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x2B",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x2C",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x2D",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x2E",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x2F",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x30",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x31",
+    "plus07_after_each_engine_update_first_26": [
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x32",
+    "plus07_after_each_engine_update_first_26": [
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x33",
+    "plus07_after_each_engine_update_first_26": [
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3,
+     2,
+     1,
+     3
+    ],
+    "bit0_set_fraction": 0.68
+   },
+   {
+    "state": "0x34",
+    "plus07_after_each_engine_update_first_26": [
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     6,
+     5,
+     4
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x35",
+    "plus07_after_each_engine_update_first_26": [
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x36",
+    "plus07_after_each_engine_update_first_26": [
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x37",
+    "plus07_after_each_engine_update_first_26": [
+     0,
+     255,
+     254,
+     253,
+     252,
+     251,
+     250,
+     249,
+     248,
+     247,
+     246,
+     245,
+     244,
+     243,
+     242,
+     241,
+     240,
+     239,
+     238,
+     237,
+     236,
+     235,
+     234,
+     233,
+     232
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x38",
+    "plus07_after_each_engine_update_first_26": [
+     201,
+     200,
+     199,
+     198,
+     197,
+     196,
+     195,
+     194,
+     193,
+     192,
+     191,
+     190,
+     189,
+     188,
+     187,
+     186,
+     185,
+     184,
+     183,
+     182,
+     181,
+     180,
+     179,
+     178,
+     177
+    ],
+    "bit0_set_fraction": 0.52
+   },
+   {
+    "state": "0x39",
+    "plus07_after_each_engine_update_first_26": [
+     44,
+     43,
+     42,
+     41,
+     40,
+     39,
+     38,
+     37,
+     36,
+     35,
+     34,
+     33,
+     32,
+     31,
+     30,
+     29,
+     28,
+     27,
+     26,
+     25,
+     24,
+     23,
+     22,
+     21,
+     20
+    ],
+    "bit0_set_fraction": 0.48
+   },
+   {
+    "state": "0x3A",
+    "plus07_after_each_engine_update_first_26": [
+     201,
+     200,
+     199,
+     198,
+     197,
+     196,
+     195,
+     194,
+     193,
+     192,
+     191,
+     190,
+     189,
+     188,
+     187,
+     186,
+     185,
+     184,
+     183,
+     182,
+     181,
+     180,
+     179,
+     178,
+     177
+    ],
+    "bit0_set_fraction": 0.52
+   },
+   {
+    "state": "0x3B",
+    "plus07_after_each_engine_update_first_26": [
+     20,
+     19,
+     18,
+     17,
+     16,
+     15,
+     14,
+     13,
+     12,
+     11,
+     10,
+     9,
+     8,
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     221,
+     220,
+     219,
+     218,
+     217
+    ],
+    "bit0_set_fraction": 0.52
+   },
+   {
+    "state": "0x3C",
+    "plus07_after_each_engine_update_first_26": [
+     201,
+     200,
+     199,
+     198,
+     197,
+     196,
+     195,
+     194,
+     193,
+     192,
+     191,
+     190,
+     189,
+     188,
+     187,
+     186,
+     185,
+     184,
+     183,
+     182,
+     181,
+     180,
+     179,
+     178,
+     177
+    ],
+    "bit0_set_fraction": 0.52
+   }
+  ]
+ },
+ "emulated_play": {
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "method": "THZ1 booted in tools/sms_frame_harness.py, 6000 frames of seeded pseudo-random pad input (RIGHT, DOWN+RIGHT, LEFT, jump), PC hook at $753E with IX=$D500",
+  "probe_calls": 4916,
+  "by_state_bit0_clear_set": {
+   "0x00": [
+    2,
+    0
+   ],
+   "0x01": [
+    8,
+    0
+   ],
+   "0x04": [
+    107,
+    106
+   ],
+   "0x05": [
+    564,
+    523
+   ],
+   "0x06": [
+    117,
+    108
+   ],
+   "0x07": [
+    15,
+    15
+   ],
+   "0x08": [
+    11,
+    9
+   ],
+   "0x09": [
+    17,
+    16
+   ],
+   "0x0A": [
+    701,
+    1399
+   ],
+   "0x0B": [
+    326,
+    319
+   ],
+   "0x0E": [
+    235,
+    234
+   ],
+   "0x0F": [
+    1,
+    0
+   ],
+   "0x10": [
+    1,
+    0
+   ],
+   "0x1E": [
+    35,
+    47
+   ]
+  },
+  "longest_same_bit0_run_by_state": {
+   "0x00": 2,
+   "0x01": 8,
+   "0x04": 2,
+   "0x05": 5,
+   "0x06": 3,
+   "0x07": 1,
+   "0x08": 2,
+   "0x09": 2,
+   "0x0A": 3,
+   "0x0B": 2,
+   "0x0E": 2,
+   "0x0F": 1,
+   "0x10": 1,
+   "0x1E": 2
+  },
+  "probe_position_equals_same_frame_end_position": [
+   4876,
+   4916
+  ],
+  "frames_with_a_probe": 4916,
+  "frames_where_x_and_y_integration_precede_the_probe": 4910,
+  "frames_where_clamp_precedes_the_probe": 4905,
+  "event_sequences_per_frame": {
+   "step_3fef > clamp > x_integrate > y_integrate > probe > move_48bc": 4897,
+   "x_integrate > y_integrate > probe > move_48bc": 5,
+   "step_3fef > clamp > x_integrate > y_integrate > probe > move_48bc > step_3fef > clamp": 4,
+   "probe > move_48bc": 4,
+   "step_3fef > clamp > x_integrate > y_integrate > probe > move_48bc > step_3fef > clamp > x_integrate > y_integrate": 3,
+   "step_3fef > clamp > x_integrate > y_integrate > probe > move_48bc > step_3fef > clamp > x_integrate": 1
+  },
+  "states_probed": [
+   "0x00",
+   "0x01",
+   "0x04",
+   "0x05",
+   "0x06",
+   "0x07",
+   "0x08",
+   "0x09",
+   "0x0A",
+   "0x0B",
+   "0x0E",
+   "0x0F",
+   "0x10",
+   "0x1E"
+  ]
+ },
+ "emulated_forced_states": {
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "method": "state requested every frame (twist on a THZ1 twist block, others near the start); counts only calls whose current state equals the forced one",
+  "twist_block_cell": [
+   97,
+   17
+  ],
+  "twist_block": "0x5B",
+  "rows": [
+   {
+    "state": "0x01",
+    "label": "standing",
+    "frames_in_state": 15,
+    "probe_calls_in_state": 15
+   },
+   {
+    "state": "0x05",
+    "label": "walking",
+    "frames_in_state": 18,
+    "probe_calls_in_state": 18
+   },
+   {
+    "state": "0x06",
+    "label": "running",
+    "frames_in_state": 27,
+    "probe_calls_in_state": 27
+   },
+   {
+    "state": "0x09",
+    "label": "rolling",
+    "frames_in_state": 30,
+    "probe_calls_in_state": 30
+   },
+   {
+    "state": "0x0A",
+    "label": "jump",
+    "frames_in_state": 15,
+    "probe_calls_in_state": 15
+   },
+   {
+    "state": "0x0B",
+    "label": "spring ascent",
+    "frames_in_state": 15,
+    "probe_calls_in_state": 15
+   },
+   {
+    "state": "0x0E",
+    "label": "falling",
+    "frames_in_state": 15,
+    "probe_calls_in_state": 15
+   },
+   {
+    "state": "0x1B",
+    "label": "ramp launch",
+    "frames_in_state": 30,
+    "probe_calls_in_state": 30
+   },
+   {
+    "state": "0x1C",
+    "label": "diagonal spring",
+    "frames_in_state": 15,
+    "probe_calls_in_state": 15
+   },
+   {
+    "state": "0x0C",
+    "label": "loop (callback $03CB)",
+    "frames_in_state": 30,
+    "probe_calls_in_state": 0
+   },
+   {
+    "state": "0x0D",
+    "label": "loop (callback $03D1)",
+    "frames_in_state": 16,
+    "probe_calls_in_state": 0
+   },
+   {
+    "state": "0x13",
+    "label": "loop (callback $03CE)",
+    "frames_in_state": 15,
+    "probe_calls_in_state": 0
+   },
+   {
+    "state": "0x22",
+    "label": "twisting strip",
+    "frames_in_state": 30,
+    "probe_calls_in_state": 0
+   }
+  ]
+ }
+}

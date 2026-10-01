@@ -76,6 +76,15 @@ Branch `research/viewport-semantics-audit`. Primary study: `docs/viewport-semant
 - Player edge clamp `[cam+16, cam+247]` uses the low byte of `playerX - cam` (wraps for `d >= 256`).
 - 384 is two unrelated values: the lifetime window bound and a player-distance radius for `$27`.
 
+### Terrain-ring collection (`$753E`): COMPLETE (awaiting review)
+
+Branch `research/terrain-ring-collection`. Primary study: `docs/terrain-ring-collection.md`; data:
+`data/rom-cache/terrain-ring-collection.json`; tool/tests: `tools/terrain_ring_collection.py`, `tests/test_terrain_ring_collection.py`.
+
+- Probe point `(anchorX, anchorY + {-26,-16} + 18)` = anchorY-8 / anchorY+2, chosen by the parity of the animation countdown `+$07`; one point, no extents, any direction.
+- Layout cell 32x32, ring quadrant 16x16 of blocks `$40..$45`; all edges inclusive; anchor window 16x16 per parity (26 rows union, 6 overlap).
+- Not probed in loop states `$0C/$0D/$13`, twist `$22`, act-clear `$20`; THZ1/THZ2/THZ3 identical (224,800 swept cases, 0 mismatches).
+
 ### THZ1/THZ2 type `$18` goal sign and act-clear chain: COMPLETE
 
 Branch `research/object-18-act-clear`. Primary study: `docs/object-18-act-clear.md`; data:
