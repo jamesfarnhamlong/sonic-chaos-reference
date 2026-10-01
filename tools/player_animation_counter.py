@@ -417,6 +417,21 @@ def _init_modelled(rom: bytes) -> None:
 # --------------------------------------------------------------------------- #
 # 4. schedules, selectors, transitions
 # --------------------------------------------------------------------------- #
+def _fragment(rom: bytes, ptr: int) -> list:
+    """Records/commands at an FF 08 branch target (listed until the first FF command)."""
+    ops = []
+    for _ in range(12):
+        o = rom_of(BANK, ptr)
+        if rom[o] != 0xFF:
+            ops.append({"at": h(ptr), "record": rom[o], "frame": rom[o + 1], "callback": h(u16(rom, o + 2))})
+            ptr += 4
+            continue
+        c = rom[o + 1]
+        ops.append({"at": h(ptr), "cmd": f"FF {c:02X}", "args": rom[o + 2:o + 2 + CMD_ARGS.get(c, 0)].hex()})
+        break
+    return ops
+
+
 def script_program(rom: bytes, state: int) -> list:
     """Linear listing of a state script (records and commands) until the first terminating restart/request."""
     ptr = u16(rom, rom_of(BANK, STATE_TABLE + 2 * state))
@@ -439,6 +454,7 @@ def script_program(rom: bytes, state: int) -> list:
             row["target"] = h(u16(rom, o + 2))
         if c == 0x08:
             row["condition_routine"], row["target_if_carry"] = h(u16(rom, o + 2)), h(u16(rom, o + 4))
+            row["fragment_at_target"] = _fragment(rom, u16(rom, o + 4))
         ops.append(row)
         if c == 0x00:
             break
@@ -474,16 +490,24 @@ def state_schedules(rom: bytes, states: list[int]) -> dict:
             seq = [mod.step(s, hi, floor, side, d448) for _ in range(40)]
             variants[label] = seq
         constant = len({tuple(v) for v in variants.values()}) == 1
-        dep = {}
+        dep, pdep = {}, {}
+        alt_all = True
         for name, vals in (("x_speed_hi", [(hi, True, False, 0) for hi in range(0, 10)]), ("floor", [(4, f, False, 0) for f in (False, True)]),
                            ("side_contact", [(4, True, sd, 0) for sd in (False, True)]), ("d448_bit0", [(4, True, False, d) for d in (0, 1)])):
             seqs = set()
+            pseqs = set()
             for hi, fl, sd, d4 in vals:
                 mod = Model(rom)
-                seqs.add(tuple(mod.step_state_run(s, hi, fl, sd, d4, 80)))
+                run = mod.step_state_run(s, hi, fl, sd, d4, 160)
+                seqs.add(tuple(run))
+                pseqs.add(tuple(v & 1 for v in run))
             dep[name] = len(seqs) > 1
+            pdep[name] = len(pseqs) > 1
+            alt_all = alt_all and all(all(v == i % 2 for i, v in enumerate(ps)) for ps in pseqs)
         loads = Model(rom).loaded_durations(s, 4, True, False, 0, 60)
         out[h(s, 2)] = {"modelled": True, "selectors": selectors, "program": prog, "depends_on_inputs": any(dep.values()), "input_dependence": dep,
+                        "parity_depends_on_inputs": any(pdep.values()), "parity_input_dependence": pdep,
+                        "parity_is_pure_alternation_from_entry_for_all_inputs": alt_all,
                         "loaded_durations_first_60_reloads_rle": _rle(loads),
                         "first_40_counter_values_by_input_set": variants if not constant else {"all": variants["hi0_floor"]}}
     return out
@@ -744,12 +768,164 @@ def dynamic_eligibility(rom: bytes) -> dict:
 
 
 # --------------------------------------------------------------------------- #
+# 6b. state $0B and $D448 (focused audit)
+# --------------------------------------------------------------------------- #
+# (rom offset of the store opcode, expected bytes ending with the store, meaning, value written)
+D448_WRITERS = [
+    (0x6A87, "3eff3248d4", "terrain upright spring (surface type 9, handler $6A75): Y speed $F880 -> $480C -> state $0B", 0xFF),
+    (0x6AC8, "af3248d4", "terrain diagonal spring (surface type $14, handler $6A90): -> $482D -> state $1C (not $0B)", 0x00),
+    (0x332CC, "3eff3248d4", "type $21 top contact (bank $0C $B2CC): Y speed $F940 -> $035F -> $480C -> state $0B", 0xFF),
+    (0x782F8, "783248d4", "type $26 spring contact state 7 (bank $1E $82F8): parameter 0 -> $FF + $F8A0, nonzero -> 0 + $FB00 -> $035F -> $480C -> state $0B", None),
+    (0x78420, "783248d4", "type $26 span-spring state 9 (bank $1E $8420): same parameter rule as $82F8", None),
+    (0x799CA, "af3248d4", "type $50 attack contact (bank $1E $99CA): Y speed $FC00 -> $035F -> $480C -> state $0B", 0x00),
+]
+
+
+def d448_audit(rom: bytes) -> dict:
+    occ = []
+    for m in re.finditer(rb"\x48\xd4", rom):
+        o = m.start() - 1
+        b, c = _loc(o)
+        occ.append({"rom_offset": h(o, 5), "bank": b, "cpu": h(c), "bytes": rom[o - 1:o + 5].hex()})
+    writers = []
+    for off, pre, meaning, val in D448_WRITERS:
+        n = len(pre) // 2
+        seen = rom[off + 3 - n:off + 3].hex()
+        writers.append({"rom_offset": h(off, 5), "bank": _loc(off)[0], "cpu": h(_loc(off)[1]), "bytes": seen, "bytes_match": seen == pre,
+                        "meaning": meaning, "value": None if val is None else h(val, 2)})
+    callers_480c = [h(m.start(), 5) for m in re.finditer(rb"\xcd\x0c\x48|\xc3\x0c\x48", rom)]
+    callers_035f = [h(m.start(), 5) for m in re.finditer(rb"\xcd\x5f\x03|\xc3\x5f\x03", rom)]
+    prog = script_program(rom, 0x0B)
+    durations = [r["record"] for r in prog if "record" in r]
+    for r in prog:
+        durations += [x["record"] for x in r.get("fragment_at_target", []) if "record" in x]
+    requests_0b = [h(m.start(), 5) for m in re.finditer(rb"\xdd\x36\x02\x0b", rom) if _loc(m.start())[0] in (0, 1)]
+    layout = {}
+    for act in ("thz1", "thz2", "thz3"):
+        d = json.loads((ROOT / "data" / "rom-cache" / "levels" / act / "objects.json").read_text(encoding="utf-8"))
+        recs = [r for r in d["records"] if r["type_id"].lower() == "0x26"]
+        layout[act] = [{"world": [r["world_x"], r["world_y"]], "parameter": r["parameter"],
+                        "d448_after_launch": "0xFF (bit 0 set)" if int(r["parameter"], 16) == 0 else "0x00 (bit 0 clear)",
+                        "launch": "strong $F8A0" if int(r["parameter"], 16) == 0 else "weak $FB00"} for r in recs]
+    return {"evidence": "BYTE-VERIFIED ASSEMBLY + CONTROLLED ROUTINE RESULT",
+            "reader": {"cpu": "0x818F (bank $0C)", "bytes": rom[rom_of(BANK, 0x818F):rom_of(BANK, 0x818F) + 5].hex(),
+                       "meaning": "LD A,($D448); RRCA; RET: carry = bit 0",
+                       "used_by": "FF 08 at $814A (first command of the state $0B script): carry -> script pointer := $8189"},
+            "all_occurrences_of_the_address_bytes": occ, "writers": writers, "stores_total": len(writers),
+            "other_accesses": "none: no IX/IY+$48 form, no HL/DE/BC load of $D448, no block copy; zeroed only by the boot/reset RAM clears ($0029, $0462)",
+            "not_cleared_at_level_load": True,
+            "callers_of_480c_upright_launch": callers_480c, "callers_of_035f_launch_vector": callers_035f,
+            "player_requests_of_state_0b_in_fixed_banks": requests_0b,
+            "every_upright_launch_writes_d448_first": True,
+            "state_0b_durations_all_even": all(d % 2 == 0 for d in durations), "state_0b_durations": sorted(set(durations)),
+            "thz_springs_by_parameter": layout,
+            "meaning": "bit 0 of $D448 records the kind of the last upright launch: $FF for terrain upright springs, type $21 stomps and parameter-0 type $26 springs; "
+                       "0 for weak (parameter != 0) type $26 springs and the boss bounce. It persists until the next launch writer, including across acts."}
+
+
+def state_0b_fixture(rom: bytes) -> dict:
+    """State $0B entered with $D448 bit 0 = 0 and = 1 against the original engine, long enough to cover the whole normal schedule."""
+    lab = Lab(rom)
+    n_updates = 200
+    seqs = {}
+    for d448 in (0, 1):
+        lab.reset()
+        mod = Model(rom)
+        lab.prime(mod)
+        orig, model = [], []
+        for _ in range(n_updates):
+            orig.append(lab.engine(0x0B, 0, False, False, d448))
+            model.append(mod.step(0x0B, 0, False, False, d448))
+        seqs[d448] = {"original": orig, "model": model}
+    parity = {k: [v & 1 for v in q["original"]] for k, q in seqs.items()}
+    first_value_diff = next((i for i in range(n_updates) if seqs[0]["original"][i] != seqs[1]["original"][i]), None)
+    rng = random.Random(0x0B448)
+    toggles = bad = 0
+    for ep in range(300):
+        lab.reset()
+        lab.prime()
+        got = []
+        for k in range(n_updates):
+            v = rng.choice([0x00, 0x01, 0xFF, 0xFE, 0x55])
+            toggles += 1
+            got.append(lab.engine(0x0B, 0, False, False, v) & 1)
+        bad += got != parity[0]
+    return {"evidence": "CONTROLLED ROUTINE RESULT", "routine": "$64FA, state $0B, bank $0C re-paged each call", "updates_per_run": n_updates,
+            "counter_sequence_d448_clear_first_90": seqs[0]["original"][:90], "counter_sequence_d448_set_first_90": seqs[1]["original"][:90],
+            "model_equals_original": seqs[0]["original"] == seqs[0]["model"] and seqs[1]["original"] == seqs[1]["model"],
+            "first_update_where_counter_values_differ": first_value_diff,
+            "parity_sequences_identical": parity[0] == parity[1], "parity_pattern_first_16": parity[0][:16],
+            "random_toggle_episodes": 300, "random_toggle_updates": toggles, "random_toggle_parity_mismatches": bad,
+            "d448_values_tried_in_toggle_test": ["0x00", "0x01", "0xFF", "0xFE", "0x55"],
+            "reason": "every record of every path has an even duration (4, 6, 8), so the counter always runs d, d-1, ..., 1 with d even: bit 0 is 0,1,0,1,... "
+                      "continuously across reloads; the D448 branch only changes WHICH even durations are loaded, never the parity sequence",
+            "conclusion": "D448 bit 0 does not affect bit 0 of +$07 in state $0B (the only reader of $D448 is the state $0B script)"}
+
+
+def emulated_springs(rom: bytes) -> dict:
+    """Real launches in THZ1/THZ2: $D448 after the launch, length of state $0B and the engine's counter values versus the model for both $D448 values."""
+    o18 = _load("object_18")
+    rows = []
+    cases = (("thz1", 0, 688, 864, 0x00), ("thz1", 0, 1912, 864, 0x01), ("thz1", 0, 1296, 608, 0x8A),
+             ("thz2", 1, 864, 896, 0x00), ("thz2", 1, 1504, 896, 0x88), ("thz2", 1, 3472, 288, 0x01))
+    for act, idx, sx, sy, param in cases:
+        s = o18._boot(rom, idx, lambda m: None)
+        m = s.mem
+        for _ in range(60):
+            s.pad = 0
+            s.run_frame()
+        trace = []
+
+        def on_cb(_, trace=trace, m=m, s=s):
+            if s.cpu.ix == 0xD500:
+                trace.append((m[0xD501], m[0xD507], m[0xD448]))
+
+        s.add_pc_hook(0x5E91, on_cb)
+        x, y = sx, sy - 18
+        for a in (0xD174, 0xD284):
+            s.w16(a, max(x - 104, 0))
+        for a in (0xD176, 0xD286):
+            s.w16(a, y - 100)
+        s.w16(0xD511, x)
+        s.w16(0xD514, y)
+        s.w16(0xD516, 0)
+        s.w16(0xD518, 0)
+        m[0xD448] = 0x55
+        m[0xD440] = 0                  # initial-fill creation so the concealed spring exists
+        trace.clear()
+        for _ in range(260):
+            s.pad = 0
+            s.run_frame()
+        idxs = [i for i, t in enumerate(trace) if t[0] == 0x0B]
+        if not idxs:
+            rows.append({"act": act, "spring": [sx, sy], "parameter": h(param, 2), "launched": False})
+            continue
+        run = []
+        for t in trace[idxs[0]:]:
+            if t[0] != 0x0B:
+                break
+            run.append(t)
+        d448 = run[0][2]
+        counters = [t[1] for t in run]
+        exp = {dv: Model(rom).step_state_run(0x0B, 0, False, False, dv, len(run)) for dv in (0, 1)}
+        rows.append({"act": act, "spring": [sx, sy], "parameter": h(param, 2), "launched": True, "d448_after_launch": h(d448, 2),
+                     "updates_in_state_0b": len(run), "counters_first_20": counters[:20], "counters_last_8": counters[-8:],
+                     "model_equal_for_observed_d448": counters == exp[d448 & 1],
+                     "model_parity_equal_for_both_d448": [v & 1 for v in exp[0]] == [v & 1 for v in exp[1]],
+                     "model_values_equal_for_both_d448": exp[0] == exp[1]})
+    return {"evidence": "EMULATED ORIGINAL FRAME",
+            "method": "THZ1/THZ2 booted in tools/sms_frame_harness.py; Sonic placed on each concealed spring with the placement scan forced to an initial fill ($D440 = 0); "
+                      "$D448 preset to $55; PC hook at the callback entry $5E91 records +$01, +$07, $D448 per update",
+            "rows": rows}
+
+
+# --------------------------------------------------------------------------- #
 # 7. build
 # --------------------------------------------------------------------------- #
 UNRESOLVED = [
     "+$03 bit 3 (engine ignores state requests while set) is never set by any recovered code; modelled behaviour is from the engine source only.",
     "FF 08 condition of state $04 depends on a zone-4 location (not a THZ case); the model assumes the carry path ($80C5 restart).",
-    "State $0B's FF 08 condition reads $D448 bit 0 (semantic name unresolved); it is an input of the model.",
+    "$D448 beyond bit 0 (last-upright-launch marker, six stores of $FF/$00): only bit 0 is read, by the state $0B script; other bits were not investigated.",
     "FF 01 call targets ($038F, $8313, $82CC, $835E, ...) were verified only to leave +$07 unchanged in the differential runs.",
     "The probing set for states that cannot be held in the emulator (see dynamic_eligibility.never_held) rests on static reachability.",
     "Other-character selectors ($8CB4, $8D05) exist for a second player type; not part of THZ play and not modelled.",
@@ -773,6 +949,9 @@ def build(rom: bytes, static_only: bool = False) -> dict:
         out["direct_write_fixtures"] = direct_write_fixtures(rom)
         out["dynamic_eligibility"] = dynamic_eligibility(rom)
         out["emulated_play"] = emulated_play(rom)
+        out["state_0b_fixture"] = state_0b_fixture(rom)
+        out["emulated_springs"] = emulated_springs(rom)
+    out["d448_audit"] = d448_audit(rom)
     return out
 
 

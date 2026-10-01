@@ -113,6 +113,63 @@ class ScheduleTests(unittest.TestCase):
         self.assertEqual(dependent, {"0x05", "0x09", "0x0A", "0x0B", "0x10", "0x1B"})
 
 
+class D448Tests(unittest.TestCase):
+    def test_audit(self):
+        a = D["d448_audit"]
+        self.assertEqual(len(a["all_occurrences_of_the_address_bytes"]), 7)
+        self.assertEqual(a["stores_total"], 6)
+        self.assertTrue(all(w["bytes_match"] for w in a["writers"]))
+        self.assertEqual([w["cpu"] for w in a["writers"]], ["0x6A87", "0x6AC8", "0xB2CC", "0x82F8", "0x8420", "0x99CA"])
+        self.assertEqual(a["reader"]["bytes"], "3a48d40fc9")
+        self.assertEqual(a["callers_of_480c_upright_launch"], ["0x05F21", "0x06A8D"])
+        self.assertEqual(a["callers_of_035f_launch_vector"], ["0x332D2", "0x782FB", "0x78423", "0x799D0"])
+        self.assertEqual(a["player_requests_of_state_0b_in_fixed_banks"], ["0x04811"])
+        self.assertTrue(a["state_0b_durations_all_even"])
+        self.assertEqual(a["state_0b_durations"], [4, 6, 8])
+        self.assertTrue(a["not_cleared_at_level_load"])
+        thz = a["thz_springs_by_parameter"]
+        self.assertEqual([r["d448_after_launch"][:4] for r in thz["thz1"]], ["0xFF", "0xFF", "0x00", "0x00"])
+        self.assertEqual(sum(r["parameter"] == "0x00" for r in thz["thz2"]), 8)
+
+    def test_branch_fragment_is_listed(self):
+        op = D["schedules"]["0x0B"]["program"][0]
+        self.assertEqual(op["cmd"], "FF 08")
+        self.assertEqual(op["target_if_carry"], "0x8189")
+        self.assertEqual(op["fragment_at_target"][0], {"at": "0x8189", "record": 4, "frame": 97, "callback": "0x039E"})
+        self.assertEqual(op["fragment_at_target"][1]["cmd"], "FF 00")
+
+    def test_fixture(self):
+        f = D["state_0b_fixture"]
+        self.assertTrue(f["model_equals_original"])
+        self.assertTrue(f["parity_sequences_identical"])
+        self.assertEqual(f["first_update_where_counter_values_differ"], 56)
+        self.assertEqual(f["random_toggle_parity_mismatches"], 0)
+        self.assertGreaterEqual(f["random_toggle_updates"], 60000)
+        self.assertEqual(f["counter_sequence_d448_set_first_90"][:8], [4, 3, 2, 1, 4, 3, 2, 1])
+        self.assertEqual(f["counter_sequence_d448_clear_first_90"][56:62], [6, 5, 4, 3, 2, 1])
+        self.assertEqual(f["counter_sequence_d448_set_first_90"][56:62], [4, 3, 2, 1, 4, 3])
+
+    def test_emulated_springs(self):
+        rows = D["emulated_springs"]["rows"]
+        self.assertEqual(len(rows), 6)
+        for r in rows:
+            self.assertTrue(r["launched"], r)
+            self.assertTrue(r["model_equal_for_observed_d448"])
+            self.assertTrue(r["model_parity_equal_for_both_d448"])
+            strong = r["parameter"] == "0x00"
+            self.assertEqual(r["d448_after_launch"], "0xFF" if strong else "0x00")
+            self.assertEqual(r["model_values_equal_for_both_d448"], not strong)
+            self.assertEqual(r["updates_in_state_0b"] > 56, strong)
+
+    def test_parity_dependence(self):
+        sch = D["schedules"]
+        self.assertEqual({st for st, v in sch.items() if v["parity_depends_on_inputs"]}, {"0x09", "0x0A", "0x10", "0x1B"})
+        for st in ("0x05", "0x0B", "0x06", "0x0E"):
+            self.assertTrue(sch[st]["parity_is_pure_alternation_from_entry_for_all_inputs"], st)
+        for st in ("0x09", "0x0A", "0x15", "0x17", "0x1E"):
+            self.assertFalse(sch[st]["parity_is_pure_alternation_from_entry_for_all_inputs"], st)
+
+
 class FixtureTests(unittest.TestCase):
     def test_differential_counts(self):
         f = D["differential_fixture"]
@@ -189,7 +246,7 @@ class RomBackedTests(unittest.TestCase):
 
     def test_static_part_regenerates(self):
         fresh = pac.build(ROM_BYTES, static_only=True)
-        for key in ("routines", "plus07_sites", "update_order", "selectors", "eligible_states_static", "modelled_states", "schedules", "unresolved"):
+        for key in ("routines", "plus07_sites", "update_order", "selectors", "eligible_states_static", "modelled_states", "schedules", "d448_audit", "unresolved"):
             self.assertEqual(fresh[key], D[key], key)
 
     def test_differential_with_new_seeds(self):
@@ -240,6 +297,19 @@ class RomBackedTests(unittest.TestCase):
                 got = lab.engine(st, hi, floor, False, 0)
                 self.assertEqual(got, mod.step(st, hi, floor, False, 0))
                 self.assertEqual(lab.probe_depth(), -8 if got % 2 == 0 else 2)
+
+    def test_state_0b_parity_ignores_d448_with_new_seeds(self):
+        lab = self.lab
+        lab.reset()
+        lab.prime()
+        base = [lab.engine(0x0B, 0, False, False, 0) & 1 for _ in range(260)]
+        for seed in (5, 6, 7):
+            rng = random.Random(seed)
+            for ep in range(80):
+                lab.reset()
+                lab.prime()
+                got = [lab.engine(0x0B, 0, False, False, rng.randrange(256)) & 1 for _ in range(260)]
+                self.assertEqual(got, base, (seed, ep))
 
     def test_state_entry_replaces_the_counter_same_update(self):
         lab = self.lab

@@ -59,7 +59,7 @@ at the **start** of the update, i.e. what the previous update's movement and con
 ## 4. The shadow model (minimal faithful model)
 
 State: `cur` (+$01), `t` (+$07), `ptr` (script position, +$0E/$0F), `loop` (+$33). Inputs at the start of each update: `req` (+$02), `hi` = the signed high byte of the X
-speed (`$D517`), `floor` = `+$22` bit 1, `side` = `+$23 & $0C` non-zero, `d448` = `$D448` bit 0 (state `$0B` only).
+speed (`$D517`), `floor` = `+$22` bit 1, `side` = `+$23 & $0C` non-zero, `d448` = `$D448` bit 0 (state `$0B` only; **irrelevant to the parity**, section 10).
 
 ```text
 update(req, hi, floor, side, d448):
@@ -111,7 +111,7 @@ Durations loaded by successive reloads (the counter then counts `d, d-1, ..., 1`
 | `$06` run | 4 forever | no |
 | `$07`, `$08` | 8, 224, 8, 224, ... | no |
 | `$09` roll, `$0A` jump, `$10`, `$1B` | selector `$8F76` | **`hi`, `floor`** |
-| `$0B` spring ascent | 4 x 14 (two passes of six records), 6 x 3, 8, repeat; if `$D448` bit 0: 4 forever | **`d448`** |
+| `$0B` spring ascent | 4 x 14 (two passes of six records + two more), 6 x 3, 8, repeat; if `$D448` bit 0: 4 forever (the `$8189` fragment) | values only (`d448`); **parity: no** |
 | `$0E` fall | 8 forever | no |
 | `$0F` | 2 | no |
 | `$11` | 8, 4, 8, 4, ... | no |
@@ -123,7 +123,7 @@ Durations loaded by successive reloads (the counter then counts `d, d-1, ..., 1`
 | `$1D` | selector `$900B` = 6 | no |
 | `$1E` hurt | 1, 2, 4, 1, 2, 4, ... | no |
 
-(complete op listings and the first 40 values per input set: `schedules` in the JSON). Only **six** states depend on inputs: `$05`, `$09`, `$0A`, `$10`, `$1B`, `$0B`.
+(complete op listings and the first 40 values per input set: `schedules` in the JSON). Only **six** states have input-dependent counter *values*: `$05`, `$09`, `$0A`, `$10`, `$1B`, `$0B`. Only **four** have input-dependent *parity* (bit 0): `$09`, `$0A`, `$10`, `$1B`, because the floor table `$8FE0` and the air constant contain odd durations (5, 3); in `$05` and `$0B` every duration is even (10/8/6/4/2 and 4/6/8), so their bit 0 is the plain alternation 0,1,0,1,... from state entry whatever the speed, side contact or `$D448` (`parity_is_pure_alternation_from_entry_for_all_inputs` in the JSON also holds for 17 more states).
 Every other eligible state is a fixed schedule; its parity at update *k* after entry is a constant sequence.
 
 Typical parities: standing/idle (180 ... ) alternates; walk `10..1`/`8..1`/`6..1`/`4..1`; run `4..1`; jump (air) `3,2,1` (bit set 2/3 of updates); roll on the floor at
@@ -162,7 +162,49 @@ bit 0, the selected record/selector address, the script pointer, and the **probe
 
 ## 9. Unresolved
 
-* `+$03` bit 3 behaviour in real play (never set); the `FF 08` condition of state `$04` away from THZ (zone 4); `$D448` bit 0 semantics.
+* `+$03` bit 3 behaviour in real play (never set); the `FF 08` condition of state `$04` away from THZ (zone 4); `$D448` beyond bit 0 (section 10).
 * `FF 01` call targets were checked only for their effect on the counter, not decoded.
 * The alternate path `$16EF` and scripted sequences that call the player update (`$14xx` act-clear/results) were not examined for counter side effects.
 * Other-character selectors (`$8CB4`, `$8D05`) are not part of THZ play and are not modelled.
+
+## 10. State `$0B` and `$D448` bit 0 (focused audit)
+
+**Answer to the practical question: no. `$D448` bit 0 can never affect terrain-ring collection in THZ1, THZ2 or anywhere else.** A fixed `$D448 = 0` in the POC is sufficient for the
+parity (bit 0 of `+$07`); it only changes the counter *values* after update 56 of a state `$0B` run.
+
+**Code path (BYTE-VERIFIED).** The state `$0B` script starts at `$814A` with `FF 08 [$818F, $8189]`, then `FF 0E 02`, six records of duration 4 (`$8153..$816B`, `FF 0F` loops once),
+then records 4, 4, 6, 6, 6, 8 (`$816F..$8183`) and `FF 00` at `$8187`. The op listing of the script ends at `$8187`; the branch target `$8189` is a separate fragment, now listed under
+`fragment_at_target` of the `FF 08` op: **record (duration 4, frame `$61`, callback `$039E`), then `FF 00`**. Routine `$818F` is `LD A,($D448); RRCA; RET`.
+
+* **When read:** only when the script executes `FF 08`, i.e. at state entry and each time the script restarts (`FF 00`): after the normal path's last record (82 updates) or after the
+  `$8189` record (4 updates). It is **not** re-read in between; changing `$D448` mid-flight does nothing until the next restart.
+* **Bit 0 set:** every restart jumps to `$8189`: one record of 4, then `FF 00`, `FF 08` again: **4 on every reload** ("4 forever"). The normal sequence is bypassed entirely
+  (there is no selector in state `$0B`; it is a plain record script).
+* **Bit 0 clear:** normal sequence 4 x 14, 6 x 3, 8 (82 updates), then `FF 08` again.
+* **Parity:** every duration on every path is even (4, 6, 8; verified from the ROM), so the counter always runs `d..1` with `d` even and bit 0 is 0,1,0,1,... continuously across
+  reloads. The two paths load different even durations but produce the **same bit-0 sequence from the first update to the last**; the counter *values* first differ at update 56 (0-based)
+  of a run (6 instead of 4). Controlled fixture (`state_0b_fixture`): 200 updates for `$D448` clear and set against the original engine, identical parity; 300 episodes x 200 updates with
+  `$D448` randomly set to `$00/$01/$FF/$FE/$55` before every update: **0 parity mismatches** (60,000 updates).
+
+**Writers (BYTE-VERIFIED, all six stores of `$D448`).** The address bytes occur exactly seven times in the ROM: the reader and six stores; no IX/IY+`$48` form, no register load, no block copy.
+It is zeroed only by the boot/reset RAM clears (`$0029`, `$0462`), **not** at level load, and persists across acts.
+
+| Store | Source | Value | Launch |
+|---|---|---|---|
+| `$6A87` | terrain upright spring (surface type 9, handler `$6A75`) | `$FF` | Y `$F880`, `$480C` -> state `$0B` |
+| `$6AC8` | terrain diagonal spring (type `$14`, `$6A90`) | `0` | `$482D` -> state `$1C` (never `$0B`) |
+| `$B2CC` | type `$21` top contact (bank `$0C`) | `$FF` | Y `$F940`, `$035F` -> `$480C` -> `$0B` |
+| `$82F8` / `$8420` | type `$26` spring contact / span spring (bank `$1E`) | parameter 0: `$FF` (Y `$F8A0`); nonzero: `0` (Y `$FB00`) | `$035F` -> `$480C` -> `$0B` |
+| `$99CA` | type `$50` attack contact | `0` | Y `$FC00`, `$035F` -> `$480C` -> `$0B` |
+
+`$480C` is the only code that requests player state `$0B` (`$4811`), and its only callers are `$5F21` (inside vector `$035F`) and `$6A8D` (terrain): **every** upright launch writes `$D448`
+immediately before launching. So bit 0 marks the kind of the last upright launch: strong (parameter-0 springs, terrain upright springs, `$21` stomps) = set; weak springs (parameter != 0)
+and the boss bounce = clear.
+
+**THZ cases (CONTROLLED + EMULATED).** THZ1 springs: `(688,864)` and `(3568,768)` parameter 0 -> `$D448 = $FF`; `(1296,608)` `$8A` and `(1912,864)` `$01` -> 0. THZ2: eight parameter-0 springs
+-> `$FF`; `(1504,896)` `$88` and `(3472,288)` `$01` -> 0. Emulated launches (six springs, `emulated_springs`): strong springs keep Sonic in state `$0B` for **79 updates** (`$D448 = $FF`: counters
+4,3,2,1 repeating), weak springs for 29-54 updates (`$D448 = 0`; shorter than 56, so the two paths coincide even in value). In every row the model equals the engine's counter for the observed
+`$D448`, and the model's parity is identical for both `$D448` values.
+
+Consequences for the POC: bit 0 of `+$07` in state `$0B` is `update_index % 2` counting from the update in which the state is entered (first value 4, even). `$D448` need not be modelled for
+ring collection. Only the counter *values* of a strong spring ascent differ (6-records appear after update 56 if `$D448` is kept 0); nothing else reads the player's `+$07`.
