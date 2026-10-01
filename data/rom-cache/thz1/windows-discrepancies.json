@@ -1535,8 +1535,8 @@
   },
   "type_21_contact": {
     "player_extents": {
-      "x": 9,
-      "y": 18
+      "x": 8,
+      "y": 24
     },
     "object_extents": {
       "x": 11,
@@ -1545,21 +1545,27 @@
     "helper_cpu": "0x6328",
     "boundaries": [
       {
-        "dx": -21,
+        "dx": -20,
         "dy": 0,
         "bits": "0x00",
         "overlap": false
       },
       {
-        "dx": -20,
+        "dx": -19,
         "dy": 0,
         "bits": "0x08",
         "overlap": true
       },
       {
-        "dx": -19,
+        "dx": -18,
         "dy": 0,
         "bits": "0x08",
+        "overlap": true
+      },
+      {
+        "dx": 18,
+        "dy": 0,
+        "bits": "0x04",
         "overlap": true
       },
       {
@@ -1570,12 +1576,6 @@
       },
       {
         "dx": 20,
-        "dy": 0,
-        "bits": "0x04",
-        "overlap": true
-      },
-      {
-        "dx": 21,
         "dy": 0,
         "bits": "0x00",
         "overlap": false
@@ -1600,30 +1600,30 @@
       },
       {
         "dx": 0,
-        "dy": 17,
+        "dy": 23,
         "bits": "0x02",
         "overlap": true
       },
       {
         "dx": 0,
-        "dy": 18,
+        "dy": 24,
         "bits": "0x02",
         "overlap": true
       },
       {
         "dx": 0,
-        "dy": 19,
+        "dy": 25,
         "bits": "0x00",
         "overlap": false
       },
       {
-        "dx": 20,
+        "dx": 19,
         "dy": -4,
         "bits": "0x04",
         "overlap": true
       },
       {
-        "dx": 20,
+        "dx": 19,
         "dy": -3,
         "bits": "0x04",
         "overlap": true
@@ -1641,6 +1641,6 @@
         "overlap": true
       }
     ],
-    "contract": "overlap abs(dx)<=20 and -26<=dy<=18; helper retains the minimum-penetration axis in object+$21; local type-$21 code treats any nonzero result as contact"
+    "contract": "overlap abs(dx)<=19 and -26<=dy<=24 (Sonic extents 8,24); helper retains the minimum-penetration axis in object+$21; local type-$21 code treats any nonzero result as contact"
   }
 }

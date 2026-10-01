@@ -77,8 +77,8 @@ def reward_mask(parameter: int) -> int:
 
 
 def overlap_contact(delta_x: int, delta_y: int, object_x_extent: int = 10,
-                    object_y_extent: int = 24, player_x_extent: int = 9,
-                    player_y_extent: int = 18) -> int:
+                    object_y_extent: int = 24, player_x_extent: int = 8,
+                    player_y_extent: int = 24) -> int:
     """Pure translation of the relevant low-nibble result from fixed $6328."""
     if delta_x >= 0:
         x_penetration = player_x_extent + object_x_extent - delta_x
@@ -197,8 +197,8 @@ def _contact_oracle(rom: bytes, parameter: int = 2, delta_x: int = 0,
     oracle.mem[0xD72D] = 24
     oracle.word(0xD511, 500 + delta_x)
     oracle.word(0xD514, 500 + delta_y)
-    oracle.mem[0xD52C] = 9
-    oracle.mem[0xD52D] = 18
+    oracle.mem[0xD52C] = 8     # Sonic runtime extents (docs/collision-geometry-audit.md)
+    oracle.mem[0xD52D] = 24
     oracle.mem[0xD501] = player_state
     oracle.mem[0xD502] = player_state if requested_state is None else requested_state
     oracle.mem[0xD503] = player_flags
@@ -235,9 +235,9 @@ def run_contact_fixture(rom: bytes, **kwargs) -> dict:
 def run_contact_fixtures(rom: bytes) -> dict:
     boundary = []
     for axis, values in (
-        ("horizontal_right", (18, 19, 20)),
+        ("horizontal_right", (17, 18, 19)),
         ("top", (-23, -24, -25)),
-        ("bottom", (17, 18, 19)),
+        ("bottom", (23, 24, 25)),
     ):
         for value in values:
             dx, dy = (value, 0) if axis == "horizontal_right" else (0, value)
@@ -275,7 +275,7 @@ def run_contact_fixtures(rom: bytes) -> dict:
             rom, delta_x=15, delta_y=0,
         ),
         "bottom_attack_upward": run_contact_fixture(
-            rom, delta_x=0, delta_y=0, player_y_velocity=0xFF00,
+            rom, delta_x=0, delta_y=10, player_y_velocity=0xFF00,
         ),
         "top_blocked_player_states": blocked_states,
         "overlap_boundaries": boundary,

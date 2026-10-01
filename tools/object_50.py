@@ -649,7 +649,7 @@ class Fixture:
         self.o = Oracle(rom)
         self.m = self.o.mem
         self.slot = SLOT
-        self.m[0xD52C], self.m[0xD52D] = 9, 18       # player extents used by $6328 in the THZ1 fixtures
+        self.m[0xD52C], self.m[0xD52D] = 8, 24       # Sonic runtime extents used by $6328 (docs/collision-geometry-audit.md)
         self.o.mem[0xD500] = 1
         self.o.word(0xD174, 1600)
         self.o.word(0xD176, 80)
@@ -839,7 +839,7 @@ def fixtures(rom: bytes) -> dict:
             r = contact(st, dx, dy, att, player_vy=0x0100)
             matrix.append({"start_state": st, "case": name, "result": r})
     out["contact_matrix"] = {
-        "geometry": "boss frame 1/2 contact extents X 20, Y 48; player extents X 9, Y 18 (fixture values); "
+        "geometry": "boss frame 1/2 contact extents X 20, Y 48; player extents X 8, Y 24 (Sonic runtime values); "
                     "penetration axis rule of $6328", "cases": matrix}
     out["contact_state_18"] = [{"case": name, "result": contact(18, dx, dy, att)} for name, dx, dy, att in cases[:4]]
     out["cooldown"] = {

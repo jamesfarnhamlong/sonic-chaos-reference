@@ -770,6 +770,16 @@ def emulated_extents(rom: bytes, frames: int = 8000) -> dict:
 def assumption_audit() -> list:
     R = "research"
     P = "poc"
+    rows = _assumption_rows()
+    for r in rows:
+        if r["repo"] == "research":
+            r["status"] = "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
+    return rows
+
+
+def _assumption_rows() -> list:
+    P = "poc"
+    R = "research"
     return [
         # research repository
         {"where": "tools/thz1_object_10.py:200-201 and overlap_contact() defaults", "repo": R, "assumed": "player extents (9,18)", "rom": "(8,24)",

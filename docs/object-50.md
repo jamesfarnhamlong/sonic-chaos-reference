@@ -260,7 +260,7 @@ Canonical anchor and ROM-visible bounds are stored separately.
 
 * horizontal: `|dx| ≤ playerExtX($D52C) + extX(+$2C)`; vertical: player above needs `|dy| ≤ extY(+$2D)`, player at/below needs `dy ≤ playerExtY($D52D)`;
   the axis of least penetration keeps bit pair (0/1) or (2/3). Type `$50` extents: 20 / 48 for every visible frame (0 for frame 0).
-  Player extents come from the player's current frame (8/24 in the emulated idle state; the fixtures state their explicit values).
+  Player extents come from the player's current frame: Sonic is 8/24 in every state except `$0F` (9/24); the fixtures use 8/24 (corrected from an earlier 9/18 assumption, `docs/collision-geometry-audit.md`).
 * the helper returns no contact when the object's `+$03` bit 6 is set, or when the player's `$D503` bit 6 is set while the object's `+$03` bit 7 is clear.
 
 Boss contact routine `$99AE` (used by states 6, 9, 12, 15):

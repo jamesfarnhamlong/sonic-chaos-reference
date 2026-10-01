@@ -323,7 +323,8 @@
       "rom": "(8,24)",
       "class": "TEST-ONLY",
       "effect": "cached type-$10 boundary fixtures: right edge 19 -> really 18; bottom edge 18 -> really 24 (top edge 24 unchanged)",
-      "evidence": "CONTROLLED (collision_geometry.solid_grid, callback_sweeps '0x10')"
+      "evidence": "CONTROLLED (collision_geometry.solid_grid, callback_sweeps '0x10')",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "data/rom-cache/thz1/object-10.json overlap_boundaries (horizontal 18/19/20, bottom 17/18/19)",
@@ -332,7 +333,8 @@
       "rom": "contact at right <= 18 and bottom <= 24",
       "class": "TEST-ONLY",
       "effect": "the recorded 'no contact at 19 right' and 'no contact at 19 bottom' are wrong for Sonic",
-      "evidence": "same"
+      "evidence": "same",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "docs/object-10.md (overlap/solid description)",
@@ -341,7 +343,8 @@
       "rom": "see above",
       "class": "TEST-ONLY",
       "effect": "documentation numbers only",
-      "evidence": "same"
+      "evidence": "same",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "tools/thz1_object_21.py:189-190",
@@ -350,7 +353,8 @@
       "rom": "(8,24)",
       "class": "TEST-ONLY",
       "effect": "fixtures sit at dx = 0 and |dy| <= 4 (inside both boxes); results unchanged. Box edges were not exercised.",
-      "evidence": "CONTROLLED (callback_sweeps '0x21')"
+      "evidence": "CONTROLLED (callback_sweeps '0x21')",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "tools/thz1_object_27.py:255-256",
@@ -359,7 +363,8 @@
       "rom": "(8,24)",
       "class": "TEST-ONLY",
       "effect": "fixtures at dx = dy = 0; results unchanged. Proximity/removal fixtures use no extents.",
-      "evidence": "CONTROLLED (callback_sweeps '0x27')"
+      "evidence": "CONTROLLED (callback_sweeps '0x27')",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "tools/object_50.py:652 and contact matrix",
@@ -368,7 +373,8 @@
       "rom": "(8,24)",
       "class": "TEST-ONLY",
       "effect": "all matrix cases (dx +-26, dy +10 / -40) are inside both boxes; results unchanged; the documented geometry sentence is wrong",
-      "evidence": "derived: boss extents (20,48)"
+      "evidence": "derived: boss extents (20,48)",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "tools/player_state_11.py:23,49",
@@ -377,7 +383,8 @@
       "rom": "(8,24)",
       "class": "TEST-ONLY",
       "effect": "player-state-$11 fixtures use the extents only as inputs to the shared helpers",
-      "evidence": "CONTROLLED"
+      "evidence": "CONTROLLED",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "tools/thz2_thz3_object_deltas.py:94-95",
@@ -386,7 +393,8 @@
       "rom": "(8,24)",
       "class": "TEST-ONLY",
       "effect": "delta fixtures; same reasoning",
-      "evidence": "CONTROLLED"
+      "evidence": "CONTROLLED",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "docs/object-50.md section 8 ('contact extents X 20, Y 48; player extents X 9, Y 18')",
@@ -395,7 +403,8 @@
       "rom": "(8,24)",
       "class": "TEST-ONLY",
       "effect": "documentation",
-      "evidence": "CONTROLLED"
+      "evidence": "CONTROLLED",
+      "status": "CORRECTED in research/collision-fixture-corrections (fixtures regenerated with 8,24; docs reworded)"
     },
     {
       "where": "SCR_chaos_adapter.gml SCR_chaos_object_spring_contact: abs(player.x - trigger_x) <= 12",

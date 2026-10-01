@@ -186,8 +186,8 @@ def _contact_oracle(rom: bytes, object_y: int, player_flags: int = 0,
     oracle.mem[0xD72D] = 0x1A
     oracle.word(0xD511, 500)
     oracle.word(0xD514, 500)
-    oracle.mem[0xD52C] = 9
-    oracle.mem[0xD52D] = 18
+    oracle.mem[0xD52C] = 8
+    oracle.mem[0xD52D] = 24
     oracle.mem[0xD503] = player_flags
     oracle.mem[0xD532] = power_up
     oracle.word(0xD518, 0)

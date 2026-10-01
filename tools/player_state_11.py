@@ -20,7 +20,7 @@ def state11_call(rom, input_bits=0, vx=0, vy=0, timer=300, x=1000, y=700):
     o.mem[0xD503]=0; o.mem[0xD504]=0; o.mem[0xD137]=input_bits
     o.word(0xD51C,100)
     o.word(0xD516,vx); o.word(0xD518,vy); o.word(0xD44C,timer)
-    o.word(0xD373,0x700); o.mem[0xD52C]=9; o.mem[0xD52D]=18
+    o.word(0xD373,0x700); o.mem[0xD52C]=8; o.mem[0xD52D]=24
     o.call(0x3A7C)
     return {"input":f"0x{input_bits:02X}","x":o.word(0xD511),"y":o.word(0xD514),
             "vx":s16(o.word(0xD516)),"vy":s16(o.word(0xD518)),
@@ -46,7 +46,7 @@ def state11_entry(rom):
 def overlap(rom, dx, dy, attack=0, power=0):
     o=Oracle(rom); o.cpu.ix=0xD700; o.mem[0xD700]=0x21
     o.word(0xD711,500); o.word(0xD714,500); o.mem[0xD72C]=11; o.mem[0xD72D]=26
-    o.word(0xD511,500+dx); o.word(0xD514,500+dy); o.mem[0xD52C]=9; o.mem[0xD52D]=18
+    o.word(0xD511,500+dx); o.word(0xD514,500+dy); o.mem[0xD52C]=8; o.mem[0xD52D]=24
     o.mem[0xD503]=attack; o.mem[0xD532]=power; o.call(0x6328)
     bits=o.mem[0xD721]&15
     return {"dx":dx,"dy":dy,"bits":f"0x{bits:02X}","overlap":bool(bits)}
@@ -67,8 +67,8 @@ def build(rom):
     for (x,y,p),surface in zip(PLACEMENTS,SURFACES):
         anchors.append({"x":x,"y":y,"parameter":f"0x{p:02X}","surface_y":surface,
             "sprite_top":y-24,"sprite_bottom":y+7,"empty_rows_to_surface":surface-(y+7)-1})
-    boundary=[overlap(rom,dx,dy) for dx,dy in [(-21,0),(-20,0),(-19,0),(19,0),(20,0),(21,0),
-        (0,-27),(0,-26),(0,-25),(0,17),(0,18),(0,19),(20,-4),(20,-3),(0,-4),(0,-3)]]
+    boundary=[overlap(rom,dx,dy) for dx,dy in [(-20,0),(-19,0),(-18,0),(18,0),(19,0),(20,0),
+        (0,-27),(0,-26),(0,-25),(0,23),(0,24),(0,25),(19,-4),(19,-3),(0,-4),(0,-3)]]
     return {"format":1,"rom_sha256":SHA256,
       "type_10_vertical":{"renderer_cpu":"0x226A","placements":anchors,
         "contract":"SAT_Y=(object_y-camera_y)+signed_piece_y; displayed scanline is SAT_Y+1"},
@@ -83,9 +83,9 @@ def build(rom):
             acceleration_call(rom,2,0x0300)]}},
       "static_spikes":{"block":"0x3D","header_flags":"0x85","floor_profile":[16]*32,
         "side_profile":[64]*16+[96]*16,"samples":spike_samples(rom)},
-      "type_21_contact":{"player_extents":{"x":9,"y":18},"object_extents":{"x":11,"y":26},
+      "type_21_contact":{"player_extents":{"x":8,"y":24},"object_extents":{"x":11,"y":26},
         "helper_cpu":"0x6328","boundaries":boundary,
-        "contract":"overlap abs(dx)<=20 and -26<=dy<=18; helper retains the minimum-penetration axis in object+$21; local type-$21 code treats any nonzero result as contact"}}
+        "contract":"overlap abs(dx)<=19 and -26<=dy<=24 (Sonic extents 8,24); helper retains the minimum-penetration axis in object+$21; local type-$21 code treats any nonzero result as contact"}}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("rom",type=Path);p.add_argument("--metadata",type=Path)

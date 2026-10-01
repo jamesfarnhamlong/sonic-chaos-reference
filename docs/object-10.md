@@ -144,14 +144,14 @@ That helper calls `$6328` and preserves one low contact bit:
 - bit 1 (`$02`): player below / bottom;
 - bit 2/3 (`$04/$08`): right/left side.
 
-With player extents 9×18 and object extents 10×24, controlled strict boundaries
-are:
+With Sonic's runtime extents 8×24 (`docs/collision-geometry-audit.md`) and object extents 10×24, controlled inclusive
+boundaries are:
 
 | Axis/direction | Inside | Exact edge | Outside |
 |---|---:|---:|---:|
-| horizontal right delta | 18 | 19 contacts | 20 |
+| horizontal right delta | 17 | 18 contacts | 19 |
 | player above delta | -23 | -24 contacts | -25 |
-| player below delta | 17 | 18 contacts | 19 |
+| player below delta | 23 | 24 contacts | 25 |
 
 ### Required player state and direction
 

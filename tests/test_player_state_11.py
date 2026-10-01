@@ -25,7 +25,7 @@ class State11AndWindowsDiscrepancies(unittest.TestCase):
         self.assertEqual(s['side_profile'],[64]*16+[96]*16)
     def test_overlap_boundaries(self):
         rows={(x['dx'],x['dy']):x['overlap'] for x in self.report['type_21_contact']['boundaries']}
-        self.assertFalse(rows[-21,0]);self.assertTrue(rows[-20,0]);self.assertFalse(rows[21,0])
-        self.assertFalse(rows[0,-27]);self.assertTrue(rows[0,-26]);self.assertTrue(rows[0,18]);self.assertFalse(rows[0,19])
+        self.assertFalse(rows[-20,0]);self.assertTrue(rows[-19,0]);self.assertFalse(rows[20,0]);self.assertTrue(rows[19,0])
+        self.assertFalse(rows[0,-27]);self.assertTrue(rows[0,-26]);self.assertTrue(rows[0,24]);self.assertFalse(rows[0,25])
 
 if __name__=='__main__': unittest.main()

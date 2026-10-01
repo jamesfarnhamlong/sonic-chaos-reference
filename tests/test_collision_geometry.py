@@ -328,17 +328,21 @@ class AssumptionAuditTests(unittest.TestCase):
         self.assertIn("SCR_monitor_collisions", joined)
         self.assertIn("goal sign", joined)
 
-    def test_type10_fixture_discrepancy_is_real(self):
-        """The cached type-$10 boundary fixtures were produced with (9,18); recompute them with the recovered extents."""
+    def test_type10_fixture_was_corrected(self):
+        """The cached type-$10 boundary fixture is now produced with Sonic's (8,24) and agrees with the recovered rule."""
         stored = json.loads((ROOT / "data/rom-cache/thz1/object-10.json").read_text(encoding="utf-8"))
         rows = stored["controlled_original_routine_fixtures"]["contact"]["overlap_boundaries"]
         by = {(r["axis"], r["delta"]): int(r["contact_bits_21"], 16) for r in rows}
-        pred = lambda dx, dy, ex, ey: tool._pred(dx, dy, ex, ey, 10, 24)
+        self.assertEqual(sorted(by), [("bottom", 23), ("bottom", 24), ("bottom", 25), ("horizontal_right", 17), ("horizontal_right", 18),
+                                      ("horizontal_right", 19), ("top", -25), ("top", -24), ("top", -23)])
         for (axis, delta), bits in by.items():
             dx, dy = (delta, 0) if axis == "horizontal_right" else (0, delta)
-            self.assertEqual(bits != 0, pred(dx, dy, 9, 18), (axis, delta))        # the fixture really used (9,18)
-        changed = [(a, d) for (a, d) in by if (by[(a, d)] != 0) != pred(*((d, 0) if a == "horizontal_right" else (0, d)), 8, 24)]
-        self.assertEqual(sorted(changed), [("bottom", 19), ("horizontal_right", 19)])
+            self.assertEqual(bits != 0, tool._pred(dx, dy, 8, 24, 10, 24), (axis, delta))
+        # the superseded (9,18) rule would have disagreed at exactly these two cells
+        old = {(a, d) for (a, d) in [("horizontal_right", 19), ("bottom", 19)]
+               if tool._pred(*((d, 0) if a == "horizontal_right" else (0, d)), 9, 18, 10, 24) != tool._pred(*((d, 0) if a == "horizontal_right" else (0, d)), 8, 24, 10, 24)}
+        self.assertEqual(old, {("horizontal_right", 19), ("bottom", 19)})
+        self.assertTrue(all(a["status"].startswith("CORRECTED") for a in D["assumption_audit"] if a["repo"] == "research"))
 
     def test_type21_type27_type50_fixtures_unchanged(self):
         # fixture offsets are inside both boxes, so the recorded results do not depend on the extent assumption

@@ -91,8 +91,8 @@ def _player(o, x: int, y: int, vy: int = 0x0100, state: int = 1) -> None:
     o.word(0xD518, vy)
     o.mem[0xD522] = 0x02
     o.mem[0xD503] = 0
-    o.mem[0xD52C] = 9
-    o.mem[0xD52D] = 18
+    o.mem[0xD52C] = 8
+    o.mem[0xD52D] = 24
 
 
 # ----------------------------------------------------------------------------- $26

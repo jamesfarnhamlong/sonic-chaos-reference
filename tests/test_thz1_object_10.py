@@ -48,15 +48,15 @@ class Object10Tests(unittest.TestCase):
         self.assertEqual(m.reward_mask(0x06), 0x20)
 
     def test_overlap_boundaries_and_side_selection(self):
+        self.assertEqual(m.overlap_contact(17, 0), 0x04)
         self.assertEqual(m.overlap_contact(18, 0), 0x04)
-        self.assertEqual(m.overlap_contact(19, 0), 0x04)
-        self.assertEqual(m.overlap_contact(20, 0), 0)
+        self.assertEqual(m.overlap_contact(19, 0), 0)
         self.assertEqual(m.overlap_contact(0, -23), 0x01)
         self.assertEqual(m.overlap_contact(0, -24), 0x01)
         self.assertEqual(m.overlap_contact(0, -25), 0)
-        self.assertEqual(m.overlap_contact(0, 17), 0x02)
-        self.assertEqual(m.overlap_contact(0, 18), 0x02)
-        self.assertEqual(m.overlap_contact(0, 19), 0)
+        self.assertEqual(m.overlap_contact(0, 23), 0x02)
+        self.assertEqual(m.overlap_contact(0, 24), 0x02)
+        self.assertEqual(m.overlap_contact(0, 25), 0)
 
     def test_complete_animation_metadata(self):
         self.assertTrue(self.cache["placement_bytes_verified"])

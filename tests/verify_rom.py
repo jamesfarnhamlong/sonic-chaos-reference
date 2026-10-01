@@ -362,7 +362,7 @@ def verify(path, output):
     task06_report=task06.build(rom)
     assert task06_report['player_state_11']['fixtures']['expiry']['requested_state']=='0x0E'
     assert task06_report['static_spikes']['header_flags']=='0x85'
-    assert task06_report['type_21_contact']['player_extents']=={'x':9,'y':18}
+    assert task06_report['type_21_contact']['player_extents']=={'x':8,'y':24}
     counts['windows_discrepancies']=171
 
     grounding = [object21.run_grounding_fixture(rom, row)

@@ -84,12 +84,12 @@ profile: side-solid lower 16 pixels, floor hazard at Y 848.
 
 ## 4. Type `$21` contact — POC BUG at the adapter boundary
 
-For ordinary THZ1 Sonic fields, player extents are X 9 and Y 18; type `$21`
+For ordinary THZ1 Sonic fields, player extents are X 8 and Y 24 (corrected from an earlier 9/18 assumption; `docs/collision-geometry-audit.md`); type `$21`
 uses X 11 and Y 26. `$6328` compares integer anchors, not sprite pixels:
 
 ```text
-abs(player_x-object_x) <= 20
-object_y-26 <= player_y <= object_y+18
+abs(player_x-object_x) <= 19
+object_y-26 <= player_y <= object_y+24
 ```
 
 Equality is contact; one pixel beyond is not. The helper sets directional bits
@@ -114,7 +114,7 @@ belongs to that player-damage system.
 POC 18.4 substitutes animated GameMaker `bbox_*` values and `cp_p.y` for the
 ROM integer anchor/extents. That can enlarge or shift overlap and the `-4`
 split as sprites/origins change. POC 18.5 must use the chaos-core integer
-anchor with fixed 9/18 extents and the inequalities above. It may ignore the
+anchor with fixed 8/24 extents and the inequalities above. It may ignore the
 helper's direction bits for behavior, exactly as the ROM type `$21` callback
 does.
 
