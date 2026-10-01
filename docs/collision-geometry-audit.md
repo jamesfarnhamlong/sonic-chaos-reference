@@ -221,7 +221,7 @@ Only `$6328`/`$5FA0` read the extents; `$26` and `$09` never do, so the `9 x 18 
 | placed rings `$09` | anchor box `|dx|,|dy| < 12` | no | no |
 | moving spikes `$1B` | `$6328` with (16,24), states 1-2 only | yes | states 1-2 |
 | loops / twist strips | position-table lookups (`docs/twist.md`, `docs/continuation-01.md`) | no | cursor-driven |
-| static spike terrain tiles | not located in this audit | - | **UNRESOLVED** |
+| static spike terrain tiles | located later: type 5, blocks `$3C/$3D`, foot probe only (`docs/platform-spike-collision-audit.md`) | no | no (only `+$03` bit 7) |
 
 Flags for POC fixtures: anything that models the side probes with a different half-width than 9, or the foot with a different offset than +18, is wrong; the POC adapter uses `+18` and
 `chaosAnchorOffset` consistently (see section 8).
@@ -294,7 +294,7 @@ Classification notes:
 
 ## 10. Unresolved
 
-* Static spike terrain tiles (if any) and their geometry were not located.
+* Static spike terrain tiles were located and audited in `docs/platform-spike-collision-audit.md`.
 * Player states above `$33` and player types other than 1/2.
 * Frames selected by callbacks rather than scripts are covered only by the 8,000-frame emulated sample.
 * The unused overlap variant `$640B`: no direct caller found; a computed jump was not excluded.

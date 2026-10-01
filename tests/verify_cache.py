@@ -22,6 +22,7 @@ import viewport_semantics
 import terrain_ring_collection
 import player_animation_counter
 import spring_interaction
+import platform_spike_collision
 
 
 def main(rom_path):
@@ -111,6 +112,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/spring-interaction.json").read_text(encoding="utf-8")
     )
     assert stored_springs == json.loads(json.dumps(spring_interaction.build(rom)))
+    # Platform / spike collision audit: controlled sweeps and emulated scenarios are regenerated (~2.5 min).
+    stored_platform_spike = json.loads(
+        (ROOT / "data/rom-cache/platform-spike-collision.json").read_text(encoding="utf-8")
+    )
+    assert stored_platform_spike == json.loads(json.dumps(platform_spike_collision.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

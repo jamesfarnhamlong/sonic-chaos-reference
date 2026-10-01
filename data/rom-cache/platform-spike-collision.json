@@ -1,0 +1,7639 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_only": true,
+ "poc_untouched": true,
+ "machine_facing_label": "platform_spike_collision",
+ "evidence_classes": {
+  "DECODED DATA": "ROM tables/records decoded by a parser",
+  "BYTE-VERIFIED ASSEMBLY": "routine bytes compared literally and disassembled by hand",
+  "SOURCE-TRACED BEHAVIOR": "behavior read from the disassembly, not executed",
+  "CONTROLLED ROUTINE RESULT": "original routine executed on a Z80 core with explicit RAM",
+  "EMULATED ORIGINAL FRAME": "whole original game run in the approximate SMS harness",
+  "POC SOURCE (READ-ONLY)": "value read from the Windows POC project files; never executed, never modified",
+  "UNRESOLVED": "not established"
+ },
+ "routines": [
+  {
+   "name": "platform_init_8585",
+   "bank": 30,
+   "cpu": "0x8585",
+   "rom_offset": "0x78585",
+   "end_cpu_exclusive": "0x85FE",
+   "length": 121,
+   "sha256": "53c885b80da4da69864a21dc17294e144811fa3f7eec88b40ad96f2f09b9fe27",
+   "first_16_bytes": "ddcb03fedd362500dd7e3fcb7f2804dd",
+   "purpose": "type $28 initializer: parameter -> state, flags, counters, object id ($0332)"
+  },
+  {
+   "name": "platform_clear_deltas_8577",
+   "bank": 30,
+   "cpu": "0x8577",
+   "rom_offset": "0x78577",
+   "end_cpu_exclusive": "0x8585",
+   "length": 14,
+   "sha256": "d0e0456ab0488ae1f7b22f200896a0a09a4ce70d53124d0cac8d432fc6c20e97",
+   "first_16_bytes": "afdd7739dd7738dd7724dd7723c9ddcb",
+   "purpose": "zero carry deltas +$38/+$39/+$23/+$24 (script call at every state entry)"
+  },
+  {
+   "name": "platform_state13_85fe",
+   "bank": 30,
+   "cpu": "0x85FE",
+   "rom_offset": "0x785FE",
+   "end_cpu_exclusive": "0x8628",
+   "length": 42,
+   "sha256": "7f5861da36c7377c657b799c25e1d9f5fb0b06d285dfedcc61f3f8ca7dbf5526",
+   "first_16_bytes": "ddcb0476c03a19d507d8cd3b03dd7e21",
+   "purpose": "stationary contact platform (param &$7F = 5 or 11): contact -> state +$36 (or 14)"
+  },
+  {
+   "name": "platform_state1_14_8628",
+   "bank": 30,
+   "cpu": "0x8628",
+   "rom_offset": "0x78628",
+   "end_cpu_exclusive": "0x8662",
+   "length": 58,
+   "sha256": "8a79f669400ea50c20bdac0fa125f2983081a929ff42bfea19c655404e4ffa07",
+   "first_16_bytes": "ddcb04762803cd38033a19d5cb7f280c",
+   "purpose": "horizontal mover (states 1/14): sign gate on player Y speed, move, X delta, support"
+  },
+  {
+   "name": "platform_state10_8662",
+   "bank": 30,
+   "cpu": "0x8662",
+   "rom_offset": "0x78662",
+   "end_cpu_exclusive": "0x86A1",
+   "length": 63,
+   "sha256": "d1356f78e570e76925d822f1d06c098c3552bd3f234bdbd409e8a8dd1b4e5a41",
+   "first_16_bytes": "cd08893a19d5cb7f280cdd362100cd38",
+   "purpose": "horizontal mover with reversal counter (state 10)"
+  },
+  {
+   "name": "platform_state2_12_86a1",
+   "bank": 30,
+   "cpu": "0x86A1",
+   "rom_offset": "0x786A1",
+   "end_cpu_exclusive": "0x86DA",
+   "length": 57,
+   "sha256": "a826dd03140b98794705a55558c8062307eeb0886e141d2b508262a675ea09c2",
+   "first_16_bytes": "ddcb04762803cd3803cd6688b7280cdd",
+   "purpose": "vertical mover without reversal (states 2/12): $8866 gate, move, Y delta, support"
+  },
+  {
+   "name": "platform_state11_86da",
+   "bank": 30,
+   "cpu": "0x86DA",
+   "rom_offset": "0x786DA",
+   "end_cpu_exclusive": "0x8719",
+   "length": 63,
+   "sha256": "1608539ebd1a3cd695065029156f7dbee6a4c55772188041d020d20ca4cbb342",
+   "first_16_bytes": "cd0889cd6688b7280cdd362100cd3803",
+   "purpose": "vertical mover with reversal counter (state 11, THZ param $0A lifts)"
+  },
+  {
+   "name": "platform_state4_8719",
+   "bank": 30,
+   "cpu": "0x8719",
+   "rom_offset": "0x78719",
+   "end_cpu_exclusive": "0x879A",
+   "length": 129,
+   "sha256": "7013d8d2a699c52c0d1cac7031186964c2b853e2e430003b41ad997f090917c9",
+   "first_16_bytes": "ddcb04762069dd7e27feff2817fe0028",
+   "purpose": "touch-triggered falling platform (state 4), unused by THZ placements"
+  },
+  {
+   "name": "platform_state5_879a",
+   "bank": 30,
+   "cpu": "0x879A",
+   "rom_offset": "0x7879A",
+   "end_cpu_exclusive": "0x87B2",
+   "length": 24,
+   "sha256": "be1f7cde3a0775824f510f662ea4a7607399e2fed864ca6565594c2cf96993ca",
+   "first_16_bytes": "ddcb0476c0cd6688b72809dd362100cd",
+   "purpose": "static support platform with weight sag (state 5, THZ param $84)"
+  },
+  {
+   "name": "platform_state6_87b2",
+   "bank": 30,
+   "cpu": "0x87B2",
+   "rom_offset": "0x787B2",
+   "end_cpu_exclusive": "0x87E2",
+   "length": 48,
+   "sha256": "171502592bf85590015874a0d2076bb59037f3850544d0f7da492c994346e97b",
+   "first_16_bytes": "cd0889dd7e31fe00200dcd3b03dd7e21",
+   "purpose": "touch-started vertical mover (state 6), unused by THZ placements"
+  },
+  {
+   "name": "platform_state7_87e2",
+   "bank": 30,
+   "cpu": "0x87E2",
+   "rom_offset": "0x787E2",
+   "end_cpu_exclusive": "0x8812",
+   "length": 48,
+   "sha256": "96134545be81846754e674f33081b9aef730f4c8535df5e114ca2724e6963f50",
+   "first_16_bytes": "cd0889dd7e31fe00200dcd3b03dd7e21",
+   "purpose": "touch-started horizontal mover (state 7), unused by THZ placements"
+  },
+  {
+   "name": "platform_support_8814",
+   "bank": 30,
+   "cpu": "0x8814",
+   "rom_offset": "0x78814",
+   "end_cpu_exclusive": "0x8843",
+   "length": 47,
+   "sha256": "75b9ad07f3a3d12d43f684febb0d82b29d411b9257b7ab7a8b9a9deee8dc9100",
+   "first_16_bytes": "3ac0d34fb72807dd463279b82021cd3b",
+   "purpose": "shared support test: owner check, $6328 overlap, claim $D3C0, sag counter, carry"
+  },
+  {
+   "name": "platform_clear_8843",
+   "bank": 30,
+   "cpu": "0x8843",
+   "rom_offset": "0x78843",
+   "end_cpu_exclusive": "0x8866",
+   "length": 35,
+   "sha256": "7d3f9d14ce5322f5b6a7509bdde4a8c0b5a9c4cd8ed56522ff93fc3261e6ae5a",
+   "first_16_bytes": "dd363300dd7e21e60c28083a21d5e633",
+   "purpose": "shared support clear: sag release, mirrored side-bit clear, release $D3C0 if owner"
+  },
+  {
+   "name": "platform_gate_8866",
+   "bank": 30,
+   "cpu": "0x8866",
+   "rom_offset": "0x78866",
+   "end_cpu_exclusive": "0x88A0",
+   "length": 58,
+   "sha256": "776f4b1f026209457438ea853a371995e06d4f58c9d4b639f269106f8fe945b4",
+   "first_16_bytes": "dd6619dd6e18ed5b18d57ca2cb7f2815",
+   "purpose": "relative-vertical-speed gate: returns $FF when platform Y speed > player Y speed (signed)"
+  },
+  {
+   "name": "platform_carry_88a0",
+   "bank": 30,
+   "cpu": "0x88A0",
+   "rom_offset": "0x788A0",
+   "end_cpu_exclusive": "0x88C1",
+   "length": 33,
+   "sha256": "aaafdf74e890712be09ce0c09600fd475425fd5291d09921fa3088ad2f9ce315",
+   "first_16_bytes": "dd6615dd6e141600dd5e2d1d1dafed52",
+   "purpose": "carry: player Y = platform Y - (+$2D - 2); player X += +$23/+$24"
+  },
+  {
+   "name": "platform_sag_88c1",
+   "bank": 30,
+   "cpu": "0x88C1",
+   "rom_offset": "0x788C1",
+   "end_cpu_exclusive": "0x88FB",
+   "length": 58,
+   "sha256": "6d55a342306065a9653f921f1878114c21d65e5905a84a502fb4d659f4a3d0b2",
+   "first_16_bytes": "dd7e35fe082814dd3435dd6615dd6e14",
+   "purpose": "sag down/up one pixel per update (counter +$35, limit 8)"
+  },
+  {
+   "name": "platform_sag_88fb",
+   "bank": 30,
+   "cpu": "0x88FB",
+   "rom_offset": "0x788FB",
+   "end_cpu_exclusive": "0x8908",
+   "length": 13,
+   "sha256": "7d8b0e4185a3425972e7b1bee8ecead8c9ae91b65ac8868b46a58e5d72ebb53a",
+   "first_16_bytes": "ddcb257ec8dd7e33b728bb18d9ddcb04",
+   "purpose": "sag dispatcher: only when +$25 bit 7; +$33 selects down/up"
+  },
+  {
+   "name": "platform_keepalive_8908",
+   "bank": 30,
+   "cpu": "0x8908",
+   "rom_offset": "0x78908",
+   "end_cpu_exclusive": "0x8925",
+   "length": 29,
+   "sha256": "c5608c88ecdb999cd278d70c5ce63dc0868ec4fd288461d93866e1917b668dca",
+   "first_16_bytes": "ddcb044ec8018002cd8303b7280a01a0",
+   "purpose": "removal when the player is >= 640 px (X) or >= 672 px (Y) away while +$04 bit 1 is set"
+  },
+  {
+   "name": "platform_reverse_counter_8925",
+   "bank": 30,
+   "cpu": "0x8925",
+   "rom_offset": "0x78925",
+   "end_cpu_exclusive": "0x8947",
+   "length": 34,
+   "sha256": "b4e1a15e309fcc4511d8ca0c4159d4ff95993ea34659eb2c7f3bca119a7e5cd4",
+   "first_16_bytes": "dd7e303d2805dd7730afc9dd7030dd7e",
+   "purpose": "reversal period counter (B = $10, +$30 then +$37 reloaded from +$34)"
+  },
+  {
+   "name": "platform_reverse_80f1",
+   "bank": 30,
+   "cpu": "0x80F1",
+   "rom_offset": "0x780F1",
+   "end_cpu_exclusive": "0x8105",
+   "length": 20,
+   "sha256": "d6eaa742780d89fc2b193319ff6462f3629bcc8e1de5a9e9d45ab3ca245d33ac",
+   "first_16_bytes": "dd6619dd6e182b7c2f677d2f6fdd7419",
+   "purpose": "negate Y velocity (+$18/+$19)"
+  },
+  {
+   "name": "overlap_6328",
+   "bank": 1,
+   "cpu": "0x6328",
+   "rom_offset": "0x06328",
+   "end_cpu_exclusive": "0x640B",
+   "length": 227,
+   "sha256": "b0d2bd1f0d033b982561cdd7b2542123270a21d173a943122ddd021cf8077c0f",
+   "first_16_bytes": "afdd7720dd7e21e6f0dd7721ddcb0376",
+   "purpose": "shared closed-interval object/player overlap (docs/collision-geometry-audit.md)"
+  },
+  {
+   "name": "object_move_60fb",
+   "bank": 1,
+   "cpu": "0x60FB",
+   "rom_offset": "0x060FB",
+   "end_cpu_exclusive": "0x613C",
+   "length": 65,
+   "sha256": "c1ed6572d53ef32f2bba2f8692bc9a64ddb2d5b231eb5e75414bf6106a444c73",
+   "first_16_bytes": "dd6e10dd6611dd5e16dd5617dd46127a",
+   "purpose": "integrate +$16/+$17 into X and +$18/+$19 into Y (8.8 fixed point, sign-extended)"
+  },
+  {
+   "name": "object_id_606b",
+   "bank": 1,
+   "cpu": "0x606B",
+   "rom_offset": "0x0606B",
+   "end_cpu_exclusive": "0x6089",
+   "length": 30,
+   "sha256": "407b44ceaed76f094907c8857c448a6487d7c7821b9bb6857d5fc10854723727",
+   "first_16_bytes": "1100d5afed527ccb2517cb25173cc93d",
+   "purpose": "A = ((IX - $D500) >> 6) + 1: object id used as the support owner"
+  },
+  {
+   "name": "merge_flags_64cb",
+   "bank": 1,
+   "cpu": "0x64CB",
+   "rom_offset": "0x064CB",
+   "end_cpu_exclusive": "0x64F0",
+   "length": 37,
+   "sha256": "a8215f32c0e716ecd64702f36c16444a7fc2a1df0e014c9d1ae08983fe8b45bf",
+   "first_16_bytes": "dd46223ac0d3b7200dddcb034e20123a",
+   "purpose": "player D523 = D522 | (D521 >> 4) unless attacking and unsupported"
+  },
+  {
+   "name": "player_update_3fef",
+   "bank": 1,
+   "cpu": "0x3FEF",
+   "rom_offset": "0x03FEF",
+   "end_cpu_exclusive": "0x401A",
+   "length": 43,
+   "sha256": "b3e2784c8be182a02a97e46dccb9fe747b62e3b5bf78c38c6a4c29ccb8901740",
+   "first_16_bytes": "cd464bcd1a40cd4141dd7e01fe053006",
+   "purpose": "shared player updater: clamp, X integration, Y integration, terrain, damage"
+  },
+  {
+   "name": "player_x_integration_402a",
+   "bank": 1,
+   "cpu": "0x402A",
+   "rom_offset": "0x0402A",
+   "end_cpu_exclusive": "0x408D",
+   "length": 99,
+   "sha256": "c75076178e70bd695a0a8b6de5278e72f58e187a7a75ea37e2ae56506dbe55f3",
+   "first_16_bytes": "2a16d5ed5b75d319ed5b77d319cb7c20",
+   "purpose": "player X integration"
+  },
+  {
+   "name": "player_y_integration_4097",
+   "bank": 1,
+   "cpu": "0x4097",
+   "rom_offset": "0x04097",
+   "end_cpu_exclusive": "0x4141",
+   "length": 170,
+   "sha256": "65b09fe22fa1fbac9f6382d2beef75d48c145d1fd1c9552bd517b92d2c94777c",
+   "first_16_bytes": "2a18d5dd7e01fe11ca0b41ddcb034620",
+   "purpose": "player Y integration (returns early when grounded on a platform)"
+  },
+  {
+   "name": "terrain_dispatch_690b",
+   "bank": 1,
+   "cpu": "0x690B",
+   "rom_offset": "0x0690B",
+   "end_cpu_exclusive": "0x6973",
+   "length": 104,
+   "sha256": "0d4a5b10f24779c684a5178e8d3c2dea866484b16def259df25ad2751c25fc68",
+   "first_16_bytes": "cd1a69cd5e71cdc973cd3e75c3cb643a",
+   "purpose": "terrain pass: floor sample, previous-surface projection $6F61, type dispatch"
+  },
+  {
+   "name": "floor_projection_6f61",
+   "bank": 1,
+   "cpu": "0x6F61",
+   "rom_offset": "0x06F61",
+   "end_cpu_exclusive": "0x715E",
+   "length": 509,
+   "sha256": "e7bb4366fe3e2af3dc5f5ec1687c1b0976a80908cd8214cc760f7d2306c106e1",
+   "first_16_bytes": "3a6cd3cb7f2005cb77204fc9ddcb197e",
+   "purpose": "projection against the PREVIOUS surface flags ($D36C); sets floor bit D522.1"
+  },
+  {
+   "name": "floor_spike_handler_6ace",
+   "bank": 1,
+   "cpu": "0x6ACE",
+   "rom_offset": "0x06ACE",
+   "end_cpu_exclusive": "0x6AE3",
+   "length": 21,
+   "sha256": "2f2b6743d9f43398e148200aea4fe01d49fc160817981454e768c70998b53c31",
+   "first_16_bytes": "3a6bd3e6fefef4c8ddcb224ec8ddcb03",
+   "purpose": "terrain type 5, foot probe: tile != $F4/$F5, floor bit, not invulnerable -> $48F7"
+  },
+  {
+   "name": "side_probe_dispatch_715e",
+   "bank": 1,
+   "cpu": "0x715E",
+   "rom_offset": "0x0715E",
+   "end_cpu_exclusive": "0x71B2",
+   "length": 84,
+   "sha256": "c2543d8b37b74cfda05e1b465db355c7f1ecc5e8b9a65bbd9aaac6767af5bb86",
+   "first_16_bytes": "2122d5cb96cb9ecd6b71c31072ed4b9c",
+   "purpose": "right ($716B) and left ($7210) side probes, type dispatch"
+  },
+  {
+   "name": "side_type5_right_7306",
+   "bank": 1,
+   "cpu": "0x7306",
+   "rom_offset": "0x07306",
+   "end_cpu_exclusive": "0x7357",
+   "length": 81,
+   "sha256": "6bd1466eee5b08431107b3f30c0331110187eb76ea1b69e5af026f7eec2726b4",
+   "first_16_bytes": "3a53d3e6fefef2280b3a02d5fe17cab6",
+   "purpose": "type 5 side tail: right ($7306) and left ($7329); damage only for tiles $F4/$F5"
+  },
+  {
+   "name": "ceiling_probe_73c9",
+   "bank": 1,
+   "cpu": "0x73C9",
+   "rom_offset": "0x073C9",
+   "end_cpu_exclusive": "0x753E",
+   "length": 373,
+   "sha256": "c796e54028518548b9138713f59c4fe74524840c285a4ca3252049c88a538f38",
+   "first_16_bytes": "ddcb22863ac0d3b7200addcb224ec0dd",
+   "purpose": "ceiling pass; type 5 tail $74E7: damage only for tiles $3E/$3F"
+  },
+  {
+   "name": "damage_dispatch_48bc",
+   "bank": 1,
+   "cpu": "0x48BC",
+   "rom_offset": "0x048BC",
+   "end_cpu_exclusive": "0x48F7",
+   "length": 59,
+   "sha256": "9426dfb7dab0cddb8176acbcd6404c531e30b8c7237d6c12439f686696f37a86",
+   "first_16_bytes": "ddcb037ec2f749ddcb0376c22e4a3a32",
+   "purpose": "damage gate: +3 bit 7/6, power selector $D532, request $D3B0, contact $D520"
+  },
+  {
+   "name": "hurt_48f7",
+   "bank": 1,
+   "cpu": "0x48F7",
+   "rom_offset": "0x048F7",
+   "end_cpu_exclusive": "0x4984",
+   "length": 141,
+   "sha256": "b2d5a189faf4730e7955a54f2ed5baceba74c7a3a31c943cbf49af3ed642cfd9",
+   "first_16_bytes": "3a01d5fe112017af3232d521a3d3cb9e",
+   "purpose": "hurt: state $11 branch, ring scatter, invulnerability $D3B1, state $1E, knockback"
+  },
+  {
+   "name": "death_4984",
+   "bank": 1,
+   "cpu": "0x4984",
+   "rom_offset": "0x04984",
+   "end_cpu_exclusive": "0x49C3",
+   "length": 63,
+   "sha256": "4bcdb9fd1be9f82f1952f256f91904b38f00d8048c4dc71b8b6b9b66eb15393b",
+   "first_16_bytes": "dd36021fddcb03c6dd3604002100fb22",
+   "purpose": "no-ring path: state $1F, Y speed -5.0"
+  },
+  {
+   "name": "invulnerability_49f7",
+   "bank": 1,
+   "cpu": "0x49F7",
+   "rom_offset": "0x049F7",
+   "end_cpu_exclusive": "0x4A2E",
+   "length": 55,
+   "sha256": "9adf657c8947a7fbb435ce43fc7ed11edf5b9aea3a4f24cc9d5f08a6d941904f",
+   "first_16_bytes": "3ab1d3b7281c3d32b1d3dd7e01fe1e28",
+   "purpose": "invulnerability countdown $D3B1 and flicker; clears +3 bits 7/6 at zero"
+  },
+  {
+   "name": "spike_init_ac7d",
+   "bank": 12,
+   "cpu": "0xAC7D",
+   "rom_offset": "0x32C7D",
+   "end_cpu_exclusive": "0xAC8B",
+   "length": 14,
+   "sha256": "72dbbc951448e650fed11c7c21253e8a52a3f147268d0c8c79e2fc82a707a21b",
+   "first_16_bytes": "ddcb03fe3e01dd7702dd361f00c9ddcb",
+   "purpose": "type $1B initializer: +$03 bit 7, request state 1, clear cooldown"
+  },
+  {
+   "name": "spike_rise_ac8b",
+   "bank": 12,
+   "cpu": "0xAC8B",
+   "rom_offset": "0x32C8B",
+   "end_cpu_exclusive": "0xACC3",
+   "length": 56,
+   "sha256": "251d2e8b6797d0a586adb600c744d7ec5dd023f45b3458330dbcf235a9210934",
+   "first_16_bytes": "ddcb0476c0cdfdacdd6615dd6e141106",
+   "purpose": "state 1: contact test FIRST, then Y -= 6 until +$3C - Y == 18"
+  },
+  {
+   "name": "spike_hold_acc3",
+   "bank": 12,
+   "cpu": "0xACC3",
+   "rom_offset": "0x32CC3",
+   "end_cpu_exclusive": "0xACCC",
+   "length": 9,
+   "sha256": "1c1f3cfceeee8f3fa5fa22a4d58f0315fcbca1b54e6bd976dde8ae2ad20403aa",
+   "first_16_bytes": "ddcb0476c0cdfdacc9ddcb0476c0dd66",
+   "purpose": "state 2: contact test only"
+  },
+  {
+   "name": "spike_retract_accc",
+   "bank": 12,
+   "cpu": "0xACCC",
+   "rom_offset": "0x32CCC",
+   "end_cpu_exclusive": "0xACFD",
+   "length": 49,
+   "sha256": "64259a1a9d57e8b85c452929bb0f081c05a980ff08b4ea1a4348d59bbea8a7af",
+   "first_16_bytes": "ddcb0476c0dd6615dd6e14110600af19",
+   "purpose": "state 3: Y += 6 until Y >= +$3C; no contact test"
+  },
+  {
+   "name": "spike_contact_acfd",
+   "bank": 12,
+   "cpu": "0xACFD",
+   "rom_offset": "0x32CFD",
+   "end_cpu_exclusive": "0xAD59",
+   "length": 92,
+   "sha256": "cacd22632af9078c4e047d3e99b3547ede6f78a64a03195b45c12438c65bdd43",
+   "first_16_bytes": "dd7e1fb728053ddd771fc93a19d507d8",
+   "purpose": "contact helper: cooldown, rising gate, $6328, top -> damage request, side -> push"
+  },
+  {
+   "name": "overlap_object_wrapper_033b",
+   "bank": 0,
+   "cpu": "0x033B",
+   "rom_offset": "0x0033B",
+   "end_cpu_exclusive": "0x033E",
+   "length": 3,
+   "sha256": "c507b7f0047938556534d0b396cf6e6bace3a6259a782b127021f24d977ec323",
+   "first_16_bytes": "c32863c3545fc32577c3f85ec33831c3",
+   "purpose": "vector $033B -> $6328"
+  }
+ ],
+ "platform_placements": {
+  "thz1": [
+   {
+    "act": "thz1",
+    "record_index": 1,
+    "rom_offset": "0x705AE",
+    "raw_bytes": "28 50 03 D0 02 00 0A 6A 09",
+    "world_x": 592,
+    "world_y": 464,
+    "flags": "0x00",
+    "parameter": "0x0A",
+    "aux0": "0x6A",
+    "aux1": "0x09",
+    "initial_state": 11,
+    "weight_sag_flag_+25": false,
+    "+26_flag": false,
+    "reversal_period_updates": 144
+   },
+   {
+    "act": "thz1",
+    "record_index": 2,
+    "rom_offset": "0x705B7",
+    "raw_bytes": "28 50 0F 00 03 00 0A 6A 0D",
+    "world_x": 3664,
+    "world_y": 512,
+    "flags": "0x00",
+    "parameter": "0x0A",
+    "aux0": "0x6A",
+    "aux1": "0x0D",
+    "initial_state": 11,
+    "weight_sag_flag_+25": false,
+    "+26_flag": false,
+    "reversal_period_updates": 208
+   },
+   {
+    "act": "thz1",
+    "record_index": 3,
+    "rom_offset": "0x705C0",
+    "raw_bytes": "28 10 05 80 02 00 84 6A 00",
+    "world_x": 1040,
+    "world_y": 384,
+    "flags": "0x00",
+    "parameter": "0x84",
+    "aux0": "0x6A",
+    "aux1": "0x00",
+    "initial_state": 5,
+    "weight_sag_flag_+25": true,
+    "+26_flag": false,
+    "reversal_period_updates": null
+   },
+   {
+    "act": "thz1",
+    "record_index": 4,
+    "rom_offset": "0x705C9",
+    "raw_bytes": "28 70 05 40 02 00 84 6A 00",
+    "world_x": 1136,
+    "world_y": 320,
+    "flags": "0x00",
+    "parameter": "0x84",
+    "aux0": "0x6A",
+    "aux1": "0x00",
+    "initial_state": 5,
+    "weight_sag_flag_+25": true,
+    "+26_flag": false,
+    "reversal_period_updates": null
+   },
+   {
+    "act": "thz1",
+    "record_index": 5,
+    "rom_offset": "0x705D2",
+    "raw_bytes": "28 D0 05 00 02 00 84 6A 00",
+    "world_x": 1232,
+    "world_y": 256,
+    "flags": "0x00",
+    "parameter": "0x84",
+    "aux0": "0x6A",
+    "aux1": "0x00",
+    "initial_state": 5,
+    "weight_sag_flag_+25": true,
+    "+26_flag": false,
+    "reversal_period_updates": null
+   },
+   {
+    "act": "thz1",
+    "record_index": 6,
+    "rom_offset": "0x705DB",
+    "raw_bytes": "28 30 06 D0 01 00 84 6A 00",
+    "world_x": 1328,
+    "world_y": 208,
+    "flags": "0x00",
+    "parameter": "0x84",
+    "aux0": "0x6A",
+    "aux1": "0x00",
+    "initial_state": 5,
+    "weight_sag_flag_+25": true,
+    "+26_flag": false,
+    "reversal_period_updates": null
+   }
+  ],
+  "thz2": [
+   {
+    "act": "thz2",
+    "record_index": 1,
+    "rom_offset": "0x7078C",
+    "raw_bytes": "28 28 03 D0 03 00 0A 6A 19",
+    "world_x": 552,
+    "world_y": 720,
+    "flags": "0x00",
+    "parameter": "0x0A",
+    "aux0": "0x6A",
+    "aux1": "0x19",
+    "initial_state": 11,
+    "weight_sag_flag_+25": false,
+    "+26_flag": false,
+    "reversal_period_updates": 400
+   },
+   {
+    "act": "thz2",
+    "record_index": 2,
+    "rom_offset": "0x70795",
+    "raw_bytes": "28 58 0F 60 03 00 0A 6A 13",
+    "world_x": 3672,
+    "world_y": 608,
+    "flags": "0x00",
+    "parameter": "0x0A",
+    "aux0": "0x6A",
+    "aux1": "0x13",
+    "initial_state": 11,
+    "weight_sag_flag_+25": false,
+    "+26_flag": false,
+    "reversal_period_updates": 304
+   },
+   {
+    "act": "thz2",
+    "record_index": 3,
+    "rom_offset": "0x7079E",
+    "raw_bytes": "28 10 07 30 02 00 84 6A 00",
+    "world_x": 1552,
+    "world_y": 304,
+    "flags": "0x00",
+    "parameter": "0x84",
+    "aux0": "0x6A",
+    "aux1": "0x00",
+    "initial_state": 5,
+    "weight_sag_flag_+25": true,
+    "+26_flag": false,
+    "reversal_period_updates": null
+   }
+  ],
+  "thz3": []
+ },
+ "platform_modes": {
+  "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY (commands 00/01/02/07/0C; lengths read from the handlers $66B9..$68CF)",
+  "table_cpu": "0x8439",
+  "table_rom_offset": "0x78439",
+  "states": [
+   {
+    "state": 0,
+    "script_cpu": "0x8457",
+    "script": [
+     {
+      "record": {
+       "duration": 224,
+       "frame": 0,
+       "callback": "0x8585"
+      }
+     },
+     {
+      "command": "0x00",
+      "meaning": "loop-or-switch",
+      "params": []
+     }
+    ],
+    "role_label": "init request (callback $8585)",
+    "placed_by": []
+   },
+   {
+    "state": 1,
+    "script_cpu": "0x845D",
+    "script": [
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x01",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 256,
+      "y_speed_8_8": 0
+     },
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x8628"
+      }
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0x63",
+       "0x84"
+      ],
+      "target_cpu": "0x8463"
+     }
+    ],
+    "role_label": "horizontal mover, X speed +1.0, sign gate only (callback $8628)",
+    "placed_by": []
+   },
+   {
+    "state": 2,
+    "script_cpu": "0x846B",
+    "script": [
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0xFF"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": -256
+     },
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x86A1"
+      }
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0x71",
+       "0x84"
+      ],
+      "target_cpu": "0x8471"
+     }
+    ],
+    "role_label": "vertical mover, Y speed -1.0, no reversal ($86A1)",
+    "placed_by": []
+   },
+   {
+    "state": 3,
+    "script_cpu": "0x8479",
+    "script": [
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x8718"
+      }
+     },
+     {
+      "command": "0x00",
+      "meaning": "loop-or-switch",
+      "params": []
+     }
+    ],
+    "role_label": "inert ($8718 = RET)",
+    "placed_by": []
+   },
+   {
+    "state": 4,
+    "script_cpu": "0x847F",
+    "script": [
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": 0
+     },
+     {
+      "command": "0x09",
+      "meaning": "object[off]=value",
+      "params": [
+       "0x1E",
+       "0x50"
+      ]
+     },
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x8719"
+      }
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0x89",
+       "0x84"
+      ],
+      "target_cpu": "0x8489"
+     }
+    ],
+    "role_label": "touch-triggered falling platform ($8719)",
+    "placed_by": []
+   },
+   {
+    "state": 5,
+    "script_cpu": "0x8491",
+    "script": [
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x879A"
+      }
+     },
+     {
+      "command": "0x00",
+      "meaning": "loop-or-switch",
+      "params": []
+     }
+    ],
+    "role_label": "static support platform with weight sag ($879A)",
+    "placed_by": [
+     "thz1#3",
+     "thz1#4",
+     "thz1#5",
+     "thz1#6",
+     "thz2#3"
+    ]
+   },
+   {
+    "state": 6,
+    "script_cpu": "0x8497",
+    "script": [
+     {
+      "command": "0x0C",
+      "meaning": "object[off]|=value",
+      "params": [
+       "0x04",
+       "0x02"
+      ]
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0xFF"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": -256
+     },
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x87B2"
+      }
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0xA1",
+       "0x84"
+      ],
+      "target_cpu": "0x84A1"
+     }
+    ],
+    "role_label": "touch-started vertical mover ($87B2)",
+    "placed_by": []
+   },
+   {
+    "state": 7,
+    "script_cpu": "0x84A9",
+    "script": [
+     {
+      "command": "0x0C",
+      "meaning": "object[off]|=value",
+      "params": [
+       "0x04",
+       "0x02"
+      ]
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x01",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 256,
+      "y_speed_8_8": 0
+     },
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x87E2"
+      }
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0xB3",
+       "0x84"
+      ],
+      "target_cpu": "0x84B3"
+     }
+    ],
+    "role_label": "touch-started horizontal mover ($87E2)",
+    "placed_by": []
+   },
+   {
+    "state": 8,
+    "script_cpu": "0x84BB",
+    "script": [
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x8812"
+      }
+     },
+     {
+      "command": "0x00",
+      "meaning": "loop-or-switch",
+      "params": []
+     }
+    ],
+    "role_label": "inert ($8812 = RET)",
+    "placed_by": []
+   },
+   {
+    "state": 9,
+    "script_cpu": "0x84C1",
+    "script": [
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x8813"
+      }
+     },
+     {
+      "command": "0x00",
+      "meaning": "loop-or-switch",
+      "params": []
+     }
+    ],
+    "role_label": "inert ($8813 = RET)",
+    "placed_by": []
+   },
+   {
+    "state": 10,
+    "script_cpu": "0x84C7",
+    "script": [
+     {
+      "command": "0x0C",
+      "meaning": "object[off]|=value",
+      "params": [
+       "0x04",
+       "0x02"
+      ]
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x01",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 256,
+      "y_speed_8_8": 0
+     },
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x8662"
+      }
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0xD1",
+       "0x84"
+      ],
+      "target_cpu": "0x84D1"
+     }
+    ],
+    "role_label": "horizontal mover with reversal ($8662)",
+    "placed_by": []
+   },
+   {
+    "state": 11,
+    "script_cpu": "0x84D9",
+    "script": [
+     {
+      "command": "0x0C",
+      "meaning": "object[off]|=value",
+      "params": [
+       "0x04",
+       "0x02"
+      ]
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0xFF"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": -256
+     },
+     {
+      "record": {
+       "duration": 224,
+       "frame": 1,
+       "callback": "0x86DA"
+      }
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0xE3",
+       "0x84"
+      ],
+      "target_cpu": "0x84E3"
+     }
+    ],
+    "role_label": "vertical mover with reversal, Y speed -1.0 initially ($86DA)",
+    "placed_by": [
+     "thz1#1",
+     "thz1#2",
+     "thz2#1",
+     "thz2#2"
+    ]
+   },
+   {
+    "state": 12,
+    "script_cpu": "0x84EB",
+    "script": [
+     {
+      "command": "0x01",
+      "meaning": "call-routine",
+      "params": [
+       "0x77",
+       "0x85"
+      ],
+      "target_cpu": "0x8577"
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0x01"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": 256
+     },
+     {
+      "record": {
+       "duration": 32,
+       "frame": 1,
+       "callback": "0x86A1"
+      }
+     },
+     {
+      "command": "0x01",
+      "meaning": "call-routine",
+      "params": [
+       "0x77",
+       "0x85"
+      ],
+      "target_cpu": "0x8577"
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x01",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 256,
+      "y_speed_8_8": 0
+     },
+     {
+      "record": {
+       "duration": 128,
+       "frame": 1,
+       "callback": "0x8628"
+      }
+     },
+     {
+      "record": {
+       "duration": 144,
+       "frame": 1,
+       "callback": "0x8628"
+      }
+     },
+     {
+      "command": "0x09",
+      "meaning": "object[off]=value",
+      "params": [
+       "0x1E",
+       "0x50"
+      ]
+     },
+     {
+      "command": "0x09",
+      "meaning": "object[off]=value",
+      "params": [
+       "0x27",
+       "0x80"
+      ]
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": 0
+     },
+     {
+      "command": "0x07",
+      "meaning": "jump-to-script",
+      "params": [
+       "0x89",
+       "0x84"
+      ],
+      "target_cpu": "0x8489"
+     }
+    ],
+    "role_label": "vertical mover ($86A1) with a delayed script",
+    "placed_by": []
+   },
+   {
+    "state": 13,
+    "script_cpu": "0x856B",
+    "script": [
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": 0
+     },
+     {
+      "record": {
+       "duration": 32,
+       "frame": 1,
+       "callback": "0x85FE"
+      }
+     },
+     {
+      "command": "0x00",
+      "meaning": "loop-or-switch",
+      "params": []
+     }
+    ],
+    "role_label": "stationary contact platform ($85FE)",
+    "placed_by": []
+   },
+   {
+    "state": 14,
+    "script_cpu": "0x851D",
+    "script": [
+     {
+      "command": "0x01",
+      "meaning": "call-routine",
+      "params": [
+       "0x77",
+       "0x85"
+      ],
+      "target_cpu": "0x8577"
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x01",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 256,
+      "y_speed_8_8": 0
+     },
+     {
+      "record": {
+       "duration": 160,
+       "frame": 1,
+       "callback": "0x8628"
+      }
+     },
+     {
+      "command": "0x01",
+      "meaning": "call-routine",
+      "params": [
+       "0x77",
+       "0x85"
+      ],
+      "target_cpu": "0x8577"
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0x01"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": 256
+     },
+     {
+      "record": {
+       "duration": 64,
+       "frame": 1,
+       "callback": "0x86A1"
+      }
+     },
+     {
+      "command": "0x01",
+      "meaning": "call-routine",
+      "params": [
+       "0x77",
+       "0x85"
+      ],
+      "target_cpu": "0x8577"
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x01",
+       "0x00",
+       "0x00"
+      ],
+      "x_speed_8_8": 256,
+      "y_speed_8_8": 0
+     },
+     {
+      "record": {
+       "duration": 96,
+       "frame": 1,
+       "callback": "0x8628"
+      }
+     },
+     {
+      "command": "0x01",
+      "meaning": "call-routine",
+      "params": [
+       "0x77",
+       "0x85"
+      ],
+      "target_cpu": "0x8577"
+     },
+     {
+      "command": "0x02",
+      "meaning": "set-velocity(X,Y)",
+      "params": [
+       "0x00",
+       "0x00",
+       "0x00",
+       "0xFF"
+      ],
+      "x_speed_8_8": 0,
+      "y_speed_8_8": -256
+     },
+     {
+      "record": {
+       "duration": 128,
+       "frame": 1,
+       "callback": "0x86A1"
+      }
+     }
+    ],
+    "role_label": "horizontal mover ($8628) entered from state 13",
+    "placed_by": []
+   }
+  ],
+  "parameter_rule": "state = (parameter & $3F) + 1; if (parameter & $7F) is 5 or 11 the state is forced to 13; parameter bit 7 -> +$25 = $FF (weight sag), bit 6 -> +$26 = $FF",
+  "used_by_thz": [
+   5,
+   11
+  ],
+  "note": "THZ1/THZ2 placements reach only states 5 and 11. Every other state is supported by the ROM code but has no THZ1/THZ2/THZ3 placement."
+ },
+ "spike_1b_placements": {
+  "thz1": [
+   {
+    "record_index": 33,
+    "rom_offset": "0x706CE",
+    "raw_bytes": "1B 40 06 60 04 00 00 00 00",
+    "world_x": 1344,
+    "world_y": 864,
+    "flags": "0x00",
+    "parameter": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "record_index": 34,
+    "rom_offset": "0x706D7",
+    "raw_bytes": "1B 90 08 60 04 00 00 00 00",
+    "world_x": 1936,
+    "world_y": 864,
+    "flags": "0x00",
+    "parameter": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "record_index": 35,
+    "rom_offset": "0x706E0",
+    "raw_bytes": "1B A0 0A 60 04 00 00 00 00",
+    "world_x": 2464,
+    "world_y": 864,
+    "flags": "0x00",
+    "parameter": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "record_index": 36,
+    "rom_offset": "0x706E9",
+    "raw_bytes": "1B 60 0C 60 04 00 00 00 00",
+    "world_x": 2912,
+    "world_y": 864,
+    "flags": "0x00",
+    "parameter": "0x00",
+    "aux1": "0x00"
+   }
+  ],
+  "thz2": [],
+  "thz3": [
+   {
+    "record_index": 7,
+    "rom_offset": "0x70934",
+    "raw_bytes": "1B F0 03 80 01 00 00 00 00",
+    "world_x": 752,
+    "world_y": 128,
+    "flags": "0x00",
+    "parameter": "0x00",
+    "aux1": "0x00"
+   }
+  ]
+ },
+ "static_spike_terrain": {
+  "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY",
+  "blocks": {
+   "0x3C": {
+    "header_rom_offset": "0x383A4",
+    "flags": "0x85",
+    "terrain_type_low5": 5,
+    "solid_bit7": true,
+    "one_way_bit6": false,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_profile_by_x_runs": [
+     [
+      0,
+      31,
+      "0x10"
+     ]
+    ],
+    "horizontal_profile_by_y_runs": [
+     [
+      0,
+      15,
+      "0x40"
+     ],
+     [
+      16,
+      31,
+      "0x60"
+     ]
+    ],
+    "vertical_profile_value": 16,
+    "meaning": "foot-probe surface at block row 16 (height 16 from the block bottom)"
+   },
+   "0x3D": {
+    "header_rom_offset": "0x383AB",
+    "flags": "0x85",
+    "terrain_type_low5": 5,
+    "solid_bit7": true,
+    "one_way_bit6": false,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_profile_by_x_runs": [
+     [
+      0,
+      31,
+      "0x10"
+     ]
+    ],
+    "horizontal_profile_by_y_runs": [
+     [
+      0,
+      15,
+      "0x40"
+     ],
+     [
+      16,
+      31,
+      "0x60"
+     ]
+    ],
+    "vertical_profile_value": 16,
+    "meaning": "foot-probe surface at block row 16 (height 16 from the block bottom)"
+   }
+  },
+  "cells": {
+   "thz1": [
+    {
+     "cell": [
+      47,
+      26
+     ],
+     "world_x": 1504,
+     "world_y": 832,
+     "block": "0x3D",
+     "left": "0xD7",
+     "right": "0x3D",
+     "above": "0xDA",
+     "below": "0x01"
+    },
+    {
+     "cell": [
+      48,
+      26
+     ],
+     "world_x": 1536,
+     "world_y": 832,
+     "block": "0x3D",
+     "left": "0x3D",
+     "right": "0xC5",
+     "above": "0xD2",
+     "below": "0x01"
+    },
+    {
+     "cell": [
+      69,
+      26
+     ],
+     "world_x": 2208,
+     "world_y": 832,
+     "block": "0x3D",
+     "left": "0xC5",
+     "right": "0x3D",
+     "above": "0xD9",
+     "below": "0x01"
+    },
+    {
+     "cell": [
+      70,
+      26
+     ],
+     "world_x": 2240,
+     "world_y": 832,
+     "block": "0x3D",
+     "left": "0x3D",
+     "right": "0xDB",
+     "above": "0xD3",
+     "below": "0x01"
+    }
+   ],
+   "thz2": [
+    {
+     "cell": [
+      106,
+      8
+     ],
+     "world_x": 3392,
+     "world_y": 256,
+     "block": "0x3C",
+     "left": "0xC8",
+     "right": "0xFE",
+     "above": "0xFE",
+     "below": "0x08"
+    },
+    {
+     "cell": [
+      13,
+      22
+     ],
+     "world_x": 416,
+     "world_y": 704,
+     "block": "0x3C",
+     "left": "0xD4",
+     "right": "0xC8",
+     "above": "0xFE",
+     "below": "0x0A"
+    },
+    {
+     "cell": [
+      64,
+      26
+     ],
+     "world_x": 2048,
+     "world_y": 832,
+     "block": "0x3D",
+     "left": "0xD9",
+     "right": "0xDB",
+     "above": "0xFE",
+     "below": "0x01"
+    },
+    {
+     "cell": [
+      41,
+      27
+     ],
+     "world_x": 1312,
+     "world_y": 864,
+     "block": "0x3D",
+     "left": "0xDB",
+     "right": "0xDB",
+     "above": "0xDA",
+     "below": "0x01"
+    },
+    {
+     "cell": [
+      51,
+      27
+     ],
+     "world_x": 1632,
+     "world_y": 864,
+     "block": "0x3D",
+     "left": "0xD7",
+     "right": "0xDB",
+     "above": "0xD8",
+     "below": "0x08"
+    }
+   ]
+  },
+  "layout_census_of_damaging_tile_ids": {
+   "thz1": {
+    "0x3C": 0,
+    "0x3D": 4,
+    "0x3E": 0,
+    "0x3F": 0,
+    "0xF4": 0,
+    "0xF5": 0
+   },
+   "thz2": {
+    "0x3C": 2,
+    "0x3D": 3,
+    "0x3E": 0,
+    "0x3F": 0,
+    "0xF4": 0,
+    "0xF5": 0
+   },
+   "thz3": {
+    "0x3C": 0,
+    "0x3D": 0,
+    "0x3E": 0,
+    "0x3F": 0,
+    "0xF4": 0,
+    "0xF5": 0
+   }
+  },
+  "floor_handler_for_type_5": "0x6ACE",
+  "other_threshold_tiles": {
+   "0x3E/0x3F": "ceiling damage tail $74E7..$752C",
+   "0xF4": "right side damage tail via $7349",
+   "0xF5": "left side damage tail via $7349",
+   "0xF2/0xF3": "type-5 side tiles that skip the requested-state gates"
+  }
+ },
+ "terrain_probe_geometry": {
+  "evidence": "BYTE-VERIFIED ASSEMBLY ($3686, $691A, $715E, $73C9, lookup adds +18 to Y at $7666) + CONTROLLED ROUTINE RESULT",
+  "probes": {
+   "floor": {
+    "offset_passed": [
+     0,
+     0
+    ],
+    "effective_probe_relative_to_anchor": [
+     0,
+     18
+    ]
+   },
+   "right_side": {
+    "offset_passed": [
+     9,
+     -12
+    ],
+    "effective_probe_relative_to_anchor": [
+     9,
+     6
+    ]
+   },
+   "left_side": {
+    "offset_passed": [
+     -9,
+     -12
+    ],
+    "effective_probe_relative_to_anchor": [
+     -9,
+     6
+    ]
+   },
+   "ceiling": {
+    "offset_passed": [
+     0,
+     -24
+    ],
+    "effective_probe_relative_to_anchor": [
+     0,
+     -6
+    ]
+   }
+  },
+  "note": "the anchor is player Y; the lookup adds 18 to the supplied Y offset, so the foot probe is (X, Y+18), the side probes (X-9, Y+6)/(X+9, Y+6), the ceiling probe (X, Y-6)"
+ },
+ "anchors": {
+  "evidence": "EMULATED ORIGINAL FRAME (SAT + VRAM opaque rows) + BYTE-VERIFIED ASSEMBLY + docs/mapped-object-screen-registration.md",
+  "rule": "world row of a sprite line = line + camera Y + 17 (shared registration: VScroll 17 + SAT 1); opaque rows are quoted relative to the object/player anchor Y",
+  "type_28_platform": {
+   "canonical_placement_anchor": "record X, Y (world, after the $0100 bias is removed)",
+   "runtime_anchor": "+$11/+$12 X, +$14/+$15 Y (lifts move it 1 px/update; sag platforms add +0..+8 while ridden)",
+   "collision_anchor": "same as the runtime anchor; $6328 box x +-16, y [-16, 0] (extents +$2C/+$2D = 16,16, both frames)",
+   "sprite_opaque_rows_relative_to_anchor": "+2..+17 (measured: platform lines 103..118 at anchor world 384, camera Y 266)",
+   "support_probe": "player anchor Y after carry = platform Y - 14 (the equivalent terrain foot row anchor+18 = platform Y + 4); player opaque rows -13..+17 (measured standing on the sag platform: world rows 357..387)",
+   "visual_overlap": "Sonic's last opaque row (platform Y + 3) is two rows below the platform's first opaque row (platform Y + 2): Sonic is drawn two pixels into the platform top; the collision box top (platform Y - 16) is 18 rows above the visible top",
+   "presentation_offset_must_not_move_gameplay": "the 18-row gap between collision top and visible top is canonical; a GameMaker presentation offset must not be absorbed into the support geometry"
+  },
+  "type_1b_moving_spike": {
+   "canonical_placement_anchor": "record X, Y = 864 (also the hidden/retracted Y = +$3C)",
+   "runtime_anchor": "+$14 moves 864 -> 846 in steps of 6",
+   "collision_anchor": "runtime anchor; $6328 box x +-16, y [-24, 0]; damage region is the 45-degree cone above the anchor (see audit)",
+   "sprite_opaque_rows_relative_to_anchor": "-6..+17 (docs/mapped-object-screen-registration.md, frame $0E shared)",
+   "hazard_probe": "player anchor (not the foot): contact needs the player's anchor above the object's anchor by 1..24"
+  },
+  "static_spike_terrain": {
+   "canonical_placement_anchor": "layout cell (32x32), block $3D / $3C; no object record",
+   "collision_anchor": "terrain lookup: foot probe (X, Y+18), side probes (X-9, Y+6)/(X+9, Y+6), ceiling probe (X, Y-6)",
+   "surface": "vertical profile 16 for every column: the spike surface is block row 16 (16 px above the block bottom); horizontal profile rows 0..15 = $40 (empty), rows 16..31 = $60 (full width, bit 6)",
+   "sprite": "block art $3D (tiles); not an object; presentation offsets do not apply to terrain collision"
+  }
+ },
+ "poc_comparison": {
+  "evidence": "POC SOURCE (READ-ONLY): SonicChaos_POC_thz1_cleanup @ 7799c34; files read, never executed or modified",
+  "files_read": [
+   "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "scripts/SCR_chaos_motion/SCR_chaos_motion.gml",
+   "scripts/SCR_chaos_core/SCR_chaos_core.gml",
+   "objects/OBJ_chaos_platform/Create_0.gml",
+   "objects/OBJ_chaos_spikes/{Create_0,Step_0}.gml"
+  ],
+  "rows": [
+   {
+    "area": "static spike probing",
+    "poc": "SCR_cc_floor: kind 5 -> hazard iff tile not $F4/$F5, (bg & 2) floor flag and (player_flags & 128) == 0, after the previous-surface projection",
+    "rom": "$6ACE: same three conditions after $6F61 projection of the previous surface",
+    "verdict": "STRUCTURALLY MATCHES; the outcome depends on the lifetime of the floor flag (bg & 2) which the POC clears in several adapters ($6C45-type empty-floor path, support clears) - a mismatch is possible only there and is not proven",
+    "class": "NOT PROVEN"
+   },
+   {
+    "area": "diagonal static-spike phasing",
+    "poc": "no source evidence of a different probe; no ROM-side phasing exists (see audit section 6)",
+    "rom": "every approach is damaged, blocked by the side wall, or clears the pair in the air (1,446 emulated runs, 0 undamaged contacts)",
+    "verdict": "A POC phase-through is NOT explained by the ROM: candidate causes are POC-side only (floor-flag clearing, previous-surface bookkeeping, side wall rows 16..31, integer-pixel stepping); needs a POC replay",
+    "class": "UNRESOLVED (POC-side)"
+   },
+   {
+    "area": "moving spike $1B geometry",
+    "poc": "SCR_chaos_spike_step: damage when the player's mask bbox overlaps x +-16 and [baseY-min(32,18+offset), baseY] in states 1/2",
+    "rom": "$6328 box x +-24 vs the player's 8-wide box; damage ONLY for the 'player above' cone (dy -24..-1, |dx| <= |dy|), only when the player's Y speed >= 0, with a 16-update cooldown; side/below contact never damages; non-attacking side contact is a WALL (D523 bit 2/3); an attacking grounded player is pushed to +-23 and requested state 1",
+    "verdict": "MISMATCH (ROM-backed): POC damages on any bbox overlap incl. sides/below/rising and has no cooldown and no wall/push behaviour",
+    "class": "CRITICAL"
+   },
+   {
+    "area": "moving spike timing",
+    "poc": "offset +6 per update to 18, hold 48, -6, hold 48; damage check after the move",
+    "rom": "contact test BEFORE the Y move in state 1; cycle 102 updates (48 hidden, 3 rising, 48 raised, 3 retracting); no test while retracting/hidden",
+    "verdict": "cycle length matches; test order differs by one 6-px step during the 3 rising updates",
+    "class": "EDGE"
+   },
+   {
+    "area": "platform support geometry",
+    "poc": "SCR_chaos_platform_overlap: bbox_right >= x-16 and bbox_left < x+16; foot within [y-1, y+20]; previous foot <= previous platform Y; snap anchor = platform y - 19 (POC platform coordinates)",
+    "rom": "support iff 'player above' contact of $6328: dy in [-16,-1] and |dx| <= min(24, 8+|dy|) (triangular region), platform Y speed <= player Y speed, anchor snapped to platform Y - 14",
+    "verdict": "MISMATCH likely: rectangular sprite-mask overlap vs triangular ROM region; vertical tolerance model differs; snap offset must be re-derived from the ROM (-14 anchor) not the sprite",
+    "class": "EDGE/CRITICAL (needs POC replay)"
+   },
+   {
+    "area": "platform speed gate and retained vy",
+    "poc": "support only for vy >= 0; landing sets vy = 0",
+    "rom": "gate is relative: support requires player vy >= platform vy (rising lifts allow slightly rising players, descending lifts need vy >= +1.0); landing leaves the player's Y speed untouched (e.g. $0190 stays)",
+    "verdict": "MISMATCH (ROM-backed)",
+    "class": "EDGE"
+   },
+   {
+    "area": "platform carry order",
+    "poc": "SCR_chaos_world_begin advances platforms BEFORE the player step and re-lands the rider from the platform delta",
+    "rom": "player update FIRST (movement, terrain, damage), platform callback afterwards: move, contact test, snap Y = platform Y - 14, X += delta",
+    "verdict": "ORDER DIFFERS: the ROM rider is positioned after the platform's move within the same frame; POC positions it before the player step (one-update phase difference)",
+    "class": "EDGE"
+   },
+   {
+    "area": "THZ2 lifts",
+    "poc": "Create_0 assigns chaosTravel only for x == 592 (144) and x == 3664 (208)",
+    "rom": "THZ2 lifts at (552,720) aux $19 (400 updates) and (3672,608) aux $13 (304 updates)",
+    "verdict": "MISMATCH for THZ2 if the same object is reused (travel 0 = sag behaviour)",
+    "class": "CRITICAL for THZ2"
+   },
+   {
+    "area": "sag platform",
+    "poc": "sag +1 per ridden update to 8, then returning flag, decrement; platform y = home + sag",
+    "rom": "+1..+8 (8 updates), one hold update at 8, then -1..0 while still ridden; after release rises 1 px/update",
+    "verdict": "MATCHES the recovered sequence",
+    "class": "MATCH"
+   },
+   {
+    "area": "damage gating",
+    "poc": "SCR_chaos_apply_hazard_damage: returns when playerSuper/playerBlink/powerInv; ring-loss/death handled by sample-engine objects",
+    "rom": "terrain: +$03 bit 7 only; object requests: $48BC gate (+3 bit 7 -> countdown, bit 6 -> ignore, $D532 == 6 -> clear); invulnerability = 120 countdown updates, cleared on the 121st gate update",
+    "verdict": "NOT COMPARED in depth (POC sample-engine damage is outside this audit)",
+    "class": "NOT PROVEN"
+   }
+  ],
+  "rule": "nothing above is a POC bug unless its row says ROM-backed; platform support/geometry rows need a POC replay on Windows before changing code"
+ },
+ "unresolved": [
+  "player states other than the numerically tested ones were not run through the platform/spike matrix; loop (`$0C/$0D/$13`) and twist (`$22`) states reposition the player, so a teleport cannot exercise platform/spike contact in them",
+  "which input sequence reproduces a given phase of the first-frame hurt consequences in the original (the emulated game uses explicit teleports, not recorded play)",
+  "object lifecycle (activation, removal, recreation phase) of platforms and $1B spikes: only the persistence radius and the recreate-from-record rule were used; no exhaustive lifecycle audit",
+  "the purpose of $D4A5 (written only by $8866 when both speeds are negative) was not traced; nothing in this audit depends on it",
+  "state $17 (requested) takes the type-5 breakable branch at the side probes ($72B6/$72DD): its entry condition and effect on spike blocks were located but not exercised",
+  "the POC was read but never run: every POC row is source-level only",
+  "the sound routine $062D and ring-scatter object behaviour were stubbed/not studied (not part of collision)",
+  "original-game visual confirmation (video) of the non-attacking side wall against a raised $1B spike was not performed; the result is emulated-routine evidence"
+ ],
+ "static_only": false,
+ "platform_support": {
+  "evidence": "CONTROLLED ROUTINE RESULT (real callbacks $879A / $86DA)",
+  "state_5": {
+   "cases": 44652,
+   "mismatches": 0,
+   "first_mismatches": [],
+   "support_region_dx_range_by_dy_at_vy_plus_1_0": {
+    "-16": [
+     -24,
+     24
+    ],
+    "-15": [
+     -23,
+     23
+    ],
+    "-14": [
+     -22,
+     22
+    ],
+    "-13": [
+     -21,
+     21
+    ],
+    "-12": [
+     -20,
+     20
+    ],
+    "-11": [
+     -19,
+     19
+    ],
+    "-10": [
+     -18,
+     18
+    ],
+    "-9": [
+     -17,
+     17
+    ],
+    "-8": [
+     -16,
+     16
+    ],
+    "-7": [
+     -15,
+     15
+    ],
+    "-6": [
+     -14,
+     14
+    ],
+    "-5": [
+     -13,
+     13
+    ],
+    "-4": [
+     -12,
+     12
+    ],
+    "-3": [
+     -11,
+     11
+    ],
+    "-2": [
+     -10,
+     10
+    ],
+    "-1": [
+     -9,
+     9
+    ]
+   },
+   "dy_extremes": [
+    -16,
+    -1
+   ],
+   "fixture": {
+    "parameter": "0x84",
+    "aux1": "0x00",
+    "platform_extents": [
+     16,
+     16
+    ],
+    "platform_speed_8_8": 0,
+    "object_id": 9,
+    "plat_flags_03": "0x80"
+   }
+  },
+  "state_11": {
+   "cases": 44652,
+   "mismatches": 0,
+   "first_mismatches": [],
+   "support_region_dx_range_by_dy_at_vy_plus_1_0": {
+    "-17": [
+     -24,
+     24
+    ],
+    "-16": [
+     -23,
+     23
+    ],
+    "-15": [
+     -22,
+     22
+    ],
+    "-14": [
+     -21,
+     21
+    ],
+    "-13": [
+     -20,
+     20
+    ],
+    "-12": [
+     -19,
+     19
+    ],
+    "-11": [
+     -18,
+     18
+    ],
+    "-10": [
+     -17,
+     17
+    ],
+    "-9": [
+     -16,
+     16
+    ],
+    "-8": [
+     -15,
+     15
+    ],
+    "-7": [
+     -14,
+     14
+    ],
+    "-6": [
+     -13,
+     13
+    ],
+    "-5": [
+     -12,
+     12
+    ],
+    "-4": [
+     -11,
+     11
+    ],
+    "-3": [
+     -10,
+     10
+    ],
+    "-2": [
+     -9,
+     9
+    ]
+   },
+   "dy_extremes": [
+    -17,
+    -2
+   ],
+   "fixture": {
+    "parameter": "0x0A",
+    "aux1": "0x09",
+    "platform_extents": [
+     16,
+     16
+    ],
+    "platform_speed_8_8": -256,
+    "object_id": 9,
+    "plat_flags_03": "0x80"
+   }
+  }
+ },
+ "platform_gate_8866": {
+  "evidence": "CONTROLLED ROUTINE RESULT ($8866 executed)",
+  "cases": 6417,
+  "mismatches": 0,
+  "rule": "returns $FF (no support this update) iff platform Y speed > player Y speed, both signed 8.8",
+  "pass_threshold_by_platform_speed": {
+   "-256": {
+    "gate_passes_from_player_vy": -256
+   },
+   "0": {
+    "gate_passes_from_player_vy": 0
+   },
+   "256": {
+    "gate_passes_from_player_vy": 256
+   }
+  }
+ },
+ "platform_gates_matrix": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "rows": [
+   {
+    "state": 5,
+    "baseline_supported": true,
+    "owner_none": true,
+    "owner_self": true,
+    "owner_other_slot_keeps_d3c0": true,
+    "player_d503_bit6_set": true,
+    "player_d503_bit1_attack": true,
+    "player_d503_bit0_airborne": true,
+    "player_extents_9_24_state_0f": true,
+    "platform_f4_bit6_set_inactive": false,
+    "platform_f3_bit6_set": false,
+    "platform_f3_bit7_clear": false,
+    "player_current_state_irrelevant": true,
+    "player_floor_flag_irrelevant": true
+   },
+   {
+    "state": 11,
+    "baseline_supported": true,
+    "owner_none": true,
+    "owner_self": true,
+    "owner_other_slot_keeps_d3c0": true,
+    "player_d503_bit6_set": true,
+    "player_d503_bit1_attack": true,
+    "player_d503_bit0_airborne": true,
+    "player_extents_9_24_state_0f": true,
+    "platform_f4_bit6_set_inactive": true,
+    "platform_f3_bit6_set": false,
+    "platform_f3_bit7_clear": false,
+    "player_current_state_irrelevant": true,
+    "player_floor_flag_irrelevant": true
+   }
+  ],
+  "reading": "True = support claimed. owner_other_slot: D3C0 held by another object -> the platform releases nothing and claims nothing (D3C0 unchanged)."
+ },
+ "platform_horizontal_mode_carry": {
+  "evidence": "CONTROLLED ROUTINE RESULT (state 1 callback $8628)",
+  "state": 1,
+  "platform_x_speed_8_8": 256,
+  "rows_[update,platform_dx,player_dx,player_dy,player_vx,d3c0,carry_delta_+23]": [
+   [
+    0,
+    3,
+    3,
+    -14,
+    0,
+    9,
+    1
+   ],
+   [
+    1,
+    4,
+    4,
+    -14,
+    0,
+    9,
+    1
+   ],
+   [
+    2,
+    5,
+    5,
+    -14,
+    0,
+    9,
+    1
+   ],
+   [
+    3,
+    6,
+    6,
+    -14,
+    0,
+    9,
+    1
+   ],
+   [
+    4,
+    7,
+    7,
+    -14,
+    0,
+    9,
+    1
+   ],
+   [
+    5,
+    8,
+    8,
+    -14,
+    0,
+    9,
+    1
+   ]
+  ],
+  "reading": "the player receives the platform's integer X displacement of that update (+$23/+$24, = new X - old X, computed after the move) added to its X; Y is re-snapped to platform Y - 14; no player speed is changed. The vertical movers' +$23/+$24 stays 0, so the lifts and sag platforms carry only in Y."
+ },
+ "platform_emulated": {
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "columns": [
+   "frame",
+   "x",
+   "y",
+   "vx",
+   "vy",
+   "cur_state",
+   "d503",
+   "d523",
+   "d3c0",
+   "platform_y"
+  ],
+  "land_on_rising_lift": {
+   "rows": [
+    [
+     0,
+     592,
+     445,
+     0,
+     304,
+     1,
+     1,
+     0,
+     0,
+     null
+    ],
+    [
+     1,
+     592,
+     446,
+     0,
+     352,
+     14,
+     1,
+     0,
+     0,
+     464
+    ],
+    [
+     2,
+     592,
+     448,
+     0,
+     400,
+     14,
+     1,
+     0,
+     0,
+     464
+    ],
+    [
+     3,
+     592,
+     449,
+     0,
+     448,
+     14,
+     1,
+     0,
+     9,
+     463
+    ],
+    [
+     4,
+     592,
+     448,
+     0,
+     496,
+     14,
+     0,
+     2,
+     9,
+     462
+    ],
+    [
+     5,
+     592,
+     447,
+     0,
+     496,
+     5,
+     0,
+     2,
+     9,
+     461
+    ],
+    [
+     6,
+     592,
+     446,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     460
+    ],
+    [
+     7,
+     592,
+     445,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     459
+    ],
+    [
+     8,
+     592,
+     444,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     458
+    ],
+    [
+     9,
+     592,
+     443,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     457
+    ],
+    [
+     10,
+     592,
+     442,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     456
+    ],
+    [
+     11,
+     592,
+     441,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     455
+    ]
+   ],
+   "support_claim_update": 3,
+   "player_y_minus_platform_y_after_claim": -14,
+   "landed_update_f3_clear": 4,
+   "vy_retained_while_standing": [
+    496
+   ]
+  },
+  "ride_through_reversal": {
+   "rows": [
+    [
+     140,
+     592,
+     312,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     326
+    ],
+    [
+     141,
+     592,
+     311,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     325
+    ],
+    [
+     142,
+     592,
+     310,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     324
+    ],
+    [
+     143,
+     592,
+     309,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     323
+    ],
+    [
+     144,
+     592,
+     308,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     322
+    ],
+    [
+     145,
+     592,
+     307,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     321
+    ],
+    [
+     146,
+     592,
+     306,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     320
+    ],
+    [
+     147,
+     592,
+     307,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     321
+    ],
+    [
+     148,
+     592,
+     308,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     322
+    ],
+    [
+     149,
+     592,
+     309,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     323
+    ],
+    [
+     150,
+     592,
+     310,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     324
+    ],
+    [
+     151,
+     592,
+     311,
+     0,
+     496,
+     1,
+     0,
+     2,
+     9,
+     325
+    ]
+   ],
+   "support_continuous": true,
+   "offsets_player_minus_platform": [
+    -14
+   ],
+   "player_vy_constant": [
+    496
+   ]
+  },
+  "land_on_descending_lift_by_player_vy": [
+   {
+    "start_vy": 0,
+    "support_claim_update": 13,
+    "vy_at_claim": 832,
+    "still_supported_at_update_39": true
+   },
+   {
+    "start_vy": 255,
+    "support_claim_update": 12,
+    "vy_at_claim": 784,
+    "still_supported_at_update_39": true
+   },
+   {
+    "start_vy": 256,
+    "support_claim_update": 12,
+    "vy_at_claim": 784,
+    "still_supported_at_update_39": true
+   },
+   {
+    "start_vy": 384,
+    "support_claim_update": 11,
+    "vy_at_claim": 736,
+    "still_supported_at_update_39": true
+   },
+   {
+    "start_vy": 1024,
+    "support_claim_update": 8,
+    "vy_at_claim": 592,
+    "still_supported_at_update_39": true
+   },
+   {
+    "start_vy": 1792,
+    "support_claim_update": 1,
+    "vy_at_claim": 256,
+    "still_supported_at_update_39": true
+   }
+  ],
+  "supported_with_retained_vy_zero": {
+   "support_lost_update": 127,
+   "platform_vy_at_loss": 256,
+   "rows_around_loss": [
+    [
+     125,
+     592,
+     307,
+     0,
+     0,
+     1,
+     0,
+     2,
+     9,
+     321
+    ],
+    [
+     126,
+     592,
+     306,
+     0,
+     0,
+     1,
+     0,
+     2,
+     9,
+     320
+    ],
+    [
+     127,
+     592,
+     306,
+     0,
+     0,
+     1,
+     0,
+     2,
+     0,
+     321
+    ],
+    [
+     128,
+     592,
+     308,
+     0,
+     256,
+     1,
+     1,
+     0,
+     9,
+     322
+    ],
+    [
+     129,
+     592,
+     309,
+     0,
+     304,
+     14,
+     0,
+     2,
+     9,
+     323
+    ],
+    [
+     130,
+     592,
+     310,
+     0,
+     304,
+     5,
+     0,
+     2,
+     9,
+     324
+    ],
+    [
+     131,
+     592,
+     311,
+     0,
+     304,
+     1,
+     0,
+     2,
+     9,
+     325
+    ],
+    [
+     132,
+     592,
+     312,
+     0,
+     304,
+     1,
+     0,
+     2,
+     9,
+     326
+    ],
+    [
+     133,
+     592,
+     313,
+     0,
+     304,
+     1,
+     0,
+     2,
+     9,
+     327
+    ],
+    [
+     134,
+     592,
+     314,
+     0,
+     304,
+     1,
+     0,
+     2,
+     9,
+     328
+    ]
+   ]
+  },
+  "step_off_right": {
+   "support_lost_update": 25,
+   "dx_at_last_supported": 22,
+   "dx_when_released": 24,
+   "rows_around_release": [
+    [
+     23,
+     1060,
+     370,
+     416,
+     688,
+     5,
+     0,
+     2,
+     9,
+     384
+    ],
+    [
+     24,
+     1062,
+     370,
+     432,
+     688,
+     5,
+     0,
+     2,
+     9,
+     384
+    ],
+    [
+     25,
+     1064,
+     370,
+     448,
+     688,
+     5,
+     0,
+     2,
+     0,
+     384
+    ],
+    [
+     26,
+     1066,
+     373,
+     464,
+     256,
+     5,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     27,
+     1068,
+     374,
+     480,
+     304,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     28,
+     1070,
+     375,
+     496,
+     352,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     29,
+     1072,
+     377,
+     512,
+     400,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     30,
+     1074,
+     379,
+     528,
+     448,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     31,
+     1076,
+     380,
+     544,
+     496,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     32,
+     1078,
+     383,
+     560,
+     544,
+     14,
+     1,
+     0,
+     0,
+     384
+    ]
+   ]
+  },
+  "step_off_left": {
+   "support_lost_update": 24,
+   "dx_at_last_supported": -21,
+   "dx_when_released": -23,
+   "rows_around_release": [
+    [
+     22,
+     1020,
+     370,
+     -400,
+     688,
+     5,
+     0,
+     2,
+     9,
+     384
+    ],
+    [
+     23,
+     1019,
+     370,
+     -416,
+     688,
+     5,
+     0,
+     2,
+     9,
+     384
+    ],
+    [
+     24,
+     1017,
+     370,
+     -432,
+     688,
+     5,
+     0,
+     2,
+     0,
+     384
+    ],
+    [
+     25,
+     1015,
+     373,
+     -448,
+     256,
+     5,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     26,
+     1013,
+     374,
+     -464,
+     304,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     27,
+     1011,
+     375,
+     -480,
+     352,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     28,
+     1010,
+     377,
+     -496,
+     400,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     29,
+     1008,
+     379,
+     -512,
+     448,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     30,
+     1005,
+     380,
+     -528,
+     496,
+     14,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     31,
+     1003,
+     383,
+     -544,
+     544,
+     14,
+     1,
+     0,
+     0,
+     384
+    ]
+   ]
+  },
+  "jump_off_sag": {
+   "rows": [
+    [
+     0,
+     1040,
+     370,
+     0,
+     688,
+     1,
+     0,
+     2,
+     9,
+     384
+    ],
+    [
+     1,
+     1040,
+     370,
+     0,
+     688,
+     1,
+     0,
+     2,
+     9,
+     384
+    ],
+    [
+     2,
+     1040,
+     370,
+     0,
+     688,
+     1,
+     0,
+     2,
+     9,
+     384
+    ],
+    [
+     3,
+     1040,
+     369,
+     0,
+     -1088,
+     1,
+     3,
+     2,
+     0,
+     384
+    ],
+    [
+     4,
+     1040,
+     365,
+     0,
+     -1040,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     5,
+     1040,
+     361,
+     0,
+     -992,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     6,
+     1040,
+     357,
+     0,
+     -944,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     7,
+     1040,
+     354,
+     0,
+     -896,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     8,
+     1040,
+     351,
+     0,
+     -848,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     9,
+     1040,
+     347,
+     0,
+     -800,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     10,
+     1040,
+     344,
+     0,
+     -752,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     11,
+     1040,
+     342,
+     0,
+     -704,
+     10,
+     3,
+     0,
+     0,
+     384
+    ]
+   ],
+   "support_lost_update": 3
+  },
+  "rising_through_from_below": {
+   "rows": [
+    [
+     0,
+     1040,
+     417,
+     0,
+     -1616,
+     1,
+     3,
+     0,
+     0,
+     null
+    ],
+    [
+     2,
+     1040,
+     405,
+     0,
+     -1520,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     4,
+     1040,
+     394,
+     0,
+     -1424,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     6,
+     1040,
+     383,
+     0,
+     -1328,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     8,
+     1040,
+     373,
+     0,
+     -1232,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     10,
+     1040,
+     364,
+     0,
+     -1136,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     12,
+     1040,
+     356,
+     0,
+     -1040,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     14,
+     1040,
+     349,
+     0,
+     -944,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     16,
+     1040,
+     342,
+     0,
+     -848,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     18,
+     1040,
+     336,
+     0,
+     -752,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     20,
+     1040,
+     330,
+     0,
+     -656,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     22,
+     1040,
+     326,
+     0,
+     -560,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     24,
+     1040,
+     322,
+     0,
+     -464,
+     10,
+     3,
+     0,
+     0,
+     384
+    ]
+   ],
+   "support_ever_claimed": false,
+   "vy_first_update": -1616
+  },
+  "rising_through_from_below_not_attacking": {
+   "rows": [
+    [
+     0,
+     1040,
+     417,
+     0,
+     -1616,
+     1,
+     1,
+     0,
+     0,
+     null
+    ],
+    [
+     2,
+     1040,
+     405,
+     0,
+     -1568,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     4,
+     1040,
+     393,
+     0,
+     -1520,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     6,
+     1040,
+     381,
+     0,
+     -1472,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     8,
+     1040,
+     370,
+     0,
+     -1424,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     10,
+     1040,
+     359,
+     0,
+     -1376,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     12,
+     1040,
+     349,
+     0,
+     -1328,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     14,
+     1040,
+     339,
+     0,
+     -1280,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     16,
+     1040,
+     329,
+     0,
+     -1232,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     18,
+     1040,
+     320,
+     0,
+     -1184,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     20,
+     1040,
+     311,
+     0,
+     -1136,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     22,
+     1040,
+     302,
+     0,
+     -1088,
+     11,
+     1,
+     0,
+     0,
+     384
+    ],
+    [
+     24,
+     1040,
+     294,
+     0,
+     -1040,
+     11,
+     1,
+     0,
+     0,
+     384
+    ]
+   ],
+   "support_ever_claimed": false,
+   "d523_bit0_seen": false
+  },
+  "through_from_the_side_at_platform_height": {
+   "rows": [
+    [
+     0,
+     974,
+     392,
+     1024,
+     48,
+     1,
+     3,
+     0,
+     0,
+     null
+    ],
+    [
+     2,
+     981,
+     393,
+     992,
+     144,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     4,
+     989,
+     394,
+     960,
+     240,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     6,
+     996,
+     397,
+     928,
+     336,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     8,
+     1003,
+     400,
+     896,
+     432,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     10,
+     1010,
+     404,
+     864,
+     528,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     12,
+     1017,
+     409,
+     832,
+     624,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     14,
+     1023,
+     414,
+     800,
+     720,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     16,
+     1029,
+     420,
+     768,
+     816,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     18,
+     1035,
+     427,
+     736,
+     912,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     20,
+     1040,
+     435,
+     704,
+     1008,
+     10,
+     3,
+     0,
+     0,
+     384
+    ],
+    [
+     22,
+     1046,
+     443,
+     672,
+     1104,
+     10,
+     3,
+     0,
+     0,
+     384
+    ]
+   ],
+   "support_ever_claimed": false,
+   "x_progress_per_update": [
+    3,
+    4
+   ]
+  },
+  "sag_while_standing": {
+   "platform_y_offset_by_update": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+   ],
+   "sag_counter": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+   ]
+  }
+ },
+ "contact_flags_after_merge": {
+  "evidence": "CONTROLLED ROUTINE RESULT (real callback, then $64CB with the player's own D522 clear)",
+  "platform_state5": {
+   "walker": {
+    "right_side": {
+     "d521": "0x00",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "left_side": {
+     "d521": "0x00",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "below": {
+     "d521": "0x10",
+     "d523": "0x01",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": true
+    },
+    "above_support_zone": {
+     "d521": "0x20",
+     "d523": "0x02",
+     "d3c0": 9,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": true,
+     "ceiling_bit0": false
+    },
+    "far_corner_horizontal": {
+     "d521": "0x00",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    }
+   },
+   "attacking": {
+    "right_side": {
+     "d521": "0x00",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "left_side": {
+     "d521": "0x00",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "below": {
+     "d521": "0x10",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "above_support_zone": {
+     "d521": "0x20",
+     "d523": "0x02",
+     "d3c0": 9,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": true,
+     "ceiling_bit0": false
+    },
+    "far_corner_horizontal": {
+     "d521": "0x00",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    }
+   }
+  },
+  "spike_1b_state2": {
+   "walker": {
+    "right_side": {
+     "d521": "0x80",
+     "d523": "0x08",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": true,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "left_side": {
+     "d521": "0x40",
+     "d523": "0x04",
+     "d3c0": 0,
+     "wall_right_bit2": true,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "below": {
+     "d521": "0x10",
+     "d523": "0x01",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": true
+    },
+    "above_support_zone": {
+     "d521": "0x20",
+     "d523": "0x02",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": true,
+     "ceiling_bit0": false
+    },
+    "far_corner_horizontal": {
+     "d521": "0x80",
+     "d523": "0x08",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": true,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    }
+   },
+   "attacking": {
+    "right_side": {
+     "d521": "0x80",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "left_side": {
+     "d521": "0x40",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "below": {
+     "d521": "0x10",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "above_support_zone": {
+     "d521": "0x20",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    },
+    "far_corner_horizontal": {
+     "d521": "0x80",
+     "d523": "0x00",
+     "d3c0": 0,
+     "wall_right_bit2": false,
+     "wall_left_bit3": false,
+     "floor_bit1": false,
+     "ceiling_bit0": false
+    }
+   }
+  },
+  "reading": "platform: side and underside contact leave no wall bits (the clear path $8843 removes them) - the platform is top-only; moving spike: a non-attacking player's side contact becomes D523 bit 2/3 (a wall for the X integration); an attacking player is not merged and is pushed out instead"
+ },
+ "terrain_foot_sweep": {
+  "evidence": "CONTROLLED ROUTINE RESULT ($690B executed on the real THZ1 layout; hurt entry $48F7 watched)",
+  "cases": 101376,
+  "block_pair_world": [
+   1504,
+   832,
+   1567,
+   863
+  ],
+  "coordinates": "x = anchor X (= foot probe X); foot row = anchor Y + 18",
+  "results": {
+   "prev_none_00|floor_0|vy_rising_-1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [],
+    "count": 0
+   },
+   "prev_none_00|floor_0|vy_zero": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [],
+    "count": 0
+   },
+   "prev_none_00|floor_0|vy_descending_+1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [],
+    "count": 0
+   },
+   "prev_none_00|floor_0|vy_fast_+7.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [],
+    "count": 0
+   },
+   "prev_none_00|floor_1|vy_rising_-1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_none_00|floor_1|vy_zero": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_none_00|floor_1|vy_descending_+1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_none_00|floor_1|vy_fast_+7.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_solid_81|floor_0|vy_rising_-1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [],
+    "count": 0
+   },
+   "prev_solid_81|floor_0|vy_zero": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      848,
+      863
+     ]
+    ],
+    "count": 1024
+   },
+   "prev_solid_81|floor_0|vy_descending_+1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      848,
+      863
+     ]
+    ],
+    "count": 1024
+   },
+   "prev_solid_81|floor_0|vy_fast_+7.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      848,
+      863
+     ]
+    ],
+    "count": 1024
+   },
+   "prev_solid_81|floor_1|vy_rising_-1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_solid_81|floor_1|vy_zero": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_solid_81|floor_1|vy_descending_+1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_solid_81|floor_1|vy_fast_+7.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_spike_85|floor_0|vy_rising_-1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [],
+    "count": 0
+   },
+   "prev_spike_85|floor_0|vy_zero": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      848,
+      863
+     ]
+    ],
+    "count": 1024
+   },
+   "prev_spike_85|floor_0|vy_descending_+1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      848,
+      863
+     ]
+    ],
+    "count": 1024
+   },
+   "prev_spike_85|floor_0|vy_fast_+7.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      848,
+      863
+     ]
+    ],
+    "count": 1024
+   },
+   "prev_spike_85|floor_1|vy_rising_-1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_spike_85|floor_1|vy_zero": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_spike_85|floor_1|vy_descending_+1.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   },
+   "prev_spike_85|floor_1|vy_fast_+7.0": {
+    "damaging_cells_[x0,x1,foot_row_y0,y1]": [
+     [
+      1504,
+      1567,
+      832,
+      863
+     ]
+    ],
+    "count": 2048
+   }
+  }
+ },
+ "terrain_side_ceiling_sweep": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "cases": 11864,
+  "side_probe_damage_cases": 0,
+  "ceiling_probe_damage_cases": 0,
+  "right_probe_changes_x_[x0,x1,probe_row_y0,y1]": [
+   [
+    1496,
+    1515,
+    848,
+    863
+   ],
+   [
+    1484,
+    1511,
+    864,
+    877
+   ],
+   [
+    1513,
+    1515,
+    864,
+    877
+   ]
+  ],
+  "left_probe_changes_x_[x0,x1,probe_row_y0,y1]": [
+   [
+    1556,
+    1575,
+    848,
+    863
+   ],
+   [
+    1556,
+    1575,
+    864,
+    877
+   ],
+   [
+    1577,
+    1587,
+    864,
+    877
+   ]
+  ],
+  "ceiling_probe_changes_y_cells": 0,
+  "requested_state_gate": {
+   "states_without_side_push": [
+    "0x1E"
+   ],
+   "note": "state $1E (hurt) returns without pushing; state $17 takes the breakable branch ($72B6/$72DD) whose push/break depends on attack posture and |X speed|"
+  },
+  "reading": "side pushes exist only for probe rows 16..31 of the spike cell (and the ground block below); rows 0..15 never push; no side or ceiling probe damages a type-5 tile other than $F4/$F5/$3E/$3F, which no THZ layout contains"
+ },
+ "static_spike_diagonal_sweep": {
+  "evidence": "EMULATED ORIGINAL FRAME (THZ1 booted; Sonic and the camera teleported; 0 rings so a hit ends in state $1F; hurt entry $48F7 watched by PC hook)",
+  "runs": 1446,
+  "classes": {
+   "A": "damaged by the terrain handler",
+   "B": "stopped by the side wall (side probe in the solid rows), undamaged",
+   "C": "crossed the pair without any solid-row probe contact",
+   "D": "no contact (left the window / never reached the pair)",
+   "E1": "foot probe in the solid spike rows, undamaged, but ONLY on updates where Y speed < 0 (the projection and the hazard are skipped while rising)",
+   "E2": "foot probe in the solid rows while level/descending and undamaged (would be a phase-through; expected 0)",
+   "X": "hurt by another hazard in range (the $1B spike at (1344,864))"
+  },
+  "counts": {
+   "from_above|fall|A_damaged": 161,
+   "from_above|fall|B_stopped_by_wall": 10,
+   "from_above|fall|D_no_contact": 125,
+   "from_above|fall|E1_foot_in_solid_rows_only_while_rising": 17,
+   "from_above|fall|E2_foot_in_solid_rows_not_rising_undamaged": 2,
+   "from_above|jump|A_damaged": 161,
+   "from_above|jump|B_stopped_by_wall": 10,
+   "from_above|jump|D_no_contact": 125,
+   "from_above|jump|E1_foot_in_solid_rows_only_while_rising": 17,
+   "from_above|jump|E2_foot_in_solid_rows_not_rising_undamaged": 2,
+   "from_left|fall|A_damaged": 40,
+   "from_left|fall|B_stopped_by_wall": 28,
+   "from_left|fall|C_crossed_without_contact": 4,
+   "from_left|fall|D_no_contact": 117,
+   "from_left|jump|A_damaged": 40,
+   "from_left|jump|B_stopped_by_wall": 28,
+   "from_left|jump|C_crossed_without_contact": 4,
+   "from_left|jump|D_no_contact": 117,
+   "from_right|fall|A_damaged": 40,
+   "from_right|fall|B_stopped_by_wall": 28,
+   "from_right|fall|C_crossed_without_contact": 4,
+   "from_right|fall|D_no_contact": 117,
+   "from_right|jump|A_damaged": 40,
+   "from_right|jump|B_stopped_by_wall": 28,
+   "from_right|jump|C_crossed_without_contact": 4,
+   "from_right|jump|D_no_contact": 117,
+   "ground_from_left|roll|B_stopped_by_wall": 10,
+   "ground_from_left|roll|D_no_contact": 2,
+   "ground_from_left|run|B_stopped_by_wall": 12,
+   "ground_from_left|walk|B_stopped_by_wall": 12,
+   "ground_from_right|roll|B_stopped_by_wall": 6,
+   "ground_from_right|roll|D_no_contact": 2,
+   "ground_from_right|run|B_stopped_by_wall": 8,
+   "ground_from_right|walk|B_stopped_by_wall": 8
+  },
+  "examples_of_E_X": {
+   "E1_foot_in_solid_rows_only_while_rising": [
+    {
+     "start": [
+      1519,
+      835
+     ],
+     "vx": -6,
+     "vy": -2,
+     "state": "jump",
+     "end": [
+      1418,
+      846
+     ],
+     "frames": 34
+    },
+    {
+     "start": [
+      1534,
+      835
+     ],
+     "vx": -6,
+     "vy": -2,
+     "state": "jump",
+     "end": [
+      1419,
+      846
+     ],
+     "frames": 44
+    },
+    {
+     "start": [
+      1549,
+      835
+     ],
+     "vx": -6,
+     "vy": -2,
+     "state": "jump",
+     "end": [
+      1433,
+      846
+     ],
+     "frames": 45
+    },
+    {
+     "start": [
+      1564,
+      835
+     ],
+     "vx": -6,
+     "vy": -2,
+     "state": "jump",
+     "end": [
+      1448,
+      846
+     ],
+     "frames": 45
+    },
+    {
+     "start": [
+      1519,
+      835
+     ],
+     "vx": -4,
+     "vy": -2,
+     "state": "jump",
+     "end": [
+      1418,
+      846
+     ],
+     "frames": 34
+    },
+    {
+     "start": [
+      1534,
+      835
+     ],
+     "vx": -4,
+     "vy": -2,
+     "state": "jump",
+     "end": [
+      1422,
+      846
+     ],
+     "frames": 44
+    }
+   ],
+   "E2_foot_in_solid_rows_not_rising_undamaged": [
+    {
+     "start": [
+      1564,
+      835
+     ],
+     "vx": 2,
+     "vy": 0,
+     "state": "jump",
+     "end": [
+      1591,
+      846
+     ],
+     "frames": 18
+    },
+    {
+     "start": [
+      1564,
+      835
+     ],
+     "vx": 2,
+     "vy": 3,
+     "state": "jump",
+     "end": [
+      1594,
+      846
+     ],
+     "frames": 16
+    },
+    {
+     "start": [
+      1564,
+      835
+     ],
+     "vx": 2,
+     "vy": 0,
+     "state": "fall",
+     "end": [
+      1591,
+      846
+     ],
+     "frames": 18
+    },
+    {
+     "start": [
+      1564,
+      835
+     ],
+     "vx": 2,
+     "vy": 3,
+     "state": "fall",
+     "end": [
+      1594,
+      846
+     ],
+     "frames": 16
+    }
+   ]
+  },
+  "rising_through_solid_rows": {
+   "runs_with_rising_solid_row_updates": 516,
+   "updates": 658,
+   "final_class_of_those_runs": {
+    "A_damaged": 482,
+    "E1_foot_in_solid_rows_only_while_rising": 34
+   },
+   "examples": [
+    {
+     "start": [
+      1472,
+      790
+     ],
+     "vx": 2,
+     "vy": -2,
+     "state": "jump",
+     "rising_solid_updates": 1,
+     "final_class": "A_damaged"
+    },
+    {
+     "start": [
+      1488,
+      790
+     ],
+     "vx": 2,
+     "vy": -2,
+     "state": "jump",
+     "rising_solid_updates": 1,
+     "final_class": "A_damaged"
+    },
+    {
+     "start": [
+      1488,
+      790
+     ],
+     "vx": 2,
+     "vy": 0,
+     "state": "jump",
+     "rising_solid_updates": 1,
+     "final_class": "A_damaged"
+    },
+    {
+     "start": [
+      1488,
+      790
+     ],
+     "vx": 2,
+     "vy": 3,
+     "state": "jump",
+     "rising_solid_updates": 1,
+     "final_class": "A_damaged"
+    }
+   ]
+  },
+  "foot_row_at_hurt_distinct": [
+   848
+  ]
+ },
+ "terrain_surface_classes": {
+  "evidence": "DECODED DATA (block headers via the layout)",
+  "classes_by_act": {
+   "thz1": {
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=00": {
+     "blocks": [
+      "0x25",
+      "0x27",
+      "0x29",
+      "0x2A",
+      "0x2B",
+      "0x2C",
+      "0x2D",
+      "0xC5",
+      "0xC6",
+      "0xC8",
+      "0xC9",
+      "0xCC",
+      "0xCD",
+      "0xCE",
+      "0xCF",
+      "0xD2",
+      "0xD3",
+      "0xD4",
+      "0xD5",
+      "0xD6",
+      "0xD7",
+      "0xD8",
+      "0xD9",
+      "0xDA",
+      "0xDB",
+      "0xE4",
+      "0xE6",
+      "0xE7",
+      "0xE8",
+      "0xE9",
+      "0xEA",
+      "0xEB",
+      "0xEC",
+      "0xED",
+      "0xEE",
+      "0xEF",
+      "0xF0",
+      "0xF1",
+      "0xF2",
+      "0xF3",
+      "0xFE"
+     ],
+     "cells": 2415
+    },
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=07": {
+     "blocks": [
+      "0x40",
+      "0x41",
+      "0x42",
+      "0x43"
+     ],
+     "cells": 72
+    },
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=17": {
+     "blocks": [
+      "0x58",
+      "0x5A",
+      "0x5B",
+      "0x5C",
+      "0x5D",
+      "0x5E",
+      "0x5F",
+      "0x60",
+      "0x61",
+      "0x62",
+      "0x63",
+      "0x64",
+      "0x65",
+      "0x66",
+      "0x67",
+      "0x68",
+      "0x69",
+      "0x6A",
+      "0x6B",
+      "0x6C"
+     ],
+     "cells": 20
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=01": {
+     "blocks": [
+      "0x0D"
+     ],
+     "cells": 9
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=09": {
+     "blocks": [
+      "0x30",
+      "0x31"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=0C": {
+     "blocks": [
+      "0xAF"
+     ],
+     "cells": 1
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=14": {
+     "blocks": [
+      "0x36",
+      "0x38"
+     ],
+     "cells": 6
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=17": {
+     "blocks": [
+      "0x59",
+      "0x73"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=01": {
+     "blocks": [
+      "0x01",
+      "0x08",
+      "0x09",
+      "0x0A",
+      "0x0B"
+     ],
+     "cells": 280
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=02": {
+     "blocks": [
+      "0x03",
+      "0x04",
+      "0x05",
+      "0x06",
+      "0x07"
+     ],
+     "cells": 1174
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=03": {
+     "blocks": [
+      "0x10",
+      "0x11",
+      "0x12",
+      "0x13",
+      "0x14",
+      "0x15",
+      "0x16",
+      "0x17",
+      "0x18",
+      "0x19",
+      "0x1A",
+      "0x1B",
+      "0x22"
+     ],
+     "cells": 43
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=04": {
+     "blocks": [
+      "0xA3"
+     ],
+     "cells": 12
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=05": {
+     "blocks": [
+      "0x3D"
+     ],
+     "cells": 4
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=0A": {
+     "blocks": [
+      "0x33"
+     ],
+     "cells": 1
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=12": {
+     "blocks": [
+      "0x1F",
+      "0x23"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=16": {
+     "blocks": [
+      "0x47"
+     ],
+     "cells": 4
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=18": {
+     "blocks": [
+      "0x8B"
+     ],
+     "cells": 1
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=1 type=04": {
+     "blocks": [
+      "0xA1",
+      "0xA2"
+     ],
+     "cells": 20
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=1 type=10": {
+     "blocks": [
+      "0x48",
+      "0x49",
+      "0x4A",
+      "0x4B",
+      "0x4C",
+      "0x4D",
+      "0x4E",
+      "0x4F",
+      "0x50",
+      "0x51",
+      "0x52",
+      "0x53",
+      "0x54",
+      "0x55"
+     ],
+     "cells": 28
+    }
+   },
+   "thz2": {
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=00": {
+     "blocks": [
+      "0x25",
+      "0x27",
+      "0x29",
+      "0x2A",
+      "0x2B",
+      "0x2C",
+      "0xC5",
+      "0xC6",
+      "0xC8",
+      "0xC9",
+      "0xCC",
+      "0xCD",
+      "0xCE",
+      "0xCF",
+      "0xD4",
+      "0xD5",
+      "0xD6",
+      "0xD7",
+      "0xD8",
+      "0xD9",
+      "0xDA",
+      "0xDB",
+      "0xE4",
+      "0xE6",
+      "0xE7",
+      "0xE8",
+      "0xE9",
+      "0xEA",
+      "0xEB",
+      "0xEC",
+      "0xED",
+      "0xEE",
+      "0xEF",
+      "0xF0",
+      "0xF1",
+      "0xF2",
+      "0xF3",
+      "0xFE"
+     ],
+     "cells": 2535
+    },
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=07": {
+     "blocks": [
+      "0x40",
+      "0x41",
+      "0x42",
+      "0x43"
+     ],
+     "cells": 76
+    },
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=17": {
+     "blocks": [
+      "0x58",
+      "0x5A",
+      "0x5B",
+      "0x5C",
+      "0x5D",
+      "0x5E",
+      "0x5F",
+      "0x60",
+      "0x61",
+      "0x62",
+      "0x63",
+      "0x64",
+      "0x65",
+      "0x66",
+      "0x67",
+      "0x68",
+      "0x69",
+      "0x6A",
+      "0x6B",
+      "0x6C"
+     ],
+     "cells": 60
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=01": {
+     "blocks": [
+      "0x0D"
+     ],
+     "cells": 13
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=09": {
+     "blocks": [
+      "0x30"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=0C": {
+     "blocks": [
+      "0xAF"
+     ],
+     "cells": 1
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=14": {
+     "blocks": [
+      "0x36"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=17": {
+     "blocks": [
+      "0x59",
+      "0x73"
+     ],
+     "cells": 6
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=01": {
+     "blocks": [
+      "0x01",
+      "0x08",
+      "0x09",
+      "0x0A",
+      "0x0B"
+     ],
+     "cells": 210
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=02": {
+     "blocks": [
+      "0x03",
+      "0x04",
+      "0x05",
+      "0x06",
+      "0x07"
+     ],
+     "cells": 1048
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=03": {
+     "blocks": [
+      "0x10",
+      "0x11",
+      "0x12",
+      "0x13",
+      "0x14",
+      "0x15",
+      "0x16",
+      "0x17",
+      "0x18",
+      "0x19",
+      "0x1A",
+      "0x1B",
+      "0x22"
+     ],
+     "cells": 64
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=04": {
+     "blocks": [
+      "0xA3"
+     ],
+     "cells": 12
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=05": {
+     "blocks": [
+      "0x3C",
+      "0x3D"
+     ],
+     "cells": 5
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=0A": {
+     "blocks": [
+      "0x34",
+      "0x35"
+     ],
+     "cells": 3
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=0D": {
+     "blocks": [
+      "0x9C"
+     ],
+     "cells": 6
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=12": {
+     "blocks": [
+      "0x1F",
+      "0x23"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=18": {
+     "blocks": [
+      "0x8A",
+      "0x8B"
+     ],
+     "cells": 3
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=1 type=04": {
+     "blocks": [
+      "0xA1",
+      "0xA2"
+     ],
+     "cells": 20
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=1 type=10": {
+     "blocks": [
+      "0x48",
+      "0x49",
+      "0x4A",
+      "0x4B",
+      "0x4C",
+      "0x4D",
+      "0x4E",
+      "0x4F",
+      "0x50",
+      "0x51",
+      "0x52",
+      "0x53",
+      "0x54",
+      "0x55"
+     ],
+     "cells": 28
+    }
+   },
+   "thz3": {
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=00": {
+     "blocks": [
+      "0x2A",
+      "0x2B",
+      "0x2C",
+      "0xC5",
+      "0xC6",
+      "0xC8",
+      "0xC9",
+      "0xCC",
+      "0xCD",
+      "0xCE",
+      "0xD2",
+      "0xD3",
+      "0xD4",
+      "0xD5",
+      "0xD6",
+      "0xD7",
+      "0xD9",
+      "0xDA",
+      "0xDB",
+      "0xE4",
+      "0xE6",
+      "0xE7",
+      "0xE8",
+      "0xE9",
+      "0xEA",
+      "0xEB",
+      "0xEC",
+      "0xED",
+      "0xEE",
+      "0xEF",
+      "0xF0",
+      "0xF1",
+      "0xF2",
+      "0xF3",
+      "0xFE"
+     ],
+     "cells": 684
+    },
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=07": {
+     "blocks": [
+      "0x40"
+     ],
+     "cells": 3
+    },
+    "bit7_solid=0 bit6_oneway=0 alt_plane=0 type=17": {
+     "blocks": [
+      "0x58",
+      "0x5A",
+      "0x5B",
+      "0x5C",
+      "0x5D",
+      "0x5E",
+      "0x5F",
+      "0x60",
+      "0x61",
+      "0x62",
+      "0x63",
+      "0x64",
+      "0x65",
+      "0x66",
+      "0x67",
+      "0x68",
+      "0x69",
+      "0x6A",
+      "0x6B",
+      "0x6C"
+     ],
+     "cells": 20
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=09": {
+     "blocks": [
+      "0x31"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=14": {
+     "blocks": [
+      "0x36"
+     ],
+     "cells": 1
+    },
+    "bit7_solid=0 bit6_oneway=1 alt_plane=0 type=17": {
+     "blocks": [
+      "0x59",
+      "0x73"
+     ],
+     "cells": 2
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=01": {
+     "blocks": [
+      "0x01",
+      "0x08",
+      "0x0A",
+      "0x0B"
+     ],
+     "cells": 82
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=02": {
+     "blocks": [
+      "0x03",
+      "0x04",
+      "0x05",
+      "0x06",
+      "0x07"
+     ],
+     "cells": 468
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=03": {
+     "blocks": [
+      "0x15",
+      "0x16",
+      "0x17",
+      "0x18",
+      "0x19",
+      "0x1B"
+     ],
+     "cells": 12
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=0D": {
+     "blocks": [
+      "0x9C"
+     ],
+     "cells": 5
+    },
+    "bit7_solid=1 bit6_oneway=0 alt_plane=0 type=18": {
+     "blocks": [
+      "0x8B"
+     ],
+     "cells": 1
+    }
+   }
+  },
+  "one_way_platform_block": {
+   "0x0D": "flags $41 (bit 6 one-way, type 1), vertical profile 32, horizontal profile $60: a full 32x32 cell that is solid only from above; no side or ceiling core runs (bit 7 clear)",
+   "0xAF": "flags $4C (one-way, type $0C), one THZ1/THZ2 cell, same profiles"
+  }
+ },
+ "terrain_one_way_platform": {
+  "evidence": "CONTROLLED ROUTINE RESULT ($690B on the real THZ1 layout)",
+  "cases": 16144,
+  "cell_world": [
+   864,
+   416
+  ],
+  "results": {
+   "prev_none_00|floor_0|vy_rising_-1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_0|vy_zero": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_0|vy_+1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_0|vy_+2.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_0|vy_+4.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_0|vy_+7.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_1|vy_rising_-1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_1|vy_zero": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_1|vy_+1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_1|vy_+2.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_1|vy_+4.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_none_00|floor_1|vy_+7.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_oneway_41|floor_0|vy_rising_-1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_oneway_41|floor_0|vy_zero": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      8
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_0|vy_+1.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      9
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_0|vy_+2.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      10
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_0|vy_+4.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      12
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_0|vy_+7.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      15
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_1|vy_rising_-1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_oneway_41|floor_1|vy_zero": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      8
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_1|vy_+1.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      9
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_1|vy_+2.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      10
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_1|vy_+4.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      12
+     ]
+    ]
+   },
+   "prev_oneway_41|floor_1|vy_+7.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      15
+     ]
+    ]
+   },
+   "prev_solid_81|floor_0|vy_rising_-1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_solid_81|floor_0|vy_zero": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_0|vy_+1.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_0|vy_+2.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_0|vy_+4.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_0|vy_+7.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_1|vy_rising_-1.0": {
+    "projected_foot_rows_relative_to_cell_top": []
+   },
+   "prev_solid_81|floor_1|vy_zero": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_1|vy_+1.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_1|vy_+2.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_1|vy_+4.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   },
+   "prev_solid_81|floor_1|vy_+7.0": {
+    "projected_foot_rows_relative_to_cell_top": [
+     [
+      1,
+      31
+     ]
+    ]
+   }
+  },
+  "side_pushes": 0,
+  "ceiling_pushes_on_rising_player": 0,
+  "reading": "support rows are those where the projection moved the player; one-way = no side push and no ceiling push, projection skipped while rising and bounded for descending players"
+ },
+ "static_spike_rising_band": {
+  "evidence": "CONTROLLED ROUTINE RESULT ($690B, THZ1 pair, previous surface = spike $85, airborne)",
+  "x": 1512,
+  "by_vertical_speed": {
+   "rising_-1.0": {
+    "foot_in_solid_rows_undamaged_unpushed_anchor_y": [
+     [
+      830,
+      841
+     ]
+    ],
+    "damaged_anchor_y": [],
+    "pushed_by_wall_anchor_y": [
+     [
+      842,
+      851
+     ]
+    ]
+   },
+   "level_0": {
+    "foot_in_solid_rows_undamaged_unpushed_anchor_y": [],
+    "damaged_anchor_y": [
+     [
+      830,
+      845
+     ]
+    ],
+    "pushed_by_wall_anchor_y": []
+   },
+   "descending_+1.0": {
+    "foot_in_solid_rows_undamaged_unpushed_anchor_y": [],
+    "damaged_anchor_y": [
+     [
+      830,
+      845
+     ]
+    ],
+    "pushed_by_wall_anchor_y": []
+   }
+  },
+  "reading": "anchor Y 830..841 puts the foot probe in the solid rows (848..859) while the side probe (Y+6) is above row 848: no wall; a rising player is then untouched, a level/descending player is projected to Y=830 and hurt; anchor Y >= 842 puts the side probe in the wall rows (pushed)"
+ },
+ "static_spike_natural_jumps": {
+  "evidence": "EMULATED ORIGINAL FRAME (Sonic starts standing on the ground row beside the pair, direction held, jump pressed at update 3)",
+  "runs": 160,
+  "counts": {
+   "left|A_damaged": 61,
+   "left|B_stopped_by_wall": 1,
+   "left|C_crossed_without_contact": 18,
+   "right|A_damaged": 38,
+   "right|B_stopped_by_wall": 7,
+   "right|C_crossed_without_contact": 17,
+   "right|D_no_contact": 18
+  },
+  "examples": {}
+ },
+ "static_spike_aftermath": {
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "with_5_rings": {
+   "first_hurt_update": 17,
+   "state_after_hit_by_update": [
+    [
+     16,
+     14,
+     "0x01",
+     0,
+     1072,
+     0
+    ],
+    [
+     17,
+     14,
+     "0xC1",
+     -256,
+     -1024,
+     119
+    ],
+    [
+     18,
+     30,
+     "0xC1",
+     -256,
+     -976,
+     118
+    ],
+    [
+     19,
+     30,
+     "0xC1",
+     -256,
+     -928,
+     117
+    ],
+    [
+     20,
+     30,
+     "0xC1",
+     -256,
+     -880,
+     116
+    ],
+    [
+     21,
+     30,
+     "0xC1",
+     -256,
+     -832,
+     115
+    ],
+    [
+     22,
+     30,
+     "0xC1",
+     -256,
+     -784,
+     114
+    ],
+    [
+     23,
+     30,
+     "0xC1",
+     -256,
+     -736,
+     113
+    ],
+    [
+     24,
+     30,
+     "0xC1",
+     -256,
+     -688,
+     112
+    ]
+   ],
+   "hurt_entry_calls_in_200_updates": 2,
+   "terrain_spike_hurt_calls_in_200_updates": 2,
+   "invulnerability_timer_at_hit+1": 118,
+   "updates_with_plus3_bit7": 120,
+   "state_sequence": [
+    [
+     14,
+     1
+    ],
+    [
+     30,
+     42
+    ],
+    [
+     5,
+     10
+    ],
+    [
+     1,
+     70
+    ],
+    [
+     31,
+     60
+    ]
+   ],
+   "final": [
+    1512,
+    867,
+    31
+   ]
+  },
+  "no_rings": {
+   "first_hurt_update": 17,
+   "state_after_hit_by_update": [
+    [
+     16,
+     14,
+     "0x01",
+     0,
+     1072,
+     0
+    ],
+    [
+     17,
+     14,
+     "0x01",
+     0,
+     -1280,
+     0
+    ],
+    [
+     18,
+     14,
+     "0x01",
+     0,
+     -1280,
+     0
+    ],
+    [
+     19,
+     31,
+     "0x41",
+     0,
+     -1232,
+     0
+    ],
+    [
+     20,
+     31,
+     "0x41",
+     0,
+     -1232,
+     0
+    ],
+    [
+     21,
+     31,
+     "0x41",
+     0,
+     -1184,
+     0
+    ],
+    [
+     22,
+     31,
+     "0x41",
+     0,
+     -1136,
+     0
+    ],
+    [
+     23,
+     31,
+     "0x41",
+     0,
+     -1088,
+     0
+    ],
+    [
+     24,
+     31,
+     "0x41",
+     0,
+     -1040,
+     0
+    ]
+   ],
+   "hurt_entry_calls_in_200_updates": 1,
+   "terrain_spike_hurt_calls_in_200_updates": 1,
+   "invulnerability_timer_at_hit+1": null,
+   "updates_with_plus3_bit7": 0,
+   "state_sequence": [
+    [
+     14,
+     2
+    ],
+    [
+     31,
+     181
+    ]
+   ],
+   "final": [
+    1560,
+    1236,
+    31
+   ]
+  }
+ },
+ "spike_1b_timeline": {
+  "evidence": "CONTROLLED ROUTINE RESULT (engine $64FA + callbacks on a real THZ1 record)",
+  "base_y": 864,
+  "rise_pixels": 18,
+  "rise_step_pixels": 6,
+  "cycle_updates": 102,
+  "cycle_runs_[state,updates,y_first,y_last]": [
+   [
+    4,
+    48,
+    864,
+    864
+   ],
+   [
+    1,
+    3,
+    858,
+    846
+   ],
+   [
+    2,
+    48,
+    846,
+    846
+   ],
+   [
+    3,
+    3,
+    852,
+    864
+   ]
+  ],
+  "states": {
+   "1": "rising: contact test first, then Y -= 6",
+   "2": "raised hold: contact test only",
+   "3": "retract: Y += 6, no test",
+   "4": "hidden hold: no test"
+  },
+  "callbacks_seen": {
+   "0xAC8B": 15,
+   "0xACC3": 201,
+   "0xACCC": 12,
+   "0xACFC": 192
+  },
+  "contact_tested_in_states": [
+   1,
+   2
+  ]
+ },
+ "spike_1b_contact_sweep": {
+  "evidence": "CONTROLLED ROUTINE RESULT (real callbacks $AC8B state 1, $ACC3 state 2; Sonic extents 8,24)",
+  "cases": 89304,
+  "mismatches": 0,
+  "damage_region_dx_range_by_dy_relative_to_object_anchor": {
+   "2": {
+    "-24": [
+     -24,
+     24
+    ],
+    "-23": [
+     -23,
+     23
+    ],
+    "-22": [
+     -22,
+     22
+    ],
+    "-21": [
+     -21,
+     21
+    ],
+    "-20": [
+     -20,
+     20
+    ],
+    "-19": [
+     -19,
+     19
+    ],
+    "-18": [
+     -18,
+     18
+    ],
+    "-17": [
+     -17,
+     17
+    ],
+    "-16": [
+     -16,
+     16
+    ],
+    "-15": [
+     -15,
+     15
+    ],
+    "-14": [
+     -14,
+     14
+    ],
+    "-13": [
+     -13,
+     13
+    ],
+    "-12": [
+     -12,
+     12
+    ],
+    "-11": [
+     -11,
+     11
+    ],
+    "-10": [
+     -10,
+     10
+    ],
+    "-9": [
+     -9,
+     9
+    ],
+    "-8": [
+     -8,
+     8
+    ],
+    "-7": [
+     -7,
+     7
+    ],
+    "-6": [
+     -6,
+     6
+    ],
+    "-5": [
+     -5,
+     5
+    ],
+    "-4": [
+     -4,
+     4
+    ],
+    "-3": [
+     -3,
+     3
+    ],
+    "-2": [
+     -2,
+     2
+    ],
+    "-1": [
+     -1,
+     1
+    ]
+   },
+   "1": {
+    "-24": [
+     -24,
+     24
+    ],
+    "-23": [
+     -23,
+     23
+    ],
+    "-22": [
+     -22,
+     22
+    ],
+    "-21": [
+     -21,
+     21
+    ],
+    "-20": [
+     -20,
+     20
+    ],
+    "-19": [
+     -19,
+     19
+    ],
+    "-18": [
+     -18,
+     18
+    ],
+    "-17": [
+     -17,
+     17
+    ],
+    "-16": [
+     -16,
+     16
+    ],
+    "-15": [
+     -15,
+     15
+    ],
+    "-14": [
+     -14,
+     14
+    ],
+    "-13": [
+     -13,
+     13
+    ],
+    "-12": [
+     -12,
+     12
+    ],
+    "-11": [
+     -11,
+     11
+    ],
+    "-10": [
+     -10,
+     10
+    ],
+    "-9": [
+     -9,
+     9
+    ],
+    "-8": [
+     -8,
+     8
+    ],
+    "-7": [
+     -7,
+     7
+    ],
+    "-6": [
+     -6,
+     6
+    ],
+    "-5": [
+     -5,
+     5
+    ],
+    "-4": [
+     -4,
+     4
+    ],
+    "-3": [
+     -3,
+     3
+    ],
+    "-2": [
+     -2,
+     2
+    ],
+    "-1": [
+     -1,
+     1
+    ]
+   }
+  },
+  "rule": "damage request only when the contact bit is 'player above' (dy in -24..-1 and |dx| <= |dy|, |dx| <= 24), player Y speed >= 0 and cooldown 0; side/below contact never damages; side/below contact pushes only a grounded player in attack posture (D503 bit 1) to X = objX +23 (right) / -23 (otherwise), requested state 1, X speed 0"
+ },
+ "spike_1b_gates": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "gates": {
+   "baseline": {
+    "damage_request": true,
+    "player_vy_after": -1024,
+    "cooldown_after": 16
+   },
+   "cooldown_16": {
+    "damage_request": false,
+    "player_vy_after": 256,
+    "cooldown_after": 15
+   },
+   "cooldown_1": {
+    "damage_request": false,
+    "player_vy_after": 256,
+    "cooldown_after": 0
+   },
+   "object_inactive_f4_bit6": {
+    "damage_request": false,
+    "player_vy_after": 256,
+    "cooldown_after": 0
+   },
+   "player_rising_vy_-1": {
+    "damage_request": false,
+    "player_vy_after": -1,
+    "cooldown_after": 0
+   },
+   "player_vy_0": {
+    "damage_request": true,
+    "player_vy_after": -1024,
+    "cooldown_after": 16
+   },
+   "player_invulnerable_d503_bit7": {
+    "damage_request": true,
+    "player_vy_after": -1024,
+    "cooldown_after": 16
+   },
+   "player_d503_bit6": {
+    "damage_request": true,
+    "player_vy_after": -1024,
+    "cooldown_after": 16
+   }
+  },
+  "by_object_state": {
+   "1": {
+    "damage_request": true,
+    "callback": "0xAC8B"
+   },
+   "2": {
+    "damage_request": true,
+    "callback": "0xACC3"
+   },
+   "3": {
+    "damage_request": false,
+    "callback": "0xACCC"
+   },
+   "4": {
+    "damage_request": false,
+    "callback": "0xACFC"
+   }
+  }
+ },
+ "spike_1b_move_before_contact": {
+  "evidence": "CONTROLLED ROUTINE RESULT (state-1 callback from Y=864)",
+  "player_y_minus_864_with_damage_request": [
+   [
+    -24,
+    -1
+   ]
+  ],
+  "object_y_after_callback": 858,
+  "reading": "rows -24..-1 are relative to the PRE-move anchor 864; the post-move anchor would be 858; the -6 move happens after the test"
+ },
+ "spike_1b_emulated": {
+  "evidence": "EMULATED ORIGINAL FRAME (real THZ1 type-$1B placement (1344,864); 5 rings unless stated)",
+  "fall_onto_raised_spike": {
+   "rows_[f,y,vy,cur,d3b0,spike_state,spike_y,hurt_calls]": [
+    [
+     10,
+     813,
+     784,
+     14,
+     0,
+     2,
+     846,
+     0
+    ],
+    [
+     11,
+     816,
+     832,
+     14,
+     0,
+     2,
+     846,
+     0
+    ],
+    [
+     12,
+     820,
+     880,
+     14,
+     0,
+     2,
+     846,
+     0
+    ],
+    [
+     13,
+     823,
+     -1024,
+     14,
+     255,
+     2,
+     846,
+     0
+    ],
+    [
+     14,
+     819,
+     -1024,
+     14,
+     0,
+     2,
+     846,
+     1
+    ],
+    [
+     15,
+     816,
+     -976,
+     30,
+     0,
+     2,
+     846,
+     1
+    ],
+    [
+     16,
+     812,
+     -928,
+     30,
+     0,
+     2,
+     846,
+     1
+    ],
+    [
+     17,
+     809,
+     -880,
+     30,
+     0,
+     2,
+     846,
+     1
+    ]
+   ],
+   "damage_request_visible_after_update": 13,
+   "hurt_entry_update": 14,
+   "reading": "the object (after the player in the frame) writes the request and bounce; the player's NEXT update consumes it ($48BC at the end of its own pass)"
+  },
+  "fall_onto_raised_spike_while_invulnerable": {
+   "hurt_entry_calls": 0,
+   "vy_trace_first_20": [
+    304,
+    352,
+    400,
+    448,
+    496,
+    544,
+    592,
+    640,
+    688,
+    736,
+    784,
+    832,
+    880,
+    -1024,
+    -976,
+    -928,
+    -880,
+    -832,
+    -784,
+    -736
+   ],
+   "reading": "the object still bounces the player (Y speed -4.0) but the request is ignored while +$03 bit 7 is set"
+  },
+  "walk_into_side": {
+   "rows_[f,x,y,vx,cur,spike_state]": [
+    [
+     6,
+     1305,
+     846,
+     844,
+     5,
+     1
+    ],
+    [
+     9,
+     1316,
+     846,
+     892,
+     5,
+     2
+    ],
+    [
+     12,
+     1326,
+     846,
+     940,
+     5,
+     2
+    ],
+    [
+     15,
+     1326,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     18,
+     1326,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     21,
+     1326,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     24,
+     1326,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     27,
+     1326,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     30,
+     1326,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     33,
+     1326,
+     846,
+     0,
+     5,
+     2
+    ]
+   ],
+   "hurt_entry_calls": 0,
+   "x_at_end": 1326
+  },
+  "roll_into_side": {
+   "rows_[f,x,y,vx,cur,spike_state]": [
+    [
+     6,
+     1311,
+     846,
+     1000,
+     9,
+     1
+    ],
+    [
+     9,
+     1321,
+     846,
+     0,
+     9,
+     2
+    ],
+    [
+     12,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     15,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     18,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     21,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     24,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     27,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     30,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ],
+    [
+     33,
+     1321,
+     846,
+     0,
+     5,
+     2
+    ]
+   ],
+   "hurt_entry_calls": 0,
+   "x_at_end": 1321
+  }
+ },
+ "damage_gate_48bc": {
+  "evidence": "CONTROLLED ROUTINE RESULT ($48BC executed with the four exits watched)",
+  "cases": 60,
+  "rows": [
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x00",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "contact_with_attack_posture_49c3",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "contact_with_attack_posture_49c3",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "hurt_48f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x02",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "return_without_hurt",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x40",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "bit6_ignore_4a2e",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0x80",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 0,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 0,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 3,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 3,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 6,
+    "request_d3b0": "0x00",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0x00",
+    "d520_after": 9
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 0,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 0
+   },
+   {
+    "d503_ie_plus3": "0xC0",
+    "d532": 6,
+    "request_d3b0": "0xFF",
+    "contact_d520": 9,
+    "reaches": "invulnerability_tick_49f7",
+    "d3b0_after": "0xFF",
+    "d520_after": 9
+   }
+  ],
+  "reading": "+$03 bit 7 (invulnerable) goes to the countdown $49F7 and ignores any request; bit 6 clears +$20 and returns; $D532 == 6 clears the request; a request or an ordinary contact ($D520 != 0, not attacking) reaches $48F7. Terrain spikes call $48F7 directly (not through $48BC) after testing +$03 bit 7 themselves."
+ },
+ "hurt_consequences": {
+  "evidence": "CONTROLLED ROUTINE RESULT ($48F7 executed; sound routine stubbed)",
+  "rows": {
+   "rings_0_death": {
+    "requested_state": "0x1F",
+    "d503": "0x01",
+    "vx": 0,
+    "vy": -1280,
+    "invulnerability_timer_d3b1": 0,
+    "rings_after": 0,
+    "scatter_objects_type_06": 0,
+    "floor_flag_after": false
+   },
+   "rings_1": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 1,
+    "floor_flag_after": false
+   },
+   "rings_15": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 1,
+    "floor_flag_after": false
+   },
+   "rings_16": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 2,
+    "floor_flag_after": false
+   },
+   "rings_31": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 2,
+    "floor_flag_after": false
+   },
+   "rings_32": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 3,
+    "floor_flag_after": false
+   },
+   "rings_63": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 4,
+    "floor_flag_after": false
+   },
+   "rings_64": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 5,
+    "floor_flag_after": false
+   },
+   "rings_100": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 7,
+    "floor_flag_after": false
+   },
+   "rings_255": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 7,
+    "floor_flag_after": false
+   },
+   "rings_5_left_wall_bit3_in_d523": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": 256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 1,
+    "floor_flag_after": false
+   },
+   "rings_5_ceiling_contact_d522_bit0": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": 256,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 1,
+    "floor_flag_after": false
+   },
+   "rings_5_airborne": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 0,
+    "scatter_objects_type_06": 1,
+    "floor_flag_after": false
+   },
+   "rings_5_state_11": {
+    "requested_state": "0x1E",
+    "d503": "0xC1",
+    "vx": -256,
+    "vy": -1024,
+    "invulnerability_timer_d3b1": 120,
+    "rings_after": 5,
+    "scatter_objects_type_06": 0,
+    "floor_flag_after": false
+   }
+  },
+  "rules": {
+   "no_rings": "state $1F, Y speed -5.0 ($FB00), X speed unchanged, +$04 := 0, no invulnerability timer",
+   "rings": "state $1E, rings := 0, scatter objects (type $06), $D3B1 := $78 (120 updates), +$03 bits 7,6 and 0 set, floor flag cleared, Y speed -4.0 ($FC00) or +1.0 if +$22 bit 0 (ceiling contact), X speed -1.0 ($FF00) or +1.0 if $D523 bit 3 (left wall)",
+   "direction": "knockback X direction depends only on wall flag $D523 bit 3, not on which side the hazard was",
+   "state_11": "current state $11 (numeric reward pose) takes a separate branch ($48F7 -> $4912): rings kept, sound $C3, then the same hurt entry"
+  }
+ },
+ "invulnerability_countdown": {
+  "evidence": "CONTROLLED ROUTINE RESULT ($48BC called repeatedly with +$03 bit 7 set, $D3B1 = $78)",
+  "damage_gate_updates_until_bits_clear": 121,
+  "timer_trace_first_6": [
+   119,
+   118,
+   117,
+   116,
+   115,
+   114
+  ],
+  "pending_request_d3b0_after_clear": 0,
+  "reading": "$49F7 decrements $D3B1 once per player update ($48BC); at zero +$03 bits 7/6 and +$04 bit 7 are cleared and the pending request $D3B0 is discarded; during the countdown any request is ignored and kept"
+ },
+ "state_matrix": {
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "method": "see docstring of emulated_state_matrix",
+  "rows": [
+   {
+    "state": "0x01",
+    "label": "stand",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       1,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 8,
+     "platform_carry_calls": 16,
+     "states_seen": [
+      [
+       1,
+       1
+      ],
+      [
+       14,
+       9
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       13
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       1,
+       1
+      ],
+      [
+       14,
+       7
+      ],
+      [
+       30,
+       6
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x05",
+    "label": "walk",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       5,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 8,
+     "platform_carry_calls": 16,
+     "states_seen": [
+      [
+       5,
+       1
+      ],
+      [
+       14,
+       9
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       13
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       5,
+       1
+      ],
+      [
+       14,
+       7
+      ],
+      [
+       30,
+       6
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x06",
+    "label": "run",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       6,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 8,
+     "platform_carry_calls": 16,
+     "states_seen": [
+      [
+       6,
+       1
+      ],
+      [
+       14,
+       9
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       13
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       6,
+       1
+      ],
+      [
+       14,
+       7
+      ],
+      [
+       30,
+       6
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x09",
+    "label": "roll",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       9,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 12,
+     "platform_carry_calls": 12,
+     "states_seen": [
+      [
+       9,
+       1
+      ],
+      [
+       10,
+       13
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       9
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       9,
+       1
+      ],
+      [
+       10,
+       9
+      ],
+      [
+       30,
+       4
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x0A",
+    "label": "jump",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       10,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 8,
+     "platform_carry_calls": 16,
+     "states_seen": [
+      [
+       10,
+       10
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       13
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       10,
+       7
+      ],
+      [
+       30,
+       7
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x0E",
+    "label": "fall",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       14,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 8,
+     "platform_carry_calls": 16,
+     "states_seen": [
+      [
+       14,
+       10
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       13
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       14,
+       7
+      ],
+      [
+       30,
+       7
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x0B",
+    "label": "spring_0b",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       11,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 9,
+     "platform_carry_calls": 15,
+     "states_seen": [
+      [
+       11,
+       1
+      ],
+      [
+       14,
+       10
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       12
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       11,
+       1
+      ],
+      [
+       14,
+       7
+      ],
+      [
+       30,
+       6
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x1C",
+    "label": "diag_spring_1c",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       28,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 9,
+     "platform_carry_calls": 15,
+     "states_seen": [
+      [
+       28,
+       1
+      ],
+      [
+       14,
+       10
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       12
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       28,
+       1
+      ],
+      [
+       14,
+       7
+      ],
+      [
+       30,
+       6
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x0C",
+    "label": "loop_0c",
+    "static_spike": {
+     "terrain_pass_calls": 9,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       12,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": false,
+     "first_claim_update": null,
+     "platform_carry_calls": 0,
+     "states_seen": [
+      [
+       12,
+       1
+      ],
+      [
+       29,
+       23
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": false,
+     "hurt_entry_calls": 0,
+     "states_seen": [
+      [
+       12,
+       1
+      ],
+      [
+       29,
+       13
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x0D",
+    "label": "loop_0d",
+    "static_spike": {
+     "terrain_pass_calls": 9,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       13,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": false,
+     "first_claim_update": null,
+     "platform_carry_calls": 0,
+     "states_seen": [
+      [
+       13,
+       1
+      ],
+      [
+       29,
+       23
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": false,
+     "hurt_entry_calls": 0,
+     "states_seen": [
+      [
+       13,
+       1
+      ],
+      [
+       29,
+       13
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x13",
+    "label": "loop_13",
+    "static_spike": {
+     "terrain_pass_calls": 9,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       19,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": false,
+     "first_claim_update": null,
+     "platform_carry_calls": 0,
+     "states_seen": [
+      [
+       19,
+       1
+      ],
+      [
+       29,
+       23
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": false,
+     "hurt_entry_calls": 0,
+     "states_seen": [
+      [
+       19,
+       1
+      ],
+      [
+       29,
+       13
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x22",
+    "label": "twist_22",
+    "static_spike": {
+     "terrain_pass_calls": 9,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       34,
+       2
+      ],
+      [
+       9,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 10,
+     "platform_carry_calls": 14,
+     "states_seen": [
+      [
+       34,
+       1
+      ],
+      [
+       9,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       14,
+       9
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       11
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       34,
+       1
+      ],
+      [
+       9,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       14,
+       5
+      ],
+      [
+       30,
+       6
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x1E",
+    "label": "hurt_1e",
+    "static_spike": {
+     "terrain_pass_calls": 10,
+     "damage_gate_calls": 10,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       30,
+       10
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 8,
+     "platform_carry_calls": 16,
+     "states_seen": [
+      [
+       30,
+       10
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       13
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       30,
+       7
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       14,
+       6
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x1F",
+    "label": "death_1f",
+    "static_spike": {
+     "terrain_pass_calls": 9,
+     "damage_gate_calls": 9,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       31,
+       2
+      ],
+      [
+       30,
+       8
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 8,
+     "platform_carry_calls": 16,
+     "states_seen": [
+      [
+       31,
+       24
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 0,
+     "states_seen": [
+      [
+       31,
+       14
+      ]
+     ]
+    }
+   },
+   {
+    "state": "0x20",
+    "label": "act_clear_20",
+    "static_spike": {
+     "terrain_pass_calls": 9,
+     "damage_gate_calls": 9,
+     "floor_spike_hurt_calls": 1,
+     "first_hurt_update": 0,
+     "states_seen": [
+      [
+       32,
+       2
+      ],
+      [
+       30,
+       1
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       6
+      ]
+     ]
+    },
+    "platform": {
+     "support_claimed": true,
+     "first_claim_update": 13,
+     "platform_carry_calls": 11,
+     "states_seen": [
+      [
+       32,
+       1
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       1,
+       8
+      ]
+     ]
+    },
+    "moving_spike": {
+     "damage_request_written": true,
+     "hurt_entry_calls": 1,
+     "states_seen": [
+      [
+       32,
+       1
+      ],
+      [
+       14,
+       10
+      ],
+      [
+       30,
+       3
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "update_order": {
+  "evidence": "EMULATED ORIGINAL FRAME (PC hooks on the named routines; one frame each, labels in execution order)",
+  "standing_on_rising_lift": [
+   "player_callback_0395",
+   "player_update_3fef",
+   "x_integration",
+   "y_integration",
+   "terrain_pass",
+   "terrain_floor",
+   "merge_flags",
+   "terrain_sides",
+   "terrain_ceiling",
+   "terrain_ring_probe",
+   "merge_flags",
+   "damage_gate",
+   "object_28_callback_86DA",
+   "object_move",
+   "platform_support",
+   "overlap_6328",
+   "platform_carry",
+   "object_21_callback_B268"
+  ],
+  "standing_on_sag_platform": [
+   "player_callback_0395",
+   "player_update_3fef",
+   "x_integration",
+   "y_integration",
+   "terrain_pass",
+   "terrain_floor",
+   "merge_flags",
+   "terrain_sides",
+   "terrain_ceiling",
+   "terrain_ring_probe",
+   "merge_flags",
+   "damage_gate",
+   "object_28_callback_879A",
+   "platform_support",
+   "overlap_6328",
+   "platform_carry",
+   "object_28_callback_879A",
+   "platform_support",
+   "platform_clear",
+   "object_28_callback_879A"
+  ],
+  "static_spike_hurt_frame": [
+   "player_callback_03AD",
+   "player_update_3fef",
+   "x_integration",
+   "y_integration",
+   "terrain_pass",
+   "terrain_floor",
+   "merge_flags",
+   "floor_spike_handler",
+   "floor_spike_hurt_jump",
+   "hurt_entry",
+   "terrain_sides",
+   "terrain_ceiling",
+   "terrain_ring_probe",
+   "merge_flags",
+   "damage_gate",
+   "object_06_callback_9A2B",
+   "object_1B_callback_AC8B"
+  ],
+  "moving_spike_request_frame": [
+   "player_callback_03AD",
+   "player_update_3fef",
+   "x_integration",
+   "y_integration",
+   "terrain_pass",
+   "terrain_floor",
+   "merge_flags",
+   "terrain_sides",
+   "terrain_ceiling",
+   "terrain_ring_probe",
+   "merge_flags",
+   "damage_gate",
+   "object_26_callback_83BF",
+   "object_21_callback_B268",
+   "object_move",
+   "overlap_6328",
+   "object_1B_callback_ACC3",
+   "spike_contact_helper",
+   "overlap_6328"
+  ],
+  "moving_spike_hurt_frame": [
+   "player_callback_03AD",
+   "player_update_3fef",
+   "x_integration",
+   "y_integration",
+   "terrain_pass",
+   "terrain_floor",
+   "merge_flags",
+   "terrain_sides",
+   "terrain_ceiling",
+   "terrain_ring_probe",
+   "merge_flags",
+   "damage_gate",
+   "hurt_entry",
+   "object_06_callback_9A2B",
+   "object_26_callback_83BF",
+   "object_21_callback_B268",
+   "object_move",
+   "overlap_6328",
+   "object_1B_callback_ACC3",
+   "spike_contact_helper"
+  ]
+ },
+ "platform_vs_spike_terrain": {
+  "evidence": "EMULATED ORIGINAL FRAME (cloned type-$28 state-5 slot at x=1520 over the spike pair; no THZ placement overlaps a spike cell)",
+  "rows": [
+   {
+    "platform_y": 830,
+    "terrain_spike_hurt_update": null,
+    "support_claim_update": 9,
+    "player_y_when_claimed": 817,
+    "outcome": "support only (no damage within the window)"
+   },
+   {
+    "platform_y": 835,
+    "terrain_spike_hurt_update": null,
+    "support_claim_update": 10,
+    "player_y_when_claimed": 822,
+    "outcome": "support only (no damage within the window)"
+   },
+   {
+    "platform_y": 838,
+    "terrain_spike_hurt_update": 18,
+    "support_claim_update": 12,
+    "player_y_when_claimed": 825,
+    "outcome": "support claimed first; on a later player pass (still airborne with the retained falling speed, or carried down by the sinking platform) the foot probe reached the spike surface and the terrain hurt him"
+   },
+   {
+    "platform_y": 840,
+    "terrain_spike_hurt_update": 13,
+    "support_claim_update": 12,
+    "player_y_when_claimed": 827,
+    "outcome": "support claimed first; on a later player pass (still airborne with the retained falling speed, or carried down by the sinking platform) the foot probe reached the spike surface and the terrain hurt him"
+   },
+   {
+    "platform_y": 842,
+    "terrain_spike_hurt_update": 13,
+    "support_claim_update": 12,
+    "player_y_when_claimed": 829,
+    "outcome": "support claimed first; on a later player pass (still airborne with the retained falling speed, or carried down by the sinking platform) the foot probe reached the spike surface and the terrain hurt him"
+   },
+   {
+    "platform_y": 845,
+    "terrain_spike_hurt_update": 13,
+    "support_claim_update": null,
+    "player_y_when_claimed": null,
+    "outcome": "terrain hurt before any platform contact"
+   },
+   {
+    "platform_y": 850,
+    "terrain_spike_hurt_update": 13,
+    "support_claim_update": null,
+    "player_y_when_claimed": null,
+    "outcome": "terrain hurt before any platform contact"
+   },
+   {
+    "platform_y": 856,
+    "terrain_spike_hurt_update": 13,
+    "support_claim_update": null,
+    "player_y_when_claimed": null,
+    "outcome": "terrain hurt before any platform contact"
+   },
+   {
+    "platform_y": 862,
+    "terrain_spike_hurt_update": 13,
+    "support_claim_update": null,
+    "player_y_when_claimed": null,
+    "outcome": "terrain hurt before any platform contact"
+   }
+  ],
+  "reading": "the player pass (terrain projection + hurt) runs BEFORE the platform contact test of the same update. A platform whose support plane is above the spike surface (anchor Y 830) holds Sonic clear; if the support plane is within about one fall step of the surface, the next player pass (the landing is only registered at the END of that pass, so the Y integration still runs with the retained speed) or the sinking of a sag platform brings the foot onto the surface and the terrain handler hurts him (the platform never reads the hurt state)"
+ },
+ "counts": {
+  "controlled_and_emulated_cases_total": 316075
+ }
+}

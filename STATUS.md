@@ -48,6 +48,17 @@ Important census correction: the 24 raw type-`$09` placement records and the 142
 
 ## Research task tracker
 
+### Platform and spike collision audit: COMPLETE (awaiting review)
+
+Branch `research/platform-spike-collision-audit`. Primary study: `docs/platform-spike-collision-audit.md`; data: `data/rom-cache/platform-spike-collision.json`;
+tool/tests: `tools/platform_spike_collision.py`, `tests/test_platform_spike_collision.py`.
+
+- `$28` is the platform (states 5 sag / 11 lift placed; 15 states in ROM); `$1B` is the moving spike; static spikes are terrain type 5 (blocks `$3C/$3D`, foot probe only).
+- Platform support = `$6328` "player above" contact (triangle `|dx| <= 8+|dy|`, dy -16..-1) AND platform Y speed <= player Y speed; rider Y = platform Y - 14, X += platform X delta, no speed change; top-only.
+- Static spikes damage only through the foot handler `$6ACE`; airborne rows 16..31 of the cell, grounded any row; a **rising** player (Y speed < 0) in anchor Y 830..841 is neither projected, hurt nor pushed.
+- `$1B`: damage only in a 45-degree cone above the anchor (Y speed >= 0, 16-update cooldown); non-attacking side contact is a wall, attacking grounded is pushed +-23; contact tested before the move; 102-update cycle.
+- 316,075 controlled/emulated cases; read-only POC comparison in the doc (no POC change).
+
 ### THZ2/THZ3 object parameter deltas ($26 `$88`, $10 `$01`/`$03`, $28 aux1): COMPLETE
 
 Branch `research/thz2-thz3-object-deltas`. Study `docs/thz2-thz3-object-deltas.md`; data
