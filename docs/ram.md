@@ -9,7 +9,13 @@ Little-endian words unless stated otherwise. Addresses are absolute RAM addresse
 | `$D137` | 1 | Direction input snapshot; physics masks bits 2/3 | `$4178` |
 | `$D168` | 2 | Pointer to level row-offset table | `$76AF` |
 | `$D16A` | 2 | Negative map row width | `$7066` |
-| `$D174` | 2 | Horizontal camera offset used by movement bounds | `$4148` |
+| `$D174` | 2 | Horizontal camera offset used by movement bounds; world X of screen column 0; committed from `$D284` at `$0570` | `$4148`, `$4D3E` |
+| `$D176` | 2 | Vertical camera offset (R9 = (camY+17) mod 224); committed from `$D286` | `$4D3E`, `$0570` |
+| `$D15E/$D15F` | 1 each | Camera control: `$D15E` bit 7 = follow/update enabled (`$0407` clears it), bits 0-3 = scroll direction this update; `$D15F` bit 0 = pan mode | `$4C94`, `$5832`, `$59B3..$59E0` |
+| `$D27C/$D280/$D27E/$D282` | 2 each | Camera top / left / bottom / right limits (left, top inclusive; right, bottom exclusive) | `$4CB0`, `$4CF7`, `$504A..$5065` |
+| `$D284/$D286` | 2 each | Camera X / Y working target committed to `$D174/$D176` at vblank | `$5832`, `$0570` |
+| `$D288..$D28F` | 1 each | Follow lead and dead-zone registers (X lead `$D28A`, X zone `$D28C/$D28B`, Y lead `$D28D`, Y zone `$D28F/$D28E`) | `$58E1..$5955` |
+| `$D2DA/$D2DC` | 2 each | Camera pan target X / Y | `$59C5`, `$5956` |
 | `$D297/$D298` | 1 each | Level/act index | `LoadRingArtPointers`, `$4B46` |
 | `$D299` | 1 | BCD counter incremented by type-`$10` parameter `$02`; semantic name unresolved | `$3104`, `$4ADA` |
 | `$D29A` | 1 | BCD byte increased by `$10` on the alternate-player form of type-`$10` parameter `$04`; semantic name unresolved | `$4AC0` |

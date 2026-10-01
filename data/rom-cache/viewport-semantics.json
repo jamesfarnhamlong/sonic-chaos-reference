@@ -1,0 +1,2802 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_only": true,
+ "poc_untouched": true,
+ "machine_facing_label": "viewport_semantics",
+ "evidence_classes": {
+  "DECODED DATA": "ROM tables/records decoded by a parser",
+  "BYTE-VERIFIED ASSEMBLY": "routine bytes compared literally and disassembled by hand",
+  "SOURCE-TRACED BEHAVIOR": "behavior read from the disassembly, not executed",
+  "CONTROLLED ROUTINE RESULT": "original routine executed on a Z80 core with explicit RAM, swept over synthetic cameras",
+  "EMULATED ORIGINAL FRAME": "whole original game run in the approximate SMS harness",
+  "UNRESOLVED": "not established"
+ },
+ "classes": {
+  "A": "WORLD-SPACE (canonical placement, terrain, level geometry, level limits)",
+  "B": "CAMERA-RELATIVE (a function of camera position or camera motion, not of the screen width)",
+  "C": "SCREEN-EDGE-RELATIVE (an offset from the left/right/centre of the original 256-px window)",
+  "D": "VIEWPORT/SPAWN-WINDOW-RELATIVE (create/sleep/delete bands around the camera window)",
+  "E": "PRESENTATION-ONLY (VDP register or sprite/scroll output)",
+  "F": "UNRESOLVED",
+  "G": "PLAYER-RELATIVE WORLD DISTANCE (added by this audit: neither camera nor screen)"
+ },
+ "reference_frame": {
+  "window_width_px": 256,
+  "right_edge_definition": "RIGHT = cam + 256 (exclusive); last visible column = cam + 255",
+  "active_lines": 192,
+  "left_mask_px_by_r0_bit5": 8,
+  "camera_origin": "left edge of the window",
+  "d_definition": "d = world X - camera X"
+ },
+ "routines": [
+  {
+   "name": "frame_update",
+   "bank": 0,
+   "cpu_start": "0x16B8",
+   "cpu_end_exclusive": "0x16EF",
+   "rom_offset": "0x016B8",
+   "length": 55,
+   "sha256": "2c8978132fccd74769f10df53ad234cae053199de81077c2423ef2cbf1507d89",
+   "first_16_bytes": "3a31d1b7c2ef16dd215ed1ddcb0076c2",
+   "purpose": "per-frame order: camera $4C90, player $361D, objects $5DD1, $7AC2, placement scan every 4th update"
+  },
+  {
+   "name": "camera_update",
+   "bank": 1,
+   "cpu_start": "0x4C90",
+   "cpu_end_exclusive": "0x4CB0",
+   "rom_offset": "0x04C90",
+   "length": 32,
+   "sha256": "5547ed413b47211344bd9911e887a535c6c9e3c2ddacbf62a937be8215fabbcc",
+   "first_16_bytes": "dd215ed1ddcb007ec8cd32583a62d1cd",
+   "purpose": "camera update entry (needs $D15E bit 7), calls follow, limits, VDP scroll prep"
+  },
+  {
+   "name": "camera_limit_x",
+   "bank": 1,
+   "cpu_start": "0x4CB0",
+   "cpu_end_exclusive": "0x4CF7",
+   "rom_offset": "0x04CB0",
+   "length": 71,
+   "sha256": "5b070410e8b3d15b0b0e2541f2c4212bce52476a72e47087c6c96ad7d45addfd",
+   "first_16_bytes": "ddcb0056281d2a84d27cfeff2832ed5b",
+   "purpose": "horizontal limit clamp: left inclusive ($D280), right exclusive ($D282)"
+  },
+  {
+   "name": "camera_limit_y",
+   "bank": 1,
+   "cpu_start": "0x4CF7",
+   "cpu_end_exclusive": "0x4D3E",
+   "rom_offset": "0x04CF7",
+   "length": 71,
+   "sha256": "6f089179a74389f27840cb3eeb870842338b69fa40186988eb27425f68839983",
+   "first_16_bytes": "ddcb0046281d2a86d27cfeff2832ed5b",
+   "purpose": "vertical limit clamp: top ($D27C), bottom ($D27E)"
+  },
+  {
+   "name": "camera_to_vdp",
+   "bank": 1,
+   "cpu_start": "0x4D3E",
+   "cpu_end_exclusive": "0x4D5D",
+   "rom_offset": "0x04D3E",
+   "length": 31,
+   "sha256": "e98289bf80ef6b6da15686dcbda18fe9ec13f8aead1f7d37617e97b4d39c794f",
+   "first_16_bytes": "3a74d1c601ed443272d12a76d1111100",
+   "purpose": "R8 = -(cam+1), R9 = (camY+17) mod 224 into $D172/$D173"
+  },
+  {
+   "name": "vblank_camera_commit",
+   "bank": 0,
+   "cpu_start": "0x0570",
+   "cpu_end_exclusive": "0x057C",
+   "rom_offset": "0x00570",
+   "length": 12,
+   "sha256": "92ccdd4b263fd231da03f93e2062171b0e66d4c33deb162f81b8693a3137c06d",
+   "first_16_bytes": "2a84d22274d12a86d22276d1cd361e3e",
+   "purpose": "$D174/$D176 := $D284/$D286 at the vblank handler"
+  },
+  {
+   "name": "camera_follow",
+   "bank": 1,
+   "cpu_start": "0x5832",
+   "cpu_end_exclusive": "0x5935",
+   "rom_offset": "0x05832",
+   "length": 259,
+   "sha256": "ef13fda1839a9116639ca3ae6e0db4ed3b094bd0a03146f1b04030f868e743f5",
+   "first_16_bytes": "3a5ed1e6f0325ed1ddcb0146c25659cd",
+   "purpose": "follow: dead zone around player screen X/Y target, pan branch, per-axis step"
+  },
+  {
+   "name": "camera_follow_init",
+   "bank": 1,
+   "cpu_start": "0x5935",
+   "cpu_end_exclusive": "0x5956",
+   "rom_offset": "0x05935",
+   "length": 33,
+   "sha256": "a7c309771422cb08c385cd1179243fba9be47d929f4ca9b32ef1807bd468c2e6",
+   "first_16_bytes": "3a88d2328ad2d608328cd2c610328bd2",
+   "purpose": "copy target offsets into the working registers"
+  },
+  {
+   "name": "camera_pan",
+   "bank": 1,
+   "cpu_start": "0x5956",
+   "cpu_end_exclusive": "0x59B3",
+   "rom_offset": "0x05956",
+   "length": 93,
+   "sha256": "1457c345ebd208b05ad4fbf1ae5bd49c9782b4549cb0828a565ab213e6626767",
+   "first_16_bytes": "2adad2ed5b74d1afed522830381813ed",
+   "purpose": "pan to ($D2DA,$D2DC), 1 px per update per axis, limit update"
+  },
+  {
+   "name": "camera_vectors",
+   "bank": 1,
+   "cpu_start": "0x59B3",
+   "cpu_end_exclusive": "0x5A03",
+   "rom_offset": "0x059B3",
+   "length": 80,
+   "sha256": "8569434be6807b150751fc0303d34380c837567c88f5963c3be7a9a33d8676de",
+   "first_16_bytes": "215ed1cbfec9215ed1cbbe2a74d12280",
+   "purpose": "$042B enable, $0407 freeze, $0359 pan on, $035C pan off, $0353 left lock, $0356 right lock"
+  },
+  {
+   "name": "level_header_loader",
+   "bank": 1,
+   "cpu_start": "0x4FDC",
+   "cpu_end_exclusive": "0x5082",
+   "rom_offset": "0x04FDC",
+   "length": 166,
+   "sha256": "753b58013ec0ab668ac8fd43af25e544441ab20a005f36d930b193a2acf8e9ee",
+   "first_16_bytes": "3a97d26f260029118250195e23563a98",
+   "purpose": "act header -> camera limits $D280/$D27C/$D282/$D27E, follow targets $D288/$D289"
+  },
+  {
+   "name": "player_edge_clamp_a",
+   "bank": 1,
+   "cpu_start": "0x4141",
+   "cpu_end_exclusive": "0x4169",
+   "rom_offset": "0x04141",
+   "length": 40,
+   "sha256": "4dccedcdd4a446dcb0d0e31eb6f2f25b14a9f7fe64241b7ed8992c5d15738929",
+   "first_16_bytes": "dd7e01fe2930212a11d5ed5b74d1afed",
+   "purpose": "player X clamp to [cam+16, cam+247] for states < $29 (low byte of playerX-cam)"
+  },
+  {
+   "name": "player_edge_clamp_snap",
+   "bank": 1,
+   "cpu_start": "0x4244",
+   "cpu_end_exclusive": "0x4281",
+   "rom_offset": "0x04244",
+   "length": 61,
+   "sha256": "e1b69965363f628cdebae8766d226a8fc5fcfb2378ff0abb47962dc757d6b98b",
+   "first_16_bytes": "2a74d1092211d5af3210d5180b2a74d1",
+   "purpose": "snap to bound, subtract this update's X speed, clear X speed"
+  },
+  {
+   "name": "player_edge_clamp_b",
+   "bank": 1,
+   "cpu_start": "0x4281",
+   "cpu_end_exclusive": "0x429D",
+   "rom_offset": "0x04281",
+   "length": 28,
+   "sha256": "6bf75ee3349f5426a4c9dc70ca58fa9b2b4fdb844751de585983ae405cebaee7",
+   "first_16_bytes": "2a11d5ed5b74d1afed527d011000fe10",
+   "purpose": "same clamp, entry used by the $39xx state handlers"
+  },
+  {
+   "name": "player_input_step",
+   "bank": 0,
+   "cpu_start": "0x3FEF",
+   "cpu_end_exclusive": "0x4010",
+   "rom_offset": "0x03FEF",
+   "length": 33,
+   "sha256": "c52a92ca7d1077bbc5595f9cda6fb84bc59e0e36b36936f9da424a46a4dd5b5d",
+   "first_16_bytes": "cd464bcd1a40cd4141dd7e01fe053006",
+   "purpose": "shared player step ($0404) that calls the clamp"
+  },
+  {
+   "name": "object_lifetime",
+   "bank": 1,
+   "cpu_start": "0x61E1",
+   "cpu_end_exclusive": "0x6276",
+   "rom_offset": "0x061E1",
+   "length": 149,
+   "sha256": "76ce45f7830850f7e9e7515e1812135dc84e9746e9e7ef00404fd53c04a5430d",
+   "first_16_bytes": "ddcb04b6dd6e11dd661201800009ed4b",
+   "purpose": "post-update visibility/lifetime: spawn-map band test"
+  },
+  {
+   "name": "player_distance_helpers",
+   "bank": 1,
+   "cpu_start": "0x61A5",
+   "cpu_end_exclusive": "0x61D6",
+   "rom_offset": "0x061A5",
+   "length": 49,
+   "sha256": "118599b7fc8c3e255da21efcaf5b285f701d8917d467b3b167b9e09004eb0343",
+   "first_16_bytes": "dd6612dd6e11ed5b11d5180add6615dd",
+   "purpose": "$0383 horizontal / $0386 vertical |object - player| < BC -> $FF"
+  },
+  {
+   "name": "placement_scan",
+   "bank": 28,
+   "cpu_start": "0x8000",
+   "cpu_end_exclusive": "0x8146",
+   "rom_offset": "0x70000",
+   "length": 326,
+   "sha256": "ded28ceaa41dccd8b71109d8b2bbbfb4ef5a21ff9d7f9f051ab7431240cbb1cb",
+   "first_16_bytes": "3a97d2875f1600214685197e23666f3a",
+   "purpose": "placement scan: same window and map as the lifetime routine"
+  },
+  {
+   "name": "screen_coordinate_prep",
+   "bank": 0,
+   "cpu_start": "0x3FC8",
+   "cpu_end_exclusive": "0x3FEF",
+   "rom_offset": "0x03FC8",
+   "length": 39,
+   "sha256": "73bc78a487ea9be77e198e7683b31f645f82e31082728d82465bff520deb40c6",
+   "first_16_bytes": "dd6e11dd6612ed5b74d1afed52dd751a",
+   "purpose": "+$1A/+$1C = anchor - camera (screen X/Y, 16-bit)"
+  },
+  {
+   "name": "player_pit_screen_y",
+   "bank": 0,
+   "cpu_start": "0x3BFB",
+   "cpu_end_exclusive": "0x3C15",
+   "rom_offset": "0x03BFB",
+   "length": 26,
+   "sha256": "e3d33e68ea98518bee9ba5f11c2fd9768825789c156799b88eec8cb86e50b638",
+   "first_16_bytes": "ddcb04beddcb03f62180003a1cd5fed8",
+   "purpose": "player screen Y ($D51C) >= $D8 sets $D293 bit 2"
+  },
+  {
+   "name": "vdp_register_init",
+   "bank": 0,
+   "cpu_start": "0x1D2D",
+   "cpu_end_exclusive": "0x1D33",
+   "rom_offset": "0x01D2D",
+   "length": 6,
+   "sha256": "ec9d5cbcfdf27ddb4371e04e0b6587640f1e60d563638770b1547b683e2cb139",
+   "first_16_bytes": "2682fffffffffb000000ffc5e578d3bf",
+   "purpose": "R0=$26, R1=$82 (R1 becomes $E2 at runtime), R5=$FF, R6=$FF/$FB"
+  },
+  {
+   "name": "player_state20_handler",
+   "bank": 12,
+   "cpu_start": "0x83A6",
+   "cpu_end_exclusive": "0x840F",
+   "rom_offset": "0x303A6",
+   "length": 105,
+   "sha256": "d98fd6472c0b3d31c1b18b8885221c69d29f43bb1f3fe31f1e52e29b7fdeeb1e",
+   "first_16_bytes": "ddcb04beafdd7718dd7719ddcb04a6ed",
+   "purpose": "run right; camera freeze above $F8; flag above $120"
+  },
+  {
+   "name": "goal_sign_camera_pan",
+   "bank": 12,
+   "cpu_start": "0xAA22",
+   "cpu_end_exclusive": "0xAA47",
+   "rom_offset": "0x32A22",
+   "length": 37,
+   "sha256": "ac4de7e5f5a6dab82d4f5b3638a826a4e9ddd62966dffa87572da6a76ae5004b",
+   "first_16_bytes": "dd6615dd6e14119900afed52221cd1dd",
+   "purpose": "pan target (signX-$80, signY-$99) through $0359"
+  },
+  {
+   "name": "child19_init_and_scroll",
+   "bank": 12,
+   "cpu_start": "0xAA87",
+   "cpu_end_exclusive": "0xAB0A",
+   "rom_offset": "0x32A87",
+   "length": 131,
+   "sha256": "d2695fb7e300e4108d539392cacac24f50b0cd046a627f20003cbfda84a87322",
+   "first_16_bytes": "21c0aa11e7d3011000edb021d0aa11c7",
+   "purpose": "type $19: X = cam+$104, Y = camY+$50, moves left 8/update to cam+$85"
+  },
+  {
+   "name": "type28_persistence_removal",
+   "bank": 30,
+   "cpu_start": "0x8908",
+   "cpu_end_exclusive": "0x8925",
+   "rom_offset": "0x78908",
+   "length": 29,
+   "sha256": "c5608c88ecdb999cd278d70c5ce63dc0868ec4fd288461d93866e1917b668dca",
+   "first_16_bytes": "ddcb044ec8018002cd8303b7280a01a0",
+   "purpose": "type $28 with +$04 bit 1: removed at |dx| >= $280 or |dy| >= $2A0 from the player"
+  },
+  {
+   "name": "type27_state1_proximity",
+   "bank": 30,
+   "cpu_start": "0x89AC",
+   "cpu_end_exclusive": "0x89DF",
+   "rom_offset": "0x789AC",
+   "length": 51,
+   "sha256": "dfcfcd23267458c4daa4209f1d4f86c95dd8876b2222a51f762ce6cf1c8b3a90",
+   "first_16_bytes": "ddcb0476c0cd3b03dd7e21e60fc22303",
+   "purpose": "type $27 state 1: |dx| < $40 from the player"
+  },
+  {
+   "name": "type27_state3_removal",
+   "bank": 30,
+   "cpu_start": "0x8A29",
+   "cpu_end_exclusive": "0x8A45",
+   "rom_offset": "0x78A29",
+   "length": 28,
+   "sha256": "dbda47bb04b26814a2ccf57e3ec761dad07bc94d458f95102776ea87b72e8224",
+   "first_16_bytes": "018001cd8303b72005dd3600fec9cd3b",
+   "purpose": "type $27 state 3: |dx| >= $180 from the player"
+  },
+  {
+   "name": "boss_trigger_and_pan",
+   "bank": 30,
+   "cpu_start": "0x9771",
+   "cpu_end_exclusive": "0x97A1",
+   "rom_offset": "0x79771",
+   "length": 48,
+   "sha256": "b9f826e289a49a3abd0d8249141479f0f3818568522ca14c0316234abad5e92c",
+   "first_16_bytes": "cd998121a1973a97d2473aa5d480cda1",
+   "purpose": "type $50 state 1/2: player distance trigger and camera pan target"
+  },
+  {
+   "name": "boss_patrol_screen_x",
+   "bank": 30,
+   "cpu_start": "0x9866",
+   "cpu_end_exclusive": "0x988E",
+   "rom_offset": "0x79866",
+   "length": 40,
+   "sha256": "b73563aadd81449448882284f070af44ef913a73ac8659c909034e4b897b9d2e",
+   "first_16_bytes": "dd7e32feff2821fe012851dd7e02fe0c",
+   "purpose": "type $50 states 6/12: screen X thresholds $38 / $C8"
+  }
+ ],
+ "spawn_map": {
+  "evidence": "DECODED DATA + CONTROLLED ROUTINE RESULT",
+  "rom_offset": "0x70146",
+  "bank_cpu": "1C:$8146",
+  "side": 32,
+  "cell_pixels": 16,
+  "cell_index": "col = (d + 128) >> 4, row = (dy + 128) >> 4; d + 128 must lie in 0..511 (8-bit after halving)",
+  "rows": [
+   "33333333333333333333333333333333",
+   "33333333333333333333333333333333",
+   "33222222222222222222222222222233",
+   "33222222222222222222222222222233",
+   "33222222222222222222222222222233",
+   "33222222222222222222222222222233",
+   "33222211111111111111111111222233",
+   "33222211111111111111111111222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211000000000000000011222233",
+   "33222211111111111111111111222233",
+   "33222211111111111111111111222233",
+   "33222222222222222222222222222233",
+   "33222222222222222222222222222233",
+   "33222222222222222222222222222233",
+   "33222222222222222222222222222233",
+   "33333333333333333333333333333333",
+   "33333333333333333333333333333333"
+  ],
+  "value_counts": {
+   "0": 256,
+   "1": 144,
+   "2": 384,
+   "3": 240
+  },
+  "closed_form_cell_equals_max_of_axis_bands": true,
+  "band_definition": {
+   "0": "d in [0,256): exactly the original 256-px window (rows: [0,256) too, taller than the 192-line screen)",
+   "1": "d in [-32,0) and [256,288): 32 px margin each side",
+   "2": "d in [-96,-32) and [288,352): 64 px outer ring",
+   "3": "d in [-128,-96) and [352,384), and anything outside [-128,384): deletion zone"
+  },
+  "bands": [
+   {
+    "band": 0,
+    "screen_relative_spans_half_open": [
+     [
+      0,
+      256
+     ]
+    ]
+   },
+   {
+    "band": 1,
+    "screen_relative_spans_half_open": [
+     [
+      -32,
+      0
+     ],
+     [
+      256,
+      288
+     ]
+    ]
+   },
+   {
+    "band": 2,
+    "screen_relative_spans_half_open": [
+     [
+      -96,
+      -32
+     ],
+     [
+      288,
+      352
+     ]
+    ]
+   },
+   {
+    "band": 3,
+    "screen_relative_spans_half_open": [
+     [
+      -130,
+      -96
+     ],
+     [
+      352,
+      390
+     ]
+    ]
+   }
+  ],
+  "values": {
+   "0,1": "object active (bit 6 clear)",
+   "2": "alive but asleep (bit 6 set)",
+   "3": "deleted unless +$04 bit 1 (keep-alive)"
+  }
+ },
+ "level_limits": {
+  "evidence": "DECODED DATA",
+  "header_fields": "act header +12 left, +14 top, +16 right, +18 bottom (words) -> $D280/$D27C/$D282/$D27E",
+  "table_rom": "0x5082 zone pointers -> act pointers -> headers",
+  "semantics": "left is inclusive (camera >= left); right is EXCLUSIVE (camera < right, so the largest camera is right-1); right = world width - 256 in every THZ act (the 256 is the original window width encoded in data)",
+  "rows": [
+   {
+    "zone_index": 0,
+    "act_index": 0,
+    "header_rom": "0x50EA",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 0,
+    "act_index": 1,
+    "header_rom": "0x5100",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 0,
+    "act_index": 2,
+    "header_rom": "0x5116",
+    "left": 0,
+    "top": 8,
+    "right": 2304,
+    "bottom": 272,
+    "right_plus_256": 2560,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 1,
+    "act_index": 0,
+    "header_rom": "0x512C",
+    "left": 0,
+    "top": 8,
+    "right": 4864,
+    "bottom": 528,
+    "right_plus_256": 5120,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 1,
+    "act_index": 1,
+    "header_rom": "0x5142",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 1,
+    "act_index": 2,
+    "header_rom": "0x5158",
+    "left": 0,
+    "top": 8,
+    "right": 2304,
+    "bottom": 272,
+    "right_plus_256": 2560,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 2,
+    "act_index": 0,
+    "header_rom": "0x516E",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 2,
+    "act_index": 1,
+    "header_rom": "0x5184",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 2,
+    "act_index": 2,
+    "header_rom": "0x519A",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 3,
+    "act_index": 0,
+    "header_rom": "0x51B0",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 3,
+    "act_index": 1,
+    "header_rom": "0x51C6",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 3,
+    "act_index": 2,
+    "header_rom": "0x51DC",
+    "left": 0,
+    "top": 8,
+    "right": 3584,
+    "bottom": 528,
+    "right_plus_256": 3840,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 4,
+    "act_index": 0,
+    "header_rom": "0x51F2",
+    "left": 0,
+    "top": 8,
+    "right": 5120,
+    "bottom": 528,
+    "right_plus_256": 5376,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 4,
+    "act_index": 1,
+    "header_rom": "0x5208",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 4,
+    "act_index": 2,
+    "header_rom": "0x521E",
+    "left": 0,
+    "top": 8,
+    "right": 2304,
+    "bottom": 272,
+    "right_plus_256": 2560,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 5,
+    "act_index": 0,
+    "header_rom": "0x5234",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 5,
+    "act_index": 1,
+    "header_rom": "0x524A",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 5,
+    "act_index": 2,
+    "header_rom": "0x5260",
+    "left": 0,
+    "top": 8,
+    "right": 3328,
+    "bottom": 784,
+    "right_plus_256": 3584,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 6,
+    "act_index": 0,
+    "header_rom": "0x50EA",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 6,
+    "act_index": 1,
+    "header_rom": "0x5100",
+    "left": 0,
+    "top": 8,
+    "right": 3840,
+    "bottom": 784,
+    "right_plus_256": 4096,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 6,
+    "act_index": 2,
+    "header_rom": "0x5116",
+    "left": 0,
+    "top": 8,
+    "right": 2304,
+    "bottom": 272,
+    "right_plus_256": 2560,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 7,
+    "act_index": 0,
+    "header_rom": "0x5276",
+    "left": 0,
+    "top": 8,
+    "right": 7936,
+    "bottom": 16,
+    "right_plus_256": 8192,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 7,
+    "act_index": 1,
+    "header_rom": "0x5276",
+    "left": 0,
+    "top": 8,
+    "right": 7936,
+    "bottom": 16,
+    "right_plus_256": 8192,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 7,
+    "act_index": 2,
+    "header_rom": "0x5276",
+    "left": 0,
+    "top": 8,
+    "right": 7936,
+    "bottom": 16,
+    "right_plus_256": 8192,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 8,
+    "act_index": 0,
+    "header_rom": "0x528C",
+    "left": 0,
+    "top": 8,
+    "right": 16128,
+    "bottom": 16,
+    "right_plus_256": 16384,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 8,
+    "act_index": 1,
+    "header_rom": "0x528C",
+    "left": 0,
+    "top": 8,
+    "right": 16128,
+    "bottom": 16,
+    "right_plus_256": 16384,
+    "right_plus_256_multiple_of_256": true
+   },
+   {
+    "zone_index": 8,
+    "act_index": 2,
+    "header_rom": "0x528C",
+    "left": 0,
+    "top": 8,
+    "right": 16128,
+    "bottom": 16,
+    "right_plus_256": 16384,
+    "right_plus_256_multiple_of_256": true
+   }
+  ],
+  "thz_world_width_relation": {
+   "thz1": {
+    "width_pixels": 4096,
+    "right_limit_equals_width_minus_256": true
+   },
+   "thz2": {
+    "width_pixels": 4096,
+    "right_limit_equals_width_minus_256": true
+   },
+   "thz3": {
+    "width_pixels": 2560,
+    "right_limit_equals_width_minus_256": true
+   }
+  },
+  "zone_6_aliases_zone_0": true
+ },
+ "boss_tables": {
+  "evidence": "DECODED DATA (table bytes) + SOURCE-TRACED BEHAVIOR (use by the type $50 code); only zone 0 is exercised by a placed type",
+  "trigger_table_rom": "0x797A1",
+  "pan_table_rom": "0x79808",
+  "rows": [
+   {
+    "zone_index": 0,
+    "trigger_abs_dx_lt": 160,
+    "trigger_abs_dy_lt": 256,
+    "pan_dx": -256,
+    "pan_dy": -160,
+    "anchor_screen_x_when_pan_complete": 256,
+    "anchor_screen_y_when_pan_complete": 160
+   },
+   {
+    "zone_index": 1,
+    "trigger_abs_dx_lt": 128,
+    "trigger_abs_dy_lt": 304,
+    "pan_dx": -192,
+    "pan_dy": -160,
+    "anchor_screen_x_when_pan_complete": 192,
+    "anchor_screen_y_when_pan_complete": 160
+   },
+   {
+    "zone_index": 2,
+    "trigger_abs_dx_lt": 160,
+    "trigger_abs_dy_lt": 304,
+    "pan_dx": -224,
+    "pan_dy": -160,
+    "anchor_screen_x_when_pan_complete": 224,
+    "anchor_screen_y_when_pan_complete": 160
+   },
+   {
+    "zone_index": 3,
+    "trigger_abs_dx_lt": 160,
+    "trigger_abs_dy_lt": 304,
+    "pan_dx": -208,
+    "pan_dy": -32,
+    "anchor_screen_x_when_pan_complete": 208,
+    "anchor_screen_y_when_pan_complete": 32
+   },
+   {
+    "zone_index": 4,
+    "trigger_abs_dx_lt": 96,
+    "trigger_abs_dy_lt": 304,
+    "pan_dx": -128,
+    "pan_dy": -160,
+    "anchor_screen_x_when_pan_complete": 128,
+    "anchor_screen_y_when_pan_complete": 160
+   },
+   {
+    "zone_index": 5,
+    "trigger_abs_dx_lt": 96,
+    "trigger_abs_dy_lt": 304,
+    "pan_dx": -128,
+    "pan_dy": -160,
+    "anchor_screen_x_when_pan_complete": 128,
+    "anchor_screen_y_when_pan_complete": 160
+   },
+   {
+    "zone_index": 6,
+    "trigger_abs_dx_lt": 96,
+    "trigger_abs_dy_lt": 304,
+    "pan_dx": -128,
+    "pan_dy": -160,
+    "anchor_screen_x_when_pan_complete": 128,
+    "anchor_screen_y_when_pan_complete": 160
+   }
+  ],
+  "note": "type $50 (THZ3 boss, zone 0) uses row 0: trigger |dx|<160,|dy|<256 from the PLAYER; pan target = boss anchor + (-256,-160), i.e. the boss anchor sits exactly on the original RIGHT edge (screen X 256) when the pan completes. Rows 1..6 are decoded but their users are other boss types whose code was not traced (UNRESOLVED)."
+ },
+ "future_risk_scan": {
+  "evidence": "BYTE-VERIFIED ASSEMBLY (instruction bytes at each site) + DECODED DATA (placements, type table); mechanics UNRESOLVED",
+  "sites": [
+   {
+    "rom_offset": "0x79878",
+    "bank": 30,
+    "cpu": "0x9878",
+    "bytes": "dd7e1afe38d0",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X (anchor - camera, low byte) < $38 keeps patrolling, else turn",
+    "owner_hint": "type $33/$40-$50 table region (THZ3 boss = $50, documented)"
+   },
+   {
+    "rom_offset": "0x79884",
+    "bank": 30,
+    "cpu": "0x9884",
+    "bytes": "dd7e1afec8d8",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X low byte >= $C8 turns",
+    "owner_hint": "type $33/$40-$50 table region (THZ3 boss = $50, documented)"
+   },
+   {
+    "rom_offset": "0x79A0F",
+    "bank": 30,
+    "cpu": "0x9A0F",
+    "bytes": "dd7e1acb7fc8fee0",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X in $80..$DF enters the patrol state",
+    "owner_hint": "type $33/$40-$50 table region (THZ3 boss = $50, documented)"
+   },
+   {
+    "rom_offset": "0x7A385",
+    "bank": 30,
+    "cpu": "0xA385",
+    "bytes": "dd7e1afed0d8",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X < $D0 returns; otherwise compares with the player's screen X ($D51A)",
+    "owner_hint": "type $54 region (zone 2 boss placement) - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7A447",
+    "bank": 30,
+    "cpu": "0xA447",
+    "bytes": "dd7e1afed4d8",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X >= $D4 stops X velocity",
+    "owner_hint": "type $54 region (zone 2 boss placement) - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7A771",
+    "bank": 30,
+    "cpu": "0xA771",
+    "bytes": "dd7e1afeb030",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X >= $B0 skips; then screen Y >= $78 removes (vector $033E)",
+    "owner_hint": "type $57 region (spawned object, no zone placement) - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7A778",
+    "bank": 30,
+    "cpu": "0xA778",
+    "bytes": "dd7e1cfe7830",
+    "bytes_match_expected": true,
+    "category": "screen_y_compare",
+    "meaning": "screen Y >= $78 branches to removal",
+    "owner_hint": "type $57 region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7AA70",
+    "bank": 30,
+    "cpu": "0xAA70",
+    "bytes": "dd7e1a2006fed0",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "moving right: screen X >= $D0 zeroes X velocity; moving left: screen X < $30 zeroes it",
+    "owner_hint": "type $59 region (zone 4 boss placement) - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7B080",
+    "bank": 30,
+    "cpu": "0xB080",
+    "bytes": "dd7e1afe3038",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X < $30 (high byte 0) takes the branch at $B092",
+    "owner_hint": "type $5E region (zone 5 boss placement) - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7B0F7",
+    "bank": 30,
+    "cpu": "0xB0F7",
+    "bytes": "dd7e1afec0d2",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X >= $C0 takes the branch at $B10B",
+    "owner_hint": "type $5E region (zone 5 boss placement) - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7B4AC",
+    "bank": 30,
+    "cpu": "0xB4AC",
+    "bytes": "dd7e1add6617cb7c",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "moving right: screen X < $F9 returns, else vector $0437; moving left: screen X < 7 ...",
+    "owner_hint": "type $5F region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7B6F7",
+    "bank": 30,
+    "cpu": "0xB6F7",
+    "bytes": "3a1ad5fe55",
+    "bytes_match_expected": true,
+    "category": "player_screen_x_compare",
+    "meaning": "player screen X ($D51A) compared with $55 and $A5",
+    "owner_hint": "type $5F/$60 region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x03C06",
+    "bank": 0,
+    "cpu": "0x3C06",
+    "bytes": "3a1cd5fed8",
+    "bytes_match_expected": true,
+    "category": "player_screen_y_compare",
+    "meaning": "player screen Y ($D51C) >= $D8 sets $D293 bit 2 (vertical, below the 192-line screen)",
+    "owner_hint": "bank 0 player/level routine"
+   },
+   {
+    "rom_offset": "0x7B696",
+    "bank": 30,
+    "cpu": "0xB696",
+    "bytes": "2a74d111e0ff19",
+    "bytes_match_expected": true,
+    "category": "spawn_relative_to_camera",
+    "meaning": "X = camera X - $20 (32 px left of the left edge)",
+    "owner_hint": "type $5F region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7B6E1",
+    "bank": 30,
+    "cpu": "0xB6E1",
+    "bytes": "2a74d1110000",
+    "bytes_match_expected": true,
+    "category": "spawn_relative_to_camera",
+    "meaning": "X = camera X (left edge) or camera X + $100 (right edge) chosen by +$0A bit 0",
+    "owner_hint": "type $5F region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7B845",
+    "bank": 30,
+    "cpu": "0xB845",
+    "bytes": "112000dd7e0a0f",
+    "bytes_match_expected": true,
+    "category": "spawn_relative_to_camera",
+    "meaning": "X = camera X + $20 or camera X + $E0, Y = camera Y, Y speed +$600",
+    "owner_hint": "type $60 region (zone 5 boss placement) - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7BAB8",
+    "bank": 30,
+    "cpu": "0xBAB8",
+    "bytes": "3e3f9026006f11b000",
+    "bytes_match_expected": true,
+    "category": "spawn_relative_to_camera",
+    "meaning": "X = camera X + $B0 + (table-derived offset)",
+    "owner_hint": "type $61 region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x7ADD6",
+    "bank": 30,
+    "cpu": "0xADD6",
+    "bytes": "2a74d1af",
+    "bytes_match_expected": true,
+    "category": "spawn_relative_to_camera",
+    "meaning": "X = camera X + 16-bit offset read from a data table, Y = camera Y + offset",
+    "owner_hint": "type $5C/$5D region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x79178",
+    "bank": 30,
+    "cpu": "0x9178",
+    "bytes": "2a76d111c000",
+    "bytes_match_expected": true,
+    "category": "camera_y_compare",
+    "meaning": "object Y compared with camera Y + $C0 (bottom of the 192-line screen)",
+    "owner_hint": "type $39/$3A region - mechanics not traced"
+   },
+   {
+    "rom_offset": "0x79580",
+    "bank": 30,
+    "cpu": "0x9580",
+    "bytes": "2a76d1227ed2",
+    "bytes_match_expected": true,
+    "category": "camera_limit_write",
+    "meaning": "bottom limit $D27E := camera Y (arena bottom lock)",
+    "owner_hint": "type $33/$40-$50 table region, state-4/5 tail (THZ3 boss, documented)"
+   },
+   {
+    "rom_offset": "0x32D9A",
+    "bank": 12,
+    "cpu": "0xAD9A",
+    "bytes": "dd6e1add661b",
+    "bytes_match_expected": true,
+    "category": "screen_x_compare",
+    "meaning": "screen X (16-bit) < $30 respawns the object at world X $C0+rand, Y $20+rand (frame of those writes UNRESOLVED)",
+    "owner_hint": "type $1C (bank $0C), not placed in THZ"
+   }
+  ],
+  "camera_vector_call_sites": {
+   "$0353 left-limit raise to camera ($59E3)": [
+    {
+     "rom_offset": "0x328C4",
+     "bank": 12,
+     "cpu": "0xA8C4"
+    },
+    {
+     "rom_offset": "0x78199",
+     "bank": 30,
+     "cpu": "0x8199"
+    }
+   ],
+   "$0356 right-limit lower to camera ($59F3)": [
+    {
+     "rom_offset": "0x79799",
+     "bank": 30,
+     "cpu": "0x9799"
+    }
+   ],
+   "$0359 pan on with target BC/DE ($59C5)": [
+    {
+     "rom_offset": "0x32A43",
+     "bank": 12,
+     "cpu": "0xAA43"
+    },
+    {
+     "rom_offset": "0x797FD",
+     "bank": 30,
+     "cpu": "0x97FD"
+    },
+    {
+     "rom_offset": "0x79AF3",
+     "bank": 30,
+     "cpu": "0x9AF3"
+    }
+   ],
+   "$035C pan off / enable follow ($59D8)": [
+    {
+     "rom_offset": "0x781D3",
+     "bank": 30,
+     "cpu": "0x81D3"
+    },
+    {
+     "rom_offset": "0x781F4",
+     "bank": 30,
+     "cpu": "0x81F4"
+    },
+    {
+     "rom_offset": "0x79D40",
+     "bank": 30,
+     "cpu": "0x9D40"
+    },
+    {
+     "rom_offset": "0x7B235",
+     "bank": 30,
+     "cpu": "0xB235"
+    },
+    {
+     "rom_offset": "0x7B92D",
+     "bank": 30,
+     "cpu": "0xB92D"
+    }
+   ],
+   "$0407 camera freeze + left limit := camera ($59B9)": [
+    {
+     "rom_offset": "0x303CB",
+     "bank": 12,
+     "cpu": "0x83CB"
+    }
+   ],
+   "$042B camera enable ($59B3)": [
+    {
+     "rom_offset": "0x79D43",
+     "bank": 30,
+     "cpu": "0x9D43"
+    }
+   ]
+  },
+  "type_state_table_pointers": {
+   "0x26": "0x8212",
+   "0x27": "0x8947",
+   "0x28": "0x8439",
+   "0x29": "0x8947",
+   "0x2A": "0x8947",
+   "0x2B": "0x8947",
+   "0x2C": "0x8947",
+   "0x2D": "0x8A45",
+   "0x2E": "0x8A45",
+   "0x2F": "0x8B1A",
+   "0x30": "0x8212",
+   "0x31": "0x9468",
+   "0x32": "0x94C6",
+   "0x33": "0x958B",
+   "0x34": "0x8BE1",
+   "0x35": "0x8D0C",
+   "0x36": "0x8DA3",
+   "0x37": "0x8E96",
+   "0x38": "0x8F61",
+   "0x39": "0x90E7",
+   "0x3A": "0x9190",
+   "0x3B": "0x91F1",
+   "0x3C": "0x91F1",
+   "0x3D": "0x9291",
+   "0x3E": "0x9379",
+   "0x3F": "0x8439",
+   "0x40": "0x958B",
+   "0x41": "0x958B",
+   "0x42": "0x958B",
+   "0x43": "0x958B",
+   "0x44": "0x958B",
+   "0x45": "0x958B",
+   "0x46": "0x958B",
+   "0x47": "0x958B",
+   "0x48": "0x958B",
+   "0x49": "0x958B",
+   "0x4A": "0x958B",
+   "0x4B": "0x958B",
+   "0x4C": "0x958B",
+   "0x4D": "0x958B",
+   "0x4E": "0x958B",
+   "0x4F": "0x958B",
+   "0x50": "0x958B",
+   "0x51": "0x9A3A",
+   "0x52": "0x9A3A",
+   "0x53": "0x9A3A",
+   "0x54": "0xA1DC",
+   "0x55": "0xA455",
+   "0x56": "0xA4C4",
+   "0x57": "0xA6D7",
+   "0x58": "0xA78A",
+   "0x59": "0xA7BA",
+   "0x5A": "0xAC08",
+   "0x5B": "0xAD2B",
+   "0x5C": "0xAD60",
+   "0x5D": "0xAED5",
+   "0x5E": "0xAF4C",
+   "0x5F": "0xB35D",
+   "0x60": "0xB559",
+   "0x61": "0xB949",
+   "0x62": "0xBB76",
+   "0x63": "0xBC23"
+  },
+  "placed_types_by_zone_act": {
+   "zone0_act0": {
+    "0x09": 24,
+    "0x10": 5,
+    "0x18": 1,
+    "0x1B": 4,
+    "0x21": 6,
+    "0x26": 4,
+    "0x27": 3,
+    "0x28": 6
+   },
+   "zone0_act1": {
+    "0x09": 13,
+    "0x10": 5,
+    "0x18": 1,
+    "0x21": 5,
+    "0x26": 10,
+    "0x27": 4,
+    "0x28": 3
+   },
+   "zone0_act2": {
+    "0x09": 3,
+    "0x10": 1,
+    "0x1B": 1,
+    "0x26": 4,
+    "0x50": 1
+   },
+   "zone1_act0": {
+    "0x09": 40,
+    "0x10": 4,
+    "0x18": 1,
+    "0x25": 5,
+    "0x26": 5,
+    "0x28": 2,
+    "0x2C": 4
+   },
+   "zone1_act1": {
+    "0x09": 30,
+    "0x10": 10,
+    "0x18": 1,
+    "0x1B": 1,
+    "0x25": 7,
+    "0x26": 7,
+    "0x28": 3,
+    "0x2C": 3
+   },
+   "zone1_act2": {
+    "0x09": 5,
+    "0x10": 2,
+    "0x28": 1,
+    "0x51": 1
+   },
+   "zone2_act0": {
+    "0x10": 6,
+    "0x18": 1,
+    "0x1B": 2,
+    "0x20": 4,
+    "0x23": 4,
+    "0x26": 9,
+    "0x28": 5,
+    "0x2F": 8
+   },
+   "zone2_act1": {
+    "0x10": 5,
+    "0x18": 1,
+    "0x1B": 2,
+    "0x20": 3,
+    "0x23": 4,
+    "0x26": 12,
+    "0x28": 2,
+    "0x2F": 4
+   },
+   "zone2_act2": {
+    "0x10": 2,
+    "0x26": 1,
+    "0x2F": 1,
+    "0x54": 1
+   },
+   "zone3_act0": {
+    "0x10": 4,
+    "0x18": 1,
+    "0x1B": 3,
+    "0x21": 6,
+    "0x24": 8,
+    "0x28": 11,
+    "0x2E": 1,
+    "0x2F": 1
+   },
+   "zone3_act1": {
+    "0x09": 6,
+    "0x10": 4,
+    "0x18": 1,
+    "0x1B": 4,
+    "0x21": 9,
+    "0x24": 4,
+    "0x28": 12,
+    "0x2E": 1,
+    "0x2F": 2
+   },
+   "zone3_act2": {
+    "0x28": 11,
+    "0x56": 1
+   },
+   "zone4_act0": {
+    "0x09": 5,
+    "0x0C": 1,
+    "0x10": 8,
+    "0x18": 1,
+    "0x30": 1,
+    "0x3C": 8,
+    "0x3D": 9,
+    "0x3F": 2
+   },
+   "zone4_act1": {
+    "0x09": 10,
+    "0x0C": 1,
+    "0x10": 4,
+    "0x18": 1,
+    "0x3C": 3,
+    "0x3D": 10,
+    "0x3F": 1
+   },
+   "zone4_act2": {
+    "0x10": 2,
+    "0x30": 1,
+    "0x59": 1
+   },
+   "zone5_act0": {
+    "0x10": 4,
+    "0x17": 2,
+    "0x18": 1,
+    "0x28": 4,
+    "0x2C": 1,
+    "0x36": 4,
+    "0x38": 3
+   },
+   "zone5_act1": {
+    "0x09": 6,
+    "0x10": 3,
+    "0x17": 2,
+    "0x18": 1,
+    "0x26": 2,
+    "0x28": 3,
+    "0x2C": 8,
+    "0x36": 6,
+    "0x38": 4
+   },
+   "zone5_act2": {
+    "0x17": 1,
+    "0x28": 2,
+    "0x5E": 1,
+    "0x60": 1
+   },
+   "zone6_act0": {
+    "0x09": 24,
+    "0x10": 5,
+    "0x18": 1,
+    "0x1B": 4,
+    "0x21": 6,
+    "0x26": 4,
+    "0x27": 3,
+    "0x28": 6
+   },
+   "zone6_act1": {
+    "0x09": 13,
+    "0x10": 5,
+    "0x18": 1,
+    "0x21": 5,
+    "0x26": 10,
+    "0x27": 4,
+    "0x28": 3
+   },
+   "zone6_act2": {
+    "0x09": 3,
+    "0x10": 1,
+    "0x1B": 1,
+    "0x26": 4,
+    "0x50": 1
+   },
+   "zone7_act0": {
+    "0x1F": 1
+   },
+   "zone7_act1": {
+    "0x1F": 1
+   },
+   "zone7_act2": {
+    "0x1F": 1
+   },
+   "zone8_act0": {
+    "0x10": 1,
+    "0x31": 1
+   },
+   "zone8_act1": {
+    "0x10": 1,
+    "0x31": 1
+   },
+   "zone8_act2": {
+    "0x10": 1,
+    "0x31": 1
+   }
+  },
+  "note": "Owner hints use the nearest preceding type state-table pointer in the same bank; they are a navigation aid, not a proof. Nothing in this list is claimed to be understood beyond the instruction semantics."
+ },
+ "constants": [
+  {
+   "system": "view",
+   "constant": "scroll window width 256",
+   "rom_address": "VDP init $1D2D (R0..R6)",
+   "raw_meaning": "name table 32 columns; the camera is the world X of screen column 0",
+   "coordinate_frame": "screen",
+   "class": "E",
+   "relationship_to_256px": "defines RIGHT = cam + 256",
+   "widescreen_implication": "every RIGHT-relative rule below is relative to the displayed width, not to 256",
+   "confidence": "high",
+   "evidence": "EMULATED ORIGINAL FRAME"
+  },
+  {
+   "system": "view",
+   "constant": "R0 = $26 (bit 5)",
+   "rom_address": "ROM $1D2D",
+   "raw_meaning": "left 8 px column masked by the VDP",
+   "coordinate_frame": "screen",
+   "class": "E",
+   "relationship_to_256px": "visible x = 8..255",
+   "widescreen_implication": "presentation only; no gameplay constant reads it",
+   "confidence": "medium",
+   "evidence": "EMULATED ORIGINAL FRAME"
+  },
+  {
+   "system": "camera",
+   "constant": "camera X $D174 / Y $D176",
+   "rom_address": "$4D3E, commit $0570",
+   "raw_meaning": "R8 = -(cam+1), R9 = (camY+17) mod 224; $D174 := $D284 at vblank",
+   "coordinate_frame": "world",
+   "class": "B",
+   "relationship_to_256px": "left edge = cam",
+   "widescreen_implication": "the left edge is the origin of every screen-relative value; a wide view extends RIGHT only",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "camera",
+   "constant": "follow lead 104 / 136 (pan mode 120)",
+   "rom_address": "$58E1..$58F3, init $5074",
+   "raw_meaning": "player screen X target: $68 facing right, $88 facing left, $78 while panning; slews 1 px/update",
+   "coordinate_frame": "screen (left origin)",
+   "class": "B",
+   "relationship_to_256px": "104 = centre-24, 136 = centre+8",
+   "widescreen_implication": "tuning of where the player sits; relation to the width is not proven (not forced by any other constant)",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "camera",
+   "constant": "dead zone +-8, max step 7",
+   "rom_address": "$590D/$5912, $5861..$5867, $587F..$5885",
+   "raw_meaning": "no scroll while player screen X in [lead-8, lead+8]; step capped at +7/-7 px per update",
+   "coordinate_frame": "screen offset / speed",
+   "class": "B",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "motion constants, independent of width",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "camera",
+   "constant": "pan speed 1 px/update per axis",
+   "rom_address": "$5964 INC DE, $597C DEC DE, $599F, $59A9",
+   "raw_meaning": "pan toward ($D2DA,$D2DC); X and Y simultaneous",
+   "coordinate_frame": "world",
+   "class": "B",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "POC provisional 4 px/update and absent Y pan are adapters, not ROM",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "camera",
+   "constant": "pan sets limits",
+   "rom_address": "$596D..$597A, $5985..$598F",
+   "raw_meaning": "moving right: $D282 := target; moving left: $D280 := target (not zone index 6)",
+   "coordinate_frame": "world",
+   "class": "B",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "pan target also becomes the lock",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "camera",
+   "constant": "limits left/top/right/bottom",
+   "rom_address": "act header +12/+14/+16/+18; table $5082",
+   "raw_meaning": "THZ: left 0, right = width-256 (exclusive), top 8, bottom = height-240",
+   "coordinate_frame": "world",
+   "class": "A",
+   "relationship_to_256px": "right = world width - 256",
+   "widescreen_implication": "right limit encodes the original window; a wider view needs worldWidth - viewWidth",
+   "confidence": "high",
+   "evidence": "DECODED DATA"
+  },
+  {
+   "system": "camera",
+   "constant": "right limit exclusive, left inclusive",
+   "rom_address": "$4CC5 (JR c), $4CE2 (JR nc)",
+   "raw_meaning": "camera in [left, right-1]; overshooting steps are dropped",
+   "coordinate_frame": "world",
+   "class": "B",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "camera settles at limit-1 (signX-129 in the sign pan)",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "camera",
+   "constant": "left lock / right lock",
+   "rom_address": "vectors $0353/$0356 -> $59E3/$59F3",
+   "raw_meaning": "$D280 := max($D280,cam); $D282 := min($D282,cam)",
+   "coordinate_frame": "world",
+   "class": "B",
+   "relationship_to_256px": "arena width = visible width",
+   "widescreen_implication": "a right lock at the camera makes the right screen edge the arena wall",
+   "confidence": "high",
+   "evidence": "SOURCE-TRACED BEHAVIOR"
+  },
+  {
+   "system": "player",
+   "constant": "left clamp 16",
+   "rom_address": "$4153 (LD BC,$10), $4156 (CP $10); copy at $428C/$428F",
+   "raw_meaning": "playerX < cam+16 -> X = cam+16 (minus this update's speed), X speed := 0",
+   "coordinate_frame": "camera-relative",
+   "class": "C",
+   "relationship_to_256px": "LEFT + 16 (= 8 masked + extent 8, interpretation)",
+   "widescreen_implication": "stays LEFT + 16",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "player",
+   "constant": "right clamp 247",
+   "rom_address": "$415B (LD BC,$F7), $415E (CP $F8); copy at $4294/$4297",
+   "raw_meaning": "low byte of (playerX-cam) >= $F8 -> X = cam+$F7",
+   "coordinate_frame": "camera-relative (8-bit)",
+   "class": "C",
+   "relationship_to_256px": "RIGHT - 9 (= 255 - extent 8, interpretation)",
+   "widescreen_implication": "must follow the displayed right edge or it is an invisible wall; low-byte compare breaks for d >= 256",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "player",
+   "constant": "state gate $29",
+   "rom_address": "$4144 (CP $29)",
+   "raw_meaning": "$4141 clamps only states < $29; state $20 (act-clear run) uses its own handler and is not clamped",
+   "coordinate_frame": "state",
+   "class": "F",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "\u2014",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "player",
+   "constant": "pit death screen Y >= $D8",
+   "rom_address": "$3C09 (CP $D8) at $3C06",
+   "raw_meaning": "player screen Y >= 216 sets $D293 bit 2",
+   "coordinate_frame": "screen Y",
+   "class": "C",
+   "relationship_to_256px": "vertical, not width",
+   "widescreen_implication": "unaffected by horizontal widening",
+   "confidence": "medium",
+   "evidence": "BYTE-VERIFIED ASSEMBLY"
+  },
+  {
+   "system": "act-clear",
+   "constant": "camera freeze d > $F8",
+   "rom_address": "$83C2 (LD DE,$00F8) .. $83CB (CALL $0407), bank $0C",
+   "raw_meaning": "playerX - cam >= 249: $D15E bit 7 cleared, $D280 := cam",
+   "coordinate_frame": "camera-relative 16-bit",
+   "class": "C",
+   "relationship_to_256px": "RIGHT - 7",
+   "widescreen_implication": "freeze the camera when the player passes RIGHT - 7",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "act-clear",
+   "constant": "clear threshold d >= $121",
+   "rom_address": "$83CF (LD HL,$0120) .. $83E7 (SET 5), bank $0C",
+   "raw_meaning": "(playerX - cam) as unsigned 16-bit > $120 sets $D293 bit 5 (act idx < 2) or bit 4",
+   "coordinate_frame": "camera-relative 16-bit",
+   "class": "C",
+   "relationship_to_256px": "RIGHT + 33 (exact; = 289)",
+   "widescreen_implication": "player anchor 33 px past the right edge; camera is frozen so it is also a fixed world X once the pan ended",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "act-clear",
+   "constant": "sign pan target (signX-$80, signY-$99)",
+   "rom_address": "$AA22..$AA47 (bank $0C), vector $0359",
+   "raw_meaning": "camera pans until the sign sits at screen X 128 / Y 153",
+   "coordinate_frame": "screen centre X, screen Y 153",
+   "class": "C",
+   "relationship_to_256px": "CENTRE (128); effective camera = target-1 because the right limit is exclusive",
+   "widescreen_implication": "centre the sign in the displayed width: cam = signX - view/2 (-1)",
+   "confidence": "high",
+   "evidence": "EMULATED ORIGINAL FRAME"
+  },
+  {
+   "system": "act-clear",
+   "constant": "child $19 X = cam+$104 -> cam+$85, Y = camY+$50",
+   "rom_address": "$AA87.., $AAE4.. (bank $0C)",
+   "raw_meaning": "spawns at RIGHT + 4, slides left 8 px/update to CENTRE + 5",
+   "coordinate_frame": "screen",
+   "class": "E",
+   "relationship_to_256px": "RIGHT + 4 / CENTRE + 5",
+   "widescreen_implication": "screen-anchored HUD-like banner: express as RIGHT and CENTRE offsets",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "lifecycle",
+   "constant": "active band [-32, 288)",
+   "rom_address": "$61E1, map ROM $70146 (bank 1C $8146)",
+   "raw_meaning": "cells 0/1: bit 6 clear (updates run, SAT eligible)",
+   "coordinate_frame": "camera-relative",
+   "class": "D",
+   "relationship_to_256px": "LEFT - 32 .. RIGHT + 32 (map cell 0 = exactly [0,256))",
+   "widescreen_implication": "wake boundary is RIGHT + 32 of the displayed width",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "lifecycle",
+   "constant": "asleep ring [-96,-32) and [288,352)",
+   "rom_address": "$61E1",
+   "raw_meaning": "cell 2: alive, bit 6 set, no updates",
+   "coordinate_frame": "camera-relative",
+   "class": "D",
+   "relationship_to_256px": "RIGHT + 32 .. RIGHT + 96",
+   "widescreen_implication": "create/sleep ring follows the displayed edges",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "lifecycle",
+   "constant": "deletion beyond -96 / +352 (window [-128,384))",
+   "rom_address": "$61E1: $61EB/$6209 (LD BC,$0080), $61F9 SRL, $624C",
+   "raw_meaning": "cell 3 or outside the 512-px window: type $FE (tracked) / $FF unless +$04 bit 1",
+   "coordinate_frame": "camera-relative",
+   "class": "D",
+   "relationship_to_256px": "LEFT - 96 / RIGHT + 96",
+   "widescreen_implication": "window is 2 x 256 wide because an 8-bit byte holds (d+128)/2: structural limit",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "lifecycle",
+   "constant": "vertical bands",
+   "rom_address": "$61E1",
+   "raw_meaning": "same bands on camera Y: cell 0 = [0,256) although the screen is 192 lines",
+   "coordinate_frame": "camera-relative Y",
+   "class": "D",
+   "relationship_to_256px": "vertical window 256 tall",
+   "widescreen_implication": "vertical unchanged by horizontal widening",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "lifecycle",
+   "constant": "creation: cell 2 only (cells 0/1 only at initial fill)",
+   "rom_address": "$8021/$802A (offset $FF80), $8099 (CP 2), $809D (CP 3), $80A2 (LD A,($D440))",
+   "raw_meaning": "steady scrolling creates objects in the outer ring RIGHT+32..+96 / LEFT-96..-32",
+   "coordinate_frame": "camera-relative",
+   "class": "D",
+   "relationship_to_256px": "RIGHT + 32 .. RIGHT + 96",
+   "widescreen_implication": "creation ring must sit outside the displayed width or objects pop in",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "lifecycle",
+   "constant": "scan period 4 updates",
+   "rom_address": "$16D9 (CP 4)",
+   "raw_meaning": "placement scan every 4th object update",
+   "coordinate_frame": "time",
+   "class": "B",
+   "relationship_to_256px": "28 px max camera travel per scan < 64 px ring",
+   "widescreen_implication": "ring width must exceed 4 x max camera speed",
+   "confidence": "high",
+   "evidence": "SOURCE-TRACED BEHAVIOR"
+  },
+  {
+   "system": "lifecycle",
+   "constant": "spawn/despawn tested on the anchor only",
+   "rom_address": "$61EE..$6217",
+   "raw_meaning": "single point (anchor X,Y), not sprite extents",
+   "coordinate_frame": "world anchor",
+   "class": "D",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "sprite size is not part of the window",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "type $27",
+   "constant": "proximity |dx| < 64",
+   "rom_address": "$89BF (LD BC,$0040), call $89C2 -> $0383",
+   "raw_meaning": "state 1 -> 2 when the post-move anchor is within 63 px of the player",
+   "coordinate_frame": "player-relative world distance",
+   "class": "G",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "unchanged by the view",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "type $27",
+   "constant": "removal |dx| >= 384 (state 3)",
+   "rom_address": "$8A29 (LD BC,$0180), call $8A2C -> $0383",
+   "raw_meaning": "type $FE when 384 px or more from the player",
+   "coordinate_frame": "player-relative world distance",
+   "class": "G",
+   "relationship_to_256px": "384 is NOT derived from the view: it is player-relative; it equals the window's right extent only numerically",
+   "widescreen_implication": "keep as player distance; it exceeds any visible offset from the player (<= 255 left of the camera origin)",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "type $28",
+   "constant": "persistence radius 640 x 672",
+   "rom_address": "$8908 (BC=$0280/$02A0)",
+   "raw_meaning": "with keep-alive bit 1: removed when |dx| >= 640 or |dy| >= 672 from the player",
+   "coordinate_frame": "player-relative world distance",
+   "class": "G",
+   "relationship_to_256px": "2.5 x 256 numerically only",
+   "widescreen_implication": "player distance, unaffected",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "type $26 / $09 / $10 / $21",
+   "constant": "contact / proximity",
+   "rom_address": "per object docs",
+   "raw_meaning": "bespoke player proximity or shared overlap $6328",
+   "coordinate_frame": "player-relative",
+   "class": "G",
+   "relationship_to_256px": "none",
+   "widescreen_implication": "none",
+   "confidence": "high",
+   "evidence": "see object docs"
+  },
+  {
+   "system": "type $50",
+   "constant": "trigger |dx|<160, |dy|<256",
+   "rom_address": "$9771..$9799, table $97A1 (bank $1E)",
+   "raw_meaning": "boss starts when the player is within 160 px horizontally",
+   "coordinate_frame": "player-relative world distance",
+   "class": "G",
+   "relationship_to_256px": "160 = 128 + 32 numerically",
+   "widescreen_implication": "player distance",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "type $50",
+   "constant": "pan target boss + (-256, -160)",
+   "rom_address": "$9808 table row 0",
+   "raw_meaning": "boss anchor sits at screen X 256 (= RIGHT edge) when the arena camera arrives",
+   "coordinate_frame": "anchor-relative",
+   "class": "C",
+   "relationship_to_256px": "RIGHT (zone 0). Rows 1..5: 192, 224, 208, 128, 128 (users untraced)",
+   "widescreen_implication": "a boss that 'enters at the right edge' needs RIGHT = displayed width, but its patrol below is fixed on the locked camera",
+   "confidence": "high",
+   "evidence": "SOURCE-TRACED BEHAVIOR"
+  },
+  {
+   "system": "type $50",
+   "constant": "patrol turn at screen X $38 / $C8; patrol entry $80..$DF",
+   "rom_address": "$9878, $9884, $9A0F",
+   "raw_meaning": "low byte of (anchor - camera) with the camera locked at 1679",
+   "coordinate_frame": "camera-relative, camera locked",
+   "class": "B",
+   "relationship_to_256px": "left-origin; equals a fixed world interval while the camera is locked",
+   "widescreen_implication": "arena positions are world-fixed; keep the locked camera's left edge or convert via the lock value",
+   "confidence": "high",
+   "evidence": "CONTROLLED ROUTINE RESULT"
+  },
+  {
+   "system": "type $50",
+   "constant": "arena locks",
+   "rom_address": "$8199 call $0353, $81D3 call $035C, $D282 saved/restored",
+   "raw_meaning": "left limit raised to the camera, right limit lowered to the camera",
+   "coordinate_frame": "camera lock",
+   "class": "B",
+   "relationship_to_256px": "arena = displayed window",
+   "widescreen_implication": "locked arena width follows the displayed width",
+   "confidence": "high",
+   "evidence": "SOURCE-TRACED BEHAVIOR"
+  },
+  {
+   "system": "generic",
+   "constant": "screen X low-byte compares",
+   "rom_address": "see future sites",
+   "raw_meaning": "8-bit compares on (anchor - camera)",
+   "coordinate_frame": "camera-relative 8-bit",
+   "class": "C",
+   "relationship_to_256px": "assume 0..255",
+   "widescreen_implication": "8-bit wrap hazard; use full-width integer screen X",
+   "confidence": "medium",
+   "evidence": "SOURCE-TRACED BEHAVIOR"
+  }
+ ],
+ "object_types": [
+  {
+   "type": "$09",
+   "viewport_relevant_tests": [
+    "lifecycle window ($61E1, $8000)",
+    "bespoke player proximity for collection"
+   ],
+   "classes": [
+    "D",
+    "G"
+   ],
+   "widescreen_adaptation": "generic lifecycle only (shared adapter)",
+   "evidence": "SOURCE-TRACED + CONTROLLED"
+  },
+  {
+   "type": "$10",
+   "viewport_relevant_tests": [
+    "lifecycle window",
+    "shared overlap $6328 against the player"
+   ],
+   "classes": [
+    "D",
+    "G"
+   ],
+   "widescreen_adaptation": "generic lifecycle only",
+   "evidence": "SOURCE-TRACED + CONTROLLED"
+  },
+  {
+   "type": "$18",
+   "viewport_relevant_tests": [
+    "state 1 waits for bit 6 clear (active band)",
+    "left lock $0353 each gated update",
+    "pan target (signX-$80, signY-$99)",
+    "contact box is world-space"
+   ],
+   "classes": [
+    "D",
+    "B",
+    "C",
+    "A"
+   ],
+   "widescreen_adaptation": "yes: sign pan target = CENTRE of the displayed width (cam = signX - view/2, then -1 from the exclusive limit); lifecycle generic",
+   "evidence": "CONTROLLED + EMULATED"
+  },
+  {
+   "type": "$19",
+   "viewport_relevant_tests": [
+    "X = cam + $104 -> cam + $85, Y = camY + $50"
+   ],
+   "classes": [
+    "C",
+    "E"
+   ],
+   "widescreen_adaptation": "yes: express as RIGHT + 4 and CENTRE + 5 (screen-anchored banner)",
+   "evidence": "CONTROLLED"
+  },
+  {
+   "type": "player state $20",
+   "viewport_relevant_tests": [
+    "camera freeze at d > $F8",
+    "flag at d > $120 (= RIGHT + 33)",
+    "no edge clamp in this state"
+   ],
+   "classes": [
+    "C",
+    "B"
+   ],
+   "widescreen_adaptation": "yes: RIGHT + 33 (already adopted by the POC); freeze at RIGHT - 7",
+   "evidence": "CONTROLLED + EMULATED"
+  },
+  {
+   "type": "$21",
+   "viewport_relevant_tests": [
+    "lifecycle window",
+    "world-space patrol and contact"
+   ],
+   "classes": [
+    "D",
+    "A"
+   ],
+   "widescreen_adaptation": "generic lifecycle only",
+   "evidence": "SOURCE-TRACED + CONTROLLED"
+  },
+  {
+   "type": "$26",
+   "viewport_relevant_tests": [
+    "lifecycle window",
+    "bespoke player proximity (|dx| < 12 in $82C9)"
+   ],
+   "classes": [
+    "D",
+    "G"
+   ],
+   "widescreen_adaptation": "generic lifecycle only",
+   "evidence": "SOURCE-TRACED"
+  },
+  {
+   "type": "$27",
+   "viewport_relevant_tests": [
+    "create ring RIGHT+32..+96 and wake at RIGHT+32 (generic)",
+    "|dx| < 64 trigger and |dx| >= 384 removal against the player"
+   ],
+   "classes": [
+    "D",
+    "G"
+   ],
+   "widescreen_adaptation": "yes, through the generic lifecycle adapter only: wake/creation rings at RIGHT + 32 / +96 of the displayed width; canonical placement, trigger 64 and removal 384 unchanged",
+   "evidence": "CONTROLLED + EMULATED"
+  },
+  {
+   "type": "$28",
+   "viewport_relevant_tests": [
+    "lifecycle window",
+    "persistence radius 640 x 672 from the player when bit 1 set"
+   ],
+   "classes": [
+    "D",
+    "G"
+   ],
+   "widescreen_adaptation": "generic lifecycle only",
+   "evidence": "CONTROLLED"
+  },
+  {
+   "type": "$50",
+   "viewport_relevant_tests": [
+    "trigger |dx|<160 from the player",
+    "pan target boss + (-256,-160): boss anchor at the RIGHT edge",
+    "patrol/entry thresholds on screen X ($38, $C8, $80..$DF) with the camera locked",
+    "left/right locks to the camera (arena = displayed window)"
+   ],
+   "classes": [
+    "G",
+    "C",
+    "B"
+   ],
+   "widescreen_adaptation": "yes (boss, later task): arena camera lock and the 'enters at RIGHT' relation must be expressed once; the patrol thresholds are world-fixed while the camera is locked",
+   "evidence": "SOURCE-TRACED + CONTROLLED + EMULATED"
+  }
+ ],
+ "unresolved": [
+  "Whether the follow leads 104/136 were tuned to the 256-px width or are independent preferences; no ROM relation beyond the numbers.",
+  "Whether the player clamp literals 16 and 247 are intentionally mask(8)+extent(8) and 255-extent(8); the code uses literals, not extents.",
+  "Which boss types use pan-table rows 1..5 and trigger-table rows 1..5 (the table exists for zones 0..6; only zone 0 / type $50 is exercised).",
+  "Mechanics of the screen-relative sites in other zones' boss/object code (FUTURE_SITES); only instruction semantics are recorded.",
+  "Type $1C: writes absolute world X $C0..$DF / Y $20..$9F when screen X < $30; its coordinate frame and use are not traced.",
+  "Level-end camera relationship for zones 7/8 (special stages: right limits 7936/16128, bottom 16) not traced.",
+  "How the vertical constants (bottom limit = height - 240, bands 256 tall, pit death screen Y $D8) relate to 192/224/240-line modes.",
+  "Second camera-release step in the act-clear chain and what $0407 (freeze) does to follow after the results screen: the engine state is cleared by $4FCE.",
+  "Behaviour of $27 contact reach and POC-side widescreen choices are outside this audit."
+ ],
+ "static_only": false,
+ "lifetime_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$61E1 (bank $1C map)",
+  "cases": 72072,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "edge_samples": [
+   {
+    "camera_x": 0,
+    "by_screen_relative_x": {
+     "-97": {
+      "type": "0xFE",
+      "bit6": 1
+     },
+     "-96": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "-33": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "-32": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "-1": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "0": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "255": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "256": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "287": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "288": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "351": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "352": {
+      "type": "0xFE",
+      "bit6": 1
+     }
+    }
+   },
+   {
+    "camera_x": 1000,
+    "by_screen_relative_x": {
+     "-97": {
+      "type": "0xFE",
+      "bit6": 1
+     },
+     "-96": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "-33": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "-32": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "-1": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "0": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "255": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "256": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "287": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "288": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "351": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "352": {
+      "type": "0xFE",
+      "bit6": 1
+     }
+    }
+   },
+   {
+    "camera_x": 3831,
+    "by_screen_relative_x": {
+     "-97": {
+      "type": "0xFE",
+      "bit6": 1
+     },
+     "-96": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "-33": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "-32": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "-1": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "0": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "255": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "256": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "287": {
+      "type": "0x27",
+      "bit6": 0
+     },
+     "288": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "351": {
+      "type": "0x27",
+      "bit6": 1
+     },
+     "352": {
+      "type": "0xFE",
+      "bit6": 1
+     }
+    }
+   }
+  ],
+  "rule": "cell = max(band(x-cam), band(y-camY)); cells 0/1 active; 2 asleep (bit 6 set); 3 or outside [-128,384) removed ($FE with placement token, $FF without) unless +$04 bit 1 keeps it asleep"
+ },
+ "placement_scan_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$8000 (bank $1C)",
+  "cases": 2048,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "record_pool_capacity": 11,
+  "type_27_thz1": [
+   {
+    "record_index": 23,
+    "world_x": 3504,
+    "world_y": 224,
+    "steady_state_creation_camera_x": [
+     3153,
+     3600
+    ],
+    "creation_screen_relative_x": [
+     -96,
+     351
+    ],
+    "active_camera_x": [
+     3217,
+     3536
+    ],
+    "active_screen_relative_x": [
+     -32,
+     287
+    ]
+   },
+   {
+    "record_index": 24,
+    "world_x": 2288,
+    "world_y": 768,
+    "steady_state_creation_camera_x": [
+     1937,
+     2384
+    ],
+    "creation_screen_relative_x": [
+     -96,
+     351
+    ],
+    "active_camera_x": [
+     2001,
+     2320
+    ],
+    "active_screen_relative_x": [
+     -32,
+     287
+    ]
+   },
+   {
+    "record_index": 25,
+    "world_x": 2240,
+    "world_y": 112,
+    "steady_state_creation_camera_x": [
+     1889,
+     2336
+    ],
+    "creation_screen_relative_x": [
+     -96,
+     351
+    ],
+    "active_camera_x": [
+     1953,
+     2272
+    ],
+    "active_screen_relative_x": [
+     -32,
+     287
+    ]
+   }
+  ],
+  "rule": "created iff occupancy byte is 0 and (cell == 2, or cell <= 1 while $D440 == 0 [initial fill]); record X/Y are stored world+256, so the test is (storedX-256-cam, storedY-256-camY); at most 11 slots; the scan runs once per 4 object updates"
+ },
+ "camera_follow_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$5832 / $58E1",
+  "cases": 2048,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "lead_right_facing": 104,
+  "lead_left_facing": 136,
+  "lead_in_pan_mode": 120,
+  "dead_zone_half_width": 8,
+  "player_screen_x_dead_zone_right_facing": [
+   96,
+   112
+  ],
+  "player_screen_x_dead_zone_left_facing": [
+   128,
+   144
+  ],
+  "max_step_right": 7,
+  "max_step_left": -7,
+  "left_step_quirk": "a step of exactly -8 is kept (A-B = $F8 passes the clamp), -9 and below become -7",
+  "slew": {
+   "facing_changed_to_left_lead_sequence_first_5_last_2": [
+    105,
+    106,
+    107,
+    108,
+    109,
+    136,
+    136
+   ],
+   "updates_to_settle": 32
+  },
+  "rule": "k = low byte of (playerX - $D284). k in [lead-8, lead+8] -> no scroll; k >= lead+8: +min(7, k-(lead+8)); k < lead-8: max(-7, k-(lead-8)) (exactly -8 allowed); the new target is $D174 + step"
+ },
+ "camera_pan_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$5956 (pan branch of $5832)",
+  "cases": 900,
+  "mismatches": 0,
+  "x_speed_px_per_update": 1,
+  "y_speed_px_per_update": 1,
+  "axes_independent_and_simultaneous": true,
+  "right_pan_lowers_right_limit_to_target": {
+   "x_step": 1,
+   "y_step": -1,
+   "limit_left": 0,
+   "limit_right": 3832
+  },
+  "left_pan_raises_left_limit_to_target": {
+   "x_step": -1,
+   "y_step": 1,
+   "limit_left": 3832,
+   "limit_right": 20000
+  },
+  "zone_6_does_not_move_limits": {
+   "x_step": 1,
+   "y_step": -1,
+   "limit_left": 0,
+   "limit_right": 20000
+  },
+  "rule": "each update: X += sign(targetX - camX), Y += sign(targetY - camY); moving right sets $D282 := targetX, moving left sets $D280 := targetX (not in zone index 6); pan mode ($D15F bit 0) persists after arrival and disables the follow routine"
+ },
+ "camera_limit_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$4CB0",
+  "cases": 114,
+  "mismatches": 0,
+  "left_limit": "inclusive: camera >= $D280",
+  "right_limit": "EXCLUSIVE: camera < $D282, so the camera stops at $D282-1",
+  "overshoot_behaviour": "a step that would cross the limit is dropped entirely (the camera does not slide to the limit)",
+  "consequence_for_sign_pan": "pan target X = signX-$80 sets $D282 to the same value, hence the camera settles at signX-$81"
+ },
+ "player_edge_clamp_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routines": "$4281, $4141",
+  "cases": 11264,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "bounds_relative_to_camera": {
+   "left_snap": 16,
+   "right_snap": 247,
+   "left_triggers_below": 16,
+   "right_triggers_from": 248
+  },
+  "velocity_compensation_samples": [
+   {
+    "vx_88": 256,
+    "x_after_minus_cam": 246,
+    "fraction_byte": 0,
+    "vx_after": 0
+   },
+   {
+    "vx_88": 384,
+    "x_after_minus_cam": 245,
+    "fraction_byte": 128,
+    "vx_after": 0
+   },
+   {
+    "vx_88": 1536,
+    "x_after_minus_cam": 241,
+    "fraction_byte": 0,
+    "vx_after": 0
+   },
+   {
+    "vx_88": 65152,
+    "x_after_minus_cam": 248,
+    "fraction_byte": 128,
+    "vx_after": 0
+   }
+  ],
+  "low_byte_wrap_samples": [
+   {
+    "d": 261,
+    "x_after_minus_cam": 16
+   },
+   {
+    "d": 356,
+    "x_after_minus_cam": 356
+   },
+   {
+    "d": 506,
+    "x_after_minus_cam": 247
+   }
+  ],
+  "state_gate_x_minus_cam_for_d5": {
+   "0x00": 16,
+   "0x01": 16,
+   "0x1D": 16,
+   "0x20": 16,
+   "0x28": 16,
+   "0x29": 5,
+   "0x2A": 5,
+   "0x30": 5
+  },
+  "rule": "e = low byte of (playerX - cam); e < $10 -> X = cam + $10; e >= $F8 -> X = cam + $F7; the snapped position is reduced by this update's X speed (8.8) and X speed is cleared; states >= $29 are not clamped by $4141. Player extents are NOT read."
+ },
+ "state20_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$83A6 (bank $0C)",
+  "cases": 528,
+  "mismatches": 0,
+  "first_mismatch": null,
+  "samples_camera_3831": [
+   {
+    "d": 247,
+    "flag": false,
+    "camera_frozen": false
+   },
+   {
+    "d": 248,
+    "flag": false,
+    "camera_frozen": false
+   },
+   {
+    "d": 249,
+    "flag": false,
+    "camera_frozen": true
+   },
+   {
+    "d": 287,
+    "flag": false,
+    "camera_frozen": true
+   },
+   {
+    "d": 288,
+    "flag": false,
+    "camera_frozen": true
+   },
+   {
+    "d": 289,
+    "flag": true,
+    "camera_frozen": true
+   },
+   {
+    "d": 290,
+    "flag": true,
+    "camera_frozen": true
+   },
+   {
+    "d": 512,
+    "flag": true,
+    "camera_frozen": true
+   }
+  ],
+  "rule": "d = (playerX - cameraX) as unsigned 16-bit: d > $F8 clears $D15E bit 7 and sets $D280 := camera (camera frozen); d > $120 (d >= $121 = 289 = RIGHT + 33) sets $D293 bit 5 (act index < 2) / bit 4; the 16-bit compare (unlike the clamp) allows d >= 256"
+ },
+ "child19_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "type $19 states 0/1 ($AA87/$AAE4)",
+  "cases": 12,
+  "mismatches": 0,
+  "rows": [
+   {
+    "camera": [
+     0,
+     0
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     0,
+     405
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     0,
+     700
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     1000,
+     0
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     1000,
+     405
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     1000,
+     700
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     3832,
+     0
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     3832,
+     405
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     3832,
+     700
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     5000,
+     0
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     5000,
+     405
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   },
+   {
+    "camera": [
+     5000,
+     700
+    ],
+    "x_minus_cam_after_first_update": 260,
+    "y_minus_camy": 80,
+    "state2_first_x_minus_cam": 132
+   }
+  ],
+  "rule": "created at X = cam + $104 (RIGHT + 4), Y = camY + $50; state 1 subtracts 8 per update until X <= cam + $85 (centre + 5); every term is relative to the camera at that update"
+ },
+ "player_distance_fixture": {
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "routine": "$61A5/$61B1 (vectors $0383/$0386), $8908",
+  "cases": 1980,
+  "mismatches": 0,
+  "helper_rule": "returns $FF iff |object - player| < BC (strict); independent of the camera for every camera swept",
+  "type_28_cases": 36,
+  "type_28_mismatches": 0,
+  "type_28_samples_camera_0": [
+   {
+    "dx": 0,
+    "dy": 0,
+    "removed": false
+   },
+   {
+    "dx": 639,
+    "dy": 0,
+    "removed": false
+   },
+   {
+    "dx": 640,
+    "dy": 0,
+    "removed": true
+   },
+   {
+    "dx": 641,
+    "dy": 0,
+    "removed": true
+   },
+   {
+    "dx": 0,
+    "dy": 671,
+    "removed": false
+   },
+   {
+    "dx": 0,
+    "dy": 672,
+    "removed": true
+   },
+   {
+    "dx": 0,
+    "dy": 673,
+    "removed": true
+   },
+   {
+    "dx": -639,
+    "dy": 0,
+    "removed": false
+   },
+   {
+    "dx": -640,
+    "dy": 0,
+    "removed": true
+   },
+   {
+    "dx": -641,
+    "dy": 0,
+    "removed": true
+   },
+   {
+    "dx": 0,
+    "dy": -671,
+    "removed": false
+   },
+   {
+    "dx": 0,
+    "dy": -672,
+    "removed": true
+   }
+  ],
+  "type_28_removal_without_keepalive_bit": false,
+  "type_28_rule": "with +$04 bit 1 set: removed (type $FE) when |dx| >= $280 (640) or |dy| >= $2A0 (672) from the player"
+ },
+ "emulated_act_clear_camera": {
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "method": "original ROM booted in tools/sms_frame_harness.py, camera/player placed at the stated start, RIGHT held until $D293 bit 4/5; frames counted from sign contact",
+  "runs": [
+   {
+    "act_index": 0,
+    "start_camera_x": 3700,
+    "start_player_x": 3800,
+    "contact_camera": [
+     3825,
+     446
+    ],
+    "pan_target": [
+     3832,
+     405
+    ],
+    "final_camera": [
+     3831,
+     405
+    ],
+    "pan_x_complete_rel": 6,
+    "pan_y_complete_rel": 41,
+    "camera_x_moves_after_pan": false,
+    "camera_y_total_move": 41,
+    "camera_x_total_move": 6,
+    "right_limit_at_contact_and_end": [
+     3840,
+     3832
+    ],
+    "left_limit_end": 3831,
+    "sign_screen_x_final": 129,
+    "sign_screen_y_final": 153,
+    "player_held_right_screen_x_min_max": [
+     239,
+     251
+    ],
+    "state20_starts_rel": 280,
+    "camera_frozen_rel": 283,
+    "flag_rel": 310,
+    "player_x_at_flag": 4120,
+    "d_at_flag": 289,
+    "flag_value": 96,
+    "player_x_minus_sign_x_at_flag": 160
+   },
+   {
+    "act_index": 1,
+    "start_camera_x": 3700,
+    "start_player_x": 3800,
+    "contact_camera": [
+     3825,
+     542
+    ],
+    "pan_target": [
+     3832,
+     501
+    ],
+    "final_camera": [
+     3831,
+     501
+    ],
+    "pan_x_complete_rel": 7,
+    "pan_y_complete_rel": 42,
+    "camera_x_moves_after_pan": false,
+    "camera_y_total_move": 41,
+    "camera_x_total_move": 6,
+    "right_limit_at_contact_and_end": [
+     3840,
+     3832
+    ],
+    "left_limit_end": 3831,
+    "sign_screen_x_final": 129,
+    "sign_screen_y_final": 153,
+    "player_held_right_screen_x_min_max": [
+     235,
+     251
+    ],
+    "state20_starts_rel": 281,
+    "camera_frozen_rel": 284,
+    "flag_rel": 311,
+    "player_x_at_flag": 4120,
+    "d_at_flag": 289,
+    "flag_value": 96,
+    "player_x_minus_sign_x_at_flag": 160
+   },
+   {
+    "act_index": 0,
+    "start_camera_x": 3760,
+    "start_player_x": 3850,
+    "contact_camera": [
+     3826,
+     446
+    ],
+    "pan_target": [
+     3832,
+     405
+    ],
+    "final_camera": [
+     3831,
+     405
+    ],
+    "pan_x_complete_rel": 5,
+    "pan_y_complete_rel": 41,
+    "camera_x_moves_after_pan": false,
+    "camera_y_total_move": 41,
+    "camera_x_total_move": 5,
+    "right_limit_at_contact_and_end": [
+     3840,
+     3832
+    ],
+    "left_limit_end": 3831,
+    "sign_screen_x_final": 129,
+    "sign_screen_y_final": 153,
+    "player_held_right_screen_x_min_max": [
+     239,
+     251
+    ],
+    "state20_starts_rel": 280,
+    "camera_frozen_rel": 283,
+    "flag_rel": 310,
+    "player_x_at_flag": 4120,
+    "d_at_flag": 289,
+    "flag_value": 96,
+    "player_x_minus_sign_x_at_flag": 160
+   }
+  ]
+ },
+ "emulated_bee_scroll": {
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "method": "camera and player placed by the script every frame (camera scrolls right at a fixed rate, player at camera+104), THZ1 type $27 record (3504,224) in an otherwise untouched game",
+  "runs": [
+   {
+    "camera_step_per_frame": 1,
+    "created": {
+     "camera_x": 3153,
+     "screen_x": 351
+    },
+    "awake": {
+     "camera_x": 3217,
+     "screen_x": 287
+    },
+    "first_moved": {
+     "camera_x": 3218,
+     "screen_x": 283,
+     "x": 3501
+    }
+   },
+   {
+    "camera_step_per_frame": 2,
+    "created": {
+     "camera_x": 3154,
+     "screen_x": 350
+    },
+    "awake": {
+     "camera_x": 3218,
+     "screen_x": 286
+    },
+    "first_moved": {
+     "camera_x": 3220,
+     "screen_x": 281,
+     "x": 3501
+    }
+   },
+   {
+    "camera_step_per_frame": 3,
+    "created": {
+     "camera_x": 3155,
+     "screen_x": 349
+    },
+    "awake": {
+     "camera_x": 3218,
+     "screen_x": 286
+    },
+    "first_moved": {
+     "camera_x": 3221,
+     "screen_x": 280,
+     "x": 3501
+    }
+   }
+  ],
+  "expected_from_model": {
+   "creation_screen_x_range": [
+    288,
+    351
+   ],
+   "awake_screen_x_range": [
+    0,
+    287
+   ]
+  }
+ },
+ "emulated_vdp": {
+  "evidence": "EMULATED ORIGINAL FRAME (VDP register state written by the original code)",
+  "registers_seen_during_150_gameplay_frames": [
+   [
+    "0x26",
+    "0xE2",
+    "0xFF",
+    "0xFB",
+    "0x00",
+    "0xFF"
+   ]
+  ],
+  "r8_equals_neg_cam_plus_1": true,
+  "r9_equals_camy_plus_17_mod_224": true,
+  "r0_bit5_left_column_mask": true,
+  "note": "R0 = $26 has bit 5 set. By SMS VDP documentation that masks screen column 0..7 with the backdrop colour, so the visible window is x = 8..255 of the 256-px scroll window. The mask is a hardware semantic of the register value, not measured on pixels here."
+ }
+}

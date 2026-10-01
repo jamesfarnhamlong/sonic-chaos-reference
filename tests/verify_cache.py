@@ -18,6 +18,7 @@ import mapped_object_registration as registration
 import object_50
 import object_18
 import collision_geometry
+import viewport_semantics
 
 
 def main(rom_path):
@@ -87,6 +88,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/collision-geometry.json").read_text(encoding="utf-8")
     )
     assert stored_geometry == json.loads(json.dumps(collision_geometry.build(rom)))
+    # Viewport-semantics audit: static tables, sweeps and emulated runs are regenerated (~25 s).
+    stored_viewport = json.loads(
+        (ROOT / "data/rom-cache/viewport-semantics.json").read_text(encoding="utf-8")
+    )
+    assert stored_viewport == json.loads(json.dumps(viewport_semantics.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
@@ -98,7 +104,7 @@ def main(rom_path):
     assert sum(r["decoded_kind"] is not None for r in records) == 14
     print(
         "ROM cache: 53 records, 14 decoded placements, 17 terrain interactions, "
-        "142 rings; type-$09/$10/$21, final closure, coverage, player-$11 graphics, background metadata, THZ3 type-$50, type-$18 act-clear and collision-geometry studies deterministic"
+        "142 rings; type-$09/$10/$21, final closure, coverage, player-$11 graphics, background metadata, THZ3 type-$50, type-$18 act-clear, collision-geometry and viewport-semantics studies deterministic"
     )
 
 

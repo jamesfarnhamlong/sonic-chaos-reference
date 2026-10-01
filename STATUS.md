@@ -66,6 +66,16 @@ Branch `research/collision-geometry-audit`. Primary study: `docs/collision-geome
 - `$6328` and `$5FA0` are reproduced exactly (62,400 and 20,000 controlled cases, 0 mismatches). Terrain (`+18` foot, side probes -9/+9 at -12) never uses the extents.
 - Research fixtures that used 9x18 are TEST-ONLY discrepancies (type `$10` boundary table is the only one with wrong expectations); the POC uses sprite masks, with CRITICAL differences for rings, monitors and the goal-sign adapter.
 
+### Viewport-relative semantics audit: COMPLETE (awaiting review)
+
+Branch `research/viewport-semantics-audit`. Primary study: `docs/viewport-semantics-audit.md`; data:
+`data/rom-cache/viewport-semantics.json`; tool/tests: `tools/viewport_semantics.py`, `tests/test_viewport_semantics.py`.
+
+- `$20` / `$121` is `RIGHT + 33` exactly, with the camera already fixed (pan 1 px/update per axis to `(signX-$80, signY-$99)`, settled at `signX-129` because the right limit is exclusive, frozen at `d > $F8`).
+- Lifetime and placement share one 32x32 map: cell = `max(band(dx), band(dy))`, bands 32/64/32 px around the original `[0,256)` window; steady-state creation only in the outer ring.
+- Player edge clamp `[cam+16, cam+247]` uses the low byte of `playerX - cam` (wraps for `d >= 256`).
+- 384 is two unrelated values: the lifetime window bound and a player-distance radius for `$27`.
+
 ### THZ1/THZ2 type `$18` goal sign and act-clear chain: COMPLETE
 
 Branch `research/object-18-act-clear`. Primary study: `docs/object-18-act-clear.md`; data:
