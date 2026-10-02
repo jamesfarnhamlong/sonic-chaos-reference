@@ -1,0 +1,2542 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_only": true,
+ "poc_untouched": true,
+ "machine_facing_label": "powerup_shoes",
+ "evidence": [
+  "DECODED DATA",
+  "BYTE-VERIFIED ASSEMBLY",
+  "SOURCE-TRACED",
+  "CONTROLLED ROUTINE RESULT"
+ ],
+ "routines": {
+  "rocket_reward_dispatch": {
+   "rom": "0x04AA3",
+   "end_exclusive": "0x04B46",
+   "bank": "0x01",
+   "cpu": "0x8AA3",
+   "bytes": 163,
+   "sha256": "99c0100c489e807372f486cdfb346650bf2a2e14270579512bb7f8e78ea3c02d",
+   "first_16_bytes": "21A3D37ECB472015CB4F202BCB57205C"
+  },
+  "rocket_entry": {
+   "rom": "0x04775",
+   "end_exclusive": "0x047A9",
+   "bank": "0x01",
+   "cpu": "0x8775",
+   "bytes": 52,
+   "sha256": "2d58d0aa90bca5cdc0307ccff59c9b609a9839637257c1aef12f61277e7a5af6",
+   "first_16_bytes": "2100002216D52218D52100072273D321"
+  },
+  "rocket_state_11": {
+   "rom": "0x03A7C",
+   "end_exclusive": "0x03B4E",
+   "bank": "0x00",
+   "cpu": "0x3A7C",
+   "bytes": 210,
+   "sha256": "07073c6e9f9e20bc688eebabd27b0c988c2b7d5308749cf1810d45e1523149dd",
+   "first_16_bytes": "DDCB04BECDC13ACD253BCDA7480604DD"
+  },
+  "spring_shoes_state_12": {
+   "rom": "0x03B4E",
+   "end_exclusive": "0x03BC1",
+   "bank": "0x00",
+   "cpu": "0x3B4E",
+   "bytes": 115,
+   "sha256": "6add1b0090c59afc0d9cff9d84d0fdf2c159e90a2a816c393d756a089ebf0ab0",
+   "first_16_bytes": "CDEF3FCDA748CDA83B3A47D1E6302030"
+  },
+  "spring_shoes_object": {
+   "rom": "0x78B5B",
+   "end_exclusive": "0x78BE1",
+   "bank": "0x1E",
+   "cpu": "0x8B5B",
+   "bytes": 134,
+   "sha256": "a1238a5a535375d2f853453f6240f62b71cbba81df1f81322af5e1d40032d3ac",
+   "first_16_bytes": "DD360201DDCB03FEC9DDCB0476C03A19"
+  },
+  "monitor_contact": {
+   "rom": "0x3216C",
+   "end_exclusive": "0x321D3",
+   "bank": "0x0C",
+   "cpu": "0xA16C",
+   "bytes": 103,
+   "sha256": "2138162f793136af62f70ad975fc19bf0aae29902043989c06b1fd58ef6edc23",
+   "first_16_bytes": "DD463FCDF9A1DDCB0476C0CD4D033A03"
+  }
+ },
+ "identities": {
+  "rocket_shoes": {
+   "object": "0x10",
+   "parameter": "0x04",
+   "reward_mask": "0x08",
+   "selector_d532": "0x04",
+   "player_state": "0x11",
+   "timer": "D44C",
+   "duration_copy": "D3A1"
+  },
+  "spring_shoes": {
+   "object": "0x2F",
+   "parameter": "0x00",
+   "monitor_reward": null,
+   "selector_d532": null,
+   "player_state": "0x12",
+   "owner_pointer": "D3A4",
+   "timer": null
+  }
+ },
+ "placements": {
+  "acts": [
+   {
+    "key": "zone_0_act_1",
+    "name": "Turquoise Hill Act 1",
+    "zone": 0,
+    "act": 0,
+    "list_rom": "0x705AE",
+    "terminator_rom": "0x7078B",
+    "rocket_shoes": 2,
+    "spring_shoes": 0,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_0_act_2",
+    "name": "Turquoise Hill Act 2",
+    "zone": 0,
+    "act": 1,
+    "list_rom": "0x7078C",
+    "terminator_rom": "0x708FD",
+    "rocket_shoes": 1,
+    "spring_shoes": 0,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_0_act_3",
+    "name": "Turquoise Hill Act 3",
+    "zone": 0,
+    "act": 2,
+    "list_rom": "0x708FE",
+    "terminator_rom": "0x70958",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_1_act_1",
+    "name": "Gigalopolis Act 1",
+    "zone": 1,
+    "act": 0,
+    "list_rom": "0x70959",
+    "terminator_rom": "0x70B7E",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_1_act_2",
+    "name": "Gigalopolis Act 2",
+    "zone": 1,
+    "act": 1,
+    "list_rom": "0x70B7F",
+    "terminator_rom": "0x70DAD",
+    "rocket_shoes": 1,
+    "spring_shoes": 0,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_1_act_3",
+    "name": "Gigalopolis Act 3",
+    "zone": 1,
+    "act": 2,
+    "list_rom": "0x70DAE",
+    "terminator_rom": "0x70DFF",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "zone": 2,
+    "act": 0,
+    "list_rom": "0x70E00",
+    "terminator_rom": "0x70F5F",
+    "rocket_shoes": 1,
+    "spring_shoes": 8,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": "type $2F parameter $00",
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_2_act_2",
+    "name": "Sleeping Egg Act 2",
+    "zone": 2,
+    "act": 1,
+    "list_rom": "0x70F60",
+    "terminator_rom": "0x71089",
+    "rocket_shoes": 1,
+    "spring_shoes": 4,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": "type $2F parameter $00",
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_2_act_3",
+    "name": "Sleeping Egg Act 3",
+    "zone": 2,
+    "act": 2,
+    "list_rom": "0x7108A",
+    "terminator_rom": "0x710B7",
+    "rocket_shoes": 0,
+    "spring_shoes": 1,
+    "rocket_variant": null,
+    "spring_variant": "type $2F parameter $00",
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_3_act_1",
+    "name": "Mecha Green Hill Act 1",
+    "zone": 3,
+    "act": 0,
+    "list_rom": "0x710B8",
+    "terminator_rom": "0x711F3",
+    "rocket_shoes": 1,
+    "spring_shoes": 1,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": "type $2F parameter $00",
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_3_act_2",
+    "name": "Mecha Green Hill Act 2",
+    "zone": 3,
+    "act": 1,
+    "list_rom": "0x711F4",
+    "terminator_rom": "0x71377",
+    "rocket_shoes": 1,
+    "spring_shoes": 2,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": "type $2F parameter $00",
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_3_act_3",
+    "name": "Mecha Green Hill Act 3",
+    "zone": 3,
+    "act": 2,
+    "list_rom": "0x71378",
+    "terminator_rom": "0x713E4",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_4_act_1",
+    "name": "Aqua Planet Act 1",
+    "zone": 4,
+    "act": 0,
+    "list_rom": "0x713E5",
+    "terminator_rom": "0x71520",
+    "rocket_shoes": 2,
+    "spring_shoes": 0,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_4_act_2",
+    "name": "Aqua Planet Act 2",
+    "zone": 4,
+    "act": 1,
+    "list_rom": "0x71521",
+    "terminator_rom": "0x7162F",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_4_act_3",
+    "name": "Aqua Planet Act 3",
+    "zone": 4,
+    "act": 2,
+    "list_rom": "0x71630",
+    "terminator_rom": "0x71654",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_5_act_1",
+    "name": "Electric Egg Act 1",
+    "zone": 5,
+    "act": 0,
+    "list_rom": "0x71655",
+    "terminator_rom": "0x71700",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_5_act_2",
+    "name": "Electric Egg Act 2",
+    "zone": 5,
+    "act": 1,
+    "list_rom": "0x71701",
+    "terminator_rom": "0x7183C",
+    "rocket_shoes": 1,
+    "spring_shoes": 0,
+    "rocket_variant": "type $10 parameter $04",
+    "spring_variant": null,
+    "same_movement_model": true
+   },
+   {
+    "key": "zone_5_act_3",
+    "name": "Electric Egg Act 3",
+    "zone": 5,
+    "act": 2,
+    "list_rom": "0x7183D",
+    "terminator_rom": "0x7186A",
+    "rocket_shoes": 0,
+    "spring_shoes": 0,
+    "rocket_variant": null,
+    "spring_variant": null,
+    "same_movement_model": true
+   }
+  ],
+  "rocket_shoes": [
+   {
+    "act": "zone_0_act_1",
+    "name": "Turquoise Hill Act 1",
+    "rom_offset": "0x70608",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 336,
+    "y": 270,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_0_act_1",
+    "name": "Turquoise Hill Act 1",
+    "rom_offset": "0x70611",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 1472,
+    "y": 110,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_0_act_2",
+    "name": "Turquoise Hill Act 2",
+    "rom_offset": "0x7080A",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 2544,
+    "y": 494,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_1_act_2",
+    "name": "Gigalopolis Act 2",
+    "rom_offset": "0x70C21",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 2288,
+    "y": 430,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70E75",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 2192,
+    "y": 878,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_2_act_2",
+    "name": "Sleeping Egg Act 2",
+    "rom_offset": "0x70FC3",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 1584,
+    "y": 942,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_3_act_1",
+    "name": "Mecha Green Hill Act 1",
+    "rom_offset": "0x71124",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 1312,
+    "y": 110,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_3_act_2",
+    "name": "Mecha Green Hill Act 2",
+    "rom_offset": "0x712BA",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 48,
+    "y": 878,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_4_act_1",
+    "name": "Aqua Planet Act 1",
+    "rom_offset": "0x7142D",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 1664,
+    "y": 430,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_4_act_1",
+    "name": "Aqua Planet Act 1",
+    "rom_offset": "0x71436",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 3344,
+    "y": 174,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   },
+   {
+    "act": "zone_5_act_2",
+    "name": "Electric Egg Act 2",
+    "rom_offset": "0x71737",
+    "type": "0x10",
+    "parameter": "0x04",
+    "x": 560,
+    "y": 878,
+    "flags": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+   }
+  ],
+  "spring_shoes": [
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70E90",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 224,
+    "y": 398,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70E99",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 784,
+    "y": 782,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70EA2",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 1264,
+    "y": 302,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70EAB",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 1936,
+    "y": 686,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70EB4",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 2384,
+    "y": 750,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70EBD",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 2528,
+    "y": 718,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70EC6",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 2944,
+    "y": 558,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_1",
+    "name": "Sleeping Egg Act 1",
+    "rom_offset": "0x70ECF",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 3152,
+    "y": 878,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_2",
+    "name": "Sleeping Egg Act 2",
+    "rom_offset": "0x70FDE",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 432,
+    "y": 846,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_2",
+    "name": "Sleeping Egg Act 2",
+    "rom_offset": "0x70FE7",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 608,
+    "y": 718,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_2",
+    "name": "Sleeping Egg Act 2",
+    "rom_offset": "0x70FF0",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 848,
+    "y": 878,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_2",
+    "name": "Sleeping Egg Act 2",
+    "rom_offset": "0x70FF9",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 3248,
+    "y": 846,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_2_act_3",
+    "name": "Sleeping Egg Act 3",
+    "rom_offset": "0x71093",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 176,
+    "y": 814,
+    "flags": "0x00",
+    "aux0": "0x94",
+    "aux1": "0x94"
+   },
+   {
+    "act": "zone_3_act_1",
+    "name": "Mecha Green Hill Act 1",
+    "rom_offset": "0x7111B",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 1552,
+    "y": 238,
+    "flags": "0x00",
+    "aux0": "0xAC",
+    "aux1": "0xAC"
+   },
+   {
+    "act": "zone_3_act_2",
+    "name": "Mecha Green Hill Act 2",
+    "rom_offset": "0x711F4",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 3760,
+    "y": 494,
+    "flags": "0x00",
+    "aux0": "0xAC",
+    "aux1": "0xAC"
+   },
+   {
+    "act": "zone_3_act_2",
+    "name": "Mecha Green Hill Act 2",
+    "rom_offset": "0x711FD",
+    "type": "0x2F",
+    "parameter": "0x00",
+    "x": 2592,
+    "y": 174,
+    "flags": "0x00",
+    "aux0": "0xAC",
+    "aux1": "0xAC"
+   }
+  ],
+  "totals": {
+   "rocket_shoes": 11,
+   "spring_shoes": 16
+  },
+  "reuse": "All records use the same numeric type/parameter and code path. Spring Shoes use art-base aux bytes $94 in Sleeping Egg and $AC in Mecha Green Hill; that is a graphics-load/VRAM-base variant, not a movement variant."
+ },
+ "rocket_shoes": {
+  "pickup": {
+   "fixture": {
+    "queued_after": "0x00",
+    "selector_d532": "0x04",
+    "timer_d44c": 300,
+    "duration_copy_d3a1": 300,
+    "requested_state": "0x11",
+    "flags_d503": "0x00",
+    "vx": 0,
+    "vy": 0,
+    "maximum_d373": "0x0700",
+    "sound_de04": "0x85",
+    "fixture_note": "ordinary-level path; fixture stubs only the interrupt synchronization call at $062D after sound $85 is written"
+   },
+   "order": "object phase N queues D3A3 bit 3; player update N+1 runs the old state then dispatches the reward and requests $11; the animation engine applies current state $11 on N+2"
+  },
+  "animation": {
+   "script_cpu": "0x8334",
+   "script_rom": "0x30334",
+   "records": [
+    [
+     8,
+     "0x38"
+    ],
+    [
+     4,
+     "0x39"
+    ],
+    [
+     8,
+     "0x3A"
+    ],
+    [
+     4,
+     "0x39"
+    ]
+   ]
+  },
+  "movement": {
+   "vertical_sweep": {
+    "cases": 21,
+    "rows": [
+     {
+      "input": "neutral",
+      "before": -1024,
+      "after": -992
+     },
+     {
+      "input": "neutral",
+      "before": -992,
+      "after": -960
+     },
+     {
+      "input": "neutral",
+      "before": -32,
+      "after": 0
+     },
+     {
+      "input": "neutral",
+      "before": 0,
+      "after": -32
+     },
+     {
+      "input": "neutral",
+      "before": 32,
+      "after": 0
+     },
+     {
+      "input": "neutral",
+      "before": 960,
+      "after": 928
+     },
+     {
+      "input": "neutral",
+      "before": 1024,
+      "after": 992
+     },
+     {
+      "input": "up",
+      "before": -1024,
+      "after": -1024
+     },
+     {
+      "input": "up",
+      "before": -992,
+      "after": -1024
+     },
+     {
+      "input": "up",
+      "before": -32,
+      "after": -96
+     },
+     {
+      "input": "up",
+      "before": 0,
+      "after": -64
+     },
+     {
+      "input": "up",
+      "before": 32,
+      "after": -32
+     },
+     {
+      "input": "up",
+      "before": 960,
+      "after": 896
+     },
+     {
+      "input": "up",
+      "before": 1024,
+      "after": 960
+     },
+     {
+      "input": "down",
+      "before": -1024,
+      "after": -960
+     },
+     {
+      "input": "down",
+      "before": -992,
+      "after": -928
+     },
+     {
+      "input": "down",
+      "before": -32,
+      "after": 32
+     },
+     {
+      "input": "down",
+      "before": 0,
+      "after": 64
+     },
+     {
+      "input": "down",
+      "before": 32,
+      "after": 96
+     },
+     {
+      "input": "down",
+      "before": 960,
+      "after": 1024
+     },
+     {
+      "input": "down",
+      "before": 1024,
+      "after": 1024
+     }
+    ],
+    "rule": "Up subtracts $0040 and clamps to -$0400; Down adds $0040 and clamps to +$0400. Neutral chooses +/-$0020 from the signed high byte, so fractional speeds cross zero and oscillate rather than clamping to zero."
+   },
+   "horizontal": "entry vx=0, maximum=$0700; $48A7 changes facing from Left/Right, then state $11 ORs held Left/Right into D137 from facing every update. Shared state-$11 acceleration is +/-$0010 dry, +/-$0002 water. This is facing-steered auto-cruise, not ordinary optional horizontal input.",
+   "gravity": "state $11 bypasses ordinary gravity; only the vertical controller changes vy",
+   "ground": "shared terrain collision remains active; floor contact clears object contact bit 1, moves y up 2, and zeros vy"
+  },
+  "camera": {
+   "vertical_clamp": {
+    "cases": 6,
+    "rows": [
+     {
+      "screen_y": 23,
+      "world_y": 1025,
+      "vy": 0
+     },
+     {
+      "screen_y": 24,
+      "world_y": 1024,
+      "vy": 291
+     },
+     {
+      "screen_y": 25,
+      "world_y": 1025,
+      "vy": 291
+     },
+     {
+      "screen_y": 191,
+      "world_y": 1191,
+      "vy": 291
+     },
+     {
+      "screen_y": 192,
+      "world_y": 1191,
+      "vy": 0
+     },
+     {
+      "screen_y": 193,
+      "world_y": 1191,
+      "vy": 0
+     }
+    ],
+    "rule": "screen Y <24 -> cameraY+25; screen Y >=192 -> cameraY+191; velocity becomes zero"
+   },
+   "other": "ordinary horizontal edge clamp/follow; no footwear-specific lead or follow-speed change found"
+  },
+  "rings": {
+   "fixtures": {
+    "cases": 14,
+    "type_09": [
+     {
+      "state": "0x11",
+      "dx": 0,
+      "dy": 0,
+      "collected": true
+     },
+     {
+      "state": "0x11",
+      "dx": 11,
+      "dy": 11,
+      "collected": true
+     },
+     {
+      "state": "0x11",
+      "dx": 12,
+      "dy": 0,
+      "collected": false
+     },
+     {
+      "state": "0x11",
+      "dx": 0,
+      "dy": 12,
+      "collected": false
+     },
+     {
+      "state": "0x11",
+      "dx": -12,
+      "dy": 0,
+      "collected": false
+     },
+     {
+      "state": "0x12",
+      "dx": 0,
+      "dy": 0,
+      "collected": true
+     },
+     {
+      "state": "0x12",
+      "dx": 11,
+      "dy": 11,
+      "collected": true
+     },
+     {
+      "state": "0x12",
+      "dx": 12,
+      "dy": 0,
+      "collected": false
+     },
+     {
+      "state": "0x12",
+      "dx": 0,
+      "dy": 12,
+      "collected": false
+     },
+     {
+      "state": "0x12",
+      "dx": -12,
+      "dy": 0,
+      "collected": false
+     }
+    ],
+    "terrain_753e": [
+     {
+      "state": "0x11",
+      "counter_bit0": 0,
+      "anchor": [
+       328,
+       336
+      ],
+      "probe": [
+       328,
+       328
+      ],
+      "collected": true
+     },
+     {
+      "state": "0x11",
+      "counter_bit0": 1,
+      "anchor": [
+       328,
+       326
+      ],
+      "probe": [
+       328,
+       328
+      ],
+      "collected": true
+     },
+     {
+      "state": "0x12",
+      "counter_bit0": 0,
+      "anchor": [
+       328,
+       336
+      ],
+      "probe": [
+       328,
+       328
+      ],
+      "collected": true
+     },
+     {
+      "state": "0x12",
+      "counter_bit0": 1,
+      "anchor": [
+       328,
+       326
+      ],
+      "probe": [
+       328,
+       328
+      ],
+      "collected": true
+     }
+    ],
+    "state_reach": [
+     {
+      "state": "0x11",
+      "script_cpu": "8334",
+      "callbacks": [
+       "0x03C2"
+      ],
+      "callback_targets": [
+       "0x3A7C"
+      ],
+      "region_categories": [],
+      "callbacks_reaching_753E": [
+       "0x03C2"
+      ],
+      "may_probe": true,
+      "indirect_jumps_not_followed": 1
+     },
+     {
+      "state": "0x12",
+      "script_cpu": "8346",
+      "callbacks": [
+       "0x03B0"
+      ],
+      "callback_targets": [
+       "0x3B4E"
+      ],
+      "region_categories": [],
+      "callbacks_reaching_753E": [
+       "0x03B0"
+      ],
+      "may_probe": true,
+      "indirect_jumps_not_followed": 1
+     }
+    ],
+    "model_mismatches": 0
+   },
+   "type_09": "ordinary strict abs(dx)<12 && abs(dy)<12 path is state-independent",
+   "terrain": "state $11 is explicitly in the 26-state $753E probe family; shared movement/projection runs first; probe uses anchor X and animation-counter parity Y-8 even / Y+2 odd",
+   "poc_failure_explanation": "The accepted source already lists states 17/18 in the terrain-ring probe and runs type-$09 proximity independently. The reported no-ring Windows behavior is not explained by a canonical skip and is not reproduced by static inspection; it likely predates the accepted ring migrations or needs an exact build/runtime replay."
+  },
+  "attack_and_objects": "Entry clears D503 bit 1. Normal Rocket Shoes are non-attacking: monitors survive; type $21 top-stomps first but side/low contact damages; type $27 and hazards damage. Invincibility can later set bit 1 while state $11 persists, so state alone must not decide attack.",
+  "terrain": "ordinary floor/wall/ceiling/slopes/one-way and shared platform/object contact remain active. Terrain upright/diagonal/horizontal springs explicitly reject current state $11; ceiling spring does not. Type $26 has no state-$11 exclusion and can override the player state/velocity when its normal gates pass.",
+  "duration": {
+   "fixtures": {
+    "cases": 4,
+    "expiry": [
+     {
+      "timer_entering_callback": 1,
+      "requested_state": "0x11",
+      "vy": -32,
+      "flags": "0x00",
+      "sound_or_music_request": "0x00"
+     },
+     {
+      "timer_entering_callback": 0,
+      "requested_state": "0x0E",
+      "vy": 256,
+      "flags": "0x01",
+      "sound_or_music_request": "0x81"
+     }
+    ],
+    "damage": [
+     {
+      "rings_before": 0,
+      "rings_after": 0,
+      "requested_state": "0x1E",
+      "selector": "0x00",
+      "queued_rewards": "0x00",
+      "vy": -1024,
+      "flags": "0xC1",
+      "sound": "0xC3"
+     },
+     {
+      "rings_before": 10,
+      "rings_after": 10,
+      "requested_state": "0x1E",
+      "selector": "0x00",
+      "queued_rewards": "0x00",
+      "vy": -1024,
+      "flags": "0xC1",
+      "sound": "0xC3"
+     }
+    ],
+    "damage_rule": "state $11 cancels selector/queued reward and enters hurt even with zero rings; it does not run ordinary ring loss/death selection"
+   },
+   "rule": "D44C starts at 300 ($012C) ordinarily. End-of-update decrement yields 300 full state-$11 updates at timer 300..1; the following callback at zero still moves/collides, restores music, and requests fall $0E with vy=+1.0. Landing/terrain do not cancel. State-$11 damage immediately clears D532 and queued bit 3, restores music, requests hurt and does not execute ordinary ring loss."
+  }
+ },
+ "spring_shoes": {
+  "pickup": {
+   "attachment_sweep": {
+    "cases": 10,
+    "rows": [
+     {
+      "dy": -17,
+      "attack_before": false,
+      "requested_player_state": "0x01",
+      "requested_object_state": 1,
+      "owner_d3a4": "0x0000",
+      "attack_after": false,
+      "contact": "0x00"
+     },
+     {
+      "dy": -17,
+      "attack_before": true,
+      "requested_player_state": "0x01",
+      "requested_object_state": 1,
+      "owner_d3a4": "0x0000",
+      "attack_after": true,
+      "contact": "0x00"
+     },
+     {
+      "dy": -16,
+      "attack_before": false,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": false,
+      "contact": "0x01"
+     },
+     {
+      "dy": -16,
+      "attack_before": true,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": true,
+      "contact": "0x01"
+     },
+     {
+      "dy": -15,
+      "attack_before": false,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": false,
+      "contact": "0x01"
+     },
+     {
+      "dy": -15,
+      "attack_before": true,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": true,
+      "contact": "0x01"
+     },
+     {
+      "dy": -14,
+      "attack_before": false,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": false,
+      "contact": "0x01"
+     },
+     {
+      "dy": -14,
+      "attack_before": true,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": true,
+      "contact": "0x01"
+     },
+     {
+      "dy": -13,
+      "attack_before": false,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": false,
+      "contact": "0x01"
+     },
+     {
+      "dy": -13,
+      "attack_before": true,
+      "requested_player_state": "0x12",
+      "requested_object_state": 3,
+      "owner_d3a4": "0xD700",
+      "attack_after": true,
+      "contact": "0x01"
+     }
+    ],
+    "attack_inheritance": "unchanged by attachment"
+   },
+   "rule": "descending/non-rising player projected onto the top requests player $12, records owner object in D3A4, and requests object state 3; no selector, timer, pickup music or palette effect"
+  },
+  "animation": {
+   "script_cpu": "0x8346",
+   "script_rom": "0x30346",
+   "record": {
+    "duration": 4,
+    "frame": "0x0B",
+    "callback_vector": "0x03B0 -> 0x3B4E"
+   }
+  },
+  "movement": {
+   "bounce_sweep": {
+    "cases": 8,
+    "rows": [
+     {
+      "attack_before": false,
+      "contact_bits": "0x00",
+      "requested_state": "0x12",
+      "flags": "0x00",
+      "vy": 256,
+      "owner_state": 3,
+      "sound": "0x00"
+     },
+     {
+      "attack_before": false,
+      "contact_bits": "0x02",
+      "requested_state": "0x12",
+      "flags": "0x01",
+      "vy": -1920,
+      "owner_state": 3,
+      "sound": "0xC2"
+     },
+     {
+      "attack_before": false,
+      "contact_bits": "0x04",
+      "requested_state": "0x12",
+      "flags": "0x00",
+      "vy": 256,
+      "owner_state": 3,
+      "sound": "0x00"
+     },
+     {
+      "attack_before": false,
+      "contact_bits": "0x08",
+      "requested_state": "0x12",
+      "flags": "0x00",
+      "vy": 256,
+      "owner_state": 3,
+      "sound": "0x00"
+     },
+     {
+      "attack_before": true,
+      "contact_bits": "0x00",
+      "requested_state": "0x12",
+      "flags": "0x02",
+      "vy": 256,
+      "owner_state": 3,
+      "sound": "0x00"
+     },
+     {
+      "attack_before": true,
+      "contact_bits": "0x02",
+      "requested_state": "0x12",
+      "flags": "0x03",
+      "vy": -1920,
+      "owner_state": 3,
+      "sound": "0xC2"
+     },
+     {
+      "attack_before": true,
+      "contact_bits": "0x04",
+      "requested_state": "0x12",
+      "flags": "0x02",
+      "vy": 256,
+      "owner_state": 3,
+      "sound": "0x00"
+     },
+     {
+      "attack_before": true,
+      "contact_bits": "0x08",
+      "requested_state": "0x12",
+      "flags": "0x02",
+      "vy": 256,
+      "owner_state": 3,
+      "sound": "0x00"
+     }
+    ],
+    "floor_rule": "contact bit 1 -> airborne, vy=-$0780 (-7.5), owner state 3, sound $C2; attack bit is preserved"
+   },
+   "horizontal": "same state-table acceleration row as $11 (+/-$0010 dry, +/-$0002 water), but no forced direction; neutral friction is +/-$0020",
+   "gravity": "ordinary airborne gravity (+$0030 dry / +$0018 water, terminal +7/+4)",
+   "manual_jump": "button $10/$20 detaches owner, clears airborne and invokes normal jump $45ED (-4.25 dry/-3.25 water, state $0A)",
+   "foot_probe": "state $12 adds +8 to the shared foot-probe offset"
+  },
+  "canonical_springs": "No multiplication/addition. Type $26 or terrain upright spring overrides with its canonical state/velocity and clears attack; diagonal/horizontal terrain springs override with their canonical state/velocity and set attack. Leaving current state $12 makes object $2F detach on its next update.",
+  "rings": "Type $09 strict proximity remains active. State $12 is explicitly in the same 26-state $753E family and uses the same animation-counter parity probe.",
+  "attack_and_hazards": "Type $2F and state $12 do not write attack bit 1: pickup and automatic rebounds inherit it. Enemy outcomes therefore follow D503 bit 1 at the exact contact. Type $21 top stomp, springs, side hurt, ordinary damage or another state detach the wearable; spikes remain hazards.",
+  "duration": "No timer and no D532 ownership. It lasts while player current state is $12 and owner object remains attached. Manual jump, side-wall state-$12 hurt path, damage, canonical spring transitions, death/clear/state replacement detach it; expiry-on-landing does not exist.",
+  "graphics": {
+   "mapping_table_rom": "0x3C05E",
+   "mapping_cpu": "0x9287",
+   "mapping_rom": "0x3D287",
+   "sleeping_egg": {
+    "stream_rom": "0x26840",
+    "vram_destination": "0x1280",
+    "tile_ids": "0x94..0xA3"
+   },
+   "mecha_green_hill": {
+    "stream_rom": "0x26840",
+    "vram_destination": "0x1580",
+    "tile_ids": "0xAC..0xBB"
+   },
+   "note": "same 512-byte source stream, different VRAM base/art byte"
+  },
+  "camera": "ordinary camera and player edge clamp; no state-$12-specific camera routine found"
+ },
+ "coexistence": {
+  "fixtures": {
+   "cases": 5,
+   "rows": [
+    {
+     "case": "rocket_over_invincibility",
+     "selector": "0x04",
+     "timer": 300,
+     "requested_state": "0x11",
+     "flags": "0x80",
+     "sound": "0x85"
+    },
+    {
+     "case": "invincibility_over_rocket",
+     "selector": "0x06",
+     "timer": 600,
+     "requested_state": "0x11",
+     "flags": "0x82",
+     "sound": "0x84"
+    },
+    {
+     "case": "speed_up_over_rocket",
+     "selector": "0x03",
+     "timer": 900,
+     "requested_state": "0x11",
+     "flags": "0x00",
+     "sound": "0x00"
+    },
+    {
+     "case": "rocket_over_spring_shoes",
+     "selector": "0x04",
+     "timer": 300,
+     "requested_state": "0x11",
+     "flags": "0x00",
+     "sound": "0x85"
+    },
+    {
+     "case": "spring_shoes_over_rocket",
+     "selector": "0x04",
+     "timer": 100,
+     "requested_state": "0x12",
+     "owner_d3a4": "0xD700",
+     "flags": "0x00",
+     "sound": "0x00"
+    }
+   ]
+  },
+  "shared_selector": "Rocket $04, speed-up $03 and invincibility $06 share D532/D44C; Spring Shoes do not.",
+  "replacement": "A later monitor reward overwrites D532/D44C. Rocket pickup requests $11 and thereby detaches type $2F. A type-$2F pickup requests $12 and ends Rocket movement, but the prior D532/D44C keeps decrementing until overwritten/expired.",
+  "invincibility": "While $11 persists, $06 overwrites the timer with 600 and sets attack bit 1; aura/attack overlay is active. Rocket entry after invincibility overwrites selector/timer and clears attack.",
+  "speed_up": "Speed-up overwrites selector/timer and changes the ordinary maximum, while current $11 can continue. At timer zero $4A74 deliberately does not clear selector 3; the next decrement wraps D44C from 0 to $FFFF, so the speed-up remains until another reset/reward. This combination must use the selector/state split, not a single footwear enum."
+ },
+ "monitor_spin_dash": {
+  "cases": 63,
+  "rows": [
+   {
+    "requested_state": "0x09",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": 0,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": 256,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": -4096,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top",
+    "dy": -24,
+    "vy": 0,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top",
+    "dy": -24,
+    "vy": 256,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x0F",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x02",
+    "parameter_after": "0x00",
+    "placement_token_after": 0,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "10 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top",
+    "dy": -24,
+    "vy": -4096,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": 0,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": 256,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x0F",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x02",
+    "parameter_after": "0x00",
+    "placement_token_after": 0,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "10 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": -4096,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "side",
+    "dy": 0,
+    "vy": 0,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "side",
+    "dy": 0,
+    "vy": 256,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x0F",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x02",
+    "parameter_after": "0x00",
+    "placement_token_after": 0,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "10 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "side",
+    "dy": 0,
+    "vy": -4096,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": 0,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": 256,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": -4096,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": 0,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": 256,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": -4096,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": 0,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": 256,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x09",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": -4096,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 9,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": 0,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": 256,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": -4096,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top",
+    "dy": -24,
+    "vy": 0,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top",
+    "dy": -24,
+    "vy": 256,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top",
+    "dy": -24,
+    "vy": -4096,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": 0,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": 256,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": -4096,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "side",
+    "dy": 0,
+    "vy": 0,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "side",
+    "dy": 0,
+    "vy": 256,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x0F",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x02",
+    "parameter_after": "0x00",
+    "placement_token_after": 0,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "10 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "side",
+    "dy": 0,
+    "vy": -4096,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": 0,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": 256,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": -4096,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": 0,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": 256,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": -4096,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": 0,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": 256,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x0F",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": -4096,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 15,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": 0,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": 256,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top-1",
+    "dy": -25,
+    "vy": -4096,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top",
+    "dy": -24,
+    "vy": 0,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top",
+    "dy": -24,
+    "vy": 256,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top",
+    "dy": -24,
+    "vy": -4096,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": 0,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": 256,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "top+1",
+    "dy": -23,
+    "vy": -4096,
+    "contact_bits_21": "0x01",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "side",
+    "dy": 0,
+    "vy": 0,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "side",
+    "dy": 0,
+    "vy": 256,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x0F",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x02",
+    "parameter_after": "0x00",
+    "placement_token_after": 0,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "10 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "side",
+    "dy": 0,
+    "vy": -4096,
+    "contact_bits_21": "0x04",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": 0,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": 256,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom-1",
+    "dy": 23,
+    "vy": -4096,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": 0,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": 256,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom",
+    "dy": 24,
+    "vy": -4096,
+    "contact_bits_21": "0x02",
+    "object_type_after": "0x10",
+    "requested_object_state": 3,
+    "object_y_velocity_8_8": -512,
+    "player_y_velocity_8_8": 512,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": 0,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 0,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": 256,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": 256,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   },
+   {
+    "requested_state": "0x10",
+    "edge": "bottom+1",
+    "dy": 25,
+    "vy": -4096,
+    "contact_bits_21": "0x00",
+    "object_type_after": "0x10",
+    "requested_object_state": 0,
+    "object_y_velocity_8_8": 0,
+    "player_y_velocity_8_8": -4096,
+    "requested_player_state": 16,
+    "damage_request_d3b0": "0x00",
+    "reward_bits_d3a3": "0x00",
+    "parameter_after": "0x02",
+    "placement_token_after": 10,
+    "occupancy_value_after": "0x10",
+    "score_bytes_after": "00 00 00"
+   }
+  ],
+  "order": "$5FA0 solid projection runs before the attack branch. Top contacts reject requested states $0F/$10/$15/$1A; side contacts do not. Every break path also needs nonzero, nonnegative Y speed. Object contact flags can therefore be staged before conversion.",
+  "classification": "D: canonical arrangement/contact-class edge case. A geometrically top-classified contact during requested $0F/$10 is rejected; an unambiguous side contact with attack bit set and downward nonzero Y speed breaks. A surviving unambiguous side contact in the POC would instead be B/C and needs the exact Windows replay."
+ },
+ "poc_migration": [
+  {
+   "area": "Rocket pickup/state",
+   "canonical": "$10/$04 -> D532=4, D44C=300, state $11",
+   "accepted_poc": "identity/entry broadly present",
+   "action": "retain numeric identity and two-update activation order"
+  },
+  {
+   "area": "Rocket horizontal control",
+   "canonical": "facing-selected forced Left/Right every state-$11 callback",
+   "accepted_poc": "passes only user input to shared movement",
+   "action": "inject the facing direction before movement"
+  },
+  {
+   "area": "Rocket neutral vertical",
+   "canonical": "+/-$20 chosen by signed high byte; fractional oscillation",
+   "accepted_poc": "clamps toward exactly zero",
+   "action": "reproduce signed-high-byte step"
+  },
+  {
+   "area": "Rocket attack",
+   "canonical": "entry clears attack, but later invincibility can set it while $11 continues",
+   "accepted_poc": "blanket !state11 suppression",
+   "action": "store/test canonical D503 bit 1 independently"
+  },
+  {
+   "area": "Rocket damage cleanup",
+   "canonical": "state-$11 special branch keeps rings (even zero), cancels selector/queue, requests hurt $1E and sound $C3",
+   "accepted_poc": "generic hurt path can scatter rings or choose death before cancel_state11",
+   "action": "add the state-$11 special branch ahead of ordinary ring-loss/death selection"
+  },
+  {
+   "area": "Rocket rings",
+   "canonical": "both type $09 and terrain $753E active",
+   "accepted_poc": "current source already includes both",
+   "action": "keep; reproduce the exact failing Windows build before changing probes"
+  },
+  {
+   "area": "Rocket terrain springs",
+   "canonical": "terrain upright/diagonal/horizontal reject $11; type $26 can override",
+   "accepted_poc": "needs explicit audit during migration",
+   "action": "preserve this split"
+  },
+  {
+   "area": "Spring Shoes",
+   "canonical": "mapped $2F attachment, player $12, no timer/selector",
+   "accepted_poc": "not implemented",
+   "action": "add object/attachment ownership, state $12 physics and detach paths"
+  },
+  {
+   "area": "Spring Shoes attack",
+   "canonical": "inherited bit across attach/rebounce",
+   "accepted_poc": "not implemented",
+   "action": "do not infer attack from state/airborne"
+  },
+  {
+   "area": "Monitor/spin-dash",
+   "canonical": "$5FA0 first; top rejects req $0F/$10; true side can break",
+   "accepted_poc": "similar staged ordering",
+   "action": "classify exact Windows contact geometry before altering collision"
+  }
+ ],
+ "counts": {
+  "controlled_routine_cases": 132,
+  "decoded_placements": 27,
+  "acts_censused": 18,
+  "model_mismatches": 0
+ },
+ "unresolved": [
+  "Exact persistence/reset across death and act-transition RAM clearing was not followed through every global initializer; normal state replacement/damage behavior is closed.",
+  "The Windows report that Rocket Shoes collect no rings is contradicted by canonical code and the accepted POC source; the exact historical executable/save state was not available for replay.",
+  "The observed monitor stop lacks an exact player/object pose. Canonical top-classification rejection is proved; a surviving unambiguous side contact would be a separate POC mismatch."
+ ]
+}

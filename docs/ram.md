@@ -37,9 +37,10 @@ Little-endian words unless stated otherwise. Addresses are absolute RAM addresse
 | `$D39D..$D39F` | 3 | Loop path cursor, eight fractional bits | previous `loop_states.asm` |
 | `$D3A1` | 2 | Timer copy written by numeric reward bit 3 player setup | `$4775` |
 | `$D3A3` | 1 | Queued numeric reward/effect bits; type `$10` parameters `$02/$04/$06` queue bits 1/3/5 | `$A1D3` bank `$0C`, `$4AA3` |
+| `$D3A4` | 2 | Owner object pointer while mapped type `$2F` Spring Shoes are attached in player state `$12` | bank `$1E` `$8B83`, `$3BA8` |
 | `$D3B3` | 1 | Dynamic graphics selector; type `$10` writes its parameter on an off-screen-to-visible transition | `$A1F9` bank `$0C`, `$7AC2` |
 | `$D443` | 1 | Water condition used by movement | `$40C1`, `$4BC0` |
-| `$D44C` | 2 | Numeric effect timer; type-`$10` branches write `$012C`, `$0258`, or level-8 `$1770` | `$4ADF`, `$4B1D` |
+| `$D44C` | 2 | Numeric effect timer; type-`$10` rewards write `$0384` (selector 3), `$012C` (Rocket selector 4), `$0258` (invincibility selector 6), or Rocket level-8 `$1770` | `$4A74`, `$4ADF`, `$4B0F`, `$4B1D` |
 | `$D498/$D49A` | 2 each | Left side probe X/Y offsets | `$3686`, `$7210` |
 | `$D49C/$D49E` | 2 each | Right side probe X/Y offsets | `$3686`, `$716B` |
 | `$D500` | 1 | Object type; Sonic=1 | `$3686` |
@@ -59,7 +60,7 @@ Little-endian words unless stated otherwise. Addresses are absolute RAM addresse
 | `$D523` | 1 | Combined contact flags | `$64EC` |
 | `$D524` | 1 | Special terrain flags; interpretation incomplete | `$6FBB` |
 | `$D525` | 1 | Collision plane / alternate-header selection | `$76E3`, `$73A7/$73B8` |
-| `$D532` | 1 | Numeric player effect selector used by interaction code; type `$10` writes `$04` or `$06` | `$4ADF`, `$4B34` |
+| `$D532` | 1 | Numeric player effect selector: speed-up `$03`, Rocket Shoes `$04`, invincibility `$06`; Spring Shoes type `$2F` do not use it | `$4A74`, `$4ADF`, `$4B13`, `$4B3C` |
 | `$D538` | 1 | Twist dispatch variant | bank 12 `$94D1` |
 
 `$D3C0`, several `+$24` paths, animation counters, and object-contact field details need further tracing. Numeric addresses are not evidence of equivalent meanings in Sonic 2 or Game Gear Chaos.

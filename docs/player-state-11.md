@@ -31,12 +31,16 @@ vertical screen-bound helper, updates facing, calls the ordinary shared
 movement/collision path, handles grounded correction, and tests the active
 timer `$D44C`.
 
-- neither vertical direction: Y velocity moves toward zero by `$0020` per callback;
+- neither vertical direction: the signed high byte selects `-$0020` for
+  nonnegative speed and `+$0020` for negative speed; fractional values cross
+  zero and can oscillate rather than clamping to zero;
 - input bit 0: subtract `$0040` from Y velocity, clamped at `-$0400`;
 - input bit 1: add `$0040` to Y velocity, clamped at `+$0400`;
-- horizontal movement remains the ordinary shared movement path, bounded by
-  `$D373=$0700`; normal left/right input therefore remains effective;
-- direction updates facing through `$48A7`;
+- Left/Right updates facing through `$48A7`; the callback then ORs a held
+  horizontal direction into `$D137` from facing (mirrored = Left, otherwise
+  Right), so shared movement always thrusts in the facing direction;
+- state-$11 shared acceleration is `$0010` dry / `$0002` in water, bounded by
+  `$D373=$0700`; there is no neutral horizontal cruise path;
 - shared movement and terrain projection remain active;
 - normal jump and roll controls are suppressed: this callback has no jump or
   roll-input path;
@@ -50,6 +54,10 @@ state-`$11` branch clears `$D532`, clears queued reward bit 3, restores music,
 and proceeds to shared hurt state `$1E`; selector `$06` suppresses damage in
 the shared precheck. There is no state-local sound after entry except the
 music restoration/cancellation paths.
+
+State `$11` is the Rocket Shoes state. The complete identity, pickup, ring,
+terrain, attack, duration and coexistence contract is in
+`docs/powerup-shoes-audit.md`.
 
 The controlled fixtures cover the shared entry path, neutral/up/down vertical
 acceleration, both clamps, ordinary continuation, timer expiry, and the

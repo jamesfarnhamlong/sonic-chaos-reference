@@ -25,6 +25,7 @@ import spring_interaction
 import platform_spike_collision
 import player_attack_badnik
 import thz3_boss_support
+import powerup_shoes
 
 
 def main(rom_path):
@@ -132,6 +133,11 @@ def main(rom_path):
     assert stored_thz3_support == fresh_thz3_support
     assert json.loads((ROOT / "data/rom-cache/thz3/implementation-manifest.json").read_text(encoding="utf-8")) == json.loads(
         json.dumps(thz3_boss_support.manifest(rom, fresh_thz3_support)))
+    # Rocket/Spring Shoes package: placements and focused original-routine sweeps (~1 s).
+    stored_shoes = json.loads(
+        (ROOT / "data/rom-cache/powerup-shoes.json").read_text(encoding="utf-8")
+    )
+    assert stored_shoes == json.loads(json.dumps(powerup_shoes.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

@@ -13,6 +13,7 @@ REGIONS = [
  ('rolling_and_ramp_states',0x38c5,0x3901,'code'),
  ('spring_state_updates',0x393b,0x396d,'code'),
  ('player_state_11_handler',0x3a7c,0x3b4e,'code'),
+ ('player_state_12_handler',0x3b4e,0x3bc1,'code'),
  ('object_screen_coordinate_preparation',0x3fc8,0x3fef,'code'),
  ('movement_core',0x401a,0x429d,'code'),
  ('movement_tables',0x429d,0x45b3,'data'),
@@ -78,6 +79,9 @@ REGIONS = [
  ('platform_code',0x78577,0x78947,'code'),
  ('object_27_scripts',0x78947,0x7898e,'data'),
  ('object_27_handlers',0x7898e,0x78a45,'code'),
+ ('object_2f_scripts',0x78b1a,0x78b5b,'data'),
+ ('object_2f_handlers',0x78b5b,0x78be1,'code'),
+ ('object_2f_mappings',0x3d287,0x3d2bd,'data'),
  ]
 
 COMMENTS = {
@@ -88,6 +92,7 @@ COMMENTS = {
 0x38d1:'Ramp-launch state $1B update wrapper; state scripts use vector $03C8.',
 0x393b:'Vertical spring update: shared movement, then landing/apex state decisions.',
 0x3a7c:'Player state $11 callback: directional acceleration, vertical wrap/clamp, damage check, shared movement/collision, and timer-expiry exit.',
+0x3b4e:'Player state $12 callback: shared movement/collision, owner positioning, manual-jump detach, side-hurt detach and automatic floor rebound.',
 0x3fc8:'Prepare generic object screen coordinates: integer object X/Y minus camera X/Y into object+$1A/$1C.',
 0x3955:'Diagonal spring update: shared movement; on apex requests falling.',
 0x402a:'Integrate signed 8.8 horizontal velocity, input delta and surface delta into 16.8 X.',
@@ -222,6 +227,9 @@ COMMENTS = {
 0x78401:'Span activation aligns object X to the player on a 16-pixel boundary and launches.',
 0x78947:'Object type $27 has four states; active animation alternates mapping frames 1 and 2.',
 0x7898e:'Initialize object $27: parameter zero requests state 1 and sets X velocity to -2.5.',
+0x78b1a:'Object type $2F state table/scripts. State 1 offers attachment, state 3 follows player state $12, and state 5 falls away.',
+0x78b5b:'Object type $2F initializes as a non-generic-damage solid; top projection attaches it and requests player state $12.',
+0x3d287:'Object type $2F mapping frames used by Sleeping Egg and Mecha Green Hill at different VRAM art bases.',
 }
 
 def generate(rom_path, output):

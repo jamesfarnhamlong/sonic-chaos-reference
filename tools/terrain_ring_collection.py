@@ -517,7 +517,9 @@ def state_reach(rom: bytes) -> dict:
     vec = {v: u16(rom, v + 1) for v in range(0x0320, 0x0450, 3) if rom[v] == 0xC3}     # fixed-bank vector table (JP entries every 3 bytes from $0320)
     targets = {0x753E}
     rows = []
-    for r in csv.DictReader(open(ROOT / "data" / "sonic-state-scripts.csv")):
+    with open(ROOT / "data" / "sonic-state-scripts.csv", newline="", encoding="utf-8") as source:
+        script_rows = list(csv.DictReader(source))
+    for r in script_rows:
         st = int(r["state_hex"], 16)
         if st > LAST_REAL_STATE:
             rows.append({"state": h(st, 2), "script_cpu": r["script_cpu"], "excluded": "pointer is not a plausible state script (points into fixed code, zero fill or a shared tail)"})
@@ -548,7 +550,9 @@ def timer_fixture(rom: bytes) -> dict:
     m = o.mem
     snap = bytes(m[0xC000:0xE000])
     out = []
-    for r in csv.DictReader(open(ROOT / "data" / "sonic-state-scripts.csv")):
+    with open(ROOT / "data" / "sonic-state-scripts.csv", newline="", encoding="utf-8") as source:
+        script_rows = list(csv.DictReader(source))
+    for r in script_rows:
         st = int(r["state_hex"], 16)
         m[0xC000:0xE000] = snap
         m[0xD500] = 1
