@@ -17,6 +17,12 @@ Evidence classes (same vocabulary as the earlier studies):
 > are now resolved; the act-clear path is traced through `$1543`; the "181 frames" below is position dependent (186 from X 1760); a hurt Sonic that still has `$D503` bit 1 hits the boss; boss
 > arena/camera constants, explicit +-1 contact fixtures and the manifest are in the new study. Sections 10/14 below keep the original wording where not contradicted.
 
+> **Contact/presentation precision:** [thz3-boss-contact-followup.md](thz3-boss-contact-followup.md)
+> gives exact flags, palette delay, entry timeline and state-18 cooldown exception.
+> The first possible recontact after reaction20 is update21; the earlier22 was
+> its attack-driver schedule. Supplement checkpoint is on
+> `research/thz3-contact-feedback`, pending review before integration into main.
+
 ## 1. Answer
 
 **Type `$50` is the THZ boss. It is one object: arena controller and fighter are the same slot.** The hypothesis is proved from ROM

@@ -1,5 +1,13 @@
 # THZ3 boss/support audit and `$1B` / `$28` closure
 
+**Contact/presentation supplement:** [thz3-boss-contact-followup.md](thz3-boss-contact-followup.md)
+has exact velocity/flag responses, hurt versus power immunity, palette timing
+and the entry-frame oracle. It corrects the old 22-update minimum interpretation
+to **21** (22 was the earlier driver schedule), and verifies that state 18 has
+no fighting-contact cooldown gate. The focused cache is separate to preserve
+this broad audit's reproducibility. Supplement checkpoint is on
+`research/thz3-contact-feedback`, pending review before integration into main.
+
 Research only. ROM: Sonic Chaos (Europe) v1.2, SHA-256 `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607` (verified; never committed).
 `SonicChaos_POC_thz1_cleanup` was **read only**. Builds on `docs/object-50.md`, `docs/platform-spike-collision-audit.md`, `docs/player-attack-badnik-audit.md`,
 `docs/object-18-act-clear.md`, `docs/viewport-semantics-audit.md`.
