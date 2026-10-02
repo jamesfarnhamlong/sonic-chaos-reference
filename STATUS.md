@@ -59,6 +59,15 @@ tool/tests: `tools/platform_spike_collision.py`, `tests/test_platform_spike_coll
 - `$1B`: damage only in a 45-degree cone above the anchor (Y speed >= 0, 16-update cooldown); non-attacking side contact is a wall, attacking grounded is pushed +-23; contact tested before the move; 102-update cycle.
 - 316,075 controlled/emulated cases; read-only POC comparison in the doc (no POC change).
 
+### THZ3 boss/support audit + `$1B`/`$28` closure: COMPLETE (awaiting review)
+
+Branch `research/thz3-boss-support-audit`. Study `docs/thz3-boss-support-audit.md`; data `data/rom-cache/thz3-boss-support.json`, `data/rom-cache/thz3/implementation-manifest.json`;
+tool/tests `tools/thz3_boss_support.py`, `tests/test_thz3_boss_support.py`.
+
+- `$1B` cooldown skips the whole contact helper (damage, wall, push) for 16 updates; below-contact push is always -23; lifecycle: lift phase = updates since creation (keep-alive 640x672 player distance), spike phase starts at wake.
+- Update-aligned emulation replaces the unaligned `Emu` teleport semantics; static-spike diagnostic rows reproduced.
+- `$12` HUD slide-away, `$34` puff, `$0A` parameter 0 bonus + sparkles, `$0F` poof; boss arena/camera constants, contact grid (61,479 cases), defeat -> `$1543` act-clear timeline, assets, manifest.
+
 ### THZ2/THZ3 object parameter deltas ($26 `$88`, $10 `$01`/`$03`, $28 aux1): COMPLETE
 
 Branch `research/thz2-thz3-object-deltas`. Study `docs/thz2-thz3-object-deltas.md`; data

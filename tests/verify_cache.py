@@ -24,6 +24,7 @@ import player_animation_counter
 import spring_interaction
 import platform_spike_collision
 import player_attack_badnik
+import thz3_boss_support
 
 
 def main(rom_path):
@@ -123,6 +124,14 @@ def main(rom_path):
         (ROOT / "data/rom-cache/player-attack-badnik.json").read_text(encoding="utf-8")
     )
     assert stored_attack == json.loads(json.dumps(player_attack_badnik.build(rom)))
+    # THZ3 boss/support audit + $1B/$28 closure: controlled sweeps and update-aligned emulated runs are regenerated (~2.5 min).
+    stored_thz3_support = json.loads(
+        (ROOT / "data/rom-cache/thz3-boss-support.json").read_text(encoding="utf-8")
+    )
+    fresh_thz3_support = json.loads(json.dumps(thz3_boss_support.build(rom)))
+    assert stored_thz3_support == fresh_thz3_support
+    assert json.loads((ROOT / "data/rom-cache/thz3/implementation-manifest.json").read_text(encoding="utf-8")) == json.loads(
+        json.dumps(thz3_boss_support.manifest(rom, fresh_thz3_support)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

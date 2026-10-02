@@ -13,6 +13,10 @@ Evidence classes (same vocabulary as the earlier studies):
 `z80` with explicit RAM, `tools/oracle.py`), **EMULATED ORIGINAL FRAME** (the complete original game booted in
 `tools/sms_frame_harness.py`, forced into THZ act 3, my own label for original code driving an approximate VDP), **UNRESOLVED**.
 
+> **Update (`docs/thz3-boss-support-audit.md`)**: children `$12` (HUD slide-away), `$34` (explosion puff), `$0A` (parameter 0: act-clear bonus `D2A6` + sparkle emitter) and `$0F` (poof, 38 updates)
+> are now resolved; the act-clear path is traced through `$1543`; the "181 frames" below is position dependent (186 from X 1760); a hurt Sonic that still has `$D503` bit 1 hits the boss; boss
+> arena/camera constants, explicit +-1 contact fixtures and the manifest are in the new study. Sections 10/14 below keep the original wording where not contradicted.
+
 ## 1. Answer
 
 **Type `$50` is the THZ boss. It is one object: arena controller and fighter are the same slot.** The hypothesis is proved from ROM
@@ -330,7 +334,7 @@ The act-clear screens and the next-level load are out of scope.
 | Creation, thresholds, patrol, contact matrix, health, reactions, defeat, removal, palette flash | CONTROLLED ROUTINE RESULT |
 | Intro timeline, first patrol cycle, 8-hit defeat, VRAM equality, SAT match, completion frames | EMULATED ORIGINAL FRAME |
 | "Boss" identity | proved from the combination above |
-| Type `$12`/`$0A`/`$34`/`$0F` roles beyond what is listed, `$D494/$D495` consumer internals | UNRESOLVED |
+| Type `$12`/`$0A`/`$34`/`$0F` roles | RESOLVED in `docs/thz3-boss-support-audit.md`; `$D494/$D495` consumer internals still UNRESOLVED |
 
 ## 13. POC implementation summary (for a later task, no POC change made)
 

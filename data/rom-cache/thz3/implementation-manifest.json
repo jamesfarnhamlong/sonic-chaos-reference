@@ -1,0 +1,1714 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "act": "thz3",
+ "research_only": true,
+ "poc_untouched": true,
+ "purpose": "everything POC needs to make THZ3 playable through boss and act clear; numeric labels only; every value is copied from data/rom-cache/thz3-boss-support.json",
+ "reused_ordinary_systems": {
+  "terrain": {
+   "blocks_used": 77,
+   "new_blocks_vs_thz1_thz2": 0,
+   "size_px": [
+    2560,
+    512
+   ],
+   "layout": "data/rom-cache/levels/thz3/layout.json"
+  },
+  "objects": {
+   "0x09": "rings, strict proximity < 12 (object-09)",
+   "0x26": "springs (spring-interaction)",
+   "0x10": "monitor parameter 1 (object-10)",
+   "0x1B": "moving spike at (752,128): lifecycle facts in part_a.a3_lifecycle.spike_1b, push/cooldown in a1/a2",
+   "terrain": "rings $753E, springs, no spike blocks"
+  }
+ },
+ "placements": [
+  {
+   "index": 1,
+   "type": "0x50",
+   "world": [
+    1936,
+    238
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x00",
+   "aux1": "0x00",
+   "rom_offset": "0x708FE",
+   "class": "boss"
+  },
+  {
+   "index": 2,
+   "type": "0x26",
+   "world": [
+    656,
+    384
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x72",
+   "aux1": "0x72",
+   "rom_offset": "0x70907",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 3,
+   "type": "0x26",
+   "world": [
+    720,
+    384
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x72",
+   "aux1": "0x72",
+   "rom_offset": "0x70910",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 4,
+   "type": "0x26",
+   "world": [
+    784,
+    384
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x72",
+   "aux1": "0x72",
+   "rom_offset": "0x70919",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 5,
+   "type": "0x26",
+   "world": [
+    1456,
+    384
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x72",
+   "aux1": "0x72",
+   "rom_offset": "0x70922",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 6,
+   "type": "0x10",
+   "world": [
+    1456,
+    366
+   ],
+   "flags": "0x00",
+   "parameter": "0x01",
+   "aux0": "0x00",
+   "aux1": "0x00",
+   "rom_offset": "0x7092B",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 7,
+   "type": "0x1B",
+   "world": [
+    752,
+    128
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x00",
+   "aux1": "0x00",
+   "rom_offset": "0x70934",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 8,
+   "type": "0x09",
+   "world": [
+    948,
+    100
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x00",
+   "aux1": "0x00",
+   "rom_offset": "0x7093D",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 9,
+   "type": "0x09",
+   "world": [
+    984,
+    74
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x00",
+   "aux1": "0x00",
+   "rom_offset": "0x70946",
+   "class": "reused_ordinary_object"
+  },
+  {
+   "index": 10,
+   "type": "0x09",
+   "world": [
+    1032,
+    64
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x00",
+   "aux1": "0x00",
+   "rom_offset": "0x7094F",
+   "class": "reused_ordinary_object"
+  }
+ ],
+ "boss": {
+  "object": "0x50",
+  "placement": {
+   "index": 1,
+   "type": "0x50",
+   "world": [
+    1936,
+    238
+   ],
+   "flags": "0x00",
+   "parameter": "0x00",
+   "aux0": "0x00",
+   "aux1": "0x00",
+   "rom_offset": "0x708FE",
+   "class": "boss"
+  },
+  "hit_points": 8,
+  "states": [
+   {
+    "state": 0,
+    "role": "init",
+    "entry": "slot created (generic placement ring)",
+    "duration": "1 update",
+    "movement": "none",
+    "spawns": "type $12 (pool $D540, parameter $97); music request $8C; $D44E := zone+1; left limit follows camera",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "next update -> 1",
+    "hit_count_effect": "-",
+    "class": "gameplay",
+    "script_cpu": "0x95B1"
+   },
+   {
+    "state": 1,
+    "role": "wait_for_player",
+    "entry": "from 0",
+    "duration": "until trigger",
+    "movement": "none",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "|dx| < 160 and |dy| < 256 (PLAYER_DIST) -> right limit := camera X, request 2",
+    "hit_count_effect": "-",
+    "class": "gameplay",
+    "script_cpu": "0x95BA"
+   },
+   {
+    "state": 2,
+    "role": "wait_for_hud_slide",
+    "entry": "from 1",
+    "duration": "until the $12 child is gone (about 98 updates after creation)",
+    "movement": "none",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "child gone -> bottom limit 78, pan target (bossX-256, bossY-160), request 3",
+    "hit_count_effect": "-",
+    "class": "gameplay (timing); the child itself is presentation",
+    "script_cpu": "0x95C0"
+   },
+   {
+    "state": 3,
+    "role": "arena_setup",
+    "entry": "from 2",
+    "duration": "1 update",
+    "movement": "vx := -128/256",
+    "spawns": "art selector $13, palette $0C, health 8, +$03 bit 7",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "request 18",
+    "hit_count_effect": "health := 8",
+    "class": "gameplay",
+    "script_cpu": "0x95C6"
+   },
+   {
+    "state": 18,
+    "role": "entry_sweep",
+    "entry": "from 3",
+    "duration": "about 68 updates",
+    "movement": "-0.5 px/update from the right edge",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "screen X low byte in $80..$DF (EDGE(RIGHT,-33..-128)) -> 6; helper $814D: solid, hurts a non-attacker, knocks an attacker back, never changes health",
+    "hit_count_effect": "none",
+    "class": "gameplay",
+    "script_cpu": "0x9624"
+   },
+   {
+    "state": 6,
+    "role": "left_cruise",
+    "entry": "from 18 / 15",
+    "duration": "until screen X low byte < $38 (EDGE(LEFT,+56))",
+    "movement": "-128/256 (first) / -130/256",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": true,
+    "exit": "decelerate (phase $FF) then request 9",
+    "hit_count_effect": "-1 health -> reaction 8",
+    "class": "gameplay",
+    "script_cpu": "0x9632"
+   },
+   {
+    "state": 9,
+    "role": "turn_to_right",
+    "entry": "from 6",
+    "duration": "about 19 updates",
+    "movement": "decelerate then accelerate to +$20",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": true,
+    "exit": "vx >= $0020 -> 12",
+    "hit_count_effect": "-1 -> reaction 11",
+    "class": "gameplay",
+    "script_cpu": "0x9688"
+   },
+   {
+    "state": 12,
+    "role": "right_cruise",
+    "entry": "from 9",
+    "duration": "until screen X low byte >= $C8 (EDGE(LEFT,+200))",
+    "movement": "+128/256, mirrored",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": true,
+    "exit": "decelerate then request 15",
+    "hit_count_effect": "-1 -> reaction 14",
+    "class": "gameplay",
+    "script_cpu": "0x96C0"
+   },
+   {
+    "state": 15,
+    "role": "turn_to_left",
+    "entry": "from 12",
+    "duration": "about 14 updates",
+    "movement": "decelerate then accelerate to -$20",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": true,
+    "exit": "vx < -$0020 -> 6",
+    "hit_count_effect": "-1 -> reaction 17",
+    "class": "gameplay",
+    "script_cpu": "0x9716"
+   },
+   {
+    "state": 7,
+    "role": "top_bounce_reaction_of_6",
+    "entry": "player landed on top",
+    "duration": "20 updates",
+    "movement": "continues",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 6",
+    "hit_count_effect": "none",
+    "class": "gameplay",
+    "script_cpu": "0x9640"
+   },
+   {
+    "state": 10,
+    "role": "top_bounce_reaction_of_9",
+    "entry": "top contact",
+    "duration": "20 updates",
+    "movement": "continues",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 9",
+    "hit_count_effect": "none",
+    "class": "gameplay",
+    "script_cpu": "0x9694"
+   },
+   {
+    "state": 13,
+    "role": "top_bounce_reaction_of_12",
+    "entry": "top contact",
+    "duration": "20 updates",
+    "movement": "continues",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 12",
+    "hit_count_effect": "none",
+    "class": "gameplay",
+    "script_cpu": "0x96CE"
+   },
+   {
+    "state": 16,
+    "role": "top_bounce_reaction_of_15",
+    "entry": "top contact",
+    "duration": "20 updates",
+    "movement": "continues",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 15",
+    "hit_count_effect": "none",
+    "class": "gameplay",
+    "script_cpu": "0x9720"
+   },
+   {
+    "state": 8,
+    "role": "hit_reaction_of_6",
+    "entry": "attack hit",
+    "duration": "20 updates",
+    "movement": "frozen",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 6, vx := 0, phase 1",
+    "hit_count_effect": "(health already -1)",
+    "class": "gameplay",
+    "script_cpu": "0x967A"
+   },
+   {
+    "state": 11,
+    "role": "hit_reaction_of_9",
+    "entry": "attack hit",
+    "duration": "20 updates",
+    "movement": "frozen",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 9",
+    "hit_count_effect": "-",
+    "class": "gameplay",
+    "script_cpu": "0x96B6"
+   },
+   {
+    "state": 14,
+    "role": "hit_reaction_of_12",
+    "entry": "attack hit",
+    "duration": "20 updates",
+    "movement": "frozen",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 12",
+    "hit_count_effect": "-",
+    "class": "gameplay",
+    "script_cpu": "0x9708"
+   },
+   {
+    "state": 17,
+    "role": "hit_reaction_of_15",
+    "entry": "attack hit",
+    "duration": "20 updates",
+    "movement": "frozen",
+    "spawns": "-",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 15",
+    "hit_count_effect": "-",
+    "class": "gameplay",
+    "script_cpu": "0x9742"
+   },
+   {
+    "state": 4,
+    "role": "defeat_explosions",
+    "entry": "health reached 0 in 6/9/12/15",
+    "duration": "148 updates",
+    "movement": "none",
+    "spawns": "five $34 puffs at offsets (-8,0) (8,0) (0,-16) (-8,-24) (-8,-24) on updates 0..4; 24 flicker loops (4 updates saved frame, 2 blank)",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "-> 5",
+    "hit_count_effect": "-",
+    "class": "presentation + timing",
+    "script_cpu": "0x95CC"
+   },
+   {
+    "state": 5,
+    "role": "finish",
+    "entry": "from 4",
+    "duration": "1 update when Sonic is on the floor (D522 bit 1), else waits",
+    "movement": "none",
+    "spawns": "release camera (D280 := camX, D282 := 2304), player state $20 + $97, $0A parameter 0, convert to $0F",
+    "boss_can_be_damaged_in_this_state": false,
+    "exit": "slot becomes type $0F, token cleared",
+    "hit_count_effect": "-",
+    "class": "gameplay",
+    "script_cpu": "0x961E"
+   }
+  ],
+  "vulnerable_states": [
+   6,
+   9,
+   12,
+   15
+  ],
+  "damage_rule": "contact bit side/below + player $D503 bit 1 -> -1 health, knockback, reaction 20 updates; bit 0 (top) -> bounce vy -4.0 (state $0B, sound $A6), no damage; non-attacking -> damage request + 2-update cooldown; $D532 == 6 never tested",
+  "knockback": "contact bit 3: vx -6.0; bit 2: vx +6.0; bit 1: vy +6.0; bit 0: vy -4.0; other axis keeps vx and negates vy; player state $1B; palette flash command 7; sound $B6",
+  "contact_geometry": {
+   "boss_extents_x_y": [
+    20,
+    48
+   ],
+   "player_extents_x_y": [
+    8,
+    24
+   ],
+   "dx_range": [
+    -34,
+    34
+   ],
+   "dy_range": [
+    -52,
+    28
+   ],
+   "box": "contact iff |dx| <= 28 and -48 <= dy <= 24 (dy = playerY - bossY, both anchors, boss anchor after any movement of that update: states 6/9/12/15 test before $0338, state 18 moves first); the minimum-penetration axis decides top/below versus left/right",
+   "top_contact": "dy -48..-1 with vertical penetration (48-|dy|) <= horizontal (28-|dx|) -> bit 0 'player above' (a triangle-free diamond: |dx| <= 28 - ... see edges)",
+   "below_contact": "dy 0..24 with vertical penetration 24-dy <= 28-|dx|"
+  },
+  "contact_fixtures": [
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 28,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": -28,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": -29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 0,
+    "dy": 24,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 0,
+    "dy": 25,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 0,
+    "dy": -48,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 0,
+    "dy": -1,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 0,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 27,
+    "dy": -47,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 28,
+    "dy": -47,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 1,
+    "dy": 23,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 27,
+    "dy": 1,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": 15,
+    "dy": -34,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": -14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "walker_grounded",
+    "dx": -15,
+    "dy": -34,
+    "expected": "player_damage_request",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": -28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": -29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 0,
+    "dy": 24,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 0,
+    "dy": 25,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 0,
+    "dy": -48,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 0,
+    "dy": -1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 0,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 27,
+    "dy": -47,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 28,
+    "dy": -47,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 1,
+    "dy": 23,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 27,
+    "dy": 1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": 15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": -14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_ball_grounded",
+    "dx": -15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": -28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": -29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 0,
+    "dy": 24,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 0,
+    "dy": 25,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 0,
+    "dy": -48,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 0,
+    "dy": -1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 0,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 27,
+    "dy": -47,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 28,
+    "dy": -47,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 1,
+    "dy": 23,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 27,
+    "dy": 1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": 15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": -14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne",
+    "dx": -15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": -28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": -29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 0,
+    "dy": 24,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 0,
+    "dy": 25,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 0,
+    "dy": -48,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 0,
+    "dy": -1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 0,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 27,
+    "dy": -47,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 28,
+    "dy": -47,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 1,
+    "dy": 23,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 27,
+    "dy": 1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": 15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": -14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_pickup_state",
+    "dx": -15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 28,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": -28,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": -29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 0,
+    "dy": 24,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 0,
+    "dy": 25,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 0,
+    "dy": -48,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 0,
+    "dy": -1,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 0,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 27,
+    "dy": -47,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 28,
+    "dy": -47,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 1,
+    "dy": 23,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 27,
+    "dy": 1,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": 15,
+    "dy": -34,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": -14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invincible_after_landing_bit1_clear",
+    "dx": -15,
+    "dy": -34,
+    "expected": "player_damage_request",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 28,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": -28,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": -29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 0,
+    "dy": 24,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 0,
+    "dy": 25,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 0,
+    "dy": -48,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 0,
+    "dy": -1,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 0,
+    "dy": 0,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 27,
+    "dy": -47,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 28,
+    "dy": -47,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 1,
+    "dy": 23,
+    "expected": "player_damage_request",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 27,
+    "dy": 1,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": 15,
+    "dy": -34,
+    "expected": "player_damage_request",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": -14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "invulnerable_blink_non_attacking",
+    "dx": -15,
+    "dy": -34,
+    "expected": "player_damage_request",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": -28,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": -29,
+    "dy": 0,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 0,
+    "dy": 24,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 0,
+    "dy": 25,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 0,
+    "dy": -48,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 0,
+    "dy": -1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 0,
+    "dy": 0,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 27,
+    "dy": -47,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 28,
+    "dy": -47,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 1,
+    "dy": 23,
+    "expected": "hit",
+    "contact_bits": 2
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 27,
+    "dy": 1,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": 15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 4
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": -14,
+    "dy": -34,
+    "expected": "top_bounce",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "hurt_state_bit6_with_bit1",
+    "dx": -15,
+    "dy": -34,
+    "expected": "hit",
+    "contact_bits": 8
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne_rising",
+    "dx": 0,
+    "dy": -40,
+    "expected": "top_contact_no_rebound",
+    "contact_bits": 1
+   },
+   {
+    "state": 6,
+    "posture": "attacker_jump_airborne_rising",
+    "dx": 0,
+    "dy": -49,
+    "expected": "none",
+    "contact_bits": 0
+   }
+  ],
+  "children": {
+   "0x12": "HUD slide-away (presentation, but gates state 2)",
+   "0x34": "explosion puff x5 in state 4 (presentation)",
+   "0x0A": "param 0: bonus D2A6 + sparkle emitter; param $FF sparkle (presentation + bonus)",
+   "0x0F": "slot conversion poof (presentation, 38 updates)"
+  }
+ },
+ "arena_and_camera": {
+  "evidence": "derived from the b3 emulation/controlled results (values copied, not assumed) + SOURCE-TRACED tables $97A1/$9808",
+  "boss_anchor": {
+   "rule": "WORLD(1936,238) canonical placement; equals LOCKED_CAMERA(1679)+257 = EDGE(RIGHT,+1) of the locked 256 px view"
+  },
+  "creation": {
+   "rule": "generic ring: 288 <= bossX - camX <= 351 (EDGE(RIGHT,+32..+95)); camera X 1585..1648 at 256 px",
+   "vocabulary": "EDGE(RIGHT,+32..+95)"
+  },
+  "camera_left_lock": {
+   "rule": "from creation (state 0) the left scroll limit D280 is raised to the camera every update: the camera never scrolls left again",
+   "vocabulary": "LOCKED_CAMERA follow, camera-relative"
+  },
+  "trigger": {
+   "rule": "|playerX - bossX| < 160 and |playerY - bossY| < 256 (strict)",
+   "vocabulary": "PLAYER_DIST(160) / PLAYER_DIST(256): never widened"
+  },
+  "right_lock": {
+   "rule": "at the trigger the right scroll limit D282 := camera X; later D282 := pan target X (1680)",
+   "vocabulary": "LOCKED_CAMERA(camera at trigger)"
+  },
+  "pan": {
+   "target": "(bossX-256, bossY-160) = (1680,78): X = bossX - 256 (boss at EDGE(RIGHT,0) of the locked view), Y = bossY - 160; bottom limit D27E := 78",
+   "speed": "1 px/update on both axes; X stops 1 px short (exclusive limit): 1679",
+   "vocabulary": "LOCKED_CAMERA(1679, 78)",
+   "starts": "when the $12 child is gone"
+  },
+  "entry": {
+   "start": "boss at WORLD 1935/1936 moving -0.5 px/update",
+   "to_patrol": "screen X low byte in $80..$DF -> state 6 (measured x 1901, screen 222)",
+   "vocabulary": "EDGE(RIGHT,-33) of the locked view (screen X 223 max)"
+  },
+  "patrol": {
+   "left_turn": "screen X low byte < $38: EDGE(LEFT,+56) of the locked view = WORLD 1735",
+   "right_turn": "screen X low byte >= $C8: EDGE(LEFT,+200) = EDGE(RIGHT,-56) = WORLD 1879",
+   "measured_world_range_of_anchor": [
+    1726,
+    1887
+   ],
+   "vocabulary": "LOCKED_CAMERA(1679)+56 / +200"
+  },
+  "player_clamp": {
+   "rule": "original EDGE(LEFT,+16)..EDGE(RIGHT,-9) of the locked view; measured anchor range 1694..1927 (camera 1679); THZ3 has no terrain wall (flat floor 1600..2560)",
+   "vocabulary": "LOCKED_CAMERA(1679)+16 .. +247 in WORLD terms; a live-view EDGE clamp would let a wide view leave the arena"
+  },
+  "release": {
+   "rule": "state 5: D280 := camera X, scroll flags cleared, D282 := 2304 (saved at creation = level width 2560 - 256)",
+   "vocabulary": "right limit = WORLD width - view width"
+  },
+  "act_clear_threshold": {
+   "rule": "playerX - cameraX > $120 (EDGE(RIGHT,+33)); measured player X 2591..2593, camera 2299 (2304 limit); in world terms 2593 = worldWidth + 33 for any view width"
+  },
+  "arena_measured": {
+   "final_lock": {
+    "camera": [
+     1679,
+     78
+    ],
+    "left_limit_D280": 1657,
+    "right_limit_D282": 1680,
+    "bottom_limit_D27E": 78,
+    "scroll_D15E_D15F": [
+     136,
+     1
+    ],
+    "boss_patrol_x_range": [
+     1726,
+     1887
+    ]
+   },
+   "player_clamp": {
+    "camera_x": 1679,
+    "max_player_x_running_right": 1927,
+    "min_player_x_running_left": 1694,
+    "max_minus_camera": 248,
+    "min_minus_camera": 15,
+    "rule": "the original player edge clamp EDGE(LEFT,+16)..EDGE(RIGHT,-9) (camera+16 .. camera+247, +-1 from the sub-pixel/low-byte quirks) confines Sonic to world X ~1695..1927 while the camera is locked at 1679; THZ3 has NO terrain wall there (floor row 8 is flat from X 1600 to 2560), so the camera and this clamp are the only arena boundary"
+   }
+  },
+  "widescreen_decisions_left_to_the_port": [
+   "where the locked camera sits for a view wider than 256 (SMS: boss enters from the right edge, EDGE(RIGHT,+1))",
+   "whether the arena clamp stays at world 1695..1926 (faithful arena) or follows the live view (bigger arena, floor continues to 2560)",
+   "boss patrol stays in WORLD terms (1726..1887) so the fight geometry is unchanged"
+  ]
+ },
+ "defeat_and_clear": {
+  "final_hit_to_state_4": "same update",
+  "state_4_updates": 148,
+  "conversion": "state 5 runs in the update after state 4 ends when Sonic is on the floor: camera released, D282 := 2304, player state $20 + $97, $0A parameter 0 (D2A6 bonus), slot -> $0F",
+  "player_control": "none after the conversion update (state $20 ignores input); damage cannot occur: no boss contact in states 4/5",
+  "flag": "playerX - cameraX > $120 sets D293 bit 4 (act index 2); about 181..186 frames after conversion depending on Sonic's X",
+  "main_loop": "$1333 -> $1543: 60 waits, fades, 96, 30, results $32F9 at flag+199, ring/time tally from flag+299, act-3 boss bonus loop $2D55 (50 x 10 points in zone 0) at flag+275, advance $15CE at about flag+856..889, level load of zone 1 act 0",
+  "timer": "never stopped in THZ3 (D2BE stays $FF); bonus computed once at conversion",
+  "score": "rings x 10 + D2A6 steps + 500; no score for the boss itself ($5F77 gate)",
+  "converges_with_18_19_20": "shares player state $20, handler $83A6, flag D293 and the results routines; differs in the creator ($50 state 5 instead of $19), the $0A bonus and the $1543 act-3 tail"
+ },
+ "assets": [
+  {
+   "id": "boss_tiles_unmirrored",
+   "kind": "tiles",
+   "source": "bank 0x0A:$8940 (ROM 0x28940)",
+   "tiles": 72,
+   "vram": "0x05C0",
+   "tile_ids": "0x2E..0x75",
+   "source_sha256": "be62830ccd8c821603179170ea371de6e202eca42de1fe10ecd8389136c17cff",
+   "status": "extracted/decoded (tools/object_50.py --png)",
+   "used_by": "boss frames 1-6 unmirrored (+$08 = 0)"
+  },
+  {
+   "id": "boss_tiles_mirrored_copy",
+   "kind": "tiles",
+   "source": "same source through the bit-reversal table at ROM 0x0100",
+   "tiles": 44,
+   "vram": "0x0EC0",
+   "tile_ids": "0x76..0xA1",
+   "source_sha256": "917b45b0337858c057b41fcc1853d51ba6e5a50db6d076d41e6c0f81101a7a6a",
+   "status": "extracted/decoded",
+   "used_by": "boss frames 1-4 mirrored (+$09 = 0x48)"
+  },
+  {
+   "id": "explosion_tiles_a2",
+   "kind": "tiles",
+   "source": "bank 0x09:$ABA0 (ROM 0x26BA0)",
+   "tiles": 12,
+   "vram": "0x1440",
+   "tile_ids": "0xA2..0xAD",
+   "source_sha256": "d3bc7be147568f9a248e5b96529385357b5f27b6c741eeb2ef490949efb1c026",
+   "status": "extracted/decoded",
+   "used_by": "type $34 puffs, art base from table at bank 0x1E:$8C98 (zone 0 = $A2)"
+  },
+  {
+   "id": "boss_mapping_94C6",
+   "kind": "mapping",
+   "source": "bank 0x0F:$94C6 (ROM 0x3D4C6), pointer 0x3C0A0",
+   "frames": 7,
+   "status": "decoded (object-50.json graphics.frames)"
+  },
+  {
+   "id": "boss_sprite_palette_0C",
+   "kind": "palette",
+   "source": "ROM 0x3B70D",
+   "status": "decoded; differs from sprite palette $06 only in colours 13-15 ($35,$20,$3F); hit flash writes $3F,$3F for 4 updates"
+  },
+  {
+   "id": "effect_mapping_8C71_frames",
+   "kind": "mapping",
+   "source": "bank 0x0F:$8C71 (ROM 0x3CC71) shared by $0A and $0F, frames 5,6 (sparkle) and 7,8,9 (smoke poof)",
+   "status": "decoded here (support_static); tiles already in the THZ level VRAM image (offsets 32..45, tile base 0)"
+  },
+  {
+   "id": "puff_mapping_92C5_frames",
+   "kind": "mapping",
+   "source": "bank 0x0F:$92C5 (ROM 0x3D2C5), frames 1-4",
+   "status": "decoded here; tiles via explosion_tiles_a2"
+  },
+  {
+   "id": "hud_sprites",
+   "kind": "existing",
+   "source": "level HUD (SAT rows DB34..DB3F)",
+   "status": "already in POC (HUD objects); type $12 only needs a slide-away effect"
+  },
+  {
+   "id": "results_screen_32F9",
+   "kind": "screen",
+   "source": "$32F9 and tables $3800..$3D10",
+   "status": "same screen as acts 1/2 (deferred in POC for THZ1/2 as well); not extracted"
+  },
+  {
+   "id": "audio_requests",
+   "kind": "numbers",
+   "source": "sound ids 0x8C boss music, 0xB6 hit, 0xA6 bounce, 0xC4 explosion, 0x97 clear jingle, 0xB4 tally",
+   "status": "numbers only (no audio is extracted)"
+  }
+ ],
+ "fixtures": {
+  "files": [
+   "data/rom-cache/thz3-boss-support.json",
+   "tests/test_thz3_boss_support.py"
+  ],
+  "counts": {
+   "a1_probe_rows": 96,
+   "a2_push_cases": 21124,
+   "a4_aligned_spike_runs": 1446,
+   "b3_trigger_cases": 36,
+   "b3_creation_window_cases": 120,
+   "b4_contact_cases": 61479,
+   "controlled_cases_total": 84301,
+   "emulated_whole_game_runs": 1481
+  },
+  "aligned_update_harness": "Aligned (tools/thz3_boss_support.py): writes at the $1336 update boundary"
+ },
+ "poc_readiness": {
+  "evidence": "POC SOURCE (READ-ONLY) at 7799c34 plus the uncommitted working tree; nothing was run or modified",
+  "usable_unchanged": [
+   "SCR_chaos_viewport: WORLD/EDGE/CENTER/PLAYER_DIST/LOCKED_CAMERA helpers cover every boss constant (b3.constants)",
+   "SCR_chaos_box_contact: $6328 minimum-penetration contact for any extents (boss 20x48 vs Sonic 8x24) and SCR_chaos_box_projection for the solid push",
+   "SCR_chaos_attack: chaos_attack_posture (bit 1 only) is exactly the boss predicate; staged $D3B0 request/promotion (chaos_request_stage) matches the ROM's one-update delay",
+   "act-clear tail: player state $20 run, EDGE(RIGHT,+33) clear (chaos_goal_clear_dx), chaos_act_complete progression; type $0F transient (OBJ_chaos_object_0F_transient: 37 visible updates matches the ROM puff)",
+   "SCR_chaos_spike1b already skips the whole contact helper (wall and push included) during the 16-update cooldown, pushes +23 only for bit 4 else -23: matches A1/A2",
+   "THZ3 level data/objects/rings already generated (SCR_chaos_level_thz3_data); chaos_level_spawn_objects counts the unsupported $50 as skipped"
+  ],
+  "new_subsystems_required": [
+   "boss object ($50): 19-state machine with the numbers in part_b.b5_phase_model, health, reaction timers, solid contact, hit/bounce/damage effects",
+   "arena camera: scroll limits (left raise, right lower, bottom 78) and the explicit-target pan; chaos_goal_pan_step derives its target from a sign anchor and the view centre, so it needs a target provider (LOCKED_CAMERA(1679,78)) rather than a rewrite",
+   "arena player clamp in WORLD terms (chaos_goal_clamp_player is hard-wired to the live view and only runs until state $20)",
+   "boss-clear completion: conversion update computes D2A6 (needs time and rings), requests state $20, keeps the timer running, then the shared act-clear tail",
+   "presentation effects: HUD slide-away, $34 puffs, $0A sparkle trail; boss/puff sprites and palette $0C (frames exported by --png)"
+  ],
+  "assumptions_likely_to_conflict": [
+   "chaos_act_complete and chaos_finish_time assume the timer stopped at a $18 contact; in THZ3 the timer is never stopped and the bonus is taken at the conversion update",
+   "chaos_goal_clamp_player and chaos_goal_pan_step use the live view width: in a wide view they would enlarge or re-centre the arena unless an explicit world rectangle is supplied",
+   "OBJ_chaos_zone follows the player vertically with a fixed 1/1.5 rule and has no scroll-limit concept; the boss pan needs Y locked to 78",
+   "the lifecycle retention adapter extends lifetimes for $1B; the ROM restarts a deleted spike at wake (A3) so wide-view backtracking can show a different spike phase (adapter, acceptable)",
+   "chaos_acts() lists THZ3 as the last act with 'no act clear'; progression after THZ3 is zone 1 act 1 (not implemented)"
+  ],
+  "widescreen_helpers_sufficient": "yes for relationships (vocabulary), no for the clamp/pan/limit behaviour above, which must be written once as a small camera-limit layer",
+  "thz3_fully_playable_in_next_batch": "reasonable: no new ROM research is blocking; the work is one boss object, a camera-limit/arena layer, three effect objects and sprite import. Results screen and boss-clear score loop can stay deferred like THZ1/2"
+ }
+}
