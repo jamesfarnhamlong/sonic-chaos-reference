@@ -242,6 +242,12 @@ The overlap helper also updates generic contact flags/bookkeeping. Whether any
 downstream system gives ordinary `$27` contact an additional gameplay meaning
 beyond the verified no-damage, no-movement callback result is **UNRESOLVED**.
 
+> **Resolved by `docs/player-attack-badnik-audit.md`:** the callback writes no `$D3B0`, but
+> `$6328` raises the player's contact flag `$D520` (type `$27` never sets object `+$03` bit 7) and
+> the player's own handler `$48BC` **damages a non-attacking Sonic on the next player update**
+> (emulated: rings 16 -> 0, state `$1E`); an attacker also gets a rebound there (-3.0 from above,
+> +0.5 from below). "No damage" above means "no damage request from the callback".
+
 ## Activation and generic visibility/lifetime behavior
 
 The bank-$1C placement scan accepts a window equivalent to `camera - 128 <=

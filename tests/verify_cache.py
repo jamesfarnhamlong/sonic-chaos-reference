@@ -23,6 +23,7 @@ import terrain_ring_collection
 import player_animation_counter
 import spring_interaction
 import platform_spike_collision
+import player_attack_badnik
 
 
 def main(rom_path):
@@ -117,6 +118,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/platform-spike-collision.json").read_text(encoding="utf-8")
     )
     assert stored_platform_spike == json.loads(json.dumps(platform_spike_collision.build(rom)))
+    # Player attack posture / badnik interaction audit: controlled sweeps and emulated runs are regenerated (~2 min).
+    stored_attack = json.loads(
+        (ROOT / "data/rom-cache/player-attack-badnik.json").read_text(encoding="utf-8")
+    )
+    assert stored_attack == json.loads(json.dumps(player_attack_badnik.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

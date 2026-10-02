@@ -1,0 +1,7288 @@
+{
+ "attack_matrix": {
+  "columns": [
+   "situation",
+   "state",
+   "set/clear by",
+   "bit1_effect_of_setter",
+   "badnik_sees_attacking",
+   "note"
+  ],
+  "emulated_state_vs_bit_windows": {
+   "current_state 0x04 requested 0x0F D503 0x02": 1,
+   "current_state 0x05 requested 0x09 D503 0x02": 3,
+   "current_state 0x05 requested 0x0A D503 0x03": 1,
+   "current_state 0x05 requested 0x1B D503 0x03": 2,
+   "current_state 0x06 requested 0x09 D503 0x02": 1,
+   "current_state 0x06 requested 0x0A D503 0x03": 2,
+   "current_state 0x09 requested 0x01 D503 0x00": 2,
+   "current_state 0x09 requested 0x07 D503 0x00": 1,
+   "current_state 0x09 requested 0x08 D503 0x00": 2,
+   "current_state 0x0A requested 0x05 D503 0x00": 1,
+   "current_state 0x0A requested 0x0B D503 0x01": 1,
+   "current_state 0x0E requested 0x1C D503 0x03": 1,
+   "current_state 0x1A requested 0x1B D503 0x03": 1,
+   "current_state 0x1C requested 0x0E D503 0x01": 1
+  },
+  "evidence": "CONTROLLED ROUTINE RESULT (setter column) + EMULATED (natural_timelines) + BYTE-VERIFIED (kept/inherits rows)",
+  "rows": [
+   [
+    "standing",
+    "$01",
+    "$45B3 stand / $45CE land",
+    "cleared",
+    false,
+    "standing callbacks write no bit 1"
+   ],
+   [
+    "walking",
+    "$05",
+    "$45CE land",
+    "cleared",
+    false,
+    ""
+   ],
+   [
+    "running",
+    "$06",
+    "$47A9 state-6 setter",
+    "cleared",
+    false,
+    ""
+   ],
+   [
+    "crouch",
+    "$04",
+    "$46BB",
+    "cleared",
+    false,
+    ""
+   ],
+   [
+    "look-up",
+    "$03",
+    "$46B0",
+    "kept",
+    false,
+    ""
+   ],
+   [
+    "skid",
+    "$07/$08",
+    "$47B6/$47C9 (gated on bit 0 clear)",
+    "conditional",
+    false,
+    "both setters return early while bit 0 is set (airborne); when they fire they clear bit 1"
+   ],
+   [
+    "ordinary jump ascending",
+    "$0A",
+    "$45ED",
+    "conditional",
+    true,
+    "bit 1 set when the jump starts (needs bit 0 clear)"
+   ],
+   [
+    "jump apex",
+    "$0A",
+    "none: $0A never calls $463C",
+    "kept",
+    true,
+    "no apex transition for the normal jump"
+   ],
+   [
+    "jump falling",
+    "$0A",
+    "none",
+    "kept",
+    true,
+    ""
+   ],
+   [
+    "jump landing request",
+    "$0A -> $05",
+    "$45CE",
+    "cleared",
+    false,
+    "cleared at the request; $D501 still $0A for one more update (ball state, not attacking)"
+   ],
+   [
+    "rolling",
+    "$09",
+    "$47DC / ramp contact $6A02",
+    "set",
+    true,
+    ""
+   ],
+   [
+    "spin-dash charge",
+    "$0F",
+    "$4701",
+    "set",
+    true,
+    "attacking while charging"
+   ],
+   [
+    "spin-dash roll",
+    "$10",
+    "$4719 / terrain $7654",
+    "set",
+    true,
+    ""
+   ],
+   [
+    "peel-out charge",
+    "$15",
+    "$46CE",
+    "kept",
+    false,
+    "kept; aura object (bits 1|7) only after a very long charge"
+   ],
+   [
+    "peel-out run",
+    "$1A",
+    "$46E2",
+    "kept",
+    false,
+    "kept; bit 7 for 12 updates"
+   ],
+   [
+    "ramp launch",
+    "$1B",
+    "$47FB",
+    "set",
+    true,
+    ""
+   ],
+   [
+    "upright spring",
+    "$0B",
+    "$480C",
+    "cleared",
+    false,
+    "bit 0 set, bit 1 cleared"
+   ],
+   [
+    "spring apex / ledge fall",
+    "$0E",
+    "$463C",
+    "kept",
+    false,
+    "bit 0 set, bit 1 cleared"
+   ],
+   [
+    "diagonal spring",
+    "$1C",
+    "$482D",
+    "set",
+    true,
+    "attacking until the apex request $463C"
+   ],
+   [
+    "horizontal spring",
+    "9",
+    "$4849/$4868",
+    "set",
+    true,
+    "grounded roll"
+   ],
+   [
+    "loop",
+    "$0C/$0D/$13",
+    "entry $3EAB/$3EE1/$3EF7 (no D503 write)",
+    "kept",
+    "inherits",
+    "exit: bit 1 -> state 9 else 6 ($3CAB); $0D launch -> $0A with bits 0|1"
+   ],
+   [
+    "twist",
+    "$22",
+    "entry/exit $95EC (no D503 write)",
+    "kept",
+    "inherits",
+    "exit requests state 9 / $0A WITHOUT setting bit 1: ball state, possibly not attacking"
+   ],
+   [
+    "hurt",
+    "$1E",
+    "$4942",
+    "kept",
+    "ignored",
+    "bit 1 kept but bit 6 disables all contact"
+   ],
+   [
+    "death",
+    "$1F",
+    "$4984",
+    "kept",
+    "ignored",
+    "bit 6 set by the callbacks"
+   ],
+   [
+    "act clear",
+    "$20",
+    "$4892",
+    "kept",
+    "inherits",
+    "no D503 write"
+   ],
+   [
+    "state $11",
+    "$11",
+    "$4775",
+    "n/a",
+    false,
+    ""
+   ],
+   [
+    "invincible (D532 6)",
+    "any",
+    "$4B1D pickup",
+    "set",
+    true,
+    "stars aura keeps bit 7; D532 6 substitutes for bit 1"
+   ]
+  ]
+ },
+ "badnik_census": {
+  "enemy_types": [
+   "0x21",
+   "0x27"
+  ],
+  "evidence": "DECODED DATA (placement census) + CONTROLLED ROUTINE RESULT (sweeps) + EMULATED",
+  "no_other_enemy": "the census (data/rom-cache/levels/object-census.json) has no other THZ1/THZ2 type that converts to $0F: $09 ring, $10 monitor, $18 sign, $1B spike, $26 spring, $28 platform. THZ3 adds only boss $50",
+  "shared_vs_per_object": "ONE shared player-side rule ($48BC: D532 == 6 immune; D3B0 damages regardless of attack; D520 + bit 1 -> rebound else damage) and ONE shared defeat gate ($5F3D, used by $27 only in THZ). $21, the monitor and the boss own their tests (each reads $D503 directly). The predicates agree for $27/$21 (bit 1 or D532 == 6) and differ for the monitor/boss (bit 1 only)",
+  "thz1": {
+   "0x10_monitors": 5,
+   "0x1B_moving_spikes": 4,
+   "0x21": 6,
+   "0x27": 3
+  },
+  "thz2": {
+   "0x10_monitors": 5,
+   "0x1B_moving_spikes": 0,
+   "0x21": 5,
+   "0x27": 4
+  },
+  "types": {
+   "0x10": {
+    "attack_test": "D503 bit 1 only (D532 == 6 does not break it)",
+    "collision_routine": "$034D ($5FA0 -> $6328)",
+    "damage": "none (solid, bit 7 set)",
+    "defeat": "reward + type $0F (not an enemy)"
+   },
+   "0x1B": {
+    "attack_test": "side bump reads bit 1 + floor flag; top damage ignores it",
+    "collision_routine": "$ACFD -> $033B",
+    "damage": "D3B0 := $FF on top contact"
+   },
+   "0x21": {
+    "attack_test": "D532 == 6 or D503 bit 1, read at object-update time (after the player update of the same frame)",
+    "bottom": "no separate case: dy -3..+24 is the 'low' branch",
+    "box": "|dx| <= 19, dy -26..+24",
+    "collision_routine": "$B2AF -> $033B ($6328), tail $B2B2",
+    "damage": "D3B0 := $FF",
+    "defeat": "$5F54 conversion to $0F (+score)",
+    "reads_attack_before_or_after_movement": "after the player movement of that frame; the object moves (patrol) before the contact tail in the same callback",
+    "rebound_after_defeat": "none",
+    "top_vs_side": "top (playerY <= objY-4) = stomp bounce BEFORE the attack test, badnik survives; side/low = attack/damage"
+   },
+   "0x27": {
+    "attack_test": "$5F3D: D532 == 6 or D503 bit 1 (same predicate as $21)",
+    "box": "|dx| <= 17, dy -14..+24",
+    "collision_routine": "$033B ($6328) at the start of every state callback, then $0323 ($5F3D) on overlap",
+    "contact_movement": "on overlap the callback returns before moving",
+    "damage": "none from the callback; generic D520 -> $48BC damage on the next player update",
+    "defeat": "$5F54",
+    "rebound_after_defeat": "-3.0 from above (next update), +0.5 from below, none from the side",
+    "top_vs_side": "no difference for the badnik; the rebound differs (above -3.0, below +0.5, side none)"
+   },
+   "0x50_thz3": {
+    "attack_test": "D503 bit 1 only",
+    "damage": "D3B0 := $FF + 2-update cooldown",
+    "note": "docs/object-50.md; D532 == 6 not tested"
+   }
+  }
+ },
+ "contact_handler_48bc": {
+  "cases": 6144,
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "inputs": "D503 bits 0,1,6,7 (16 combos), D532 in {0,3,4,6}, D520 in {0,9}, D3B0 in {0,FF}, D521 high nibble in {0..3}, rings {0,>0}, current state in {5,9,$11}",
+  "model_function": "model_48bc",
+  "model_mismatches": 0,
+  "rules_in_priority_order": [
+   "D503 bit 7 set -> invulnerable path ($49F7): no contact or damage processing",
+   "D503 bit 6 set -> hurt/dying path ($4A2E): D520 cleared, nothing else",
+   "D532 == 6 -> D3B0 and D520 cleared, no damage, no rebound",
+   "D3B0 != 0 -> damage whatever D503 bit 1 is (state $11: clears D532, hurt without ring test; else rings == 0 -> death $1F, else scatter rings + hurt $1E)",
+   "D520 == 0 -> nothing",
+   "D520 != 0 and D503 bit 1 set (attacking): D521 bit 4 -> vy := +0.5 unless current state is 9; else D521 bit 5 -> vy := -3.0 (floor flag cleared, airborne set); else nothing; D520 cleared",
+   "D520 != 0 and D503 bit 1 clear -> damage exactly as for D3B0 != 0"
+  ]
+ },
+ "contact_trials": {
+  "evidence": "EMULATED ORIGINAL FRAME (pose forced at update 0; ring counter $D29A forced to $10 so damage is not death)",
+  "type21": {
+   "object_world_position_after_settle": [
+    1247,
+    846
+   ],
+   "trials": [
+    {
+     "D503_after_12": "0x01",
+     "converted_at_update": null,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 33,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 0,
+       "vy": 816
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 10,
+       "u": 1,
+       "vy": -1728
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 2,
+       "vy": -1704
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 3,
+       "vy": -1680
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 4,
+       "vy": -1656
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 5,
+       "vy": -1632
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 6,
+       "vy": -1608
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "jump_falling_onto_top",
+     "rebound_update": 1,
+     "rebound_vy_8_8": -1728,
+     "rings_after": 16,
+     "start_D503": "0x03",
+     "start_D532": 0,
+     "start_state": "0x0A",
+     "state_after_12": "0x0E"
+    },
+    {
+     "D503_after_12": "0x01",
+     "converted_at_update": null,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 0,
+       "vy": 816
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 14,
+       "u": 1,
+       "vy": -1728
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 2,
+       "vy": -1704
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 3,
+       "vy": -1680
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 4,
+       "vy": -1656
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 5,
+       "vy": -1632
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 33,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 6,
+       "vy": -1608
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "falling_state_0E_onto_top",
+     "rebound_update": 1,
+     "rebound_vy_8_8": -1728,
+     "rings_after": 16,
+     "start_D503": "0x01",
+     "start_D532": 0,
+     "start_state": "0x0E",
+     "state_after_12": "0x0E"
+    },
+    {
+     "D503_after_12": "0x02",
+     "converted_at_update": 1,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 2,
+       "object_type": 33,
+       "req": 9,
+       "rings": 16,
+       "state": 9,
+       "u": 0,
+       "vy": 0
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 2,
+       "object_type": 15,
+       "req": 9,
+       "rings": 16,
+       "state": 9,
+       "u": 1,
+       "vy": 0
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 2,
+       "object_type": 15,
+       "req": 9,
+       "rings": 16,
+       "state": 9,
+       "u": 2,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 2,
+       "object_type": 15,
+       "req": 9,
+       "rings": 16,
+       "state": 9,
+       "u": 3,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 2,
+       "object_type": 15,
+       "req": 9,
+       "rings": 16,
+       "state": 9,
+       "u": 4,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 2,
+       "object_type": 15,
+       "req": 9,
+       "rings": 16,
+       "state": 9,
+       "u": 5,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 2,
+       "object_type": 15,
+       "req": 9,
+       "rings": 16,
+       "state": 9,
+       "u": 6,
+       "vy": 1792
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "rolling_from_the_side",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 16,
+     "start_D503": "0x02",
+     "start_D532": 0,
+     "start_state": "0x09",
+     "state_after_12": "0x09"
+    },
+    {
+     "D503_after_12": "0xC1",
+     "converted_at_update": null,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 33,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 0,
+       "vy": 0
+      },
+      {
+       "D3B0": 255,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 33,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 1,
+       "vy": 0
+      },
+      {
+       "D3B0": 255,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 33,
+       "req": 30,
+       "rings": 0,
+       "state": 5,
+       "u": 2,
+       "vy": -1024
+      },
+      {
+       "D3B0": 255,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 33,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 3,
+       "vy": -976
+      },
+      {
+       "D3B0": 255,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 33,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 4,
+       "vy": -928
+      },
+      {
+       "D3B0": 255,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 33,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 5,
+       "vy": -880
+      },
+      {
+       "D3B0": 255,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 33,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 6,
+       "vy": -880
+      }
+     ],
+     "hurt_or_death_requested_at_update": 2,
+     "pose": "walking_from_the_side",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 0,
+     "start_D503": "0x00",
+     "start_D532": 0,
+     "start_state": "0x05",
+     "state_after_12": "0x1E"
+    },
+    {
+     "D503_after_12": "0x00",
+     "converted_at_update": 1,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 33,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 0,
+       "vy": 0
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 15,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 1,
+       "vy": 0
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 15,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 2,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 15,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 3,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 15,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 4,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 15,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 5,
+       "vy": 1792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 15,
+       "req": 5,
+       "rings": 16,
+       "state": 5,
+       "u": 6,
+       "vy": 1792
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "invincible_walking_from_the_side",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 16,
+     "start_D503": "0x00",
+     "start_D532": 6,
+     "start_state": "0x05",
+     "state_after_12": "0x05"
+    }
+   ]
+  },
+  "type27": {
+   "object_world_position_after_settle": [
+    2285,
+    768
+   ],
+   "trials": [
+    {
+     "D503_after_12": "0x03",
+     "converted_at_update": 4,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 0,
+       "vy": 816
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 1,
+       "vy": 864
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 2,
+       "vy": 912
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 3,
+       "vy": 960
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 4,
+       "vy": 1008
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 5,
+       "vy": -768
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 6,
+       "vy": -720
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "normal_jump_falling_onto_it",
+     "rebound_update": 5,
+     "rebound_vy_8_8": -768,
+     "rings_after": 16,
+     "start_D503": "0x03",
+     "start_D532": 0,
+     "start_state": "0x0A",
+     "state_after_12": "0x0A"
+    },
+    {
+     "D503_after_12": "0x03",
+     "converted_at_update": 0,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 0,
+       "vy": -464
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 1,
+       "vy": 128
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 2,
+       "vy": 176
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 3,
+       "vy": 224
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 4,
+       "vy": 272
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 5,
+       "vy": 320
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 6,
+       "vy": 368
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "normal_jump_ascending_from_below",
+     "rebound_update": 1,
+     "rebound_vy_8_8": 128,
+     "rings_after": 16,
+     "start_D503": "0x03",
+     "start_D532": 0,
+     "start_state": "0x0A",
+     "state_after_12": "0x0A"
+    },
+    {
+     "D503_after_12": "0x03",
+     "converted_at_update": 2,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 10,
+       "rings": 16,
+       "state": 9,
+       "u": 0,
+       "vy": 0
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 1,
+       "vy": 48
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 2,
+       "vy": 96
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 3,
+       "vy": 144
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 4,
+       "vy": 192
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 5,
+       "vy": 240
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 10,
+       "rings": 16,
+       "state": 10,
+       "u": 6,
+       "vy": 288
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "rolling_from_the_side",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 16,
+     "start_D503": "0x02",
+     "start_D532": 0,
+     "start_state": "0x09",
+     "state_after_12": "0x0A"
+    },
+    {
+     "D503_after_12": "0xC1",
+     "converted_at_update": null,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 0,
+       "vy": 792
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 1,
+       "vy": 816
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 2,
+       "vy": 840
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 3,
+       "vy": 864
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 1,
+       "object_type": 39,
+       "req": 11,
+       "rings": 16,
+       "state": 11,
+       "u": 4,
+       "vy": 888
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 11,
+       "u": 5,
+       "vy": -1024
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 6,
+       "vy": -976
+      }
+     ],
+     "hurt_or_death_requested_at_update": 5,
+     "pose": "upright_spring_fall_state_0B",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 0,
+     "start_D503": "0x01",
+     "start_D532": 0,
+     "start_state": "0x0B",
+     "state_after_12": "0x1E"
+    },
+    {
+     "D503_after_12": "0xC1",
+     "converted_at_update": null,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 0,
+       "vy": 816
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 1,
+       "vy": 864
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 2,
+       "vy": 912
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 3,
+       "vy": 960
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 4,
+       "vy": 1008
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 14,
+       "u": 5,
+       "vy": -1024
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 6,
+       "vy": -976
+      }
+     ],
+     "hurt_or_death_requested_at_update": 5,
+     "pose": "falling_state_0E_after_apex_or_ledge",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 0,
+     "start_D503": "0x01",
+     "start_D532": 0,
+     "start_state": "0x0E",
+     "state_after_12": "0x1E"
+    },
+    {
+     "D503_after_12": "0x03",
+     "converted_at_update": 4,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 28,
+       "rings": 16,
+       "state": 28,
+       "u": 0,
+       "vy": 816
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 28,
+       "rings": 16,
+       "state": 28,
+       "u": 1,
+       "vy": 864
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 28,
+       "rings": 16,
+       "state": 28,
+       "u": 2,
+       "vy": 912
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 39,
+       "req": 28,
+       "rings": 16,
+       "state": 28,
+       "u": 3,
+       "vy": 960
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 3,
+       "object_type": 15,
+       "req": 28,
+       "rings": 16,
+       "state": 28,
+       "u": 4,
+       "vy": 1008
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 28,
+       "rings": 16,
+       "state": 28,
+       "u": 5,
+       "vy": -768
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 3,
+       "object_type": 15,
+       "req": 28,
+       "rings": 16,
+       "state": 28,
+       "u": 6,
+       "vy": -720
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "diagonal_spring_state_1C",
+     "rebound_update": 5,
+     "rebound_vy_8_8": -768,
+     "rings_after": 16,
+     "start_D503": "0x03",
+     "start_D532": 0,
+     "start_state": "0x1C",
+     "state_after_12": "0x1C"
+    },
+    {
+     "D503_after_12": "0xC1",
+     "converted_at_update": null,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 5,
+       "u": 0,
+       "vy": 256
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 1,
+       "vy": 304
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 2,
+       "vy": 352
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 14,
+       "u": 3,
+       "vy": -1024
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 4,
+       "vy": -976
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 5,
+       "vy": -928
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 193,
+       "object_type": 39,
+       "req": 30,
+       "rings": 0,
+       "state": 30,
+       "u": 6,
+       "vy": -880
+      }
+     ],
+     "hurt_or_death_requested_at_update": 3,
+     "pose": "walking_from_the_side",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 0,
+     "start_D503": "0x00",
+     "start_D532": 0,
+     "start_state": "0x05",
+     "state_after_12": "0x1E"
+    },
+    {
+     "D503_after_12": "0x01",
+     "converted_at_update": 4,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 0,
+       "vy": 816
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 1,
+       "vy": 864
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 2,
+       "vy": 912
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 3,
+       "vy": 960
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 1,
+       "object_type": 15,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 4,
+       "vy": 1008
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 0,
+       "object_type": 15,
+       "req": 5,
+       "rings": 16,
+       "state": 14,
+       "u": 5,
+       "vy": 1056
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 15,
+       "req": 14,
+       "rings": 16,
+       "state": 5,
+       "u": 6,
+       "vy": 256
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "invincible_falling_state_0E",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 16,
+     "start_D503": "0x01",
+     "start_D532": 6,
+     "start_state": "0x0E",
+     "state_after_12": "0x0E"
+    },
+    {
+     "D503_after_12": "0x01",
+     "converted_at_update": 2,
+     "first_updates": [
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 5,
+       "u": 0,
+       "vy": 256
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 39,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 1,
+       "vy": 304
+      },
+      {
+       "D3B0": 0,
+       "D520": 9,
+       "f3": 1,
+       "object_type": 15,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 2,
+       "vy": 352
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 15,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 3,
+       "vy": 400
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 15,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 4,
+       "vy": 448
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 15,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 5,
+       "vy": 496
+      },
+      {
+       "D3B0": 0,
+       "D520": 0,
+       "f3": 1,
+       "object_type": 15,
+       "req": 14,
+       "rings": 16,
+       "state": 14,
+       "u": 6,
+       "vy": 544
+      }
+     ],
+     "hurt_or_death_requested_at_update": null,
+     "pose": "invincible_walking_from_the_side",
+     "rebound_update": null,
+     "rebound_vy_8_8": null,
+     "rings_after": 16,
+     "start_D503": "0x00",
+     "start_D532": 6,
+     "start_state": "0x05",
+     "state_after_12": "0x0E"
+    }
+   ]
+  }
+ },
+ "counts": {
+  "controlled_cases": 76422,
+  "emulated_contact_trials": 14,
+  "emulated_updates_recorded": 2144,
+  "model_mismatches": 0
+ },
+ "d503_model": {
+  "attack_posture_definition": "(D503 & 2) != 0, OR power-up D532 == 6; both tests exist at $48CA/$5F3D/$B2D5; the monitor, boss and moving-spike side bump test bit 1 only",
+  "bits": {
+   "0": "airborne (set by every launch/jump/fall setter, cleared by landing $45CE, stand $45B3, state 6/7/8 setters, horizontal springs, roll $47DC)",
+   "1": "ATTACK POSTURE: the only thing player-side contact ($48BC), $5F3D, type $21, the monitor, the moving spike side bump and the boss read. Not 'airborne', not 'rolling by sprite'",
+   "2": "not referenced by player code",
+   "3": "read by the animation engine ($6502) as a state-switch lock; no player code sets it",
+   "4": "not referenced",
+   "5": "not referenced",
+   "6": "hurt/dying: $6328 returns before any contact (+$20/+$21 stay clear) and $48BC takes the $4A2E path; set by $4942, $3BF4/$3BFF; cleared by landing $45CE and at invulnerability end",
+   "7": "invulnerable (post-hit blink, $D3B1 timer $78 / $0C): $6328 still reports contact but does not set the +$20 overlap flag, $48BC takes $49F7 (no damage); set by $4942, $4B24 (invincibility pickup), $8313 (state $1A entry), type $05 object"
+  },
+  "byte": "$D503 = player object +$03 (IX = $D500)",
+  "evidence": "BYTE-VERIFIED ASSEMBLY + CONTROLLED ROUTINE RESULT (setter_effects, contact_handler_48bc)",
+  "persistence": {
+   "across_state_transitions": "bit 1 is only changed by the setters listed in setter_effects and by the three HL writers; every other state change (loop entry $3EAB/$3EE1/$3EF7, twist entry/exit $95EC/$978F, hurt $4942, death $4984, act-clear $4892, standing callbacks) leaves it as it was",
+   "apex_and_fall": "the normal jump ($0A) never calls the fall setter ($463C returns when the current state is $0A): bit 1 stays set through ascent, apex and descent until landing. Spring apex ($0B/$1C) and every other fall ($463C from state != $0A: ledge, apex, state $11 end) CLEARS bit 1",
+   "damage_and_death": "hurt $4942 and death $4984 do NOT clear bit 1 (they set bit 6, which disables contact); the next landing clears it",
+   "landing": "$45CE clears bits 0, 1, 6 and requests state 5 (it is requested in the callback; $D501 changes at the start of the next update)",
+   "walking_off_a_ledge": "$6C7C: fall setter $463C -> state $0E, bit 0 set, bit 1 cleared; when the current state is 9 (rolling): $4699 -> state $0A with bits 0 and 1 set (still attacking)"
+  }
+ },
+ "d532_model": {
+  "evidence": "BYTE-VERIFIED ASSEMBLY (all 5 writers, 5 readers) + CONTROLLED ROUTINE RESULT (power_up)",
+  "lifetime": "set by the monitor, 600 updates, cleared by $4A74 at timer 0; no other clear exists in player code (state-$11 damage clears 4); act start RAM clear is not traced here (UNRESOLVED for persistence across acts)",
+  "meaning": "player power-up selector: 0 none, 3 speed-up (X speed cap $0600 each update, timer $D44C := 900), 4 timer $12C (player type 1; sets state $11), 6 invincibility (timer 600, D503 |= $82 at pickup, stars = type $05 child)",
+  "poc_note": "global.powerInv is the right owner; 'playerSuper' has no ROM counterpart",
+  "readers": {
+   "$48CA": "$48BC: == 6 -> D3B0 and D520 cleared, no damage, no rebound",
+   "$4A74/$4A8F": "timer service",
+   "$5F43": "$5F3D: == 6 -> convert regardless of D503",
+   "$98EC (bank $0C)": "type $04 speed trail: runs only while == 3",
+   "$998A (bank $0C)": "type $05 aura keeps D503 bit 7 set while == 6, else deletes itself",
+   "$B2DD": "type $21 tail: == 6 -> convert"
+  },
+  "why_enemy_callbacks_treat_6_specially": "not an enemy-specific rule: 6 is the invincibility power-up. It substitutes for D503 bit 1 in the shared defeat gate $5F3D and in type $21, and makes $48BC ignore every contact; the monitor ($A17A) and the boss do not test it",
+  "writers": {
+   "$48FF": ":= 0 when damaged in state $11",
+   "$4AA0": ":= 0 when the timer reaches 0 and the code is 4 or 6 (code 3 is NOT cleared here)",
+   "$4AE8": ":= 4 (reward bit 3, only when $D500 == 1)",
+   "$4B13": ":= 3 (reward bit 2)",
+   "$4B3C": ":= 6 (reward bit 5; spawns type $05 aura when it was not already 6)"
+  }
+ },
+ "evidence_classes": {
+  "BYTE-VERIFIED ASSEMBLY": "routine bytes compared literally and disassembled by hand",
+  "CONTROLLED ROUTINE RESULT": "original routine executed on a Z80 core with explicit RAM",
+  "DECODED DATA": "ROM tables/records decoded by a parser",
+  "EMULATED ORIGINAL FRAME": "whole original game run in the approximate SMS harness",
+  "SOURCE-TRACED BEHAVIOR": "behavior read from the disassembly, not executed",
+  "UNRESOLVED": "not established"
+ },
+ "format": "player-attack-badnik/1",
+ "frame_event_order": {
+  "contact_update": {
+   "D503": 3,
+   "D520": 9,
+   "object_type": 15,
+   "order": [
+    "player update entry $361D",
+    "animation engine $64FA (player)",
+    "callback dispatcher $5E91 (player)",
+    "shared movement $3FEF (player)",
+    "contact/damage handler $48BC",
+    "power-up timer $4A74 (end of player update)",
+    "object scheduler $5DD1",
+    "overlap $6328 IX=$D700",
+    "attack gate $5F3D",
+    "enemy conversion $5F54",
+    "overlap $6328 IX=$D740"
+   ],
+   "player_vy": 1008,
+   "update": 4
+  },
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "following_update": {
+   "D503": 3,
+   "D520": 0,
+   "object_type": 15,
+   "order": [
+    "player update entry $361D",
+    "animation engine $64FA (player)",
+    "callback dispatcher $5E91 (player)",
+    "shared movement $3FEF (player)",
+    "contact/damage handler $48BC",
+    "power-up timer $4A74 (end of player update)",
+    "object scheduler $5DD1"
+   ],
+   "player_vy": -768,
+   "update": 5
+  },
+  "frames": [
+   {
+    "D503": 3,
+    "D520": 0,
+    "object_type": 39,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1",
+     "overlap $6328 IX=$D700",
+     "overlap $6328 IX=$D740"
+    ],
+    "player_vy": 816,
+    "update": 0
+   },
+   {
+    "D503": 3,
+    "D520": 0,
+    "object_type": 39,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1",
+     "overlap $6328 IX=$D700",
+     "overlap $6328 IX=$D740"
+    ],
+    "player_vy": 864,
+    "update": 1
+   },
+   {
+    "D503": 3,
+    "D520": 0,
+    "object_type": 39,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1",
+     "overlap $6328 IX=$D700",
+     "overlap $6328 IX=$D740"
+    ],
+    "player_vy": 912,
+    "update": 2
+   },
+   {
+    "D503": 3,
+    "D520": 0,
+    "object_type": 39,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1",
+     "overlap $6328 IX=$D700",
+     "overlap $6328 IX=$D740"
+    ],
+    "player_vy": 960,
+    "update": 3
+   },
+   {
+    "D503": 3,
+    "D520": 9,
+    "object_type": 15,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1",
+     "overlap $6328 IX=$D700",
+     "attack gate $5F3D",
+     "enemy conversion $5F54",
+     "overlap $6328 IX=$D740"
+    ],
+    "player_vy": 1008,
+    "update": 4
+   },
+   {
+    "D503": 3,
+    "D520": 0,
+    "object_type": 15,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1"
+    ],
+    "player_vy": -768,
+    "update": 5
+   },
+   {
+    "D503": 3,
+    "D520": 0,
+    "object_type": 15,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1"
+    ],
+    "player_vy": -720,
+    "update": 6
+   },
+   {
+    "D503": 3,
+    "D520": 0,
+    "object_type": 15,
+    "order": [
+     "player update entry $361D",
+     "animation engine $64FA (player)",
+     "callback dispatcher $5E91 (player)",
+     "shared movement $3FEF (player)",
+     "contact/damage handler $48BC",
+     "power-up timer $4A74 (end of player update)",
+     "object scheduler $5DD1"
+    ],
+    "player_vy": -672,
+    "update": 7
+   }
+  ]
+ },
+ "gate_5f3d": {
+  "by_d532": {
+   "0x00": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x01": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x02": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x03": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x04": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x05": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x06": {
+    "converts_when_bit1_clear": [
+     true
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x07": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   },
+   "0x08": {
+    "converts_when_bit1_clear": [
+     false
+    ],
+    "converts_when_bit1_set": [
+     true
+    ]
+   }
+  },
+  "cases": 4608,
+  "converted_slot_p3f_during_call": "0x80 then cleared",
+  "converted_slot_type": "0x0F",
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "model_mismatches": 0,
+  "rule": "converts iff (object +$21 & 15) != 0 and ($D532 == 6 or $D503 bit 1); every other $D503 bit is irrelevant"
+ },
+ "machine_facing_label": "player_attack_badnik",
+ "monitor_sweep": {
+  "callback": "0xA16C (bank $0C)",
+  "cases": 12834,
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "per_condition": {
+   "airborne_only_bit0": {
+    "no_effect": 2139
+   },
+   "attack_bit1_grounded": {
+    "bottom_hit_player_vy_+2.0_object_up": 300,
+    "break_rebound_-4.0": 375,
+    "no_effect": 1464
+   },
+   "invincible_D532_6": {
+    "no_effect": 2139
+   },
+   "invincible_and_bit1": {
+    "bottom_hit_player_vy_+2.0_object_up": 300,
+    "break_rebound_-4.0": 375,
+    "no_effect": 1464
+   },
+   "jump_bits01": {
+    "bottom_hit_player_vy_+2.0_object_up": 300,
+    "break_rebound_-4.0": 375,
+    "no_effect": 1464
+   },
+   "standing_or_walking": {
+    "no_effect": 2139
+   }
+  },
+  "rule": "break/bounce/bottom-hit all require $D503 bit 1 (the very first test after the $5FA0 projection); $D532 == 6 alone does nothing. Requested player states $0F/$10/$15/$1A reject a top break; a non-negative, non-zero player Y speed is required; state 9 breaks without a rebound; the monitor sets object +3 bit 7 so the generic D520 damage path never sees it"
+ },
+ "natural_timelines": {
+  "cases": [
+   {
+    "act": 0,
+    "case": "stand",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 30,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 30
+   },
+   {
+    "act": 0,
+    "case": "walk",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 48,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 50
+   },
+   {
+    "act": 0,
+    "case": "run",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 59,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 61,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 271,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 62,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x06",
+      "updates": 21,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 275,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 83,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x06",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 358,
+      "y": 653
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 84,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 6,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 362,
+      "y": 652
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 90,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": -1440,
+      "vy_last": -1440,
+      "x": 385,
+      "y": 643
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 91,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1B",
+      "updates": 39,
+      "vy_first": -1404,
+      "vy_last": -36,
+      "x": 389,
+      "y": 637
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 130
+   },
+   {
+    "act": 0,
+    "case": "jump_tap_from_run",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 59,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 61,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 271,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 62,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x06",
+      "updates": 9,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 275,
+      "y": 654
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 71,
+      "legacy_playerJump": true,
+      "requested": "0x0A",
+      "state": "0x06",
+      "updates": 1,
+      "vy_first": -1088,
+      "vy_last": -1088,
+      "x": 311,
+      "y": 653
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 72,
+      "legacy_playerJump": true,
+      "requested": "0x0A",
+      "state": "0x0A",
+      "updates": 36,
+      "vy_first": -1040,
+      "vy_last": 592,
+      "x": 315,
+      "y": 648
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 108,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x0A",
+      "updates": 1,
+      "vy_first": 640,
+      "vy_last": 640,
+      "x": 407,
+      "y": 620
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 109,
+      "legacy_playerJump": false,
+      "requested": "0x08",
+      "state": "0x09",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 401,
+      "y": 627
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 110,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x08",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 401,
+      "y": 627
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 111,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 397,
+      "y": 634
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 112,
+      "legacy_playerJump": false,
+      "requested": "0x08",
+      "state": "0x09",
+      "updates": 1,
+      "vy_first": 2304,
+      "vy_last": 2304,
+      "x": 391,
+      "y": 639
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 113,
+      "legacy_playerJump": false,
+      "requested": "0x08",
+      "state": "0x08",
+      "updates": 17,
+      "vy_first": 2304,
+      "vy_last": 1792,
+      "x": 385,
+      "y": 643
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 130
+   },
+   {
+    "act": 0,
+    "case": "jump_hold_from_run",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 59,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 61,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 271,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 62,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x06",
+      "updates": 9,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 275,
+      "y": 654
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 71,
+      "legacy_playerJump": true,
+      "requested": "0x0A",
+      "state": "0x06",
+      "updates": 1,
+      "vy_first": -1088,
+      "vy_last": -1088,
+      "x": 311,
+      "y": 653
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 72,
+      "legacy_playerJump": true,
+      "requested": "0x0A",
+      "state": "0x0A",
+      "updates": 53,
+      "vy_first": -1040,
+      "vy_last": 880,
+      "x": 315,
+      "y": 648
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 125,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x0A",
+      "updates": 1,
+      "vy_first": 928,
+      "vy_last": 928,
+      "x": 527,
+      "y": 590
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 126,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 531,
+      "y": 590
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 127,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x06",
+      "updates": 23,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 535,
+      "y": 590
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 150
+   },
+   {
+    "act": 0,
+    "case": "roll_from_run",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 59,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 61,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 271,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 62,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x06",
+      "updates": 9,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 275,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 71,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x06",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 311,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 72,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x09",
+      "updates": 20,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 314,
+      "y": 654
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 92,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x09",
+      "updates": 1,
+      "vy_first": -1050,
+      "vy_last": -1050,
+      "x": 386,
+      "y": 643
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 93,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1B",
+      "updates": 37,
+      "vy_first": -1014,
+      "vy_last": 282,
+      "x": 388,
+      "y": 639
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 130,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1B",
+      "updates": 10,
+      "vy_first": 318,
+      "vy_last": 1792,
+      "x": 441,
+      "y": 590
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 140
+   },
+   {
+    "act": 0,
+    "case": "spin_dash_charge_and_release",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 6,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 6,
+      "legacy_playerJump": false,
+      "requested": "0x04",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 7,
+      "legacy_playerJump": false,
+      "requested": "0x04",
+      "state": "0x04",
+      "updates": 9,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 16,
+      "legacy_playerJump": true,
+      "requested": "0x0F",
+      "state": "0x04",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 17,
+      "legacy_playerJump": true,
+      "requested": "0x0F",
+      "state": "0x0F",
+      "updates": 54,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 71,
+      "legacy_playerJump": true,
+      "requested": "0x10",
+      "state": "0x0F",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 72,
+      "legacy_playerJump": true,
+      "requested": "0x10",
+      "state": "0x10",
+      "updates": 36,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 148,
+      "y": 654
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 108,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x10",
+      "updates": 1,
+      "vy_first": -2230,
+      "vy_last": -2230,
+      "x": 385,
+      "y": 643
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 109,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1B",
+      "updates": 11,
+      "vy_first": -2194,
+      "vy_last": -1834,
+      "x": 391,
+      "y": 634
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 120
+   },
+   {
+    "act": 0,
+    "case": "peel_out_charge_and_release",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 6,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 6,
+      "legacy_playerJump": false,
+      "requested": "0x03",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 7,
+      "legacy_playerJump": false,
+      "requested": "0x03",
+      "state": "0x03",
+      "updates": 9,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 16,
+      "legacy_playerJump": false,
+      "requested": "0x15",
+      "state": "0x03",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 17,
+      "legacy_playerJump": false,
+      "requested": "0x15",
+      "state": "0x15",
+      "updates": 54,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 71,
+      "legacy_playerJump": false,
+      "requested": "0x1A",
+      "state": "0x15",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x80",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 72,
+      "legacy_playerJump": false,
+      "requested": "0x1A",
+      "state": "0x1A",
+      "updates": 12,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 148,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 84,
+      "legacy_playerJump": false,
+      "requested": "0x1A",
+      "state": "0x1A",
+      "updates": 36,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 225,
+      "y": 654
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 120,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1A",
+      "updates": 1,
+      "vy_first": -858,
+      "vy_last": -858,
+      "x": 384,
+      "y": 644
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 121,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1B",
+      "updates": 41,
+      "vy_first": -822,
+      "vy_last": 618,
+      "x": 386,
+      "y": 640
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 162,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x1B",
+      "updates": 1,
+      "vy_first": 654,
+      "vy_last": 654,
+      "x": 400,
+      "y": 629
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 163,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x09",
+      "updates": 37,
+      "vy_first": 2304,
+      "vy_last": 1792,
+      "x": 396,
+      "y": 635
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 259
+   },
+   {
+    "act": 0,
+    "case": "walk_off_ledge",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 980,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 980,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 45,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 980,
+      "y": 654
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 47,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 1058,
+      "y": 661
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 48,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 40,
+      "vy_first": 304,
+      "vy_last": 1792,
+      "x": 1061,
+      "y": 662
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 88,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x0E",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 1217,
+      "y": 846
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 89,
+      "legacy_playerJump": true,
+      "requested": "0x1F",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": -1280,
+      "vy_last": -1280,
+      "x": 1221,
+      "y": 846
+     }
+    ],
+    "start": [
+     980,
+     654
+    ],
+    "updates": 90
+   },
+   {
+    "act": 0,
+    "case": "roll_off_ledge",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 900,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 900,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 19,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 900,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 21,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 917,
+      "y": 654
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 22,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x09",
+      "updates": 78,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 919,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 100,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x09",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 985,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 101,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 985,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 102,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 38,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 985,
+      "y": 654
+     }
+    ],
+    "start": [
+     900,
+     654
+    ],
+    "updates": 140
+   },
+   {
+    "act": 0,
+    "case": "ramp_curve_1B",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 59,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 142,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 61,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 271,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 62,
+      "legacy_playerJump": false,
+      "requested": "0x06",
+      "state": "0x06",
+      "updates": 21,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 275,
+      "y": 654
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 83,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x06",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 358,
+      "y": 653
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 84,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 6,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 362,
+      "y": 652
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 90,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": -1440,
+      "vy_last": -1440,
+      "x": 385,
+      "y": 643
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 91,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1B",
+      "updates": 68,
+      "vy_first": -1404,
+      "vy_last": 1008,
+      "x": 389,
+      "y": 637
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 159,
+      "legacy_playerJump": true,
+      "requested": "0x1B",
+      "state": "0x1B",
+      "updates": 41,
+      "vy_first": 1044,
+      "vy_last": 1792,
+      "x": 545,
+      "y": 590
+     }
+    ],
+    "start": [
+     142,
+     654
+    ],
+    "updates": 200
+   },
+   {
+    "act": 0,
+    "case": "upright_spring_type26_strong_(688,864)",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 4,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 688,
+      "y": 846
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 4,
+      "legacy_playerJump": true,
+      "requested": "0x0B",
+      "state": "0x0B",
+      "updates": 78,
+      "vy_first": -1864,
+      "vy_last": -16,
+      "x": 688,
+      "y": 838
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 82,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0B",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 688,
+      "y": 559
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 83,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 14,
+      "vy_first": 304,
+      "vy_last": 928,
+      "x": 688,
+      "y": 560
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 97,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x0E",
+      "updates": 1,
+      "vy_first": 976,
+      "vy_last": 976,
+      "x": 688,
+      "y": 590
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 98,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 688,
+      "y": 590
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 99,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 31,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 688,
+      "y": 590
+     }
+    ],
+    "start": [
+     688,
+     846
+    ],
+    "updates": 130
+   },
+   {
+    "act": 0,
+    "case": "upright_spring_type26_weak_(1912,864)",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 4,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 1912,
+      "y": 846
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 4,
+      "legacy_playerJump": true,
+      "requested": "0x0B",
+      "state": "0x0B",
+      "updates": 28,
+      "vy_first": -1256,
+      "vy_last": -608,
+      "x": 1912,
+      "y": 841
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 32,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0B",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 1912,
+      "y": 742
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 33,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 28,
+      "vy_first": 304,
+      "vy_last": 1600,
+      "x": 1912,
+      "y": 743
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 61,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x0E",
+      "updates": 1,
+      "vy_first": 1648,
+      "vy_last": 1648,
+      "x": 1912,
+      "y": 846
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 62,
+      "legacy_playerJump": true,
+      "requested": "0x0B",
+      "state": "0x0B",
+      "updates": 17,
+      "vy_first": -1256,
+      "vy_last": -872,
+      "x": 1912,
+      "y": 841
+     }
+    ],
+    "start": [
+     1912,
+     846
+    ],
+    "updates": 79
+   },
+   {
+    "act": 0,
+    "case": "terrain_upright_spring_(928,640)",
+    "segments": [
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 944,
+      "y": 603
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 14,
+      "vy_first": 304,
+      "vy_last": 928,
+      "x": 944,
+      "y": 604
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 15,
+      "legacy_playerJump": true,
+      "requested": "0x0B",
+      "state": "0x0E",
+      "updates": 1,
+      "vy_first": -1920,
+      "vy_last": -1920,
+      "x": 944,
+      "y": 638
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 16,
+      "legacy_playerJump": true,
+      "requested": "0x0B",
+      "state": "0x0B",
+      "updates": 79,
+      "vy_first": -1896,
+      "vy_last": -24,
+      "x": 944,
+      "y": 631
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 95,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0B",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 944,
+      "y": 342
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 96,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 34,
+      "vy_first": 304,
+      "vy_last": 1792,
+      "x": 944,
+      "y": 343
+     }
+    ],
+    "start": [
+     944,
+     596
+    ],
+    "updates": 130
+   },
+   {
+    "act": 0,
+    "case": "terrain_diagonal_spring_right_(2464,256)",
+    "segments": [
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 2470,
+      "y": 229
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 11,
+      "vy_first": 304,
+      "vy_last": 784,
+      "x": 2470,
+      "y": 230
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 12,
+      "legacy_playerJump": true,
+      "requested": "0x1C",
+      "state": "0x0E",
+      "updates": 1,
+      "vy_first": -1792,
+      "vy_last": -1792,
+      "x": 2472,
+      "y": 254
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 13,
+      "legacy_playerJump": true,
+      "requested": "0x1C",
+      "state": "0x1C",
+      "updates": 37,
+      "vy_first": -1744,
+      "vy_last": -16,
+      "x": 2476,
+      "y": 247
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 50,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x1C",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 2624,
+      "y": 127
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 51,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 67,
+      "vy_first": 304,
+      "vy_last": 1792,
+      "x": 2627,
+      "y": 128
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 118,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x0E",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 2749,
+      "y": 508
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 119,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 9,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 2749,
+      "y": 508
+     }
+    ],
+    "start": [
+     2470,
+     222
+    ],
+    "updates": 128
+   },
+   {
+    "act": 0,
+    "case": "terrain_horizontal_spring_run_left_(3200,832)",
+    "segments": [
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 256,
+      "vy_last": 256,
+      "x": 3262,
+      "y": 797
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": true,
+      "requested": "0x0E",
+      "state": "0x0E",
+      "updates": 18,
+      "vy_first": 304,
+      "vy_last": 1120,
+      "x": 3261,
+      "y": 798
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 19,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x0E",
+      "updates": 1,
+      "vy_first": 1168,
+      "vy_last": 1168,
+      "x": 3245,
+      "y": 846
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 20,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 11,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 3244,
+      "y": 846
+     },
+     {
+      "D503": "0x02",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 31,
+      "legacy_playerJump": true,
+      "requested": "0x09",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 3224,
+      "y": 846
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 32,
+      "legacy_playerJump": false,
+      "requested": "0x07",
+      "state": "0x09",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 3230,
+      "y": 846
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 33,
+      "legacy_playerJump": false,
+      "requested": "0x07",
+      "state": "0x07",
+      "updates": 41,
+      "vy_first": 1792,
+      "vy_last": 2304,
+      "x": 3236,
+      "y": 846
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 74,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x07",
+      "updates": 1,
+      "vy_first": 2304,
+      "vy_last": 2304,
+      "x": 3364,
+      "y": 839
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 75,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 22,
+      "vy_first": 2304,
+      "vy_last": 1792,
+      "x": 3363,
+      "y": 840
+     }
+    ],
+    "start": [
+     3262,
+     790
+    ],
+    "updates": 97
+   },
+   {
+    "act": 0,
+    "case": "jump_into_terrain_upright_spring",
+    "segments": [
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 0,
+      "legacy_playerJump": false,
+      "requested": "0x01",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 600,
+      "y": 590
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 1,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x01",
+      "updates": 1,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 600,
+      "y": 590
+     },
+     {
+      "D503": "0x00",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 2,
+      "legacy_playerJump": false,
+      "requested": "0x05",
+      "state": "0x05",
+      "updates": 58,
+      "vy_first": 1792,
+      "vy_last": 1792,
+      "x": 600,
+      "y": 590
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 60,
+      "legacy_playerJump": true,
+      "requested": "0x0A",
+      "state": "0x05",
+      "updates": 1,
+      "vy_first": -1088,
+      "vy_last": -1088,
+      "x": 725,
+      "y": 589
+     },
+     {
+      "D503": "0x03",
+      "D532": 0,
+      "badnik_sees_attack": true,
+      "first_update": 61,
+      "legacy_playerJump": true,
+      "requested": "0x0A",
+      "state": "0x0A",
+      "updates": 54,
+      "vy_first": -1040,
+      "vy_last": 1504,
+      "x": 729,
+      "y": 584
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 115,
+      "legacy_playerJump": true,
+      "requested": "0x0B",
+      "state": "0x0A",
+      "updates": 1,
+      "vy_first": -1920,
+      "vy_last": -1920,
+      "x": 945,
+      "y": 638
+     },
+     {
+      "D503": "0x01",
+      "D532": 0,
+      "badnik_sees_attack": false,
+      "first_update": 116,
+      "legacy_playerJump": true,
+      "requested": "0x0B",
+      "state": "0x0B",
+      "updates": 25,
+      "vy_first": -1896,
+      "vy_last": -1320,
+      "x": 949,
+      "y": 630
+     }
+    ],
+    "start": [
+     600,
+     600
+    ],
+    "updates": 141
+   }
+  ],
+  "evidence": "EMULATED ORIGINAL FRAME",
+  "legacy_vs_canonical": {
+   "by_state_of_those_updates": {
+    "0x01": 3,
+    "0x05": 2,
+    "0x0A": 1,
+    "0x0B": 230,
+    "0x0E": 227,
+    "0x1C": 1
+   },
+   "updates_canonical_attack_true": 724,
+   "updates_legacy_playerJump_true": 1188,
+   "updates_legacy_true_but_canonical_false": 464
+  },
+  "method": "THZ1 booted in tools/sms_frame_harness.py, Sonic teleported with the camera; a PC hook at $5DD1 (start of the object phase) records the player's $D501/$D502/$D503/$D532 that every badnik callback of that frame sees",
+  "state_vs_attack_bit_disagreement_updates": {
+   "attack_set_states": [
+    "0x09",
+    "0x0A",
+    "0x0F",
+    "0x10",
+    "0x1B",
+    "0x1C"
+   ],
+   "counts": {
+    "current_state 0x04 requested 0x0F D503 0x02": 1,
+    "current_state 0x05 requested 0x09 D503 0x02": 3,
+    "current_state 0x05 requested 0x0A D503 0x03": 1,
+    "current_state 0x05 requested 0x1B D503 0x03": 2,
+    "current_state 0x06 requested 0x09 D503 0x02": 1,
+    "current_state 0x06 requested 0x0A D503 0x03": 2,
+    "current_state 0x09 requested 0x01 D503 0x00": 2,
+    "current_state 0x09 requested 0x07 D503 0x00": 1,
+    "current_state 0x09 requested 0x08 D503 0x00": 2,
+    "current_state 0x0A requested 0x05 D503 0x00": 1,
+    "current_state 0x0A requested 0x0B D503 0x01": 1,
+    "current_state 0x0E requested 0x1C D503 0x03": 1,
+    "current_state 0x1A requested 0x1B D503 0x03": 1,
+    "current_state 0x1C requested 0x0E D503 0x01": 1
+   },
+   "meaning": "updates where $D501 (the state that selects the animation script/frame in that update) is not the state whose own setter normally leaves the attack bit that way; the bit changes in the callback of one update, $D501 follows at the start of the next"
+  },
+  "updates_recorded": 2144
+ },
+ "non_attacking_contact": {
+  "evidence": "CONTROLLED ROUTINE RESULT + EMULATED ORIGINAL FRAME (contact_trials: type $27 walking/falling hurts, rings 16 -> 0, $1E, D3B1 120)",
+  "invulnerability": "D503 bit 7 (set by hurt $4942, timer $D3B1 = $78): $48BC takes $49F7, no damage, no rebound; contact is still computed",
+  "type1b_moving_spike": "top contact writes D3B0 := $FF whatever bit 1 is (only D532 == 6 saves Sonic); side contact with bit 1 and the floor flag bumps Sonic to state 1 (docs/platform-spike-collision-audit.md)",
+  "type21": "side/low contact writes D3B0 := $FF (damage). Top contact (playerY <= objectY - 4) is a stomp bounce, never damage",
+  "type27": "DAMAGES. The callback only returns, but $6328 raises D520 (object +3 bit 7 is clear) and $48BC hurts the non-attacking player on the NEXT player update (rings 0 -> death $1F). This CORRECTS the earlier reading 'ordinary contact requests no damage'; what is true is that the callback never writes D3B0",
+  "type27_stall": "the callback returns before its movement/timer on every overlap update (stall is real)",
+  "type28_platform_type26_type09": "no damage (they set bit 7 or use their own proximity test)",
+  "vertical_direction": "type $21 is the only badnik whose outcome depends on above/below ($B2B7 compare). Type $27's contact flag direction decides only the rebound, not damage"
+ },
+ "parked_type27_observation": {
+  "can_the_rom_do_it": {
+   "D532_6_while_unrolled": "YES while invincible (stars), any pose: the invincibility pickup sets bits 1|7 and D532 6 substitutes for bit 1",
+   "enemy_specific_other_condition": "NO: $5F3D is the only gate; it reads bit 1 and D532 only",
+   "upright_spring_or_falling_unrolled_and_destroys_bee": "NO: contact_trials show state $0B/$0E (D503 = 1) does NOT convert the bee and the bee hurts Sonic (rings 16 -> 0, $1E)",
+   "visually_unrolled_with_bit1_set": "YES, for ONE update at jump start: the jump request ($45ED) sets bit 1 in the callback of update n while $D501 (the animation state) is still 5/6 until update n+1 (natural_timelines: state $06/$05 requested $0A with D503 $03). Also state $1C (diagonal spring) is attacking by design"
+  },
+  "classification": "B (POC global.playerJump false positive) as the persistent cause: legacy playerJump = (move & 3) != 0 is true in $0B (upright spring), $0E (post-apex / ledge fall) which the ROM treats as NOT attacking; the single canonical one-update window (jump start) is C-class timing but is 1/60 s",
+  "not_reproduced": "the Windows run itself (UNRESOLVED E for the exact trigger Sonic state; every ROM-possible state is classified above)",
+  "question": "type $27 destroyed from above while Sonic appears unrolled",
+  "secondary": "D: POC type $27 ordinary overlap does not hurt; the ROM hurts through D520/$48BC and also rebounds an attacker (-3.0 above / +0.5 below)"
+ },
+ "poc_consumers": {
+  "classification_legend": [
+   "canonical attack posture",
+   "airborne status",
+   "rolling status",
+   "enemy-specific",
+   "unresolved"
+  ],
+  "evidence": "SOURCE READ of POC checkout 7799c3459f59781878574e5d805bb3df4baa057c (read-only; no POC file modified)",
+  "poc_commit": "7799c3459f59781878574e5d805bb3df4baa057c",
+  "rows": [
+   {
+    "current": "global.playerJump = !state11 && (move & 3) != 0",
+    "location": "SCR_chaos_adapter.gml:30",
+    "migration": "retire; split into chaosAttackPosture (bit 1) and airborne (bit 0)",
+    "rom_comparison": "legacy definition; (move&3) includes airborne-without-attack ($0B,$0E)"
+   },
+   {
+    "current": "global.chaosAttackPosture = !state11 && (move & 2) != 0",
+    "location": "SCR_chaos_adapter.gml:35",
+    "migration": "KEEP as the canonical attack bit; consumers should add 'or powerInv (D532==6)' where the ROM does",
+    "rom_comparison": "canonical bit; the state-$11 exclusion is not in the ROM predicate (bit 1 is simply cleared by $4775)"
+   },
+   {
+    "current": "global.playerJumpSpring = next == 11 || next == 28",
+    "location": "SCR_chaos_adapter.gml:31",
+    "migration": "should remain as is (airborne/spring physics)",
+    "rom_comparison": "physics-only (jump-spring gravity/control), not an attack predicate"
+   },
+   {
+    "current": "global.playerSpinDash = next == 15",
+    "location": "SCR_chaos_adapter.gml:32",
+    "migration": "should use canonical attack posture (bit 1 already set in $0F/$10)",
+    "rom_comparison": "state $0F only; the released roll $10 is covered by bit 1"
+   },
+   {
+    "current": "(move&2) || OBJ_player_char_spin || playerJump || playerSpinDash",
+    "location": "SCR_chaos_adapter.gml:242 (SCR_chaos_block47_step)",
+    "migration": "should use canonical attack posture + the four-state exclusion",
+    "rom_comparison": "breakable block $47/$6AE3 requires bit 1 and excludes states $0F/$10/$15/$1A (docs/spring-interaction-audit.md)"
+   },
+   {
+    "current": "playerJump = true; playerJumpSpring = true",
+    "location": "SCR_chaos_adapter.gml:310-311 (type21 top bounce)",
+    "migration": "should set airborne + spring physics but NOT attack",
+    "rom_comparison": "the ROM clears bit 1 on the stomp ($480C): spring-flight is not attacking"
+   },
+   {
+    "current": "place_meeting(OBJ_badniks) && !playerJump && !playerSpinDash -> hazard damage",
+    "location": "SCR_chaos_adapter.gml:425 (sample_damage)",
+    "migration": "should use canonical attack posture (+powerInv) and the ROM's rebound/ignore split",
+    "rom_comparison": "generic contact damage keyed on the legacy predicate; ROM keys on D520 && !(bit1 || D532==6)"
+   },
+   {
+    "current": "OBJ_player_char_spin || playerJump || playerSpinDash || playerSuper || powerInv -> destroy",
+    "location": "OBJ_chaos_object_27/Step_0.gml:58",
+    "migration": "should use canonical attack posture or powerInv (D532==6); drop playerSuper (no ROM counterpart)",
+    "rom_comparison": "THE parked observation: playerJump is true in $0B/$0E (upright spring fall, apex, ledge fall)"
+   },
+   {
+    "current": "ordinary overlap: no damage, exit",
+    "location": "OBJ_chaos_object_27/Step_0.gml:62",
+    "migration": "unresolved in POC: needs ROM-faithful contact damage + -3.0/+0.5 rebound after a defeat",
+    "rom_comparison": "ROM: the callback requests no damage, but $6328 raises D520 and $48BC hurts a non-attacking player next update"
+   },
+   {
+    "current": "(!state11 && (spin || playerJump || playerSpinDash)) || playerSuper || powerInv",
+    "location": "OBJ_chaos_object_21/Step_0.gml:73",
+    "migration": "should use canonical attack posture or powerInv; the top-bounce branch is already ROM-ordered",
+    "rom_comparison": "type $21 tests D503 bit 1 or D532==6 only"
+   },
+   {
+    "current": "with (cp_p) SCR_physics_jump_objects() after defeat",
+    "location": "OBJ_chaos_object_21/Step_0.gml:80",
+    "migration": "should be removed (enemy-specific)",
+    "rom_comparison": "no player rebound in the ROM for a $21 side defeat"
+   },
+   {
+    "current": "!state11 && (spin || playerJump || playerSpinDash)",
+    "location": "OBJ_chaos_object_10/Step_0.gml:69",
+    "migration": "should use canonical attack posture (not powerInv)",
+    "rom_comparison": "monitor requires bit 1 ONLY; D532==6 alone does not break it"
+   },
+   {
+    "current": "playerJump / playerSpinDash / Super / powerInv checks on legacy OBJ_badniks/OBJ_monitors (OBJ_badnik_1)",
+    "location": "SCR_badnik_death.gml / SCR_monitor_collisions.gml",
+    "migration": "should remain legacy (not part of the ROM-derived THZ set)",
+    "rom_comparison": "legacy sample-engine objects, not canonical THZ objects"
+   },
+   {
+    "current": "global.playerJump = true on spring contact",
+    "location": "SCR_physics_spring.gml:23-36",
+    "migration": "should set airborne; attack only for the diagonal ($1C)",
+    "rom_comparison": "physics for the legacy spring; ROM: upright spring clears bit 1, diagonal sets it"
+   },
+   {
+    "current": "playerJump gates ground friction/jump-physics",
+    "location": "SCR_physics_speed.gml:6,74,97,107,126,135; OBJ_player_char/Step_0.gml:150-451",
+    "migration": "should use airborne status (bit 0) / state, remain as is",
+    "rom_comparison": "airborne/physics predicate, not attack"
+   },
+   {
+    "current": "playerJump == false gates",
+    "location": "SCR_physics_ramp.gml:8, SCR_physics_ramp_spin.gml:8; OBJ_chaos_controls/Step_0.gml:39",
+    "migration": "should use airborne status",
+    "rom_comparison": "airborne/physics/checkpoint predicate"
+   },
+   {
+    "current": "legacy spin object",
+    "location": "OBJ_player_char_spin Step_0/Step_2 (playerJump)",
+    "migration": "should remain legacy",
+    "rom_comparison": "legacy character object, not the chaosCore"
+   }
+  ]
+ },
+ "poc_untouched": true,
+ "power_up_controlled": {
+  "branches": {
+   "bit2_param3": {
+    "D3A3_after": 0,
+    "D3C4_after": 0,
+    "D44C_timer_after": 900,
+    "D503_after": 0,
+    "D532_after": 3,
+    "mask": "0x04",
+    "requested_state_after": 5
+   },
+   "bit3_param4": {
+    "D3A3_after": 0,
+    "D3C4_after": 0,
+    "D44C_timer_after": 300,
+    "D503_after": 0,
+    "D532_after": 4,
+    "mask": "0x08",
+    "requested_state_after": 17
+   },
+   "bit4_param5": {
+    "D3A3_after": 0,
+    "D3C4_after": 11,
+    "D44C_timer_after": 0,
+    "D503_after": 0,
+    "D532_after": 0,
+    "mask": "0x10",
+    "requested_state_after": 5
+   },
+   "bit5_param6": {
+    "D3A3_after": 0,
+    "D3C4_after": 0,
+    "D44C_timer_after": 600,
+    "D503_after": 130,
+    "D532_after": 6,
+    "mask": "0x20",
+    "requested_state_after": 5
+   },
+   "damage_request_FF_with_D532": {
+    "0x00": {
+     "D3B0_after": 0,
+     "requested_state": "0x1E",
+     "rings_after": 0
+    },
+    "0x03": {
+     "D3B0_after": 0,
+     "requested_state": "0x1E",
+     "rings_after": 0
+    },
+    "0x04": {
+     "D3B0_after": 0,
+     "requested_state": "0x1E",
+     "rings_after": 0
+    },
+    "0x06": {
+     "D3B0_after": 0,
+     "requested_state": "0x05",
+     "rings_after": 16
+    }
+   },
+   "timer_expiry_from_1": {
+    "0x00": {
+     "D44C_after": 1,
+     "D532_after_timer_reaches_0": 0,
+     "speed_cap_D373_after": "0x0400"
+    },
+    "0x03": {
+     "D44C_after": 0,
+     "D532_after_timer_reaches_0": 3,
+     "speed_cap_D373_after": "0x0600"
+    },
+    "0x04": {
+     "D44C_after": 0,
+     "D532_after_timer_reaches_0": 0,
+     "speed_cap_D373_after": "0x0400"
+    },
+    "0x06": {
+     "D44C_after": 0,
+     "D532_after_timer_reaches_0": 0,
+     "speed_cap_D373_after": "0x0400"
+    }
+   }
+  },
+  "evidence": "CONTROLLED ROUTINE RESULT"
+ },
+ "rebound_model": {
+  "enemy_defeat_by_type27": "the callback converts the badnik only; it writes nothing to the player. The player's own handler $48BC applies the rebound one update later from $D520 and the high nibble of $D521 (side of contact from $6328)",
+  "evidence": "CONTROLLED ROUTINE RESULT (contact_handler_48bc, sweep_type21, sweep_monitor) + EMULATED (contact_trials)",
+  "monitor": {
+   "from_above_moving_down": "vy := $FC00 (-4.0), no rebound if the current state is 9",
+   "from_below": "vy := +2.0 ($0200), monitor rises",
+   "needs": "D503 bit 1 (D532 == 6 alone does nothing)"
+  },
+  "poc_mismatch": "POC type $21 calls SCR_physics_jump_objects() after a defeat (some rebound); the ROM gives none for a side defeat",
+  "type21_attack": "side/low contact with bit 1 or D532 == 6: defeated, no rebound (the object sets +3 bit 7 so D520 is never raised)",
+  "type21_top": {
+   "condition": "overlap and playerY <= objectY - 4",
+   "meaning": "$F940 = -6.75, request $0B, $D448 = $FF, bit 1 cleared by $480C, badnik NOT defeated, any attack posture or none",
+   "vy": -1728
+  },
+  "type27_from_above_player_in_dy_-14..-1": {
+   "meaning": "$FD00 = -3.0",
+   "rule": "$D521 bit 5; overwrites incoming Y speed (incoming speed does not matter); floor flag cleared, airborne set; requested state unchanged; D503 unchanged (attack bit persists); applied at the next player update inside $48BC",
+   "vy": -768
+  },
+  "type27_from_below_player_in_dy_+7..+24": {
+   "meaning": "$0080 = +0.5",
+   "rule": "$D521 bit 4; not applied when the current state is 9 (rolling); no state change",
+   "vy": 128
+  },
+  "type27_from_the_side": "no rebound (D521 bits 6/7 only)"
+ },
+ "research_only": true,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "routines": [
+  {
+   "bank": 0,
+   "cpu": "0x361D",
+   "end_cpu_exclusive": "0x3657",
+   "first_16_bytes": "dd2100d53a00d5b7c8ddcb04be3a4bd4",
+   "length": 58,
+   "name": "player_frame_361d",
+   "purpose": "player update: engine $64FA, state callback $5E91, then $4A74",
+   "rom_offset": "0x0361D",
+   "sha256": "394729c8763aaab5b5265514f23fb20f3784a884d52b92e2aa176eb1f0fb0b69"
+  },
+  {
+   "bank": 0,
+   "cpu": "0x3FEF",
+   "end_cpu_exclusive": "0x401A",
+   "first_16_bytes": "cd464bcd1a40cd4141dd7e01fe053006",
+   "length": 43,
+   "name": "shared_movement_3fef",
+   "purpose": "clamp, input, X/Y integrate, terrain $690B, damage/contact $48BC, jump request",
+   "rom_offset": "0x03FEF",
+   "sha256": "b3e2784c8be182a02a97e46dccb9fe747b62e3b5bf78c38c6a4c29ccb8901740"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x48BC",
+   "end_cpu_exclusive": "0x4A33",
+   "first_16_bytes": "ddcb037ec2f749ddcb0376c22e4a3a32",
+   "length": 375,
+   "name": "damage_contact_48bc",
+   "purpose": "D532==6 immunity, D3B0 damage request, D520 contact: attack bounce or damage, hurt, death",
+   "rom_offset": "0x048BC",
+   "sha256": "70f58e7ac4022fb5e228d0c8da00771f6cd9474aa910a06a3e8b9227456e68d0"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x4A74",
+   "end_cpu_exclusive": "0x4AA3",
+   "first_16_bytes": "3a32d5b72829fe0320062100062273d3",
+   "length": 47,
+   "name": "power_up_timer_4a74",
+   "purpose": "power-up D532 timer; expiry clears 4 and 6",
+   "rom_offset": "0x04A74",
+   "sha256": "86c883d49f089db30babb07c7bfc506cea9a63ee31797960a51136d073bdfc46"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x4AA3",
+   "end_cpu_exclusive": "0x4B46",
+   "first_16_bytes": "21a3d37ecb472015cb4f202bcb57205c",
+   "length": 163,
+   "name": "reward_dispatch_4aa3",
+   "purpose": "monitor reward bits: D532 := 3 / 4 / 6",
+   "rom_offset": "0x04AA3",
+   "sha256": "99c0100c489e807372f486cdfb346650bf2a2e14270579512bb7f8e78ea3c02d"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x45B3",
+   "end_cpu_exclusive": "0x4892",
+   "first_16_bytes": "ddcb0386ddcb038edd36020121000022",
+   "length": 735,
+   "name": "state_setters_45b3",
+   "purpose": "every player state request setter and its $D503 effect",
+   "rom_offset": "0x045B3",
+   "sha256": "d3d8e9430e22fdb46cf7c628377690fce8451298bebc60b1173dfde039f52fb9"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x4892",
+   "end_cpu_exclusive": "0x48A7",
+   "first_16_bytes": "3e203202d50e893a98d2fe0220020e97",
+   "length": 21,
+   "name": "act_clear_setter_4892",
+   "purpose": "request state $20",
+   "rom_offset": "0x04892",
+   "sha256": "ad096870119cd9ba85752ef79e929464752fe25e3208d07812cbb1ef106e0e3f"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x6C45",
+   "end_cpu_exclusive": "0x6C82",
+   "first_16_bytes": "ddcb2486ddcb248eddcb216e2017ddcb",
+   "length": 61,
+   "name": "floor_loss_6c72",
+   "purpose": "loss of floor: fall $0E (bit1 clear) or, when rolling, jump $0A (bit1 set)",
+   "rom_offset": "0x06C45",
+   "sha256": "0ce46e29580ec775943fcf98f55e588d3a0d23c74cfea0b82cb9d4681bdf348e"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x5F3D",
+   "end_cpu_exclusive": "0x5F84",
+   "first_16_bytes": "dd7e21e60fc83a32d5fe0628063a03d5",
+   "length": 71,
+   "name": "attack_convert_5f3d",
+   "purpose": "badnik defeat gate: D532==6 or D503 bit 1, then convert to type $0F",
+   "rom_offset": "0x05F3D",
+   "sha256": "e61e594fa96ac8f259cb8223bf66569819ce9dcb5fe383e1ff4a731f0c9d1882"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x6328",
+   "end_cpu_exclusive": "0x640B",
+   "first_16_bytes": "afdd7720dd7e21e6f0dd7721ddcb0376",
+   "length": 227,
+   "name": "object_overlap_6328",
+   "purpose": "shared overlap; sets player D520 (slot id) for non-ghost objects",
+   "rom_offset": "0x06328",
+   "sha256": "b0d2bd1f0d033b982561cdd7b2542123270a21d173a943122ddd021cf8077c0f"
+  },
+  {
+   "bank": 1,
+   "cpu": "0x606B",
+   "end_cpu_exclusive": "0x607A",
+   "first_16_bytes": "1100d5afed527ccb2517cb25173cc93d",
+   "length": 15,
+   "name": "slot_index_606b",
+   "purpose": "object address -> slot id ((addr-$D500)/$40 + 1)",
+   "rom_offset": "0x0606B",
+   "sha256": "4ba7bc5a916c2a76ce802d9709900ff6b4a5ac1c0a38fe362cf4ab3433ff98ea"
+  },
+  {
+   "bank": 12,
+   "cpu": "0xB2AF",
+   "end_cpu_exclusive": "0xB2EB",
+   "first_16_bytes": "cd3b03dd7e21b7c8dd6615dd6e1411fc",
+   "length": 60,
+   "name": "type21_contact_b2af",
+   "purpose": "type $21 stomp/attack/damage tail",
+   "rom_offset": "0x332AF",
+   "sha256": "9603e30a2221083e44e799e07ff124bd7141a1080c9983f2932497203713e967"
+  },
+  {
+   "bank": 30,
+   "cpu": "0x898E",
+   "end_cpu_exclusive": "0x8A45",
+   "first_16_bytes": "dd360201dd7e3fb7c2cb892100fddd36",
+   "length": 183,
+   "name": "type27_handlers",
+   "purpose": "type $27 callbacks",
+   "rom_offset": "0x7898E",
+   "sha256": "c18fa2817349356469875925a8c53af21f04b949e91ae1bb23d9684d6a5ccb43"
+  },
+  {
+   "bank": 12,
+   "cpu": "0xA16C",
+   "end_cpu_exclusive": "0xA1D3",
+   "first_16_bytes": "dd463fcdf9a1ddcb0476c0cd4d033a03",
+   "length": 103,
+   "name": "type10_contact_a16c",
+   "purpose": "monitor: attack-bit gate, rebound, break",
+   "rom_offset": "0x3216C",
+   "sha256": "2138162f793136af62f70ad975fc19bf0aae29902043989c06b1fd58ef6edc23"
+  },
+  {
+   "bank": 12,
+   "cpu": "0xACFD",
+   "end_cpu_exclusive": "0xAD59",
+   "first_16_bytes": "dd7e1fb728053ddd771fc93a19d507d8",
+   "length": 92,
+   "name": "type1b_spike_helper_acfd",
+   "purpose": "moving spike contact helper",
+   "rom_offset": "0x32CFD",
+   "sha256": "cacd22632af9078c4e047d3e99b3547ede6f78a64a03195b45c12438c65bdd43"
+  },
+  {
+   "bank": 12,
+   "cpu": "0x9959",
+   "end_cpu_exclusive": "0x99FB",
+   "first_16_bytes": "dd7e3fb728023e04dd7706ddcb04c6dd",
+   "length": 162,
+   "name": "type05_aura_998a",
+   "purpose": "type $05 child: re-asserts D503 bit 7 (and bit 1 for state $15/$1A)",
+   "rom_offset": "0x31959",
+   "sha256": "5eed5c4b32fa700941c8654dea41903706f0b3bca08b19508fe82cbddce8f4cf"
+  },
+  {
+   "bank": 12,
+   "cpu": "0x8313",
+   "end_cpu_exclusive": "0x831D",
+   "first_16_bytes": "ddcb03fe3e0c32b1d3c9c90222dd0302",
+   "length": 10,
+   "name": "peel_out_state_1a_init_8313",
+   "purpose": "state $1A entry: D503 bit 7, D3B1 := 12",
+   "rom_offset": "0x30313",
+   "sha256": "a7266c767d71c57f5910b7218336bca14b249da9f3c0fda814b8079fd58786a6"
+  },
+  {
+   "bank": 12,
+   "cpu": "0x95DD",
+   "end_cpu_exclusive": "0x9610",
+   "first_16_bytes": "cd6e03cd3803c9dd360a00dd360b00dd",
+   "length": 51,
+   "name": "twist_exit_95ec_978b",
+   "purpose": "twist exit requests state 9 / state $0A without touching bit 1",
+   "rom_offset": "0x315DD",
+   "sha256": "9773e265c4d10bb00927cef346d535747786f72f16ed273c01608ae849698b1f"
+  }
+ ],
+ "setter_effects": {
+  "cases": 6912,
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "reading": "bit1_attack 'set' = forced 1; 'cleared' = forced 0; 'kept' = untouched. State requests only change $D502; $D501 (the current state that selects the animation frame) switches at the START of the next player update ($64FA), while the bit change is immediate.",
+  "setters": [
+   {
+    "bit0_airborne": "cleared",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "stand_state_1",
+    "requested_state_results": [
+     "0x01"
+    ],
+    "setter": "0x45B3"
+   },
+   {
+    "bit0_airborne": "cleared",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "cleared",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "land_state_5",
+    "requested_state_results": [
+     "0x05"
+    ],
+    "setter": "0x45CE"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "conditional",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "jump_state_0A",
+    "requested_state_results": [
+     "0x05",
+     "0x0A"
+    ],
+    "setter": "0x45ED"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "fall_state_0E",
+    "requested_state_results": [
+     "0x0E"
+    ],
+    "setter": "0x463C"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "kept",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x0A",
+    "inputs_swept": 256,
+    "name": "fall_state_0E",
+    "requested_state_results": [
+     "0x0A"
+    ],
+    "setter": "0x463C"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_14",
+    "requested_state_results": [
+     "0x14"
+    ],
+    "setter": "0x4663"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_1D",
+    "requested_state_results": [
+     "0x1D"
+    ],
+    "setter": "0x4680"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "jump_no_impulse_state_0A",
+    "requested_state_results": [
+     "0x0A"
+    ],
+    "setter": "0x4699"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "kept",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_3",
+    "requested_state_results": [
+     "0x03"
+    ],
+    "setter": "0x46B0"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "cleared",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_4",
+    "requested_state_results": [
+     "0x04"
+    ],
+    "setter": "0x46BB"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "kept",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "cleared",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_15_peel_out_charge",
+    "requested_state_results": [
+     "0x15"
+    ],
+    "setter": "0x46CE"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "kept",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_1A_peel_out_run",
+    "requested_state_results": [
+     "0x1A"
+    ],
+    "setter": "0x46E2"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "cleared",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_0F_spin_dash_charge",
+    "requested_state_results": [
+     "0x0F"
+    ],
+    "setter": "0x4701"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_10_spin_dash_roll",
+    "requested_state_results": [
+     "0x10"
+    ],
+    "setter": "0x4719"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "cleared",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_18",
+    "requested_state_results": [
+     "0x18"
+    ],
+    "setter": "0x473C"
+   },
+   {
+    "bit0_airborne": "cleared",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_6",
+    "requested_state_results": [
+     "0x06"
+    ],
+    "setter": "0x47A9"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "conditional",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_7",
+    "requested_state_results": [
+     "0x05",
+     "0x07"
+    ],
+    "setter": "0x47B6"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "conditional",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "state_8",
+    "requested_state_results": [
+     "0x05",
+     "0x08"
+    ],
+    "setter": "0x47C9"
+   },
+   {
+    "bit0_airborne": "cleared",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "roll_state_9",
+    "requested_state_results": [
+     "0x09"
+    ],
+    "setter": "0x47DC"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "ramp_state_1B",
+    "requested_state_results": [
+     "0x1B"
+    ],
+    "setter": "0x47FB"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "cleared",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      0
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      0
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "upright_spring_state_0B",
+    "requested_state_results": [
+     "0x0B"
+    ],
+    "setter": "0x480C"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "diagonal_spring_state_1C",
+    "requested_state_results": [
+     "0x1C"
+    ],
+    "setter": "0x482D"
+   },
+   {
+    "bit0_airborne": "cleared",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "horizontal_spring_right_state_9",
+    "requested_state_results": [
+     "0x09"
+    ],
+    "setter": "0x4849"
+   },
+   {
+    "bit0_airborne": "cleared",
+    "bit1_attack": "set",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      1
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      1
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "horizontal_spring_left_state_9",
+    "requested_state_results": [
+     "0x09"
+    ],
+    "setter": "0x4868"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "kept",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "set",
+    "bit7_invulnerable": "set",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "hurt_state_1E",
+    "requested_state_results": [
+     "0x1E"
+    ],
+    "setter": "0x4942"
+   },
+   {
+    "bit0_airborne": "set",
+    "bit1_attack": "kept",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "death_state_1F",
+    "requested_state_results": [
+     "0x1F"
+    ],
+    "setter": "0x4984"
+   },
+   {
+    "bit0_airborne": "kept",
+    "bit1_attack": "kept",
+    "bit1_out_by_input_bits01": {
+     "in0=0,in1=0": [
+      0
+     ],
+     "in0=0,in1=1": [
+      1
+     ],
+     "in0=1,in1=0": [
+      0
+     ],
+     "in0=1,in1=1": [
+      1
+     ]
+    },
+    "bit6_hurt": "kept",
+    "bit7_invulnerable": "kept",
+    "current_state_when_called": "0x05",
+    "inputs_swept": 256,
+    "name": "act_clear_state_20",
+    "requested_state_results": [
+     "0x20"
+    ],
+    "setter": "0x4892"
+   }
+  ]
+ },
+ "sites": {
+  "d503_absolute": [
+   {
+    "bank": 1,
+    "cpu": "0x5F4A",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x05F4A"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x633F",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x0633F"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x63C9",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x063C9"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x6422",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x06422"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x649D",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x0649D"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x64DA",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x064DA"
+   },
+   {
+    "bank": 12,
+    "cpu": "0xA17A",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x3217A"
+   },
+   {
+    "bank": 12,
+    "cpu": "0xA34B",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x3234B"
+   },
+   {
+    "bank": 12,
+    "cpu": "0xAD31",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x32D31"
+   },
+   {
+    "bank": 12,
+    "cpu": "0xB2D5",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x332D5"
+   },
+   {
+    "bank": 30,
+    "cpu": "0x8105",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x78105"
+   },
+   {
+    "bank": 30,
+    "cpu": "0x815B",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x7815B"
+   },
+   {
+    "bank": 30,
+    "cpu": "0x8B9B",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x78B9B"
+   },
+   {
+    "bank": 30,
+    "cpu": "0x99D6",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x799D6"
+   },
+   {
+    "bank": 30,
+    "cpu": "0x9E35",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x79E35"
+   },
+   {
+    "bank": 30,
+    "cpu": "0xA65D",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x7A65D"
+   },
+   {
+    "bank": 30,
+    "cpu": "0xAAE3",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x7AAE3"
+   },
+   {
+    "bank": 30,
+    "cpu": "0xB2FD",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x7B2FD"
+   },
+   {
+    "bank": 30,
+    "cpu": "0xB329",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x7B329"
+   },
+   {
+    "bank": 30,
+    "cpu": "0xB79A",
+    "kind": "LD A,($D503)",
+    "region": "other",
+    "rom_offset": "0x7B79A"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4B1F",
+    "kind": "LD HL,$D503 (then bit op on (HL))",
+    "region": "reward dispatch",
+    "rom_offset": "0x04B1F"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4C7A",
+    "kind": "LD HL,$D503 (then bit op on (HL))",
+    "region": "carried-by-object position copy",
+    "rom_offset": "0x04C7A"
+   },
+   {
+    "bank": 12,
+    "cpu": "0x997F",
+    "kind": "LD HL,$D503 (then bit op on (HL))",
+    "region": "type $05 child (power-up aura)",
+    "rom_offset": "0x3197F"
+   },
+   {
+    "bank": 12,
+    "cpu": "0x9991",
+    "kind": "LD HL,$D503 (then bit op on (HL))",
+    "region": "type $05 child (power-up aura)",
+    "rom_offset": "0x31991"
+   },
+   {
+    "bank": 12,
+    "cpu": "0x99D3",
+    "kind": "LD HL,$D503 (then bit op on (HL))",
+    "region": "type $05 child (power-up aura)",
+    "rom_offset": "0x319D3"
+   },
+   {
+    "bank": 12,
+    "cpu": "0x99E0",
+    "kind": "LD HL,$D503 (then bit op on (HL))",
+    "region": "type $05 child (power-up aura)",
+    "rom_offset": "0x319E0"
+   }
+  ],
+  "d503_bit1_hl_writers": [
+   {
+    "cpu": "0x4B22",
+    "effect": "SET 1 (HL=$D503) with SET 7: invincibility monitor pickup"
+   },
+   {
+    "cpu": "0x4C7D",
+    "effect": "SET 1: state $17 carried-by-object position copy $4C56"
+   },
+   {
+    "cpu": "0x99D8",
+    "effect": "SET 1 and SET 7: type $05 aura object (state $15 / $1A)"
+   }
+  ],
+  "d532_absolute": [
+   {
+    "bank": 1,
+    "cpu": "0x48CA",
+    "kind": "LD A,($D532) read",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x048CA"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4A74",
+    "kind": "LD A,($D532) read",
+    "region": "power-up timer",
+    "rom_offset": "0x04A74"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4A8F",
+    "kind": "LD A,($D532) read",
+    "region": "power-up timer",
+    "rom_offset": "0x04A8F"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4B34",
+    "kind": "LD A,($D532) read",
+    "region": "reward dispatch",
+    "rom_offset": "0x04B34"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x5F43",
+    "kind": "LD A,($D532) read",
+    "region": "other",
+    "rom_offset": "0x05F43"
+   },
+   {
+    "bank": 12,
+    "cpu": "0x98EC",
+    "kind": "LD A,($D532) read",
+    "region": "other",
+    "rom_offset": "0x318EC"
+   },
+   {
+    "bank": 12,
+    "cpu": "0x998A",
+    "kind": "LD A,($D532) read",
+    "region": "type $05 child (power-up aura)",
+    "rom_offset": "0x3198A"
+   },
+   {
+    "bank": 12,
+    "cpu": "0xB2DD",
+    "kind": "LD A,($D532) read",
+    "region": "other",
+    "rom_offset": "0x332DD"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x48FF",
+    "kind": "LD ($D532),A write",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x048FF"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4AA0",
+    "kind": "LD ($D532),A write",
+    "region": "power-up timer",
+    "rom_offset": "0x04AA0"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4AE8",
+    "kind": "LD ($D532),A write",
+    "region": "reward dispatch",
+    "rom_offset": "0x04AE8"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4B13",
+    "kind": "LD ($D532),A write",
+    "region": "reward dispatch",
+    "rom_offset": "0x04B13"
+   },
+   {
+    "bank": 1,
+    "cpu": "0x4B3C",
+    "kind": "LD ($D532),A write",
+    "region": "reward dispatch",
+    "rom_offset": "0x04B3C"
+   }
+  ],
+  "d532_other_forms": {
+   "LD rr,$D532": [],
+   "note": "the (IX+$32) forms in bank $1E are object fields of other types (IX is not the player there)"
+  },
+  "evidence": "BYTE-VERIFIED ASSEMBLY (whole-ROM byte scan; IX forms labelled by enclosing routine)",
+  "ix3_bit1_player_writers": [
+   {
+    "bank": 0,
+    "bit": 1,
+    "cpu": "0x39CE",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "state $1A peel-out run callback",
+    "rom_offset": "0x039CE"
+   },
+   {
+    "bank": 0,
+    "bit": 1,
+    "cpu": "0x3DA5",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "loop states $0C/$0D/$13",
+    "rom_offset": "0x03DA5"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x45B7",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: stand (state 1)",
+    "rom_offset": "0x045B7"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x45D2",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: land (state 5)",
+    "rom_offset": "0x045D2"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x460B",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: jump (state $0A)",
+    "rom_offset": "0x0460B"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4652",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: fall (state $0E)",
+    "rom_offset": "0x04652"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4673",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $14",
+    "rom_offset": "0x04673"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4690",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $1D",
+    "rom_offset": "0x04690"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x469D",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: jump state without impulse (state $0A)",
+    "rom_offset": "0x0469D"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x46C1",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 4",
+    "rom_offset": "0x046C1"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4707",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: state $0F (spin-dash charge)",
+    "rom_offset": "0x04707"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x472E",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: state $10 (spin-dash roll)",
+    "rom_offset": "0x0472E"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4758",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $18",
+    "rom_offset": "0x04758"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x479C",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $11",
+    "rom_offset": "0x0479C"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47AD",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 6",
+    "rom_offset": "0x047AD"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47C0",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 7",
+    "rom_offset": "0x047C0"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47D3",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 8",
+    "rom_offset": "0x047D3"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47F1",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: roll (state 9)",
+    "rom_offset": "0x047F1"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4803",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: ramp launch (state $1B)",
+    "rom_offset": "0x04803"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x481F",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: upright spring (state $0B)",
+    "rom_offset": "0x0481F"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4840",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: diagonal spring (state $1C)",
+    "rom_offset": "0x04840"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x485A",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: horizontal spring right (state 9)",
+    "rom_offset": "0x0485A"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4884",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: horizontal spring left (state 9)",
+    "rom_offset": "0x04884"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x7654",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "terrain type launch: speed 7.0, state $10",
+    "rom_offset": "0x07654"
+   }
+  ],
+  "ix3_bit_ops": [
+   {
+    "bank": 0,
+    "bit": 0,
+    "cpu": "0x38DF",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "state 9 roll / state $1B callbacks",
+    "rom_offset": "0x038DF"
+   },
+   {
+    "bank": 0,
+    "bit": 1,
+    "cpu": "0x39CE",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "state $1A peel-out run callback",
+    "rom_offset": "0x039CE"
+   },
+   {
+    "bank": 0,
+    "bit": 7,
+    "cpu": "0x39D2",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "state $1A peel-out run callback",
+    "rom_offset": "0x039D2"
+   },
+   {
+    "bank": 0,
+    "bit": 0,
+    "cpu": "0x3B6F",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "state $12 callback",
+    "rom_offset": "0x03B6F"
+   },
+   {
+    "bank": 0,
+    "bit": 0,
+    "cpu": "0x3B96",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "state $12 callback",
+    "rom_offset": "0x03B96"
+   },
+   {
+    "bank": 0,
+    "bit": 6,
+    "cpu": "0x3BF4",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "state $19 / $1F / death callbacks",
+    "rom_offset": "0x03BF4"
+   },
+   {
+    "bank": 0,
+    "bit": 6,
+    "cpu": "0x3BFF",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "state $19 / $1F / death callbacks",
+    "rom_offset": "0x03BFF"
+   },
+   {
+    "bank": 0,
+    "bit": 1,
+    "cpu": "0x3CAB",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "loop states $0C/$0D/$13",
+    "rom_offset": "0x03CAB"
+   },
+   {
+    "bank": 0,
+    "bit": 0,
+    "cpu": "0x3DA1",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "loop states $0C/$0D/$13",
+    "rom_offset": "0x03DA1"
+   },
+   {
+    "bank": 0,
+    "bit": 1,
+    "cpu": "0x3DA5",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "loop states $0C/$0D/$13",
+    "rom_offset": "0x03DA5"
+   },
+   {
+    "bank": 0,
+    "bit": 1,
+    "cpu": "0x3E53",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "loop states $0C/$0D/$13",
+    "rom_offset": "0x03E53"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x40A2",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x040A2"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x45B3",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: stand (state 1)",
+    "rom_offset": "0x045B3"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x45B7",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: stand (state 1)",
+    "rom_offset": "0x045B7"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x45CE",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: land (state 5)",
+    "rom_offset": "0x045CE"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x45D2",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: land (state 5)",
+    "rom_offset": "0x045D2"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x45D6",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: land (state 5)",
+    "rom_offset": "0x045D6"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x45ED",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "setter: jump (state $0A)",
+    "rom_offset": "0x045ED"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x4607",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: jump (state $0A)",
+    "rom_offset": "0x04607"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x460B",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: jump (state $0A)",
+    "rom_offset": "0x0460B"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x464E",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: fall (state $0E)",
+    "rom_offset": "0x0464E"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4652",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: fall (state $0E)",
+    "rom_offset": "0x04652"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x466F",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: state $14",
+    "rom_offset": "0x0466F"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4673",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $14",
+    "rom_offset": "0x04673"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x468C",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: state $1D",
+    "rom_offset": "0x0468C"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4690",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $1D",
+    "rom_offset": "0x04690"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x4699",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: jump state without impulse (state $0A)",
+    "rom_offset": "0x04699"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x469D",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: jump state without impulse (state $0A)",
+    "rom_offset": "0x0469D"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x46C1",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 4",
+    "rom_offset": "0x046C1"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x46C5",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 4",
+    "rom_offset": "0x046C5"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x46D4",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $15 (peel-out charge)",
+    "rom_offset": "0x046D4"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4707",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: state $0F (spin-dash charge)",
+    "rom_offset": "0x04707"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x470B",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $0F (spin-dash charge)",
+    "rom_offset": "0x0470B"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x472E",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: state $10 (spin-dash roll)",
+    "rom_offset": "0x0472E"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4758",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $18",
+    "rom_offset": "0x04758"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x475C",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $18",
+    "rom_offset": "0x0475C"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x479C",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $11",
+    "rom_offset": "0x0479C"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x47A0",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state $11",
+    "rom_offset": "0x047A0"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x47A9",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 6",
+    "rom_offset": "0x047A9"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47AD",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 6",
+    "rom_offset": "0x047AD"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x47B6",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "setter: state 7",
+    "rom_offset": "0x047B6"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47C0",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 7",
+    "rom_offset": "0x047C0"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x47C9",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "setter: state 8",
+    "rom_offset": "0x047C9"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47D3",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: state 8",
+    "rom_offset": "0x047D3"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x47ED",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: roll (state 9)",
+    "rom_offset": "0x047ED"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x47F1",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: roll (state 9)",
+    "rom_offset": "0x047F1"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x47FF",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: ramp launch (state $1B)",
+    "rom_offset": "0x047FF"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4803",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: ramp launch (state $1B)",
+    "rom_offset": "0x04803"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x481B",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: upright spring (state $0B)",
+    "rom_offset": "0x0481B"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x481F",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: upright spring (state $0B)",
+    "rom_offset": "0x0481F"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x483C",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: diagonal spring (state $1C)",
+    "rom_offset": "0x0483C"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4840",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: diagonal spring (state $1C)",
+    "rom_offset": "0x04840"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x4856",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: horizontal spring right (state 9)",
+    "rom_offset": "0x04856"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x485A",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: horizontal spring right (state 9)",
+    "rom_offset": "0x0485A"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x4880",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "setter: horizontal spring left (state 9)",
+    "rom_offset": "0x04880"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4884",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "setter: horizontal spring left (state 9)",
+    "rom_offset": "0x04884"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x48BC",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x048BC"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x48C3",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x048C3"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x48F0",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x048F0"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x4942",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x04942"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x4946",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x04946"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x4957",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x04957"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x4988",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x04988"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x49DB",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x049DB"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x49E7",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x049E7"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x4A1D",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x04A1D"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x4A21",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "damage/contact handler $48BC",
+    "rom_offset": "0x04A21"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x4BE5",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "water-level / speed helper $4BC0",
+    "rom_offset": "0x04BE5"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x4C2D",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "state $17 carried-by-object callback",
+    "rom_offset": "0x04C2D"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x6334",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x06334"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x6339",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x06339"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x63D4",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x063D4"
+   },
+   {
+    "bank": 1,
+    "bit": 6,
+    "cpu": "0x6417",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x06417"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x641C",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x0641C"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x64A8",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x064A8"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x64D4",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x064D4"
+   },
+   {
+    "bank": 1,
+    "bit": 3,
+    "cpu": "0x6502",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x06502"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x6ADB",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x06ADB"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x6AE3",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "breakable blocks",
+    "rom_offset": "0x06AE3"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x6B0D",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "breakable blocks",
+    "rom_offset": "0x06B0D"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x6B3B",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "breakable blocks",
+    "rom_offset": "0x06B3B"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x6B4F",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "breakable blocks",
+    "rom_offset": "0x06B4F"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x6C72",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "floor loss (airborne transition)",
+    "rom_offset": "0x06C72"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x6D53",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "terrain special-entry handlers",
+    "rom_offset": "0x06D53"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x72B6",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x072B6"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x72DD",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x072DD"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x7349",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x07349"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x7378",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x07378"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x7396",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x07396"
+   },
+   {
+    "bank": 1,
+    "bit": 7,
+    "cpu": "0x7525",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x07525"
+   },
+   {
+    "bank": 1,
+    "bit": 1,
+    "cpu": "0x7654",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "terrain type launch: speed 7.0, state $10",
+    "rom_offset": "0x07654"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x7658",
+    "ix_is_player": true,
+    "op": "RES",
+    "region": "terrain type launch: speed 7.0, state $10",
+    "rom_offset": "0x07658"
+   },
+   {
+    "bank": 1,
+    "bit": 0,
+    "cpu": "0x782C",
+    "ix_is_player": true,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x0782C"
+   },
+   {
+    "bank": 1,
+    "bit": 4,
+    "cpu": "0x7831",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x07831"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0x8313",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "state $1A entry init",
+    "rom_offset": "0x30313"
+   },
+   {
+    "bank": 12,
+    "bit": 1,
+    "cpu": "0x903D",
+    "ix_is_player": false,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x3103D"
+   },
+   {
+    "bank": 12,
+    "bit": 0,
+    "cpu": "0x978F",
+    "ix_is_player": true,
+    "op": "SET",
+    "region": "twist handlers",
+    "rom_offset": "0x3178F"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0x9A6F",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x31A6F"
+   },
+   {
+    "bank": 12,
+    "bit": 6,
+    "cpu": "0x9A73",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x31A73"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0x9CFE",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x31CFE"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0xA149",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x32149"
+   },
+   {
+    "bank": 12,
+    "bit": 6,
+    "cpu": "0xA747",
+    "ix_is_player": false,
+    "op": "BIT",
+    "region": "other",
+    "rom_offset": "0x32747"
+   },
+   {
+    "bank": 12,
+    "bit": 6,
+    "cpu": "0xA752",
+    "ix_is_player": false,
+    "op": "RES",
+    "region": "other",
+    "rom_offset": "0x32752"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0xA867",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x32867"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0xAAB7",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x32AB7"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0xAC7D",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x32C7D"
+   },
+   {
+    "bank": 12,
+    "bit": 7,
+    "cpu": "0xB224",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x33224"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0x8585",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x78585"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0x8B5F",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x78B5F"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0x93CB",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x793CB"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0x9484",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x79484"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0x9856",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x79856"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0xA586",
+    "ix_is_player": false,
+    "op": "SET",
+    "region": "other",
+    "rom_offset": "0x7A586"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0xAB7A",
+    "ix_is_player": false,
+    "op": "RES",
+    "region": "other",
+    "rom_offset": "0x7AB7A"
+   },
+   {
+    "bank": 30,
+    "bit": 7,
+    "cpu": "0xAC3C",
+    "ix_is_player": false,
+    "op": "RES",
+    "region": "other",
+    "rom_offset": "0x7AC3C"
+   }
+  ]
+ },
+ "static_only": false,
+ "thz3_dependency_census": {
+  "boss_only_deferrable": [
+   "type $50 and children $12/$34/$0A",
+   "camera lock / boss music / arena art selector $13 and palette $0C",
+   "defeat -> state $20 -> act-clear screen (shared $18/$19/$20 chain does not apply: no sign in THZ3)"
+  ],
+  "evidence": "DECODED DATA (cached layouts/objects) + references to accepted research; no new ROM tracing",
+  "object_dependencies": {
+   "0x09": {
+    "docs": "docs/object-09.md",
+    "status": "researched and Windows accepted (strict <12 proximity)"
+   },
+   "0x10": {
+    "docs": "docs/object-10.md",
+    "status": "researched; parameter 1 (+10 rings) covered by docs/thz2-thz3-object-deltas.md; attack gate = bit 1 only (this audit)"
+   },
+   "0x1B": {
+    "docs": "docs/platform-spike-collision-audit.md",
+    "status": "researched for THZ1; THZ3 placement (752,128) outside the platform/spike audit's measured set but same routine ($ACFD)"
+   },
+   "0x26": {
+    "docs": "docs/spring-interaction-audit.md",
+    "status": "researched (strong x4 in THZ3: fixed, parameter 0)"
+   },
+   "0x50": {
+    "docs": "docs/object-50.md",
+    "status": "boss: full study exists; DEFERRABLE for ordinary traversal; attack gate = bit 1 only",
+    "unresolved_children": [
+     "type $12",
+     "type $34",
+     "type $0A",
+     "type $0F effect roles",
+     "palette consumer $D494/$D495",
+     "state $20 act-clear screen / next-level load"
+    ]
+   }
+  },
+  "objects_thz3": {
+   "0x09": [
+    [
+     948,
+     100,
+     "0x00"
+    ],
+    [
+     984,
+     74,
+     "0x00"
+    ],
+    [
+     1032,
+     64,
+     "0x00"
+    ]
+   ],
+   "0x10": [
+    [
+     1456,
+     366,
+     "0x01"
+    ]
+   ],
+   "0x1B": [
+    [
+     752,
+     128,
+     "0x00"
+    ]
+   ],
+   "0x26": [
+    [
+     656,
+     384,
+     "0x00"
+    ],
+    [
+     720,
+     384,
+     "0x00"
+    ],
+    [
+     784,
+     384,
+     "0x00"
+    ],
+    [
+     1456,
+     384,
+     "0x00"
+    ]
+   ],
+   "0x50": [
+    [
+     1936,
+     238,
+     "0x00"
+    ]
+   ]
+  },
+  "prerequisites_for_ordinary_traversal": [
+   "canonical THZ3 layout/rings/objects import (levels/thz3)",
+   "shared widescreen viewport/lifecycle adapter (accepted)",
+   "type $26 strong springs, terrain springs, rings (accepted)",
+   "type $10 reward 1 (new branch, trivial)",
+   "canonical attack posture migration (this audit) so the boss and monitors read bit 1",
+   "type $1B at (752,128) (same routine as THZ1)"
+  ],
+  "recommended_next_scope": "THZ3 foundation (layout, rings, springs, monitors, one $1B) immediately after the canonical attack-posture migration; hold the boss until its five follow-up objects and the act-clear screen are studied",
+  "terrain": {
+   "blocks_already_used_by_thz1_or_thz2": 77,
+   "blocks_new_to_thz3": [],
+   "blocks_used_in_thz3": 77,
+   "collision_surface_types_used": [
+    0,
+    1,
+    2,
+    3,
+    7,
+    9,
+    13,
+    20,
+    23,
+    24
+   ],
+   "ring_blocks_present": [
+    "0x40"
+   ],
+   "spike_blocks_present": [],
+   "spring_blocks_present": {
+    "diagonal": [
+     "0x36"
+    ],
+    "horizontal": [],
+    "upright": [
+     "0x31"
+    ]
+   },
+   "terrain_ring_counts": {
+    "initial_visible_population": 9,
+    "object_09_hidden": 0,
+    "object_09_raw_records": 3,
+    "object_09_visible": 3,
+    "terrain": 6
+   },
+   "verdict": "every THZ3 terrain block is already exercised by the accepted THZ1/THZ2 populations: no new collision/terrain mechanism"
+  }
+ },
+ "type21_sweep": {
+  "callback": "0xB2AF (bank $0C)",
+  "cases": 24168,
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "model_mismatches": 0,
+  "per_condition": {
+   "airborne_only_bit0": {
+    "converted": {
+     "cells": 0
+    },
+    "damage_request_D3B0": {
+     "cells": 1092,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -3,
+      24
+     ]
+    },
+    "stomp_bounce": {
+     "cells": 897,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -26,
+      -4
+     ]
+    }
+   },
+   "attack_bit1_grounded": {
+    "converted": {
+     "cells": 1092,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -3,
+      24
+     ]
+    },
+    "damage_request_D3B0": {
+     "cells": 0
+    },
+    "stomp_bounce": {
+     "cells": 897,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -26,
+      -4
+     ]
+    }
+   },
+   "invincible_D532_6": {
+    "converted": {
+     "cells": 1092,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -3,
+      24
+     ]
+    },
+    "damage_request_D3B0": {
+     "cells": 0
+    },
+    "stomp_bounce": {
+     "cells": 897,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -26,
+      -4
+     ]
+    }
+   },
+   "invincible_and_bit1": {
+    "converted": {
+     "cells": 1092,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -3,
+      24
+     ]
+    },
+    "damage_request_D3B0": {
+     "cells": 0
+    },
+    "stomp_bounce": {
+     "cells": 897,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -26,
+      -4
+     ]
+    }
+   },
+   "jump_bits01": {
+    "converted": {
+     "cells": 1092,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -3,
+      24
+     ]
+    },
+    "damage_request_D3B0": {
+     "cells": 0
+    },
+    "stomp_bounce": {
+     "cells": 897,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -26,
+      -4
+     ]
+    }
+   },
+   "standing_or_walking": {
+    "converted": {
+     "cells": 0
+    },
+    "damage_request_D3B0": {
+     "cells": 1092,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -3,
+      24
+     ]
+    },
+    "stomp_bounce": {
+     "cells": 897,
+     "dx": [
+      -19,
+      19
+     ],
+     "dy": [
+      -26,
+      -4
+     ]
+    }
+   }
+  },
+  "rule": "overlap (|dx| <= 19, -26 <= dy <= 24) -> if player Y <= objectY - 4: stomp bounce (vy $F940, request $0B, $D448 $FF, attack bit cleared by $480C) REGARDLESS of attack bit/D532 and the badnik survives; else $D503 bit 1 or $D532 == 6 -> convert; else D3B0 := $FF. Object +3 bit 7 is set at init, so $6328 never sets D520 for type $21",
+  "stomp_does_not_convert": true
+ },
+ "type27_sweep": {
+  "D521_high_nibble_regions_after_callback": {
+   "0x1": {
+    "cells": 324,
+    "dx_range": [
+     -17,
+     17
+    ],
+    "dy_range": [
+     7,
+     24
+    ]
+   },
+   "0x2": {
+    "cells": 308,
+    "dx_range": [
+     -17,
+     17
+    ],
+    "dy_range": [
+     -14,
+     -1
+    ]
+   },
+   "0x4": {
+    "cells": 363,
+    "dx_range": [
+     -17,
+     -1
+    ],
+    "dy_range": [
+     -13,
+     23
+    ]
+   },
+   "0x8": {
+    "cells": 370,
+    "dx_range": [
+     0,
+     17
+    ],
+    "dy_range": [
+     -13,
+     23
+    ]
+   }
+  },
+  "callback": "0x89AC (bank $1E state 1)",
+  "cases": 21756,
+  "evidence": "CONTROLLED ROUTINE RESULT",
+  "model_mismatches": 0,
+  "overlap_box_player_minus_object": {
+   "cells": 1365,
+   "dx": [
+    -17,
+    17
+   ],
+   "dy": [
+    -14,
+    24
+   ]
+  },
+  "per_condition": {
+   "airborne_only_bit0": {
+    "D3B0_ever_set_by_callback": 0,
+    "cells_converted": 0
+   },
+   "attack_bit1_grounded": {
+    "D3B0_ever_set_by_callback": 0,
+    "cells_converted": 1365
+   },
+   "invincible_D532_6": {
+    "D3B0_ever_set_by_callback": 0,
+    "cells_converted": 1365
+   },
+   "invincible_and_bit1": {
+    "D3B0_ever_set_by_callback": 0,
+    "cells_converted": 1365
+   },
+   "jump_bits01": {
+    "D3B0_ever_set_by_callback": 0,
+    "cells_converted": 1365
+   },
+   "standing_or_walking": {
+    "D3B0_ever_set_by_callback": 0,
+    "cells_converted": 0
+   }
+  },
+  "rule": "overlap && ($D532 == 6 || $D503 bit 1) -> $5F3D converts to $0F; overlap otherwise -> callback returns (NO $D3B0 request) but $6328 has already set player D520 (object +3 bit 7 clear) so $48BC hurts a non-attacking player on the next player update"
+ },
+ "unresolved": [
+  "Super Peel-Out ($15/$1A): in an ordinary charge and release (36+ updates emulated) bit 1 stays CLEAR; the type $05 param-$FF aura that sets bits 1|7 is spawned only after a very long charge script (loop counter $D2); untested beyond that (peel-out is not in the POC)",
+  "Loop states $0C/$0D/$13 and twist $22 are not reachable in THZ1/THZ2 natural runs; their bit-1 behaviour is BYTE-VERIFIED (no writers in the loop/twist code except the exit setters) but not emulated",
+  "Act-clear state $20: setter leaves bit 1 untouched (controlled); not emulated end to end here",
+  "Animation frame identity (is a given state's frame a ball?) was NOT established; the 'visually unrolled' discussion uses state numbers and the one-update state/bit lag only",
+  "James's Windows observation could not be replayed (needs the POC build); the ROM-side mechanism that reproduces 'destroyed from above while apparently unrolled' is the POC's legacy playerJump predicate",
+  "$D532 persistence across act changes (RAM clear not traced); code 3 is not cleared at timer expiry by $4A74 (other clear not found)",
+  "Type $1B THZ3 placement (752,128) not measured"
+ ],
+ "update_order": {
+  "consequences": [
+   "a badnik always sees the attack bit left by the player's callback of the SAME update (movement already applied), never the previous update's",
+   "a state requested in update n changes $D501 (animation frame) at the start of update n+1, but its D503 effect is immediate: the frame shown in update n can contradict the bit (jump start: unrolled frame + attack bit; landing: ball frame + no attack)",
+   "player rebound/damage caused by an object overlap in update n is applied in update n+1 AFTER that update's movement",
+   "object damage request D3B0 and contact D520 are consumed once per player update; D520 is cleared by the bounce path or the hurt path"
+  ],
+  "evidence": "BYTE-VERIFIED + EMULATED (frame_event_order)",
+  "per_update": [
+   "$361D player: $64FA animation engine (applies the PREVIOUS update's requested state to $D501, runs the script)",
+   "$5E91 state callback -> $3FEF shared movement: input, X/Y integrate, terrain $690B, then $48BC (contact/damage handler) and the jump request $45ED",
+   "$4A74 power-up timer (end of player update)",
+   "$5DD1 object scheduler: each object's own callback: $6328 overlap (sets D520 / D521 / +$21), $5F3D/$B2B2 defeat gate, $5F54 conversion, D3B0 damage request",
+   "next update: $48BC consumes D520/D3B0 after that update's movement"
+  ]
+ }
+}
