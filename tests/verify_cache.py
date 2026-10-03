@@ -26,6 +26,7 @@ import platform_spike_collision
 import player_attack_badnik
 import thz3_boss_support
 import powerup_shoes
+import player_hurt_ring_scatter
 
 
 def main(rom_path):
@@ -138,6 +139,11 @@ def main(rom_path):
         (ROOT / "data/rom-cache/powerup-shoes.json").read_text(encoding="utf-8")
     )
     assert stored_shoes == json.loads(json.dumps(powerup_shoes.build(rom)))
+    # Player hurt / lost-ring scatter audit: controlled sweeps, model-vs-ROM sweep and the GPZ3 whole-game example are regenerated (~10 s).
+    stored_scatter = json.loads(
+        (ROOT / "data/rom-cache/player-hurt-ring-scatter.json").read_text(encoding="utf-8")
+    )
+    assert stored_scatter == json.loads(json.dumps(player_hurt_ring_scatter.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
