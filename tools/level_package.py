@@ -279,9 +279,10 @@ def palette_selection(rom: bytes, zone: int, act: int) -> dict:
     }
 
 
-def build_descriptor(rom: bytes, key: str) -> dict:
+def build_descriptor(rom: bytes, key: str, metadata: dict = None) -> dict:
     """ROM-derived act descriptor. Raises if internal consistency checks fail."""
-    zone, act = ACTS[key]["zone"], ACTS[key]["act"]
+    metadata = ACTS[key] if metadata is None else metadata
+    zone, act = metadata["zone"], metadata["act"]
     header = act_header(rom, zone, act)
     objects = object_list_pointer(rom, zone, act)
     width = header["width_cells"]
@@ -304,7 +305,7 @@ def build_descriptor(rom: bytes, key: str) -> dict:
         "header_word_10_equals_7_widths": header["header_word_10"] == 7 * width,
     }
     return {
-        "key": key, "name": ACTS[key]["name"], "zone": zone, "act": act,
+        "key": key, "name": metadata["name"], "zone": zone, "act": act,
         "header": header,
         "layout": {
             "rom": header["layout_rom"], "end_rom": end,
@@ -538,8 +539,8 @@ def block_usage(rom: bytes, cells: list, mapping_rom: int, runtime_cells: int) -
 
 
 # --- act package -------------------------------------------------------------
-def build_act(rom: bytes, key: str) -> dict:
-    desc = build_descriptor(rom, key)
+def build_act(rom: bytes, key: str, metadata: dict = None) -> dict:
+    desc = build_descriptor(rom, key, metadata)
     layout = desc["layout"]
     width, height = layout["width_cells"], layout["height_cells"]
     cells, _, _ = decode_layout_stream(rom, layout["rom"])
