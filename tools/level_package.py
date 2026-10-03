@@ -489,7 +489,11 @@ def build_vram(rom: bytes, art: dict) -> tuple:
 def block_mapping(rom: bytes, mapping_rom: int, block: int) -> dict:
     entry = mapping_rom + block * 2
     cpu = u16(rom, entry)
-    rom_off = mapping_rom + cpu - 0x8000
+    # The table is an index within the bank, not the base of its pointers.
+    # Loader $4FDC stores bank in $D162 and table CPU in $D164; render
+    # loops $5316/$53DA dereference the resulting absolute CPU pointer.
+    bank = mapping_rom // 0x4000
+    rom_off = bank_cpu_to_rom(bank, cpu)
     return {"pointer_entry_rom": entry, "cpu": cpu, "rom": rom_off,
             "attributes": [u16(rom, rom_off + p * 2) for p in range(16)]}
 

@@ -20,7 +20,7 @@
       "0x97"
     ],
     "mapped_object_examined_separately": "0x28",
-    "finding": "Gigapolis contains two distinct systems: invisible surface-$1C terrain decks, and type-$28 platforms. Parameter $83 is the object-backed touch-delay/fall/sag variant introduced in GPZ2 and later reused; it is not the source of the surface-$1C deck collision."
+    "finding": "Gigapolis contains two distinct systems: visible surface-$1C terrain decks, and type-$28 platforms. Parameter $83 is the object-backed touch-delay/fall/sag variant introduced in GPZ2 and later reused; it is not the source of the surface-$1C deck collision."
   },
   "routines": [
     {
@@ -137,14 +137,25 @@
       ],
       "mapping_pointer_rom": "0x45758",
       "mapping_cpu": "0xA360",
-      "mapping_rom": "0x479A0",
+      "mapping_rom": "0x46360",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "4c41cf402bc9ec0091d5dcef54cb8a7fc7e31a7cf17d3fc60a5649cf17974167",
+      "decoded_nonzero_palette_pixels": 512,
       "decoded_palette_indices": [
-        0
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x8D": {
       "header_rom": "0x3863D",
@@ -178,14 +189,20 @@
       ],
       "mapping_pointer_rom": "0x4575A",
       "mapping_cpu": "0xA380",
-      "mapping_rom": "0x479C0",
+      "mapping_rom": "0x46380",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "9c41133cd7afe2c0a722b3c5c019fc17b9729b3b3421b5537f6a8fca49531190",
+      "decoded_nonzero_palette_pixels": 512,
       "decoded_palette_indices": [
-        0
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x8E": {
       "header_rom": "0x38644",
@@ -219,14 +236,24 @@
       ],
       "mapping_pointer_rom": "0x4575C",
       "mapping_cpu": "0xA3A0",
-      "mapping_rom": "0x479E0",
+      "mapping_rom": "0x463A0",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "91f7b4d2d27d3ad4d702e44c394d299e1be229e96ed8776da33afc7e6d4f19db",
+      "decoded_nonzero_palette_pixels": 200,
       "decoded_palette_indices": [
-        0
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x8F": {
       "header_rom": "0x3864B",
@@ -260,14 +287,25 @@
       ],
       "mapping_pointer_rom": "0x4575E",
       "mapping_cpu": "0xA3C0",
-      "mapping_rom": "0x47A00",
+      "mapping_rom": "0x463C0",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "76f87c91f2a00dfe2dbb3b370fb5a5e8eabb2fa97a9aacf87ac294bfd3f5ca74",
+      "decoded_nonzero_palette_pixels": 512,
       "decoded_palette_indices": [
-        0
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x90": {
       "header_rom": "0x38652",
@@ -371,14 +409,24 @@
       ],
       "mapping_pointer_rom": "0x45760",
       "mapping_cpu": "0xA3E0",
-      "mapping_rom": "0x47A20",
+      "mapping_rom": "0x463E0",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "717c4a1abe10c54b60dabd4ef6ae0f3d7a8af8867cb78f0e240c7e206a5f4bc6",
+      "decoded_nonzero_palette_pixels": 1024,
       "decoded_palette_indices": [
-        0
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x91": {
       "header_rom": "0x38659",
@@ -412,14 +460,19 @@
       ],
       "mapping_pointer_rom": "0x45762",
       "mapping_cpu": "0xA400",
-      "mapping_rom": "0x47A40",
+      "mapping_rom": "0x46400",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "64b95a3c1349e7bfc457635518387c3e1bf655390b7196d7d7320e61b4a85d0b",
+      "decoded_nonzero_palette_pixels": 1024,
       "decoded_palette_indices": [
-        0
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x92": {
       "header_rom": "0x38660",
@@ -453,14 +506,22 @@
       ],
       "mapping_pointer_rom": "0x45764",
       "mapping_cpu": "0xA420",
-      "mapping_rom": "0x47A60",
+      "mapping_rom": "0x46420",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "f79859677dba247f32c0e2f1cbff55b12006964e7752de661f9db4b47e8312f6",
+      "decoded_nonzero_palette_pixels": 478,
       "decoded_palette_indices": [
-        0
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x93": {
       "header_rom": "0x38667",
@@ -564,14 +625,24 @@
       ],
       "mapping_pointer_rom": "0x45766",
       "mapping_cpu": "0xA440",
-      "mapping_rom": "0x47A80",
+      "mapping_rom": "0x46440",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "bb47fb4b6db5769e330ac49910f84e3241d9d29e2660797858a0633622facf35",
+      "decoded_nonzero_palette_pixels": 1024,
       "decoded_palette_indices": [
-        0
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x94": {
       "header_rom": "0x3866E",
@@ -610,14 +681,28 @@
       ],
       "mapping_pointer_rom": "0x45768",
       "mapping_cpu": "0xA460",
-      "mapping_rom": "0x47AA0",
+      "mapping_rom": "0x46460",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "47f01e7c5fe0c174afc60b744b5d7f1958b8e737848e1d107413eb71df60885f",
+      "decoded_nonzero_palette_pixels": 1024,
       "decoded_palette_indices": [
-        0
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x95": {
       "header_rom": "0x38675",
@@ -656,14 +741,23 @@
       ],
       "mapping_pointer_rom": "0x4576A",
       "mapping_cpu": "0xA480",
-      "mapping_rom": "0x47AC0",
+      "mapping_rom": "0x46480",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "b1ab13fbcda5a254ce7f17d6a5527cebe246f1f666546ec71c837ef33667d6f5",
+      "decoded_nonzero_palette_pixels": 1024,
       "decoded_palette_indices": [
-        0
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        12,
+        13,
+        14,
+        15
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x96": {
       "header_rom": "0x3867C",
@@ -702,14 +796,28 @@
       ],
       "mapping_pointer_rom": "0x4576C",
       "mapping_cpu": "0xA4A0",
-      "mapping_rom": "0x47AE0",
+      "mapping_rom": "0x464A0",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "964cba919909d86097782fd59726d1b531cb203363337d57ea328a7b07176fd8",
+      "decoded_nonzero_palette_pixels": 712,
       "decoded_palette_indices": [
-        0
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     },
     "0x97": {
       "header_rom": "0x38683",
@@ -748,14 +856,28 @@
       ],
       "mapping_pointer_rom": "0x4576E",
       "mapping_cpu": "0xA4C0",
-      "mapping_rom": "0x47B00",
+      "mapping_rom": "0x464C0",
       "mapping_attributes_all_zero": false,
-      "mapping_attributes_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051",
-      "decoded_nonzero_palette_pixels": 0,
+      "mapping_attributes_sha256": "915bc3890a00e1a069b5975ef957234156a68f3f44d8d62ab562ec128751f86a",
+      "decoded_nonzero_palette_pixels": 1024,
       "decoded_palette_indices": [
-        0
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
-      "presentation": "transparent/background colour only"
+      "presentation": "visible terrain deck/platform art"
     }
   },
   "terrain_census": {
@@ -21848,7 +21970,7 @@
     }
   },
   "unresolved": [
-    "The semantic reason the collision-only deck is registered over the background perspective art is not named by the ROM.",
+    "Dynamic background/palette/scroll presentation remains outside this static deck-art audit.",
     "Whole-frame traces use the project's approximate SMS harness; visible-playback confirmation remains desirable but no collision rule depends on it."
   ]
 }

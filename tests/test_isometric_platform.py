@@ -60,11 +60,11 @@ class TestIdentityAndCensus(unittest.TestCase):
         for b in D["terrain_blocks"].values():
             self.assertEqual((b["flags"], b["surface_type"], b["modifier"]), ("0x9C", 28, "0x00"))
 
-    def test_surface_blocks_are_graphically_transparent(self):
+    def test_surface_blocks_have_visible_deck_art(self):
         for b in D["terrain_blocks"].values():
-            self.assertEqual(b["decoded_nonzero_palette_pixels"], 0)
-            self.assertEqual(b["decoded_palette_indices"], [0])
-            self.assertEqual(b["presentation"], "transparent/background colour only")
+            self.assertGreater(b["decoded_nonzero_palette_pixels"], 0)
+            self.assertTrue(any(v & 15 for v in b["decoded_palette_indices"]))
+            self.assertEqual(b["presentation"], "visible terrain deck/platform art")
 
     def test_surface_and_parameter_83_do_not_overlap(self):
         c = D["type_28_terrain_contexts"]

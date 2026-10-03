@@ -60,8 +60,11 @@ POC branch for every block.
 Surface `$1C` contains **212 / 116 / 90 cells**. Consume Research `ce2ef9b`:
 blocks `$8C..$8F` height16; `$90/$93` mirrored 1..8 profiles; `$91/$92`
 height8; `$94..$97` raw `$54` becomes height32 when **previous** surface is
-`$1C` and sampled bit6 is set. All twelve GPZ mappings decode to zero opaque
-pixels. Preserve them as collision cells; do not invent platform sprites.
+`$1C` and sampled bit6 is set. All twelve bank-correct GPZ mappings contain visible deck/platform
+art. The earlier zero-opaque-pixel conclusion was caused by the decoder
+adding $1640 to mapping addresses; it is withdrawn. Preserve canonical
+terrain profiles and render their recovered terrain art. See
+`gpz-mapping-pointer-correction.md`.
 Accepted side and underside results remain in the isometric audit/cache.
 
 **POC read-only correction:** its floor bit6 special case and side-profile path
@@ -233,7 +236,7 @@ POC still needs generated zone terrain sheets, ring-stripped terrain, object
 sprite/palette variants, layout/placement tables, and GPZ room/act registration.
 Existing dynamic monitor-selector and sign extraction tools remain useful.
 Static tilemap registration is established. Dynamic GPZ palette/tile animation,
-scroll behavior and presentation over the transparent deck need bounded follow-up
+scroll behavior and deck presentation need bounded follow-up
 and Windows comparison; no fabricated parallax is supplied.
 
 ## 11. Read-only POC readiness and genuinely new integration

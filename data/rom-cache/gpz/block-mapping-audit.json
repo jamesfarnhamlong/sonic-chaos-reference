@@ -1,0 +1,378 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "formula": "bank*0x4000 + raw_pointer_word - 0x8000; table offset only indexes the pointer word",
+  "consumers": {
+    "header_loader": {
+      "rom": 20444,
+      "length": 92,
+      "sha256": "cf09a94773dd4236c678ca7e620f072511835f1b0343351768f5193558cd22f6"
+    },
+    "mapper": {
+      "rom": 7279,
+      "length": 7,
+      "sha256": "d085bf024f53961dfcc80d68cb88c3e4500002e6c68c7a16f798b3414148df60"
+    },
+    "horizontal_pointer": {
+      "rom": 21270,
+      "length": 13,
+      "sha256": "a20420ff5a969b284a8c47b887881bf95bfd05629b7f51b06b36384de55fa66f"
+    },
+    "vertical_pointer": {
+      "rom": 21471,
+      "length": 10,
+      "sha256": "e1222651943347708852bd2d0e3fb010ef97933af66a41f66e846171a023ab50"
+    }
+  },
+  "acts": {
+    "thz1": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 32768,
+      "table_rom": 278528,
+      "old_address_error": 0,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "3984b28337fd50102d934e332971558f9772c8efd618f24808c72e75ea0fa9f7",
+      "mapping_attributes_sha256": "670af39356e7976dd3bd5a2fa179e5d7bf8cd033da95251a48ce894b8a533555"
+    },
+    "thz2": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 32768,
+      "table_rom": 278528,
+      "old_address_error": 0,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "3984b28337fd50102d934e332971558f9772c8efd618f24808c72e75ea0fa9f7",
+      "mapping_attributes_sha256": "670af39356e7976dd3bd5a2fa179e5d7bf8cd033da95251a48ce894b8a533555"
+    },
+    "thz3": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 32768,
+      "table_rom": 278528,
+      "old_address_error": 0,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "3984b28337fd50102d934e332971558f9772c8efd618f24808c72e75ea0fa9f7",
+      "mapping_attributes_sha256": "670af39356e7976dd3bd5a2fa179e5d7bf8cd033da95251a48ce894b8a533555"
+    },
+    "gpz1": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 38464,
+      "table_rom": 284224,
+      "old_address_error": 5696,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "41a32ccef3ebc56e1b214dd12b90b13f9a8191f49df2ccd738795e8add0336a7",
+      "mapping_attributes_sha256": "aa6b5fc4883f606ea4cf05bb38f3fd36906387374d76a75b14e4d08b49e19a89"
+    },
+    "gpz2": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 38464,
+      "table_rom": 284224,
+      "old_address_error": 5696,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "41a32ccef3ebc56e1b214dd12b90b13f9a8191f49df2ccd738795e8add0336a7",
+      "mapping_attributes_sha256": "aa6b5fc4883f606ea4cf05bb38f3fd36906387374d76a75b14e4d08b49e19a89"
+    },
+    "gpz3": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 38464,
+      "table_rom": 284224,
+      "old_address_error": 5696,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "41a32ccef3ebc56e1b214dd12b90b13f9a8191f49df2ccd738795e8add0336a7",
+      "mapping_attributes_sha256": "aa6b5fc4883f606ea4cf05bb38f3fd36906387374d76a75b14e4d08b49e19a89"
+    },
+    "sez1": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 43584,
+      "table_rom": 289344,
+      "old_address_error": 10816,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "5bfdb620a8e31024ee6793a454b79331bbe3150d1e7ecbca225c635bd361a64c",
+      "mapping_attributes_sha256": "aa666709270df2df5303cf7c4464901cfd7c6b3ee6d21523ddb3dbb9e5aeef32"
+    },
+    "sez2": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 43584,
+      "table_rom": 289344,
+      "old_address_error": 10816,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "5bfdb620a8e31024ee6793a454b79331bbe3150d1e7ecbca225c635bd361a64c",
+      "mapping_attributes_sha256": "aa666709270df2df5303cf7c4464901cfd7c6b3ee6d21523ddb3dbb9e5aeef32"
+    },
+    "sez3": {
+      "bank": 17,
+      "bank_base_rom": 278528,
+      "table_cpu": 43584,
+      "table_rom": 289344,
+      "old_address_error": 10816,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "5bfdb620a8e31024ee6793a454b79331bbe3150d1e7ecbca225c635bd361a64c",
+      "mapping_attributes_sha256": "aa666709270df2df5303cf7c4464901cfd7c6b3ee6d21523ddb3dbb9e5aeef32"
+    },
+    "mghz1": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 32768,
+      "table_rom": 327680,
+      "old_address_error": 0,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "3b48f82372236965022cd509645f5c7bf0248751ccf7428deda3da1e3c2f4def",
+      "mapping_attributes_sha256": "305f6acc889b7c0893b3b961fa8cbaeb516901ae5cf5c1c6f912681b4148e2f3"
+    },
+    "mghz2": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 32768,
+      "table_rom": 327680,
+      "old_address_error": 0,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "3b48f82372236965022cd509645f5c7bf0248751ccf7428deda3da1e3c2f4def",
+      "mapping_attributes_sha256": "305f6acc889b7c0893b3b961fa8cbaeb516901ae5cf5c1c6f912681b4148e2f3"
+    },
+    "mghz3": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 32768,
+      "table_rom": 327680,
+      "old_address_error": 0,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "3b48f82372236965022cd509645f5c7bf0248751ccf7428deda3da1e3c2f4def",
+      "mapping_attributes_sha256": "305f6acc889b7c0893b3b961fa8cbaeb516901ae5cf5c1c6f912681b4148e2f3"
+    },
+    "apz1": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 37664,
+      "table_rom": 332576,
+      "old_address_error": 4896,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "1428d2259768722b212b7883e485f0694988ef2650c23b278825bc2f46dd98e3",
+      "mapping_attributes_sha256": "436ad1f924216a13de0a4885abad36aa4d288a2f52b946626fb2afc662b74868"
+    },
+    "apz2": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 37664,
+      "table_rom": 332576,
+      "old_address_error": 4896,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "1428d2259768722b212b7883e485f0694988ef2650c23b278825bc2f46dd98e3",
+      "mapping_attributes_sha256": "436ad1f924216a13de0a4885abad36aa4d288a2f52b946626fb2afc662b74868"
+    },
+    "apz3": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 37664,
+      "table_rom": 332576,
+      "old_address_error": 4896,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "1428d2259768722b212b7883e485f0694988ef2650c23b278825bc2f46dd98e3",
+      "mapping_attributes_sha256": "436ad1f924216a13de0a4885abad36aa4d288a2f52b946626fb2afc662b74868"
+    },
+    "eez1": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 42208,
+      "table_rom": 337120,
+      "old_address_error": 9440,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "a0eaeb71f85e053d0c5dcc0ba1bcf996795efb40390bb50e1c324b07a7356400",
+      "mapping_attributes_sha256": "e3abf21dbc27cf9a26536e3ba025129659042c18f192018678b0844ed8fbbd53"
+    },
+    "eez2": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 42208,
+      "table_rom": 337120,
+      "old_address_error": 9440,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "a0eaeb71f85e053d0c5dcc0ba1bcf996795efb40390bb50e1c324b07a7356400",
+      "mapping_attributes_sha256": "e3abf21dbc27cf9a26536e3ba025129659042c18f192018678b0844ed8fbbd53"
+    },
+    "eez3": {
+      "bank": 20,
+      "bank_base_rom": 327680,
+      "table_cpu": 42208,
+      "table_rom": 337120,
+      "old_address_error": 9440,
+      "original_consumer_checks": 512,
+      "resolved_offsets_sha256": "a0eaeb71f85e053d0c5dcc0ba1bcf996795efb40390bb50e1c324b07a7356400",
+      "mapping_attributes_sha256": "e3abf21dbc27cf9a26536e3ba025129659042c18f192018678b0844ed8fbbd53"
+    }
+  },
+  "gpz_fixtures": {
+    "0x00": {
+      "raw_pointer_word": 38976,
+      "pointer_entry_rom": 284224,
+      "bank": 17,
+      "cpu": 38976,
+      "rom": 284736,
+      "old_wrong_rom": 290432,
+      "old_attributes_all_ffff": false,
+      "mapping_sha256": "4febf4d8ae22d8edd29b5ca6def38950d0ae1b1deb23e24a28b7965ca77817c7",
+      "palette_index_sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "nonzero_pixels": 0
+    },
+    "0x3C": {
+      "raw_pointer_word": 40736,
+      "pointer_entry_rom": 284344,
+      "bank": 17,
+      "cpu": 40736,
+      "rom": 286496,
+      "old_wrong_rom": 292192,
+      "old_attributes_all_ffff": false,
+      "mapping_sha256": "415d855de3a620e354f366709f05522aae6ea289f9599d48f5bef759bd15440e",
+      "palette_index_sha256": "aee96c13cb89abd37b74d8391f8664085015b521c642824bf83eecc7bc17e188",
+      "nonzero_pixels": 384
+    },
+    "0x8C": {
+      "raw_pointer_word": 41824,
+      "pointer_entry_rom": 284504,
+      "bank": 17,
+      "cpu": 41824,
+      "rom": 287584,
+      "old_wrong_rom": 293280,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "4c41cf402bc9ec0091d5dcef54cb8a7fc7e31a7cf17d3fc60a5649cf17974167",
+      "palette_index_sha256": "39a8f04e764f53c8bff03ebfd881780ea39985b1871619bd76cc01c122a4bf26",
+      "nonzero_pixels": 512
+    },
+    "0x8D": {
+      "raw_pointer_word": 41856,
+      "pointer_entry_rom": 284506,
+      "bank": 17,
+      "cpu": 41856,
+      "rom": 287616,
+      "old_wrong_rom": 293312,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "9c41133cd7afe2c0a722b3c5c019fc17b9729b3b3421b5537f6a8fca49531190",
+      "palette_index_sha256": "4fc0fe76b9a2a51cf59565fe480f2ab58435c2aaaa78fcfd77744ac4a2ecb925",
+      "nonzero_pixels": 512
+    },
+    "0x8E": {
+      "raw_pointer_word": 41888,
+      "pointer_entry_rom": 284508,
+      "bank": 17,
+      "cpu": 41888,
+      "rom": 287648,
+      "old_wrong_rom": 293344,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "91f7b4d2d27d3ad4d702e44c394d299e1be229e96ed8776da33afc7e6d4f19db",
+      "palette_index_sha256": "d6576983a4e25c3ab3536a431442058969fa1390e63081abc6a1f6ebc2783c29",
+      "nonzero_pixels": 200
+    },
+    "0x8F": {
+      "raw_pointer_word": 41920,
+      "pointer_entry_rom": 284510,
+      "bank": 17,
+      "cpu": 41920,
+      "rom": 287680,
+      "old_wrong_rom": 293376,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "76f87c91f2a00dfe2dbb3b370fb5a5e8eabb2fa97a9aacf87ac294bfd3f5ca74",
+      "palette_index_sha256": "175f4c63f202a06e34ffefff8dd0014641993f9b6548ff1a1edafffed08344db",
+      "nonzero_pixels": 512
+    },
+    "0x90": {
+      "raw_pointer_word": 41952,
+      "pointer_entry_rom": 284512,
+      "bank": 17,
+      "cpu": 41952,
+      "rom": 287712,
+      "old_wrong_rom": 293408,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "717c4a1abe10c54b60dabd4ef6ae0f3d7a8af8867cb78f0e240c7e206a5f4bc6",
+      "palette_index_sha256": "636539963d2fc80762d97d9215752fe02e7a2a61025c90e1044294e5c0abf32c",
+      "nonzero_pixels": 1024
+    },
+    "0x91": {
+      "raw_pointer_word": 41984,
+      "pointer_entry_rom": 284514,
+      "bank": 17,
+      "cpu": 41984,
+      "rom": 287744,
+      "old_wrong_rom": 293440,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "64b95a3c1349e7bfc457635518387c3e1bf655390b7196d7d7320e61b4a85d0b",
+      "palette_index_sha256": "19912d95a38455b9063d2fa76251bdb743b126d1e9dd11c58821d1cc2b83444d",
+      "nonzero_pixels": 1024
+    },
+    "0x92": {
+      "raw_pointer_word": 42016,
+      "pointer_entry_rom": 284516,
+      "bank": 17,
+      "cpu": 42016,
+      "rom": 287776,
+      "old_wrong_rom": 293472,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "f79859677dba247f32c0e2f1cbff55b12006964e7752de661f9db4b47e8312f6",
+      "palette_index_sha256": "a46975ddfb86def1d43f5929432c0eb055e9ef86904d05a29d2fa6e000805d4e",
+      "nonzero_pixels": 478
+    },
+    "0x93": {
+      "raw_pointer_word": 42048,
+      "pointer_entry_rom": 284518,
+      "bank": 17,
+      "cpu": 42048,
+      "rom": 287808,
+      "old_wrong_rom": 293504,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "bb47fb4b6db5769e330ac49910f84e3241d9d29e2660797858a0633622facf35",
+      "palette_index_sha256": "cc84f4c07bf83635d34a005ef29ca07464ec2826b1478077370b22ca3f4a11c4",
+      "nonzero_pixels": 1024
+    },
+    "0x94": {
+      "raw_pointer_word": 42080,
+      "pointer_entry_rom": 284520,
+      "bank": 17,
+      "cpu": 42080,
+      "rom": 287840,
+      "old_wrong_rom": 293536,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "47f01e7c5fe0c174afc60b744b5d7f1958b8e737848e1d107413eb71df60885f",
+      "palette_index_sha256": "c58a88577092f1b83a128b3cdfb0987ce2eb2df51f940cde012b403dfd02d359",
+      "nonzero_pixels": 1024
+    },
+    "0x95": {
+      "raw_pointer_word": 42112,
+      "pointer_entry_rom": 284522,
+      "bank": 17,
+      "cpu": 42112,
+      "rom": 287872,
+      "old_wrong_rom": 293568,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "b1ab13fbcda5a254ce7f17d6a5527cebe246f1f666546ec71c837ef33667d6f5",
+      "palette_index_sha256": "5e07c99438d8fad94c6f6e1f2ca104b6ab2624853a7ecf452d01fd2cf79e387d",
+      "nonzero_pixels": 1024
+    },
+    "0x96": {
+      "raw_pointer_word": 42144,
+      "pointer_entry_rom": 284524,
+      "bank": 17,
+      "cpu": 42144,
+      "rom": 287904,
+      "old_wrong_rom": 293600,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "964cba919909d86097782fd59726d1b531cb203363337d57ea328a7b07176fd8",
+      "palette_index_sha256": "7d5a272e6a69b871174bed9a31875cf5ff5d809c7f6df9267161169bb91b1711",
+      "nonzero_pixels": 712
+    },
+    "0x97": {
+      "raw_pointer_word": 42176,
+      "pointer_entry_rom": 284526,
+      "bank": 17,
+      "cpu": 42176,
+      "rom": 287936,
+      "old_wrong_rom": 293632,
+      "old_attributes_all_ffff": true,
+      "mapping_sha256": "915bc3890a00e1a069b5975ef957234156a68f3f44d8d62ab562ec128751f86a",
+      "palette_index_sha256": "2aa26ca7ba778562fabb5c1156f2914229042ac6cd4a0ead647ca0c567586894",
+      "nonzero_pixels": 1024
+    }
+  }
+}

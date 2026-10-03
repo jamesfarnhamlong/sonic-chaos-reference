@@ -16,7 +16,7 @@ The apparent Gigapolis isometric/platform presentation combines two independent
 mechanisms:
 
 1. **Terrain surface `$1C`, blocks `$8C..$97`**. These 32x32 layout cells are
-   collision-only: their decoded GPZ mappings contain zero non-background
+   visible terrain: their bank-correct GPZ mappings contain deck/platform
    pixels. They form the broad perspective/isometric decks in all three GPZ
    acts. They are always-present terrain, not mapped objects. **[DECODED DATA +
    CONTROLLED ROUTINE RESULT]**
@@ -53,10 +53,13 @@ in prose. **[DECODED DATA: all 18 normal-act layout streams]**
 
 All twelve blocks have header flags `$9C` (solid bit 7 plus low-five-bit
 surface ID `$1C`) and modifier 0. Their mapping table is the GPZ block table at
-ROM `$45640`. Mapping attributes are nonzero, but after the GPZ art streams are
-decoded every one of the 1,024 pixels in every block is palette index 0. The
-collision is therefore registered over background/perspective presentation;
-there is no foreground collision sprite and no object anchor. **[DECODED DATA]**
+ROM `$45640`. The raw pointer is an absolute CPU address in bank $11, so file offset is
+$44000 + pointer - $8000, not $45640 + pointer - $8000. All twelve blocks
+contain visible deck/platform art. The former zero-pixel claim read unused
+$FFFF attributes through an erroneous +$1640 offset and is withdrawn. These
+are terrain cells with terrain profiles, not object sprites/anchors.
+**[SOURCE-TRACED + CONTROLLED POINTER RESULT + DECODED DATA]**
+See `gpz-mapping-pointer-correction.md` for consumer trace and fixtures.
 
 The vertical floor contours are:
 
@@ -257,7 +260,7 @@ Reusable as-is:
 - `SCR_chaos_core.gml` already contains the exact `$1C` bit-6 floor special
   case (`raw bit 6 && previous surface == 28 -> height 32`) and the generic ROM
   vertical/horizontal profile pipeline. Surface `$1C` therefore needs decoded
-  GPZ layout/header/profile data and transparent collision cells, **not a new
+  GPZ layout/header/profile data and visible deck mappings, **not a new
   collision algorithm**.
 - `SCR_chaos_platform.gml` already has the canonical type `$28` triangular
   contact, signed relative-speed gate, support ownership and carry helpers.
@@ -291,9 +294,9 @@ Run the focused audit and tests with the repository environment:
 
 Unresolved, deliberately bounded:
 
-- The ROM does not name the design-level semantic reason for registering these
-  transparent collision cells over the GPZ perspective background. The numeric
-  identity, placement and runtime behavior are established.
+- Dynamic background/palette/scroll presentation remains outside this static
+  deck-art audit. The numeric identity, placement and collision behavior are
+  established.
 - The selected whole-frame traces use the project's approximate SMS harness.
   Visible-playback confirmation remains useful for presentation acceptance, but
   no collision, timing or reuse conclusion depends on an inferred screenshot.

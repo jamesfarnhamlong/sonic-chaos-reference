@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ROM-backed audit of the Gigapolis invisible/isometric terrain decks.
+"""ROM-backed audit of the Gigapolis isometric terrain decks.
 
 The visual name is deliberately kept out of machine-facing identities.  The
 tool inventories both sides of the ambiguity which motivated the audit:
@@ -115,8 +115,7 @@ def block_definitions(rom: bytes) -> dict:
     out = OrderedDict()
     for b in BLOCKS:
         h = rom_tables.header(rom, b)
-        # The block mappings for the collision-only cells are deliberately
-        # checked instead of inferred from the black render.
+        # Read the bank-relative mapping pointers before interpreting deck art.
         mapping = L.block_mapping(rom, 0x45640, b)
         attrs = mapping["attributes"]
         palette_pixels = [p for row in pixels[b] for p in row]
@@ -136,7 +135,7 @@ def block_definitions(rom: bytes) -> dict:
             "mapping_attributes_sha256": sha(b"".join(v.to_bytes(2, "little") for v in attrs)),
             "decoded_nonzero_palette_pixels": sum(bool(v) for v in palette_pixels),
             "decoded_palette_indices": sorted(set(palette_pixels)),
-            "presentation": "transparent/background colour only",
+            "presentation": "visible terrain deck/platform art",
         }
     if {v["surface_type"] for v in out.values()} != {SURFACE}:
         raise AssertionError("block set no longer surface $1C")
@@ -575,7 +574,7 @@ def build(rom: bytes, static_only: bool = False) -> dict:
         ("format", 1), ("rom_sha256", ROM_SHA256), ("research_only", True), ("poc_untouched", True),
         ("identity", {"terrain_surface": "0x1C", "terrain_blocks": [hx(b) for b in BLOCKS],
                       "mapped_object_examined_separately": "0x28",
-                      "finding": "Gigapolis contains two distinct systems: invisible surface-$1C terrain decks, and type-$28 platforms. Parameter $83 is the object-backed touch-delay/fall/sag variant introduced in GPZ2 and later reused; it is not the source of the surface-$1C deck collision."}),
+                      "finding": "Gigapolis contains two distinct systems: visible surface-$1C terrain decks, and type-$28 platforms. Parameter $83 is the object-backed touch-delay/fall/sag variant introduced in GPZ2 and later reused; it is not the source of the surface-$1C deck collision."}),
         ("routines", routines(rom)), ("terrain_blocks", blocks), ("terrain_census", terrain),
         ("type_28_census", objects), ("type_28_terrain_contexts", placement_contexts(rom, objects)),
         ("graphics", graphics(rom)),
@@ -596,7 +595,7 @@ def build(rom: bytes, static_only: bool = False) -> dict:
                            for k in ACTS if not k.startswith(("gpz", "mghz"))},
         }),
         ("unresolved", [
-            "The semantic reason the collision-only deck is registered over the background perspective art is not named by the ROM.",
+            "Dynamic background/palette/scroll presentation remains outside this static deck-art audit.",
             "Whole-frame traces use the project's approximate SMS harness; visible-playback confirmation remains desirable but no collision rule depends on it.",
         ]),
     ])

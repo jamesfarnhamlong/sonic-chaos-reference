@@ -172,7 +172,7 @@ def build(r):
             'graphics':{'static_vram_loads':a['vram_loads'], 'vram_sha256':digest(a['vram']),
                         'palettes':{n:{'rom':d['palette'][n+'_rom'], 'index':d['palette'][n+'_index'],
                             'cram':list(r[d['palette'][n+'_rom']:d['palette'][n+'_rom']+16])} for n in ('background','sprite')},
-                        'registration':'shared 32px cell -> 4x4 8px mappings; palette/flip/priority attributes retained; transparent $1C cells remain collision-only',
+                        'registration':'shared 32px cell -> 4x4 8px mappings; palette/flip/priority attributes retained; surface $1C cells carry visible deck/platform art',
                         'background_policy':'static ROM tilemap presentation reconstructed from layout/mappings; dynamic palette/scroll changes unresolved, no fabricated parallax',
                         'extraction':'level_package build_vram/block_pixel_maps and level_maps render accept explicit GPZ descriptors; local PNGs optional, not canonical cache content'}}
     out['platform_scripts'] = P.platform_modes(r)['states']

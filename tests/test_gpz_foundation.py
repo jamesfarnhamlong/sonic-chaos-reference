@@ -72,7 +72,7 @@ class PackageTests(unittest.TestCase):
   self.assertEqual([a['census']['terrain_interactions']['surface1c'] for a in self.x['acts'].values()],[212,116,90])
   for a in self.x['acts'].values():
    for b in a['blocks']:
-    if b['surface']==28:self.assertEqual(b['nonzero_pixels'],0);self.assertEqual(b['headers'][0]['flags'],0x9C)
+    if b['surface']==28:self.assertGreater(b['nonzero_pixels'],0);self.assertEqual(b['headers'][0]['flags'],0x9C)
  def test_mutation_mappings(self):
   for a in self.x['acts'].values():
    blocks={b['block_id'] for b in a['blocks']};self.assertTrue({0x46,0x9D}<=blocks)
