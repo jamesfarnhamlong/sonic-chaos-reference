@@ -120,5 +120,6 @@ consumers, terrain rings, the ring-art descriptor and the three level-effect rou
 the `$7010` sink projection with a Python model checked against the ROM over 88,560 cases, runaway counter 25/23, death, resets, stale-bit effect on other one-way blocks, state coverage and whole-game fixtures) and the
 ceiling spikes `$3E/$3F` (probe path, gate matrix over 408,576 cases, hurt rectangle, foot/side behaviour, hurt consequences, real placements and MGHZ example coordinates). Docs:
 `docs/mghz-surface-1b-ceiling-spikes-audit.md`. No ROM bytes are stored (region hashes only).
+`mghz/m1-windows-followup.json` (`tools/mghz_m1_followup.py`) answers three Windows-test questions: a rising type-`$28` platform carrying Sonic into overhead terrain (breakable `$0D` crush death `$4984`, one-way `$F9` capture, jump window, update order, controlled fixtures), the animated tile strip `$1A8/$1A9` (blocks `$D2/$D3`: consumers, scenery, frame schedule, thin-line audit) and the breakable block `$0D` break presentation (`$7898`, fragments `$07`). Docs: `docs/mghz-m1-windows-followup.md`. Hashes only; no ROM bytes or pixels.
 `mghz/art-approval.json` lists the PNG review subjects (approved by the user 2026-10-04; pixels live only in the git-ignored `build/mghz-approval/`). Docs: `docs/mghz-foundation-audit.md`,
 `docs/mghz-object-census.md`. No ROM bytes or pixels are stored.

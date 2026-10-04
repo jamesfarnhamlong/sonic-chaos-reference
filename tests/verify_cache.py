@@ -30,6 +30,7 @@ import player_hurt_ring_scatter
 import mghz_foundation
 import mghz_object_census
 import mghz_surface_ceiling
+import mghz_m1_followup
 
 
 def main(rom_path):
@@ -152,6 +153,8 @@ def main(rom_path):
     assert (ROOT / "data/rom-cache/mghz/object-census.json").read_text(encoding="utf-8") == mghz_object_census.dumps(mghz_object_census.build(rom))
     # MGHZ surface $1B (oil) and ceiling-spike audit: controlled sweeps and emulated scenarios are regenerated (~20 s).
     assert (ROOT / "data/rom-cache/mghz/surface-1b-ceiling-spikes.json").read_text(encoding="utf-8") == mghz_surface_ceiling.dumps(mghz_surface_ceiling.build(rom))
+    # MGHZ M1 Windows follow-up (rising platform into terrain, strip $1A8/$1A9, breakable $0D): controlled and emulated fixtures are regenerated (~30 s).
+    assert (ROOT / "data/rom-cache/mghz/m1-windows-followup.json").read_text(encoding="utf-8") == mghz_m1_followup.dumps(mghz_m1_followup.build(rom))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

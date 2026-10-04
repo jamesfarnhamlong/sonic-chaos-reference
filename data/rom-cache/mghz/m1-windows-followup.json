@@ -1,0 +1,4182 @@
+{
+ "format": "mghz-m1-windows-followup-v1",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_base": "7315df2",
+ "research_only": true,
+ "poc_untouched": true,
+ "scope": {
+  "in": [
+   "A rising $28 platform into overhead terrain",
+   "B animated tiles $1A8/$1A9",
+   "C breakable block $0D presentation"
+  ],
+  "out": [
+   "new enemy/boss research",
+   "$24",
+   "$2E",
+   "boss $56",
+   "footwear"
+  ]
+ },
+ "evidence_classes": [
+  "DECODED DATA",
+  "BYTE-VERIFIED ASSEMBLY",
+  "SOURCE-TRACED BEHAVIOR",
+  "CONTROLLED ROUTINE RESULT",
+  "EMULATED ORIGINAL FRAME",
+  "SYNTHETIC CONTROL",
+  "UNRESOLVED"
+ ],
+ "static_only": false,
+ "part_a": {
+  "scope": "type $28 vertical movers in MGHZ1-3 whose carried rider meets overhead terrain",
+  "platform_family": {
+   "state_13": "stationary contact platform ($85FE): waits for a contact flag, then enters the touch-start mover",
+   "state_6": "touch-started vertical mover ($87B2): latch +$31 0 -> 1 on any contact bit, then the lift callback $86DA (Y speed -1.0 per update, reversal period 16 x aux1 updates via $8925); keeps running without a rider once started",
+   "parameter_rule": "param $05 -> state 13 -> 6; param $0A (also forced rule for $0B) -> state 11 lift"
+  },
+  "placements": {
+   "mghz1": [
+    {
+     "record_index": 9,
+     "world": [
+      1136,
+      240
+     ],
+     "parameter": "0x05",
+     "aux1": "0x07",
+     "initial_state": 13,
+     "state_after_touch": 6,
+     "travel_updates_up": 112,
+     "overhead_hits": []
+    },
+    {
+     "record_index": 10,
+     "world": [
+      2768,
+      414
+     ],
+     "parameter": "0x05",
+     "aux1": "0x0C",
+     "initial_state": 13,
+     "state_after_touch": 6,
+     "travel_updates_up": 192,
+     "overhead_hits": [
+      {
+       "cell": [
+        86,
+        7
+       ],
+       "block": "0xF9",
+       "flags": "0x41",
+       "surface_type": "0x01",
+       "platform_y_first": 275,
+       "platform_y_last": 244
+      }
+     ]
+    },
+    {
+     "record_index": 11,
+     "world": [
+      2960,
+      830
+     ],
+     "parameter": "0x05",
+     "aux1": "0x1C",
+     "initial_state": 13,
+     "state_after_touch": 6,
+     "travel_updates_up": 448,
+     "overhead_hits": [
+      {
+       "cell": [
+        92,
+        12
+       ],
+       "block": "0xF9",
+       "flags": "0x41",
+       "surface_type": "0x01",
+       "platform_y_first": 435,
+       "platform_y_last": 404
+      }
+     ]
+    }
+   ],
+   "mghz2": [
+    {
+     "record_index": 3,
+     "world": [
+      304,
+      496
+     ],
+     "parameter": "0x0A",
+     "aux1": "0x0A",
+     "initial_state": 11,
+     "state_after_touch": 11,
+     "travel_updates_up": 160,
+     "overhead_hits": []
+    },
+    {
+     "record_index": 4,
+     "world": [
+      648,
+      464
+     ],
+     "parameter": "0x0A",
+     "aux1": "0x12",
+     "initial_state": 11,
+     "state_after_touch": 11,
+     "travel_updates_up": 288,
+     "overhead_hits": []
+    },
+    {
+     "record_index": 12,
+     "world": [
+      2768,
+      624
+     ],
+     "parameter": "0x05",
+     "aux1": "0x19",
+     "initial_state": 13,
+     "state_after_touch": 6,
+     "travel_updates_up": 400,
+     "overhead_hits": [
+      {
+       "cell": [
+        86,
+        15
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 531,
+       "platform_y_last": 500
+      },
+      {
+       "cell": [
+        86,
+        14
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 499,
+       "platform_y_last": 468
+      },
+      {
+       "cell": [
+        86,
+        13
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 467,
+       "platform_y_last": 436
+      },
+      {
+       "cell": [
+        86,
+        12
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 435,
+       "platform_y_last": 404
+      },
+      {
+       "cell": [
+        86,
+        11
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 403,
+       "platform_y_last": 372
+      },
+      {
+       "cell": [
+        86,
+        10
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 371,
+       "platform_y_last": 340
+      },
+      {
+       "cell": [
+        86,
+        9
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 339,
+       "platform_y_last": 308
+      },
+      {
+       "cell": [
+        86,
+        8
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 307,
+       "platform_y_last": 276
+      },
+      {
+       "cell": [
+        86,
+        7
+       ],
+       "block": "0xF9",
+       "flags": "0x41",
+       "surface_type": "0x01",
+       "platform_y_first": 275,
+       "platform_y_last": 244
+      }
+     ]
+    },
+    {
+     "record_index": 13,
+     "world": [
+      3024,
+      560
+     ],
+     "parameter": "0x05",
+     "aux1": "0x14",
+     "initial_state": 13,
+     "state_after_touch": 6,
+     "travel_updates_up": 320,
+     "overhead_hits": [
+      {
+       "cell": [
+        94,
+        12
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 435,
+       "platform_y_last": 404
+      },
+      {
+       "cell": [
+        94,
+        11
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 403,
+       "platform_y_last": 372
+      },
+      {
+       "cell": [
+        94,
+        10
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 371,
+       "platform_y_last": 340
+      },
+      {
+       "cell": [
+        94,
+        9
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 339,
+       "platform_y_last": 308
+      },
+      {
+       "cell": [
+        94,
+        8
+       ],
+       "block": "0x9C",
+       "flags": "0x8D",
+       "surface_type": "0x0D",
+       "platform_y_first": 307,
+       "platform_y_last": 276
+      },
+      {
+       "cell": [
+        94,
+        7
+       ],
+       "block": "0xF9",
+       "flags": "0x41",
+       "surface_type": "0x01",
+       "platform_y_first": 275,
+       "platform_y_last": 244
+      }
+     ]
+    },
+    {
+     "record_index": 14,
+     "world": [
+      3856,
+      768
+     ],
+     "parameter": "0x05",
+     "aux1": "0x10",
+     "initial_state": 13,
+     "state_after_touch": 6,
+     "travel_updates_up": 256,
+     "overhead_hits": []
+    }
+   ],
+   "mghz3": []
+  },
+  "overhead_summary": {
+   "breakable_0d_shafts": [
+    "mghz2 #12 (2768,624) param $05 aux1 $19: column x cells 86, rows 15..8 = block $9C (surface $0D), then row 7 = $F9 (one-way)",
+    "mghz2 #13 (3024,560) param $05 aux1 $14: column x cell 94, rows 12..8 = $9C, then row 7 = $F9"
+   ],
+   "one_way_ledges": [
+    "mghz1 #10 (2768,414) param $05 aux1 $0C: row 7 block $F9 ($41, one-way surface type 1)",
+    "mghz1 #11 (2960,830) param $05 aux1 $1C: row 12 block $F9"
+   ],
+   "plain_solid_ceilings": "none: no MGHZ vertical-mover path meets an ordinary solid (bit 7, non-$0D) block",
+   "no_overhead_terrain": [
+    "mghz1 #9",
+    "mghz2 #3",
+    "mghz2 #4",
+    "mghz2 #14"
+   ]
+  },
+  "ceiling_rule": {
+   "entry": "$73C9: runs when the support owner $D3C0 != 0 (rider) or (floor flag clear and Y speed negative); probe = player (X, Y - 24 + 18) = (X, Y - 6); dispatch on terrain type",
+   "type_0d_7464": "$D3C0 == 0 -> $7898 (break); $D3C0 != 0 -> JP $4984 (crush death: requested state $1F, +$03 bit 0, +$04 := 0, Y speed := $FB00 (-5.0), $D375 := 0, +$22 bit 1 cleared, zone < 8: $D293 bit 2, $D44B &= $80, sound $96 via $062D)",
+   "type_0d_has_no_ring_or_invulnerability_gate": true
+  },
+  "assembly": {
+   "ceiling_73c9": [
+    "73C9 dd cb 22 86 | RES 0,(IX+0x22)",
+    "73CD 3a c0 d3 | LD A,(0xd3c0)",
+    "73D0 b7 | OR A",
+    "73D1 20 0a | JR nz,0x73dd",
+    "73D3 dd cb 22 4e | BIT 1,(IX+0x22)",
+    "73D7 c0 | RET nz",
+    "73D8 dd cb 19 7e | BIT 7,(IX+0x19)",
+    "73DC c8 | RET z",
+    "73DD 01 00 00 | LD BC,0",
+    "73E0 11 e8 ff | LD DE,0xffe8",
+    "73E3 dd cb 00 4e | BIT 1,(IX)",
+    "73E7 28 06 | JR z,0x73ef",
+    "73E9 01 00 00 | LD BC,0",
+    "73EC 11 e8 ff | LD DE,0xffe8",
+    "73EF cd 66 76 | CALL 0x7666",
+    "73F2 3a 64 d3 | LD A,(0xd364)",
+    "73F5 47 | LD B,A",
+    "73F6 e6 1f | AND 0x1f",
+    "73F8 fe 0d | CP 13",
+    "73FA ca 64 74 | JP z,0x7464",
+    "73FD fe 15 | CP 0x15",
+    "73FF ca 8f 74 | JP z,0x748f",
+    "7402 fe 14 | CP 0x14",
+    "7404 ca 9d 74 | JP z,0x749d",
+    "7407 fe 13 | CP 0x13",
+    "7409 ca 2f 75 | JP z,0x752f",
+    "740C fe 05 | CP 5",
+    "740E ca e7 74 | JP z,0x74e7",
+    "7411 fe 1c | CP 0x1c",
+    "7413 ca 6e 74 | JP z,0x746e"
+   ],
+   "ceiling_0d_7464": [
+    "7464 3a c0 d3 | LD A,(0xd3c0)",
+    "7467 b7 | OR A",
+    "7468 ca 98 78 | JP z,0x7898",
+    "746B c3 84 49 | JP 0x4984"
+   ],
+   "crush_death_4984": [
+    "4984 dd 36 02 1f | LD (IX+2),0x1f",
+    "4988 dd cb 03 c6 | SET 0,(IX+3)",
+    "498C dd 36 04 00 | LD (IX+4),0",
+    "4990 21 00 fb | LD HL,0xfb00",
+    "4993 22 18 d5 | LD (0xd518),HL",
+    "4996 21 00 00 | LD HL,0",
+    "4999 22 75 d3 | LD (0xd375),HL",
+    "499C dd cb 22 8e | RES 1,(IX+0x22)",
+    "49A0 3a 97 d2 | LD A,(0xd297)",
+    "49A3 fe 08 | CP 8",
+    "49A5 30 16 | JR nc,0x49bd",
+    "49A7 21 93 d2 | LD HL,0xd293",
+    "49AA cb d6 | SET 2,(HL)",
+    "49AC 3a 4b d4 | LD A,(0xd44b)",
+    "49AF e6 80 | AND 0x80",
+    "49B1 32 4b d4 | LD (0xd44b),A",
+    "49B4 3e 96 | LD A,0x96",
+    "49B6 32 04 de | LD (0xde04),A",
+    "49B9 cd 2d 06 | CALL 0x062d",
+    "49BC c9 | RET",
+    "49BD 21 94 d2 | LD HL,0xd294",
+    "49C0 cb ee | SET 5,(HL)",
+    "49C2 c9 | RET"
+   ]
+  },
+  "update_order": {
+   "events_in_one_update_while_riding": [
+    "player_update",
+    "x_integration",
+    "y_integration",
+    "terrain_pass",
+    "terrain_floor",
+    "terrain_sides",
+    "terrain_ceiling",
+    "object_move",
+    "platform_support",
+    "overlap_6328",
+    "platform_carry"
+   ],
+   "reading": "player callback first ($3FEF: X/Y integration, terrain pass: floor, sides, ceiling), then the platform callback (move, support $8814, overlap $6328, carry $88A0 = Y := platform Y - 14)."
+  },
+  "fixtures": {
+   "mghz2_12_ride_into_breakable_0d": {
+    "rings_0": {
+     "start": {
+      "x": 2768,
+      "y": 585,
+      "vy": 256,
+      "cur": 14,
+      "f3": 1,
+      "rings_bcd": 0,
+      "platform": [
+       2768,
+       624
+      ]
+     },
+     "support_claim_update": 11,
+     "death_update": 104,
+     "platform_y_at_start_of_death_update": 531,
+     "player_y_in_death_pass": 517,
+     "first_fatal_platform_y_rule": "platform Y at the start of an update <= (bottom row of the overhead $0D cell) + 20 = 531",
+     "death_d3c0": 9,
+     "events_in_death_update": [
+      "player_update",
+      "x_integration",
+      "y_integration",
+      "terrain_pass",
+      "terrain_floor",
+      "terrain_sides",
+      "terrain_ceiling",
+      "ceiling_surface_0d",
+      "crush_death_4984"
+     ],
+     "rows_around_death": [
+      {
+       "u": 99,
+       "y": 521,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 535,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 522,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 100,
+       "y": 520,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 534,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 521,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 101,
+       "y": 519,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 533,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 520,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 102,
+       "y": 518,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 532,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 519,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 103,
+       "y": 517,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 531,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 518,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 104,
+       "y": 517,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 531,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "ceiling_surface_0d",
+        "crush_death_4984"
+       ],
+       "cap": {
+        "pass_y": 517,
+        "pass_vy": 832,
+        "ceil0d_y": 517,
+        "ceil0d_d3c0": 9,
+        "death_pass_y": 517,
+        "death_d3c0": 9
+       }
+      }
+     ],
+     "after_death_updates": [
+      {
+       "u": "+1",
+       "y": 517,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 0,
+       "plat_y": 530,
+       "ev": [
+        "object_move"
+       ]
+      },
+      {
+       "u": "+2",
+       "y": 517,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 0,
+       "plat_y": 530,
+       "ev": []
+      }
+     ],
+     "player_state_after": {
+      "cur": 1,
+      "req": 31,
+      "f3": 1,
+      "vy": -1280,
+      "rings": 0
+     },
+     "platform_frozen_after_death": true
+    },
+    "rings_5": {
+     "start": {
+      "x": 2768,
+      "y": 585,
+      "vy": 256,
+      "cur": 14,
+      "f3": 1,
+      "rings_bcd": 5,
+      "platform": [
+       2768,
+       624
+      ]
+     },
+     "support_claim_update": 11,
+     "death_update": 104,
+     "platform_y_at_start_of_death_update": 531,
+     "player_y_in_death_pass": 517,
+     "first_fatal_platform_y_rule": "platform Y at the start of an update <= (bottom row of the overhead $0D cell) + 20 = 531",
+     "death_d3c0": 9,
+     "events_in_death_update": [
+      "player_update",
+      "x_integration",
+      "y_integration",
+      "terrain_pass",
+      "terrain_floor",
+      "terrain_sides",
+      "terrain_ceiling",
+      "ceiling_surface_0d",
+      "crush_death_4984"
+     ],
+     "rows_around_death": [
+      {
+       "u": 99,
+       "y": 521,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 535,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 522,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 100,
+       "y": 520,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 534,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 521,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 101,
+       "y": 519,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 533,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 520,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 102,
+       "y": 518,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 532,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 519,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 103,
+       "y": 517,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 531,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 518,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 104,
+       "y": 517,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 9,
+       "plat_y": 531,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "ceiling_surface_0d",
+        "crush_death_4984"
+       ],
+       "cap": {
+        "pass_y": 517,
+        "pass_vy": 832,
+        "ceil0d_y": 517,
+        "ceil0d_d3c0": 9,
+        "death_pass_y": 517,
+        "death_d3c0": 9
+       }
+      }
+     ],
+     "after_death_updates": [
+      {
+       "u": "+1",
+       "y": 517,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 0,
+       "plat_y": 530,
+       "ev": [
+        "object_move"
+       ]
+      },
+      {
+       "u": "+2",
+       "y": 517,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 0,
+       "plat_y": 530,
+       "ev": []
+      }
+     ],
+     "player_state_after": {
+      "cur": 1,
+      "req": 31,
+      "f3": 1,
+      "vy": -1280,
+      "rings": 5
+     },
+     "platform_frozen_after_death": true
+    }
+   },
+   "mghz2_13_ride_into_breakable_0d": {
+    "rings_0": {
+     "start": {
+      "x": 3024,
+      "y": 521,
+      "vy": 256,
+      "cur": 14,
+      "f3": 1,
+      "rings_bcd": 0,
+      "platform": [
+       3024,
+       560
+      ]
+     },
+     "support_claim_update": 11,
+     "death_update": 136,
+     "platform_y_at_start_of_death_update": 435,
+     "player_y_in_death_pass": 421,
+     "first_fatal_platform_y_rule": "platform Y at the start of an update <= (bottom row of the overhead $0D cell) + 20 = 435",
+     "death_d3c0": 10,
+     "events_in_death_update": [
+      "player_update",
+      "x_integration",
+      "y_integration",
+      "terrain_pass",
+      "terrain_floor",
+      "terrain_sides",
+      "terrain_ceiling",
+      "ceiling_surface_0d",
+      "crush_death_4984"
+     ],
+     "rows_around_death": [
+      {
+       "u": 131,
+       "y": 425,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 10,
+       "plat_y": 439,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 426,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 132,
+       "y": 424,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 10,
+       "plat_y": 438,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 425,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 133,
+       "y": 423,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 10,
+       "plat_y": 437,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 424,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 134,
+       "y": 422,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 10,
+       "plat_y": 436,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 423,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 135,
+       "y": 421,
+       "vy": 832,
+       "cur": 1,
+       "f3": 0,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 10,
+       "plat_y": 435,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "object_move",
+        "platform_support",
+        "overlap_6328",
+        "platform_carry"
+       ],
+       "cap": {
+        "pass_y": 422,
+        "pass_vy": 832
+       }
+      },
+      {
+       "u": 136,
+       "y": 421,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 10,
+       "plat_y": 435,
+       "ev": [
+        "player_update",
+        "x_integration",
+        "y_integration",
+        "terrain_pass",
+        "terrain_floor",
+        "terrain_sides",
+        "terrain_ceiling",
+        "ceiling_surface_0d",
+        "crush_death_4984"
+       ],
+       "cap": {
+        "pass_y": 421,
+        "pass_vy": 832,
+        "ceil0d_y": 421,
+        "ceil0d_d3c0": 10,
+        "death_pass_y": 421,
+        "death_d3c0": 10
+       }
+      }
+     ],
+     "after_death_updates": [
+      {
+       "u": "+1",
+       "y": 421,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 0,
+       "plat_y": 434,
+       "ev": [
+        "object_move"
+       ]
+      },
+      {
+       "u": "+2",
+       "y": 421,
+       "vy": -1280,
+       "cur": 1,
+       "f3": 1,
+       "f22": 0,
+       "f23": 2,
+       "d3c0": 0,
+       "plat_y": 434,
+       "ev": []
+      }
+     ],
+     "player_state_after": {
+      "cur": 1,
+      "req": 31,
+      "f3": 1,
+      "vy": -1280,
+      "rings": 0
+     },
+     "platform_frozen_after_death": true
+    }
+   },
+   "mghz2_12_jump_window": {
+    "start": {
+     "x": 2768,
+     "y": 585,
+     "platform": [
+      2768,
+      624
+     ]
+    },
+    "press": "B1 held for 3 updates starting at jump_update",
+    "outcome_runs": [
+     {
+      "outcome": "death",
+      "from": 20,
+      "to": 51
+     },
+     {
+      "outcome": "break",
+      "from": 52,
+      "to": 102
+     },
+     {
+      "outcome": "death",
+      "from": 103,
+      "to": 109
+     }
+    ],
+    "samples": [
+     {
+      "jump_update": 20,
+      "outcome": "death",
+      "update": 104,
+      "pass_y": 517,
+      "vy_after": -1280
+     },
+     {
+      "jump_update": 55,
+      "outcome": "break",
+      "update": 74,
+      "pass_y": 517,
+      "vy_after": -272
+     },
+     {
+      "jump_update": 56,
+      "outcome": "break",
+      "update": 74,
+      "pass_y": 517,
+      "vy_after": -320
+     },
+     {
+      "jump_update": 60,
+      "outcome": "break",
+      "update": 75,
+      "pass_y": 517,
+      "vy_after": -464
+     },
+     {
+      "jump_update": 80,
+      "outcome": "break",
+      "update": 87,
+      "pass_y": 517,
+      "vy_after": -848
+     },
+     {
+      "jump_update": 100,
+      "outcome": "break",
+      "update": 102,
+      "pass_y": 515,
+      "vy_after": -1040
+     },
+     {
+      "jump_update": 101,
+      "outcome": "break",
+      "update": 103,
+      "pass_y": 514,
+      "vy_after": -1040
+     },
+     {
+      "jump_update": 102,
+      "outcome": "break",
+      "update": 104,
+      "pass_y": 513,
+      "vy_after": -1040
+     },
+     {
+      "jump_update": 103,
+      "outcome": "death",
+      "update": 104,
+      "pass_y": 517,
+      "vy_after": -1280
+     },
+     {
+      "jump_update": 104,
+      "outcome": "death",
+      "update": 104,
+      "pass_y": 517,
+      "vy_after": -1280
+     }
+    ]
+   },
+   "mghz2_12_break_by_jump": {
+    "jump_update": 60,
+    "break_update": 75,
+    "player_y_in_break_pass": 517,
+    "vy_in_break_update": -464,
+    "d3c0_in_break_update": 0,
+    "events": [
+     "player_update",
+     "x_integration",
+     "y_integration",
+     "terrain_pass",
+     "terrain_floor",
+     "terrain_sides",
+     "terrain_ceiling",
+     "ceiling_surface_0d",
+     "break_7898",
+     "nametable_refresh_23f9",
+     "spawn_object_5e9c",
+     "object_move"
+    ],
+    "rows": [
+     {
+      "u": 72,
+      "y": 523,
+      "vy": -608,
+      "cur": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "d3c0": 0,
+      "plat_y": 562,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 523,
+       "pass_vy": -608
+      }
+     },
+     {
+      "u": 73,
+      "y": 521,
+      "vy": -560,
+      "cur": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "d3c0": 0,
+      "plat_y": 561,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 521,
+       "pass_vy": -560
+      }
+     },
+     {
+      "u": 74,
+      "y": 519,
+      "vy": -512,
+      "cur": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "d3c0": 0,
+      "plat_y": 560,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 519,
+       "pass_vy": -512
+      }
+     },
+     {
+      "u": 75,
+      "y": 517,
+      "vy": -464,
+      "cur": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "d3c0": 0,
+      "plat_y": 559,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "ceiling_surface_0d",
+       "break_7898",
+       "nametable_refresh_23f9",
+       "spawn_object_5e9c",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 517,
+       "pass_vy": -464,
+       "ceil0d_y": 517,
+       "ceil0d_d3c0": 0,
+       "break_pass_y": 517,
+       "break_cell_ptr": 51159
+      }
+     }
+    ],
+    "after": [
+     {
+      "u": "+1",
+      "y": 515,
+      "vy": -416,
+      "cur": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "d3c0": 0,
+      "plat_y": 558,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 515,
+       "pass_vy": -416
+      }
+     },
+     {
+      "u": "+2",
+      "y": 514,
+      "vy": -368,
+      "cur": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "d3c0": 0,
+      "plat_y": 557,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 514,
+       "pass_vy": -368
+      }
+     },
+     {
+      "u": "+3",
+      "y": 513,
+      "vy": -320,
+      "cur": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "d3c0": 0,
+      "plat_y": 556,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 513,
+       "pass_vy": -320
+      }
+     }
+    ]
+   },
+   "mghz1_10_one_way_snap_natural": {
+    "retained_vy": "natural",
+    "snapped": true,
+    "snap_update": 194,
+    "player_y_in_pass": 217,
+    "player_y_after": 206,
+    "platform_y_in_pass": 231,
+    "feet_depth_in_block": 11,
+    "pass_vy": 832,
+    "y_delta": -11,
+    "floor_flag_after": 2,
+    "support_after": 0,
+    "vy_after": 832,
+    "block_top_y": 224,
+    "standing_anchor": 206,
+    "rows": [
+     {
+      "u": 191,
+      "y": 219,
+      "vy": 832,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 233,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 220,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 192,
+      "y": 218,
+      "vy": 832,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 232,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 219,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 193,
+      "y": 217,
+      "vy": 832,
+      "cur": 2,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 231,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 218,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 194,
+      "y": 206,
+      "vy": 832,
+      "cur": 2,
+      "f3": 0,
+      "f22": 2,
+      "f23": 2,
+      "d3c0": 0,
+      "plat_y": 230,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 217,
+       "pass_vy": 832
+      }
+     }
+    ]
+   },
+   "mghz1_11_one_way_snap_natural": {
+    "retained_vy": "natural",
+    "snapped": true,
+    "snap_update": 450,
+    "player_y_in_pass": 377,
+    "player_y_after": 366,
+    "platform_y_in_pass": 391,
+    "feet_depth_in_block": 11,
+    "pass_vy": 832,
+    "y_delta": -11,
+    "floor_flag_after": 2,
+    "support_after": 0,
+    "vy_after": 832,
+    "block_top_y": 384,
+    "standing_anchor": 366,
+    "rows": [
+     {
+      "u": 447,
+      "y": 379,
+      "vy": 832,
+      "cur": 2,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 393,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 380,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 448,
+      "y": 378,
+      "vy": 832,
+      "cur": 2,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 392,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 379,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 449,
+      "y": 377,
+      "vy": 832,
+      "cur": 2,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 391,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 378,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 450,
+      "y": 366,
+      "vy": 832,
+      "cur": 2,
+      "f3": 0,
+      "f22": 2,
+      "f23": 2,
+      "d3c0": 0,
+      "plat_y": 390,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 377,
+       "pass_vy": 832
+      }
+     }
+    ]
+   },
+   "mghz1_10_one_way_depth_sweep": {
+    "model": "one-way capture depth = 8 + (retained Y speed >> 8) rows (docs/platform-spike-collision-audit.md 1.5); the carried rider passes through the 32-px-thick one-way block (feet deeper than the depth), then snaps to the block's upper surface in the first pass whose feet depth is within the band",
+    "rows": [
+     {
+      "retained_vy": 0,
+      "snap_update": 197,
+      "feet_depth_in_block": 8,
+      "model_depth": 8,
+      "player_y_in_pass": 214,
+      "player_y_after": 206
+     },
+     {
+      "retained_vy": 256,
+      "snap_update": 196,
+      "feet_depth_in_block": 9,
+      "model_depth": 9,
+      "player_y_in_pass": 215,
+      "player_y_after": 206
+     },
+     {
+      "retained_vy": 512,
+      "snap_update": 195,
+      "feet_depth_in_block": 10,
+      "model_depth": 10,
+      "player_y_in_pass": 216,
+      "player_y_after": 206
+     },
+     {
+      "retained_vy": 768,
+      "snap_update": 194,
+      "feet_depth_in_block": 11,
+      "model_depth": 11,
+      "player_y_in_pass": 217,
+      "player_y_after": 206
+     },
+     {
+      "retained_vy": 880,
+      "snap_update": 194,
+      "feet_depth_in_block": 11,
+      "model_depth": 11,
+      "player_y_in_pass": 217,
+      "player_y_after": 206
+     },
+     {
+      "retained_vy": 1024,
+      "snap_update": 193,
+      "feet_depth_in_block": 12,
+      "model_depth": 12,
+      "player_y_in_pass": 218,
+      "player_y_after": 206
+     },
+     {
+      "retained_vy": 1280,
+      "snap_update": 192,
+      "feet_depth_in_block": 13,
+      "model_depth": 13,
+      "player_y_in_pass": 219,
+      "player_y_after": 206
+     },
+     {
+      "retained_vy": 1792,
+      "snap_update": 190,
+      "feet_depth_in_block": 15,
+      "model_depth": 15,
+      "player_y_in_pass": 221,
+      "player_y_after": 206
+     }
+    ],
+    "matches_model": true
+   },
+   "synthetic_solid_control": {
+    "patched_cells": [
+     [
+      86,
+      13,
+      "0x01"
+     ],
+     [
+      86,
+      14,
+      "0x01"
+     ],
+     [
+      86,
+      15,
+      "0x01"
+     ]
+    ],
+    "ceiling_bounce_updates": [
+     104,
+     105,
+     106,
+     107,
+     108,
+     109
+    ],
+    "first_pop_update": 129,
+    "rows_around_first_contact": [
+     {
+      "u": 102,
+      "y": 518,
+      "vy": 832,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 532,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 519,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 103,
+      "y": 517,
+      "vy": 832,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 531,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 518,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 104,
+      "y": 516,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 530,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "bounce"
+      ],
+      "cap": {
+       "pass_y": 517,
+       "pass_vy": 832
+      }
+     },
+     {
+      "u": 105,
+      "y": 515,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 529,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "bounce"
+      ],
+      "cap": {
+       "pass_y": 516,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 106,
+      "y": 514,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 528,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "bounce"
+      ],
+      "cap": {
+       "pass_y": 515,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 107,
+      "y": 513,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 527,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "bounce"
+      ],
+      "cap": {
+       "pass_y": 514,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 108,
+      "y": 512,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 526,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "bounce"
+      ],
+      "cap": {
+       "pass_y": 513,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 109,
+      "y": 511,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 0,
+      "f23": 2,
+      "d3c0": 9,
+      "plat_y": 525,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry",
+       "bounce"
+      ],
+      "cap": {
+       "pass_y": 512,
+       "pass_vy": 256
+      }
+     }
+    ],
+    "rows_around_pop": [
+     {
+      "u": 126,
+      "y": 494,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 12,
+      "f23": 14,
+      "d3c0": 9,
+      "plat_y": 508,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 495,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 127,
+      "y": 493,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 12,
+      "f23": 14,
+      "d3c0": 9,
+      "plat_y": 507,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 494,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 128,
+      "y": 492,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 12,
+      "f23": 14,
+      "d3c0": 9,
+      "plat_y": 506,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328",
+       "platform_carry"
+      ],
+      "cap": {
+       "pass_y": 493,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 129,
+      "y": 430,
+      "vy": 256,
+      "cur": 1,
+      "f3": 0,
+      "f22": 14,
+      "f23": 14,
+      "d3c0": 0,
+      "plat_y": 505,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 492,
+       "pass_vy": 256
+      }
+     },
+     {
+      "u": 130,
+      "y": 398,
+      "vy": 1792,
+      "cur": 1,
+      "f3": 0,
+      "f22": 14,
+      "f23": 14,
+      "d3c0": 0,
+      "plat_y": 504,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 437,
+       "pass_vy": 1792
+      }
+     },
+     {
+      "u": 131,
+      "y": 366,
+      "vy": 1792,
+      "cur": 1,
+      "f3": 0,
+      "f22": 14,
+      "f23": 14,
+      "d3c0": 0,
+      "plat_y": 503,
+      "ev": [
+       "player_update",
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "object_move",
+       "platform_support",
+       "overlap_6328"
+      ],
+      "cap": {
+       "pass_y": 405,
+       "pass_vy": 1792
+      }
+     },
+     {
+      "u": 132,
+      "y": 366,
+      "vy": -1280,
+      "cur": 1,
+      "f3": 1,
+      "f22": 12,
+      "f23": 14,
+      "d3c0": 0,
+      "plat_y": 503,
+      "ev": [
+       "player_update",
+       "crush_death_4984"
+      ],
+      "cap": {
+       "death_pass_y": 366,
+       "death_d3c0": 0
+      }
+     },
+     {
+      "u": 133,
+      "y": 361,
+      "vy": -1232,
+      "cur": 1,
+      "f3": 1,
+      "f22": 12,
+      "f23": 12,
+      "d3c0": 0,
+      "plat_y": 502,
+      "ev": [
+       "x_integration",
+       "y_integration",
+       "terrain_pass",
+       "terrain_floor",
+       "terrain_sides",
+       "terrain_ceiling",
+       "ceiling_surface_0d",
+       "break_7898",
+       "nametable_refresh_23f9",
+       "spawn_object_5e9c",
+       "object_move"
+      ],
+      "cap": {
+       "pass_y": 361,
+       "pass_vy": -1232,
+       "ceil0d_y": 361,
+       "ceil0d_d3c0": 0,
+       "break_pass_y": 361,
+       "break_cell_ptr": 50647
+      }
+     }
+    ],
+    "reading": "ordinary solid ceiling with a supported rider: the ceiling pass pushes down / sets Y speed +1.0 but the platform carry (later in the same update) re-places the rider at platform Y - 14, so he stays inside the block; once his FEET sample is inside solid blocks the floor projection moves him up to the top of the solid column (one cell per update here). Not an MGHZ placement."
+   }
+  },
+  "verdict": {
+   "temporarily_embedded_or_jitter": "no for the two real solid cases: the rider is killed in the first pass whose head probe enters the $0D cell; no push-out, no jitter. For the one-way ledges he is carried THROUGH the 32-px block (feet inside it) for ~20 updates with a constant Y offset of -14 (no jitter), which is the canonical 'embedded' look",
+   "ever_snaps_to_upper_surface": "yes, only for one-way ledges (mghz1 #10/#11): the first pass whose feet depth is within 8 + (Y speed >> 8) rows captures him to the block's upper surface (Y delta up to 11 px in one update, support released, floor flag set). Never for $0D (death first)",
+   "classification": "canonical SMS behavior (not a quirk of this harness); a POC that neither kills a supported rider at a $0D ceiling nor reproduces the one-way capture is a POC divergence",
+   "death_update_example": 104,
+   "death_platform_y": 531
+  }
+ },
+ "part_b": {
+  "consumers": {
+   "tile_to_blocks_all_256_blocks": {
+    "0x1A8": {
+     "mghz1": [
+      "0xD2",
+      "0xD3"
+     ],
+     "mghz2": [
+      "0xD2",
+      "0xD3"
+     ],
+     "mghz3": [
+      "0xD2",
+      "0xD3"
+     ]
+    },
+    "0x1A9": {
+     "mghz1": [
+      "0xD2",
+      "0xD3"
+     ],
+     "mghz2": [
+      "0xD2",
+      "0xD3"
+     ],
+     "mghz3": [
+      "0xD2",
+      "0xD3"
+     ]
+    }
+   },
+   "layout_cells": {
+    "mghz1": {
+     "count": 37,
+     "block_$D2": 17,
+     "block_$D3": 20,
+     "cells": [
+      [
+       36,
+       3,
+       "0xD2"
+      ],
+      [
+       39,
+       3,
+       "0xD2"
+      ],
+      [
+       95,
+       4,
+       "0xD3"
+      ],
+      [
+       97,
+       4,
+       "0xD2"
+      ],
+      [
+       1,
+       6,
+       "0xD3"
+      ],
+      [
+       3,
+       6,
+       "0xD3"
+      ],
+      [
+       5,
+       6,
+       "0xD2"
+      ],
+      [
+       8,
+       6,
+       "0xD3"
+      ],
+      [
+       10,
+       6,
+       "0xD2"
+      ],
+      [
+       11,
+       6,
+       "0xD3"
+      ],
+      [
+       63,
+       6,
+       "0xD3"
+      ],
+      [
+       67,
+       6,
+       "0xD3"
+      ],
+      [
+       73,
+       6,
+       "0xD2"
+      ],
+      [
+       77,
+       6,
+       "0xD3"
+      ],
+      [
+       81,
+       6,
+       "0xD3"
+      ],
+      [
+       84,
+       6,
+       "0xD2"
+      ],
+      [
+       89,
+       6,
+       "0xD2"
+      ],
+      [
+       48,
+       7,
+       "0xD3"
+      ],
+      [
+       49,
+       7,
+       "0xD2"
+      ],
+      [
+       55,
+       7,
+       "0xD3"
+      ],
+      [
+       58,
+       7,
+       "0xD2"
+      ],
+      [
+       101,
+       10,
+       "0xD2"
+      ],
+      [
+       112,
+       10,
+       "0xD3"
+      ],
+      [
+       89,
+       11,
+       "0xD3"
+      ],
+      [
+       93,
+       11,
+       "0xD2"
+      ],
+      [
+       116,
+       11,
+       "0xD3"
+      ],
+      [
+       120,
+       11,
+       "0xD3"
+      ],
+      [
+       125,
+       11,
+       "0xD3"
+      ],
+      [
+       4,
+       21,
+       "0xD2"
+      ],
+      [
+       5,
+       21,
+       "0xD3"
+      ],
+      [
+       25,
+       22,
+       "0xD2"
+      ],
+      [
+       65,
+       22,
+       "0xD2"
+      ],
+      [
+       68,
+       22,
+       "0xD3"
+      ],
+      [
+       29,
+       23,
+       "0xD3"
+      ],
+      [
+       52,
+       23,
+       "0xD2"
+      ],
+      [
+       58,
+       23,
+       "0xD3"
+      ],
+      [
+       94,
+       25,
+       "0xD2"
+      ]
+     ],
+     "sha256_of_cells": "313ee6e45e5835eb7832a471194556894ce176fb1e40f30436d04fce998570a8",
+     "block_directly_below": {
+      "0x01": 35,
+      "0x9B": 1,
+      "0xF5": 1
+     },
+     "block_directly_above": {
+      "0x40": 3,
+      "0xDE": 1,
+      "0xE1": 1,
+      "0xFE": 32
+     },
+     "twist_cells_surface_17": 0,
+     "near_twist_within_10_cells": []
+    },
+    "mghz2": {
+     "count": 44,
+     "block_$D2": 20,
+     "block_$D3": 24,
+     "cells": [
+      [
+       21,
+       4,
+       "0xD2"
+      ],
+      [
+       28,
+       4,
+       "0xD2"
+      ],
+      [
+       30,
+       4,
+       "0xD3"
+      ],
+      [
+       34,
+       4,
+       "0xD2"
+      ],
+      [
+       37,
+       4,
+       "0xD3"
+      ],
+      [
+       40,
+       4,
+       "0xD3"
+      ],
+      [
+       42,
+       4,
+       "0xD3"
+      ],
+      [
+       80,
+       5,
+       "0xD2"
+      ],
+      [
+       81,
+       5,
+       "0xD3"
+      ],
+      [
+       85,
+       6,
+       "0xD2"
+      ],
+      [
+       88,
+       6,
+       "0xD3"
+      ],
+      [
+       89,
+       6,
+       "0xD2"
+      ],
+      [
+       93,
+       6,
+       "0xD3"
+      ],
+      [
+       95,
+       6,
+       "0xD3"
+      ],
+      [
+       97,
+       6,
+       "0xD3"
+      ],
+      [
+       69,
+       7,
+       "0xD3"
+      ],
+      [
+       114,
+       8,
+       "0xD2"
+      ],
+      [
+       118,
+       8,
+       "0xD2"
+      ],
+      [
+       125,
+       8,
+       "0xD3"
+      ],
+      [
+       127,
+       8,
+       "0xD3"
+      ],
+      [
+       0,
+       9,
+       "0xD2"
+      ],
+      [
+       1,
+       9,
+       "0xD3"
+      ],
+      [
+       4,
+       9,
+       "0xD2"
+      ],
+      [
+       7,
+       9,
+       "0xD3"
+      ],
+      [
+       16,
+       16,
+       "0xD2"
+      ],
+      [
+       17,
+       16,
+       "0xD3"
+      ],
+      [
+       20,
+       16,
+       "0xD2"
+      ],
+      [
+       101,
+       16,
+       "0xD3"
+      ],
+      [
+       105,
+       16,
+       "0xD3"
+      ],
+      [
+       107,
+       16,
+       "0xD2"
+      ],
+      [
+       109,
+       16,
+       "0xD3"
+      ],
+      [
+       110,
+       16,
+       "0xD2"
+      ],
+      [
+       6,
+       17,
+       "0xD2"
+      ],
+      [
+       8,
+       17,
+       "0xD3"
+      ],
+      [
+       11,
+       17,
+       "0xD2"
+      ],
+      [
+       59,
+       17,
+       "0xD2"
+      ],
+      [
+       60,
+       17,
+       "0xD3"
+      ],
+      [
+       63,
+       17,
+       "0xD3"
+      ],
+      [
+       64,
+       17,
+       "0xD3"
+      ],
+      [
+       65,
+       17,
+       "0xD2"
+      ],
+      [
+       50,
+       26,
+       "0xD3"
+      ],
+      [
+       21,
+       27,
+       "0xD3"
+      ],
+      [
+       53,
+       27,
+       "0xD2"
+      ],
+      [
+       57,
+       27,
+       "0xD2"
+      ]
+     ],
+     "sha256_of_cells": "69ff92326853f53d8798f5df3fc1727a71593c83b540a6705b642223398127b3",
+     "block_directly_below": {
+      "0x01": 41,
+      "0xF5": 3
+     },
+     "block_directly_above": {
+      "0x40": 9,
+      "0xCD": 1,
+      "0xD0": 1,
+      "0xDE": 2,
+      "0xE1": 2,
+      "0xE3": 1,
+      "0xFE": 28
+     },
+     "twist_cells_surface_17": 28,
+     "near_twist_within_10_cells": [
+      {
+       "cell": [
+        69,
+        7
+       ],
+       "block": "0xD3",
+       "nearest_twist_cell": [
+        73,
+        12
+       ],
+       "manhattan_cells": 9
+      },
+      {
+       "cell": [
+        63,
+        17
+       ],
+       "block": "0xD3",
+       "nearest_twist_cell": [
+        73,
+        17
+       ],
+       "manhattan_cells": 10
+      },
+      {
+       "cell": [
+        64,
+        17
+       ],
+       "block": "0xD3",
+       "nearest_twist_cell": [
+        73,
+        17
+       ],
+       "manhattan_cells": 9
+      },
+      {
+       "cell": [
+        65,
+        17
+       ],
+       "block": "0xD2",
+       "nearest_twist_cell": [
+        73,
+        17
+       ],
+       "manhattan_cells": 8
+      }
+     ]
+    },
+    "mghz3": {
+     "count": 22,
+     "block_$D2": 12,
+     "block_$D3": 10,
+     "cells": [
+      [
+       1,
+       5,
+       "0xD2"
+      ],
+      [
+       6,
+       5,
+       "0xD2"
+      ],
+      [
+       10,
+       5,
+       "0xD3"
+      ],
+      [
+       12,
+       5,
+       "0xD2"
+      ],
+      [
+       32,
+       5,
+       "0xD2"
+      ],
+      [
+       33,
+       5,
+       "0xD3"
+      ],
+      [
+       49,
+       11,
+       "0xD3"
+      ],
+      [
+       54,
+       11,
+       "0xD2"
+      ],
+      [
+       55,
+       11,
+       "0xD3"
+      ],
+      [
+       87,
+       11,
+       "0xD3"
+      ],
+      [
+       93,
+       11,
+       "0xD2"
+      ],
+      [
+       94,
+       11,
+       "0xD3"
+      ],
+      [
+       105,
+       11,
+       "0xD2"
+      ],
+      [
+       109,
+       11,
+       "0xD2"
+      ],
+      [
+       113,
+       11,
+       "0xD2"
+      ],
+      [
+       114,
+       11,
+       "0xD3"
+      ],
+      [
+       118,
+       11,
+       "0xD3"
+      ],
+      [
+       65,
+       19,
+       "0xD3"
+      ],
+      [
+       68,
+       19,
+       "0xD2"
+      ],
+      [
+       72,
+       19,
+       "0xD2"
+      ],
+      [
+       77,
+       19,
+       "0xD3"
+      ],
+      [
+       80,
+       19,
+       "0xD2"
+      ]
+     ],
+     "sha256_of_cells": "bfe2e69239efb1aa57bacf49c2bab42f28941502ad979e86f7c4de9ed7835689",
+     "block_directly_below": {
+      "0x01": 22
+     },
+     "block_directly_above": {
+      "0x40": 3,
+      "0xDE": 1,
+      "0xE3": 1,
+      "0xFE": 17
+     },
+     "twist_cells_surface_17": 0,
+     "near_twist_within_10_cells": []
+    },
+    "mghz3_boss_area": {
+     "boss_record": [
+      3269,
+      288
+     ],
+     "cells_with_x_ge_boss_x_minus_256": [
+      [
+       105,
+       11,
+       "0xD2"
+      ],
+      [
+       109,
+       11,
+       "0xD2"
+      ],
+      [
+       113,
+       11,
+       "0xD2"
+      ],
+      [
+       114,
+       11,
+       "0xD3"
+      ],
+      [
+       118,
+       11,
+       "0xD3"
+      ]
+     ]
+    }
+   },
+   "sprite_pattern_consumers": {
+    "sprite_pattern_bank": "VRAM tiles 0..255 (patterns index VRAM tile = pattern); tools/thz1_object_assets.tile_pixels masks tile & $FF",
+    "type_24_patterns": "$A0..$AB -> VRAM tiles $0A0..$0AB, not $1A8/$1A9",
+    "any_object_uses_vram_tile_1a8_1a9": false
+   },
+   "block_mapping": {
+    "0xD2": {
+     "attributes_4x4_row_major": [
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x01A8",
+      "0x03A8",
+      "0x01A9",
+      "0x03A9"
+     ],
+     "tile_ids": [
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      424,
+      424,
+      425,
+      425
+     ],
+     "h_flip": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      false,
+      true
+     ],
+     "rows_0_to_2": "tile $0C0 (all index 0) x12",
+     "row_3": [
+      "tile 0x1A8",
+      "tile 0x1A8 hflip",
+      "tile 0x1A9",
+      "tile 0x1A9 hflip"
+     ],
+     "surface": 0,
+     "header_flags": "0x00",
+     "priority_tiles": 0,
+     "palette1_tiles": 0
+    },
+    "0xD3": {
+     "attributes_4x4_row_major": [
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x00C0",
+      "0x01A9",
+      "0x03A9",
+      "0x01A8",
+      "0x03A8"
+     ],
+     "tile_ids": [
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      192,
+      425,
+      425,
+      424,
+      424
+     ],
+     "h_flip": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      false,
+      true
+     ],
+     "rows_0_to_2": "tile $0C0 (all index 0) x12",
+     "row_3": [
+      "tile 0x1A9",
+      "tile 0x1A9 hflip",
+      "tile 0x1A8",
+      "tile 0x1A8 hflip"
+     ],
+     "surface": 0,
+     "header_flags": "0x00",
+     "priority_tiles": 0,
+     "palette1_tiles": 0
+    }
+   },
+   "effect_14_only_writer": "level effect $0E (bank $1D $82F7): the only runtime writer of VRAM $3500; static level art loads the initial pair"
+  },
+  "tiles": {
+   "initial": {
+    "0x1A8": {
+     "rows_hex": [
+      "000000FE",
+      "00000FEC",
+      "00000FED",
+      "00000FED",
+      "000000FE",
+      "0000000A",
+      "00000098",
+      "00000009"
+     ],
+     "sha256": "f11f08085096be046de2a3b56c14691651bd4cd4aabef1d74efb997aac1cdae9"
+    },
+    "0x1A9": {
+     "rows_hex": [
+      "00EFF000",
+      "0ECEEF00",
+      "0EDEEFFF",
+      "0EDEEF0A",
+      "00EFF0A9",
+      "0000000A",
+      "00000098",
+      "00000009"
+     ],
+     "sha256": "08787721f9a94c1856cbfe227999d861d4ce3180f8a1108963661911292163fe"
+    }
+   },
+   "source_A_8E3D": {
+    "0x1A8": {
+     "rows_hex": [
+      "00EFF000",
+      "0ECEEF00",
+      "0EDEEFFF",
+      "0EDEEF0A",
+      "00EFF0A9",
+      "0000000A",
+      "00000098",
+      "00000009"
+     ],
+     "sha256": "08787721f9a94c1856cbfe227999d861d4ce3180f8a1108963661911292163fe"
+    },
+    "0x1A9": {
+     "rows_hex": [
+      "000000FE",
+      "00000FEC",
+      "00000FED",
+      "00000FED",
+      "000000FE",
+      "0000000A",
+      "00000098",
+      "00000009"
+     ],
+     "sha256": "f11f08085096be046de2a3b56c14691651bd4cd4aabef1d74efb997aac1cdae9"
+    }
+   },
+   "source_B_8E1D": {
+    "0x1A8": {
+     "rows_hex": [
+      "000000FE",
+      "00000FEC",
+      "00000FED",
+      "00000FED",
+      "000000FE",
+      "0000000A",
+      "00000098",
+      "00000009"
+     ],
+     "sha256": "f11f08085096be046de2a3b56c14691651bd4cd4aabef1d74efb997aac1cdae9"
+    },
+    "0x1A9": {
+     "rows_hex": [
+      "00EFF000",
+      "0ECEEF00",
+      "0EDEEFFF",
+      "0EDEEF0A",
+      "00EFF0A9",
+      "0000000A",
+      "00000098",
+      "00000009"
+     ],
+     "sha256": "08787721f9a94c1856cbfe227999d861d4ce3180f8a1108963661911292163fe"
+    }
+   }
+  },
+  "tile_c0_all_zero": true,
+  "effect_14": {
+   "vram_destination": "0x3500",
+   "bytes": 64,
+   "sources": {
+    "A": "0x8E3D",
+    "B": "0x8E1D"
+   },
+   "source_overlap": "A and B are one 3-tile sequence X0 X1 X2 at $8E1D/$8E3D/$8E5D; B = (X0,X1), A = (X1,X2); X0 == X2",
+   "initial_vram_equals_source": "B",
+   "schedule_updates_zero_based": [
+    [
+     3,
+     "0x8E3D"
+    ],
+    [
+     7,
+     "0x8E1D"
+    ],
+    [
+     11,
+     "0x8E3D"
+    ],
+    [
+     15,
+     "0x8E1D"
+    ],
+    [
+     19,
+     "0x8E3D"
+    ],
+    [
+     23,
+     "0x8E1D"
+    ],
+    [
+     27,
+     "0x8E3D"
+    ],
+    [
+     31,
+     "0x8E1D"
+    ]
+   ],
+   "period_updates": 4,
+   "first_upload_update": 3,
+   "paused_while_D44E_nonzero": true
+  },
+  "block_art_hashes": {
+   "initial": {
+    "0xD2": {
+     "bottom_8_rows_index_sha256": "9bbe7498d2d99c764c9b924e882d237bb9774272b28a94139d32a68830c8c35f",
+     "top_24_rows_all_zero": true,
+     "nonzero_pixels": 94,
+     "bottom_8_rows_distinct_colour_indices": [
+      0,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     "rows_with_any_nonzero": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ]
+    },
+    "0xD3": {
+     "bottom_8_rows_index_sha256": "ac836d3c3a40dbf09fa86fc00ee6e5e4ddda568fdb65a2d9144835b352983a52",
+     "top_24_rows_all_zero": true,
+     "nonzero_pixels": 94,
+     "bottom_8_rows_distinct_colour_indices": [
+      0,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     "rows_with_any_nonzero": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ]
+    }
+   },
+   "source_A_8E3D": {
+    "0xD2": {
+     "bottom_8_rows_index_sha256": "ac836d3c3a40dbf09fa86fc00ee6e5e4ddda568fdb65a2d9144835b352983a52",
+     "top_24_rows_all_zero": true,
+     "nonzero_pixels": 94,
+     "bottom_8_rows_distinct_colour_indices": [
+      0,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     "rows_with_any_nonzero": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ]
+    },
+    "0xD3": {
+     "bottom_8_rows_index_sha256": "9bbe7498d2d99c764c9b924e882d237bb9774272b28a94139d32a68830c8c35f",
+     "top_24_rows_all_zero": true,
+     "nonzero_pixels": 94,
+     "bottom_8_rows_distinct_colour_indices": [
+      0,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     "rows_with_any_nonzero": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ]
+    }
+   },
+   "source_B_8E1D": {
+    "0xD2": {
+     "bottom_8_rows_index_sha256": "9bbe7498d2d99c764c9b924e882d237bb9774272b28a94139d32a68830c8c35f",
+     "top_24_rows_all_zero": true,
+     "nonzero_pixels": 94,
+     "bottom_8_rows_distinct_colour_indices": [
+      0,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     "rows_with_any_nonzero": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ]
+    },
+    "0xD3": {
+     "bottom_8_rows_index_sha256": "ac836d3c3a40dbf09fa86fc00ee6e5e4ddda568fdb65a2d9144835b352983a52",
+     "top_24_rows_all_zero": true,
+     "nonzero_pixels": 94,
+     "bottom_8_rows_distinct_colour_indices": [
+      0,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15
+     ],
+     "rows_with_any_nonzero": [
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ]
+    }
+   }
+  },
+  "thin_line_audit": {
+   "initial": {
+    "0xD2": {
+     "widest_row_nonzero_run": 14,
+     "rows_fully_nonzero": [],
+     "horizontal_line_rows": []
+    },
+    "0xD3": {
+     "widest_row_nonzero_run": 14,
+     "rows_fully_nonzero": [],
+     "horizontal_line_rows": []
+    }
+   },
+   "source_A_8E3D": {
+    "0xD2": {
+     "widest_row_nonzero_run": 14,
+     "rows_fully_nonzero": [],
+     "horizontal_line_rows": []
+    },
+    "0xD3": {
+     "widest_row_nonzero_run": 14,
+     "rows_fully_nonzero": [],
+     "horizontal_line_rows": []
+    }
+   },
+   "source_B_8E1D": {
+    "0xD2": {
+     "widest_row_nonzero_run": 14,
+     "rows_fully_nonzero": [],
+     "horizontal_line_rows": []
+    },
+    "0xD3": {
+     "widest_row_nonzero_run": 14,
+     "rows_fully_nonzero": [],
+     "horizontal_line_rows": []
+    }
+   }
+  },
+  "scenery": {
+   "identification": "small animated ground flowers/buds (pairs of mirrored yellow bulbs on a short stem) in the 8-pixel bottom row of the cell directly above the grass-top surface; rows 0..23 of the cell are empty background (tile $0C0)",
+   "evidence": "DECODED DATA + EMULATED ORIGINAL FRAME (nametable scan in the booted game) + review renders",
+   "text_status": "visual identification; pending James' PNG review"
+  },
+  "emulated_nametable": {
+   "evidence": "EMULATED ORIGINAL FRAME (MGHZ1, settled at cell (49,7))",
+   "sprite_pattern_register_r6_bit2": false,
+   "name_table_entries_with_1a8_1a9": 13,
+   "all_in_bottom_row_of_a_4_row_group": true,
+   "tile_above_each_is_c0": true,
+   "hflip_pairs_follow_pattern": true
+  }
+ },
+ "part_c": {
+  "blocks": {
+   "0x9B": {
+    "mghz1": {
+     "cells": 14,
+     "surface": 13,
+     "header_flags": "0x8D",
+     "tile_ids": [
+      "0x0C1",
+      "0x0C2",
+      "0x0C3",
+      "0x0C4",
+      "0x0C5",
+      "0x0C6",
+      "0x0C7",
+      "0x0C8",
+      "0x0C9",
+      "0x0CA"
+     ],
+     "priority_tiles": 16,
+     "uses_animated_tile": [],
+     "background_palette_indices_used": [
+      1,
+      2,
+      8,
+      9,
+      12,
+      15
+     ],
+     "uses_cycled_palette_entry_4_or_11": [],
+     "block_index_sha256": "4fb2f843e6dc62439c5f4baffeed8cbc7a3f0b395a0b916169ecdad184aa73a0"
+    },
+    "mghz2": {
+     "cells": 8,
+     "surface": 13,
+     "header_flags": "0x8D",
+     "tile_ids": [
+      "0x0C1",
+      "0x0C2",
+      "0x0C3",
+      "0x0C4",
+      "0x0C5",
+      "0x0C6",
+      "0x0C7",
+      "0x0C8",
+      "0x0C9",
+      "0x0CA"
+     ],
+     "priority_tiles": 16,
+     "uses_animated_tile": [],
+     "background_palette_indices_used": [
+      1,
+      2,
+      8,
+      9,
+      12,
+      15
+     ],
+     "uses_cycled_palette_entry_4_or_11": [],
+     "block_index_sha256": "4fb2f843e6dc62439c5f4baffeed8cbc7a3f0b395a0b916169ecdad184aa73a0"
+    }
+   },
+   "0x9C": {
+    "mghz1": {
+     "cells": 41,
+     "surface": 13,
+     "header_flags": "0x8D",
+     "tile_ids": [
+      "0x0C2",
+      "0x0C3",
+      "0x0C4",
+      "0x0C5",
+      "0x0C6",
+      "0x0C7",
+      "0x0C8",
+      "0x0C9",
+      "0x0CA"
+     ],
+     "priority_tiles": 16,
+     "uses_animated_tile": [],
+     "background_palette_indices_used": [
+      8,
+      9,
+      12
+     ],
+     "uses_cycled_palette_entry_4_or_11": [],
+     "block_index_sha256": "87479718dce2f0606d631ed2f6fe79a246a7db1834fe2667e93af5f990c12cf2"
+    },
+    "mghz2": {
+     "cells": 44,
+     "surface": 13,
+     "header_flags": "0x8D",
+     "tile_ids": [
+      "0x0C2",
+      "0x0C3",
+      "0x0C4",
+      "0x0C5",
+      "0x0C6",
+      "0x0C7",
+      "0x0C8",
+      "0x0C9",
+      "0x0CA"
+     ],
+     "priority_tiles": 16,
+     "uses_animated_tile": [],
+     "background_palette_indices_used": [
+      8,
+      9,
+      12
+     ],
+     "uses_cycled_palette_entry_4_or_11": [],
+     "block_index_sha256": "87479718dce2f0606d631ed2f6fe79a246a7db1834fe2667e93af5f990c12cf2"
+    }
+   },
+   "0x9D": {
+    "mghz1": {
+     "cells": 0,
+     "surface": 0,
+     "header_flags": "0x00",
+     "tile_ids": [
+      "0x0E3"
+     ],
+     "priority_tiles": 0,
+     "uses_animated_tile": [],
+     "background_palette_indices_used": [
+      4,
+      8,
+      9,
+      10,
+      11,
+      15
+     ],
+     "uses_cycled_palette_entry_4_or_11": [
+      4,
+      11
+     ],
+     "block_index_sha256": "c29a1ce58a85b27358efc3fabd6a8cbcee5d70d9cf4f20bec4af1e39b948a9cf"
+    },
+    "mghz2": {
+     "cells": 0,
+     "surface": 0,
+     "header_flags": "0x00",
+     "tile_ids": [
+      "0x0E3"
+     ],
+     "priority_tiles": 0,
+     "uses_animated_tile": [],
+     "background_palette_indices_used": [
+      4,
+      8,
+      9,
+      10,
+      11,
+      15
+     ],
+     "uses_cycled_palette_entry_4_or_11": [
+      4,
+      11
+     ],
+     "block_index_sha256": "c29a1ce58a85b27358efc3fabd6a8cbcee5d70d9cf4f20bec4af1e39b948a9cf"
+    }
+   }
+  },
+  "triggers": {
+   "floor_6b2c": "surface $0D under the foot probe: current state not in {$0F,$10,$15,$1A} AND attack posture (+$03 bit 1): $D3B2 := $10, Y speed := $FBC0 (-4.25), floor flag cleared, airborne, -> $7898",
+   "sides_72b6_72dd": "attack posture AND |X speed high byte| >= 3: X speed nudged by +/-$40 when its high byte < 7, -> $7898 (otherwise ordinary wall projection)",
+   "ceiling_7464": "support owner $D3C0 == 0 -> $7898; support owner != 0 (platform rider) -> $4984 crush death (see part A)"
+  },
+  "break_routine_7898": {
+   "assembly": [
+    "7898 3a 62 d1 | LD A,(0xd162)",
+    "789B cd 6f 1c | CALL 0x1c6f",
+    "789E 3e 9d | LD A,0x9d",
+    "78A0 2a 54 d3 | LD HL,(0xd354)",
+    "78A3 77 | LD (HL),A",
+    "78A4 6f | LD L,A",
+    "78A5 26 00 | LD H,0",
+    "78A7 29 | ADD HL,HL",
+    "78A8 3a 64 d1 | LD A,(0xd164)",
+    "78AB 4f | LD C,A",
+    "78AC 3a 65 d1 | LD A,(0xd165)",
+    "78AF 47 | LD B,A",
+    "78B0 09 | ADD HL,BC",
+    "78B1 5e | LD E,(HL)",
+    "78B2 23 | INC HL",
+    "78B3 56 | LD D,(HL)",
+    "78B4 cd f9 23 | CALL 0x23f9",
+    "78B7 2a 58 d3 | LD HL,(0xd358)",
+    "78BA 7d | LD A,L",
+    "78BB e6 e0 | AND 0xe0",
+    "78BD 6f | LD L,A",
+    "78BE 22 5c d3 | LD (0xd35c),HL",
+    "78C1 2a 5a d3 | LD HL,(0xd35a)",
+    "78C4 7d | LD A,L",
+    "78C5 e6 e0 | AND 0xe0",
+    "78C7 6f | LD L,A",
+    "78C8 22 5e d3 | LD (0xd35e),HL",
+    "78CB 0e 07 | LD C,7",
+    "78CD 26 00 | LD H,0",
+    "78CF cd 9c 5e | CALL 0x5e9c",
+    "78D2 26 01 | LD H,1",
+    "78D4 cd 9c 5e | CALL 0x5e9c",
+    "78D7 26 02 | LD H,2",
+    "78D9 cd 9c 5e | CALL 0x5e9c",
+    "78DC 26 03 | LD H,3",
+    "78DE c3 9c 5e | JP 0x5e9c"
+   ],
+   "steps": [
+    "bank select from $D162 (level art bank) via $1C6F",
+    "layout cell := $9D",
+    "block mapping of $9D written to the name table via $23F9 (4x4 tiles, same update)",
+    "fragment anchor := cell top-left ($D358/$D35A & $E0) -> $D35C/$D35E",
+    "spawn type $07 four times with H = 0..3 via $5E9C"
+   ],
+   "no_intermediate_frame": true
+  },
+  "replacement_block": {
+   "id": "0x9D",
+   "evidence": "block_facts"
+  },
+  "fragment_object_07": {
+   "state_scripts": [
+    {
+     "state": 0,
+     "script_cpu": 39682,
+     "cleanly_terminated": true,
+     "bounded_by_cpu": 39691,
+     "ops": [
+      {
+       "cpu": 39682,
+       "command": 6,
+       "op": "sound",
+       "sound": 163
+      },
+      {
+       "cpu": 39685,
+       "op": "record",
+       "duration": 1,
+       "frame": 0,
+       "callback": 39697
+      },
+      {
+       "cpu": 39689,
+       "command": 0,
+       "op": "restart_state"
+      }
+     ]
+    },
+    {
+     "state": 1,
+     "script_cpu": 39691,
+     "cleanly_terminated": true,
+     "bounded_by_cpu": 39697,
+     "ops": [
+      {
+       "cpu": 39691,
+       "op": "record",
+       "duration": 128,
+       "frame": 15,
+       "callback": 39861
+      },
+      {
+       "cpu": 39695,
+       "command": 0,
+       "op": "restart_state"
+      }
+     ]
+    }
+   ],
+   "state_0": "sound $A3 requested, record frame 0 for 1 update, restart into state set by the init callback ($9B11 sets +$02 := 1)",
+   "state_1": "frame 15 (duration 128, looped), callback $9BB5: if +$04 bit 6 (off-screen) -> delete ($0344); else $0350 with BC=$1000, DE=$00C0 then move $0338; measured +192 (0.75 px) Y speed per update in the emulated run",
+   "frames": {
+    "0": {
+     "piece_count": 0,
+     "extent_word": "0x0000",
+     "frame_rom": "0x3E0E4"
+    },
+    "15": {
+     "piece_count": 1,
+     "extent_word": "0x1004",
+     "frame_rom": "0x3CD3B"
+    }
+   },
+   "quadrant_in": "+$3F",
+   "init_callback": "0x9B11",
+   "offset_tables": {
+    "player_x_speed_ge_0_table_9b75": [
+     {
+      "quadrant": 0,
+      "x_offset": 4,
+      "y_offset": 0,
+      "x_speed": -512,
+      "y_speed": -1024
+     },
+     {
+      "quadrant": 1,
+      "x_offset": 20,
+      "y_offset": 0,
+      "x_speed": 128,
+      "y_speed": -768
+     },
+     {
+      "quadrant": 2,
+      "x_offset": 4,
+      "y_offset": 20,
+      "x_speed": -512,
+      "y_speed": -256
+     },
+     {
+      "quadrant": 3,
+      "x_offset": 20,
+      "y_offset": 20,
+      "x_speed": 128,
+      "y_speed": -512
+     }
+    ],
+    "player_x_speed_lt_0_table_9b95": [
+     {
+      "quadrant": 0,
+      "x_offset": 4,
+      "y_offset": 0,
+      "x_speed": -128,
+      "y_speed": -768
+     },
+     {
+      "quadrant": 1,
+      "x_offset": 20,
+      "y_offset": 0,
+      "x_speed": 512,
+      "y_speed": -1024
+     },
+     {
+      "quadrant": 2,
+      "x_offset": 4,
+      "y_offset": 20,
+      "x_speed": -128,
+      "y_speed": -512
+     },
+     {
+      "quadrant": 3,
+      "x_offset": 20,
+      "y_offset": 20,
+      "x_speed": 512,
+      "y_speed": -256
+     }
+    ]
+   },
+   "act_special_case": "zone 6 / act 2 sets +$08 := $9C (not MGHZ)"
+  },
+  "answer": {
+   "animation_before_destruction": false,
+   "frame_change_during_destruction": false,
+   "expected_presentation": "instant replacement of the 32x32 cell by $9D (no intermediate block art) plus four shared type-$07 fragment objects (frame 0 for one update, then frame 15) and sound $A3; the only block-side effect is the layout write",
+   "block_art_uses_no_animated_tile": true,
+   "block_art_uses_cycled_palette_entry": "see blocks.*.uses_cycled_palette_entry_4_or_11",
+   "open": [
+    "type-$07 fragment art (pieces of frames 0/15 and which VRAM pattern base the MGHZ stream uses) is not audited here (art task)"
+   ]
+  },
+  "d3b2_note": "$D3B2 is only ever written (jump setter $4601 = $20, break $6B42 = $10); no reader by absolute address; treated as a jump-hold counter, unresolved but irrelevant to presentation",
+  "emulated_floor_break": {
+   "start": {
+    "cell": [
+     76,
+     23
+    ],
+    "player_x": 2448,
+    "player_y": 666,
+    "vy": 768,
+    "cur": 10,
+    "f3": 3,
+    "cell_before": "0x9B"
+   },
+   "break_update": 12,
+   "break_row": {
+    "u": 12,
+    "ev": [
+     "player_update",
+     "x_integration",
+     "y_integration",
+     "terrain_pass",
+     "terrain_floor",
+     "break_7898",
+     "nametable_refresh_23f9",
+     "spawn_object_5e9c",
+     "terrain_sides",
+     "terrain_ceiling",
+     "overlap_6328"
+    ],
+    "broken_cell": [
+     76,
+     23
+    ],
+    "broken_cell_after": "0x9D",
+    "player": [
+     2448,
+     722
+    ],
+    "vy": -1088,
+    "d3b2": 16,
+    "fragments": [
+     {
+      "slot": 0,
+      "x": 2436,
+      "y": 736,
+      "vx": -512,
+      "vy": -1024,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 0
+     },
+     {
+      "slot": 1,
+      "x": 2452,
+      "y": 736,
+      "vx": 128,
+      "vy": -768,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 1
+     },
+     {
+      "slot": 2,
+      "x": 2436,
+      "y": 756,
+      "vx": -512,
+      "vy": -256,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 2
+     },
+     {
+      "slot": 3,
+      "x": 2452,
+      "y": 756,
+      "vx": 128,
+      "vy": -512,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 3
+     }
+    ]
+   },
+   "fragment_first_state_rows": [
+    [
+     {
+      "slot": 0,
+      "x": 2436,
+      "y": 736,
+      "vx": -512,
+      "vy": -1024,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 0
+     },
+     {
+      "slot": 1,
+      "x": 2452,
+      "y": 736,
+      "vx": 128,
+      "vy": -768,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 1
+     },
+     {
+      "slot": 2,
+      "x": 2436,
+      "y": 756,
+      "vx": -512,
+      "vy": -256,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 2
+     },
+     {
+      "slot": 3,
+      "x": 2452,
+      "y": 756,
+      "vx": 128,
+      "vy": -512,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 3
+     }
+    ]
+   ],
+   "fragment_life_updates_by_quadrant": {
+    "0": [
+     0,
+     26,
+     27
+    ],
+    "1": [
+     0,
+     24,
+     25
+    ],
+    "2": [
+     0,
+     20,
+     21
+    ],
+    "3": [
+     0,
+     21,
+     22
+    ]
+   },
+   "fragment_x_track_q0": [
+    2436,
+    2434,
+    2432,
+    2430,
+    2428,
+    2426,
+    2424,
+    2422,
+    2420,
+    2418
+   ],
+   "fragment_vy_track_q0": [
+    -1024,
+    -832,
+    -640,
+    -448,
+    -256,
+    -64,
+    128,
+    320,
+    512,
+    704
+   ]
+  },
+  "emulated_floor_break_moving_left": {
+   "start": {
+    "cell": [
+     76,
+     23
+    ],
+    "player_x": 2448,
+    "player_y": 666,
+    "vy": 768,
+    "cur": 10,
+    "f3": 3,
+    "cell_before": "0x9B"
+   },
+   "break_update": 12,
+   "break_row": {
+    "u": 12,
+    "ev": [
+     "player_update",
+     "x_integration",
+     "y_integration",
+     "terrain_pass",
+     "terrain_floor",
+     "break_7898",
+     "nametable_refresh_23f9",
+     "spawn_object_5e9c",
+     "terrain_sides",
+     "terrain_ceiling",
+     "overlap_6328"
+    ],
+    "broken_cell": [
+     75,
+     23
+    ],
+    "broken_cell_after": "0x9D",
+    "player": [
+     2427,
+     722
+    ],
+    "vy": -1088,
+    "d3b2": 16,
+    "fragments": [
+     {
+      "slot": 0,
+      "x": 2404,
+      "y": 736,
+      "vx": -128,
+      "vy": -768,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 0
+     },
+     {
+      "slot": 1,
+      "x": 2420,
+      "y": 736,
+      "vx": 512,
+      "vy": -1024,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 1
+     },
+     {
+      "slot": 2,
+      "x": 2404,
+      "y": 756,
+      "vx": -128,
+      "vy": -512,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 2
+     },
+     {
+      "slot": 3,
+      "x": 2420,
+      "y": 756,
+      "vx": 512,
+      "vy": -256,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 3
+     }
+    ]
+   },
+   "fragment_first_state_rows": [
+    [
+     {
+      "slot": 0,
+      "x": 2404,
+      "y": 736,
+      "vx": -128,
+      "vy": -768,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 0
+     },
+     {
+      "slot": 1,
+      "x": 2420,
+      "y": 736,
+      "vx": 512,
+      "vy": -1024,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 1
+     },
+     {
+      "slot": 2,
+      "x": 2404,
+      "y": 756,
+      "vx": -128,
+      "vy": -512,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 2
+     },
+     {
+      "slot": 3,
+      "x": 2420,
+      "y": 756,
+      "vx": 512,
+      "vy": -256,
+      "state": 0,
+      "flags4": 1,
+      "quadrant": 3
+     }
+    ]
+   ],
+   "fragment_life_updates_by_quadrant": {
+    "0": [
+     0,
+     27,
+     28
+    ],
+    "1": [
+     0,
+     29,
+     30
+    ],
+    "2": [
+     0,
+     24,
+     25
+    ],
+    "3": [
+     0,
+     23,
+     24
+    ]
+   },
+   "fragment_x_track_q0": [
+    2404,
+    2403,
+    2403,
+    2403,
+    2402,
+    2402,
+    2401,
+    2401,
+    2401,
+    2400
+   ],
+   "fragment_vy_track_q0": [
+    -768,
+    -576,
+    -384,
+    -384,
+    -192,
+    0,
+    192,
+    192,
+    384,
+    576
+   ]
+  }
+ }
+}
