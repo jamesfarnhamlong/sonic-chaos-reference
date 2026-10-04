@@ -111,3 +111,10 @@ boss support chain (`$12`, `$34`, `$0A`, `$0F`), arena/camera constants, a 61,47
 (velocity tables, gravity, block-flag floor/ceiling probes, bounce decay, 16-update pickup lockout and pickup box, sparkle, lifetime window), allocator limits,
 water independence, the second-hurt interaction and an update-aligned GPZ3 boss example. A pure-Python model is checked against the original routines
 (84k ring-updates). It contains no ROM bytes beyond 16-byte prefixes and hashes.
+
+`mghz/implementation-manifest.json` (`tools/mghz_foundation.py`) is the Mecha Green Hill (ROM zone 3) three-act foundation: dimensions, starts, camera bounds, layouts,
+all 116 used/replacement blocks with bank-correct mappings (table `$14:$8000`, verified against the original consumers), surface census with floor/side/ceiling
+consumers, terrain rings, the ring-art descriptor and the three level-effect routines (2, 3, 14) executed from the original ROM. `mghz/object-census.json`
+(`tools/mghz_object_census.py`) holds all 90 mapped records, the six-zone reuse census, footwear placements, enemy (`$21/$24/$2E`) and boss (`$56`) reconnaissance.
+`mghz/art-approval.json` lists the PNG review subjects (approved by the user 2026-10-04; pixels live only in the git-ignored `build/mghz-approval/`). Docs: `docs/mghz-foundation-audit.md`,
+`docs/mghz-object-census.md`. No ROM bytes or pixels are stored.

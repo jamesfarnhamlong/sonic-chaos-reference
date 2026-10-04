@@ -27,6 +27,8 @@ import player_attack_badnik
 import thz3_boss_support
 import powerup_shoes
 import player_hurt_ring_scatter
+import mghz_foundation
+import mghz_object_census
 
 
 def main(rom_path):
@@ -144,6 +146,9 @@ def main(rom_path):
         (ROOT / "data/rom-cache/player-hurt-ring-scatter.json").read_text(encoding="utf-8")
     )
     assert stored_scatter == json.loads(json.dumps(player_hurt_ring_scatter.build(rom)))
+    # MGHZ foundation and object census: regenerated from the ROM.
+    assert (ROOT / "data/rom-cache/mghz/implementation-manifest.json").read_text(encoding="utf-8") == mghz_foundation.dumps(mghz_foundation.build(rom))
+    assert (ROOT / "data/rom-cache/mghz/object-census.json").read_text(encoding="utf-8") == mghz_object_census.dumps(mghz_object_census.build(rom))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

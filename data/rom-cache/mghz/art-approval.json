@@ -1,0 +1,263 @@
+{
+  "format": 1,
+  "approval": "APPROVED BY USER 2026-10-04 (foundation checkpoint, all boards)",
+  "generator": "tools/mghz_art_approval.py + tools/mghz_art_previews.py",
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "png_folder": "build/mghz-approval (git-ignored)",
+  "boards": [
+    "terrain-tiles.png",
+    "terrain-blocks.png",
+    "terrain-special-surfaces.png",
+    "terrain-context-mghz1.png",
+    "terrain-context-mghz2.png",
+    "terrain-context-mghz3.png",
+    "map-mghz1.png",
+    "map-mghz2.png",
+    "map-mghz3.png",
+    "animated-terrain.png",
+    "type-21-approval.png",
+    "type-24-approval.png",
+    "type-2e-approval.png",
+    "type-2f-approval.png",
+    "type-28-approval.png",
+    "type-56-approval.png"
+  ],
+  "subjects": {
+    "0x21": {
+      "label": "ordinary enemy (flags $10 variant)",
+      "act": "mghz1",
+      "palette_index": 9,
+      "bases": [
+        "0x7C",
+        "0x8E"
+      ],
+      "frames": [
+        0,
+        1,
+        2
+      ],
+      "raw_tile_count": 36,
+      "mirror_rule": "runtime uses bit4 (states 3/6 vs 4/5): both orientations are canonical",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "57d454090ab4b9dd474b69cca64038e3d4d6db9c4b4c9585b20fcbde0742ef4a",
+          "89f75d99268721bf6a04981e1551593fcd0fe3056fa762aed547caa0583fd44a"
+        ],
+        "2": [
+          "91ae7999e1a91f26f34914dd34dd2856c2076d9b907ba20079756819a43e58ab",
+          "1f8dd18dc83f6815a8caee3fc495f0b7271225dc55aa75ccf4949a5e56817989"
+        ]
+      }
+    },
+    "0x24": {
+      "label": "ordinary enemy candidate",
+      "act": "mghz1",
+      "palette_index": 9,
+      "bases": [
+        "0xA0",
+        "0xA0"
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "raw_tile_count": 12,
+      "mirror_rule": "unmirrored runtime art only; bit4=1 images are forced diagnostics and NOT approved",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "14747ff909265f3477bdfc69db01eae8cf9ebcdc487ac41cdfdc3f53754b46fa",
+          "caf2d2c36f8ab576ec1d22e444a933cb45deb446f1acaabb094af0f1b92a69c3"
+        ],
+        "2": [
+          "828c35e9a3f1c9f2f308fb271972bf2b4f1fc6412839bbfd3b74131c8de55c9f",
+          "a1a5401ac33f05864add3164ab6eaf912d14b7df810b17246c0d0a8b1b4ff6d2"
+        ],
+        "3": [
+          "345854d5c172ef2fdd002e186adf70c7a13abc365492f8e88ccb132e47f6f188",
+          "d3460197bfed4eddea2e01732319c6d7de3dc00acca454e4d91ad97861b94a3d"
+        ]
+      }
+    },
+    "0x2E": {
+      "label": "splash/effect object",
+      "act": "mghz1",
+      "palette_index": 9,
+      "bases": [
+        "0x72",
+        "0x13"
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "raw_tile_count": 20,
+      "mirror_rule": "unmirrored runtime art only; bit4=1 images are forced diagnostics and NOT approved",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "94271ec96bb1a547b3bb73cd633b3b62bed08a57186281ad6d63f3e06b830317",
+          "4fd1520aab33de1bd04c0c89dba0684d6127aa2fdbb480ac8a9b4ea49019537f"
+        ],
+        "2": [
+          "551effc410dc16ae7e89af2f4f8a303ebcd79a27c752bdec7a8fb2e4ea1b365e",
+          "56b10e4310da4cbdefcbda8fd129b5323142220952b1c2f537e233dc61bd8f3e"
+        ],
+        "3": [
+          "8c5183bbbea04cf52e7af40e7cf66b5a352d636f549fda8960fdb90076bb4e92",
+          "65d5e21bbad2ecf8036c025375ce4535f500bf498e7e1ac040ebdfb6665d6d37"
+        ],
+        "4": [
+          "7d0c70f558883be42aacf085cf1d9d362c698a774f28b37b9f44f622020a7024",
+          "8f1829072ee24d70abfe3be181ac42829a984fe8dd34abf2693cc54e239050a7"
+        ]
+      }
+    },
+    "0x2F": {
+      "label": "Spring Shoes pickup",
+      "act": "mghz1",
+      "palette_index": 9,
+      "bases": [
+        "0xAC",
+        "0xAC"
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "raw_tile_count": 16,
+      "mirror_rule": "unmirrored runtime art only; bit4=1 images are forced diagnostics and NOT approved",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "476dded85ac239188c9a78b973f34b63d1d8774e41576e963882871400e36d32"
+        ],
+        "2": [
+          "46417f8f6926434e1091772c3749e5fc04ad9db6b0f451227332f5477c004d0b"
+        ],
+        "3": [
+          "28507180c0a0474240ea6d9f31ac705aa418855742857d942ec34417c86d82b9"
+        ],
+        "4": [
+          "077c1dda8d179f5d2b0f7c7328ef4f4fac9e9841a775eed1b3e8b3fbfaef211e"
+        ]
+      }
+    },
+    "0x28": {
+      "label": "platform, MGHZ art",
+      "act": "mghz1",
+      "palette_index": 9,
+      "bases": [
+        "0x6A",
+        "0x6A"
+      ],
+      "frames": [
+        1
+      ],
+      "raw_tile_count": 8,
+      "mirror_rule": "unmirrored runtime art only; bit4=1 images are forced diagnostics and NOT approved",
+      "frame_hashes": {
+        "1": [
+          "06a33e7e631899bae06b1f750157fdedd42302c63e5db191836f4a4200fb5bf6"
+        ]
+      }
+    },
+    "0x56": {
+      "label": "MGHZ3 boss and $57/$58 children",
+      "act": "mghz3",
+      "palette_index": 15,
+      "bases": [
+        "0x00",
+        "0x00"
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "raw_tile_count": 52,
+      "mirror_rule": "bank $1E never sets bit4 and the record flags are 0: unmirrored only; bit4=1 images are forced diagnostics, NOT approved",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "54ffdec5d8529dff769968ddde23f31d9da6b2e494fb50e5faadd63352c2c99b",
+          "7a291e26bf4f0b601eaa70bdbef80314037f5ff7889d9e9531a7405ddfaa5307"
+        ],
+        "2": [
+          "654d81e8bb96e087a27c9e02b57df0bfbfb972d33de8a1b8e29eb6de7f7d58c6",
+          "83a1b022a20fa0f9ed7e786ce9984e537ac8ca9c2ed7c3d6fb0b92c802eafecf"
+        ],
+        "3": [
+          "a67b8d7ff50311dd24d4b156c11b287c480c30dbb87f808931da072e3adc02be",
+          "2eb7fe3e1a31e1e959a666c8c534d377165237636e2083e31d56ab1a1e5b2d28"
+        ],
+        "4": [
+          "8f755a3de127b45f73c35632f8a2709a98c354e84b81795e5710688ecf38d22b",
+          "0ee8b71eb122e0ecd6bcd38ba64dc5e6a7daf7e5a594a4c71ad58afe038deb1e"
+        ],
+        "5": [
+          "1f622f3dd08ddfbc719ce16c1a1e13c09e5c230aa84532cef7908a63e8efc295",
+          "8dc7f0002a7bd0ac3ab1e90ad5927b89c14b9b0f35e4ead5ba49969f21649798"
+        ],
+        "6": [
+          "bdab7db58acaf6542d913f9a56d5827c9d1598854c69e821f6d5b54c53c2a1af",
+          "29388995e8be86a0f11fbb695d159412d94b49338580d0888c5ea52f40cf5243"
+        ],
+        "11": [
+          "beeee7788b1f691e20b37501fe65f511fa456a38fb384c58eae8cc0073af9804",
+          "cbaae8833bc750ffb9bb598ae7fd00344d4c1a10779f1fa58dd99f555709284a"
+        ],
+        "12": [
+          "fdbbebf29c6151804676f67b3e06d430031b48819c3c2eac74b9bf9da2280ded",
+          "795ade5bad659ace0c44fba4e28876a034edfbeb177d03658b4d59bca5e17885"
+        ],
+        "13": [
+          "4a77e67881f4870d41509e7b8651fd1aeac9d374a1cb6c6cfbb761d135e25f27",
+          "4a77e67881f4870d41509e7b8651fd1aeac9d374a1cb6c6cfbb761d135e25f27"
+        ],
+        "14": [
+          "b75fb4eb570e7fd66f7ba2afc1998a306dd1b63b5c648c1c7ec60efac34da6f9",
+          "b75fb4eb570e7fd66f7ba2afc1998a306dd1b63b5c648c1c7ec60efac34da6f9"
+        ],
+        "15": [
+          "c066d3e26cd8b188e775893f00f40c1bdf5fd3d137f036450d29c3ceed04839b",
+          "c066d3e26cd8b188e775893f00f40c1bdf5fd3d137f036450d29c3ceed04839b"
+        ]
+      }
+    }
+  },
+  "approved_runtime_candidates": "canonical orientation images of every subject (bit4=0; both orientations for $21); forced/diagnostic mirrors of $24/$2E/$2F/$28/$56 are never candidates",
+  "policy": "James approved the PNG boards in-thread (incl. flat $A0 oil and animated/twisty scenery); the boards remain git-ignored review diagnostics."
+}
