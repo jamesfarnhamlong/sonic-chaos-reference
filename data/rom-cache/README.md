@@ -112,6 +112,8 @@ boss support chain (`$12`, `$34`, `$0A`, `$0F`), arena/camera constants, a 61,47
 water independence, the second-hurt interaction and an update-aligned GPZ3 boss example. A pure-Python model is checked against the original routines
 (84k ring-updates). It contains no ROM bytes beyond 16-byte prefixes and hashes.
 
+`player-fall-control.json` (`tools/player_fall_control.py`) is the shared player fall / control audit prompted by the Windows MGHZ M1 test: special fall `$14` (all-zero dry/water/friction input tables, single entry `$37C3 -> $4663`, setter diff vs `$463C`, the `+$24` bit0 strip marker lifetime over 26 surface types, one-way gate matrix, exits, 5,296-case horizontal and 1,400-case vertical sweeps against Python models, whole-game MGHZ1/GPZ2 strip fixtures, PC-hook pass traces), the ring-monitor `$5FA0` + side-wall ordering (guard matrix, natural-fall sweep, SYNTHETIC wedge/floor-pop fixtures, 192-placement chamber grid) and which of the 53 player states acquire one-way, solid, GPZ `$1C` deck and type-`$28` support. It also carries the CANONICAL / POC DIVERGENCE / EXPLICIT ADAPTER CANDIDATE / UNRESOLVED classification. Docs: `docs/player-fall-control-audit.md`. Hashes only; no ROM bytes or pixels.
+
 `mghz/implementation-manifest.json` (`tools/mghz_foundation.py`) is the Mecha Green Hill (ROM zone 3) three-act foundation: dimensions, starts, camera bounds, layouts,
 all 116 used/replacement blocks with bank-correct mappings (table `$14:$8000`, verified against the original consumers), surface census with floor/side/ceiling
 consumers, terrain rings, the ring-art descriptor and the three level-effect routines (2, 3, 14) executed from the original ROM. `mghz/object-census.json`
