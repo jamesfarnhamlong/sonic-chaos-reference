@@ -116,5 +116,9 @@ water independence, the second-hurt interaction and an update-aligned GPZ3 boss 
 all 116 used/replacement blocks with bank-correct mappings (table `$14:$8000`, verified against the original consumers), surface census with floor/side/ceiling
 consumers, terrain rings, the ring-art descriptor and the three level-effect routines (2, 3, 14) executed from the original ROM. `mghz/object-census.json`
 (`tools/mghz_object_census.py`) holds all 90 mapped records, the six-zone reuse census, footwear placements, enemy (`$21/$24/$2E`) and boss (`$56`) reconnaissance.
+`mghz/surface-1b-ceiling-spikes.json` (`tools/mghz_surface_ceiling.py`) is the bounded MGHZ terrain-mechanics audit: surface `$1B` (oil block `$A0`: handler `$6B14`, `+$24` bit 1, the `$D3BC` sink counter,
+the `$7010` sink projection with a Python model checked against the ROM over 88,560 cases, runaway counter 25/23, death, resets, stale-bit effect on other one-way blocks, state coverage and whole-game fixtures) and the
+ceiling spikes `$3E/$3F` (probe path, gate matrix over 408,576 cases, hurt rectangle, foot/side behaviour, hurt consequences, real placements and MGHZ example coordinates). Docs:
+`docs/mghz-surface-1b-ceiling-spikes-audit.md`. No ROM bytes are stored (region hashes only).
 `mghz/art-approval.json` lists the PNG review subjects (approved by the user 2026-10-04; pixels live only in the git-ignored `build/mghz-approval/`). Docs: `docs/mghz-foundation-audit.md`,
 `docs/mghz-object-census.md`. No ROM bytes or pixels are stored.

@@ -109,7 +109,7 @@ canonical only for `$21`; all other bit4=1 images are forced diagnostics and not
 |---|---|---|---|
 | **1. Terrain + shared mechanics** | MGHZ1–3 registration (generic act table, 4095-cell ceiling), terrain/art/palettes, rings (new VRAM dest), springs, `$19`, twist variants 2/3, breakable `$0D`, `$1B`/`$26`-less objects, `$28` platforms, monitors, sign | none blocking; breakable fragment art (small) | medium |
 | **1a. Level effects** | CRAM cycles (2, 3), tile strip (14), ring animation | none | small |
-| **R1. Research: surface `$1B` oil + ceiling spikes** | bounded audits | before package 1 claims fidelity for those cells | medium |
+| **R1. Research: surface `$1B` oil + ceiling spikes** | bounded audits — **done**, `docs/mghz-surface-1b-ceiling-spikes-audit.md` | before package 1 claims fidelity for those cells | medium |
 | **2. `$21` MGHZ variant** | art + states 5/6 | small controlled audit of facing/settling | small |
 | **3. New runtimes** | `$24`, `$2E` | audit each (≈4 states) | medium |
 | **4. Footwear** | Rocket (`$11`) + Spring Shoes (`$2F`) on MGHZ1 x≈1300–1560 | none (researched) | medium |

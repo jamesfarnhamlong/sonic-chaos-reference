@@ -29,6 +29,7 @@ import powerup_shoes
 import player_hurt_ring_scatter
 import mghz_foundation
 import mghz_object_census
+import mghz_surface_ceiling
 
 
 def main(rom_path):
@@ -149,6 +150,8 @@ def main(rom_path):
     # MGHZ foundation and object census: regenerated from the ROM.
     assert (ROOT / "data/rom-cache/mghz/implementation-manifest.json").read_text(encoding="utf-8") == mghz_foundation.dumps(mghz_foundation.build(rom))
     assert (ROOT / "data/rom-cache/mghz/object-census.json").read_text(encoding="utf-8") == mghz_object_census.dumps(mghz_object_census.build(rom))
+    # MGHZ surface $1B (oil) and ceiling-spike audit: controlled sweeps and emulated scenarios are regenerated (~20 s).
+    assert (ROOT / "data/rom-cache/mghz/surface-1b-ceiling-spikes.json").read_text(encoding="utf-8") == mghz_surface_ceiling.dumps(mghz_surface_ceiling.build(rom))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

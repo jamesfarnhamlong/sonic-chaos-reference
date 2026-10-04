@@ -135,7 +135,7 @@ match. PNG boards: `python tools/mghz_art_approval.py <rom>` then a Pillow-enabl
 
 ## 7. Unresolved
 
-- Surface `$1B` semantics; ceiling-spike hurt behaviour; fragment art for type `$07`.
+- ~~Surface `$1B` semantics; ceiling-spike hurt behaviour~~ — resolved in `docs/mghz-surface-1b-ceiling-spikes-audit.md`. Still open: fragment art for type `$07`.
 - Effect phase vs. global clock; which scenery the `$1A8/$1A9` pair draws (needs PNG review).
 - Surface `$18` visual role; no mghz-specific background scroll was found.
 - No Windows/gameplay acceptance is claimed; the PNG boards were approved by James on 2026-10-04 for this foundation checkpoint.

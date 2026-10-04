@@ -1,0 +1,8015 @@
+{
+ "format": "mghz-surface-1b-ceiling-spikes-v1",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_base": "ac04dfe",
+ "research_only": true,
+ "poc_untouched": true,
+ "scope": {
+  "in": [
+   "surface $1B / block $A0 sinking",
+   "MGHZ2 (and MGHZ1) ceiling spikes, blocks $3E/$3F"
+  ],
+  "out": [
+   "$24",
+   "$2E",
+   "footwear",
+   "boss $56"
+  ]
+ },
+ "evidence_classes": [
+  "DECODED DATA",
+  "BYTE-VERIFIED ASSEMBLY",
+  "SOURCE-TRACED BEHAVIOR",
+  "CONTROLLED ROUTINE RESULT",
+  "EMULATED ORIGINAL FRAME",
+  "UNRESOLVED"
+ ],
+ "static": {
+  "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY",
+  "floor_dispatch_table_6973": {
+   "surface_$1B": "0x6B14",
+   "surface_$05": "0x6ACE",
+   "surface_$00": "0x6C45",
+   "surface_$19": "0x6B23",
+   "surface_$06": "0x6C4D",
+   "surface_$07": "0x6C4D",
+   "surface_$01": "0x6A5D",
+   "surface_$02": "0x6A5B"
+  },
+  "ceiling_dispatch_chain": [
+   [
+    "0x0D",
+    "0x7464"
+   ],
+   [
+    "0x15",
+    "0x748F"
+   ],
+   [
+    "0x14",
+    "0x749D"
+   ],
+   [
+    "0x13",
+    "0x752F"
+   ],
+   [
+    "0x05",
+    "0x74E7"
+   ]
+  ],
+  "routines": [
+   {
+    "name": "surface_1b_handler_6b14",
+    "cpu": "0x6B14",
+    "file": "0x06B14",
+    "length": 15,
+    "sha256": "a2d41002fce5d37128481dc7e4ac4408b94f2eb89d51b01681d260375d662ace",
+    "purpose": "player +$24 bit 1 := 1; $D3BC += 1 when ($D12F & 3) == 0"
+   },
+   {
+    "name": "surface_19_handler_6b23",
+    "cpu": "0x6B23",
+    "file": "0x06B23",
+    "length": 9,
+    "sha256": "7b38c3609672acc55a2df99bb87e6c6dd94456103ff6e8a7e230595dfd88df0a",
+    "purpose": "sibling strip handler: +$24 bit 0, $D3BC += 1 every pass (for contrast)"
+   },
+   {
+    "name": "surface_0_handler_6c45",
+    "cpu": "0x6C45",
+    "file": "0x06C45",
+    "length": 8,
+    "sha256": "6e27403660fcd7561967d018809092adbd7f2b314377e6885bb4c3cdba963da8",
+    "purpose": "empty block: clears +$24 bits 0 and 1 ($6C4D tail is shared with surface 6/7)"
+   },
+   {
+    "name": "floor_pass_691a",
+    "cpu": "0x691A",
+    "file": "0x0691A",
+    "length": 89,
+    "sha256": "38011cd337daad4d168b2b3d8be0fe48e696751c98b2278cbc67e2a135427c1d",
+    "purpose": "foot sample, previous-surface projection $6F61, dispatch by current surface type"
+   },
+   {
+    "name": "floor_projection_6f61",
+    "cpu": "0x6F61",
+    "file": "0x06F61",
+    "length": 245,
+    "sha256": "2842d7bf1241b473cde97151e3e180d15e21c7a028edafb9767f4a33b38f3a37",
+    "purpose": "projection against the PREVIOUS flags $D36C: solid / one-way / strip gate / bit-1 sink branch $7010"
+   },
+   {
+    "name": "sink_branch_7010",
+    "cpu": "0x7010",
+    "file": "0x07010",
+    "length": 70,
+    "sha256": "a6096481b1ee73aebb7a70cad888c363f85c2ff8d46b02dc4b882f4a5b6e8eab",
+    "purpose": "one-way projection with the sink counter: probe +4, penetration, Y := Y - pen + $D3BC"
+   },
+   {
+    "name": "jump_reset_45ed",
+    "cpu": "0x45ED",
+    "file": "0x045ED",
+    "length": 79,
+    "sha256": "8aa9a09d12adcadb45de25e643ea7998e0b2de4a5f344e9ae3a815227aba3fd1",
+    "purpose": "jump setter: clears $D3BC and +$24 bit 0 (not bit 1)"
+   },
+   {
+    "name": "fall_reset_463c",
+    "cpu": "0x463C",
+    "file": "0x0463C",
+    "length": 39,
+    "sha256": "330313248688e0748368351d497515a913201bb69b5876d1e939cdc65ed8ab7e",
+    "purpose": "ordinary fall setter (state $0E): clears $D3BC and +$24 bit 0"
+   },
+   {
+    "name": "strip_fall_reset_4663",
+    "cpu": "0x4663",
+    "file": "0x04663",
+    "length": 29,
+    "sha256": "78a7875a1dfaeb3110462e10ddf9b8dffbd75841faf2ed0f4461e1ea0faa13ed",
+    "purpose": "strip fall setter (state $14): clears $D3BC, keeps +$24 bit 0"
+   },
+   {
+    "name": "y_integration_4097",
+    "cpu": "0x4097",
+    "file": "0x04097",
+    "length": 170,
+    "sha256": "65b09fe22fa1fbac9f6382d2beef75d48c145d1fd1c9552bd517b92d2c94777c",
+    "purpose": "player Y integration: floor flag set => Y speed := $0700 ($0900 for modifier 10/12)"
+   },
+   {
+    "name": "ceiling_probe_73c9",
+    "cpu": "0x73C9",
+    "file": "0x073C9",
+    "length": 77,
+    "sha256": "e4d412c65b5e290fed6cae86dfcaeafb9f30af7b36207054a66c28c9d7b3a6ea",
+    "purpose": "ceiling pass entry gate, probe (0,-24), type dispatch chain"
+   },
+   {
+    "name": "ceiling_type5_74e7",
+    "cpu": "0x74E7",
+    "file": "0x074E7",
+    "length": 73,
+    "sha256": "be81b767bb2568d57c689454b308e160f0405fcabe5fddc108ae142de1bc2255",
+    "purpose": "type 5 ceiling tail: push down, hurt only for blocks $3E/$3F and not invulnerable, else ordinary bounce"
+   },
+   {
+    "name": "ceiling_bounce_7459",
+    "cpu": "0x7459",
+    "file": "0x07459",
+    "length": 11,
+    "sha256": "f282a8252881f29136b8e7db51ba433ecd4da8ce4c1c1a7b1a46b13f8c31fd32",
+    "purpose": "ordinary ceiling response: Y speed := +1.0, clear ceiling flag"
+   },
+   {
+    "name": "floor_spike_handler_6ace",
+    "cpu": "0x6ACE",
+    "file": "0x06ACE",
+    "length": 21,
+    "sha256": "2f2b6743d9f43398e148200aea4fe01d49fc160817981454e768c70998b53c31",
+    "purpose": "type 5 foot handler: hurt when floor flag set and not invulnerable (tile != $F4/$F5)"
+   },
+   {
+    "name": "hurt_48f7",
+    "cpu": "0x48F7",
+    "file": "0x048F7",
+    "length": 141,
+    "sha256": "b2d5a189faf4730e7955a54f2ed5baceba74c7a3a31c943cbf49af3ed642cfd9",
+    "purpose": "shared hurt entry (ring scatter or death); no invulnerability or power-up test inside"
+   },
+   {
+    "name": "damage_gate_48bc",
+    "cpu": "0x48BC",
+    "file": "0x048BC",
+    "length": 59,
+    "sha256": "9426dfb7dab0cddb8176acbcd6404c531e30b8c7237d6c12439f686696f37a86",
+    "purpose": "object/contact damage gate ($D532 == 6 invincibility lives HERE, not in terrain hazards)"
+   },
+   {
+    "name": "lookup_7666",
+    "cpu": "0x7666",
+    "file": "0x07666",
+    "length": 330,
+    "sha256": "559f60548806126bd0677e8eaf5ea5bae38f209c3c9dd380bec02272627de88f",
+    "purpose": "block lookup: probe (X+BC, Y+DE+18), header flags -> $D364, vertical profile -> $D368"
+   },
+   {
+    "name": "terrain_pass_690b",
+    "cpu": "0x690B",
+    "file": "0x0690B",
+    "length": 15,
+    "sha256": "99a138560281d9adb2bff1fd9cf6b84925f63d17a8001504aba075dca903252b",
+    "purpose": "floor, sides, ceiling, terrain-ring probe, merge"
+   }
+  ],
+  "block_headers": {
+   "0xA0": {
+    "block": "0xA0",
+    "header_file": "0x386C2",
+    "flags": "0x5B",
+    "surface_type": "0x1B",
+    "solid_bit7": false,
+    "one_way_bit6": true,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8990",
+    "vertical_pointer_high_byte": 137,
+    "horizontal_pointer": "0x9210",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x20"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      31,
+      "0x40"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0x3E": {
+    "block": "0x3E",
+    "header_file": "0x383B2",
+    "flags": "0x85",
+    "surface_type": "0x05",
+    "solid_bit7": true,
+    "one_way_bit6": false,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8CB0",
+    "vertical_pointer_high_byte": 140,
+    "horizontal_pointer": "0x94F0",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x58"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      15,
+      "0x60"
+     ],
+     [
+      16,
+      31,
+      "0x40"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0x3F": {
+    "block": "0x3F",
+    "header_file": "0x383B9",
+    "flags": "0x85",
+    "surface_type": "0x05",
+    "solid_bit7": true,
+    "one_way_bit6": false,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8CB0",
+    "vertical_pointer_high_byte": 140,
+    "horizontal_pointer": "0x94F0",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x58"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      15,
+      "0x60"
+     ],
+     [
+      16,
+      31,
+      "0x40"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0x3C": {
+    "block": "0x3C",
+    "header_file": "0x383A4",
+    "flags": "0x85",
+    "surface_type": "0x05",
+    "solid_bit7": true,
+    "one_way_bit6": false,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8C90",
+    "vertical_pointer_high_byte": 140,
+    "horizontal_pointer": "0x94D0",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x10"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      15,
+      "0x40"
+     ],
+     [
+      16,
+      31,
+      "0x60"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0x3D": {
+    "block": "0x3D",
+    "header_file": "0x383AB",
+    "flags": "0x85",
+    "surface_type": "0x05",
+    "solid_bit7": true,
+    "one_way_bit6": false,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8C90",
+    "vertical_pointer_high_byte": 140,
+    "horizontal_pointer": "0x94D0",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x10"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      15,
+      "0x40"
+     ],
+     [
+      16,
+      31,
+      "0x60"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0x9E": {
+    "block": "0x9E",
+    "header_file": "0x386B4",
+    "flags": "0x00",
+    "surface_type": "0x00",
+    "solid_bit7": false,
+    "one_way_bit6": false,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8970",
+    "vertical_pointer_high_byte": 137,
+    "horizontal_pointer": "0x9210",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x00"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      31,
+      "0x40"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0x0D": {
+    "block": "0x0D",
+    "header_file": "0x3825B",
+    "flags": "0x41",
+    "surface_type": "0x01",
+    "solid_bit7": false,
+    "one_way_bit6": true,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8990",
+    "vertical_pointer_high_byte": 137,
+    "horizontal_pointer": "0x9230",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x20"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      31,
+      "0x60"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0x0F": {
+    "block": "0x0F",
+    "header_file": "0x38269",
+    "flags": "0x41",
+    "surface_type": "0x01",
+    "solid_bit7": false,
+    "one_way_bit6": true,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8990",
+    "vertical_pointer_high_byte": 137,
+    "horizontal_pointer": "0x9210",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x20"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      31,
+      "0x40"
+     ]
+    ],
+    "trailing_byte": 255
+   },
+   "0xF9": {
+    "block": "0xF9",
+    "header_file": "0x3893F",
+    "flags": "0x41",
+    "surface_type": "0x01",
+    "solid_bit7": false,
+    "one_way_bit6": true,
+    "alt_plane_bit5": false,
+    "modifier": 0,
+    "vertical_pointer": "0x8990",
+    "vertical_pointer_high_byte": 137,
+    "horizontal_pointer": "0x9230",
+    "vertical_profile_runs_by_x": [
+     [
+      0,
+      31,
+      "0x20"
+     ]
+    ],
+    "horizontal_profile_runs_by_y": [
+     [
+      0,
+      31,
+      "0x60"
+     ]
+    ],
+    "trailing_byte": 255
+   }
+  },
+  "blocks_3e_3f_header_fields_identical": {
+   "flags": true,
+   "modifier": true,
+   "vertical": true,
+   "horizontal": true,
+   "trailing_byte": true
+  },
+  "oil_block_is_the_only_surface_1b_block": true,
+  "bit6_only_blocks_all_zones": [
+   "0x0D",
+   "0x0E",
+   "0x0F",
+   "0x30",
+   "0x31",
+   "0x36",
+   "0x37",
+   "0x38",
+   "0x39",
+   "0x3A",
+   "0x3B",
+   "0x59",
+   "0x73",
+   "0x85",
+   "0x87",
+   "0xA0",
+   "0xAF",
+   "0xB9",
+   "0xBA",
+   "0xBB",
+   "0xF8",
+   "0xF9",
+   "0xFA",
+   "0xFB"
+  ],
+  "sink_branch_B_register": {
+   "finding": "the sink branch executes `CP B` with B left over from the block lookup $7666: the lookup ends by loading the HORIZONTAL-profile pointer of the block header into BC ($770A..$770C), so B is the high byte of that pointer. Every header pointer is a bank-$0E CPU address >= $8000, so B >= 128 and the `RET NC` (penetration >= B) can never fire for a penetration <= 31; with a raw profile byte up to $FF it could only fire for penetration >= 137.",
+   "horizontal_pointer_high_byte_by_bit6_only_block": {
+    "0x0D": 146,
+    "0x0E": 146,
+    "0x0F": 146,
+    "0x30": 148,
+    "0x31": 148,
+    "0x36": 148,
+    "0x37": 148,
+    "0x38": 148,
+    "0x39": 148,
+    "0x3A": 148,
+    "0x3B": 148,
+    "0x59": 152,
+    "0x73": 146,
+    "0x85": 146,
+    "0x87": 146,
+    "0xA0": 146,
+    "0xAF": 146,
+    "0xB9": 146,
+    "0xBA": 146,
+    "0xBB": 146,
+    "0xF8": 146,
+    "0xF9": 146,
+    "0xFA": 146,
+    "0xFB": 146
+   },
+   "min_over_all_256_blocks": 146,
+   "max_over_all_256_blocks": 153,
+   "min_over_bit6_only_blocks": 146,
+   "min_alternate_plane_bit6_only": 146,
+   "oil_block_B": 146
+  },
+  "foot_probe": {
+   "evidence": "BYTE-VERIFIED ASSEMBLY ($691A..$694F)",
+   "bytes_match_expected_pattern": true,
+   "foot_probe": "(anchor X, anchor Y + 18 + extra) with extra = 0 normally",
+   "extra_y_by_current_state": {
+    "0x21": -14,
+    "0x12": 8
+   },
+   "lookup_adds": 18,
+   "note": "states $21 and $12 therefore sample the oil (and every other floor block) 14 px higher / 8 px lower than the default; the sink formula uses the sampled row, so their steady anchor differs by that offset. State $12 is Spring Shoes (footwear audit) and is not examined further here."
+  },
+  "block_art_attribute_words": {
+   "0x3C": [
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x102",
+    "0x102",
+    "0x102",
+    "0x102",
+    "0x103",
+    "0x103",
+    "0x103",
+    "0x103",
+    "0x104",
+    "0x104",
+    "0x104",
+    "0x104"
+   ],
+   "0x3E": [
+    "0x504",
+    "0x504",
+    "0x504",
+    "0x504",
+    "0x503",
+    "0x503",
+    "0x503",
+    "0x503",
+    "0x502",
+    "0x502",
+    "0x502",
+    "0x502",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0"
+   ],
+   "0x3F": [
+    "0x108",
+    "0x108",
+    "0x108",
+    "0x108",
+    "0x109",
+    "0x109",
+    "0x109",
+    "0x109",
+    "0x10A",
+    "0x10A",
+    "0x10A",
+    "0x10A",
+    "0x0E3",
+    "0x0E3",
+    "0x0E3",
+    "0x0E3"
+   ],
+   "0xA0": [
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173",
+    "0x1173"
+   ],
+   "0x9E": [
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x0C0",
+    "0x116F",
+    "0x1170",
+    "0x1370",
+    "0x1171"
+   ]
+  },
+  "bit_and_counter_sites": {
+   "evidence": "BYTE-VERIFIED ASSEMBLY (whole-ROM scan of the instruction forms, then hand classification)",
+   "plus24_bit_instructions": {
+    "bit0": [
+     {
+      "op": "BIT 0,(IX+$24)",
+      "file": "0x037BF",
+      "bank": "0x00",
+      "cpu": "0x37BF"
+     },
+     {
+      "op": "RES 0,(IX+$24)",
+      "file": "0x0460F",
+      "bank": "0x01",
+      "cpu": "0x460F"
+     },
+     {
+      "op": "RES 0,(IX+$24)",
+      "file": "0x04656",
+      "bank": "0x01",
+      "cpu": "0x4656"
+     },
+     {
+      "op": "SET 0,(IX+$24)",
+      "file": "0x06B23",
+      "bank": "0x01",
+      "cpu": "0x6B23"
+     },
+     {
+      "op": "RES 0,(IX+$24)",
+      "file": "0x06C45",
+      "bank": "0x01",
+      "cpu": "0x6C45"
+     },
+     {
+      "op": "BIT 0,(IX+$24)",
+      "file": "0x06FBB",
+      "bank": "0x01",
+      "cpu": "0x6FBB"
+     },
+     {
+      "op": "BIT 0,(IX+$24)",
+      "file": "0x30CBF",
+      "bank": "0x0C",
+      "cpu": "0x8CBF"
+     },
+     {
+      "op": "BIT 0,(IX+$24)",
+      "file": "0x30D07",
+      "bank": "0x0C",
+      "cpu": "0x8D07"
+     },
+     {
+      "op": "RES 0,(IX+$24)",
+      "file": "0x30D16",
+      "bank": "0x0C",
+      "cpu": "0x8D16"
+     },
+     {
+      "op": "BIT 0,(IX+$24)",
+      "file": "0x30EEC",
+      "bank": "0x0C",
+      "cpu": "0x8EEC"
+     },
+     {
+      "op": "RES 0,(IX+$24)",
+      "file": "0x30EFB",
+      "bank": "0x0C",
+      "cpu": "0x8EFB"
+     },
+     {
+      "op": "BIT 0,(IX+$24)",
+      "file": "0x30F47",
+      "bank": "0x0C",
+      "cpu": "0x8F47"
+     },
+     {
+      "op": "RES 0,(IX+$24)",
+      "file": "0x30F56",
+      "bank": "0x0C",
+      "cpu": "0x8F56"
+     }
+    ],
+    "bit1": [
+     {
+      "op": "SET 1,(IX+$24)",
+      "file": "0x06B14",
+      "bank": "0x01",
+      "cpu": "0x6B14"
+     },
+     {
+      "op": "RES 1,(IX+$24)",
+      "file": "0x06C49",
+      "bank": "0x01",
+      "cpu": "0x6C49"
+     },
+     {
+      "op": "BIT 1,(IX+$24)",
+      "file": "0x06FC7",
+      "bank": "0x01",
+      "cpu": "0x6FC7"
+     }
+    ],
+    "other_bits": []
+   },
+   "d3bc_operands": [
+    {
+     "operand_file": "0x04605",
+     "file": "0x04605",
+     "bank": "0x01",
+     "cpu": "0x4605",
+     "role": "jump setter $45ED: counter := 0"
+    },
+    {
+     "operand_file": "0x0465C",
+     "file": "0x0465C",
+     "bank": "0x01",
+     "cpu": "0x465C",
+     "role": "fall setter $463C (state $0E): counter := 0"
+    },
+    {
+     "operand_file": "0x0467D",
+     "file": "0x0467D",
+     "bank": "0x01",
+     "cpu": "0x467D",
+     "role": "strip-fall setter $4663 (state $14): counter := 0"
+    },
+    {
+     "operand_file": "0x06B1F",
+     "file": "0x06B1F",
+     "bank": "0x01",
+     "cpu": "0x6B1F",
+     "role": "surface $1B handler: INC (HL) when ($D12F & 3) == 0"
+    },
+    {
+     "operand_file": "0x06B28",
+     "file": "0x06B28",
+     "bank": "0x01",
+     "cpu": "0x6B28",
+     "role": "surface $19 handler: INC (HL) every pass"
+    },
+    {
+     "operand_file": "0x0703E",
+     "file": "0x0703E",
+     "bank": "0x01",
+     "cpu": "0x703E",
+     "role": "sink branch $7010: the ONLY numeric read (Y := Y - penetration + counter)"
+    },
+    {
+     "operand_file": "0x30D1C",
+     "file": "0x30D1C",
+     "bank": "0x0C",
+     "cpu": "0x8D1C",
+     "role": "other-character run selector: counter := 0 only when +$24 bit 0 is set and the previous surface != $19"
+    },
+    {
+     "operand_file": "0x30F01",
+     "file": "0x30F01",
+     "bank": "0x0C",
+     "cpu": "0x8F01",
+     "role": "Sonic walk selector: counter := 0 only when +$24 bit 0 is set and the previous surface != $19"
+    },
+    {
+     "operand_file": "0x30F5C",
+     "file": "0x30F5C",
+     "bank": "0x0C",
+     "cpu": "0x8F5C",
+     "role": "Sonic run selector: counter := 0 only when +$24 bit 0 is set and the previous surface != $19"
+    }
+   ],
+   "reading": "bit 1 of the player's +$24 byte is SET only at $6B14 (surface $1B), CLEARED only at $6C49 (surface $00 handler) and READ only at $6FC7 (one-way projection). Bit 0 is the surface-$19 strip bit (separate audit). The other +$24 word accesses in banks 0/2/$1E belong to unrelated object slots (VRAM-stream effect object at $2DDE..$2E56 etc.), not to the player."
+  }
+ },
+ "ceiling_probe": {
+  "evidence": "BYTE-VERIFIED ASSEMBLY",
+  "ceiling_entry_gate": {
+   "0x73C9": "RES 0,(IX+$22): ceiling flag cleared first",
+   "0x73CD..0x73DC": "if $D3C0 == 0: return when floor flag (+$22.1) set; return when Y speed high byte (+$19) bit 7 is clear (not rising)",
+   "owner_bypass": "$D3C0 != 0 skips both tests"
+  },
+  "ceiling_probe": {
+   "bytes_at_0x73E0": "11 e8 ff",
+   "decoded_DE": -24,
+   "lookup_adds_to_Y": 18,
+   "effective_probe": "(anchor X, anchor Y - 24 + 18) = (X, Y-6)",
+   "block_row_hit_range_for_3e_3f": "probe row 0..24 inclusive (profile $58: bit 6 + 24; collision when 24 >= row)"
+  },
+  "type5_tail_74e7": [
+   "C := D35A & 31 (probe row)",
+   "B := D368 (vertical profile byte); A := B & $3F; return if A == 0",
+   "if A != 32 and bit 6 of B clear: return",
+   "return if A < C (row > height)",
+   "Y += A - C (pushes the anchor DOWN so the probe row becomes A = 24)",
+   "+$22 bit 0 := 1; $64CB",
+   "return if current state (+$01) == $1E",
+   "block (D353 & $FE) != $3E: JP $7459 (ordinary bounce)",
+   "+$03 bit 7 set: JP $7459",
+   "JP $48F7 (hurt)"
+  ],
+  "ordinary_bounce_7459": "Y speed := +1.0 ($0100); ceiling flag (+$22 bit 0) := 0",
+  "hurt_vertical_speed": "$48F7 sets Y speed $FC00 (-4.0) unless +$22 bit 0 is set, in which case $0100 (+1.0): ceiling-spike hurt therefore knocks the player DOWN at +1.0 (no ring rebound upwards)"
+ },
+ "placements": {
+  "oil": {
+   "mghz1": {
+    "oil_cells": 70,
+    "pits": [
+     {
+      "cells": [
+       42,
+       51,
+       25,
+       31
+      ],
+      "count": 70,
+      "world_rect": [
+       1344,
+       800,
+       1663,
+       1023
+      ],
+      "oil_top_world_y": 800,
+      "anchor_y_standing_at_counter_0": 778,
+      "blocks_in_row_above_oil": [
+       "0x9E"
+      ],
+      "row_above_oil_collision": [
+       "0x00"
+      ],
+      "left_neighbour_blocks": [
+       "0x04",
+       "0x05",
+       "0x07",
+       "0x08"
+      ],
+      "right_neighbour_blocks": [
+       "0x04",
+       "0x05",
+       "0x06",
+       "0x08",
+       "0x0B"
+      ],
+      "rim_row_cells_just_outside_[left,right]": [
+       "0x01",
+       "0x01"
+      ],
+      "roof_cells_in_row_above": []
+     }
+    ]
+   },
+   "mghz2": {
+    "oil_cells": 42,
+    "pits": [
+     {
+      "cells": [
+       7,
+       20,
+       29,
+       31
+      ],
+      "count": 42,
+      "world_rect": [
+       224,
+       928,
+       671,
+       1023
+      ],
+      "oil_top_world_y": 928,
+      "anchor_y_standing_at_counter_0": 906,
+      "blocks_in_row_above_oil": [
+       "0x9E"
+      ],
+      "row_above_oil_collision": [
+       "0x00"
+      ],
+      "left_neighbour_blocks": [
+       "0x08",
+       "0x0B"
+      ],
+      "right_neighbour_blocks": [
+       "0x04",
+       "0x05",
+       "0x0B"
+      ],
+      "rim_row_cells_just_outside_[left,right]": [
+       "0x01",
+       "0x01"
+      ],
+      "roof_cells_in_row_above": []
+     }
+    ]
+   },
+   "mghz3": {
+    "oil_cells": 0,
+    "pits": []
+   }
+  },
+  "ceiling_spike_runs": {
+   "mghz1": [
+    {
+     "block": "0x3E",
+     "cells": [
+      4,
+      6,
+      15
+     ],
+     "world_x_range": [
+      128,
+      223
+     ],
+     "cell_top_world_y": 480,
+     "count": 3,
+     "blocks_above": [
+      "0x05",
+      "0x06",
+      "0x07"
+     ],
+     "above_is_solid": true,
+     "blocks_below": [
+      "0xFE"
+     ],
+     "below_is_air": true,
+     "hazard_anchor_y_range": [
+      486,
+      510
+     ],
+     "hazard_anchor_x_range": [
+      128,
+      223
+     ]
+    }
+   ],
+   "mghz2": [
+    {
+     "block": "0x3F",
+     "cells": [
+      27,
+      43,
+      11
+     ],
+     "world_x_range": [
+      864,
+      1407
+     ],
+     "cell_top_world_y": 352,
+     "count": 17,
+     "blocks_above": [
+      "0x06",
+      "0x07",
+      "0x08",
+      "0x0B"
+     ],
+     "above_is_solid": true,
+     "blocks_below": [
+      "0x2F"
+     ],
+     "below_is_air": true,
+     "hazard_anchor_y_range": [
+      358,
+      382
+     ],
+     "hazard_anchor_x_range": [
+      864,
+      1407
+     ]
+    },
+    {
+     "block": "0x3F",
+     "cells": [
+      87,
+      87,
+      16
+     ],
+     "world_x_range": [
+      2784,
+      2815
+     ],
+     "cell_top_world_y": 512,
+     "count": 1,
+     "blocks_above": [
+      "0xF4"
+     ],
+     "above_is_solid": true,
+     "blocks_below": [
+      "0x2F"
+     ],
+     "below_is_air": true,
+     "hazard_anchor_y_range": [
+      518,
+      542
+     ],
+     "hazard_anchor_x_range": [
+      2784,
+      2815
+     ]
+    },
+    {
+     "block": "0x3F",
+     "cells": [
+      107,
+      113,
+      21
+     ],
+     "world_x_range": [
+      3424,
+      3647
+     ],
+     "cell_top_world_y": 672,
+     "count": 7,
+     "blocks_above": [
+      "0x05",
+      "0x06",
+      "0x07",
+      "0x08",
+      "0x0B"
+     ],
+     "above_is_solid": true,
+     "blocks_below": [
+      "0x2F"
+     ],
+     "below_is_air": true,
+     "hazard_anchor_y_range": [
+      678,
+      702
+     ],
+     "hazard_anchor_x_range": [
+      3424,
+      3647
+     ]
+    }
+   ],
+   "mghz3": []
+  },
+  "other_bit6_blocks": {
+   "mghz1": {
+    "0x0D": {
+     "count": 1,
+     "first_cells": [
+      [
+       111,
+       18
+      ]
+     ]
+    },
+    "0x0F": {
+     "count": 2,
+     "first_cells": [
+      [
+       59,
+       10
+      ],
+      [
+       51,
+       12
+      ]
+     ]
+    },
+    "0x30": {
+     "count": 4,
+     "first_cells": [
+      [
+       22,
+       17
+      ],
+      [
+       111,
+       17
+      ],
+      [
+       51,
+       20
+      ],
+      [
+       110,
+       25
+      ]
+     ]
+    },
+    "0x31": {
+     "count": 8,
+     "first_cells": [
+      [
+       6,
+       25
+      ],
+      [
+       4,
+       26
+      ],
+      [
+       23,
+       26
+      ],
+      [
+       74,
+       29
+      ]
+     ]
+    },
+    "0x36": {
+     "count": 3,
+     "first_cells": [
+      [
+       90,
+       7
+      ],
+      [
+       102,
+       7
+      ],
+      [
+       43,
+       8
+      ]
+     ]
+    },
+    "0x38": {
+     "count": 1,
+     "first_cells": [
+      [
+       47,
+       9
+      ]
+     ]
+    },
+    "0x85": {
+     "count": 4,
+     "first_cells": [
+      [
+       22,
+       11
+      ],
+      [
+       38,
+       12
+      ],
+      [
+       102,
+       12
+      ],
+      [
+       95,
+       27
+      ]
+     ]
+    },
+    "0x87": {
+     "count": 52,
+     "first_cells": [
+      [
+       23,
+       11
+      ],
+      [
+       24,
+       11
+      ],
+      [
+       25,
+       11
+      ],
+      [
+       26,
+       11
+      ]
+     ]
+    },
+    "0xF9": {
+     "count": 2,
+     "first_cells": [
+      [
+       86,
+       7
+      ],
+      [
+       92,
+       12
+      ]
+     ]
+    }
+   },
+   "mghz2": {
+    "0x0D": {
+     "count": 2,
+     "first_cells": [
+      [
+       106,
+       5
+      ],
+      [
+       107,
+       5
+      ]
+     ]
+    },
+    "0x0F": {
+     "count": 9,
+     "first_cells": [
+      [
+       58,
+       28
+      ],
+      [
+       59,
+       28
+      ],
+      [
+       60,
+       28
+      ],
+      [
+       61,
+       28
+      ]
+     ]
+    },
+    "0x30": {
+     "count": 2,
+     "first_cells": [
+      [
+       66,
+       17
+      ],
+      [
+       52,
+       18
+      ]
+     ]
+    },
+    "0x36": {
+     "count": 5,
+     "first_cells": [
+      [
+       58,
+       7
+      ],
+      [
+       73,
+       9
+      ],
+      [
+       53,
+       19
+      ],
+      [
+       53,
+       21
+      ]
+     ]
+    },
+    "0x38": {
+     "count": 6,
+     "first_cells": [
+      [
+       76,
+       7
+      ],
+      [
+       76,
+       11
+      ],
+      [
+       57,
+       18
+      ],
+      [
+       57,
+       20
+      ]
+     ]
+    },
+    "0x59": {
+     "count": 1,
+     "first_cells": [
+      [
+       73,
+       12
+      ]
+     ]
+    },
+    "0x73": {
+     "count": 1,
+     "first_cells": [
+      [
+       76,
+       22
+      ]
+     ]
+    },
+    "0x85": {
+     "count": 2,
+     "first_cells": [
+      [
+       102,
+       10
+      ],
+      [
+       51,
+       11
+      ]
+     ]
+    },
+    "0x87": {
+     "count": 24,
+     "first_cells": [
+      [
+       103,
+       10
+      ],
+      [
+       104,
+       10
+      ],
+      [
+       105,
+       10
+      ],
+      [
+       106,
+       10
+      ]
+     ]
+    },
+    "0xF9": {
+     "count": 2,
+     "first_cells": [
+      [
+       86,
+       7
+      ],
+      [
+       94,
+       7
+      ]
+     ]
+    }
+   },
+   "mghz3": {
+    "0x30": {
+     "count": 3,
+     "first_cells": [
+      [
+       57,
+       19
+      ],
+      [
+       85,
+       19
+      ],
+      [
+       79,
+       23
+      ]
+     ]
+    },
+    "0x85": {
+     "count": 2,
+     "first_cells": [
+      [
+       15,
+       7
+      ],
+      [
+       57,
+       13
+      ]
+     ]
+    },
+    "0x87": {
+     "count": 39,
+     "first_cells": [
+      [
+       16,
+       7
+      ],
+      [
+       17,
+       7
+      ],
+      [
+       18,
+       7
+      ],
+      [
+       19,
+       7
+      ]
+     ]
+    }
+   }
+  },
+  "hazard_neighbour_objects": {
+   "evidence": "DECODED DATA (placement geometry only; no gameplay observation)",
+   "window": "|dx| <= 256 beyond the hazard x-range, |dy| <= 320",
+   "results": {
+    "mghz1": [
+     {
+      "kind": "ceiling_spike_run",
+      "cells": [
+       4,
+       6,
+       15
+      ],
+      "nearby_objects": [
+       {
+        "type": "0x10",
+        "parameter": "0x02",
+        "world": [
+         208,
+         686
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "oil_pit",
+      "cells": [
+       42,
+       51,
+       25,
+       31
+      ],
+      "nearby_objects": [
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         1232,
+         800
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x89",
+        "world": [
+         1360,
+         750
+        ]
+       },
+       {
+        "type": "0x2E",
+        "parameter": "0x00",
+        "world": [
+         1352,
+         780
+        ]
+       }
+      ]
+     }
+    ],
+    "mghz2": [
+     {
+      "kind": "ceiling_spike_run",
+      "cells": [
+       27,
+       43,
+       11
+      ],
+      "nearby_objects": [
+       {
+        "type": "0x28",
+        "parameter": "0x0A",
+        "world": [
+         648,
+         464
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         848,
+         608
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         1072,
+         608
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         1264,
+         608
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         1392,
+         608
+        ]
+       },
+       {
+        "type": "0x1B",
+        "parameter": "0x00",
+        "world": [
+         1584,
+         608
+        ]
+       },
+       {
+        "type": "0x21",
+        "parameter": "0x04",
+        "world": [
+         1040,
+         590
+        ]
+       },
+       {
+        "type": "0x21",
+        "parameter": "0x04",
+        "world": [
+         1232,
+         590
+        ]
+       },
+       {
+        "type": "0x24",
+        "parameter": "0x01",
+        "world": [
+         808,
+         48
+        ]
+       },
+       {
+        "type": "0x24",
+        "parameter": "0x00",
+        "world": [
+         824,
+         48
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "ceiling_spike_run",
+      "cells": [
+       87,
+       87,
+       16
+      ],
+      "nearby_objects": [
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         3056,
+         736
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x05",
+        "world": [
+         2768,
+         624
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x05",
+        "world": [
+         3024,
+         560
+        ]
+       },
+       {
+        "type": "0x10",
+        "parameter": "0x01",
+        "world": [
+         2672,
+         334
+        ]
+       },
+       {
+        "type": "0x21",
+        "parameter": "0x03",
+        "world": [
+         2960,
+         718
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "ceiling_spike_run",
+      "cells": [
+       107,
+       113,
+       21
+      ],
+      "nearby_objects": [
+       {
+        "type": "0x2F",
+        "parameter": "0x00",
+        "world": [
+         3760,
+         494
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         3312,
+         800
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         3792,
+         800
+        ]
+       },
+       {
+        "type": "0x28",
+        "parameter": "0x05",
+        "world": [
+         3856,
+         768
+        ]
+       },
+       {
+        "type": "0x1B",
+        "parameter": "0x00",
+        "world": [
+         3264,
+         768
+        ]
+       },
+       {
+        "type": "0x21",
+        "parameter": "0x02",
+        "world": [
+         3408,
+         526
+        ]
+       },
+       {
+        "type": "0x21",
+        "parameter": "0x04",
+        "world": [
+         3568,
+         526
+        ]
+       },
+       {
+        "type": "0x21",
+        "parameter": "0x04",
+        "world": [
+         3600,
+         782
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "oil_pit",
+      "cells": [
+       7,
+       20,
+       29,
+       31
+      ],
+      "nearby_objects": [
+       {
+        "type": "0x28",
+        "parameter": "0x83",
+        "world": [
+         848,
+         608
+        ]
+       },
+       {
+        "type": "0x10",
+        "parameter": "0x04",
+        "world": [
+         48,
+         878
+        ]
+       },
+       {
+        "type": "0x2E",
+        "parameter": "0x00",
+        "world": [
+         232,
+         908
+        ]
+       }
+      ]
+     }
+    ],
+    "mghz3": []
+   }
+  }
+ },
+ "static_only": false,
+ "examples": {
+  "coordinates": "world pixels; anchor = player Y register (feet = anchor + 18); cells are 32 px",
+  "oil": {
+   "mghz1": {
+    "pit_cells_[x0,x1,y0,y1]": [
+     42,
+     51,
+     25,
+     31
+    ],
+    "world_rect_[x0,y0,x1,y1]": [
+     1344,
+     800,
+     1663,
+     1023
+    ],
+    "oil_top_y": 800,
+    "rim_top_y": 768,
+    "rim_description": "row 24: cells 41 and 52 are solid (blocks 0x01 / 0x01, top y 768); cells 42..51 are block 0x9E (surface 0x00, no collision); the oil top is one cell lower (y 800)",
+    "fixtures": [
+     {
+      "name": "drop_onto_oil_centre",
+      "place": {
+       "x": 1503,
+       "y": 722,
+       "state": "0x0E"
+      },
+      "expect": {
+       "first_oil_handler_update": 25,
+       "plunge_at_counter": 25,
+       "plunge_anchor_y_path": [
+        803,
+        835,
+        867,
+        899,
+        932,
+        932
+       ],
+       "death_request_update": 133,
+       "death_screen_y_before": 220
+      }
+     },
+     {
+      "name": "walk_off_left_rim_holding_right",
+      "place": {
+       "x": 1300,
+       "y": 750,
+       "vx": 1024,
+       "state": "0x05"
+      },
+      "expect": {
+       "first_oil_handler_update": 24,
+       "plunge_counter": 25,
+       "plunge_update": 124,
+       "death_request_update": 128
+      }
+     },
+     {
+      "name": "steady_standing_anchor",
+      "formula": "anchor_y = 778 + counter for counter 0..24 (feet = 796 + counter = oil_top - 4 + counter)"
+     },
+     {
+      "name": "jump_out_over_far_rim",
+      "reaches_far_rim_by_counter_at_jump": {
+       "0": true,
+       "8": true,
+       "14": true,
+       "18": true,
+       "20": true,
+       "22": true,
+       "23": true,
+       "24": false,
+       "26": false
+      },
+      "setup": "standing on the oil 40 px left of the far rim wall (x 1624), hold RIGHT, press jump on the second update"
+     }
+    ]
+   },
+   "mghz2": {
+    "pit_cells_[x0,x1,y0,y1]": [
+     7,
+     20,
+     29,
+     31
+    ],
+    "world_rect_[x0,y0,x1,y1]": [
+     224,
+     928,
+     671,
+     1023
+    ],
+    "oil_top_y": 928,
+    "rim_top_y": 896,
+    "rim_description": "row 28: cells 6 and 21 are solid (blocks 0x01 / 0x01, top y 896); cells 7..20 are block 0x9E (surface 0x00, no collision); the oil top is one cell lower (y 928)",
+    "fixtures": [
+     {
+      "name": "drop_onto_oil_centre",
+      "place": {
+       "x": 447,
+       "y": 850,
+       "state": "0x0E"
+      },
+      "expect": {
+       "first_oil_handler_update": 26,
+       "plunge_at_counter": 25,
+       "plunge_anchor_y_path": [
+        931,
+        963,
+        995,
+        995,
+        981
+       ],
+       "death_request_update": 128
+      }
+     }
+    ]
+   },
+   "mghz3": "no $A0 cells"
+  },
+  "ceiling_spikes": {
+   "mghz1": [
+    {
+     "block": "0x3E",
+     "cells": [
+      4,
+      6,
+      15
+     ],
+     "hazard_anchor_x": [
+      128,
+      223
+     ],
+     "hazard_anchor_y": [
+      486,
+      510
+     ],
+     "above": [
+      "0x05",
+      "0x06",
+      "0x07"
+     ],
+     "below": [
+      "0xFE"
+     ]
+    }
+   ],
+   "mghz2": [
+    {
+     "block": "0x3F",
+     "cells": [
+      27,
+      43,
+      11
+     ],
+     "hazard_anchor_x": [
+      864,
+      1407
+     ],
+     "hazard_anchor_y": [
+      358,
+      382
+     ],
+     "above": [
+      "0x06",
+      "0x07",
+      "0x08",
+      "0x0B"
+     ],
+     "below": [
+      "0x2F"
+     ]
+    },
+    {
+     "block": "0x3F",
+     "cells": [
+      87,
+      87,
+      16
+     ],
+     "hazard_anchor_x": [
+      2784,
+      2815
+     ],
+     "hazard_anchor_y": [
+      518,
+      542
+     ],
+     "above": [
+      "0xF4"
+     ],
+     "below": [
+      "0x2F"
+     ]
+    },
+    {
+     "block": "0x3F",
+     "cells": [
+      107,
+      113,
+      21
+     ],
+     "hazard_anchor_x": [
+      3424,
+      3647
+     ],
+     "hazard_anchor_y": [
+      678,
+      702
+     ],
+     "above": [
+      "0x05",
+      "0x06",
+      "0x07",
+      "0x08",
+      "0x0B"
+     ],
+     "below": [
+      "0x2F"
+     ]
+    }
+   ],
+   "mghz3": "no $3E/$3F cells (two $3C floor-spike cells at (101,13),(103,13) are covered by the platform/spike audit)",
+   "fixtures": [
+    {
+     "name": "rising_hit_5_rings",
+     "act": "mghz2",
+     "place": {
+      "x": 1000,
+      "y": 398,
+      "vy": -768,
+      "state": "0x0A",
+      "rings_bcd": 5
+     },
+     "expect": {
+      "hurt_update": 7,
+      "anchor_y": 382,
+      "row": {
+       "u": 7,
+       "y": 382,
+       "vx": -256,
+       "vy": 256,
+       "cur": 10,
+       "req": 30,
+       "f3": 195,
+       "f22": 1,
+       "f23": 1,
+       "rings": 0,
+       "d3b1": 119,
+       "ev": [
+        "ceil5",
+        "hurt"
+       ]
+      }
+     }
+    },
+    {
+     "name": "rising_hit_0_rings",
+     "act": "mghz2",
+     "place": {
+      "x": 1000,
+      "y": 398,
+      "vy": -768,
+      "state": "0x0A",
+      "rings_bcd": 0
+     },
+     "expect": {
+      "row": {
+       "u": 7,
+       "y": 382,
+       "vx": 0,
+       "vy": -1280,
+       "cur": 10,
+       "req": 31,
+       "f3": 3,
+       "f22": 1,
+       "f23": 1,
+       "rings": 0,
+       "d3b1": 0,
+       "ev": [
+        "ceil5",
+        "hurt"
+       ]
+      }
+     }
+    },
+    {
+     "name": "invulnerable_bounce",
+     "act": "mghz2",
+     "place": {
+      "x": 1000,
+      "y": 398,
+      "vy": -768,
+      "state": "0x0A",
+      "rings_bcd": 5
+     },
+     "expect": {
+      "bounce_update": 7,
+      "anchor_y": 382
+     }
+    },
+    {
+     "name": "near_miss_apex_383",
+     "act": "mghz2",
+     "place": {
+      "x": 1000,
+      "y": 430,
+      "vy": -1088,
+      "state": "0x0A"
+     },
+     "expect": {
+      "apex_y": 383,
+      "hurt": false
+     }
+    }
+   ]
+  }
+ },
+ "surface_1b": {
+  "gate_matrix": {
+   "evidence": "CONTROLLED ROUTINE RESULT ($7666 then $6F61 on the MGHZ1 oil block, watch point at $7010)",
+   "cases": 336,
+   "model_mismatches": 0,
+   "summary": {
+    "prev=0x00 p24=0 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x00 p24=0 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x00 p24=1 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x00 p24=1 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x00 p24=2 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x00 p24=2 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x00 p24=3 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x00 p24=3 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=0 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=0 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=1 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=1 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=2 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=2 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=3 req=0x05": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x01 p24=3 req=0x14": {
+     "model": "none",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x41 p24=0 req=0x05": {
+     "model": "one_way",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x41 p24=0 req=0x14": {
+     "model": "one_way",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x41 p24=1 req=0x05": {
+     "model": "one_way",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x41 p24=1 req=0x14": {
+     "model": "strip_fall_no_support",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x41 p24=2 req=0x05": {
+     "model": "sink",
+     "sink_branch_reached_in": 6,
+     "of": 6
+    },
+    "prev=0x41 p24=2 req=0x14": {
+     "model": "sink",
+     "sink_branch_reached_in": 6,
+     "of": 6
+    },
+    "prev=0x41 p24=3 req=0x05": {
+     "model": "sink",
+     "sink_branch_reached_in": 6,
+     "of": 6
+    },
+    "prev=0x41 p24=3 req=0x14": {
+     "model": "strip_fall_no_support",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x5B p24=0 req=0x05": {
+     "model": "one_way",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x5B p24=0 req=0x14": {
+     "model": "one_way",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x5B p24=1 req=0x05": {
+     "model": "one_way",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x5B p24=1 req=0x14": {
+     "model": "strip_fall_no_support",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x5B p24=2 req=0x05": {
+     "model": "sink",
+     "sink_branch_reached_in": 6,
+     "of": 6
+    },
+    "prev=0x5B p24=2 req=0x14": {
+     "model": "sink",
+     "sink_branch_reached_in": 6,
+     "of": 6
+    },
+    "prev=0x5B p24=3 req=0x05": {
+     "model": "sink",
+     "sink_branch_reached_in": 6,
+     "of": 6
+    },
+    "prev=0x5B p24=3 req=0x14": {
+     "model": "strip_fall_no_support",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=0 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=0 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=1 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=1 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=2 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=2 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=3 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x81 p24=3 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=0 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=0 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=1 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=1 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=2 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=2 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=3 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0x82 p24=3 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=0 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=0 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=1 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=1 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=2 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=2 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=3 req=0x05": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    },
+    "prev=0xC1 p24=3 req=0x14": {
+     "model": "solid",
+     "sink_branch_reached_in": 0,
+     "of": 6
+    }
+   },
+   "rule": "sink branch <=> previous flags have bit 6 and not bit 7, +$24 bit 1 set, and NOT (+$24 bit 0 and requested state $14); inside it a negative Y speed (+$19 bit 7) returns before touching anything"
+  },
+  "sink_parity": {
+   "evidence": "CONTROLLED ROUTINE RESULT (every bit-6-only block patched into MGHZ1 cell (42,25); real routines $7666 + $6F61; Python model of $7010 compared)",
+   "cases": 88560,
+   "projected_cases": 42456,
+   "mismatches": 0,
+   "mismatch_examples": [],
+   "per_block": {
+    "0x0D": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0x0E": {
+     "cases": 3690,
+     "projected": 1836
+    },
+    "0x0F": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0x30": {
+     "cases": 3690,
+     "projected": 1140
+    },
+    "0x31": {
+     "cases": 3690,
+     "projected": 1140
+    },
+    "0x36": {
+     "cases": 3690,
+     "projected": 564
+    },
+    "0x37": {
+     "cases": 3690,
+     "projected": 564
+    },
+    "0x38": {
+     "cases": 3690,
+     "projected": 756
+    },
+    "0x39": {
+     "cases": 3690,
+     "projected": 756
+    },
+    "0x3A": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0x3B": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0x59": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0x73": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0x85": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0x87": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xA0": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xAF": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xB9": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xBA": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xBB": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xF8": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xF9": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xFA": {
+     "cases": 3690,
+     "projected": 2100
+    },
+    "0xFB": {
+     "cases": 3690,
+     "projected": 2100
+    }
+   },
+   "model": {
+    "gate": "bit6 && !bit7 && +$24.1 && !(+$24.0 && req==$14)",
+    "negative_y_speed": "return before clearing anything",
+    "else": "floor flag cleared; D35A += 4; C := D35A & 31; A := D368 + C (8-bit); A < 32 -> return (floor flag stays cleared); A -= 32; A >= B -> return; Y := Y - A + $D3BC; floor flag set; $64CB; D369 := D100"
+   }
+  },
+  "steady_state": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "oil_top_world_y": 800,
+   "steady_anchor_y_formula": "oil_top - 22 + counter (foot probe = anchor + 18 sits at oil_top - 4 + counter)",
+   "runaway_rule": "grounded Y integration is +7, so the integrated probe row is (counter + 7) >= 32, i.e. counter >= 25: the projection then reads row 0..6 of the NEXT block and adds the full counter: ~+32 px per update",
+   "cases": {
+    "integration_7": {
+     "first_runaway_counter": 25,
+     "anchor_y_after_projection_by_counter_0_to_24": [
+      778,
+      779,
+      780,
+      781,
+      782,
+      783,
+      784,
+      785,
+      786,
+      787,
+      788,
+      789,
+      790,
+      791,
+      792,
+      793,
+      794,
+      795,
+      796,
+      797,
+      798,
+      799,
+      800,
+      801,
+      802
+     ],
+     "rows_around_runaway_[counter,anchor_before,anchor_after,step,floor]": [
+      [
+       23,
+       801,
+       801,
+       0,
+       true
+      ],
+      [
+       24,
+       802,
+       802,
+       0,
+       true
+      ],
+      [
+       25,
+       803,
+       835,
+       32,
+       true
+      ],
+      [
+       26,
+       804,
+       836,
+       32,
+       true
+      ],
+      [
+       27,
+       805,
+       837,
+       32,
+       true
+      ]
+     ]
+    },
+    "integration_9": {
+     "first_runaway_counter": 23,
+     "anchor_y_after_projection_by_counter_0_to_24": [
+      778,
+      779,
+      780,
+      781,
+      782,
+      783,
+      784,
+      785,
+      786,
+      787,
+      788,
+      789,
+      790,
+      791,
+      792,
+      793,
+      794,
+      795,
+      796,
+      797,
+      798,
+      799,
+      800,
+      833,
+      834
+     ],
+     "rows_around_runaway_[counter,anchor_before,anchor_after,step,floor]": [
+      [
+       21,
+       799,
+       799,
+       0,
+       true
+      ],
+      [
+       22,
+       800,
+       800,
+       0,
+       true
+      ],
+      [
+       23,
+       801,
+       833,
+       32,
+       true
+      ],
+      [
+       24,
+       802,
+       834,
+       32,
+       true
+      ],
+      [
+       25,
+       803,
+       835,
+       32,
+       true
+      ]
+     ]
+    }
+   }
+  },
+  "stale_bit_one_way": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "results": {
+    "0x0D": {
+     "probe_rows_dy": [
+      -3,
+      0,
+      2,
+      6,
+      10,
+      20
+     ],
+     "final_anchor_y_minus_surface_anchor": {
+      "bit1_clear": [
+       -3,
+       0,
+       0,
+       0,
+       0,
+       20
+      ],
+      "bit1_set_k0": [
+       -3,
+       -4,
+       -4,
+       -4,
+       -4,
+       -4
+      ],
+      "bit1_set_k10": [
+       -3,
+       6,
+       6,
+       6,
+       6,
+       6
+      ],
+      "bit1_set_k25": [
+       -3,
+       21,
+       21,
+       21,
+       21,
+       21
+      ]
+     }
+    },
+    "0x0F": {
+     "probe_rows_dy": [
+      -3,
+      0,
+      2,
+      6,
+      10,
+      20
+     ],
+     "final_anchor_y_minus_surface_anchor": {
+      "bit1_clear": [
+       -3,
+       0,
+       0,
+       0,
+       0,
+       20
+      ],
+      "bit1_set_k0": [
+       -3,
+       -4,
+       -4,
+       -4,
+       -4,
+       -4
+      ],
+      "bit1_set_k10": [
+       -3,
+       6,
+       6,
+       6,
+       6,
+       6
+      ],
+      "bit1_set_k25": [
+       -3,
+       21,
+       21,
+       21,
+       21,
+       21
+      ]
+     }
+    },
+    "0xF9": {
+     "probe_rows_dy": [
+      -3,
+      0,
+      2,
+      6,
+      10,
+      20
+     ],
+     "final_anchor_y_minus_surface_anchor": {
+      "bit1_clear": [
+       -3,
+       0,
+       0,
+       0,
+       0,
+       20
+      ],
+      "bit1_set_k0": [
+       -3,
+       -4,
+       -4,
+       -4,
+       -4,
+       -4
+      ],
+      "bit1_set_k10": [
+       -3,
+       6,
+       6,
+       6,
+       6,
+       6
+      ],
+      "bit1_set_k25": [
+       -3,
+       21,
+       21,
+       21,
+       21,
+       21
+      ]
+     }
+    }
+   },
+   "reading": "with +$24 bit 1 clear a one-way block puts the anchor at (surface - 18) for probes at or below the top; with the stale bit set it lands at surface - 18 - 4 + counter"
+  },
+  "whole_game": {
+   "fall_in": {
+    "mghz1": {
+     "updates": 132,
+     "first_oil_handler_update": 25,
+     "first_sink_branch_update": 26,
+     "counter_increment_updates_first8": [
+      28,
+      32,
+      36,
+      43,
+      47,
+      51,
+      55,
+      59
+     ],
+     "counter_increment_gaps_first8": [
+      4,
+      4,
+      7,
+      4,
+      4,
+      4,
+      4
+     ],
+     "counter_increment_d12f_at_handler_first8": [
+      32,
+      36,
+      40,
+      48,
+      52,
+      56,
+      60,
+      64
+     ],
+     "counter_increment_d12f_low2_all_zero": true,
+     "counter_increment_d12f_gaps_first8": [
+      4,
+      4,
+      8,
+      4,
+      4,
+      4,
+      4,
+      4
+     ],
+     "plunge_update": 129,
+     "plunge_counter": 25,
+     "plunge_y_path": [
+      803,
+      835,
+      867,
+      899,
+      932,
+      932
+     ],
+     "death_request_update": 133,
+     "death_screen_y_before": 220,
+     "final": {
+      "u": 134,
+      "x": 1503,
+      "y": 922,
+      "k": 26,
+      "cur": 31,
+      "p24": 2,
+      "sy": 203
+     },
+     "landing_rows": [
+      {
+       "u": 24,
+       "y": 778,
+       "vy": 1152,
+       "cur": 14,
+       "f22": 0,
+       "p24": 0,
+       "k": 0,
+       "d36c": 0,
+       "ev": []
+      },
+      {
+       "u": 25,
+       "y": 783,
+       "vy": 1200,
+       "cur": 14,
+       "f22": 0,
+       "p24": 2,
+       "k": 0,
+       "d36c": 91,
+       "ev": [
+        "oil"
+       ]
+      },
+      {
+       "u": 26,
+       "y": 778,
+       "vy": 1248,
+       "cur": 14,
+       "f22": 2,
+       "p24": 2,
+       "k": 0,
+       "d36c": 91,
+       "ev": [
+        "sink",
+        "oil"
+       ]
+      },
+      {
+       "u": 27,
+       "y": 778,
+       "vy": 1792,
+       "cur": 14,
+       "f22": 2,
+       "p24": 2,
+       "k": 0,
+       "d36c": 91,
+       "ev": [
+        "sink",
+        "oil"
+       ]
+      },
+      {
+       "u": 28,
+       "y": 778,
+       "vy": 1792,
+       "cur": 14,
+       "f22": 2,
+       "p24": 2,
+       "k": 1,
+       "d36c": 91,
+       "ev": [
+        "sink",
+        "oil"
+       ]
+      }
+     ],
+     "start": {
+      "x": 1503,
+      "y": 722,
+      "state": "0x0E"
+     }
+    },
+    "mghz2": {
+     "updates": 112,
+     "first_oil_handler_update": 26,
+     "first_sink_branch_update": 26,
+     "counter_increment_updates_first8": [
+      28,
+      33,
+      36,
+      42,
+      44,
+      49,
+      53,
+      57
+     ],
+     "counter_increment_gaps_first8": [
+      5,
+      3,
+      6,
+      2,
+      5,
+      4,
+      4
+     ],
+     "counter_increment_d12f_at_handler_first8": [
+      32,
+      36,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60
+     ],
+     "counter_increment_d12f_low2_all_zero": true,
+     "counter_increment_d12f_gaps_first8": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+     ],
+     "plunge_update": 126,
+     "plunge_counter": 25,
+     "plunge_y_path": [
+      931,
+      963,
+      995,
+      995,
+      981
+     ],
+     "death_request_update": 128,
+     "death_screen_y_before": 214,
+     "final": {
+      "u": 130,
+      "x": 447,
+      "y": 981,
+      "k": 25,
+      "cur": 31,
+      "p24": 2,
+      "sy": 205
+     },
+     "landing_rows": [
+      {
+       "u": 25,
+       "y": 906,
+       "vy": 1152,
+       "cur": 14,
+       "f22": 0,
+       "p24": 0,
+       "k": 0,
+       "d36c": 0,
+       "ev": []
+      },
+      {
+       "u": 26,
+       "y": 906,
+       "vy": 1248,
+       "cur": 14,
+       "f22": 2,
+       "p24": 2,
+       "k": 0,
+       "d36c": 91,
+       "ev": [
+        "oil",
+        "sink",
+        "oil"
+       ]
+      },
+      {
+       "u": 27,
+       "y": 906,
+       "vy": 1792,
+       "cur": 14,
+       "f22": 2,
+       "p24": 2,
+       "k": 0,
+       "d36c": 91,
+       "ev": [
+        "sink",
+        "oil"
+       ]
+      },
+      {
+       "u": 28,
+       "y": 906,
+       "vy": 1792,
+       "cur": 14,
+       "f22": 2,
+       "p24": 2,
+       "k": 1,
+       "d36c": 91,
+       "ev": [
+        "sink",
+        "oil"
+       ]
+      },
+      {
+       "u": 30,
+       "y": 907,
+       "vy": 1792,
+       "cur": 14,
+       "f22": 2,
+       "p24": 2,
+       "k": 1,
+       "d36c": 91,
+       "ev": [
+        "sink",
+        "oil"
+       ]
+      }
+     ],
+     "start": {
+      "x": 447,
+      "y": 850,
+      "state": "0x0E"
+     }
+    }
+   },
+   "walk_in": {
+    "mghz1": [
+     {
+      "updates": 142,
+      "first_oil_handler_update": 38,
+      "first_sink_branch_update": 39,
+      "counter_increment_updates_first8": [
+       40,
+       44,
+       47,
+       50,
+       55,
+       60,
+       64,
+       68
+      ],
+      "counter_increment_gaps_first8": [
+       4,
+       3,
+       3,
+       5,
+       5,
+       4,
+       4
+      ],
+      "counter_increment_d12f_at_handler_first8": [
+       44,
+       48,
+       52,
+       56,
+       64,
+       72,
+       76,
+       80
+      ],
+      "counter_increment_d12f_low2_all_zero": true,
+      "counter_increment_d12f_gaps_first8": [
+       4,
+       4,
+       4,
+       8,
+       8,
+       4,
+       4,
+       4
+      ],
+      "plunge_update": 138,
+      "plunge_counter": 25,
+      "plunge_y_path": [
+       803,
+       835,
+       867,
+       899,
+       932,
+       932
+      ],
+      "death_request_update": 142,
+      "death_screen_y_before": 220,
+      "final": {
+       "u": 144,
+       "x": 1655,
+       "y": 918,
+       "k": 26,
+       "cur": 31,
+       "p24": 2,
+       "sy": 204
+      },
+      "label": "walk_1.0",
+      "start": {
+       "x": 1300,
+       "y": 750,
+       "vx": 256,
+       "state": "0x05"
+      }
+     },
+     {
+      "updates": 128,
+      "first_oil_handler_update": 24,
+      "first_sink_branch_update": 25,
+      "counter_increment_updates_first8": [
+       24,
+       28,
+       32,
+       35,
+       42,
+       46,
+       50,
+       54
+      ],
+      "counter_increment_gaps_first8": [
+       4,
+       4,
+       3,
+       7,
+       4,
+       4,
+       4
+      ],
+      "counter_increment_d12f_at_handler_first8": [
+       28,
+       32,
+       36,
+       40,
+       52,
+       56,
+       60,
+       64
+      ],
+      "counter_increment_d12f_low2_all_zero": true,
+      "counter_increment_d12f_gaps_first8": [
+       4,
+       4,
+       4,
+       12,
+       4,
+       4,
+       4,
+       4
+      ],
+      "plunge_update": 124,
+      "plunge_counter": 25,
+      "plunge_y_path": [
+       803,
+       835,
+       867,
+       899,
+       932,
+       932
+      ],
+      "death_request_update": 128,
+      "death_screen_y_before": 220,
+      "final": {
+       "u": 130,
+       "x": 1655,
+       "y": 918,
+       "k": 26,
+       "cur": 31,
+       "p24": 2,
+       "sy": 204
+      },
+      "label": "walk_4.0",
+      "start": {
+       "x": 1300,
+       "y": 750,
+       "vx": 1024,
+       "state": "0x05"
+      }
+     },
+     {
+      "updates": 121,
+      "first_oil_handler_update": 23,
+      "first_sink_branch_update": 24,
+      "counter_increment_updates_first8": [
+       24,
+       28,
+       32,
+       35,
+       37,
+       39,
+       41,
+       48
+      ],
+      "counter_increment_gaps_first8": [
+       4,
+       4,
+       3,
+       2,
+       2,
+       2,
+       7
+      ],
+      "counter_increment_d12f_at_handler_first8": [
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       60
+      ],
+      "counter_increment_d12f_low2_all_zero": true,
+      "counter_increment_d12f_gaps_first8": [
+       4,
+       4,
+       4,
+       4,
+       4,
+       4,
+       8,
+       4
+      ],
+      "plunge_update": 117,
+      "plunge_counter": 25,
+      "plunge_y_path": [
+       803,
+       835,
+       867,
+       899,
+       932,
+       932
+      ],
+      "death_request_update": 121,
+      "death_screen_y_before": 220,
+      "final": {
+       "u": 123,
+       "x": 1655,
+       "y": 918,
+       "k": 26,
+       "cur": 31,
+       "p24": 2,
+       "sy": 204
+      },
+      "label": "run_6.0",
+      "start": {
+       "x": 1300,
+       "y": 750,
+       "vx": 1536,
+       "state": "0x06"
+      }
+     },
+     {
+      "updates": 130,
+      "first_oil_handler_update": 28,
+      "first_sink_branch_update": 29,
+      "counter_increment_updates_first8": [
+       28,
+       32,
+       35,
+       39,
+       46,
+       49,
+       52,
+       56
+      ],
+      "counter_increment_gaps_first8": [
+       4,
+       3,
+       4,
+       7,
+       3,
+       3,
+       4
+      ],
+      "counter_increment_d12f_at_handler_first8": [
+       32,
+       36,
+       40,
+       44,
+       56,
+       60,
+       64,
+       68
+      ],
+      "counter_increment_d12f_low2_all_zero": true,
+      "counter_increment_d12f_gaps_first8": [
+       4,
+       4,
+       4,
+       12,
+       4,
+       4,
+       4,
+       4
+      ],
+      "plunge_update": 126,
+      "plunge_counter": 25,
+      "plunge_y_path": [
+       803,
+       835,
+       867,
+       899,
+       932,
+       932
+      ],
+      "death_request_update": 130,
+      "death_screen_y_before": 220,
+      "final": {
+       "u": 132,
+       "x": 1655,
+       "y": 918,
+       "k": 26,
+       "cur": 31,
+       "p24": 2,
+       "sy": 203
+      },
+      "label": "roll_4.0",
+      "start": {
+       "x": 1300,
+       "y": 750,
+       "vx": 1024,
+       "state": "0x09"
+      }
+     }
+    ],
+    "mghz2": [
+     {
+      "updates": 125,
+      "first_oil_handler_update": 24,
+      "first_sink_branch_update": 25,
+      "counter_increment_updates_first8": [
+       24,
+       28,
+       32,
+       36,
+       38,
+       43,
+       49,
+       53
+      ],
+      "counter_increment_gaps_first8": [
+       4,
+       4,
+       4,
+       2,
+       5,
+       6,
+       4
+      ],
+      "counter_increment_d12f_at_handler_first8": [
+       28,
+       32,
+       36,
+       40,
+       44,
+       52,
+       60,
+       64
+      ],
+      "counter_increment_d12f_low2_all_zero": true,
+      "counter_increment_d12f_gaps_first8": [
+       4,
+       4,
+       4,
+       4,
+       8,
+       8,
+       4,
+       4
+      ],
+      "plunge_update": 123,
+      "plunge_counter": 25,
+      "plunge_y_path": [
+       931,
+       963,
+       995,
+       995,
+       985
+      ],
+      "death_request_update": 125,
+      "death_screen_y_before": 213,
+      "final": {
+       "u": 126,
+       "x": 663,
+       "y": 985,
+       "k": 25,
+       "cur": 31,
+       "p24": 2,
+       "sy": 203
+      },
+      "label": "walk_4.0",
+      "start": {
+       "x": 180,
+       "y": 878,
+       "vx": 1024,
+       "state": "0x05"
+      }
+     }
+    ]
+   },
+   "jump_cycle": [
+    {
+     "wait_updates": 6,
+     "jump_taken": true,
+     "counter_just_before_jump": 1,
+     "counter_in_first_jump_row": 0,
+     "counter_reset_by_jump_setter": true,
+     "plus24_bit1_cleared_after_airborne_updates": 0,
+     "y_before_jump": 778,
+     "apex_y": 732,
+     "rise_px": 46,
+     "jump_vy_first": -1040,
+     "f3_first": 3,
+     "relanded_update": 55,
+     "counter_at_reland": 0,
+     "y_at_reland": 778,
+     "final": {
+      "u": 127,
+      "y": 796,
+      "k": 18,
+      "cur": 1,
+      "p24": 2
+     }
+    },
+    {
+     "wait_updates": 40,
+     "jump_taken": true,
+     "counter_just_before_jump": 10,
+     "counter_in_first_jump_row": 0,
+     "counter_reset_by_jump_setter": true,
+     "plus24_bit1_cleared_after_airborne_updates": 1,
+     "y_before_jump": 787,
+     "apex_y": 741,
+     "rise_px": 46,
+     "jump_vy_first": -1040,
+     "f3_first": 3,
+     "relanded_update": 86,
+     "counter_at_reland": 0,
+     "y_at_reland": 778,
+     "final": {
+      "u": 161,
+      "y": 796,
+      "k": 18,
+      "cur": 1,
+      "p24": 2
+     }
+    },
+    {
+     "wait_updates": 90,
+     "jump_taken": true,
+     "counter_just_before_jump": 22,
+     "counter_in_first_jump_row": 0,
+     "counter_reset_by_jump_setter": true,
+     "plus24_bit1_cleared_after_airborne_updates": 4,
+     "y_before_jump": 799,
+     "apex_y": 753,
+     "rise_px": 46,
+     "jump_vy_first": -1040,
+     "f3_first": 3,
+     "relanded_update": 133,
+     "counter_at_reland": 2,
+     "y_at_reland": 780,
+     "final": {
+      "u": 211,
+      "y": 799,
+      "k": 22,
+      "cur": 1,
+      "p24": 2
+     }
+    }
+   ],
+   "escape_over_far_rim": [
+    {
+     "counter_at_jump": 0,
+     "reached_far_rim": true,
+     "max_x": 1829,
+     "min_y": 731,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1829,
+      "y": 750,
+      "k": 0,
+      "cur": 6,
+      "p24": 0
+     }
+    },
+    {
+     "counter_at_jump": 8,
+     "reached_far_rim": true,
+     "max_x": 1829,
+     "min_y": 739,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1829,
+      "y": 750,
+      "k": 0,
+      "cur": 6,
+      "p24": 0
+     }
+    },
+    {
+     "counter_at_jump": 14,
+     "reached_far_rim": true,
+     "max_x": 1829,
+     "min_y": 745,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1829,
+      "y": 750,
+      "k": 1,
+      "cur": 6,
+      "p24": 0
+     }
+    },
+    {
+     "counter_at_jump": 18,
+     "reached_far_rim": true,
+     "max_x": 1829,
+     "min_y": 749,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1829,
+      "y": 750,
+      "k": 1,
+      "cur": 6,
+      "p24": 0
+     }
+    },
+    {
+     "counter_at_jump": 20,
+     "reached_far_rim": true,
+     "max_x": 1829,
+     "min_y": 750,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1829,
+      "y": 750,
+      "k": 1,
+      "cur": 6,
+      "p24": 0
+     }
+    },
+    {
+     "counter_at_jump": 22,
+     "reached_far_rim": true,
+     "max_x": 1829,
+     "min_y": 750,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1829,
+      "y": 750,
+      "k": 1,
+      "cur": 6,
+      "p24": 0
+     }
+    },
+    {
+     "counter_at_jump": 23,
+     "reached_far_rim": true,
+     "max_x": 1829,
+     "min_y": 750,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1829,
+      "y": 750,
+      "k": 2,
+      "cur": 6,
+      "p24": 0
+     }
+    },
+    {
+     "counter_at_jump": 24,
+     "reached_far_rim": false,
+     "max_x": 1662,
+     "min_y": 755,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1655,
+      "y": 790,
+      "k": 12,
+      "cur": 5,
+      "p24": 2
+     }
+    },
+    {
+     "counter_at_jump": 26,
+     "reached_far_rim": false,
+     "max_x": 1655,
+     "min_y": 836,
+     "died": false,
+     "final": {
+      "u": 81,
+      "x": 1655,
+      "y": 893,
+      "k": 19,
+      "cur": 5,
+      "p24": 2
+     }
+    }
+   ],
+   "speed_control": {
+    "right": {
+     "vx_oil_first12": [
+      0,
+      64,
+      96,
+      128,
+      144,
+      160,
+      176,
+      192,
+      208,
+      224,
+      240,
+      256
+     ],
+     "vx_solid_first12": [
+      0,
+      64,
+      96,
+      128,
+      144,
+      160,
+      176,
+      192,
+      208,
+      224,
+      240,
+      256
+     ],
+     "vx_identical_first40": true,
+     "x_identical_first40": true,
+     "y_range_oil": [
+      778,
+      787
+     ],
+     "y_range_solid": [
+      782,
+      782
+     ]
+    },
+    "left": {
+     "vx_oil_first12": [
+      0,
+      -64,
+      -96,
+      -128,
+      -144,
+      -160,
+      -176,
+      -192,
+      -224,
+      -256,
+      -272,
+      -288
+     ],
+     "vx_solid_first12": [
+      0,
+      -64,
+      -96,
+      -128,
+      -144,
+      -160,
+      -176,
+      -192,
+      -224,
+      -256,
+      -272,
+      -288
+     ],
+     "vx_identical_first40": true,
+     "x_identical_first40": true,
+     "y_range_oil": [
+      778,
+      788
+     ],
+     "y_range_solid": [
+      782,
+      782
+     ]
+    },
+    "right_from_run": {
+     "vx_oil_first12": [
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024
+     ],
+     "vx_solid_first12": [
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024,
+      1024
+     ],
+     "vx_identical_first40": true,
+     "x_identical_first40": true,
+     "y_range_oil": [
+      778,
+      787
+     ],
+     "y_range_solid": [
+      782,
+      782
+     ]
+    }
+   },
+   "roll_on_oil": {
+    "states_seen": [
+     "0x09"
+    ],
+    "f3_values_seen": [
+     "0x02"
+    ],
+    "all_rows_supported_f22_bit1": true,
+    "counter_after_60_updates": 15,
+    "y_after_60_updates": 793,
+    "y_first6": [
+     778,
+     778,
+     778,
+     779,
+     779,
+     779
+    ],
+    "vx_first8": [
+     1019,
+     1009,
+     1004,
+     999,
+     994,
+     989,
+     984,
+     979
+    ]
+   },
+   "direction_independence": {
+    "neutral": {
+     "first_oil_handler_update": 14,
+     "plunge_update": 113,
+     "plunge_counter": 25,
+     "death_request_update": 117,
+     "frames_first_oil_to_plunge": 100
+    },
+    "hold_left": {
+     "first_oil_handler_update": 14,
+     "plunge_update": 114,
+     "plunge_counter": 25,
+     "death_request_update": 118,
+     "frames_first_oil_to_plunge": 108
+    },
+    "hold_right": {
+     "first_oil_handler_update": 14,
+     "plunge_update": 113,
+     "plunge_counter": 25,
+     "death_request_update": 117,
+     "frames_first_oil_to_plunge": 104
+    },
+    "hold_down": {
+     "first_oil_handler_update": 14,
+     "plunge_update": 113,
+     "plunge_counter": 25,
+     "death_request_update": 117,
+     "frames_first_oil_to_plunge": 100
+    },
+    "hold_up": {
+     "first_oil_handler_update": 14,
+     "plunge_update": 113,
+     "plunge_counter": 25,
+     "death_request_update": 117,
+     "frames_first_oil_to_plunge": 100
+    }
+   },
+   "state_scan_first_update": {
+    "0x00": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x01": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x02": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x03": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x04": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x05": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x06": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x07": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x08": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x09": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x0A": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x0B": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x0C": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x0D": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x0E": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x0F": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x10": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x11": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x12": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x13": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x14": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x15": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x16": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x17": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x18": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x19": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x1A": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x1B": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x1C": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x1D": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x1E": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x1F": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x20": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x21": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x22": {
+     "oil_handler": true,
+     "sink_branch": true
+    },
+    "0x23": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x24": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x25": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x26": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x27": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x28": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x29": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x2A": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x2B": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x2C": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x2D": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x2E": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x2F": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x30": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x31": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x32": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x33": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x34": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x35": {
+     "oil_handler": false,
+     "sink_branch": false
+    },
+    "0x36": {
+     "oil_handler": false,
+     "sink_branch": false
+    }
+   },
+   "after_death": {
+    "at_death": {
+     "counter": 26,
+     "plus24": 2,
+     "state": 31
+    },
+    "after_restart": {
+     "counter": 0,
+     "plus24": 0,
+     "state": 2,
+     "x": 78,
+     "y": 206,
+     "zone": 3,
+     "act": 0
+    }
+   }
+  }
+ },
+ "ceiling_spikes": {
+  "gate_sweep": {
+   "evidence": "CONTROLLED ROUTINE RESULT ($73C9 on the real MGHZ2 layout with the test cell patched; watch points $48F7, $74E7, $7459)",
+   "cases": 408576,
+   "test_cell": {
+    "cell": [
+     30,
+     13
+    ],
+    "origin_world": [
+     960,
+     416
+    ],
+    "neighbours": "all air ($2F)"
+   },
+   "coordinates": "[x0,x1,y0,y1] relative to the cell origin; x = anchor X (the ceiling probe is the anchor column, no width); y = anchor Y; probe row = y - 6",
+   "results": {
+    "0x3E": {
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     }
+    },
+    "0x3F": {
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1.0|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1.0|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1.0|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1/256|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1/256|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=rising_-1/256|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=zero|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=zero|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=falling_+1.0|floor=0|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=0|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=0|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [],
+      "pushed_down": [],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=0|state=0x0A": {
+      "hurt": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=0|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=1|state=0x0A": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": [
+       [
+        0,
+        31,
+        6,
+        30
+       ]
+      ]
+     },
+     "vy=falling_+1.0|floor=1|owner=9|invulnerable=1|state=0x1E": {
+      "hurt": [],
+      "type5_tail_reached": [
+       [
+        0,
+        31,
+        6,
+        37
+       ]
+      ],
+      "pushed_down": [
+       [
+        0,
+        31,
+        6,
+        29
+       ]
+      ],
+      "ordinary_bounce_path": []
+     }
+    }
+   }
+  },
+  "gate_summary": {
+   "rule": "hurt <=> head probe (X, Y-6) in a $3E/$3F cell at row 0..24 (anchor Y = cell top + 6..30), any column of the cell (anchor X = cell left .. +31), AND ((Y speed negative AND floor flag clear) OR support owner $D3C0 != 0), AND +$03 bit 7 clear, AND current state != $1E",
+   "damage_rectangle_anchor_relative_to_cell_origin": {
+    "x": [
+     0,
+     31
+    ],
+    "y": [
+     6,
+     30
+    ]
+   },
+   "rule_holds_for_every_combination_and_both_blocks": true,
+   "blocks_3e_and_3f_give_identical_results_in_every_combination": true
+  },
+  "real_runs_check": {
+   "evidence": "CONTROLLED ROUTINE RESULT (real layouts, ceiling pass)",
+   "results": {
+    "mghz1:0x3E@cells[4, 6, 15]": {
+     "hurt_[x0,x1,y0,y1]_world_anchor": [
+      [
+       128,
+       223,
+       486,
+       510
+      ]
+     ],
+     "expected": [
+      [
+       128,
+       223,
+       486,
+       510
+      ]
+     ],
+     "matches": true
+    },
+    "mghz2:0x3F@cells[27, 43, 11]": {
+     "hurt_[x0,x1,y0,y1]_world_anchor": [
+      [
+       864,
+       1407,
+       358,
+       382
+      ]
+     ],
+     "expected": [
+      [
+       864,
+       1407,
+       358,
+       382
+      ]
+     ],
+     "matches": true
+    },
+    "mghz2:0x3F@cells[87, 87, 16]": {
+     "hurt_[x0,x1,y0,y1]_world_anchor": [
+      [
+       2784,
+       2815,
+       518,
+       542
+      ]
+     ],
+     "expected": [
+      [
+       2784,
+       2815,
+       518,
+       542
+      ]
+     ],
+     "matches": true
+    },
+    "mghz2:0x3F@cells[107, 113, 21]": {
+     "hurt_[x0,x1,y0,y1]_world_anchor": [
+      [
+       3424,
+       3647,
+       678,
+       702
+      ]
+     ],
+     "expected": [
+      [
+       3424,
+       3647,
+       678,
+       702
+      ]
+     ],
+     "matches": true
+    }
+   }
+  },
+  "full_pass_versus_isolated": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "full_pass_hurt": [
+    [
+     0,
+     31,
+     10,
+     30
+    ]
+   ],
+   "isolated_ceiling_pass_hurt": [
+    [
+     0,
+     31,
+     6,
+     30
+    ]
+   ],
+   "only_in_isolated_pass": [
+    [
+     0,
+     31,
+     6,
+     9
+    ]
+   ],
+   "only_in_full_pass": [],
+   "reading": "the side probes run before the ceiling probe in $690B and can push X (rows 0..15 of the cell) out of the column first, so a player grazing a cell edge from the side can avoid the hurt; the isolated rule is exact for the head column"
+  },
+  "foot_sweep": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "cases": 92160,
+   "coordinates": "[x0,x1,foot_row_y0,y1] relative to the cell origin; foot row = anchor Y + 18",
+   "blocks_3e_3f_identical": true,
+   "results": {
+    "prev=none_00|floor=0|vy=rising_-1.0": {
+     "hurt": [],
+     "projected": []
+    },
+    "prev=none_00|floor=0|vy=zero": {
+     "hurt": [],
+     "projected": []
+    },
+    "prev=none_00|floor=0|vy=descending_+1.0": {
+     "hurt": [],
+     "projected": []
+    },
+    "prev=none_00|floor=0|vy=fast_+7.0": {
+     "hurt": [],
+     "projected": []
+    },
+    "prev=none_00|floor=1|vy=rising_-1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": []
+    },
+    "prev=none_00|floor=1|vy=zero": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": []
+    },
+    "prev=none_00|floor=1|vy=descending_+1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": []
+    },
+    "prev=none_00|floor=1|vy=fast_+7.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": []
+    },
+    "prev=solid_81|floor=0|vy=rising_-1.0": {
+     "hurt": [],
+     "projected": []
+    },
+    "prev=solid_81|floor=0|vy=zero": {
+     "hurt": [
+      [
+       0,
+       31,
+       8,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=solid_81|floor=0|vy=descending_+1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       8,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=solid_81|floor=0|vy=fast_+7.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       8,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=solid_81|floor=1|vy=rising_-1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": []
+    },
+    "prev=solid_81|floor=1|vy=zero": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=solid_81|floor=1|vy=descending_+1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=solid_81|floor=1|vy=fast_+7.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=spike_85|floor=0|vy=rising_-1.0": {
+     "hurt": [],
+     "projected": []
+    },
+    "prev=spike_85|floor=0|vy=zero": {
+     "hurt": [
+      [
+       0,
+       31,
+       8,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=spike_85|floor=0|vy=descending_+1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       8,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=spike_85|floor=0|vy=fast_+7.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       8,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=spike_85|floor=1|vy=rising_-1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": []
+    },
+    "prev=spike_85|floor=1|vy=zero": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=spike_85|floor=1|vy=descending_+1.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    },
+    "prev=spike_85|floor=1|vy=fast_+7.0": {
+     "hurt": [
+      [
+       0,
+       31,
+       0,
+       31
+      ]
+     ],
+     "projected": [
+      [
+       0,
+       31,
+       9,
+       31
+      ]
+     ]
+    }
+   }
+  },
+  "side_sweep": {
+   "evidence": "CONTROLLED ROUTINE RESULT",
+   "cases": 7168,
+   "coordinates": "[x0,x1,y0,y1]: x = anchor X relative to the cell origin, y = side probe row (anchor Y + 6) relative to the cell top",
+   "results": {
+    "0x3E": {
+     "right_probe_pushes_[dx,dx,probe_row,probe_row]": [
+      [
+       -8,
+       11,
+       0,
+       15
+      ]
+     ],
+     "left_probe_pushes": [
+      [
+       20,
+       39,
+       0,
+       15
+      ]
+     ],
+     "side_damage_cases": 0
+    },
+    "0x3F": {
+     "right_probe_pushes_[dx,dx,probe_row,probe_row]": [
+      [
+       -8,
+       11,
+       0,
+       15
+      ]
+     ],
+     "left_probe_pushes": [
+      [
+       20,
+       39,
+       0,
+       15
+      ]
+     ],
+     "side_damage_cases": 0
+    }
+   },
+   "blocks_3e_3f_identical": true,
+   "reading": "side contact never hurts a $3E/$3F cell (damage is reserved for tiles $F4/$F5); the wall exists only for probe rows 0..15 of the cell (horizontal profile $60 there, $40 below)"
+  },
+  "whole_game": {
+   "hit_5_rings": {
+    "label": "5 rings (BCD 05)",
+    "start": {
+     "x": 1000,
+     "y": 398,
+     "vy": -768,
+     "state": "0x0A",
+     "rings_bcd": 5
+    },
+    "hurt_reached": true,
+    "ordinary_bounce_reached": false,
+    "hurt_update": 7,
+    "rows_around_hurt": [
+     {
+      "u": 4,
+      "y": 387,
+      "vx": 0,
+      "vy": -576,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 5,
+      "y": 385,
+      "vx": 0,
+      "vy": -528,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 6,
+      "y": 383,
+      "vx": 0,
+      "vy": -480,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 7,
+      "y": 382,
+      "vx": -256,
+      "vy": 256,
+      "cur": 10,
+      "req": 30,
+      "f3": 195,
+      "f22": 1,
+      "f23": 1,
+      "rings": 0,
+      "d3b1": 119,
+      "ev": [
+       "ceil5",
+       "hurt"
+      ]
+     },
+     {
+      "u": 8,
+      "y": 383,
+      "vx": -256,
+      "vy": 304,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 118,
+      "ev": []
+     },
+     {
+      "u": 9,
+      "y": 384,
+      "vx": -256,
+      "vy": 352,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 117,
+      "ev": []
+     },
+     {
+      "u": 10,
+      "y": 386,
+      "vx": -256,
+      "vy": 400,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 116,
+      "ev": []
+     },
+     {
+      "u": 11,
+      "y": 388,
+      "vx": -256,
+      "vy": 448,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 115,
+      "ev": []
+     }
+    ],
+    "anchor_y_at_hurt": 382,
+    "pushed_to_tip_row": true
+   },
+   "hit_0_rings": {
+    "label": "0 rings",
+    "start": {
+     "x": 1000,
+     "y": 398,
+     "vy": -768,
+     "state": "0x0A",
+     "rings_bcd": 0
+    },
+    "hurt_reached": true,
+    "ordinary_bounce_reached": false,
+    "hurt_update": 7,
+    "rows_around_hurt": [
+     {
+      "u": 4,
+      "y": 387,
+      "vx": 0,
+      "vy": -576,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 5,
+      "y": 385,
+      "vx": 0,
+      "vy": -528,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 6,
+      "y": 383,
+      "vx": 0,
+      "vy": -480,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 7,
+      "y": 382,
+      "vx": 0,
+      "vy": -1280,
+      "cur": 10,
+      "req": 31,
+      "f3": 3,
+      "f22": 1,
+      "f23": 1,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": [
+       "ceil5",
+       "hurt"
+      ]
+     },
+     {
+      "u": 8,
+      "y": 377,
+      "vx": 0,
+      "vy": -1232,
+      "cur": 31,
+      "req": 31,
+      "f3": 67,
+      "f22": 1,
+      "f23": 1,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 9,
+      "y": 372,
+      "vx": 0,
+      "vy": -1184,
+      "cur": 31,
+      "req": 31,
+      "f3": 67,
+      "f22": 1,
+      "f23": 1,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 10,
+      "y": 368,
+      "vx": 0,
+      "vy": -1136,
+      "cur": 31,
+      "req": 31,
+      "f3": 67,
+      "f22": 1,
+      "f23": 1,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 11,
+      "y": 364,
+      "vx": 0,
+      "vy": -1088,
+      "cur": 31,
+      "req": 31,
+      "f3": 67,
+      "f22": 1,
+      "f23": 1,
+      "rings": 0,
+      "d3b1": 0,
+      "ev": []
+     }
+    ],
+    "anchor_y_at_hurt": 382,
+    "pushed_to_tip_row": true
+   },
+   "hit_while_invulnerable": {
+    "label": "+$03 bit 7 and $D3B1 = 100",
+    "start": {
+     "x": 1000,
+     "y": 398,
+     "vy": -768,
+     "state": "0x0A",
+     "rings_bcd": 5
+    },
+    "hurt_reached": false,
+    "ordinary_bounce_reached": true,
+    "bounce_update": 7,
+    "rows_around_bounce": [
+     {
+      "u": 4,
+      "y": 387,
+      "vx": 0,
+      "vy": -576,
+      "cur": 10,
+      "req": 10,
+      "f3": 131,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 96,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 6,
+      "y": 385,
+      "vx": 0,
+      "vy": -528,
+      "cur": 10,
+      "req": 10,
+      "f3": 131,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 95,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 7,
+      "y": 382,
+      "vx": 0,
+      "vy": 256,
+      "cur": 10,
+      "req": 10,
+      "f3": 131,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 93,
+      "ev": [
+       "ceil5",
+       "ceil5",
+       "bounce"
+      ]
+     },
+     {
+      "u": 8,
+      "y": 383,
+      "vx": 0,
+      "vy": 304,
+      "cur": 10,
+      "req": 10,
+      "f3": 131,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 92,
+      "ev": []
+     },
+     {
+      "u": 10,
+      "y": 386,
+      "vx": 0,
+      "vy": 400,
+      "cur": 10,
+      "req": 10,
+      "f3": 131,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 91,
+      "ev": []
+     },
+     {
+      "u": 12,
+      "y": 388,
+      "vx": 0,
+      "vy": 448,
+      "cur": 10,
+      "req": 10,
+      "f3": 131,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 89,
+      "ev": []
+     },
+     {
+      "u": 14,
+      "y": 394,
+      "vx": 0,
+      "vy": 592,
+      "cur": 10,
+      "req": 10,
+      "f3": 131,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 87,
+      "ev": []
+     }
+    ],
+    "anchor_y_at_bounce": 382
+   },
+   "hit_with_power_up_invincibility": {
+    "label": "$D532 = 6",
+    "start": {
+     "x": 1000,
+     "y": 398,
+     "vy": -768,
+     "state": "0x0A",
+     "rings_bcd": 5
+    },
+    "hurt_reached": true,
+    "ordinary_bounce_reached": false,
+    "hurt_update": 7,
+    "rows_around_hurt": [
+     {
+      "u": 4,
+      "y": 387,
+      "vx": 0,
+      "vy": -576,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 5,
+      "y": 385,
+      "vx": 0,
+      "vy": -528,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 6,
+      "y": 383,
+      "vx": 0,
+      "vy": -480,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 7,
+      "y": 382,
+      "vx": -256,
+      "vy": 256,
+      "cur": 10,
+      "req": 30,
+      "f3": 195,
+      "f22": 1,
+      "f23": 1,
+      "rings": 0,
+      "d3b1": 119,
+      "ev": [
+       "ceil5",
+       "hurt"
+      ]
+     },
+     {
+      "u": 8,
+      "y": 383,
+      "vx": -256,
+      "vy": 304,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 118,
+      "ev": []
+     },
+     {
+      "u": 9,
+      "y": 384,
+      "vx": -256,
+      "vy": 352,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 117,
+      "ev": []
+     },
+     {
+      "u": 10,
+      "y": 386,
+      "vx": -256,
+      "vy": 400,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 116,
+      "ev": []
+     },
+     {
+      "u": 11,
+      "y": 388,
+      "vx": -256,
+      "vy": 448,
+      "cur": 30,
+      "req": 30,
+      "f3": 195,
+      "f22": 0,
+      "f23": 0,
+      "rings": 0,
+      "d3b1": 115,
+      "ev": []
+     }
+    ],
+    "anchor_y_at_hurt": 382,
+    "pushed_to_tip_row": true
+   },
+   "near_miss": {
+    "start": {
+     "x": 1000,
+     "y": 430,
+     "vy": -1088,
+     "state": "0x0A"
+    },
+    "type5_tail_updates": 8,
+    "apex_y": 383,
+    "head_probe_rows_at_apex": 25,
+    "hurt": false,
+    "ceiling_bounce": false,
+    "rows_at_tail": [
+     {
+      "u": 15,
+      "y": 388,
+      "vx": 0,
+      "vy": -368,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 16,
+      "y": 387,
+      "vx": 0,
+      "vy": -320,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     },
+     {
+      "u": 17,
+      "y": 386,
+      "vx": 0,
+      "vy": -272,
+      "cur": 10,
+      "req": 10,
+      "f3": 3,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": [
+       "ceil5"
+      ]
+     }
+    ]
+   },
+   "falling_through": {
+    "start": {
+     "x": 1000,
+     "y": 372,
+     "vy": 256,
+     "state": "0x0E"
+    },
+    "hurt": false,
+    "type5_tail": false,
+    "rows": [
+     {
+      "u": 2,
+      "y": 373,
+      "vx": 0,
+      "vy": 304,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 3,
+      "y": 376,
+      "vx": 0,
+      "vy": 400,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 4,
+      "y": 377,
+      "vx": 0,
+      "vy": 448,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 5,
+      "y": 379,
+      "vx": 0,
+      "vy": 496,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 6,
+      "y": 381,
+      "vx": 0,
+      "vy": 544,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": []
+     }
+    ]
+   },
+   "stomp_bounce_state_0b_launch": {
+    "start": {
+     "x": 1000,
+     "y": 566,
+     "vy": -1728,
+     "state": "0x0B (what a $21 top stomp leaves)",
+     "rings_bcd": 5
+    },
+    "hurt_reached": true,
+    "hurt_update": 37,
+    "anchor_y_at_hurt": 382,
+    "rise_px_before_hurt": 184,
+    "rows_every_20": [
+     {
+      "u": 2,
+      "y": 559,
+      "vx": 0,
+      "vy": -1704,
+      "cur": 11,
+      "req": 11,
+      "f3": 1,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": []
+     },
+     {
+      "u": 22,
+      "y": 441,
+      "vx": 0,
+      "vy": -1200,
+      "cur": 11,
+      "req": 11,
+      "f3": 1,
+      "f22": 0,
+      "f23": 0,
+      "rings": 5,
+      "d3b1": 0,
+      "ev": []
+     }
+    ]
+   },
+   "state_scan_three_updates": {
+    "0x00": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x01": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x02": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x03": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x04": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x05": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x06": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x07": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x08": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x09": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x0A": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x0B": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x0C": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x0C",
+      "0x1D"
+     ]
+    },
+    "0x0D": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x0D",
+      "0x1D"
+     ]
+    },
+    "0x0E": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x0F": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x0F",
+      "0x10",
+      "0x1E"
+     ]
+    },
+    "0x10": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x11": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x0E",
+      "0x11"
+     ]
+    },
+    "0x12": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x13": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x13",
+      "0x1D"
+     ]
+    },
+    "0x14": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x15": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": true,
+     "states_seen": [
+      "0x15",
+      "0x1A"
+     ]
+    },
+    "0x16": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x16",
+      "0x17",
+      "0x1F"
+     ]
+    },
+    "0x17": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x17",
+      "0x1F"
+     ]
+    },
+    "0x18": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x18"
+     ]
+    },
+    "0x19": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x1A": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": true,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": true,
+     "states_seen": [
+      "0x01",
+      "0x0E"
+     ]
+    },
+    "0x1B": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x1C": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x1D": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": true,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x1E": {
+     "ceiling_type5_reached_in_state": true,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1E"
+     ]
+    },
+    "0x1F": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1F"
+     ]
+    },
+    "0x20": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x20"
+     ]
+    },
+    "0x21": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x1B",
+      "0x1E",
+      "0x21"
+     ]
+    },
+    "0x22": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": true,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x09",
+      "0x1E"
+     ]
+    },
+    "0x23": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x23"
+     ]
+    },
+    "0x24": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x24"
+     ]
+    },
+    "0x25": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x25"
+     ]
+    },
+    "0x26": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x26"
+     ]
+    },
+    "0x27": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x27"
+     ]
+    },
+    "0x28": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x28"
+     ]
+    },
+    "0x29": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x29"
+     ]
+    },
+    "0x2A": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x2A"
+     ]
+    },
+    "0x2B": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x2B"
+     ]
+    },
+    "0x2C": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x2C"
+     ]
+    },
+    "0x2D": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x2D"
+     ]
+    },
+    "0x2E": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x2E"
+     ]
+    },
+    "0x2F": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x2F"
+     ]
+    },
+    "0x30": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x30"
+     ]
+    },
+    "0x31": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x31"
+     ]
+    },
+    "0x32": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x32"
+     ]
+    },
+    "0x33": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x33"
+     ]
+    },
+    "0x34": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x34"
+     ]
+    },
+    "0x35": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x35"
+     ]
+    },
+    "0x36": {
+     "ceiling_type5_reached_in_state": false,
+     "hurt_in_state": false,
+     "ordinary_bounce_in_state": false,
+     "hurt_within_three_updates_any_state": false,
+     "bit7_set_by_state_scripts": false,
+     "states_seen": [
+      "0x36"
+     ]
+    }
+   }
+  }
+ },
+ "counts": {
+  "controlled_cases_total": 596800
+ }
+}
