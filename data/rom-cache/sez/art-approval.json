@@ -1,0 +1,326 @@
+{
+  "format": 1,
+  "approval": "PENDING (James reviews the PNG boards in-thread before any POC import)",
+  "generator": "tools/sez_art_approval.py + tools/sez_art_previews.py",
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "png_folder": "build/sez-approval (git-ignored)",
+  "boards": [
+    "terrain-tiles.png",
+    "terrain-blocks.png",
+    "terrain-special-surfaces.png",
+    "terrain-context-sez1.png",
+    "terrain-context-sez2.png",
+    "terrain-context-sez3.png",
+    "map-sez1.png",
+    "map-sez2.png",
+    "map-sez3.png",
+    "animated-terrain.png",
+    "type-20-approval.png",
+    "type-23-approval.png",
+    "type-28-approval.png",
+    "type-2f-approval.png",
+    "type-54-approval.png",
+    "shared-objects-sez-palette.png"
+  ],
+  "subjects": {
+    "0x20": {
+      "label": "SEZ enemy candidate (script-set bit4)",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0xA4",
+        "0xA4"
+      ],
+      "frames": [
+        0,
+        1,
+        2
+      ],
+      "raw_tile_count": 18,
+      "mirror_rule": "runtime uses bit4 (script-set in every visible state): the bit4=1 image is the canonical one",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "77b96e99fc7158af202e26b3b2af6c6cf63049d33f61d174dbf8b91ef1bf8695",
+          "a1ab7a7009947b0f1a731af938faacc5cf584197f8c610ab022ecef336e2303b"
+        ],
+        "2": [
+          "4ae47e1acfeff0ce5e9360a92b7ae6d4d41371dc27b0a52619f416377b3059ec",
+          "594d36bc823917bca0b580fa2236be37442a575a513dde7750c708a360b5410b"
+        ]
+      }
+    },
+    "0x23": {
+      "label": "SEZ enemy candidate",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0x86",
+        "0x86"
+      ],
+      "frames": [
+        0,
+        1,
+        2
+      ],
+      "raw_tile_count": 14,
+      "mirror_rule": "unmirrored runtime art only; bit4=1 images are forced diagnostics and NOT approved",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "d91a6851850a8641e6be5c920f6e0e32d54f2293060e408e361739127e36d684",
+          "24dc1ec09f66a1e883d44e44f38f1f94af7fa9f8b91fdcdf36a1c88fd5d650fe"
+        ],
+        "2": [
+          "09f3aa6c8dcae9836e5926481e9589641473be7e243823488b249f8a2c769947",
+          "60f2baf2f6c316e4042ee0149ed772cb708e12e51342de0bdf01cccd8824c0f3"
+        ]
+      }
+    },
+    "0x28": {
+      "label": "platform, SEZ art",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0x6A",
+        "0x6A"
+      ],
+      "frames": [
+        1
+      ],
+      "raw_tile_count": 8,
+      "mirror_rule": "unmirrored runtime art only; bit4=1 images are forced diagnostics and NOT approved",
+      "frame_hashes": {
+        "1": [
+          "8861d456fd2eff57ba35b3c3a46588217029b6dda87135fece8be4009a4eb5cf"
+        ]
+      }
+    },
+    "0x2F": {
+      "label": "Spring Shoes pickup, SEZ base $94",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0x94",
+        "0x94"
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "raw_tile_count": 16,
+      "mirror_rule": "unmirrored runtime art only; bit4=1 images are forced diagnostics and NOT approved",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "476dded85ac239188c9a78b973f34b63d1d8774e41576e963882871400e36d32"
+        ],
+        "2": [
+          "46417f8f6926434e1091772c3749e5fc04ad9db6b0f451227332f5477c004d0b"
+        ],
+        "3": [
+          "28507180c0a0474240ea6d9f31ac705aa418855742857d942ec34417c86d82b9"
+        ],
+        "4": [
+          "077c1dda8d179f5d2b0f7c7328ef4f4fac9e9841a775eed1b3e8b3fbfaef211e"
+        ]
+      }
+    },
+    "0x54": {
+      "label": "SEZ3 boss and $55 child (frames of both)",
+      "act": "sez3",
+      "palette_index": 14,
+      "bases": [
+        "0x00",
+        "0x00"
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "raw_tile_count": 70,
+      "mirror_rule": "bank $1E never sets bit4 and the record flags are 0: unmirrored only; bit4=1 images are forced diagnostics, NOT approved",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "cccdae58fb31870ccc0244ad10a2d818962589cb5fc54190a61adf1965ab9ce5",
+          "65f4f5465d80b7be7d7821083c6a112bb3f6ad28d9d90f2da8ca77baa16a14db"
+        ],
+        "2": [
+          "8a620e030051c08b78e18143927b25aa031bf0da09653980adcce401651ba120",
+          "179b7d3cbdf61bcb8ba82d3bbd2307ba719ea2736b394ff3929e05366da54d69"
+        ],
+        "3": [
+          "a4ea846166de5bc3edc67246c909b7226c31ca7daefb2896ade30588380b1df2",
+          "6d3e470583312e32a31648623a5452498f6ece428407267564b7b2568dd3f1c0"
+        ],
+        "4": [
+          "656377c010792d51d6c9ec40801df65e10d13d15b10d9d40fd16782e908ad93f",
+          "dfae47bd70659870f11021033ece64e29b0e9b78618f68ddc8e04d4bcfefbd24"
+        ],
+        "5": [
+          "1ccc2419cc60be3dd40c405bc5026c5cc046746921ee64efae34a7d6c056d110",
+          "18748f470e3816faee48e43d7fe88497ec52f2a83e23fe7b4a67390cedfaac78"
+        ],
+        "6": [
+          "8511bd19e090343e71c491ed75823930f6d23fbaa922773144354873841c5109",
+          "0b43672c5dbba277e766978fbcfa1e6deb8f848ae63b522256ad58d260e3ef2d"
+        ],
+        "7": [
+          "1a0c5aa29aaf52e561ec00cb31a6847ba9bcaaa477cf34ec98d6bd5e2e48c809",
+          "0271901546cf993cb5203c34671ad7a7661d8ec26778bd427592b0f2b47cdfb3"
+        ],
+        "8": [
+          "9431a4595cf2ec0714def27197d6a88e4c24097ceaded7d310648094eeb797a1",
+          "6e919ffadc396c295313cdc6e8bbd16a6da380d03b8502f425e68dc97a0ed204"
+        ],
+        "15": [
+          "4ff132afadb6a54f9c1ab3a63dc259636f1f4286a7f469ba6a672087b486bb03",
+          "59edc9e3bc3cf87d19a3db633602bf6cb2d24931aab182f7c91826d323935710"
+        ],
+        "16": [
+          "4a4db367dd2064942e8329fb86816e83d46d4fba5d1fe29501e59815b3af5d6b",
+          "faff13aa28b9938b85af73fa9f62ab054eed16a31b042b3fa363b68ac698aeac"
+        ],
+        "17": [
+          "29eab71a06ac13ca7863a8174152552bf9f4bb81c84837c6de2a6ca5c2212bf8",
+          "29eab71a06ac13ca7863a8174152552bf9f4bb81c84837c6de2a6ca5c2212bf8"
+        ],
+        "18": [
+          "c2375f609d7afc101ffbf954f74c2a0138497c71d6e4fd933b5da992aa8963c5",
+          "c2375f609d7afc101ffbf954f74c2a0138497c71d6e4fd933b5da992aa8963c5"
+        ],
+        "19": [
+          "878b74a0d7d083dd0d6e36a06e70290b9c64920ee4de8a27d38ab96c80ee5cec",
+          "878b74a0d7d083dd0d6e36a06e70290b9c64920ee4de8a27d38ab96c80ee5cec"
+        ]
+      }
+    }
+  },
+  "shared_subjects_identical_to_accepted_zone": {
+    "0x10": {
+      "label": "monitor",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0x00",
+        "0x00"
+      ],
+      "frames": [
+        0,
+        11,
+        12
+      ],
+      "raw_tile_count": 18,
+      "mirror_rule": "compositions identical to the accepted zone (sez_object_census shared_reuse_proof); shown only for the SEZ sprite palette",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "11": [
+          "1f4a61e817c4ae1bbabdac5458d66dc4cc476e20d45a373058bc45af5bece9bb"
+        ],
+        "12": [
+          "f5694c4b3d4b6224f9bd078e62444686340f4be888986a3abff5c916d1ab5ebe"
+        ]
+      }
+    },
+    "0x1B": {
+      "label": "moving spike",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0x00",
+        "0x00"
+      ],
+      "frames": [
+        14
+      ],
+      "raw_tile_count": 4,
+      "mirror_rule": "compositions identical to the accepted zone (sez_object_census shared_reuse_proof); shown only for the SEZ sprite palette",
+      "frame_hashes": {
+        "14": [
+          "3c5ccfc2ad60fd5558673cc5afe2a36ea5866e56c6c64aea11e43b31833e35f7"
+        ]
+      }
+    },
+    "0x26": {
+      "label": "mapped spring",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0x72",
+        "0x00"
+      ],
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "raw_tile_count": 20,
+      "mirror_rule": "compositions identical to the accepted zone (sez_object_census shared_reuse_proof); shown only for the SEZ sprite palette",
+      "frame_hashes": {
+        "0": [
+          "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        ],
+        "1": [
+          "0d8787caef970aa6618e1460085db04843be8716e493628e0d0c64f7bf4ca8b6"
+        ],
+        "2": [
+          "5c1dd46bc04297dc2e5bb333a911b05b1b14e46aa2bdacd5e6770d01212c013f"
+        ],
+        "3": [
+          "4ed9ed96ed51daf9eaf1f935c7275ffb96024bfaf598b38b96c9ce2bf3c3c69b"
+        ]
+      }
+    },
+    "0x07": {
+      "label": "breakable/crumble shard (base 0)",
+      "act": "sez1",
+      "palette_index": 8,
+      "bases": [
+        "0x00",
+        "0x00"
+      ],
+      "frames": [
+        15
+      ],
+      "raw_tile_count": 2,
+      "mirror_rule": "unmirrored",
+      "frame_hashes": {
+        "15": [
+          "49b8ad8326a05bed025a24b0d3a843af83a8e7212485dd5d72258863670495b1"
+        ]
+      }
+    }
+  },
+  "approved_runtime_candidates": "none until approved; canonical orientation images only (bit4=0 for $23/$28/$2F/$54, script-set bit4=1 for $20); forced/diagnostic mirrors are never candidates",
+  "policy": "Existing unchanged shared compositions ($10/$1B/$26/$2F frames, $07 shard) are proven identical to accepted zones in sez_object_census; they are shown once under the SEZ sprite palette. New compositions are the SEZ terrain, platform $28 art, $20, $23, $54/$55."
+}

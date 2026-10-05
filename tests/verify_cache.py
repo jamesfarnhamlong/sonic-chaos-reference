@@ -29,6 +29,9 @@ import powerup_shoes
 import player_hurt_ring_scatter
 import mghz_foundation
 import mghz_object_census
+import sez_foundation
+import sez_object_census
+import sez_art_approval
 import mghz_surface_ceiling
 import mghz_m1_followup
 import mghz_object_24_2e
@@ -164,6 +167,10 @@ def main(rom_path):
     assert (ROOT / "data/rom-cache/player-fall-control.json").read_text(encoding="utf-8") == player_fall_control.dumps(player_fall_control.build(rom))
     # Spring Shoes presentation / act-clear / detach audit: controlled and whole-game fixtures are regenerated (~35 s).
     assert (ROOT / "data/rom-cache/spring-shoes-presentation.json").read_text(encoding="utf-8") == spring_shoes_presentation.dumps(spring_shoes_presentation.build(rom))
+    # SEZ foundation (corrected bank-relative mapping, surfaces, effect 5, controlled handlers), object census and art-approval manifest: regenerated from the ROM (~10 s).
+    assert (ROOT / "data/rom-cache/sez/implementation-manifest.json").read_text(encoding="utf-8") == sez_foundation.dumps(sez_foundation.build(rom))
+    assert (ROOT / "data/rom-cache/sez/object-census.json").read_text(encoding="utf-8") == sez_object_census.dumps(sez_object_census.build(rom))
+    assert (ROOT / "data/rom-cache/sez/art-approval.json").read_text(encoding="utf-8") == json.dumps(sez_art_approval.manifest_for(sez_art_approval.build(rom)), indent=2) + "\n"
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
