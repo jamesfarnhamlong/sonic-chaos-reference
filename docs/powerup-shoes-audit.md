@@ -191,7 +191,9 @@ Pressing either action button detaches the owner and invokes normal jump
 `$45ED`: `-4.25` dry / `-3.25` water, state `$0A`. Thus manual jump is allowed
 but explicitly cancels the shoes.
 
-Canonical springs win over the footwear:
+Canonical springs win over the footwear **when they act** (terrain springs). Correction, `docs/spring-shoes-presentation-audit.md` section 3.3: the table below was
+obtained from isolated handler sweeps; in play mapped `$26` springs never act on state `$12` (the shoes' rebound clears D522 bit1 and the floor contact is 8 px higher than a
+standing contact), so only the terrain-spring rows are reachable.
 
 | Spring | Result |
 |---|---|

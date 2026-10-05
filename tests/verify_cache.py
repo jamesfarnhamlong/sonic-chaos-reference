@@ -31,6 +31,7 @@ import mghz_foundation
 import mghz_object_census
 import mghz_surface_ceiling
 import mghz_m1_followup
+import spring_shoes_presentation
 import player_fall_control
 
 
@@ -158,6 +159,8 @@ def main(rom_path):
     assert (ROOT / "data/rom-cache/mghz/m1-windows-followup.json").read_text(encoding="utf-8") == mghz_m1_followup.dumps(mghz_m1_followup.build(rom))
     # Shared player fall / control audit (special fall $14, monitor + wall, fall-state support): controlled sweeps and whole-game fixtures are regenerated (~85 s).
     assert (ROOT / "data/rom-cache/player-fall-control.json").read_text(encoding="utf-8") == player_fall_control.dumps(player_fall_control.build(rom))
+    # Spring Shoes presentation / act-clear / detach audit: controlled and whole-game fixtures are regenerated (~35 s).
+    assert (ROOT / "data/rom-cache/spring-shoes-presentation.json").read_text(encoding="utf-8") == spring_shoes_presentation.dumps(spring_shoes_presentation.build(rom))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

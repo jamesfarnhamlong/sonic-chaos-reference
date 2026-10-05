@@ -1,0 +1,5096 @@
+{
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_base": "a779fde",
+ "scope": "Spring Shoes (type $2F / state $12) presentation, act clear and detach audit; Research only",
+ "evidence_classes": [
+  "DECODED DATA",
+  "BYTE-VERIFIED ASSEMBLY",
+  "SOURCE-TRACED BEHAVIOR",
+  "CONTROLLED ROUTINE RESULT",
+  "EMULATED ORIGINAL FRAME",
+  "SYNTHETIC CONTROL",
+  "POC SOURCE (READ-ONLY)",
+  "UNRESOLVED"
+ ],
+ "static_only": false,
+ "part_a_presentation": {
+  "object_scripts": {
+   "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY (bank $1E)",
+   "state_table_rom": "0x78B1A",
+   "states": {
+    "0": {
+     "script_cpu": "0x8B26",
+     "records": [
+      {
+       "duration": 224,
+       "frame": 0,
+       "callback": "0x8B5B",
+       "raw": "e0005b8b"
+      },
+      {
+       "command": "00 restart/hold state",
+       "raw": "ff00"
+      }
+     ]
+    },
+    "1": {
+     "script_cpu": "0x8B2C",
+     "records": [
+      {
+       "duration": 8,
+       "frame": 1,
+       "callback": "0x8B64",
+       "raw": "0801648b"
+      },
+      {
+       "duration": 8,
+       "frame": 2,
+       "callback": "0x8B64",
+       "raw": "0802648b"
+      },
+      {
+       "command": "00 restart/hold state",
+       "raw": "ff00"
+      }
+     ]
+    },
+    "2": {
+     "script_cpu": "0x8B36",
+     "records": [
+      {
+       "command": "04 spawn object",
+       "raw": "ff040f0000000000"
+      },
+      {
+       "command": "00 restart/hold state",
+       "raw": "ff00"
+      }
+     ]
+    },
+    "3": {
+     "script_cpu": "0x8B40",
+     "records": [
+      {
+       "duration": 12,
+       "frame": 3,
+       "callback": "0x8BC3",
+       "raw": "0c03c38b"
+      },
+      {
+       "command": "03 request state",
+       "state": 4,
+       "raw": "ff0304"
+      },
+      {
+       "command": "00 restart/hold state",
+       "raw": "ff00"
+      }
+     ]
+    },
+    "4": {
+     "script_cpu": "0x8B49",
+     "records": [
+      {
+       "duration": 4,
+       "frame": 4,
+       "callback": "0x8BC3",
+       "raw": "0404c38b"
+      },
+      {
+       "command": "00 restart/hold state",
+       "raw": "ff00"
+      }
+     ]
+    },
+    "5": {
+     "script_cpu": "0x8B4F",
+     "records": [
+      {
+       "duration": 1,
+       "frame": 4,
+       "callback": "0x8BCE",
+       "raw": "0104ce8b"
+      },
+      {
+       "duration": 8,
+       "frame": 4,
+       "callback": "0x8BD7",
+       "raw": "0804d78b"
+      },
+      {
+       "command": "07 jump",
+       "target": "0x8B53",
+       "raw": "ff07538b"
+      }
+     ]
+    }
+   },
+   "meaning": {
+    "0": "creation: init callback $8B5B (request state 1, +$03 bit7 set = non-generic-damage solid)",
+    "1": "free on the ground: frames 1 and 2 alternate every 8 updates; callback $8B64 offers attachment",
+    "2": "unused script (spawns a type-$0F object); no placement or code requests state 2",
+    "3": "attached, just bounced: frame 3 for 12 updates, callback $8BC3, then request state 4",
+    "4": "attached, held: frame 4, duration 4 repeated forever, callback $8BC3",
+    "5": "detached: frame 4, duration 1 then 8 repeated, callback $8BCE (fall speed +1.5) then $8BD7 (gravity +0.5 and move)"
+   },
+   "callback_roles": {
+    "$8B64": "state 1: top contact (player not rising, current state != $12) -> $5FA0 -> +$21 bit0: owner pointer $D3A4 := IX, requested player state $12, own state 3; side contact with a grounded attacker: stand + push, no pickup",
+    "$8BC3": "states 3/4: if player current state ($D501) != $12 then own requested state := 5",
+    "$8BCE/$8BD7": "state 5: Y speed +1.5 once, then gravity +$0080 (DE=$80 via $0431) and move ($0338) every update"
+   }
+  },
+  "mapping_frames": {
+   "evidence": "DECODED DATA (bank $0F, record layout verified against $6567/$226A/$22B6 by tools/mapped_object_registration.py)",
+   "type_2F_table_cpu": "0x9287",
+   "frames": {
+    "0": {
+     "record_cpu": "0xA0E4",
+     "pieces": 0,
+     "extent_x": 0,
+     "extent_y": 0,
+     "y_origin": 0,
+     "x_origin": 0,
+     "coords_cpu": "0xADF3",
+     "tiles_cpu": "0x0000",
+     "piece_list": []
+    },
+    "1": {
+     "record_cpu": "0x9291",
+     "pieces": 2,
+     "extent_x": 8,
+     "extent_y": 16,
+     "y_origin": 0,
+     "x_origin": 0,
+     "coords_cpu": "0xA23B",
+     "tiles_cpu": "0x92BD",
+     "piece_list": [
+      {
+       "piece_y": -16,
+       "piece_x": -8,
+       "tile_offset": 0
+      },
+      {
+       "piece_y": -16,
+       "piece_x": 0,
+       "tile_offset": 2
+      }
+     ]
+    },
+    "2": {
+     "record_cpu": "0x929C",
+     "pieces": 2,
+     "extent_x": 8,
+     "extent_y": 16,
+     "y_origin": 0,
+     "x_origin": 0,
+     "coords_cpu": "0xA23B",
+     "tiles_cpu": "0x92BF",
+     "piece_list": [
+      {
+       "piece_y": -16,
+       "piece_x": -8,
+       "tile_offset": 4
+      },
+      {
+       "piece_y": -16,
+       "piece_x": 0,
+       "tile_offset": 6
+      }
+     ]
+    },
+    "3": {
+     "record_cpu": "0x92A7",
+     "pieces": 2,
+     "extent_x": 12,
+     "extent_y": 48,
+     "y_origin": 0,
+     "x_origin": 4,
+     "coords_cpu": "0xA3F7",
+     "tiles_cpu": "0x92C1",
+     "piece_list": [
+      {
+       "piece_y": -16,
+       "piece_x": -12,
+       "tile_offset": 8
+      },
+      {
+       "piece_y": -16,
+       "piece_x": -4,
+       "tile_offset": 10
+      }
+     ]
+    },
+    "4": {
+     "record_cpu": "0x92B2",
+     "pieces": 2,
+     "extent_x": 12,
+     "extent_y": 48,
+     "y_origin": 0,
+     "x_origin": 4,
+     "coords_cpu": "0xA3F7",
+     "tiles_cpu": "0x92C3",
+     "piece_list": [
+      {
+       "piece_y": -16,
+       "piece_x": -12,
+       "tile_offset": 12
+      },
+      {
+       "piece_y": -16,
+       "piece_x": -4,
+       "tile_offset": 14
+      }
+     ]
+    }
+   },
+   "frame_0": "empty record shared with other objects (never selected by any type-$2F script)",
+   "player_frame_0B": {
+    "record_cpu": "0x81FA",
+    "pieces": 5,
+    "extent_x": 8,
+    "extent_y": 24,
+    "y_origin": 0,
+    "x_origin": 2,
+    "coords_cpu": "0xA13F",
+    "tiles_cpu": "0x85B7",
+    "piece_list": [
+     {
+      "piece_y": -32,
+      "piece_x": -12,
+      "tile_offset": 0
+     },
+     {
+      "piece_y": -32,
+      "piece_x": -4,
+      "tile_offset": 2
+     },
+     {
+      "piece_y": -16,
+      "piece_x": -12,
+      "tile_offset": 4
+     },
+     {
+      "piece_y": -16,
+      "piece_x": -4,
+      "tile_offset": 6
+     },
+     {
+      "piece_y": -16,
+      "piece_x": 4,
+      "tile_offset": 8
+     }
+    ]
+   },
+   "art_bases": {
+    "SEZ": {
+     "aux0": 148,
+     "vram_tiles": "$94..$A3",
+     "stream_rom": "0x26840"
+    },
+    "MGHZ": {
+     "aux0": 172,
+     "vram_tiles": "$AC..$BB",
+     "stream_rom": "0x26840"
+    }
+   },
+   "note": "frames 3 and 4 share geometry (coords $A3F7, extents 12x48, x origin +4) and differ only in tile ids; frames 1 and 2 share geometry (extents 8x16)"
+  },
+  "player_state_12_script": {
+   "evidence": "DECODED DATA (bank $0C)",
+   "script_cpu": "0x8346",
+   "script_rom": "0x30346",
+   "records": [
+    {
+     "duration": 4,
+     "frame": 11,
+     "callback": "0x03B0",
+     "raw": "040bb003"
+    },
+    {
+     "command": "00 restart/hold state",
+     "raw": "ff00"
+    }
+   ],
+   "reading": "a single frame: record frame $0B, duration 4, callback trampoline $03B0 (= $3B4E), then FF 00 (restart): the player's animation record never changes while state $12 is current"
+  },
+  "static_facts": {
+   "evidence": "BYTE-VERIFIED ASSEMBLY (opcode scans of the whole ROM)",
+   "regions": [
+    {
+     "cpu": "0x3B4E",
+     "end_exclusive": "0x3BC1",
+     "rom": "0x03B4E",
+     "length": 115,
+     "sha256": "6add1b0090c59afc0d9cff9d84d0fdf2c159e90a2a816c393d756a089ebf0ab0",
+     "purpose": "player state $12 callback + owner follow $3BA8"
+    },
+    {
+     "cpu": "0x5F27",
+     "end_exclusive": "0x5F3D",
+     "rom": "0x05F27",
+     "length": 22,
+     "sha256": "bad7e7f82b396ec3b5a1ecddce8acb08d5047b9e399da2f01ab612256981add2",
+     "purpose": "owner positioning helper $5F27"
+    },
+    {
+     "cpu": "0x45ED",
+     "end_exclusive": "0x4663",
+     "rom": "0x045ED",
+     "length": 118,
+     "sha256": "5436abe92f0d16ea5e6bc764a01615816d2be8a637d4d9875959e7f84bfbc123",
+     "purpose": "normal jump $45ED / fall setter $463C"
+    },
+    {
+     "cpu": "0x480C",
+     "end_exclusive": "0x4838",
+     "rom": "0x0480C",
+     "length": 44,
+     "sha256": "9fd41d1417496be645c2874442045d275f72f09c0ffed524eadd41a7cf7e46ab",
+     "purpose": "upright spring setter $480C"
+    },
+    {
+     "cpu": "0x494F",
+     "end_exclusive": "0x49C3",
+     "rom": "0x0494F",
+     "length": 116,
+     "sha256": "84b7116251d8d6eb745018c938a658f1e63ce2875efe47ab4dd685bdae112768",
+     "purpose": "hurt tail $494F and death setter $4984"
+    },
+    {
+     "bank": 30,
+     "cpu": "0x8B1A",
+     "end_exclusive": "0x8BE1",
+     "rom": "0x78B1A",
+     "length": 199,
+     "sha256": "bb35ee6185edb4427a54cad518e1cebe6375ba1dc804ad95b2614c9cacd32d87",
+     "purpose": "type $2F tables, scripts and callbacks"
+    },
+    {
+     "bank": 12,
+     "cpu": "0xA870",
+     "end_exclusive": "0xA8CE",
+     "rom": "0x32870",
+     "length": 94,
+     "sha256": "7748f926d6d1ef6dc2a21b92beccb43afaa62198af4324ee2af973601c3e5855",
+     "purpose": "type $18 activation $A87D / contact $A88E"
+    }
+   ],
+   "requested_state_compare_12_sites": [
+    {
+     "rom": "0x32882",
+     "bank": 12,
+     "cpu": "0xA882",
+     "role": "type $18 state 2 (sign activation)"
+    },
+    {
+     "rom": "0x79765",
+     "bank": 30,
+     "cpu": "0x9765",
+     "role": "type $50 state 0 (boss creation)"
+    }
+   ],
+   "d3a4_operand_sites": [
+    {
+     "rom": "0x03B82",
+     "bank": 0,
+     "cpu": "0x3B82"
+    },
+    {
+     "rom": "0x03B90",
+     "bank": 0,
+     "cpu": "0x3B90"
+    },
+    {
+     "rom": "0x03B9F",
+     "bank": 0,
+     "cpu": "0x3B9F"
+    },
+    {
+     "rom": "0x03BAC",
+     "bank": 0,
+     "cpu": "0x3BAC"
+    },
+    {
+     "rom": "0x78B85",
+     "bank": 30,
+     "cpu": "0x8B85"
+    }
+   ],
+   "d3b3_operand_site_count": 21,
+   "requested_state_12_writers_for_the_player": "only $78B89 (type $2F pickup: LD A,$12; LD ($D502),A); the state-script/animation engine copies it to the current state",
+   "owner_pointer": "$D3A4 is written once (pickup, $78B85) and read only by the state-$12 callback ($3B80/$3B90/$3B9F) and $3BAC; no instruction ever clears it",
+   "footwear_clear_paths": "exactly two instructions in the ROM compare the REQUESTED player state with $12 and convert it: the type-$18 sign's state-2 callback ($A87D..$A88A, bank $0C: $D3B3 := $12 sign art selector, then requested $12 -> $0E) and the identical sequence at bank $1E $9765 (type $50 state 0, docs/object-50.md section 'state 0'); no instruction clears the owner pointer"
+  },
+  "registration": {
+   "evidence": "DECODED DATA + SOURCE-TRACED BEHAVIOR ($3BA8: HL := $10 when the owner's frame (+6) is 3 else 11; $5F27: owner X := player X, owner Y := player Y + HL)",
+   "rule": "owner anchor = (playerX, playerY + (16 if owner frame == 3 else 11)); the frame tested is the owner's frame AT THE TIME of the player's update (set by the previous object phase)",
+   "sonic_frame_0B_rows_rel_anchor": [
+    -32,
+    -1
+   ],
+   "sonic_frame_0B_cols_rel_anchor": [
+    -10,
+    13
+   ],
+   "shoe_frame_3_compressed": {
+    "shoe_anchor_dy_from_sonic_anchor": 16,
+    "piece_rows_rel_sonic_anchor": [
+     0,
+     15
+    ],
+    "piece_cols_rel_sonic_anchor": [
+     -8,
+     7
+    ]
+   },
+   "shoe_frame_4_held": {
+    "shoe_anchor_dy_from_sonic_anchor": 11,
+    "piece_rows_rel_sonic_anchor": [
+     -5,
+     10
+    ],
+    "piece_cols_rel_sonic_anchor": [
+     -8,
+     7
+    ]
+   },
+   "shoe_frames_1_2_unattached_only": {
+    "shoe_anchor_dy_from_sonic_anchor": 0,
+    "piece_rows_rel_sonic_anchor": [
+     -16,
+     -1
+    ],
+    "piece_cols_rel_sonic_anchor": [
+     -8,
+     7
+    ]
+   },
+   "x": "dx = 0 in every frame: the shoe is centred on Sonic's anchor (pieces -8 and 0 after the x origin) and is never mirrored (object +$04 stays 0 while Sonic's bit4 follows facing)",
+   "vertical_overlap": "frame 4 overlaps Sonic's lowest piece row by 5 rows (shoe rows -5..+10, Sonic bottom row ends at -1); frame 3 starts directly below it (rows 0..15)"
+  },
+  "traces": {
+   "evidence": "EMULATED ORIGINAL FRAME (whole game; SAT buffer compared with the renderer model on every checked frame)",
+   "mghz1_plain": {
+    "label": "MGHZ1 shoes (1552,238): released above them, no input, 300 updates",
+    "start": {
+     "x": 1552,
+     "y": 200,
+     "vy": 256,
+     "state": "0x0E"
+    },
+    "state_12_first_update": 12,
+    "contact_updates": [
+     12,
+     93,
+     174,
+     255
+    ],
+    "bounce_period_updates": [
+     81,
+     81,
+     81
+    ],
+    "shoe_frame_runs": [
+     {
+      "state": 0,
+      "frame": 0,
+      "first_u": 3,
+      "last_u": 4,
+      "length": 2
+     },
+     {
+      "state": 1,
+      "frame": 1,
+      "first_u": 5,
+      "last_u": 11,
+      "length": 7
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 12,
+      "last_u": 23,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 24,
+      "last_u": 92,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 93,
+      "last_u": 104,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 105,
+      "last_u": 173,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 174,
+      "last_u": 185,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 186,
+      "last_u": 254,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 255,
+      "last_u": 266,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 267,
+      "last_u": 300,
+      "length": 34
+     }
+    ],
+    "frame_changes_after_pickup": 7,
+    "player_frame_values_in_state_12": [
+     11
+    ],
+    "player_timer_cycle_first_12": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1
+    ],
+    "player_f4_values": [
+     0
+    ],
+    "shoe_f4_values": [
+     0
+    ],
+    "shoe_f3_values": [
+     128
+    ],
+    "follow_offsets": {
+     "values": [
+      11,
+      16
+     ],
+     "offset_16_updates_per_bounce_relative_to_contact": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ]
+    },
+    "sat_checks": {
+     "frames_checked": 289,
+     "mismatch_updates": [
+      13
+     ]
+    },
+    "rows_first_pickup": [
+     {
+      "u": 6,
+      "x": 1552,
+      "y": 210,
+      "vx": 0,
+      "vy": 544,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 2,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 7,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 7,
+      "x": 1552,
+      "y": 212,
+      "vx": 0,
+      "vy": 592,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 2,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 6,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 8,
+      "x": 1552,
+      "y": 215,
+      "vx": 0,
+      "vy": 640,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 2,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 5,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 9,
+      "x": 1552,
+      "y": 217,
+      "vx": 0,
+      "vy": 688,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 8,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 4,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 10,
+      "x": 1552,
+      "y": 220,
+      "vx": 0,
+      "vy": 736,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 7,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 3,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 11,
+      "x": 1552,
+      "y": 222,
+      "vx": 0,
+      "vy": 784,
+      "cur": 14,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 6,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 3,
+       "frame": 1,
+       "timer": 2,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 12,
+      "x": 1552,
+      "y": 225,
+      "vx": 0,
+      "vy": -1920,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 2,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 12,
+       "x": 1552,
+       "y": 237,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 1
+     },
+     {
+      "u": 13,
+      "x": 1552,
+      "y": 217,
+      "vx": 0,
+      "vy": -1872,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 11,
+       "x": 1552,
+       "y": 233,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 14,
+      "x": 1552,
+      "y": 210,
+      "vx": 0,
+      "vy": -1824,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 10,
+       "x": 1552,
+       "y": 226,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 15,
+      "x": 1552,
+      "y": 203,
+      "vx": 0,
+      "vy": -1776,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 9,
+       "x": 1552,
+       "y": 219,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 16,
+      "x": 1552,
+      "y": 196,
+      "vx": 0,
+      "vy": -1728,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 8,
+       "x": 1552,
+       "y": 212,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 17,
+      "x": 1552,
+      "y": 190,
+      "vx": 0,
+      "vy": -1680,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 7,
+       "x": 1552,
+       "y": 206,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 18,
+      "x": 1552,
+      "y": 184,
+      "vx": 0,
+      "vy": -1632,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 6,
+       "x": 1552,
+       "y": 200,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 19,
+      "x": 1552,
+      "y": 177,
+      "vx": 0,
+      "vy": -1584,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 5,
+       "x": 1552,
+       "y": 193,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     }
+    ],
+    "rows_second_bounce_window": [
+     {
+      "u": 91,
+      "x": 1552,
+      "y": 224,
+      "vx": 0,
+      "vy": 1792,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 1,
+       "x": 1552,
+       "y": 235,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 92,
+      "x": 1552,
+      "y": 231,
+      "vx": 0,
+      "vy": 1792,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 4,
+       "x": 1552,
+       "y": 242,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 93,
+      "x": 1552,
+      "y": 229,
+      "vx": 0,
+      "vy": -1920,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 2,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 12,
+       "x": 1552,
+       "y": 241,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 94,
+      "x": 1552,
+      "y": 222,
+      "vx": 0,
+      "vy": -1872,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 11,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 95,
+      "x": 1552,
+      "y": 215,
+      "vx": 0,
+      "vy": -1824,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 10,
+       "x": 1552,
+       "y": 231,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 96,
+      "x": 1552,
+      "y": 208,
+      "vx": 0,
+      "vy": -1776,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 9,
+       "x": 1552,
+       "y": 224,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 97,
+      "x": 1552,
+      "y": 201,
+      "vx": 0,
+      "vy": -1728,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 8,
+       "x": 1552,
+       "y": 217,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 98,
+      "x": 1552,
+      "y": 194,
+      "vx": 0,
+      "vy": -1680,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 7,
+       "x": 1552,
+       "y": 210,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 99,
+      "x": 1552,
+      "y": 188,
+      "vx": 0,
+      "vy": -1632,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 6,
+       "x": 1552,
+       "y": 204,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 100,
+      "x": 1552,
+      "y": 182,
+      "vx": 0,
+      "vy": -1584,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 5,
+       "x": 1552,
+       "y": 198,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 101,
+      "x": 1552,
+      "y": 176,
+      "vx": 0,
+      "vy": -1536,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 4,
+       "x": 1552,
+       "y": 192,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 102,
+      "x": 1552,
+      "y": 170,
+      "vx": 0,
+      "vy": -1488,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 3,
+       "x": 1552,
+       "y": 186,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 103,
+      "x": 1552,
+      "y": 164,
+      "vx": 0,
+      "vy": -1440,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 2,
+       "x": 1552,
+       "y": 180,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 104,
+      "x": 1552,
+      "y": 159,
+      "vx": 0,
+      "vy": -1392,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 1,
+       "x": 1552,
+       "y": 175,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 105,
+      "x": 1552,
+      "y": 154,
+      "vx": 0,
+      "vy": -1344,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 4,
+       "x": 1552,
+       "y": 170,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 106,
+      "x": 1552,
+      "y": 149,
+      "vx": 0,
+      "vy": -1296,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 3,
+       "x": 1552,
+       "y": 160,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 107,
+      "x": 1552,
+      "y": 144,
+      "vx": 0,
+      "vy": -1248,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 2,
+       "x": 1552,
+       "y": 155,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     }
+    ],
+    "follow_offset_rel_second_contact": {
+     "-2": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "-1": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "0": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "1": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "2": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "3": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "4": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "5": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "6": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "7": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "8": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "9": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "10": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "11": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "12": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "13": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "14": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     }
+    }
+   },
+   "mghz1_left_right": {
+    "label": "same, Right for 40 updates then Left for 40, repeating (facing/mirroring)",
+    "start": {
+     "x": 1552,
+     "y": 200,
+     "vy": 256,
+     "state": "0x0E"
+    },
+    "state_12_first_update": 12,
+    "contact_updates": [
+     12,
+     93,
+     174,
+     250
+    ],
+    "bounce_period_updates": [
+     81,
+     81,
+     76
+    ],
+    "shoe_frame_runs": [
+     {
+      "state": 0,
+      "frame": 0,
+      "first_u": 3,
+      "last_u": 4,
+      "length": 2
+     },
+     {
+      "state": 1,
+      "frame": 1,
+      "first_u": 5,
+      "last_u": 11,
+      "length": 7
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 12,
+      "last_u": 23,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 24,
+      "last_u": 92,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 93,
+      "last_u": 104,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 105,
+      "last_u": 173,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 174,
+      "last_u": 185,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 186,
+      "last_u": 249,
+      "length": 64
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 250,
+      "last_u": 256,
+      "length": 7
+     }
+    ],
+    "frame_changes_after_pickup": 6,
+    "player_frame_values_in_state_12": [
+     11
+    ],
+    "player_timer_cycle_first_12": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1
+    ],
+    "player_f4_values": [
+     0,
+     16
+    ],
+    "shoe_f4_values": [
+     0
+    ],
+    "shoe_f3_values": [
+     128
+    ],
+    "follow_offsets": {
+     "values": [
+      11,
+      16
+     ],
+     "offset_16_updates_per_bounce_relative_to_contact": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ]
+    },
+    "sat_checks": {
+     "frames_checked": 0,
+     "mismatch_updates": []
+    },
+    "rows_first_pickup": [
+     {
+      "u": 6,
+      "x": 1554,
+      "y": 210,
+      "vx": 160,
+      "vy": 544,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 2,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 7,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 7,
+      "x": 1555,
+      "y": 212,
+      "vx": 176,
+      "vy": 592,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 2,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 6,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 8,
+      "x": 1555,
+      "y": 215,
+      "vx": 192,
+      "vy": 640,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 2,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 5,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 9,
+      "x": 1556,
+      "y": 217,
+      "vx": 208,
+      "vy": 688,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 8,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 4,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 10,
+      "x": 1557,
+      "y": 220,
+      "vx": 224,
+      "vy": 736,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 7,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 3,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 11,
+      "x": 1558,
+      "y": 222,
+      "vx": 240,
+      "vy": 784,
+      "cur": 14,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 6,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 3,
+       "frame": 1,
+       "timer": 2,
+       "x": 1552,
+       "y": 238,
+       "f4": 0
+      }
+     },
+     {
+      "u": 12,
+      "x": 1559,
+      "y": 225,
+      "vx": 256,
+      "vy": -1920,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 2,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 12,
+       "x": 1559,
+       "y": 237,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 1
+     },
+     {
+      "u": 13,
+      "x": 1560,
+      "y": 217,
+      "vx": 272,
+      "vy": -1872,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 11,
+       "x": 1560,
+       "y": 233,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 14,
+      "x": 1561,
+      "y": 210,
+      "vx": 288,
+      "vy": -1824,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 10,
+       "x": 1561,
+       "y": 226,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 15,
+      "x": 1562,
+      "y": 203,
+      "vx": 304,
+      "vy": -1776,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 9,
+       "x": 1562,
+       "y": 219,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 16,
+      "x": 1564,
+      "y": 196,
+      "vx": 320,
+      "vy": -1728,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 8,
+       "x": 1564,
+       "y": 212,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 17,
+      "x": 1565,
+      "y": 190,
+      "vx": 336,
+      "vy": -1680,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 7,
+       "x": 1565,
+       "y": 206,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 18,
+      "x": 1566,
+      "y": 184,
+      "vx": 352,
+      "vy": -1632,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 6,
+       "x": 1566,
+       "y": 200,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 19,
+      "x": 1568,
+      "y": 177,
+      "vx": 368,
+      "vy": -1584,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 5,
+       "x": 1568,
+       "y": 193,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     }
+    ],
+    "rows_second_bounce_window": [
+     {
+      "u": 91,
+      "x": 1683,
+      "y": 224,
+      "vx": 256,
+      "vy": 1792,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 1,
+       "x": 1683,
+       "y": 235,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 92,
+      "x": 1684,
+      "y": 231,
+      "vx": 272,
+      "vy": 1792,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 4,
+       "x": 1684,
+       "y": 242,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 93,
+      "x": 1685,
+      "y": 229,
+      "vx": 288,
+      "vy": -1920,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 2,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 12,
+       "x": 1685,
+       "y": 241,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 94,
+      "x": 1687,
+      "y": 222,
+      "vx": 304,
+      "vy": -1872,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 11,
+       "x": 1687,
+       "y": 238,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 95,
+      "x": 1688,
+      "y": 215,
+      "vx": 320,
+      "vy": -1824,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 10,
+       "x": 1688,
+       "y": 231,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 96,
+      "x": 1689,
+      "y": 208,
+      "vx": 336,
+      "vy": -1776,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 9,
+       "x": 1689,
+       "y": 224,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 97,
+      "x": 1691,
+      "y": 201,
+      "vx": 352,
+      "vy": -1728,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 8,
+       "x": 1691,
+       "y": 217,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 98,
+      "x": 1692,
+      "y": 194,
+      "vx": 368,
+      "vy": -1680,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 7,
+       "x": 1692,
+       "y": 210,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 99,
+      "x": 1694,
+      "y": 188,
+      "vx": 384,
+      "vy": -1632,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 6,
+       "x": 1694,
+       "y": 204,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 100,
+      "x": 1695,
+      "y": 182,
+      "vx": 400,
+      "vy": -1584,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 5,
+       "x": 1695,
+       "y": 198,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 101,
+      "x": 1697,
+      "y": 176,
+      "vx": 416,
+      "vy": -1536,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 4,
+       "x": 1697,
+       "y": 192,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 102,
+      "x": 1698,
+      "y": 170,
+      "vx": 432,
+      "vy": -1488,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 3,
+       "x": 1698,
+       "y": 186,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 103,
+      "x": 1700,
+      "y": 164,
+      "vx": 448,
+      "vy": -1440,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 2,
+       "x": 1700,
+       "y": 180,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 104,
+      "x": 1702,
+      "y": 159,
+      "vx": 464,
+      "vy": -1392,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 1,
+       "x": 1702,
+       "y": 175,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 105,
+      "x": 1704,
+      "y": 154,
+      "vx": 480,
+      "vy": -1344,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 4,
+       "x": 1704,
+       "y": 170,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 106,
+      "x": 1706,
+      "y": 149,
+      "vx": 496,
+      "vy": -1296,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 3,
+       "x": 1706,
+       "y": 160,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 107,
+      "x": 1708,
+      "y": 144,
+      "vx": 512,
+      "vy": -1248,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 2,
+       "x": 1708,
+       "y": 155,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     }
+    ],
+    "follow_offset_rel_second_contact": {
+     "-2": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "-1": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "0": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "1": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "2": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "3": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "4": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "5": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "6": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "7": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "8": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "9": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "10": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "11": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "12": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "13": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "14": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     }
+    }
+   },
+   "art_bounds_mghz": {
+    "1": {
+     "opaque_rows_rel_anchor": [
+      2,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 255
+    },
+    "2": {
+     "opaque_rows_rel_anchor": [
+      2,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 245
+    },
+    "3": {
+     "opaque_rows_rel_anchor": [
+      2,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 184
+    },
+    "4": {
+     "opaque_rows_rel_anchor": [
+      7,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 152
+    }
+   },
+   "sez1_plain": {
+    "label": "SEZ1 shoes (224,398), same release (camera scrolls: SAT model check skipped)",
+    "start": {
+     "x": 224,
+     "y": 350,
+     "vy": 256,
+     "state": "0x0E"
+    },
+    "state_12_first_update": 14,
+    "contact_updates": [
+     14,
+     95,
+     176,
+     257
+    ],
+    "bounce_period_updates": [
+     81,
+     81,
+     81
+    ],
+    "shoe_frame_runs": [
+     {
+      "state": 0,
+      "frame": 0,
+      "first_u": 2,
+      "last_u": 3,
+      "length": 2
+     },
+     {
+      "state": 1,
+      "frame": 1,
+      "first_u": 4,
+      "last_u": 11,
+      "length": 8
+     },
+     {
+      "state": 1,
+      "frame": 2,
+      "first_u": 12,
+      "last_u": 13,
+      "length": 2
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 14,
+      "last_u": 25,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 26,
+      "last_u": 94,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 95,
+      "last_u": 106,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 107,
+      "last_u": 175,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 176,
+      "last_u": 187,
+      "length": 12
+     },
+     {
+      "state": 4,
+      "frame": 4,
+      "first_u": 188,
+      "last_u": 256,
+      "length": 69
+     },
+     {
+      "state": 3,
+      "frame": 3,
+      "first_u": 257,
+      "last_u": 259,
+      "length": 3
+     }
+    ],
+    "frame_changes_after_pickup": 6,
+    "player_frame_values_in_state_12": [
+     11
+    ],
+    "player_timer_cycle_first_12": [
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1,
+     4,
+     3,
+     2,
+     1
+    ],
+    "player_f4_values": [
+     0
+    ],
+    "shoe_f4_values": [
+     0
+    ],
+    "shoe_f3_values": [
+     128
+    ],
+    "follow_offsets": {
+     "values": [
+      11,
+      16
+     ],
+     "offset_16_updates_per_bounce_relative_to_contact": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ]
+    },
+    "sat_checks": {
+     "frames_checked": 0,
+     "mismatch_updates": []
+    },
+    "rows_first_pickup": [
+     {
+      "u": 8,
+      "x": 224,
+      "y": 367,
+      "vx": 0,
+      "vy": 688,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 2,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 4,
+       "x": 224,
+       "y": 398,
+       "f4": 0
+      }
+     },
+     {
+      "u": 9,
+      "x": 224,
+      "y": 370,
+      "vx": 0,
+      "vy": 736,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 8,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 3,
+       "x": 224,
+       "y": 398,
+       "f4": 0
+      }
+     },
+     {
+      "u": 10,
+      "x": 224,
+      "y": 373,
+      "vx": 0,
+      "vy": 784,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 7,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 2,
+       "x": 224,
+       "y": 398,
+       "f4": 0
+      }
+     },
+     {
+      "u": 11,
+      "x": 224,
+      "y": 376,
+      "vx": 0,
+      "vy": 832,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 6,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 1,
+       "timer": 1,
+       "x": 224,
+       "y": 398,
+       "f4": 0
+      }
+     },
+     {
+      "u": 12,
+      "x": 224,
+      "y": 380,
+      "vx": 0,
+      "vy": 880,
+      "cur": 14,
+      "req": 14,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 5,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 1,
+       "frame": 2,
+       "timer": 8,
+       "x": 224,
+       "y": 398,
+       "f4": 0
+      }
+     },
+     {
+      "u": 13,
+      "x": 224,
+      "y": 382,
+      "vx": 0,
+      "vy": 928,
+      "cur": 14,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 3,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 1,
+       "req": 3,
+       "frame": 2,
+       "timer": 7,
+       "x": 224,
+       "y": 398,
+       "f4": 0
+      }
+     },
+     {
+      "u": 14,
+      "x": 224,
+      "y": 385,
+      "vx": 0,
+      "vy": -1920,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 2,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 12,
+       "x": 224,
+       "y": 397,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 2
+     },
+     {
+      "u": 15,
+      "x": 224,
+      "y": 378,
+      "vx": 0,
+      "vy": -1872,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 11,
+       "x": 224,
+       "y": 394,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 16,
+      "x": 224,
+      "y": 371,
+      "vx": 0,
+      "vy": -1824,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 10,
+       "x": 224,
+       "y": 387,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 17,
+      "x": 224,
+      "y": 364,
+      "vx": 0,
+      "vy": -1776,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 9,
+       "x": 224,
+       "y": 380,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 18,
+      "x": 224,
+      "y": 357,
+      "vx": 0,
+      "vy": -1728,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 8,
+       "x": 224,
+       "y": 373,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 19,
+      "x": 224,
+      "y": 350,
+      "vx": 0,
+      "vy": -1680,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 7,
+       "x": 224,
+       "y": 366,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 20,
+      "x": 224,
+      "y": 344,
+      "vx": 0,
+      "vy": -1632,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 6,
+       "x": 224,
+       "y": 360,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     }
+    ],
+    "rows_second_bounce_window": [
+     {
+      "u": 93,
+      "x": 224,
+      "y": 385,
+      "vx": 0,
+      "vy": 1792,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 1,
+       "x": 224,
+       "y": 396,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 94,
+      "x": 224,
+      "y": 392,
+      "vx": 0,
+      "vy": 1792,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 4,
+       "x": 224,
+       "y": 403,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 95,
+      "x": 224,
+      "y": 389,
+      "vx": 0,
+      "vy": -1920,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 2,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 12,
+       "x": 224,
+       "y": 401,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 96,
+      "x": 224,
+      "y": 381,
+      "vx": 0,
+      "vy": -1872,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 11,
+       "x": 224,
+       "y": 397,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 97,
+      "x": 224,
+      "y": 374,
+      "vx": 0,
+      "vy": -1824,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 10,
+       "x": 224,
+       "y": 390,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 98,
+      "x": 224,
+      "y": 367,
+      "vx": 0,
+      "vy": -1776,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 9,
+       "x": 224,
+       "y": 383,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 99,
+      "x": 224,
+      "y": 360,
+      "vx": 0,
+      "vy": -1728,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 8,
+       "x": 224,
+       "y": 376,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 100,
+      "x": 224,
+      "y": 354,
+      "vx": 0,
+      "vy": -1680,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 7,
+       "x": 224,
+       "y": 370,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 101,
+      "x": 224,
+      "y": 348,
+      "vx": 0,
+      "vy": -1632,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 6,
+       "x": 224,
+       "y": 364,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 102,
+      "x": 224,
+      "y": 341,
+      "vx": 0,
+      "vy": -1584,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 5,
+       "x": 224,
+       "y": 357,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 103,
+      "x": 224,
+      "y": 335,
+      "vx": 0,
+      "vy": -1536,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 4,
+       "x": 224,
+       "y": 351,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 104,
+      "x": 224,
+      "y": 330,
+      "vx": 0,
+      "vy": -1488,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 3,
+       "x": 224,
+       "y": 346,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 105,
+      "x": 224,
+      "y": 324,
+      "vx": 0,
+      "vy": -1440,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 2,
+       "x": 224,
+       "y": 340,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 106,
+      "x": 224,
+      "y": 318,
+      "vx": 0,
+      "vy": -1392,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 4,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 3,
+       "req": 3,
+       "frame": 3,
+       "timer": 1,
+       "x": 224,
+       "y": 334,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 107,
+      "x": 224,
+      "y": 313,
+      "vx": 0,
+      "vy": -1344,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 3,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 4,
+       "x": 224,
+       "y": 329,
+       "f4": 0
+      },
+      "follow_offset_y": 16,
+      "follow_owner_frame_at_call": 3
+     },
+     {
+      "u": 108,
+      "x": 224,
+      "y": 308,
+      "vx": 0,
+      "vy": -1296,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 2,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 3,
+       "x": 224,
+       "y": 319,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     },
+     {
+      "u": 109,
+      "x": 224,
+      "y": 303,
+      "vx": 0,
+      "vy": -1248,
+      "cur": 18,
+      "req": 18,
+      "f3": 1,
+      "f4": 0,
+      "pframe": 11,
+      "ptimer": 1,
+      "f22": 0,
+      "f23": 0,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4,
+       "timer": 2,
+       "x": 224,
+       "y": 314,
+       "f4": 0
+      },
+      "follow_offset_y": 11,
+      "follow_owner_frame_at_call": 4
+     }
+    ],
+    "follow_offset_rel_second_contact": {
+     "-2": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "-1": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "0": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "1": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "2": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "3": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "4": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "5": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "6": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "7": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "8": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "9": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "10": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "11": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "12": {
+      "offset_y": 16,
+      "owner_frame_at_call": 3
+     },
+     "13": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     },
+     "14": {
+      "offset_y": 11,
+      "owner_frame_at_call": 4
+     }
+    }
+   },
+   "art_bounds_sez": {
+    "1": {
+     "opaque_rows_rel_anchor": [
+      2,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 255
+    },
+    "2": {
+     "opaque_rows_rel_anchor": [
+      2,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 245
+    },
+    "3": {
+     "opaque_rows_rel_anchor": [
+      2,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 184
+    },
+    "4": {
+     "opaque_rows_rel_anchor": [
+      7,
+      17
+     ],
+     "opaque_cols_rel_anchor": [
+      -7,
+      8
+     ],
+     "opaque_pixels": 152
+    }
+   },
+   "cadence_identical_between_zones": true
+  }
+ },
+ "part_b_act_clear": {
+  "callback_12_matrix": {
+   "evidence": "CONTROLLED ROUTINE RESULT (callback $3B4E, owner slot $D700 present, 5 rings held)",
+   "cases": [
+    {
+     "case": "airborne_no_contact",
+     "requested_after": 18,
+     "vy_after": 304,
+     "vx_after": 0,
+     "d522_floor_bit1_after": 0,
+     "d522_after": 0,
+     "f3_after": 1,
+     "y_after": 501,
+     "owner_requested_state": 4,
+     "sound_request_de04": 0,
+     "rings_after": 5,
+     "invulnerability_timer_d3b1": 0,
+     "owner_y_after": 512
+    },
+    {
+     "case": "floor_contact",
+     "requested_after": 18,
+     "vy_after": -1920,
+     "vx_after": 0,
+     "d522_floor_bit1_after": 0,
+     "d522_after": 0,
+     "f3_after": 1,
+     "y_after": 485,
+     "owner_requested_state": 3,
+     "sound_request_de04": 194,
+     "rings_after": 5,
+     "invulnerability_timer_d3b1": 0,
+     "owner_y_after": 497
+    },
+    {
+     "case": "floor_contact_jump_press",
+     "requested_after": 10,
+     "vy_after": -1088,
+     "vx_after": 0,
+     "d522_floor_bit1_after": 0,
+     "d522_after": 0,
+     "f3_after": 3,
+     "y_after": 485,
+     "owner_requested_state": 5,
+     "sound_request_de04": 162,
+     "rings_after": 5,
+     "invulnerability_timer_d3b1": 0,
+     "owner_y_after": 497
+    },
+    {
+     "case": "jump_press_airborne",
+     "requested_after": 10,
+     "vy_after": -1088,
+     "vx_after": 0,
+     "d522_floor_bit1_after": 0,
+     "d522_after": 0,
+     "f3_after": 3,
+     "y_after": 500,
+     "owner_requested_state": 5,
+     "sound_request_de04": 162,
+     "rings_after": 5,
+     "invulnerability_timer_d3b1": 0,
+     "owner_y_after": 512
+    },
+    {
+     "case": "side_wall_right",
+     "requested_after": 30,
+     "vy_after": -1024,
+     "vx_after": -256,
+     "d522_floor_bit1_after": 0,
+     "d522_after": 4,
+     "f3_after": 1,
+     "y_after": 501,
+     "owner_requested_state": 5,
+     "sound_request_de04": 0,
+     "rings_after": 5,
+     "invulnerability_timer_d3b1": 0,
+     "owner_y_after": 512
+    },
+    {
+     "case": "side_wall_right_and_floor",
+     "requested_after": 18,
+     "vy_after": -1920,
+     "vx_after": 0,
+     "d522_floor_bit1_after": 0,
+     "d522_after": 0,
+     "f3_after": 1,
+     "y_after": 453,
+     "owner_requested_state": 3,
+     "sound_request_de04": 194,
+     "rings_after": 5,
+     "invulnerability_timer_d3b1": 0,
+     "owner_y_after": 465
+    },
+    {
+     "case": "floor_contact_hold_right",
+     "requested_after": 18,
+     "vy_after": -1920,
+     "vx_after": 32,
+     "d522_floor_bit1_after": 0,
+     "d522_after": 0,
+     "f3_after": 1,
+     "y_after": 485,
+     "owner_requested_state": 3,
+     "sound_request_de04": 194,
+     "rings_after": 5,
+     "invulnerability_timer_d3b1": 0,
+     "owner_y_after": 497
+    }
+   ],
+   "invariant": "after the callback the object phase always sees D522 bit1 (floor) CLEAR: the rebound ($3B6B), the jump branch ($45ED, $4632) and the hurt tail ($494F, $495B) each clear it, and airborne updates never set it"
+  },
+  "activation": {
+   "evidence": "EMULATED ORIGINAL FRAME (MGHZ2 type-$18 sign (3968,270); Sonic with attached shoes teleported so that the sign's screen X is varied; no input)",
+   "conversion_screen_x_values": [
+    287,
+    286,
+    285,
+    284,
+    283,
+    282,
+    281,
+    280,
+    279,
+    278,
+    277,
+    276,
+    275,
+    274,
+    273,
+    272,
+    271
+   ],
+   "conversion_screen_x_range": [
+    271,
+    287
+   ],
+   "horizontal_sweep": [
+    {
+     "sign_screen_x": 300,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 299,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 298,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 297,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 296,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 295,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 294,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 293,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 292,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 291,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 290,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 289,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 288,
+     "converted_within_10_frames": false,
+     "sign_state_after": 1
+    },
+    {
+     "sign_screen_x": 287,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 286,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 285,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 284,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 283,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 282,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 281,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 280,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 279,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 278,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 277,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 276,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 275,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 274,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 273,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 272,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    },
+    {
+     "sign_screen_x": 271,
+     "converted_within_10_frames": true,
+     "sign_state_after": 3
+    }
+   ],
+   "timeline": {
+    "request_update": 3,
+    "requested": 14,
+    "current_replaced_update": 4,
+    "shoe_state5_first_update": 5,
+    "shoe_removed_update": 36,
+    "writes": [
+     {
+      "what": "D502",
+      "value": 14,
+      "pc": "0xA88D"
+     },
+     {
+      "what": "D502",
+      "value": 5,
+      "pc": "0x45DE"
+     },
+     {
+      "what": "D502",
+      "value": 1,
+      "pc": "0x45BF"
+     },
+     {
+      "what": "shoe_slot",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "what": "shoe_slot",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "what": "shoe_slot",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "what": "shoe_slot",
+      "value": 47,
+      "pc": "0x80F6"
+     }
+    ],
+    "activation_callback_hits": 1,
+    "first_rows": [
+     {
+      "u": 1,
+      "cur": 18,
+      "req": 18,
+      "y": 202,
+      "vy": 304,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4
+      }
+     },
+     {
+      "u": 2,
+      "cur": 18,
+      "req": 18,
+      "y": 203,
+      "vy": 352,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4
+      }
+     },
+     {
+      "u": 3,
+      "cur": 18,
+      "req": 14,
+      "y": 205,
+      "vy": 400,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 4,
+       "req": 4,
+       "frame": 4
+      }
+     },
+     {
+      "u": 4,
+      "cur": 14,
+      "req": 14,
+      "y": 206,
+      "vy": 448,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 4,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 5,
+      "cur": 14,
+      "req": 14,
+      "y": 208,
+      "vy": 496,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 6,
+      "cur": 14,
+      "req": 14,
+      "y": 210,
+      "vy": 544,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 7,
+      "cur": 14,
+      "req": 14,
+      "y": 213,
+      "vy": 592,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 8,
+      "cur": 14,
+      "req": 14,
+      "y": 215,
+      "vy": 640,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 9,
+      "cur": 14,
+      "req": 14,
+      "y": 218,
+      "vy": 688,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 10,
+      "cur": 14,
+      "req": 14,
+      "y": 221,
+      "vy": 736,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 11,
+      "cur": 14,
+      "req": 14,
+      "y": 224,
+      "vy": 784,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 12,
+      "cur": 14,
+      "req": 14,
+      "y": 227,
+      "vy": 832,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 13,
+      "cur": 14,
+      "req": 14,
+      "y": 231,
+      "vy": 880,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     },
+     {
+      "u": 14,
+      "cur": 14,
+      "req": 14,
+      "y": 234,
+      "vy": 928,
+      "d3a4": 55040,
+      "shoe": {
+       "state": 5,
+       "req": 5,
+       "frame": 4
+      }
+     }
+    ]
+   },
+   "reading": "the sign's state-2 callback $A87D runs once when the sign wakes ($61E1: screen X < 288 = RIGHT+32); it writes requested $0E only if the REQUESTED state is $12; the player's next update makes $0E current, the shoes see that in their own next update and fall; the owner pointer is never written again"
+  },
+  "chains": {
+   "natural_conversion_then_walk_into_sign": {
+    "label": "shoes attached, sign wakes (conversion), hold Right",
+    "start": {
+     "x": 3900,
+     "y": 200,
+     "vx": 0,
+     "inject_awake_sign_SYNTHETIC": false
+    },
+    "events_frame_index": {
+     "left_12_request": 2,
+     "sign_contact": 38,
+     "child_spawned": 168,
+     "child_state4": 316,
+     "request_20": 316,
+     "act_clear_flag": 346
+    },
+    "end": {
+     "final_player_state": 32,
+     "final_requested": 32,
+     "child_state_at_end": [
+      4
+     ],
+     "sign_state_at_end": [
+      5
+     ],
+     "level_timer_d2be": 0,
+     "shoe_present": false,
+     "frames_run": 347,
+     "rings": 0
+    }
+   },
+   "synthetic_prewoken_sign_top_contact_stalls": {
+    "label": "SYNTHETIC pre-woken sign, shoes kept, small rightward drift, vertical contact",
+    "start": {
+     "x": 3966,
+     "y": 150,
+     "vx": 16,
+     "inject_awake_sign_SYNTHETIC": true
+    },
+    "events_frame_index": {
+     "sign_contact": 24,
+     "child_spawned": 154,
+     "child_state4": 302
+    },
+    "end": {
+     "final_player_state": 18,
+     "final_requested": 18,
+     "child_state_at_end": [
+      4
+     ],
+     "sign_state_at_end": [
+      5
+     ],
+     "level_timer_d2be": 0,
+     "shoe_present": true,
+     "frames_run": 1500,
+     "rings": 0
+    }
+   },
+   "synthetic_prewoken_sign_top_contact_then_jump": {
+    "label": "same, then B1 pressed 200 updates after the sign contact",
+    "start": {
+     "x": 3966,
+     "y": 150,
+     "vx": 16,
+     "inject_awake_sign_SYNTHETIC": true
+    },
+    "events_frame_index": {
+     "sign_contact": 24,
+     "child_spawned": 154,
+     "left_12_request": 225,
+     "child_state4": 302,
+     "request_20": 315,
+     "act_clear_flag": 385
+    },
+    "end": {
+     "final_player_state": 32,
+     "final_requested": 32,
+     "child_state_at_end": [
+      4
+     ],
+     "sign_state_at_end": [
+      5
+     ],
+     "level_timer_d2be": 0,
+     "shoe_present": false,
+     "frames_run": 386,
+     "rings": 0
+    }
+   },
+   "synthetic_prewoken_sign_side_contact": {
+    "label": "SYNTHETIC pre-woken sign, horizontal contact at speed",
+    "start": {
+     "x": 3944,
+     "y": 262,
+     "vx": 256,
+     "inject_awake_sign_SYNTHETIC": true
+    },
+    "events_frame_index": {
+     "sign_contact": 4,
+     "hurt_requested": 4,
+     "left_12_request": 4,
+     "child_spawned": 134,
+     "child_state4": 282,
+     "request_20": 282,
+     "act_clear_flag": 320
+    },
+    "end": {
+     "final_player_state": 32,
+     "final_requested": 32,
+     "child_state_at_end": [
+      4
+     ],
+     "sign_state_at_end": [
+      5
+     ],
+     "level_timer_d2be": 0,
+     "shoe_present": false,
+     "frames_run": 321,
+     "rings": 0
+    }
+   }
+  },
+  "child_gate": {
+   "evidence": "DOCUMENTED + BYTE-VERIFIED (docs/object-18-act-clear.md; type $19 state 4 callback $AB8C)",
+   "rule": "type $19 state 4: every update unless player state is $20: $037D, then if $D522 bit1 (floor) then CALL $03F5 -> $4892 (requested $20); no timeout"
+  }
+ },
+ "part_c_detach": {
+  "evidence": "EMULATED ORIGINAL FRAME (MGHZ1 shoes (1552,238) attached naturally, then Sonic teleported next to the trigger; the shoes, owner pointer and state stay as they are)",
+  "cases": {
+   "manual_jump_rising": {
+    "label": "B1 pressed 8 updates after the attach point (rising)",
+    "request_update": 10,
+    "successor_requested": 10,
+    "current_state_replaced_update": 11,
+    "successor_current": 10,
+    "shoe_state5_first_update": 10,
+    "shoe_removed_update": 40,
+    "owner_pointer_after": "0xD700",
+    "owner_pointer_changed_by_any_write": false,
+    "writes": [
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 10,
+      "pc": "0x4617"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 5,
+      "pc": "0x45DE"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 1,
+      "pc": "0x45BF"
+     }
+    ],
+    "rings_before": 0,
+    "at_replacement": {
+     "vx": 0,
+     "vy": -1040,
+     "f3": 3,
+     "d3b1": 0,
+     "rings": 0
+    }
+   },
+   "manual_jump_falling": {
+    "label": "B1 pressed 40 updates after the attach point (falling)",
+    "request_update": 42,
+    "successor_requested": 10,
+    "current_state_replaced_update": 43,
+    "successor_current": 10,
+    "shoe_state5_first_update": 42,
+    "shoe_removed_update": 69,
+    "owner_pointer_after": "0xD700",
+    "owner_pointer_changed_by_any_write": false,
+    "writes": [
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 10,
+      "pc": "0x4617"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 5,
+      "pc": "0x45DE"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 1,
+      "pc": "0x45BF"
+     }
+    ],
+    "rings_before": 0,
+    "at_replacement": {
+     "vx": 0,
+     "vy": -1040,
+     "f3": 3,
+     "d3b1": 0,
+     "rings": 0
+    }
+   },
+   "manual_jump_floor_contact": {
+    "label": "B1 pressed 61 updates after the attach point (floor_contact)",
+    "request_update": 63,
+    "successor_requested": 10,
+    "current_state_replaced_update": 64,
+    "successor_current": 10,
+    "shoe_state5_first_update": 63,
+    "shoe_removed_update": 89,
+    "owner_pointer_after": "0xD700",
+    "owner_pointer_changed_by_any_write": false,
+    "writes": [
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 10,
+      "pc": "0x4617"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 5,
+      "pc": "0x45DE"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 1,
+      "pc": "0x45BF"
+     }
+    ],
+    "rings_before": 0,
+    "at_replacement": {
+     "vx": 0,
+     "vy": -1040,
+     "f3": 3,
+     "d3b1": 0,
+     "rings": 0
+    }
+   },
+   "type21_top_stomp": {
+    "label": "type $21 (1744,238) stomped from above",
+    "request_update": 21,
+    "successor_requested": 11,
+    "current_state_replaced_update": 22,
+    "successor_current": 11,
+    "shoe_state5_first_update": 23,
+    "shoe_removed_update": 44,
+    "owner_pointer_after": "0xD700",
+    "owner_pointer_changed_by_any_write": false,
+    "writes": [
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 11,
+      "pc": "0x4815"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 47,
+      "pc": "0x80F6"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 14,
+      "pc": "0x4646"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 5,
+      "pc": "0x45DE"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 1,
+      "pc": "0x45BF"
+     }
+    ],
+    "rings_before": 0,
+    "at_replacement": {
+     "vx": 0,
+     "vy": -1704,
+     "f3": 1,
+     "d3b1": 0,
+     "rings": 0
+    }
+   },
+   "type21_side_contact_with_rings": {
+    "label": "type $21 side/low contact at speed, 5 rings",
+    "request_update": 76,
+    "successor_requested": 30,
+    "current_state_replaced_update": 77,
+    "successor_current": 30,
+    "shoe_state5_first_update": 78,
+    "shoe_removed_update": 101,
+    "owner_pointer_after": "0xD700",
+    "owner_pointer_changed_by_any_write": false,
+    "writes": [
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 30,
+      "pc": "0x4957"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 5,
+      "pc": "0x45DE"
+     }
+    ],
+    "rings_before": 5,
+    "at_replacement": {
+     "vx": -256,
+     "vy": -1872,
+     "f3": 193,
+     "d3b1": 119,
+     "rings": 0
+    }
+   },
+   "terrain_wall_side_branch_with_rings": {
+    "label": "terrain wall (MGHZ1 shaft wall, X3575), 5 rings",
+    "request_update": 11,
+    "successor_requested": 30,
+    "current_state_replaced_update": 12,
+    "successor_current": 30,
+    "shoe_state5_first_update": 11,
+    "shoe_removed_update": 38,
+    "owner_pointer_after": "0xD700",
+    "owner_pointer_changed_by_any_write": false,
+    "writes": [
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 30,
+      "pc": "0x4957"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 5,
+      "pc": "0x45DE"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 20,
+      "pc": "0x4667"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 31,
+      "pc": "0x4988"
+     }
+    ],
+    "rings_before": 5,
+    "at_replacement": {
+     "vx": -256,
+     "vy": -976,
+     "f3": 1,
+     "d3b1": 0,
+     "rings": 5
+    }
+   },
+   "terrain_upright_spring": {
+    "label": "terrain upright spring MGHZ1 cell (110,25)",
+    "request_update": 26,
+    "successor_requested": 11,
+    "current_state_replaced_update": 27,
+    "successor_current": 11,
+    "shoe_state5_first_update": 28,
+    "shoe_removed_update": 48,
+    "owner_pointer_after": "0xD700",
+    "owner_pointer_changed_by_any_write": false,
+    "writes": [
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 11,
+      "pc": "0x4815"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 254,
+      "pc": "0x625F"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 255,
+      "pc": "0x6271"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 0,
+      "pc": "0x5F0E"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "D502",
+      "value": 14,
+      "pc": "0x4646"
+     },
+     {
+      "frame_index_in_run": null,
+      "what": "shoe_slot_type",
+      "value": 16,
+      "pc": "0x80F6"
+     }
+    ],
+    "rings_before": 0,
+    "at_replacement": {
+     "vx": 0,
+     "vy": -1896,
+     "f3": 1,
+     "d3b1": 0,
+     "rings": 0
+    }
+   }
+  },
+  "mapped_spring": {
+   "evidence": "EMULATED ORIGINAL FRAME (SEZ1 fixed type-$26 springs; control: Sonic in $0E dropped 90 px above the spring; shoes: attached shoes, Sonic dropped 120 px above, 260 updates, X offsets -12..+12)",
+   "springs": [
+    {
+     "spring": {
+      "placement": [
+       1760,
+       896
+      ],
+      "anchor_y": 908,
+      "parameter": 0,
+      "window_y": [
+       875,
+       880
+      ]
+     },
+     "control_request_state_0E": 11,
+     "control_request_update": 21,
+     "with_shoes": [
+      {
+       "dx": -12,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": -8,
+       "rebounds": 1,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": 30
+      },
+      {
+       "dx": -4,
+       "rebounds": 1,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": 30
+      },
+      {
+       "dx": 0,
+       "rebounds": 1,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": 30
+      },
+      {
+       "dx": 4,
+       "rebounds": 1,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": 30
+      },
+      {
+       "dx": 8,
+       "rebounds": 1,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": 30
+      },
+      {
+       "dx": 12,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      }
+     ]
+    },
+    {
+     "spring": {
+      "placement": [
+       1472,
+       864
+      ],
+      "anchor_y": 876,
+      "parameter": 1,
+      "window_y": [
+       843,
+       848
+      ]
+     },
+     "control_request_state_0E": 11,
+     "control_request_update": 21,
+     "with_shoes": [
+      {
+       "dx": -12,
+       "rebounds": 3,
+       "rebound_y": [
+        837
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": -8,
+       "rebounds": 3,
+       "rebound_y": [
+        837
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": -4,
+       "rebounds": 3,
+       "rebound_y": [
+        837
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 0,
+       "rebounds": 3,
+       "rebound_y": [
+        837
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 4,
+       "rebounds": 3,
+       "rebound_y": [
+        837
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 8,
+       "rebounds": 3,
+       "rebound_y": [
+        837
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 12,
+       "rebounds": 3,
+       "rebound_y": [
+        837
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      }
+     ]
+    },
+    {
+     "spring": {
+      "placement": [
+       1632,
+       896
+      ],
+      "anchor_y": 908,
+      "parameter": 1,
+      "window_y": [
+       875,
+       880
+      ]
+     },
+     "control_request_state_0E": 11,
+     "control_request_update": 21,
+     "with_shoes": [
+      {
+       "dx": -12,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": -8,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": -4,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 0,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 4,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 8,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      },
+      {
+       "dx": 12,
+       "rebounds": 3,
+       "rebound_y": [
+        869
+       ],
+       "spring_requests": [],
+       "other_first_request": null
+      }
+     ]
+    }
+   ],
+   "spring_launches_with_shoes": 0,
+   "controls_that_launch": 3,
+   "gates": "$782AF (fixed spring): not off-screen, Y speed >= 0, D522 bit1 (floor), requested state != $21, |dx| < 12 (strict), player Y in springY-33..-28",
+   "reading": "no fixed mapped spring ever launches Sonic while the shoes are attached: the shoes' rebound clears D522 bit1 and sets Y speed -7.5 in the same update (callback_12_matrix), and the floor contact sits 8 px higher than a standing contact (state-$12 foot offset), outside the spring's 6-px Y window; the other non-$12 requests in the sweep are terrain side walls / neighbouring solid objects"
+  },
+  "object_mirrored_side_contact_monitor": {
+   "label": "SEZ1 monitor $10 (368,238): Sonic with shoes drops beside it (X352)",
+   "request_update": 92,
+   "successor_requested": 30,
+   "current_state_replaced_update": 93,
+   "successor_current": 30,
+   "shoe_state5_first_update": 92,
+   "shoe_removed_update": 119,
+   "owner_pointer_after": "0xD780",
+   "owner_pointer_changed_by_any_write": false,
+   "writes": [
+    {
+     "frame_index_in_run": null,
+     "what": "D502",
+     "value": 30,
+     "pc": "0x4957"
+    },
+    {
+     "frame_index_in_run": null,
+     "what": "shoe_slot_type",
+     "value": 254,
+     "pc": "0x625F"
+    },
+    {
+     "frame_index_in_run": null,
+     "what": "shoe_slot_type",
+     "value": 255,
+     "pc": "0x6271"
+    },
+    {
+     "frame_index_in_run": null,
+     "what": "shoe_slot_type",
+     "value": 0,
+     "pc": "0x5F0E"
+    },
+    {
+     "frame_index_in_run": null,
+     "what": "shoe_slot_type",
+     "value": 47,
+     "pc": "0x80F6"
+    },
+    {
+     "frame_index_in_run": null,
+     "what": "D502",
+     "value": 5,
+     "pc": "0x45DE"
+    }
+   ],
+   "rings_before": 5,
+   "at_replacement": {
+    "vx": -256,
+    "vy": -976,
+    "f3": 1,
+    "d3b1": 0,
+    "rings": 7
+   }
+  }
+ },
+ "classification": [
+  {
+   "id": "P1",
+   "observation": "The shoe sprite shows frames 1/2 (alternating every 8 updates) only while unattached; attached it shows frame 3 for 12 updates after every floor contact and frame 4 otherwise",
+   "class": "CANONICAL",
+   "evidence": "object scripts $8B2C/$8B40/$8B49; whole-game traces (contact updates 12/93/174/255: period 81, frame 3 length 12, frame 4 length 69)"
+  },
+  {
+   "id": "P2",
+   "observation": "While attached the shoe changes frame exactly twice per bounce (3 at the contact update, 4 twelve updates later); there is no continuous shoe animation",
+   "class": "CANONICAL",
+   "evidence": "shoe_frame_runs; the frame-4 record repeats duration 4 without changing frame"
+  },
+  {
+   "id": "P3",
+   "observation": "Sonic's animation record is the single frame $0B (duration 4, restart) for the whole of state $12; it changes only with facing (+$04 bit4)",
+   "class": "CANONICAL",
+   "evidence": "player script $8346; player_frame_values_in_state_12 = [11]; f4 values {0,16}"
+  },
+  {
+   "id": "P4",
+   "observation": "Registration: owner anchor = (player X, player Y + 16 if the owner's frame is 3 else 11), evaluated in the player update from the frame left by the previous object phase; dx = 0; the shoe is never mirrored",
+   "class": "CANONICAL",
+   "evidence": "$3BA8/$5F27 hooks (follow_offsets), SAT buffer equals the renderer model on every checked frame except the pickup update, shoe +$04 = 0 while Left/Right alternate"
+  },
+  {
+   "id": "P5",
+   "observation": "SEZ (art base $94) and MGHZ (art base $AC) behave identically",
+   "class": "CANONICAL",
+   "evidence": "cadence_identical_between_zones"
+  },
+  {
+   "id": "P6",
+   "observation": "The POC object Step and player sprite choice mirror these scripts in source; the reported 'too active' presentation cannot be explained from source and needs a capture compared with the frame fixtures",
+   "class": "UNRESOLVED",
+   "evidence": "POC SOURCE (READ-ONLY); the JSON fixtures give exact update indices"
+  },
+  {
+   "id": "B1",
+   "observation": "The sign's contact does not request $20 and does not touch the footwear",
+   "class": "CANONICAL",
+   "evidence": "type $18 state-3 callback; whole-game chains"
+  },
+  {
+   "id": "B2",
+   "observation": "The only footwear clear paths are two requested-state conversions $12 -> $0E: type $18 state 2 (sign wakes: screen X < 288 = RIGHT+32) and type $50 state 0 (boss creation)",
+   "class": "CANONICAL",
+   "evidence": "opcode scan (2 sites), activation sweep 271..287 converts, 288+ does not"
+  },
+  {
+   "id": "B3",
+   "observation": "The sign's wake trigger is an EDGE(RIGHT,+32) relation; on a wide view the generic wake band must be adapted explicitly",
+   "class": "EXPLICIT ADAPTER CANDIDATE",
+   "evidence": "docs/viewport-semantics-audit.md generic lifetime bands"
+  },
+  {
+   "id": "B4",
+   "observation": "Replacement timeline: request written in the sign's object phase of update N, $0E current in N+1, shoes request state 5 in N+1 and are in state 5 in N+2; the owner pointer $D3A4 is never cleared",
+   "class": "CANONICAL",
+   "evidence": "activation timeline (request 3, current 4, shoe state 5 at 5); opcode scan of $D3A4"
+  },
+  {
+   "id": "B5",
+   "observation": "Type $2F removes itself only through the generic mapped-object lifetime routine $61E1 (type $FE, tracked placement released); the placement later re-creates the shoes",
+   "class": "CANONICAL",
+   "evidence": "write watch: slot type $FE at $625F then free, later $2F written by the placement creator $80F6"
+  },
+  {
+   "id": "B6",
+   "observation": "The act-clear child waits for D522 bit1 with no timeout; state $12 clears that bit in every branch, so with shoes attached and the sign already awake a vertical sign contact stalls act completion until a button press, hurt or spring detaches the shoes",
+   "class": "CANONICAL",
+   "evidence": "SYNTHETIC pre-woken sign: 1500 updates, child state 4, no request $20; B1 after contact+200 -> request $20 at +90; callback_12_matrix invariant"
+  },
+  {
+   "id": "B7",
+   "observation": "Whether that stall is reachable in a canonical placement is not shown: the only shoes within 288 px of a sign are MGHZ2 (3760,494) vs (3968,270) and the sign's wake normally converts the shoes first",
+   "class": "UNRESOLVED",
+   "evidence": "placement census; sign wake always converts when the sign wakes while shoes are attached"
+  },
+  {
+   "id": "B8",
+   "observation": "A horizontal sign contact in state $12 is a side-wall hurt (not a stall): the act-clear chain then completes after the landing",
+   "class": "CANONICAL",
+   "evidence": "chains: side contact hurt at the contact update, request $20 at +278"
+  },
+  {
+   "id": "C1",
+   "observation": "Type $21 top stomp: successor $0B (via $5F17 -> $480C, Y speed -6.75); shoes detach (state 5 two updates after the request)",
+   "class": "CANONICAL",
+   "evidence": "type21_top_stomp"
+  },
+  {
+   "id": "C2",
+   "observation": "Type $21 side/low contact: ordinary damage $1E (rings lost, invulnerability); shoes detach",
+   "class": "CANONICAL",
+   "evidence": "type21_side_contact_with_rings"
+  },
+  {
+   "id": "C3",
+   "observation": "Mapped type $26 springs never launch or detach a $12 Sonic (D522 bit1 is always clear after the shoes' callback and the floor contact sits 8 px higher than a standing contact)",
+   "class": "CANONICAL",
+   "evidence": "3 SEZ1 springs whose control launches: 0 launches with shoes over 21 x 260 updates; callback_12_matrix. Corrects docs/powerup-shoes-audit.md section 6 (isolated-handler result)"
+  },
+  {
+   "id": "C4",
+   "observation": "The POC lets a mapped spring launch state $12 (contact judged on the pre-bounce Y speed/floor)",
+   "class": "POC DIVERGENCE",
+   "evidence": "POC SOURCE (READ-ONLY): SCR_chaos_spring.gml shoe_bounced / shoe_prev_vy"
+  },
+  {
+   "id": "C5",
+   "observation": "Side-wall branch ($3B9D -> $494F): requested $1E, shoes detach in the same update, NO ring loss, NO invulnerability; triggered by terrain walls and by object contacts mirrored into D523 bit2/3 (monitor $10, sign $18)",
+   "class": "CANONICAL",
+   "evidence": "terrain_wall_side_branch_with_rings (rings 5 -> 5, D3B1 0, +$03 = $01), monitor_side_case, sign side chain"
+  },
+  {
+   "id": "C6",
+   "observation": "Terrain upright spring: successor $0B, Y speed -7.5, shoes detach",
+   "class": "CANONICAL",
+   "evidence": "terrain_upright_spring"
+  },
+  {
+   "id": "C7",
+   "observation": "Manual jump: successor $0A (-4.25), the owner is set to state 5 in the same update",
+   "class": "CANONICAL",
+   "evidence": "manual_jump_* (rising/falling/floor contact)"
+  }
+ ],
+ "agents_candidates": [
+  "Spring Shoes presentation: attached shoe = frame 3 for 12 updates after every floor contact, frame 4 otherwise (unattached: frames 1/2 every 8); Sonic's record is the single frame $0B; shoe anchor = Sonic X, Sonic Y + 16 (frame 3) / +11, one-update lag, never mirrored.",
+  "A type-$18 sign (and the type-$50 boss) converts a REQUESTED state $12 to $0E when it wakes (screen X < 288 = EDGE(RIGHT,+32)); no other code clears Spring Shoes except the state change itself. $D3A4 is never cleared.",
+  "Spring Shoes can stall act completion only in the narrow case of an already-awake sign plus a vertical contact (the child waits for D522 bit1, which state $12 always clears); a side contact hurts instead.",
+  "Mapped $26 springs never act on state $12; terrain springs, $21 stomps, damage and manual jump do. The state-$12 side-wall branch hurts without ring loss or invulnerability and is also triggered by object contacts mirrored into D523."
+ ],
+ "poc_source_read_only": {
+  "files": [
+   "objects/OBJ_chaos_object_2F/Step_0.gml",
+   "objects/OBJ_chaos_object_2F/Draw_0.gml",
+   "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "scripts/SCR_chaos_spring/SCR_chaos_spring.gml"
+  ],
+  "facts": [
+   "object Step mirrors the ROM states 1/3/4/5 (frames 1/2 every 8 ticks, frame 3 for 12 ticks then 4, detach when player state != $12)",
+   "Sonic sprite in state $12: SPR_player_jump, image_index 0, image_speed 0 (single record), facing from player_flags bit 4",
+   "SCR_chaos_spring: a mapped spring contact is judged on the pre-bounce Y speed / floor flag / anchor of the shoes' relaunch (so a mapped spring CAN launch state $12) - the original never does",
+   "state-$12 side-wall branch uses the $494F hurt movement without damage flags (matches the ROM)"
+  ]
+ }
+}
