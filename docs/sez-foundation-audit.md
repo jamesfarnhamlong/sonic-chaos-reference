@@ -145,11 +145,11 @@ git diff --check
 ```
 
 PNG boards: `python tools/sez_art_approval.py <rom>` (project venv) then `tools/sez_art_previews.py` with a Pillow-enabled Python (16 PNGs in
-`build/sez-approval/`, git-ignored). **PENDING James's review; nothing is approved for POC import yet.**
+`build/sez-approval/`, git-ignored). **Approved by James on 2026-10-05 (all 16 boards) for POC use.**
 
 ## 10. Unresolved
 
 * Surface `$0C`/`$13` crumble and surface `$1A` booster semantics (§5); package S2.
 * Effect-5 absolute phase vs the global clock; whether `$A7`'s tile `$158` is the only animated art of the pad.
 * Results/act-3 tables `$2D84`, `$32CA`, `$A3A0` (zone-indexed presentation) — deferred with the results screen.
-* No Windows/gameplay acceptance is claimed; art is not approved.
+* No Windows/gameplay acceptance is claimed; the visual package was approved by James on 2026-10-05.

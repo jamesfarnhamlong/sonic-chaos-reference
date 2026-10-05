@@ -1,6 +1,7 @@
 {
   "format": 1,
-  "approval": "PENDING (James reviews the PNG boards in-thread before any POC import)",
+  "approval": "APPROVED BY USER 2026-10-05 (all 16 boards, complete visual package approved for POC use)",
+  "approval_date": "2026-10-05",
   "generator": "tools/sez_art_approval.py + tools/sez_art_previews.py",
   "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
   "png_folder": "build/sez-approval (git-ignored)",
@@ -321,6 +322,6 @@
       }
     }
   },
-  "approved_runtime_candidates": "none until approved; canonical orientation images only (bit4=0 for $23/$28/$2F/$54, script-set bit4=1 for $20); forced/diagnostic mirrors are never candidates",
+  "approved_runtime_candidates": "canonical orientation images only (bit4=0 for $23/$28/$2F/$54, script-set bit4=1 for $20); forced/diagnostic mirrors are never candidates",
   "policy": "Existing unchanged shared compositions ($10/$1B/$26/$2F frames, $07 shard) are proven identical to accepted zones in sez_object_census; they are shown once under the SEZ sprite palette. New compositions are the SEZ terrain, platform $28 art, $20, $23, $54/$55."
 }

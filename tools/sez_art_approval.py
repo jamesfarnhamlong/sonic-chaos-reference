@@ -4,7 +4,7 @@
 Pixels never enter the committed cache: they are written to the ignored ``build/`` folder
 and rendered to PNG boards by ``sez_art_previews.py`` (needs Pillow).  The committed
 ``data/rom-cache/sez/art-approval.json`` records only subjects, sources and hashes, and
-the approval state (PENDING until James reviews the PNGs in-thread).  Compositions are
+the approval state (APPROVED by James 2026-10-05).  Compositions are
 recomposed from ROM mappings/SAT data through the original render oracle, never hand edited.
 
     .venv/Scripts/python.exe tools/sez_art_approval.py "../source/Sonic Chaos (Europe).sms"
@@ -182,14 +182,14 @@ def manifest_for(full):
         return {'label': s['label'], 'act': s['act'], 'palette_index': s['palette_index'], 'bases': [f'0x{v:02X}' for v in s['bases']],
                 'frames': [f['frame'] for f in s['frames']], 'raw_tile_count': len(s['raw_tiles']), 'mirror_rule': s['mirror_rule'],
                 'frame_hashes': {str(f['frame']): [im['composed_index_sha256'] for im in f['images']] for f in s['frames']}}
-    return {'format': 1, 'approval': 'PENDING (James reviews the PNG boards in-thread before any POC import)',
+    return {'format': 1, 'approval': 'APPROVED BY USER 2026-10-05 (all 16 boards, complete visual package approved for POC use)', 'approval_date': '2026-10-05',
             'generator': 'tools/sez_art_approval.py + tools/sez_art_previews.py', 'rom_sha256': L.ROM_SHA256, 'png_folder': 'build/sez-approval (git-ignored)',
             'boards': ['terrain-tiles.png', 'terrain-blocks.png', 'terrain-special-surfaces.png', 'terrain-context-sez1.png', 'terrain-context-sez2.png',
                        'terrain-context-sez3.png', 'map-sez1.png', 'map-sez2.png', 'map-sez3.png', 'animated-terrain.png', 'type-20-approval.png', 'type-23-approval.png',
                        'type-28-approval.png', 'type-2f-approval.png', 'type-54-approval.png', 'shared-objects-sez-palette.png'],
             'subjects': {f"0x{int(k):02X}": entry(s) for k, s in full['subjects'].items()},
             'shared_subjects_identical_to_accepted_zone': {f"0x{int(k):02X}": entry(s) for k, s in full['shared'].items()},
-            'approved_runtime_candidates': 'none until approved; canonical orientation images only (bit4=0 for $23/$28/$2F/$54, script-set bit4=1 for $20); forced/diagnostic mirrors are never candidates',
+            'approved_runtime_candidates': 'canonical orientation images only (bit4=0 for $23/$28/$2F/$54, script-set bit4=1 for $20); forced/diagnostic mirrors are never candidates',
             'policy': 'Existing unchanged shared compositions ($10/$1B/$26/$2F frames, $07 shard) are proven identical to accepted zones in sez_object_census; '
                       'they are shown once under the SEZ sprite palette. New compositions are the SEZ terrain, platform $28 art, $20, $23, $54/$55.'}
 

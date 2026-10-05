@@ -286,8 +286,9 @@ class CacheTests(unittest.TestCase):
         self.assertEqual((ids['sign_clear'], ids['boss_trigger'], ids['boss_camera_lock'], ids['mapped_lifecycle']), ('EDGE', 'PLAYER_DIST', 'LOCKED_CAMERA', 'EDGE'))
         self.assertEqual(ids['boss_object_54'], 'UNRESOLVED')
 
-    def test_art_approval_recorded_pending(self):
-        self.assertTrue(self.a['approval'].startswith('PENDING'))
+    def test_art_approval_recorded(self):
+        self.assertTrue(self.a['approval'].startswith('APPROVED BY USER 2026-10-05'))
+        self.assertEqual(self.a['approval_date'], '2026-10-05')
         self.assertEqual(sorted(self.a['subjects']), ['0x20', '0x23', '0x28', '0x2F', '0x54'])
         self.assertEqual(sorted(self.a['shared_subjects_identical_to_accepted_zone']), ['0x07', '0x10', '0x1B', '0x26'])
         self.assertEqual(len(self.a['boards']), 16)

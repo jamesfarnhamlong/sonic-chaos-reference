@@ -94,9 +94,9 @@ SPECIAL_MECHANICS = [
      'gamemaker_adapter_candidate': 'same two-frame strip pattern as the accepted MGHZ $1A8/$1A9 strip; pause during the SEZ3 boss', 'package': 'S1'},
 ]
 IMPLEMENTATION_PACKAGES = [
-    {'id': 'S1', 'name': 'SEZ three-act foundation', 'scope': 'terrain/art/palettes (after approval), 4095-cell ceiling, rings (terrain only, no $09), springs ($09/$0A/$14 terrain, $26 mapped incl. new span $8C), '
+    {'id': 'S1', 'name': 'SEZ three-act foundation', 'scope': 'terrain/art/palettes (visual package approved 2026-10-05), 4095-cell ceiling, rings (terrain only, no $09), springs ($09/$0A/$14 terrain, $26 mapped incl. new span $8C), '
      'monitors ($10 params 1/2/4/6), ordinary sign clear (SEZ1/2), Spring Shoes ($2F, base $94) and Rocket Shoes, platform $28 params $83/$84, breakable $0D, ramp $12, block $47, static spikes $3D, '
-     'effect 5 tile animation, shared support ($0F/$34/$0A/$06/$03/$07)', 'blocked_by': ['visual approval of the SEZ art boards'], 'omits': ['$20', '$23', '$28 params $86/$04', 'surfaces $0C/$1A', '$54 boss']},
+     'effect 5 tile animation, shared support ($0F/$34/$0A/$06/$03/$07)', 'blocked_by': [], 'omits': ['$20', '$23', '$28 params $86/$04', 'surfaces $0C/$1A', '$54 boss']},
     {'id': 'S2', 'name': 'SEZ terrain mechanics audit', 'scope': 'surface $0C/$13 crumble and surface $1A booster (small oracle audits, 36+4 cells)', 'blocked_by': []},
     {'id': 'S3', 'name': 'SEZ platform state 7', 'scope': 'type $28 parameter $86 (3 placements) and parameter $04 axis variant (1 placement)', 'blocked_by': []},
     {'id': 'S4', 'name': 'SEZ enemies $20/$23', 'scope': 'contact/defeat/hop timing, art orientation (bit4), lifecycle (15 placements; SEZ only)', 'blocked_by': []},

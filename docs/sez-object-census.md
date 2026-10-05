@@ -44,7 +44,7 @@ re-hashed in the ROM (0 mismatches) and tested for zone-indexed code sites insid
 | Mapped `$26` springs | **exact** (30 spring regions); art identical to THZ | frames 0–3 identical for bases `$72/$72` and `$72/$00`; new parameter `$8C` follows the accepted span rule `(p & $7F)·16` = 192 px |
 | Terrain springs `$09`/`$0A`/`$14` | **exact**; diagonal launch −5.5 because zone ≠ 0 | `$6AB9` is the only zone gate in the region; blocks `$30..$33`, `$36` |
 | `$10` monitors (params 1/2/4/6) | **exact**; frames 0/11/12 identical to THZ | all four SEZ parameters are accepted rewards |
-| `$28` platforms | **behaviour exact for `$83/$84`; art NEW** | state table/callbacks unchanged; frame 1 differs from THZ, GPZ **and** MGHZ → SEZ-specific composition needs approval; `$86` (state 7) and `$04` are **not** accepted |
+| `$28` platforms | **behaviour exact for `$83/$84`; art NEW** | state table/callbacks unchanged; frame 1 differs from THZ, GPZ **and** MGHZ → SEZ-specific composition (approved 2026-10-05); `$86` (state 7) and `$04` are **not** accepted |
 | Ordinary sign clear (`$18`, SEZ1/2) | **exact** (45 regions) | prize selector executed: zone 2 → table `$A919` (THZ parity); pan targets (3832,405) / (3832,245) inside limits |
 | Rocket Shoes (`$10` param 4) | **exact**; 1 + 1 placements | counts match `powerup-shoes.json` |
 | Spring Shoes (`$2F`) | **exact behaviour, SEZ art base `$94`** | `$26840` is the *same ROM stream* as MGHZ (`→ $AC`); decoded hash and all five frame compositions identical; only the VRAM base (`$94` vs `$AC`) and the sprite palette (`$08` vs `$09`) differ |
@@ -109,13 +109,13 @@ target; `UNRESOLVED`: the boss object's own camera-limit manipulations. **Candid
 horizontal retention `max(0, viewport_width−256)` for `$20/$23/$26/$28/$10/$1B/$2F`; right camera limit `worldWidth − viewportWidth`; a boss composition
 adapter belongs to the boss package. Nothing 256-wide was widened.
 
-## 8. Visual approval package (PENDING)
+## 8. Visual approval package (APPROVED 2026-10-05)
 
 `tools/sez_art_approval.py` + `tools/sez_art_previews.py` recompose from ROM mappings/SAT data through the original render oracle (no hand-edited
 sprites); 16 PNGs in git-ignored `build/sez-approval/`; the committed `data/rom-cache/sez/art-approval.json` records subjects, bases, palettes and
-composition hashes with state **PENDING**.
+composition hashes with state **APPROVED BY USER 2026-10-05**: James reviewed all 16 boards and approved the complete visual package for POC use.
 
-* **New compositions needing approval:** SEZ terrain tiles/blocks (`terrain-tiles`, `terrain-blocks`, `terrain-special-surfaces`, `terrain-context-sez1..3`,
+* **New compositions (approved):** SEZ terrain tiles/blocks (`terrain-tiles`, `terrain-blocks`, `terrain-special-surfaces`, `terrain-context-sez1..3`,
   `map-sez1..3`), `animated-terrain` (ring frames at `$29A0`, effect-5 tile `$158`, block `$A7`), `type-20`, `type-23`, `type-28` (SEZ platform art), `type-54`
   (boss + `$55` child frames incl. dynamic selector `$15`, arena/approach contexts).
 * **Unchanged shared compositions** (`$10`, `$1B`, `$26`, `$2F` frames, `$07` shard): proven identical in §2 and shown once on
@@ -126,7 +126,7 @@ composition hashes with state **PENDING**.
 
 | Pkg | Scope | Blocked by |
 |---|---|---|
-| **S1** SEZ three-act foundation | terrain/art/palettes, 4095 ceiling, terrain rings, springs, monitors, sign clear (SEZ1/2), shoes, `$28` `$83/$84`, breakable `$0D`, ramp `$12`, block `$47`, `$3D`, effect-5, shared support | art approval |
+| **S1** SEZ three-act foundation | terrain/art/palettes, 4095 ceiling, terrain rings, springs, monitors, sign clear (SEZ1/2), shoes, `$28` `$83/$84`, breakable `$0D`, ramp `$12`, block `$47`, `$3D`, effect-5, shared support | – (visual package approved 2026-10-05) |
 | S2 terrain mechanics | surface `$0C/$13` crumble and `$1A` booster audits | – |
 | S3 platform state 7 | `$28` parameter `$86` (+ `$04` axis variant) | – |
 | S4 enemies | `$20`, `$23` audits (15 placements, SEZ only) | – |
