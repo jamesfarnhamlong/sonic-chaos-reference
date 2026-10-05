@@ -1,0 +1,10718 @@
+{
+ "format": "sez-surface-runtime-contracts-v1",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_base": "a200826",
+ "research_only": true,
+ "coordinate_policy": "world pixels; anchor = player Y register (feet = anchor + 18); cells 32 px; 'update' = one game-loop iteration (player engine, callback, object pass)",
+ "evidence_note": "every number is copied from the audit JSON (surfaces-0c-1a.json) or asserted against it when this file is generated",
+ "crumble_0C_13": {
+  "status": "ROM-derived (Research); Windows acceptance pending; GameMaker implementation not started",
+  "identity": {
+   "surface_type": "0x0C",
+   "block": "0xAF",
+   "replacement_block": "0xB0",
+   "dynamic_object_type": "0x13",
+   "object_is_ever_placed": false,
+   "same_header_blocks_never_in_any_layout": [
+    "0xB9",
+    "0xBA",
+    "0xBB"
+   ],
+   "identity_name": "UNRESOLVED (numeric ids only)"
+  },
+  "terrain_block": {
+   "flags": "0x4C",
+   "one_way_bit6": true,
+   "solid_bit7": false,
+   "modifier": 0,
+   "vertical_profile": "32 at every X (full cell height)",
+   "horizontal_profile": "0x60 at every row",
+   "side_pass": "no wall (0 pushes in the sweep: same as one-way block $0D)",
+   "ceiling_pass": "none: a rising player passes through",
+   "support": "ordinary one-way projection of the shared floor pass (table in the audit: support_projection_table); nothing else about the block is special"
+  },
+  "replacement_block_b0": {
+   "flags": "0x00",
+   "profiles": "vertical 0 / horizontal 0x40: empty air",
+   "mapping": "all 16 tile numbers = 192 (blank)",
+   "placed_in_initial_layouts": 0
+  },
+  "update_order": [
+   "player_engine_64fa",
+   "callback_player",
+   "terrain_pass_690b",
+   "floor_pass_691a",
+   "ring_probe_753e",
+   "object_scheduler_5dd1",
+   "frame_wait_0606"
+  ],
+  "trigger": {
+   "dispatch": "floor pass $691A -> floor dispatch table $6973[surface $0C] = $6B79 (run for the CURRENT foot sample, after the projection against the previous update's flags)",
+   "probe": {
+    "x": "player anchor X (no width)",
+    "y": "player anchor Y + 18 + extra",
+    "extra_by_state": {
+     "0x21": -14,
+     "0x12": 8
+    },
+    "extra_default": 0,
+    "cell": "32 x 32, block id from the layout RAM"
+   },
+   "handler_called_iff": "the probed block is $AF; independent of player state, floor flag, previous-update block flags, Y speed, +$03 (attack posture / jump latch / blink) and invincibility (106,704 + 3,072 controlled cases, 0 exceptions)",
+   "states_that_run_the_floor_pass_and_so_the_handler": [
+    "0x00",
+    "0x01",
+    "0x02",
+    "0x03",
+    "0x04",
+    "0x05",
+    "0x06",
+    "0x07",
+    "0x08",
+    "0x09",
+    "0x0A",
+    "0x0B",
+    "0x0E",
+    "0x0F",
+    "0x10",
+    "0x11",
+    "0x12",
+    "0x14",
+    "0x15",
+    "0x19",
+    "0x1A",
+    "0x1B",
+    "0x1C",
+    "0x1D",
+    "0x1E",
+    "0x22"
+   ],
+   "states_that_do_not": [
+    "0x0C",
+    "0x0D",
+    "0x13",
+    "0x16",
+    "0x17",
+    "0x18",
+    "0x1F",
+    "0x20",
+    "0x21",
+    "0x23",
+    "0x24",
+    "0x25",
+    "0x26",
+    "0x27",
+    "0x28",
+    "0x29",
+    "0x2A",
+    "0x2B",
+    "0x2C",
+    "0x2D",
+    "0x2E",
+    "0x2F",
+    "0x30",
+    "0x31",
+    "0x32",
+    "0x33",
+    "0x34",
+    "0x35",
+    "0x36"
+   ],
+   "states_numeric_note": "numeric player-state ids only; $0C/$0D/$13 are the loop states, $16/$17/$18 and $1F/$20/$21/$23.. do not run the floor pass; $22 (twist) and $0F..$12 do",
+   "handler_algorithm": [
+    "if player +$19 bit 7 (Y speed negative): return (nothing changes: no Y speed write, no spawn, no remembered-cell update)",
+    "Y speed := 0 (EVERY call, before the same-cell test: standing on the cell zeroes Y speed every update)",
+    "if probed cell pointer ($D354) == remembered cell ($D356): return",
+    "spawn type $13 at probe position ($D358,$D35A) via $5EB7: first free slot of slots 0..15, parameter 0; silent no-op when full",
+    "$D356 := $D354 (also when the spawn failed); +$30/+$31 of the object at IY := cell pointer (IY = $D940 = slot 16 when the pool was full)"
+   ]
+  },
+  "remembered_cell": {
+   "register": "$D356 (word)",
+   "written_only_by": "$6B79 (byte scan: two operand sites in the whole ROM)",
+   "reset": "$297E level clear ($D300..$DBBF) at every level initialisation: death/restart gives 0 (EMULATED)",
+   "behaviour": [
+    "touching a different $AF cell always spawns (even while an earlier object still lives)",
+    "re-touching the SAME cell while it is still remembered never spawns: jump + re-land (EMULATED), standing on a cell whose object was removed (EMULATED, cell stays $AF)",
+    "A -> B -> A before A broke creates a SECOND object for A; both end with $B0 (EMULATED)"
+   ],
+   "cell_pointer": "layout RAM $C001 + cy * width + cx"
+  },
+  "allocator": {
+   "parent": {
+    "routine": "$5EB7",
+    "slots": "0..15 (first free)",
+    "full_behaviour": "no object, no hold, no break; cell never crumbles while the remembered cell equals it; Y speed still zeroed; slot 16 +$30/+$31 (bytes $D970/$D971) overwritten with the cell pointer (no consumer found)",
+    "evidence": "handler matrix 545 cases + EMULATED full-pool drop"
+   },
+   "children": {
+    "routine": "$5EE1 via script command 4",
+    "slots": "7..17 (11 slots, shared with every other command-4 / badnik allocation)",
+    "when_k_free": "only the first k of the four shards are created, in the order offsets 0, 8, 16, 24 (parameters 3, 8, 5, 1); none when 0 free; silent",
+    "child_below_parent_slot": "its state-0 callback (and so the whole shard timeline) is one update later"
+   }
+  },
+  "object_13": {
+   "created_by": "$6B79 only (and by its own command-4 children)",
+   "state_table": "0xA28A",
+   "states": {
+    "0": "init $A2DD (dur 224)",
+    "1": "record 16 updates rider hold $A344; record 1 update break $A36A; then sound $A3 + 4 child spawns; record 224 remove $A33F",
+    "2": "remove (unreachable: nothing requests state 2)",
+    "3": "shard fall $A31B"
+   },
+   "init_a2dd": {
+    "parameter_nonzero": "request state 3",
+    "parameter_zero": "X := (X & $FFE0) + 14, Y := (Y & $FFE0) + 24 from the probed position; +$34/35 := raw X, +$36/37 := raw Y; request state 1"
+   },
+   "timeline_updates_relative_to_spawn_update_T": {
+    "spawn_and_state0_callback": 0,
+    "rider_hold_first": 1,
+    "rider_hold_count": 16,
+    "rider_hold_last": 16,
+    "break_callback": 17,
+    "cell_replaced": 17,
+    "sound_a3_children_created_and_remove_callback": 18,
+    "child_state0_callbacks": 18,
+    "first_shard_state3_pass": 19,
+    "first_shard_move": {
+     "offset_0_p3": 22,
+     "offset_8_p8": 27,
+     "offset_16_p5": 24,
+     "offset_24_p1": 20
+    }
+   },
+   "anchor": "object X = cell left + 14, object Y = cell top + 24 (the cell is the one containing the probed foot sample)",
+   "visible_art": "the parent object is INVISIBLE (mapping frame 0 has no pieces); the ledge you see is the terrain block art; shards use mapping frame 15"
+  },
+  "rider_hold": {
+   "callback": "$A344 (once per update during the 16-update record, in the object pass)",
+   "applies_iff": "player state == $0E OR player +$03 bit 0 clear",
+   "effect": "player Y := objectY - 40 (= cell top - 16: feet 2 px INTO the cell), Y speed := 0, $D521 bit 1 set (no reader of that bit was found: it is cleared by the scheduler every frame and has no observable effect on the floor flags or the state, e.g. a hovering Sonic keeps floor flags 0 and state $0E)",
+   "no_presence_test": "no X or Y comparison with the object: any player in a qualifying state is held, so walking off a ledge hovers at the held Y until the last live object breaks (SEZ1 walk-off: 9 hover updates beyond the ledge edge)",
+   "ordering": "inside every hold update the terrain pass leaves Sonic at cell top - 18 (EMULATED hook at the scheduler entry), the object pass then writes cell top - 16; the end-of-update Y is what is rendered; the first update (spawn) and the break update have no hold",
+   "matrix": "state 0..$36 x +$03 0..255 = 14,080 controlled cases, 0 exceptions"
+  },
+  "break": {
+   "callback": "$A36A",
+   "replaces_cell_unless": "object asleep (+$04 bit 6) or objectX < cameraX (strict, unsigned 16-bit; cameraX = $D174)",
+   "replacement": "block $B0 written into the layout RAM through vector $0428 -> $6C1F (also redraws the 4x4 name-table cells: blank)",
+   "when_not_replaced": "object removed (type := $FF); the cell stays $AF and $D356 still remembers it",
+   "naturally_reachable": "camera trails the player by about 118 px: SEZ1 bridge at 4.0..7.0 px/update keeps objectX - cameraX >= 8 px at every break (EMULATED): the removal branches need fixtures in the shipped acts"
+  },
+  "shards": {
+   "count": 4,
+   "type": "0x13 parameter != 0 (state 3)",
+   "spawn": "script command 4 at the break update + 1 (update 18): offsets from the parent (-14,-24),(-6,-24),(2,-24),(10,-24) -> world (cell+0, cell+8, cell+16, cell+24; cell top)",
+   "parameters_delay": [
+    3,
+    8,
+    5,
+    1
+   ],
+   "motion": "Y speed +$0200 loaded once, then per pass after the delay: Y speed += $0200, Y += Y speed (integer part); X never changes; k-th move adds 2(k+1) px: y_k = y0 + k(k+3)",
+   "first_move_pass_from_creation": "parameter + 2 (the state-0 pass is pass 1)",
+   "lifetime": "until the generic lifecycle sleeps them (class 2: +$04 bit 6), then their callback removes them one pass later (type $FF, slot cleared the pass after)",
+   "no_terrain_no_contact_no_damage": true,
+   "art": "mapping frame 15 (8x16 piece, common object stream tiles $66/$67, art base 0) - presentation, see the SEZ art package"
+  },
+  "lifecycle": {
+   "table": "bank $1C:$8146, 32 x 32 classes of 16 px, index (x - camX + 128, y - camY + 128)",
+   "model": "lifecycle_class() in the audit; 55,155 cases, 0 mismatches"
+  },
+  "player_interactions": {
+   "contact_with_player": "none (no overlap helper, no attack gate, no damage entry in any $13 callback)",
+   "attack_posture": "not read by the handler, the hold or the object",
+   "rolling_jumping_spin_dash": "handled exactly like walking: only state == $0E or +$03 bit 0 clear matters for the hold; a jumping player (bit 0 set, state != $0E) is not held until the landing clears bit 0",
+   "rising": "no spawn, no zero",
+   "footwear": "state $12 samples the foot 8 px lower ($6B79 reached 8 px earlier), state $21 14 px higher; Spring Shoes / Rocket Shoes end-to-end on a crumble cell is UNRESOLVED (no shoe is near a cell)",
+   "invincibility_d532": "not read",
+   "hurt_blink_fixture": "no effect on the timeline"
+  },
+  "persistence": {
+   "cell": "the layout RAM keeps $B0 for the rest of the act (scroll away/back: still $B0; no new object)",
+   "restart": "act restart reloads the layout: $AF returns, $D356 := 0",
+   "object": "no placement token: never recreated, never persistent; a removed object leaves the cell $AF"
+  },
+  "global_runtime": {
+   "proof": "same coordinate-free timeline signature for all 93 $AF cells in THZ1, THZ2, SEZ1-3, AQZ1-2, EEZ2; no routine involved reads the zone byte (byte scan)",
+   "signature_classes": 1,
+   "cells": 93
+  },
+  "cells": [
+   {
+    "act": "sez1",
+    "cell": [
+     67,
+     6
+    ],
+    "object_anchor": [
+     2158,
+     216
+    ],
+    "hold_anchor_y": 176,
+    "shard_anchors": [
+     [
+      2144,
+      192
+     ],
+     [
+      2152,
+      192
+     ],
+     [
+      2160,
+      192
+     ],
+     [
+      2168,
+      192
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 835,
+    "above_block": "0x40"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     68,
+     6
+    ],
+    "object_anchor": [
+     2190,
+     216
+    ],
+    "hold_anchor_y": 176,
+    "shard_anchors": [
+     [
+      2176,
+      192
+     ],
+     [
+      2184,
+      192
+     ],
+     [
+      2192,
+      192
+     ],
+     [
+      2200,
+      192
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 836,
+    "above_block": "0x40"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     69,
+     6
+    ],
+    "object_anchor": [
+     2222,
+     216
+    ],
+    "hold_anchor_y": 176,
+    "shard_anchors": [
+     [
+      2208,
+      192
+     ],
+     [
+      2216,
+      192
+     ],
+     [
+      2224,
+      192
+     ],
+     [
+      2232,
+      192
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 837,
+    "above_block": "0x40"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     114,
+     8
+    ],
+    "object_anchor": [
+     3662,
+     280
+    ],
+    "hold_anchor_y": 240,
+    "shard_anchors": [
+     [
+      3648,
+      256
+     ],
+     [
+      3656,
+      256
+     ],
+     [
+      3664,
+      256
+     ],
+     [
+      3672,
+      256
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1138,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     28,
+     10
+    ],
+    "object_anchor": [
+     910,
+     344
+    ],
+    "hold_anchor_y": 304,
+    "shard_anchors": [
+     [
+      896,
+      320
+     ],
+     [
+      904,
+      320
+     ],
+     [
+      912,
+      320
+     ],
+     [
+      920,
+      320
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1308,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     29,
+     10
+    ],
+    "object_anchor": [
+     942,
+     344
+    ],
+    "hold_anchor_y": 304,
+    "shard_anchors": [
+     [
+      928,
+      320
+     ],
+     [
+      936,
+      320
+     ],
+     [
+      944,
+      320
+     ],
+     [
+      952,
+      320
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1309,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     114,
+     11
+    ],
+    "object_anchor": [
+     3662,
+     376
+    ],
+    "hold_anchor_y": 336,
+    "shard_anchors": [
+     [
+      3648,
+      352
+     ],
+     [
+      3656,
+      352
+     ],
+     [
+      3664,
+      352
+     ],
+     [
+      3672,
+      352
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1522,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     21,
+     13
+    ],
+    "object_anchor": [
+     686,
+     440
+    ],
+    "hold_anchor_y": 400,
+    "shard_anchors": [
+     [
+      672,
+      416
+     ],
+     [
+      680,
+      416
+     ],
+     [
+      688,
+      416
+     ],
+     [
+      696,
+      416
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1685,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     97,
+     13
+    ],
+    "object_anchor": [
+     3118,
+     440
+    ],
+    "hold_anchor_y": 400,
+    "shard_anchors": [
+     [
+      3104,
+      416
+     ],
+     [
+      3112,
+      416
+     ],
+     [
+      3120,
+      416
+     ],
+     [
+      3128,
+      416
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1761,
+    "above_block": "0xCF"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     98,
+     13
+    ],
+    "object_anchor": [
+     3150,
+     440
+    ],
+    "hold_anchor_y": 400,
+    "shard_anchors": [
+     [
+      3136,
+      416
+     ],
+     [
+      3144,
+      416
+     ],
+     [
+      3152,
+      416
+     ],
+     [
+      3160,
+      416
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1762,
+    "above_block": "0xCF"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     62,
+     14
+    ],
+    "object_anchor": [
+     1998,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      1984,
+      448
+     ],
+     [
+      1992,
+      448
+     ],
+     [
+      2000,
+      448
+     ],
+     [
+      2008,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1854,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     63,
+     14
+    ],
+    "object_anchor": [
+     2030,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      2016,
+      448
+     ],
+     [
+      2024,
+      448
+     ],
+     [
+      2032,
+      448
+     ],
+     [
+      2040,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1855,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     64,
+     14
+    ],
+    "object_anchor": [
+     2062,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      2048,
+      448
+     ],
+     [
+      2056,
+      448
+     ],
+     [
+      2064,
+      448
+     ],
+     [
+      2072,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1856,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     65,
+     14
+    ],
+    "object_anchor": [
+     2094,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      2080,
+      448
+     ],
+     [
+      2088,
+      448
+     ],
+     [
+      2096,
+      448
+     ],
+     [
+      2104,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1857,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     66,
+     14
+    ],
+    "object_anchor": [
+     2126,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      2112,
+      448
+     ],
+     [
+      2120,
+      448
+     ],
+     [
+      2128,
+      448
+     ],
+     [
+      2136,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1858,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     67,
+     14
+    ],
+    "object_anchor": [
+     2158,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      2144,
+      448
+     ],
+     [
+      2152,
+      448
+     ],
+     [
+      2160,
+      448
+     ],
+     [
+      2168,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1859,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     93,
+     14
+    ],
+    "object_anchor": [
+     2990,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      2976,
+      448
+     ],
+     [
+      2984,
+      448
+     ],
+     [
+      2992,
+      448
+     ],
+     [
+      3000,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1885,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     94,
+     14
+    ],
+    "object_anchor": [
+     3022,
+     472
+    ],
+    "hold_anchor_y": 432,
+    "shard_anchors": [
+     [
+      3008,
+      448
+     ],
+     [
+      3016,
+      448
+     ],
+     [
+      3024,
+      448
+     ],
+     [
+      3032,
+      448
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1886,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez1",
+    "cell": [
+     104,
+     28
+    ],
+    "object_anchor": [
+     3342,
+     920
+    ],
+    "hold_anchor_y": 880,
+    "shard_anchors": [
+     [
+      3328,
+      896
+     ],
+     [
+      3336,
+      896
+     ],
+     [
+      3344,
+      896
+     ],
+     [
+      3352,
+      896
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 3688,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     100,
+     7
+    ],
+    "object_anchor": [
+     3214,
+     248
+    ],
+    "hold_anchor_y": 208,
+    "shard_anchors": [
+     [
+      3200,
+      224
+     ],
+     [
+      3208,
+      224
+     ],
+     [
+      3216,
+      224
+     ],
+     [
+      3224,
+      224
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 996,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     25,
+     8
+    ],
+    "object_anchor": [
+     814,
+     280
+    ],
+    "hold_anchor_y": 240,
+    "shard_anchors": [
+     [
+      800,
+      256
+     ],
+     [
+      808,
+      256
+     ],
+     [
+      816,
+      256
+     ],
+     [
+      824,
+      256
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1049,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     26,
+     8
+    ],
+    "object_anchor": [
+     846,
+     280
+    ],
+    "hold_anchor_y": 240,
+    "shard_anchors": [
+     [
+      832,
+      256
+     ],
+     [
+      840,
+      256
+     ],
+     [
+      848,
+      256
+     ],
+     [
+      856,
+      256
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1050,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     42,
+     8
+    ],
+    "object_anchor": [
+     1358,
+     280
+    ],
+    "hold_anchor_y": 240,
+    "shard_anchors": [
+     [
+      1344,
+      256
+     ],
+     [
+      1352,
+      256
+     ],
+     [
+      1360,
+      256
+     ],
+     [
+      1368,
+      256
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1066,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     102,
+     8
+    ],
+    "object_anchor": [
+     3278,
+     280
+    ],
+    "hold_anchor_y": 240,
+    "shard_anchors": [
+     [
+      3264,
+      256
+     ],
+     [
+      3272,
+      256
+     ],
+     [
+      3280,
+      256
+     ],
+     [
+      3288,
+      256
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1126,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     104,
+     9
+    ],
+    "object_anchor": [
+     3342,
+     312
+    ],
+    "hold_anchor_y": 272,
+    "shard_anchors": [
+     [
+      3328,
+      288
+     ],
+     [
+      3336,
+      288
+     ],
+     [
+      3344,
+      288
+     ],
+     [
+      3352,
+      288
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1256,
+    "above_block": "0xC8"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     106,
+     10
+    ],
+    "object_anchor": [
+     3406,
+     344
+    ],
+    "hold_anchor_y": 304,
+    "shard_anchors": [
+     [
+      3392,
+      320
+     ],
+     [
+      3400,
+      320
+     ],
+     [
+      3408,
+      320
+     ],
+     [
+      3416,
+      320
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1386,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     16,
+     11
+    ],
+    "object_anchor": [
+     526,
+     376
+    ],
+    "hold_anchor_y": 336,
+    "shard_anchors": [
+     [
+      512,
+      352
+     ],
+     [
+      520,
+      352
+     ],
+     [
+      528,
+      352
+     ],
+     [
+      536,
+      352
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1424,
+    "above_block": "0xD3"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     17,
+     11
+    ],
+    "object_anchor": [
+     558,
+     376
+    ],
+    "hold_anchor_y": 336,
+    "shard_anchors": [
+     [
+      544,
+      352
+     ],
+     [
+      552,
+      352
+     ],
+     [
+      560,
+      352
+     ],
+     [
+      568,
+      352
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1425,
+    "above_block": "0xD3"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     42,
+     13
+    ],
+    "object_anchor": [
+     1358,
+     440
+    ],
+    "hold_anchor_y": 400,
+    "shard_anchors": [
+     [
+      1344,
+      416
+     ],
+     [
+      1352,
+      416
+     ],
+     [
+      1360,
+      416
+     ],
+     [
+      1368,
+      416
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1706,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     43,
+     13
+    ],
+    "object_anchor": [
+     1390,
+     440
+    ],
+    "hold_anchor_y": 400,
+    "shard_anchors": [
+     [
+      1376,
+      416
+     ],
+     [
+      1384,
+      416
+     ],
+     [
+      1392,
+      416
+     ],
+     [
+      1400,
+      416
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1707,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     44,
+     18
+    ],
+    "object_anchor": [
+     1422,
+     600
+    ],
+    "hold_anchor_y": 560,
+    "shard_anchors": [
+     [
+      1408,
+      576
+     ],
+     [
+      1416,
+      576
+     ],
+     [
+      1424,
+      576
+     ],
+     [
+      1432,
+      576
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 2348,
+    "above_block": "0x40"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     45,
+     18
+    ],
+    "object_anchor": [
+     1454,
+     600
+    ],
+    "hold_anchor_y": 560,
+    "shard_anchors": [
+     [
+      1440,
+      576
+     ],
+     [
+      1448,
+      576
+     ],
+     [
+      1456,
+      576
+     ],
+     [
+      1464,
+      576
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 2349,
+    "above_block": "0x40"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     46,
+     18
+    ],
+    "object_anchor": [
+     1486,
+     600
+    ],
+    "hold_anchor_y": 560,
+    "shard_anchors": [
+     [
+      1472,
+      576
+     ],
+     [
+      1480,
+      576
+     ],
+     [
+      1488,
+      576
+     ],
+     [
+      1496,
+      576
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 2350,
+    "above_block": "0x40"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     47,
+     18
+    ],
+    "object_anchor": [
+     1518,
+     600
+    ],
+    "hold_anchor_y": 560,
+    "shard_anchors": [
+     [
+      1504,
+      576
+     ],
+     [
+      1512,
+      576
+     ],
+     [
+      1520,
+      576
+     ],
+     [
+      1528,
+      576
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 2351,
+    "above_block": "0x40"
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     54,
+     27
+    ],
+    "object_anchor": [
+     1742,
+     888
+    ],
+    "hold_anchor_y": 848,
+    "shard_anchors": [
+     [
+      1728,
+      864
+     ],
+     [
+      1736,
+      864
+     ],
+     [
+      1744,
+      864
+     ],
+     [
+      1752,
+      864
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 3510,
+    "above_block": "0xFE"
+   },
+   {
+    "act": "sez3",
+    "cell": [
+     27,
+     10
+    ],
+    "object_anchor": [
+     878,
+     344
+    ],
+    "hold_anchor_y": 304,
+    "shard_anchors": [
+     [
+      864,
+      320
+     ],
+     [
+      872,
+      320
+     ],
+     [
+      880,
+      320
+     ],
+     [
+      888,
+      320
+     ]
+    ],
+    "cell_pointer_offset_from_c001": 1307,
+    "above_block": "0xFE"
+   }
+  ],
+  "viewport_classification": [
+   {
+    "subject": "break removal 'left of camera'",
+    "class": "EDGE(LEFT,0)",
+    "rule": "objectX < cameraX (strict)",
+    "adapter": "keep the relation to the visible left edge; do not convert to a world distance"
+   },
+   {
+    "subject": "shard / object lifecycle (class 2 sleep, class 3 delete)",
+    "class": "LIFECYCLE",
+    "rule": "table lookup of (x - camX + 128, y - camY + 128)",
+    "adapter": "candidate: the accepted generic lifecycle adapter (horizontal retention max(0, viewport_width - 256)); vertical bands not widened"
+   },
+   {
+    "subject": "probe / handler / hold",
+    "class": "WORLD",
+    "rule": "player anchor and cell grid only: no camera input"
+   },
+   {
+    "subject": "rider hold",
+    "class": "WORLD",
+    "rule": "no presence distance"
+   }
+  ],
+  "adapter_candidates_not_rom_facts": [
+   "pre-aligning the hold to the terrain (e.g. holding at cell top - 18) is NOT canonical: the 2 px sink is observable",
+   "dropping the unconditional hold (hover) is NOT canonical"
+  ]
+ },
+ "booster_1A": {
+  "status": "ROM-derived (Research); Windows acceptance pending; GameMaker implementation not started",
+  "identity": {
+   "surface_type": "0x1A",
+   "block": "0xA7",
+   "identity_name": "UNRESOLVED (numeric ids only); art = a pad with animated tile $158, no directional glyph"
+  },
+  "terrain_block": {
+   "flags": "0x9A",
+   "solid_bit7": true,
+   "one_way_bit6": false,
+   "vertical_profile_runs": [
+    [
+     0,
+     7,
+     0
+    ],
+    [
+     8,
+     11,
+     1
+    ],
+    [
+     12,
+     19,
+     2
+    ],
+    [
+     20,
+     23,
+     1
+    ],
+    [
+     24,
+     31,
+     0
+    ]
+   ],
+   "horizontal_profile": "0x40 at every row",
+   "floor_handler": "$69B1 = RET (the floor pass never acts on the block)",
+   "side_pass": "no wall",
+   "ceiling_pass": "no handler for surface $1A; solid profile pushes only in the 24 grazing cases of the sweep",
+   "support": "solid projection against the 0..2 px bump (support = cell top + 32 - profile)",
+   "reading": "the pad is a decoration/trigger cell placed one cell ABOVE the ground row"
+  },
+  "trigger": {
+   "dispatch": "terrain ring probe $753E ONLY (after floor, sides, ceiling in the terrain pass); the floor dispatch entry is a bare RET",
+   "probe": {
+    "x": "player anchor X",
+    "y": "anchor Y - 8 when (+$07 & 1) == 0 else anchor Y + 2",
+    "note": "+$07 = the animation record counter (see the animation-counter audit)"
+   },
+   "handler_reached_iff": "the probe's block is $A7",
+   "effect_iff": "player +$22 bit 1 (floor flag) is set at the probe",
+   "cell_condition_world": "anchor X in [cell left, cell left + 31]; anchor Y in [cell top + 8, cell top + 39] (even parity) or [cell top - 2, cell top + 29] (odd parity)",
+   "standing_on_ground_row_below": "anchor Y = ground top - 18 = cell top + 14 lies inside both parity windows: a grounded walker is launched in every update the column contains it",
+   "controlled_sweeps": {
+    "probe": 19200,
+    "handler": 65536
+   }
+  },
+  "effect": {
+   "x_speed_8_8": 1792,
+   "max_x_speed_d373": 1792,
+   "movement_d503": "(+$03 | $02) & $FE: attack posture ON, jump latch cleared",
+   "requested_state": "0x10",
+   "sound_request_de04": "0xBD",
+   "untouched": [
+    "Y speed",
+    "facing (+$04 bit 4)",
+    "position",
+    "floor flags",
+    "everything else"
+   ],
+   "sign": "always positive: an incoming X speed (including negative) is overwritten",
+   "not_the_spin_dash_setter": "$4719 would use facing and request sound $BE; the booster writes the speed itself and only REQUESTS state $10"
+  },
+  "after_launch": {
+   "state_10": "spin-dash roll state: callback $3A23 -> shared updater $3FEF; X speed decays 5/256 per update with no input (4/256 with RIGHT held) and the player stays in $10 while |X speed| >= $10 and no opposing direction is held; LEFT held while moving right requests the skid state $07 and decelerates faster; DOWN/UP change nothing; B1 jumps (state $0A with attack posture kept, X speed kept)",
+   "max_x_speed": "$D373 stays $0700 until a later setter rewrites it (a RIGHT-held airborne player re-accelerates to 7.0)",
+   "facing": "not written by the handler; the game turns Sonic to face right within the next update when he was facing left (EMULATED)",
+   "attack": "+$03 bit 1 set = canonical attack posture"
+  },
+  "repeat_contact": {
+   "rule": "the handler runs in EVERY update whose probe is inside the cell with the floor flag set; at 7.0 px/update a 32 px column re-triggers 5 times; the sound request is rewritten each time",
+   "standing_start": {
+    "handler_updates": [
+     1,
+     2,
+     3
+    ],
+    "handler_x_at_end_of_update": [
+     1361,
+     1368,
+     1375
+    ],
+    "handler_count": 3,
+    "first_handler_update": 1,
+    "x_at_first_handler": 17,
+    "state_after_first": "0x05",
+    "requested_after_first": "0x10",
+    "vx_after_first": 1792,
+    "d373_after_first": 1792,
+    "d503_after_first": 2,
+    "state_next_update": "0x10",
+    "x_offsets_from_cell_left_at_each_handler_update": [
+     17,
+     24,
+     31
+    ],
+    "vx_from_first_to_first_plus_8": [
+     1792,
+     1792,
+     1792,
+     1787,
+     1782,
+     1777,
+     1772,
+     1767,
+     1762
+    ]
+   },
+   "entry_speed_table": {
+    "0": {
+     "handler_count": 5,
+     "x_offsets": [
+      0,
+      7,
+      14,
+      21,
+      28
+     ],
+     "vx_after_first": 1792
+    },
+    "128": {
+     "handler_count": 5,
+     "x_offsets": [
+      1,
+      8,
+      15,
+      21,
+      28
+     ],
+     "vx_after_first": 1792
+    },
+    "256": {
+     "handler_count": 5,
+     "x_offsets": [
+      0,
+      7,
+      14,
+      21,
+      28
+     ],
+     "vx_after_first": 1792
+    },
+    "512": {
+     "handler_count": 5,
+     "x_offsets": [
+      0,
+      7,
+      14,
+      21,
+      28
+     ],
+     "vx_after_first": 1792
+    },
+    "768": {
+     "handler_count": 5,
+     "x_offsets": [
+      1,
+      8,
+      15,
+      22,
+      29
+     ],
+     "vx_after_first": 1792
+    },
+    "1024": {
+     "handler_count": 5,
+     "x_offsets": [
+      3,
+      10,
+      17,
+      24,
+      31
+     ],
+     "vx_after_first": 1792
+    },
+    "1280": {
+     "handler_count": 5,
+     "x_offsets": [
+      0,
+      6,
+      13,
+      20,
+      27
+     ],
+     "vx_after_first": 1792
+    },
+    "1536": {
+     "handler_count": 5,
+     "x_offsets": [
+      0,
+      6,
+      13,
+      20,
+      27
+     ],
+     "vx_after_first": 1792
+    },
+    "1792": {
+     "handler_count": 5,
+     "x_offsets": [
+      0,
+      6,
+      13,
+      20,
+      27
+     ],
+     "vx_after_first": 1792
+    },
+    "-256": {
+     "handler_count": 1,
+     "x_offsets": [
+      30
+     ],
+     "vx_after_first": 1792
+    },
+    "-1024": {
+     "handler_count": 1,
+     "x_offsets": [
+      31
+     ],
+     "vx_after_first": 1792
+    },
+    "-1792": {
+     "handler_count": 1,
+     "x_offsets": [
+      31
+     ],
+     "vx_after_first": 1792
+    }
+   }
+  },
+  "direction": {
+   "fixed_rightward": true,
+   "evidence": [
+    "handler writes +$0700 unconditionally (65,536 controlled cases)",
+    "entering from the right edge at any speed re-launches rightward after one update",
+    "the art has no directional glyph"
+   ],
+   "from_right_handler_count": 1
+  },
+  "interactions": {
+   "states_reaching_the_probe": [
+    "0x00",
+    "0x01",
+    "0x02",
+    "0x03",
+    "0x04",
+    "0x05",
+    "0x06",
+    "0x07",
+    "0x08",
+    "0x09",
+    "0x0A",
+    "0x0B",
+    "0x0E",
+    "0x0F",
+    "0x10",
+    "0x11",
+    "0x12",
+    "0x14",
+    "0x15",
+    "0x17",
+    "0x19",
+    "0x1A",
+    "0x1B",
+    "0x1C",
+    "0x1D",
+    "0x1E"
+   ],
+   "states_where_the_effect_applies_at_first_update": [
+    "0x00",
+    "0x01",
+    "0x02",
+    "0x03",
+    "0x04",
+    "0x05",
+    "0x06",
+    "0x07",
+    "0x08",
+    "0x09",
+    "0x0A",
+    "0x0B",
+    "0x0E",
+    "0x0F",
+    "0x10",
+    "0x14",
+    "0x19",
+    "0x1A",
+    "0x1B",
+    "0x1C"
+   ],
+   "state_scan_note": "forced-state first update",
+   "twist_22": "runs the floor pass but not the ring probe: no effect",
+   "loop_states": "$0C/$0D/$13 do not run the terrain pass",
+   "rocket_shoes_11": {
+    "probe_updates": 12,
+    "floor_flag_at_probe_per_update": [
+     2,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     2
+    ],
+    "handler_updates": [
+     1,
+     2,
+     3
+    ],
+    "launched_updates": [
+     1,
+     2,
+     3
+    ],
+    "states_seen": [
+     "0x05",
+     "0x06",
+     "0x0E",
+     "0x10",
+     "0x11"
+    ],
+    "y_first_5": [
+     554,
+     554,
+     554,
+     554,
+     555
+    ],
+    "d532_after": 4,
+    "state_sequence_first_6": [
+     "0x11",
+     "0x10",
+     "0x10",
+     "0x10",
+     "0x0E",
+     "0x0E"
+    ]
+   },
+   "spring_shoes_12_forced_without_shoe_object": {
+    "parity_0": {
+     "probe_updates": 12,
+     "floor_flag_at_probe_per_update": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "handler_updates": [],
+     "launched_updates": [],
+     "states_seen": [
+      "0x12"
+     ],
+     "y_first_5": [
+      547,
+      539,
+      532,
+      525,
+      518
+     ],
+     "d532_after": 0,
+     "state_sequence_first_6": [
+      "0x12",
+      "0x12",
+      "0x12",
+      "0x12",
+      "0x12",
+      "0x12"
+     ]
+    },
+    "parity_1": {
+     "probe_updates": 12,
+     "floor_flag_at_probe_per_update": [
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "handler_updates": [
+      1
+     ],
+     "launched_updates": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "states_seen": [
+      "0x10",
+      "0x12"
+     ],
+     "y_first_5": [
+      547,
+      539,
+      532,
+      525,
+      518
+     ],
+     "d532_after": 0,
+     "state_sequence_first_6": [
+      "0x12",
+      "0x10",
+      "0x10",
+      "0x10",
+      "0x10",
+      "0x10"
+     ]
+    }
+   },
+   "footwear_notes": "$11 = real Rocket Shoes setup (selector $D532 = 4, timer $D44C = 300): the first handler update replaces the rocket state by $10 (the selector and timer are NOT cleared by the handler); $12 = Spring Shoes state forced WITHOUT the $2F shoe object: it is rising after its own relaunch, so the floor flag is clear at the probe and the handler does nothing (parity 1 shows a launch only because the first update still has the floor flag); end-to-end Spring Shoes with a real shoe object on a pad is UNRESOLVED (no pad is near a shoe)",
+   "crumble_bridge": "SEZ2: the pad at (42,17) leads onto the crumble bridge (44..47,18); arrival at 7 px/update crosses without falling (EMULATED)"
+  },
+  "effect5_animation": {
+   "summary": "tile $158 (VRAM $2B00) alternates two 32-byte images every 3 effect calls, one call per game-loop iteration, paused while the boss flag $D44E != 0",
+   "sources": {
+    "0x8DDD": {
+     "bank": "0x1D",
+     "file": "0x74DDD",
+     "sha256": "26e71245c37a6d62f17d774f35a5db88ad5902423bf7609eba02a5db7b43e984"
+    },
+    "0x8DFD": {
+     "bank": "0x1D",
+     "file": "0x74DFD",
+     "sha256": "56e53cddbdd914352f7ff53f4dd500b3468063f3a11b72cdb54f45d7c9e7c7f8"
+    }
+   },
+   "first_copy_image": "0x8DFD",
+   "period_calls": 6,
+   "rule": "the dispatcher ($1D:$8000) calls the effect once per game-loop iteration while $D492 == 0; effect 5 returns at once if $D44E != 0, else increments the call counter (+3); at 3 it resets to 0, toggles the phase (+2: 0 -> 1 -> 0) and copies 32 bytes: first copy (3rd call after the effect starts) = $8DFD, then $8DDD, alternating every 3 calls (period 6)",
+   "art_relation": {
+    "block": "0xA7",
+    "tile_0x158_use_count": 8,
+    "positions_of_tile_0x158_row_major_index": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11
+    ],
+    "blocks_that_draw_tile_0x158_in_sez2": [
+     "0xA7"
+    ],
+    "images_differ": true
+   },
+   "absolute_phase": "not tied to the player: it counts effect calls since the level started ($D452..: cleared by $297E); the pad's launch does not read it"
+  },
+  "global_runtime": {
+   "proof": "same coordinate-free launch signature for all 9 $A7 cells (SEZ2 x2, SEZ3 x2, AQZ1, AQZ2 x2, EEZ1, EEZ2); the handler and probe read no zone byte (effect 5 does, by table)",
+   "signature_classes": 1,
+   "cells": 9
+  },
+  "placements": [
+   {
+    "act": "sez2",
+    "cell": [
+     42,
+     17
+    ],
+    "world_rect_xywh": [
+     1344,
+     544,
+     32,
+     32
+    ],
+    "trigger_anchor_x": [
+     1344,
+     1375
+    ],
+    "trigger_anchor_y_even_parity": [
+     552,
+     583
+    ],
+    "trigger_anchor_y_odd_parity": [
+     542,
+     573
+    ],
+    "ground_block_below": "0x08",
+    "standing_anchor_y_on_flat_ground_below": 558,
+    "neighbours": {
+     "left": "0x2D",
+     "right": "0xFE",
+     "above": "0xFE",
+     "below": "0x08",
+     "left2": "0x47",
+     "right2": "0x40"
+    },
+    "walk_from_left_handler_x_offsets": [
+     0,
+     7,
+     14,
+     21,
+     28
+    ],
+    "walk_from_right_handler_x_offsets": [
+     30
+    ]
+   },
+   {
+    "act": "sez2",
+    "cell": [
+     84,
+     24
+    ],
+    "world_rect_xywh": [
+     2688,
+     768,
+     32,
+     32
+    ],
+    "trigger_anchor_x": [
+     2688,
+     2719
+    ],
+    "trigger_anchor_y_even_parity": [
+     776,
+     807
+    ],
+    "trigger_anchor_y_odd_parity": [
+     766,
+     797
+    ],
+    "ground_block_below": "0x08",
+    "standing_anchor_y_on_flat_ground_below": 782,
+    "neighbours": {
+     "left": "0x2C",
+     "right": "0xFE",
+     "above": "0xFE",
+     "below": "0x08",
+     "left2": "0xD3",
+     "right2": "0xC7"
+    },
+    "walk_from_left_handler_x_offsets": [
+     0,
+     7,
+     14,
+     21,
+     28
+    ],
+    "walk_from_right_handler_x_offsets": [
+     30
+    ]
+   },
+   {
+    "act": "sez3",
+    "cell": [
+     34,
+     7
+    ],
+    "world_rect_xywh": [
+     1088,
+     224,
+     32,
+     32
+    ],
+    "trigger_anchor_x": [
+     1088,
+     1119
+    ],
+    "trigger_anchor_y_even_parity": [
+     232,
+     263
+    ],
+    "trigger_anchor_y_odd_parity": [
+     222,
+     253
+    ],
+    "ground_block_below": "0x08",
+    "standing_anchor_y_on_flat_ground_below": 238,
+    "neighbours": {
+     "left": "0xD0",
+     "right": "0xC6",
+     "above": "0xFE",
+     "below": "0x08",
+     "left2": "0xD2",
+     "right2": "0x43"
+    },
+    "walk_from_left_handler_x_offsets": [
+     1,
+     8,
+     15,
+     22,
+     29
+    ],
+    "walk_from_right_handler_x_offsets": [
+     31
+    ]
+   },
+   {
+    "act": "sez3",
+    "cell": [
+     72,
+     22
+    ],
+    "world_rect_xywh": [
+     2304,
+     704,
+     32,
+     32
+    ],
+    "trigger_anchor_x": [
+     2304,
+     2335
+    ],
+    "trigger_anchor_y_even_parity": [
+     712,
+     743
+    ],
+    "trigger_anchor_y_odd_parity": [
+     702,
+     733
+    ],
+    "ground_block_below": "0x08",
+    "standing_anchor_y_on_flat_ground_below": 718,
+    "neighbours": {
+     "left": "0xC5",
+     "right": "0xC5",
+     "above": "0xFE",
+     "below": "0x08",
+     "left2": "0xC6",
+     "right2": "0xD2"
+    },
+    "walk_from_left_handler_x_offsets": [
+     1,
+     8,
+     15,
+     22,
+     29
+    ],
+    "walk_from_right_handler_x_offsets": [
+     31
+    ]
+   }
+  ],
+  "viewport_classification": [
+   {
+    "subject": "probe / handler / launch",
+    "class": "WORLD",
+    "rule": "player anchor and cell grid only"
+   },
+   {
+    "subject": "effect-5 animation",
+    "class": "frame-count timer",
+    "rule": "not viewport-relative; do not scale with the window"
+   }
+  ],
+  "adapter_candidates_not_rom_facts": [
+   "a GameMaker mask or hitbox for the pad is NOT canonical: use the probe rule",
+   "do not flip the direction for a left-facing player"
+  ]
+ },
+ "oracle_vectors": {
+  "how_to_use": "table_vectors: call the named original routine (or its POC equivalent) with `input` and compare `expect`; trace_vectors: apply `fixture` at an update boundary, feed `input`, compare rows column by column (the 12th row column, objects, is in the audit JSON)",
+  "table_vectors": {
+   "crumble_handler_6b79": [
+    {
+     "input": {
+      "y_speed_high_byte_d519": 0,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": 0,
+      "spawned_xy": [
+       2160,
+       194
+      ]
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 0,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": 3,
+      "spawned_xy": [
+       2160,
+       194
+      ]
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 0,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 0,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 0,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 0,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 1,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": 0,
+      "spawned_xy": [
+       2160,
+       194
+      ]
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 1,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": 3,
+      "spawned_xy": [
+       2160,
+       194
+      ]
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 1,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 1,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 1,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 1,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 127,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": 0,
+      "spawned_xy": [
+       2160,
+       194
+      ]
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 127,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": 3,
+      "spawned_xy": [
+       2160,
+       194
+      ]
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 127,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 127,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 127,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 127,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 0,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 128,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 32820,
+      "remembered_cell_after": 49987,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 128,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 32820,
+      "remembered_cell_after": 49987,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 128,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 32820,
+      "remembered_cell_after": 49987,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 128,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 32820,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 128,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 32820,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 128,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 32820,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 255,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 65332,
+      "remembered_cell_after": 49987,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 255,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 65332,
+      "remembered_cell_after": 49987,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 255,
+      "remembered_cell_equals_probed_cell": false,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 65332,
+      "remembered_cell_after": 49987,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 255,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 65332,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 255,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 65332,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    },
+    {
+     "input": {
+      "y_speed_high_byte_d519": 255,
+      "remembered_cell_equals_probed_cell": true,
+      "occupied_slots_0_15": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15
+      ],
+      "probe_xy": [
+       2160,
+       194
+      ],
+      "cell_pointer": 49988
+     },
+     "expect": {
+      "y_speed_8_8": 65332,
+      "remembered_cell_after": 49988,
+      "spawned_slot": null,
+      "spawned_xy": null
+     }
+    }
+   ],
+   "crumble_rider_a344": [
+    {
+     "input": {
+      "player_state_d501": 5,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 5,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 5,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 5,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 5,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 5,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 6,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 6,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 6,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 6,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 6,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 6,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 9,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 9,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 9,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 9,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 9,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 9,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 10,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 10,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 10,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 10,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 10,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 10,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 14,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 14,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 14,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 14,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 14,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 14,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 15,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 15,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 15,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 15,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 15,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 15,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 16,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 16,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 16,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 16,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 16,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 16,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 17,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 17,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 17,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 17,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 17,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 17,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 18,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 18,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 18,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 18,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 18,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 18,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 20,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 20,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 20,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 20,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 20,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 20,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 26,
+      "movement_d503": 0
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 26,
+      "movement_d503": 1
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 26,
+      "movement_d503": 2
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 26,
+      "movement_d503": 3
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 26,
+      "movement_d503": 128
+     },
+     "expect": {
+      "hold_applied": true,
+      "player_y": 176,
+      "y_speed": 0,
+      "d521_bit1_set": true
+     }
+    },
+    {
+     "input": {
+      "player_state_d501": 26,
+      "movement_d503": 129
+     },
+     "expect": {
+      "hold_applied": false,
+      "player_y": "unchanged",
+      "y_speed": "unchanged",
+      "d521_bit1_set": false
+     }
+    }
+   ],
+   "crumble_break_a36a": [
+    {
+     "input": {
+      "object_flags_04": 0,
+      "camera_x_minus_object_x": 2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 0,
+      "camera_x_minus_object_x": 1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 0,
+      "camera_x_minus_object_x": 0,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "replaced"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 0,
+      "camera_x_minus_object_x": -1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "replaced"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 0,
+      "camera_x_minus_object_x": -2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "replaced"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 64,
+      "camera_x_minus_object_x": 2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 64,
+      "camera_x_minus_object_x": 1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 64,
+      "camera_x_minus_object_x": 0,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 64,
+      "camera_x_minus_object_x": -1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 64,
+      "camera_x_minus_object_x": -2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 2,
+      "camera_x_minus_object_x": 2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 2,
+      "camera_x_minus_object_x": 1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 2,
+      "camera_x_minus_object_x": 0,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "replaced"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 2,
+      "camera_x_minus_object_x": -1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "replaced"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 2,
+      "camera_x_minus_object_x": -2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "replaced"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 66,
+      "camera_x_minus_object_x": 2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 66,
+      "camera_x_minus_object_x": 1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 66,
+      "camera_x_minus_object_x": 0,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 66,
+      "camera_x_minus_object_x": -1,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    },
+    {
+     "input": {
+      "object_flags_04": 66,
+      "camera_x_minus_object_x": -2,
+      "object_x": 2158
+     },
+     "expect": {
+      "outcome": "removed"
+     }
+    }
+   ],
+   "crumble_init_a2dd": [
+    {
+     "input": {
+      "parameter": 0,
+      "probed_x": 2160,
+      "probed_y": 194
+     },
+     "expect": {
+      "requested_state": 1,
+      "x": 2158,
+      "y": 216,
+      "cell_x_raw": 2160,
+      "cell_y_raw": 194
+     }
+    },
+    {
+     "input": {
+      "parameter": 0,
+      "probed_x": 2144,
+      "probed_y": 192
+     },
+     "expect": {
+      "requested_state": 1,
+      "x": 2158,
+      "y": 216,
+      "cell_x_raw": 2144,
+      "cell_y_raw": 192
+     }
+    },
+    {
+     "input": {
+      "parameter": 0,
+      "probed_x": 2175,
+      "probed_y": 223
+     },
+     "expect": {
+      "requested_state": 1,
+      "x": 2158,
+      "y": 216,
+      "cell_x_raw": 2175,
+      "cell_y_raw": 223
+     }
+    },
+    {
+     "input": {
+      "parameter": 0,
+      "probed_x": 2100,
+      "probed_y": 455
+     },
+     "expect": {
+      "requested_state": 1,
+      "x": 2094,
+      "y": 472,
+      "cell_x_raw": 2100,
+      "cell_y_raw": 455
+     }
+    },
+    {
+     "input": {
+      "parameter": 0,
+      "probed_x": 5,
+      "probed_y": 5
+     },
+     "expect": {
+      "requested_state": 1,
+      "x": 14,
+      "y": 24,
+      "cell_x_raw": 5,
+      "cell_y_raw": 5
+     }
+    },
+    {
+     "input": {
+      "parameter": 3,
+      "probed_x": 2144,
+      "probed_y": 192
+     },
+     "expect": {
+      "requested_state": 3,
+      "x": 2144,
+      "y": 192
+     }
+    }
+   ],
+   "crumble_shard_schedule": [
+    {
+     "input": {
+      "parameter": 1,
+      "y0": 192
+     },
+     "expect": {
+      "first_move_pass": 3,
+      "y_after_each_pass_1_to_16": [
+       192,
+       192,
+       196,
+       202,
+       210,
+       220,
+       232,
+       246,
+       262,
+       280,
+       300,
+       322,
+       346,
+       372,
+       400,
+       430
+      ]
+     }
+    },
+    {
+     "input": {
+      "parameter": 3,
+      "y0": 192
+     },
+     "expect": {
+      "first_move_pass": 5,
+      "y_after_each_pass_1_to_16": [
+       192,
+       192,
+       192,
+       192,
+       196,
+       202,
+       210,
+       220,
+       232,
+       246,
+       262,
+       280,
+       300,
+       322,
+       346,
+       372
+      ]
+     }
+    },
+    {
+     "input": {
+      "parameter": 5,
+      "y0": 192
+     },
+     "expect": {
+      "first_move_pass": 7,
+      "y_after_each_pass_1_to_16": [
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       196,
+       202,
+       210,
+       220,
+       232,
+       246,
+       262,
+       280,
+       300,
+       322
+      ]
+     }
+    },
+    {
+     "input": {
+      "parameter": 8,
+      "y0": 192
+     },
+     "expect": {
+      "first_move_pass": 10,
+      "y_after_each_pass_1_to_16": [
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       196,
+       202,
+       210,
+       220,
+       232,
+       246,
+       262
+      ]
+     }
+    },
+    {
+     "input": {
+      "parameter": 20,
+      "y0": 192
+     },
+     "expect": {
+      "first_move_pass": 22,
+      "y_after_each_pass_1_to_16": [
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192,
+       192
+      ]
+     }
+    }
+   ],
+   "booster_handler_7646": [
+    {
+     "input": {
+      "floor_flags_d522": 0,
+      "movement_d503": 1,
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "y_speed_8_8": 1365
+     },
+     "expect": {
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "movement_d503": 1,
+      "sound_request_de04": 0,
+      "y_speed_8_8": 1365,
+      "position_unchanged": true
+     }
+    },
+    {
+     "input": {
+      "floor_flags_d522": 1,
+      "movement_d503": 1,
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "y_speed_8_8": 1365
+     },
+     "expect": {
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "movement_d503": 1,
+      "sound_request_de04": 0,
+      "y_speed_8_8": 1365,
+      "position_unchanged": true
+     }
+    },
+    {
+     "input": {
+      "floor_flags_d522": 2,
+      "movement_d503": 1,
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "y_speed_8_8": 1365
+     },
+     "expect": {
+      "x_speed_8_8": 1792,
+      "max_x_speed_d373": 1792,
+      "requested_state": 16,
+      "movement_d503": 2,
+      "sound_request_de04": 189,
+      "y_speed_8_8": 1365,
+      "position_unchanged": true
+     }
+    },
+    {
+     "input": {
+      "floor_flags_d522": 3,
+      "movement_d503": 1,
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "y_speed_8_8": 1365
+     },
+     "expect": {
+      "x_speed_8_8": 1792,
+      "max_x_speed_d373": 1792,
+      "requested_state": 16,
+      "movement_d503": 2,
+      "sound_request_de04": 189,
+      "y_speed_8_8": 1365,
+      "position_unchanged": true
+     }
+    },
+    {
+     "input": {
+      "floor_flags_d522": 130,
+      "movement_d503": 1,
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "y_speed_8_8": 1365
+     },
+     "expect": {
+      "x_speed_8_8": 1792,
+      "max_x_speed_d373": 1792,
+      "requested_state": 16,
+      "movement_d503": 2,
+      "sound_request_de04": 189,
+      "y_speed_8_8": 1365,
+      "position_unchanged": true
+     }
+    },
+    {
+     "input": {
+      "floor_flags_d522": 255,
+      "movement_d503": 1,
+      "x_speed_8_8": 4660,
+      "max_x_speed_d373": 546,
+      "requested_state": 7,
+      "y_speed_8_8": 1365
+     },
+     "expect": {
+      "x_speed_8_8": 1792,
+      "max_x_speed_d373": 1792,
+      "requested_state": 16,
+      "movement_d503": 2,
+      "sound_request_de04": 189,
+      "y_speed_8_8": 1365,
+      "position_unchanged": true
+     }
+    }
+   ],
+   "booster_probe_753e": [
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": -1,
+      "anchor_y_minus_cell_top": 14,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": false,
+      "launched": false
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 0,
+      "anchor_y_minus_cell_top": 14,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": true
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 31,
+      "anchor_y_minus_cell_top": 14,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": true
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 32,
+      "anchor_y_minus_cell_top": 14,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": false,
+      "launched": false
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 14,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": false
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": false
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 7,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": false,
+      "launched": false
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 8,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": true
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 39,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": true
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 40,
+      "anim_counter_bit0_plus07": 0,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": false,
+      "launched": false
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": -3,
+      "anim_counter_bit0_plus07": 1,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": false,
+      "launched": false
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": -2,
+      "anim_counter_bit0_plus07": 1,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": true
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 29,
+      "anim_counter_bit0_plus07": 1,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": true
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 30,
+      "anim_counter_bit0_plus07": 1,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": false,
+      "launched": false
+     }
+    },
+    {
+     "input": {
+      "cell": [
+       42,
+       17
+      ],
+      "anchor_x_minus_cell_left": 16,
+      "anchor_y_minus_cell_top": 14,
+      "anim_counter_bit0_plus07": 1,
+      "floor_flag": true
+     },
+     "expect": {
+      "handler_reached": true,
+      "launched": true
+     }
+    }
+   ],
+   "crumble_trigger_floor_pass": [
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": true,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": true,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 5,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": true,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": true,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 33,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": -1,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": true,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 0,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": true,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 31,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": true,
+      "spawned": false,
+      "y_speed_8_8": 0
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": -256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": -256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": false,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    },
+    {
+     "input": {
+      "state": 18,
+      "foot_row_in_cell": 32,
+      "y_speed_8_8": 256,
+      "remembered_cell_equals_cell": true,
+      "anchor_x_offset_in_cell": 10
+     },
+     "expect": {
+      "handler_reached": false,
+      "spawned": false,
+      "y_speed_8_8": 256
+     }
+    }
+   ]
+  },
+  "trace_vectors": [
+   {
+    "id": "crumble_drop_sez1_67_6",
+    "act": "sez1",
+    "fixture": {
+     "start_anchor": [
+      2160,
+      120
+     ],
+     "state": "0x0E",
+     "movement_d503": "0x81 (jump latch + invulnerable fixture)",
+     "floor_flag": false,
+     "previous_flags": 0,
+     "input": "none",
+     "player_invulnerable_fixture": true
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      9,
+      2160,
+      162,
+      0,
+      432,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      10,
+      2160,
+      164,
+      0,
+      480,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      11,
+      2160,
+      166,
+      0,
+      528,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      12,
+      2160,
+      168,
+      0,
+      576,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      13,
+      2160,
+      171,
+      0,
+      624,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      14,
+      2160,
+      173,
+      0,
+      672,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      15,
+      2160,
+      176,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "h0c",
+       "spawn13",
+       "13s0"
+      ]
+     ],
+     [
+      16,
+      2160,
+      176,
+      0,
+      0,
+      14,
+      5,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      17,
+      2160,
+      176,
+      0,
+      0,
+      5,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      18,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      19,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      20,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      21,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      22,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      23,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      24,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      25,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      26,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      27,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      28,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      29,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      30,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      31,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      32,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c",
+       "13break",
+       "replace"
+      ]
+     ],
+     [
+      33,
+      2160,
+      181,
+      0,
+      256,
+      1,
+      14,
+      0,
+      129,
+      0,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      34,
+      2160,
+      182,
+      0,
+      304,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      35,
+      2160,
+      184,
+      0,
+      352,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      36,
+      2160,
+      185,
+      0,
+      400,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      37,
+      2160,
+      187,
+      0,
+      448,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      38,
+      2160,
+      189,
+      0,
+      496,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      39,
+      2160,
+      191,
+      0,
+      544,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      40,
+      2160,
+      193,
+      0,
+      592,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      41,
+      2160,
+      196,
+      0,
+      640,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      42,
+      2160,
+      199,
+      0,
+      688,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "alloc11"
+      ]
+     ],
+     [
+      43,
+      2160,
+      202,
+      0,
+      736,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      44,
+      2160,
+      205,
+      0,
+      784,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      45,
+      2160,
+      208,
+      0,
+      832,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      46,
+      2160,
+      211,
+      0,
+      880,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      47,
+      2160,
+      215,
+      0,
+      928,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      48,
+      2160,
+      219,
+      0,
+      976,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13rm"
+      ]
+     ],
+     [
+      49,
+      2160,
+      223,
+      0,
+      1024,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      50,
+      2160,
+      227,
+      0,
+      1072,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      51,
+      2160,
+      231,
+      0,
+      1120,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      52,
+      2160,
+      236,
+      0,
+      1168,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13rm"
+      ]
+     ],
+     [
+      53,
+      2160,
+      241,
+      0,
+      1216,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard"
+      ]
+     ],
+     [
+      54,
+      2160,
+      246,
+      0,
+      1264,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard"
+      ]
+     ],
+     [
+      55,
+      2160,
+      251,
+      0,
+      1312,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard"
+      ]
+     ],
+     [
+      56,
+      2160,
+      256,
+      0,
+      1360,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13rm"
+      ]
+     ],
+     [
+      57,
+      2160,
+      261,
+      0,
+      1408,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      58,
+      2160,
+      267,
+      0,
+      1456,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      59,
+      2160,
+      273,
+      0,
+      1504,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      60,
+      2160,
+      279,
+      0,
+      1552,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      61,
+      2160,
+      285,
+      0,
+      1600,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      62,
+      2160,
+      292,
+      0,
+      1648,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ]
+    ],
+    "checks": [
+     "spawn at the first update whose foot sample is in the cell",
+     "16 rider updates directly after",
+     "break update = spawn + 17",
+     "children + remove callback = spawn + 18"
+    ],
+    "note": "rows are updates 8..61; the 12th column of each row (objects) is in the audit JSON"
+   },
+   {
+    "id": "crumble_walk_off_sez1_28_10",
+    "act": "sez1",
+    "fixture": {
+     "hover_count": 9,
+     "first_free_fall_update": 37,
+     "held_anchor_y": 304,
+     "x_when_hover_ends": 859,
+     "summary_keys": [
+      "start",
+      "spawn_updates",
+      "break_updates",
+      "hover_updates_left_of_both_cells_with_floor_flag",
+      "hover_count",
+      "first_free_fall_update",
+      "held_anchor_y",
+      "x_when_hover_ends"
+     ]
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      9,
+      966,
+      293,
+      -868,
+      2304,
+      5,
+      5,
+      2,
+      0,
+      0,
+      []
+     ],
+     [
+      10,
+      962,
+      297,
+      -915,
+      2304,
+      5,
+      5,
+      2,
+      0,
+      0,
+      [
+       "alloc11",
+       "alloc11"
+      ]
+     ],
+     [
+      11,
+      958,
+      302,
+      -962,
+      0,
+      5,
+      5,
+      2,
+      0,
+      0,
+      [
+       "h0c",
+       "spawn13",
+       "13s0"
+      ]
+     ],
+     [
+      12,
+      954,
+      304,
+      -978,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      13,
+      951,
+      304,
+      -994,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      14,
+      947,
+      304,
+      -1010,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "alloc11"
+      ]
+     ],
+     [
+      15,
+      943,
+      304,
+      -1024,
+      0,
+      5,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      16,
+      939,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      17,
+      935,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      18,
+      931,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "alloc11"
+      ]
+     ],
+     [
+      19,
+      927,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "13rider",
+       "13s0"
+      ]
+     ],
+     [
+      20,
+      923,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      21,
+      919,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      22,
+      915,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "alloc11"
+      ]
+     ],
+     [
+      23,
+      911,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      24,
+      907,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      25,
+      903,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      26,
+      899,
+      304,
+      -1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "alloc11"
+      ]
+     ],
+     [
+      27,
+      895,
+      311,
+      -1024,
+      256,
+      6,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      28,
+      891,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "13break",
+       "replace",
+       "13rider"
+      ]
+     ],
+     [
+      29,
+      887,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      30,
+      883,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "alloc11"
+      ]
+     ],
+     [
+      31,
+      879,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      32,
+      875,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      33,
+      871,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      34,
+      867,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      35,
+      863,
+      304,
+      -1024,
+      0,
+      14,
+      14,
+      0,
+      1,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      36,
+      859,
+      304,
+      -1024,
+      48,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13break",
+       "replace",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      37,
+      855,
+      305,
+      -1024,
+      96,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13s0",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      38,
+      851,
+      305,
+      -1024,
+      144,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      39,
+      847,
+      306,
+      -1024,
+      192,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      40,
+      843,
+      307,
+      -1024,
+      240,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      41,
+      839,
+      308,
+      -1024,
+      288,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      42,
+      835,
+      309,
+      -1024,
+      336,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      43,
+      831,
+      311,
+      -1024,
+      384,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      44,
+      827,
+      312,
+      -1024,
+      432,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      45,
+      823,
+      314,
+      -1024,
+      480,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      46,
+      819,
+      316,
+      -1024,
+      528,
+      14,
+      14,
+      0,
+      1,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ]
+    ],
+    "checks": [],
+    "note": "Sonic walks left off the two-cell ledge and hovers at Y 304 until the second object breaks"
+   },
+   {
+    "id": "crumble_strip_run_sez1_62_67_14",
+    "act": "sez1",
+    "fixture": {
+     "summary_keys": [
+      "start",
+      "spawns_u_x",
+      "replace_updates",
+      "spawn_to_replace",
+      "cells_60_to_69_after",
+      "player_y_values_before_update_100"
+     ]
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      15,
+      1975,
+      430,
+      716,
+      1792,
+      5,
+      5,
+      2,
+      0,
+      0,
+      []
+     ],
+     [
+      16,
+      1978,
+      430,
+      732,
+      1792,
+      5,
+      5,
+      2,
+      0,
+      0,
+      []
+     ],
+     [
+      17,
+      1981,
+      430,
+      748,
+      1792,
+      5,
+      5,
+      2,
+      0,
+      0,
+      []
+     ],
+     [
+      18,
+      1984,
+      430,
+      764,
+      0,
+      5,
+      5,
+      2,
+      0,
+      0,
+      [
+       "h0c",
+       "spawn13",
+       "13s0"
+      ]
+     ],
+     [
+      19,
+      1987,
+      432,
+      780,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      20,
+      1990,
+      432,
+      796,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      21,
+      1993,
+      432,
+      812,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      22,
+      1996,
+      432,
+      828,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      23,
+      2000,
+      432,
+      844,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      24,
+      2003,
+      432,
+      860,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      25,
+      2006,
+      432,
+      876,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      26,
+      2010,
+      432,
+      892,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      27,
+      2013,
+      432,
+      908,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      28,
+      2017,
+      432,
+      924,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "13rider",
+       "13s0"
+      ]
+     ],
+     [
+      29,
+      2021,
+      432,
+      940,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      30,
+      2024,
+      432,
+      956,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      31,
+      2028,
+      432,
+      972,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      32,
+      2032,
+      432,
+      988,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      33,
+      2036,
+      432,
+      1004,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      34,
+      2040,
+      432,
+      1020,
+      0,
+      5,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      35,
+      2044,
+      432,
+      1024,
+      0,
+      5,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13break",
+       "replace",
+       "13rider"
+      ]
+     ],
+     [
+      36,
+      2048,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      37,
+      2052,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      38,
+      2056,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      39,
+      2060,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      40,
+      2064,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      41,
+      2068,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      42,
+      2072,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      43,
+      2076,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      44,
+      2080,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "13s0",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      45,
+      2084,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13break",
+       "replace",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      46,
+      2088,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      47,
+      2092,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      48,
+      2096,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      49,
+      2100,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      50,
+      2104,
+      432,
+      1024,
+      0,
+      6,
+      6,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ]
+    ],
+    "checks": [],
+    "note": "six-cell bridge at 4 px/update: one object per cell, each breaks 17 updates after its spawn, Sonic never falls"
+   },
+   {
+    "id": "crumble_rise_through_sez1_67_6",
+    "act": "sez1",
+    "fixture": {
+     "handler_calls_while_rising": 10,
+     "first_spawn_update": 45,
+     "y_speed_before_spawn_update": 576,
+     "y_speed_at_spawn_update": 0,
+     "summary_keys": [
+      "start",
+      "handler_calls_while_rising",
+      "handler_calls_while_rising_first_last",
+      "spawns_while_rising",
+      "first_spawn_update",
+      "y_speed_before_spawn_update",
+      "y_speed_at_spawn_update"
+     ]
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      7,
+      2160,
+      213,
+      0,
+      -1200,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      8,
+      2160,
+      208,
+      0,
+      -1152,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      9,
+      2160,
+      204,
+      0,
+      -1104,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      10,
+      2160,
+      200,
+      0,
+      -1056,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      11,
+      2160,
+      196,
+      0,
+      -1008,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      12,
+      2160,
+      192,
+      0,
+      -960,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      13,
+      2160,
+      189,
+      0,
+      -912,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      14,
+      2160,
+      185,
+      0,
+      -864,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      15,
+      2160,
+      182,
+      0,
+      -816,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      16,
+      2160,
+      179,
+      0,
+      -768,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      17,
+      2160,
+      176,
+      0,
+      -720,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c",
+       "alloc16"
+      ]
+     ],
+     [
+      18,
+      2160,
+      174,
+      0,
+      -672,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      19,
+      2160,
+      171,
+      0,
+      -624,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      20,
+      2160,
+      169,
+      0,
+      -576,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      21,
+      2160,
+      167,
+      0,
+      -528,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      22,
+      2160,
+      165,
+      0,
+      -480,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      23,
+      2160,
+      163,
+      0,
+      -432,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      24,
+      2160,
+      162,
+      0,
+      -384,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      25,
+      2160,
+      160,
+      0,
+      -336,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      26,
+      2160,
+      159,
+      0,
+      -288,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      27,
+      2160,
+      158,
+      0,
+      -240,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      28,
+      2160,
+      158,
+      0,
+      -192,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      29,
+      2160,
+      157,
+      0,
+      -144,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      30,
+      2160,
+      157,
+      0,
+      -96,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      31,
+      2160,
+      157,
+      0,
+      -48,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      32,
+      2160,
+      157,
+      0,
+      0,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      33,
+      2160,
+      157,
+      0,
+      48,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      34,
+      2160,
+      157,
+      0,
+      96,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      35,
+      2160,
+      158,
+      0,
+      144,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      36,
+      2160,
+      158,
+      0,
+      192,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      37,
+      2160,
+      159,
+      0,
+      240,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      38,
+      2160,
+      160,
+      0,
+      288,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      39,
+      2160,
+      162,
+      0,
+      336,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      40,
+      2160,
+      163,
+      0,
+      384,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      41,
+      2160,
+      165,
+      0,
+      432,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      42,
+      2160,
+      167,
+      0,
+      480,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      43,
+      2160,
+      169,
+      0,
+      528,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      44,
+      2160,
+      171,
+      0,
+      576,
+      10,
+      10,
+      0,
+      1,
+      0,
+      []
+     ],
+     [
+      45,
+      2160,
+      174,
+      0,
+      0,
+      10,
+      10,
+      0,
+      1,
+      0,
+      [
+       "h0c",
+       "spawn13",
+       "13s0"
+      ]
+     ],
+     [
+      46,
+      2160,
+      176,
+      0,
+      0,
+      10,
+      5,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      47,
+      2160,
+      176,
+      0,
+      0,
+      5,
+      1,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      48,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      49,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      50,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      0,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ]
+    ],
+    "checks": [],
+    "note": "handler runs while rising (no effect); first spawn on the first non-negative-Y-speed update with the foot in the cell"
+   },
+   {
+    "id": "crumble_revisit_same_cell_sez1_67_6",
+    "act": "sez1",
+    "fixture": {
+     "handler_calls": 18,
+     "second_object_created": false,
+     "summary_keys": [
+      "spawn_updates",
+      "replace_updates",
+      "jump_press_updates",
+      "handler_calls",
+      "second_object_created",
+      "state_trace_u_state_f3_y_vy"
+     ]
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      15,
+      2160,
+      142,
+      0,
+      720,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      16,
+      2160,
+      145,
+      0,
+      768,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      17,
+      2160,
+      148,
+      0,
+      816,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      18,
+      2160,
+      152,
+      0,
+      864,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      19,
+      2160,
+      155,
+      0,
+      912,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      20,
+      2160,
+      159,
+      0,
+      960,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "alloc16"
+      ]
+     ],
+     [
+      21,
+      2160,
+      163,
+      0,
+      1008,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      22,
+      2160,
+      167,
+      0,
+      1056,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      23,
+      2160,
+      171,
+      0,
+      1104,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      24,
+      2160,
+      176,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "h0c",
+       "spawn13",
+       "13s0"
+      ]
+     ],
+     [
+      25,
+      2160,
+      176,
+      0,
+      0,
+      14,
+      5,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      26,
+      2160,
+      176,
+      0,
+      0,
+      5,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      27,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      28,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      29,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      30,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      31,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      32,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      33,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      34,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      35,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      36,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      37,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      38,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      39,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      40,
+      2160,
+      176,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      41,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c",
+       "13break",
+       "replace"
+      ]
+     ],
+     [
+      42,
+      2160,
+      181,
+      0,
+      256,
+      1,
+      14,
+      0,
+      129,
+      0,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      43,
+      2160,
+      182,
+      0,
+      304,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      44,
+      2160,
+      184,
+      0,
+      352,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      45,
+      2160,
+      185,
+      0,
+      400,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      46,
+      2160,
+      187,
+      0,
+      448,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      47,
+      2160,
+      189,
+      0,
+      496,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      48,
+      2160,
+      191,
+      0,
+      544,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      49,
+      2160,
+      193,
+      0,
+      592,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      50,
+      2160,
+      196,
+      0,
+      640,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "alloc11"
+      ]
+     ],
+     [
+      51,
+      2160,
+      198,
+      0,
+      688,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      52,
+      2160,
+      201,
+      0,
+      736,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      53,
+      2160,
+      204,
+      0,
+      784,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      54,
+      2160,
+      208,
+      0,
+      832,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      55,
+      2160,
+      211,
+      0,
+      880,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      56,
+      2160,
+      215,
+      0,
+      928,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      57,
+      2160,
+      218,
+      0,
+      976,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13rm"
+      ]
+     ],
+     [
+      58,
+      2160,
+      222,
+      0,
+      1024,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      59,
+      2160,
+      227,
+      0,
+      1072,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      60,
+      2160,
+      231,
+      0,
+      1120,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard"
+      ]
+     ]
+    ],
+    "checks": [],
+    "note": "jump during the hold and land again on the same cell: no second object"
+   },
+   {
+    "id": "crumble_a_b_a_sez1_62_63_14",
+    "act": "sez1",
+    "fixture": {
+     "sequence": "A at update 1, X teleport to B after update 6, back to A after update 10 (writes on update boundaries)",
+     "summary_keys": [
+      "sequence",
+      "spawn_updates",
+      "replace_updates",
+      "d356_by_update",
+      "cell_pointers",
+      "cells_after"
+     ]
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      1,
+      2000,
+      428,
+      0,
+      48,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      2,
+      2000,
+      428,
+      0,
+      96,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "alloc11",
+       "alloc11"
+      ]
+     ],
+     [
+      3,
+      2000,
+      429,
+      0,
+      144,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      4,
+      2000,
+      429,
+      0,
+      192,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      5,
+      2000,
+      430,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "h0c",
+       "spawn13",
+       "13s0"
+      ]
+     ],
+     [
+      6,
+      2000,
+      432,
+      0,
+      0,
+      14,
+      5,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      7,
+      2032,
+      432,
+      0,
+      0,
+      5,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      8,
+      2032,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "13rider",
+       "13s0"
+      ]
+     ],
+     [
+      9,
+      2032,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      10,
+      2032,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      11,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      12,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "13rider",
+       "13rider",
+       "13s0"
+      ]
+     ],
+     [
+      13,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      14,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      15,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      16,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      17,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      18,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      19,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      20,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      21,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      22,
+      2000,
+      432,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      2,
+      [
+       "h0c",
+       "13break",
+       "replace",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      23,
+      2000,
+      439,
+      0,
+      256,
+      1,
+      14,
+      0,
+      129,
+      0,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13rider",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      24,
+      2000,
+      432,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      2,
+      [
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      25,
+      2000,
+      432,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      2,
+      [
+       "13break",
+       "replace",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      26,
+      2000,
+      432,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      2,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      27,
+      2000,
+      432,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      28,
+      2000,
+      432,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      2,
+      [
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      29,
+      2000,
+      433,
+      0,
+      48,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13break",
+       "replace",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      30,
+      2000,
+      433,
+      0,
+      96,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13s0"
+      ]
+     ],
+     [
+      31,
+      2000,
+      434,
+      0,
+      144,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      32,
+      2000,
+      434,
+      0,
+      192,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      33,
+      2000,
+      435,
+      0,
+      240,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      34,
+      2000,
+      436,
+      0,
+      288,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      35,
+      2000,
+      438,
+      0,
+      336,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      36,
+      2000,
+      439,
+      0,
+      384,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      37,
+      2000,
+      441,
+      0,
+      432,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      38,
+      2000,
+      443,
+      0,
+      480,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      39,
+      2000,
+      445,
+      0,
+      528,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      40,
+      2000,
+      447,
+      0,
+      576,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13rm",
+       "13shard"
+      ]
+     ]
+    ],
+    "checks": [],
+    "note": "teleport A -> B -> A: a second object for A is created because $D356 changed"
+   },
+   {
+    "id": "crumble_full_pool_sez1_67_6",
+    "act": "sez1",
+    "fixture": {
+     "fixture": "dummy objects occupy the free slots 0..15 only for the duration of the $5EB7 call",
+     "spawn_calls_logged_at_5eb7_entry": [
+      24
+     ],
+     "replace_events": [],
+     "first_handler_update": 24,
+     "player_y_after": [
+      174,
+      174,
+      174,
+      174,
+      174,
+      174,
+      174,
+      174
+     ],
+     "y_speed_after": [
+      0
+     ],
+     "d356_after": 49988,
+     "cell_pointer": 49988,
+     "cell_after": "0xAF",
+     "slot16_bytes_30_31_after_failed_spawn": [
+      68,
+      195
+     ],
+     "iy_after_failed_spawn": 55616
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      21,
+      2160,
+      163,
+      0,
+      1008,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      22,
+      2160,
+      167,
+      0,
+      1056,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      23,
+      2160,
+      171,
+      0,
+      1104,
+      14,
+      14,
+      0,
+      129,
+      0,
+      []
+     ],
+     [
+      24,
+      2160,
+      176,
+      0,
+      0,
+      14,
+      14,
+      0,
+      129,
+      0,
+      [
+       "h0c",
+       "spawn13"
+      ]
+     ],
+     [
+      25,
+      2160,
+      174,
+      0,
+      0,
+      14,
+      5,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      26,
+      2160,
+      174,
+      0,
+      0,
+      5,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      27,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      28,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      29,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      30,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      31,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ],
+     [
+      32,
+      2160,
+      174,
+      0,
+      0,
+      1,
+      1,
+      2,
+      128,
+      0,
+      [
+       "h0c"
+      ]
+     ]
+    ],
+    "checks": [],
+    "note": "pool full: no object, no hold, no break, Y speed zeroed every update"
+   },
+   {
+    "id": "booster_bridge_sez2_42_17",
+    "act": "sez2",
+    "fixture": {
+     "approach": "from x = 1280 (64 px before the pad) at 2 px/update, RIGHT held",
+     "handler_updates": [
+      25,
+      26,
+      27,
+      28,
+      29
+     ],
+     "crumble_spawns_u_x": [
+      [
+       34,
+       1409
+      ],
+      [
+       39,
+       1443
+      ],
+      [
+       44,
+       1477
+      ],
+      [
+       48,
+       1504
+      ]
+     ],
+     "replace_updates": [
+      51,
+      56,
+      61,
+      65
+     ],
+     "spawn_to_replace": [
+      17,
+      17,
+      17,
+      17
+     ],
+     "cells_44_to_47_after": {
+      "44": "0xB0",
+      "45": "0xB0",
+      "46": "0xB0",
+      "47": "0xB0"
+     },
+     "player_y_range_during_bridge": [
+      558,
+      560
+     ],
+     "min_state_during": [
+      "0x05",
+      "0x0E",
+      "0x10",
+      "0x1B"
+     ],
+     "x_at_end": 1645,
+     "never_fell_below_y": 560
+    },
+    "rows_columns": [
+     "update",
+     "x",
+     "y",
+     "vx_8_8",
+     "vy_8_8",
+     "state",
+     "requested",
+     "floor_flags_d522",
+     "movement_d503",
+     "d521",
+     "events"
+    ],
+    "rows": [
+     [
+      29,
+      1374,
+      558,
+      1792,
+      1792,
+      16,
+      16,
+      2,
+      2,
+      0,
+      [
+       "h1a"
+      ]
+     ],
+     [
+      30,
+      1381,
+      558,
+      1788,
+      1792,
+      16,
+      16,
+      2,
+      2,
+      0,
+      []
+     ],
+     [
+      31,
+      1388,
+      558,
+      1784,
+      1792,
+      16,
+      16,
+      2,
+      2,
+      0,
+      []
+     ],
+     [
+      32,
+      1395,
+      558,
+      1780,
+      1792,
+      16,
+      16,
+      2,
+      2,
+      0,
+      []
+     ],
+     [
+      33,
+      1402,
+      558,
+      1776,
+      1792,
+      16,
+      16,
+      2,
+      2,
+      0,
+      []
+     ],
+     [
+      34,
+      1409,
+      558,
+      1772,
+      0,
+      16,
+      16,
+      2,
+      2,
+      0,
+      [
+       "h0c",
+       "spawn13",
+       "alloc16",
+       "13s0"
+      ]
+     ],
+     [
+      35,
+      1416,
+      560,
+      1768,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      36,
+      1423,
+      560,
+      1764,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      37,
+      1430,
+      560,
+      1760,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider"
+      ]
+     ],
+     [
+      38,
+      1437,
+      560,
+      1756,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "alloc16",
+       "13rider"
+      ]
+     ],
+     [
+      39,
+      1443,
+      560,
+      1752,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "13rider",
+       "13s0"
+      ]
+     ],
+     [
+      40,
+      1450,
+      560,
+      1748,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "alloc16",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      41,
+      1457,
+      560,
+      1744,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      42,
+      1464,
+      560,
+      1740,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "alloc16",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      43,
+      1471,
+      560,
+      1736,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      44,
+      1477,
+      560,
+      1732,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "alloc16",
+       "13rider",
+       "13rider",
+       "13s0"
+      ]
+     ],
+     [
+      45,
+      1484,
+      560,
+      1728,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      46,
+      1491,
+      560,
+      1724,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "alloc16",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      47,
+      1498,
+      560,
+      1720,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      48,
+      1504,
+      560,
+      1716,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "spawn13",
+       "alloc16",
+       "13rider",
+       "13rider",
+       "13rider",
+       "13s0"
+      ]
+     ],
+     [
+      49,
+      1511,
+      560,
+      1712,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      50,
+      1518,
+      560,
+      1708,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13rider",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      51,
+      1524,
+      560,
+      1704,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "13break",
+       "replace",
+       "13rider",
+       "13rider",
+       "13rider"
+      ]
+     ],
+     [
+      52,
+      1531,
+      560,
+      1700,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "h0c",
+       "alloc16",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13rider",
+       "13rider",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      53,
+      1538,
+      560,
+      1696,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "13rider",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      54,
+      1544,
+      560,
+      1692,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "alloc16",
+       "13rider",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      55,
+      1551,
+      560,
+      1688,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "13rider",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      56,
+      1557,
+      560,
+      1684,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "alloc16",
+       "13break",
+       "replace",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      57,
+      1564,
+      560,
+      1680,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13s0",
+       "13s0"
+      ]
+     ],
+     [
+      58,
+      1570,
+      560,
+      1676,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "alloc16",
+       "13rider",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      59,
+      1577,
+      560,
+      1672,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "13rider",
+       "13rider",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      60,
+      1583,
+      560,
+      1668,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "13rider",
+       "13rider",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      61,
+      1590,
+      560,
+      1664,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "13break",
+       "replace",
+       "13rider",
+       "13shard",
+       "13shard",
+       "13shard"
+      ]
+     ],
+     [
+      62,
+      1596,
+      560,
+      1660,
+      0,
+      16,
+      16,
+      2,
+      2,
+      2,
+      [
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "alloc11",
+       "13rm",
+       "13rider",
+       "13s0",
+       "13s0",
+       "13s0",
+       "13shard",
+       "13rm",
+       "13shard",
+       "13shard"
+      ]
+     ]
+    ],
+    "checks": [],
+    "note": "pad then four-cell crumble bridge"
+   }
+  ]
+ }
+}

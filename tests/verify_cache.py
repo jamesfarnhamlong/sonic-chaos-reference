@@ -32,6 +32,7 @@ import mghz_object_census
 import sez_foundation
 import sez_object_census
 import sez_art_approval
+import sez_surfaces
 import mghz_surface_ceiling
 import mghz_m1_followup
 import mghz_object_24_2e
@@ -171,6 +172,10 @@ def main(rom_path):
     assert (ROOT / "data/rom-cache/sez/implementation-manifest.json").read_text(encoding="utf-8") == sez_foundation.dumps(sez_foundation.build(rom))
     assert (ROOT / "data/rom-cache/sez/object-census.json").read_text(encoding="utf-8") == sez_object_census.dumps(sez_object_census.build(rom))
     assert (ROOT / "data/rom-cache/sez/art-approval.json").read_text(encoding="utf-8") == json.dumps(sez_art_approval.manifest_for(sez_art_approval.build(rom)), indent=2) + "\n"
+    # SEZ terrain mechanics (surface $0C/$13 crumble ledge, surface $1A booster pad): controlled sweeps, whole-game fixtures and runtime contracts are regenerated (~60 s).
+    sez_data, sez_contracts = sez_surfaces.build_all(rom)
+    assert (ROOT / "data/rom-cache/sez/surfaces-0c-1a.json").read_text(encoding="utf-8") == sez_surfaces.dumps(sez_data)
+    assert (ROOT / "data/rom-cache/sez/surface-runtime-contracts.json").read_text(encoding="utf-8") == sez_surfaces.dumps(sez_contracts)
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

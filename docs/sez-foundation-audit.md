@@ -150,6 +150,7 @@ PNG boards: `python tools/sez_art_approval.py <rom>` (project venv) then `tools/
 ## 10. Unresolved
 
 * Surface `$0C`/`$13` crumble and surface `$1A` booster semantics (§5); package S2.
+  **Superseded:** audited in `docs/sez-surfaces-0c-13-1a-audit.md` (exact trigger, remembered cell, pools, rider hold, break, shards, booster effect and the 93-cell / 9-pad whole-game proofs).
 * Effect-5 absolute phase vs the global clock; whether `$A7`'s tile `$158` is the only animated art of the pad.
 * Results/act-3 tables `$2D84`, `$32CA`, `$A3A0` (zone-indexed presentation) — deferred with the results screen.
 * No Windows/gameplay acceptance is claimed; the visual package was approved by James on 2026-10-05.
