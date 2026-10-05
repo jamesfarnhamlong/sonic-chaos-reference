@@ -2,6 +2,7 @@
   "format": 1,
   "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
   "research_base": "7ba4d8a7bfb7f8164462fbf50db05c4b63cec0fe",
+  "reconciliation_base": "badba9d085906054e4f15fa1d1a960ca2ae0abdd",
   "status": "Research closed; review/merge before POC consumption; Windows gameplay acceptance pending",
   "runtime": "data/rom-cache/mghz/boss-56-runtime.json",
   "fullgame": "data/rom-cache/mghz/boss-56-fullgame.json",
@@ -84,6 +85,64 @@
     "clear_world_x": 3356,
     "clear_requires_floor_bit1": true,
     "timer_stops_on_boss_defeat": false
+  },
+  "throw_vertical_selector": {
+    "state06": {
+      "any": [
+        {
+          "unsigned_player_y_lt_body_y": true
+        },
+        {
+          "all": [
+            {
+              "signed_body_vy_ge": 0
+            },
+            {
+              "body_world_y_eq": 430
+            }
+          ]
+        }
+      ]
+    },
+    "otherwise": 7
+  },
+  "warning_contact": {
+    "calls": 24,
+    "callback_cpu": 42879,
+    "contact_vector": 1076,
+    "extents": [
+      4,
+      16
+    ],
+    "sonic_closed_contact": {
+      "x": [
+        -12,
+        12
+      ],
+      "y": [
+        -16,
+        24
+      ]
+    },
+    "attack_defeats": false,
+    "hurt_bit6_skips": true,
+    "invulnerability_checked_by_player_consumer": true
+  },
+  "post_defeat_camera": {
+    "routine": 22578,
+    "enable_vector": 860,
+    "lead_right": 104,
+    "lead_left": 136,
+    "lead_slew": 1,
+    "deadzone_half_width": 8,
+    "max_right_step": 7,
+    "max_left_step": -7,
+    "exact_minus8_preserved": true,
+    "saved_right": 3584,
+    "retained_left_fixture": 2954,
+    "limit_rule": "retained D280 <= candidate < restored D282; reject overshoot, do not clamp to boundary",
+    "begins": "State05 callback disables pan/restores right limit before testing WORLD playerX>=3356 and grounded. Camera phase has already run; follow resumes next update, even if clear gate is false.",
+    "speed_dependency": "Position error and working lead; no player velocity read or min(player speed) cap"
   },
   "dependencies": [
     {
@@ -254,6 +313,49 @@
       "widescreen_candidate": "Do not move with viewport height"
     },
     {
+      "name": "post-throw vertical selector",
+      "relationship": "WORLD / PLAYER_RELATIVE",
+      "canonical": {
+        "06": "playerY<bodyY OR (bodyVy>=0 AND bodyY==430)",
+        "otherwise": 7
+      },
+      "source": "$A613 JR C / JR Z",
+      "widescreen_candidate": "Do not substitute A-return threshold >=430"
+    },
+    {
+      "name": "post-defeat follow lead",
+      "relationship": "VIEWPORT_OFFSET",
+      "canonical": {
+        "right_facing": 104,
+        "left_facing": 136,
+        "slew_px_per_update": 1
+      },
+      "source": "$5832/$58E1",
+      "widescreen_candidate": "Explicit recentering candidate: CENTER-24 / CENTER+8; width intent unproven"
+    },
+    {
+      "name": "post-defeat follow rate",
+      "relationship": "MOTION",
+      "canonical": {
+        "deadzone_half_width": 8,
+        "right_cap": 7,
+        "left_cap": -7,
+        "exact_minus8_allowed": true
+      },
+      "source": "$5832/$4CB0",
+      "widescreen_candidate": "Smooth right-only 4px/player-speed cap is a documented adapter, not canonical"
+    },
+    {
+      "name": "post-defeat limits",
+      "relationship": "WORLD",
+      "canonical": {
+        "left_in_trace": 2954,
+        "restored_right_exclusive": 3584
+      },
+      "source": "$81F4/$4CB0",
+      "widescreen_candidate": "Retain saved limits; widening requires explicit worldWidth-viewportWidth adapter"
+    },
+    {
       "name": "projectile early removal screen X",
       "relationship": "EDGE",
       "canonical": {
@@ -316,6 +418,8 @@
     "Controller uses full shared solid projection before attack/damage; preserve terrain/camera guards",
     "Boss hit cooldown restricts HP decrement only, not contact, sound or player rebound",
     "Independent projectiles are not killed by parent defeat",
+    "Warning frames13/14 run contact on all24 calls; hurt consumer follows on next player update",
+    "Throw selector branches on CPU Z, not the A value returned by A69F",
     "No timer stop; MGHZ-specific world3356+floor gate before shared clear path",
     "Shared monitor fix and parked player presentation defects remain separate"
   ],

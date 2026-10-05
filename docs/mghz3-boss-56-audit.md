@@ -1,6 +1,7 @@
 # MGHZ3 boss `$56`, projectiles `$57/$58`
 
-Research base `7ba4d8a7bfb7f8164462fbf50db05c4b63cec0fe`. This package closes
+Original Research base `7ba4d8a7bfb7f8164462fbf50db05c4b63cec0fe`; focused
+reconciliation base `badba9d085906054e4f15fa1d1a960ca2ae0abdd`. This package closes
 the ROM runtime/data dependency chain for POC implementation after review and
 merge. No POC files are changed. The shared monitor fix and parked slope,
 spring and facing presentation issues remain separate.
@@ -101,15 +102,17 @@ underwater-scaled. The post-gravity world430 test selects0C.
 
 `$A5FD` selects 08/09 from `(D12F + ROM[$0200+D12F]) & 1`; all 256 counter
 values are in the cache. This is deterministic engine-counter/ROM-table input,
-not a fresh random choice. `$A613` selects07 only if playerY>=bodyY and the
-body's non-rising world430 test succeeds; otherwise06. In08/09, contact precedes
+not a fresh random choice. `$A613` selects06 if unsigned playerY<bodyY, or
+if body vy>=0 AND body worldY==430; otherwise07. It tests the helper's **Z
+flag**, not its A-return value. Thus rising bodies and non-rising bodies at429
+or431 select07 when playerY>=bodyY. In08/09, contact precedes
 movement and X velocity is negated every call, giving the small −2/+2 wobble.
 The one-call `$A5C9` tail restores **saved canonical X3269**, then contact runs.
 
 | `$57` state | Script CPU | Behavior |
 |---|---|---|
 | 00 | A6DF | Blank224 record, A724 requests01 and sets +04 bit0. |
-| 01 | A6E5 | Frames14/13, four calls each, three repetitions (24 calls); A77F is RET. Then A72D selects02 for parameter0 or03 otherwise. |
+| 01 | A6E5 | Frames14/13, four calls each, three repetitions (24 calls); A77F CALL0434 contact on every call, RET at A782. Then A72D selects02 for parameter0 or03 otherwise. |
 | 02 | A6FA | SoundBE; frames11/12 alternate four calls each; integrate/contact/removal A761. vx−2, vy0. |
 | 03 | A709 | Spawn58 params0 and1 at own anchor; soundBE; frame15 repeated224, A761. vx−2.125, vy0; launch first subtracts8 from Y. |
 
@@ -119,7 +122,7 @@ The one-call `$A5C9` tail restores **saved canonical X3269**, then contact runs.
 | 01 | A794 | Frame15 repeated224; same A761 movement/contact/removal. |
 
 Projectiles have no gravity or terrain bounce. The 24-call `$57` warning phase
-has no contact callback. The downward/upward `$58` pair and the parent `$57`
+is stationary but damaging on overlap throughout. The downward/upward `$58` pair and the parent `$57`
 continue independently; the central projectile remains after the split.
 
 ## Scheduling, ownership and removal
@@ -208,7 +211,7 @@ disable projection, hurt, rebound or sound. Repeated top contact hits on calls
 Projectiles use the same closed overlap but **no solid projection** and no
 attack/defeat branch. Frame11 extents12×16 gives normal Sonic dx±20; frame12
 8×16 gives dx±16; frames13/14/15 4×16 give dx±12. All use dy−16..+24.
-Frames13/14 are warning-only, so these extents are not active hazard boxes then.
+Frames13/14 are active warning-phase hazard boxes on all24 callback calls.
 Their ordinary +03 bit7 is clear: hurt-bit6 skips contact, while attack posture
 cannot defeat them. Selector6 immunity belongs to the subsequent player hurt
 consumer. Exhaustive child geometry/attack/hurt/bit7 sweeps lock this distinction.
@@ -242,6 +245,97 @@ already beyond settled-camera3060 +289, so player20 can reach the clear flag
 on its first handler visit. The emulated trace does precisely that; do not
 require a long auto-run as a fidelity criterion. At wider widths the existing
 explicit RIGHT+33 adapter can produce a longer shared auto-run.
+
+### Original post-defeat camera baseline
+
+`$81F4 CALL $035C` reaches `$59D8`: set D15E bit7, clear D15F bit0.
+`$81FD` restores D282 from the split saved-right bytes +25/+27 (3584).
+It leaves **D280 unchanged**, retaining the intro's left-lock result, rather
+than assigning a new fixed arena-left coordinate. Main replay retains2954;
+the separate delayed-clear fixture retains2947. These are trace inputs/results,
+not two competing immutable arena constants. The saved right limit is WORLD
+3584 (act width3840 minus canonical viewport256), exclusive.
+
+The shared camera entry `$4C90` resumes `$5832` with pan disabled. `$16B8`
+runs camera first (`$16CA`), then player (`$16CD`), then objects (`$16D0`).
+Consequently release in the state05 object callback affects the **next camera
+update**. Release precedes the WORLD3356+floor clear test; follow resumes while
+the gate is false. Same-visit script promotion can enter05 and release/clear
+before an external driver has ever observed state05 at an update boundary.
+
+The working horizontal lead D28A slews1/update toward104 facing right or136
+facing left. These are viewport offsets (at256, CENTER−24 / CENTER+8);
+their intended wider-view relationship is not proven. Pan mode uses120, but
+after release the working lead is retained and slews toward the facing target.
+Define `k=(playerX-D284)&255`, using the pre-follow candidate camera. An exact
+16-bit zero difference bypasses the horizontal branch. Otherwise:
+
+- `k < lead-8`: delta = k−(lead−8); retain −1..−8, cap −9 or lower to−7.
+- `lead-8 <= k <= lead+8`: delta0 (the upper comparison computes0).
+- `k > lead+8`: delta = min(7,k−(lead+8)).
+
+The new candidate is **actual camera D174 + delta**. There is no player-speed
+read or speed cap. Left movement is possible: even with stationary Sonic,
+position error can cause ±7; exactly−8 is preserved by the `$F8` comparison.
+The 8px dead-zone, step caps and1px lead slew are motion constants, independent
+of viewport width. `$4CB0` accepts left candidate >=D280 and right candidate
+<D282; an overshoot rejects the entire move rather than snapping to a limit.
+The VBlank handler commits D284/D286 to D174/D176.
+
+SMS low-byte wrapping also matters: the main synthetic clear replay reaches
+player3368 with camera3060, difference308, low byte52. The next follow candidate
+is3053 (−7), before the shared state20 clear path completes. This is original
+controlled behavior, not a reason to reproduce wrapping in widescreen. The
+additional full-game delayed-clear fixture proves right and left7px movements
+before the clear gate, with the retained left and restored right limits.
+An explicit smooth, right-only, 4px/player-speed-limited widescreen adapter
+remains a valid downstream design choice; it does not match this256px baseline.
+
+### Reconciliation oracles and replay reconstruction
+
+`tools/mghz56_reconciliation.py` byte-verifies bank1E CPU A77F/file7A77F as
+`CD 34 04 C9`: CALL0434 then RET atA782. Vector0434 reaches630B, which calls
+6328 and sets D3B0=FF for any low-nibble overlap. Both warning frames are4×16;
+normal Sonic8×24 gives closed dx−12..12 and dy−16..24 (state0F extent9 gives
+dx−13..13). No projection, movement, attack defeat, rebound or HP branch runs.
+Attack posture does not protect Sonic. With the child bit7 clear, player hurt
+bit6 skips overlap; bit7 invulnerability still permits the queued request,
+but player48BC handles immunity, as it also does for D532==6. Ordinary47 BCD
+rings become0; invulnerable/hurt/power6 fixtures retain47. These fixtures run
+the actual scheduler for all24 warning calls for both parameters and all
+attack/hurt/invulnerability/power combinations, plus exhaustive frame13/14
+geometry. Player damage is consumed on the next player phase in the real game;
+the isolated fixture invokes that same consumer explicitly after sampling.
+
+AtA61D, SBC playerY−bodyY produces carry. LD B,6 preserves it; JR C bypasses
+the helper. Otherwise A69F's BIT7(vy high) produces Z=0 for rising velocity and
+RET NZ preserves that flag. Non-rising velocity reaches SBC bodyY−430, producing
+Z=1 **only at equality**. LD A,0/FF and RET C preserve Z. A626's JR Z keeps06;
+otherwise INC B produces07. The old A-return threshold remains valid for the
+other callbacks that explicitly test A, but was wrong for this selector.
+The oracle exhausts all65536 player Y values for each body429/430/431 and
+vy−1/0/+1:589824 selector executions, including both sides and equality.
+
+The full-game format2 cache records D12F at each boundary and phase, pre-driver
+player state, after-camera, **after-player-before-objects**, after-objects,
+warning-contact and post-helper flags, and release events. Boundary `player`
+still deliberately describes synthetic driver input. It is not physics-settled
+Y. For the main fixture's written430, measured settled Y includes398,430,437;
+the usual platform-resting value is398. The delayed release's X3260 rests414.
+Do not replace exact terrain results by a generic384..412 parked-Y assumption.
+
+`D12F=(frame+96)&255` can be an explicitly fitted driver reconstruction only
+when validated against counter values at the same execution phase. It is not
+a ROM formula: IRQ0606 increments D12F;075A resets it during setup; harness
+frame counts continue through setup/results. The current main trace has
+boundary offsets188/237/252/253, not a single96. Extra breakpoint sampling in
+the approximate IRQ harness can alter interrupt alignment (old cache543 rows,
+new main546). A reported14/256 successful offsets establishes only that those
+synthetic fixtures reach the fight, not that they reproduce canonical timing.
+Likewise a384..412 parked-Y choice may avoid hazards for a synthetic fixture,
+but is not reconstruction of the logged input430 or a universal ROM position.
+Use phase-recorded values to remove both guesses. Exact controller-only timing
+and original-game visual acceptance remain outside this synthetic replay.
 
 Type0A initializes the shared time/ring bonus at D2A6, follows the player and
 emits parameterFF sparkles at Y−12/Y−8 every8 calls. The parent80 smoke uses
@@ -313,9 +407,12 @@ its chosen arena/projectile behavior and first validate width256 equivalence.
 
 ## Verification limits and remaining work
 
-Runtime generator: **226,601 counted oracle/model assertions**, plus static
-art/source assertions. Whole-game fixture: four completion assertions, 543
+Runtime generator: **894,975 counted oracle/model assertions**, plus static
+art/source assertions. Whole-game fixtures: eight counted assertions, 546 main
 update-boundary rows and11 original hit entries, deterministic regeneration.
+The separate delayed-clear replay verifies bidirectional camera follow before
+the gate. The37 boss regression tests and159-test MGHZ suite pass; see
+`reports/mghz3-boss-56-reconciliation.md` for the focused change report.
 Independent attacks are synthetic, applied at1336 before full updates; no
 combat/camera/results routine is patched. The routine-only Oracle supplies
 D135=1 when a real death routine waits for IRQ synchronization. Whole-game

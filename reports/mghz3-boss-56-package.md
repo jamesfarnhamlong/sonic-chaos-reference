@@ -1,5 +1,10 @@
 # MGHZ3 `$56/$57/$58` Research package — 2026-10-05
 
+Historical initial-package report. The warning-phase and post-throw selector
+claims were corrected by the focused follow-up in
+`reports/mghz3-boss-56-reconciliation.md`; use the regenerated canonical caches
+and current audit. Counts below describe the original reviewed package.
+
 Branch `research/mghz3-boss-56`, based exactly on Research main
 `7ba4d8a7bfb7f8164462fbf50db05c4b63cec0fe`. Research runtime dependency chain
 closed for review/merge before POC consumption. Research main, POC and root
@@ -50,7 +55,7 @@ Material findings for the POC reviewer:
 - Grounded contact from below invokes player death before attack handling.
   Boss contact bypasses the usual hurt-bit overlap skip through its own bit7.
 - `$57/$58` projectiles have independent lifetimes and no controller owner link;
-  warning phase24 calls is inert, then straight or three-way leftward motion.
+  warning phase24 calls **has contact** (corrected in the follow-up), then straight or three-way leftward motion.
   Preserve allocator pools, ascending-slot scheduling and allocation-failure skip.
 - MGHZ defeat uses **WORLD(playerX)>=3356 AND floor bit1** before player20,
   bonus controller and smoke conversion; timer keeps running. Results advance AQZ1.

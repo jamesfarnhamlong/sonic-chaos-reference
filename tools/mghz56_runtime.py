@@ -16,6 +16,7 @@ import mghz_object_24_2e as Q
 import thz3_boss_support as B
 import thz1_type18_dynamic_graphics as D
 import viewport_semantics as V
+import mghz56_reconciliation as X
 from oracle import Oracle
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,6 +51,7 @@ class Lab:
 
     def step(self):
         self.m[0xD135]=1
+        self.scheduler_counter=self.m[0xD12F]
         self.o.call(0x5DD1)
         self.m[0xD12F]=(self.m[0xD12F]+1)&255
 
@@ -63,7 +65,8 @@ class Lab:
                 vx=R.s16(o.word(b+22)),vy=R.s16(o.word(b+24)),
                 extent=[m[b+44],m[b+45]],hp=m[b+38],cooldown=m[b+56],
                 saved_x=o.word(b+58),hud_owner=o.word(b+52),placement_token=m[b+62],flags=m[b+3],flags4=m[b+4]))
-        return dict(tick=tick,slots=slots,player=player(o),camera=[o.word(0xD174),o.word(0xD176)],
+        return dict(tick=tick,counter=m[0xD12F],scheduler_counter=getattr(self,'scheduler_counter',None),
+            slots=slots,player=player(o),camera=[o.word(0xD174),o.word(0xD176)],
             limits=[o.word(v) for v in (0xD280,0xD282,0xD27C,0xD27E)],
             pan=[o.word(0xD2DA),o.word(0xD2DC)],scroll=[m[0xD15E],m[0xD15F]],
             timer_running=m[0xD2BE],dynamic=m[0xD3B3],palette=m[0xD495])
@@ -368,8 +371,8 @@ def build(r):
         scope=['MGHZ3 $56','$57','$58','direct support/clear dependencies'],
         evidence=['DECODED DATA','BYTE-VERIFIED ASSEMBLY','CONTROLLED ROUTINE RESULT'],
         research_only=True,poc_untouched=True,
-        static=static(r),contacts=contacts(r),thresholds=thresholds(r),cycles=cycles(r),children=child_sweeps(r),clear=clear_gates(r),creation_camera=creation_camera(r),feedback=feedback(r),projection_guards=projection_guards(r))
-    data['assertions']=sum(data[k]['assertions'] for k in ('contacts','thresholds','cycles','children','clear','creation_camera','feedback','projection_guards'))
+        static=static(r),contacts=contacts(r),thresholds=thresholds(r),cycles=cycles(r),children=child_sweeps(r),clear=clear_gates(r),creation_camera=creation_camera(r),feedback=feedback(r),projection_guards=projection_guards(r),reconciliation=X.build(r,__import__(__name__)))
+    data['assertions']=sum(v['assertions'] for v in data.values() if isinstance(v,dict) and 'assertions' in v)
     return data
 
 
@@ -377,6 +380,7 @@ def implementation_manifest(data):
     def rule(name,kind,value,source,adapter):
         return dict(name=name,relationship=kind,canonical=value,source=source,widescreen_candidate=adapter)
     return dict(format=1,rom_sha256=R.SHA256,research_base=data['research_base'],
+        reconciliation_base=data['reconciliation']['reconciliation_base'],
         status='Research closed; review/merge before POC consumption; Windows gameplay acceptance pending',
         runtime='data/rom-cache/mghz/boss-56-runtime.json',fullgame='data/rom-cache/mghz/boss-56-fullgame.json',
         documentation='docs/mghz3-boss-56-audit.md',
@@ -390,6 +394,11 @@ def implementation_manifest(data):
             hp_byte_initial=10,damaging_hits_to_defeat=11,hp_underflow=255,hit_cooldown_calls=8,
             vulnerable_states=[6,7,8,9],nonvulnerable_contact_states=[10,11,12],
             clear_world_x=3356,clear_requires_floor_bit1=True,timer_stops_on_boss_defeat=False),
+        throw_vertical_selector=data['reconciliation']['selector']['condition'],
+        warning_contact=dict(calls=24,callback_cpu=0xA77F,contact_vector=0x0434,extents=[4,16],
+            sonic_closed_contact={'x':[-12,12],'y':[-16,24]},attack_defeats=False,
+            hurt_bit6_skips=True,invulnerability_checked_by_player_consumer=True),
+        post_defeat_camera={k:v for k,v in data['reconciliation']['camera'].items() if k!='rows'},
         dependencies=[dict(type=t,role=role,source=source) for t,role,source in (
             (18,'HUD slide-away; recreated at combat init','shared $81A6 / bank0C state table'),
             (87,'parent $56 states8/9 child','bank1E $A510/$A51C'),
@@ -412,6 +421,10 @@ def implementation_manifest(data):
             rule('player clamp','EDGE',{'left':16,'right':-9},'shared player edge clamp','Use full-width edge comparison; avoid SMS low-byte wrap'),
             rule('solid side projection guards','EDGE',{'left':32,'right':-32},'$6009/$6038','Preserve side-push D523 guards and edge relationship in boss contact adapter'),
             rule('body vertical turn/floor','WORLD',{'rise_strict_lt':288,'fall_inclusive_ge':430},'$A6B8/$A69F','Do not move with viewport height'),
+            rule('post-throw vertical selector','WORLD / PLAYER_RELATIVE',{'06':'playerY<bodyY OR (bodyVy>=0 AND bodyY==430)','otherwise':7},'$A613 JR C / JR Z','Do not substitute A-return threshold >=430'),
+            rule('post-defeat follow lead','VIEWPORT_OFFSET',{'right_facing':104,'left_facing':136,'slew_px_per_update':1},'$5832/$58E1','Explicit recentering candidate: CENTER-24 / CENTER+8; width intent unproven'),
+            rule('post-defeat follow rate','MOTION',{'deadzone_half_width':8,'right_cap':7,'left_cap':-7,'exact_minus8_allowed':True},'$5832/$4CB0','Smooth right-only 4px/player-speed cap is a documented adapter, not canonical'),
+            rule('post-defeat limits','WORLD',{'left_in_trace':2954,'restored_right_exclusive':3584},'$81F4/$4CB0','Retain saved limits; widening requires explicit worldWidth-viewportWidth adapter'),
             rule('projectile early removal screen X','EDGE',{'right':-80,'raw_lt':176},'$A771','Explicit candidate follows right edge; only on even D12F'),
             rule('projectile early removal screen Y','LOCKED_CAMERA',{'top_plus':120,'raw_ge':120},'$A778','Keep fixed vertical camera relationship; paired with screen X condition'),
             rule('projectile lifetime','EDGE',{'awake_margin':32,'outer_margin':96},'$61E1','$57/$58 are transient projectiles; no mapped-enemy QoL retention by default'),
@@ -423,6 +436,8 @@ def implementation_manifest(data):
             'Controller uses full shared solid projection before attack/damage; preserve terrain/camera guards',
             'Boss hit cooldown restricts HP decrement only, not contact, sound or player rebound',
             'Independent projectiles are not killed by parent defeat',
+            'Warning frames13/14 run contact on all24 calls; hurt consumer follows on next player update',
+            'Throw selector branches on CPU Z, not the A value returned by A69F',
             'No timer stop; MGHZ-specific world3356+floor gate before shared clear path',
             'Shared monitor fix and parked player presentation defects remain separate'],
         unresolved=['Windows/gameplay acceptance and choice of optional widescreen arena reframing',

@@ -188,9 +188,63 @@ class CacheTests(unittest.TestCase):
         self.assertEqual(constants['arena camera']['relationship'],'LOCKED_CAMERA')
 
     def test_assertion_count(self):
-        self.assertEqual(D['assertions'],226601)
-        self.assertEqual(sum(v['assertions'] for v in D.values() if isinstance(v,dict) and 'assertions' in v),226601)
-        self.assertEqual(G['assertions'],4)
+        self.assertEqual(D['assertions'],894975)
+        self.assertEqual(sum(v['assertions'] for v in D.values() if isinstance(v,dict) and 'assertions' in v),894975)
+        self.assertEqual(G['assertions'],8)
+
+    def test_warning_exact_bytes(self):
+        source=D['reconciliation']['sources'][0]
+        self.assertEqual((source['bank'],source['file']),(30,0x7A77F))
+        self.assertEqual([(v['cpu'],v['bytes']) for v in source['instructions']],
+                         [('0xA77F','cd3404'),('0xA782','c9')])
+
+    def test_all_warning_calls_contact_and_immunity(self):
+        for case in D['reconciliation']['warning']['rows']:
+            self.assertEqual(len(case['rows']),24)
+            for row in case['rows']:
+                self.assertEqual(bool(row['pending']),not case['hurt'])
+                self.assertEqual(row['rings_after_consumer'],0x47 if case['hurt'] or case['inv'] or case['power']==6 else 0)
+                self.assertEqual(row['frame'],14 if (row['call']-1)%8<4 else 13)
+
+    def test_warning_closed_geometry(self):
+        self.assertEqual(M['warning_contact']['sonic_closed_contact'],{'x':[-12,12],'y':[-16,24]})
+        self.assertEqual(len(D['reconciliation']['warning']['geometry']),4)
+
+    def test_selector_z_flag_boundary(self):
+        x=D['reconciliation']['selector']
+        self.assertEqual(sum(x['counts'].values()),65536*9)
+        for row in x['boundaries']:
+            special=row['body_vy']>=0 and row['body_y']==430
+            self.assertEqual(row['helper_z'],special)
+            self.assertEqual(row['requested'],6 if row['player_y']<row['body_y'] or special else 7)
+
+    def test_camera_release_both_directions_before_gate(self):
+        replay=G['camera_release_replay']
+        self.assertGreater(replay['clear_gate_update'],replay['release_update'])
+        moves=[p['candidate'][0]-p['camera'][0] for p in replay['phases'] if p['phase']=='after_camera_before_player']
+        self.assertTrue(any(v>0 for v in moves) and any(v<0 for v in moves))
+        self.assertEqual(moves[0],0) # release occurs after this update's camera phase
+        for p in replay['phases']:
+            if p['phase']=='after_release_before_clear_gate':self.assertEqual(p['limits'],[replay['retained_left'],3584])
+
+    def test_camera_no_player_speed_cap_and_limits(self):
+        x=D['reconciliation']['camera']
+        self.assertEqual((x['routine'],x['max_right_step'],x['max_left_step']),(0x5832,7,-7))
+        self.assertTrue(any(v['candidate_delta']==-8 for v in x['rows']))
+        for row in x['rows']:
+            expected=row['camera']+row['candidate_delta']
+            self.assertEqual(row['limited_candidate'],expected if 2954<=expected<3584 else row['camera'])
+
+    def test_fullgame_phase_counter_is_recorded(self):
+        self.assertTrue(all('counter' in row and 'pre_driver' in row for row in G['rows']))
+        self.assertTrue(all('counter' in p for p in G['phases']))
+        self.assertEqual(G['fixture_reconstruction']['counter_frame_offsets'],
+                         sorted({(v['counter']-v['frame'])&255 for v in G['rows']}))
+
+    def test_driver_y_is_distinct_from_physics(self):
+        self.assertTrue(any(row['player'][1]==430 and row['pre_driver']['player'][1]==398 for row in G['rows']))
+        self.assertTrue(any(p['phase']=='after_player_before_objects' and p['player'][1]==398 for p in G['phases']))
+        self.assertEqual(D['reconciliation']['reconciliation_base'],M['reconciliation_base'])
 
 
 @unittest.skipUnless(ROM,'verified ROM unavailable')
