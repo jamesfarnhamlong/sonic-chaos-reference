@@ -73,6 +73,7 @@ ceiling-spike (`$3E/$3F`, 25 cells) and oil (`$1B`) terrain in MGHZ2, which must
   generic `$034A`. Zero extents: not a contact enemy. Aux1 `$13/$1B` is not a mirror base.
   Community label "oil splash" is an unverified lead.
 * Forced mirrors (`bit4=1`) of `$24`/`$2E` exist only as diagnostics and are marked **not approved**.
+* **Superseded:** `$24` and `$2E` are now fully audited in `docs/mghz-object-24-2e-audit.md` (cache `data/rom-cache/mghz/object-24-2e.json`). Corrections to this section: `$24` landing converts to `$0F` (+10 score) instead of deleting; `$0431` is the gravity add (the contact helper is `$0434`); `$2E` frame 0 alone has 0x0 extents (frames 1-4 carry 4x16/8x16 that nothing reads - still no contact); `$2E` `aux1` is the strip length; the `$2E` parent is a keep-alive emitter and is never deleted.
 
 ## 4. MGHZ3 boss reconnaissance (type `$56`)
 

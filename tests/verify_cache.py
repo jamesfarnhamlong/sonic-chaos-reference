@@ -31,6 +31,7 @@ import mghz_foundation
 import mghz_object_census
 import mghz_surface_ceiling
 import mghz_m1_followup
+import mghz_object_24_2e
 import spring_shoes_presentation
 import player_fall_control
 
@@ -157,6 +158,8 @@ def main(rom_path):
     assert (ROOT / "data/rom-cache/mghz/surface-1b-ceiling-spikes.json").read_text(encoding="utf-8") == mghz_surface_ceiling.dumps(mghz_surface_ceiling.build(rom))
     # MGHZ M1 Windows follow-up (rising platform into terrain, strip $1A8/$1A9, breakable $0D): controlled and emulated fixtures are regenerated (~30 s).
     assert (ROOT / "data/rom-cache/mghz/m1-windows-followup.json").read_text(encoding="utf-8") == mghz_m1_followup.dumps(mghz_m1_followup.build(rom))
+    # MGHZ object $24 / $2E audit (trigger, shake/fall/landing, contact sweeps, strip emitter, lifecycle and runtime-art fixtures): controlled and whole-game fixtures are regenerated (~25 s).
+    assert (ROOT / "data/rom-cache/mghz/object-24-2e.json").read_text(encoding="utf-8") == mghz_object_24_2e.dumps(mghz_object_24_2e.build(rom))
     # Shared player fall / control audit (special fall $14, monitor + wall, fall-state support): controlled sweeps and whole-game fixtures are regenerated (~85 s).
     assert (ROOT / "data/rom-cache/player-fall-control.json").read_text(encoding="utf-8") == player_fall_control.dumps(player_fall_control.build(rom))
     # Spring Shoes presentation / act-clear / detach audit: controlled and whole-game fixtures are regenerated (~35 s).
