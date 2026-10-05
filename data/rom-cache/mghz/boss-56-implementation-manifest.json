@@ -1,0 +1,328 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "research_base": "7ba4d8a7bfb7f8164462fbf50db05c4b63cec0fe",
+  "status": "Research closed; review/merge before POC consumption; Windows gameplay acceptance pending",
+  "runtime": "data/rom-cache/mghz/boss-56-runtime.json",
+  "fullgame": "data/rom-cache/mghz/boss-56-fullgame.json",
+  "documentation": "docs/mghz3-boss-56-audit.md",
+  "identities": {
+    "86": "MGHZ3 controller/body; numeric identity authoritative",
+    "87": "delayed left-moving projectile; parameter1 splits into two $58 children",
+    "88": "left-moving diagonal projectile; parameter0 up, parameter1 down"
+  },
+  "placement": {
+    "index": 12,
+    "zero_based_index": 11,
+    "rom_offset": "0x713DB",
+    "bank": "0x1C",
+    "cpu": "0x93DB",
+    "raw_bytes": "56 C5 0D 20 02 00 00 00 00",
+    "type_id": "0x56",
+    "stored_x": 3525,
+    "stored_y": 544,
+    "world_x": 3269,
+    "world_y": 288,
+    "flags": "0x00",
+    "parameter": "0x00",
+    "aux0": "0x00",
+    "aux1": "0x00"
+  },
+  "state_counts": {
+    "86": 13,
+    "87": 4,
+    "88": 2
+  },
+  "baseline": {
+    "viewport_width": 256,
+    "camera_target": [
+      3061,
+      256
+    ],
+    "settled_camera": [
+      3060,
+      256
+    ],
+    "boss_anchor": [
+      3269,
+      288
+    ],
+    "body_extents": [
+      16,
+      48
+    ],
+    "sonic_extents": [
+      8,
+      24
+    ],
+    "body_contact": {
+      "x_inclusive": [
+        -24,
+        24
+      ],
+      "y_inclusive": [
+        -48,
+        24
+      ],
+      "classification": "minimum penetration; vertical wins ties"
+    },
+    "hp_byte_initial": 10,
+    "damaging_hits_to_defeat": 11,
+    "hp_underflow": 255,
+    "hit_cooldown_calls": 8,
+    "vulnerable_states": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "nonvulnerable_contact_states": [
+      10,
+      11,
+      12
+    ],
+    "clear_world_x": 3356,
+    "clear_requires_floor_bit1": true,
+    "timer_stops_on_boss_defeat": false
+  },
+  "dependencies": [
+    {
+      "type": 18,
+      "role": "HUD slide-away; recreated at combat init",
+      "source": "shared $81A6 / bank0C state table"
+    },
+    {
+      "type": 87,
+      "role": "parent $56 states8/9 child",
+      "source": "bank1E $A510/$A51C"
+    },
+    {
+      "type": 88,
+      "role": "$57 parameter1 splits into params0/1",
+      "source": "bank1E $A709"
+    },
+    {
+      "type": 52,
+      "role": "five parameter4 explosion puffs",
+      "source": "shared state4 $95CC"
+    },
+    {
+      "type": 10,
+      "role": "parameter0 bonus controller and parameterFF sparkle trail",
+      "source": "shared $81DF"
+    },
+    {
+      "type": 15,
+      "role": "boss and expired-projectile conversion/poof",
+      "source": "shared $033E -> $5F54"
+    }
+  ],
+  "art": {
+    "approval": "Reachable nonblank frames match previously approved 2026-10-04 foundation board; no new composition requested.",
+    "new_visual_approval_required": false,
+    "original_approval": "data/rom-cache/mghz/art-approval.json",
+    "mapping_cpu": 39009,
+    "mapping_bank": 15,
+    "mapping_file": 252001,
+    "reachable_frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "dynamic_selector": 22,
+    "loads": [
+      {
+        "list_rom": 31749,
+        "bank_byte": 5,
+        "bank": 5,
+        "tile_count": 64,
+        "vram_destination": 1472,
+        "tile_base": 46,
+        "source_cpu": 46720,
+        "source_rom": 95872,
+        "remap": false,
+        "source_sha256": "dec51e0b7d06f942b58206faca4daf8ff6323e0a699abc491cbd6e4bd1ff9202"
+      },
+      {
+        "list_rom": 31755,
+        "bank_byte": 9,
+        "bank": 9,
+        "tile_count": 12,
+        "vram_destination": 3520,
+        "tile_base": 110,
+        "source_cpu": 43936,
+        "source_rom": 158624,
+        "remap": false,
+        "source_sha256": "d3bc7be147568f9a248e5b96529385357b5f27b6c741eeb2ef490949efb1c026"
+      }
+    ],
+    "palette_index": 15,
+    "whole_bitmap_mirror": false,
+    "registration": "SAT piece coordinates canonical; existing terrain-relative +(1,18) renderer/presentation adapter; collision stays at world anchor"
+  },
+  "constants": [
+    {
+      "name": "placement/pole",
+      "relationship": "WORLD",
+      "canonical": [
+        3269,
+        288
+      ],
+      "source": "bank1C:$93DB file$713DB",
+      "widescreen_candidate": "Keep anchor and terrain unchanged"
+    },
+    {
+      "name": "trigger",
+      "relationship": "PLAYER_DIST",
+      "canonical": {
+        "strict_x_lt": 160,
+        "strict_y_lt": 304
+      },
+      "source": "bank1E:$97A1 row3",
+      "widescreen_candidate": "Do not widen"
+    },
+    {
+      "name": "mapped creation",
+      "relationship": "EDGE",
+      "canonical": {
+        "left": [
+          -96,
+          -33
+        ],
+        "right": [
+          32,
+          95
+        ]
+      },
+      "source": "bank1C:$8000/$8146",
+      "widescreen_candidate": "Apply generic viewport bands; initial-fill exception retained"
+    },
+    {
+      "name": "arena camera",
+      "relationship": "LOCKED_CAMERA",
+      "canonical": [
+        3060,
+        256
+      ],
+      "source": "bank1E:$9808 row3; fixed bank:$5956",
+      "widescreen_candidate": "Keep baseline lock; any reframing must be explicit"
+    },
+    {
+      "name": "nominal body screen X",
+      "relationship": "LOCKED_CAMERA",
+      "canonical": 208,
+      "source": "row3 pan dx -208",
+      "widescreen_candidate": "Equivalent at256 to RIGHT-48 or CENTER+80; intended widening is unproven. Keep WORLD anchor"
+    },
+    {
+      "name": "player clamp",
+      "relationship": "EDGE",
+      "canonical": {
+        "left": 16,
+        "right": -9
+      },
+      "source": "shared player edge clamp",
+      "widescreen_candidate": "Use full-width edge comparison; avoid SMS low-byte wrap"
+    },
+    {
+      "name": "solid side projection guards",
+      "relationship": "EDGE",
+      "canonical": {
+        "left": 32,
+        "right": -32
+      },
+      "source": "$6009/$6038",
+      "widescreen_candidate": "Preserve side-push D523 guards and edge relationship in boss contact adapter"
+    },
+    {
+      "name": "body vertical turn/floor",
+      "relationship": "WORLD",
+      "canonical": {
+        "rise_strict_lt": 288,
+        "fall_inclusive_ge": 430
+      },
+      "source": "$A6B8/$A69F",
+      "widescreen_candidate": "Do not move with viewport height"
+    },
+    {
+      "name": "projectile early removal screen X",
+      "relationship": "EDGE",
+      "canonical": {
+        "right": -80,
+        "raw_lt": 176
+      },
+      "source": "$A771",
+      "widescreen_candidate": "Explicit candidate follows right edge; only on even D12F"
+    },
+    {
+      "name": "projectile early removal screen Y",
+      "relationship": "LOCKED_CAMERA",
+      "canonical": {
+        "top_plus": 120,
+        "raw_ge": 120
+      },
+      "source": "$A778",
+      "widescreen_candidate": "Keep fixed vertical camera relationship; paired with screen X condition"
+    },
+    {
+      "name": "projectile lifetime",
+      "relationship": "EDGE",
+      "canonical": {
+        "awake_margin": 32,
+        "outer_margin": 96
+      },
+      "source": "$61E1",
+      "widescreen_candidate": "$57/$58 are transient projectiles; no mapped-enemy QoL retention by default"
+    },
+    {
+      "name": "boss-specific clear gate",
+      "relationship": "WORLD",
+      "canonical": 3356,
+      "source": "bank1E:$8200",
+      "widescreen_candidate": "Do not scale; restore camera limits and require grounded player"
+    },
+    {
+      "name": "state20 completion",
+      "relationship": "EDGE",
+      "canonical": {
+        "right_plus": 33,
+        "raw_ge": 289
+      },
+      "source": "bank0C:$83ED",
+      "widescreen_candidate": "Reuse explicit RIGHT+33 widescreen adapter"
+    },
+    {
+      "name": "state20 camera freeze",
+      "relationship": "EDGE",
+      "canonical": {
+        "right_minus": 7
+      },
+      "source": "shared player state20",
+      "widescreen_candidate": "Reuse existing viewport adapter"
+    }
+  ],
+  "integration_constraints": [
+    "Original ascending-slot script/callback/lifecycle ordering; child allocation can execute later slots in the same update",
+    "Use attack bit D503.1; airborne status, visual frame and invincibility selector are not substitutes",
+    "Controller uses full shared solid projection before attack/damage; preserve terrain/camera guards",
+    "Boss hit cooldown restricts HP decrement only, not contact, sound or player rebound",
+    "Independent projectiles are not killed by parent defeat",
+    "No timer stop; MGHZ-specific world3356+floor gate before shared clear path",
+    "Shared monitor fix and parked player presentation defects remain separate"
+  ],
+  "unresolved": [
+    "Windows/gameplay acceptance and choice of optional widescreen arena reframing",
+    "State10 exists but no request to it is reached from audited $56 init/combat code; preserve table without inventing a trigger",
+    "No controller-only full-fight replay; approximate VDP/IRQ harness uses update-aligned synthetic attack fixtures",
+    "Results graphics/audio integration remains the existing POC deferred shared presentation scope"
+  ]
+}

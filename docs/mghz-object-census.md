@@ -5,6 +5,10 @@ Companion to `docs/mghz-foundation-audit.md`. Data: `data/rom-cache/mghz/object-
 are authoritative; community names are leads only. POC state is a read-only observation of
 `84c3e10` (uncommitted POC batch not inspected).
 
+For current `$56/$57/$58` behavior, use [the dedicated boss audit](mghz3-boss-56-audit.md)
+and `data/rom-cache/mghz/boss-56-implementation-manifest.json`; they supersede
+the unresolved boss runtime entries in this historical census.
+
 ## 1. Placement census (35 / 43 / 12 records, none off-map)
 
 | Type | Param(s) | MGHZ1 | MGHZ2 | MGHZ3 | Category | Status | Canonical research | POC |

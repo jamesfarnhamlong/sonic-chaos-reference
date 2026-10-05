@@ -5,6 +5,10 @@ Research branch `research/mghz-foundation`, based on Research `main` `399f95b`
 `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607` (verified).
 POC and root `AGENTS.md` untouched; work left uncommitted for review.
 
+Later dedicated runtime closure: [MGHZ3 `$56/$57/$58`](mghz3-boss-56-audit.md).
+Its boss implementation manifest supersedes this foundation's unresolved boss
+reconnaissance; the original foundation cache remains a dated data/census checkpoint.
+
 Machine-readable packages (regenerate/check with the tools below):
 
 | File | Tool |

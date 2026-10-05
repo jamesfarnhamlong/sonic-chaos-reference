@@ -8,6 +8,7 @@ The complete earlier `SonicChaos_Disassembly_Continuation_01` package is preserv
 
 ## Start here
 
+- [MGHZ3 boss `$56/$57/$58` dependency-chain audit](docs/mghz3-boss-56-audit.md): complete intro, camera, top-only eleven-hit combat, independent projectiles, exact approved art, MGHZ world/floor clear gate, results/AQZ1 trace and explicit widescreen candidates. Machine-facing contract: `data/rom-cache/mghz/boss-56-implementation-manifest.json`.
 - [Full research and POC audit — 21 September 2026](docs/audit-2026-09-21.md): measured coverage, fresh verification results, remaining unknowns and concrete v14 integration gaps.
 - [Windows Act 1 POC roadmap after 14.5](docs/windows-poc-roadmap.md): the next spring/object, twisting-strip and completion passes with acceptance checks.
 - [Act 1 emulator observations, 21 September 2026](reports/emulator-observations-2026-09-21.md): retracting spikes, the concealed contact spring and the validated opening red-spring height.
