@@ -60815,6 +60815,9 @@
       "id": "S4",
       "name": "SEZ enemies $20/$23",
       "scope": "contact/defeat/hop timing, art orientation (bit4), lifecycle (15 placements; SEZ only)",
+      "research_status": "CLOSED",
+      "poc_status": "pending implementation and Windows acceptance",
+      "runtime_contract": "data/rom-cache/sez/enemies-20-23-runtime.json",
       "blocked_by": []
     },
     {
@@ -60835,6 +60838,17 @@
     "cache": "data/rom-cache/sez/platform-28-runtime.json",
     "audit": "docs/sez-platform-28-audit.md",
     "summary": "$86: contact-triggered timed right-and-return excursion, aux1*16 px per leg; $04: state5 with weight sag disabled, not an axis swap.",
+    "poc_acceptance": "pending"
+  },
+  "enemy_runtime": {
+    "status": "RESEARCHED_DATA",
+    "types": [
+      "0x20",
+      "0x23"
+    ],
+    "placements": 15,
+    "cache": "data/rom-cache/sez/enemies-20-23-runtime.json",
+    "audit": "docs/sez-enemies-20-23-audit.md",
     "poc_acceptance": "pending"
   },
   "unresolved": [

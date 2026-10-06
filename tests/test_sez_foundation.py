@@ -180,8 +180,8 @@ class CacheTests(unittest.TestCase):
     def test_classification_counts(self):
         cc = {k: v['classification_counts'] for k, v in self.c['acts'].items()}
         self.assertEqual(cc['sez3'], {'BOSS_SUPPORT': 1, 'SHARED_RECOVERED': 3, 'SHARED_WITH_SEZ_DATA': 1})
-        self.assertEqual(cc['sez1'].get('SEZ_SPECIFIC_NEEDS_AUDIT'), 8)        # $20 x4, $23 x4; platform S3 closed
-        self.assertEqual(cc['sez2'].get('SEZ_SPECIFIC_NEEDS_AUDIT'), 7)        # $20 x3, $23 x4; platform S3 closed
+        self.assertEqual(cc['sez1'].get('RESEARCHED_SEZ_SPECIFIC'), 8)        # S4: $20 x4, $23 x4
+        self.assertEqual(cc['sez2'].get('RESEARCHED_SEZ_SPECIFIC'), 7)        # S4: $20 x3, $23 x4
 
     def test_six_zone_census(self):
         t = self.c['six_zone_reuse_census']['types']

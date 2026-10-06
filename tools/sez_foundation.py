@@ -101,7 +101,9 @@ IMPLEMENTATION_PACKAGES = [
     {'id': 'S3', 'name': 'SEZ platform state 7', 'scope': 'type $28 parameter $86 (3 placements) and parameter $04 no-sag variant (1 placement)',
      'research_status': 'CLOSED', 'poc_status': 'pending implementation and Windows acceptance',
      'runtime_contract': 'data/rom-cache/sez/platform-28-runtime.json', 'blocked_by': []},
-    {'id': 'S4', 'name': 'SEZ enemies $20/$23', 'scope': 'contact/defeat/hop timing, art orientation (bit4), lifecycle (15 placements; SEZ only)', 'blocked_by': []},
+    {'id': 'S4', 'name': 'SEZ enemies $20/$23', 'scope': 'contact/defeat/hop timing, art orientation (bit4), lifecycle (15 placements; SEZ only)',
+     'research_status': 'CLOSED', 'poc_status': 'pending implementation and Windows acceptance',
+     'runtime_contract': 'data/rom-cache/sez/enemies-20-23-runtime.json', 'blocked_by': []},
     {'id': 'S5', 'name': 'SEZ3 boss $54/$55', 'scope': 'dedicated boss audit: 13-state table (own states 3,6..12), selector $15, palette 14, health byte 8, child $55, arena/camera row 2, clear gate; '
      'support types $12/$34/$0F/$0A are shared', 'blocked_by': ['S1 for the SEZ3 act to exist']},
 ]
@@ -474,6 +476,9 @@ def build(r):
                                'audit': 'docs/sez-platform-28-audit.md',
                                'summary': '$86: contact-triggered timed right-and-return excursion, aux1*16 px per leg; $04: state5 with weight sag disabled, not an axis swap.',
                                'poc_acceptance': 'pending'}
+    out['enemy_runtime'] = {'status': 'RESEARCHED_DATA', 'types': ['0x20', '0x23'], 'placements': 15,
+                            'cache': 'data/rom-cache/sez/enemies-20-23-runtime.json',
+                            'audit': 'docs/sez-enemies-20-23-audit.md', 'poc_acceptance': 'pending'}
     out['unresolved'] = [
         'Surface $0C / block $AF crumbling-ledge semantics (spawn $6B79 confirmed; object $13 behaviour is decoded, not audited).',
         'Surface $1A / block $A7 booster semantics (handler $7646 executed; block $A7 carries the effect-5 animated tile; direction rule and states that skip the $753E probe are open).',

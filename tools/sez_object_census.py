@@ -26,7 +26,7 @@ from platform_spike_collision import SLOT
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'data/rom-cache/sez/object-census.json'
 ZONE_NAMES = C.ZONE_NAMES
-CLASSES = ('SHARED_RECOVERED', 'SHARED_WITH_SEZ_DATA', 'SEZ_SPECIFIC_NEEDS_AUDIT', 'BOSS_SUPPORT', 'UNRESOLVED')
+CLASSES = ('SHARED_RECOVERED', 'SHARED_WITH_SEZ_DATA', 'RESEARCHED_SEZ_SPECIFIC', 'SEZ_SPECIFIC_NEEDS_AUDIT', 'BOSS_SUPPORT', 'UNRESOLVED')
 ACCEPTED_ZONES = ('thz', 'gpz', 'mghz')          # Windows-accepted runtime zones
 POC_COMMIT = '472c7b9'
 digest, hexb, u16, s16 = C.digest, C.hexb, C.u16, C.s16
@@ -37,8 +37,8 @@ REGISTRY = {
     0x10: ('monitor', 'SHARED_RECOVERED', 'monitor (parameters 1/2/4/6 are accepted rewards)', 'docs/object-10.md; docs/powerup-shoes-audit.md', 'implemented (all four SEZ parameters accepted)'),
     0x18: ('support', 'SHARED_RECOVERED', 'goal sign (SEZ1/SEZ2 only)', 'docs/object-18-act-clear.md', 'implemented (THZ/GPZ/MGHZ ordinary sign clear)'),
     0x1B: ('hazard', 'SHARED_RECOVERED', 'moving spike', 'docs/platform-spike-collision-audit.md', 'implemented'),
-    0x20: ('enemy', 'SEZ_SPECIFIC_NEEDS_AUDIT', 'ground walker that hops (numeric identity only)', None, 'absent'),
-    0x23: ('enemy', 'SEZ_SPECIFIC_NEEDS_AUDIT', 'repeated left-moving leaper (numeric identity only)', None, 'absent'),
+    0x20: ('enemy', 'RESEARCHED_SEZ_SPECIFIC', 'ground walker that hops (numeric identity only)', 'docs/sez-enemies-20-23-audit.md', 'absent'),
+    0x23: ('enemy', 'RESEARCHED_SEZ_SPECIFIC', 'repeated left-moving leaper (numeric identity only)', 'docs/sez-enemies-20-23-audit.md', 'absent'),
     0x26: ('spring', 'SHARED_RECOVERED', 'mapped spring', 'docs/spring-interaction-audit.md', 'implemented'),
     0x28: ('platform', 'SHARED_WITH_SEZ_DATA', 'platform (state selected by parameter)', 'docs/platform-spike-collision-audit.md; docs/isometric-platform-audit.md', 'implemented for THZ $0A/$84 and GPZ/MGHZ $83/$89/$05'),
     0x2F: ('footwear', 'SHARED_WITH_SEZ_DATA', 'Spring Shoes pickup (SEZ art base $94)', 'docs/powerup-shoes-audit.md; docs/spring-shoes-presentation-audit.md', 'implemented (MGHZ art base $AC)'),
@@ -393,7 +393,7 @@ def enemy_recon(r, acts, recs):
                     created, after = init_detail(r, acts[k], x)
                     traces.append({'act': k, 'index': x['index'], 'created_fields': created, 'after_two_updates': after, 'trace': trace(r, acts[k], x), 'trace_note': 'controlled lab: +$04 bit 6 cleared every update (awake), player parked far away, act layout loaded'})
         out[hexb(t)] = {
-            'type': t, 'classification': 'ENEMY_SEZ_SPECIFIC_NEEDS_AUDIT', 'placements': placements,
+            'type': t, 'classification': 'RESEARCHED_SEZ_SPECIFIC', 'runtime_cache': 'data/rom-cache/sez/enemies-20-23-runtime.json', 'placements': placements,
             'mapping': {'pointer_entry_rom': hexb(G.POINTER_TABLE_ROM_BASE + t * 2, 5), 'mapping_cpu': hexb(m['mapping_cpu'], 4), 'mapping_rom': hexb(m['mapping_rom'], 5),
                         'frame_count': len(fps), 'frame_pointers': [hexb(x, 4) for x in fps]},
             'art': {'placement_bases': [hexb(b0), hexb(b1)], 'covering_loads': C.art_sources(act, b0, b1, sc['sets_bit4']),
@@ -647,6 +647,7 @@ def build(r):
            'classification_vocabulary': {'SHARED_RECOVERED': 'accepted runtime exists; only SEZ placement/art-base data to generate',
                                          'SHARED_WITH_SEZ_DATA': 'accepted runtime exists; SEZ adds parameters/art/placements that need audit-light verification',
                                          'SEZ_SPECIFIC_NEEDS_AUDIT': 'new runtime or an unaccepted state/parameter; dedicated audit required',
+                                         'RESEARCHED_SEZ_SPECIFIC': 'ROM runtime contract closed; POC implementation and Windows acceptance pending',
                                          'BOSS_SUPPORT': 'boss/controller', 'UNRESOLVED': 'not established'},
            'acts': {}}
     for key, v in recs.items():
@@ -700,7 +701,7 @@ def build(r):
                                        'sign_18': 'dynamic selector $12 overwrites VRAM tiles $6A..$A9 at act clear (original behaviour; keep sprite atlases separate): in SEZ this covers the platform/$26/$23/$2F art loads',
                                        'monitor_10': 'static art base from the common stream ($23340 -> $10, 90 tiles); item icons are dynamic selectors independent of the zone'}
     out['unresolved'] = ['Human-facing names of $20/$23/$54 are not proven; community labels are leads only.',
-                         'Types $20/$23 gameplay (contact, defeat, hop timing) is not audited; traces are controlled initialisation/movement only.',
+                         'Types $20/$23 runtime is closed in enemies-20-23-runtime.json; POC implementation/Windows acceptance pending.',
                          'Platform parameters $86/$04 are ROM-audited in platform-28-runtime.json; POC implementation/Windows acceptance pending.',
                          'Boss $54: hit count, state behaviour, arena clamp, camera release and clear gate are census-level only.',
                          'Type $13 crumble object and surface $0C, surface $1A booster: dedicated audit (see implementation manifest).',
