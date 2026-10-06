@@ -42,7 +42,7 @@ REGISTRY = {
     0x26: ('spring', 'SHARED_RECOVERED', 'mapped spring', 'docs/spring-interaction-audit.md', 'implemented'),
     0x28: ('platform', 'SHARED_WITH_SEZ_DATA', 'platform (state selected by parameter)', 'docs/platform-spike-collision-audit.md; docs/isometric-platform-audit.md', 'implemented for THZ $0A/$84 and GPZ/MGHZ $83/$89/$05'),
     0x2F: ('footwear', 'SHARED_WITH_SEZ_DATA', 'Spring Shoes pickup (SEZ art base $94)', 'docs/powerup-shoes-audit.md; docs/spring-shoes-presentation-audit.md', 'implemented (MGHZ art base $AC)'),
-    0x54: ('boss', 'BOSS_SUPPORT', 'SEZ3 boss/controller (numeric identity only)', None, 'absent'),
+    0x54: ('boss', 'BOSS_SUPPORT', 'SEZ3 boss/controller (numeric identity only)', 'docs/sez3-boss-54-audit.md', 'absent'),
 }
 SHARED_TYPES = (0x10, 0x18, 0x1B, 0x26, 0x28, 0x2F)
 SEZ_ONLY_TYPES = (0x20, 0x23, 0x54)
@@ -703,7 +703,7 @@ def build(r):
     out['unresolved'] = ['Human-facing names of $20/$23/$54 are not proven; community labels are leads only.',
                          'Types $20/$23 runtime is closed in enemies-20-23-runtime.json; POC implementation/Windows acceptance pending.',
                          'Platform parameters $86/$04 are ROM-audited in platform-28-runtime.json; POC implementation/Windows acceptance pending.',
-                         'Boss $54: hit count, state behaviour, arena clamp, camera release and clear gate are census-level only.',
+                         'Boss $54/$55 runtime is closed in boss-54-runtime.json; POC implementation/Windows acceptance pending.',
                          'Type $13 crumble object and surface $0C, surface $1A booster: dedicated audit (see implementation manifest).',
                          'Fragment art is resolved (common-stream tile $66/$67, zone independent); only the visual sign-off of the shard in the SEZ sprite palette remains (shared board).']
     return out

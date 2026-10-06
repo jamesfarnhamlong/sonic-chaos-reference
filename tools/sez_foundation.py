@@ -105,7 +105,9 @@ IMPLEMENTATION_PACKAGES = [
      'research_status': 'CLOSED', 'poc_status': 'pending implementation and Windows acceptance',
      'runtime_contract': 'data/rom-cache/sez/enemies-20-23-runtime.json', 'blocked_by': []},
     {'id': 'S5', 'name': 'SEZ3 boss $54/$55', 'scope': 'dedicated boss audit: 13-state table (own states 3,6..12), selector $15, palette 14, health byte 8, child $55, arena/camera row 2, clear gate; '
-     'support types $12/$34/$0F/$0A are shared', 'blocked_by': ['S1 for the SEZ3 act to exist']},
+     'support types $12/$34/$0F/$0A are shared', 'research_status': 'CLOSED',
+     'poc_status': 'pending implementation and Windows acceptance',
+     'runtime_contract': 'data/rom-cache/sez/boss-54-runtime.json', 'blocked_by': []},
 ]
 
 
@@ -479,6 +481,17 @@ def build(r):
     out['enemy_runtime'] = {'status': 'RESEARCHED_DATA', 'types': ['0x20', '0x23'], 'placements': 15,
                             'cache': 'data/rom-cache/sez/enemies-20-23-runtime.json',
                             'audit': 'docs/sez-enemies-20-23-audit.md', 'poc_acceptance': 'pending'}
+    out['boss_runtime'] = {'status': 'RESEARCHED_DATA', 'types': ['0x54', '0x55'],
+        'cache': 'data/rom-cache/sez/boss-54-runtime.json', 'whole_game': 'data/rom-cache/sez/boss-54-fullgame.json',
+        'audit': 'docs/sez3-boss-54-audit.md', 'poc_acceptance': 'pending',
+        'baseline': {'viewport_width': 256, 'placement': [3200, 622], 'placement_file': '0x710AE',
+            'camera_target': [2976,462], 'settled_camera': [2975,462], 'hp_initial':8, 'damaging_hits':8,
+            'hit_cooldown_helper_calls':18, 'hp_requires_attack_bit':False, 'attack_bit_controls_rebound':True,
+            'clear_requires_floor_bit1':True, 'clear_world_x_gate':None, 'next_zone_act':[3,0]},
+        'integration_constraints': ['Read the post-projection HP height test; do not substitute earlier boss attack gates.',
+            'Preserve final-hit same-callback requested-state arbitration and cached screen coordinates/sleep flags.',
+            'Type55 is an independent damage-only dynamic child; do not inherit mapped-enemy retention automatically.',
+            'Use WORLD thresholds610/622/626, strict PLAYER_DIST160/304 and explicit camera/EDGE adapters.']}
     out['unresolved'] = [
         'Surface $0C / block $AF crumbling-ledge semantics (spawn $6B79 confirmed; object $13 behaviour is decoded, not audited).',
         'Surface $1A / block $A7 booster semantics (handler $7646 executed; block $A7 carries the effect-5 animated tile; direction rule and states that skip the $753E probe are open).',

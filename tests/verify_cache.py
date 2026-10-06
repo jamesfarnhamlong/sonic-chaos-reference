@@ -180,6 +180,9 @@ def main(rom_path):
     assert (ROOT / "data/rom-cache/sez/surface-runtime-contracts.json").read_text(encoding="utf-8") == sez_surfaces.dumps(sez_contracts)
     assert (ROOT / "data/rom-cache/sez/platform-28-runtime.json").read_text(encoding="utf-8") == sez_platform_28.dumps(sez_platform_28.build(rom))
     assert json.loads((ROOT / 'data/rom-cache/sez/enemies-20-23-runtime.json').read_text(encoding='utf-8')) == json.loads(json.dumps(sez_enemies_20_23.build(rom)))
+    import sez54_runtime, sez54_fullgame
+    assert json.loads((ROOT / 'data/rom-cache/sez/boss-54-runtime.json').read_text(encoding='utf-8')) == json.loads(json.dumps(sez54_runtime.build(rom)))
+    assert json.loads((ROOT / 'data/rom-cache/sez/boss-54-fullgame.json').read_text(encoding='utf-8')) == json.loads(json.dumps(sez54_fullgame.build(rom)))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
