@@ -60805,7 +60805,10 @@
     {
       "id": "S3",
       "name": "SEZ platform state 7",
-      "scope": "type $28 parameter $86 (3 placements) and parameter $04 axis variant (1 placement)",
+      "scope": "type $28 parameter $86 (3 placements) and parameter $04 no-sag variant (1 placement)",
+      "research_status": "CLOSED",
+      "poc_status": "pending implementation and Windows acceptance",
+      "runtime_contract": "data/rom-cache/sez/platform-28-runtime.json",
       "blocked_by": []
     },
     {
@@ -60823,6 +60826,17 @@
       ]
     }
   ],
+  "platform_runtime": {
+    "status": "RESEARCHED_DATA",
+    "parameters": [
+      "0x86",
+      "0x04"
+    ],
+    "cache": "data/rom-cache/sez/platform-28-runtime.json",
+    "audit": "docs/sez-platform-28-audit.md",
+    "summary": "$86: contact-triggered timed right-and-return excursion, aux1*16 px per leg; $04: state5 with weight sag disabled, not an axis swap.",
+    "poc_acceptance": "pending"
+  },
   "unresolved": [
     "Surface $0C / block $AF crumbling-ledge semantics (spawn $6B79 confirmed; object $13 behaviour is decoded, not audited).",
     "Surface $1A / block $A7 booster semantics (handler $7646 executed; block $A7 carries the effect-5 animated tile; direction rule and states that skip the $753E probe are open).",

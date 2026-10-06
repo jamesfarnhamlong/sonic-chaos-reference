@@ -49,8 +49,8 @@ SEZ_ONLY_TYPES = (0x20, 0x23, 0x54)
 PLATFORM_PARAMS = {0x0A: ('THZ lift family', 'accepted'), 0x83: ('state 4 sag/delay/fall', 'accepted (GPZ/MGHZ)'),
                    0x84: ('state 5 weight sag, axis flag +$25 = $FF', 'accepted (THZ)'), 0x89: ('state 10 horizontal reversal', 'accepted (GPZ)'),
                    0x05: ('state 13 -> 6 touch-start vertical mover', 'accepted (GPZ/MGHZ)'),
-                   0x04: ('state 5 with the axis flag clear', 'PARTIAL: state 5 shared with $84, bit 7 of the parameter differs'),
-                   0x86: ('state 7 touch-started horizontal mover', 'NEW: no accepted placement uses state 7 (static decode only)'),
+                   0x04: ('state 5 with weight sag disabled', 'RESEARCHED: state 5 fixed support; POC acceptance pending'),
+                   0x86: ('state 7 contact-started right-and-return mover', 'RESEARCHED: platform-28-runtime.json; POC acceptance pending'),
                    0x8B: ('state 12/vertical mover without reversal (EEZ)', 'not an SEZ parameter')}
 
 
@@ -135,8 +135,9 @@ def classify(rec):
     if t == 0x28:
         fam = PLATFORM_PARAMS.get(p, ('UNRESOLVED', 'UNRESOLVED'))
         detail.update(platform_family=fam[0], platform_acceptance=fam[1], initial_state=platform_state(p))
-        if p == 0x86:
-            klass = 'SEZ_SPECIFIC_NEEDS_AUDIT'
+        if p in (0x04, 0x86):
+            klass = 'SHARED_WITH_SEZ_DATA'
+            research = 'docs/sez-platform-28-audit.md'
     if t == 0x26:
         detail['span_mode'] = bool(p & 0x80)
         detail['span_pixels'] = (p & 0x7F) * 16 if p & 0x80 else None
@@ -449,7 +450,7 @@ def platform_recon(r, acts, recs):
     sc, scan = type_scan(r, 0x28)
     state7 = scan_code(r, sc['bank'], [0x87E2], 'type_28_state_7')
     out['state_7_scan'] = {k: state7[k] for k in ('entries', 'instruction_count', 'ix_fields_read', 'ix_fields_written', 'vector_calls', 'viewport_ram_references', 'code_regions')}
-    out['state_7_evidence'] = 'DECODED DATA + BYTE-VERIFIED ASSEMBLY ($87E2 region scanned); docs/platform-spike-collision-audit.md lists state 7 as touch-started horizontal mover unused by THZ placements; no oracle audit'
+    out['state_7_evidence'] = 'CONTROLLED ROUTINE RESULT + EMULATED ORIGINAL UPDATE: dedicated audit docs/sez-platform-28-audit.md and cache data/rom-cache/sez/platform-28-runtime.json supersede initial reconnaissance.'
     return out
 
 
@@ -700,7 +701,7 @@ def build(r):
                                        'monitor_10': 'static art base from the common stream ($23340 -> $10, 90 tiles); item icons are dynamic selectors independent of the zone'}
     out['unresolved'] = ['Human-facing names of $20/$23/$54 are not proven; community labels are leads only.',
                          'Types $20/$23 gameplay (contact, defeat, hop timing) is not audited; traces are controlled initialisation/movement only.',
-                         'Platform parameter $86 (state 7, 3 placements) and $04 (state 5 with axis flag clear) are not oracle-audited.',
+                         'Platform parameters $86/$04 are ROM-audited in platform-28-runtime.json; POC implementation/Windows acceptance pending.',
                          'Boss $54: hit count, state behaviour, arena clamp, camera release and clear gate are census-level only.',
                          'Type $13 crumble object and surface $0C, surface $1A booster: dedicated audit (see implementation manifest).',
                          'Fragment art is resolved (common-stream tile $66/$67, zone independent); only the visual sign-off of the shard in the SEZ sprite palette remains (shared board).']

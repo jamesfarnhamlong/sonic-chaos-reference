@@ -33,6 +33,7 @@ import sez_foundation
 import sez_object_census
 import sez_art_approval
 import sez_surfaces
+import sez_platform_28
 import mghz_surface_ceiling
 import mghz_m1_followup
 import mghz_object_24_2e
@@ -176,6 +177,7 @@ def main(rom_path):
     sez_data, sez_contracts = sez_surfaces.build_all(rom)
     assert (ROOT / "data/rom-cache/sez/surfaces-0c-1a.json").read_text(encoding="utf-8") == sez_surfaces.dumps(sez_data)
     assert (ROOT / "data/rom-cache/sez/surface-runtime-contracts.json").read_text(encoding="utf-8") == sez_surfaces.dumps(sez_contracts)
+    assert (ROOT / "data/rom-cache/sez/platform-28-runtime.json").read_text(encoding="utf-8") == sez_platform_28.dumps(sez_platform_28.build(rom))
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

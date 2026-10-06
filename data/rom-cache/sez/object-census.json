@@ -84,11 +84,11 @@
           "classification": "SHARED_WITH_SEZ_DATA",
           "identification": "platform (state selected by parameter)",
           "canonical_research_exists": true,
-          "canonical_research": "docs/platform-spike-collision-audit.md; docs/isometric-platform-audit.md",
+          "canonical_research": "docs/sez-platform-28-audit.md",
           "poc_status": "implemented for THZ $0A/$84 and GPZ/MGHZ $83/$89/$05",
           "sez_only": false,
-          "platform_family": "state 5 with the axis flag clear",
-          "platform_acceptance": "PARTIAL: state 5 shared with $84, bit 7 of the parameter differs",
+          "platform_family": "state 5 with weight sag disabled",
+          "platform_acceptance": "RESEARCHED: state 5 fixed support; POC acceptance pending",
           "initial_state": 5,
           "evidence": "DECODED DATA; behaviour evidence in the referenced research"
         },
@@ -149,14 +149,14 @@
           ],
           "anchor_block": 254,
           "category": "platform",
-          "classification": "SEZ_SPECIFIC_NEEDS_AUDIT",
+          "classification": "SHARED_WITH_SEZ_DATA",
           "identification": "platform (state selected by parameter)",
           "canonical_research_exists": true,
-          "canonical_research": "docs/platform-spike-collision-audit.md; docs/isometric-platform-audit.md",
+          "canonical_research": "docs/sez-platform-28-audit.md",
           "poc_status": "implemented for THZ $0A/$84 and GPZ/MGHZ $83/$89/$05",
           "sez_only": false,
-          "platform_family": "state 7 touch-started horizontal mover",
-          "platform_acceptance": "NEW: no accepted placement uses state 7 (static decode only)",
+          "platform_family": "state 7 contact-started right-and-return mover",
+          "platform_acceptance": "RESEARCHED: platform-28-runtime.json; POC acceptance pending",
           "initial_state": 7,
           "evidence": "DECODED DATA; behaviour evidence in the referenced research"
         },
@@ -183,14 +183,14 @@
           ],
           "anchor_block": 254,
           "category": "platform",
-          "classification": "SEZ_SPECIFIC_NEEDS_AUDIT",
+          "classification": "SHARED_WITH_SEZ_DATA",
           "identification": "platform (state selected by parameter)",
           "canonical_research_exists": true,
-          "canonical_research": "docs/platform-spike-collision-audit.md; docs/isometric-platform-audit.md",
+          "canonical_research": "docs/sez-platform-28-audit.md",
           "poc_status": "implemented for THZ $0A/$84 and GPZ/MGHZ $83/$89/$05",
           "sez_only": false,
-          "platform_family": "state 7 touch-started horizontal mover",
-          "platform_acceptance": "NEW: no accepted placement uses state 7 (static decode only)",
+          "platform_family": "state 7 contact-started right-and-return mover",
+          "platform_acceptance": "RESEARCHED: platform-28-runtime.json; POC acceptance pending",
           "initial_state": 7,
           "evidence": "DECODED DATA; behaviour evidence in the referenced research"
         },
@@ -1294,9 +1294,9 @@
         "support": 1
       },
       "classification_counts": {
-        "SEZ_SPECIFIC_NEEDS_AUDIT": 10,
+        "SEZ_SPECIFIC_NEEDS_AUDIT": 8,
         "SHARED_RECOVERED": 18,
-        "SHARED_WITH_SEZ_DATA": 11
+        "SHARED_WITH_SEZ_DATA": 13
       },
       "off_map_records": []
     },
@@ -1369,14 +1369,14 @@
           ],
           "anchor_block": 254,
           "category": "platform",
-          "classification": "SEZ_SPECIFIC_NEEDS_AUDIT",
+          "classification": "SHARED_WITH_SEZ_DATA",
           "identification": "platform (state selected by parameter)",
           "canonical_research_exists": true,
-          "canonical_research": "docs/platform-spike-collision-audit.md; docs/isometric-platform-audit.md",
+          "canonical_research": "docs/sez-platform-28-audit.md",
           "poc_status": "implemented for THZ $0A/$84 and GPZ/MGHZ $83/$89/$05",
           "sez_only": false,
-          "platform_family": "state 7 touch-started horizontal mover",
-          "platform_acceptance": "NEW: no accepted placement uses state 7 (static decode only)",
+          "platform_family": "state 7 contact-started right-and-return mover",
+          "platform_acceptance": "RESEARCHED: platform-28-runtime.json; POC acceptance pending",
           "initial_state": 7,
           "evidence": "DECODED DATA; behaviour evidence in the referenced research"
         },
@@ -2392,9 +2392,9 @@
         "support": 1
       },
       "classification_counts": {
-        "SEZ_SPECIFIC_NEEDS_AUDIT": 8,
+        "SEZ_SPECIFIC_NEEDS_AUDIT": 7,
         "SHARED_RECOVERED": 20,
-        "SHARED_WITH_SEZ_DATA": 5
+        "SHARED_WITH_SEZ_DATA": 6
       },
       "off_map_records": []
     },
@@ -4387,7 +4387,7 @@
           "field_36": 5,
           "counter_1e": 0
         },
-        "acceptance": "PARTIAL: state 5 shared with $84, bit 7 of the parameter differs"
+        "acceptance": "RESEARCHED: state 5 fixed support; POC acceptance pending"
       },
       {
         "act": "sez1",
@@ -4471,7 +4471,7 @@
           "field_36": 7,
           "counter_1e": 0
         },
-        "acceptance": "NEW: no accepted placement uses state 7 (static decode only)"
+        "acceptance": "RESEARCHED: platform-28-runtime.json; POC acceptance pending"
       },
       {
         "act": "sez1",
@@ -4513,7 +4513,7 @@
           "field_36": 7,
           "counter_1e": 0
         },
-        "acceptance": "NEW: no accepted placement uses state 7 (static decode only)"
+        "acceptance": "RESEARCHED: platform-28-runtime.json; POC acceptance pending"
       },
       {
         "act": "sez2",
@@ -4597,12 +4597,12 @@
           "field_36": 7,
           "counter_1e": 0
         },
-        "acceptance": "NEW: no accepted placement uses state 7 (static decode only)"
+        "acceptance": "RESEARCHED: platform-28-runtime.json; POC acceptance pending"
       }
     ],
     "parameters": {
       "0x04": {
-        "family": "state 5 with the axis flag clear",
+        "family": "state 5 with weight sag disabled",
         "initial_state": 5,
         "count": 1
       },
@@ -4617,7 +4617,7 @@
         "count": 1
       },
       "0x86": {
-        "family": "state 7 touch-started horizontal mover",
+        "family": "state 7 contact-started right-and-return mover",
         "initial_state": 7,
         "count": 3
       }
@@ -5154,7 +5154,7 @@
         }
       ]
     },
-    "state_7_evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY ($87E2 region scanned); docs/platform-spike-collision-audit.md lists state 7 as touch-started horizontal mover unused by THZ placements; no oracle audit"
+    "state_7_evidence": "CONTROLLED ROUTINE RESULT + EMULATED ORIGINAL UPDATE: dedicated audit docs/sez-platform-28-audit.md and cache data/rom-cache/sez/platform-28-runtime.json supersede initial reconnaissance."
   },
   "footwear": {
     "placements": [
@@ -14680,7 +14680,7 @@
   "unresolved": [
     "Human-facing names of $20/$23/$54 are not proven; community labels are leads only.",
     "Types $20/$23 gameplay (contact, defeat, hop timing) is not audited; traces are controlled initialisation/movement only.",
-    "Platform parameter $86 (state 7, 3 placements) and $04 (state 5 with axis flag clear) are not oracle-audited.",
+    "Platform parameters $86/$04 are ROM-audited in platform-28-runtime.json; POC implementation/Windows acceptance pending.",
     "Boss $54: hit count, state behaviour, arena clamp, camera release and clear gate are census-level only.",
     "Type $13 crumble object and surface $0C, surface $1A booster: dedicated audit (see implementation manifest).",
     "Fragment art is resolved (common-stream tile $66/$67, zone independent); only the visual sign-off of the shard in the SEZ sprite palette remains (shared board)."

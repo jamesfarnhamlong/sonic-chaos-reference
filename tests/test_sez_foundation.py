@@ -180,8 +180,8 @@ class CacheTests(unittest.TestCase):
     def test_classification_counts(self):
         cc = {k: v['classification_counts'] for k, v in self.c['acts'].items()}
         self.assertEqual(cc['sez3'], {'BOSS_SUPPORT': 1, 'SHARED_RECOVERED': 3, 'SHARED_WITH_SEZ_DATA': 1})
-        self.assertEqual(cc['sez1'].get('SEZ_SPECIFIC_NEEDS_AUDIT'), 8 + 2)        # $20 x4, $23 x4, $28/$86 x2
-        self.assertEqual(cc['sez2'].get('SEZ_SPECIFIC_NEEDS_AUDIT'), 7 + 1)        # $20 x3, $23 x4, $28/$86 x1
+        self.assertEqual(cc['sez1'].get('SEZ_SPECIFIC_NEEDS_AUDIT'), 8)        # $20 x4, $23 x4; platform S3 closed
+        self.assertEqual(cc['sez2'].get('SEZ_SPECIFIC_NEEDS_AUDIT'), 7)        # $20 x3, $23 x4; platform S3 closed
 
     def test_six_zone_census(self):
         t = self.c['six_zone_reuse_census']['types']
@@ -227,7 +227,7 @@ class CacheTests(unittest.TestCase):
         self.assertEqual(sweep['by_parameter']['0x86'], dict(state=7, requested=7, axis_flag_25=255, callback='0x87E2', vx_8_8=256, vy_8_8=0))
         self.assertEqual(sweep['by_parameter']['0x04']['axis_flag_25'], 0)
         tally('platform_parameter_sweep', 56)
-        self.assertEqual({x['parameter']: x['acceptance'][:3] for x in p['platforms']}, {'0x83': 'acc', '0x04': 'PAR', '0x86': 'NEW', '0x84': 'acc'})
+        self.assertEqual({x['parameter']: x['acceptance'][:3] for x in p['platforms']}, {'0x83': 'acc', '0x04': 'RES', '0x86': 'RES', '0x84': 'acc'})
         self.assertEqual(p['state_7_scan']['viewport_ram_references'], {})
 
     def test_footwear_matches_accepted_footwear_cache(self):

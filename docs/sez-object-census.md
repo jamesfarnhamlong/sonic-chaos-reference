@@ -4,6 +4,8 @@ Companion to [`sez-foundation-audit.md`](sez-foundation-audit.md). Data: `data/r
 (`tools/sez_object_census.py`). This is a **census plus bounded reconnaissance**, not a behaviour audit. Numeric type IDs are
 authoritative; community names are leads only. POC state is a read-only observation of `472c7b9` (MGHZ3 boss).
 
+S3 follow-up: [`sez-platform-28-audit.md`](sez-platform-28-audit.md) supersedes the platform reconnaissance below. `$86` is now ROM-audited as an any-overlap-triggered right-and-return excursion (`16*aux1` px each leg); `$04` disables state-5 weight sag, with no movement-axis swap. Cache `platform-28-runtime.json` supplies the implementation contract and whole-game/original-routine vectors. POC/Windows acceptance is pending.
+
 ## 1. Placement census (39 / 33 / 5 records, none off-map)
 
 | Type | Param(s) | aux | SEZ1 | SEZ2 | SEZ3 | Category | Classification |
@@ -17,8 +19,8 @@ authoritative; community names are leads only. POC state is a read-only observat
 | `$26` | `$00` / `$01` | `$72/$72` | 3/4 | 7/5 | 1/0 | mapped spring | shared, recovered |
 | `$26` | `$88`, `$8C` (span) | `$72/$00` | 1+1 | 0 | 0 | mapped spring | shared (`$8C` is a new value of the accepted span rule) |
 | `$28` | `$83` | `$6A/$6A` | 2 | 0 | 0 | platform | shared, SEZ art |
-| `$28` | `$84` / `$04` | `$6A/$6A` | 0/1 | 1/0 | 0 | platform | shared state 5 (`$04`: axis flag clear, partial) |
-| `$28` | **`$86`** | `$6A/$18,$30,$1C` | 2 | 1 | 0 | platform | **state 7, needs audit** |
+| `$28` | `$84` / `$04` | `$6A/$6A` | 0/1 | 1/0 | 0 | platform | state5 sag enabled/disabled; Research closed |
+| `$28` | **`$86`** | `$6A/$18,$30,$1C` | 2 | 1 | 0 | platform | state7 contact-started excursion; Research closed |
 | `$2F` | `$00` | `$94/$94` | 8 | 4 | 1 | Spring Shoes | shared, SEZ art base |
 | `$54` | `$00` | `$00/$00` | 0 | 0 | 1 | boss | boss/support |
 
@@ -136,7 +138,7 @@ composition hashes with state **APPROVED BY USER 2026-10-05**: James reviewed al
 
 * Identity/name of `$20`, `$23`, `$54`, `$55`, `$13`; their gameplay (§3, §5).
 * **Superseded:** surface `$0C` / type `$13` and surface `$1A` are now fully audited in `docs/sez-surfaces-0c-13-1a-audit.md` (cache `data/rom-cache/sez/surfaces-0c-1a.json`, contracts `surface-runtime-contracts.json`); package S2 of §9 is closed on the Research side. Corrections to the foundation notes: the `$13` object holds Sonic for 16 updates with **no presence test**, the cell becomes `$B0` at spawn+17 and shards first move at spawn+19+p; the booster writes X speed +7.0 and `$D373 = $0700` and requests state `$10` (sound `$BD`) only when the floor flag is set at the ring probe.
-* Platform state 7 and parameter `$04` behaviour (§4); surfaces `$0C/$13` and `$1A` (foundation §5).
+* Platform state7 and parameter `$04` are now closed by the S3 audit linked above; POC/Windows acceptance remains pending.
 * SEZ3 clear gate, hit count and arena; boss camera-limit RAM uses.
 * Effect-5 absolute phase; results-screen zone tables; Windows acceptance of any of the above.
 
