@@ -1,5 +1,12 @@
 # SEZ S5: boss `$54`, child `$55`, arena and clear
 
+Focused right-clamp reachability/renderer follow-up:
+[`sez3-boss-54-safe-zone-audit.md`](sez3-boss-54-safe-zone-audit.md).
+The pad-only right-clamp trace naturally reaches11/12 with cached212/247;
+its local complete CPU restore closes the shared snapshot timing gap for this
+discrepancy check. A specific conflicting original-video sequence remains
+unreconciled; this is not POC Windows acceptance.
+
 Research base: `8b7fc8aeaec6f5a57f9aa9b6a58d9f579b62514c`. This package
 closes the ROM contract; Manager review and merge precede POC consumption.
 No POC, root AGENTS, replacement results assets or approval boards are changed.
