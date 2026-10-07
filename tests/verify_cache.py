@@ -193,6 +193,9 @@ def main(rom_path):
     import aqz_water, aqz_water_game
     for path, value in [(aqz_water.OUTPUT, aqz_water.build(rom)), (aqz_water_game.OUTPUT, aqz_water_game.build(rom))]:
         assert path.read_text(encoding='utf-8') == aqz_foundation.dumps(value), path
+    import aqz_platform_3f, aqz_platform_game
+    for path,value in [(aqz_platform_3f.OUTPUT,aqz_platform_3f.build(rom)),(aqz_platform_game.OUTPUT,aqz_platform_game.build(rom))]:
+        assert path.read_text(encoding='utf-8') == aqz_foundation.dumps(value),path
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

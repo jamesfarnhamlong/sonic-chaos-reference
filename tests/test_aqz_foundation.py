@@ -75,7 +75,7 @@ class Foundation(unittest.TestCase):
         self.assertIn('state14',self.c['platform_reuse_recon']['aqz2_override'])
         for a in self.c['acts'].values():
             for x in a['records']:
-                if x['type_id']=='0x3F':self.assertEqual(x['classification'],'AQZ_SPECIFIC_NEEDS_AUDIT')
+                if x['type_id']=='0x3F':self.assertEqual(x['classification'],'AQZ_SPECIFIC_RECOVERED')
                 if x['type_id'] in ('0x09','0x10','0x18'):self.assertTrue(x['contract']);tally('reuse_records')
         for name,v in self.c['shared_systems'].items():self.assertGreater(v['regions_checked'],0);self.assertEqual(v['hash_mismatches'],[]);tally('shared_source_regions',v['regions_checked'])
         for name in ('spring26','platform28','spike1b','spring_shoes2f'):self.assertEqual(self.c['system_presence'][name]['mapped'],0)

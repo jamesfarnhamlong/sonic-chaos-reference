@@ -55457,12 +55457,14 @@
   },
   "tool_hash_policy": "UTF-8 source normalized to LF before hashing; stable across Git CRLF checkouts",
   "extraction_tool_sha256": {
-    "aqz_foundation.py": "73fbf6408d2f9464dbc6090413c47b3e2e74a00b354a441db80fc6a62b96531c",
+    "aqz_foundation.py": "b2769876b44a94fb67ba7bbe0a32616c46ad01317633e6eca42c74ca08d09a2e",
     "aqz_art_approval.py": "6883b2932a0f89f1cd9370b21f04269cf855f49f3bca5eb9ee0363d90d938595",
     "aqz_art_previews.py": "7d69475b42b4f5be176ee0dcb52294b719df1af9b75f1c5b5b13846efd5e057e",
     "aqz_original_checks.py": "11530d6b93a693de23327b8288f3e3c9abf72c3da0352913062d46cdd42cff20",
     "aqz_water.py": "cce30606047ba1fbb30076e11544122cfd74e61ba47bea1c8f845e997eb0eb98",
     "aqz_water_game.py": "3be583e4637eeb049ced50a4332557b754c3fbf17311ac0a103b0b9d521e3e9b",
+    "aqz_platform_3f.py": "154059f86e7a77cbf0137f566decd9d588208808565d837d988354d39f26e17b",
+    "aqz_platform_game.py": "9054a199ebfaf1da9b3bd824b0809704ba60ba7542532f89178379da987bbe79",
     "level_package.py": "27f35efa0b35c16b676d714a3cf4e73f7c4fc1493f51154e8e8afbea0c2aeb35",
     "rom.py": "ad91392ed16197cc6f79fa9e67952492dabd89de6e3a2764d49fc72924d30f6e",
     "oracle.py": "4f8cf0ba0209de6acb34eb6f63e520105147feb346e459f1a36c36d66729bcc1",
@@ -55807,11 +55809,12 @@
     {
       "id": "A2",
       "scope": "water physics/drowning, types $0C/$0D/$0E/$32 and background/camera palette effects; AQZ loop-layout integration uses shared contracts",
-      "status": "RECOVERED_REVIEW_PENDING"
+      "status": "ACCEPTED"
     },
     {
       "id": "A3",
-      "scope": "type $3F platform parameter paths $83/$86/$8B, shared $28 comparison including AQZ2 override"
+      "scope": "type $3F platform parameter paths $83/$86/$8B, shared $28 comparison including AQZ2 override",
+      "status": "RECOVERED_REVIEW_PENDING"
     },
     {
       "id": "A4",
@@ -56816,10 +56819,67 @@
         "camera_death": "LOCKED_CAMERA lower bound = current cameraY at countdown tail; state28 uses EDGE(TOP,+216)"
       }
     },
-    "status": "A2_RECOVERED_REVIEW_PENDING"
+    "status": "A2_ACCEPTED"
+  },
+  "platform_3f_runtime": {
+    "cache": "data/rom-cache/aqz/platform-3f-runtime.json",
+    "whole_game_cache": "data/rom-cache/aqz/platform-3f-game-checks.json",
+    "audit": "docs/aqz-platform-3f-audit.md",
+    "contracts": {
+      "placements": {
+        "aqz1#1": {
+          "parameter": 134,
+          "initial": 7,
+          "aux1": 50,
+          "leg_updates": 800,
+          "excursion_pixels": 800,
+          "world": [
+            2128,
+            480
+          ]
+        },
+        "aqz1#2": {
+          "parameter": 131,
+          "initial": 4,
+          "delay": 80,
+          "world": [
+            3408,
+            272
+          ]
+        },
+        "aqz2#2": {
+          "parameter": 139,
+          "initial": 13,
+          "contact_request": 14,
+          "world": [
+            2096,
+            669
+          ]
+        }
+      },
+      "alias": "type28/type3F share bank1E state table8439, initializer8585 and all callbacks; dispatcher maps both to bank1E. Type byte not read by reachable platform callbacks. Art and parameter data remain distinct.",
+      "initializer": "bit7 flags3; bit7 parameter enables sag25, bit6 sets26; req=(p&63)+1 saved36, p&127 in5/11 overrides req13; aux1->34/37, tick30=16, owner32 from slot; deltas/sag/latch/scratch zero; flags render C0/02",
+      "state4": "frame1, speed0; 1E=80. Top-classified contact after support/sag sets27=80. Subsequent active callbacks decrement delay; following callback sets27=FF, next begins gravity48/256 with no cap. Move before support once falling. Only playerVy>=0 is required: unlike86A1, no relative platform/player speed gate. Sleep with27!=0 sets runtime parameter3F=80, clears placement token and marksFE, leaving occupancy spent until act restart; idle sleep returns.",
+      "state7": "frame1, keepalive bit1, vx256. Any shared rectangle contact triggers31=1 and moves immediately; support after move. 30 counts16 moving calls, 37 counts aux1 such groups, reload and negate vx after movement/carry. At negative vx latch2, after full return nonnegative vx latch0. Aux50=800 calls/pixels each leg, not50px. Sag0..8 via25 independent of movement. Asleep does not pause; own strict player-distance640X/672Y retention marksFE but finishes callback. Cleanup releases occupancy; recreation resets everything.",
+      "state13": "awake, playerVy>=0, shared overlap classifies top bit0: requests36; zone4 act1 overrides request to14 regardless of type or parameter. p5/11 first select13; 8B alone is not state14 predicate. No carry/support-owner acquisition in this gate callback.",
+      "state14": "helper8577 zeros carry deltas at each direction change; vx+1 160 calls, vy+1 64, vx+1 96, vy-1 128+128. Frame1 throughout. No acceleration or terrain probe. No-rider displacement(+256,-192) after576 movement calls. Tail sets1E80 and2780, speed0; jumps8489 callback8719 without changing numeric current/requested state14. Thus waits80 active calls then same unbounded falling tail as4. No transition to numeric4. Sag can offset route Y by0..8.",
+      "asleep_route": "8628/86A1 first integrate once when asleep then continue normal code and integrate again: two movement steps per callback, timers unchanged. Horizontal carry delta includes only second integration. Generic lifecycle may then delete, since state14 does not set keepalive. Post-route falling tail uses8719 spent-token deletion.",
+      "support": "ordinary Sonic triangle dy=-16..-1 inclusive, abs(dx)<=8+abs(dy), different owner blocks. 8628/8662 and falling8719 require playerVy>=0; route vertical86A1 requires signed platformVy<=playerVy. Falling state4/state14 tail deliberately has no relative-speed gate. Sag before carry, riderY=platformY-14; add integer horizontal delta; preserve XY speeds/state/floor flags; shared contact bits merge next player phase.",
+      "water": "no D443/D450/controller/underwater-flag reads in reachable callbacks/helpers. Changing water flag/line alone cannot change platform. Water affects player-provided Y speed before support via A2; indirect eligibility can differ. State14 no-rider route Y669->733->477 stays above788; later fall may cross without drag/buoyancy.",
+      "lifecycle": "mapped creator stores raw-derived WORLD coordinates plus origins, flags|64 and canonical token. Generic create/wake/sleep/delete use accepted 256px EDGE bands; callback precedes lifecycle update, so previous asleep flag is observed. FE->FF->zero; token release except spent8719 clears token first. Generic fresh recreation only for released occupancy.",
+      "scheduling": "camera, player movement/water/terrain, then object animation and callback, then generic lifecycle, periodic mapped creation. No source code or placement changed.",
+      "viewport": {
+        "placement": "WORLD",
+        "route_and_excursion": "WORLD origin-relative",
+        "keepalive": "PLAYER_DIST(640,672)",
+        "generic_lifecycle": "EDGE canonical256px"
+      },
+      "art": "approved A1 frame0/1 mappings, aux0 tile base80; aux1=32/00 is counter data, not a second tile base; no new reachable frames or synthetic compositions",
+      "unresolved": []
+    },
+    "status": "A3_RECOVERED_REVIEW_PENDING"
   },
   "unresolved": [
-    "Type3F parameter path reuse is not assumed from the shared state scripts (A3)",
     "Callback reachability and boss clear gates are not yet audited (A4/A5)",
     "Results graphics/audio remain deferred"
   ],

@@ -178,6 +178,7 @@ def build(r):
                 contract=CONTRACTS.get(t),parameter_status='known reward' if t==16 and p in (1,2,3,4,6) else 'shared record format' if t in (9,24) else 'strong spring parameter0' if t==48 and p==0 else 'needs path audit')
             rec['original_creator']=placement_creator(r,rec)
             if t==12:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-water-environment-audit.md; water-runtime.json contracts.bubbles',parameter_status='parameter0 emitter, states0/1; emits parameters1/2')
+            if t==63:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-platform-3f-audit.md; platform-3f-runtime.json contracts',parameter_status={131:'shared state4, AQZ art',134:'shared state7; aux1=50 groups of16',139:'state13 top gate -> AQZ2 state14 route/fall tail'}[p])
             if t==16 and p not in (1,2,3,4,6):rec.update(classification='UNRESOLVED',contract=None)
         census['acts'][k]=dict(pointer=ptr,terminator_file=term,records_sha256=digest(r[ptr['list_rom']:term]),count=len(rows),records=rows,
             type_counts=dict(sorted(Counter(x['type_id'] for x in rows).items())),parameter_counts=dict(sorted(Counter(x['type_id']+'/'+x['parameter'] for x in rows).items())))
@@ -192,6 +193,7 @@ def build(r):
             motion_constants=[dict(state=s['state'],x=op['x'],y=op['y']) for s in sc['states'] for op in s['ops'] if op['op']=='velocity_8_8'],
             classification='BOSS_SUPPORT' if t>=89 else 'SHARED_WITH_AQZ_DATA' if t in CONTRACTS else 'AQZ_SPECIFIC_NEEDS_AUDIT' if t in alltypes|{13,14,50} else 'SHARED_RECOVERED')
         if t in (12,13,14,50):census['types'][f'0x{t:02X}'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A2 source-traced paths and original-routine/whole-game fixtures',contract='water-runtime.json contracts; docs/aqz-water-environment-audit.md')
+        if t==63:census['types']['0x3F'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A3 creator/type-alias comparison, complete script14 and natural mapped scheduler fixtures',contract='platform-3f-runtime.json contracts; docs/aqz-platform-3f-audit.md')
     census['controlled_initialization_recon']=[]
     seen=set()
     for k,a in census['acts'].items():
@@ -216,8 +218,8 @@ def build(r):
     platform28=C.state_scripts(r,40);platform3f=C.state_scripts(r,63)
     census['platform_reuse_recon']=dict(table28=platform28['state_table_cpu'],table3f=platform3f['state_table_cpu'],
         tables_identical=platform28['state_script_cpus']==platform3f['state_script_cpus'],
-        aqz2_override='$8617 zone==4 and act==1 requests state14; must audit before reusing $28 parameter $8B',
-        contract_status='AQZ_SPECIFIC_NEEDS_AUDIT despite shared scripts')
+        aqz2_override='$8617 zone==4 and act==1 requests state14 after awake/non-rising top contact in state13; A3 closes route and falling tail',
+        contract_status='AQZ_SPECIFIC_RECOVERED; $83/$86 shared runtime except type/mapping; $8B AQZ2 state14 contract in platform-3f-runtime.json')
     spring26=C.state_scripts(r,38);spring30=C.state_scripts(r,48)
     assert spring26['states']==spring30['states']
     census['spring30_reuse']=dict(table26=spring26['state_table_cpu'],table30=spring30['state_table_cpu'],
@@ -253,7 +255,7 @@ def build(r):
     manifest['surface_consumers']=consumers
     manifest['tool_hash_policy']='UTF-8 source normalized to LF before hashing; stable across Git CRLF checkouts'
     manifest['extraction_tool_sha256']={p:digest((ROOT/'tools'/p).read_text(encoding='utf-8').encode('utf-8')) for p in
-        ('aqz_foundation.py','aqz_art_approval.py','aqz_art_previews.py','aqz_original_checks.py','aqz_water.py','aqz_water_game.py',
+        ('aqz_foundation.py','aqz_art_approval.py','aqz_art_previews.py','aqz_original_checks.py','aqz_water.py','aqz_water_game.py','aqz_platform_3f.py','aqz_platform_game.py',
          'level_package.py','rom.py','oracle.py','block_mapping_audit.py','mghz_foundation.py',
          'mghz_object_census.py','sez_foundation.py','sez_object_census.py','sez_surfaces_rig.py','sms_frame_harness.py')}
     manifest['zone_sites']=M.zone_sites(r)['sites']
@@ -267,10 +269,12 @@ def build(r):
         dict(id='A4',scope='enemies $3C/$3D parameter 0/1 and 0/4/8: contact, movement, lifecycle'),
         dict(id='A5',scope='boss $59 and children $5A/$5B/$5C/$5D, arena and clear; shared support reuse')]
     from aqz_water import contracts
-    manifest['water_runtime']=dict(cache='data/rom-cache/aqz/water-runtime.json',whole_game_cache='data/rom-cache/aqz/water-game-checks.json',audit='docs/aqz-water-environment-audit.md',contracts=contracts(r),status='A2_RECOVERED_REVIEW_PENDING')
-    manifest['packages'][0]['status']='RECOVERED_REVIEW_PENDING'
+    manifest['water_runtime']=dict(cache='data/rom-cache/aqz/water-runtime.json',whole_game_cache='data/rom-cache/aqz/water-game-checks.json',audit='docs/aqz-water-environment-audit.md',contracts=contracts(r),status='A2_ACCEPTED')
+    manifest['packages'][0]['status']='ACCEPTED'
+    from aqz_platform_3f import contracts as platform_contracts
+    manifest['platform_3f_runtime']=dict(cache='data/rom-cache/aqz/platform-3f-runtime.json',whole_game_cache='data/rom-cache/aqz/platform-3f-game-checks.json',audit='docs/aqz-platform-3f-audit.md',contracts=platform_contracts(),status='A3_RECOVERED_REVIEW_PENDING')
+    manifest['packages'][1]['status']='RECOVERED_REVIEW_PENDING'
     manifest['unresolved']=[
-        'Type3F parameter path reuse is not assumed from the shared state scripts (A3)',
         'Callback reachability and boss clear gates are not yet audited (A4/A5)', 'Results graphics/audio remain deferred']
     manifest['poc_ready']='decoded terrain/placements only after Manager review; A1 art approved by James 2026-10-07 and Manager technical review passed; unresolved mechanics omitted explicitly'
     census['boss']=dict(type='0x59',placement=[x for x in census['acts']['aqz3']['records'] if x['type_id']=='0x59'],
