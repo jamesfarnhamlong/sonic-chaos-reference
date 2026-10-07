@@ -61,7 +61,7 @@ class Enemies(unittest.TestCase):
     def test_natural_cases_complete_restore_and_review_status(self):
         self.assertEqual(self.g['row_count'],15032);self.assertEqual(self.g['complete_snapshot_replay_acts'],[0,1])
         self.assertEqual(len(self.g['cases']),10)
-        manifest,census,_=F.build(self.r);self.assertEqual(manifest['enemies_runtime']['status'],'A4_RECOVERED_REVIEW_PENDING')
+        manifest,census,_=F.build(self.r);self.assertEqual(manifest['enemies_runtime']['status'],'A4_ACCEPTED')
         for act in census['acts'].values():
             for rec in act['records']:
                 if rec['type_id'] in ('0x3C','0x3D'):self.assertEqual(rec['classification'],'AQZ_SPECIFIC_RECOVERED')

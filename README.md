@@ -115,3 +115,5 @@ The exporter uses the standard library. `recover.py` needs `z80dis`; differentia
 Assembly labels use ROM file offsets, e.g. `SC_07666`. Banked CPU addresses are identified separately in the documents and CSVs. Contributions should preserve this distinction and state whether a claim is inferred, source-traced or tested. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 AQZ A2: [water/environment runtime and oracle contracts](docs/aqz-water-environment-audit.md).
+
+AQZ A5 boss `$59`/children `$5A–$5D`, arena and clear are recovered for Manager review on `research/aqz3-boss-59`: [audit](docs/aqz3-boss-59-audit.md), [runtime cache](data/rom-cache/aqz/boss-59-runtime.json), [whole fights](data/rom-cache/aqz/boss-59-game-checks.json). A4 is accepted on main `c4ec2ee1e1bbf86b38939352691da09859f75c33`. A5 remains unmerged.

@@ -55457,7 +55457,7 @@
   },
   "tool_hash_policy": "UTF-8 source normalized to LF before hashing; stable across Git CRLF checkouts",
   "extraction_tool_sha256": {
-    "aqz_foundation.py": "783737d4117c918e74dc9297ea5715cb3593833ca4b3dbbc3a02a5068a2c440d",
+    "aqz_foundation.py": "89410ac0dfe2340de960a2774943f046bb427edf4f7d3e35506812fd636fc040",
     "aqz_art_approval.py": "6883b2932a0f89f1cd9370b21f04269cf855f49f3bca5eb9ee0363d90d938595",
     "aqz_art_previews.py": "7d69475b42b4f5be176ee0dcb52294b719df1af9b75f1c5b5b13846efd5e057e",
     "aqz_original_checks.py": "11530d6b93a693de23327b8288f3e3c9abf72c3da0352913062d46cdd42cff20",
@@ -55821,11 +55821,12 @@
     {
       "id": "A4",
       "scope": "enemies $3C/$3D parameter 0/1 and 0/4/8: contact, movement, lifecycle",
-      "status": "RECOVERED_REVIEW_PENDING"
+      "status": "ACCEPTED"
     },
     {
       "id": "A5",
-      "scope": "boss $59 and children $5A/$5B/$5C/$5D, arena and clear; shared support reuse"
+      "scope": "boss $59 and children $5A/$5B/$5C/$5D, arena and clear; shared support reuse",
+      "status": "RECOVERED_REVIEW_PENDING"
     }
   ],
   "water_runtime": {
@@ -56938,11 +56939,197 @@
       },
       "unresolved": []
     },
-    "status": "A4_RECOVERED_REVIEW_PENDING"
+    "status": "A4_ACCEPTED"
+  },
+  "boss_runtime": {
+    "cache": "data/rom-cache/aqz/boss-59-runtime.json",
+    "whole_game_cache": "data/rom-cache/aqz/boss-59-game-checks.json",
+    "audit": "docs/aqz3-boss-59-audit.md",
+    "contracts": {
+      "callbacks": {
+        "974C": "keepalive4.1, bossactiveD44E=zone+1=5, D4A5=0, allocateHUD12/storepointer34/35, savecameraRight25/27, req1; requestedSpringShoes12->fall0E",
+        "9771": "refreshsavedrightlimit, strictabsX<96 andabsY<304 ->camera mode59F3,req2; noawake gate needed separately",
+        "97C1": "waitstoredHUDpointerbyte==0; installcamera target boss+(-128,-160),upperYtarget78, req3. No waitforpanarrival",
+        "A9A5": "dynamicselector23,palette16queuebit5,allocateHUDagain;req6;integerY-=224;hp26=10;counter30=field34=6;23/24=0",
+        "A9E0": "RET; only state4, no naturalincomingrequest",
+        "A9E1": "state6 script call onceeach64-recordrestart: decrementcounter30; zero ->req7,counter30=64; creates6 type5A at relative(0,+224)",
+        "A9F3": "state7 waitsfield34==0 (six5Aunderflows). Then decrements30; borrowafter65eligiblecalls ->req8,zeroallvelocities",
+        "AA13": "state8 solidcontact814D, integrate,vy+=16,ifpositiveintegerY>238 ->vy=-1536,vx=-160,req9,angle10/counter30/cooldown31=0",
+        "AA4D": "script17-tail faceplayer: bossX<playerX givesvx+160 else-160;vy=-1536",
+        "AA68": "state10 sets30=FF thenfallsintoAA6C eachcallback",
+        "AA6C": "cachedX stop left<48/right>=208 beforeintegrate; integrate,vy+=48; ifnonnegativevyandpositiveY>238 ->req17,zeroallvelocities,RETURN; elseAAB5",
+        "AAB5": "angle10!=0 ->req11,zeroVX,RETURN. Else cooldown31decrement;solid5FA0; oncontact8105attackrebound. Ifcooldown0andattack:command7,B6,req20,cooldown16,hpSUB1;borrowsetsangleFFandRETURN. Tailcounter30==0andabsplayerY-bossY<32 ->req10 canoverwrite20",
+        "AB1D": "state11 vy+=32 BEFOREintegrate,solid814D;Y<=238 andcounter30==16 ->counter0;Y>238 ->req12,cooldown31=48,vx0,vy-256,counter30=96",
+        "AB60": "state12 contact814D; compute31-1, store/RETunlesszero. At31==1 leaveit1 andintegrate everycall; counter30--,borrowafter97moves ->clearobject03.7,req13,zeroVY,counter30=0",
+        "AB8D": "state13 contact814D; waitfixedD724!=0 from5Basleepdeath;req14,clear23/24,counter30=16",
+        "ABA5": "state14 contact814D then30--;borrowafter17callbacks ->30=6,req18. Scriptsfirstwait16records thenall7spawnsoneenginepass",
+        "ABEB": "states18/19 integrate thencontact814D. Script18 vx0 vy-384 for32calls then23=FF req15. Script19 vx0 vy384 for32 thenreq16",
+        "ABBA": "state15 contact814D; waits30==0 fromsix5Ccompletions thenreq19,30=64",
+        "ABCB": "state16 if30==0 req14,30=16 RETURN;otherwise30--,contact814D;anynibble->req5. Timeoutrepeatschildren; noHP/attackprerequisite",
+        "81BD": "state5 afterpuff/blinkscript:camera617Eeachcall;floorbit1 gates59D8release,restoreRight25/27,state20via03F5,allocate0A0,convert0Ftoken0param0no score"
+      },
+      "boss": {
+        "initial_counter": 10,
+        "damaging_contacts": 11,
+        "defeat": "SUB1 borrow sets angle10=FF; reaching zero survives. State20 requested on every damaging contact; subsequent tail can overwrite with10 when counter30==0 and PLAYER_DIST(Y)<32.",
+        "contact": "AAB5 decrements cooldown31 before solid5FA0; 8105 rebound requires attack independently of cooldown; HP additionally requires cooldown==0 and attack. No D532 substitute. Hurt suppresses6328; blink does not suppress overlap/HP. Ordinary nonattack combat contact projects only; entry/defeat callbacks814D queue hurt for nonattack.",
+        "cooldown": 16,
+        "rebound": {
+          "top_vy": -1024,
+          "bottom_vy": 1536,
+          "left_vx": -1536,
+          "right_vx": 1536,
+          "side_vy": "negate incoming",
+          "requested": 27,
+          "preserve_floor": true
+        },
+        "feedback": "command7 and B6 only on damaging combat contact; shared palette flash uses palette16.",
+        "reachable": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "external_only": [
+          4
+        ]
+      },
+      "child5a": {
+        "init": "AC38 keepalive4.1, clear03.7, req1, WORLD(2048,238), vx-128 vy-512, hp1,counter30=2,cooldown31=0",
+        "movement": "AC71 clearcontact; cooldown31>0 decrements/skips overlap; otherwise6328 any contact savesreq->3 and returns beforegravity/move. Gravity+20/256 beforemove; nonnegativevy and signedpositiveY>238 resetsvy-512. Three landings underflowcounter2 then faceplayer at vx+/-128 req1/2.",
+        "contact": "No attack/selector prerequisite. State3 ACE3: cooldown4, integrate once, restore savedreq, vy+512 if top bit else-512, command7/B6, hpSUB1. Second contact underflows1->0->FF, decrements fixedD734, req4.",
+        "cleanup": "state4 AD24 parameter0 converts0F no score; no parent type/liveness check; multiple independent children coexist; six scheduled across state6."
+      },
+      "child5b": {
+        "init": "keepalive req1 vy-256",
+        "active": "AD4D if asleep setsFF and fixedD724=FF, otherwiseintegrate; no contact. Parent waitsD724 in state13.",
+        "role": "presentation/support signal, no gameplay overlap"
+      },
+      "child5c": {
+        "init": "req1 keepalive, counter30=0,angle0,magnitude11=128;036E velocitylookup.",
+        "states": "1 move then forcedhurt630B then ifsleepreq2. 2 waits fixedD723!=0 then camera-relative relocation/angle tables, req5,delay48=16+32*p. 5 delays N decrements then nextcallreq3,cooldown31=4. 3 selectorAE5B duration3 before AE3B move, decrement31; every4callsAE88 turn/recomputevelocity; forcedhurt; WORLD Y>238 req4. 4 parameter0,decrementfixedD71E,convert0F.",
+        "motion": "signed ROM sinebyte($0200+angle)*magnitude arithmetic>>4 for vx; angle+192 forvy; no gravity. AE88 negative step updates onlyangle>=80; positiveonlyangle<176. Frames negative angle>=88->20/21 else22/23;positive angle<168->16/17 else18/19; counter30parity advances eachselector.",
+        "parameter6": "Reads adjoiningdata beyond six-entry tables: offset(-400,-400), angle217,step-82,wait208. No corrective clamp; moves offscreen and may remain keepalive without countercompletion. Intended0..5 completions decrement6->0; do not require seven completions.",
+        "parent": "FixedD723,D71E; not ownership pointer. No parent sweep or type check; initialprojectiles and later curved hazards forcehurt; none attack-defeatable."
+      },
+      "child5d": {
+        "init": "req1,counter31=0,vx-576,vy0. PLAYER_DIST(absY)<32 leavesdirection0; otherwise playerabove->FF/below->1.",
+        "active": "AF1E asleep deletesFF; awake integrate, forcedhurt630B, then vy += -8/256 ifdirectionFF or +8/256 if1; no furtherplayerretarget; frames24/25every2calls; no parentlookup."
+      },
+      "allocator": {
+        "command4": "5EE1 first zero slotD700..D980 (11), carryfailure no spawn and script continues; inherits positioned spawn/art as original command4",
+        "hud_bonus": "5E9C firstzeroD540..D900 (16); no successflag. 81A6 stores IY evenfailure (past endD940). No guaranteedHUD/spawn.",
+        "scheduler": "ascending64bytes; childallocatedafterparent samepass gets engine/init, precedingfreedslot waitsnextpass; keepalive exempts genericdeletion butsleepbitcontinuescomputed."
+      },
+      "arena": {
+        "trigger": "strict PLAYER_DIST(absX)<96,absY<304; sharedframework intro beforetrigger setsD44E=5",
+        "target": [
+          1728,
+          78
+        ],
+        "settled": [
+          1727,
+          78
+        ],
+        "pan_rate": [
+          1,
+          1
+        ],
+        "camera": "state2 waits HUD disappearance then installs offset(-128,-160), upperY78,req3; combatinit whilepaninprogress, no arrivalgate",
+        "horizontal_stop": "prior-render cached +1A: vx<0 stopsat<48; vx>=0 stopsat>=208. Preserve cachedbyte, not world-minuscurrentcamera."
+      },
+      "clear": {
+        "path": "underflow -> angleFF ->11 ->12 ->13 waits5B ->14 ->18 ->15 waitschildcounter0 ->19 ->16; state16 overlap within64calls ->5; otherwise14 repeat. 5 puffs8/blinks then81BD; floorbit1 only; releasepan,restore savedrightlimit,requestplayer20,allocate0A0,convert0F token0/param0.",
+        "timer": "continues; no ordinary18 sign",
+        "boss_active": "D44E remains5 through parent conversion/bonus/results; shared next-act initialization clears it to0",
+        "progression": {
+          "zone": 5,
+          "act": 0,
+          "player": [
+            238,
+            864
+          ],
+          "camera": [
+            126,
+            752
+          ]
+        }
+      },
+      "viewport": [
+        {
+          "kind": "WORLD",
+          "value": 238,
+          "use": "boss/5A/5C positive integerY threshold, strict>"
+        },
+        {
+          "kind": "PLAYER_DIST",
+          "value": [
+            96,
+            304
+          ],
+          "use": "boss trigger strict"
+        },
+        {
+          "kind": "PLAYER_DIST",
+          "value": 32,
+          "use": "Y distance boss tail/5D init"
+        },
+        {
+          "kind": "LOCKED_CAMERA",
+          "value": [
+            1727,
+            78
+          ],
+          "use": "settled arena"
+        },
+        {
+          "kind": "CENTER",
+          "value": -128,
+          "use": "camera target X relative boss"
+        },
+        {
+          "kind": "EDGE",
+          "value": [
+            48,
+            208
+          ],
+          "use": "cachedscreenX stop canonical256"
+        },
+        {
+          "kind": "EDGE",
+          "value": [
+            -16,
+            80,
+            64,
+            192,
+            272
+          ],
+          "use": "5C canonicalscreenoffsets"
+        }
+      ],
+      "water": "No directD443/D450/D131/D132 dependency; sharedplayer hurt/physics can respond indirectly. AQZ3 boot containsno0D controllers; A2 transitionreset applies.",
+      "art": "A1 approved0..29mappingframes reused. No wholebitmapflip, syntheticart ornewboard."
+    },
+    "status": "A5_RECOVERED_REVIEW_PENDING"
   },
   "unresolved": [
-    "Boss/child callbacks and clear gates are not yet audited (A5)",
-    "Results graphics/audio remain deferred"
+    "Results graphics/audio remain deferred; A5 does not assign historical intent to parameter6 adjacent-table reads"
   ],
   "poc_ready": "decoded terrain/placements only after Manager review; A1 art approved by James 2026-10-07 and Manager technical review passed; unresolved mechanics omitted explicitly"
 }

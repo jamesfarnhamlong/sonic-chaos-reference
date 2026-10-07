@@ -180,6 +180,7 @@ def build(r):
             if t==12:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-water-environment-audit.md; water-runtime.json contracts.bubbles',parameter_status='parameter0 emitter, states0/1; emits parameters1/2')
             if t==63:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-platform-3f-audit.md; platform-3f-runtime.json contracts',parameter_status={131:'shared state4, AQZ art',134:'shared state7; aux1=50 groups of16',139:'state13 top gate -> AQZ2 state14 route/fall tail'}[p])
             if t in (60,61):rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-enemies-3c-3d-audit.md; enemies-3c-3d-runtime.json contracts',parameter_status=('frame1/up-first' if p==0 else 'frame2/down-first, initialY+12') if t==60 else f'initializer delay {p} callbacks; then independent origin-relative trajectory')
+            if t==89:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz3-boss-59-audit.md; boss-59-runtime.json contracts',parameter_status='mapped parameter0, eleven-contact underflow then seven-child second phase')
             if t==16 and p not in (1,2,3,4,6):rec.update(classification='UNRESOLVED',contract=None)
         census['acts'][k]=dict(pointer=ptr,terminator_file=term,records_sha256=digest(r[ptr['list_rom']:term]),count=len(rows),records=rows,
             type_counts=dict(sorted(Counter(x['type_id'] for x in rows).items())),parameter_counts=dict(sorted(Counter(x['type_id']+'/'+x['parameter'] for x in rows).items())))
@@ -196,6 +197,7 @@ def build(r):
         if t in (12,13,14,50):census['types'][f'0x{t:02X}'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A2 source-traced paths and original-routine/whole-game fixtures',contract='water-runtime.json contracts; docs/aqz-water-environment-audit.md')
         if t==63:census['types']['0x3F'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A3 creator/type-alias comparison, complete script14 and natural mapped scheduler fixtures',contract='platform-3f-runtime.json contracts; docs/aqz-platform-3f-audit.md')
         if t in (60,61):census['types'][f'0x{t:02X}'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A4 all30 natural placements, all parameter paths, original contact/movement/lifecycle and complete-state scheduler fixtures',contract='enemies-3c-3d-runtime.json contracts; docs/aqz-enemies-3c-3d-audit.md')
+        if 89<=t<=93:census['types'][f'0x{t:02X}'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A5 original callbacks and complete fights; 59 state4 external-only',contract='boss-59-runtime.json contracts; docs/aqz3-boss-59-audit.md')
     census['controlled_initialization_recon']=[]
     seen=set()
     for k,a in census['acts'].items():
@@ -277,15 +279,17 @@ def build(r):
     manifest['platform_3f_runtime']=dict(cache='data/rom-cache/aqz/platform-3f-runtime.json',whole_game_cache='data/rom-cache/aqz/platform-3f-game-checks.json',audit='docs/aqz-platform-3f-audit.md',contracts=platform_contracts(),status='A3_ACCEPTED')
     manifest['packages'][1]['status']='ACCEPTED'
     from aqz_enemies import contracts as enemy_contracts
-    manifest['enemies_runtime']=dict(cache='data/rom-cache/aqz/enemies-3c-3d-runtime.json',whole_game_cache='data/rom-cache/aqz/enemies-3c-3d-game-checks.json',audit='docs/aqz-enemies-3c-3d-audit.md',contracts=enemy_contracts(),status='A4_RECOVERED_REVIEW_PENDING')
-    manifest['packages'][2]['status']='RECOVERED_REVIEW_PENDING'
-    manifest['unresolved']=[
-        'Boss/child callbacks and clear gates are not yet audited (A5)', 'Results graphics/audio remain deferred']
+    manifest['enemies_runtime']=dict(cache='data/rom-cache/aqz/enemies-3c-3d-runtime.json',whole_game_cache='data/rom-cache/aqz/enemies-3c-3d-game-checks.json',audit='docs/aqz-enemies-3c-3d-audit.md',contracts=enemy_contracts(),status='A4_ACCEPTED')
+    manifest['packages'][2]['status']='ACCEPTED'
+    from aqz59_runtime import contracts as boss_contracts
+    manifest['boss_runtime']=dict(cache='data/rom-cache/aqz/boss-59-runtime.json',whole_game_cache='data/rom-cache/aqz/boss-59-game-checks.json',audit='docs/aqz3-boss-59-audit.md',contracts=boss_contracts(),status='A5_RECOVERED_REVIEW_PENDING')
+    manifest['packages'][3]['status']='RECOVERED_REVIEW_PENDING'
+    manifest['unresolved']=['Results graphics/audio remain deferred; A5 does not assign historical intent to parameter6 adjacent-table reads']
     manifest['poc_ready']='decoded terrain/placements only after Manager review; A1 art approved by James 2026-10-07 and Manager technical review passed; unresolved mechanics omitted explicitly'
     census['boss']=dict(type='0x59',placement=[x for x in census['acts']['aqz3']['records'] if x['type_id']=='0x59'],
         children=['0x5A','0x5B','0x5C','0x5D'],support=['0x12','0x34','0x0F','0x0A'],dynamic_selector=23,
-        clear='shared callback $81BD in state4 and explosion state5; precise floor/position gates need A5',
-        sign_present=False,source_evidence='decoded script spawns and byte-verified $A9A5 selector; not full behavior audit')
+        clear='A5: state4 RET external-only; shared81BD in state5 after final contact/explosions, floorbit1-only',
+        sign_present=False,source_evidence='A5 source-traced full boss/child contracts and original complete fights')
     census['boss']['framework_row']=C.boss_tables(r)['rows'][4]
     census['boss']['child5c_frame_selector']=child5c_frames(r)
     return manifest,census,acts

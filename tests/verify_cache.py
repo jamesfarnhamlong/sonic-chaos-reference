@@ -199,6 +199,9 @@ def main(rom_path):
     import aqz_enemies, aqz_enemies_game
     for path,value in [(aqz_enemies.OUTPUT,aqz_enemies.build(rom)),(aqz_enemies_game.OUTPUT,aqz_enemies_game.build(rom))]:
         assert path.read_text(encoding='utf-8') == aqz_foundation.dumps(value),path
+    import aqz59_runtime, aqz59_game
+    for path,value in [(aqz59_runtime.OUTPUT,aqz59_runtime.build(rom)),(aqz59_game.OUTPUT,aqz59_game.build(rom))]:
+        assert path.read_text(encoding='utf-8') == aqz_foundation.dumps(value),path
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )
