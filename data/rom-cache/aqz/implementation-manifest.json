@@ -55457,7 +55457,7 @@
   },
   "tool_hash_policy": "UTF-8 source normalized to LF before hashing; stable across Git CRLF checkouts",
   "extraction_tool_sha256": {
-    "aqz_foundation.py": "b2769876b44a94fb67ba7bbe0a32616c46ad01317633e6eca42c74ca08d09a2e",
+    "aqz_foundation.py": "783737d4117c918e74dc9297ea5715cb3593833ca4b3dbbc3a02a5068a2c440d",
     "aqz_art_approval.py": "6883b2932a0f89f1cd9370b21f04269cf855f49f3bca5eb9ee0363d90d938595",
     "aqz_art_previews.py": "7d69475b42b4f5be176ee0dcb52294b719df1af9b75f1c5b5b13846efd5e057e",
     "aqz_original_checks.py": "11530d6b93a693de23327b8288f3e3c9abf72c3da0352913062d46cdd42cff20",
@@ -55465,6 +55465,8 @@
     "aqz_water_game.py": "3be583e4637eeb049ced50a4332557b754c3fbf17311ac0a103b0b9d521e3e9b",
     "aqz_platform_3f.py": "154059f86e7a77cbf0137f566decd9d588208808565d837d988354d39f26e17b",
     "aqz_platform_game.py": "9054a199ebfaf1da9b3bd824b0809704ba60ba7542532f89178379da987bbe79",
+    "aqz_enemies.py": "5c6f16c5d1a4f4ef08fac9d5daeb047cbea1e478831e6efe0f460089e3b927e9",
+    "aqz_enemies_game.py": "c4dcea1b7680dad908704df2dd41e8023247b4e6e1d178fb6622bd8c5c264fad",
     "level_package.py": "27f35efa0b35c16b676d714a3cf4e73f7c4fc1493f51154e8e8afbea0c2aeb35",
     "rom.py": "ad91392ed16197cc6f79fa9e67952492dabd89de6e3a2764d49fc72924d30f6e",
     "oracle.py": "4f8cf0ba0209de6acb34eb6f63e520105147feb346e459f1a36c36d66729bcc1",
@@ -55814,11 +55816,12 @@
     {
       "id": "A3",
       "scope": "type $3F platform parameter paths $83/$86/$8B, shared $28 comparison including AQZ2 override",
-      "status": "RECOVERED_REVIEW_PENDING"
+      "status": "ACCEPTED"
     },
     {
       "id": "A4",
-      "scope": "enemies $3C/$3D parameter 0/1 and 0/4/8: contact, movement, lifecycle"
+      "scope": "enemies $3C/$3D parameter 0/1 and 0/4/8: contact, movement, lifecycle",
+      "status": "RECOVERED_REVIEW_PENDING"
     },
     {
       "id": "A5",
@@ -56877,10 +56880,68 @@
       "art": "approved A1 frame0/1 mappings, aux0 tile base80; aux1=32/00 is counter data, not a second tile base; no new reachable frames or synthetic compositions",
       "unresolved": []
     },
-    "status": "A3_RECOVERED_REVIEW_PENDING"
+    "status": "A3_ACCEPTED"
+  },
+  "enemies_runtime": {
+    "cache": "data/rom-cache/aqz/enemies-3c-3d-runtime.json",
+    "whole_game_cache": "data/rom-cache/aqz/enemies-3c-3d-game-checks.json",
+    "audit": "docs/aqz-enemies-3c-3d-audit.md",
+    "contracts": {
+      "type3c": {
+        "parameters": {
+          "00": "initial request1; frame1; no anchor shift",
+          "01": "initial request5; Y +=12 once; frame2; same for every nonzero parameter"
+        },
+        "graph": {
+          "0": "parameter0->1; nonzero->5",
+          "1": "4 calls Y-=4 ->2",
+          "2": "32 dwell calls ->3",
+          "3": "4 calls Y+=4 ->4",
+          "4": "32 dwell calls ->1",
+          "5": "4 calls Y+=4 ->6",
+          "6": "32 dwell calls ->7",
+          "7": "4 calls Y-=4 ->8",
+          "8": "32 dwell calls ->5"
+        },
+        "motion": "integer WORLD Y writes, fractions and velocities untouched; 16px legs,72-call cycles; no origin clamp, terrain or water input",
+        "contact": "after movement, only awake and VBlank-owned D12F bit0==0 (increment0603/0606); 0434->630B->6328, any contact sets D3B0=FF. No defeat helper, no score, no conversion even with attack or selector6. Player-side selector6 ignores damage; attack alone does not protect against D3B0.",
+        "asleep": "script durations/transitions and Y movement continue; contact skipped"
+      },
+      "type3d": {
+        "parameters": {
+          "00": "initializer requests1 immediately",
+          "04": "decrement parameter on four initializer callbacks, fifth requests1",
+          "08": "eight decrement callbacks, ninth requests1",
+          "FF": "nonnatural initializer selects3, base08=70, clears mirror bit4"
+        },
+        "graph": {
+          "0": "parameter countdown->1; FF->3",
+          "1": "frames1/2 alternate8 calls; gravity24/256; integrate vx+192/256, initial vy-512/256; on descending integerY>=savedOriginY set35=32",
+          "2": "same, vx-192/256, frames3/4; requested toggles1/2 when32-call counter reaches0",
+          "3": "nonnatural: -0.5Y40calls; stationary frames2/3/4/1/2/3/4 each8; +0.5Y40; nominal16-call frame1 record deletesFF on FIRST92FF callback, not after16"
+        },
+        "dwell": "counter>0: contact first, decrement then return without gravity/move; at1 request opposite state; next engine installs launch velocities, fractions retained. Overlap returns before decrement/movement even without defeat.",
+        "boundary": "descending updated vy>=0 and unsigned integer WORLD Y>=saved origin+$3C/+3D; inclusive. Neither D450 nor screen waterline. No coordinate clamp; fractions/overshoot retained.",
+        "contact": "awake, before counter/gravity/movement:6328 then5F3D on overlap. Selector6 or D503 bit1 defeats; ordinary nonattack overlap leaves D520 for next player damage. Contact freezes current motion even when not defeated.",
+        "defeat": "type0F; reset state/request/frame timer/script pointer/flags4/token/parameter; score100 (BCD low byte10). Placement occupancy remains spent; ordinary backtracking cannot recreate until act restart.",
+        "asleep": "active932B returns immediately: counter/gravity/movement/contact frozen, script animation advances. Initializer9304 ignores sleep and continues parameter decrement/state request. No keepalive.",
+        "grouping": "independent per-slot parameter countdown/counter and origin; no communication with triplet neighbours, global clock or waterline"
+      },
+      "player_contact": "6328 closed interval, frame-specific extents; player ex8 or state0F ex9, ey24. D503 bit6 suppresses overlap. Bit7 suppresses object contact-status byte but not contact nibble/D520 or3D defeat; player48BC skips damage/rebound while blinking. Shared3D rebound on next player update: top -3, below +0.5, side none; state9 suppresses only below rebound, selector6 suppresses both. 3C forces hurt regardless attack unless selector6 or player hurt/blink suppresses player-side processing.",
+      "water": "neither family nor called move/overlap/gravity/forced-hurt/defeat helper reads D443/D450/D131/D132. 3C alone reads D12F for contact parity. 3D origin compare and per-object counter were mischaracterized as waterline/time in A1 reconnaissance. No drag/buoyancy/raster coupling.",
+      "lifecycle": "ordinary mapped EDGE lifecycle; callbacks precede generic61E1 visibility, so observe previous sleep flag; periodic original mapped creator; ordinary deletion FE->FF->zero releases token, fresh creation reinitializes parameter/offset/phase. 3D defeat clears token first, retaining occupancy; 3C has no defeat path. No new PLAYER_DIST/CENTER/LOCKED_CAMERA constant.",
+      "scheduling": "player motion/water/terrain/damage then enemy script engine/callback, generic lifecycle, periodic creation, renderer; 3C moves before contact,3D contacts before motion; D520/D3B0 consumed by following player callback",
+      "art": "approved A1 frames3C0..2 and3D0..4; direction via distinct mapping frames; no routine sets whole-sprite mirror for natural parameters; preserve original SAT compositions",
+      "viewport": {
+        "coordinates_and_saved_origin": "WORLD",
+        "generic_create_sleep_delete": "EDGE canonical256px"
+      },
+      "unresolved": []
+    },
+    "status": "A4_RECOVERED_REVIEW_PENDING"
   },
   "unresolved": [
-    "Callback reachability and boss clear gates are not yet audited (A4/A5)",
+    "Boss/child callbacks and clear gates are not yet audited (A5)",
     "Results graphics/audio remain deferred"
   ],
   "poc_ready": "decoded terrain/placements only after Manager review; A1 art approved by James 2026-10-07 and Manager technical review passed; unresolved mechanics omitted explicitly"

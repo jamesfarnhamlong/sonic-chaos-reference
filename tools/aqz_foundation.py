@@ -179,6 +179,7 @@ def build(r):
             rec['original_creator']=placement_creator(r,rec)
             if t==12:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-water-environment-audit.md; water-runtime.json contracts.bubbles',parameter_status='parameter0 emitter, states0/1; emits parameters1/2')
             if t==63:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-platform-3f-audit.md; platform-3f-runtime.json contracts',parameter_status={131:'shared state4, AQZ art',134:'shared state7; aux1=50 groups of16',139:'state13 top gate -> AQZ2 state14 route/fall tail'}[p])
+            if t in (60,61):rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-enemies-3c-3d-audit.md; enemies-3c-3d-runtime.json contracts',parameter_status=('frame1/up-first' if p==0 else 'frame2/down-first, initialY+12') if t==60 else f'initializer delay {p} callbacks; then independent origin-relative trajectory')
             if t==16 and p not in (1,2,3,4,6):rec.update(classification='UNRESOLVED',contract=None)
         census['acts'][k]=dict(pointer=ptr,terminator_file=term,records_sha256=digest(r[ptr['list_rom']:term]),count=len(rows),records=rows,
             type_counts=dict(sorted(Counter(x['type_id'] for x in rows).items())),parameter_counts=dict(sorted(Counter(x['type_id']+'/'+x['parameter'] for x in rows).items())))
@@ -194,6 +195,7 @@ def build(r):
             classification='BOSS_SUPPORT' if t>=89 else 'SHARED_WITH_AQZ_DATA' if t in CONTRACTS else 'AQZ_SPECIFIC_NEEDS_AUDIT' if t in alltypes|{13,14,50} else 'SHARED_RECOVERED')
         if t in (12,13,14,50):census['types'][f'0x{t:02X}'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A2 source-traced paths and original-routine/whole-game fixtures',contract='water-runtime.json contracts; docs/aqz-water-environment-audit.md')
         if t==63:census['types']['0x3F'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A3 creator/type-alias comparison, complete script14 and natural mapped scheduler fixtures',contract='platform-3f-runtime.json contracts; docs/aqz-platform-3f-audit.md')
+        if t in (60,61):census['types'][f'0x{t:02X}'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A4 all30 natural placements, all parameter paths, original contact/movement/lifecycle and complete-state scheduler fixtures',contract='enemies-3c-3d-runtime.json contracts; docs/aqz-enemies-3c-3d-audit.md')
     census['controlled_initialization_recon']=[]
     seen=set()
     for k,a in census['acts'].items():
@@ -255,7 +257,7 @@ def build(r):
     manifest['surface_consumers']=consumers
     manifest['tool_hash_policy']='UTF-8 source normalized to LF before hashing; stable across Git CRLF checkouts'
     manifest['extraction_tool_sha256']={p:digest((ROOT/'tools'/p).read_text(encoding='utf-8').encode('utf-8')) for p in
-        ('aqz_foundation.py','aqz_art_approval.py','aqz_art_previews.py','aqz_original_checks.py','aqz_water.py','aqz_water_game.py','aqz_platform_3f.py','aqz_platform_game.py',
+        ('aqz_foundation.py','aqz_art_approval.py','aqz_art_previews.py','aqz_original_checks.py','aqz_water.py','aqz_water_game.py','aqz_platform_3f.py','aqz_platform_game.py','aqz_enemies.py','aqz_enemies_game.py',
          'level_package.py','rom.py','oracle.py','block_mapping_audit.py','mghz_foundation.py',
          'mghz_object_census.py','sez_foundation.py','sez_object_census.py','sez_surfaces_rig.py','sms_frame_harness.py')}
     manifest['zone_sites']=M.zone_sites(r)['sites']
@@ -272,10 +274,13 @@ def build(r):
     manifest['water_runtime']=dict(cache='data/rom-cache/aqz/water-runtime.json',whole_game_cache='data/rom-cache/aqz/water-game-checks.json',audit='docs/aqz-water-environment-audit.md',contracts=contracts(r),status='A2_ACCEPTED')
     manifest['packages'][0]['status']='ACCEPTED'
     from aqz_platform_3f import contracts as platform_contracts
-    manifest['platform_3f_runtime']=dict(cache='data/rom-cache/aqz/platform-3f-runtime.json',whole_game_cache='data/rom-cache/aqz/platform-3f-game-checks.json',audit='docs/aqz-platform-3f-audit.md',contracts=platform_contracts(),status='A3_RECOVERED_REVIEW_PENDING')
-    manifest['packages'][1]['status']='RECOVERED_REVIEW_PENDING'
+    manifest['platform_3f_runtime']=dict(cache='data/rom-cache/aqz/platform-3f-runtime.json',whole_game_cache='data/rom-cache/aqz/platform-3f-game-checks.json',audit='docs/aqz-platform-3f-audit.md',contracts=platform_contracts(),status='A3_ACCEPTED')
+    manifest['packages'][1]['status']='ACCEPTED'
+    from aqz_enemies import contracts as enemy_contracts
+    manifest['enemies_runtime']=dict(cache='data/rom-cache/aqz/enemies-3c-3d-runtime.json',whole_game_cache='data/rom-cache/aqz/enemies-3c-3d-game-checks.json',audit='docs/aqz-enemies-3c-3d-audit.md',contracts=enemy_contracts(),status='A4_RECOVERED_REVIEW_PENDING')
+    manifest['packages'][2]['status']='RECOVERED_REVIEW_PENDING'
     manifest['unresolved']=[
-        'Callback reachability and boss clear gates are not yet audited (A4/A5)', 'Results graphics/audio remain deferred']
+        'Boss/child callbacks and clear gates are not yet audited (A5)', 'Results graphics/audio remain deferred']
     manifest['poc_ready']='decoded terrain/placements only after Manager review; A1 art approved by James 2026-10-07 and Manager technical review passed; unresolved mechanics omitted explicitly'
     census['boss']=dict(type='0x59',placement=[x for x in census['acts']['aqz3']['records'] if x['type_id']=='0x59'],
         children=['0x5A','0x5B','0x5C','0x5D'],support=['0x12','0x34','0x0F','0x0A'],dynamic_selector=23,
