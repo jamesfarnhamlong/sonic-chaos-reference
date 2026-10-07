@@ -1,0 +1,90 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "method": "Guarded AQZ original-game boot/layout and history-independent replay checks.\n\nUses the complete CPU exported state (prefix, EI shadow and frame tick included),\nplus the existing RAM/VDP/harness snapshot. Fixture writes at engine boundaries.\nNo register-only restore or injected NOP workaround.\n",
+  "acts": {
+    "aqz1": {
+      "layout_cells_checked": 4032,
+      "layout_mismatches": [],
+      "layout_sha256": "a08ddb99d34d619f2f41ec8a510898f2fe0c81314f10c2627a143845a5aa1c64",
+      "water": {
+        "line": 568,
+        "flag": 0,
+        "screen_line": 255,
+        "irq_enabled": 0,
+        "controllers": [
+          {
+            "type": 13,
+            "state": 1,
+            "parameter": 0,
+            "x": 120,
+            "y": 568
+          },
+          {
+            "type": 13,
+            "state": 1,
+            "parameter": 1,
+            "x": 248,
+            "y": 568
+          }
+        ]
+      },
+      "complete_cpu_state_bytes": 65580,
+      "replay_updates": 48,
+      "replay_sha256": "206e9c20d20023a41d4c1d0da186b19e95c8ee1c2895c65f80118166757cfe15",
+      "history_independent_replay": true,
+      "zone": 4,
+      "act": 0
+    },
+    "aqz2": {
+      "layout_cells_checked": 4095,
+      "layout_mismatches": [],
+      "layout_sha256": "068022b83a9850df5ccaaaea2e0d2827c0a345a11021a053e8d773959648e714",
+      "water": {
+        "line": 788,
+        "flag": 0,
+        "screen_line": 255,
+        "irq_enabled": 0,
+        "controllers": [
+          {
+            "type": 13,
+            "state": 1,
+            "parameter": 0,
+            "x": 120,
+            "y": 788
+          },
+          {
+            "type": 13,
+            "state": 1,
+            "parameter": 1,
+            "x": 248,
+            "y": 788
+          }
+        ]
+      },
+      "complete_cpu_state_bytes": 65580,
+      "replay_updates": 48,
+      "replay_sha256": "a05ccbf6f5303461de69523afd8477406dffd839262e4d1eb21e25497c491b44",
+      "history_independent_replay": true,
+      "zone": 4,
+      "act": 1
+    },
+    "aqz3": {
+      "layout_cells_checked": 1280,
+      "layout_mismatches": [],
+      "layout_sha256": "942948bedf326396b08fc7ba23844e4b706cfd8140a2b2f0fae0fbf8abbb85ea",
+      "water": {
+        "line": 0,
+        "flag": 0,
+        "screen_line": 0,
+        "irq_enabled": 0,
+        "controllers": []
+      },
+      "complete_cpu_state_bytes": 65580,
+      "replay_updates": 48,
+      "replay_sha256": "9db3f3b76f1c48e3087015c35d0a56ffd56574d7374278436dcc58b5a5f7d2f6",
+      "history_independent_replay": true,
+      "zone": 4,
+      "act": 2
+    }
+  }
+}
