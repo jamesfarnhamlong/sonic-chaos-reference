@@ -110,3 +110,5 @@ The exporter uses the standard library. `recover.py` needs `z80dis`; differentia
 | `docs/` | Explanations, evidence, corrections and remaining work |
 
 Assembly labels use ROM file offsets, e.g. `SC_07666`. Banked CPU addresses are identified separately in the documents and CSVs. Contributions should preserve this distinction and state whether a claim is inferred, source-traced or tested. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+AQZ A2: [water/environment runtime and oracle contracts](docs/aqz-water-environment-audit.md).

@@ -19,11 +19,11 @@ CACHE=F.OUT/'art-approval.json'
 
 def build(r):
     manifest,census,acts=F.build(r)
-    data=dict(rom_sha256=L.ROM_SHA256,status='PENDING_JAMES_APPROVAL',acts={},subjects={},animated={})
-    meta=dict(format=1,rom_sha256=L.ROM_SHA256,research_base=F.BASE,status='PENDING_JAMES_APPROVAL',approved_by=None,
+    data=dict(rom_sha256=L.ROM_SHA256,status='APPROVED',acts={},subjects={},animated={})
+    meta=dict(format=1,rom_sha256=L.ROM_SHA256,research_base=F.BASE,status='APPROVED',approved_by="James", approval_date="2026-10-07", approval_statement="all AQZ A1 boards approved", approval_base="d1661de8b44b7904dd1c250c6fa53b8f4c24b735",
         output_directory='build/aqz-approval',composition='original ROM renderer SAT pieces; reverse SAT precedence, no extra bitmap flip; diagnostic forced mirrors labelled',
         subjects={},terrain={},animated={},reproduction=['tools/aqz_foundation.py ROM','tools/aqz_art_approval.py ROM','tools/aqz_art_previews.py'],
-        limitations=['No art is approved until James reviews.', 'Static maps do not simulate waterline raster IRQ or parallax.',
+        limitations=['James approved all A1 boards on 2026-10-07; forced mirrors remain diagnostics.', 'Static maps do not simulate waterline raster IRQ or parallax.',
             'Boss selector23 and palette16 traced to initializer; children use their own mappings.',
             'Script frames include invisible/init frames; gameplay reachability belongs to later audits.'])
     for k,a in acts.items():
@@ -63,7 +63,7 @@ def build(r):
                 label=f'type ${t:02X} bases ${bases[0]:02X}/${bases[1]:02X}; original SAT, forced mirror diagnostic',
                 flags=rec['flags'],parameter=rec['parameter'])
             meta['subjects'][key]=dict(type=t,act=k,bases=bases,palette_index=palette,
-                palette_file=L.PALETTE_DATA+palette*16,placement_file=rec['rom_offset'],frames=[C.strip_pixels(x) for x in frames],status='PENDING_JAMES_APPROVAL')
+                palette_file=L.PALETTE_DATA+palette*16,placement_file=rec['rom_offset'],frames=[C.strip_pixels(x) for x in frames],status='APPROVED')
     a=acts['aqz3'];v=bytearray(a['vram']);D.apply_dynamic_entries(v,r,dynamic)
     for t in (90,91,92,93):
         sc=C.state_scripts(r,t);used=set(sc['frames'])
@@ -72,18 +72,18 @@ def build(r):
         key=f'{t:02X}-child'
         data['subjects'][key]=dict(type=t,act='aqz3',bases=[0,0],palette=A.pal(r,16),frames=frames,
             label=f'boss child ${t:02X}; selector23/palette16; base override reachability needs A5')
-        meta['subjects'][key]=dict(type=t,frames=[C.strip_pixels(x) for x in frames],status='PENDING_JAMES_APPROVAL',
+        meta['subjects'][key]=dict(type=t,frames=[C.strip_pixels(x) for x in frames],status='APPROVED',
             caveat='dynamic art bases0 inherited from boss command-4 spawns; initializer callbacks do not write art bases; behavior reachability remains A5')
     # Waterline/controller art is dynamically created, not part of mapped census.
     sc=C.state_scripts(r,13);a=acts['aqz1']
     frames=[C.frame_record(r,13,fi,0xA0,0,bytes(a['vram']),flips=(False,)) for fi in sc['frames']]
     data['subjects']['0D-waterline']=dict(type=13,act='aqz1',bases=[160,0],palette=A.pal(r,10),frames=frames,label='type $0D camera-relative waterline strip; original unmirrored SAT')
-    meta['subjects']['0D-waterline']=dict(type=13,frames=[C.strip_pixels(x) for x in frames],status='PENDING_JAMES_APPROVAL',source='$0C:$9DAD initializer sets base $A0')
+    meta['subjects']['0D-waterline']=dict(type=13,frames=[C.strip_pixels(x) for x in frames],status='APPROVED',source='$0C:$9DAD initializer sets base $A0')
     for t,bases,label in [(14,(0xA4,0),'water-entry effect; initializer $9FAA/base$A4'),(50,(0,0),'water countdown; initializer $9500/base0')]:
         sc=C.state_scripts(r,t);frames=[C.frame_record(r,t,fi,*bases,bytes(a['vram']),flips=(False,)) for fi in sc['frames']]
         key=f'{t:02X}-water-support'
         data['subjects'][key]=dict(type=t,act='aqz1',bases=bases,palette=A.pal(r,10),frames=frames,label=label)
-        meta['subjects'][key]=dict(type=t,bases=bases,frames=[C.strip_pixels(x) for x in frames],status='PENDING_JAMES_APPROVAL',source=label)
+        meta['subjects'][key]=dict(type=t,bases=bases,frames=[C.strip_pixels(x) for x in frames],status='APPROVED',source=label)
     # Rocket Shoes are present in AQZ1; show the shared player graphics under
     # AQZ's sprite palette rather than duplicating the already-approved art.
     player_frames=[]
@@ -100,7 +100,7 @@ def build(r):
             source={key:value for key,value in src.items() if key!='raw'}))
     data['subjects']['01-rocket-palette']=dict(type=1,act='aqz1',bases=[0,0],palette=A.pal(r,10),frames=player_frames,label='Rocket Shoes shared player frames38-3A; AQZ palette10 variant')
     meta['subjects']['01-rocket-palette']=dict(type=1,palette_index=10,frames=[dict(frame=f['frame'],source=f['source'],
-        compositions=[im['composed_index_sha256'] for im in f['images']]) for f in player_frames],status='PENDING_JAMES_APPROVAL')
+        compositions=[im['composed_index_sha256'] for im in f['images']]) for f in player_frames],status='APPROVED')
     a=acts['aqz1'];d=manifest['ring_animation']['descriptor']
     for name,copies in [('ring',[dict(source_cpu=d['ring_frames_source_cpu']+128*i,vram=d['ring_frames_vram_destination'],length=128) for i in range(4)])]+[
         (f'effect{eid}',e['unique_copies']) for eid,e in manifest['effects'].items()]:
@@ -121,6 +121,6 @@ def main():
     if args.check:assert CACHE.read_text(encoding='utf-8')==F.dumps(meta)
     else:CACHE.write_text(F.dumps(meta),encoding='utf-8')
     (OUT/'preview-input.json').write_text(F.dumps(data),encoding='utf-8')
-    print('Pending subjects:',list(meta['subjects']))
+    print('Approved subjects:',list(meta['subjects']))
 
 if __name__=='__main__':main()

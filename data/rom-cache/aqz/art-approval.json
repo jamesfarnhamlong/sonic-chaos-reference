@@ -2,8 +2,11 @@
   "format": 1,
   "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
   "research_base": "53e9095ae2d807be8cd67f8ed572caead09094d9",
-  "status": "PENDING_JAMES_APPROVAL",
-  "approved_by": null,
+  "status": "APPROVED",
+  "approved_by": "James",
+  "approval_date": "2026-10-07",
+  "approval_statement": "all AQZ A1 boards approved",
+  "approval_base": "d1661de8b44b7904dd1c250c6fa53b8f4c24b735",
   "output_directory": "build/aqz-approval",
   "composition": "original ROM renderer SAT pieces; reverse SAT precedence, no extra bitmap flip; diagnostic forced mirrors labelled",
   "subjects": {
@@ -126,7 +129,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "3F-80-00": {
       "type": 63,
@@ -247,7 +250,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "10-00-00": {
       "type": 16,
@@ -501,7 +504,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "30-86-86": {
       "type": 48,
@@ -703,7 +706,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "3C-6A-6A": {
       "type": 60,
@@ -853,7 +856,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "3D-70-70": {
       "type": 61,
@@ -1113,7 +1116,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "0C-8E-8E": {
       "type": 12,
@@ -1357,7 +1360,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "09-00-00": {
       "type": 9,
@@ -1701,7 +1704,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "18-00-00": {
       "type": 24,
@@ -2380,7 +2383,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "59-00-00": {
       "type": 89,
@@ -4569,7 +4572,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     },
     "5A-child": {
       "type": 90,
@@ -4821,7 +4824,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL",
+      "status": "APPROVED",
       "caveat": "dynamic art bases0 inherited from boss command-4 spawns; initializer callbacks do not write art bases; behavior reachability remains A5"
     },
     "5B-child": {
@@ -4987,7 +4990,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL",
+      "status": "APPROVED",
       "caveat": "dynamic art bases0 inherited from boss command-4 spawns; initializer callbacks do not write art bases; behavior reachability remains A5"
     },
     "5C-child": {
@@ -5674,7 +5677,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL",
+      "status": "APPROVED",
       "caveat": "dynamic art bases0 inherited from boss command-4 spawns; initializer callbacks do not write art bases; behavior reachability remains A5"
     },
     "5D-child": {
@@ -5791,7 +5794,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL",
+      "status": "APPROVED",
       "caveat": "dynamic art bases0 inherited from boss command-4 spawns; initializer callbacks do not write art bases; behavior reachability remains A5"
     },
     "0D-waterline": {
@@ -5856,7 +5859,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL",
+      "status": "APPROVED",
       "source": "$0C:$9DAD initializer sets base $A0"
     },
     "0E-water-support": {
@@ -6027,7 +6030,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL",
+      "status": "APPROVED",
       "source": "water-entry effect; initializer $9FAA/base$A4"
     },
     "32-water-support": {
@@ -6276,7 +6279,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL",
+      "status": "APPROVED",
       "source": "water countdown; initializer $9500/base0"
     },
     "01-rocket-palette": {
@@ -6380,7 +6383,7 @@
           ]
         }
       ],
-      "status": "PENDING_JAMES_APPROVAL"
+      "status": "APPROVED"
     }
   },
   "terrain": {
@@ -7362,7 +7365,7 @@
     "tools/aqz_art_previews.py"
   ],
   "limitations": [
-    "No art is approved until James reviews.",
+    "James approved all A1 boards on 2026-10-07; forced mirrors remain diagnostics.",
     "Static maps do not simulate waterline raster IRQ or parallax.",
     "Boss selector23 and palette16 traced to initializer; children use their own mappings.",
     "Script frames include invisible/init frames; gameplay reachability belongs to later audits."

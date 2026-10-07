@@ -55457,10 +55457,12 @@
   },
   "tool_hash_policy": "UTF-8 source normalized to LF before hashing; stable across Git CRLF checkouts",
   "extraction_tool_sha256": {
-    "aqz_foundation.py": "97d1ba0cbfee8cf40463446adca8fab222d9433dd3c7c060b52af98d83d8b24b",
-    "aqz_art_approval.py": "e5fc8b6be5a75111a47c072cea6a181767a6fbe2386690826c787d9109dd2987",
-    "aqz_art_previews.py": "8f93cdb58b4447527fcb319a34bc402ab3eab6f20a8950f29c4f3eda8f11bc0b",
+    "aqz_foundation.py": "73fbf6408d2f9464dbc6090413c47b3e2e74a00b354a441db80fc6a62b96531c",
+    "aqz_art_approval.py": "6883b2932a0f89f1cd9370b21f04269cf855f49f3bca5eb9ee0363d90d938595",
+    "aqz_art_previews.py": "7d69475b42b4f5be176ee0dcb52294b719df1af9b75f1c5b5b13846efd5e057e",
     "aqz_original_checks.py": "11530d6b93a693de23327b8288f3e3c9abf72c3da0352913062d46cdd42cff20",
+    "aqz_water.py": "cce30606047ba1fbb30076e11544122cfd74e61ba47bea1c8f845e997eb0eb98",
+    "aqz_water_game.py": "3be583e4637eeb049ced50a4332557b754c3fbf17311ac0a103b0b9d521e3e9b",
     "level_package.py": "27f35efa0b35c16b676d714a3cf4e73f7c4fc1493f51154e8e8afbea0c2aeb35",
     "rom.py": "ad91392ed16197cc6f79fa9e67952492dabd89de6e3a2764d49fc72924d30f6e",
     "oracle.py": "4f8cf0ba0209de6acb34eb6f63e520105147feb346e459f1a36c36d66729bcc1",
@@ -55804,7 +55806,8 @@
   "packages": [
     {
       "id": "A2",
-      "scope": "water physics/drowning, types $0C/$0D/$0E/$32 and background/camera palette effects; AQZ loop-layout integration uses shared contracts"
+      "scope": "water physics/drowning, types $0C/$0D/$0E/$32 and background/camera palette effects; AQZ loop-layout integration uses shared contracts",
+      "status": "RECOVERED_REVIEW_PENDING"
     },
     {
       "id": "A3",
@@ -55819,13 +55822,1006 @@
       "scope": "boss $59 and children $5A/$5B/$5C/$5D, arena and clear; shared support reuse"
     }
   ],
+  "water_runtime": {
+    "cache": "data/rom-cache/aqz/water-runtime.json",
+    "whole_game_cache": "data/rom-cache/aqz/water-game-checks.json",
+    "audit": "docs/aqz-water-environment-audit.md",
+    "contracts": {
+      "crossing": {
+        "cpu": 19392,
+        "zone_gate": [
+          4,
+          0,
+          1
+        ],
+        "entry": "unsigned player anchor Y >= WORLD waterline; equality submerged",
+        "exit": "Y < waterline",
+        "modifications": "D443 only; on entry allocate0E parameter0; no velocity scaling, floor/input/latch/animation/sound writes in crossing routine",
+        "repeated_gate": "while submerged: vy>=0, attack bit1 and abs(signed vx HIGH BYTE)>=4 sets vy=-768; negative fractional vx uses its high byte, not abs(vx)",
+        "exit_effect": false,
+        "order": "within $3FEF before screen-death, input tables, X/Y movement and terrain; flag can lag final Y by one update"
+      },
+      "controllers": {
+        "type": 13,
+        "bank": 12,
+        "table": 40347,
+        "reachable_states": [
+          0,
+          1
+        ],
+        "state2": "alias of state1, no AQZ request path",
+        "creator": 10798,
+        "parameters": [
+          0,
+          1
+        ],
+        "creation": "first two free 16-slot allocator slots, sequential params0 then1; sets initial WORLD768 after both attempts",
+        "authority": "both callbacks $9DDD prepare raster from previous D450 then publish their identical object WORLD Y (568/788); neither exclusively owns D450",
+        "strips": "parameter0 offsets8..248 stride16; parameter1 same table rotated8 positions; index increments before lookup, wraps16 every callback",
+        "cadence": "one callback per gameplay object pass, independent of 128-update animation-record restart",
+        "keepalive": "+$04 bit1 prevents out-of-range deletion; generic lifecycle can mark asleep bit6 but callback does not gate it",
+        "gameplay": "both redundantly publish authoritative waterline and prepare raster; parameters only change strip X; no separate presentation-only controller",
+        "failure": "creator silently tolerates full pool; no retry; if both allocations fail initial768 persists; restart clears pool first so normal creation succeeds",
+        "first_pass": "state0 initializes object Y but leaves D450=768; next pass state1 parameter0 prepares raster using768 then publishes568/788, parameter1 prepares from updated568/788 then republishes",
+        "restart": "original $297E clears D300..DBBF, includes flags/timers/objects; $2934 calls clear, level data/load, $2A2E creator; AQZ3 skips creator/updater"
+      },
+      "drowning": {
+        "updater": 19270,
+        "unit": "calls of shared player-water updater, not wall clock",
+        "fine_address": 54340,
+        "coarse_address": 54341,
+        "increment": "water true increments fine byte; if resulting byte>=120 resets0 then increments coarse; byte overflow255->0 does not roll coarse",
+        "reset": "entry never resets either counter; exit resets coarse0 only; air state25 resets coarse0 only; restart clears both",
+        "thresholds": [
+          {
+            "coarse": 11,
+            "action": "allocate type32 parameter0"
+          },
+          {
+            "coarse": 17,
+            "action": "request player1F, no direct ring/death setup"
+          }
+        ],
+        "non_threshold": "no warning threshold besides11 and17; every rollover attempts small breath bubble0C param3 if R bit2 clear",
+        "allocation": "16-slot allocator5E9C silently drops failed spawn; does not retry threshold32; request1F still happens at17; without countdown no9555 tail or camera lock/death setup, no invented fallback",
+        "countdown": {
+          "type": 50,
+          "table_bank": 30,
+          "table_cpu": 38086,
+          "states": [
+            0,
+            1
+          ],
+          "spawn": "initializer playerX,playerY-34; following callback playerX,playerY-40",
+          "frames": [
+            21,
+            20,
+            19,
+            18,
+            17,
+            16
+          ],
+          "durations": [
+            120,
+            120,
+            120,
+            120,
+            120,
+            120
+          ],
+          "sound": 181,
+          "blink": "+$07 counter bit2 controls +$04 bit7 every callback",
+          "removal": "follow callback deletes FF when D445==0; otherwise tracks irrespective of water flag; keepalive bit1",
+          "tail": "frame1 calls9555 immediately: req28, flag3 bit0, flag4=0, vy0, D3750, clear floor bit1, sound96, camera lower bound=cameraY, deleteFF"
+        },
+        "death": "countdown tail bypasses hurt/lost-ring helper; neither updater nor tail changes ring counter; no-ring death setter4984 is separate",
+        "freeze": "loops0C/0D/13, air25, clear20, death1F/28 and stationary spindash charge0F do not call water updater; count calls, preserve stale water flag"
+      },
+      "bubbles": {
+        "type": 12,
+        "table_bank": 12,
+        "table_cpu": 40108,
+        "placements": [
+          {
+            "act": "aqz1",
+            "x": 768,
+            "y": 686,
+            "parameter": 0
+          },
+          {
+            "act": "aqz2",
+            "x": 2496,
+            "y": 942,
+            "parameter": 0
+          }
+        ],
+        "states": {
+          "emitter": 1,
+          "small": 2,
+          "large": 3
+        },
+        "parameters": {
+          "0": "mapped emitter ->1",
+          "1": "small emitted ->2",
+          "2": "large emitted ->3",
+          "3": "player breath ->2; initializer overrides XY to playerX/playerY-16"
+        },
+        "initialization": "base8E/8E; bit7 flags3 prevents shared contact from damaging player; vy=-192 for every parameter including inert emitter",
+        "emitter": "128/120/112 update records, spawn1/1/2 after each; 360-update cycle; original scheduler births at130,250,362 then490,610,722 from zero object",
+        "child_allocator": "command4 uses5EE1 poolD700..D980 eleven slots; failed command advances to next record without retry; player breath uses distinct16-slot5E9C",
+        "motion": "vy=-192; vx integrates +/-4 acceleration selected by D12F bit4 (0 -> -4,1 ->+4); no gravity/cap; original0338 24-bit XY integration",
+        "termination": "callbacks test asleep bit6 every update; on D2E2&3 !=0 test objectY - extentY < D450 and deleteFE; equality survives; mapped emitter inert callback does not test waterline",
+        "large": "state3 frames1/2 each16 then frame3 repeating224; only frame3 callback9D39 checks contact on D12F&3 !=0 (3 of4 phases)",
+        "contact": "shared6328 closed overlap: ordinary Sonic8x24 plus bubble8x16 gives abs(dx)<=16 and dy=-16..24; flags3 bit7 allows even hurt player; callback request25 and deleteFE",
+        "air": "only qualifying large callback; no parameter/frame guard inside callback (script reachability supplies restriction); soundAE and coarse reset happen in player state25 next update, fine preserved",
+        "removal": "FE -> next object pass marksFF through626D -> following pass5EF8 clears64 bytes and placement token; dynamic bubbles have no token"
+      },
+      "splash": {
+        "type": 14,
+        "table_bank": 12,
+        "table_cpu": 40843,
+        "states": [
+          0,
+          1
+        ],
+        "creator": "dry->submerged edge only from4BC0",
+        "initialization": "playerX, WORLD D450; baseA4; +$04 bit0; request1",
+        "frames": [
+          1,
+          2,
+          3
+        ],
+        "durations": [
+          4,
+          4,
+          4
+        ],
+        "sound": 175,
+        "ending": "frame0 delete callback0362 immediately on next record; original calls frames at2,6,10,FF at14, cleared at15",
+        "contact": false,
+        "movement": false,
+        "exit_spawn": false,
+        "failure": "silent16-slot drop; D443 still set; no later retry while submerged"
+      },
+      "player_states": {
+        "1": {
+          "state": 1,
+          "script_cpu": 32897,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ]
+        },
+        "2": {
+          "state": 2,
+          "script_cpu": 32920,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ]
+        },
+        "3": {
+          "state": 3,
+          "script_cpu": 32959,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            0,
+            0
+          ]
+        },
+        "4": {
+          "state": 4,
+          "script_cpu": 32965,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            0,
+            0
+          ]
+        },
+        "5": {
+          "state": 5,
+          "script_cpu": 33038,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              16
+            ],
+            [
+              -16,
+              16
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ]
+        },
+        "6": {
+          "state": 6,
+          "script_cpu": 33046,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              16
+            ],
+            [
+              -16,
+              16
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ]
+        },
+        "7": {
+          "state": 7,
+          "script_cpu": 33054,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -4,
+              4
+            ],
+            [
+              -4,
+              4
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -32,
+              32
+            ],
+            [
+              -32,
+              32
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ]
+        },
+        "8": {
+          "state": 8,
+          "script_cpu": 33064,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -4,
+              4
+            ],
+            [
+              -4,
+              4
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -32,
+              32
+            ],
+            [
+              -32,
+              32
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ]
+        },
+        "9": {
+          "state": 9,
+          "script_cpu": 33074,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -2,
+              -4
+            ],
+            [
+              4,
+              2
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              -4
+            ],
+            [
+              4,
+              16
+            ]
+          ],
+          "neutral_control": [
+            5,
+            -5
+          ]
+        },
+        "10": {
+          "state": 10,
+          "script_cpu": 33090,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -8,
+              4
+            ],
+            [
+              -4,
+              8
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -64,
+              16
+            ],
+            [
+              -16,
+              64
+            ]
+          ],
+          "neutral_control": [
+            16,
+            -16
+          ]
+        },
+        "11": {
+          "state": 11,
+          "script_cpu": 33098,
+          "water_gravity": 12,
+          "dry_gravity": 24,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -8,
+              4
+            ],
+            [
+              -4,
+              8
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -64,
+              16
+            ],
+            [
+              -16,
+              64
+            ]
+          ],
+          "neutral_control": [
+            16,
+            -16
+          ]
+        },
+        "12": {
+          "state": 12,
+          "script_cpu": 33198,
+          "water_gravity": null,
+          "dry_gravity": null,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": null,
+          "dry_down_cap": null,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ],
+          "exception": "route table integration; no $3FEF/$4B46/$4097 call, water flag and air timer remain latched during route; no underwater slowing"
+        },
+        "13": {
+          "state": 13,
+          "script_cpu": 33206,
+          "water_gravity": null,
+          "dry_gravity": null,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": null,
+          "dry_down_cap": null,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ],
+          "exception": "route table integration; no $3FEF/$4B46/$4097 call, water flag and air timer remain latched during route; no underwater slowing"
+        },
+        "14": {
+          "state": 14,
+          "script_cpu": 33248,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -4,
+              4
+            ],
+            [
+              -4,
+              4
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              16
+            ],
+            [
+              -16,
+              16
+            ]
+          ],
+          "neutral_control": [
+            16,
+            -16
+          ]
+        },
+        "15": {
+          "state": 15,
+          "script_cpu": 33566,
+          "water_gravity": 0,
+          "dry_gravity": 0,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": null,
+          "dry_down_cap": null,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            0,
+            0
+          ],
+          "exception": "stationary spindash charge $396D calls terrain/damage/edge clamp, no shared movement or water updater; release setter +/-7 unchanged"
+        },
+        "16": {
+          "state": 16,
+          "script_cpu": 33580,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -2,
+              -4
+            ],
+            [
+              4,
+              2
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              -4
+            ],
+            [
+              4,
+              16
+            ]
+          ],
+          "neutral_control": [
+            5,
+            -5
+          ]
+        },
+        "17": {
+          "state": 17,
+          "script_cpu": 33588,
+          "water_gravity": 0,
+          "dry_gravity": 0,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": null,
+          "dry_down_cap": null,
+          "control_table_water": [
+            [
+              -2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              16
+            ],
+            [
+              -16,
+              16
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ],
+          "exception": "Rocket $4097 goes straight to integration; Up/Down +/-64, neutral +/-32; signed-high-byte clamp as existing powerup-shoes vectors; maxX7, thrust dry16/water2, doubled at abs(vx)<128"
+        },
+        "19": {
+          "state": 19,
+          "script_cpu": 33214,
+          "water_gravity": null,
+          "dry_gravity": null,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": null,
+          "dry_down_cap": null,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            0,
+            0
+          ],
+          "exception": "route table integration; no $3FEF/$4B46/$4097 call, water flag and air timer remain latched during route; no underwater slowing"
+        },
+        "20": {
+          "state": 20,
+          "script_cpu": 33222,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "control_table_dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "neutral_control": [
+            0,
+            0
+          ]
+        },
+        "26": {
+          "state": 26,
+          "script_cpu": 33497,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              16
+            ],
+            [
+              -16,
+              16
+            ]
+          ],
+          "neutral_control": [
+            20,
+            -20
+          ]
+        },
+        "27": {
+          "state": 27,
+          "script_cpu": 33082,
+          "water_gravity": 18,
+          "dry_gravity": 36,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -4,
+              4
+            ],
+            [
+              -4,
+              4
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              16
+            ],
+            [
+              -16,
+              16
+            ]
+          ],
+          "neutral_control": [
+            2,
+            -2
+          ]
+        },
+        "28": {
+          "state": 28,
+          "script_cpu": 33172,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": [
+            [
+              -4,
+              4
+            ],
+            [
+              -4,
+              4
+            ]
+          ],
+          "control_table_dry": [
+            [
+              -16,
+              16
+            ],
+            [
+              -16,
+              16
+            ]
+          ],
+          "neutral_control": [
+            0,
+            0
+          ]
+        },
+        "30": {
+          "state": 30,
+          "script_cpu": 33660,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": null,
+          "control_table_dry": null,
+          "neutral_control": null
+        },
+        "31": {
+          "state": 31,
+          "script_cpu": 33674,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": null,
+          "control_table_dry": null,
+          "neutral_control": null,
+          "exception": "death callback $3BF0 -> $4097, hides blinking and sets flag3 bit6; water flag stays latched, gravity24/cap4; no water updater, terrain, damage/ring loss"
+        },
+        "32": {
+          "state": 32,
+          "script_cpu": 33694,
+          "water_gravity": 0,
+          "dry_gravity": 0,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": null,
+          "dry_down_cap": null,
+          "control_table_water": null,
+          "control_table_dry": null,
+          "neutral_control": null,
+          "exception": "clear $0C:$83A6 zeros vy, adds vx16 until high byte>=6; $0338 integration, no water updater/terrain/ring probe"
+        },
+        "37": {
+          "state": 37,
+          "script_cpu": 33635,
+          "water_gravity": 0,
+          "dry_gravity": 0,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": null,
+          "dry_down_cap": null,
+          "control_table_water": null,
+          "control_table_dry": null,
+          "neutral_control": null,
+          "exception": "air state $25: sound AE; 16 updates frame54 callback $836F clears D445; no movement or timer; then requests fall0E"
+        },
+        "40": {
+          "state": 40,
+          "script_cpu": 33680,
+          "water_gravity": 24,
+          "dry_gravity": 48,
+          "gravity_unit": "1/256 px/update squared; only when $4097 takes airborne branch",
+          "water_down_cap": 1024,
+          "dry_down_cap": 1792,
+          "control_table_water": null,
+          "control_table_dry": null,
+          "neutral_control": null,
+          "exception": "drowning callback $3BFB fixes vy128 while screenY<216; at >=216 sets D293 bit2 and vy4096, then $4097 uses stale water flag and its cap4; no new water test or terrain"
+        }
+      },
+      "shared": {
+        "jump": "45ED/3901: dry -1088 / water -832, fixed-point; jump hold updates same launch for first13 held calls; existing latch/attack/floor rules unchanged",
+        "maximum": "D373 is not halved: ordinary4, roll6, spindash7, Rocket7; actual setters/terrain may supply another cap",
+        "control": "4141 selects441D/449D water vs429D/431D dry; two signed direction entries per state; opposing acceleration signs are significant; acceleration doubles when abs(vx)<128; neutral439D and slope459D unchanged",
+        "forced_floor": "D522 bit1 branch overrides Y speed after gravity to7, or9 when D369=0A/0C; overrides underwater cap4; grounded flags3 bit0 clear bypasses gravity",
+        "walk": "underwater37A4 skips run transition47A9 and strip-fall test4663; crouch3713 bypasses Sonic jump-fly selector473C; spin dash release remains +/-7",
+        "springs": "terrain/mapped launch setters have no D443 branch: accepted launch values unchanged; subsequent spring0B uses water gravity12/cap4 and horizontal tables",
+        "terrain": "booster1A, crumble0C/type13, breakables, collision handlers and ring probe do not read D443; no new water terrain contract; loops use route tables and pause updater",
+        "hurt": "same494F initial launch and recoverable scatter; hurt state1E callback03AA ->3A71 ->3FEF continues water updater and uses4097 gravity24/cap4; damage/scatter initial launch remains unchanged",
+        "effects": "5 every3 and boss-paused;11 every8 and not boss-paused; graphics copies unchanged, neither writes CRAM/priority; common raster palette changes displayed colors including affected sprites/terrain; no refraction or scanline horizontal-scroll change in0652"
+      },
+      "scheduling": [
+        "camera/background4C90",
+        "player animation64FA",
+        "player callback: water+air4B46 where called",
+        "screen death401A",
+        "control4141",
+        "X402A",
+        "Y4097",
+        "terrain floor/sides/ceiling/rings690B",
+        "damage48BC",
+        "reward4A74",
+        "objects5DD1 sequential19 slots: animation then callback then lifecycle",
+        "mapped creation bank1C:8000 every fourth D2E2 pass",
+        "renderer220E/1027 moved into main split path16EF; normal renderer in vblank05B0",
+        "effects bank1D:8000 in eligible vblank; line IRQ interrupts copy fixed CRAM and next guarded vblank restores palette"
+      ],
+      "viewport": {
+        "waterline": "WORLD(568/788)",
+        "raster": "EDGE(TOP, waterline-cameraY), canonical active192 lines",
+        "strip_x": "EDGE(LEFT, table offset8..248), two phases covering256px",
+        "bubble_contact": "PLAYER_DIST closed overlap; never widen",
+        "countdown": "PLAYER_DIST(0,-34/-40)",
+        "camera_death": "LOCKED_CAMERA lower bound = current cameraY at countdown tail; state28 uses EDGE(TOP,+216)"
+      }
+    },
+    "status": "A2_RECOVERED_REVIEW_PENDING"
+  },
   "unresolved": [
-    "New art approval by James",
-    "Complete water runtime and controller timing (A2)",
-    "Waterline raster timing and any additional parallax require source audit (A2)",
     "Type3F parameter path reuse is not assumed from the shared state scripts (A3)",
     "Callback reachability and boss clear gates are not yet audited (A4/A5)",
     "Results graphics/audio remain deferred"
   ],
-  "poc_ready": "decoded terrain/placements only after Manager review; new art remains PENDING_JAMES_APPROVAL; unresolved mechanics omitted explicitly"
+  "poc_ready": "decoded terrain/placements only after Manager review; A1 art approved by James 2026-10-07 and Manager technical review passed; unresolved mechanics omitted explicitly"
 }

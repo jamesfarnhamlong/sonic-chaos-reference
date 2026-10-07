@@ -58,7 +58,7 @@ def main():
             y+=((len(v['blocks'])+11)//12)*72+16
         sheet.save(OUT/f'animated-{name}.png')
     rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.png'))}
-    index=['# AQZ A1 visual review','', 'Pending James approval. All images are decoded from the verified Europe v1.2 ROM.',
+    index=['# AQZ A1 visual review','', 'Approved by James 2026-10-07. All images are decoded from the verified Europe v1.2 ROM.',
         'Forced bit4 mirrors are diagnostics; approve canonical compositions only. Static maps omit water raster timing.', '',
         'Review terrain, animation, new objects, palette variants and boss/children. Report any composition that needs correction.', '']
     index += [f'- [{name}]({(OUT/name).as_posix()})' for name in rows]

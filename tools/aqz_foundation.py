@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'data/rom-cache/aqz'
 BASE = '53e9095ae2d807be8cd67f8ed572caead09094d9'
 ACTS = {f'aqz{i+1}': dict(zone=4, act=i, name=f'Aqua Planet Act {i+1}') for i in range(3)}
-CLASSES = ['SHARED_RECOVERED', 'SHARED_WITH_AQZ_DATA', 'AQZ_SPECIFIC_NEEDS_AUDIT', 'BOSS_SUPPORT', 'UNRESOLVED']
+CLASSES = ['SHARED_RECOVERED', 'SHARED_WITH_AQZ_DATA', 'AQZ_SPECIFIC_RECOVERED', 'AQZ_SPECIFIC_NEEDS_AUDIT', 'BOSS_SUPPORT', 'UNRESOLVED']
 CONTRACTS = {9: 'docs/object-09.md', 16: 'docs/object-10.md; docs/powerup-shoes-audit.md',
              24: 'docs/object-18-act-clear.md',48:'docs/spring-interaction-audit.md; original type30/type26 share state table $8212; mapped parameter0 strong path'}
 SURFACES = dict(S.SURFACES)
@@ -177,6 +177,7 @@ def build(r):
                 placement_token=rec['index'],classification='SHARED_WITH_AQZ_DATA' if t in CONTRACTS else 'BOSS_SUPPORT' if t==89 else 'AQZ_SPECIFIC_NEEDS_AUDIT',
                 contract=CONTRACTS.get(t),parameter_status='known reward' if t==16 and p in (1,2,3,4,6) else 'shared record format' if t in (9,24) else 'strong spring parameter0' if t==48 and p==0 else 'needs path audit')
             rec['original_creator']=placement_creator(r,rec)
+            if t==12:rec.update(classification='AQZ_SPECIFIC_RECOVERED',contract='docs/aqz-water-environment-audit.md; water-runtime.json contracts.bubbles',parameter_status='parameter0 emitter, states0/1; emits parameters1/2')
             if t==16 and p not in (1,2,3,4,6):rec.update(classification='UNRESOLVED',contract=None)
         census['acts'][k]=dict(pointer=ptr,terminator_file=term,records_sha256=digest(r[ptr['list_rom']:term]),count=len(rows),records=rows,
             type_counts=dict(sorted(Counter(x['type_id'] for x in rows).items())),parameter_counts=dict(sorted(Counter(x['type_id']+'/'+x['parameter'] for x in rows).items())))
@@ -190,6 +191,7 @@ def build(r):
             reachability='table states decoded; callback-driven state reachability requires dedicated audit',
             motion_constants=[dict(state=s['state'],x=op['x'],y=op['y']) for s in sc['states'] for op in s['ops'] if op['op']=='velocity_8_8'],
             classification='BOSS_SUPPORT' if t>=89 else 'SHARED_WITH_AQZ_DATA' if t in CONTRACTS else 'AQZ_SPECIFIC_NEEDS_AUDIT' if t in alltypes|{13,14,50} else 'SHARED_RECOVERED')
+        if t in (12,13,14,50):census['types'][f'0x{t:02X}'].update(classification='AQZ_SPECIFIC_RECOVERED',reachability='A2 source-traced paths and original-routine/whole-game fixtures',contract='water-runtime.json contracts; docs/aqz-water-environment-audit.md')
     census['controlled_initialization_recon']=[]
     seen=set()
     for k,a in census['acts'].items():
@@ -236,7 +238,7 @@ def build(r):
         contract=CONTRACTS.get(t),status='not mapped' if t not in alltypes else 'see per-placement classification')
         for name,t in [('rings09',9),('monitors10',16),('sign18',24),('spring26',38),('platform28',40),('spike1b',27),('spring_shoes2f',47)]}
     census['system_presence']['rocket_shoes']=dict(mapped=sum(x['type_id']=='0x10' and x['parameter']=='0x04' for a in census['acts'].values() for x in a['records']),
-        contract='docs/powerup-shoes-audit.md',water_path='shared Rocket Shoes water constants already researched; environment timing A2')
+        contract='docs/powerup-shoes-audit.md',water_path='A2 closed: natural AQZ1 mapped reward and controlled crossing in water-game-checks.json; shared powerup-shoes contract')
     desc=M.ring_art_descriptor(r,4,0)
     manifest['ring_animation']=dict(M.terrain_ring_animation(r,desc),descriptor=desc)
     for eid in sorted(set(desc['effect_ids'])-{0}):
@@ -251,7 +253,7 @@ def build(r):
     manifest['surface_consumers']=consumers
     manifest['tool_hash_policy']='UTF-8 source normalized to LF before hashing; stable across Git CRLF checkouts'
     manifest['extraction_tool_sha256']={p:digest((ROOT/'tools'/p).read_text(encoding='utf-8').encode('utf-8')) for p in
-        ('aqz_foundation.py','aqz_art_approval.py','aqz_art_previews.py','aqz_original_checks.py',
+        ('aqz_foundation.py','aqz_art_approval.py','aqz_art_previews.py','aqz_original_checks.py','aqz_water.py','aqz_water_game.py',
          'level_package.py','rom.py','oracle.py','block_mapping_audit.py','mghz_foundation.py',
          'mghz_object_census.py','sez_foundation.py','sez_object_census.py','sez_surfaces_rig.py','sms_frame_harness.py')}
     manifest['zone_sites']=M.zone_sites(r)['sites']
@@ -264,11 +266,13 @@ def build(r):
         dict(id='A3',scope='type $3F platform parameter paths $83/$86/$8B, shared $28 comparison including AQZ2 override'),
         dict(id='A4',scope='enemies $3C/$3D parameter 0/1 and 0/4/8: contact, movement, lifecycle'),
         dict(id='A5',scope='boss $59 and children $5A/$5B/$5C/$5D, arena and clear; shared support reuse')]
-    manifest['unresolved']=['New art approval by James','Complete water runtime and controller timing (A2)',
-        'Waterline raster timing and any additional parallax require source audit (A2)',
+    from aqz_water import contracts
+    manifest['water_runtime']=dict(cache='data/rom-cache/aqz/water-runtime.json',whole_game_cache='data/rom-cache/aqz/water-game-checks.json',audit='docs/aqz-water-environment-audit.md',contracts=contracts(r),status='A2_RECOVERED_REVIEW_PENDING')
+    manifest['packages'][0]['status']='RECOVERED_REVIEW_PENDING'
+    manifest['unresolved']=[
         'Type3F parameter path reuse is not assumed from the shared state scripts (A3)',
         'Callback reachability and boss clear gates are not yet audited (A4/A5)', 'Results graphics/audio remain deferred']
-    manifest['poc_ready']='decoded terrain/placements only after Manager review; new art remains PENDING_JAMES_APPROVAL; unresolved mechanics omitted explicitly'
+    manifest['poc_ready']='decoded terrain/placements only after Manager review; A1 art approved by James 2026-10-07 and Manager technical review passed; unresolved mechanics omitted explicitly'
     census['boss']=dict(type='0x59',placement=[x for x in census['acts']['aqz3']['records'] if x['type_id']=='0x59'],
         children=['0x5A','0x5B','0x5C','0x5D'],support=['0x12','0x34','0x0F','0x0A'],dynamic_selector=23,
         clear='shared callback $81BD in state4 and explosion state5; precise floor/position gates need A5',

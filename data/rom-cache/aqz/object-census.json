@@ -5,6 +5,7 @@
   "classifications": [
     "SHARED_RECOVERED",
     "SHARED_WITH_AQZ_DATA",
+    "AQZ_SPECIFIC_RECOVERED",
     "AQZ_SPECIFIC_NEEDS_AUDIT",
     "BOSS_SUPPORT",
     "UNRESOLVED"
@@ -1545,9 +1546,9 @@
           ],
           "anchor_block": 254,
           "placement_token": 29,
-          "classification": "AQZ_SPECIFIC_NEEDS_AUDIT",
-          "contract": null,
-          "parameter_status": "needs path audit",
+          "classification": "AQZ_SPECIFIC_RECOVERED",
+          "contract": "docs/aqz-water-environment-audit.md; water-runtime.json contracts.bubbles",
+          "parameter_status": "parameter0 emitter, states0/1; emits parameters1/2",
           "original_creator": {
             "x": 768,
             "y": 686,
@@ -3206,9 +3207,9 @@
           ],
           "anchor_block": 38,
           "placement_token": 1,
-          "classification": "AQZ_SPECIFIC_NEEDS_AUDIT",
-          "contract": null,
-          "parameter_status": "needs path audit",
+          "classification": "AQZ_SPECIFIC_RECOVERED",
+          "contract": "docs/aqz-water-environment-audit.md; water-runtime.json contracts.bubbles",
+          "parameter_status": "parameter0 emitter, states0/1; emits parameters1/2",
           "original_creator": {
             "x": 2496,
             "y": 942,
@@ -8775,9 +8776,10 @@
         ]
       },
       "placements": 2,
-      "reachability": "table states decoded; callback-driven state reachability requires dedicated audit",
+      "reachability": "A2 source-traced paths and original-routine/whole-game fixtures",
       "motion_constants": [],
-      "classification": "AQZ_SPECIFIC_NEEDS_AUDIT"
+      "classification": "AQZ_SPECIFIC_RECOVERED",
+      "contract": "water-runtime.json contracts; docs/aqz-water-environment-audit.md"
     },
     "0x0D": {
       "script": {
@@ -8923,9 +8925,10 @@
         ]
       },
       "placements": 0,
-      "reachability": "table states decoded; callback-driven state reachability requires dedicated audit",
+      "reachability": "A2 source-traced paths and original-routine/whole-game fixtures",
       "motion_constants": [],
-      "classification": "AQZ_SPECIFIC_NEEDS_AUDIT"
+      "classification": "AQZ_SPECIFIC_RECOVERED",
+      "contract": "water-runtime.json contracts; docs/aqz-water-environment-audit.md"
     },
     "0x0E": {
       "script": {
@@ -9058,9 +9061,10 @@
         ]
       },
       "placements": 0,
-      "reachability": "table states decoded; callback-driven state reachability requires dedicated audit",
+      "reachability": "A2 source-traced paths and original-routine/whole-game fixtures",
       "motion_constants": [],
-      "classification": "AQZ_SPECIFIC_NEEDS_AUDIT"
+      "classification": "AQZ_SPECIFIC_RECOVERED",
+      "contract": "water-runtime.json contracts; docs/aqz-water-environment-audit.md"
     },
     "0x0F": {
       "script": {
@@ -11175,9 +11179,10 @@
         ]
       },
       "placements": 0,
-      "reachability": "table states decoded; callback-driven state reachability requires dedicated audit",
+      "reachability": "A2 source-traced paths and original-routine/whole-game fixtures",
       "motion_constants": [],
-      "classification": "AQZ_SPECIFIC_NEEDS_AUDIT"
+      "classification": "AQZ_SPECIFIC_RECOVERED",
+      "contract": "water-runtime.json contracts; docs/aqz-water-environment-audit.md"
     },
     "0x34": {
       "script": {
@@ -15606,7 +15611,7 @@
     "rocket_shoes": {
       "mapped": 2,
       "contract": "docs/powerup-shoes-audit.md",
-      "water_path": "shared Rocket Shoes water constants already researched; environment timing A2"
+      "water_path": "A2 closed: natural AQZ1 mapped reward and controlled crossing in water-game-checks.json; shared powerup-shoes contract"
     }
   },
   "boss": {

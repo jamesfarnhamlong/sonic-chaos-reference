@@ -102,7 +102,7 @@ class Foundation(unittest.TestCase):
         self.assertEqual(self.c['boss']['children'],['0x5A','0x5B','0x5C','0x5D'])
         self.assertEqual(self.c['boss']['child5c_frame_selector']['frames'],list(range(16,24)));tally('original_child_frame_selectors',1024)
     def test_visual_original_renderer(self):
-        self.assertEqual(self.art['status'],'PENDING_JAMES_APPROVAL');self.assertIsNone(self.art['approved_by'])
+        self.assertEqual(self.art['status'],'APPROVED');self.assertEqual(self.art['approved_by'],'James')
         for s in self.pixels['subjects'].values():
             for f in s['frames']:
                 for im in f['images']:

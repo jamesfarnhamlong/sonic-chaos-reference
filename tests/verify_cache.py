@@ -184,12 +184,15 @@ def main(rom_path):
     assert json.loads((ROOT / 'data/rom-cache/sez/boss-54-runtime.json').read_text(encoding='utf-8')) == json.loads(json.dumps(sez54_runtime.build(rom)))
     assert json.loads((ROOT / 'data/rom-cache/sez/boss-54-fullgame.json').read_text(encoding='utf-8')) == json.loads(json.dumps(sez54_fullgame.build(rom)))
     # AQZ A1: fresh bank-relative extraction, full placement census, original SAT
-    # compositions and complete-state replay. New art remains pending approval.
+    # compositions and complete-state replay. James approved all A1 boards.
     import aqz_foundation, aqz_art_approval, aqz_original_checks
     aqz_manifest, aqz_census, _ = aqz_foundation.build(rom)
     for name, value in [('implementation-manifest.json', aqz_manifest), ('object-census.json', aqz_census),
                         ('art-approval.json', aqz_art_approval.build(rom)[0]), ('original-checks.json', aqz_original_checks.build(rom))]:
         assert (ROOT / 'data/rom-cache/aqz' / name).read_text(encoding='utf-8') == aqz_foundation.dumps(value), name
+    import aqz_water, aqz_water_game
+    for path, value in [(aqz_water.OUTPUT, aqz_water.build(rom)), (aqz_water_game.OUTPUT, aqz_water_game.build(rom))]:
+        assert path.read_text(encoding='utf-8') == aqz_foundation.dumps(value), path
     manifest = json.loads(
         (ROOT / "data/rom-cache/thz1/manifest.json").read_text(encoding="utf-8")
     )

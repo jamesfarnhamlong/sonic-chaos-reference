@@ -357,3 +357,5 @@ these mechanics. POC must not treat them as implemented or invent substitutes.
   historical exports are wrong by$1320. AQZ2 leaves encoded cell4095 unloaded.
 - Next AQZ research packages: A2 water/environment, A3$3F platform, A4$3C/$3D
   enemies, A5$59 boss/support. No POC rollout is assigned by this report.
+
+A2 follow-up: James approved all A1 boards on 2026-10-07; Manager technical review passed. See [water/runtime closure](aqz-water-environment-audit.md) for updated contracts and split-IRQ palette sources.
