@@ -1,0 +1,752 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "checks": 32412,
+  "geometry": [
+    12,
+    16
+  ],
+  "vectors": [
+    [
+      0,
+      -16,
+      0,
+      0,
+      5,
+      22,
+      55040
+    ],
+    [
+      0,
+      -16,
+      0,
+      0,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      -16,
+      0,
+      64,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      -16,
+      0,
+      64,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      -16,
+      2,
+      0,
+      5,
+      22,
+      55040
+    ],
+    [
+      0,
+      -16,
+      2,
+      0,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      -16,
+      2,
+      64,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      -16,
+      2,
+      64,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      5,
+      22,
+      55040
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      64,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      64,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      5,
+      22,
+      55040
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      64,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      64,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      24,
+      0,
+      0,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      24,
+      0,
+      0,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      24,
+      0,
+      64,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      24,
+      0,
+      64,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      24,
+      2,
+      0,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      24,
+      2,
+      0,
+      23,
+      23,
+      0
+    ],
+    [
+      0,
+      24,
+      2,
+      64,
+      5,
+      5,
+      0
+    ],
+    [
+      0,
+      24,
+      2,
+      64,
+      23,
+      23,
+      0
+    ]
+  ],
+  "scripts": {
+    "0x17": {
+      "bank": 12,
+      "type_table_entry_rom": 26086,
+      "state_table_cpu": "0xA582",
+      "state_table_rom": "0x32582",
+      "state_count": 7,
+      "state_script_cpus": [
+        "0xA590",
+        "0xA596",
+        "0xA5A2",
+        "0xA5B7",
+        "0xA5BD",
+        "0xA5C3",
+        "0xA5C9"
+      ],
+      "callbacks": [
+        "0x0362",
+        "0xA5D3",
+        "0xA5D8",
+        "0xA5F7",
+        "0xA63A",
+        "0xA691",
+        "0xA716",
+        "0xA72B"
+      ],
+      "calls": [],
+      "frames_used": [
+        0,
+        1
+      ],
+      "spawns": [],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xA590",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA596",
+          "ops": [
+            {
+              "cpu": "0xA590",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0xA5D3"
+            },
+            {
+              "cpu": "0xA594",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xA596",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA5A2",
+          "ops": [
+            {
+              "cpu": "0xA596",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": 256
+            },
+            {
+              "cpu": "0xA59C",
+              "op": "record",
+              "duration": 128,
+              "frame": 1,
+              "callback": "0xA5D8"
+            },
+            {
+              "cpu": "0xA5A0",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0xA5A2",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA5B7",
+          "ops": [
+            {
+              "cpu": "0xA5A2",
+              "op": "record",
+              "duration": 3,
+              "frame": 1,
+              "callback": "0xA5F7"
+            },
+            {
+              "cpu": "0xA5A6",
+              "op": "record",
+              "duration": 3,
+              "frame": 1,
+              "callback": "0xA5F7"
+            },
+            {
+              "cpu": "0xA5AA",
+              "op": "record",
+              "duration": 3,
+              "frame": 1,
+              "callback": "0xA5F7"
+            },
+            {
+              "cpu": "0xA5AE",
+              "op": "record",
+              "duration": 3,
+              "frame": 1,
+              "callback": "0xA5F7"
+            },
+            {
+              "cpu": "0xA5B2",
+              "command": 6,
+              "op": "sound",
+              "sound": 183
+            },
+            {
+              "cpu": "0xA5B5",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xA5B7",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA5BD",
+          "ops": [
+            {
+              "cpu": "0xA5B7",
+              "op": "record",
+              "duration": 3,
+              "frame": 1,
+              "callback": "0xA63A"
+            },
+            {
+              "cpu": "0xA5BB",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 4,
+          "script_cpu": "0xA5BD",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA5C3",
+          "ops": [
+            {
+              "cpu": "0xA5BD",
+              "op": "record",
+              "duration": 3,
+              "frame": 1,
+              "callback": "0xA691"
+            },
+            {
+              "cpu": "0xA5C1",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 5,
+          "script_cpu": "0xA5C3",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA5C9",
+          "ops": [
+            {
+              "cpu": "0xA5C3",
+              "op": "record",
+              "duration": 6,
+              "frame": 1,
+              "callback": "0xA716"
+            },
+            {
+              "cpu": "0xA5C7",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 6,
+          "script_cpu": "0xA5C9",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA5D3",
+          "ops": [
+            {
+              "cpu": "0xA5C9",
+              "op": "record",
+              "duration": 16,
+              "frame": 1,
+              "callback": "0xA72B"
+            },
+            {
+              "cpu": "0xA5CD",
+              "op": "record",
+              "duration": 3,
+              "frame": 0,
+              "callback": "0x0362"
+            },
+            {
+              "cpu": "0xA5D1",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    },
+    "0x01": {
+      "bank": 12,
+      "type_table_entry_rom": 26042,
+      "state_table_cpu": "0x8000",
+      "state_table_rom": "0x30000",
+      "state_count": 55,
+      "state_script_cpus": [
+        "0x807D",
+        "0x8081",
+        "0x8098",
+        "0x80BF",
+        "0x80C5",
+        "0x810E",
+        "0x8116",
+        "0x811E",
+        "0x8128",
+        "0x8132",
+        "0x8142",
+        "0x814A",
+        "0x81AE",
+        "0x81B6",
+        "0x81E0",
+        "0x831E",
+        "0x832C",
+        "0x8334",
+        "0x8346",
+        "0x81BE",
+        "0x81C6",
+        "0x8256",
+        "0x834C",
+        "0x8356",
+        "0x806E",
+        "0x808A",
+        "0x82D9",
+        "0x813A",
+        "0x8194",
+        "0x8374",
+        "0x837C",
+        "0x838A",
+        "0x839E",
+        "0x840F",
+        "0x8425",
+        "0x806E",
+        "0x806E",
+        "0x8363",
+        "0x806E",
+        "0x806E",
+        "0x8390",
+        "0x8480",
+        "0x806E",
+        "0x806E",
+        "0x806E",
+        "0x806E",
+        "0x806E",
+        "0x806E",
+        "0x843B",
+        "0x84D4",
+        "0x806E",
+        "0x86FB",
+        "0x880A",
+        "0x8913",
+        "0x895A"
+      ],
+      "callbacks": [
+        "0x032F",
+        "0x0338",
+        "0x0392",
+        "0x0395",
+        "0x03A4",
+        "0x03A7",
+        "0x03AA",
+        "0x03AD",
+        "0x03B0",
+        "0x03B3",
+        "0x03B6",
+        "0x03B9",
+        "0x03BC",
+        "0x03C2",
+        "0x03C5",
+        "0x03C8",
+        "0x03CB",
+        "0x03CE",
+        "0x03D1",
+        "0x03D4",
+        "0x03DA",
+        "0x03DD",
+        "0x03E0",
+        "0x03E3",
+        "0x03E6",
+        "0x03E9",
+        "0x03F8",
+        "0x043D",
+        "0x0440",
+        "0x0443",
+        "0x0449",
+        "0x044C",
+        "0x807C",
+        "0x836F",
+        "0x83A6",
+        "0x87E4",
+        "0x87F2",
+        "0x88C6",
+        "0x8933",
+        "0x8986",
+        "0x916B",
+        "0x94C1"
+      ],
+      "calls": [
+        "0x038F",
+        "0x82CC",
+        "0x8313",
+        "0x835E",
+        "0x846D",
+        "0x84BD",
+        "0x84C2",
+        "0x88A8",
+        "0x88B1",
+        "0x8EE1",
+        "0x8F45",
+        "0x8F76",
+        "0x900B",
+        "0x903D",
+        "0x9138"
+      ],
+      "frames_used": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        54,
+        55,
+        56,
+        57,
+        58,
+        94,
+        95,
+        96,
+        97
+      ],
+      "spawns": [
+        {
+          "state": 40,
+          "type": "0x0C",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 3
+        },
+        {
+          "state": 52,
+          "type": "0x0C",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 3
+        },
+        {
+          "state": 52,
+          "type": "0x0C",
+          "dx": 0,
+          "dy": -12,
+          "parameter": 3
+        }
+      ],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 22,
+          "script_cpu": "0x834C",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x8356",
+          "ops": [
+            {
+              "cpu": "0x834C",
+              "op": "record",
+              "duration": 1,
+              "frame": 95,
+              "callback": "0x0449"
+            },
+            {
+              "cpu": "0x8350",
+              "command": 1,
+              "op": "call",
+              "target": "0x835E"
+            },
+            {
+              "cpu": "0x8354",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 23,
+          "script_cpu": "0x8356",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x8363",
+          "ops": [
+            {
+              "cpu": "0x8356",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0x9138",
+              "callback": "0x044C"
+            },
+            {
+              "cpu": "0x835C",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "regions": [
+    {
+      "bank": 12,
+      "cpu": 42370,
+      "file": 206210,
+      "length": 522,
+      "sha256": "797c32c576bc329345cae9ea9c31299119307d38213a7e55ee60c20a83c6da11"
+    },
+    {
+      "bank": 0,
+      "cpu": 19458,
+      "file": 19458,
+      "length": 142,
+      "sha256": "04f888467a530b070a08a14d50ad8a6f20c3fa6116d6040ff18fad7b5b6d662b"
+    }
+  ],
+  "block_lists": {
+    "continuation": [
+      1,
+      8,
+      9,
+      11,
+      13,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "obstacle": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      10
+    ]
+  },
+  "contracts": {
+    "capture": "A741 returns immediately if current player17. Otherwise advances own hurt cooldown flag3bit6/counter1F, then6328. Remove contact bit1 (bottom), retain top/side bits0/2/3. Any retained overlap stores owner slot D3A6, clears playerflag3bits0/1, requests16. Attack posture does not gate capture; shared6328 hurt gate still applies.",
+    "init": "A5D3 requests1. Natural records parameter02. State1 velocity script VY+1; asleep returns; capture ->clear placement token, request parameter(2), VY+4. Awake no capture ->move+floor and save probed block D36E.",
+    "state2": "accelerateVX +1/16 while highbyte<4; probe(+16,-16) against six obstacle IDs; then capture; floor contact continues motion; otherwise request4,VY+1. Obstacle with floorbit proceeds bounce, else fall4.",
+    "state3": "negative-side counterpart: magnitude test via negation, accelerate negativeVX -1/16; probe(-16,-16). Natural parameter02 does not initially choose3; other requests must be source-traced.",
+    "state4": "probe signed16,-16; obstacle zerosVX. Gravity helper5F84 adds+1/8 with rejection at+6 ceiling (does not clamp). Until floor:move/floor/saveD36E. On floor and prior marker in15-byte continue list requests parameter again,VY+4. Other floor ->bounce path.",
+    "bounce": "soundBB,clear actor floorbit1,clear player hidebit7,VY-4,VX0,request5. If D3A6 owns this actor clear owner and call494F hurt helper on player. State5 gravity+1/4 ceiling6; on floor request6.",
+    "state6": "frame1 duration16,then frame0 duration3 callback64F5 clears ownflags; A72B clears placement token/parameter. No reward or badnik attack defeat.",
+    "player16": "frame5F duration1 callback4C02 copies actor X/Y/VX/VY to Sonic and sets attack, actor hidden; script835E requests17. Facing flag4bit4 derives from carrier parameter==2, not signVX.",
+    "player17": "4C12 copies actor state, terrain ring probe753E, hurt48BC, movement401A. If requested hurt/death1E/1F OR buttonbits4/5 then detach:unhideactor,set counter1F16/hurtflag3bit6,request actor parameter,clear owner,ordinary setter45ED. Otherwise retains carrier; player normal terrain update is not substituted.",
+    "semantics": "WORLD anchors and collision probes; generic viewport lifecycle still governs mapped actor before capture, canonical token cleared on capture. No dynamic allocations; no viewport-scaled distances. Player updates precede actor movement, so attachment sees prior actor position.",
+    "unresolved": "Natural whole-game capture/continuation/detach and final6 cleanup cadence still require trace; no complete A4 closure claimed by isolated overlap sweep."
+  }
+}
