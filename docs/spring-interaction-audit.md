@@ -123,6 +123,8 @@ After the projection the launch is applied from the projected position.
 
 Probe `(X, Y - 6)` in a `$3A/$3B` cell, probe rows 0..16, all columns; needs Y speed negative, floor flag clear. Not present in THZ.
 
+> **Correction (`docs/player-spring-airborne-state-closure.md` section 8, C1):** the Y-speed / floor-flag gate stated above is the gate of the ceiling pass `$73C9` only. `$749D` is also reached by the unconditional tail of the terrain-ring probe `$753E` (`$7569 JP $749D`), which has no such gate: a `$3A/$3B` block also launches a player who is falling onto it (AQZ3, state `$0E`, vy +400).
+
 ## 3. Activation gates (all swept)
 
 | Gate | Type `$26` (state 7 / 8) | Terrain upright `$6A75` / diagonal `$6A90` | Terrain horizontal | Ceiling `$749D` |

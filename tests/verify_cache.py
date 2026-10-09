@@ -40,6 +40,7 @@ import mghz_m1_followup
 import mghz_object_24_2e
 import spring_shoes_presentation
 import player_fall_control
+import player_spring_airborne
 
 
 def main(rom_path):
@@ -168,6 +169,8 @@ def main(rom_path):
     assert (ROOT / "data/rom-cache/mghz/object-24-2e.json").read_text(encoding="utf-8") == mghz_object_24_2e.dumps(mghz_object_24_2e.build(rom))
     # Shared player fall / control audit (special fall $14, monitor + wall, fall-state support): controlled sweeps and whole-game fixtures are regenerated (~85 s).
     assert (ROOT / "data/rom-cache/player-fall-control.json").read_text(encoding="utf-8") == player_fall_control.dumps(player_fall_control.build(rom))
+    # Shared player spring / airborne state closure (states $09/$0A/$0B/$0E/$1B/$1C, frames, apex ordering, AQZ chains, ceiling-spring probe paths): regenerated (~2.5 min).
+    assert (ROOT / "data/rom-cache/player-spring-airborne.json").read_text(encoding="utf-8") == player_spring_airborne.dumps(player_spring_airborne.build(rom))
     # Spring Shoes presentation / act-clear / detach audit: controlled and whole-game fixtures are regenerated (~35 s).
     assert (ROOT / "data/rom-cache/spring-shoes-presentation.json").read_text(encoding="utf-8") == spring_shoes_presentation.dumps(spring_shoes_presentation.build(rom))
     # SEZ foundation (corrected bank-relative mapping, surfaces, effect 5, controlled handlers), object census and art-approval manifest: regenerated from the ROM (~10 s).
