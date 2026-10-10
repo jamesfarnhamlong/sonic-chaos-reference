@@ -1,0 +1,358 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "research_base": "c4c389c28fe686713d9371fb925f60eb4014191c",
+  "approval": "PENDING James; nothing here is approved or inherited",
+  "boards": [
+    {
+      "id": "map-ss1",
+      "kind": "terrain map",
+      "stage": 1,
+      "size": [
+        16384,
+        256
+      ],
+      "sha256": "95af5518ae8e4a930775852e64704c5f2d24d3f93af8ed667b27df325f2d811a",
+      "palettes": [
+        38,
+        18
+      ]
+    },
+    {
+      "id": "map-ss2",
+      "kind": "terrain map",
+      "stage": 2,
+      "size": [
+        768,
+        2048
+      ],
+      "sha256": "0b95bc8651c8e315b457669bad5094ae75744c22b90b198aa4b9ee4fc129f7f1",
+      "palettes": [
+        38,
+        18
+      ]
+    },
+    {
+      "id": "map-ss3",
+      "kind": "terrain map",
+      "stage": 3,
+      "size": [
+        4096,
+        768
+      ],
+      "sha256": "13bd407d70a1bf3472d73971e89dce30fc0c26e34690e1df9debd3e203df947a",
+      "palettes": [
+        39,
+        19
+      ]
+    },
+    {
+      "id": "map-ss4",
+      "kind": "terrain map",
+      "stage": 4,
+      "size": [
+        8192,
+        512
+      ],
+      "sha256": "8dbecde49252f8108f0bca1f03a8388531939e7873f21f5c81be16ab14807cb6",
+      "palettes": [
+        38,
+        18
+      ]
+    },
+    {
+      "id": "map-ss5",
+      "kind": "terrain map",
+      "stage": 5,
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6494c116699e380db368e43000260b3936ea046790b7606c6b1435ed58480ad0",
+      "palettes": [
+        39,
+        20
+      ]
+    },
+    {
+      "id": "terrain-outdoor",
+      "kind": "terrain blocks",
+      "stages": [
+        "ss1",
+        "ss2",
+        "ss4"
+      ],
+      "unique_block_images": 54
+    },
+    {
+      "id": "terrain-interior",
+      "kind": "terrain blocks",
+      "stages": [
+        "ss3",
+        "ss5"
+      ],
+      "unique_block_images": 78
+    },
+    {
+      "id": "objects-new",
+      "kind": "object compositions",
+      "cells": [
+        {
+          "type": 49,
+          "stage": 1,
+          "frame": 1,
+          "sha256": "c4dd52d2b136efb6dd07c637a9dbe90fead5c400768098e398919c7806ede03a"
+        },
+        {
+          "type": 49,
+          "stage": 1,
+          "frame": 2,
+          "sha256": "ec9dc1b2f520ce8ab4ff23523041676f712b7ef43d429fc6572afa635c6736c9"
+        },
+        {
+          "type": 49,
+          "stage": 1,
+          "frame": 3,
+          "sha256": "9111c0e90263917d02cba46bf1c64eabcfb5f0c7228140374839e7fd380819e5"
+        },
+        {
+          "type": 49,
+          "stage": 2,
+          "frame": 1,
+          "sha256": "a5e476b6a59dfe92b58070499d7008890f56fe8ede2119e5db958f1bc250d8ed"
+        },
+        {
+          "type": 49,
+          "stage": 2,
+          "frame": 2,
+          "sha256": "00b8b253901633e89de3b940e246ab04f333c66a9d9393e5d6a5e0a2c72aab9f"
+        },
+        {
+          "type": 49,
+          "stage": 2,
+          "frame": 3,
+          "sha256": "6578b537a775a5e3a26449d565997e1cb527fb3da611171353be8e2399ee6d24"
+        },
+        {
+          "type": 49,
+          "stage": 3,
+          "frame": 1,
+          "sha256": "73b7a320a38bbe5362daeb865e8f171d129d955df628fb5a84bd603f4554be4f"
+        },
+        {
+          "type": 49,
+          "stage": 3,
+          "frame": 2,
+          "sha256": "d0cfbbb63377c30efd0f6f05b29caf6c61689a834756bf6c18816099b876fc0b"
+        },
+        {
+          "type": 49,
+          "stage": 3,
+          "frame": 3,
+          "sha256": "cf9feb279b798de09216558f73784a443c11bc20f2b27150d2db27eeae67570a"
+        },
+        {
+          "type": 49,
+          "stage": 4,
+          "frame": 1,
+          "sha256": "1761830addfb5091085654825caa0d4330a1db770f96a2d3109d5d3f9399ad3f"
+        },
+        {
+          "type": 49,
+          "stage": 4,
+          "frame": 2,
+          "sha256": "b7f4ee99c97344f717be92d9615ce042ae93debabc638917a57c012aeb23f879"
+        },
+        {
+          "type": 49,
+          "stage": 4,
+          "frame": 3,
+          "sha256": "413a0daae42169767c3c5b76704616fc3a5b474434a0c8217fe8999dd47c6a53"
+        },
+        {
+          "type": 49,
+          "stage": 5,
+          "frame": 1,
+          "sha256": "71d36fb8345b9476094d716d00145064d4d2b0fc94dccf2849bb11392fa8f532"
+        },
+        {
+          "type": 49,
+          "stage": 5,
+          "frame": 2,
+          "sha256": "e333d3bf62be292b575c0200706abc803cf8896675cda6742118bc6d8766bc31"
+        },
+        {
+          "type": 49,
+          "stage": 5,
+          "frame": 3,
+          "sha256": "ffc3d65a225d1c73f297b691858251eeead9209bde1daa5d10a793006b08a18e"
+        }
+      ]
+    },
+    {
+      "id": "monitors-emulated",
+      "kind": "emulated crops",
+      "cells": [
+        {
+          "stage": 1,
+          "parameter": 4,
+          "frames": 12,
+          "sha256": "293b640d610707d5e303eb2952a7a30c2f58ec8c65423b34b88386b991f979f5"
+        },
+        {
+          "stage": 3,
+          "parameter": 6,
+          "frames": 12,
+          "sha256": "268b89a171df09d0452fa627212e1cb3b934f438c898e0c81f517c8772ec80c4"
+        },
+        {
+          "stage": 5,
+          "parameter": 5,
+          "frames": 12,
+          "sha256": "0e6f15ce4247be834dce5ade3ac99fd76c9b5e35ffc79cefe9cbfc58870ea797"
+        }
+      ]
+    },
+    {
+      "id": "goal-ring-in-situ",
+      "kind": "emulated frames",
+      "cells": [
+        {
+          "stage": 1,
+          "sha256": "256c397c1ed80dec0cc986972d17cf0e3a349ad295e591027d4be1c2739bc873"
+        },
+        {
+          "stage": 2,
+          "sha256": "fd40bdc5fdb02b838e891f472542b42fb23506e1140d62a67f303100cb5d57f7"
+        },
+        {
+          "stage": 3,
+          "sha256": "01a9d9d082023d0f27837b25bcc3ff069415983f3b7e97fbe692e8a50aef29ee"
+        },
+        {
+          "stage": 4,
+          "sha256": "361fe16ddf951e59e449fd23a593b0dd6d8d70ca3c8096d220d80fc740940709"
+        },
+        {
+          "stage": 5,
+          "sha256": "5e6369791125d2493babfa996bd600c9cc6ff0d967c3a087a66c6d8e1a763440"
+        }
+      ]
+    },
+    {
+      "id": "results",
+      "kind": "emulated frames",
+      "cells": [
+        {
+          "kind": "success",
+          "frames": 2
+        },
+        {
+          "kind": "death",
+          "frames": 2
+        }
+      ]
+    }
+  ],
+  "dedup": [
+    {
+      "type": 49,
+      "stage": 1,
+      "bases": [
+        106,
+        106
+      ],
+      "frame_hashes": {
+        "1": "c4dd52d2b136efb6",
+        "2": "ec9dc1b2f520ce8a",
+        "3": "9111c0e90263917d"
+      },
+      "pixel_identical_to_approved_zone_art": false
+    },
+    {
+      "type": 49,
+      "stage": 2,
+      "bases": [
+        106,
+        106
+      ],
+      "frame_hashes": {
+        "1": "a5e476b6a59dfe92",
+        "2": "00b8b253901633e8",
+        "3": "6578b537a775a5e3"
+      },
+      "pixel_identical_to_approved_zone_art": false
+    },
+    {
+      "type": 47,
+      "stage": 2,
+      "bases": [
+        118,
+        118
+      ],
+      "frame_hashes": {
+        "1": "476dded85ac23918",
+        "2": "46417f8f6926434e",
+        "3": "28507180c0a04742",
+        "4": "077c1dda8d179f5d"
+      },
+      "pixel_identical_to_approved_zone_art": true
+    },
+    {
+      "type": 49,
+      "stage": 3,
+      "bases": [
+        106,
+        106
+      ],
+      "frame_hashes": {
+        "1": "73b7a320a38bbe53",
+        "2": "d0cfbbb63377c30e",
+        "3": "cf9feb279b798de0"
+      },
+      "pixel_identical_to_approved_zone_art": false
+    },
+    {
+      "type": 49,
+      "stage": 4,
+      "bases": [
+        106,
+        106
+      ],
+      "frame_hashes": {
+        "1": "1761830addfb5091",
+        "2": "b7f4ee99c97344f7",
+        "3": "413a0daae4216976"
+      },
+      "pixel_identical_to_approved_zone_art": false
+    },
+    {
+      "type": 38,
+      "stage": 4,
+      "bases": [
+        118,
+        118
+      ],
+      "frame_hashes": {
+        "1": "0d8787caef970aa6",
+        "2": "5c1dd46bc04297dc",
+        "3": "4ed9ed96ed51daf9"
+      },
+      "pixel_identical_to_approved_zone_art": true
+    },
+    {
+      "type": 49,
+      "stage": 5,
+      "bases": [
+        106,
+        106
+      ],
+      "frame_hashes": {
+        "1": "71d36fb8345b9476",
+        "2": "e333d3bf62be292b",
+        "3": "ffc3d65a225d1c73"
+      },
+      "pixel_identical_to_approved_zone_art": false
+    }
+  ]
+}

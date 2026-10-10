@@ -1,0 +1,149 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "research_base": "c4c389c28fe686713d9371fb925f60eb4014191c",
+  "stage": "SS-A5 progression",
+  "evidence": "original gate/selector/ring callback executed in sequence; whole-game persistence traces in the approximate SMS harness",
+  "sequences": {
+    "all_succeed": {
+      "outcomes": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "visited_zones": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        null,
+        null
+      ],
+      "final_bits": 31
+    },
+    "fail_stage2_twice": {
+      "outcomes": [
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "visited_zones": [
+        8,
+        9,
+        9,
+        9,
+        10,
+        11,
+        12,
+        null
+      ],
+      "final_bits": 31
+    },
+    "fail_stage1_forever": {
+      "outcomes": [
+        false,
+        false,
+        false
+      ],
+      "visited_zones": [
+        8,
+        8,
+        8
+      ],
+      "final_bits": 0
+    }
+  },
+  "persistence": {
+    "death_with_lives": {
+      "start": {
+        "lives": 2,
+        "continues": 0,
+        "emeralds": 7
+      },
+      "end": {
+        "zone": 0,
+        "act": 0,
+        "lives": 1,
+        "emeralds": 7,
+        "continues": 0,
+        "score": [
+          0,
+          18,
+          52
+        ]
+      },
+      "zones_visited": [
+        0
+      ]
+    },
+    "game_over_no_continue": {
+      "start": {
+        "lives": 1,
+        "continues": 0,
+        "emeralds": 7
+      },
+      "end": {
+        "zone": 0,
+        "act": 0,
+        "lives": 0,
+        "emeralds": 7,
+        "continues": 0,
+        "score": [
+          0,
+          18,
+          52
+        ]
+      },
+      "zones_visited": [
+        0,
+        7,
+        0
+      ]
+    },
+    "game_over_with_continue": {
+      "start": {
+        "lives": 1,
+        "continues": 2,
+        "emeralds": 7
+      },
+      "end": {
+        "zone": 0,
+        "act": 0,
+        "lives": 3,
+        "emeralds": 7,
+        "continues": 129,
+        "score": [
+          0,
+          0,
+          0
+        ]
+      },
+      "zones_visited": [
+        0
+      ]
+    },
+    "new_game_reset_2A00": {
+      "emeralds_after": 0,
+      "rings_after": 0
+    }
+  },
+  "ending_link": {
+    "source": "docs/eez-boss-endgame-audit.md; data/rom-cache/eez/boss-game-flags-31.json",
+    "facts": [
+      "type $61 state 5 ($1E:$BB1A): Sonic with $D2CC == $1F does not take the immediate final-clear branch",
+      "type $61 state 7 ($1E:$BB61): $D2CC |= $20 (sixth bit), $D293 = $50, delete",
+      "ending selector $18ED: Sonic with $D2CC & $3F == $3F takes the full ending ($18FE); partial flags take $1A41; other characters take $1ACD"
+    ],
+    "stage_reward": "the five special-stage completion bits are the only way to reach $1F; no object other than type $31 writes bits 0..4"
+  }
+}

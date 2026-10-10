@@ -85,4 +85,10 @@ class SSRig(ZoneGame):
             s.run_frame()
         self.post_ram = bytes(m[0xC000:0xE000])
         self.e.base = self.e.snapshot()
+        self.base_cpu = bytes(self.s.cpu.get_state_view())
         self.upd = 0
+
+    def restore_snapshot(self) -> None:
+        """Complete-state restore (harness snapshot plus the z80 core's full state view) so forks are history independent."""
+        self.e.restore(self.e.base)
+        self.s.cpu.get_state_view()[:] = self.base_cpu

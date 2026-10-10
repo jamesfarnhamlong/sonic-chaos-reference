@@ -6,7 +6,7 @@ Machine package: `data/rom-cache/special-stages/{implementation-manifest,object-
 
 ## 1. Number, indexing, order
 
-There are **five** Special Stages: ROM zones **8..12**, one act each (all three act slots point at the same 22-byte header record). Zone 7 (one type `$1F` object, 256x8 map) is *not* a Special Stage: `$187B` can never select it.
+There are **five** Special Stages: ROM zones **8..12**, one act each (all three act slots point at the same 22-byte header record). Zone 7 (one type `$1F` object, 256x8 map) is *not* a Special Stage: `$187B` can never select it; EMULATED, it is the Game Over screen (entered when the last life is lost with no continue).
 
 Selection (`$187B`, BYTE-VERIFIED + executed in tests): `$D296 := $D297` (saved zone), then `$D297 := 8 + (count of consecutive set bits of $D2CC from bit 0, max 4)`. `$D2CC` bits 0..4 are the per-stage completion bits (SS1=1, SS2=2, SS3=4, SS4=8, SS5=16). Order is therefore fixed: the lowest *uncleared-in-sequence* stage is always next. Bit 5 (`$20`) is set by a different object (bank `$1E:$BB61`, final-zone chain, A5).
 

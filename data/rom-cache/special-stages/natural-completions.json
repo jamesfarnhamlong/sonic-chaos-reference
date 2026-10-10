@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "evidence": "EMULATED ORIGINAL FRAME; input-only replay from the stage-entry snapshot",
+  "stages": {
+    "ss1": {
+      "input_sha256": "7ad8845d78dba4228c34c8051f892a019b759569dac040bc360f52255382a627",
+      "input_runs": 153,
+      "input_frames": 2288,
+      "completed": true,
+      "completion_frame": 2288,
+      "timer_remaining": "0x20",
+      "emerald_bits": 1,
+      "bit_expected": 1,
+      "continues": 1,
+      "result_card": 255,
+      "return_frame_after_contact": 1929,
+      "returned_zone_act": [
+        0,
+        1
+      ],
+      "failure_routes": {
+        "idle_from_start": {
+          "frame": 3510,
+          "mode": "0xa0",
+          "timer": "0x0",
+          "player_state": 2,
+          "lives": 4,
+          "emeralds": 0,
+          "ended_by": "timer underflow"
+        },
+        "pit_death_controlled_placement": {
+          "frame": 30,
+          "mode": "0xa0",
+          "player_state": 14,
+          "lives": 4,
+          "emeralds": 0
+        }
+      }
+    },
+    "ss2": {
+      "completed": false,
+      "reason": "no input-only completion found within the search budget (see SS-A4 audit)",
+      "failure_routes": {
+        "idle_from_start": {
+          "frame": 3510,
+          "mode": "0xa0",
+          "timer": "0x0",
+          "player_state": 2,
+          "lives": 4,
+          "emeralds": 1,
+          "ended_by": "timer underflow"
+        },
+        "pit_death_controlled_placement": {
+          "frame": 33,
+          "mode": "0xa0",
+          "player_state": 14,
+          "lives": 4,
+          "emeralds": 1
+        }
+      }
+    },
+    "ss3": {
+      "input_sha256": "65147b272374b0c03ce4c89e3f2eafa5f0f1e6c2ef1a43169bc629dfbd2d9045",
+      "input_runs": 310,
+      "input_frames": 2096,
+      "completed": true,
+      "completion_frame": 2090,
+      "timer_remaining": "0x23",
+      "emerald_bits": 7,
+      "bit_expected": 4,
+      "continues": 1,
+      "result_card": 255,
+      "return_frame_after_contact": 2014,
+      "returned_zone_act": [
+        0,
+        1
+      ],
+      "failure_routes": {
+        "idle_from_start": {
+          "frame": 3510,
+          "mode": "0xa0",
+          "timer": "0x0",
+          "player_state": 2,
+          "lives": 4,
+          "emeralds": 3,
+          "ended_by": "timer underflow"
+        },
+        "pit_death_controlled_placement": {
+          "frame": 4,
+          "mode": "0xa0",
+          "player_state": 1,
+          "lives": 4,
+          "emeralds": 3
+        }
+      }
+    },
+    "ss4": {
+      "completed": false,
+      "reason": "no input-only completion found within the search budget (see SS-A4 audit)",
+      "failure_routes": {
+        "idle_from_start": {
+          "frame": 3510,
+          "mode": "0xa0",
+          "timer": "0x0",
+          "player_state": 2,
+          "lives": 4,
+          "emeralds": 7,
+          "ended_by": "timer underflow"
+        },
+        "pit_death_controlled_placement": {
+          "frame": 33,
+          "mode": "0xa0",
+          "player_state": 14,
+          "lives": 4,
+          "emeralds": 7
+        }
+      }
+    },
+    "ss5": {
+      "input_sha256": "c4b07cfbc99a2a565b07db7550d7ccf15c36224e664c28b4b00ef313771c3d88",
+      "input_runs": 212,
+      "input_frames": 1426,
+      "completed": true,
+      "completion_frame": 1426,
+      "timer_remaining": "0x34",
+      "emerald_bits": 31,
+      "bit_expected": 16,
+      "continues": 1,
+      "result_card": 255,
+      "return_frame_after_contact": 2372,
+      "returned_zone_act": [
+        0,
+        1
+      ],
+      "failure_routes": {
+        "idle_from_start": {
+          "frame": 3510,
+          "mode": "0xa0",
+          "timer": "0x0",
+          "player_state": 2,
+          "lives": 4,
+          "emeralds": 15,
+          "ended_by": "timer underflow"
+        },
+        "pit_death_controlled_placement": {
+          "frame": 33,
+          "mode": "0xa0",
+          "player_state": 14,
+          "lives": 4,
+          "emeralds": 15
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "research_base": "c4c389c28fe686713d9371fb925f60eb4014191c",
+  "stage": "SS-A4 goal ring",
+  "evidence": "original callback $1E:$9489 executed over a boundary sweep; whole-game traces in the approximate SMS harness",
+  "object": {
+    "type": 49,
+    "type_table_entry_rom": 26138,
+    "bank": 30,
+    "state_table_cpu": 37992,
+    "scripts": {
+      "bank": 30,
+      "type_table_entry_rom": 26138,
+      "state_table_cpu": "0x9468",
+      "state_table_rom": "0x79468",
+      "state_count": 2,
+      "state_script_cpus": [
+        "0x946C",
+        "0x9472"
+      ],
+      "callbacks": [
+        "0x9480",
+        "0x9489"
+      ],
+      "calls": [],
+      "frames_used": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "spawns": [],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0x946C",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x9472",
+          "ops": [
+            {
+              "cpu": "0x946C",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0x9480"
+            },
+            {
+              "cpu": "0x9470",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0x9472",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x9480",
+          "ops": [
+            {
+              "cpu": "0x9472",
+              "op": "record",
+              "duration": 6,
+              "frame": 1,
+              "callback": "0x9489"
+            },
+            {
+              "cpu": "0x9476",
+              "op": "record",
+              "duration": 6,
+              "frame": 2,
+              "callback": "0x9489"
+            },
+            {
+              "cpu": "0x947A",
+              "op": "record",
+              "duration": 6,
+              "frame": 3,
+              "callback": "0x9489"
+            },
+            {
+              "cpu": "0x947E",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    },
+    "state0": "$9480: state := 1, SET bit7 of +3 (contact ignores player blink/hurt bit)",
+    "state1": "frames 1,2,3 for 6 updates each; callback $9489",
+    "fields": {
+      "+3": 128,
+      "+0x2C": 8,
+      "+0x2D": 16,
+      "+0x3F": "placement parameter = completion bit"
+    },
+    "art_bases": [
+      106,
+      106
+    ]
+  },
+  "callback_9489": [
+    "if (+4 bit6) return                                     ; asleep/hidden: no contact",
+    "contact test = shared $6328 (closed intervals): |dx| <= playerHalfW($D52C)+8 ; dy in [-(ringHalfH 16), +playerHalfH($D52D)]",
+    "any overlap class bit (+0x21 & $F) != 0 -> collect",
+    "D2A6 := (D2BF << 8) ; D2CC |= +0x3F ; D2CD := $FF ; +0x3E := 0 ; type := $FF (delete) ; D294 |= $40 ; D2C3 := (D2C3+1) & $7F",
+    "no player state change, no velocity change, no sound here"
+  ],
+  "contact_sweep": {
+    "normal_8x24": {
+      "dx": [
+        -16,
+        16
+      ],
+      "dy": [
+        -16,
+        24
+      ],
+      "cells": 1353,
+      "full_rectangle": true
+    },
+    "state0F_9x24": {
+      "dx": [
+        -17,
+        17
+      ],
+      "dy": [
+        -16,
+        24
+      ],
+      "cells": 1435,
+      "full_rectangle": true
+    },
+    "hurt_blink_d503_40": {
+      "dx": [
+        -16,
+        16
+      ],
+      "dy": [
+        -16,
+        24
+      ],
+      "cells": 1353,
+      "full_rectangle": true
+    },
+    "invincible_d503_80": {
+      "dx": [
+        -16,
+        16
+      ],
+      "dy": [
+        -16,
+        24
+      ],
+      "cells": 1353,
+      "full_rectangle": true
+    },
+    "asleep_or_hidden_ix4_bit6_blocks_collection": true,
+    "ix3_bit6_blocks_collection": true
+  },
+  "collection_effects": {
+    "param1": {
+      "pre": {
+        "emeralds": 0,
+        "continues": 0,
+        "timer": 88,
+        "mode": 128
+      },
+      "post": {
+        "emeralds": 1,
+        "continues": 1,
+        "card": 255,
+        "d2a6": 22528,
+        "mode": 192,
+        "slot_type": 255,
+        "token": 0
+      }
+    },
+    "param2": {
+      "pre": {
+        "emeralds": 1,
+        "continues": 5,
+        "timer": 32,
+        "mode": 128
+      },
+      "post": {
+        "emeralds": 3,
+        "continues": 6,
+        "card": 255,
+        "d2a6": 8192,
+        "mode": 192,
+        "slot_type": 255,
+        "token": 0
+      }
+    },
+    "param4": {
+      "pre": {
+        "emeralds": 3,
+        "continues": 127,
+        "timer": 0,
+        "mode": 128
+      },
+      "post": {
+        "emeralds": 7,
+        "continues": 0,
+        "card": 255,
+        "d2a6": 0,
+        "mode": 192,
+        "slot_type": 255,
+        "token": 0
+      }
+    },
+    "param8": {
+      "pre": {
+        "emeralds": 7,
+        "continues": 128,
+        "timer": 89,
+        "mode": 128
+      },
+      "post": {
+        "emeralds": 15,
+        "continues": 1,
+        "card": 255,
+        "d2a6": 22784,
+        "mode": 192,
+        "slot_type": 255,
+        "token": 0
+      }
+    },
+    "param16": {
+      "pre": {
+        "emeralds": 15,
+        "continues": 126,
+        "timer": 1,
+        "mode": 160
+      },
+      "post": {
+        "emeralds": 31,
+        "continues": 127,
+        "card": 255,
+        "d2a6": 256,
+        "mode": 224,
+        "slot_type": 255,
+        "token": 0
+      }
+    }
+  },
+  "whole_game": {
+    "success_and_failure_flags_together": {
+      "emeralds": 1,
+      "card": 255,
+      "continues": 1,
+      "zone": 0,
+      "act": 0
+    },
+    "pit_death_ss1": [
+      {
+        "frame": 30,
+        "mode": "0xa0",
+        "lives": 4
+      }
+    ]
+  }
+}
