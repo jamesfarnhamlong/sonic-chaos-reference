@@ -1,0 +1,4621 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "checks": 202,
+  "vectors": [
+    [
+      0,
+      0,
+      177,
+      0
+    ],
+    [
+      0,
+      1,
+      177,
+      0
+    ],
+    [
+      0,
+      2,
+      177,
+      0
+    ],
+    [
+      0,
+      3,
+      177,
+      0
+    ],
+    [
+      0,
+      4,
+      177,
+      0
+    ],
+    [
+      0,
+      5,
+      177,
+      0
+    ],
+    [
+      0,
+      6,
+      177,
+      0
+    ],
+    [
+      0,
+      7,
+      177,
+      0
+    ],
+    [
+      0,
+      8,
+      177,
+      0
+    ],
+    [
+      0,
+      9,
+      177,
+      0
+    ],
+    [
+      0,
+      10,
+      177,
+      0
+    ],
+    [
+      0,
+      11,
+      177,
+      0
+    ],
+    [
+      0,
+      12,
+      177,
+      0
+    ],
+    [
+      0,
+      13,
+      177,
+      0
+    ],
+    [
+      0,
+      14,
+      177,
+      0
+    ],
+    [
+      0,
+      15,
+      177,
+      0
+    ],
+    [
+      0,
+      16,
+      177,
+      0
+    ],
+    [
+      1,
+      0,
+      177,
+      0
+    ],
+    [
+      1,
+      1,
+      177,
+      0
+    ],
+    [
+      1,
+      2,
+      177,
+      0
+    ],
+    [
+      1,
+      3,
+      177,
+      0
+    ],
+    [
+      1,
+      4,
+      177,
+      0
+    ],
+    [
+      1,
+      5,
+      177,
+      0
+    ],
+    [
+      1,
+      6,
+      177,
+      0
+    ],
+    [
+      1,
+      7,
+      177,
+      0
+    ],
+    [
+      1,
+      8,
+      177,
+      0
+    ],
+    [
+      1,
+      9,
+      177,
+      0
+    ],
+    [
+      1,
+      10,
+      177,
+      0
+    ],
+    [
+      1,
+      11,
+      177,
+      0
+    ],
+    [
+      1,
+      12,
+      177,
+      0
+    ],
+    [
+      1,
+      13,
+      177,
+      0
+    ],
+    [
+      1,
+      14,
+      177,
+      0
+    ],
+    [
+      1,
+      15,
+      177,
+      0
+    ],
+    [
+      1,
+      16,
+      177,
+      0
+    ],
+    [
+      2,
+      0,
+      178,
+      1
+    ],
+    [
+      2,
+      1,
+      178,
+      1
+    ],
+    [
+      2,
+      2,
+      178,
+      1
+    ],
+    [
+      2,
+      3,
+      178,
+      1
+    ],
+    [
+      2,
+      4,
+      178,
+      1
+    ],
+    [
+      2,
+      5,
+      178,
+      1
+    ],
+    [
+      2,
+      6,
+      178,
+      1
+    ],
+    [
+      2,
+      7,
+      178,
+      1
+    ],
+    [
+      2,
+      8,
+      178,
+      1
+    ],
+    [
+      2,
+      9,
+      178,
+      1
+    ],
+    [
+      2,
+      10,
+      178,
+      1
+    ],
+    [
+      2,
+      11,
+      178,
+      1
+    ],
+    [
+      2,
+      12,
+      178,
+      1
+    ],
+    [
+      2,
+      13,
+      178,
+      1
+    ],
+    [
+      2,
+      14,
+      178,
+      1
+    ],
+    [
+      2,
+      15,
+      178,
+      1
+    ],
+    [
+      2,
+      16,
+      178,
+      0
+    ],
+    [
+      3,
+      0,
+      178,
+      1
+    ],
+    [
+      3,
+      1,
+      178,
+      1
+    ],
+    [
+      3,
+      2,
+      178,
+      1
+    ],
+    [
+      3,
+      3,
+      178,
+      1
+    ],
+    [
+      3,
+      4,
+      178,
+      1
+    ],
+    [
+      3,
+      5,
+      178,
+      1
+    ],
+    [
+      3,
+      6,
+      178,
+      1
+    ],
+    [
+      3,
+      7,
+      178,
+      1
+    ],
+    [
+      3,
+      8,
+      178,
+      1
+    ],
+    [
+      3,
+      9,
+      178,
+      1
+    ],
+    [
+      3,
+      10,
+      178,
+      1
+    ],
+    [
+      3,
+      11,
+      178,
+      1
+    ],
+    [
+      3,
+      12,
+      178,
+      1
+    ],
+    [
+      3,
+      13,
+      178,
+      1
+    ],
+    [
+      3,
+      14,
+      178,
+      1
+    ],
+    [
+      3,
+      15,
+      178,
+      1
+    ],
+    [
+      3,
+      16,
+      178,
+      0
+    ]
+  ],
+  "effects": {
+    "5": {
+      "cpu": 33215,
+      "events": [
+        {
+          "update": 2,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 5,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 8,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 11,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 14,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 17,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 20,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 23,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 26,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 29,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 32,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 35,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 38,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 41,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 44,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 47,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 50,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 53,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 56,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 59,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 62,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 65,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 68,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 71,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 74,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 77,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 80,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 83,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 86,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 89,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 92,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 95,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 98,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 101,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 104,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 107,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 110,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 113,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 116,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 119,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 122,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 125,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 128,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 131,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 134,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 137,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 140,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 143,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 146,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 149,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 152,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 155,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 158,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 161,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 164,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 167,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 170,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 173,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 176,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 179,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 182,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 185,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 188,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 191,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 194,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 197,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 200,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 203,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 206,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 209,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 212,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 215,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 218,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 221,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 224,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 227,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 230,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 233,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 236,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 239,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 242,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 245,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 248,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 251,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 254,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 257,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 260,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 263,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 266,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 269,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 272,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 275,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 278,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 281,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 284,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 287,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 290,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 293,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 296,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 299,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 302,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 305,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 308,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 311,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 314,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 317,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 320,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 323,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 326,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 329,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 332,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 335,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 338,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 341,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 344,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 347,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 350,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 353,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 356,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 359,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 362,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 365,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 368,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 371,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 374,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 377,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        },
+        {
+          "update": 380,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36541,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "747a6b18e5d35a0ef59cd200d0af0debef0cd18841eebc4a72db89a51bcb7933"
+            }
+          ]
+        },
+        {
+          "update": 383,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36477,
+              "vram": 12320,
+              "length": 64,
+              "sha256": "e89f8b35ab2a8c2bb4e56f942496aa7f4dd1c05ecf701a50fe33a29faa379d16"
+            }
+          ]
+        }
+      ],
+      "paused": []
+    },
+    "6": {
+      "cpu": 33369,
+      "events": [
+        {
+          "update": 29,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36701,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            },
+            {
+              "source_cpu": 36605,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            }
+          ]
+        },
+        {
+          "update": 59,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36605,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            },
+            {
+              "source_cpu": 36701,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            }
+          ]
+        },
+        {
+          "update": 89,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36701,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            },
+            {
+              "source_cpu": 36605,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            }
+          ]
+        },
+        {
+          "update": 119,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36605,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            },
+            {
+              "source_cpu": 36701,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            }
+          ]
+        },
+        {
+          "update": 149,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36701,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            },
+            {
+              "source_cpu": 36605,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            }
+          ]
+        },
+        {
+          "update": 179,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36605,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            },
+            {
+              "source_cpu": 36701,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            }
+          ]
+        },
+        {
+          "update": 209,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36701,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            },
+            {
+              "source_cpu": 36605,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            }
+          ]
+        },
+        {
+          "update": 239,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36605,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            },
+            {
+              "source_cpu": 36701,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            }
+          ]
+        },
+        {
+          "update": 269,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36701,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            },
+            {
+              "source_cpu": 36605,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            }
+          ]
+        },
+        {
+          "update": 299,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36605,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            },
+            {
+              "source_cpu": 36701,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            }
+          ]
+        },
+        {
+          "update": 329,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36701,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            },
+            {
+              "source_cpu": 36605,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            }
+          ]
+        },
+        {
+          "update": 359,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36605,
+              "vram": 10880,
+              "length": 96,
+              "sha256": "76fdf0297ee223be26a6ca0cccba013291c846d1c223e175183f4bd7390dfa48"
+            },
+            {
+              "source_cpu": 36701,
+              "vram": 12224,
+              "length": 96,
+              "sha256": "fa4ec92477ac042220c31dbc4b63e7a9240d703bf3dba8db85593e41038bdd8f"
+            }
+          ]
+        }
+      ],
+      "paused": []
+    },
+    "8": {
+      "cpu": 33858,
+      "events": [
+        {
+          "update": 7,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 10,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 15,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 23,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 31,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 39,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 47,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 55,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 63,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 71,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 79,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 87,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 95,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 103,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 111,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 119,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 127,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 135,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 143,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 151,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 159,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 167,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 175,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 183,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 191,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 199,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 207,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 215,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 223,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 231,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 239,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 247,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 255,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 263,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 271,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 279,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 287,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 295,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 303,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 311,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 319,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 327,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 335,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 343,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 351,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 359,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 367,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 375,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 383,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        }
+      ],
+      "paused": [
+        {
+          "update": 7,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 10,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 15,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 23,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 31,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 39,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 47,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 55,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 63,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 71,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 79,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 87,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 95,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 103,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 111,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 119,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 127,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 135,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 143,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 151,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 159,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 167,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 175,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 183,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 191,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 199,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 207,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 215,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 223,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 231,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 239,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 247,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 255,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 263,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 271,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 279,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 287,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 295,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 303,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 60
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 311,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 60,
+              "after": 40
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 319,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 40,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 327,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 60
+            },
+            {
+              "cram_index": 15,
+              "before": 20,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 335,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 60,
+              "after": 40
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 343,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 40,
+              "after": 20
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 351,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 20,
+              "after": 0
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 51
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 359,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 0,
+              "after": 17
+            },
+            {
+              "cram_index": 15,
+              "before": 51,
+              "after": 34
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 367,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 17,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 34,
+              "after": 17
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 375,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 34,
+              "after": 51
+            },
+            {
+              "cram_index": 15,
+              "before": 17,
+              "after": 0
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        },
+        {
+          "update": 383,
+          "palette_writes": [
+            {
+              "cram_index": 14,
+              "before": 51,
+              "after": 34
+            },
+            {
+              "cram_index": 15,
+              "before": 0,
+              "after": 20
+            }
+          ],
+          "palette_dirty_flag": 255,
+          "vram_copies": []
+        }
+      ]
+    },
+    "13": {
+      "cpu": 33468,
+      "events": [
+        {
+          "update": 7,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 15,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 23,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 31,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 39,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 47,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 55,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 63,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 71,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 79,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 87,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 95,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 103,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 111,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 119,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 127,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 135,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 143,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 151,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 159,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 167,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 175,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 183,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 191,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 199,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 207,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 215,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 223,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 231,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 239,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 247,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 255,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 263,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 271,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 279,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 287,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 295,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 303,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 311,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 319,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 327,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 335,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 343,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 351,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        },
+        {
+          "update": 359,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36893,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b3ae74bd497659719f191cd91c2546cca934eeee934ea78ad77af591f1c0d60f"
+            }
+          ]
+        },
+        {
+          "update": 367,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36989,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "b249788bcaa57a4fa58221e50c50f54f8504ba4bfcce2bee94421e7ea326dc64"
+            }
+          ]
+        },
+        {
+          "update": 375,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 37085,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "a07d13e20d1e65b52b9d072f3fa71fc1b1bd070d9a852e9316f17782d6cd7c08"
+            }
+          ]
+        },
+        {
+          "update": 383,
+          "palette_writes": [],
+          "palette_dirty_flag": 0,
+          "vram_copies": [
+            {
+              "source_cpu": 36797,
+              "vram": 14176,
+              "length": 96,
+              "sha256": "514466961cb455887d9222a75ea5ab2b0280a1272054dc994c6103dcd3c6728c"
+            }
+          ]
+        }
+      ],
+      "paused": []
+    }
+  },
+  "source": [
+    {
+      "bank": 0,
+      "cpu": 27562,
+      "file": 27562,
+      "length": 83,
+      "sha256": "2ff46b5588fec45f677737e48ad501b028debd02d283095c816de9ab8554b5a9"
+    },
+    {
+      "bank": 29,
+      "cpu": 33369,
+      "file": 475737,
+      "length": 158,
+      "sha256": "69b29cdd8f342732234adc95f170864552207bb7782af604078d3c74ce0d03a3"
+    },
+    {
+      "bank": 29,
+      "cpu": 33858,
+      "file": 476226,
+      "length": 47,
+      "sha256": "58b83c68f6c8ca31d87d0774c287528765959b55044d240457e5225fe2dc9a3c"
+    }
+  ],
+  "contracts": {
+    "surface0b": "floorbit1 required. Replace probed WORLD cellB1->B2 before 16-slot allocation of37 parameter1. Store cellX/Y D35C/D35E and destination34..37. Exhaustion still mutates terrain and writes coordinates through IY=D940; do not create guaranteed child or restore terrain on failure.",
+    "restoration": "37 scripts/callbacks8ED0..8F60 contain no terrain restoration call. B1->B2 persists until map reload; retain cached replacement mapping. Generic object deletion does not restore it.",
+    "effect5": "shared dispatcher81BF;zone5 chooses64-byte paired-frame stream toVRAM3020 every3calls;bossactive pauses. This destination/source differs from SEZ single tile158; use zone-aware data.",
+    "effect6": "8259 every30calls,alternateindex2,paired96-byte copies8EFD/8F5D swap VRAM2A80/2FC0. Bossactive pauses counter and copies.",
+    "effect8": "8442 every8calls,12 palettepairs at1D:9961 toD480/D481 (background indices14/15),dirtyFF. Does not test bossactive; same palette animation continues.",
+    "effect13": "82BC every8calls,indexmod4,table82EF ->96bytes toVRAM3760. Bossactive pauses; copies8FBD/901D/907D/90DD in table order. No engine-added frames.",
+    "dispatch": "shared effect dispatcher requires D492zero; eight-byte slots. Ring uploader is separate every8globalD12Fupdates. WORLD terrain and original VRAM/palette timing, no widescreen scaling."
+  }
+}

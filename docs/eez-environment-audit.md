@@ -62,7 +62,20 @@ terrain-board speckles to initial/animated VRAM presentation rather than a
 static tile decoder discrepancy. Boards still need proper animation-state
 presentation before James approval.
 
-Remaining A2 closure: `$0B` replacement and type `$37` restoration; transport
+`terrain-effects.json` adds 202 assertions for `$0B`, including all first-free
+slots and exhaustion. Floor bit1 gates replacement `$B1->$B2` before allocation.
+On exhaustion the replacement still happens and the routine writes the probed
+cell coordinates through out-of-pool IY `$D940`. Type `$37` has no restoration
+callback; the mutated cell persists until map reload. Do not add restoration.
+
+Effects 5/6/13 pause while boss-active; effect8 does not. The 384-call traces
+record every copy/palette write. Effect5 is zone-dependent (64 bytes to `$3020`
+every3 calls); effect6 swaps paired96-byte strips every30; effect13 cycles four
+96-byte strips to `$3760` every8; effect8 cycles12 palette pairs at indices14/15
+every8. Ring animation remains separate. Exact source/destination records are
+machine-readable in `terrain-effects.json`.
+
+Remaining A2 closure: transport
 full player update/order traces; effect 6/8/13 interpretation and animation
 approval. Carrier `$17` is a distinct A4 subsystem, not this tube state `$21`.
 No whole-stage closure or POC-ready status is claimed yet.
