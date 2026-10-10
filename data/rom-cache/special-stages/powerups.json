@@ -1,0 +1,379 @@
+{
+  "format": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "research_base": "c4c389c28fe686713d9371fb925f60eb4014191c",
+  "stage": "SS-A3 powerups",
+  "evidence": "original reward dispatcher under zone bytes + whole-game traces (approximate SMS harness) + static zone-read scan of the ROM",
+  "placements": {
+    "0x10/0x04": {
+      "ss1": 1,
+      "ss4": 5
+    },
+    "0x31/0x01": {
+      "ss1": 1
+    },
+    "0x10/0x05": {
+      "ss2": 1,
+      "ss4": 1,
+      "ss5": 3
+    },
+    "0x2F/0x00": {
+      "ss2": 7
+    },
+    "0x31/0x02": {
+      "ss2": 1
+    },
+    "0x10/0x06": {
+      "ss3": 7
+    },
+    "0x31/0x04": {
+      "ss3": 1
+    },
+    "0x26/0x00": {
+      "ss4": 2
+    },
+    "0x26/0x01": {
+      "ss4": 3
+    },
+    "0x31/0x08": {
+      "ss4": 1
+    },
+    "0x31/0x10": {
+      "ss5": 1
+    }
+  },
+  "monitor_parameter_effects": {
+    "1": {
+      "queue_bit": 0
+    },
+    "2": {
+      "queue_bit": 1
+    },
+    "3": {
+      "queue_bit": 2
+    },
+    "4": {
+      "queue_bit": 3
+    },
+    "5": {
+      "queue_bit": 4
+    },
+    "6": {
+      "queue_bit": 5
+    }
+  },
+  "monitor_sweep": {
+    "0": {
+      "zone0": {
+        "selector": 0,
+        "power_timer": 0,
+        "power_copy": 0,
+        "clock_pause": 0,
+        "lives": 4,
+        "rings": 5,
+        "d503": 0,
+        "mode": 136,
+        "result_card": 1,
+        "sound": 169,
+        "requested_state": 5
+      },
+      "deviations": {
+        "6": {
+          "mode": [
+            136,
+            0
+          ],
+          "result_card": [
+            1,
+            0
+          ]
+        },
+        "7": {
+          "mode": [
+            136,
+            0
+          ],
+          "result_card": [
+            1,
+            0
+          ]
+        },
+        "8": {
+          "mode": [
+            136,
+            0
+          ],
+          "result_card": [
+            1,
+            0
+          ]
+        },
+        "9": {
+          "mode": [
+            136,
+            0
+          ],
+          "result_card": [
+            1,
+            0
+          ]
+        },
+        "10": {
+          "mode": [
+            136,
+            0
+          ],
+          "result_card": [
+            1,
+            0
+          ]
+        },
+        "11": {
+          "mode": [
+            136,
+            0
+          ],
+          "result_card": [
+            1,
+            0
+          ]
+        },
+        "12": {
+          "mode": [
+            136,
+            0
+          ],
+          "result_card": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    "1": {
+      "zone0": {
+        "selector": 0,
+        "power_timer": 0,
+        "power_copy": 0,
+        "clock_pause": 0,
+        "lives": 4,
+        "rings": 149,
+        "d503": 0,
+        "mode": 0,
+        "result_card": 0,
+        "sound": 169,
+        "requested_state": 5
+      },
+      "deviations": {}
+    },
+    "2": {
+      "zone0": {
+        "selector": 3,
+        "power_timer": 900,
+        "power_copy": 0,
+        "clock_pause": 0,
+        "lives": 3,
+        "rings": 149,
+        "d503": 0,
+        "mode": 0,
+        "result_card": 0,
+        "sound": 0,
+        "requested_state": 5
+      },
+      "deviations": {}
+    },
+    "3": {
+      "zone0": {
+        "selector": 4,
+        "power_timer": 300,
+        "power_copy": 300,
+        "clock_pause": 0,
+        "lives": 3,
+        "rings": 149,
+        "d503": 0,
+        "mode": 0,
+        "result_card": 0,
+        "sound": 133,
+        "requested_state": 17
+      },
+      "deviations": {
+        "8": {
+          "power_timer": [
+            300,
+            6000
+          ],
+          "power_copy": [
+            300,
+            6000
+          ],
+          "sound": [
+            133,
+            0
+          ]
+        }
+      }
+    },
+    "4": {
+      "zone0": {
+        "selector": 0,
+        "power_timer": 0,
+        "power_copy": 0,
+        "clock_pause": 11,
+        "lives": 3,
+        "rings": 149,
+        "d503": 0,
+        "mode": 0,
+        "result_card": 0,
+        "sound": 248,
+        "requested_state": 5
+      },
+      "deviations": {}
+    },
+    "5": {
+      "zone0": {
+        "selector": 6,
+        "power_timer": 600,
+        "power_copy": 0,
+        "clock_pause": 0,
+        "lives": 3,
+        "rings": 149,
+        "d503": 130,
+        "mode": 0,
+        "result_card": 0,
+        "sound": 132,
+        "requested_state": 5
+      },
+      "deviations": {}
+    }
+  },
+  "clock_monitor_param5": {
+    "pickup_sound": 248,
+    "ticks": [
+      {
+        "frame": 0,
+        "d3c4": 11,
+        "timer": 88,
+        "sound": 248
+      },
+      {
+        "frame": 12,
+        "d3c4": 10,
+        "timer": 88,
+        "sound": 0
+      },
+      {
+        "frame": 71,
+        "d3c4": 9,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 131,
+        "d3c4": 8,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 191,
+        "d3c4": 7,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 251,
+        "d3c4": 6,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 311,
+        "d3c4": 5,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 371,
+        "d3c4": 4,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 431,
+        "d3c4": 3,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 491,
+        "d3c4": 2,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 551,
+        "d3c4": 1,
+        "timer": 88,
+        "sound": 181
+      },
+      {
+        "frame": 611,
+        "d3c4": 0,
+        "timer": 88,
+        "sound": 143
+      }
+    ],
+    "timer_frozen_at": 88,
+    "timer_first_changed_after_frames": 700
+  },
+  "rocket_shoes": {
+    "ss1": {
+      "selector": 4,
+      "power_timer": 5999,
+      "power_copy": 6000,
+      "stage_ended": "0xa0",
+      "frames_in_state": null,
+      "still_active_after_frames": null
+    },
+    "ss4": {
+      "selector": 4,
+      "power_timer": 299,
+      "power_copy": 300,
+      "left_state": 14,
+      "frames_in_state": 301,
+      "still_active_after_frames": null
+    }
+  },
+  "spring_shoes_ss2": {
+    "entered_state": 11,
+    "launch_vy": -1920,
+    "relaunch_vy": [
+      -1920,
+      -1920,
+      -1920,
+      -1920
+    ],
+    "d3a4": 55040
+  },
+  "springs_ss4": {
+    "param0_1616": {
+      "state": 11,
+      "vy": -1864,
+      "d448": 255
+    },
+    "param1_1424": {
+      "state": 11,
+      "vy": -1256,
+      "d448": 0
+    },
+    "param1_1488": {
+      "state": 11,
+      "vy": -1256,
+      "d448": 0
+    },
+    "param1_1552": {
+      "state": 11,
+      "vy": -1256,
+      "d448": 0
+    }
+  }
+}
