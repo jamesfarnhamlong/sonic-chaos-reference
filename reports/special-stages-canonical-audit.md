@@ -50,7 +50,7 @@ Palettes: SS1/2/4 bg 38 / sp 18; SS3 bg 39 / sp 19; SS5 bg 39 / sp 20. Music `$8
 
 ## Natural completion / failure coverage
 
-See `docs/special-stages-goal-ring-audit.md` section 6 and `data/rom-cache/special-stages/natural-completions.json`. Every stage has a verified idle-timeout failure and a pit-death failure route returning to the next act. Natural input-only completions that were found and replay-verified are recorded per stage; stages without one are explicitly marked unresolved, not simulated.
+See `docs/special-stages-goal-ring-audit.md` section 6 and `data/rom-cache/special-stages/natural-completions.json`. Every stage has a verified idle-timeout failure and a pit-death failure route returning to the next act. Replay-verified input-only completions exist for **SS1 (2288 frames), SS3 (2090), SS4 (2057), SS5 (1426)**. **SS2 (Spring Shoes climb) is unresolved**: the shoes are reached by input and the relaunch is verified, but no complete climb was found (best-first reached Y 1277 of 142; a steering controller loses the shoes when Sonic leaves the owner `$2F` object's range). Not simulated.
 
 ## Visual boards needing James's approval (PENDING)
 
@@ -60,7 +60,7 @@ See `docs/special-stages-goal-ring-audit.md` section 6 and `data/rom-cache/speci
 
 - Whether the act-index-3 aliasing should be reproduced in the POC (canonical) or adapted.
 - Names for sounds `$8A/$86/$B5/$F8/$8F`; purpose of seven invincibility monitors in SS3.
-- Input-only natural completions for any stage not marked completed.
+- Input-only natural completion for SS2.
 - Sound/PSG and exact mid-line timing are not modelled by the harness; all traces are approximate-harness evidence.
 - Visual approval.
 

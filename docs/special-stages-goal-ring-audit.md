@@ -62,6 +62,6 @@ Restart/retry: none. After any failure the game proceeds to the next act; the st
 | SS3 | **completed** | 2090 | pipe network + rooms |
 | SS5 | **completed** | 1426 | pipe maze |
 | SS2 | **unresolved** | | Spring Shoes climb: the shoes are reached by input in 234 frames (jump-run steps), the relaunch is verified, but no complete climb was found: best-first search (5,726 nodes) reached Y 1277 of 142, and a platform-aware steering controller loses the shoes when Sonic moves away from the owner `$2F` object (attachment is tied to that object's lifetime, so the seven placements are re-pickup stations). A station-to-station route needs a purpose-built controller. |
-| SS4 | **unresolved** | | platform course: best route found reached the ring's column (x 8113) at Y 208 (ring Y 174, contact needs the player within 24 px below) with 2-4 s of timer left; no verified completion |
+| SS4 | **completed** | 2057 | platform course; found by a time-weighted best-first search (4,527 nodes), replay-verified |
 
 Each completed run continues to the return to zone 0 act 1 with the emerald bit and +1 continue set (`natural-completions.json`). Every stage also has an idle-timeout route (3510 frames) and a controlled-placement pit-death route.
