@@ -1,7 +1,7 @@
 # Zone5 mapped $17 and player $16/$17
 
 Unmerged research; `carrier-17.json` is the source contract, script tables,
-block lists, source hashes and 32,412 controlled overlap/copy assertions.
+block lists, source hashes and 32,470 controlled assertions.
 All five mapped placements use parameter `$02`; canonical records remain
 unchanged. This mechanism is separate from terrain transport state `$21`.
 
@@ -21,7 +21,9 @@ zeros X on a forward obstacle. Landing on one of the 15 continuation blocks
 returns to the parameter state at Vy+4; other floor contact bounces at−4,
 zeros X, requests5 and plays `$BB`. If this actor owns `$D3A6`, that bounce
 clears ownership and invokes the shared hurt helper. State5 falls with
-gravity+1/4 until floor then requests6; state6 clears token and parameter.
+gravity+1/4 until floor then requests6. State6 frame1 lasts16 updates and
+calls `$A72B` to clear token/parameter; subsequent frame0 calls `$0362->$64F5`
+to set typeFF and delete. `$64F5` is deletion, not flag clearing.
 Scripts and block bytes are cached rather than renamed from appearance.
 
 Player `$16` copies actor WORLD position and velocities through `$4C56`,
@@ -38,6 +40,10 @@ All movement/probe/alignment coordinates are WORLD. Before capture, generic
 mapped lifecycle applies; clearing the token on capture matters for later
 placement occupancy. No dynamic child allocation or reward path is present.
 
-Remaining closure: natural whole-game capture, continuation, detach, bounce
-and final cleanup cadence, lifecycle occupancy, and actor/player registration.
-The routine sweep does not claim full A4 closure or Windows approval.
+The original scheduler trace in `system-game-checks.json` observes player16/17,
+owner assignment, carrier2/4 continuation, and action-button detach. Bounce
+sweeps vary owner, player floor flags and contact side, verifying both carrier
+motion and the owning player's shared hurt reaction. Cleanup callbacks are
+directly tested separately. Generic mapped lifecycle is reused; captured token
+release is explicit. These controlled checks do not claim an input-only route
+playthrough or Windows approval.

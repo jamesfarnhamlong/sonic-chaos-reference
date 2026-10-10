@@ -29,6 +29,17 @@ def build(r):
         o.call(0x4C56)
         assert [o.word(a) for a in (0xD511,0xD514,0xD516,0xD518)]==[1234,567,65472,1024]
         assert m[0xD503]&2;assert bool(m[0xD504]&16)==(param!=2);checks+=3
+    for owner,floor,contact in itertools.product((0,S,S+64),range(4),(0,8)):
+        o.bank(2,12);m[0xD12B]=12;o.cpu.ix=S;o.cpu.iy=0xD500;m[S:S+64]=bytes(64);m[S]=23;m[S+34]=3
+        m[0xD504]=255;m[0xD502]=5;m[0xD503]=2;m[0xD522]=floor;m[0xD523]=contact;o.word(0xD3A6,owner)
+        o.call(0xA6D7)
+        assert [m[S+2],o.word(S+22),o.word(S+24),m[S+34],m[0xDE04],m[0xD504]]==[5,0,64512,1,187,127];checks+=1
+        assert [o.word(0xD3A6),m[0xD502]]==[0 if owner==S else owner,30 if owner==S else 5];checks+=1
+        if owner==S:
+            assert [o.word(0xD518),o.word(0xD516)]==[256 if floor&1 else 64512,256 if contact&8 else 65280];checks+=1
+    m[S]=23;m[S+62]=17;m[S+63]=2;o.cpu.ix=S;o.call(0xA72B)
+    assert [m[S],m[S+62],m[S+63]]==[23,0,0];checks+=1
+    o.call(0x64F5);assert m[S]==255;checks+=1
     scripts={f'0x{t:02X}':C.public_script(C.state_scripts(r,t)) for t in (23,1)}
     scripts['0x01']['states']=[v for v in scripts['0x01']['states'] if v['state'] in (22,23)]
     return dict(rom_sha256=L.ROM_SHA256,checks=checks,geometry=[ox,oy],vectors=rows,scripts=scripts,
@@ -41,11 +52,11 @@ def build(r):
             state3='negative-side counterpart: magnitude test via negation, accelerate negativeVX -1/16; probe(-16,-16). Natural parameter02 does not initially choose3; other requests must be source-traced.',
             state4='probe signed16,-16; obstacle zerosVX. Gravity helper5F84 adds+1/8 with rejection at+6 ceiling (does not clamp). Until floor:move/floor/saveD36E. On floor and prior marker in15-byte continue list requests parameter again,VY+4. Other floor ->bounce path.',
             bounce='soundBB,clear actor floorbit1,clear player hidebit7,VY-4,VX0,request5. If D3A6 owns this actor clear owner and call494F hurt helper on player. State5 gravity+1/4 ceiling6; on floor request6.',
-            state6='frame1 duration16,then frame0 duration3 callback64F5 clears ownflags; A72B clears placement token/parameter. No reward or badnik attack defeat.',
+            state6='frame1 duration16 callbackA72B clears placement token/parameter on every call; then frame0 duration3 callback0362->64F5 sets typeFF (deletes), not merely flags. No reward or badnik attack defeat.',
             player16='frame5F duration1 callback4C02 copies actor X/Y/VX/VY to Sonic and sets attack, actor hidden; script835E requests17. Facing flag4bit4 derives from carrier parameter==2, not signVX.',
             player17='4C12 copies actor state, terrain ring probe753E, hurt48BC, movement401A. If requested hurt/death1E/1F OR buttonbits4/5 then detach:unhideactor,set counter1F16/hurtflag3bit6,request actor parameter,clear owner,ordinary setter45ED. Otherwise retains carrier; player normal terrain update is not substituted.',
             semantics='WORLD anchors and collision probes; generic viewport lifecycle still governs mapped actor before capture, canonical token cleared on capture. No dynamic allocations; no viewport-scaled distances. Player updates precede actor movement, so attachment sees prior actor position.',
-            unresolved='Natural whole-game capture/continuation/detach and final6 cleanup cadence still require trace; no complete A4 closure claimed by isolated overlap sweep.'))
+            validation_limits='Whole scheduler capture/continuation/button detach is traced in system-game-checks; bounce/hurt-owner combinations and final cleanup are separately routine-tested. Not an input-only whole-act playthrough; visual approval pending.'))
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('rom');a=p.parse_args();v=build(L.load_rom(a.rom))

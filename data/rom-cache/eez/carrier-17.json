@@ -1,6 +1,6 @@
 {
   "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
-  "checks": 32412,
+  "checks": 32470,
   "geometry": [
     12,
     16
@@ -743,10 +743,10 @@
     "state3": "negative-side counterpart: magnitude test via negation, accelerate negativeVX -1/16; probe(-16,-16). Natural parameter02 does not initially choose3; other requests must be source-traced.",
     "state4": "probe signed16,-16; obstacle zerosVX. Gravity helper5F84 adds+1/8 with rejection at+6 ceiling (does not clamp). Until floor:move/floor/saveD36E. On floor and prior marker in15-byte continue list requests parameter again,VY+4. Other floor ->bounce path.",
     "bounce": "soundBB,clear actor floorbit1,clear player hidebit7,VY-4,VX0,request5. If D3A6 owns this actor clear owner and call494F hurt helper on player. State5 gravity+1/4 ceiling6; on floor request6.",
-    "state6": "frame1 duration16,then frame0 duration3 callback64F5 clears ownflags; A72B clears placement token/parameter. No reward or badnik attack defeat.",
+    "state6": "frame1 duration16 callbackA72B clears placement token/parameter on every call; then frame0 duration3 callback0362->64F5 sets typeFF (deletes), not merely flags. No reward or badnik attack defeat.",
     "player16": "frame5F duration1 callback4C02 copies actor X/Y/VX/VY to Sonic and sets attack, actor hidden; script835E requests17. Facing flag4bit4 derives from carrier parameter==2, not signVX.",
     "player17": "4C12 copies actor state, terrain ring probe753E, hurt48BC, movement401A. If requested hurt/death1E/1F OR buttonbits4/5 then detach:unhideactor,set counter1F16/hurtflag3bit6,request actor parameter,clear owner,ordinary setter45ED. Otherwise retains carrier; player normal terrain update is not substituted.",
     "semantics": "WORLD anchors and collision probes; generic viewport lifecycle still governs mapped actor before capture, canonical token cleared on capture. No dynamic allocations; no viewport-scaled distances. Player updates precede actor movement, so attachment sees prior actor position.",
-    "unresolved": "Natural whole-game capture/continuation/detach and final6 cleanup cadence still require trace; no complete A4 closure claimed by isolated overlap sweep."
+    "validation_limits": "Whole scheduler capture/continuation/button detach is traced in system-game-checks; bounce/hurt-owner combinations and final cleanup are separately routine-tested. Not an input-only whole-act playthrough; visual approval pending."
   }
 }
