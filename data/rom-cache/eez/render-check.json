@@ -1,0 +1,115 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "checks": [
+    {
+      "tile": 124,
+      "sha256": "f92b65698040300365925ccd0908bb12aaa5781ef567912d361f666948633d51"
+    },
+    {
+      "tile": 125,
+      "sha256": "ee884edf8669aa684704679d4c14a1fd0effcb8bf079ac4595acfab07f6ae996"
+    },
+    {
+      "tile": 126,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "tile": 127,
+      "sha256": "db1f536890a346551e8a43438006e0f6fcbf5b93f50664fe39c1c42c5c0841ab"
+    },
+    {
+      "tile": 128,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "tile": 129,
+      "sha256": "ea6ea430405bae600a0dce393ac89051eee84515eb039958ee1714a5c0cd3031"
+    },
+    {
+      "tile": 130,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "tile": 131,
+      "sha256": "723d54de27e97f3a6d5787f21bd1d7368ffd8e20cc935126aaae1c779db79e46"
+    },
+    {
+      "tile": 132,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "tile": 133,
+      "sha256": "1e24438aaf69b7996567c2a53c03eba8a114655d461421d4885bea1b5d66a241"
+    },
+    {
+      "tile": 134,
+      "sha256": "af83b110620f7739d5853621acce738d4b08addd13b5458f5906f6670ae6ac4c"
+    },
+    {
+      "tile": 135,
+      "sha256": "e8109d063e490ce7a99e9c835618153d77350f0129ad41c1921c75b446852660"
+    },
+    {
+      "tile": 136,
+      "sha256": "e8d2e12a6ecccfdcb637474cba7561cf2f8419c8984caae4923a6c0346d533f5"
+    },
+    {
+      "tile": 137,
+      "sha256": "8047b640c410e7eb8f380ac0435406d7e23d5e3a6a72c5a0abe35aa63b95dc5a"
+    },
+    {
+      "tile": 138,
+      "sha256": "0dc4bf9b440259d52e896b5ab2e2a5e18e19654723f61f7a86c37b06b815d5bc"
+    },
+    {
+      "tile": 139,
+      "sha256": "1e10c85f715dec47debafbe60370ba817939fc45b8c3726938866e0f52e8241e"
+    },
+    {
+      "tile": 140,
+      "sha256": "8b2339ae5709ce31daf5a9a15c82ee9dc92795719bb63278a927ead4e796fd0e"
+    },
+    {
+      "tile": 141,
+      "sha256": "80a9124de371cf96fba678d6be865aff6a4ba7201411b5030896f16007af23e1"
+    },
+    {
+      "tile": 142,
+      "sha256": "34ad77cad661d96c2782fba6e62d5fa6d76b2db6addaf62d1d89e6fdd8db06bc"
+    },
+    {
+      "tile": 143,
+      "sha256": "9a447e473ed20b0b43d8cfc50aae13bd749f80d606c71b417e55bd2b7431d1f7"
+    },
+    {
+      "tile": 144,
+      "sha256": "64cd0603cba0b853a96679c4bb170041647da210cb3c8717f2425f4879c8f2d0"
+    },
+    {
+      "tile": 145,
+      "sha256": "8c243ae221f51de4f751cba0275476231a65600211522a461a9e3bdbb85d83ac"
+    },
+    {
+      "tile": 192,
+      "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+    },
+    {
+      "tile": 347,
+      "sha256": "8eae843f33755a486701f100e060501a31db38d5f3c7e24319e2bc496c9f5c0b"
+    },
+    {
+      "tile": 348,
+      "sha256": "68e9e282a6580c53156daada15c678e459e5857ed761ab6c14460023211831f1"
+    },
+    {
+      "tile": 349,
+      "sha256": "376bc706301c4180166fb99670ca3427c826a90a0e7d784053c0782007d1aa27"
+    },
+    {
+      "tile": 350,
+      "sha256": "9376be86df76f34baa29f428de11c753cd1db2cdfc5e0007d3f1fb98be6ceccb"
+    }
+  ],
+  "assertions": 27,
+  "explanation": "Original boot VRAM matches suspect terrain blank/star fields and base7C projectile tiles byte-for-byte; sparse pixels are not introduced by extractor. Harness screenshot is supplemental evidence, not hardware approval."
+}

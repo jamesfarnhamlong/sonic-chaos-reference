@@ -1,0 +1,114 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "status": "PENDING_JAMES_REVIEW",
+  "boards": [
+    {
+      "file": "terrain.png",
+      "sha256": "7b46253d308a60013ff7960e80d53671ad134b40790da73c0e655181c684ee55",
+      "bytes": 39149
+    },
+    {
+      "file": "object-17.png",
+      "sha256": "b1a40a0ee87bd4e2fd5a78cf2e0cee45e7826e5112fadc5bb3ae60db8e0dbc28",
+      "bytes": 4366
+    },
+    {
+      "file": "object-36.png",
+      "sha256": "c1cac7119a09b2e9cacdf1b8a7216f49e8b1a9ba3e301841eafefc9225744e2d",
+      "bytes": 6039
+    },
+    {
+      "file": "object-38.png",
+      "sha256": "0380000ab2580fb5dbc41e0ad275438e9914fd3695489380140a0fdf54c1be7d",
+      "bytes": 5889
+    },
+    {
+      "file": "object-5E-selector24.png",
+      "sha256": "2b413197e1208bea14679312ede5dec7b8979b7c457bbdb4fb0b1d07170b5276",
+      "bytes": 10953
+    },
+    {
+      "file": "object-5F-selector24.png",
+      "sha256": "63224f9a394d7ed8dd5caf6dcf05e5a4763453c3ac16e5b3aae631977e56534e",
+      "bytes": 7968
+    },
+    {
+      "file": "object-60-selector25.png",
+      "sha256": "a763f3af6155af6ad8fd46c4e7adab6156fe78cee35a78d4919fe6e9df8882c1",
+      "bytes": 13585
+    },
+    {
+      "file": "object-61-selector26.png",
+      "sha256": "9ed04f7fa6bd97a678b73fe397596d067fab4ce8dce4c6310db2acf5ba5eab6e",
+      "bytes": 8787
+    },
+    {
+      "file": "object-62-selector26.png",
+      "sha256": "9a316ef96ed6dc80bab794c9af9a3deb9bc28545e8a2d553094c1be4a80aca57",
+      "bytes": 5848
+    },
+    {
+      "file": "object-63-selector33.png",
+      "sha256": "687eb4679f80f6b2323e0e06ac71a93c321782626a5fd504bc582b3e6e2bd5ee",
+      "bytes": 9653
+    },
+    {
+      "file": "object-37-support.png",
+      "sha256": "f4a8bac187ec11432941ed0723c24174c856411169c37040ec228ffd7872323f",
+      "bytes": 6031
+    },
+    {
+      "file": "object-37-support-base7C.png",
+      "sha256": "f4a8bac187ec11432941ed0723c24174c856411169c37040ec228ffd7872323f",
+      "bytes": 6031
+    },
+    {
+      "file": "object-39-support.png",
+      "sha256": "db5c6c84c0974d1c3513b380de8d207568ad4824d7693d575813193b71daef6f",
+      "bytes": 4726
+    },
+    {
+      "file": "object-3A-support-base92.png",
+      "sha256": "441f542ebfe4584d4c098e44478beb3b4a9c395baee47f79e83ded11c38f432c",
+      "bytes": 4502
+    },
+    {
+      "file": "effect-5.png",
+      "sha256": "b1fe8f57051f0365f745c1fcff143a24d2f5cd507f7995f50722e77527bc8ab3",
+      "bytes": 4826
+    },
+    {
+      "file": "effect-6.png",
+      "sha256": "5715a982dd2bd30de39c3a7a5b4954dd01d0f48a9ef76de04122db26d809938a",
+      "bytes": 5040
+    },
+    {
+      "file": "effect-8.png",
+      "sha256": "43e80f13bf62e1d4b77c7f70ee447178dbfa2f0378ceaf7e4d1ca45d8727abb8",
+      "bytes": 88460
+    },
+    {
+      "file": "effect-13.png",
+      "sha256": "e02cb5a713ed0ead670d48645509d2f9f344bf354837eb9a2eb8209dcedc07f4",
+      "bytes": 6814
+    },
+    {
+      "file": "ending-flags0-delay0-angleNone-char1.png",
+      "sha256": "3f4ef19019bec8df07f7a81ced4c9167b4506986e26d68636013b3f9c4f91d15",
+      "bytes": 24758
+    },
+    {
+      "file": "ending-flags31-delay0-angleNone-char1.png",
+      "sha256": "aa5dca8ff3152648404dbd329884c2e20c3cf111fa2cead92d3d9be8915f81f3",
+      "bytes": 73546
+    },
+    {
+      "file": "ending-flags0-delay0-angleNone-char2.png",
+      "sha256": "ace82c6b6a4f8e551a4e619b83c86cb27495b252774ca61c9128d4d861a98df1",
+      "bytes": 43022
+    }
+  ],
+  "rules": "Original decoded pixels/piece origins; known shared object families omitted; static terrain deduplicated against all256 indexed compositions for all15 prior acts. Ending frames are original approximate-harness rasters, no redrawing.",
+  "recreate": "eez_art.py ROM; eez_boss_game.py ROM [--flags31 or --character2]; bundled Pillow Python eez_art_render.py; eez_review_index.py",
+  "review_limits": "No visual approval claimed. Ending raster samples preserve original SAT/CRAM but approximate VDP timing; they are not hardware-perfect screenshots."
+}
