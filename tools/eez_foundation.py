@@ -18,7 +18,7 @@ ACTS = {f'eez{i+1}': dict(zone=5, act=i, name=f'Zone 5 Act {i+1}') for i in rang
 CONTRACTS = {9: 'docs/object-09.md', 16: 'docs/object-10.md; docs/powerup-shoes-audit.md',
              24: 'docs/object-18-act-clear.md', 38: 'docs/spring-interaction-audit.md',
              40: 'docs/platform-spike-collision-audit.md; docs/sez-platform-28-audit.md',
-             44: 'docs/gpz-enemies-25-2c-audit.md'}
+             44: 'docs/gpz-enemy-audit.md'}
 
 def loader(r, a):
     o = Oracle(r)
@@ -45,11 +45,13 @@ def build(r):
     m=dict(format=1,rom_sha256=L.ROM_SHA256,research_base=BASE,zone=5,
            evidence='decoded data and controlled original loaders; runtime contracts remain separate',
            stage='A1 foundation',acts={},surfaces={},effects={},unresolved=[
-               'Reachable act count and terminal progression require A5 control-flow proof; three table records decoded.',
-               'Surface 01 zone5 gate and any new consumers require A2.',
-               'Object reuse must be parameter/zone-gate checked in A3/A4.',
-               'Types 5E/60 and final completion require A5; identities not inferred from appearance.',
-               'New art approval is pending James; no approval inherited from other zones.'])
+               'New art approval is pending James; no approval inherited from other zones.'],
+           audit_packages=dict(A2=['environment-gates.json','transport-state21.json','terrain-effects.json','transport-game-checks.json'],
+               A3=['objects-36-39.json','shared-reuse.json','allocation-checks.json','system-game-checks.json'],
+               A4=['carrier-17.json','system-game-checks.json'],
+               A5=['boss-endgame-recon.json','boss-game-checks.json','boss-game-flags-31.json','boss-game-character2.json','ending-scripts.json']),
+           progression=dict(playable_zone_indices=list(range(6)),acts_in_zone5=3,after_final_act='zone6,act0 ->flagbit7 ->18ED ending selector ->04B4 title; not a seventh playable zone',evidence='source-traced + original controlled terminal traces'),
+           validation_limits=['Approximate SMS harness; controlled boundary fixtures are not input-only playthroughs.','James visual approval remains pending; no POC/Windows acceptance is implied.'])
     census=dict(format=1,rom_sha256=L.ROM_SHA256,acts={},types={})
     consumers,floor,right,left,ceiling=M.surface_consumers(r)
     for key,a in acts.items():

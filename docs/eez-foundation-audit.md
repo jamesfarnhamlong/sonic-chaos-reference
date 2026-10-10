@@ -3,9 +3,10 @@
 Base `89641f8093e62401cd81f94e6ac889422f600472`. Research branch only;
 not reviewed or merged. Verified Europe v1.2 SHA-256
 `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607`.
-Numeric zone 5 is used until title/control-flow evidence establishes naming
-and reachable terminal progression. Three act table records are decoded;
-this alone does not prove game-completion behavior.
+Numeric zone5 is retained in machine contracts (`eez` is the cache prefix).
+Three decoded act records are playable in the original harness; the terminal
+control-flow audit proves zone5 act3 advances to the ending/title path, not a
+seventh playable zone. See `eez-boss-endgame-audit.md` for that separate evidence.
 
 | Act | Cells | Pixels | Player start | Camera start | Camera right/bottom | Written cells | Terrain rings | Mapped records |
 |---|---|---|---|---|---|---|---|---|
@@ -66,10 +67,14 @@ tools/eez_art.py ROM
 
 Render `tools/eez_art_render.py` using the bundled Pillow Python. Pixel inputs
 and PNGs remain under ignored `build/eez-approval`; committed approval metadata
-records original mappings. Current boards are provisional: animated VRAM
-initialization must be reconciled before terrain approval. Boss compositions
-are deferred until their dynamic art chain is traced. No approval is claimed.
+records original mappings. Terrain boards now initialize original ring/effect
+copies; separate boards show original effect states/palette pairs. Sparse
+background/projectile pixels match original boot VRAM, including27 direct
+suspect-tile comparisons; an original harness raster corroborates them.
+Boss boards use original selector24/25/26/33 loads and piece positions. Ending
+scene samples retain raster hashes, SAT and CRAM. James approval remains pending.
 
 AGENTS candidate: Zone5 A1 is on a separate unmerged research branch; retain
 the `$14:$A4E0` mapping regression and the 112-cell act3 row stride. Do not
-consume unresolved runtime reconnaissance as an implementation contract.
+consume this unmerged branch as accepted main before review. The reconciled
+manifest links the A2–A5 contracts and controlled checks.

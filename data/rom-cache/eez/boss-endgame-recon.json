@@ -1,0 +1,4665 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "checks": {
+    "5e_hp": 1152,
+    "5e_cooldown": 1152,
+    "5e_feedback": 1152,
+    "5e_complete_geometry": 48492,
+    "5e_decision": 33264,
+    "60_hit_latch": 192,
+    "60_hit_phase": 192,
+    "60_disabled": 192,
+    "60_hit_sound": 192,
+    "60_death_request": 192,
+    "5e_world_floor": 7,
+    "60_route_entry": 131072,
+    "5f_initial": 512,
+    "61_chase": 6144,
+    "61_trigger": 229,
+    "63_oscillator": 131072,
+    "command4_pool": 12,
+    "5f_parent_pointer": 1,
+    "60_controller_pointer": 1,
+    "ending_selector": 768,
+    "zone_terminal": 6,
+    "61_early_clear": 768,
+    "61_final_flags": 768
+  },
+  "assertions": 357532,
+  "contact_vectors": [
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      2,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      2,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      2,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      2,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      64,
+      2,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      16,
+      4
+    ],
+    [
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      2,
+      1,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      2,
+      2,
+      1,
+      2,
+      0
+    ],
+    [
+      1,
+      2,
+      0,
+      2,
+      16,
+      1,
+      16,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      2,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      2,
+      1,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      2,
+      2,
+      1,
+      2,
+      0
+    ],
+    [
+      1,
+      2,
+      64,
+      2,
+      16,
+      1,
+      16,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      2,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      2,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      2,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      2,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      0,
+      64,
+      2,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      5,
+      2,
+      0,
+      0,
+      0,
+      0,
+      16,
+      4
+    ],
+    [
+      5,
+      2,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      2,
+      0,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      2,
+      0,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      5,
+      2,
+      0,
+      2,
+      0,
+      0,
+      16,
+      4
+    ],
+    [
+      5,
+      2,
+      0,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      2,
+      0,
+      2,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      2,
+      0,
+      2,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      0,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      0,
+      16,
+      1,
+      15,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      2,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      2,
+      2,
+      1,
+      1,
+      0
+    ],
+    [
+      5,
+      2,
+      64,
+      2,
+      16,
+      1,
+      15,
+      0
+    ]
+  ],
+  "completion_vectors": [
+    [
+      0,
+      0,
+      32,
+      80
+    ],
+    [
+      0,
+      31,
+      63,
+      80
+    ],
+    [
+      0,
+      63,
+      63,
+      80
+    ],
+    [
+      1,
+      0,
+      32,
+      80
+    ],
+    [
+      1,
+      31,
+      63,
+      80
+    ],
+    [
+      1,
+      63,
+      63,
+      80
+    ],
+    [
+      2,
+      0,
+      32,
+      80
+    ],
+    [
+      2,
+      31,
+      63,
+      80
+    ],
+    [
+      2,
+      63,
+      63,
+      80
+    ]
+  ],
+  "ending_vectors": [
+    [
+      0,
+      0,
+      6861
+    ],
+    [
+      0,
+      31,
+      6861
+    ],
+    [
+      0,
+      63,
+      6861
+    ],
+    [
+      0,
+      255,
+      6861
+    ],
+    [
+      1,
+      0,
+      6721
+    ],
+    [
+      1,
+      31,
+      6721
+    ],
+    [
+      1,
+      63,
+      6398
+    ],
+    [
+      1,
+      255,
+      6398
+    ],
+    [
+      2,
+      0,
+      6861
+    ],
+    [
+      2,
+      31,
+      6861
+    ],
+    [
+      2,
+      63,
+      6861
+    ],
+    [
+      2,
+      255,
+      6861
+    ]
+  ],
+  "second_parent_vectors": [
+    [
+      0,
+      2,
+      0,
+      0,
+      0,
+      [
+        0,
+        -32
+      ],
+      9,
+      255
+    ],
+    [
+      1,
+      2,
+      0,
+      0,
+      0,
+      [
+        0,
+        -32
+      ],
+      10,
+      0
+    ]
+  ],
+  "geometry": [
+    [
+      1,
+      8,
+      16,
+      64
+    ],
+    [
+      1,
+      9,
+      16,
+      64
+    ],
+    [
+      2,
+      8,
+      16,
+      64
+    ],
+    [
+      2,
+      9,
+      16,
+      64
+    ],
+    [
+      3,
+      8,
+      16,
+      64
+    ],
+    [
+      3,
+      9,
+      16,
+      64
+    ],
+    [
+      4,
+      8,
+      16,
+      64
+    ],
+    [
+      4,
+      9,
+      16,
+      64
+    ],
+    [
+      5,
+      8,
+      16,
+      48
+    ],
+    [
+      5,
+      9,
+      16,
+      48
+    ]
+  ],
+  "allocations": [
+    [
+      0,
+      55040,
+      false
+    ],
+    [
+      1,
+      55104,
+      false
+    ],
+    [
+      2,
+      55168,
+      false
+    ],
+    [
+      3,
+      55232,
+      false
+    ],
+    [
+      4,
+      55296,
+      false
+    ],
+    [
+      5,
+      55360,
+      false
+    ],
+    [
+      6,
+      55424,
+      false
+    ],
+    [
+      7,
+      55488,
+      false
+    ],
+    [
+      8,
+      55552,
+      false
+    ],
+    [
+      9,
+      55616,
+      false
+    ],
+    [
+      10,
+      55680,
+      false
+    ],
+    [
+      11,
+      55744,
+      true
+    ]
+  ],
+  "scripts": {
+    "0x5E": {
+      "bank": 30,
+      "type_table_entry_rom": 26228,
+      "state_table_cpu": "0xAF4C",
+      "state_table_rom": "0x7AF4C",
+      "state_count": 14,
+      "state_script_cpus": [
+        "0xAF68",
+        "0x95BA",
+        "0x95C0",
+        "0xAF9C",
+        "0x95CC",
+        "0xAF71",
+        "0xAFA2",
+        "0xAFB0",
+        "0xAFBE",
+        "0xAFCC",
+        "0xAFE5",
+        "0xAFBE",
+        "0xB000",
+        "0xB009"
+      ],
+      "callbacks": [
+        "0x032F",
+        "0x9771",
+        "0x97C1",
+        "0xB011",
+        "0xB02B",
+        "0xB077",
+        "0xB0ED",
+        "0xB165",
+        "0xB19E",
+        "0xB1D2",
+        "0xB1E7",
+        "0xB1F6",
+        "0xB217"
+      ],
+      "calls": [
+        "0x9A1E",
+        "0x9A29",
+        "0x9A2F",
+        "0xB09B",
+        "0xB114",
+        "0xB1A2",
+        "0xB1E1",
+        "0xB20D",
+        "0xB212"
+      ],
+      "frames_used": [
+        0,
+        1,
+        4,
+        5,
+        20
+      ],
+      "spawns": [
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": -8,
+          "dy": 0,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": 8,
+          "dy": 0,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": 0,
+          "dy": -16,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter": 4
+        },
+        {
+          "state": 9,
+          "type": "0x5F",
+          "dx": -16,
+          "dy": -32,
+          "parameter": 1
+        },
+        {
+          "state": 10,
+          "type": "0x5F",
+          "dx": -16,
+          "dy": -22,
+          "parameter": 0
+        }
+      ],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xAF68",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAF71",
+          "ops": [
+            {
+              "cpu": "0xAF68",
+              "command": 6,
+              "op": "sound",
+              "sound": 139
+            },
+            {
+              "cpu": "0xAF6B",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB011"
+            },
+            {
+              "cpu": "0xAF6F",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0x95BA",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x95C0",
+          "ops": [
+            {
+              "cpu": "0x95BA",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0x9771"
+            },
+            {
+              "cpu": "0x95BE",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0x95C0",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x95CC",
+          "ops": [
+            {
+              "cpu": "0x95C0",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0x97C1"
+            },
+            {
+              "cpu": "0x95C4",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xAF9C",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAFA2",
+          "ops": [
+            {
+              "cpu": "0xAF9C",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB02B"
+            },
+            {
+              "cpu": "0xAFA0",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 4,
+          "script_cpu": "0x95CC",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAF68",
+          "ops": [
+            {
+              "cpu": "0x95CC",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": -8,
+              "dy": 0,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95D4",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0x9A1E",
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x95DA",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": 8,
+              "dy": 0,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95E2",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x95E6",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": 0,
+              "dy": -16,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95EE",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0x9A29",
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x95F4",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": -8,
+              "dy": -24,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95FC",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x9600",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": -8,
+              "dy": -24,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x9608",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 24
+            },
+            {
+              "cpu": "0x960B",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0x9A2F",
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x9611",
+              "op": "record",
+              "duration": 2,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x9615",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0x960B"
+            },
+            {
+              "cpu": "0x9619",
+              "command": 3,
+              "op": "request_state",
+              "state": 5
+            }
+          ]
+        },
+        {
+          "state": 5,
+          "script_cpu": "0xAF71",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAF9C",
+          "ops": [
+            {
+              "cpu": "0xAF71",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -256
+            },
+            {
+              "cpu": "0xAF77",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 20
+            },
+            {
+              "cpu": "0xAF7A",
+              "op": "record",
+              "duration": 2,
+              "frame": 20,
+              "callback": "0xB217"
+            },
+            {
+              "cpu": "0xAF7E",
+              "op": "record",
+              "duration": 2,
+              "frame": 0,
+              "callback": "0xB217"
+            },
+            {
+              "cpu": "0xAF82",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xAF7A"
+            },
+            {
+              "cpu": "0xAF86",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 512,
+              "y": 0
+            },
+            {
+              "cpu": "0xAF8C",
+              "command": 9,
+              "op": "set_field",
+              "offset": 31,
+              "value": 32
+            },
+            {
+              "cpu": "0xAF90",
+              "op": "record",
+              "duration": 2,
+              "frame": 20,
+              "callback": "0xB217"
+            },
+            {
+              "cpu": "0xAF94",
+              "op": "record",
+              "duration": 2,
+              "frame": 0,
+              "callback": "0xB217"
+            },
+            {
+              "cpu": "0xAF98",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAF90"
+            },
+            {
+              "cpu": "0xAF90",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 6,
+          "script_cpu": "0xAFA2",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAFB0",
+          "ops": [
+            {
+              "cpu": "0xAFA2",
+              "op": "record",
+              "duration": 16,
+              "frame": 1,
+              "callback": "0xB077"
+            },
+            {
+              "cpu": "0xAFA6",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB09B",
+              "callback": "0xB077"
+            },
+            {
+              "cpu": "0xAFAC",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAFA6"
+            },
+            {
+              "cpu": "0xAFA6",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 7,
+          "script_cpu": "0xAFB0",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAFBE",
+          "ops": [
+            {
+              "cpu": "0xAFB0",
+              "op": "record",
+              "duration": 16,
+              "frame": 4,
+              "callback": "0xB0ED"
+            },
+            {
+              "cpu": "0xAFB4",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB114",
+              "callback": "0xB0ED"
+            },
+            {
+              "cpu": "0xAFBA",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAFB4"
+            },
+            {
+              "cpu": "0xAFB4",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 8,
+          "script_cpu": "0xAFBE",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAFCC",
+          "ops": [
+            {
+              "cpu": "0xAFBE",
+              "op": "record",
+              "duration": 10,
+              "frame": 4,
+              "callback": "0xB19E"
+            },
+            {
+              "cpu": "0xAFC2",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB1A2",
+              "callback": "0xB165"
+            },
+            {
+              "cpu": "0xAFC8",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAFC2"
+            },
+            {
+              "cpu": "0xAFC2",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 9,
+          "script_cpu": "0xAFCC",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAFE5",
+          "ops": [
+            {
+              "cpu": "0xAFCC",
+              "command": 1,
+              "op": "call",
+              "target": "0xB1E1"
+            },
+            {
+              "cpu": "0xAFD0",
+              "command": 6,
+              "op": "sound",
+              "sound": 177
+            },
+            {
+              "cpu": "0xAFD3",
+              "command": 4,
+              "op": "spawn",
+              "type": 95,
+              "dx": -16,
+              "dy": -32,
+              "parameter": 1
+            },
+            {
+              "cpu": "0xAFDB",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB212",
+              "callback": "0xB1D2"
+            },
+            {
+              "cpu": "0xAFE1",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAFDB"
+            },
+            {
+              "cpu": "0xAFDB",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 10,
+          "script_cpu": "0xAFE5",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB000",
+          "ops": [
+            {
+              "cpu": "0xAFE5",
+              "command": 1,
+              "op": "call",
+              "target": "0xB1E1"
+            },
+            {
+              "cpu": "0xAFE9",
+              "command": 6,
+              "op": "sound",
+              "sound": 177
+            },
+            {
+              "cpu": "0xAFEC",
+              "op": "record",
+              "duration": 4,
+              "frame": 5,
+              "callback": "0xB1E7"
+            },
+            {
+              "cpu": "0xAFF0",
+              "command": 4,
+              "op": "spawn",
+              "type": 95,
+              "dx": -16,
+              "dy": -22,
+              "parameter": 0
+            },
+            {
+              "cpu": "0xAFF8",
+              "op": "record",
+              "duration": 8,
+              "frame": 5,
+              "callback": "0xB1E7"
+            },
+            {
+              "cpu": "0xAFFC",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAFF8"
+            },
+            {
+              "cpu": "0xAFF8",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 11,
+          "script_cpu": "0xAFBE",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAFCC",
+          "ops": [
+            {
+              "cpu": "0xAFBE",
+              "op": "record",
+              "duration": 10,
+              "frame": 4,
+              "callback": "0xB19E"
+            },
+            {
+              "cpu": "0xAFC2",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB1A2",
+              "callback": "0xB165"
+            },
+            {
+              "cpu": "0xAFC8",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAFC2"
+            },
+            {
+              "cpu": "0xAFC2",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 12,
+          "script_cpu": "0xB000",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB009",
+          "ops": [
+            {
+              "cpu": "0xB000",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xB004",
+              "command": 3,
+              "op": "request_state",
+              "state": 6
+            }
+          ]
+        },
+        {
+          "state": 13,
+          "script_cpu": "0xB009",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB011",
+          "ops": [
+            {
+              "cpu": "0xB009",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB20D",
+              "callback": "0xB1F6"
+            },
+            {
+              "cpu": "0xB00F",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    },
+    "0x5F": {
+      "bank": 30,
+      "type_table_entry_rom": 26230,
+      "state_table_cpu": "0xB35D",
+      "state_table_rom": "0x7B35D",
+      "state_count": 7,
+      "state_script_cpus": [
+        "0xB36B",
+        "0xB371",
+        "0xB393",
+        "0xB39B",
+        "0xB3AD",
+        "0xB3BD",
+        "0xB3CB"
+      ],
+      "callbacks": [
+        "0x032F",
+        "0xB3D5",
+        "0xB463",
+        "0xB46A",
+        "0xB4F2",
+        "0xB4F7",
+        "0xB4FC"
+      ],
+      "calls": [
+        "0xB389",
+        "0xB437",
+        "0xB4C4"
+      ],
+      "frames_used": [
+        0,
+        10,
+        11,
+        12,
+        17,
+        18,
+        19
+      ],
+      "spawns": [
+        {
+          "state": 1,
+          "type": "0x5F",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 254
+        },
+        {
+          "state": 5,
+          "type": "0x5F",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 255
+        }
+      ],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xB36B",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB371",
+          "ops": [
+            {
+              "cpu": "0xB36B",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB3D5"
+            },
+            {
+              "cpu": "0xB36F",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xB371",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB393",
+          "ops": [
+            {
+              "cpu": "0xB371",
+              "command": 4,
+              "op": "spawn",
+              "type": 95,
+              "dx": 0,
+              "dy": 0,
+              "parameter": 254
+            },
+            {
+              "cpu": "0xB379",
+              "command": 1,
+              "op": "call",
+              "target": "0xB389"
+            },
+            {
+              "cpu": "0xB37D",
+              "op": "record",
+              "duration": 3,
+              "frame": 10,
+              "callback": "0xB46A"
+            },
+            {
+              "cpu": "0xB381",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0xB46A"
+            },
+            {
+              "cpu": "0xB385",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB37D"
+            },
+            {
+              "cpu": "0xB37D",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0xB393",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB39B",
+          "ops": [
+            {
+              "cpu": "0xB393",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB4C4",
+              "callback": "0xB46A"
+            },
+            {
+              "cpu": "0xB399",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xB39B",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB3AD",
+          "ops": [
+            {
+              "cpu": "0xB39B",
+              "op": "record",
+              "duration": 6,
+              "frame": 17,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xB39F",
+              "op": "record",
+              "duration": 6,
+              "frame": 18,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xB3A3",
+              "op": "record",
+              "duration": 6,
+              "frame": 19,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xB3A7",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0xB4F2"
+            },
+            {
+              "cpu": "0xB3AB",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 4,
+          "script_cpu": "0xB3AD",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB3BD",
+          "ops": [
+            {
+              "cpu": "0xB3AD",
+              "command": 1,
+              "op": "call",
+              "target": "0xB437"
+            },
+            {
+              "cpu": "0xB3B1",
+              "op": "record",
+              "duration": 2,
+              "frame": 11,
+              "callback": "0xB463"
+            },
+            {
+              "cpu": "0xB3B5",
+              "op": "record",
+              "duration": 2,
+              "frame": 12,
+              "callback": "0xB463"
+            },
+            {
+              "cpu": "0xB3B9",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB3B1"
+            },
+            {
+              "cpu": "0xB3B1",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 5,
+          "script_cpu": "0xB3BD",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB3CB",
+          "ops": [
+            {
+              "cpu": "0xB3BD",
+              "command": 4,
+              "op": "spawn",
+              "type": 95,
+              "dx": 0,
+              "dy": 0,
+              "parameter": 255
+            },
+            {
+              "cpu": "0xB3C5",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB4F7"
+            },
+            {
+              "cpu": "0xB3C9",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 6,
+          "script_cpu": "0xB3CB",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB3D5",
+          "ops": [
+            {
+              "cpu": "0xB3CB",
+              "op": "record",
+              "duration": 2,
+              "frame": 11,
+              "callback": "0xB4FC"
+            },
+            {
+              "cpu": "0xB3CF",
+              "op": "record",
+              "duration": 2,
+              "frame": 12,
+              "callback": "0xB4FC"
+            },
+            {
+              "cpu": "0xB3D3",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    },
+    "0x60": {
+      "bank": 30,
+      "type_table_entry_rom": 26232,
+      "state_table_cpu": "0xB559",
+      "state_table_rom": "0x7B559",
+      "state_count": 13,
+      "state_script_cpus": [
+        "0xB573",
+        "0x95BA",
+        "0x95C0",
+        "0xB58F",
+        "0x95CC",
+        "0x961E",
+        "0xB595",
+        "0xB595",
+        "0xB595",
+        "0xB59B",
+        "0xB5A3",
+        "0xB5D7",
+        "0xB616"
+      ],
+      "callbacks": [
+        "0x032F",
+        "0x81BD",
+        "0x9771",
+        "0x97C1",
+        "0xB624",
+        "0xB642",
+        "0xB67F",
+        "0xB741",
+        "0xB8F6",
+        "0xB91F",
+        "0xB92D"
+      ],
+      "calls": [
+        "0x9A1E",
+        "0x9A29",
+        "0x9A2F",
+        "0xB53B",
+        "0xB585",
+        "0xB8AF"
+      ],
+      "frames_used": [
+        0,
+        13,
+        14,
+        15
+      ],
+      "spawns": [
+        {
+          "state": 0,
+          "type": "0x63",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 0
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": -8,
+          "dy": 0,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": 8,
+          "dy": 0,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": 0,
+          "dy": -16,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter": 4
+        },
+        {
+          "state": 4,
+          "type": "0x34",
+          "dx": -8,
+          "dy": -24,
+          "parameter": 4
+        },
+        {
+          "state": 10,
+          "type": "0x35",
+          "dx": -8,
+          "dy": 0,
+          "parameter": 2
+        },
+        {
+          "state": 10,
+          "type": "0x35",
+          "dx": 8,
+          "dy": 0,
+          "parameter": 2
+        },
+        {
+          "state": 10,
+          "type": "0x35",
+          "dx": 0,
+          "dy": -16,
+          "parameter": 2
+        },
+        {
+          "state": 11,
+          "type": "0x35",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 1
+        },
+        {
+          "state": 11,
+          "type": "0x35",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 1
+        },
+        {
+          "state": 12,
+          "type": "0x61",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 0
+        }
+      ],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xB573",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB58F",
+          "ops": [
+            {
+              "cpu": "0xB573",
+              "command": 4,
+              "op": "spawn",
+              "type": 99,
+              "dx": 0,
+              "dy": 0,
+              "parameter": 0
+            },
+            {
+              "cpu": "0xB57B",
+              "command": 1,
+              "op": "call",
+              "target": "0xB585"
+            },
+            {
+              "cpu": "0xB57F",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB624"
+            },
+            {
+              "cpu": "0xB583",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0x95BA",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x95C0",
+          "ops": [
+            {
+              "cpu": "0x95BA",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0x9771"
+            },
+            {
+              "cpu": "0x95BE",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0x95C0",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x95CC",
+          "ops": [
+            {
+              "cpu": "0x95C0",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0x97C1"
+            },
+            {
+              "cpu": "0x95C4",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xB58F",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB595",
+          "ops": [
+            {
+              "cpu": "0xB58F",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB642"
+            },
+            {
+              "cpu": "0xB593",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 4,
+          "script_cpu": "0x95CC",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0x961E",
+          "ops": [
+            {
+              "cpu": "0x95CC",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": -8,
+              "dy": 0,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95D4",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0x9A1E",
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x95DA",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": 8,
+              "dy": 0,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95E2",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x95E6",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": 0,
+              "dy": -16,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95EE",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0x9A29",
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x95F4",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": -8,
+              "dy": -24,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x95FC",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x9600",
+              "command": 4,
+              "op": "spawn",
+              "type": 52,
+              "dx": -8,
+              "dy": -24,
+              "parameter": 4
+            },
+            {
+              "cpu": "0x9608",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 24
+            },
+            {
+              "cpu": "0x960B",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0x9A2F",
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x9611",
+              "op": "record",
+              "duration": 2,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0x9615",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0x960B"
+            },
+            {
+              "cpu": "0x9619",
+              "command": 3,
+              "op": "request_state",
+              "state": 5
+            }
+          ]
+        },
+        {
+          "state": 5,
+          "script_cpu": "0x961E",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB573",
+          "ops": [
+            {
+              "cpu": "0x961E",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0x81BD"
+            },
+            {
+              "cpu": "0x9622",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 6,
+          "script_cpu": "0xB595",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB59B",
+          "ops": [
+            {
+              "cpu": "0xB595",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB67F"
+            },
+            {
+              "cpu": "0xB599",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 7,
+          "script_cpu": "0xB595",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB59B",
+          "ops": [
+            {
+              "cpu": "0xB595",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB67F"
+            },
+            {
+              "cpu": "0xB599",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 8,
+          "script_cpu": "0xB595",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB59B",
+          "ops": [
+            {
+              "cpu": "0xB595",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB67F"
+            },
+            {
+              "cpu": "0xB599",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 9,
+          "script_cpu": "0xB59B",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB5A3",
+          "ops": [
+            {
+              "cpu": "0xB59B",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB8AF",
+              "callback": "0xB741"
+            },
+            {
+              "cpu": "0xB5A1",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 10,
+          "script_cpu": "0xB5A3",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB5D7",
+          "ops": [
+            {
+              "cpu": "0xB5A3",
+              "command": 1,
+              "op": "call",
+              "target": "0xB53B"
+            },
+            {
+              "cpu": "0xB5A7",
+              "command": 4,
+              "op": "spawn",
+              "type": 53,
+              "dx": -8,
+              "dy": 0,
+              "parameter": 2
+            },
+            {
+              "cpu": "0xB5AF",
+              "op": "record",
+              "duration": 6,
+              "frame": 13,
+              "callback": "0xB8F6"
+            },
+            {
+              "cpu": "0xB5B3",
+              "command": 4,
+              "op": "spawn",
+              "type": 53,
+              "dx": 8,
+              "dy": 0,
+              "parameter": 2
+            },
+            {
+              "cpu": "0xB5BB",
+              "op": "record",
+              "duration": 6,
+              "frame": 14,
+              "callback": "0xB8F6"
+            },
+            {
+              "cpu": "0xB5BF",
+              "command": 4,
+              "op": "spawn",
+              "type": 53,
+              "dx": 0,
+              "dy": -16,
+              "parameter": 2
+            },
+            {
+              "cpu": "0xB5C7",
+              "op": "record",
+              "duration": 6,
+              "frame": 15,
+              "callback": "0xB8F6"
+            },
+            {
+              "cpu": "0xB5CB",
+              "op": "record",
+              "duration": 6,
+              "frame": 13,
+              "callback": "0xB8F6"
+            },
+            {
+              "cpu": "0xB5CF",
+              "op": "record",
+              "duration": 6,
+              "frame": 14,
+              "callback": "0xB8F6"
+            },
+            {
+              "cpu": "0xB5D3",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB5C7"
+            },
+            {
+              "cpu": "0xB5C7",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 11,
+          "script_cpu": "0xB5D7",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB616",
+          "ops": [
+            {
+              "cpu": "0xB5D7",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 3
+            },
+            {
+              "cpu": "0xB5DA",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 384,
+              "y": -256
+            },
+            {
+              "cpu": "0xB5E0",
+              "op": "record",
+              "duration": 6,
+              "frame": 13,
+              "callback": "0xB91F"
+            },
+            {
+              "cpu": "0xB5E4",
+              "op": "record",
+              "duration": 6,
+              "frame": 14,
+              "callback": "0xB91F"
+            },
+            {
+              "cpu": "0xB5E8",
+              "op": "record",
+              "duration": 6,
+              "frame": 15,
+              "callback": "0xB91F"
+            },
+            {
+              "cpu": "0xB5EC",
+              "command": 4,
+              "op": "spawn",
+              "type": 53,
+              "dx": 0,
+              "dy": 0,
+              "parameter": 1
+            },
+            {
+              "cpu": "0xB5F4",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 384,
+              "y": 256
+            },
+            {
+              "cpu": "0xB5FA",
+              "op": "record",
+              "duration": 6,
+              "frame": 13,
+              "callback": "0xB91F"
+            },
+            {
+              "cpu": "0xB5FE",
+              "op": "record",
+              "duration": 6,
+              "frame": 14,
+              "callback": "0xB91F"
+            },
+            {
+              "cpu": "0xB602",
+              "op": "record",
+              "duration": 6,
+              "frame": 15,
+              "callback": "0xB91F"
+            },
+            {
+              "cpu": "0xB606",
+              "command": 4,
+              "op": "spawn",
+              "type": 53,
+              "dx": 0,
+              "dy": 0,
+              "parameter": 1
+            },
+            {
+              "cpu": "0xB60E",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xB5DA"
+            },
+            {
+              "cpu": "0xB612",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB5D7"
+            },
+            {
+              "cpu": "0xB5D7",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 12,
+          "script_cpu": "0xB616",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB624",
+          "ops": [
+            {
+              "cpu": "0xB616",
+              "command": 4,
+              "op": "spawn",
+              "type": 97,
+              "dx": 0,
+              "dy": 0,
+              "parameter": 0
+            },
+            {
+              "cpu": "0xB61E",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB92D"
+            },
+            {
+              "cpu": "0xB622",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    },
+    "0x61": {
+      "bank": 30,
+      "type_table_entry_rom": 26234,
+      "state_table_cpu": "0xB949",
+      "state_table_rom": "0x7B949",
+      "state_count": 8,
+      "state_script_cpus": [
+        "0xB959",
+        "0xB95F",
+        "0xB96F",
+        "0xB9A7",
+        "0xB9DD",
+        "0xB9FF",
+        "0xBA37",
+        "0xBA45"
+      ],
+      "callbacks": [
+        "0x0338",
+        "0xBA4B",
+        "0xBA87",
+        "0xBA96",
+        "0xBAE7",
+        "0xBAFE",
+        "0xBB1A",
+        "0xBB51",
+        "0xBB61"
+      ],
+      "calls": [
+        "0xB981",
+        "0xB98C",
+        "0xB9C2",
+        "0xB9CF"
+      ],
+      "frames_used": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        7
+      ],
+      "spawns": [
+        {
+          "state": 1,
+          "type": "0x62",
+          "dx": 0,
+          "dy": 0,
+          "parameter": 0
+        },
+        {
+          "state": 5,
+          "type": "0x0A",
+          "dx": 4,
+          "dy": 0,
+          "parameter": 1
+        },
+        {
+          "state": 5,
+          "type": "0x0A",
+          "dx": -4,
+          "dy": 0,
+          "parameter": 1
+        }
+      ],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xB959",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB95F",
+          "ops": [
+            {
+              "cpu": "0xB959",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xBA4B"
+            },
+            {
+              "cpu": "0xB95D",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xB95F",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB96F",
+          "ops": [
+            {
+              "cpu": "0xB95F",
+              "command": 4,
+              "op": "spawn",
+              "type": 98,
+              "dx": 0,
+              "dy": 0,
+              "parameter": 0
+            },
+            {
+              "cpu": "0xB967",
+              "op": "record",
+              "duration": 224,
+              "frame": 1,
+              "callback": "0xBA87"
+            },
+            {
+              "cpu": "0xB96B",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB967"
+            },
+            {
+              "cpu": "0xB967",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0xB96F",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB9A7",
+          "ops": [
+            {
+              "cpu": "0xB96F",
+              "op": "record",
+              "duration": 6,
+              "frame": 1,
+              "callback": "0xBA96"
+            },
+            {
+              "cpu": "0xB973",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB981",
+              "callback": "0xBA96"
+            },
+            {
+              "cpu": "0xB979",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xB98C",
+              "callback": "0xBA96"
+            },
+            {
+              "cpu": "0xB97F",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xB9A7",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB9DD",
+          "ops": [
+            {
+              "cpu": "0xB9A7",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 64,
+              "y": -1024
+            },
+            {
+              "cpu": "0xB9AD",
+              "op": "record",
+              "duration": 32,
+              "frame": 1,
+              "callback": "0xBAE7"
+            },
+            {
+              "cpu": "0xB9B1",
+              "command": 1,
+              "op": "call",
+              "target": "0xB9C2"
+            },
+            {
+              "cpu": "0xB9B5",
+              "op": "record",
+              "duration": 64,
+              "frame": 1,
+              "callback": "0xBAE7"
+            },
+            {
+              "cpu": "0xB9B9",
+              "command": 1,
+              "op": "call",
+              "target": "0xB9CF"
+            },
+            {
+              "cpu": "0xB9BD",
+              "command": 3,
+              "op": "request_state",
+              "state": 4
+            }
+          ]
+        },
+        {
+          "state": 4,
+          "script_cpu": "0xB9DD",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB9FF",
+          "ops": [
+            {
+              "cpu": "0xB9DD",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": 256
+            },
+            {
+              "cpu": "0xB9E3",
+              "op": "record",
+              "duration": 16,
+              "frame": 4,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB9E7",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -256
+            },
+            {
+              "cpu": "0xB9ED",
+              "op": "record",
+              "duration": 16,
+              "frame": 4,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB9F1",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -256
+            },
+            {
+              "cpu": "0xB9F7",
+              "op": "record",
+              "duration": 224,
+              "frame": 4,
+              "callback": "0xBAFE"
+            },
+            {
+              "cpu": "0xB9FB",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB9F7"
+            },
+            {
+              "cpu": "0xB9F7",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 5,
+          "script_cpu": "0xB9FF",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBA37",
+          "ops": [
+            {
+              "cpu": "0xB9FF",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 2
+            },
+            {
+              "cpu": "0xBA02",
+              "op": "record",
+              "duration": 4,
+              "frame": 5,
+              "callback": "0xBB1A"
+            },
+            {
+              "cpu": "0xBA06",
+              "op": "record",
+              "duration": 4,
+              "frame": 6,
+              "callback": "0xBB1A"
+            },
+            {
+              "cpu": "0xBA0A",
+              "op": "record",
+              "duration": 4,
+              "frame": 7,
+              "callback": "0xBB1A"
+            },
+            {
+              "cpu": "0xBA0E",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xBA02"
+            },
+            {
+              "cpu": "0xBA12",
+              "command": 4,
+              "op": "spawn",
+              "type": 10,
+              "dx": 4,
+              "dy": 0,
+              "parameter": 1
+            },
+            {
+              "cpu": "0xBA1A",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 2
+            },
+            {
+              "cpu": "0xBA1D",
+              "op": "record",
+              "duration": 4,
+              "frame": 5,
+              "callback": "0xBB1A"
+            },
+            {
+              "cpu": "0xBA21",
+              "op": "record",
+              "duration": 4,
+              "frame": 6,
+              "callback": "0xBB1A"
+            },
+            {
+              "cpu": "0xBA25",
+              "op": "record",
+              "duration": 4,
+              "frame": 7,
+              "callback": "0xBB1A"
+            },
+            {
+              "cpu": "0xBA29",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xBA1D"
+            },
+            {
+              "cpu": "0xBA2D",
+              "command": 4,
+              "op": "spawn",
+              "type": 10,
+              "dx": -4,
+              "dy": 0,
+              "parameter": 1
+            },
+            {
+              "cpu": "0xBA35",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 6,
+          "script_cpu": "0xBA37",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBA45",
+          "ops": [
+            {
+              "cpu": "0xBA37",
+              "op": "record",
+              "duration": 4,
+              "frame": 5,
+              "callback": "0xBB51"
+            },
+            {
+              "cpu": "0xBA3B",
+              "op": "record",
+              "duration": 4,
+              "frame": 6,
+              "callback": "0xBB51"
+            },
+            {
+              "cpu": "0xBA3F",
+              "op": "record",
+              "duration": 4,
+              "frame": 7,
+              "callback": "0xBB51"
+            },
+            {
+              "cpu": "0xBA43",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 7,
+          "script_cpu": "0xBA45",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBA4B",
+          "ops": [
+            {
+              "cpu": "0xBA45",
+              "op": "record",
+              "duration": 224,
+              "frame": 5,
+              "callback": "0xBB61"
+            },
+            {
+              "cpu": "0xBA49",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    },
+    "0x62": {
+      "bank": 30,
+      "type_table_entry_rom": 26236,
+      "state_table_cpu": "0xBB76",
+      "state_table_rom": "0x7BB76",
+      "state_count": 3,
+      "state_script_cpus": [
+        "0xBB7C",
+        "0xBB82",
+        "0xBBA0"
+      ],
+      "callbacks": [
+        "0x0338",
+        "0xBBE1",
+        "0xBBFA",
+        "0xBC0F"
+      ],
+      "calls": [],
+      "frames_used": [
+        0,
+        8,
+        9
+      ],
+      "spawns": [],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xBB7C",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBB82",
+          "ops": [
+            {
+              "cpu": "0xBB7C",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xBBE1"
+            },
+            {
+              "cpu": "0xBB80",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xBB82",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBBA0",
+          "ops": [
+            {
+              "cpu": "0xBB82",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": 128
+            },
+            {
+              "cpu": "0xBB88",
+              "op": "record",
+              "duration": 6,
+              "frame": 8,
+              "callback": "0xBBFA"
+            },
+            {
+              "cpu": "0xBB8C",
+              "op": "record",
+              "duration": 2,
+              "frame": 9,
+              "callback": "0xBBFA"
+            },
+            {
+              "cpu": "0xBB90",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -128
+            },
+            {
+              "cpu": "0xBB96",
+              "op": "record",
+              "duration": 6,
+              "frame": 8,
+              "callback": "0xBBFA"
+            },
+            {
+              "cpu": "0xBB9A",
+              "op": "record",
+              "duration": 2,
+              "frame": 9,
+              "callback": "0xBBFA"
+            },
+            {
+              "cpu": "0xBB9E",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0xBBA0",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBBE1",
+          "ops": [
+            {
+              "cpu": "0xBBA0",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": 256
+            },
+            {
+              "cpu": "0xBBA6",
+              "op": "record",
+              "duration": 6,
+              "frame": 8,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBAA",
+              "op": "record",
+              "duration": 2,
+              "frame": 9,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBAE",
+              "op": "record",
+              "duration": 6,
+              "frame": 8,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBB2",
+              "op": "record",
+              "duration": 2,
+              "frame": 9,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBB6",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -256
+            },
+            {
+              "cpu": "0xBBBC",
+              "op": "record",
+              "duration": 6,
+              "frame": 8,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBC0",
+              "op": "record",
+              "duration": 2,
+              "frame": 9,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBC4",
+              "op": "record",
+              "duration": 6,
+              "frame": 8,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBC8",
+              "op": "record",
+              "duration": 2,
+              "frame": 9,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xBBCC",
+              "command": 6,
+              "op": "sound",
+              "sound": 190
+            },
+            {
+              "cpu": "0xBBCF",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -256
+            },
+            {
+              "cpu": "0xBBD5",
+              "op": "record",
+              "duration": 6,
+              "frame": 8,
+              "callback": "0xBC0F"
+            },
+            {
+              "cpu": "0xBBD9",
+              "op": "record",
+              "duration": 2,
+              "frame": 9,
+              "callback": "0xBC0F"
+            },
+            {
+              "cpu": "0xBBDD",
+              "command": 7,
+              "op": "jump",
+              "target": "0xBBD5"
+            },
+            {
+              "cpu": "0xBBD5",
+              "op": "loops_back"
+            }
+          ]
+        }
+      ]
+    },
+    "0x63": {
+      "bank": 30,
+      "type_table_entry_rom": 26238,
+      "state_table_cpu": "0xBC23",
+      "state_table_rom": "0x7BC23",
+      "state_count": 4,
+      "state_script_cpus": [
+        "0xBC2B",
+        "0xBC31",
+        "0xBC37",
+        "0xBC61"
+      ],
+      "callbacks": [
+        "0xBC67",
+        "0xBC7D",
+        "0xBC86",
+        "0xBCBD",
+        "0xBCC9"
+      ],
+      "calls": [],
+      "frames_used": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "spawns": [],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xBC2B",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBC31",
+          "ops": [
+            {
+              "cpu": "0xBC2B",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xBC67"
+            },
+            {
+              "cpu": "0xBC2F",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xBC31",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBC37",
+          "ops": [
+            {
+              "cpu": "0xBC31",
+              "op": "record",
+              "duration": 224,
+              "frame": 1,
+              "callback": "0xBC7D"
+            },
+            {
+              "cpu": "0xBC35",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0xBC37",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBC61",
+          "ops": [
+            {
+              "cpu": "0xBC37",
+              "op": "record",
+              "duration": 32,
+              "frame": 1,
+              "callback": "0xBC86"
+            },
+            {
+              "cpu": "0xBC3B",
+              "op": "record",
+              "duration": 32,
+              "frame": 2,
+              "callback": "0xBC86"
+            },
+            {
+              "cpu": "0xBC3F",
+              "op": "record",
+              "duration": 32,
+              "frame": 3,
+              "callback": "0xBC86"
+            },
+            {
+              "cpu": "0xBC43",
+              "op": "record",
+              "duration": 32,
+              "frame": 4,
+              "callback": "0xBC86"
+            },
+            {
+              "cpu": "0xBC47",
+              "op": "record",
+              "duration": 32,
+              "frame": 5,
+              "callback": "0xBC86"
+            },
+            {
+              "cpu": "0xBC4B",
+              "op": "record",
+              "duration": 8,
+              "frame": 6,
+              "callback": "0xBC86"
+            },
+            {
+              "cpu": "0xBC4F",
+              "op": "record",
+              "duration": 8,
+              "frame": 7,
+              "callback": "0xBC86"
+            },
+            {
+              "cpu": "0xBC53",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": -640,
+              "y": 0
+            },
+            {
+              "cpu": "0xBC59",
+              "op": "record",
+              "duration": 8,
+              "frame": 7,
+              "callback": "0xBCBD"
+            },
+            {
+              "cpu": "0xBC5D",
+              "command": 7,
+              "op": "jump",
+              "target": "0xBC59"
+            },
+            {
+              "cpu": "0xBC59",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xBC61",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xBC67",
+          "ops": [
+            {
+              "cpu": "0xBC61",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xBCC9"
+            },
+            {
+              "cpu": "0xBC65",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        }
+      ]
+    },
+    "0x15": {
+      "bank": 12,
+      "type_table_entry_rom": 26082,
+      "state_table_cpu": "0xA412",
+      "state_table_rom": "0x32412",
+      "state_count": 5,
+      "state_script_cpus": [
+        "0xA41C",
+        "0xA422",
+        "0xA469",
+        "0xA48E",
+        "0xA4C0"
+      ],
+      "callbacks": [
+        "0x032F",
+        "0xA4E9"
+      ],
+      "calls": [
+        "0xA460",
+        "0xA4B7",
+        "0xA4FD"
+      ],
+      "frames_used": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "spawns": [],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xA41C",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA422",
+          "ops": [
+            {
+              "cpu": "0xA41C",
+              "command": 1,
+              "op": "call",
+              "target": "0xA4FD"
+            },
+            {
+              "cpu": "0xA420",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xA422",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA469",
+          "ops": [
+            {
+              "cpu": "0xA422",
+              "op": "record",
+              "duration": 32,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA426",
+              "op": "record",
+              "duration": 28,
+              "frame": 1,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA42A",
+              "command": 6,
+              "op": "sound",
+              "sound": 166
+            },
+            {
+              "cpu": "0xA42D",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 3
+            },
+            {
+              "cpu": "0xA430",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -1152
+            },
+            {
+              "cpu": "0xA436",
+              "op": "record",
+              "duration": 38,
+              "frame": 1,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA43A",
+              "command": 6,
+              "op": "sound",
+              "sound": 166
+            },
+            {
+              "cpu": "0xA43D",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xA430"
+            },
+            {
+              "cpu": "0xA441",
+              "op": "record",
+              "duration": 16,
+              "frame": 1,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA445",
+              "command": 1,
+              "op": "call",
+              "target": "0xA460"
+            },
+            {
+              "cpu": "0xA449",
+              "command": 6,
+              "op": "sound",
+              "sound": 186
+            },
+            {
+              "cpu": "0xA44C",
+              "op": "record",
+              "duration": 224,
+              "frame": 1,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA450",
+              "op": "record",
+              "duration": 224,
+              "frame": 1,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA454",
+              "command": 9,
+              "op": "set_field",
+              "offset": 38,
+              "value": 255
+            },
+            {
+              "cpu": "0xA458",
+              "op": "record",
+              "duration": 224,
+              "frame": 1,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA45C",
+              "command": 7,
+              "op": "jump",
+              "target": "0xA458"
+            },
+            {
+              "cpu": "0xA458",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0xA469",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA48E",
+          "ops": [
+            {
+              "cpu": "0xA469",
+              "op": "record",
+              "duration": 32,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA46D",
+              "op": "record",
+              "duration": 28,
+              "frame": 2,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA471",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 3
+            },
+            {
+              "cpu": "0xA474",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -1152
+            },
+            {
+              "cpu": "0xA47A",
+              "op": "record",
+              "duration": 38,
+              "frame": 2,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA47E",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xA474"
+            },
+            {
+              "cpu": "0xA482",
+              "op": "record",
+              "duration": 16,
+              "frame": 2,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA486",
+              "op": "record",
+              "duration": 224,
+              "frame": 2,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA48A",
+              "command": 7,
+              "op": "jump",
+              "target": "0xA486"
+            },
+            {
+              "cpu": "0xA486",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xA48E",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA4C0",
+          "ops": [
+            {
+              "cpu": "0xA48E",
+              "op": "record",
+              "duration": 32,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA492",
+              "op": "record",
+              "duration": 28,
+              "frame": 3,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA496",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 3
+            },
+            {
+              "cpu": "0xA499",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -1152
+            },
+            {
+              "cpu": "0xA49F",
+              "op": "record",
+              "duration": 38,
+              "frame": 3,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA4A3",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xA499"
+            },
+            {
+              "cpu": "0xA4A7",
+              "op": "record",
+              "duration": 16,
+              "frame": 3,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA4AB",
+              "command": 1,
+              "op": "call",
+              "target": "0xA4B7"
+            },
+            {
+              "cpu": "0xA4AF",
+              "op": "record",
+              "duration": 224,
+              "frame": 3,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA4B3",
+              "command": 7,
+              "op": "jump",
+              "target": "0xA4AF"
+            },
+            {
+              "cpu": "0xA4AF",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 4,
+          "script_cpu": "0xA4C0",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xA4E9",
+          "ops": [
+            {
+              "cpu": "0xA4C0",
+              "op": "record",
+              "duration": 32,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA4C4",
+              "op": "record",
+              "duration": 28,
+              "frame": 4,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA4C8",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 3
+            },
+            {
+              "cpu": "0xA4CB",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 0,
+              "y": -1152
+            },
+            {
+              "cpu": "0xA4D1",
+              "op": "record",
+              "duration": 38,
+              "frame": 4,
+              "callback": "0xA4E9"
+            },
+            {
+              "cpu": "0xA4D5",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xA4CB"
+            },
+            {
+              "cpu": "0xA4D9",
+              "op": "record",
+              "duration": 16,
+              "frame": 4,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA4DD",
+              "command": 1,
+              "op": "call",
+              "target": "0xA4B7"
+            },
+            {
+              "cpu": "0xA4E1",
+              "op": "record",
+              "duration": 224,
+              "frame": 4,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xA4E5",
+              "command": 7,
+              "op": "jump",
+              "target": "0xA4E1"
+            },
+            {
+              "cpu": "0xA4E1",
+              "op": "loops_back"
+            }
+          ]
+        }
+      ]
+    },
+    "0x1F": {
+      "bank": 12,
+      "type_table_entry_rom": 26102,
+      "state_table_cpu": "0xAEB3",
+      "state_table_rom": "0x32EB3",
+      "state_count": 8,
+      "state_script_cpus": [
+        "0xAEC3",
+        "0xAEDF",
+        "0xAEE5",
+        "0xAEED",
+        "0xAF23",
+        "0xAF2D",
+        "0xB00F",
+        "0xB063"
+      ],
+      "callbacks": [
+        "0x032F",
+        "0x0338",
+        "0xAF45",
+        "0xAF4E",
+        "0xAF6A",
+        "0xAF8C",
+        "0xAF94",
+        "0xAFE3",
+        "0xB00E",
+        "0xB09D"
+      ],
+      "calls": [
+        "0xAED1",
+        "0xAF33"
+      ],
+      "frames_used": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "spawns": [],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xAEC3",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAEDF",
+          "ops": [
+            {
+              "cpu": "0xAEC3",
+              "command": 1,
+              "op": "call",
+              "target": "0xAED1"
+            },
+            {
+              "cpu": "0xAEC7",
+              "op": "record",
+              "duration": 1,
+              "frame": 0,
+              "callback": "0x032F"
+            },
+            {
+              "cpu": "0xAECB",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xAF45"
+            },
+            {
+              "cpu": "0xAECF",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xAEDF",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAEE5",
+          "ops": [
+            {
+              "cpu": "0xAEDF",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xAF4E"
+            },
+            {
+              "cpu": "0xAEE3",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "script_cpu": "0xAEE5",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAEED",
+          "ops": [
+            {
+              "cpu": "0xAEE5",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xAF33",
+              "callback": "0xAF6A"
+            },
+            {
+              "cpu": "0xAEEB",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "script_cpu": "0xAEED",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAF23",
+          "ops": [
+            {
+              "cpu": "0xAEED",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 8
+            },
+            {
+              "cpu": "0xAEF0",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xAF33",
+              "callback": "0xAF8C"
+            },
+            {
+              "cpu": "0xAEF6",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xAEF0"
+            },
+            {
+              "cpu": "0xAEFA",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 8
+            },
+            {
+              "cpu": "0xAEFD",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xAF33",
+              "callback": "0xAF94"
+            },
+            {
+              "cpu": "0xAF03",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xAEFD"
+            },
+            {
+              "cpu": "0xAF07",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 8
+            },
+            {
+              "cpu": "0xAF0A",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xAF33",
+              "callback": "0xAF94"
+            },
+            {
+              "cpu": "0xAF10",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xAF0A"
+            },
+            {
+              "cpu": "0xAF14",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 8
+            },
+            {
+              "cpu": "0xAF17",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xAF33",
+              "callback": "0xAF8C"
+            },
+            {
+              "cpu": "0xAF1D",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xAF17"
+            },
+            {
+              "cpu": "0xAF21",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 4,
+          "script_cpu": "0xAF23",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xAF2D",
+          "ops": [
+            {
+              "cpu": "0xAF23",
+              "command": 5,
+              "op": "call_and_set_callback",
+              "target": "0xAF33",
+              "callback": "0xAFE3"
+            },
+            {
+              "cpu": "0xAF29",
+              "command": 7,
+              "op": "jump",
+              "target": "0xAF23"
+            },
+            {
+              "cpu": "0xAF23",
+              "op": "loops_back"
+            }
+          ]
+        },
+        {
+          "state": 5,
+          "script_cpu": "0xAF2D",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB00F",
+          "ops": [
+            {
+              "cpu": "0xAF2D",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB00E"
+            },
+            {
+              "cpu": "0xAF31",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 6,
+          "script_cpu": "0xB00F",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB063",
+          "ops": [
+            {
+              "cpu": "0xB00F",
+              "command": 14,
+              "op": "set_loop_counter",
+              "count": 10
+            },
+            {
+              "cpu": "0xB012",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 192,
+              "y": 128
+            },
+            {
+              "cpu": "0xB018",
+              "op": "record",
+              "duration": 4,
+              "frame": 1,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB01C",
+              "op": "record",
+              "duration": 4,
+              "frame": 2,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB020",
+              "op": "record",
+              "duration": 4,
+              "frame": 3,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB024",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 192,
+              "y": -128
+            },
+            {
+              "cpu": "0xB02A",
+              "op": "record",
+              "duration": 4,
+              "frame": 4,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB02E",
+              "op": "record",
+              "duration": 4,
+              "frame": 5,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB032",
+              "op": "record",
+              "duration": 4,
+              "frame": 6,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB036",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": -192,
+              "y": 128
+            },
+            {
+              "cpu": "0xB03C",
+              "op": "record",
+              "duration": 4,
+              "frame": 7,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB040",
+              "op": "record",
+              "duration": 4,
+              "frame": 8,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB044",
+              "op": "record",
+              "duration": 4,
+              "frame": 9,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB048",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": -192,
+              "y": -128
+            },
+            {
+              "cpu": "0xB04E",
+              "op": "record",
+              "duration": 4,
+              "frame": 10,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB052",
+              "op": "record",
+              "duration": 4,
+              "frame": 11,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB056",
+              "op": "record",
+              "duration": 4,
+              "frame": 12,
+              "callback": "0x0338"
+            },
+            {
+              "cpu": "0xB05A",
+              "command": 15,
+              "op": "loop_jump",
+              "target": "0xB012"
+            },
+            {
+              "cpu": "0xB05E",
+              "command": 3,
+              "op": "request_state",
+              "state": 7
+            }
+          ]
+        },
+        {
+          "state": 7,
+          "script_cpu": "0xB063",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": null,
+          "ops": [
+            {
+              "cpu": "0xB063",
+              "command": 2,
+              "op": "velocity_8_8",
+              "x": 256,
+              "y": 1024
+            },
+            {
+              "cpu": "0xB069",
+              "op": "record",
+              "duration": 4,
+              "frame": 1,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB06D",
+              "op": "record",
+              "duration": 4,
+              "frame": 2,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB071",
+              "op": "record",
+              "duration": 4,
+              "frame": 3,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB075",
+              "op": "record",
+              "duration": 4,
+              "frame": 4,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB079",
+              "op": "record",
+              "duration": 4,
+              "frame": 5,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB07D",
+              "op": "record",
+              "duration": 4,
+              "frame": 6,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB081",
+              "op": "record",
+              "duration": 4,
+              "frame": 7,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB085",
+              "op": "record",
+              "duration": 4,
+              "frame": 8,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB089",
+              "op": "record",
+              "duration": 4,
+              "frame": 9,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB08D",
+              "op": "record",
+              "duration": 4,
+              "frame": 10,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB091",
+              "op": "record",
+              "duration": 4,
+              "frame": 11,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB095",
+              "op": "record",
+              "duration": 4,
+              "frame": 12,
+              "callback": "0xB09D"
+            },
+            {
+              "cpu": "0xB099",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB069"
+            },
+            {
+              "cpu": "0xB069",
+              "op": "loops_back"
+            }
+          ]
+        }
+      ]
+    },
+    "0x22": {
+      "bank": 12,
+      "type_table_entry_rom": 26108,
+      "state_table_cpu": "0xB2F9",
+      "state_table_rom": "0x332F9",
+      "state_count": 2,
+      "state_script_cpus": [
+        "0xB2FD",
+        "0xB303"
+      ],
+      "callbacks": [
+        "0xB353",
+        "0xB35C"
+      ],
+      "calls": [
+        "0xB396"
+      ],
+      "frames_used": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "spawns": [],
+      "sets_bit4": false,
+      "clears_bit4": false,
+      "states": [
+        {
+          "state": 0,
+          "script_cpu": "0xB2FD",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB303",
+          "ops": [
+            {
+              "cpu": "0xB2FD",
+              "op": "record",
+              "duration": 224,
+              "frame": 0,
+              "callback": "0xB353"
+            },
+            {
+              "cpu": "0xB301",
+              "command": 0,
+              "op": "restart_state"
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "script_cpu": "0xB303",
+          "cleanly_terminated": true,
+          "bounded_by_cpu": "0xB353",
+          "ops": [
+            {
+              "cpu": "0xB303",
+              "command": 1,
+              "op": "call",
+              "target": "0xB396"
+            },
+            {
+              "cpu": "0xB307",
+              "op": "record",
+              "duration": 1,
+              "frame": 1,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB30B",
+              "op": "record",
+              "duration": 1,
+              "frame": 2,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB30F",
+              "op": "record",
+              "duration": 1,
+              "frame": 3,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB313",
+              "op": "record",
+              "duration": 1,
+              "frame": 4,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB317",
+              "op": "record",
+              "duration": 1,
+              "frame": 5,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB31B",
+              "op": "record",
+              "duration": 1,
+              "frame": 4,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB31F",
+              "op": "record",
+              "duration": 1,
+              "frame": 3,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB323",
+              "op": "record",
+              "duration": 1,
+              "frame": 6,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB327",
+              "op": "record",
+              "duration": 55,
+              "frame": 0,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB32B",
+              "op": "record",
+              "duration": 2,
+              "frame": 1,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB32F",
+              "op": "record",
+              "duration": 2,
+              "frame": 2,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB333",
+              "op": "record",
+              "duration": 2,
+              "frame": 3,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB337",
+              "op": "record",
+              "duration": 2,
+              "frame": 4,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB33B",
+              "op": "record",
+              "duration": 2,
+              "frame": 5,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB33F",
+              "op": "record",
+              "duration": 2,
+              "frame": 4,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB343",
+              "op": "record",
+              "duration": 2,
+              "frame": 3,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB347",
+              "op": "record",
+              "duration": 2,
+              "frame": 6,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB34B",
+              "op": "record",
+              "duration": 137,
+              "frame": 0,
+              "callback": "0xB35C"
+            },
+            {
+              "cpu": "0xB34F",
+              "command": 7,
+              "op": "jump",
+              "target": "0xB307"
+            },
+            {
+              "cpu": "0xB307",
+              "op": "loops_back"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "graphics": {
+    "24": {
+      "cpu": 31775,
+      "entries": [
+        {
+          "list_rom": 31775,
+          "bank_byte": 11,
+          "bank": 11,
+          "tile_count": 132,
+          "vram_destination": 1472,
+          "tile_base": 46,
+          "source_cpu": 32768,
+          "source_rom": 180224,
+          "remap": false
+        },
+        {
+          "list_rom": 31781,
+          "bank_byte": 9,
+          "bank": 9,
+          "tile_count": 12,
+          "vram_destination": 5696,
+          "tile_base": 178,
+          "source_cpu": 43936,
+          "source_rom": 158624,
+          "remap": false
+        }
+      ]
+    },
+    "25": {
+      "cpu": 31788,
+      "entries": [
+        {
+          "list_rom": 31788,
+          "bank_byte": 11,
+          "bank": 11,
+          "tile_count": 140,
+          "vram_destination": 1472,
+          "tile_base": 46,
+          "source_cpu": 41344,
+          "source_rom": 188800,
+          "remap": false
+        }
+      ]
+    },
+    "26": {
+      "cpu": 31795,
+      "entries": [
+        {
+          "list_rom": 31795,
+          "bank_byte": 11,
+          "bank": 11,
+          "tile_count": 90,
+          "vram_destination": 1472,
+          "tile_base": 46,
+          "source_cpu": 45824,
+          "source_rom": 193280,
+          "remap": false
+        },
+        {
+          "list_rom": 31801,
+          "bank_byte": 9,
+          "bank": 9,
+          "tile_count": 12,
+          "vram_destination": 4352,
+          "tile_base": 136,
+          "source_cpu": 43936,
+          "source_rom": 158624,
+          "remap": false
+        }
+      ]
+    },
+    "33": {
+      "cpu": 31808,
+      "entries": [
+        {
+          "list_rom": 31808,
+          "bank_byte": 11,
+          "bank": 11,
+          "tile_count": 136,
+          "vram_destination": 1472,
+          "tile_base": 46,
+          "source_cpu": 36992,
+          "source_rom": 184448,
+          "remap": false
+        }
+      ]
+    }
+  },
+  "regions": [
+    {
+      "bank": 30,
+      "cpu": 44876,
+      "file": 503628,
+      "length": 3458,
+      "sha256": "fb3e55bcb2163e2fd814425e6d31a3a99728302d1ed734051f88a3987b69785a"
+    },
+    {
+      "bank": 0,
+      "cpu": 6381,
+      "file": 6381,
+      "length": 625,
+      "sha256": "cfad34cb8b964076bc5d0184de2370f87ae69cba481fad8ab951ba07a9c92e02"
+    },
+    {
+      "bank": 0,
+      "cpu": 4915,
+      "file": 4915,
+      "length": 87,
+      "sha256": "270581b9d31048e05e72216da3e252b2ff55fdb595ecbed74128cef4fc67a72c"
+    },
+    {
+      "bank": 0,
+      "cpu": 5443,
+      "file": 5443,
+      "length": 175,
+      "sha256": "46b9f946a53cc5ccb7e9d9974f84fa82f711f37ff0c42f66427684b3eae13f23"
+    }
+  ],
+  "framework": {
+    "index_rule": "index = zone ($D297) + $D4A5 (starts 0); state 1 trigger table $1E:$97A1 (strict dx/dy distance), state 2 camera-target offset table $1E:$9808",
+    "rows": [
+      {
+        "index": 0,
+        "trigger_dx_lt": 160,
+        "trigger_dy_lt": 256,
+        "camera_x_offset": -256,
+        "camera_y_offset": -160
+      },
+      {
+        "index": 1,
+        "trigger_dx_lt": 128,
+        "trigger_dy_lt": 304,
+        "camera_x_offset": -192,
+        "camera_y_offset": -160
+      },
+      {
+        "index": 2,
+        "trigger_dx_lt": 160,
+        "trigger_dy_lt": 304,
+        "camera_x_offset": -224,
+        "camera_y_offset": -160
+      },
+      {
+        "index": 3,
+        "trigger_dx_lt": 160,
+        "trigger_dy_lt": 304,
+        "camera_x_offset": -208,
+        "camera_y_offset": -32
+      },
+      {
+        "index": 4,
+        "trigger_dx_lt": 96,
+        "trigger_dy_lt": 304,
+        "camera_x_offset": -128,
+        "camera_y_offset": -160
+      },
+      {
+        "index": 5,
+        "trigger_dx_lt": 96,
+        "trigger_dy_lt": 304,
+        "camera_x_offset": -128,
+        "camera_y_offset": -160
+      },
+      {
+        "index": 6,
+        "trigger_dx_lt": 96,
+        "trigger_dy_lt": 304,
+        "camera_x_offset": -128,
+        "camera_y_offset": -160
+      }
+    ],
+    "mghz_row": {
+      "index": 3,
+      "trigger_dx_lt": 160,
+      "trigger_dy_lt": 304,
+      "camera_x_offset": -208,
+      "camera_y_offset": -32
+    },
+    "thz_row_cross_check": "index 0 gives (160,256) and (-256,-160): reproduces accepted THZ3 trigger and camera target (1680,78)"
+  },
+  "contracts": {
+    "trigger": "5E row5 strict PLAYER_DIST(96,304);60 gated by D4A7 then shared row6, same thresholds. Initial placement5E(2080,494),60(2464,494). Camera targets(1952,334)/(2336,334) from WORLD offsets(-128,-160); generic exclusive pan semantics retained.",
+    "first_parent": "5E 14 states;B011 keepalive,bossactive6,D4A5=0,HUD12,right-limit save. B02B selector24,palette17,newX+128,VX-0.75,counterE0,HP16,D4A7=0,state12. States6/7 patrol with callback frame selectors1..4 and screen-X thresholds48/192; states9/10 launch5F;state11 jump;state13 eight-call attack-selection pause.",
+    "contact5e": "B2EC: pending defeat38 ->state4. Otherwise palette restore; frame!=5 with attacking+grounded player returns before overlap/cooldown. Shared5FA0 contact. Cooldown37 decrements and skips damage while nonzero. Bottom contact sets hurt request. Other attacking contact rebounds via8105; only topbit0 decrementsHP. HP reaches0 ->state4,defeat38FF; cooldown16,soundB6 and palette entries13/14 flashwhite. Not THZ top-immunity.",
+    "defeat5e": "shared explosion state4 ->ownstate5: VY-1 and20 loops of frame20/0 duration2 each, thenVX+2,VY0,delay32, sameflash. B217 waits asleepbit6 thenzerosVX,countdownborrow ->D280=cameraX,releasepan,restore savedrightlimit,D4A7FF,token0,param80,typeFE. No ordinary player20/bonus clear at this intermediate boss.",
+    "child5f": "seven states and parameter-specific initialization:1 bouncing(-3,+3) with3 floor rebounds;0 parity selects projectile or tethered attachment;FF special(-2.625,+0.1875),FE parent link. Callback B389 stores parent pointer in child38/39. B463 checks WORLD Y>494 ->shareddefeat, then asleep delete; movement, forcedhurt, cached screen7/249 X reversal. B4FC follows parent X with8-step Y wobble. Full scripts preserve callbacks/velocities/frame timing.",
+    "second_parent": "60 state0 command4 creates63 andB585 stores IY pointer38/39;B624 waits D4A7!=0,clearsD3E7,D4A5=1,HUD/rightsave,state2. State3 waits pointed-slot type!=63,then selector25,state7,Y414,counter32. State7/8 delay ->state9 repeated flight orstate10 escape when field26 nonzero. State9 chooses routes from player cachedscreenX thresholds55/A5 and angle parity; screenedge placements0/256,turnspawns32/224 and cameraY; WORLD Y414/480.",
+    "contact60": "state9 B741 while awake andfield26==0: shared5FA0; attacking top contact setsfield35,feedbacksoundB6,paletteflash;ANY other overlap invokes4984 immediate DEATH (state1F,sound96), bypassing ordinary ring-loss hurt. No general HP decrement. Successful odd-angle contact immediately requests10;even sets26FF andcounter32; passingawake->asleep requests8/delay80 thenescape. Routine oracle skips only IRQ wait062D after death writes.",
+    "defeat60": "state10script35 explosionchildren and timer33calls ->state11,VX+0.75,VY0,field23=FD00;state11 alternatingVY\u00b11 passeswith35 children; asleep ->state12;state12command4 creates61, B92D releasespan/restoresright,signalsD4A7FF,convertsFE without player20.",
+    "controller63": "selector33,keepalive,Y414;waitawake thenframes1..5 duration32,6/7 duration8;vertical oscillator accelerates\u00b12/256 between signed thresholds;thenVX-2.5 untilasleep->state3delete. This is dependency for60 entry, not inferred scenery.",
+    "final61": "initializer stops timerD2BE=0,bossactive6,selector26,palette17,D4A5=2,HUD/rightsave;WORLD(2752,494). Wait strict |dx|<112, state2chase: triangular128-call offset176..239 fromcameraX, forwardonly capWORLD3504. WORLD playerX>=3456 ->state3 script32+64 delay thenstate4; gravity+1/16, motions0.25/-4 etc retained in scripts.",
+    "final62": "WORLD(3536,430),keepalive;bob\u00b10.5 in8-call halves;D3E7nonzero ->state2bob\u00b11 then soundBE andrise-1 untilasleep;clearsD3E7/deletes. 61 waits D3E7zero afterrise thenstate5; state5 emits0Aparam1 at\u00b14, gravity4/256,settlesstate6,overlap->7. State7 sets collectedflagsbit5 and D293=50,delete. Earlystate5 clearsimmediately except Sonic with collectedflags exactly1F.",
+    "endgame": "D29350 haszone-clearbit4;1543 results/transition skips32F9 whenzone>=5.15CE resetsact, incrementszone to6,setsbit7 ratherthannextactbit1.1333bit7 invokes1365 ->18ED ending, then clearsflags andjumps04B4. Ending selector: D2C8==1 and(D2CC&3F)==3F enters18FE; D2C8==1 partial ->1A41;othercharacter ->1ACD. Full source is retained; no invented credits/art.",
+    "ending_full": "18FE scene usesbank9BD90,player1state31,type22,sound8D,backgroundpalettes2A..2F,1500calls each exceptfinal3000;repeatuntilD3C1FF. Thenbank14B23A,type15 parameters0..3,waitD766FF. Exact visible text/credits attribution requires graphics/scene trace.",
+    "ending_partial": "1A41 scene bank9B600,player1state33,type1Fparam1 at144,88,sound9A,palettes2A/29;waitplayerdeletion,fade,34D3 timed scene bankload7A3C,palette25,sound98,thenreturn.",
+    "route60": "B67F counter borrow starts flight; odd angleVX+3.5 atcameraX,evenVX-3.5 atcameraX+256. Player cachedscreenX<85 chooses route1/0 forodd/even; >=165 chooses0/1; middle alternates3/2. Routes0/2 Y414,1/3 Y480. B7BC moves BEFORE acceleration. Route0 addsVy32/256 until>=448/256 then subtracts8/256 toward0 and acceleratesX16/256. Route1 mirrored upward with strict threshold below-448/256. Route2 first pass setsXcamera+32odd/+224even,YcameraY,Vy+6,Vx\u00b11.625,then subtractsVy32/256 eachlaterpass. Route3 acceleratesX16/256. No viewport-dependent world offsets.",
+    "oscillator63": "BC86 moves before Vy update. Phase even adds2/256 and flips when new signnonnegative AND new lowbyte>=20hex; odd subtracts2/256 and flips when new signnegative AND new lowbyte<E0hex. At natural velocities this oscillates through+32/256 and-34/256; do not replace the lowbyte/sign tests with a generic float clamp.",
+    "validation_limits": "Source graphs and full controlled chain traces are separate evidence. Both60 angle branches and Sonic ending branches execute to title; long passive5E paths observed plus exhaustive decision/contact sweeps. Not an input-only fight. Art approval and scene raster fidelity remain James review; do not claim Windows acceptance."
+  }
+}
