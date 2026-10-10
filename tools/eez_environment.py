@@ -64,7 +64,7 @@ def build(r):
         conveyor='$6B56 surface0E: floor bit1 required; WORLD X -= 1 including 24-bit carry; preserves X velocity and fractional byte. Player terrain pass, not camera-relative.',
         transport_entry='$6D43 surface13: block80 immediate RET. Otherwise copy D36B to D36D, clear floorbit1,set flag3bit0. 7F falling/nonrising launches down; 81 nonnegativeVX and Ymod32<16 launches right; 82 Ymod32<16 and (state18 or VX<=0) launches left. Current21 blocks launch; soundA5, state21, speed6.0 along axis, other speed0. Block80 rising branch is unreachable from routine entry.',
         effect3a='$1E:91A8 sets D3F7=FF,bases92/92,request1. 91BA aligns player WORLD X to8 +3 and WORLD Y+32 to32 +6; animation alternates frames1/0 for2 updates each. 91DB deletes/clears latch when requested player17 OR floor-probed block !=0B. Gate is set on initializer, not allocation.',
-        remaining='surface0B replacement/type37; state21 full transport graph; terrain/player dispatch ordering need whole-game closure. These contracts alone do not close A2.')
+        supporting_packages='terrain-effects.json closes0B replacement/exhaustion and effects;transport-state21.json has44800 selectors;transport-game-checks.json verifies natural7F entry and movement-before-terrain order. New visual boards pending James review.')
     out['regions']=[F.A.source(r,0,0x6A5D,0x6A75),F.A.source(r,0,0x6B56,0x6B78),F.A.source(r,0,0x6D43,0x6E56),F.A.source(r,30,0x9190,0x91F1)]
     return out
 

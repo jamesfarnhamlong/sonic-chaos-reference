@@ -75,7 +75,10 @@ every3 calls); effect6 swaps paired96-byte strips every30; effect13 cycles four
 every8. Ring animation remains separate. Exact source/destination records are
 machine-readable in `terrain-effects.json`.
 
-Remaining A2 closure: transport
-full player update/order traces; effect 6/8/13 interpretation and animation
-approval. Carrier `$17` is a distinct A4 subsystem, not this tube state `$21`.
-No whole-stage closure or POC-ready status is claimed yet.
+`transport-game-checks.json` adds the original full player path from natural
+act1 block `$7F` at (96,384), with one boundary fixture at player(110,360).
+It observes ordinary terrain entry -> requested `$21` -> executing `$21`,
+and verifies every route-tail event moves before terrain sampling (79 checks).
+No player route/state is supplied after entry. This complements the 44,800
+isolated selector comparisons. Carrier `$17` is a distinct A4 subsystem.
+Visual approval remains pending; these are canonical contracts, not POC acceptance.
