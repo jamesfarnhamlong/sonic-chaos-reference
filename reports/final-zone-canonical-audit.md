@@ -66,4 +66,3 @@ Review and merge useful Research checkpoints before treating them as accepted ca
 - Record5E's16 top-hit HP,60's direct-death contact and final-clear ending/title branch rather than ordinary zone progression.
 - Clarify shared score: BCD accumulator +10 becomes displayed100 points because the renderer appends a fixed trailing zero; this does not reopen accepted earlier-zone gameplay.
 - Record21 pending visual boards separately from canonical behavior verification and Windows acceptance.
-
