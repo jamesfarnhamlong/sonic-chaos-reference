@@ -14,7 +14,7 @@ class Closure(unittest.TestCase):
         v=T.build(self.r);self.assertEqual(v['checks'],202)
         self.assertEqual((F.OUT/'terrain-effects.json').read_text(encoding='utf-8'),F.dumps(v))
     def test_boss_boundaries_endgame(self):
-        v=B.build(self.r);self.assertEqual(v['assertions'],357532)
+        v=B.build(self.r);self.assertEqual(v['assertions'],507036)
         self.assertEqual((F.OUT/'boss-endgame-recon.json').read_text(encoding='utf-8'),F.dumps(v))
     def test_complete_ending_scripts(self):
         v=E.build(self.r)

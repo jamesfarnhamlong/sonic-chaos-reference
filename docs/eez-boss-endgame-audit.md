@@ -3,7 +3,7 @@
 Canonical source/controlled results are in `data/rom-cache/eez/`:
 `boss-endgame-recon.json`, five `boss-game-*` traces, `allocation-checks.json`
 and `ending-scripts.json`. Europe v1.2 SHA is verified on every build. The
-routine package executes 357,532 independent boundary comparisons. Original
+routine package executes 507,036 independent boundary comparisons. Original
 game traces supply player/camera boundary fixtures; they never write boss HP,
 state, movement or children. These are not input-only fights or Windows approval.
 

@@ -106,6 +106,17 @@ def build(r):
         new=(v+(-2 if phase else 2))&65535
         flip=(bool(new&32768) and (new&255)<224) if phase else (not new&32768 and (new&255)>=32)
         eq('63_oscillator',[o.word(S+24),m[S+52]],[new,phase+int(flip)])
+    for count,phase,vx,vy in itertools.product(range(10),range(256),(256,65280),(256,65280)):
+        m[S:S+64]=bytes(64);m[S+10]=count;m[S+31]=phase;o.word(S+22,vx);o.word(S+24,vy);o.call(0xB4C4)
+        new=(count-1)&255;anim=(phase+int(new==0))&255
+        eq('5f_animation',[m[S+10],m[S+31],m[S+6],m[S+7]],[8 if new==0 else new,anim,(13 if (vx^vy)&32768 else 15)+(anim&1),1])
+    for angle,hit,frame in itertools.product(range(256),(0,1),range(16)):
+        m[S:S+64]=bytes(64);m[S+10]=angle;m[S+53]=hit;m[S+6]=frame;o.call(0xB8AF)
+        base=(9 if hit else 6) if angle&1 else (3 if hit else 0)
+        eq('60_animation',[m[S+6],m[S+7]],[frame+1 if frame<base+3 else base+1,2])
+    for cb,vx in itertools.product((0xB981,0xB98C),range(65536)):
+        m[S:S+64]=bytes(64);o.word(0xD516,vx);o.call(cb)
+        eq('61_animation',[m[S+6],m[S+7]],[1 if vx<64 or vx&32768 else 2 if cb==0xB981 else 3,6])
     allocations=[]
     for free in range(12):
         m[0xD700:0xD9C0]=bytes([255])*704
