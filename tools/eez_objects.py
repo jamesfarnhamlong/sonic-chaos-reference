@@ -68,7 +68,7 @@ def build(r):
                 state1='8F23 sleep ->request2 without movement/contact. Awake forced hurt630B before move then solid/oneway anchor probe614E; empty retains1, solid requests2.',
                 state2='frames2/3/4/5 for6 each, then frame0 delete8F3E; no pickup or score.',
                 state3='8F43 moves first; compare WORLD cellY-24 versus objectY; <= boundary applies forced hurt, otherwise request2. No extra attack defeat.',
-                dependency='surface0B replaces block B1 withB2 and allocates type37 parameter1, stores probed cellX/Y in34..37 and D35C/D35E. Cell restoration path still needs separate trace; do not silently infer it.'),
+                dependency='surface0B replaces block B1 withB2 before allocating type37 parameter1, stores probed cellX/Y in34..37 and D35C/D35E. terrain-effects.json tests exhaustion; no restoration callback exists, replacement persists until map reload.'),
             type38=dict(initial='8FC5 counter30=32; parameter1 ->state4 (script spawns38 parameter2), parameter2 ->state5; all other values state1,VX+0.25,VY0.',
                 state1='forced hurt630B first, then strict |dx|<32 and |dy|<32. Outside: move and decrement30; underflow resets32/reversesVX. Inside: state2,counter30=2,counter31=32, no move.',
                 state2='forced hurt first; counter31 subtract1, borrow requests3 without movement. Otherwise move; counter30 subtract1,borrow resets2/reversesVX. 32 movement calls followed by transition on33rd.',

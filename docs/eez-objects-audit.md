@@ -55,8 +55,22 @@ state13 contact gate, whose AQZ2 override does not apply to zone5; `$8B` must
 not select AQZ state14 here. Existing spring span and enemy parameter contracts
 still need explicit zone5 integration checks. No new placements are authored.
 
-Remaining closure: complete natural producer/projectile scheduler traces,
-pool exhaustion, scored conversion observation, shared-family zone5 traces,
-and surface `$0B` cell mutation/restoration. This checkpoint does not claim
-complete A3 acceptance. Art boards for numeric `$36/$38` are provisional;
-children and reachable animation frames still need registration checks.
+`shared-reuse.json` verifies every naturally placed shared record's first two
+updates at zone5 against the same record/act/parameter at zone1 (44 assertions,
+including nine platform state checks). Source inventories retain callback
+regions, viewport references and vector dependencies for every family.
+
+`allocation-checks.json` executes original command4 across all 0..11 free-slot
+capacities for `$36->$37`, `$38->$39/$39`, producer `$38->$38`, and boss handoffs.
+Failed spawns advance without retry or replacement children. Its 574 checks
+include all 256 score-gate bytes and the shared score display: accumulator BCD
+`10 00 00` means **100 displayed points**, because `$26F8` draws six digits then
+appends a static zero at `$3BA6`. Do not confuse accumulator +10 with points +10.
+
+`system-game-checks.json` runs actual original scheduler/animation/contact code
+from canonical creation fields. `$36` emits `$37`; producer `$38` emits falling
+`$38`, which lands, triggers, emits both `$39` parameters and converts to `$0F`
+with the shared score. Player contact is held at update boundaries and is
+explicitly synthetic; actor state/velocity/children remain original. Surface
+`$0B` replacement persists until reload, as closed in the environment report.
+New art boards retain original piece coordinates; James approval is pending.
