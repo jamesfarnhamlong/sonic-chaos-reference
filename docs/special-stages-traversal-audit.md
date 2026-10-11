@@ -20,7 +20,7 @@ Every surface type used by the five maps dispatches to a handler that already ex
 | `$13` | `$6D43` | **tube mouth/pipe** | SS3 397, SS5 444 | eez-environment |
 | `$14` | `$6A90` | diagonal / ceiling spring; zone != 0 -> Y -5.5 | SS3 73, SS4 5 | spring-interaction |
 | `$16` | `$6AE3` | floor break/bounce | SS4 12 | gpz-foundation |
-| `$1D` | `$69B1` | no-op (decor-like platform art `$B8`) | SS1 128, SS2 8 | - |
+| `$1D` | `$69B1` (floor handler: no-op) | **Large Ring**: collected by the `$753E` probe, block `$B8` -> `$46`, +10 rings per cell | SS1 128, SS2 8 | terrain-ring-collection; followup audit |
 
 Surface `$01` blocks in SS2/4/5 and `$0B`-dependent behavior of the final zone therefore have **no** effect: these blocks are plain solid cells. Diagonal springs launch with Y -5.5 (zone byte is not 0), exactly like GPZ/MGHZ/SEZ.
 

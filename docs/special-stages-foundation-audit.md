@@ -30,7 +30,7 @@ Hence an active Rocket/Spring Shoes, invincibility, or the act timer is **lost**
 
 Every exit (success `$D294` bit6 -> `$183F`; failure bit5 -> `$1815`) ends at `$1869`: `$D294 := 0`, `$D297 := $D296`, `$D293 |= $20`. That flag is the ordinary **act-clear** flag, so `$14AE` runs: results `$32F9` (special-stage card because `$D2CD != 0`), tally, then **`$D298 += 1`** and a normal level load. EMULATED whole-game traces (`flow-traces.json`): success, death and timeout all land on zone 0 act 1 (from zone 0 act 0), with lives unchanged (4); only success sets the emerald bit and +1 continue. **Failure costs nothing and has no retry.** The interrupted act's remaining content is skipped.
 
-**Canonical quirk:** entered from act index 2 (including boss acts and zone 5), the return makes `$D298 = 3`. Header/start/palette/art/object tables are adjacent, so act index 3 *is* the next zone's act 0 data under the old zone number. EMULATED: zone 0 act 3 loads at player (110,384) (the GPZ1 start), zone 1 act 3 at (110,718) (SEZ1 start), zone 5 act 3 at (96,142) (zone-7 start). Clearing that act uses the `D298 >= 2` bit4 path, i.e. the next zone's first act is played twice. Decision for POC: reproduce, or adapt as a labelled QoL deviation — not decided here.
+**Canonical quirk:** entered from act index 2 (including boss acts and zone 5), the return makes `$D298 = 3`. Header/start/palette/art/object tables are adjacent, so act index 3 *is* the next zone's act 0 data under the old zone number. EMULATED: zone 0 act 3 loads at player (110,384) (the GPZ1 start), zone 1 act 3 at (110,718) (SEZ1 start), zone 5 act 3 at (96,142) (zone-7 start). Clearing that act uses the `D298 >= 2` bit4 path, i.e. the next zone's first act is played twice. **Follow-up classification:** this is a *dormant, unreachable-through-normal-entry* ROM quirk — no act-index-2 act holds 100 obtainable rings (maximum 83, MGHZ3), so it can only occur when entry is forced (see `docs/special-stages-followup-audit.md`). Normal behavior (entry in Acts 1/2, return to the next act) is what the POC should implement; the aliasing is optional/labelled if reproduced at all.
 
 ## 5. Stage metadata (DECODED, loaders executed)
 
@@ -48,13 +48,13 @@ All maps load with the shared decoder; SS1 and SS4 encode a 4096th cell the 4095
 
 | Stage | Census (type/param) |
 |---|---|
-| SS1 | `$10/4` Rocket Shoes monitor x1 (under the start), `$31/1` goal ring |
+| SS1 | `$10/4` Rocket Shoes monitor x1 (under the start), `$31/1` Chaos Emerald (success object) |
 | SS2 | `$10/5` x1, `$2F/0` Spring Shoes x7, `$31/2` |
 | SS3 | `$10/6` x7, `$31/4` |
 | SS4 | `$10/4` x5, `$10/5` x1, `$26` springs x5 (params 0/1), `$31/8` |
 | SS5 | `$10/5` x3, `$31/16` |
 
-The large ring is type `$31` whose placement **parameter is the stage's completion bit** (source of the `$D2CC` write). Monitor parameter meanings are closed in SS-A3.
+The Chaos Emerald object (type `$31`, formerly called the "goal ring" in this research) has a placement **parameter equal to the stage's completion bit** (source of the `$D2CC` write). Monitor parameter meanings are closed in SS-A3.
 
 ## 7. One loader, thin dispatch
 

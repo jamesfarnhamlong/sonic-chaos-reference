@@ -1,11 +1,13 @@
-# Special Stages SS-A4 — large goal ring, completion and failure paths
+# Special Stages SS-A4 — Chaos Emerald (type `$31`), completion and failure paths
+
+> **Terminology correction (follow-up).** Type `$31` is the **Chaos Emerald / Special Stage success object**; earlier text called it the "goal ring". Behavior, placements, parameters and collision are unchanged. It is distinct from the **Large Rings** (terrain surface `$1D`, block `$B8`, worth 10 rings each; see `docs/special-stages-followup-audit.md`). File and identifier names (`goal-ring.json`, `ss_goal_ring.py`, board id `goal-ring-in-situ`) are kept to avoid churn.
 
 Unmerged research on `research/special-stages-canonical`. Machine packages `data/rom-cache/special-stages/goal-ring.json`, `natural-completions.json` (+ `natural-inputs.json`); tools `ss_goal_ring.py`, `ss_natural.py`, `ss_search.py`; tests `tests/test_ss_goal_ring.py`, `tests/test_ss_natural.py`.
 Evidence: CONTROLLED (original callback `$1E:$9489` over a boundary sweep), EMULATED (whole-game, approximate SMS harness, complete CPU-state restore), SOURCE-TRACED.
 
 ## 1. Identity, placement, art
 
-The large ring is **mapped object type `$31`** (type-table entry `$661A`, bank `$1E`, state table `$1E:$9468`, two states). One placement per stage; **the placement parameter is the stage's completion bit** (`01/02/04/08/10`). It is *not* the ordinary `$18` goal sign: no timer stop, no sign hop, no `$19` child, no player state `$20`, no results flag `$D293`.
+The Chaos Emerald object is **mapped object type `$31`** (type-table entry `$661A`, bank `$1E`, state table `$1E:$9468`, two states). One placement per stage; **the placement parameter is the stage's completion bit** (`01/02/04/08/10`). It is *not* the ordinary `$18` goal sign (and not a Large Ring): no timer stop, no sign hop, no `$19` child, no player state `$20`, no results flag `$D293`.
 
 | Stage | World (x,y) | Token | Parameter |
 |---|---|---|---|

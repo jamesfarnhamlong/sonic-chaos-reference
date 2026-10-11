@@ -1,4 +1,4 @@
-"""Special Stage goal ring (type $31)."""
+"""Special Stage Chaos Emerald object (type $31; module name keeps the old goal-ring label)."""
 import json, os, sys, unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT / 'tools'))

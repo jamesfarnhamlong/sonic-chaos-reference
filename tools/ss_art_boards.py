@@ -134,7 +134,7 @@ def build(r, acts):
         im.save(OUT / 'objects-new.png')
         manifest['boards'].append(dict(id='objects-new', kind='object compositions', cells=[dict(type=t, stage=st, frame=fi, sha256=c['images'][0]['composed_index_sha256'])
                                                                                              for t, st, fi, c in cells]))
-    # --- 4. emulated original frames: monitors, goal ring in situ, HUD/results ---------------------------------------------
+    # --- 4. emulated original frames: monitors, Chaos Emerald object in situ, HUD/results ---------------------------------------------
     def frame(g):
         rgb = g.s.render()[0]
         img = Image.new('RGB', (256, 192)); img.putdata([tuple(px) for row in rgb for px in row])
@@ -178,7 +178,7 @@ def build(r, acts):
         manifest['boards'].append(dict(id='monitors-emulated', kind='emulated crops', cells=[dict(stage=s_, parameter=p_, frames=len(c), sha256=digest(b''.join(x.tobytes() for x in c)))
                                                                                               for s_, p_, c in mon_cells]))
     if ring_frames:
-        im = canvas(256 * 3 + 16, 192 * 2 + 40, 'Goal ring in situ, each stage (EMULATED ORIGINAL FRAMES, 1x)')
+        im = canvas(256 * 3 + 16, 192 * 2 + 40, 'Chaos Emerald object (type $31) in situ, each stage (EMULATED ORIGINAL FRAMES, 1x)')
         d = ImageDraw.Draw(im)
         for i, (st, f) in enumerate(ring_frames):
             x, y = 8 + (i % 3) * 256, 28 + (i // 3) * 196

@@ -4,14 +4,14 @@ Branch `research/special-stages-canonical` from Research `main` `c4c389c28fe6867
 
 ## Commit chain
 
-`SS-A1 foundation` -> `SS-A2 traversal` -> `SS-A3 powerups` -> `SS-A4 goal ring` -> `SS-A5 progression/closure` (see `git log`).
+`SS-A1 foundation` -> `SS-A2 traversal` -> `SS-A3 powerups` -> `SS-A4 goal ring` (commit label; the object is the Chaos Emerald) -> `SS-A5 progression/closure` (see `git log`).
 
 ## What the ROM says (headline facts)
 
 1. **Five stages = ROM zones 8..12**, one act each. Order is fixed 1..5 (`$187B`: zone = 8 + consecutive set bits of `$D2CC` from bit 0). Zone 7 is the Game Over screen, not a stage.
 2. **Entry** is the hundredth ring (`$3138` BCD wrap or the +10-ring monitor `$4AC0`), always granting +1 life, then `$178F` gates on Sonic only, zone < 6 and `$D2CC & $1F != $1F`. Timer becomes a 59-second countdown; power-ups, rings and the act timer are lost.
-3. **Exit** (success or failure) always returns to the *next act*; failure costs no life and has no retry; the stage is re-offered at the next entry. Canonical quirk: from act index 2 the return loads act index 3 = next zone's act 0 data under the old zone (the next zone's first act is then played twice).
-4. **Goal ring** = mapped type `$31`; its placement parameter is the stage's completion bit. Collection: contact box dx +-16, dy -16..+24; sets `D2CC` bit, +1 continue, time-bonus value, `D294` bit 6. No player state change; success beats a simultaneous failure flag.
+3. **Exit** (success or failure) always returns to the *next act*; failure costs no life and has no retry; the stage is re-offered at the next entry. Dormant quirk (follow-up classification): *if entry is forced* at act index 2 the return loads act index 3 = next zone's act 0 data under the old zone; no act-index-2 act can reach 100 rings, so it is unreachable through normal entry.
+4. **Chaos Emerald object** = mapped type `$31`; its placement parameter is the stage's completion bit. Collection: contact box dx +-16, dy -16..+24; sets `D2CC` bit, +1 continue, time-bonus value, `D294` bit 6. No player state change; success beats a simultaneous failure flag.
 5. **No Special-Stage-specific terrain code**: every surface uses an existing handler. **Tubes are the final-zone transport (surface `$13`, blocks `$74..$82`, player state `$21`) unchanged**; router proven zone-independent (76,800 original-handler checks over zones 8..12).
 6. **Only two stage-specific behavior differences exist**: Rocket Shoes last 6000 updates with no pickup sound in zone 8 (300 elsewhere), and the death path in zones >= 8 sets stage failure instead of life loss. The clock monitor (parameter 5) only matters inside a stage (`$D3C4 = 11`: timer frozen for 11 one-second ticks).
 7. No enemies, signs, `$09` rings or hazard objects exist in any stage.
@@ -41,7 +41,7 @@ Palettes: SS1/2/4 bg 38 / sp 18; SS3 bg 39 / sp 19; SS5 bg 39 / sp 20. Music `$8
 | Invincibility monitor `$10/6` | shared | object-10 contract |
 | Spring Shoes `$2F`, springs `$26`, terrain springs | shared | zone-sweep + traces |
 | Death/failure in stages | **stage-specific rule** (`$49A0`, `$2846`) | source-traced |
-| Goal ring `$31`, results card, tally, continue/emerald reward | **new** | SS-A4/A5 |
+| Chaos Emerald object `$31`, results card, tally, continue/emerald reward | **new** | SS-A4/A5 |
 | Terrain art (`$64000`, `$65590`), per-stage ring/object art `$D40` streams, results cards | **new art** | boards APPROVED |
 
 ## Tests (all pass on this branch)
@@ -54,13 +54,13 @@ See `docs/special-stages-goal-ring-audit.md` section 6 and `data/rom-cache/speci
 
 ## Visual boards: APPROVED by James
 
-`build/ss-approval/` (ignored), index `data/rom-cache/special-stages/art-approval.json`: five maps (`map-ss1-part1..4`, `map-ss2`, `map-ss3`, `map-ss4-part1..2`, `map-ss5`), `terrain-outdoor`, `terrain-interior`, `objects-new` (goal ring, five colourways), `monitors-emulated` (parameters 4/5/6), `goal-ring-in-situ`, `results`. Pixel-identical `$2F/$26` art is deduplicated.
+`build/ss-approval/` (ignored), index `data/rom-cache/special-stages/art-approval.json`: five maps (`map-ss1-part1..4`, `map-ss2`, `map-ss3`, `map-ss4-part1..2`, `map-ss5`), `terrain-outdoor`, `terrain-interior`, `objects-new` (Chaos Emerald object, five colourways), `monitors-emulated` (parameters 4/5/6), `goal-ring-in-situ`, `results`. Pixel-identical `$2F/$26` art is deduplicated.
 
 ## Unresolved
 
-- Whether the act-index-3 aliasing should be reproduced in the POC (canonical) or adapted.
-- Names for sounds `$8A/$86/$B5/$F8/$8F` and the purpose of SS3's seven invincibility monitors: open notes, **non-blocking**.
-- SS2 replay-verified natural completion: **non-blocking route automation only**. The SS2 gameplay contract is closed (Spring Shoes pickup/relaunch, platform layout, goal ring, failure routes); only an input-script generator for the full climb is missing.
+- The act-index-3 aliasing is dormant; reproduction in the POC is optional.
+- Names for sounds `$8A/$86/$B5/$F8/$8F` (open note, **non-blocking**). SS3's invincibility monitors were resolved in the follow-up: route obstacles / time-cost gates.
+- SS2 replay-verified natural completion: **non-blocking route automation only**. The SS2 gameplay contract is closed (Spring Shoes pickup/relaunch, platform layout, Chaos Emerald object, failure routes); only an input-script generator for the full climb is missing.
 - Sound/PSG and exact mid-line timing are not modelled by the harness; all traces are approximate-harness evidence.
 
 ## Proposed POC rollout
@@ -76,3 +76,7 @@ AGENTS candidate updates: add the Special Stage zone 8..12 indexing and entry/ex
 ## Closure
 
 James approved all Special Stage visual boards (`art-approval.json` approval state updated; board hashes unchanged). No canonical behavior or POC code changed in the closure pass. Ready for Manager fast-forward to Research `main`.
+
+## Follow-up (research/special-stages-followup)
+
+See `docs/special-stages-followup-audit.md` and `data/rom-cache/special-stages/followup.json`: type `$31` is the Chaos Emerald (Special Stage success object), distinct from the Large Rings (surface `$1D`, +10 rings per cell); SS3's single junction needs **Up** (ROM-proved); its invincibility monitors are route obstacles/time-cost gates; the act-index-3 quirk is dormant (max 83 rings in any act-index-2 act); a reproduced mechanism for the community Entry Fail glitch (stale `$D2C2 = 59`).

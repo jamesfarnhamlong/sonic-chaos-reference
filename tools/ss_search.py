@@ -1,7 +1,7 @@
 """Input-only route search for Special Stages (snapshot DFS/best-first over short held-input macros).
 
 The search starts from the stage-start snapshot (nothing is injected: only controller input is chosen), forks via full harness snapshots and succeeds when the
-original game itself sets `$D294` bit 6 (goal ring collected).  The resulting input list is a natural completion and is replayed from the start for
+original game itself sets `$D294` bit 6 (Chaos Emerald object collected).  The resulting input list is a natural completion and is replayed from the start for
 verification by `ss_natural.py`.
 """
 from __future__ import annotations
