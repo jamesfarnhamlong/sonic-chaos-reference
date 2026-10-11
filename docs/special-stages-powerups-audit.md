@@ -12,7 +12,7 @@ Evidence: CONTROLLED (original reward dispatcher `$4AA3` executed for every queu
 | `$10` monitor | 6 | SS3 x7 | invincibility selector (`$D532=6`, timer `$0258`, d503 bits1/7, child `$05`) |
 | `$2F` | 0 | SS2 x7 | Spring Shoes pickup |
 | `$26` | 0 / 1 | SS4 x2 / x3 | spring: parameter 0 strong, 1 weak |
-| `$31` | 1/2/4/8/16 | one per stage | goal ring (SS-A4) |
+| `$31` | 1/2/4/8/16 | one per stage | Chaos Emerald / success object (SS-A4) |
 
 There are no enemies, no `$09` rings, no `$18` signs, no hazards objects in any stage. Reward queue bit for monitor parameter *p* is `p-1` (`D3A3`); parameters 1..6 map to bits 0..5.
 
@@ -38,6 +38,6 @@ Terrain interaction with Rocket Shoes: the shared state-`$11` terrain/screen cla
 
 ## 4. Unresolved
 
-- SS3 places seven invincibility monitors but no hurt source was found; the design purpose is unknown (kept as placements, no invented hazard).
+- SS3's seven invincibility monitors: **resolved in the follow-up** (`docs/special-stages-followup-audit.md`): route obstacles / time-cost gates; the reward is real but no hurt source exists.
 - The `$26` placement at (3856,448) (SS4) was not reached by the controlled walk-on test; its contract is the shared parameter-0 spring by object-code identity.
 - Names of sounds `$F8/$B5/$8F/$85` are unresolved (numeric only).

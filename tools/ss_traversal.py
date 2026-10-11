@@ -29,7 +29,7 @@ SURFACES = {
     0x13: ('transport / tube entry $6D43 (+ state $21)', 'docs/eez-environment-audit.md'),
     0x14: ('terrain diagonal / ceiling spring $6A90 (zone != 0 -> Y -5.5)', 'docs/spring-interaction-audit.md'),
     0x16: ('floor break/bounce/reward $6AE3', 'docs/gpz-foundation-audit.md'),
-    0x1D: ('no-op handler $69B1 (decor/platform art, no special rule)', None),
+    0x1D: ('Large Ring: floor handler $69B1 is a no-op, but the terrain-ring probe $753E collects block $B8 once per cell (-> $46, +$10 BCD rings)', 'docs/terrain-ring-collection.md; docs/special-stages-followup-audit.md'),
 }
 SWEEP = dict(block=range(0x74, 0x84), x=(0, 14, 31), y=(0, 14, 16, 31), vel=((-1536, 0), (1536, 0), (0, -1536), (0, 1536), (64, 0)), pad=range(16))
 

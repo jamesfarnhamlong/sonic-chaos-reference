@@ -1,4 +1,4 @@
-"""SS-A4: large goal ring (type $31): contact box, collection effects, simultaneous-flag ordering and failure paths."""
+"""SS-A4: Chaos Emerald / Special Stage success object (type $31; file keeps the old 'goal ring' name): contact box, collection effects, simultaneous-flag ordering and failure paths."""
 import argparse
 import itertools
 import json
@@ -89,7 +89,7 @@ def whole_game(r):
 
 
 def build(r):
-    d = dict(format=1, rom_sha256=L.ROM_SHA256, research_base=F.BASE, stage='SS-A4 goal ring',
+    d = dict(format=1, rom_sha256=L.ROM_SHA256, research_base=F.BASE, stage='SS-A4 Chaos Emerald object (type $31)',
              evidence='original callback $1E:$9489 executed over a boundary sweep; whole-game traces in the approximate SMS harness')
     d['object'] = dict(type=0x31, type_table_entry_rom=0x661A, bank=0x1E, state_table_cpu=0x9468, scripts=C.public_script(C.state_scripts(r, 0x31)),
                        state0='$9480: state := 1, SET bit7 of +3 (contact ignores player blink/hurt bit)',
