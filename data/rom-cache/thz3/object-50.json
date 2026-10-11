@@ -257,15 +257,28 @@
     {
       "name": "anim_cmd_dispatch",
       "kind": "code",
-      "purpose": "FF xx command dispatcher and pointer table",
+      "purpose": "FF xx command dispatcher (ends JP (HL) at $6695)",
       "bank": "0x01",
       "cpu": "0x6680",
-      "cpu_end_exclusive": "0x66B6",
+      "cpu_end_exclusive": "0x6696",
       "rom_offset": "0x06680",
-      "length": 54,
+      "length": 22,
       "first_16_bytes": "237e23dd750edd740f876f2600119666",
-      "sha256": "5aef535c072eb69bb3ec357dfdb2ff8488f699e5813fc2b18adbeb23f6f15224",
+      "sha256": "4998bf328fe98eb76ab1e49117b818a132e2f8cf5530203d783ae1d89fbb1f7d",
       "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "anim_cmd_pointer_table",
+      "kind": "data",
+      "purpose": "16 command handler pointers indexed by (xx*2) from $6696",
+      "bank": "0x01",
+      "cpu": "0x6696",
+      "cpu_end_exclusive": "0x66B6",
+      "rom_offset": "0x06696",
+      "length": 32,
+      "first_16_bytes": "b966c566db660b671f67a167d567ec67",
+      "sha256": "c59341b4ffceac099d8a8cc4367ec1115cc5a5ac1d713696f5c7d783b484e4c8",
+      "evidence": "DECODED DATA"
     },
     {
       "name": "anim_cmd_spawn",
