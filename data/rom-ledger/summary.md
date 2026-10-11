@@ -23,9 +23,9 @@ ROM: Sonic Chaos (Europe) v1.2, 524288 bytes, SHA-256 `eabc8db59746714262d2f91a9
 |---|---:|---:|
 | Recovered into reproducible assembly | 13046 | 2.488 |
 | Structurally classified (primary class known) | 153480 | 29.274 |
-| of which classified only by the recovery manifest | 7485 | 1.428 |
-| of which independently evidenced | 145995 | 27.846 |
-| Recovered and independently evidenced | 5529 | 1.055 |
+| of which classified only by the recovery manifest | 10799 | 2.060 |
+| of which independently evidenced | 142681 | 27.214 |
+| Recovered and independently evidenced | 2215 | 0.422 |
 | UNKNOWN | 370808 | 70.726 |
 | Contested (counted in UNKNOWN) | 32 | 0.006 |
 

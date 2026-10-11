@@ -129,6 +129,16 @@ class CommittedLedgerTests(unittest.TestCase):
         t = self.ledger["totals"]
         self.assertEqual(t["recovered_code_bytes"] + t["recovered_data_bytes"] + contested, rm["bytes"])
 
+    def test_committed_manifest_copies_are_recovery_evidence(self):
+        regions = {(r["start"], r["end"], r["kind"].upper())
+                   for r in json.loads(REGIONS.read_text(encoding="utf-8"))}
+        copies = [c for c in self.ledger["claims"] if "manifest_copies" in c["importers"]]
+        self.assertTrue(copies)
+        for c in copies:
+            self.assertEqual(c["basis"], "recovery_manifest")
+            self.assertIn((c["start"], c["end"], c["primary"]), regions)
+        by_id = {c["id"]: c for c in self.ledger["claims"]}
+
     def test_contradictions_are_reported_not_resolved(self):
         hard = self.ledger["overlaps"]["contradictory"]
         self.assertEqual(self.ledger["overlaps"]["stats"]["contradictory_pairs"], len(hard))
@@ -258,6 +268,14 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(only_recovery["classified_by_recovery_only_bytes"], 0x100)
         self.assertEqual(only_recovery["independent_structural_bytes"], 0)
 
+    def test_manifest_copies_cannot_inflate_independent_coverage(self):
+        copy = claim(0x100, 0x200, "CODE", importer="manifest_copies", evidence="manifest_copy",
+                     basis="recovery_manifest")
+        t = RL.totals(resolve_synthetic([copy])[0])
+        self.assertEqual(t["classified_bytes"], 0x100)
+        self.assertEqual(t["independent_structural_bytes"], 0)
+        self.assertEqual(t["classified_by_recovery_only_bytes"], 0x100)
+
     def test_deterministic_resolution(self):
         claims = [claim(0x100, 0x200, "DATA", subtype="b"), claim(0x100, 0x200, "DATA", subtype="a"),
                   claim(0x4100, 0x4200, "CODE")]
@@ -288,6 +306,23 @@ class RomBackedTests(unittest.TestCase):
                 self.assertEqual((Path(a) / name).read_bytes(), (Path(b) / name).read_bytes())
             _, stale = RL.generate(ROM_PATH, a, check=True)
             self.assertEqual(stale, [])
+
+    def test_unmatched_manifest_copy_is_rejected_not_imported(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            cache = root / "data" / "rom-cache"
+            cache.mkdir(parents=True)
+            (cache / "x.json").write_text(json.dumps({"recovered_regions": [
+                {"name": "bogus", "rom_start": "0x1000", "rom_end_exclusive": "0x1010", "kind": "code"}]}))
+            old = RL.ROOT
+            RL.ROOT = root
+            try:
+                claims, _, rejected, _ = RL.import_manifest_ranges(self.rom, root, [])
+            finally:
+                RL.ROOT = old
+            self.assertEqual(claims, [])
+            self.assertEqual(len(rejected), 1)
+            self.assertIn("no recovered region", rejected[0]["reason"])
 
     def test_rejects_wrong_rom(self):
         with tempfile.TemporaryDirectory() as d:

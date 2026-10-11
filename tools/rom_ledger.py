@@ -410,7 +410,7 @@ def import_layout_manifests(rom, root=ROOT):
     return claims, rejected
 
 
-def import_manifest_ranges(rom, root=ROOT):
+def import_manifest_ranges(rom, root=ROOT, recovered_regions=()):
     """Audit-manifest ranges: hash-verified, imported only when ``kind`` is stated.
 
     Returns (claims, unclassified, rejected, ignored_count). Ranges whose SHA-256
@@ -418,6 +418,7 @@ def import_manifest_ranges(rom, root=ROOT):
     """
     claims, unclassified, rejected = [], {}, []
     ignored = 0
+    recovered_ranges = {(r["start"], r["end"], r["kind"]) for r in recovered_regions}
     for path in cache_files(root):
         rp = rel(path)
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -462,8 +463,15 @@ def import_manifest_ranges(rom, root=ROOT):
                 start, end = hexnum(node["rom_start"]), hexnum(node["rom_end_exclusive"])
                 if start is None or end is None or not node["kind"] in ("code", "data"):
                     continue
+                # derivative copies of regions.json: must match a registered region exactly
+                if (start, end, node["kind"]) not in recovered_ranges:
+                    rejected.append({"source": rp, "name": str(node.get("name"))[:80], "start": start,
+                                     "end": end, "reason": "manifest copy matches no recovered region "
+                                     "(exact range and kind required)"})
+                    continue
                 claims.append(make_claim(start, end, node["kind"].upper(), "manifest_copies", rp,
-                                         "manifest_copy", name=node.get("name")))
+                                         "manifest_copy", name=node.get("name"),
+                                         basis="recovery_manifest"))
     return claims, unclassified, rejected, ignored
 
 
@@ -627,7 +635,7 @@ def build_ledger(rom, root=ROOT):
     raw += import_pointer_tables(rom, root)
     layout_claims, rejected = import_layout_manifests(rom, root)
     raw += layout_claims
-    manifest_claims, unclassified, rejected_ranges, ignored = import_manifest_ranges(rom, root)
+    manifest_claims, unclassified, rejected_ranges, ignored = import_manifest_ranges(rom, root, regions)
     raw += manifest_claims
     rejected = rejected + rejected_ranges
     claims = dedupe_claims(raw)

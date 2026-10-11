@@ -66,7 +66,7 @@ A claim is imported only when **both boundaries and the class** are supported:
 | `decoder_verified` | an existing decoder/loader consumes exactly these bytes and the extent is recomputed from the ROM on every run | level layout RLE streams (end at the `count 0` terminator), tile streams (header + payload + command bytes; the payload end must equal the command start or the stream is rejected), object lists (to the `$FF` terminator) |
 | `structure_verified` | fixed-size record/table read by a loader, or a committed export the ROM bytes must reproduce | act headers (22 B), art-load entries (7 B), palette records (16 B), collision profile arrays (32 B), sound/state/twist pointer tables |
 | `manifest_hash_verified` | audit manifest range whose SHA-256 matches the ROM **and** which states `kind` | `data/rom-cache/object-18-act-clear.json`, `thz3/object-50.json` |
-| `manifest_copy` | cache copy of a recovered region (kept to detect disagreement) | `thz1/object-census.json` |
+| `manifest_copy` | cache copy of a recovered region; must match a registered region's exact range and kind (else rejected), and counts as recovery-manifest evidence, never independent | `thz1/object-census.json` |
 
 Deliberately **not** done:
 
@@ -120,9 +120,9 @@ Consequences:
   table with an independent decoder) raises source coverage and leaves
   structural coverage unchanged.
 * Bytes recovered but never independently identified are reported separately
-  as `classified_by_recovery_only_bytes` (7,485 initially). Their class comes
+  as `classified_by_recovery_only_bytes` (10,799 initially). Their class comes
   from the recovery manifest's own `kind`, so the headline structural figure
-  includes them, and `independent_structural_bytes` (145,995) shows the part
+  includes them, and `independent_structural_bytes` (142,681) shows the part
   with outside evidence. Recovering a previously UNKNOWN region will therefore
   add to the classified total through the manifest's `kind` and is visible as
   `recovery_manifest_only`, never as independent evidence.
@@ -182,9 +182,9 @@ Importers (all in `tools/rom_ledger.py`):
 |---|---:|---:|
 | Recovered into reproducible assembly | 13,046 | 2.488 |
 | Structurally classified (primary class known) | 153,480 | 29.274 |
-| &nbsp;&nbsp;independently evidenced | 145,995 | 27.846 |
-| &nbsp;&nbsp;classified only by the recovery manifest | 7,485 | 1.428 |
-| Recovered and independently evidenced | 5,529 | 1.055 |
+| &nbsp;&nbsp;independently evidenced | 142,681 | 27.214 |
+| &nbsp;&nbsp;classified only by the recovery manifest | 10,799 | 2.060 |
+| Recovered and independently evidenced | 2,215 | 0.422 |
 | UNKNOWN | 370,808 | 70.726 |
 | of which contested | 32 | 0.006 |
 
