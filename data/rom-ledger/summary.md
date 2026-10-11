@@ -8,28 +8,28 @@ ROM: Sonic Chaos (Europe) v1.2, 524288 bytes, SHA-256 `eabc8db59746714262d2f91a9
 
 | Category | Bytes | % |
 |---|---:|---:|
-| CODE | 18056 | 3.444 |
+| CODE | 18064 | 3.445 |
 | DATA | 38663 | 7.374 |
 | GRAPHICS | 192 | 0.037 |
 | MUSIC | 0 | 0.000 |
 | COMPRESSED | 99976 | 19.069 |
 | PADDING | 0 | 0.000 |
-| UNKNOWN | 367401 | 70.076 |
+| UNKNOWN | 367393 | 70.075 |
 | **Total** | **524288** | 100 |
 
 ## Coverage
 
 | Metric | Bytes | % |
 |---|---:|---:|
-| Recovered into reproducible assembly | 13988 | 2.668 |
-| Structurally classified (primary class known) | 156887 | 29.924 |
-| of which classified only by the recovery manifest | 11541 | 2.201 |
+| Recovered into reproducible assembly | 14199 | 2.708 |
+| Structurally classified (primary class known) | 156895 | 29.925 |
+| of which classified only by the recovery manifest | 11549 | 2.203 |
 | of which independently evidenced | 145346 | 27.723 |
-| Recovered and independently evidenced | 2447 | 0.467 |
-| UNKNOWN | 367401 | 70.076 |
+| Recovered and independently evidenced | 2650 | 0.505 |
+| UNKNOWN | 367393 | 70.075 |
 | Contested (counted in UNKNOWN) | 0 | 0.000 |
 
-Recovered manifest: 113 regions, 13988 bytes (12002 code, 1986 data).
+Recovered manifest: 115 regions, 14199 bytes (12213 code, 1986 data).
 
 ## Per bank
 
@@ -63,22 +63,22 @@ Recovered manifest: 113 regions, 13988 bytes (12002 code, 1986 data).
 | 25 | `64000-67FFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
 | 26 | `68000-6BFFF` | 0 | 0 | 0 | 0 | 5596 | 0 | 10788 | 0 | 34.2 |
 | 27 | `6C000-6FFFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
-| 28 | `70000-73FFF` | 318 | 5869 | 0 | 0 | 0 | 0 | 10197 | 83 | 37.8 |
+| 28 | `70000-73FFF` | 326 | 5869 | 0 | 0 | 0 | 0 | 10189 | 294 | 37.8 |
 | 29 | `74000-77FFF` | 124 | 0 | 0 | 0 | 0 | 0 | 16260 | 0 | 0.8 |
 | 30 | `78000-7BFFF` | 2686 | 733 | 0 | 0 | 0 | 0 | 12965 | 2000 | 20.9 |
 | 31 | `7C000-7FFFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
 
 ## Overlaps
 
-- compatible nested pairs: 385
+- compatible nested pairs: 386
 - compatible partial overlaps: 0
 - contradictory pairs: 0
 
 ## Hash-verified ranges with no stated kind
 
-211 ranges (14310 bytes in union, 1553 still UNKNOWN): 185 fully classified, 8 partially, 18 unresolved.
+211 ranges (14310 bytes in union, 1545 still UNKNOWN): 186 fully classified, 7 partially, 18 unresolved.
 
-Reviewed code-flow classifications (`data/rom-ledger/reviewed-ranges.json`): 29 reviews, 1910 CODE bytes; 23 clusters (1553 UNKNOWN bytes) unresolved.
+Reviewed code-flow classifications (`data/rom-ledger/reviewed-ranges.json`): 29 reviews, 1910 CODE bytes; 22 clusters (1545 UNKNOWN bytes) unresolved.
 
 Rejected claims: 0. Hashless ranges ignored: 12.
 

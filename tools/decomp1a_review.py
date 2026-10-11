@@ -29,6 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
+import decomp1d_banked_flow as BF  # noqa: E402
 import rom_flow as F  # noqa: E402
 import player_scripts as PS  # noqa: E402
 import rom_ledger as RL  # noqa: E402
@@ -60,12 +61,17 @@ def runs_of(offsets):
     return out
 
 
-def build(rom, root=ROOT, extra_regions=(), drop_regions=(), script_seeds=True):
+def build(rom, root=ROOT, extra_regions=(), drop_regions=(), script_seeds=True, banked_seeds=True):
     """``extra_regions``/``drop_regions`` (DECOMP-1B) let a caller ask what a hypothetical recovered
     region would support, or what the evidence was before one existed; ``script_seeds=False`` (DECOMP-1C) leaves
-    out the player-script dispatch seeds. The defaults change nothing."""
-    baseline = RL.build_ledger(rom, root, reviewed=False, drop_regions=drop_regions)
+    out the player-script dispatch seeds; ``banked_seeds=False`` (DECOMP-1D) leaves out the bank-resolved seeds
+    and the DECOMP-1D regions (name prefix ``banked_``), which reproduces the earlier evidence. Registered regions classify their own bytes first, as for DECOMP-1B/1C, so a byte
+    range recovered with a banked entry no longer needs a review claim; the seeds remain available for ranges that are
+    not yet recovered. The defaults change nothing for evidence that does not depend on a banked entry."""
     regions = json.loads((root / "asm" / "recovered" / "regions.json").read_text(encoding="utf-8"))
+    if not banked_seeds:
+        drop_regions = set(drop_regions) | {r["name"] for r in regions if r["name"].startswith(BF.BANKED_PREFIX)}
+    baseline = RL.build_ledger(rom, root, reviewed=False, drop_regions=drop_regions)
     regions = [r for r in regions if r["name"] not in drop_regions] + list(extra_regions)
     by_name = {r["name"]: r for r in regions}
     unknown = set()
@@ -97,6 +103,12 @@ def build(rom, root=ROOT, extra_regions=(), drop_regions=(), script_seeds=True):
     # DECOMP-1C: words that parsed player scripts make the engine execute (callback vectors and command operands)
     for off, via in (PS.dispatch_seeds(rom).items() if script_seeds else ()):
         table_seeds.setdefault(off, {"player_script": via})
+
+    # DECOMP-1D: bank-resolved entries (a resident CALL into slot 2 whose bank the ROM fixes) and the dispatch-table
+    # words reached from them. Keyed by file offset, never by CPU address.
+    if banked_seeds:
+        for off, via in BF.seed_support(rom, regions, BF.Context(baseline["claims"])).items():
+            table_seeds.setdefault(off, via)
 
     state = {id(c): {"seeds": OrderedDict(), "reached": {}} for c in todo}
     changed = True

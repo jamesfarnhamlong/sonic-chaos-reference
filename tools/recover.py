@@ -64,7 +64,9 @@ REGIONS = [
  ('spike_object_handlers',0x32c7d,0x32d59,'code'),
  ('object_21_scripts',0x331b6,0x33210,'data'),
  ('object_21_handlers',0x33210,0x332f9,'code'),
+ ('banked_entry_70000',0x70000,0x700cb,'code'),
  ('object_placement_create',0x700eb,0x7013e,'code'),
+ ('banked_dispatch_7013E',0x7013e,0x70146,'code'),
  # Previously recovered regions retained where they do not overlap the above.
  ('loop_states',0x3c1b,0x3efd,'code'),
  ('spring_setters',0x480c,0x4892,'code'),
@@ -231,6 +233,7 @@ COMMENTS = {
 0x33268:'Object $21 patrol: move, project to floor, reverse at saved bounds, then process player contact.',
 0x332af:'Object $21 contact: top contact springs the player; attack/invincibility destroys; other contact requests damage.',
 0x332f0:'Falling callback: integrate position and add $0040 to Y velocity.',
+0x70000:'Bank $1C entry (CPU $8000), called from the gameplay frame update: selects a record list through word tables at $8546 indexed by $D297 then $D298, converts the camera position ($D174/$D176) into a window and walks 9-byte records; for a record whose occupancy byte at $D400+n is zero and whose position falls in the window it dispatches on the byte at +5 through the 16-word table at $80CB (file $700CB, data, not part of this region). Ends with the table dispatch JP (HL).',
 0x700eb:'Create a placement-backed object, preserving origin, parameter, art bases, and occupancy token.',
 0x78212:'Object type $26 state-script table and scripts for fixed and span variants.',
 0x7825a:'Initialize object $26; parameter bit 7 selects a low-seven-bit times 16 trigger span.',
@@ -246,8 +249,22 @@ COMMENTS = {
 0x7898e:'Initialize object $27: parameter zero requests state 1 and sets X velocity to -2.5.',
 0x78b1a:'Object type $2F state table/scripts. State 1 offers attachment, state 3 follows player state $12, and state 5 falls away.',
 0x78b5b:'Object type $2F initializes as a non-generic-damage solid; top projection attaches it and requests player state $12.',
+0x7013e:'Dispatch-table targets: $7013E is a bare RET (words 1-15 of the table at $700CB); $7013F (word 0) reads the handler word at (HL+1..HL+2) and jumps to it. The final JP (HL) is an indirect exit that is not followed.',
 0x3d287:'Object type $2F mapping frames used by Sleeping Egg and Mecha Green Hill at different VRAM art bases.',
 }
+
+def foreign_label(rom,regions,bank,target):
+    """Label of the instruction at CPU ``target`` (same bank) when another code region decodes one there."""
+    base=0 if bank==0 else 0x4000 if bank in (1,2) else 0x8000
+    offset=bank*0x4000+(target-base)
+    for name,start,end,kind in regions:
+        if kind!='code' or not start<=offset<end:continue
+        p=start
+        while p<end:
+            d=z80.decode(rom[p:p+4],base+p%0x4000)
+            if p==offset:return f'SC_{p:05X}'
+            p+=d.len
+    return None
 
 def generate(rom_path, output):
     global REGIONS
@@ -278,8 +295,13 @@ def generate(rom_path, output):
                     match=re.search(r'0x([0-9a-f]+)$',assembly)
                     target=int(match.group(1),16)
                     # All recovered JR/DJNZ destinations must be decoded labels.
-                    if target not in labels:raise ValueError((name,hex(addr),assembly))
-                    assembly=assembly[:match.start()]+labels[target]
+                    if target not in labels:
+                        # DECOMP-1D: a target in another recovered code region is a global label of that region.
+                        other=foreign_label(rom,sorted(REGIONS,key=lambda x:x[1]),bank,target)
+                        if other is None:raise ValueError((name,hex(addr),assembly))
+                        assembly=assembly[:match.start()]+other
+                    else:
+                        assembly=assembly[:match.start()]+labels[target]
                 assembly=re.sub(r'0x([0-9a-f]+)',lambda m:'$'+m.group(1).upper(),assembly)
                 assembly=assembly.replace('(IX)','(IX+0)').replace('(IY)','(IY+0)')
                 lines.append('    '+assembly)

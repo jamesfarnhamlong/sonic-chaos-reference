@@ -99,7 +99,7 @@ def handler_regions(rom, root, stub_runs, derived_names):
     relative branch stays inside the run.
     """
     extra = [region_dict("%s%04X" % (STUB_PREFIX, a), a, b) for a, b in stub_runs]
-    review = RV.build(rom, root, extra_regions=extra, drop_regions=derived_names)
+    review = RV.build(rom, root, extra_regions=extra, drop_regions=derived_names, banked_seeds=False)
 
     def stub_site(site):
         return any(a <= site < b for a, b in stub_runs)
