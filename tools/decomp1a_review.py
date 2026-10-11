@@ -5,13 +5,13 @@
 
 Starting from the hash-verified audit ranges that state no code/data kind
 (``unclassified_range_claims``), this proposes CODE claims only where the ROM
-itself proves execution:
+itself supports static reachability:
 
 * an entry point is the target of a CALL/JP/JR/DJNZ at an instruction of
-  byte-verified recovered code (or of a claim this tool already proved), or is a
+  byte-verified recovered code (or of a claim this tool already supported), or is a
   word of a recovered dispatch table whose address recovered code loads and
   whose consumer jumps through ``JP (HL)``;
-* recursive descent from the proven entries, confined to the audit range(s),
+* recursive descent from the supported entries, confined to the audit range(s),
   fetches each claimed byte as an instruction and never touches a recovered
   DATA region.
 
@@ -107,8 +107,10 @@ def build(rom, root=ROOT):
             for off in range(c["start"], c["end"]):
                 if off in st["seeds"]:
                     continue
-                if off in sites:
-                    st["seeds"][off] = {"site": sites[off][0]}
+                # a proof site that is itself one of this cluster's unknown bytes would be self-supporting
+                outside = [x for x in sites.get(off, ()) if not (c["start"] <= x < c["end"] and x in unknown)]
+                if outside:
+                    st["seeds"][off] = {"site": outside[0]}
                 elif off in table_seeds:
                     st["seeds"][off] = table_seeds[off]
             if not st["seeds"]:
@@ -142,10 +144,10 @@ def build(rom, root=ROOT):
                 ("seeds", [OrderedDict([("offset", o), ("via", v)]) for o, v in sorted(st["seeds"].items())]),
                 ("claims", [OrderedDict([("start", lo), ("end", hi), ("primary", "CODE"), ("subtype", "routine")])
                             for lo, hi in runs]),
-                ("verification", "recursive descent from the proven entries, confined to bounds, fetches every claimed "
+                ("verification", "static recursive descent from the supported entries, confined to bounds, fetches every claimed "
                                  "byte as an instruction and reaches no recovered DATA region"),
-                ("uncertainty", "executed-instruction evidence only; the routine's purpose and any subsystem label are "
-                                "audit text, not established here"),
+                ("uncertainty", "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and "
+                                "any subsystem label are audit text, not established here"),
             ]))
         if left:
             unresolved.append(OrderedDict([
@@ -176,20 +178,20 @@ def _reason(c, st, runs):
     if not st["seeds"]:
         bank = c["start"] // RL.BANK_SIZE
         if bank >= 2:
-            return ("no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, "
+            return ("no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, "
                     "and it is not a word of a recovered dispatch table")
-        return "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it"
+        return "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it"
     if runs:
-        return "entry points proven, but flow does not reach every byte of the audited range"
-    return "entry points proven but they fetch no UNKNOWN byte"
+        return "entry points supported, but flow does not reach every byte of the audited range"
+    return "entry points supported but they fetch no UNKNOWN byte"
 
 
 def _needed(c, st):
     if c["start"] // RL.BANK_SIZE >= 2:
-        return ("a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded "
+        return ("a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded "
                 "callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer "
                 "consumer that fixes the extent if the range is a table")
-    return ("a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; "
+    return ("a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; "
             "for a table, an instruction that loads its address and indexes it")
 
 

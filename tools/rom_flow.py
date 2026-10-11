@@ -5,8 +5,8 @@ decoder and the byte-verified recovered assembly:
 
 * ``branch_sites`` lists every CALL / JP / JR / DJNZ / RST inside the recovered
   CODE regions together with the file offset its target resolves to. A site in a
-  recovered region is byte-verified code, so its target is an executed entry
-  point. Targets below ``$8000`` are the resident engine (file offset == CPU
+  recovered region is byte-verified code, so its target is a statically reachable
+  entry point (control-flow support; not an execution trace). Targets below ``$8000`` are the resident engine (file offset == CPU
   address). A site that itself executes in slot 2 (CPU ``$8000+``) cannot remap
   slot 2, so a slot-2 target is in the *same* bank. A resident site calling a
   slot-2 address is ambiguous and is never resolved.
@@ -25,9 +25,21 @@ RESIDENT_END = 0x8000
 TRANSFER_OPS = (OP.CALL, OP.JP, OP.JR, OP.DJNZ)
 
 
+def cpu_address(offset):
+    """CPU address an instruction at file ``offset`` executes at.
+
+    Banks 0 and 1 are the resident engine (file offset == CPU address); every
+    other bank is paged into slot 2, so its code runs at ``$8000 + offset % $4000``.
+    """
+    if offset < RESIDENT_END:
+        return offset
+    return 0x8000 + offset % BANK
+
+
 def decode(rom, offset):
-    d = z80.decode(bytes(rom[offset:offset + 4]), offset & 0xFFFF)
-    return d
+    """Decode at ``offset`` using its real CPU address, so relative JR/DJNZ
+    targets come out as true CPU addresses."""
+    return z80.decode(bytes(rom[offset:offset + 4]), cpu_address(offset))
 
 
 def is_invalid(d):

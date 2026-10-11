@@ -488,7 +488,7 @@ def dispatch_table_word(rom, region, index):
 def import_reviewed(rom, root=ROOT, regions=None):
     """Re-verify every reviewed code-flow claim; any stale or inconsistent entry raises.
 
-    Each review names its entry points and the proof that each is executed:
+    Each review names its entry points and the control-flow support for each:
     ``{"site": off}`` (a CALL/JP/JR at ``off`` inside proven code resolves to the
     entry) or ``{"table": name, "index": i, "load_site": off}`` (word ``i`` of a
     recovered dispatch table, whose address is loaded by proven code at
@@ -560,9 +560,9 @@ def import_reviewed(rom, root=ROOT, regions=None):
             resident = hi <= F.RESIDENT_END          # banks 0 and 1 form one contiguous engine region
             if not (0 <= lo < hi <= ROM_SIZE) or (not resident and lo // BANK_SIZE != (hi - 1) // BANK_SIZE):
                 raise ValueError("review %s: bounds outside one bank" % review["id"])
-            good = [s["offset"] for s in review["seeds"] if seed_ok(s)]
-            if not good:
-                continue
+            if not all(seed_ok(s) for s in review["seeds"]):
+                continue                         # every recorded seed must be supported (deferred until it is)
+            good = [s["offset"] for s in review["seeds"]]
             reached, notes = F.descend(rom, good, lo, hi)
             covered = set()
             for a, n in reached.items():

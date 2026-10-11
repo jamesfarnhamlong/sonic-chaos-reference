@@ -10,8 +10,8 @@ assembly recovery, no POC or root `AGENTS.md` changes.
 A SHA-256 match proves a range, not its type. A kind is accepted only from the ROM itself:
 
 * **CODE** by control flow (`tools/rom_flow.py`, built on the existing `z80dis` decoder). An entry point
-  is proven when a CALL/JP/JR/DJNZ at an instruction of byte-verified recovered code (or of a claim
-  already proven this way) targets it, or it is a word of a recovered dispatch table whose address
+  is control-flow-supported when a CALL/JP/JR/DJNZ at an instruction of byte-verified recovered code (or of a claim
+  already supported this way) targets it, or it is a word of a recovered dispatch table whose address
   recovered code loads and whose consumer jumps through `JP (HL)`. A slot-2 target is attributed to the
   caller's own bank only when the caller itself executes in slot 2; a resident caller reaching a slot-2
   address is ambiguous and never used. Recursive descent confined to the audit range(s) must then fetch
@@ -26,7 +26,23 @@ A SHA-256 match proves a range, not its type. A kind is accepted only from the R
 `regions.json` on each build (to a fixed point, so file order is irrelevant) and a stale or inconsistent
 entry raises instead of being skipped. Each review records exact bounds, bank, audit provenance, the
 proven entries and their proofs, the claimed runs, the verification method and the remaining
-uncertainty (executed-instruction evidence only; the routine's purpose is audit text).
+uncertainty (statically reachable CODE only; no execution trace; the routine's purpose is audit text).
+
+## Evidence tiers
+
+The ledger keeps three kinds of evidence apart, and this task adds only the middle one:
+
+1. **Byte-verified recovered assembly**: reassembled byte for byte by `tools/build_verify.py`.
+2. **Static control-flow evidence ("statically reachable CODE")**: instructions that recursive descent reaches
+   from supported entry points. It shows the bytes decode and are reachable by branches from known code. It
+   does not show that the game ever executes them, and says nothing about purpose. Recorded as
+   `reviewed_flow_verified`.
+3. **Original-ROM execution traces**: actual Z80 PC and mapper observations from the unmodified game. None
+   are used yet; they are the recommended way to confirm tier 2 and to resolve banked routines.
+
+Decoding uses each instruction's real CPU address (`rom_flow.cpu_address`: resident banks 0/1 at their file
+offset, other banks at `$8000 + offset % $4000`), so relative `JR`/`DJNZ` targets are true CPU addresses.
+Every recorded seed of a review must be supported; a review with any unsupported seed is rejected.
 
 ## 1. Baseline and final totals
 
@@ -135,7 +151,7 @@ settle them:
 * **Resident engine (banks 0/1):** a proven caller, a decoded jump-table consumer, or a Z80 PC trace of the
   unmodified game. Recovering a caller is the natural route: each recovered caller converts its callee
   automatically on the next `decomp1a_review.py` run.
-* **Banked (2+):** a bank-resolved executed entry (a CALL/JP from verified code in the same bank, a decoded
+* **Banked (2+):** a bank-resolved entry (a CALL/JP from verified code in the same bank, a decoded
   callback/script-pointer table entry, or a PC trace with the mapper state). For ranges that may be tables
   (duration tables, state scripts) an instruction that loads the address and indexes it.
 
@@ -197,10 +213,10 @@ or data. `0x0606B-0x06089` (15 bytes) is partly reached.
 
 1. **Recover callers, not callees.** The camera block (`0x04C90-0x05956`, about 500 UNKNOWN bytes), the level
    header loader (`0x04FDC-0x05082`), the player-update/state wrappers (`0x0361D-0x03A59`)
-   need only an executed entry; recovering the few call sites in unrecovered engine
+   need only a supported entry; recovering the few call sites in unrecovered engine
    code (the main loop in bank 0) would convert most of the resident backlog.
 2. **A bounded PC trace** of the unmodified game through `tools/sms_frame_harness.py` (title -> THZ1 -> boss
-   frame) would give executed-instruction and mapper evidence for the banked routines (bank 12 selectors,
+   frame) would give actual-execution and mapper evidence (a stronger tier than the static evidence used here) for the banked routines (bank 12 selectors,
    bank 28/30 object code) and distinguish their tables. It needs a hook faster than per-address Python hooks.
 3. **Bank 12 selector/duration tables** (`0x30EE1-0x3103D`): decide code vs data by finding the instruction
    that loads the table address and indexes it, after the selector routines are reached.

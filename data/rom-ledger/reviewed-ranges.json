@@ -34,8 +34,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 1,
@@ -68,8 +68,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 2,
@@ -102,8 +102,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 3,
@@ -132,12 +132,6 @@
      "via": {
       "site": 14533
      }
-    },
-    {
-     "offset": 16389,
-     "via": {
-      "site": 16381
-     }
     }
    ],
    "claims": [
@@ -148,8 +142,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 4,
@@ -222,45 +216,9 @@
      }
     },
     {
-     "offset": 18649,
-     "via": {
-      "site": 18639
-     }
-    },
-    {
-     "offset": 18667,
-     "via": {
-      "site": 18653
-     }
-    },
-    {
      "offset": 18679,
      "via": {
       "site": 29524
-     }
-    },
-    {
-     "offset": 18709,
-     "via": {
-      "site": 18684
-     }
-    },
-    {
-     "offset": 18729,
-     "via": {
-      "site": 18725
-     }
-    },
-    {
-     "offset": 18734,
-     "via": {
-      "site": 18740
-     }
-    },
-    {
-     "offset": 18754,
-     "via": {
-      "site": 18706
      }
     },
     {
@@ -270,81 +228,9 @@
      }
     },
     {
-     "offset": 18795,
-     "via": {
-      "site": 18790
-     }
-    },
-    {
-     "offset": 18810,
-     "via": {
-      "site": 18805
-     }
-    },
-    {
      "offset": 18820,
      "via": {
       "site": 16423
-     }
-    },
-    {
-     "offset": 18877,
-     "via": {
-      "site": 18853
-     }
-    },
-    {
-     "offset": 18883,
-     "via": {
-      "site": 18676
-     }
-    },
-    {
-     "offset": 18895,
-     "via": {
-      "site": 18905
-     }
-    },
-    {
-     "offset": 18900,
-     "via": {
-      "site": 18887
-     }
-    },
-    {
-     "offset": 18919,
-     "via": {
-      "site": 18893
-     }
-    },
-    {
-     "offset": 18935,
-     "via": {
-      "site": 18624
-     }
-    },
-    {
-     "offset": 18959,
-     "via": {
-      "site": 18950
-     }
-    },
-    {
-     "offset": 18964,
-     "via": {
-      "site": 18957
-     }
-    },
-    {
-     "offset": 18969,
-     "via": {
-      "site": 18939
-     }
-    },
-    {
-     "offset": 18990,
-     "via": {
-      "site": 18631
      }
     }
    ],
@@ -356,8 +242,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 5,
@@ -380,18 +266,6 @@
      "via": {
       "site": 19267
      }
-    },
-    {
-     "offset": 24229,
-     "via": {
-      "site": 24237
-     }
-    },
-    {
-     "offset": 24240,
-     "via": {
-      "site": 24233
-     }
     }
    ],
    "claims": [
@@ -402,8 +276,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 6,
@@ -426,18 +300,6 @@
      "via": {
       "site": 30866
      }
-    },
-    {
-     "offset": 24257,
-     "via": {
-      "site": 24265
-     }
-    },
-    {
-     "offset": 24269,
-     "via": {
-      "site": 24261
-     }
     }
    ],
    "claims": [
@@ -448,8 +310,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 7,
@@ -482,8 +344,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 8,
@@ -522,8 +384,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 9,
@@ -558,8 +420,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 10,
@@ -614,8 +476,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 11,
@@ -650,8 +512,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 12,
@@ -686,8 +548,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 13,
@@ -720,12 +582,6 @@
       "index": 6,
       "load_site": 26986
      }
-    },
-    {
-     "offset": 27754,
-     "via": {
-      "site": 27729
-     }
     }
    ],
    "claims": [
@@ -736,8 +592,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 14,
@@ -770,8 +626,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   },
   {
    "id": 15,
@@ -804,8 +660,8 @@
      "subtype": "routine"
     }
    ],
-   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
-   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+   "verification": "static recursive descent from the supported entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "statically reachable CODE (control-flow evidence); not an execution trace; the routine's purpose and any subsystem label are audit text, not established here"
   }
  ],
  "unresolved": [
@@ -830,8 +686,8 @@
     ]
    ],
    "unknown_bytes": 12,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -854,8 +710,8 @@
     ]
    ],
    "unknown_bytes": 6,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -878,8 +734,8 @@
     ]
    ],
    "unknown_bytes": 58,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -902,8 +758,8 @@
     ]
    ],
    "unknown_bytes": 73,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -926,8 +782,8 @@
     ]
    ],
    "unknown_bytes": 34,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -950,8 +806,8 @@
     ]
    ],
    "unknown_bytes": 58,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -986,8 +842,8 @@
     ]
    ],
    "unknown_bytes": 34,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1010,8 +866,8 @@
     ]
    ],
    "unknown_bytes": 26,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1112,8 +968,8 @@
     ]
    ],
    "unknown_bytes": 51,
-   "reason": "entry points proven but they fetch no UNKNOWN byte",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "entry points supported but they fetch no UNKNOWN byte",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1136,8 +992,8 @@
     ]
    ],
    "unknown_bytes": 47,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1160,8 +1016,8 @@
     ]
    ],
    "unknown_bytes": 37,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1184,8 +1040,8 @@
     ]
    ],
    "unknown_bytes": 32,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1208,8 +1064,8 @@
     ]
    ],
    "unknown_bytes": 71,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1232,8 +1088,8 @@
     ]
    ],
    "unknown_bytes": 71,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1256,8 +1112,8 @@
     ]
    ],
    "unknown_bytes": 31,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1280,8 +1136,8 @@
     ]
    ],
    "unknown_bytes": 65,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1310,8 +1166,8 @@
     ]
    ],
    "unknown_bytes": 166,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1334,8 +1190,8 @@
     ]
    ],
    "unknown_bytes": 13,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1358,8 +1214,8 @@
     ]
    ],
    "unknown_bytes": 10,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1382,8 +1238,8 @@
     ]
    ],
    "unknown_bytes": 259,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1406,8 +1262,8 @@
     ]
    ],
    "unknown_bytes": 33,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1430,8 +1286,8 @@
     ]
    ],
    "unknown_bytes": 6,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1460,8 +1316,8 @@
     ]
    ],
    "unknown_bytes": 23,
-   "reason": "entry points proven but they fetch no UNKNOWN byte",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "entry points supported but they fetch no UNKNOWN byte",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1490,8 +1346,8 @@
     ]
    ],
    "unknown_bytes": 15,
-   "reason": "entry points proven, but flow does not reach every byte of the audited range",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "entry points supported, but flow does not reach every byte of the audited range",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1514,8 +1370,8 @@
     ]
    ],
    "unknown_bytes": 26,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1538,8 +1394,8 @@
     ]
    ],
    "unknown_bytes": 20,
-   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
-   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "evidence_needed": "a supported caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
   },
   {
    "bounds": [
@@ -1562,8 +1418,8 @@
     ]
    ],
    "unknown_bytes": 53,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1586,8 +1442,8 @@
     ]
    ],
    "unknown_bytes": 5,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1610,8 +1466,8 @@
     ]
    ],
    "unknown_bytes": 10,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1634,8 +1490,8 @@
     ]
    ],
    "unknown_bytes": 130,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1676,8 +1532,8 @@
     ]
    ],
    "unknown_bytes": 149,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1706,8 +1562,8 @@
     ]
    ],
    "unknown_bytes": 149,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1730,8 +1586,8 @@
     ]
    ],
    "unknown_bytes": 50,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1754,8 +1610,8 @@
     ]
    ],
    "unknown_bytes": 43,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1778,8 +1634,8 @@
     ]
    ],
    "unknown_bytes": 162,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1802,8 +1658,8 @@
     ]
    ],
    "unknown_bytes": 211,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1838,8 +1694,8 @@
     ]
    ],
    "unknown_bytes": 8,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "entry points supported but they fetch no UNKNOWN byte",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1862,8 +1718,8 @@
     ]
    ],
    "unknown_bytes": 82,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1886,8 +1742,8 @@
     ]
    ],
    "unknown_bytes": 154,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1910,8 +1766,8 @@
     ]
    ],
    "unknown_bytes": 55,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1934,8 +1790,8 @@
     ]
    ],
    "unknown_bytes": 100,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1958,8 +1814,8 @@
     ]
    ],
    "unknown_bytes": 75,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -1988,8 +1844,8 @@
     ]
    ],
    "unknown_bytes": 318,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -2012,8 +1868,8 @@
     ]
    ],
    "unknown_bytes": 12,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -2036,8 +1892,8 @@
     ]
    ],
    "unknown_bytes": 10,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -2060,8 +1916,8 @@
     ]
    ],
    "unknown_bytes": 100,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   },
   {
    "bounds": [
@@ -2084,8 +1940,8 @@
     ]
    ],
    "unknown_bytes": 19,
-   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
-   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+   "reason": "no statically supported entry point: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
   }
  ]
 }
