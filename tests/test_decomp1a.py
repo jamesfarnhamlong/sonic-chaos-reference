@@ -82,6 +82,28 @@ class FlowPrimitiveTests(unittest.TestCase):
         self.assertEqual(sorted(reached), [0x100])
         self.assertEqual(notes, [("indirect", 0x100)])
 
+    def test_cpu_address_by_bank(self):
+        self.assertEqual(F.cpu_address(0x0123), 0x0123)
+        self.assertEqual(F.cpu_address(0x6F61), 0x6F61)              # bank 1 is resident
+        self.assertEqual(F.cpu_address(0x30100), 0x8100)             # bank $0C paged into slot 2
+        self.assertEqual(F.cpu_address(0x70200), 0x8200)             # bank $1C
+
+    def test_relative_branches_use_slot2_addresses_in_banked_code(self):
+        for base, name in ((0x30100, "bank $0C"), (0x70100, "bank $1C")):
+            image = bytearray(0x80000)
+            # JR +2 ; NOP ; NOP ; RET   and   DJNZ +0 ; RET  further on
+            image[base:base + 5] = bytes([0x18, 0x02, 0x00, 0x00, 0xC9])
+            reached, notes = F.descend(bytes(image), [base], base, base + 5)
+            self.assertEqual(sorted(reached), [base, base + 4], name)
+            self.assertEqual(notes, [], name)
+            d = F.decode(bytes(image), base)
+            self.assertEqual(F._addr_operand(d), 0x8100 + 4, name)           # absolute slot-2 target
+            image[base:base + 3] = bytes([0x10, 0x00, 0xC9])
+            d = F.decode(bytes(image), base)
+            self.assertEqual(F._addr_operand(d), 0x8102, name)               # DJNZ +0 -> next instruction
+            reached, _ = F.descend(bytes(image), [base], base, base + 3)
+            self.assertEqual(sorted(reached), [base, base + 2], name)
+
     def test_target_resolution_rules(self):
         self.assertEqual(F.resolve_target(0x6000, 0x1234), 0x1234)              # resident target
         self.assertIsNone(F.resolve_target(0x6000, 0x8123))                     # resident site, slot-2 target: ambiguous
@@ -236,7 +258,11 @@ class RomBackedTests(unittest.TestCase):
             r = next(x for x in doc["code_flow_reviews"] if len(x["claims"]) == 1)
             r["claims"][0]["start"] += 1          # splits the first instruction
 
-        for edit in (shift_seed, fake_site, grow_claim, wrong_rom):
+        def extra_bogus_seed(doc):
+            r = doc["code_flow_reviews"][0]
+            r["seeds"].append({"offset": r["bounds"][0], "via": {"site": 0x4}})   # first seed stays valid
+
+        for edit in (shift_seed, fake_site, grow_claim, wrong_rom, extra_bogus_seed):
             with self.assertRaises(ValueError, msg=edit.__name__):
                 self.tamper(edit)
         # an unreached byte (or an instruction split) never verifies
