@@ -64,7 +64,7 @@ A claim is imported only when **both boundaries and the class** are supported:
 |---|---|---|
 | `byte_verified_assembly` | registered in `asm/recovered/regions.json`; `tools/build_verify.py` reassembles the ROM byte for byte | the 74 recovered regions |
 | `decoder_verified` | an existing decoder/loader consumes exactly these bytes and the extent is recomputed from the ROM on every run | level layout RLE streams (end at the `count 0` terminator), tile streams (header + payload + command bytes; the payload end must equal the command start or the stream is rejected), object lists (to the `$FF` terminator) |
-| `reviewed_flow_verified` | a reviewed CODE claim (`data/rom-ledger/reviewed-ranges.json`): every claimed byte is fetched as an instruction by static recursive descent from entry points supported by byte-verified code or a recovered dispatch table (statically reachable CODE; not an execution trace); the generator re-runs the proof on every build and fails on a stale entry | 16 reviews, 860 bytes |
+| `reviewed_flow_verified` | a reviewed CODE claim (`data/rom-ledger/reviewed-ranges.json`): every claimed byte is fetched as an instruction by static recursive descent from entry points supported by byte-verified code or a recovered dispatch table (statically reachable CODE; not an execution trace); the generator re-runs the proof on every build and fails on a stale entry | 16 reviews, 794 bytes |
 | `structure_verified` | fixed-size record/table read by a loader, or a committed export the ROM bytes must reproduce | act headers (22 B), art-load entries (7 B), palette records (16 B), collision profile arrays (32 B), sound/state/twist pointer tables |
 | `manifest_hash_verified` | audit manifest range whose SHA-256 matches the ROM **and** which states `kind` | `data/rom-cache/object-18-act-clear.json`, `thz3/object-50.json` |
 | `manifest_copy` | cache copy of a recovered region; must match a registered region's exact range and kind (else rejected), and counts as recovery-manifest evidence, never independent | `thz1/object-census.json` |
@@ -82,7 +82,7 @@ Deliberately **not** done:
 * Audit ranges that hash correctly but state no `kind` are **not** guessed
   from their name or purpose text. They are listed under
   `unclassified_range_claims` (211 ranges, 14,310 bytes in union; DECOMP-1A
-  classified 860 of their UNKNOWN bytes by control-flow proof and 3,172 remain
+  classified 794 of their UNKNOWN bytes by control-flow evidence and 3,135 remain
   UNKNOWN). Each range carries its final `status` and `bytes_by_class`.
 * Zone index 6 is not imported: the act-header table aliases it onto zone 0
   (six real zones x three acts = 18 acts).
@@ -170,41 +170,41 @@ Importers (all in `tools/rom_ledger.py`):
    `data/rom-ledger/reviewed-ranges.json` with `tools/rom_flow.py`; the file is
    proposed by `tools/decomp1a_review.py` but never trusted.
 
-## Current result (after DECOMP-1A)
+## Current result (after DECOMP-1A and the EEZ carrier claims)
 
 | Category | Bytes | % of ROM |
 |---|---:|---:|
-| CODE | 15,541 | 2.964 |
+| CODE | 16,103 | 3.071 |
 | DATA | 38,663 | 7.374 |
 | GRAPHICS | 192 | 0.037 |
 | MUSIC | 0 | 0.000 |
 | COMPRESSED | 99,976 | 19.069 |
 | PADDING | 0 | 0.000 |
-| UNKNOWN | 369,916 | 70.556 |
+| UNKNOWN | 369,354 | 70.449 |
 | **Total** | **524,288** | 100 |
 
 | Coverage metric | Bytes | % of ROM |
 |---|---:|---:|
 | Recovered into reproducible assembly | 13,046 | 2.488 |
-| Structurally classified (primary class known) | 154,372 | 29.444 |
-| &nbsp;&nbsp;independently evidenced | 143,573 | 27.384 |
-| &nbsp;&nbsp;classified only by the recovery manifest | 10,799 | 2.060 |
-| Recovered and independently evidenced | 2,247 | 0.429 |
-| UNKNOWN | 369,916 | 70.556 |
+| Structurally classified (primary class known) | 154,934 | 29.551 |
+| &nbsp;&nbsp;independently evidenced | 144,230 | 27.510 |
+| &nbsp;&nbsp;classified only by the recovery manifest | 10,704 | 2.042 |
+| Recovered and independently evidenced | 2,342 | 0.447 |
+| UNKNOWN | 369,354 | 70.449 |
 | of which contested | 0 | 0.000 |
 
 Recovered manifest, recalculated by the generator: 74 regions, 13,046 bytes (11,060 code, 1,986 data); the ledger counts 11,060 recovered CODE and 1,986 recovered DATA bytes. DECOMP-1A adds no recovered assembly.
 
-DECOMP-0's initial figures were CODE 14,681, DATA 38,631, UNKNOWN 370,808 (70.726 %), classified 153,480, independently evidenced 142,681 and 32 contested bytes. DECOMP-1A changed them to the figures above: +860 CODE bytes from reviewed control-flow evidence, +32 DATA bytes from correcting the `object-50` audit claim, and 0 contested bytes. See `docs/decomp-1a-existing-evidence.md`.
+History: the DECOMP-0 ledger had CODE 14,681, UNKNOWN 370,808 (70.726 %), classified 153,480, independently evidenced 142,681 and 32 contested bytes. The EEZ carrier-contract correction added seven hash-verified CODE claims from `data/rom-cache/eez/carrier-17.json` (+628 bytes: classified 154,108, UNKNOWN 370,180, independent 143,404). DECOMP-1A then added 794 CODE bytes of reviewed control-flow evidence and 32 DATA bytes by correcting the `object-50` audit claim (+826), and removed the contested bytes. See `docs/decomp-1a-existing-evidence.md`.
 
-The generator tallies 1639 claims, 1827 segments, 376 compatible nested overlaps, 0 partial overlaps and 0 contradictory pairs; 0 claims were rejected.
+The generator tallies 1647 claims, 1835 segments, 383 compatible nested overlaps, 0 partial overlaps and 0 contradictory pairs; 0 claims were rejected.
 
 ## 32-bank summary
 
 | Bank | File range | Code | Data | Graphics | Compressed | Unknown | Recovered | Classified |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
 | 0 | `00000-03FFF` | 2,464 | 0 | 0 | 0 | 13,920 | 1,531 | 15.0% |
-| 1 | `04000-07FFF` | 7,715 | 2,117 | 0 | 0 | 6,552 | 7,137 | 60.0% |
+| 1 | `04000-07FFF` | 7,857 | 2,117 | 0 | 0 | 6,410 | 7,137 | 60.9% |
 | 2 | `08000-0BFFF` | 0 | 136 | 0 | 0 | 16,248 | 0 | 0.8% |
 | 3 | `0C000-0FFFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
 | 4 | `10000-13FFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
@@ -215,7 +215,7 @@ The generator tallies 1639 claims, 1827 segments, 376 compatible nested overlaps
 | 9 | `24000-27FFF` | 0 | 0 | 0 | 7,949 | 8,435 | 0 | 48.5% |
 | 10 | `28000-2BFFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
 | 11 | `2C000-2FFFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
-| 12 | `30000-33FFF` | 2,234 | 1,066 | 0 | 0 | 13,084 | 2,241 | 20.1% |
+| 12 | `30000-33FFF` | 2,654 | 1,066 | 0 | 0 | 12,664 | 2,241 | 22.7% |
 | 13 | `34000-37FFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
 | 14 | `38000-3BFFF` | 0 | 6,544 | 192 | 0 | 9,648 | 0 | 41.1% |
 | 15 | `3C000-3FFFF` | 0 | 54 | 0 | 0 | 16,330 | 54 | 0.3% |
@@ -273,7 +273,7 @@ contradiction detector is unchanged and still tested. See
 
 ## Unresolved areas
 
-* 369,916 bytes (70.6 %) remain UNKNOWN. Twelve banks have no claim at all:
+* 369,354 bytes (70.4 %) remain UNKNOWN. Twelve banks have no claim at all:
   3, 4, 5, 6, 7, 10, 11, 13, 19, 25, 27, 31.
 * `MUSIC`, `PADDING` and uncompressed `GRAPHICS` (beyond palettes) are 0 bytes
   by evidence standard, not by absence in the ROM.
@@ -287,7 +287,7 @@ contradiction detector is unchanged and still tested. See
 
 Ordered by evidence per effort.
 
-1. **Finish the kindless audit ranges** (3,172 bytes in 47 clusters still
+1. **Finish the kindless audit ranges** (3,135 bytes in 46 clusters still
    UNKNOWN; evidence needed per cluster is in `unresolved` of
    `reviewed-ranges.json` and `docs/decomp-1a-existing-evidence.md`).
 2. **Z80 PC traces of the unmodified game** (`tools/sms_frame_harness.py`) would

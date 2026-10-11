@@ -1,13 +1,16 @@
 # DECOMP-1A: classification from existing evidence
 
-Branch `research/decomp-1a-existing-evidence`, from Research `main` `c42c86a`. Scope: resolve the
+Branches `research/decomp-1a-existing-evidence` (published) and `research/decomp-1a-integration`
+(the accepted commits rebuilt on Research `main` `ea948a2`, which already carries the EEZ carrier ledger
+claims). Scope: resolve the
 211 hash-verified ROM ranges that DECOMP-0 left without a content kind, and the one 32-byte
 CODE/DATA contradiction, using evidence Research already holds. No new engine analysis, no
 assembly recovery, no POC or root `AGENTS.md` changes.
 
 ## Method and evidence standard
 
-A SHA-256 match proves a range, not its type. A kind is accepted only from the ROM itself:
+A SHA-256 match proves a range, not its type. A kind is accepted only from the ROM itself, and static control-flow
+evidence is described as what it is: statically reachable CODE, not proof that the game executes it:
 
 * **CODE** by control flow (`tools/rom_flow.py`, built on the existing `z80dis` decoder). An entry point
   is control-flow-supported when a CALL/JP/JR/DJNZ at an instruction of byte-verified recovered code (or of a claim
@@ -30,36 +33,34 @@ uncertainty (statically reachable CODE only; no execution trace; the routine's p
 
 ## Evidence tiers
 
-The ledger keeps three kinds of evidence apart, and this task adds only the middle one:
-
 1. **Byte-verified recovered assembly**: reassembled byte for byte by `tools/build_verify.py`.
-2. **Static control-flow evidence ("statically reachable CODE")**: instructions that recursive descent reaches
-   from supported entry points. It shows the bytes decode and are reachable by branches from known code. It
-   does not show that the game ever executes them, and says nothing about purpose. Recorded as
-   `reviewed_flow_verified`.
-3. **Original-ROM execution traces**: actual Z80 PC and mapper observations from the unmodified game. None
-   are used yet; they are the recommended way to confirm tier 2 and to resolve banked routines.
+2. **Static control-flow evidence ("statically reachable CODE")**: instructions recursive descent reaches from
+   supported entry points. Shows the bytes decode and are branch-reachable from known code; does not show the game
+   executes them or what they do. Recorded as `reviewed_flow_verified`.
+3. **Original-ROM execution traces**: actual Z80 PC and mapper observations. None used yet.
 
-Decoding uses each instruction's real CPU address (`rom_flow.cpu_address`: resident banks 0/1 at their file
-offset, other banks at `$8000 + offset % $4000`), so relative `JR`/`DJNZ` targets are true CPU addresses.
-Every recorded seed of a review must be supported; a review with any unsupported seed is rejected.
+Decoding uses each instruction's real CPU address (`rom_flow.cpu_address`), so relative `JR`/`DJNZ` targets are
+true CPU addresses in every bank; every recorded seed of a review must be supported or the review is rejected.
+All 16 reviews are in resident banks 0/1, so the decoding fix changed no classification.
 
 ## 1. Baseline and final totals
 
-| | DECOMP-0 | After task C | DECOMP-1A final |
+| | `main` ea948a2 | + task C only | Final (integration) |
 |---|---:|---:|---:|
-| CODE | 14,681 | 14,681 | 15,541 |
+| CODE | 15,309 | 15,309 | 16,103 |
 | DATA | 38,631 | 38,663 | 38,663 |
 | GRAPHICS | 192 | 192 | 192 |
 | MUSIC / PADDING | 0 | 0 | 0 |
 | COMPRESSED | 99,976 | 99,976 | 99,976 |
-| UNKNOWN | 370,808 | 370,776 | 369,916 |
+| UNKNOWN | 370,180 | 370,148 | 369,354 |
 | Contested | 32 | 0 | 0 |
-| Structurally classified | 153,480 | 153,512 | 154,372 |
-| Independently evidenced | 142,681 | 142,713 | 143,573 |
+| Structurally classified | 154,108 | 154,140 | 154,934 |
+| Independently evidenced | 143,404 | 143,436 | 144,230 |
 | Recovered assembly | 13,046 | 13,046 | 13,046 |
 
-"After task C" is the contradiction fix alone. Recovered assembly is unchanged: structural
+The original DECOMP-0 ledger had CODE 14,681, UNKNOWN 370,808 and classified 153,480; `main` since added the
+seven EEZ carrier/helper CODE claims (`data/rom-cache/eez/carrier-17.json`, +628 previously UNKNOWN bytes).
+"+ task C only" is the contradiction fix alone, on top of `main`. Recovered assembly is unchanged: structural
 classification is not source recovery, and `regions.json` and `asm/recovered` were not touched.
 
 ## 2-3. Candidate ranges reviewed
@@ -69,43 +70,46 @@ in `unclassified_range_claims`):
 
 | Status | Before | After |
 |---|---:|---:|
-| Fully classified (no UNKNOWN byte) | 130 | 156 |
-| Partially classified | 6 | 7 |
-| Unresolved (all bytes UNKNOWN) | 75 | 48 |
+| Fully classified (no UNKNOWN byte) | 131 | 157 |
+| Partially classified | 10 | 7 |
+| Unresolved (all bytes UNKNOWN) | 70 | 47 |
 
-Of the 211, 26 moved from unresolved to fully classified and 1 from unresolved to partial. The
+"Before" is `main` plus task C. Of the 211, 22 moved from unresolved to fully classified, 4 from partial to
+fully classified and 1 from unresolved to partial. The
 ranges' bytes overlap one another, so the union is the meaningful byte figure: 14,310 bytes, of which
-UNKNOWN fell 4,064 -> 4,032 (task C) -> 3,172.
+UNKNOWN fell 3,961 (`main`) -> 3,929 (task C) -> 3,135.
 
 ## 4. Net newly classified UNKNOWN bytes
 
-**892 bytes**: 860 CODE (16 reviews, 16 claims) plus 32 DATA (the animation pointer table, task C).
+**826 bytes** relative to `main`: 794 CODE (16 reviews, 17 claims) plus 32 DATA (the animation pointer table,
+task C). Standing alone on the older baseline the same reviews claimed 860 CODE bytes; the other 66 are now
+claimed by the EEZ carrier CODE entries, which are kept as they were.
 
-The 16 reviewed CODE claims:
+The reviewed CODE claims:
 
 | Review | Bytes (file offset) | Entry proofs | Audit provenance |
 |---:|---|---:|---|
 | 0 | `0033B-0033E` | 1 | overlap_object_wrapper_033b |
 | 1 | `01C6F-01C76` | 1 | (unnamed in cache) |
 | 2 | `03138-0314A` | 1 | ring_counter_3138 |
-| 3 | `03FEF-0401A` | 2 | player_step_3fef, player_update_3fef |
-| 4 | `048A7-04A33` | 23 | facing_48A7, facing + damage gate $48BC + death, damage_dispatch_48bc, |
-| 5 | `05E9C-05EB7` | 3 | (unnamed in cache) |
-| 6 | `05EB7-05EE1` | 3 | (unnamed in cache) |
+| 3 | `03FEF-0401A` | 1 | player_step_3fef, player_update_3fef |
+| 4 | `048A7-04942`, `04984-04A33` | 5 | facing_48A7, facing + damage gate $48BC + death, damage_dispatch_48bc, |
+| 5 | `05E9C-05EB7` | 1 | (unnamed in cache) |
+| 6 | `05EB7-05EE1` | 1 | (unnamed in cache) |
 | 7 | `05F27-05F3D` | 1 | owner positioning helper $5F27 |
 | 8 | `0606B-0607A` | 1 | slot_index_606b, object_id_606b |
 | 9 | `06ACE-06AE3` | 1 | floor_spike_handler_6ace |
 | 10 | `06B14-06B2C` | 2 | (unnamed in cache) |
 | 11 | `06B2C-06B56` | 1 | breakable_6B2C |
 | 12 | `06B79-06BAA` | 1 | (unnamed in cache) |
-| 13 | `06C45-06C82` | 3 | floor_loss_6c72 |
+| 13 | `06C45-06C82` | 2 | floor_loss_6c72 |
 | 14 | `0760C-07646` | 1 | surface_type_1d_handler |
 | 15 | `07646-07666` | 1 | (unnamed in cache) |
 
 ## 5. Classification changes that do not increase coverage
 
-130 of the 211 ranges were already fully classified before this task by recovered assembly or other
-claims (121 CODE-only, 2 DATA-only, 7 mixed CODE/DATA). Their kind is now documented per range
+131 of the 211 ranges were already fully classified before this task by recovered assembly or other
+claims (122 CODE-only, 2 DATA-only, 7 mixed CODE/DATA). Their kind is now documented per range
 (`bytes_by_class`), with no coverage change. Observations from that comparison, none acted on:
 
 * Seven ranges mix CODE and DATA (for example the type `$2F` tables/scripts/callbacks range and
@@ -117,12 +121,12 @@ claims (121 CODE-only, 2 DATA-only, 7 mixed CODE/DATA). Their kind is now docume
 
 ## 6. Independently evidenced coverage
 
-Independent structural coverage rose from 142,681 to 143,573 bytes (+892). Recovered-and-independent
-rose by 32 (2,215 -> 2,247): the corrected `object-50` data entry repeats the recovered pointer-table
+Independent structural coverage rose from 143,404 (`main`) to 144,230 bytes (+826). Recovered-and-independent
+rose by 32 (2,310 -> 2,342): the corrected `object-50` data entry repeats the recovered pointer-table
 range with its own SHA-256, as that audit's other explicit-kind entries already did; the recovered
-manifest copies (`thz1/object-census.json`, 22 entries) remain recovery-manifest evidence only. The 860
+manifest copies (`thz1/object-census.json`, 22 entries) remain recovery-manifest evidence only. The 794
 reviewed bytes were all UNKNOWN before, none is recovered, and `classified_by_recovery_only_bytes` is
-unchanged at 10,799.
+unchanged at 10,704.
 
 ## 7. The 32-byte contradiction (`0x06696-0x066B6`)
 
@@ -136,12 +140,12 @@ unchanged at 10,799.
 
 `tools/object_50.py` now records `anim_cmd_dispatch` as `0x6680-0x6696` CODE and a new
 `anim_cmd_pointer_table` as `0x6696-0x66B6` DATA; `data/rom-cache/thz3/object-50.json` was regenerated
-(only those two entries changed; `anim_cmd_dispatch` length 54 -> 22 and its SHA-256 follow). The ledger's
+(only those two entries changed; `anim_cmd_dispatch` length 54 -> 22 and its SHA-256 follow). `main` still carried the contested 32 bytes at ea948a2. The ledger's
 contradiction detector is unchanged and still tested with a synthetic pair.
 
 ## 8. Remaining unresolved ranges and the evidence needed
 
-47 clusters (overlapping audit ranges merged), 3,172 UNKNOWN bytes: 26 resident-engine clusters (1,277 bytes)
+46 clusters (overlapping audit ranges merged), 3,135 UNKNOWN bytes: 25 resident-engine clusters (1,240 bytes)
 and 21 banked clusters (1,895 bytes).
 
 Common reason: no CALL/JP/JR from byte-verified (or already proven) code, and no recovered dispatch
@@ -167,7 +171,6 @@ settle them:
 | `03BFB-03C15` | 26 | player_pit_screen_y | viewport-semantics.json |
 | `045B3-04892` | 51 | stand/landing setters $45B3/$45CE, state_setters_45b3, landing_45CE, n | gpz-surface19.json, player-attack-badnik.json, player-fall-c |
 | `04A74-04AA3` | 47 | power_up_timer_4a74 | player-attack-badnik.json |
-| `04C12-04C37` | 37 | state_probe_caller_4c12 | terrain-ring-collection.json |
 | `04C90-04CB0` | 32 | camera_update | viewport-semantics.json |
 | `04CB0-04CF7` | 71 | camera_limit_x | viewport-semantics.json |
 | `04CF7-04D3E` | 71 | camera_limit_y | viewport-semantics.json |
@@ -205,9 +208,8 @@ settle them:
 | `79E4B-79EAF` | 100 | (unnamed in cache) | gpz/boss-51-composition.json |
 | `7A141-7A154` | 19 | (unnamed in cache) | gpz/boss-51-composition.json |
 
-Two resident clusters have proven entries but unreached bytes: `0x045B3-0x04892` (51 bytes) and
-`0x05F3D-0x05F84` (23 bytes) lie between reached routines, so flow cannot say whether they are code
-or data. `0x0606B-0x06089` (15 bytes) is partly reached.
+Resident clusters whose entries are supported but whose remaining bytes flow does not reach (flow cannot say
+whether they are code or data): `0x045B3-0x04892` (51 bytes); `0x05F3D-0x05F84` (23 bytes); `0x0606B-0x06089` (15 bytes); `0x70000-0x70146` (8 bytes).
 
 ## 9. Recommended next classification targets
 
