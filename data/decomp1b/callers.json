@@ -1,0 +1,2062 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "generator": "tools/decomp1b_callers.py",
+ "vector_reachability": {
+  "roots": [
+   {
+    "address": 0,
+    "name": "reset"
+   },
+   {
+    "address": 56,
+    "name": "IM 1 interrupt"
+   },
+   {
+    "address": 102,
+    "name": "NMI"
+   }
+  ],
+  "scope": "resident engine, banks 0 and 1 ($0000-$7FFF); CALL/JP/JR/DJNZ and fall-through only",
+  "instructions": 9214,
+  "bytes": 18642,
+  "indirect_jumps_not_followed": [
+   24175,
+   24218,
+   26261,
+   26994,
+   30700
+  ],
+  "undecodable_stops": [],
+  "evidence_tier": "static control-flow evidence (statically reachable CODE), not an execution trace"
+ },
+ "dependency_map": [
+  {
+   "name": "camera_update",
+   "range": [
+    19600,
+    19632
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 19600,
+     "direct_callers": [
+      {
+       "site": 5834,
+       "op": "CALL",
+       "owner_entry": 5816,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 5882,
+       "op": "CALL",
+       "owner_entry": 5816,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11402,
+       "via": "CALL at $2BD8"
+      },
+      {
+       "to": 5816,
+       "via": "CALL at $2C8E"
+      },
+      {
+       "to": 5871,
+       "via": "JP at $16BC"
+      },
+      {
+       "to": 19600,
+       "via": "CALL at $16FA"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  },
+  {
+   "name": "camera_limit_x",
+   "range": [
+    19632,
+    19703
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 19632,
+     "direct_callers": [
+      {
+       "site": 19618,
+       "op": "CALL",
+       "owner_entry": 19600,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11402,
+       "via": "CALL at $2BD8"
+      },
+      {
+       "to": 5816,
+       "via": "CALL at $2C8E"
+      },
+      {
+       "to": 5871,
+       "via": "JP at $16BC"
+      },
+      {
+       "to": 19600,
+       "via": "CALL at $16FA"
+      },
+      {
+       "to": 19632,
+       "via": "CALL at $4CA2"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  },
+  {
+   "name": "camera_limit_y",
+   "range": [
+    19703,
+    19774
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 19703,
+     "direct_callers": [
+      {
+       "site": 19621,
+       "op": "CALL",
+       "owner_entry": 19600,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11402,
+       "via": "CALL at $2BD8"
+      },
+      {
+       "to": 5816,
+       "via": "CALL at $2C8E"
+      },
+      {
+       "to": 5871,
+       "via": "JP at $16BC"
+      },
+      {
+       "to": 19600,
+       "via": "CALL at $16FA"
+      },
+      {
+       "to": 19703,
+       "via": "CALL at $4CA5"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  },
+  {
+   "name": "camera_to_vdp",
+   "range": [
+    19774,
+    19805
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 19774,
+     "direct_callers": [
+      {
+       "site": 19624,
+       "op": "CALL",
+       "owner_entry": 19600,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11402,
+       "via": "CALL at $2BD8"
+      },
+      {
+       "to": 5816,
+       "via": "CALL at $2C8E"
+      },
+      {
+       "to": 5871,
+       "via": "JP at $16BC"
+      },
+      {
+       "to": 19600,
+       "via": "CALL at $16FA"
+      },
+      {
+       "to": 19774,
+       "via": "CALL at $4CA8"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  },
+  {
+   "name": "camera_follow",
+   "range": [
+    22578,
+    22837
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 22578,
+     "direct_callers": [
+      {
+       "site": 19609,
+       "op": "CALL",
+       "owner_entry": 19600,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11402,
+       "via": "CALL at $2BD8"
+      },
+      {
+       "to": 5816,
+       "via": "CALL at $2C8E"
+      },
+      {
+       "to": 5871,
+       "via": "JP at $16BC"
+      },
+      {
+       "to": 19600,
+       "via": "CALL at $16FA"
+      },
+      {
+       "to": 22578,
+       "via": "CALL at $4C99"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  },
+  {
+   "name": "camera_follow_init",
+   "range": [
+    22837,
+    22870
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 22837,
+     "direct_callers": [
+      {
+       "site": 20606,
+       "op": "CALL",
+       "owner_entry": 20444,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11127,
+       "via": "JP at $2B5B"
+      },
+      {
+       "to": 1735,
+       "via": "CALL at $2B7A"
+      },
+      {
+       "to": 20444,
+       "via": "CALL at $06E1"
+      },
+      {
+       "to": 22837,
+       "via": "CALL at $507E"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  },
+  {
+   "name": "player_update",
+   "range": [
+    13853,
+    13911
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 13853,
+     "direct_callers": [
+      {
+       "site": 2928,
+       "op": "CALL",
+       "owner_entry": 2768,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 5163,
+       "op": "CALL",
+       "owner_entry": 5101,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 5223,
+       "op": "CALL",
+       "owner_entry": 5220,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 5284,
+       "op": "CALL",
+       "owner_entry": 5220,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 5636,
+       "op": "CALL",
+       "owner_entry": 5220,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 5837,
+       "op": "CALL",
+       "owner_entry": 5816,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 5890,
+       "op": "CALL",
+       "owner_entry": 5816,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 6698,
+       "op": "CALL",
+       "owner_entry": 6694,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 6822,
+       "op": "CALL",
+       "owner_entry": 6694,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 6973,
+       "op": "CALL",
+       "owner_entry": 6694,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 11463,
+       "op": "CALL",
+       "owner_entry": 11460,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 13611,
+       "op": "CALL",
+       "owner_entry": 13602,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 13630,
+       "op": "CALL",
+       "owner_entry": 13602,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11460,
+       "via": "CALL at $2BDB"
+      },
+      {
+       "to": 13853,
+       "via": "CALL at $2CC7"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  },
+  {
+   "name": "player_wrapper_0A",
+   "range": [
+    14593,
+    14651
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 14593,
+     "direct_callers": [],
+     "reached_from_hardware_vector": false,
+     "transfer_chain_from_vector": [],
+     "jp_stub_entries": [
+      947
+     ],
+     "stub_word_in_state_scripts": [
+      {
+       "stub": 947,
+       "type": 1,
+       "state": 10,
+       "script_cpu": 33090,
+       "occurrences": 1,
+       "first_word_offset_in_script": 4,
+       "first_immediately_after_ff05_selector": true
+      },
+      {
+       "stub": 947,
+       "type": 2,
+       "state": 10,
+       "script_cpu": 35534,
+       "occurrences": 1,
+       "first_word_offset_in_script": 4,
+       "first_immediately_after_ff05_selector": true
+      }
+     ],
+     "blocked_only_by": "no decoded CALL/JP/JR reaches it"
+    }
+   ]
+  },
+  {
+   "name": "player_wrapper_0E_14",
+   "range": [
+    14903,
+    14937
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 14903,
+     "direct_callers": [],
+     "reached_from_hardware_vector": false,
+     "transfer_chain_from_vector": [],
+     "jp_stub_entries": [
+      941
+     ],
+     "stub_word_in_state_scripts": [
+      {
+       "stub": 941,
+       "type": 1,
+       "state": 14,
+       "script_cpu": 33248,
+       "occurrences": 29,
+       "first_word_offset_in_script": 2,
+       "first_immediately_after_ff05_selector": false
+      },
+      {
+       "stub": 941,
+       "type": 2,
+       "state": 14,
+       "script_cpu": 35687,
+       "occurrences": 29,
+       "first_word_offset_in_script": 2,
+       "first_immediately_after_ff05_selector": false
+      }
+     ],
+     "blocked_only_by": "no decoded CALL/JP/JR reaches it"
+    },
+    {
+     "entry": 14920,
+     "direct_callers": [],
+     "reached_from_hardware_vector": false,
+     "transfer_chain_from_vector": [],
+     "jp_stub_entries": [
+      1016
+     ],
+     "stub_word_in_state_scripts": [
+      {
+       "stub": 1016,
+       "type": 1,
+       "state": 20,
+       "script_cpu": 33222,
+       "occurrences": 6,
+       "first_word_offset_in_script": 2,
+       "first_immediately_after_ff05_selector": false
+      },
+      {
+       "stub": 1016,
+       "type": 2,
+       "state": 20,
+       "script_cpu": 35661,
+       "occurrences": 6,
+       "first_word_offset_in_script": 2,
+       "first_immediately_after_ff05_selector": false
+      }
+     ],
+     "blocked_only_by": "no decoded CALL/JP/JR reaches it"
+    }
+   ]
+  },
+  {
+   "name": "level_header_loader",
+   "range": [
+    20444,
+    20610
+   ],
+   "decomp1a_status": "unresolved: no statically supported entry point: no CALL/JP from byte-verified or already-supported code targets it",
+   "entries": [
+    {
+     "entry": 20444,
+     "direct_callers": [
+      {
+       "site": 1761,
+       "op": "CALL",
+       "owner_entry": 1735,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      },
+      {
+       "site": 10565,
+       "op": "CALL",
+       "owner_entry": 10548,
+       "site_is_recovered_assembly": false,
+       "site_reached_from_vector": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11127,
+       "via": "JP at $2B5B"
+      },
+      {
+       "to": 1735,
+       "via": "CALL at $2B7A"
+      },
+      {
+       "to": 20444,
+       "via": "CALL at $06E1"
+      }
+     ],
+     "jp_stub_entries": [],
+     "stub_word_in_state_scripts": [],
+     "blocked_only_by": "its callers are in unrecovered code (none is byte-verified assembly)"
+    }
+   ]
+  }
+ ],
+ "candidates": {
+  "baseline_code_bytes_claimed": 794,
+  "baseline_supported_entries": 22,
+  "baseline_unresolved_unknown_bytes": 3135,
+  "candidates": [
+   {
+    "name": "main_loop_dispatch",
+    "bounds": [
+     4915,
+     4965
+    ],
+    "region_bytes": 50,
+    "new_supported_entries": [],
+    "new_code_bytes_classified": 0,
+    "unresolved_clusters_after": 46
+   },
+   {
+    "name": "main_loop_bit1_handler",
+    "bounds": [
+     5747,
+     5782
+    ],
+    "region_bytes": 35,
+    "new_supported_entries": [
+     22963
+    ],
+    "new_code_bytes_classified": 6,
+    "unresolved_clusters_after": 45
+   },
+   {
+    "name": "gameplay_frame_update",
+    "bounds": [
+     5816,
+     5971
+    ],
+    "region_bytes": 155,
+    "new_supported_entries": [
+     13853,
+     19060,
+     19600,
+     19632,
+     19703,
+     19774,
+     22578
+    ],
+    "new_code_bytes_classified": 569,
+    "unresolved_clusters_after": 39
+   },
+   {
+    "name": "level_load_sequence",
+    "bounds": [
+     10548,
+     10622
+    ],
+    "region_bytes": 74,
+    "new_supported_entries": [
+     20444,
+     22837
+    ],
+    "new_code_bytes_classified": 199,
+    "unresolved_clusters_after": 44
+   },
+   {
+    "name": "level_intro_setup",
+    "bounds": [
+     1735,
+     1817
+    ],
+    "region_bytes": 82,
+    "new_supported_entries": [
+     20444,
+     22837,
+     22963
+    ],
+    "new_code_bytes_classified": 205,
+    "unresolved_clusters_after": 43
+   },
+   {
+    "name": "mode_handler_1696",
+    "bounds": [
+     5782,
+     5816
+    ],
+    "region_bytes": 34,
+    "new_supported_entries": [],
+    "new_code_bytes_classified": 0,
+    "unresolved_clusters_after": 46
+   },
+   {
+    "name": "player_state_callback_stubs",
+    "bounds": [
+     896,
+     1103
+    ],
+    "region_bytes": 207,
+    "new_supported_entries": [
+     14211,
+     14413,
+     14593,
+     14903,
+     14920,
+     15355,
+     17843,
+     17870,
+     17901,
+     17955,
+     17980,
+     18019,
+     18048,
+     18073,
+     18107,
+     18161,
+     18216,
+     18293,
+     18329,
+     18345,
+     18396,
+     18427,
+     18444,
+     18477,
+     18505,
+     18536,
+     18557,
+     22963,
+     22969,
+     25335
+    ],
+    "new_code_bytes_classified": 264,
+    "unresolved_clusters_after": 39
+   }
+  ],
+  "selected_combined": {
+   "regions": [
+    "main_loop_dispatch",
+    "main_loop_bit1_handler",
+    "gameplay_frame_update",
+    "level_load_sequence"
+   ],
+   "new_supported_entries": [
+    13853,
+    19060,
+    19600,
+    19632,
+    19703,
+    19774,
+    20444,
+    22578,
+    22837,
+    22963
+   ],
+   "new_code_bytes_classified": 774,
+   "unresolved_clusters_after": 36,
+   "unresolved_unknown_bytes_after": 2361
+  }
+ },
+ "recovered_callers": [
+  {
+   "name": "main_loop_dispatch",
+   "bounds": [
+    4915,
+    4965
+   ],
+   "instructions": 23,
+   "bytes": 50,
+   "entries": [
+    4915
+   ],
+   "every_byte_reached_from_entries": true,
+   "unreached_instruction_offsets": [],
+   "final_instruction_is_terminal": true,
+   "stop_notes": [
+    [
+     "leaves_range",
+     4915
+    ],
+    [
+     "leaves_range",
+     4922
+    ],
+    [
+     "leaves_range",
+     4929
+    ],
+    [
+     "leaves_range",
+     4933
+    ],
+    [
+     "leaves_range",
+     4937
+    ],
+    [
+     "leaves_range",
+     4941
+    ],
+    [
+     "leaves_range",
+     4946
+    ],
+    [
+     "leaves_range",
+     4950
+    ],
+    [
+     "leaves_range",
+     4954
+    ],
+    [
+     "leaves_range",
+     4957
+    ],
+    [
+     "leaves_range",
+     4960
+    ]
+   ],
+   "touches_recovered_data": [],
+   "table_loads_inside_region": [],
+   "transfers": [
+    {
+     "site": 4915,
+     "op": "CALL",
+     "conditional": false,
+     "target": 1581,
+     "target_offset": 1581,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 4922,
+     "op": "JP",
+     "conditional": true,
+     "target": 5986,
+     "target_offset": 5986,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 4929,
+     "op": "JP",
+     "conditional": true,
+     "target": 4965,
+     "target_offset": 4965,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 4933,
+     "op": "JP",
+     "conditional": true,
+     "target": 5002,
+     "target_offset": 5002,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 4937,
+     "op": "JP",
+     "conditional": true,
+     "target": 5294,
+     "target_offset": 5294,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 4941,
+     "op": "JP",
+     "conditional": true,
+     "target": 5443,
+     "target_offset": 5443,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 4946,
+     "op": "JP",
+     "conditional": true,
+     "target": 5618,
+     "target_offset": 5618,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 4950,
+     "op": "JP",
+     "conditional": true,
+     "target": 5747,
+     "target_offset": 5747,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 4954,
+     "op": "JP",
+     "conditional": true,
+     "target": 5782,
+     "target_offset": 5782,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 4957,
+     "op": "CALL",
+     "conditional": false,
+     "target": 5816,
+     "target_offset": 5816,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 4960,
+     "op": "CALL",
+     "conditional": false,
+     "target": 5951,
+     "target_offset": 5951,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 4963,
+     "op": "JR",
+     "conditional": false,
+     "target": 4915,
+     "target_offset": 4915,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    }
+   ],
+   "fall_through_off_end": false,
+   "internal_targets_are_instruction_starts": true,
+   "entry_support": [
+    {
+     "entry": 4915,
+     "external_sites": [
+      {
+       "site": 1247,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 5098,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 5440,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 5605,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 5615,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 5736,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 5744,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 5779,
+       "op": "JP",
+       "recovered_assembly": true
+      },
+      {
+       "site": 5813,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 6028,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 6162,
+       "op": "JP",
+       "recovered_assembly": false
+      },
+      {
+       "site": 6264,
+       "op": "JP",
+       "recovered_assembly": false
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 4915,
+       "via": "JP at $04DF"
+      }
+     ]
+    }
+   ],
+   "registered": true
+  },
+  {
+   "name": "main_loop_bit1_handler",
+   "bounds": [
+    5747,
+    5782
+   ],
+   "instructions": 12,
+   "bytes": 35,
+   "entries": [
+    5747
+   ],
+   "every_byte_reached_from_entries": true,
+   "unreached_instruction_offsets": [],
+   "final_instruction_is_terminal": true,
+   "stop_notes": [
+    [
+     "leaves_range",
+     5747
+    ],
+    [
+     "leaves_range",
+     5750
+    ],
+    [
+     "leaves_range",
+     5753
+    ],
+    [
+     "leaves_range",
+     5756
+    ],
+    [
+     "leaves_range",
+     5759
+    ],
+    [
+     "leaves_range",
+     5762
+    ],
+    [
+     "leaves_range",
+     5765
+    ],
+    [
+     "leaves_range",
+     5768
+    ],
+    [
+     "leaves_range",
+     5771
+    ],
+    [
+     "leaves_range",
+     5779
+    ]
+   ],
+   "touches_recovered_data": [],
+   "table_loads_inside_region": [],
+   "transfers": [
+    {
+     "site": 5747,
+     "op": "CALL",
+     "conditional": false,
+     "target": 20430,
+     "target_offset": 20430,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5750,
+     "op": "CALL",
+     "conditional": false,
+     "target": 12661,
+     "target_offset": 12661,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5753,
+     "op": "CALL",
+     "conditional": false,
+     "target": 10548,
+     "target_offset": 10548,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 5756,
+     "op": "CALL",
+     "conditional": false,
+     "target": 12566,
+     "target_offset": 12566,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 5759,
+     "op": "CALL",
+     "conditional": false,
+     "target": 12618,
+     "target_offset": 12618,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5762,
+     "op": "CALL",
+     "conditional": false,
+     "target": 10332,
+     "target_offset": 10332,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5765,
+     "op": "CALL",
+     "conditional": false,
+     "target": 6299,
+     "target_offset": 6299,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5768,
+     "op": "CALL",
+     "conditional": false,
+     "target": 31055,
+     "target_offset": 31055,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5771,
+     "op": "CALL",
+     "conditional": false,
+     "target": 22963,
+     "target_offset": 22963,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5779,
+     "op": "JP",
+     "conditional": false,
+     "target": 4915,
+     "target_offset": 4915,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    }
+   ],
+   "fall_through_off_end": false,
+   "internal_targets_are_instruction_starts": true,
+   "entry_support": [
+    {
+     "entry": 5747,
+     "external_sites": [
+      {
+       "site": 4950,
+       "op": "JP",
+       "recovered_assembly": true
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 4915,
+       "via": "JP at $04DF"
+      },
+      {
+       "to": 5747,
+       "via": "JP at $1356"
+      }
+     ]
+    }
+   ],
+   "registered": true
+  },
+  {
+   "name": "gameplay_frame_update",
+   "bounds": [
+    5816,
+    5971
+   ],
+   "instructions": 62,
+   "bytes": 155,
+   "entries": [
+    5816,
+    5871,
+    5951
+   ],
+   "every_byte_reached_from_entries": true,
+   "unreached_instruction_offsets": [],
+   "final_instruction_is_terminal": true,
+   "stop_notes": [
+    [
+     "leaves_range",
+     5834
+    ],
+    [
+     "leaves_range",
+     5837
+    ],
+    [
+     "leaves_range",
+     5840
+    ],
+    [
+     "leaves_range",
+     5843
+    ],
+    [
+     "leaves_range",
+     5860
+    ],
+    [
+     "leaves_range",
+     5863
+    ],
+    [
+     "leaves_range",
+     5882
+    ],
+    [
+     "leaves_range",
+     5890
+    ],
+    [
+     "leaves_range",
+     5897
+    ],
+    [
+     "leaves_range",
+     5913
+    ],
+    [
+     "leaves_range",
+     5916
+    ],
+    [
+     "leaves_range",
+     5923
+    ],
+    [
+     "leaves_range",
+     5940
+    ],
+    [
+     "leaves_range",
+     5943
+    ]
+   ],
+   "touches_recovered_data": [],
+   "table_loads_inside_region": [],
+   "transfers": [
+    {
+     "site": 5820,
+     "op": "JP",
+     "conditional": true,
+     "target": 5871,
+     "target_offset": 5871,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5831,
+     "op": "JP",
+     "conditional": true,
+     "target": 5866,
+     "target_offset": 5866,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5834,
+     "op": "CALL",
+     "conditional": false,
+     "target": 19600,
+     "target_offset": 19600,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5837,
+     "op": "CALL",
+     "conditional": false,
+     "target": 13853,
+     "target_offset": 13853,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5840,
+     "op": "CALL",
+     "conditional": false,
+     "target": 24017,
+     "target_offset": 24017,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 5843,
+     "op": "CALL",
+     "conditional": false,
+     "target": 31426,
+     "target_offset": 31426,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 5851,
+     "op": "JP",
+     "conditional": true,
+     "target": 5866,
+     "target_offset": 5866,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5860,
+     "op": "CALL",
+     "conditional": false,
+     "target": 7279,
+     "target_offset": 7279,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5863,
+     "op": "CALL",
+     "conditional": false,
+     "target": 32768,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": "slot-2 target from resident code: bank chosen at run time"
+    },
+    {
+     "site": 5870,
+     "op": "RET",
+     "conditional": false,
+     "target": null,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5879,
+     "op": "JP",
+     "conditional": true,
+     "target": 5946,
+     "target_offset": 5946,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5882,
+     "op": "CALL",
+     "conditional": false,
+     "target": 19600,
+     "target_offset": 19600,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5890,
+     "op": "CALL",
+     "conditional": false,
+     "target": 13853,
+     "target_offset": 13853,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5897,
+     "op": "CALL",
+     "conditional": false,
+     "target": 24017,
+     "target_offset": 24017,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 5913,
+     "op": "CALL",
+     "conditional": false,
+     "target": 8718,
+     "target_offset": 8718,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5916,
+     "op": "CALL",
+     "conditional": false,
+     "target": 4135,
+     "target_offset": 4135,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5923,
+     "op": "CALL",
+     "conditional": false,
+     "target": 31426,
+     "target_offset": 31426,
+     "internal": false,
+     "target_class_baseline": "CODE",
+     "bank_note": null
+    },
+    {
+     "site": 5931,
+     "op": "JP",
+     "conditional": true,
+     "target": 5946,
+     "target_offset": 5946,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5940,
+     "op": "CALL",
+     "conditional": false,
+     "target": 7279,
+     "target_offset": 7279,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 5943,
+     "op": "CALL",
+     "conditional": false,
+     "target": 32768,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": "slot-2 target from resident code: bank chosen at run time"
+    },
+    {
+     "site": 5950,
+     "op": "RET",
+     "conditional": false,
+     "target": null,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5955,
+     "op": "RET",
+     "conditional": true,
+     "target": null,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 5970,
+     "op": "RET",
+     "conditional": false,
+     "target": null,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": null
+    }
+   ],
+   "fall_through_off_end": false,
+   "internal_targets_are_instruction_starts": true,
+   "entry_support": [
+    {
+     "entry": 5816,
+     "external_sites": [
+      {
+       "site": 1958,
+       "op": "CALL",
+       "recovered_assembly": false
+      },
+      {
+       "site": 1980,
+       "op": "CALL",
+       "recovered_assembly": false
+      },
+      {
+       "site": 4957,
+       "op": "CALL",
+       "recovered_assembly": true
+      },
+      {
+       "site": 6022,
+       "op": "CALL",
+       "recovered_assembly": false
+      },
+      {
+       "site": 11406,
+       "op": "CALL",
+       "recovered_assembly": false
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11402,
+       "via": "CALL at $2BD8"
+      },
+      {
+       "to": 5816,
+       "via": "CALL at $2C8E"
+      }
+     ]
+    },
+    {
+     "entry": 5871,
+     "external_sites": [],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11402,
+       "via": "CALL at $2BD8"
+      },
+      {
+       "to": 5816,
+       "via": "CALL at $2C8E"
+      },
+      {
+       "to": 5871,
+       "via": "JP at $16BC"
+      }
+     ]
+    },
+    {
+     "entry": 5951,
+     "external_sites": [
+      {
+       "site": 4960,
+       "op": "CALL",
+       "recovered_assembly": true
+      },
+      {
+       "site": 6025,
+       "op": "CALL",
+       "recovered_assembly": false
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 4915,
+       "via": "JP at $04DF"
+      },
+      {
+       "to": 5951,
+       "via": "CALL at $1360"
+      }
+     ]
+    }
+   ],
+   "registered": true
+  },
+  {
+   "name": "level_load_sequence",
+   "bounds": [
+    10548,
+    10622
+   ],
+   "instructions": 30,
+   "bytes": 74,
+   "entries": [
+    10548
+   ],
+   "every_byte_reached_from_entries": true,
+   "unreached_instruction_offsets": [],
+   "final_instruction_is_terminal": true,
+   "stop_notes": [
+    [
+     "leaves_range",
+     10549
+    ],
+    [
+     "leaves_range",
+     10552
+    ],
+    [
+     "leaves_range",
+     10555
+    ],
+    [
+     "leaves_range",
+     10562
+    ],
+    [
+     "leaves_range",
+     10565
+    ],
+    [
+     "leaves_range",
+     10568
+    ],
+    [
+     "leaves_range",
+     10571
+    ],
+    [
+     "leaves_range",
+     10574
+    ],
+    [
+     "leaves_range",
+     10584
+    ],
+    [
+     "leaves_range",
+     10587
+    ],
+    [
+     "leaves_range",
+     10614
+    ],
+    [
+     "leaves_range",
+     10618
+    ]
+   ],
+   "touches_recovered_data": [],
+   "table_loads_inside_region": [],
+   "transfers": [
+    {
+     "site": 10549,
+     "op": "CALL",
+     "conditional": false,
+     "target": 10622,
+     "target_offset": 10622,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10552,
+     "op": "CALL",
+     "conditional": false,
+     "target": 30945,
+     "target_offset": 30945,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10555,
+     "op": "CALL",
+     "conditional": false,
+     "target": 10643,
+     "target_offset": 10643,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10562,
+     "op": "CALL",
+     "conditional": false,
+     "target": 20430,
+     "target_offset": 20430,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10565,
+     "op": "CALL",
+     "conditional": false,
+     "target": 20444,
+     "target_offset": 20444,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10568,
+     "op": "CALL",
+     "conditional": false,
+     "target": 19885,
+     "target_offset": 19885,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10571,
+     "op": "CALL",
+     "conditional": false,
+     "target": 10831,
+     "target_offset": 10831,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10574,
+     "op": "CALL",
+     "conditional": false,
+     "target": 10798,
+     "target_offset": 10798,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10584,
+     "op": "CALL",
+     "conditional": true,
+     "target": 31199,
+     "target_offset": 31199,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10587,
+     "op": "CALL",
+     "conditional": false,
+     "target": 31218,
+     "target_offset": 31218,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10594,
+     "op": "JR",
+     "conditional": true,
+     "target": 10618,
+     "target_offset": 10618,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 10607,
+     "op": "JR",
+     "conditional": true,
+     "target": 10614,
+     "target_offset": 10614,
+     "internal": true,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 10614,
+     "op": "CALL",
+     "conditional": false,
+     "target": 1581,
+     "target_offset": 1581,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10617,
+     "op": "RET",
+     "conditional": false,
+     "target": null,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": null
+    },
+    {
+     "site": 10618,
+     "op": "CALL",
+     "conditional": false,
+     "target": 1581,
+     "target_offset": 1581,
+     "internal": false,
+     "target_class_baseline": "UNKNOWN",
+     "bank_note": null
+    },
+    {
+     "site": 10621,
+     "op": "RET",
+     "conditional": false,
+     "target": null,
+     "target_offset": null,
+     "internal": false,
+     "target_class_baseline": null,
+     "bank_note": null
+    }
+   ],
+   "fall_through_off_end": false,
+   "internal_targets_are_instruction_starts": true,
+   "entry_support": [
+    {
+     "entry": 10548,
+     "external_sites": [
+      {
+       "site": 5753,
+       "op": "CALL",
+       "recovered_assembly": true
+      },
+      {
+       "site": 6117,
+       "op": "CALL",
+       "recovered_assembly": false
+      },
+      {
+       "site": 11437,
+       "op": "CALL",
+       "recovered_assembly": false
+      }
+     ],
+     "reached_from_hardware_vector": true,
+     "transfer_chain_from_vector": [
+      {
+       "to": 0,
+       "via": "vector"
+      },
+      {
+       "to": 1142,
+       "via": "JP at $0035"
+      },
+      {
+       "to": 11088,
+       "via": "CALL at $04BE"
+      },
+      {
+       "to": 11203,
+       "via": "JP at $2B63"
+      },
+      {
+       "to": 11428,
+       "via": "CALL at $2BCC"
+      },
+      {
+       "to": 10548,
+       "via": "CALL at $2CAD"
+      }
+     ]
+    }
+   ],
+   "registered": true
+  }
+ ]
+}

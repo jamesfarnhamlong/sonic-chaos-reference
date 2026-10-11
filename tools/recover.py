@@ -7,6 +7,10 @@ from rom import load
 # End offsets are exclusive. Code/data are classified explicitly: exploratory
 # linear-disassembly output is deliberately not treated as annotated source.
 REGIONS = [
+ ('main_loop_dispatch',0x1333,0x1365,'code'),
+ ('main_loop_bit1_handler',0x1673,0x1696,'code'),
+ ('gameplay_frame_update',0x16b8,0x1753,'code'),
+ ('level_load_sequence',0x2934,0x297e,'code'),
  ('object_sprite_coordinate_renderer',0x226a,0x2335,'code'),
  ('numeric_reward_counter',0x3104,0x3138,'code'),
  ('side_sensors',0x3686,0x36c6,'code'),
@@ -85,6 +89,12 @@ REGIONS = [
  ]
 
 COMMENTS = {
+0x1333:'Main loop: wait for the frame ($062D), then test $D294 bit 7 and the bits of the flag byte $D293 in turn: bit 7 -> $1365, bit 6 clear -> $138A, bit 5 -> $14AE, bit 4 -> $1543, bit 2 -> $15F2, bit 1 -> $1673, bit 0 -> $1696 (bit 3 is not tested). With none selected it runs the gameplay update ($16B8, $173F) and loops.',
+0x1673:'Handler for $D293 bit 1: calls $4FCE, $3175, the level load sequence $2934, $3116, $314A, $285C, $189B, $794F and the camera vector routine $59B3, clears the bit and returns to the main loop.',
+0x16b8:'Gameplay frame update, $D131 = 0 variant: camera update $4C90, player update $361D, object scheduler $5DD1, $7AC2, then once the counter $D2E2 reaches 4 it is cleared, bank $1C is mapped and $8000 is called. $D2E2 is incremented on every exit.',
+0x16ef:'Gameplay frame update, $D131 nonzero variant: the same sequence with $D44F set to $FF around the player update and around the extra calls $220E and $1027 (bank 15 mapped for them).',
+0x173f:'When $D12E is nonzero: clear it, store $80 in $DE08 and set $D293 bit 0.',
+0x2934:'Level load sequence: clear the $D300 block ($297E), $78E1, $2993, clear the $D15E block ($4FCE), level header loader $4FDC, $4DAD, $2A4F, $2A2E, copy $D2C8 to $D500, then $79DF (when $D2C8 is not 1) and $79F2. Both exits wait a frame ($062D).',
 0x226a:'Generic Y renderer: screen anchor object+$14 minus camera Y, then add each signed mapping-piece Y offset and write the raw VDP SAT Y byte.',
 0x22b6:'Sprite renderer; object+$04 bit 4 selects mirrored coordinates and art base object+$09 instead of +$08.',
 0x3104:'Numeric reward bit 1 path: request sound $A9 and increment BCD byte $D299 up to $99.',

@@ -59,9 +59,12 @@ def runs_of(offsets):
     return out
 
 
-def build(rom, root=ROOT):
+def build(rom, root=ROOT, extra_regions=(), drop_regions=()):
+    """``extra_regions``/``drop_regions`` (DECOMP-1B) let a caller ask what a hypothetical recovered
+    region would support, or what the evidence was before one existed; the defaults change nothing."""
     baseline = RL.build_ledger(rom, root, reviewed=False)
     regions = json.loads((root / "asm" / "recovered" / "regions.json").read_text(encoding="utf-8"))
+    regions = [r for r in regions if r["name"] not in drop_regions] + list(extra_regions)
     by_name = {r["name"]: r for r in regions}
     unknown = set()
     for s in baseline["segments"]:
