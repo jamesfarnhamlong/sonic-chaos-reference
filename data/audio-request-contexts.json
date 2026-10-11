@@ -1,0 +1,575 @@
+{
+  "schema_version": 1,
+  "names": {
+    "81": {
+      "name": "Turquoise Hill Zone music",
+      "source": "docs/object-50.md; ROM zone/act table $18BA"
+    },
+    "83": {
+      "name": "Gigalopolis Zone music",
+      "source": "ROM zone/act table $18BA; accepted zone indexing"
+    },
+    "84": {
+      "name": "Invincibility music",
+      "source": "docs/object-10.md; docs/special-stages-powerups-audit.md"
+    },
+    "85": {
+      "name": "Rocket Shoes music",
+      "source": "docs/powerup-shoes-audit.md; ROM $4775"
+    },
+    "86": {
+      "name": "Special Stage success results music",
+      "source": "docs/special-stages-goal-ring-audit.md; ROM $33C9"
+    },
+    "87": {
+      "name": "Game over music",
+      "source": "ROM $138A..$13C9: no accepted continue, game-over card $3436, return to title"
+    },
+    "88": {
+      "name": "Act title-card music",
+      "source": "ROM $3175, called by level-entry $1673; docs/decomp-1b-engine-callers.md"
+    },
+    "89": {
+      "name": "Ordinary act-clear music",
+      "source": "docs/object-18-act-clear.md; ROM $4892"
+    },
+    "8A": {
+      "name": "Special Stage entry / success transition music",
+      "source": "docs/special-stages-foundation-audit.md; docs/special-stages-goal-ring-audit.md"
+    },
+    "8B": {
+      "name": "EEZ first encounter entry music",
+      "source": "docs/eez-boss-endgame-audit.md; type $5E state 0 at bank $1E:$AF68"
+    },
+    "8C": {
+      "name": "Ordinary boss music",
+      "source": "docs/object-50.md; docs/gpz3-boss-runtime-audit.md; docs/aqz3-boss-59-audit.md"
+    },
+    "8D": {
+      "name": "Full Sonic / Tails ending music",
+      "source": "docs/eez-boss-endgame-audit.md; ROM $1942/$1B35"
+    },
+    "8F": {
+      "name": "Special Stage music",
+      "source": "docs/special-stages-foundation-audit.md; table $18BA, zones 8..12"
+    },
+    "90": {
+      "name": "EEZ act 3 / intro-index music",
+      "source": "ROM table $18BA: zone5 act2 and zone7 acts0..2; no acoustic title asserted"
+    },
+    "91": {
+      "name": "Sleeping Egg Zone music",
+      "source": "ROM table $18BA; accepted zone indexing"
+    },
+    "92": {
+      "name": "Mecha Green Hill Zone music",
+      "source": "ROM table $18BA; accepted zone indexing"
+    },
+    "93": {
+      "name": "Aqua Planet Zone music",
+      "source": "ROM table $18BA; accepted zone indexing"
+    },
+    "94": {
+      "name": "Continue-screen music",
+      "source": "ROM $13ED..$1464: continue count, countdown and accept branch"
+    },
+    "95": {
+      "name": "Electric Egg Zone acts 1 / 2 music",
+      "source": "ROM table $18BA; accepted zone indexing"
+    },
+    "96": {
+      "name": "Player death music",
+      "source": "docs/player-hurt-ring-scatter-audit.md; ROM $4984/$49B4"
+    },
+    "97": {
+      "name": "Act 3 clear music",
+      "source": "docs/object-18-act-clear.md; ROM $4892"
+    },
+    "98": {
+      "name": "TRY AGAIN ending-card music",
+      "source": "docs/eez-boss-endgame-audit.md; ROM $34D3..$3522"
+    },
+    "9A": {
+      "name": "Partial Sonic ending music",
+      "source": "docs/eez-boss-endgame-audit.md; ROM $1A9E"
+    },
+    "A3": {
+      "name": "Break / crumble feedback",
+      "source": "docs/sez-surfaces-0c-13-1a-audit.md; docs/mghz-m1-windows-followup.md"
+    },
+    "A4": {
+      "name": "Player hurt with ring loss",
+      "source": "docs/player-hurt-ring-scatter-audit.md; ROM $493D"
+    },
+    "A6": {
+      "name": "Spring / rebound feedback",
+      "source": "docs/object-50.md; asm/recovered/spring_setters.asm"
+    },
+    "A9": {
+      "name": "Extra life feedback",
+      "source": "docs/special-stages-foundation-audit.md; ROM $3104"
+    },
+    "AA": {
+      "name": "Goal-sign spinning feedback",
+      "source": "docs/object-18-act-clear.md; type $18 states4/6"
+    },
+    "B4": {
+      "name": "Results tally / continue countdown feedback",
+      "source": "docs/object-18-act-clear.md; ROM $2F43/$1485"
+    },
+    "B5": {
+      "name": "Countdown numeral / frozen-clock tick feedback",
+      "source": "docs/aqz-water-environment-audit.md; docs/special-stages-powerups-audit.md"
+    },
+    "B6": {
+      "name": "Boss attack-contact feedback (not always damage)",
+      "source": "docs/object-50.md; docs/eez-boss-endgame-audit.md"
+    },
+    "BD": {
+      "name": "Booster-pad feedback",
+      "source": "docs/sez-surfaces-0c-13-1a-audit.md; ROM $7660"
+    },
+    "BF": {
+      "name": "Ring / Large Ring collection feedback",
+      "source": "docs/player-hurt-ring-scatter-audit.md; docs/special-stages-followup-audit.md; ROM $763E"
+    },
+    "C2": {
+      "name": "Spring Shoes relaunch feedback",
+      "source": "docs/powerup-shoes-audit.md; ROM $3B88"
+    },
+    "C3": {
+      "name": "Rocket Shoes damage-cancel feedback",
+      "source": "docs/player-hurt-ring-scatter-audit.md; ROM $490D"
+    },
+    "C4": {
+      "name": "Shared destruction / explosion feedback",
+      "source": "docs/mghz-object-24-2e-audit.md; ROM $61D6; type $0F callback vector $03EF"
+    },
+    "82": {
+      "name": "Title / character-selection music",
+      "source": "ROM $04B4 -> $3065 -> $30BA and input/character-selection loop $3522"
+    }
+  },
+  "direct_sites": {
+    "013A5": {
+      "trigger": "no accepted continue; game-over card then return to title",
+      "source": "ROM $138A..$13C9",
+      "status": "source-traced"
+    },
+    "0141D": {
+      "trigger": "available continue enters countdown screen",
+      "source": "ROM $13ED..$1464",
+      "status": "source-traced"
+    },
+    "01487": {
+      "trigger": "continue countdown numeral changes",
+      "source": "ROM $1464..$148A",
+      "status": "source-traced"
+    },
+    "0148E": {
+      "trigger": "continue accepted on input bits $30",
+      "source": "ROM $1464..$1491",
+      "status": "source-traced"
+    },
+    "014E5": {
+      "trigger": "ordinary act-clear transition writes zero to pending request",
+      "source": "docs/object-18-act-clear.md",
+      "status": "source-traced"
+    },
+    "0157A": {
+      "trigger": "act-3 clear transition writes zero to pending request",
+      "source": "ROM $1543..$1590",
+      "status": "source-traced"
+    },
+    "017B2": {
+      "trigger": "Special Stage entry transition",
+      "source": "docs/special-stages-foundation-audit.md",
+      "status": "source-traced"
+    },
+    "01844": {
+      "trigger": "Special Stage success transition",
+      "source": "docs/special-stages-goal-ring-audit.md",
+      "status": "source-traced"
+    },
+    "01944": {
+      "trigger": "full Sonic ending scene",
+      "source": "docs/eez-boss-endgame-audit.md",
+      "status": "source-traced"
+    },
+    "01AA0": {
+      "trigger": "partial Sonic ending scene",
+      "source": "docs/eez-boss-endgame-audit.md",
+      "status": "source-traced"
+    },
+    "01B37": {
+      "trigger": "Tails ending scene",
+      "source": "docs/eez-boss-endgame-audit.md",
+      "status": "source-traced"
+    },
+    "02858": {
+      "trigger": "clock-freeze tick while decrement remains nonzero (10 sound ticks, eleventh resumes music)",
+      "source": "docs/special-stages-powerups-audit.md; ROM $284C..$285B",
+      "status": "source-traced"
+    },
+    "02F45": {
+      "trigger": "results bonus/ring tally step",
+      "source": "docs/object-18-act-clear.md",
+      "status": "source-traced"
+    },
+    "03106": {
+      "trigger": "increment BCD lives counter, including 100-ring wrap before Special Stage entry gate",
+      "source": "docs/player-hurt-ring-scatter-audit.md",
+      "status": "source-traced"
+    },
+    "031AE": {
+      "trigger": "level-entry act title card $3175",
+      "source": "docs/decomp-1b-engine-callers.md; ROM $3175..$31D3",
+      "status": "source-traced"
+    },
+    "033CB": {
+      "trigger": "Special Stage success results card when D2CD == FF",
+      "source": "docs/special-stages-goal-ring-audit.md",
+      "status": "source-traced"
+    },
+    "034FC": {
+      "trigger": "TRY AGAIN timed ending card",
+      "source": "docs/eez-boss-endgame-audit.md",
+      "status": "source-traced"
+    },
+    "03B8A": {
+      "trigger": "Spring Shoes floor contact; vy = -$0780; owner state3",
+      "source": "docs/powerup-shoes-audit.md",
+      "status": "source-traced"
+    },
+    "04790": {
+      "trigger": "Rocket Shoes entry except zone8 (SS1), which skips this request and wait",
+      "source": "docs/special-stages-powerups-audit.md",
+      "status": "source-traced"
+    },
+    "0490F": {
+      "trigger": "Rocket Shoes state11 damage cancellation after requesting level music",
+      "source": "docs/player-hurt-ring-scatter-audit.md",
+      "status": "source-traced"
+    },
+    "0493F": {
+      "trigger": "ordinary player hurt with rings after scattering",
+      "source": "docs/player-hurt-ring-scatter-audit.md",
+      "status": "source-traced"
+    },
+    "049B6": {
+      "trigger": "ordinary player death; Special Stage zone >=8 branches to failure before this store",
+      "source": "docs/special-stages-foundation-audit.md; ROM $4984..$49B9",
+      "status": "source-traced"
+    },
+    "04B0B": {
+      "trigger": "clock monitor reward queues 11 frozen ticks and silence",
+      "source": "docs/special-stages-powerups-audit.md",
+      "status": "source-traced"
+    },
+    "04B28": {
+      "trigger": "invincibility reward, including repeated pickup before already-selected check",
+      "source": "docs/object-10.md",
+      "status": "source-traced"
+    },
+    "061DD": {
+      "trigger": "shared destruction callback only if DE04 is empty; nonzero pending request wins",
+      "source": "docs/mghz-object-24-2e-audit.md; ROM $61D6..$61E1",
+      "status": "source-traced"
+    },
+    "075D6": {
+      "trigger": "ordinary terrain ring collection",
+      "source": "asm/recovered/layout_ring_handler.asm",
+      "status": "source-traced"
+    },
+    "07640": {
+      "trigger": "Large Ring collected: replace terrain, spawn effect, +10-ring reward; may be overwritten by extra life",
+      "source": "docs/special-stages-followup-audit.md; ROM $760C..$7646",
+      "status": "source-traced"
+    },
+    "07662": {
+      "trigger": "grounded booster-pad handler writes vx/max +7 and requests state10",
+      "source": "docs/sez-surfaces-0c-13-1a-audit.md",
+      "status": "source-traced"
+    },
+    "302CE": {
+      "trigger": "Sonic callback at bank0C:82CC requests BF",
+      "source": "ROM bank0C:$82CC; player callback evidence",
+      "status": "source-traced"
+    },
+    "311FA": {
+      "trigger": "tube exit sets max X speed and requests ordinary state",
+      "source": "docs/eez-environment-audit.md",
+      "status": "source-traced"
+    },
+    "31AF3": {
+      "trigger": "lost-ring pickup callback requests BF before shared ring counter",
+      "source": "docs/player-hurt-ring-scatter-audit.md",
+      "status": "source-traced"
+    },
+    "31C2E": {
+      "trigger": "mapped ring collection callback, one branch",
+      "source": "docs/object-09.md",
+      "status": "source-traced"
+    },
+    "31C49": {
+      "trigger": "mapped ring collection callback, alternate branch",
+      "source": "docs/object-09.md",
+      "status": "source-traced"
+    },
+    "7957B": {
+      "trigger": "drowning numeral object final branch requests direct player death",
+      "source": "docs/aqz-water-environment-audit.md",
+      "status": "source-traced"
+    },
+    "799E7": {
+      "trigger": "THZ boss attacking contact response",
+      "source": "docs/object-50.md",
+      "status": "source-traced"
+    },
+    "79AAD": {
+      "trigger": "shared ordinary boss intro",
+      "source": "docs/gpz3-boss-runtime-audit.md",
+      "status": "source-traced"
+    },
+    "79E3D": {
+      "trigger": "GPZ head attacking contact response",
+      "source": "docs/gpz3-boss-runtime-audit.md",
+      "status": "source-traced"
+    },
+    "7A122": {
+      "trigger": "GPZ attached segment overlap bounce",
+      "source": "docs/gpz3-boss-runtime-audit.md",
+      "status": "source-traced"
+    },
+    "7A3FC": {
+      "trigger": "SEZ boss attack-contact response",
+      "source": "docs/sez3-boss-54-audit.md",
+      "status": "source-traced"
+    },
+    "7A5F5": {
+      "trigger": "MGHZ boss landing transition",
+      "source": "docs/mghz3-boss-56-audit.md",
+      "status": "source-traced"
+    },
+    "7A66B": {
+      "trigger": "MGHZ boss attack-contact response",
+      "source": "docs/mghz3-boss-56-audit.md",
+      "status": "source-traced"
+    },
+    "7AAF1": {
+      "trigger": "AQZ boss attack-contact response",
+      "source": "docs/aqz3-boss-59-audit.md",
+      "status": "source-traced"
+    },
+    "7AD0A": {
+      "trigger": "AQZ helper overlap feedback",
+      "source": "docs/aqz3-boss-59-audit.md",
+      "status": "source-traced"
+    },
+    "7B331": {
+      "trigger": "EEZ first encounter attack-contact feedback; side hit need not damage HP",
+      "source": "docs/eez-boss-endgame-audit.md",
+      "status": "source-traced"
+    },
+    "7B7AB": {
+      "trigger": "EEZ second encounter top attack-contact feedback",
+      "source": "docs/eez-boss-endgame-audit.md",
+      "status": "source-traced"
+    },
+    "04638": {
+      "trigger": "normal jump setter $45ED passes jump-latch, state11 and surface $90 exclusions; requests state0A",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "046DE": {
+      "trigger": "setter $46CE: stop vx, request state15, then AC",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "046FD": {
+      "trigger": "setter $46E2: max X =7, facing-directed vx +/-7, request state1A, then BE",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "04715": {
+      "trigger": "setter $4701: stop vx, attack posture, request state0F, then AC",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "04738": {
+      "trigger": "spin-dash release setter $4719: facing-directed vx +/-7, state10, then BE",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "047BD": {
+      "trigger": "rightward skid setter: grounded branch requests state07 and A1",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "047D0": {
+      "trigger": "leftward skid setter: grounded branch requests state08 and A1",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "047F7": {
+      "trigger": "ramp/rolling setter $47DC: nonzero vx high byte, request state09 then A5",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "04829": {
+      "trigger": "vertical spring setter $480C: only non-rising vy passes; request state0B and caller-supplied vy, then A6",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "04864": {
+      "trigger": "horizontal spring setter $4849: state09, vx and max X = caller HL, then A6",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "0488E": {
+      "trigger": "horizontal spring setter $4868: state09, vx = HL, max X = abs(HL), then A6",
+      "source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+      "status": "source-traced"
+    },
+    "06A35": {
+      "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+      "source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+      "status": "source-traced"
+    },
+    "06A55": {
+      "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+      "source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+      "status": "source-traced"
+    },
+    "06AC4": {
+      "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+      "source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+      "status": "source-traced"
+    },
+    "06E76": {
+      "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+      "source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+      "status": "source-traced"
+    },
+    "06EF9": {
+      "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+      "source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+      "status": "source-traced"
+    },
+    "07497": {
+      "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+      "source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+      "status": "source-traced"
+    },
+    "074E1": {
+      "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+      "source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+      "status": "source-traced"
+    },
+    "030BC": {
+      "trigger": "title / character selection scene $3065, reached from title entry $04B4; $3522 handles left/right character choice and button5 acceptance",
+      "source": "ROM $04B4..$04C4, $3065..$30DF, $3522..$3595",
+      "status": "source-traced"
+    },
+    "00746": {
+      "trigger": "startup scene $0719 after wait24; followed by $2F77 and wait12",
+      "source": "ROM $0719..$0769; no confident scene/sound name",
+      "status": "source-traced"
+    },
+    "00756": {
+      "trigger": "startup scene $0719 following the preceding request and wait12",
+      "source": "ROM $0719..$0769; no confident scene/sound name",
+      "status": "source-traced"
+    },
+    "00CAD": {
+      "trigger": "title/sound-test routine $0C99, BCD progression branch",
+      "source": "ROM $0C99..$0CB0",
+      "status": "source-traced"
+    },
+    "00CE5": {
+      "trigger": "title/sound-test routine $0C99, alternate BCD progression branch",
+      "source": "ROM $0CB0..$0CE8",
+      "status": "source-traced"
+    },
+    "03004": {
+      "trigger": "title presentation input routine reaches BF request",
+      "source": "ROM $2F77..$3008",
+      "status": "source-traced"
+    },
+    "03566": {
+      "trigger": "title selection accepted, after starting lives/continues are set",
+      "source": "ROM $3522..$356A",
+      "status": "source-traced"
+    },
+    "03581": {
+      "trigger": "left character-selection change, only if current selector nonzero",
+      "source": "ROM $356A..$3585",
+      "status": "source-traced"
+    },
+    "03591": {
+      "trigger": "right character-selection change, only if selector below1",
+      "source": "ROM $3585..$3595",
+      "status": "source-traced"
+    },
+    "039AA": {
+      "trigger": "player movement callback requests AC",
+      "source": "ROM $3990..$39AD; callback $03A4 from player state scripts",
+      "status": "source-traced"
+    },
+    "06D82": {
+      "trigger": "transport entry branch: current state not21 and rising vy; surface route $80",
+      "source": "ROM $6D6E..$6D8C",
+      "status": "source-traced"
+    },
+    "06DB2": {
+      "trigger": "transport entry branch reaches A5 store",
+      "source": "ROM $6D8C..$6DB5",
+      "status": "source-traced"
+    },
+    "06DE9": {
+      "trigger": "transport entry branch reaches A5 store",
+      "source": "ROM $6DCE..$6DEC",
+      "status": "source-traced"
+    },
+    "06E30": {
+      "trigger": "transport entry branch reaches A5 store",
+      "source": "ROM $6E05..$6E33",
+      "status": "source-traced"
+    },
+    "30C78": {
+      "trigger": "Tails callback $8C6F; D522 & 0F == 0 selects B0",
+      "source": "ROM bank0C:$8C6F..$8C82",
+      "status": "source-traced"
+    },
+    "30C7E": {
+      "trigger": "Tails callback $8C6F; D522 & 0F != 0 selects C0",
+      "source": "ROM bank0C:$8C6F..$8C82",
+      "status": "source-traced"
+    },
+    "326D9": {
+      "trigger": "type17 terrain/contact callback passes floor and surface-table rejection guards",
+      "source": "ROM bank0C:$A6BF..$A6DC; exact object/event name unresolved",
+      "status": "source-traced"
+    },
+    "7B0AB": {
+      "trigger": "EEZ first encounter landing callback",
+      "source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B0A9",
+      "status": "source-traced"
+    },
+    "7B0B6": {
+      "trigger": "EEZ first encounter landing alternate callback",
+      "source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B0B4",
+      "status": "source-traced"
+    },
+    "7B130": {
+      "trigger": "EEZ first encounter landing transition",
+      "source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B12E",
+      "status": "source-traced"
+    },
+    "7B1CE": {
+      "trigger": "EEZ first encounter landing transition",
+      "source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B1CC",
+      "status": "source-traced"
+    }
+  }
+}

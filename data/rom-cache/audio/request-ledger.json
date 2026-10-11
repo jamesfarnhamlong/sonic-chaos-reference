@@ -1,0 +1,4050 @@
+{
+  "schema_version": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "base_main": "6874337671d01891909a1b5d439e0baba3fbfb80",
+  "scope": "AUDIO-0 request/control audit; static request paths plus controlled original CPU routines",
+  "address_rules": "ROM offsets are integers, half-open spans. Bank 2 driver executes in slot 1 ($4000); gameplay banks 12/30 execute in slot 2 ($8000).",
+  "summary": {
+    "unique_ids": 70,
+    "categories": {
+      "control": 2,
+      "music": 31,
+      "sfx": 37
+    },
+    "friendly_names_supported": 39,
+    "named_by_category": {
+      "control": 2,
+      "music": 24,
+      "sfx": 13
+    },
+    "ids_with_sites_by_category": {
+      "control": 2,
+      "music": 25,
+      "sfx": 34
+    },
+    "unknown_names": [
+      "0x8E",
+      "0x99",
+      "0x9B",
+      "0x9C",
+      "0x9D",
+      "0x9E",
+      "0x9F",
+      "0xA0",
+      "0xA1",
+      "0xA2",
+      "0xA5",
+      "0xA7",
+      "0xA8",
+      "0xAB",
+      "0xAC",
+      "0xAD",
+      "0xAE",
+      "0xAF",
+      "0xB0",
+      "0xB1",
+      "0xB2",
+      "0xB3",
+      "0xB7",
+      "0xB8",
+      "0xB9",
+      "0xBA",
+      "0xBB",
+      "0xBC",
+      "0xBE",
+      "0xC0",
+      "0xC1"
+    ],
+    "ids_without_verified_call_sites": [
+      "0x8E",
+      "0x9B",
+      "0x9C",
+      "0x9D",
+      "0x9E",
+      "0x9F",
+      "0xA8",
+      "0xB2",
+      "0xC1"
+    ]
+  },
+  "reviewed_spans": [
+    {
+      "start": 32895,
+      "end": 32944,
+      "sha256": "95986f6a9c7115714033b6885bb90d859c2e5023906555333d75a44afa27b6b5"
+    },
+    {
+      "start": 33049,
+      "end": 33080,
+      "sha256": "5800694717e361a291a0ba66926010a2bfbb9b554232e605ddcfecb5e00cafd6"
+    },
+    {
+      "start": 33128,
+      "end": 33191,
+      "sha256": "219bf57f58a4b060f622ae36af1027313af8fb9ca5a4327bdc9a1c51f062440e"
+    },
+    {
+      "start": 33191,
+      "end": 33323,
+      "sha256": "804f62ee8608db5d5eee8e01a903f15c8b4f99971b058f3e26dc56277751fd4f"
+    },
+    {
+      "start": 33765,
+      "end": 33813,
+      "sha256": "a66daadfedc16d337fec9fc4328d46dad47a062d2463898e92c76f2fb49bd7e8"
+    },
+    {
+      "start": 6369,
+      "end": 6381,
+      "sha256": "c741d938a54fc425937a5a2e4c4b6d9c439fd5b6ddfb957f696967c3b03d4931"
+    },
+    {
+      "start": 19060,
+      "end": 19270,
+      "sha256": "c0026f6e577fdd77b8ddc033bd09763cce4ebb98024632efa8206fa98e22be1e"
+    },
+    {
+      "start": 26581,
+      "end": 26604,
+      "sha256": "86a1a9b966e29d548cdc571b6a9b3a5c827a37076caf9ccdf1cdc525318a5e61"
+    },
+    {
+      "start": 24049,
+      "end": 24161,
+      "sha256": "72f7279dd3288549eb7bab34d2415fecfaa5a653805591a1193030494131d948"
+    }
+  ],
+  "requests": [
+    {
+      "request_id": 0,
+      "request_hex": "0x00",
+      "category": "control",
+      "friendly_name": "empty pending request (not silence)",
+      "name_status": "driver-proven",
+      "evidence": [],
+      "call_sites": [
+        {
+          "rom_offset": 5349,
+          "bank": 0,
+          "cpu_address": 5349,
+          "kind": "direct",
+          "trigger": "ordinary act-clear transition writes zero to pending request",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-18-act-clear.md",
+          "instruction_sha256": "65de3defa7cac5ddbb941bde6df1e6182123fdab1ca57215fe7abcee0c9e74e7"
+        },
+        {
+          "rom_offset": 5498,
+          "bank": 0,
+          "cpu_address": 5498,
+          "kind": "direct",
+          "trigger": "act-3 clear transition writes zero to pending request",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $1543..$1590",
+          "instruction_sha256": "65de3defa7cac5ddbb941bde6df1e6182123fdab1ca57215fe7abcee0c9e74e7"
+        }
+      ],
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 129,
+      "request_hex": "0x81",
+      "category": "music",
+      "friendly_name": "Turquoise Hill Zone music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6330,
+          "zone": 0,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6331,
+          "zone": 0,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6332,
+          "zone": 0,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37089,
+        "stored_cpu": 20841,
+        "target_rom": 37225
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/object-50.md; ROM zone/act table $18BA",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 130,
+      "request_hex": "0x82",
+      "category": "music",
+      "friendly_name": "Title / character-selection music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 12476,
+          "bank": 0,
+          "cpu_address": 12476,
+          "kind": "direct",
+          "trigger": "title / character selection scene $3065, reached from title entry $04B4; $3522 handles left/right character choice and button5 acceptance",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $04B4..$04C4, $3065..$30DF, $3522..$3595",
+          "instruction_sha256": "642d168bf3855455af6f9609dc73d9e56922fc9ac9942bac2cb19b9af7d3b210"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37091,
+        "stored_cpu": 22079,
+        "target_rom": 38463
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM $04B4 -> $3065 -> $30BA and input/character-selection loop $3522",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 131,
+      "request_hex": "0x83",
+      "category": "music",
+      "friendly_name": "Gigalopolis Zone music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6333,
+          "zone": 1,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6334,
+          "zone": 1,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6335,
+          "zone": 1,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37093,
+        "stored_cpu": 22419,
+        "target_rom": 38803
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM zone/act table $18BA; accepted zone indexing",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 132,
+      "request_hex": "0x84",
+      "category": "music",
+      "friendly_name": "Invincibility music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 19240,
+          "bank": 1,
+          "cpu_address": 19240,
+          "kind": "direct",
+          "trigger": "invincibility reward, including repeated pickup before already-selected check",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-10.md",
+          "instruction_sha256": "c8b6d300ae12d8e4c81ab51ea23293fb3a0d16b06a6bb0a0a11d440b67d4913c"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37095,
+        "stored_cpu": 23784,
+        "target_rom": 40168
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/object-10.md; docs/special-stages-powerups-audit.md",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 133,
+      "request_hex": "0x85",
+      "category": "music",
+      "friendly_name": "Rocket Shoes music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18320,
+          "bank": 1,
+          "cpu_address": 18320,
+          "kind": "direct",
+          "trigger": "Rocket Shoes entry except zone8 (SS1), which skips this request and wait",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-powerups-audit.md",
+          "instruction_sha256": "ff8a3f87261688a978149ea60ceb831319e051f95ad53c80cb5c6dba6ebb1d41"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37097,
+        "stored_cpu": 24242,
+        "target_rom": 40626
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/powerup-shoes-audit.md; ROM $4775",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 134,
+      "request_hex": "0x86",
+      "category": "music",
+      "friendly_name": "Special Stage success results music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 13259,
+          "bank": 0,
+          "cpu_address": 13259,
+          "kind": "direct",
+          "trigger": "Special Stage success results card when D2CD == FF",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-goal-ring-audit.md",
+          "instruction_sha256": "972b656ec77bd3e14bd9ff67e59a14fadc5f7461e7b02a657e326c6726b374c0"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37099,
+        "stored_cpu": 24442,
+        "target_rom": 40826
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/special-stages-goal-ring-audit.md; ROM $33C9",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 135,
+      "request_hex": "0x87",
+      "category": "music",
+      "friendly_name": "Game over music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 5029,
+          "bank": 0,
+          "cpu_address": 5029,
+          "kind": "direct",
+          "trigger": "no accepted continue; game-over card then return to title",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $138A..$13C9",
+          "instruction_sha256": "0b2d789bd1fab2ed32390fe021dfb6a26549b7398bb10728146e0ab39c19590a"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37101,
+        "stored_cpu": 24581,
+        "target_rom": 40965
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM $138A..$13C9: no accepted continue, game-over card $3436, return to title",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 136,
+      "request_hex": "0x88",
+      "category": "music",
+      "friendly_name": "Act title-card music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 12718,
+          "bank": 0,
+          "cpu_address": 12718,
+          "kind": "direct",
+          "trigger": "level-entry act title card $3175",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/decomp-1b-engine-callers.md; ROM $3175..$31D3",
+          "instruction_sha256": "1c7ae9167f9f6a3ea436409220a631a71bfbcd45026d8c237f1b677ae80c75cf"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37103,
+        "stored_cpu": 24741,
+        "target_rom": 41125
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM $3175, called by level-entry $1673; docs/decomp-1b-engine-callers.md",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 137,
+      "request_hex": "0x89",
+      "category": "music",
+      "friendly_name": "Ordinary act-clear music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18595,
+          "bank": 1,
+          "cpu_address": 18595,
+          "kind": "conditional_direct",
+          "trigger": "player clear setter $4892: act index 2 selects $97, other acts $89",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-18-act-clear.md; ROM 0x04892..0x048AB"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37105,
+        "stored_cpu": 24914,
+        "target_rom": 41298
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/object-18-act-clear.md; ROM $4892",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 138,
+      "request_hex": "0x8A",
+      "category": "music",
+      "friendly_name": "Special Stage entry / success transition music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6066,
+          "bank": 0,
+          "cpu_address": 6066,
+          "kind": "direct",
+          "trigger": "Special Stage entry transition",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md",
+          "instruction_sha256": "7f46f878b642e110ffbd34ddbc11b418e3588ed97017313b63bc2f954bc8e60e"
+        },
+        {
+          "rom_offset": 6212,
+          "bank": 0,
+          "cpu_address": 6212,
+          "kind": "direct",
+          "trigger": "Special Stage success transition",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-goal-ring-audit.md",
+          "instruction_sha256": "7f46f878b642e110ffbd34ddbc11b418e3588ed97017313b63bc2f954bc8e60e"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37107,
+        "stored_cpu": 25057,
+        "target_rom": 41441
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/special-stages-foundation-audit.md; docs/special-stages-goal-ring-audit.md",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 139,
+      "request_hex": "0x8B",
+      "category": "music",
+      "friendly_name": "EEZ first encounter entry music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 503656,
+          "bank": 30,
+          "cpu_address": 44904,
+          "kind": "script_command_06",
+          "type_id": 94,
+          "state": 0,
+          "table_entry_rom": 26228,
+          "state_pointer_rom": 503628,
+          "script_start_cpu": 44904,
+          "operand_rom": 503658,
+          "trigger": "type $5E state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "c0e06689a8c7497a77239db0621c442cfb601bca1cfb76c4a69036ed5e970a20"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37109,
+        "stored_cpu": 25149,
+        "target_rom": 41533
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/eez-boss-endgame-audit.md; type $5E state 0 at bank $1E:$AF68",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 140,
+      "request_hex": "0x8C",
+      "category": "music",
+      "friendly_name": "Ordinary boss music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 51,
+          "state": 0,
+          "table_entry_rom": 26142,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $33 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 64,
+          "state": 0,
+          "table_entry_rom": 26168,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $40 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 65,
+          "state": 0,
+          "table_entry_rom": 26170,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $41 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 66,
+          "state": 0,
+          "table_entry_rom": 26172,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $42 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 67,
+          "state": 0,
+          "table_entry_rom": 26174,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $43 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 68,
+          "state": 0,
+          "table_entry_rom": 26176,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $44 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 69,
+          "state": 0,
+          "table_entry_rom": 26178,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $45 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 70,
+          "state": 0,
+          "table_entry_rom": 26180,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $46 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 71,
+          "state": 0,
+          "table_entry_rom": 26182,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $47 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 72,
+          "state": 0,
+          "table_entry_rom": 26184,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $48 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 73,
+          "state": 0,
+          "table_entry_rom": 26186,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $49 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 74,
+          "state": 0,
+          "table_entry_rom": 26188,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $4A state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 75,
+          "state": 0,
+          "table_entry_rom": 26190,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $4B state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 76,
+          "state": 0,
+          "table_entry_rom": 26192,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $4C state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 77,
+          "state": 0,
+          "table_entry_rom": 26194,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $4D state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 78,
+          "state": 0,
+          "table_entry_rom": 26196,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $4E state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 79,
+          "state": 0,
+          "table_entry_rom": 26198,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $4F state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 80,
+          "state": 0,
+          "table_entry_rom": 26200,
+          "state_pointer_rom": 497035,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $50 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 84,
+          "state": 0,
+          "table_entry_rom": 26208,
+          "state_pointer_rom": 500188,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $54 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 86,
+          "state": 0,
+          "table_entry_rom": 26212,
+          "state_pointer_rom": 500932,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $56 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 497073,
+          "bank": 30,
+          "cpu_address": 38321,
+          "kind": "script_command_06",
+          "type_id": 89,
+          "state": 0,
+          "table_entry_rom": 26218,
+          "state_pointer_rom": 501690,
+          "script_start_cpu": 38321,
+          "operand_rom": 497075,
+          "trigger": "type $59 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e93e8ae294cd0b9896b829515c471434503936e3692816ed3a5a502ab3b8f0f7"
+        },
+        {
+          "rom_offset": 498349,
+          "bank": 30,
+          "cpu_address": 39597,
+          "kind": "direct",
+          "trigger": "shared ordinary boss intro",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/gpz3-boss-runtime-audit.md",
+          "instruction_sha256": "83479879ac73c4ebe07b934fc4940104a0ec892bbbb7aa4cd57c40787a217608"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37111,
+        "stored_cpu": 26952,
+        "target_rom": 43336
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/object-50.md; docs/gpz3-boss-runtime-audit.md; docs/aqz3-boss-59-audit.md",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 141,
+      "request_hex": "0x8D",
+      "category": "music",
+      "friendly_name": "Full Sonic / Tails ending music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6468,
+          "bank": 0,
+          "cpu_address": 6468,
+          "kind": "direct",
+          "trigger": "full Sonic ending scene",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md",
+          "instruction_sha256": "f360f7e1e084eb5c5155875ce21638a77c98eee64fb4c51ddbd5aec07cebd86a"
+        },
+        {
+          "rom_offset": 6967,
+          "bank": 0,
+          "cpu_address": 6967,
+          "kind": "direct",
+          "trigger": "Tails ending scene",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md",
+          "instruction_sha256": "f360f7e1e084eb5c5155875ce21638a77c98eee64fb4c51ddbd5aec07cebd86a"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37113,
+        "stored_cpu": 28521,
+        "target_rom": 44905
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/eez-boss-endgame-audit.md; ROM $1942/$1B35",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 142,
+      "request_hex": "0x8E",
+      "category": "music",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37115,
+        "stored_cpu": 30260,
+        "target_rom": 46644
+      },
+      "arbitration_priority_byte": 128,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 143,
+      "request_hex": "0x8F",
+      "category": "music",
+      "friendly_name": "Special Stage music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6348,
+          "zone": 6,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6349,
+          "zone": 6,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6350,
+          "zone": 6,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6354,
+          "zone": 8,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6355,
+          "zone": 8,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6356,
+          "zone": 8,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6357,
+          "zone": 9,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6358,
+          "zone": 9,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6359,
+          "zone": 9,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6360,
+          "zone": 10,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6361,
+          "zone": 10,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6362,
+          "zone": 10,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6363,
+          "zone": 11,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6364,
+          "zone": 11,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6365,
+          "zone": 11,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6366,
+          "zone": 12,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6367,
+          "zone": 12,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6368,
+          "zone": 12,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37117,
+        "stored_cpu": 30404,
+        "target_rom": 46788
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/special-stages-foundation-audit.md; table $18BA, zones 8..12",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 144,
+      "request_hex": "0x90",
+      "category": "music",
+      "friendly_name": "EEZ act 3 / intro-index music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6347,
+          "zone": 5,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6351,
+          "zone": 7,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6352,
+          "zone": 7,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6353,
+          "zone": 7,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37119,
+        "stored_cpu": 30955,
+        "target_rom": 47339
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM table $18BA: zone5 act2 and zone7 acts0..2; no acoustic title asserted",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 145,
+      "request_hex": "0x91",
+      "category": "music",
+      "friendly_name": "Sleeping Egg Zone music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6336,
+          "zone": 2,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6337,
+          "zone": 2,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6338,
+          "zone": 2,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37121,
+        "stored_cpu": 32502,
+        "target_rom": 48886
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM table $18BA; accepted zone indexing",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 146,
+      "request_hex": "0x92",
+      "category": "music",
+      "friendly_name": "Mecha Green Hill Zone music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6339,
+          "zone": 3,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6340,
+          "zone": 3,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6341,
+          "zone": 3,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37123,
+        "stored_cpu": 33757,
+        "target_rom": 50141
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM table $18BA; accepted zone indexing",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 147,
+      "request_hex": "0x93",
+      "category": "music",
+      "friendly_name": "Aqua Planet Zone music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6342,
+          "zone": 4,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6343,
+          "zone": 4,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6344,
+          "zone": 4,
+          "act": 2,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37125,
+        "stored_cpu": 34998,
+        "target_rom": 51382
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM table $18BA; accepted zone indexing",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 148,
+      "request_hex": "0x94",
+      "category": "music",
+      "friendly_name": "Continue-screen music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 5149,
+          "bank": 0,
+          "cpu_address": 5149,
+          "kind": "direct",
+          "trigger": "available continue enters countdown screen",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $13ED..$1464",
+          "instruction_sha256": "9b8b91e331b7a104d061dbb09c8d5953f40d6db7fbeea3eb70a05f1acd90c122"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37127,
+        "stored_cpu": 36829,
+        "target_rom": 53213
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM $13ED..$1464: continue count, countdown and accept branch",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 149,
+      "request_hex": "0x95",
+      "category": "music",
+      "friendly_name": "Electric Egg Zone acts 1 / 2 music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6345,
+          "zone": 5,
+          "act": 0,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        },
+        {
+          "rom_offset": 6323,
+          "bank": 0,
+          "cpu_address": 6323,
+          "kind": "zone_act_table",
+          "table_operand_rom": 6346,
+          "zone": 5,
+          "act": 1,
+          "trigger": "UpdateMusic $189B, when D4A3 == 0; index = zone*3 + act",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM 0x0189B..0x018BA"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37129,
+        "stored_cpu": 37382,
+        "target_rom": 53766
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "ROM table $18BA; accepted zone indexing",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 150,
+      "request_hex": "0x96",
+      "category": "music",
+      "friendly_name": "Player death music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18870,
+          "bank": 1,
+          "cpu_address": 18870,
+          "kind": "direct",
+          "trigger": "ordinary player death; Special Stage zone >=8 branches to failure before this store",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-foundation-audit.md; ROM $4984..$49B9",
+          "instruction_sha256": "5e33bbee887fd0349b831cbcfe20b0ddb1951125ecdbe91583e1e83c4115da5e"
+        },
+        {
+          "rom_offset": 497019,
+          "bank": 30,
+          "cpu_address": 38267,
+          "kind": "direct",
+          "trigger": "drowning numeral object final branch requests direct player death",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/aqz-water-environment-audit.md",
+          "instruction_sha256": "5e33bbee887fd0349b831cbcfe20b0ddb1951125ecdbe91583e1e83c4115da5e"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37131,
+        "stored_cpu": 38876,
+        "target_rom": 55260
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/player-hurt-ring-scatter-audit.md; ROM $4984/$49B4",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 151,
+      "request_hex": "0x97",
+      "category": "music",
+      "friendly_name": "Act 3 clear music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18595,
+          "bank": 1,
+          "cpu_address": 18595,
+          "kind": "conditional_direct",
+          "trigger": "player clear setter $4892: act index 2 selects $97, other acts $89",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-18-act-clear.md; ROM 0x04892..0x048AB"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37133,
+        "stored_cpu": 39041,
+        "target_rom": 55425
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/object-18-act-clear.md; ROM $4892",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 152,
+      "request_hex": "0x98",
+      "category": "music",
+      "friendly_name": "TRY AGAIN ending-card music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 13564,
+          "bank": 0,
+          "cpu_address": 13564,
+          "kind": "direct",
+          "trigger": "TRY AGAIN timed ending card",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md",
+          "instruction_sha256": "468d9f2651b6560bcd5cd758574eaa2a7649d8be3fd3e1f373a23be83560fb98"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37135,
+        "stored_cpu": 39196,
+        "target_rom": 55580
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/eez-boss-endgame-audit.md; ROM $34D3..$3522",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 153,
+      "request_hex": "0x99",
+      "category": "music",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 1878,
+          "bank": 0,
+          "cpu_address": 1878,
+          "kind": "direct",
+          "trigger": "startup scene $0719 following the preceding request and wait12",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $0719..$0769; no confident scene/sound name",
+          "instruction_sha256": "6c9fca97821d947494217fc6cabd391713d59de55dc9c3a425b486d710d01974"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37137,
+        "stored_cpu": 39313,
+        "target_rom": 55697
+      },
+      "arbitration_priority_byte": 128,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 154,
+      "request_hex": "0x9A",
+      "category": "music",
+      "friendly_name": "Partial Sonic ending music",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 6816,
+          "bank": 0,
+          "cpu_address": 6816,
+          "kind": "direct",
+          "trigger": "partial Sonic ending scene",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md",
+          "instruction_sha256": "d9c81e8f54e99dc31282742b91fcc0d008150127fe7685e5ed2e31288e5ebcf8"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37139,
+        "stored_cpu": 39882,
+        "target_rom": 56266
+      },
+      "arbitration_priority_byte": 128,
+      "name_evidence": "docs/eez-boss-endgame-audit.md; ROM $1A9E",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 155,
+      "request_hex": "0x9B",
+      "category": "music",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37141,
+        "stored_cpu": 40532,
+        "target_rom": 56916
+      },
+      "arbitration_priority_byte": 128,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 156,
+      "request_hex": "0x9C",
+      "category": "music",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37143,
+        "stored_cpu": 40558,
+        "target_rom": 56942
+      },
+      "arbitration_priority_byte": 128,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 157,
+      "request_hex": "0x9D",
+      "category": "music",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37145,
+        "stored_cpu": 40584,
+        "target_rom": 56968
+      },
+      "arbitration_priority_byte": 128,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 158,
+      "request_hex": "0x9E",
+      "category": "music",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37147,
+        "stored_cpu": 40610,
+        "target_rom": 56994
+      },
+      "arbitration_priority_byte": 128,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 159,
+      "request_hex": "0x9F",
+      "category": "music",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37149,
+        "stored_cpu": 40636,
+        "target_rom": 57020
+      },
+      "arbitration_priority_byte": 128,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 160,
+      "request_hex": "0xA0",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 5262,
+          "bank": 0,
+          "cpu_address": 5262,
+          "kind": "direct",
+          "trigger": "continue accepted on input bits $30",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $1464..$1491",
+          "instruction_sha256": "c300d4a85d2ec3cb76150f54f9fabf9406f4e9d4a5fe6b608d4a0de13362f257"
+        },
+        {
+          "rom_offset": 13670,
+          "bank": 0,
+          "cpu_address": 13670,
+          "kind": "direct",
+          "trigger": "title selection accepted, after starting lives/continues are set",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $3522..$356A",
+          "instruction_sha256": "c300d4a85d2ec3cb76150f54f9fabf9406f4e9d4a5fe6b608d4a0de13362f257"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37151,
+        "stored_cpu": 40662,
+        "target_rom": 57046
+      },
+      "arbitration_priority_byte": 120,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 161,
+      "request_hex": "0xA1",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18365,
+          "bank": 1,
+          "cpu_address": 18365,
+          "kind": "direct",
+          "trigger": "rightward skid setter: grounded branch requests state07 and A1",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "b572296bf13823b8a21ebb0b4b3be863a030924d29a71e69536890e722778ea8"
+        },
+        {
+          "rom_offset": 18384,
+          "bank": 1,
+          "cpu_address": 18384,
+          "kind": "direct",
+          "trigger": "leftward skid setter: grounded branch requests state08 and A1",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "b572296bf13823b8a21ebb0b4b3be863a030924d29a71e69536890e722778ea8"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37153,
+        "stored_cpu": 40709,
+        "target_rom": 57093
+      },
+      "arbitration_priority_byte": 56,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 162,
+      "request_hex": "0xA2",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 17976,
+          "bank": 1,
+          "cpu_address": 17976,
+          "kind": "direct",
+          "trigger": "normal jump setter $45ED passes jump-latch, state11 and surface $90 exclusions; requests state0A",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "30a6ead1e4d3b9d0c4222c12d456ecc26eea5ad63cdf3b4b3430cac8cce6ffd4"
+        },
+        {
+          "rom_offset": 27189,
+          "bank": 1,
+          "cpu_address": 27189,
+          "kind": "direct",
+          "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+          "instruction_sha256": "30a6ead1e4d3b9d0c4222c12d456ecc26eea5ad63cdf3b4b3430cac8cce6ffd4"
+        },
+        {
+          "rom_offset": 27221,
+          "bank": 1,
+          "cpu_address": 27221,
+          "kind": "direct",
+          "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+          "instruction_sha256": "30a6ead1e4d3b9d0c4222c12d456ecc26eea5ad63cdf3b4b3430cac8cce6ffd4"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37155,
+        "stored_cpu": 40731,
+        "target_rom": 57115
+      },
+      "arbitration_priority_byte": 56,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 163,
+      "request_hex": "0xA3",
+      "category": "sfx",
+      "friendly_name": "Break / crumble feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 203522,
+          "bank": 12,
+          "cpu_address": 39682,
+          "kind": "script_command_06",
+          "type_id": 7,
+          "state": 0,
+          "table_entry_rom": 26054,
+          "state_pointer_rom": 203518,
+          "script_start_cpu": 39682,
+          "operand_rom": 203524,
+          "trigger": "type $07 state $00 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "70e34d1ea2cf4009688cdadaa78591d3ffd12780c429e2bac3990d6ac25e18fe"
+        },
+        {
+          "rom_offset": 205472,
+          "bank": 12,
+          "cpu_address": 41632,
+          "kind": "script_command_06",
+          "type_id": 19,
+          "state": 1,
+          "table_entry_rom": 26078,
+          "state_pointer_rom": 205452,
+          "script_start_cpu": 41624,
+          "operand_rom": 205474,
+          "trigger": "type $13 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "70e34d1ea2cf4009688cdadaa78591d3ffd12780c429e2bac3990d6ac25e18fe"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37157,
+        "stored_cpu": 40770,
+        "target_rom": 57154
+      },
+      "arbitration_priority_byte": 88,
+      "name_evidence": "docs/sez-surfaces-0c-13-1a-audit.md; docs/mghz-m1-windows-followup.md",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 164,
+      "request_hex": "0xA4",
+      "category": "sfx",
+      "friendly_name": "Player hurt with ring loss",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18751,
+          "bank": 1,
+          "cpu_address": 18751,
+          "kind": "direct",
+          "trigger": "ordinary player hurt with rings after scattering",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/player-hurt-ring-scatter-audit.md",
+          "instruction_sha256": "4adf48631cfa07c349c96b0d0352facbf53601618759297fd513f512e99e1c75"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37159,
+        "stored_cpu": 40813,
+        "target_rom": 57197
+      },
+      "arbitration_priority_byte": 112,
+      "name_evidence": "docs/player-hurt-ring-scatter-audit.md; ROM $493D",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 165,
+      "request_hex": "0xA5",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18423,
+          "bank": 1,
+          "cpu_address": 18423,
+          "kind": "direct",
+          "trigger": "ramp/rolling setter $47DC: nonzero vx high byte, request state09 then A5",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "ae1ba9d977f37a09b5d7040b74e3f33420b9d00c75e974e780237b05aee4dcd3"
+        },
+        {
+          "rom_offset": 28034,
+          "bank": 1,
+          "cpu_address": 28034,
+          "kind": "direct",
+          "trigger": "transport entry branch: current state not21 and rising vy; surface route $80",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $6D6E..$6D8C",
+          "instruction_sha256": "ae1ba9d977f37a09b5d7040b74e3f33420b9d00c75e974e780237b05aee4dcd3"
+        },
+        {
+          "rom_offset": 28082,
+          "bank": 1,
+          "cpu_address": 28082,
+          "kind": "direct",
+          "trigger": "transport entry branch reaches A5 store",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $6D8C..$6DB5",
+          "instruction_sha256": "ae1ba9d977f37a09b5d7040b74e3f33420b9d00c75e974e780237b05aee4dcd3"
+        },
+        {
+          "rom_offset": 28137,
+          "bank": 1,
+          "cpu_address": 28137,
+          "kind": "direct",
+          "trigger": "transport entry branch reaches A5 store",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $6DCE..$6DEC",
+          "instruction_sha256": "ae1ba9d977f37a09b5d7040b74e3f33420b9d00c75e974e780237b05aee4dcd3"
+        },
+        {
+          "rom_offset": 28208,
+          "bank": 1,
+          "cpu_address": 28208,
+          "kind": "direct",
+          "trigger": "transport entry branch reaches A5 store",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $6E05..$6E33",
+          "instruction_sha256": "ae1ba9d977f37a09b5d7040b74e3f33420b9d00c75e974e780237b05aee4dcd3"
+        },
+        {
+          "rom_offset": 28278,
+          "bank": 1,
+          "cpu_address": 28278,
+          "kind": "direct",
+          "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+          "instruction_sha256": "ae1ba9d977f37a09b5d7040b74e3f33420b9d00c75e974e780237b05aee4dcd3"
+        },
+        {
+          "rom_offset": 28409,
+          "bank": 1,
+          "cpu_address": 28409,
+          "kind": "direct",
+          "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+          "instruction_sha256": "ae1ba9d977f37a09b5d7040b74e3f33420b9d00c75e974e780237b05aee4dcd3"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37161,
+        "stored_cpu": 40876,
+        "target_rom": 57260
+      },
+      "arbitration_priority_byte": 56,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 166,
+      "request_hex": "0xA6",
+      "category": "sfx",
+      "friendly_name": "Spring / rebound feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18473,
+          "bank": 1,
+          "cpu_address": 18473,
+          "kind": "direct",
+          "trigger": "vertical spring setter $480C: only non-rising vy passes; request state0B and caller-supplied vy, then A6",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "587ac0cdca27bf30b005ef95eb69dc988a41b95ea4ef5d068d15a0c17d75d0af"
+        },
+        {
+          "rom_offset": 18532,
+          "bank": 1,
+          "cpu_address": 18532,
+          "kind": "direct",
+          "trigger": "horizontal spring setter $4849: state09, vx and max X = caller HL, then A6",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "587ac0cdca27bf30b005ef95eb69dc988a41b95ea4ef5d068d15a0c17d75d0af"
+        },
+        {
+          "rom_offset": 18574,
+          "bank": 1,
+          "cpu_address": 18574,
+          "kind": "direct",
+          "trigger": "horizontal spring setter $4868: state09, vx = HL, max X = abs(HL), then A6",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "587ac0cdca27bf30b005ef95eb69dc988a41b95ea4ef5d068d15a0c17d75d0af"
+        },
+        {
+          "rom_offset": 27332,
+          "bank": 1,
+          "cpu_address": 27332,
+          "kind": "direct",
+          "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+          "instruction_sha256": "587ac0cdca27bf30b005ef95eb69dc988a41b95ea4ef5d068d15a0c17d75d0af"
+        },
+        {
+          "rom_offset": 29847,
+          "bank": 1,
+          "cpu_address": 29847,
+          "kind": "direct",
+          "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+          "instruction_sha256": "587ac0cdca27bf30b005ef95eb69dc988a41b95ea4ef5d068d15a0c17d75d0af"
+        },
+        {
+          "rom_offset": 29921,
+          "bank": 1,
+          "cpu_address": 29921,
+          "kind": "direct",
+          "trigger": "terrain contact/state transition reaches this store; exact guards remain in cited recovered code",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/ramp_contact.asm; asm/recovered/spring_contacts.asm; asm/recovered/twist_entry.asm; asm/recovered/ceiling_collision.asm",
+          "instruction_sha256": "587ac0cdca27bf30b005ef95eb69dc988a41b95ea4ef5d068d15a0c17d75d0af"
+        },
+        {
+          "rom_offset": 205866,
+          "bank": 12,
+          "cpu_address": 42026,
+          "kind": "script_command_06",
+          "type_id": 21,
+          "state": 1,
+          "table_entry_rom": 26082,
+          "state_pointer_rom": 205844,
+          "script_start_cpu": 42018,
+          "operand_rom": 205868,
+          "trigger": "type $15 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "2ccf3cd7c5b623158d11454f88b830370d0a415ccc84a0ae9dd0647a4844d2d6"
+        },
+        {
+          "rom_offset": 205882,
+          "bank": 12,
+          "cpu_address": 42042,
+          "kind": "script_command_06",
+          "type_id": 21,
+          "state": 1,
+          "table_entry_rom": 26082,
+          "state_pointer_rom": 205844,
+          "script_start_cpu": 42018,
+          "operand_rom": 205884,
+          "trigger": "type $15 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "2ccf3cd7c5b623158d11454f88b830370d0a415ccc84a0ae9dd0647a4844d2d6"
+        },
+        {
+          "rom_offset": 500302,
+          "bank": 30,
+          "cpu_address": 41550,
+          "kind": "script_command_06",
+          "type_id": 84,
+          "state": 9,
+          "table_entry_rom": 26208,
+          "state_pointer_rom": 500206,
+          "script_start_cpu": 41550,
+          "operand_rom": 500304,
+          "trigger": "type $54 state $09 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "2ccf3cd7c5b623158d11454f88b830370d0a415ccc84a0ae9dd0647a4844d2d6"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37163,
+        "stored_cpu": 40900,
+        "target_rom": 57284
+      },
+      "arbitration_priority_byte": 56,
+      "name_evidence": "docs/object-50.md; asm/recovered/spring_setters.asm",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 167,
+      "request_hex": "0xA7",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 207962,
+          "bank": 12,
+          "cpu_address": 44122,
+          "kind": "script_command_06",
+          "type_id": 27,
+          "state": 1,
+          "table_entry_rom": 26094,
+          "state_pointer_rom": 207948,
+          "script_start_cpu": 44122,
+          "operand_rom": 207964,
+          "trigger": "type $1B state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e43168f87fee4d4744b5650fd8f606285acfd08193bd6b39b2081fd5af0f0ebd"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37165,
+        "stored_cpu": 40949,
+        "target_rom": 57333
+      },
+      "arbitration_priority_byte": 48,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 168,
+      "request_hex": "0xA8",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37167,
+        "stored_cpu": 40971,
+        "target_rom": 57355
+      },
+      "arbitration_priority_byte": 120,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 169,
+      "request_hex": "0xA9",
+      "category": "sfx",
+      "friendly_name": "Extra life feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 3245,
+          "bank": 0,
+          "cpu_address": 3245,
+          "kind": "direct",
+          "trigger": "title/sound-test routine $0C99, BCD progression branch",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $0C99..$0CB0",
+          "instruction_sha256": "cd5ebdbe137fc4083ce2f10111fc18bc2671cac7ed3629b2ec7435c26fdf5595"
+        },
+        {
+          "rom_offset": 3301,
+          "bank": 0,
+          "cpu_address": 3301,
+          "kind": "direct",
+          "trigger": "title/sound-test routine $0C99, alternate BCD progression branch",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $0CB0..$0CE8",
+          "instruction_sha256": "cd5ebdbe137fc4083ce2f10111fc18bc2671cac7ed3629b2ec7435c26fdf5595"
+        },
+        {
+          "rom_offset": 12550,
+          "bank": 0,
+          "cpu_address": 12550,
+          "kind": "direct",
+          "trigger": "increment BCD lives counter, including 100-ring wrap before Special Stage entry gate",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/player-hurt-ring-scatter-audit.md",
+          "instruction_sha256": "cd5ebdbe137fc4083ce2f10111fc18bc2671cac7ed3629b2ec7435c26fdf5595"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37169,
+        "stored_cpu": 41035,
+        "target_rom": 57419
+      },
+      "arbitration_priority_byte": 120,
+      "name_evidence": "docs/special-stages-foundation-audit.md; ROM $3104",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 170,
+      "request_hex": "0xAA",
+      "category": "sfx",
+      "friendly_name": "Goal-sign spinning feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 206831,
+          "bank": 12,
+          "cpu_address": 42991,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 4,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206788,
+          "script_start_cpu": 42984,
+          "operand_rom": 206833,
+          "trigger": "type $18 state $04 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        },
+        {
+          "rom_offset": 206842,
+          "bank": 12,
+          "cpu_address": 43002,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 4,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206788,
+          "script_start_cpu": 42984,
+          "operand_rom": 206844,
+          "trigger": "type $18 state $04 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        },
+        {
+          "rom_offset": 206853,
+          "bank": 12,
+          "cpu_address": 43013,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 4,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206788,
+          "script_start_cpu": 42984,
+          "operand_rom": 206855,
+          "trigger": "type $18 state $04 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        },
+        {
+          "rom_offset": 206864,
+          "bank": 12,
+          "cpu_address": 43024,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 4,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206788,
+          "script_start_cpu": 42984,
+          "operand_rom": 206866,
+          "trigger": "type $18 state $04 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        },
+        {
+          "rom_offset": 206897,
+          "bank": 12,
+          "cpu_address": 43057,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 6,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206792,
+          "script_start_cpu": 43054,
+          "operand_rom": 206899,
+          "trigger": "type $18 state $06 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        },
+        {
+          "rom_offset": 206908,
+          "bank": 12,
+          "cpu_address": 43068,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 6,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206792,
+          "script_start_cpu": 43054,
+          "operand_rom": 206910,
+          "trigger": "type $18 state $06 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        },
+        {
+          "rom_offset": 206919,
+          "bank": 12,
+          "cpu_address": 43079,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 6,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206792,
+          "script_start_cpu": 43054,
+          "operand_rom": 206921,
+          "trigger": "type $18 state $06 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        },
+        {
+          "rom_offset": 206930,
+          "bank": 12,
+          "cpu_address": 43090,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 6,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206792,
+          "script_start_cpu": 43054,
+          "operand_rom": 206932,
+          "trigger": "type $18 state $06 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "7cc06ce6f5c6a1b81c58482663b35b3d10d2afdafdab3fbd8c82339a25771619"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37171,
+        "stored_cpu": 41081,
+        "target_rom": 57465
+      },
+      "arbitration_priority_byte": 112,
+      "name_evidence": "docs/object-18-act-clear.md; type $18 states4/6",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 171,
+      "request_hex": "0xAB",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 204811,
+          "bank": 12,
+          "cpu_address": 40971,
+          "kind": "script_command_06",
+          "type_id": 15,
+          "state": 3,
+          "table_entry_rom": 26070,
+          "state_pointer_rom": 204751,
+          "script_start_cpu": 40971,
+          "operand_rom": 204813,
+          "trigger": "type $0F state $03 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "8189b98ac5d2b4cd925c6ed0ac0d26d3c233ee4e963b688812923497d52a9062"
+        },
+        {
+          "rom_offset": 206883,
+          "bank": 12,
+          "cpu_address": 43043,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 5,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206790,
+          "script_start_cpu": 43039,
+          "operand_rom": 206885,
+          "trigger": "type $18 state $05 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "8189b98ac5d2b4cd925c6ed0ac0d26d3c233ee4e963b688812923497d52a9062"
+        },
+        {
+          "rom_offset": 500002,
+          "bank": 30,
+          "cpu_address": 41250,
+          "kind": "direct",
+          "trigger": "GPZ attached segment overlap bounce",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/gpz3-boss-runtime-audit.md",
+          "instruction_sha256": "505bfcf2bee6312377de6153dcc8d14fee7d9ceb56cf37a9d3ef4e523eacb2be"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37173,
+        "stored_cpu": 41100,
+        "target_rom": 57484
+      },
+      "arbitration_priority_byte": 112,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 172,
+      "request_hex": "0xAC",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 14762,
+          "bank": 0,
+          "cpu_address": 14762,
+          "kind": "direct",
+          "trigger": "player movement callback requests AC",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $3990..$39AD; callback $03A4 from player state scripts",
+          "instruction_sha256": "a84d9444497f23365e53b1bc6a5a62518d09819cbb3d104cc9808997ea362afc"
+        },
+        {
+          "rom_offset": 18142,
+          "bank": 1,
+          "cpu_address": 18142,
+          "kind": "direct",
+          "trigger": "setter $46CE: stop vx, request state15, then AC",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "a84d9444497f23365e53b1bc6a5a62518d09819cbb3d104cc9808997ea362afc"
+        },
+        {
+          "rom_offset": 18197,
+          "bank": 1,
+          "cpu_address": 18197,
+          "kind": "direct",
+          "trigger": "setter $4701: stop vx, attack posture, request state0F, then AC",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "a84d9444497f23365e53b1bc6a5a62518d09819cbb3d104cc9808997ea362afc"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37175,
+        "stored_cpu": 41125,
+        "target_rom": 57509
+      },
+      "arbitration_priority_byte": 80,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 173,
+      "request_hex": "0xAD",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 501086,
+          "bank": 30,
+          "cpu_address": 42334,
+          "kind": "script_command_06",
+          "type_id": 86,
+          "state": 11,
+          "table_entry_rom": 26212,
+          "state_pointer_rom": 500954,
+          "script_start_cpu": 42328,
+          "operand_rom": 501088,
+          "trigger": "type $56 state $0B reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "16eeb1f7afa99f3278f1e05e7de2cac019f773c6cae8ec6bd0921a3016a21de0"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37177,
+        "stored_cpu": 41172,
+        "target_rom": 57556
+      },
+      "arbitration_priority_byte": 56,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 174,
+      "request_hex": "0xAE",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 197475,
+          "bank": 12,
+          "cpu_address": 33635,
+          "kind": "script_command_06",
+          "type_id": 1,
+          "state": 37,
+          "table_entry_rom": 26042,
+          "state_pointer_rom": 196682,
+          "script_start_cpu": 33635,
+          "operand_rom": 197477,
+          "trigger": "type $01 state $25 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a943f09cfa64c98d3ce61f8cad275bf3216359c65dcb2d8b7e1cfe00ab9c11b6"
+        },
+        {
+          "rom_offset": 199691,
+          "bank": 12,
+          "cpu_address": 35851,
+          "kind": "script_command_06",
+          "type_id": 2,
+          "state": 37,
+          "table_entry_rom": 26044,
+          "state_pointer_rom": 199173,
+          "script_start_cpu": 35851,
+          "operand_rom": 199693,
+          "trigger": "type $02 state $25 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a943f09cfa64c98d3ce61f8cad275bf3216359c65dcb2d8b7e1cfe00ab9c11b6"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37179,
+        "stored_cpu": 41196,
+        "target_rom": 57580
+      },
+      "arbitration_priority_byte": 104,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 175,
+      "request_hex": "0xAF",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 204693,
+          "bank": 12,
+          "cpu_address": 40853,
+          "kind": "script_command_06",
+          "type_id": 14,
+          "state": 1,
+          "table_entry_rom": 26068,
+          "state_pointer_rom": 204685,
+          "script_start_cpu": 40853,
+          "operand_rom": 204695,
+          "trigger": "type $0E state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "562c8163500c3a30b0fdcabc841cc710b5784b6e92dbdb7675f7058373b991f8"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37181,
+        "stored_cpu": 41231,
+        "target_rom": 57615
+      },
+      "arbitration_priority_byte": 72,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 176,
+      "request_hex": "0xB0",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 199800,
+          "bank": 12,
+          "cpu_address": 35960,
+          "kind": "direct",
+          "trigger": "Tails callback $8C6F; D522 & 0F == 0 selects B0",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM bank0C:$8C6F..$8C82",
+          "instruction_sha256": "c43d8621b5b9a671a96406209e3bfe92f1daa3eb461df8b9c7d801c79eedc983"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37183,
+        "stored_cpu": 41266,
+        "target_rom": 57650
+      },
+      "arbitration_priority_byte": 64,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 177,
+      "request_hex": "0xB1",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 495268,
+          "bank": 30,
+          "cpu_address": 36516,
+          "kind": "script_command_06",
+          "type_id": 55,
+          "state": 1,
+          "table_entry_rom": 26150,
+          "state_pointer_rom": 495256,
+          "script_start_cpu": 36516,
+          "operand_rom": 495270,
+          "trigger": "type $37 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e1e3f351b62175c9fcca60baa7a7a81b940894cc1f97155d692008bd79ce5f40"
+        },
+        {
+          "rom_offset": 495301,
+          "bank": 30,
+          "cpu_address": 36549,
+          "kind": "script_command_06",
+          "type_id": 55,
+          "state": 3,
+          "table_entry_rom": 26150,
+          "state_pointer_rom": 495260,
+          "script_start_cpu": 36549,
+          "operand_rom": 495303,
+          "trigger": "type $37 state $03 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e1e3f351b62175c9fcca60baa7a7a81b940894cc1f97155d692008bd79ce5f40"
+        },
+        {
+          "rom_offset": 503760,
+          "bank": 30,
+          "cpu_address": 45008,
+          "kind": "script_command_06",
+          "type_id": 94,
+          "state": 9,
+          "table_entry_rom": 26228,
+          "state_pointer_rom": 503646,
+          "script_start_cpu": 45004,
+          "operand_rom": 503762,
+          "trigger": "type $5E state $09 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e1e3f351b62175c9fcca60baa7a7a81b940894cc1f97155d692008bd79ce5f40"
+        },
+        {
+          "rom_offset": 503785,
+          "bank": 30,
+          "cpu_address": 45033,
+          "kind": "script_command_06",
+          "type_id": 94,
+          "state": 10,
+          "table_entry_rom": 26228,
+          "state_pointer_rom": 503648,
+          "script_start_cpu": 45029,
+          "operand_rom": 503787,
+          "trigger": "type $5E state $0A reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "e1e3f351b62175c9fcca60baa7a7a81b940894cc1f97155d692008bd79ce5f40"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37185,
+        "stored_cpu": 41296,
+        "target_rom": 57680
+      },
+      "arbitration_priority_byte": 72,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 178,
+      "request_hex": "0xB2",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37187,
+        "stored_cpu": 41323,
+        "target_rom": 57707
+      },
+      "arbitration_priority_byte": 96,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 179,
+      "request_hex": "0xB3",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 498822,
+          "bank": 30,
+          "cpu_address": 40070,
+          "kind": "script_command_06",
+          "type_id": 81,
+          "state": 13,
+          "table_entry_rom": 26202,
+          "state_pointer_rom": 498260,
+          "script_start_cpu": 40070,
+          "operand_rom": 498824,
+          "trigger": "type $51 state $0D reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a8501db761784bc06147f64e26519e7333a5f8283c88f18e74be9b151119006a"
+        },
+        {
+          "rom_offset": 498822,
+          "bank": 30,
+          "cpu_address": 40070,
+          "kind": "script_command_06",
+          "type_id": 82,
+          "state": 13,
+          "table_entry_rom": 26204,
+          "state_pointer_rom": 498260,
+          "script_start_cpu": 40070,
+          "operand_rom": 498824,
+          "trigger": "type $52 state $0D reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a8501db761784bc06147f64e26519e7333a5f8283c88f18e74be9b151119006a"
+        },
+        {
+          "rom_offset": 498822,
+          "bank": 30,
+          "cpu_address": 40070,
+          "kind": "script_command_06",
+          "type_id": 83,
+          "state": 13,
+          "table_entry_rom": 26206,
+          "state_pointer_rom": 498260,
+          "script_start_cpu": 40070,
+          "operand_rom": 498824,
+          "trigger": "type $53 state $0D reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a8501db761784bc06147f64e26519e7333a5f8283c88f18e74be9b151119006a"
+        },
+        {
+          "rom_offset": 498837,
+          "bank": 30,
+          "cpu_address": 40085,
+          "kind": "script_command_06",
+          "type_id": 81,
+          "state": 13,
+          "table_entry_rom": 26202,
+          "state_pointer_rom": 498260,
+          "script_start_cpu": 40070,
+          "operand_rom": 498839,
+          "trigger": "type $51 state $0D reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a8501db761784bc06147f64e26519e7333a5f8283c88f18e74be9b151119006a"
+        },
+        {
+          "rom_offset": 498837,
+          "bank": 30,
+          "cpu_address": 40085,
+          "kind": "script_command_06",
+          "type_id": 82,
+          "state": 13,
+          "table_entry_rom": 26204,
+          "state_pointer_rom": 498260,
+          "script_start_cpu": 40070,
+          "operand_rom": 498839,
+          "trigger": "type $52 state $0D reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a8501db761784bc06147f64e26519e7333a5f8283c88f18e74be9b151119006a"
+        },
+        {
+          "rom_offset": 498837,
+          "bank": 30,
+          "cpu_address": 40085,
+          "kind": "script_command_06",
+          "type_id": 83,
+          "state": 13,
+          "table_entry_rom": 26206,
+          "state_pointer_rom": 498260,
+          "script_start_cpu": 40070,
+          "operand_rom": 498839,
+          "trigger": "type $53 state $0D reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "a8501db761784bc06147f64e26519e7333a5f8283c88f18e74be9b151119006a"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37189,
+        "stored_cpu": 41363,
+        "target_rom": 57747
+      },
+      "arbitration_priority_byte": 104,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 180,
+      "request_hex": "0xB4",
+      "category": "sfx",
+      "friendly_name": "Results tally / continue countdown feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 5255,
+          "bank": 0,
+          "cpu_address": 5255,
+          "kind": "direct",
+          "trigger": "continue countdown numeral changes",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $1464..$148A",
+          "instruction_sha256": "5c5c8fc491cf9f58d7e33932c9fbbbbbd1a4dd77a75f97ec08d04fdc846d4c55"
+        },
+        {
+          "rom_offset": 12101,
+          "bank": 0,
+          "cpu_address": 12101,
+          "kind": "direct",
+          "trigger": "results bonus/ring tally step",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-18-act-clear.md",
+          "instruction_sha256": "5c5c8fc491cf9f58d7e33932c9fbbbbbd1a4dd77a75f97ec08d04fdc846d4c55"
+        },
+        {
+          "rom_offset": 13697,
+          "bank": 0,
+          "cpu_address": 13697,
+          "kind": "direct",
+          "trigger": "left character-selection change, only if current selector nonzero",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $356A..$3585",
+          "instruction_sha256": "5c5c8fc491cf9f58d7e33932c9fbbbbbd1a4dd77a75f97ec08d04fdc846d4c55"
+        },
+        {
+          "rom_offset": 13713,
+          "bank": 0,
+          "cpu_address": 13713,
+          "kind": "direct",
+          "trigger": "right character-selection change, only if selector below1",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $3585..$3595",
+          "instruction_sha256": "5c5c8fc491cf9f58d7e33932c9fbbbbbd1a4dd77a75f97ec08d04fdc846d4c55"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37191,
+        "stored_cpu": 41401,
+        "target_rom": 57785
+      },
+      "arbitration_priority_byte": 120,
+      "name_evidence": "docs/object-18-act-clear.md; ROM $2F43/$1485",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 181,
+      "request_hex": "0xB5",
+      "category": "sfx",
+      "friendly_name": "Countdown numeral / frozen-clock tick feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 10328,
+          "bank": 0,
+          "cpu_address": 10328,
+          "kind": "direct",
+          "trigger": "clock-freeze tick while decrement remains nonzero (10 sound ticks, eleventh resumes music)",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-powerups-audit.md; ROM $284C..$285B",
+          "instruction_sha256": "693b9df6339aebebd9f6c3ca0933eea7b1791276bf9a0569764ee5bc503c62f6"
+        },
+        {
+          "rom_offset": 496848,
+          "bank": 30,
+          "cpu_address": 38096,
+          "kind": "script_command_06",
+          "type_id": 50,
+          "state": 1,
+          "table_entry_rom": 26140,
+          "state_pointer_rom": 496840,
+          "script_start_cpu": 38096,
+          "operand_rom": 496850,
+          "trigger": "type $32 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "eb93acd901b6c1a0c9a94eef26cb5f4aadee5152b16f475bd5959f48ba2747c3"
+        },
+        {
+          "rom_offset": 496855,
+          "bank": 30,
+          "cpu_address": 38103,
+          "kind": "script_command_06",
+          "type_id": 50,
+          "state": 1,
+          "table_entry_rom": 26140,
+          "state_pointer_rom": 496840,
+          "script_start_cpu": 38096,
+          "operand_rom": 496857,
+          "trigger": "type $32 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "eb93acd901b6c1a0c9a94eef26cb5f4aadee5152b16f475bd5959f48ba2747c3"
+        },
+        {
+          "rom_offset": 496862,
+          "bank": 30,
+          "cpu_address": 38110,
+          "kind": "script_command_06",
+          "type_id": 50,
+          "state": 1,
+          "table_entry_rom": 26140,
+          "state_pointer_rom": 496840,
+          "script_start_cpu": 38096,
+          "operand_rom": 496864,
+          "trigger": "type $32 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "eb93acd901b6c1a0c9a94eef26cb5f4aadee5152b16f475bd5959f48ba2747c3"
+        },
+        {
+          "rom_offset": 496869,
+          "bank": 30,
+          "cpu_address": 38117,
+          "kind": "script_command_06",
+          "type_id": 50,
+          "state": 1,
+          "table_entry_rom": 26140,
+          "state_pointer_rom": 496840,
+          "script_start_cpu": 38096,
+          "operand_rom": 496871,
+          "trigger": "type $32 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "eb93acd901b6c1a0c9a94eef26cb5f4aadee5152b16f475bd5959f48ba2747c3"
+        },
+        {
+          "rom_offset": 496876,
+          "bank": 30,
+          "cpu_address": 38124,
+          "kind": "script_command_06",
+          "type_id": 50,
+          "state": 1,
+          "table_entry_rom": 26140,
+          "state_pointer_rom": 496840,
+          "script_start_cpu": 38096,
+          "operand_rom": 496878,
+          "trigger": "type $32 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "eb93acd901b6c1a0c9a94eef26cb5f4aadee5152b16f475bd5959f48ba2747c3"
+        },
+        {
+          "rom_offset": 496883,
+          "bank": 30,
+          "cpu_address": 38131,
+          "kind": "script_command_06",
+          "type_id": 50,
+          "state": 1,
+          "table_entry_rom": 26140,
+          "state_pointer_rom": 496840,
+          "script_start_cpu": 38096,
+          "operand_rom": 496885,
+          "trigger": "type $32 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "eb93acd901b6c1a0c9a94eef26cb5f4aadee5152b16f475bd5959f48ba2747c3"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37193,
+        "stored_cpu": 41441,
+        "target_rom": 57825
+      },
+      "arbitration_priority_byte": 104,
+      "name_evidence": "docs/aqz-water-environment-audit.md; docs/special-stages-powerups-audit.md",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 182,
+      "request_hex": "0xB6",
+      "category": "sfx",
+      "friendly_name": "Boss attack-contact feedback (not always damage)",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 498151,
+          "bank": 30,
+          "cpu_address": 39399,
+          "kind": "direct",
+          "trigger": "THZ boss attacking contact response",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-50.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        },
+        {
+          "rom_offset": 499261,
+          "bank": 30,
+          "cpu_address": 40509,
+          "kind": "direct",
+          "trigger": "GPZ head attacking contact response",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/gpz3-boss-runtime-audit.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        },
+        {
+          "rom_offset": 500732,
+          "bank": 30,
+          "cpu_address": 41980,
+          "kind": "direct",
+          "trigger": "SEZ boss attack-contact response",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/sez3-boss-54-audit.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        },
+        {
+          "rom_offset": 501355,
+          "bank": 30,
+          "cpu_address": 42603,
+          "kind": "direct",
+          "trigger": "MGHZ boss attack-contact response",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/mghz3-boss-56-audit.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        },
+        {
+          "rom_offset": 502513,
+          "bank": 30,
+          "cpu_address": 43761,
+          "kind": "direct",
+          "trigger": "AQZ boss attack-contact response",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/aqz3-boss-59-audit.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        },
+        {
+          "rom_offset": 503050,
+          "bank": 30,
+          "cpu_address": 44298,
+          "kind": "direct",
+          "trigger": "AQZ helper overlap feedback",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/aqz3-boss-59-audit.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        },
+        {
+          "rom_offset": 504625,
+          "bank": 30,
+          "cpu_address": 45873,
+          "kind": "direct",
+          "trigger": "EEZ first encounter attack-contact feedback; side hit need not damage HP",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        },
+        {
+          "rom_offset": 505771,
+          "bank": 30,
+          "cpu_address": 47019,
+          "kind": "direct",
+          "trigger": "EEZ second encounter top attack-contact feedback",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md",
+          "instruction_sha256": "26980bc1cdac200314400921854af2e0412c6f998db3786d98a6d1e880087e53"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37195,
+        "stored_cpu": 41468,
+        "target_rom": 57852
+      },
+      "arbitration_priority_byte": 104,
+      "name_evidence": "docs/object-50.md; docs/eez-boss-endgame-audit.md",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 183,
+      "request_hex": "0xB7",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 206258,
+          "bank": 12,
+          "cpu_address": 42418,
+          "kind": "script_command_06",
+          "type_id": 23,
+          "state": 2,
+          "table_entry_rom": 26086,
+          "state_pointer_rom": 206214,
+          "script_start_cpu": 42402,
+          "operand_rom": 206260,
+          "trigger": "type $17 state $02 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "30f93f383c9132b76d7fd219602d94151a3ebaf9187d56e902346fcf863d41a6"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37197,
+        "stored_cpu": 41518,
+        "target_rom": 57902
+      },
+      "arbitration_priority_byte": 72,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 184,
+      "request_hex": "0xB8",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 198716,
+          "bank": 12,
+          "cpu_address": 34876,
+          "kind": "script_command_06",
+          "type_id": 1,
+          "state": 52,
+          "table_entry_rom": 26042,
+          "state_pointer_rom": 196712,
+          "script_start_cpu": 34826,
+          "operand_rom": 198718,
+          "trigger": "type $01 state $34 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "f1c64e3fda64f5ee14e0539a669e7dbadb2bea6d7cd9f44e20b3952fe4663f65"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37199,
+        "stored_cpu": 41548,
+        "target_rom": 57932
+      },
+      "arbitration_priority_byte": 72,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 185,
+      "request_hex": "0xB9",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 501237,
+          "bank": 30,
+          "cpu_address": 42485,
+          "kind": "direct",
+          "trigger": "MGHZ boss landing transition",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/mghz3-boss-56-audit.md",
+          "instruction_sha256": "284279df5997cbd50312bc8ba78c4bd73502e6c33c9485ed9d10ead2249c0b8d"
+        },
+        {
+          "rom_offset": 503979,
+          "bank": 30,
+          "cpu_address": 45227,
+          "kind": "direct",
+          "trigger": "EEZ first encounter landing callback",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B0A9",
+          "instruction_sha256": "284279df5997cbd50312bc8ba78c4bd73502e6c33c9485ed9d10ead2249c0b8d"
+        },
+        {
+          "rom_offset": 503990,
+          "bank": 30,
+          "cpu_address": 45238,
+          "kind": "direct",
+          "trigger": "EEZ first encounter landing alternate callback",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B0B4",
+          "instruction_sha256": "284279df5997cbd50312bc8ba78c4bd73502e6c33c9485ed9d10ead2249c0b8d"
+        },
+        {
+          "rom_offset": 504112,
+          "bank": 30,
+          "cpu_address": 45360,
+          "kind": "direct",
+          "trigger": "EEZ first encounter landing transition",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B12E",
+          "instruction_sha256": "284279df5997cbd50312bc8ba78c4bd73502e6c33c9485ed9d10ead2249c0b8d"
+        },
+        {
+          "rom_offset": 504270,
+          "bank": 30,
+          "cpu_address": 45518,
+          "kind": "direct",
+          "trigger": "EEZ first encounter landing transition",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-boss-endgame-audit.md; ROM bank1E:$B1CC",
+          "instruction_sha256": "284279df5997cbd50312bc8ba78c4bd73502e6c33c9485ed9d10ead2249c0b8d"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37201,
+        "stored_cpu": 41575,
+        "target_rom": 57959
+      },
+      "arbitration_priority_byte": 72,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 186,
+      "request_hex": "0xBA",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 198684,
+          "bank": 12,
+          "cpu_address": 34844,
+          "kind": "script_command_06",
+          "type_id": 1,
+          "state": 52,
+          "table_entry_rom": 26042,
+          "state_pointer_rom": 196712,
+          "script_start_cpu": 34826,
+          "operand_rom": 198686,
+          "trigger": "type $01 state $34 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "5ed52772b8a4f96183b955dd879fba06e0b4611f15b797b0260bab2c4665f271"
+        },
+        {
+          "rom_offset": 200241,
+          "bank": 12,
+          "cpu_address": 36401,
+          "kind": "script_command_06",
+          "type_id": 2,
+          "state": 52,
+          "table_entry_rom": 26044,
+          "state_pointer_rom": 199203,
+          "script_start_cpu": 36383,
+          "operand_rom": 200243,
+          "trigger": "type $02 state $34 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "5ed52772b8a4f96183b955dd879fba06e0b4611f15b797b0260bab2c4665f271"
+        },
+        {
+          "rom_offset": 201210,
+          "bank": 12,
+          "cpu_address": 37370,
+          "kind": "direct",
+          "trigger": "tube exit sets max X speed and requests ordinary state",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/eez-environment-audit.md",
+          "instruction_sha256": "de4935c931555ebebf27d5041ab47d543db46880696ffa0a982858a2a129e74e"
+        },
+        {
+          "rom_offset": 205897,
+          "bank": 12,
+          "cpu_address": 42057,
+          "kind": "script_command_06",
+          "type_id": 21,
+          "state": 1,
+          "table_entry_rom": 26082,
+          "state_pointer_rom": 205844,
+          "script_start_cpu": 42018,
+          "operand_rom": 205899,
+          "trigger": "type $15 state $01 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "5ed52772b8a4f96183b955dd879fba06e0b4611f15b797b0260bab2c4665f271"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37203,
+        "stored_cpu": 41627,
+        "target_rom": 58011
+      },
+      "arbitration_priority_byte": 72,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 187,
+      "request_hex": "0xBB",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 206553,
+          "bank": 12,
+          "cpu_address": 42713,
+          "kind": "direct",
+          "trigger": "type17 terrain/contact callback passes floor and surface-table rejection guards",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM bank0C:$A6BF..$A6DC; exact object/event name unresolved",
+          "instruction_sha256": "48ae0202305fcc3a8048f5508cd4918c1524b532e872b35d192480fa59348c68"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37205,
+        "stored_cpu": 41693,
+        "target_rom": 58077
+      },
+      "arbitration_priority_byte": 112,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 188,
+      "request_hex": "0xBC",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 207464,
+          "bank": 12,
+          "cpu_address": 43624,
+          "kind": "script_command_06",
+          "type_id": 25,
+          "state": 2,
+          "table_entry_rom": 26090,
+          "state_pointer_rom": 207443,
+          "script_start_cpu": 43621,
+          "operand_rom": 207466,
+          "trigger": "type $19 state $02 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "940790ce1f5933870c9db4848ff8af2d01f59a55ce8ada379ebeefb8ab073ed7"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37207,
+        "stored_cpu": 41741,
+        "target_rom": 58125
+      },
+      "arbitration_priority_byte": 96,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 189,
+      "request_hex": "0xBD",
+      "category": "sfx",
+      "friendly_name": "Booster-pad feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 30306,
+          "bank": 1,
+          "cpu_address": 30306,
+          "kind": "direct",
+          "trigger": "grounded booster-pad handler writes vx/max +7 and requests state10",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/sez-surfaces-0c-13-1a-audit.md",
+          "instruction_sha256": "f91272bb465d651a6ccacebb1772516ed1989477a27d2ed2d23b4b394d920ba9"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37209,
+        "stored_cpu": 41776,
+        "target_rom": 58160
+      },
+      "arbitration_priority_byte": 88,
+      "name_evidence": "docs/sez-surfaces-0c-13-1a-audit.md; ROM $7660",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 190,
+      "request_hex": "0xBE",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 1862,
+          "bank": 0,
+          "cpu_address": 1862,
+          "kind": "direct",
+          "trigger": "startup scene $0719 after wait24; followed by $2F77 and wait12",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $0719..$0769; no confident scene/sound name",
+          "instruction_sha256": "02e2dc47c19ace917f67563846e483ed4d3252d4b08add50a8c1d4150f489ac5"
+        },
+        {
+          "rom_offset": 18173,
+          "bank": 1,
+          "cpu_address": 18173,
+          "kind": "direct",
+          "trigger": "setter $46E2: max X =7, facing-directed vx +/-7, request state1A, then BE",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "02e2dc47c19ace917f67563846e483ed4d3252d4b08add50a8c1d4150f489ac5"
+        },
+        {
+          "rom_offset": 18232,
+          "bank": 1,
+          "cpu_address": 18232,
+          "kind": "direct",
+          "trigger": "spin-dash release setter $4719: facing-directed vx +/-7, state10, then BE",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/player_state_setters.asm; asm/recovered/spring_setters.asm; asm/recovered/ramp_state_setters.asm",
+          "instruction_sha256": "02e2dc47c19ace917f67563846e483ed4d3252d4b08add50a8c1d4150f489ac5"
+        },
+        {
+          "rom_offset": 501498,
+          "bank": 30,
+          "cpu_address": 42746,
+          "kind": "script_command_06",
+          "type_id": 87,
+          "state": 2,
+          "table_entry_rom": 26214,
+          "state_pointer_rom": 501467,
+          "script_start_cpu": 42746,
+          "operand_rom": 501500,
+          "trigger": "type $57 state $02 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "830f00525981b4115933571d98252c5b6115af00d0c2a4943c58fe4706b96f54"
+        },
+        {
+          "rom_offset": 501529,
+          "bank": 30,
+          "cpu_address": 42777,
+          "kind": "script_command_06",
+          "type_id": 87,
+          "state": 3,
+          "table_entry_rom": 26214,
+          "state_pointer_rom": 501469,
+          "script_start_cpu": 42761,
+          "operand_rom": 501531,
+          "trigger": "type $57 state $03 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "830f00525981b4115933571d98252c5b6115af00d0c2a4943c58fe4706b96f54"
+        },
+        {
+          "rom_offset": 506828,
+          "bank": 30,
+          "cpu_address": 48076,
+          "kind": "script_command_06",
+          "type_id": 98,
+          "state": 2,
+          "table_entry_rom": 26236,
+          "state_pointer_rom": 506746,
+          "script_start_cpu": 48032,
+          "operand_rom": 506830,
+          "trigger": "type $62 state $02 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "830f00525981b4115933571d98252c5b6115af00d0c2a4943c58fe4706b96f54"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37211,
+        "stored_cpu": 41816,
+        "target_rom": 58200
+      },
+      "arbitration_priority_byte": 80,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 191,
+      "request_hex": "0xBF",
+      "category": "sfx",
+      "friendly_name": "Ring / Large Ring collection feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 12292,
+          "bank": 0,
+          "cpu_address": 12292,
+          "kind": "direct",
+          "trigger": "title presentation input routine reaches BF request",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM $2F77..$3008",
+          "instruction_sha256": "4641d9a7c9c47114cdec9a289d00e1170fbfe6f4702f870d35f1bd436fbc27a5"
+        },
+        {
+          "rom_offset": 30166,
+          "bank": 1,
+          "cpu_address": 30166,
+          "kind": "direct",
+          "trigger": "ordinary terrain ring collection",
+          "trigger_status": "source-traced",
+          "evidence_source": "asm/recovered/layout_ring_handler.asm",
+          "instruction_sha256": "4641d9a7c9c47114cdec9a289d00e1170fbfe6f4702f870d35f1bd436fbc27a5"
+        },
+        {
+          "rom_offset": 30272,
+          "bank": 1,
+          "cpu_address": 30272,
+          "kind": "direct",
+          "trigger": "Large Ring collected: replace terrain, spawn effect, +10-ring reward; may be overwritten by extra life",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-followup-audit.md; ROM $760C..$7646",
+          "instruction_sha256": "4641d9a7c9c47114cdec9a289d00e1170fbfe6f4702f870d35f1bd436fbc27a5"
+        },
+        {
+          "rom_offset": 197326,
+          "bank": 12,
+          "cpu_address": 33486,
+          "kind": "direct",
+          "trigger": "Sonic callback at bank0C:82CC requests BF",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM bank0C:$82CC; player callback evidence",
+          "instruction_sha256": "4641d9a7c9c47114cdec9a289d00e1170fbfe6f4702f870d35f1bd436fbc27a5"
+        },
+        {
+          "rom_offset": 203507,
+          "bank": 12,
+          "cpu_address": 39667,
+          "kind": "direct",
+          "trigger": "lost-ring pickup callback requests BF before shared ring counter",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/player-hurt-ring-scatter-audit.md",
+          "instruction_sha256": "4641d9a7c9c47114cdec9a289d00e1170fbfe6f4702f870d35f1bd436fbc27a5"
+        },
+        {
+          "rom_offset": 203822,
+          "bank": 12,
+          "cpu_address": 39982,
+          "kind": "direct",
+          "trigger": "mapped ring collection callback, one branch",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-09.md",
+          "instruction_sha256": "4641d9a7c9c47114cdec9a289d00e1170fbfe6f4702f870d35f1bd436fbc27a5"
+        },
+        {
+          "rom_offset": 203849,
+          "bank": 12,
+          "cpu_address": 40009,
+          "kind": "direct",
+          "trigger": "mapped ring collection callback, alternate branch",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/object-09.md",
+          "instruction_sha256": "4641d9a7c9c47114cdec9a289d00e1170fbfe6f4702f870d35f1bd436fbc27a5"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37213,
+        "stored_cpu": 41846,
+        "target_rom": 58230
+      },
+      "arbitration_priority_byte": 56,
+      "name_evidence": "docs/player-hurt-ring-scatter-audit.md; docs/special-stages-followup-audit.md; ROM $763E",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 192,
+      "request_hex": "0xC0",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 199806,
+          "bank": 12,
+          "cpu_address": 35966,
+          "kind": "direct",
+          "trigger": "Tails callback $8C6F; D522 & 0F != 0 selects C0",
+          "trigger_status": "source-traced",
+          "evidence_source": "ROM bank0C:$8C6F..$8C82",
+          "instruction_sha256": "f9433564b909a15f28f7f11e50ca5994eebcf5a2a89ec8092000702387d953bc"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37215,
+        "stored_cpu": 41873,
+        "target_rom": 58257
+      },
+      "arbitration_priority_byte": 64,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 193,
+      "request_hex": "0xC1",
+      "category": "sfx",
+      "friendly_name": null,
+      "name_status": "unresolved",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [],
+      "sound_pointer": {
+        "pointer_rom": 37217,
+        "stored_cpu": 41908,
+        "target_rom": 58292
+      },
+      "arbitration_priority_byte": 48,
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 194,
+      "request_hex": "0xC2",
+      "category": "sfx",
+      "friendly_name": "Spring Shoes relaunch feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 15242,
+          "bank": 0,
+          "cpu_address": 15242,
+          "kind": "direct",
+          "trigger": "Spring Shoes floor contact; vy = -$0780; owner state3",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/powerup-shoes-audit.md",
+          "instruction_sha256": "d4980f670d7733c53ac14f77a69eaeda3a4ba1d6d3bc749c27f44d80f815fd76"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37219,
+        "stored_cpu": 41932,
+        "target_rom": 58316
+      },
+      "arbitration_priority_byte": 64,
+      "name_evidence": "docs/powerup-shoes-audit.md; ROM $3B88",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 195,
+      "request_hex": "0xC3",
+      "category": "sfx",
+      "friendly_name": "Rocket Shoes damage-cancel feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 18703,
+          "bank": 1,
+          "cpu_address": 18703,
+          "kind": "direct",
+          "trigger": "Rocket Shoes state11 damage cancellation after requesting level music",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/player-hurt-ring-scatter-audit.md",
+          "instruction_sha256": "257b02927745898a44b4303333a3e80b1f3ccd4400708513f9aee58d122cd894"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37221,
+        "stored_cpu": 41996,
+        "target_rom": 58380
+      },
+      "arbitration_priority_byte": 112,
+      "name_evidence": "docs/player-hurt-ring-scatter-audit.md; ROM $490D",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 196,
+      "request_hex": "0xC4",
+      "category": "sfx",
+      "friendly_name": "Shared destruction / explosion feedback",
+      "name_status": "context-supported",
+      "evidence": [
+        "original driver dispatch: ROM 0x08119..0x08138, 0x08168..0x081A7; sound bank 2 in slot 1"
+      ],
+      "call_sites": [
+        {
+          "rom_offset": 25053,
+          "bank": 1,
+          "cpu_address": 25053,
+          "kind": "direct",
+          "trigger": "shared destruction callback only if DE04 is empty; nonzero pending request wins",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/mghz-object-24-2e-audit.md; ROM $61D6..$61E1",
+          "instruction_sha256": "ed584275d159c44ca335ce4aa6e23bc4c118463eefcd0fb027f987f4a1871d46"
+        }
+      ],
+      "sound_pointer": {
+        "pointer_rom": 37223,
+        "stored_cpu": 42036,
+        "target_rom": 58420
+      },
+      "arbitration_priority_byte": 96,
+      "name_evidence": "docs/mghz-object-24-2e-audit.md; ROM $61D6; type $0F callback vector $03EF",
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    },
+    {
+      "request_id": 248,
+      "request_hex": "0xF8",
+      "category": "control",
+      "friendly_name": "reset / silence",
+      "name_status": "driver-proven",
+      "evidence": [],
+      "call_sites": [
+        {
+          "rom_offset": 19211,
+          "bank": 1,
+          "cpu_address": 19211,
+          "kind": "direct",
+          "trigger": "clock monitor reward queues 11 frozen ticks and silence",
+          "trigger_status": "source-traced",
+          "evidence_source": "docs/special-stages-powerups-audit.md",
+          "instruction_sha256": "eed3c19c5f36e9618208b5dade7823760205947b78994f4b07ffe0378b59a996"
+        },
+        {
+          "rom_offset": 206824,
+          "bank": 12,
+          "cpu_address": 42984,
+          "kind": "script_command_06",
+          "type_id": 24,
+          "state": 4,
+          "table_entry_rom": 26088,
+          "state_pointer_rom": 206788,
+          "script_start_cpu": 42984,
+          "operand_rom": 206826,
+          "trigger": "type $18 state $04 reaches this script command",
+          "trigger_status": "static script path; gameplay instantiation not inferred",
+          "evidence_source": "ROM scheduler $5DF1; table $65BA; engine/handler $67D5; bounded accepted script parser",
+          "instruction_sha256": "97dda13e57c8ca982e4dd7735cfd4621c29e3c9187fa775cc3402caa2f39b441"
+        }
+      ],
+      "confidence": "driver-classified; trigger evidence is per site; no audible playback claimed"
+    }
+  ],
+  "shared_dataflow_sites": [
+    {
+      "rom_offset": 1487,
+      "bank": 0,
+      "cpu_address": 1487,
+      "source": "D4A4",
+      "meaning": "IRQ forwards nonzero deferred request, clears latch; may overwrite DE04"
+    },
+    {
+      "rom_offset": 3123,
+      "bank": 0,
+      "cpu_address": 3123,
+      "source": "D2BF",
+      "meaning": "sound-test user selection on button bit $20; unrestricted value, not gameplay evidence"
+    },
+    {
+      "rom_offset": 26595,
+      "bank": 1,
+      "cpu_address": 26595,
+      "source": "FF06 operand",
+      "meaning": "script handler writes operand twice at $67E3 and $67E6; no delay between stores"
+    }
+  ],
+  "unreviewed_store_candidates": [],
+  "script_parser_notes": [
+    {
+      "type_id": 22,
+      "state": 3,
+      "note": "bounded script ended without explicit terminator"
+    },
+    {
+      "type_id": 45,
+      "state": 3,
+      "note": "bounded script ended without explicit terminator"
+    },
+    {
+      "type_id": 46,
+      "state": 3,
+      "note": "bounded script ended without explicit terminator"
+    }
+  ],
+  "controlled_results": {
+    "track_activity": [
+      {
+        "request_id": 129,
+        "first_inactive_update": null,
+        "limit": 1500,
+        "evidence": "controlled original driver calls; no PSG rendering, IRQ or real-time claim"
+      },
+      {
+        "request_id": 132,
+        "first_inactive_update": 1088,
+        "limit": 1500,
+        "evidence": "controlled original driver calls; no PSG rendering, IRQ or real-time claim"
+      },
+      {
+        "request_id": 133,
+        "first_inactive_update": 432,
+        "limit": 1500,
+        "evidence": "controlled original driver calls; no PSG rendering, IRQ or real-time claim"
+      },
+      {
+        "request_id": 138,
+        "first_inactive_update": 179,
+        "limit": 1500,
+        "evidence": "controlled original driver calls; no PSG rendering, IRQ or real-time claim"
+      },
+      {
+        "request_id": 143,
+        "first_inactive_update": null,
+        "limit": 1500,
+        "evidence": "controlled original driver calls; no PSG rendering, IRQ or real-time claim"
+      }
+    ],
+    "repeated_requests": [
+      {
+        "request_id": 129,
+        "initialized_stream_headers_repeated": true,
+        "compared_channel_bases": [
+          56896,
+          56944,
+          56992,
+          57040
+        ],
+        "compared_bytes_per_channel": 11
+      },
+      {
+        "request_id": 132,
+        "initialized_stream_headers_repeated": true,
+        "compared_channel_bases": [
+          56896,
+          56944,
+          56992,
+          57040
+        ],
+        "compared_bytes_per_channel": 11
+      },
+      {
+        "request_id": 133,
+        "initialized_stream_headers_repeated": true,
+        "compared_channel_bases": [
+          56896,
+          56944,
+          56992,
+          57040
+        ],
+        "compared_bytes_per_channel": 11
+      },
+      {
+        "request_id": 191,
+        "initialized_stream_headers_repeated": true,
+        "compared_channel_bases": [
+          57136
+        ],
+        "compared_bytes_per_channel": 11
+      },
+      {
+        "request_id": 196,
+        "initialized_stream_headers_repeated": true,
+        "compared_channel_bases": [
+          57184
+        ],
+        "compared_bytes_per_channel": 11
+      }
+    ],
+    "zero": {
+      "selected": 128,
+      "channel_state_unchanged": true
+    },
+    "f8_all_channels_inactive": true,
+    "ring_priority": [
+      {
+        "current_priority": 0,
+        "selected_request": 191,
+        "pending": 0
+      },
+      {
+        "current_priority": 56,
+        "selected_request": 191,
+        "pending": 0
+      },
+      {
+        "current_priority": 127,
+        "selected_request": 128,
+        "pending": 0
+      }
+    ],
+    "invincibility_then_sneakers": [
+      {
+        "sneakers_at": null,
+        "selector_expired_at": 600,
+        "requests": [
+          {
+            "update": 600,
+            "request_id": 129
+          }
+        ],
+        "timer_first_zero_at": 600,
+        "timer_first_underflow_at": null,
+        "music_first_inactive_update": null,
+        "final_selector": 0,
+        "final_music_active": true
+      },
+      {
+        "sneakers_at": 100,
+        "selector_expired_at": null,
+        "requests": [],
+        "timer_first_zero_at": 1000,
+        "timer_first_underflow_at": 1001,
+        "music_first_inactive_update": 1089,
+        "final_selector": 3,
+        "final_music_active": false
+      }
+    ]
+  }
+}
