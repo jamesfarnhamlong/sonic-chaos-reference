@@ -1,0 +1,1080 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "generator": "tools/decomp1d_banked_flow.py",
+ "evidence_tier": "static ROM-derived control-flow evidence under the listed residual assumptions; not an execution trace",
+ "mapper_model": {
+  "registers": {
+   "$FFFC": "cartridge control",
+   "$FFFD": "slot 0 bank",
+   "$FFFE": "slot 1 bank",
+   "$FFFF": "slot 2 bank"
+  },
+  "slot_2": {
+   "cpu": [
+    32768,
+    49152
+   ],
+   "register": "$FFFF",
+   "file_offset": "bank * $4000 + (cpu - $8000)",
+   "rom_banks": 32
+  },
+  "setters": [
+   {
+    "entry": 7279,
+    "shadow": 53547,
+    "register": 65535,
+    "instructions": [
+     {
+      "offset": 7279,
+      "bytes": "322bd1",
+      "asm": "LD (0xd12b),A"
+     },
+     {
+      "offset": 7282,
+      "bytes": "32ffff",
+      "asm": "LD (0xffff),A"
+     },
+     {
+      "offset": 7285,
+      "bytes": "c9",
+      "asm": "RET"
+     }
+    ],
+    "order": "shadow is stored before the register, so an interrupt between the two stores still leaves register == shadow"
+   }
+  ],
+  "slot1_register_stores": [
+   {
+    "offset": 17,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 1135,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 1152,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 1163,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 1496,
+    "form": "LD (nn),A",
+    "immediate_value": 2
+   },
+   {
+    "offset": 1546,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 274267,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 308898,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 327244,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 497768,
+    "form": "LD (nn),A"
+   }
+  ],
+  "slot0_register_stores": [
+   {
+    "offset": 13,
+    "form": "LD (nn),A",
+    "immediate_value": 0
+   },
+   {
+    "offset": 1131,
+    "form": "LD (nn),A",
+    "immediate_value": 0
+   },
+   {
+    "offset": 327244,
+    "form": "LD (nn),HL"
+   }
+  ],
+  "control_register_stores": [
+   {
+    "offset": 8,
+    "form": "LD (nn),A",
+    "immediate_value": 0
+   },
+   {
+    "offset": 1126,
+    "form": "LD (nn),A",
+    "immediate_value": 0
+   }
+  ],
+  "slot2_register_stores": [
+   {
+    "offset": 21,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 1139,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 1409,
+    "form": "LD (nn),A",
+    "immediate_value": 29
+   },
+   {
+    "offset": 1436,
+    "form": "LD (nn),A",
+    "immediate_value": 14
+   },
+   {
+    "offset": 1464,
+    "form": "LD (nn),A",
+    "immediate_value": 15
+   },
+   {
+    "offset": 1475,
+    "form": "LD (nn),A",
+    "immediate_value": 29
+   },
+   {
+    "offset": 1501,
+    "form": "LD (nn),A",
+    "immediate_value": 3
+   },
+   {
+    "offset": 1552,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 3384,
+    "form": "LD (nn),A",
+    "immediate_value": 31
+   },
+   {
+    "offset": 3394,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 5655,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 5910,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 7282,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 9387,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 24075,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 24095,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 24123,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 24143,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 25147,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 28768,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 28862,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 30319,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 30497,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 30510,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 30633,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 271136,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 277055,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 311317,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 314729,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 314741,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 314753,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 325048,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 327193,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 370614,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 370648,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 403925,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 404156,
+    "form": "LD (nn),HL"
+   },
+   {
+    "offset": 482480,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 482988,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 484368,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 485372,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 486320,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 486860,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 488208,
+    "form": "LD (nn),A"
+   },
+   {
+    "offset": 489244,
+    "form": "LD (nn),A"
+   }
+  ]
+ },
+ "interrupt_model": {
+  "nmi": {
+   "vector": 102,
+   "instructions": 16,
+   "mapper_or_shadow_stores": [],
+   "calls": [],
+   "exits": [
+    1733
+   ],
+   "problems": [],
+   "leaves_mapper_untouched": true
+  },
+  "irq": {
+   "vector": 56,
+   "top_level_instructions": 187,
+   "exits": [
+    {
+     "offset": 1671,
+     "slot2_matches_shadow": true
+    },
+    {
+     "offset": 1574,
+     "slot2_matches_shadow": true
+    }
+   ],
+   "exit_restore_stores": [
+    1552
+   ],
+   "top_level_problems": [],
+   "exit_contract": "every RET reached from the vector, with callees treated as opaque and every register store other than LD A,(shadow) / LD ($FFFF),A treated as a change, leaves $FFFF equal to the shadow",
+   "exit_contract_holds": true,
+   "resident_closure": {
+    "instructions": 1787,
+    "shadow_store_sites": [],
+    "register_stores": [
+     {
+      "offset": 1409,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 1436,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 1464,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 1475,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 1496,
+      "register": "slot 1 bank"
+     },
+     {
+      "offset": 1501,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 1546,
+      "register": "slot 1 bank"
+     },
+     {
+      "offset": 1552,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 3384,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 3394,
+      "register": "slot 2 bank"
+     },
+     {
+      "offset": 9387,
+      "register": "slot 2 bank"
+     }
+    ],
+    "restart_edges": [
+     9362
+    ],
+    "restart_rule": "a JP to $0450 (DI / LD SP,$DFF0) discards the interrupted context and does not return to it",
+    "problems": []
+   },
+   "banked_callees": [
+    {
+     "call_site": 1412,
+     "cpu_target": 34058,
+     "mapping": "slot2",
+     "file_offset": null
+    },
+    {
+     "call_site": 1439,
+     "cpu_target": 46170,
+     "mapping": "slot2",
+     "file_offset": null
+    },
+    {
+     "call_site": 1478,
+     "cpu_target": 32768,
+     "mapping": "slot2",
+     "file_offset": null
+    },
+    {
+     "call_site": 1504,
+     "cpu_target": 16384,
+     "mapping": "slot1=2",
+     "file_offset": 32768
+    },
+    {
+     "call_site": 1526,
+     "cpu_target": 16384,
+     "mapping": "slot1=2",
+     "file_offset": 32768
+    }
+   ]
+  },
+  "shadow_store_patterns": {
+   "shadow": 53547,
+   "sites": [
+    {
+     "offset": 50,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 5652,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 5907,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 7279,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 24072,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 24092,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 24120,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 24140,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 25144,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 28765,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 28859,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 30316,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 30494,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 30507,
+     "form": "LD (nn),A"
+    },
+    {
+     "offset": 30630,
+     "form": "LD (nn),A"
+    }
+   ],
+   "outside_resident_engine": []
+  },
+  "banked_callee_scan_note": "see residual_assumptions R1",
+  "supported": true,
+  "reasons": []
+ },
+ "residual_assumptions": [
+  {
+   "id": "R1",
+   "text": "The banked routines the IM 1 handler calls (listed in interrupt_model.irq.banked_callees) are not walked. No byte sequence in banks 2-31 stores to the mapper shadow, but those routines could transfer into a resident routine that does; that is not excluded."
+  },
+  {
+   "id": "R2",
+   "text": "Register-addressed stores (LD (HL),r / (IX+d) / block moves) that alias $FFFF or the shadow are not modelled; only absolute-address stores are."
+  },
+  {
+   "id": "R3",
+   "text": "Slot 1 is bank 1 whenever the IM 1 handler starts. Absolute stores to $FFFE/$FFFD exist in the reset path and the handler, plus the byte patterns listed in mapper_model.slot1_register_stores; those patterns lie in compressed data, in bytes with no classification, or in CODE-classified bytes that are not decoded here, so they cannot be shown not to be instructions."
+  },
+  {
+   "id": "R4",
+   "text": "Standard Sega mapper semantics (a write to $FFFF selects a 16 KiB bank for $8000-$BFFF; bank numbers are taken modulo the 32 pages in the ROM). Only the ROM's own use of the register corroborates this; no emulator trace is used."
+  }
+ ],
+ "banked_transfers": [
+  {
+   "caller": 1412,
+   "status": "unresolved",
+   "cpu_target": 34058,
+   "reasons": [
+    "caller_not_in_byte_verified_recovered_code"
+   ],
+   "unproven_bank_hint": {
+    "bank": 29,
+    "pattern": "LD A,n / LD ($FFFF),A directly before the call",
+    "why_not_claimed": "informational only: this module claims no entry without a recovered caller and the shadow-based interrupt proof"
+   }
+  },
+  {
+   "caller": 1439,
+   "status": "unresolved",
+   "cpu_target": 46170,
+   "reasons": [
+    "caller_not_in_byte_verified_recovered_code"
+   ],
+   "unproven_bank_hint": {
+    "bank": 14,
+    "pattern": "LD A,n / LD ($FFFF),A directly before the call",
+    "why_not_claimed": "informational only: this module claims no entry without a recovered caller and the shadow-based interrupt proof"
+   }
+  },
+  {
+   "caller": 1478,
+   "status": "unresolved",
+   "cpu_target": 32768,
+   "reasons": [
+    "caller_not_in_byte_verified_recovered_code"
+   ],
+   "unproven_bank_hint": {
+    "bank": 29,
+    "pattern": "LD A,n / LD ($FFFF),A directly before the call",
+    "why_not_claimed": "informational only: this module claims no entry without a recovered caller and the shadow-based interrupt proof"
+   }
+  },
+  {
+   "caller": 5863,
+   "status": "supported",
+   "reasons": [],
+   "instruction": {
+    "bytes": "cd0080",
+    "asm": "CALL 0x8000"
+   },
+   "cpu_target": 32768,
+   "region": "gameplay_frame_update",
+   "sequence": [
+    {
+     "offset": 5858,
+     "bytes": "3e1c",
+     "asm": "LD A,0x1c"
+    },
+    {
+     "offset": 5860,
+     "bytes": "cd6f1c",
+     "asm": "CALL 0x1c6f"
+    },
+    {
+     "offset": 5863,
+     "bytes": "cd0080",
+     "asm": "CALL 0x8000"
+    }
+   ],
+   "bank_selection": {
+    "instruction": 5858,
+    "value": 28,
+    "setter_call": 5860,
+    "setter": {
+     "entry": 7279,
+     "shadow": 53547,
+     "register": 65535,
+     "instructions": [
+      {
+       "offset": 7279,
+       "bytes": "322bd1",
+       "asm": "LD (0xd12b),A"
+      },
+      {
+       "offset": 7282,
+       "bytes": "32ffff",
+       "asm": "LD (0xffff),A"
+      },
+      {
+       "offset": 7285,
+       "bytes": "c9",
+       "asm": "RET"
+      }
+     ],
+     "order": "shadow is stored before the register, so an interrupt between the two stores still leaves register == shadow"
+    },
+    "register": "slot 2 bank ($FFFF)",
+    "shadow": 53547
+   },
+   "mapper_state_at_call": {
+    "slot2_bank": 28,
+    "basis": "LD A,n directly before CALL setter; setter stores A to the shadow then $FFFF and returns to the call; nothing executes in between"
+   },
+   "destination": {
+    "bank": 28,
+    "cpu": 32768,
+    "file_offset": 458752,
+    "rule": "bank * $4000 + (cpu - $8000)"
+   },
+   "sequence_integrity": {
+    "interior_addresses": [
+     5860,
+     5863
+    ],
+    "entries_into_sequence": [],
+    "inert_literals": [],
+    "scanned": "decoded CALL/JP/JR/DJNZ in recovered and hardware-vector-reachable code, and every 16-bit literal in the ROM"
+   },
+   "interrupt_safety": {
+    "supported": true,
+    "reasons": [],
+    "shadow": 53547,
+    "model": "data/decomp1d/banked-flow.json interrupt_model"
+   },
+   "follow_safely": true,
+   "follow_rule": "code executing in slot 2 cannot remap slot 2 without leaving itself, so a descent confined to the destination bank may resolve same-bank slot-2 targets",
+   "residual_assumptions": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ]
+  },
+  {
+   "caller": 5943,
+   "status": "supported",
+   "reasons": [],
+   "instruction": {
+    "bytes": "cd0080",
+    "asm": "CALL 0x8000"
+   },
+   "cpu_target": 32768,
+   "region": "gameplay_frame_update",
+   "sequence": [
+    {
+     "offset": 5938,
+     "bytes": "3e1c",
+     "asm": "LD A,0x1c"
+    },
+    {
+     "offset": 5940,
+     "bytes": "cd6f1c",
+     "asm": "CALL 0x1c6f"
+    },
+    {
+     "offset": 5943,
+     "bytes": "cd0080",
+     "asm": "CALL 0x8000"
+    }
+   ],
+   "bank_selection": {
+    "instruction": 5938,
+    "value": 28,
+    "setter_call": 5940,
+    "setter": {
+     "entry": 7279,
+     "shadow": 53547,
+     "register": 65535,
+     "instructions": [
+      {
+       "offset": 7279,
+       "bytes": "322bd1",
+       "asm": "LD (0xd12b),A"
+      },
+      {
+       "offset": 7282,
+       "bytes": "32ffff",
+       "asm": "LD (0xffff),A"
+      },
+      {
+       "offset": 7285,
+       "bytes": "c9",
+       "asm": "RET"
+      }
+     ],
+     "order": "shadow is stored before the register, so an interrupt between the two stores still leaves register == shadow"
+    },
+    "register": "slot 2 bank ($FFFF)",
+    "shadow": 53547
+   },
+   "mapper_state_at_call": {
+    "slot2_bank": 28,
+    "basis": "LD A,n directly before CALL setter; setter stores A to the shadow then $FFFF and returns to the call; nothing executes in between"
+   },
+   "destination": {
+    "bank": 28,
+    "cpu": 32768,
+    "file_offset": 458752,
+    "rule": "bank * $4000 + (cpu - $8000)"
+   },
+   "sequence_integrity": {
+    "interior_addresses": [
+     5940,
+     5943
+    ],
+    "entries_into_sequence": [],
+    "inert_literals": [
+     {
+      "offset": 330640,
+      "class": "inert_data",
+      "ledger_class": "DATA",
+      "literal": 5940
+     },
+     {
+      "offset": 330622,
+      "class": "inert_data",
+      "ledger_class": "DATA",
+      "literal": 5943
+     }
+    ],
+    "scanned": "decoded CALL/JP/JR/DJNZ in recovered and hardware-vector-reachable code, and every 16-bit literal in the ROM"
+   },
+   "interrupt_safety": {
+    "supported": true,
+    "reasons": [],
+    "shadow": 53547,
+    "model": "data/decomp1d/banked-flow.json interrupt_model"
+   },
+   "follow_safely": true,
+   "follow_rule": "code executing in slot 2 cannot remap slot 2 without leaving itself, so a descent confined to the destination bank may resolve same-bank slot-2 targets",
+   "residual_assumptions": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ]
+  }
+ ],
+ "not_examined": {
+  "slot2_transfers_from_slot_2_code": 101,
+  "reason": "code that itself executes in slot 2 cannot remap slot 2, so its slot-2 targets are same-bank and are already resolved by the DECOMP-1A rule (rom_flow.resolve_target)"
+ },
+ "ambiguity": {
+  "rule": "the CPU address never classifies anything: only a supported record names a file offset",
+  "banks_seen_for_cpu_8000": [
+   28,
+   29
+  ],
+  "note": "CALL $8000 reaches bank $1C from the gameplay frame update and bank $1D from the interrupt handler; only the former is supported",
+  "slot2_transfers_by_cpu_address": {
+   "$850A": [
+    {
+     "caller": 1412,
+     "status": "unresolved",
+     "unproven_bank_hint": 29
+    }
+   ],
+   "$B45A": [
+    {
+     "caller": 1439,
+     "status": "unresolved",
+     "unproven_bank_hint": 14
+    }
+   ],
+   "$8000": [
+    {
+     "caller": 1478,
+     "status": "unresolved",
+     "unproven_bank_hint": 29
+    },
+    {
+     "caller": 5863,
+     "status": "supported",
+     "bank": 28,
+     "file_offset": 458752
+    },
+    {
+     "caller": 5943,
+     "status": "supported",
+     "bank": 28,
+     "file_offset": 458752
+    }
+   ]
+  }
+ },
+ "supported_entries": [
+  {
+   "file_offset": 458752,
+   "bank": 28,
+   "cpu": 32768,
+   "callers": [
+    5863,
+    5943
+   ]
+  }
+ ],
+ "dispatch_tables": [
+  {
+   "table": 458955,
+   "words": 16,
+   "end": 458987,
+   "load_site": 458941,
+   "consumer": 458954,
+   "entry": 458752,
+   "words_resolved": [
+    {
+     "index": 0,
+     "cpu": 33087,
+     "file_offset": 459071
+    },
+    {
+     "index": 1,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 2,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 3,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 4,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 5,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 6,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 7,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 8,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 9,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 10,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 11,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 12,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 13,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 14,
+     "cpu": 33086,
+     "file_offset": 459070
+    },
+    {
+     "index": 15,
+     "cpu": 33086,
+     "file_offset": 459070
+    }
+   ],
+   "next_word_after_table": 52677
+  }
+ ],
+ "registered_regions": [
+  {
+   "name": "banked_entry_70000",
+   "bounds": [
+    458752,
+    458955
+   ],
+   "every_byte_reached": true,
+   "instructions": 135,
+   "last_instruction_terminal": true,
+   "internal_targets_are_instruction_starts": true,
+   "touches_recovered_data": false,
+   "exits": [
+    {
+     "site": 458837,
+     "target": 459068
+    },
+    {
+     "site": 458846,
+     "target": 459068
+    },
+    {
+     "site": 458866,
+     "target": 459068
+    },
+    {
+     "site": 458875,
+     "target": 459068
+    },
+    {
+     "site": 458911,
+     "target": 459068
+    },
+    {
+     "site": 458918,
+     "target": 459068
+    },
+    {
+     "site": 458929,
+     "target": 458987
+    },
+    {
+     "site": 458954,
+     "target": null
+    }
+   ],
+   "unresolved_exits": [
+    {
+     "kind": "indirect",
+     "offset": 458954
+    }
+   ]
+  },
+  {
+   "name": "banked_dispatch_7013E",
+   "bounds": [
+    459070,
+    459078
+   ],
+   "every_byte_reached": true,
+   "instructions": 8,
+   "last_instruction_terminal": true,
+   "internal_targets_are_instruction_starts": true,
+   "touches_recovered_data": false,
+   "exits": [
+    {
+     "site": 459077,
+     "target": null
+    }
+   ],
+   "unresolved_exits": [
+    {
+     "kind": "indirect",
+     "offset": 459077
+    }
+   ]
+  }
+ ],
+ "registered": [
+  "banked_entry_70000",
+  "banked_dispatch_7013E"
+ ],
+ "findings": [
+  {
+   "id": "F1",
+   "kind": "table_inside_code_claim",
+   "table": [
+    458955,
+    458987
+   ],
+   "claims": [
+    {
+     "start": 458752,
+     "end": 458987,
+     "names": [
+      "placement_creator_loop"
+     ],
+     "sources": [
+      "data/rom-cache/thz3/object-50.json"
+     ]
+    }
+   ],
+   "detail": "a hash-verified audit manifest claims this range as CODE although it contains the 16-word dispatch table; the table is not registered as DATA because that would make the ledger contradictory. Correct at the audit source (as DECOMP-1A did for object-50) after review."
+  },
+  {
+   "id": "F2",
+   "kind": "decomp1b_vector_reachability_slot1_edges",
+   "detail": "The IM 1 handler calls $4000 at $05E0 and $05F6 after mapping bank 2 into slot 1, so those calls enter file $8000+, not the bank-1 code at file $4000 that DECOMP-1B's resident descent follows.",
+   "instructions_reached_only_through_these_edges": 1227,
+   "bytes_reached_only_through_these_edges": 2732,
+   "effect": "affects only the vector_reachability and dependency_map figures in data/decomp1b/callers.json; no ledger claim depends on them (reviews and recovered regions rest on recovered code). Reported, not changed, so the historical output still reproduces."
+  }
+ ],
+ "ledger_effect": {
+  "note": "before = the same tree with the banked_ regions set aside; both include the committed reviewed-ranges.json",
+  "before": {
+   "classified_bytes": 156887,
+   "unknown_bytes": 367401,
+   "recovered_bytes": 13988,
+   "recovered_code_bytes": 12002,
+   "independent_structural_bytes": 145346,
+   "classified_by_recovery_only_bytes": 11541,
+   "recovered_and_independently_classified_bytes": 2447,
+   "contested_bytes": 0
+  },
+  "after": {
+   "classified_bytes": 156895,
+   "unknown_bytes": 367393,
+   "recovered_bytes": 14199,
+   "recovered_code_bytes": 12213,
+   "independent_structural_bytes": 145346,
+   "classified_by_recovery_only_bytes": 11549,
+   "recovered_and_independently_classified_bytes": 2650,
+   "contested_bytes": 0
+  },
+  "by_category_before": {
+   "CODE": 18056,
+   "DATA": 38663,
+   "GRAPHICS": 192,
+   "MUSIC": 0,
+   "COMPRESSED": 99976,
+   "PADDING": 0,
+   "UNKNOWN": 367401
+  },
+  "by_category_after": {
+   "CODE": 18064,
+   "DATA": 38663,
+   "GRAPHICS": 192,
+   "MUSIC": 0,
+   "COMPRESSED": 99976,
+   "PADDING": 0,
+   "UNKNOWN": 367393
+  },
+  "recovered_regions": {
+   "before": 113,
+   "after": 115
+  },
+  "contradictory_pairs": 0,
+  "audit_ranges_changed": [
+   {
+    "start": 458752,
+    "end": 459078,
+    "name": "placement_scan",
+    "before": {
+     "status": "partial",
+     "bytes_by_class": {
+      "CODE": 318,
+      "UNKNOWN": 8
+     }
+    },
+    "after": {
+     "status": "classified",
+     "bytes_by_class": {
+      "CODE": 326
+     }
+    }
+   }
+  ]
+ }
+}

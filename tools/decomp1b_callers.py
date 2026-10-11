@@ -68,8 +68,8 @@ CANDIDATES = RECOVERED + (
 
 STUB_TABLE = (0x0380, 0x044F)
 
-# Regions DECOMP-1C added later; this report describes the evidence as it stood before them.
-LATER_PREFIXES = ("callback_stubs_", "dispatch_target_")
+# Regions DECOMP-1C and DECOMP-1D added later; this report describes the evidence as it stood before them.
+LATER_PREFIXES = ("callback_stubs_", "dispatch_target_", "banked_")
 
 
 def later_regions(root=ROOT):
@@ -351,7 +351,7 @@ def simulate_candidates(rom, review_without):
         extra = [OrderedDict([("name", name), ("start", lo), ("end", hi), ("bank", lo // RL.BANK_SIZE),
                               ("kind", "code"), ("bytes", hi - lo), ("instructions", 0), ("file", name + ".asm")])]
         try:
-            doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names, script_seeds=False)
+            doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names, script_seeds=False, banked_seeds=False)
         except Exception as exc:  # a candidate that cannot be simulated is reported, not hidden
             rows.append(OrderedDict([("name", name), ("bounds", [lo, hi]), ("error", str(exc))]))
             continue
@@ -364,7 +364,7 @@ def simulate_candidates(rom, review_without):
             ("unresolved_clusters_after", len(doc["unresolved"]))]))
     extra = [OrderedDict([("name", n), ("start", lo), ("end", hi), ("bank", lo // RL.BANK_SIZE), ("kind", "code"),
                           ("bytes", hi - lo), ("instructions", 0), ("file", n + ".asm")]) for n, lo, hi, _ in RECOVERED]
-    doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names, script_seeds=False)
+    doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names, script_seeds=False, banked_seeds=False)
     claimed = sum(c["end"] - c["start"] for r in doc["code_flow_reviews"] for c in r["claims"])
     seeds = {s["offset"] for r in doc["code_flow_reviews"] for s in r["seeds"]}
     combined = OrderedDict([("regions", [n for n, _, _, _ in RECOVERED]),
@@ -385,7 +385,7 @@ def build(rom, root=ROOT):
     ins, parent, indirect, invalid = vector_descent(rom)
     names = {c[0] for c in RECOVERED} | later
     # the dependency map describes why DECOMP-1A could not reach the ranges, so it uses the evidence without 1B
-    review_without = RV.build(rom, root, drop_regions=names, script_seeds=False)
+    review_without = RV.build(rom, root, drop_regions=names, script_seeds=False, banked_seeds=False)
     prior_regions = [r for r in regions if r["name"] not in names]
     doc = OrderedDict()
     doc["format"] = 1

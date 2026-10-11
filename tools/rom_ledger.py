@@ -39,6 +39,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
+import decomp1d_banked_flow as BF  # noqa: E402
 import level_package as L  # noqa: E402
 import player_scripts as PS  # noqa: E402
 import rom as R  # noqa: E402
@@ -489,7 +490,7 @@ def dispatch_table_word(rom, region, index):
     return R.u16(rom, p)
 
 
-def import_reviewed(rom, root=ROOT, regions=None):
+def import_reviewed(rom, root=ROOT, regions=None, context_claims=None):
     """Re-verify every reviewed code-flow claim; any stale or inconsistent entry raises.
 
     Each review names its entry points and the control-flow support for each:
@@ -501,6 +502,12 @@ def import_reviewed(rom, root=ROOT, regions=None):
     file order does not matter. Control flow is then re-run confined to the
     review's bounds and must fetch every claimed byte as an instruction without
     touching a recovered DATA region.
+
+    DECOMP-1D adds two seed kinds, both re-derived from the ROM here and never trusted:
+    ``{"banked_transfer": {"caller", "bank", "cpu"}}`` (a resident ``CALL`` into slot 2 whose bank the original
+    instructions fix; see ``decomp1d_banked_flow``) and ``{"bank_table": {...}}`` (a word of a bank-resolved dispatch
+    table reached from such an entry). ``context_claims`` are the other importers' claims, used only to classify
+    16-bit literals as non-code.
     """
     path = Path(root) / REVIEWED
     if not path.is_file():
@@ -533,9 +540,13 @@ def import_reviewed(rom, root=ROOT, regions=None):
                 return any(F.is_indirect_jump(d) for p, _, d in F.region_instructions(rom, r) if p > site)
         return False
 
+    banked_ctx = BF.Context(context_claims)
+
     def seed_ok(seed):
         via = seed["via"]
         off = seed["offset"]
+        if "banked_transfer" in via or "bank_table" in via:
+            return BF.verify_seed(rom, regions, off, via, banked_ctx)
         if "site" in via:
             site = via["site"]
             if site not in proven:
@@ -777,9 +788,10 @@ def build_ledger(rom, root=ROOT, reviewed=True, drop_regions=()):
     raw += layout_claims
     manifest_claims, unclassified, rejected_ranges, ignored = import_manifest_ranges(rom, root, regions)
     raw += manifest_claims
+    BF.verify_registered_regions(rom, regions, BF.Context(raw))      # DECOMP-1D regions need live bank proofs
     review_summary = {"reviews": 0, "claims": 0, "unresolved": []}
     if reviewed:
-        review_claims, review_summary = import_reviewed(rom, root, regions)
+        review_claims, review_summary = import_reviewed(rom, root, regions, raw)
         raw += review_claims
     rejected = rejected + rejected_ranges
     claims = dedupe_claims(raw)

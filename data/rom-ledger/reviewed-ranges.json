@@ -1811,42 +1811,6 @@
   },
   {
    "bounds": [
-    458752,
-    459078
-   ],
-   "bank": 28,
-   "audit_ranges": [
-    {
-     "start": 458752,
-     "end": 459078,
-     "name": "placement_scan",
-     "source": "data/rom-cache/viewport-semantics.json"
-    },
-    {
-     "start": 458987,
-     "end": 459068,
-     "name": "object_creator_80eb",
-     "source": "data/rom-cache/spring-interaction.json"
-    },
-    {
-     "start": 458987,
-     "end": 459070,
-     "name": "placement_creator",
-     "source": "data/rom-cache/sez/platform-28-runtime.json"
-    }
-   ],
-   "unknown_runs": [
-    [
-     459070,
-     459078
-    ]
-   ],
-   "unknown_bytes": 8,
-   "reason": "entry points supported but they fetch no UNKNOWN byte",
-   "evidence_needed": "a bank-resolved entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
-  },
-  {
-   "bounds": [
     475136,
     475218
    ],
