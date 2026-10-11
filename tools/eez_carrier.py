@@ -4,6 +4,7 @@ import eez_foundation as F
 import level_package as L
 import mghz_object_census as C
 import mghz56_runtime as M
+import eez_carrier_contract as CC
 from oracle import Oracle
 S=0xD700
 
@@ -42,7 +43,21 @@ def build(r):
     o.call(0x64F5);assert m[S]==255;checks+=1
     scripts={f'0x{t:02X}':C.public_script(C.state_scripts(r,t)) for t in (23,1)}
     scripts['0x01']['states']=[v for v in scripts['0x01']['states'] if v['state'] in (22,23)]
-    return dict(rom_sha256=L.ROM_SHA256,checks=checks,geometry=[ox,oy],vectors=rows,scripts=scripts,
+    correction=CC.build(r)
+    code_regions=[]
+    for bank,start,end,label in [(0,0x401A,0x402A,'signed cached screen-Y death check'),
+        (0,0x45ED,0x463C,'ordinary jump setter after detach'),
+        (0,0x4942,0x4984,'immunity setup followed by distinct494F hurt tail'),
+        (0,0x4C02,0x4C90,'player16/17 callbacks and integer-only owner copy'),
+        (0,0x5EF8,0x5F17,'placement occupancy and slot cleanup'),
+        (0,0x61E1,0x6276,'generic object sleep/removal'),
+        (12,0xA5D3,0xA777,'carrier callbacks; scripts and block tables excluded')]:
+        region=F.A.source(r,bank,start,end)
+        code_regions.append(dict(region,file_offset=region['file'],
+                                 rom_end_exclusive=region['file']+region['length'],kind='code',name=label))
+    return dict(rom_sha256=L.ROM_SHA256,checks=checks+correction['assertions'],
+        legacy_assertions=checks,correction_validation=correction,code_regions=code_regions,
+        geometry=[ox,oy],vectors=rows,scripts=scripts,
         regions=[F.A.source(r,12,0xA582,0xA78C),F.A.source(r,0,0x4C02,0x4C90)],
         block_lists=dict(continuation=list(r[0x32777:0x32786]),obstacle=list(r[0x32786:0x3278C])),
         contracts=dict(
@@ -51,15 +66,21 @@ def build(r):
             state2='accelerateVX +1/16 while highbyte<4; probe(+16,-16) against six obstacle IDs; then capture; floor contact continues motion; otherwise request4,VY+1. Obstacle with floorbit proceeds bounce, else fall4.',
             state3='negative-side counterpart: magnitude test via negation, accelerate negativeVX -1/16; probe(-16,-16). Natural parameter02 does not initially choose3; other requests must be source-traced.',
             state4='probe signed16,-16; obstacle zerosVX. Gravity helper5F84 adds+1/8 with rejection at+6 ceiling (does not clamp). Until floor:move/floor/saveD36E. On floor and prior marker in15-byte continue list requests parameter again,VY+4. Other floor ->bounce path.',
-            bounce='soundBB,clear actor floorbit1,clear player hidebit7,VY-4,VX0,request5. If D3A6 owns this actor clear owner and call494F hurt helper on player. State5 gravity+1/4 ceiling6; on floor request6.',
+            bounce='soundBB,clear actor floorbit1,clear player hidebit7,VY-4,VX0,request5. If D3A6 owns this actor clear owner then A710->0419->494F: clear player contact20,request1E,set airborne,clear floor; VY=-4 (ceiling bit0 ->+1),VX=-1 (side bit3 ->+1),clearD375. This tail bypasses48F7 ring-loss/no-ring-death selection and4942 immunity setup: rings, existing immunity bits and D3B1 remain unchanged. Non-owner does not enter494F. State5 gravity+1/4 ceiling6; on floor request6.',
             state6='frame1 duration16 callbackA72B clears placement token/parameter on every call; then frame0 duration3 callback0362->64F5 sets typeFF (deletes), not merely flags. No reward or badnik attack defeat.',
-            player16='frame5F duration1 callback4C02 copies actor X/Y/VX/VY to Sonic and sets attack, actor hidden; script835E requests17. Facing flag4bit4 derives from carrier parameter==2, not signVX.',
-            player17='4C12 copies actor state, terrain ring probe753E, hurt48BC, movement401A. If requested hurt/death1E/1F OR buttonbits4/5 then detach:unhideactor,set counter1F16/hurtflag3bit6,request actor parameter,clear owner,ordinary setter45ED. Otherwise retains carrier; player normal terrain update is not substituted.',
-            semantics='WORLD anchors and collision probes; generic viewport lifecycle still governs mapped actor before capture, canonical token cleared on capture. No dynamic allocations; no viewport-scaled distances. Player updates precede actor movement, so attachment sees prior actor position.',
-            validation_limits='Whole scheduler capture/continuation/button detach is traced in system-game-checks; bounce/hurt-owner combinations and final cleanup are separately routine-tested. Not an input-only whole-act playthrough; visual approval pending.'))
+            owner_copy='4C56 copies only integer WORLD X word11/12 and Y word14/15; player fractional bytes10/13 are preserved, not copied from owner. VX/VY words16..19 copied exactly. SET player attack bit1; facing flag4bit4 cleared for owner parameter02, set otherwise. No owner requested/executing state, floor, flags, fractions or animation counter is copied.',
+            player16='frame5F duration1 callback4C02 clears player hidebit7,loads D3A6,performs integer-only4C56 copy,sets owner hidebit7; script835E requests17 at next script advance. Facing derives from owner parameter==2, not signVX.',
+            player17='4C12 loads D3A6,integer-only4C56 copy,terrain-ring/special probe753E,hurt gate48BC,signed cached screen-Y death check401A. 401A reads signed D51C: negative returns; nonnegative>=208 invokes4984. No4141 input/friction,402A X integration,4097 Y integration or690B normal terrain pass. If requested1E/1F detach immediately; otherwise clear airborne bit0 then test D137 actionbits4/5. Directions do not steer. Detach unhideowner,set cooldown1F=16/hurtflag3bit6,request owner parameter,clear D3A6,JP ordinary JUMP setter45ED. Actual hurt/death flags keep airborne set and block jump; request-only synthetic1E/1F without airborne can be overwritten by jump.',
+            detach_jump='45ED returns if airborne bit0 is set,current player11,or D36B&FC==90. Otherwise clearsD3B2/D3BC,sets movebits0/1,clears specialbit0,requests0A,VY=-4.25 dry/-3.25 water,integer Y-=1 (fraction unchanged),timerD289=60,clear floor,soundA2; copied VX retained.',
+            lifecycle='Only state1 gates asleep; states2..6 continue their callbacks asleep. Generic61E1 still applies after callbacks, including after capture. Capture clears actor token3E only, NOT D400 occupancy. Outside lifetime: token!=0 ->typeFE,626D ->FF,5EF8 releases occupancy and clears slot; token0 ->FF then5EF8 clears slot without releasing old occupancy. Generic removal/cleanup does not clear D3A6. State6 also clears token/parameter before deletion. No owner-type/aliveness/null validation in4C56/4C12; deleted,reused or cleared RAM owner slots are read as-is. No invented detach/repair fallback.',
+            semantics='WORLD anchors and collision probes; no dynamic children or viewport-scaled distances. Player pass precedes actor movement: copy sees prior actor integer position and current speed words while retaining player fractions. Screen death uses already cached D51C, not a screen-Y recalculation after copy.',
+            validation_limits='Original overlap baseline retained; expanded original-routine breakpoint observations, all65536 signed screen-Y values, fractional/speed/flag/callback/lifecycle sweeps and natural-record scheduler replays for all five placements. No POC model or patched ROM instructions. Arbitrary non-RAM/null owner-pointer consequences and input-only whole-act traversal are not claimed.'))
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('rom');a=p.parse_args();v=build(L.load_rom(a.rom))
-    (F.OUT/'carrier-17.json').write_text(F.dumps(v),encoding='utf-8');print('carrier assertions',v['checks'])
+    p=argparse.ArgumentParser();p.add_argument('rom');p.add_argument('--check',action='store_true');a=p.parse_args();v=build(L.load_rom(a.rom))
+    path=F.OUT/'carrier-17.json'
+    if a.check:assert path.read_text(encoding='utf-8')==F.dumps(v)
+    else:path.write_text(F.dumps(v),encoding='utf-8')
+    print('carrier assertions',v['checks'])
 
 if __name__=='__main__':main()

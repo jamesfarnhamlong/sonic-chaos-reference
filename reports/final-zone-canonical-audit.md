@@ -32,7 +32,40 @@ New dependency chains include terrain-created3A/37, carrier17 and player16/17, o
 
 Every ROM-loading tool verifies Europe v1.2 SHA-256 `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607`. No ROM or raw ROM dump is committed.
 
-The final full opt-in EEZ batch, including the animation extension, passed21 tests with no skips in129.478s. The focused closure suite also passed all3 tests (latest rerun2.060s). Recorded controlled assertions total601,927: environment5200, transport44800, ordinary objects10718, carrier32470, terrain/effects202, boss/endgame507036, allocations574, reuse44, natural transport79, scheduler systems9, ending command768 and render checks27. Separately, foundation verification covers1536 mapping-consumer comparisons and11774 original whole-game layout cells; complete CPU/platform restore was replayed48 updates twice per act. These are recorded oracle checks, not a count of unittest assertion calls.
+The original accepted full opt-in EEZ batch, including the animation extension, passed21 tests with no skips in129.478s. The focused closure suite also passed all3 tests (latest rerun2.060s). Its historical controlled-assertion total was601,927: environment5200, transport44800, ordinary objects10718, carrier32470, terrain/effects202, boss/endgame507036, allocations574, reuse44, natural transport79, scheduler systems9, ending command768 and render checks27. Separately, foundation verification covers1536 mapping-consumer comparisons and11774 original whole-game layout cells; complete CPU/platform restore was replayed48 updates twice per act. These are recorded oracle checks, not a count of unittest assertion calls. See the carrier correction below for expanded current coverage.
+
+### Carrier contract correction — 2026-10-11, pending Manager review
+
+Correction branch starts at Research `c42c86ad9a2ead9682883a864284293ec4c2f6af`.
+The authoritative carrier description mislabeled `$401A` as movement/input;
+it is the signed cached screen-Y death check. `$4C56` copies integer WORLD
+coordinate words and exact speed words, preserving Sonic's fractional bytes;
+it sets attack and derives facing from owner parameter, without copying actor
+state/flags. Owning bounce enters `$494F` after ordinary ring-loss/death and
+immunity setup, so the bounce preserves rings and existing immunity. Detach
+calls the gated ordinary jump setter `$45ED`. Full details and limits are in
+`docs/eez-carrier-audit.md` and regenerated `carrier-17.json`.
+
+The old 32,470 assertions executed original routines and still pass. They did
+not test the mislabeled callback, varied fractions or bounce ring/immunity
+preservation; this was incomplete coverage and interpretation, not a proven
+incorrect overlap oracle. The corrected carrier cache has 124,524 assertions
+(+92,054); ten new original scheduler cases cover all five placements and both
+action bits with 265 additional assertions. The corresponding controlled EEZ
+total is 694,246. No POC, art, placement or other-family behavior changed.
+Arbitrary non-RAM/null-owner consequences and natural reachability of every
+synthetic stale-owner/state3 fixture remain unclaimed; no owner-repair fallback
+is justified. This correction does not imply input-only whole-act traversal
+or Windows acceptance.
+
+Correction verification: all 25 EEZ unittest methods passed with
+`SONIC_CHAOS_FULL_EEZ=1` and no skips (121.127s), including the four focused
+carrier tests. Both carrier caches reproduced with `--check`. All 24 ledger
+tests passed (39.758s), ledger regeneration/`--check` passed, and
+`git diff --check` passed. The local ROM was size/hash verified as Europe v1.2.
+Seven exact helper/carrier CODE claims classify 628 previously UNKNOWN bytes:
+current ledger 154,108 classified / 13,046 recovered / 370,180 UNKNOWN; the 32-byte
+contested range remains unresolved. Research `main` and POC are unchanged.
 
 Five complete controlled boss/terminal sweeps reached title: partial/full Sonic, alternate character ending selection, and delayed even/odd final-hit routes. They use explicit player/camera fixtures and original boss/scheduler code; they are not input-only playthroughs. Full CPU restore and regenerated machine caches matched. The SMS harness is approximate and does not establish cycle-exact VDP behavior. `git diff --check` passed.
 

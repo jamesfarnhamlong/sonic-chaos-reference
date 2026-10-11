@@ -1,6 +1,502 @@
 {
   "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
-  "checks": 32470,
+  "checks": 124524,
+  "legacy_assertions": 32470,
+  "correction_validation": {
+    "assertions": 92054,
+    "groups": {
+      "copy": 13728,
+      "attached_callback": 5376,
+      "attached_screen_death": 12,
+      "player16": 2,
+      "screen_death": 65536,
+      "bounce": 1600,
+      "hurt_gate": 96,
+      "invalid_owner": 4,
+      "lifecycle": 7,
+      "capture_cooldown": 18,
+      "capture_token": 1,
+      "motion_paths": 2560,
+      "continuation": 3072,
+      "sleep": 1,
+      "gravity_sleep": 16,
+      "cleanup": 18,
+      "terrain_ring": 6,
+      "placements": 1
+    },
+    "samples": {
+      "attached_callback": [
+        {
+          "pad": 0,
+          "requested": 23,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410
+          ],
+          "final_requested": 23,
+          "owner": 55040
+        },
+        {
+          "pad": 0,
+          "requested": 30,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 0,
+          "requested": 31,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 4,
+          "requested": 23,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410
+          ],
+          "final_requested": 23,
+          "owner": 55040
+        },
+        {
+          "pad": 4,
+          "requested": 30,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 4,
+          "requested": 31,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 8,
+          "requested": 23,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410
+          ],
+          "final_requested": 23,
+          "owner": 55040
+        },
+        {
+          "pad": 8,
+          "requested": 30,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 8,
+          "requested": 31,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 16,
+          "requested": 23,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 16,
+          "requested": 30,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 16,
+          "requested": 31,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 32,
+          "requested": 23,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 32,
+          "requested": 30,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 32,
+          "requested": 31,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 48,
+          "requested": 23,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 48,
+          "requested": 30,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        },
+        {
+          "pad": 48,
+          "requested": 31,
+          "entries": [
+            19542,
+            30014,
+            18620,
+            16410,
+            17901
+          ],
+          "final_requested": 10,
+          "owner": 0
+        }
+      ],
+      "bounce": [
+        {
+          "rings_bcd": 0,
+          "requested": 30,
+          "flags": 3,
+          "immunity_ticks": 37
+        },
+        {
+          "rings_bcd": 1,
+          "requested": 30,
+          "flags": 3,
+          "immunity_ticks": 37
+        },
+        {
+          "rings_bcd": 16,
+          "requested": 30,
+          "flags": 3,
+          "immunity_ticks": 37
+        },
+        {
+          "rings_bcd": 153,
+          "requested": 30,
+          "flags": 3,
+          "immunity_ticks": 37
+        }
+      ],
+      "invalid_owner": [
+        {
+          "slot_type": 0,
+          "retained_owner": true,
+          "copied_integer_position": [
+            1000,
+            100
+          ]
+        },
+        {
+          "slot_type": 254,
+          "retained_owner": true,
+          "copied_integer_position": [
+            1000,
+            100
+          ]
+        },
+        {
+          "slot_type": 255,
+          "retained_owner": true,
+          "copied_integer_position": [
+            1000,
+            100
+          ]
+        },
+        {
+          "slot_type": 40,
+          "retained_owner": true,
+          "copied_integer_position": [
+            1000,
+            100
+          ]
+        }
+      ],
+      "lifecycle": [
+        {
+          "token": 0,
+          "removal_type": 255,
+          "occupancy_after_cleanup": 255,
+          "stale_owner_retained": true,
+          "cleared_owner_copy": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "token": 17,
+          "removal_type": 254,
+          "occupancy_after_cleanup": 0,
+          "stale_owner_retained": true,
+          "cleared_owner_copy": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "terrain_ring": [
+        {
+          "parity": 0,
+          "owner_integer": [
+            1384,
+            144
+          ],
+          "collected_rings": 1
+        },
+        {
+          "parity": 1,
+          "owner_integer": [
+            1384,
+            134
+          ],
+          "collected_rings": 1
+        }
+      ],
+      "placements": [
+        {
+          "act": "eez1",
+          "index": 17,
+          "world": [
+            1040,
+            478
+          ],
+          "parameter": "0x02",
+          "rom": "0x716E5"
+        },
+        {
+          "act": "eez1",
+          "index": 18,
+          "world": [
+            2832,
+            222
+          ],
+          "parameter": "0x02",
+          "rom": "0x716EE"
+        },
+        {
+          "act": "eez2",
+          "index": 9,
+          "world": [
+            752,
+            318
+          ],
+          "parameter": "0x02",
+          "rom": "0x71749"
+        },
+        {
+          "act": "eez2",
+          "index": 10,
+          "world": [
+            2672,
+            670
+          ],
+          "parameter": "0x02",
+          "rom": "0x71752"
+        },
+        {
+          "act": "eez3",
+          "index": 3,
+          "world": [
+            272,
+            318
+          ],
+          "parameter": "0x02",
+          "rom": "0x7184F"
+        }
+      ]
+    },
+    "method": "original ROM routines; RAM boundary fixtures; breakpoint entry observations; no patched ROM code",
+    "limits": "Controlled routine results. Natural-placement scheduler replay is a separate cache. Arbitrary non-RAM owner pointers and input-only whole-act traversal are not claimed."
+  },
+  "code_regions": [
+    {
+      "bank": 0,
+      "cpu": 16410,
+      "file": 16410,
+      "length": 16,
+      "sha256": "e390a89317b91bf86dc76f978de6f03bcfc4887c08f3d6b00d504a9258d16a25",
+      "file_offset": 16410,
+      "rom_end_exclusive": 16426,
+      "kind": "code",
+      "name": "signed cached screen-Y death check"
+    },
+    {
+      "bank": 0,
+      "cpu": 17901,
+      "file": 17901,
+      "length": 79,
+      "sha256": "8aa9a09d12adcadb45de25e643ea7998e0b2de4a5f344e9ae3a815227aba3fd1",
+      "file_offset": 17901,
+      "rom_end_exclusive": 17980,
+      "kind": "code",
+      "name": "ordinary jump setter after detach"
+    },
+    {
+      "bank": 0,
+      "cpu": 18754,
+      "file": 18754,
+      "length": 66,
+      "sha256": "89137a3edc079f04ae6a487805f4b80c83bba0dcc4f35a478ef2ea505b7d5b80",
+      "file_offset": 18754,
+      "rom_end_exclusive": 18820,
+      "kind": "code",
+      "name": "immunity setup followed by distinct494F hurt tail"
+    },
+    {
+      "bank": 0,
+      "cpu": 19458,
+      "file": 19458,
+      "length": 142,
+      "sha256": "04f888467a530b070a08a14d50ad8a6f20c3fa6116d6040ff18fad7b5b6d662b",
+      "file_offset": 19458,
+      "rom_end_exclusive": 19600,
+      "kind": "code",
+      "name": "player16/17 callbacks and integer-only owner copy"
+    },
+    {
+      "bank": 0,
+      "cpu": 24312,
+      "file": 24312,
+      "length": 31,
+      "sha256": "83be206e1627d072ff3a2581297a6ba4bf4a3082bd345ff897813d0c90a1cf19",
+      "file_offset": 24312,
+      "rom_end_exclusive": 24343,
+      "kind": "code",
+      "name": "placement occupancy and slot cleanup"
+    },
+    {
+      "bank": 0,
+      "cpu": 25057,
+      "file": 25057,
+      "length": 149,
+      "sha256": "76ce45f7830850f7e9e7515e1812135dc84e9746e9e7ef00404fd53c04a5430d",
+      "file_offset": 25057,
+      "rom_end_exclusive": 25206,
+      "kind": "code",
+      "name": "generic object sleep/removal"
+    },
+    {
+      "bank": 12,
+      "cpu": 42451,
+      "file": 206291,
+      "length": 420,
+      "sha256": "ccd64dcdda38e8cbd47a4ffbddb8277ba03fadc3712874607f8443d08742a373",
+      "file_offset": 206291,
+      "rom_end_exclusive": 206711,
+      "kind": "code",
+      "name": "carrier callbacks; scripts and block tables excluded"
+    }
+  ],
   "geometry": [
     12,
     16
@@ -742,11 +1238,14 @@
     "state2": "accelerateVX +1/16 while highbyte<4; probe(+16,-16) against six obstacle IDs; then capture; floor contact continues motion; otherwise request4,VY+1. Obstacle with floorbit proceeds bounce, else fall4.",
     "state3": "negative-side counterpart: magnitude test via negation, accelerate negativeVX -1/16; probe(-16,-16). Natural parameter02 does not initially choose3; other requests must be source-traced.",
     "state4": "probe signed16,-16; obstacle zerosVX. Gravity helper5F84 adds+1/8 with rejection at+6 ceiling (does not clamp). Until floor:move/floor/saveD36E. On floor and prior marker in15-byte continue list requests parameter again,VY+4. Other floor ->bounce path.",
-    "bounce": "soundBB,clear actor floorbit1,clear player hidebit7,VY-4,VX0,request5. If D3A6 owns this actor clear owner and call494F hurt helper on player. State5 gravity+1/4 ceiling6; on floor request6.",
+    "bounce": "soundBB,clear actor floorbit1,clear player hidebit7,VY-4,VX0,request5. If D3A6 owns this actor clear owner then A710->0419->494F: clear player contact20,request1E,set airborne,clear floor; VY=-4 (ceiling bit0 ->+1),VX=-1 (side bit3 ->+1),clearD375. This tail bypasses48F7 ring-loss/no-ring-death selection and4942 immunity setup: rings, existing immunity bits and D3B1 remain unchanged. Non-owner does not enter494F. State5 gravity+1/4 ceiling6; on floor request6.",
     "state6": "frame1 duration16 callbackA72B clears placement token/parameter on every call; then frame0 duration3 callback0362->64F5 sets typeFF (deletes), not merely flags. No reward or badnik attack defeat.",
-    "player16": "frame5F duration1 callback4C02 copies actor X/Y/VX/VY to Sonic and sets attack, actor hidden; script835E requests17. Facing flag4bit4 derives from carrier parameter==2, not signVX.",
-    "player17": "4C12 copies actor state, terrain ring probe753E, hurt48BC, movement401A. If requested hurt/death1E/1F OR buttonbits4/5 then detach:unhideactor,set counter1F16/hurtflag3bit6,request actor parameter,clear owner,ordinary setter45ED. Otherwise retains carrier; player normal terrain update is not substituted.",
-    "semantics": "WORLD anchors and collision probes; generic viewport lifecycle still governs mapped actor before capture, canonical token cleared on capture. No dynamic allocations; no viewport-scaled distances. Player updates precede actor movement, so attachment sees prior actor position.",
-    "validation_limits": "Whole scheduler capture/continuation/button detach is traced in system-game-checks; bounce/hurt-owner combinations and final cleanup are separately routine-tested. Not an input-only whole-act playthrough; visual approval pending."
+    "owner_copy": "4C56 copies only integer WORLD X word11/12 and Y word14/15; player fractional bytes10/13 are preserved, not copied from owner. VX/VY words16..19 copied exactly. SET player attack bit1; facing flag4bit4 cleared for owner parameter02, set otherwise. No owner requested/executing state, floor, flags, fractions or animation counter is copied.",
+    "player16": "frame5F duration1 callback4C02 clears player hidebit7,loads D3A6,performs integer-only4C56 copy,sets owner hidebit7; script835E requests17 at next script advance. Facing derives from owner parameter==2, not signVX.",
+    "player17": "4C12 loads D3A6,integer-only4C56 copy,terrain-ring/special probe753E,hurt gate48BC,signed cached screen-Y death check401A. 401A reads signed D51C: negative returns; nonnegative>=208 invokes4984. No4141 input/friction,402A X integration,4097 Y integration or690B normal terrain pass. If requested1E/1F detach immediately; otherwise clear airborne bit0 then test D137 actionbits4/5. Directions do not steer. Detach unhideowner,set cooldown1F=16/hurtflag3bit6,request owner parameter,clear D3A6,JP ordinary JUMP setter45ED. Actual hurt/death flags keep airborne set and block jump; request-only synthetic1E/1F without airborne can be overwritten by jump.",
+    "detach_jump": "45ED returns if airborne bit0 is set,current player11,or D36B&FC==90. Otherwise clearsD3B2/D3BC,sets movebits0/1,clears specialbit0,requests0A,VY=-4.25 dry/-3.25 water,integer Y-=1 (fraction unchanged),timerD289=60,clear floor,soundA2; copied VX retained.",
+    "lifecycle": "Only state1 gates asleep; states2..6 continue their callbacks asleep. Generic61E1 still applies after callbacks, including after capture. Capture clears actor token3E only, NOT D400 occupancy. Outside lifetime: token!=0 ->typeFE,626D ->FF,5EF8 releases occupancy and clears slot; token0 ->FF then5EF8 clears slot without releasing old occupancy. Generic removal/cleanup does not clear D3A6. State6 also clears token/parameter before deletion. No owner-type/aliveness/null validation in4C56/4C12; deleted,reused or cleared RAM owner slots are read as-is. No invented detach/repair fallback.",
+    "semantics": "WORLD anchors and collision probes; no dynamic children or viewport-scaled distances. Player pass precedes actor movement: copy sees prior actor integer position and current speed words while retaining player fractions. Screen death uses already cached D51C, not a screen-Y recalculation after copy.",
+    "validation_limits": "Original overlap baseline retained; expanded original-routine breakpoint observations, all65536 signed screen-Y values, fractional/speed/flag/callback/lifecycle sweeps and natural-record scheduler replays for all five placements. No POC model or patched ROM instructions. Arbitrary non-RAM/null owner-pointer consequences and input-only whole-act traversal are not claimed."
   }
 }

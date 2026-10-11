@@ -8,13 +8,13 @@ ROM: Sonic Chaos (Europe) v1.2, 524288 bytes, SHA-256 `eabc8db59746714262d2f91a9
 
 | Category | Bytes | % |
 |---|---:|---:|
-| CODE | 14681 | 2.800 |
+| CODE | 15309 | 2.920 |
 | DATA | 38631 | 7.368 |
 | GRAPHICS | 192 | 0.037 |
 | MUSIC | 0 | 0.000 |
 | COMPRESSED | 99976 | 19.069 |
 | PADDING | 0 | 0.000 |
-| UNKNOWN | 370808 | 70.726 |
+| UNKNOWN | 370180 | 70.606 |
 | **Total** | **524288** | 100 |
 
 ## Coverage
@@ -22,11 +22,11 @@ ROM: Sonic Chaos (Europe) v1.2, 524288 bytes, SHA-256 `eabc8db59746714262d2f91a9
 | Metric | Bytes | % |
 |---|---:|---:|
 | Recovered into reproducible assembly | 13046 | 2.488 |
-| Structurally classified (primary class known) | 153480 | 29.274 |
-| of which classified only by the recovery manifest | 10799 | 2.060 |
-| of which independently evidenced | 142681 | 27.214 |
-| Recovered and independently evidenced | 2215 | 0.422 |
-| UNKNOWN | 370808 | 70.726 |
+| Structurally classified (primary class known) | 154108 | 29.394 |
+| of which classified only by the recovery manifest | 10704 | 2.042 |
+| of which independently evidenced | 143404 | 27.352 |
+| Recovered and independently evidenced | 2310 | 0.441 |
+| UNKNOWN | 370180 | 70.606 |
 | Contested (counted in UNKNOWN) | 32 | 0.006 |
 
 Recovered manifest: 74 regions, 13046 bytes (11060 code, 1986 data).
@@ -36,7 +36,7 @@ Recovered manifest: 74 regions, 13046 bytes (11060 code, 1986 data).
 | Bank | File range | Code | Data | Graphics | Music | Compressed | Padding | Unknown | Recovered | Classified % |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 0 | `00000-03FFF` | 2419 | 0 | 0 | 0 | 0 | 0 | 13965 | 1531 | 14.8 |
-| 1 | `04000-07FFF` | 6900 | 2085 | 0 | 0 | 0 | 0 | 7399 | 7137 | 54.8 |
+| 1 | `04000-07FFF` | 7108 | 2085 | 0 | 0 | 0 | 0 | 7191 | 7137 | 56.1 |
 | 2 | `08000-0BFFF` | 0 | 136 | 0 | 0 | 0 | 0 | 16248 | 0 | 0.8 |
 | 3 | `0C000-0FFFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
 | 4 | `10000-13FFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
@@ -47,7 +47,7 @@ Recovered manifest: 74 regions, 13046 bytes (11060 code, 1986 data).
 | 9 | `24000-27FFF` | 0 | 0 | 0 | 0 | 7949 | 0 | 8435 | 0 | 48.5 |
 | 10 | `28000-2BFFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
 | 11 | `2C000-2FFFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
-| 12 | `30000-33FFF` | 2234 | 1066 | 0 | 0 | 0 | 0 | 13084 | 2241 | 20.1 |
+| 12 | `30000-33FFF` | 2654 | 1066 | 0 | 0 | 0 | 0 | 12664 | 2241 | 22.7 |
 | 13 | `34000-37FFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
 | 14 | `38000-3BFFF` | 0 | 6544 | 192 | 0 | 0 | 0 | 9648 | 0 | 41.1 |
 | 15 | `3C000-3FFFF` | 0 | 54 | 0 | 0 | 0 | 0 | 16330 | 54 | 0.3 |
@@ -70,14 +70,14 @@ Recovered manifest: 74 regions, 13046 bytes (11060 code, 1986 data).
 
 ## Overlaps
 
-- compatible nested pairs: 375
+- compatible nested pairs: 382
 - compatible partial overlaps: 0
 - contradictory pairs: 1
   - `06696-066B6` CODE vs DATA (anim_cmd_dispatch / animation_command_table)
 
 ## Hash-verified ranges with no stated kind
 
-211 ranges (14310 bytes in union, 4064 still UNKNOWN) await a code/data decision.
+211 ranges (14310 bytes in union, 3961 still UNKNOWN) await a code/data decision.
 
 Rejected claims: 0. Hashless ranges ignored: 12.
 

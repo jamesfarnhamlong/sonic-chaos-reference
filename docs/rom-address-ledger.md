@@ -80,7 +80,7 @@ Deliberately **not** done:
 * Content is not inferred from neighbours.
 * Audit ranges that hash correctly but state no `kind` are **not** guessed
   from their name or purpose text. They are listed under
-  `unclassified_range_claims` (211 ranges, 14,310 bytes in union, 4,064 of those
+  `unclassified_range_claims` (211 ranges, 14,310 bytes in union, 3,961 of those
   bytes still UNKNOWN) as the cheapest future wins.
 * Zone index 6 is not imported: the act-header table aliases it onto zone 0
   (six real zones x three acts = 18 acts).
@@ -130,6 +130,14 @@ Consequences:
   class is contested.
 
 ## Regeneration
+
+Current carrier-contract correction accounting (2026-10-11): **154,108**
+structurally classified bytes, **13,046** assembly-recovered bytes, and
+**370,180** UNKNOWN bytes. Independently evidenced classification is 143,404
+bytes. The seven exact, hash-verified carrier/helper CODE claims in
+`data/rom-cache/eez/carrier-17.json` add 628 previously UNKNOWN bytes; they do
+not recover assembly or resolve the 32 contested bytes at `$06696..$066B6`.
+Earlier baseline figures in this document describe the initial DECOMP-0 ledger.
 
 ```bash
 python tools/rom_ledger.py "path/to/Sonic Chaos (Europe).sms"      # writes data/rom-ledger/
@@ -267,7 +275,7 @@ means correcting the audit boundary or the recovered split with evidence.
 
 ## Unresolved areas
 
-* 370,808 bytes (70.7 %) remain UNKNOWN. Twelve banks have no claim at all:
+* 370,180 bytes (70.6 %) remain UNKNOWN. Twelve banks have no claim at all:
   3, 4, 5, 6, 7, 10, 11, 13, 19, 25, 27, 31.
 * `MUSIC`, `PADDING` and uncompressed `GRAPHICS` (beyond palettes) are 0 bytes
   by evidence standard, not by absence in the ROM.
@@ -282,8 +290,7 @@ means correcting the audit boundary or the recovered split with evidence.
 Ordered by evidence per effort.
 
 1. **Classify the 211 hash-verified, kindless audit ranges** (14,310 bytes,
-   4,064 still UNKNOWN). Their unknown bytes lie in banks 0, 1, 12, 28, 29 and 30 (bank 1
-   holds 2,781 of them). A kind decision per range converts them without new reverse
+   3,961 still UNKNOWN). Their unknown bytes lie in banks 0, 1, 12, 28, 29 and 30. A kind decision per range converts them without new reverse
    engineering.
 2. **Resolve the object-50 / animation-table contradiction** (32 bytes) above.
 3. **Bank 2 `0x08000-0x0BFFF` (16,248 bytes unknown):** the sound pointer table sits at
@@ -296,7 +303,7 @@ Ordered by evidence per effort.
 6. **Bank 14 `0x39990-0x3B6AC` (7,453 bytes)** between the proven collision
    profiles and the palette records.
 7. **Bank 28 `0x7186B-0x73FFF` (10,133 bytes)** after the last object list.
-8. **Bank 1 and bank 0 engine gaps** (7,399 and 13,965 bytes) around recovered
+8. **Bank 1 and bank 0 engine gaps** (7,191 and 13,965 bytes) around recovered
    code, and the startup/interrupt area `0x0000-0x1332`.
 9. **Banks 3-7** (82 KB, no claims): start from the loaders that select them
    (art-load entries and mapping-pointer tables already reference banks 8, 9, 16,

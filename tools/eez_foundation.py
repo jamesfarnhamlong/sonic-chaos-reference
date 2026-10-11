@@ -48,7 +48,7 @@ def build(r):
                'New art approval is pending James; no approval inherited from other zones.'],
            audit_packages=dict(A2=['environment-gates.json','transport-state21.json','terrain-effects.json','transport-game-checks.json'],
                A3=['objects-36-39.json','shared-reuse.json','allocation-checks.json','system-game-checks.json'],
-               A4=['carrier-17.json','system-game-checks.json'],
+               A4=['carrier-17.json','system-game-checks.json','carrier-game-checks.json'],
                A5=['boss-endgame-recon.json','boss-game-checks.json','boss-game-flags-31.json','boss-game-character2.json','ending-scripts.json']),
            progression=dict(playable_zone_indices=list(range(6)),acts_in_zone5=3,after_final_act='zone6,act0 ->flagbit7 ->18ED ending selector ->04B4 title; not a seventh playable zone',evidence='source-traced + original controlled terminal traces'),
            validation_limits=['Approximate SMS harness; controlled boundary fixtures are not input-only playthroughs.','James visual approval remains pending; no POC/Windows acceptance is implied.'])
