@@ -1,0 +1,97 @@
+{
+  "S1_stand": {
+    "fixture": "Sonic lands on EEZ3 cell (36,26), invincibility selector 6, no input, 700 updates.",
+    "fire_update": 18,
+    "floor_hits_total": 1,
+    "handler_entries": 7,
+    "alloc16": 1,
+    "bolt_inits": 1,
+    "bolt_delete_updates": [
+      67
+    ],
+    "first_b2_update": 19,
+    "cell0_after": "0xb2",
+    "cell1_after": "0xb1",
+    "sonic_still_on_button": true,
+    "updates": 701
+  },
+  "S2_offscreen_return": {
+    "fixture": "Fire button 0 (u~17), park Sonic at WORLD(200,400) u120..1019 (button 0 ~1000px offscreen), return u1020, step on fresh button 1 at u1420.",
+    "floor_hits": [
+      18,
+      1426
+    ],
+    "alloc16": [
+      18,
+      1426
+    ],
+    "cell0_at": {
+      "60": "0xb2",
+      "119": "0xb2",
+      "1019": "0xb2",
+      "1100": "0xb2",
+      "1400": "0xb2",
+      "1699": "0xb2"
+    },
+    "cell1_at": {
+      "60": "0xb1",
+      "1100": "0xb1",
+      "1419": "0xb1",
+      "1500": "0xb2",
+      "1699": "0xb2"
+    },
+    "updates": 1700
+  },
+  "S3_bolt_asleep": {
+    "fixture": "Fire button 0, move Sonic+camera away 3 updates after allocation for 500 updates, then return to the same cell.",
+    "floor_hits": [
+      18
+    ],
+    "alloc16": 1,
+    "bolt_alive_updates": [
+      18,
+      19,
+      20
+    ],
+    "cell0_final": "0xb2",
+    "updates": 801
+  },
+  "S4_reload": {
+    "fixture": "Fire button 0, run right over buttons 1..6 and into the pit; invincibility off from u80.",
+    "level_loader_updates": [
+      351,
+      713
+    ],
+    "floor_hits": [
+      18,
+      120,
+      141,
+      157,
+      173,
+      189,
+      205
+    ],
+    "cell0_before_loader": "0xb2",
+    "cell3_before_loader": "0xb2",
+    "cell0_after_loader": "0xb1",
+    "cell3_after_loader": "0xb1",
+    "updates": 900
+  },
+  "static": {
+    "layout_cell_writers_of_B2": [
+      "0x6baf"
+    ],
+    "note": "Immediate-operand scan: the only LD C,$B2 followed by CALL $6BD4 is surface $0B at $6BAF. $6BD4 stores C to the probed layout cell ($D354) and redraws it."
+  },
+  "contract": {
+    "chain": "terrain floor pass -> surface $0B handler $6BAA (needs floor bit1 $D522) -> $6BAF C=$B2, $6BD4: layout cell (*$D354)=$B2 and nametable redraw -> $5E9C (16-slot) type $37 parameter 1 -> init $1E:$8ED0 state3 at cell X+15, Y=cell+24-120 (act index 2) -> state3 $8F43 falls +4.25 and hurts while at/before cellY-24 -> state2 dissipate -> delete.",
+    "q1": "No. Nothing re-arms. The cell stays $B2 until the act layout is re-decoded by the level loader ($4DAE..$4DFB) on death/restart/reload.",
+    "q2": "Not applicable (no callback count or event restores $B1). Only level (re)load resets it.",
+    "q3": "No visible reset: $B2 is written once and redrawn once; the button stays in its changed art.",
+    "q4": "Local to each layout cell. EEZ3 has seven $B1 cells at row 26, x=36,38,...,48; each fires independently and once. Shared state is only the object pool and scratch $D35C/$D35E/$D354.",
+    "q5": "One firing only: the handler runs with floor bit1 once, rewrites the cell, and later frames probe $B2, so the handler is not entered. Standing for 700 updates gives one allocation.",
+    "q6": "No. Reset is not object-owned. The bolt is a normal object and is removed by generic offscreen lifecycle if the camera leaves (the cell stays $B2), and the cell persists through 1000 offscreen updates."
+  },
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "method": "EEZ3 floor button (surface $0B, cell $B1->$B2) and the type-$37 parameter-1 cannon bolt.\n\nWhole-game fixtures run original scheduler/player/terrain/object code from the zone5 act3\nsnapshot. Fixture writes are Sonic's placement, invincibility selector $D532=6 (so contact\ncannot knock him off the button), camera/park position (to force offscreen sleep) and, in the\nreload case, a pit position. The layout cell is only observed, never written.\n"
+}
