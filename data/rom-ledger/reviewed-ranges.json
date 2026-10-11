@@ -1,0 +1,2091 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "generator": "tools/decomp1a_review.py",
+ "code_flow_reviews": [
+  {
+   "id": 0,
+   "bounds": [
+    827,
+    830
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 827,
+     "end": 830,
+     "name": "overlap_object_wrapper_033b",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 827,
+     "via": {
+      "site": 208141
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 827,
+     "end": 830,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 1,
+   "bounds": [
+    7279,
+    7286
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 7279,
+     "end": 7286,
+     "name": "",
+     "source": "data/rom-cache/gpz/block-mapping-audit.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 7279,
+     "via": {
+      "site": 15389
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 7279,
+     "end": 7286,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 2,
+   "bounds": [
+    12600,
+    12618
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 12600,
+     "end": 12618,
+     "name": "ring_counter_3138",
+     "source": "data/rom-cache/terrain-ring-collection.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 12600,
+     "via": {
+      "site": 30169
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 12600,
+     "end": 12618,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 3,
+   "bounds": [
+    16367,
+    16410
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 16367,
+     "end": 16400,
+     "name": "player_step_3fef",
+     "source": "data/rom-cache/terrain-ring-collection.json"
+    },
+    {
+     "start": 16367,
+     "end": 16410,
+     "name": "player_update_3fef",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 16367,
+     "via": {
+      "site": 14533
+     }
+    },
+    {
+     "offset": 16389,
+     "via": {
+      "site": 16381
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 16367,
+     "end": 16410,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 4,
+   "bounds": [
+    18599,
+    18995
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 18599,
+     "end": 18620,
+     "name": "facing_48A7",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    },
+    {
+     "start": 18599,
+     "end": 18995,
+     "name": "facing + damage gate $48BC + death",
+     "source": "data/rom-cache/player-fall-control.json"
+    },
+    {
+     "start": 18620,
+     "end": 18679,
+     "name": "damage_dispatch_48bc",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    },
+    {
+     "start": 18620,
+     "end": 18995,
+     "name": "damage_contact_48bc",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    },
+    {
+     "start": 18679,
+     "end": 18820,
+     "name": "hurt_48f7",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    },
+    {
+     "start": 18767,
+     "end": 18883,
+     "name": "hurt tail $494F and death setter $4984",
+     "source": "data/rom-cache/spring-shoes-presentation.json"
+    },
+    {
+     "start": 18820,
+     "end": 18883,
+     "name": "death_4984",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    },
+    {
+     "start": 18935,
+     "end": 18990,
+     "name": "invulnerability_49f7",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 18599,
+     "via": {
+      "site": 14674
+     }
+    },
+    {
+     "offset": 18620,
+     "via": {
+      "site": 15516
+     }
+    },
+    {
+     "offset": 18649,
+     "via": {
+      "site": 18639
+     }
+    },
+    {
+     "offset": 18667,
+     "via": {
+      "site": 18653
+     }
+    },
+    {
+     "offset": 18679,
+     "via": {
+      "site": 29524
+     }
+    },
+    {
+     "offset": 18709,
+     "via": {
+      "site": 18684
+     }
+    },
+    {
+     "offset": 18729,
+     "via": {
+      "site": 18725
+     }
+    },
+    {
+     "offset": 18734,
+     "via": {
+      "site": 18740
+     }
+    },
+    {
+     "offset": 18754,
+     "via": {
+      "site": 18706
+     }
+    },
+    {
+     "offset": 18767,
+     "via": {
+      "site": 15269
+     }
+    },
+    {
+     "offset": 18795,
+     "via": {
+      "site": 18790
+     }
+    },
+    {
+     "offset": 18810,
+     "via": {
+      "site": 18805
+     }
+    },
+    {
+     "offset": 18820,
+     "via": {
+      "site": 16423
+     }
+    },
+    {
+     "offset": 18877,
+     "via": {
+      "site": 18853
+     }
+    },
+    {
+     "offset": 18883,
+     "via": {
+      "site": 18676
+     }
+    },
+    {
+     "offset": 18895,
+     "via": {
+      "site": 18905
+     }
+    },
+    {
+     "offset": 18900,
+     "via": {
+      "site": 18887
+     }
+    },
+    {
+     "offset": 18919,
+     "via": {
+      "site": 18893
+     }
+    },
+    {
+     "offset": 18935,
+     "via": {
+      "site": 18624
+     }
+    },
+    {
+     "offset": 18959,
+     "via": {
+      "site": 18950
+     }
+    },
+    {
+     "offset": 18964,
+     "via": {
+      "site": 18957
+     }
+    },
+    {
+     "offset": 18969,
+     "via": {
+      "site": 18939
+     }
+    },
+    {
+     "offset": 18990,
+     "via": {
+      "site": 18631
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 18599,
+     "end": 18995,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 5,
+   "bounds": [
+    24220,
+    24247
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 24220,
+     "end": 24247,
+     "name": "",
+     "source": "data/rom-cache/sez/implementation-manifest.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 24220,
+     "via": {
+      "site": 19267
+     }
+    },
+    {
+     "offset": 24229,
+     "via": {
+      "site": 24237
+     }
+    },
+    {
+     "offset": 24240,
+     "via": {
+      "site": 24233
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 24220,
+     "end": 24247,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 6,
+   "bounds": [
+    24247,
+    24289
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 24247,
+     "end": 24289,
+     "name": "",
+     "source": "data/rom-cache/sez/implementation-manifest.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 24247,
+     "via": {
+      "site": 30866
+     }
+    },
+    {
+     "offset": 24257,
+     "via": {
+      "site": 24265
+     }
+    },
+    {
+     "offset": 24269,
+     "via": {
+      "site": 24261
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 24247,
+     "end": 24289,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 7,
+   "bounds": [
+    24359,
+    24381
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 24359,
+     "end": 24381,
+     "name": "owner positioning helper $5F27",
+     "source": "data/rom-cache/spring-shoes-presentation.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 24359,
+     "via": {
+      "site": 15291
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 24359,
+     "end": 24381,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 8,
+   "bounds": [
+    24683,
+    24713
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 24683,
+     "end": 24698,
+     "name": "slot_index_606b",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    },
+    {
+     "start": 24683,
+     "end": 24713,
+     "name": "object_id_606b",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 24683,
+     "via": {
+      "site": 25565
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 24683,
+     "end": 24698,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 9,
+   "bounds": [
+    27342,
+    27363
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 27342,
+     "end": 27363,
+     "name": "floor_spike_handler_6ace",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 27342,
+     "via": {
+      "table": "floor_dispatch_table",
+      "index": 5,
+      "load_site": 26986
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 27342,
+     "end": 27363,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 10,
+   "bounds": [
+    27412,
+    27436
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 27412,
+     "end": 27427,
+     "name": "",
+     "source": "data/rom-cache/mghz/implementation-manifest.json"
+    },
+    {
+     "start": 27412,
+     "end": 27436,
+     "name": "",
+     "source": "data/rom-cache/gpz-surface19.json"
+    },
+    {
+     "start": 27427,
+     "end": 27436,
+     "name": "",
+     "source": "data/rom-cache/gpz/implementation-manifest.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 27412,
+     "via": {
+      "table": "floor_dispatch_table",
+      "index": 27,
+      "load_site": 26986
+     }
+    },
+    {
+     "offset": 27427,
+     "via": {
+      "table": "floor_dispatch_table",
+      "index": 25,
+      "load_site": 26986
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 27412,
+     "end": 27436,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 11,
+   "bounds": [
+    27436,
+    27478
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 27436,
+     "end": 27478,
+     "name": "breakable_6B2C",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 27436,
+     "via": {
+      "table": "floor_dispatch_table",
+      "index": 13,
+      "load_site": 26986
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 27436,
+     "end": 27478,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 12,
+   "bounds": [
+    27513,
+    27562
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 27513,
+     "end": 27562,
+     "name": "",
+     "source": "data/rom-cache/sez/implementation-manifest.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 27513,
+     "via": {
+      "table": "floor_dispatch_table",
+      "index": 12,
+      "load_site": 26986
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 27513,
+     "end": 27562,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 13,
+   "bounds": [
+    27717,
+    27778
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 27717,
+     "end": 27778,
+     "name": "floor_loss_6c72",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 27717,
+     "via": {
+      "table": "floor_dispatch_table",
+      "index": 0,
+      "load_site": 26986
+     }
+    },
+    {
+     "offset": 27725,
+     "via": {
+      "table": "floor_dispatch_table",
+      "index": 6,
+      "load_site": 26986
+     }
+    },
+    {
+     "offset": 27754,
+     "via": {
+      "site": 27729
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 27717,
+     "end": 27778,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 14,
+   "bounds": [
+    30220,
+    30278
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 30220,
+     "end": 30278,
+     "name": "surface_type_1d_handler",
+     "source": "data/rom-cache/terrain-ring-collection.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 30220,
+     "via": {
+      "site": 30049
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 30220,
+     "end": 30278,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  },
+  {
+   "id": 15,
+   "bounds": [
+    30278,
+    30310
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 30278,
+     "end": 30310,
+     "name": "",
+     "source": "data/rom-cache/sez/implementation-manifest.json"
+    }
+   ],
+   "seeds": [
+    {
+     "offset": 30278,
+     "via": {
+      "site": 30054
+     }
+    }
+   ],
+   "claims": [
+    {
+     "start": 30278,
+     "end": 30310,
+     "primary": "CODE",
+     "subtype": "routine"
+    }
+   ],
+   "verification": "recursive descent from the proven entries, confined to bounds, fetches every claimed byte as an instruction and reaches no recovered DATA region",
+   "uncertainty": "executed-instruction evidence only; the routine's purpose and any subsystem label are audit text, not established here"
+  }
+ ],
+ "unresolved": [
+  {
+   "bounds": [
+    1392,
+    1404
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 1392,
+     "end": 1404,
+     "name": "vblank_camera_commit",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     1392,
+     1404
+    ]
+   ],
+   "unknown_bytes": 12,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    7469,
+    7475
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 7469,
+     "end": 7475,
+     "name": "vdp_register_init",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     7469,
+     7475
+    ]
+   ],
+   "unknown_bytes": 6,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    13853,
+    13911
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 13853,
+     "end": 13911,
+     "name": "player_update",
+     "source": "data/rom-cache/player-animation-counter.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     13853,
+     13911
+    ]
+   ],
+   "unknown_bytes": 58,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    14211,
+    14284
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 14211,
+     "end": 14284,
+     "name": "",
+     "source": "data/rom-cache/gpz-surface19.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     14211,
+     14284
+    ]
+   ],
+   "unknown_bytes": 73,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    14413,
+    14447
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 14413,
+     "end": 14447,
+     "name": "",
+     "source": "data/rom-cache/gpz-surface19.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     14413,
+     14447
+    ]
+   ],
+   "unknown_bytes": 34,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    14593,
+    14651
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 14593,
+     "end": 14651,
+     "name": "wrapper_0A_3901",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     14593,
+     14651
+    ]
+   ],
+   "unknown_bytes": 58,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    14903,
+    14937
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 14903,
+     "end": 14920,
+     "name": "wrapper_0E_3A37",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    },
+    {
+     "start": 14903,
+     "end": 14937,
+     "name": "callbacks $3A37 ($0E) and $3A48 ($14)",
+     "source": "data/rom-cache/player-fall-control.json"
+    },
+    {
+     "start": 14920,
+     "end": 14937,
+     "name": "",
+     "source": "data/rom-cache/gpz-surface19.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     14903,
+     14937
+    ]
+   ],
+   "unknown_bytes": 34,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    15355,
+    15381
+   ],
+   "bank": 0,
+   "audit_ranges": [
+    {
+     "start": 15355,
+     "end": 15381,
+     "name": "player_pit_screen_y",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     15355,
+     15381
+    ]
+   ],
+   "unknown_bytes": 26,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    17843,
+    18578
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 17843,
+     "end": 17901,
+     "name": "stand/landing setters $45B3/$45CE",
+     "source": "data/rom-cache/player-fall-control.json"
+    },
+    {
+     "start": 17843,
+     "end": 18578,
+     "name": "state_setters_45b3",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    },
+    {
+     "start": 17870,
+     "end": 17901,
+     "name": "landing_45CE",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    },
+    {
+     "start": 17901,
+     "end": 18019,
+     "name": "normal jump $45ED / fall setter $463C",
+     "source": "data/rom-cache/spring-shoes-presentation.json"
+    },
+    {
+     "start": 17901,
+     "end": 18048,
+     "name": "",
+     "source": "data/rom-cache/gpz-surface19.json"
+    },
+    {
+     "start": 17980,
+     "end": 18019,
+     "name": "setter_fall_463C",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    },
+    {
+     "start": 17980,
+     "end": 18048,
+     "name": "fall setters $463C/$4663",
+     "source": "data/rom-cache/player-fall-control.json"
+    },
+    {
+     "start": 18293,
+     "end": 18345,
+     "name": "",
+     "source": "data/rom-cache/powerup-shoes.json"
+    },
+    {
+     "start": 18427,
+     "end": 18444,
+     "name": "setter_1B_47FB",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    },
+    {
+     "start": 18444,
+     "end": 18477,
+     "name": "setter_upright_480C",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    },
+    {
+     "start": 18444,
+     "end": 18488,
+     "name": "upright spring setter $480C",
+     "source": "data/rom-cache/spring-shoes-presentation.json"
+    },
+    {
+     "start": 18444,
+     "end": 18578,
+     "name": "launch_setters_480c",
+     "source": "data/rom-cache/spring-interaction.json"
+    },
+    {
+     "start": 18477,
+     "end": 18505,
+     "name": "setter_diagonal_482D",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    },
+    {
+     "start": 18505,
+     "end": 18578,
+     "name": "setter_horizontal_4849_4868",
+     "source": "data/rom-cache/player-spring-airborne.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     18345,
+     18396
+    ]
+   ],
+   "unknown_bytes": 51,
+   "reason": "entry points proven but they fetch no UNKNOWN byte",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    19060,
+    19107
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 19060,
+     "end": 19107,
+     "name": "power_up_timer_4a74",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     19060,
+     19107
+    ]
+   ],
+   "unknown_bytes": 47,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    19474,
+    19511
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 19474,
+     "end": 19511,
+     "name": "state_probe_caller_4c12",
+     "source": "data/rom-cache/terrain-ring-collection.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     19474,
+     19511
+    ]
+   ],
+   "unknown_bytes": 37,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    19600,
+    19632
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 19600,
+     "end": 19632,
+     "name": "camera_update",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     19600,
+     19632
+    ]
+   ],
+   "unknown_bytes": 32,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    19632,
+    19703
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 19632,
+     "end": 19703,
+     "name": "camera_limit_x",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     19632,
+     19703
+    ]
+   ],
+   "unknown_bytes": 71,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    19703,
+    19774
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 19703,
+     "end": 19774,
+     "name": "camera_limit_y",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     19703,
+     19774
+    ]
+   ],
+   "unknown_bytes": 71,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    19774,
+    19805
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 19774,
+     "end": 19805,
+     "name": "camera_to_vdp",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     19774,
+     19805
+    ]
+   ],
+   "unknown_bytes": 31,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    20055,
+    20120
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 20055,
+     "end": 20120,
+     "name": "",
+     "source": "data/rom-cache/gpz/implementation-manifest.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     20055,
+     20120
+    ]
+   ],
+   "unknown_bytes": 65,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    20444,
+    20610
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 20444,
+     "end": 20536,
+     "name": "",
+     "source": "data/rom-cache/gpz/block-mapping-audit.json"
+    },
+    {
+     "start": 20444,
+     "end": 20610,
+     "name": "level_header_loader",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     20444,
+     20610
+    ]
+   ],
+   "unknown_bytes": 166,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    21270,
+    21283
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 21270,
+     "end": 21283,
+     "name": "",
+     "source": "data/rom-cache/gpz/block-mapping-audit.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     21270,
+     21283
+    ]
+   ],
+   "unknown_bytes": 13,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    21471,
+    21481
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 21471,
+     "end": 21481,
+     "name": "",
+     "source": "data/rom-cache/gpz/block-mapping-audit.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     21471,
+     21481
+    ]
+   ],
+   "unknown_bytes": 10,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    22578,
+    22837
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 22578,
+     "end": 22837,
+     "name": "camera_follow",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     22578,
+     22837
+    ]
+   ],
+   "unknown_bytes": 259,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    22837,
+    22870
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 22837,
+     "end": 22870,
+     "name": "camera_follow_init",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     22837,
+     22870
+    ]
+   ],
+   "unknown_bytes": 33,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    22963,
+    23043
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 22963,
+     "end": 23043,
+     "name": "camera_vectors",
+     "source": "data/rom-cache/viewport-semantics.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     22963,
+     22969
+    ]
+   ],
+   "unknown_bytes": 6,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    24381,
+    24452
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 24381,
+     "end": 24439,
+     "name": "badnik_attack_check_5f3d",
+     "source": "data/rom-cache/spring-interaction.json"
+    },
+    {
+     "start": 24381,
+     "end": 24452,
+     "name": "attack_convert_5f3d",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     24381,
+     24404
+    ]
+   ],
+   "unknown_bytes": 23,
+   "reason": "entry points proven but they fetch no UNKNOWN byte",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    24683,
+    24713
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 24683,
+     "end": 24698,
+     "name": "slot_index_606b",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    },
+    {
+     "start": 24683,
+     "end": 24713,
+     "name": "object_id_606b",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     24698,
+     24713
+    ]
+   ],
+   "unknown_bytes": 15,
+   "reason": "entry points proven, but flow does not reach every byte of the audited range",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    24910,
+    24936
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 24910,
+     "end": 24936,
+     "name": "",
+     "source": "data/rom-cache/sez/enemies-20-23-runtime.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     24910,
+     24936
+    ]
+   ],
+   "unknown_bytes": 26,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    25335,
+    25355
+   ],
+   "bank": 1,
+   "audit_ranges": [
+    {
+     "start": 25335,
+     "end": 25355,
+     "name": "x_velocity_negate",
+     "source": "data/rom-cache/sez/platform-28-runtime.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     25335,
+     25355
+    ]
+   ],
+   "unknown_bytes": 20,
+   "reason": "no entry point proven: no CALL/JP from byte-verified or already-proven code targets it",
+   "evidence_needed": "a proven caller (CALL/JP/JR from verified code), a decoded jump-table consumer, or a Z80 PC trace; for a table, an instruction that loads its address and indexes it"
+  },
+  {
+   "bounds": [
+    196825,
+    196878
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 196825,
+     "end": 196878,
+     "name": "state_04_branch_80d9",
+     "source": "data/rom-cache/player-animation-counter.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     196825,
+     196878
+    ]
+   ],
+   "unknown_bytes": 53,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    197007,
+    197012
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 197007,
+     "end": 197012,
+     "name": "state_0b_branch_818f",
+     "source": "data/rom-cache/player-animation-counter.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     197007,
+     197012
+    ]
+   ],
+   "unknown_bytes": 5,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    197395,
+    197405
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 197395,
+     "end": 197405,
+     "name": "peel_out_state_1a_init_8313",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     197395,
+     197405
+    ]
+   ],
+   "unknown_bytes": 10,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    199860,
+    199990
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 199860,
+     "end": 199990,
+     "name": "",
+     "source": "data/rom-cache/gpz-surface19.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     199860,
+     199990
+    ]
+   ],
+   "unknown_bytes": 130,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    200417,
+    200566
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 200417,
+     "end": 200517,
+     "name": "selector_walk_8ee1",
+     "source": "data/rom-cache/player-animation-counter.json"
+    },
+    {
+     "start": 200417,
+     "end": 200566,
+     "name": "",
+     "source": "data/rom-cache/gpz-surface19.json"
+    },
+    {
+     "start": 200492,
+     "end": 200508,
+     "name": "walk_duration_table",
+     "source": "data/rom-cache/player-animation-counter.json"
+    },
+    {
+     "start": 200517,
+     "end": 200566,
+     "name": "selector_run_8f45",
+     "source": "data/rom-cache/player-animation-counter.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     200417,
+     200566
+    ]
+   ],
+   "unknown_bytes": 149,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    200566,
+    200715
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 200566,
+     "end": 200715,
+     "name": "selector_roll_jump_8f76",
+     "source": "data/rom-cache/player-animation-counter.json"
+    },
+    {
+     "start": 200672,
+     "end": 200688,
+     "name": "floor_duration_table",
+     "source": "data/rom-cache/player-animation-counter.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     200566,
+     200715
+    ]
+   ],
+   "unknown_bytes": 149,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    200715,
+    200765
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 200715,
+     "end": 200765,
+     "name": "selector_1d_900b",
+     "source": "data/rom-cache/player-animation-counter.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     200715,
+     200765
+    ]
+   ],
+   "unknown_bytes": 50,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    201016,
+    201059
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 201016,
+     "end": 201059,
+     "name": "selector_17_9138",
+     "source": "data/rom-cache/player-animation-counter.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     201016,
+     201059
+    ]
+   ],
+   "unknown_bytes": 43,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    203097,
+    203259
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 203097,
+     "end": 203259,
+     "name": "type05_aura_998a",
+     "source": "data/rom-cache/player-attack-badnik.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     203097,
+     203259
+    ]
+   ],
+   "unknown_bytes": 162,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    205533,
+    205744
+   ],
+   "bank": 12,
+   "audit_ranges": [
+    {
+     "start": 205533,
+     "end": 205744,
+     "name": "",
+     "source": "data/rom-cache/sez/implementation-manifest.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     205533,
+     205744
+    ]
+   ],
+   "unknown_bytes": 211,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    458752,
+    459078
+   ],
+   "bank": 28,
+   "audit_ranges": [
+    {
+     "start": 458752,
+     "end": 459078,
+     "name": "placement_scan",
+     "source": "data/rom-cache/viewport-semantics.json"
+    },
+    {
+     "start": 458987,
+     "end": 459068,
+     "name": "object_creator_80eb",
+     "source": "data/rom-cache/spring-interaction.json"
+    },
+    {
+     "start": 458987,
+     "end": 459070,
+     "name": "placement_creator",
+     "source": "data/rom-cache/sez/platform-28-runtime.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     459070,
+     459078
+    ]
+   ],
+   "unknown_bytes": 8,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    475136,
+    475218
+   ],
+   "bank": 29,
+   "audit_ranges": [
+    {
+     "start": 475136,
+     "end": 475218,
+     "name": "",
+     "source": "data/rom-cache/mghz/implementation-manifest.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     475136,
+     475218
+    ]
+   ],
+   "unknown_bytes": 82,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    475583,
+    475737
+   ],
+   "bank": 29,
+   "audit_ranges": [
+    {
+     "start": 475583,
+     "end": 475737,
+     "name": "",
+     "source": "data/rom-cache/sez/implementation-manifest.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     475583,
+     475737
+    ]
+   ],
+   "unknown_bytes": 154,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    475895,
+    475950
+   ],
+   "bank": 29,
+   "audit_ranges": [
+    {
+     "start": 475895,
+     "end": 475950,
+     "name": "",
+     "source": "data/rom-cache/mghz/implementation-manifest.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     475895,
+     475950
+    ]
+   ],
+   "unknown_bytes": 55,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    475950,
+    476050
+   ],
+   "bank": 29,
+   "audit_ranges": [
+    {
+     "start": 475950,
+     "end": 476050,
+     "name": "",
+     "source": "data/rom-cache/mghz/implementation-manifest.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     475950,
+     476050
+    ]
+   ],
+   "unknown_bytes": 100,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    476426,
+    476501
+   ],
+   "bank": 29,
+   "audit_ranges": [
+    {
+     "start": 476426,
+     "end": 476501,
+     "name": "",
+     "source": "data/rom-cache/mghz/implementation-manifest.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     476426,
+     476501
+    ]
+   ],
+   "unknown_bytes": 75,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    492601,
+    492933
+   ],
+   "bank": 30,
+   "audit_ranges": [
+    {
+     "start": 492601,
+     "end": 492933,
+     "name": "type-$28 state scripts",
+     "source": "data/rom-cache/isometric-platform.json"
+    },
+    {
+     "start": 492919,
+     "end": 492933,
+     "name": "platform_clear_deltas_8577",
+     "source": "data/rom-cache/platform-spike-collision.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     492601,
+     492919
+    ]
+   ],
+   "unknown_bytes": 318,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    498577,
+    498589
+   ],
+   "bank": 30,
+   "audit_ranges": [
+    {
+     "start": 498577,
+     "end": 498589,
+     "name": "",
+     "source": "data/rom-cache/gpz/boss-51-composition.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     498577,
+     498589
+    ]
+   ],
+   "unknown_bytes": 12,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    498703,
+    498713
+   ],
+   "bank": 30,
+   "audit_ranges": [
+    {
+     "start": 498703,
+     "end": 498713,
+     "name": "",
+     "source": "data/rom-cache/gpz/boss-51-composition.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     498703,
+     498713
+    ]
+   ],
+   "unknown_bytes": 10,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    499275,
+    499375
+   ],
+   "bank": 30,
+   "audit_ranges": [
+    {
+     "start": 499275,
+     "end": 499375,
+     "name": "",
+     "source": "data/rom-cache/gpz/boss-51-composition.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     499275,
+     499375
+    ]
+   ],
+   "unknown_bytes": 100,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  },
+  {
+   "bounds": [
+    500033,
+    500052
+   ],
+   "bank": 30,
+   "audit_ranges": [
+    {
+     "start": 500033,
+     "end": 500052,
+     "name": "",
+     "source": "data/rom-cache/gpz/boss-51-composition.json"
+    }
+   ],
+   "unknown_runs": [
+    [
+     500033,
+     500052
+    ]
+   ],
+   "unknown_bytes": 19,
+   "reason": "no entry point proven: no CALL/JP from byte-verified code in the same bank targets it, and it is not a word of a recovered dispatch table",
+   "evidence_needed": "a bank-resolved executed entry: a CALL/JP from verified code in the same bank, a decoded callback/script-pointer table entry, or a Z80 PC trace with the mapper state; or a pointer consumer that fixes the extent if the range is a table"
+  }
+ ]
+}

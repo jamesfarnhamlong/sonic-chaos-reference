@@ -64,6 +64,7 @@ A claim is imported only when **both boundaries and the class** are supported:
 |---|---|---|
 | `byte_verified_assembly` | registered in `asm/recovered/regions.json`; `tools/build_verify.py` reassembles the ROM byte for byte | the 74 recovered regions |
 | `decoder_verified` | an existing decoder/loader consumes exactly these bytes and the extent is recomputed from the ROM on every run | level layout RLE streams (end at the `count 0` terminator), tile streams (header + payload + command bytes; the payload end must equal the command start or the stream is rejected), object lists (to the `$FF` terminator) |
+| `reviewed_flow_verified` | a reviewed CODE claim (`data/rom-ledger/reviewed-ranges.json`): every claimed byte is fetched as an instruction by recursive descent from entry points proven by byte-verified code or a recovered dispatch table; the generator re-runs the proof on every build and fails on a stale entry | 16 reviews, 860 bytes |
 | `structure_verified` | fixed-size record/table read by a loader, or a committed export the ROM bytes must reproduce | act headers (22 B), art-load entries (7 B), palette records (16 B), collision profile arrays (32 B), sound/state/twist pointer tables |
 | `manifest_hash_verified` | audit manifest range whose SHA-256 matches the ROM **and** which states `kind` | `data/rom-cache/object-18-act-clear.json`, `thz3/object-50.json` |
 | `manifest_copy` | cache copy of a recovered region; must match a registered region's exact range and kind (else rejected), and counts as recovery-manifest evidence, never independent | `thz1/object-census.json` |
@@ -80,8 +81,9 @@ Deliberately **not** done:
 * Content is not inferred from neighbours.
 * Audit ranges that hash correctly but state no `kind` are **not** guessed
   from their name or purpose text. They are listed under
-  `unclassified_range_claims` (211 ranges, 14,310 bytes in union, 4,064 of those
-  bytes still UNKNOWN) as the cheapest future wins.
+  `unclassified_range_claims` (211 ranges, 14,310 bytes in union; DECOMP-1A
+  classified 860 of their UNKNOWN bytes by control-flow proof and 3,172 remain
+  UNKNOWN). Each range carries its final `status` and `bytes_by_class`.
 * Zone index 6 is not imported: the act-header table aliases it onto zone 0
   (six real zones x three acts = 18 acts).
 
@@ -164,40 +166,45 @@ Importers (all in `tools/rom_ledger.py`):
    implementation manifests, re-decoded; this adds the five special-stage layouts.
 6. `import_manifest_ranges`: hash-verified audit ranges (class only when `kind`
    is stated) and cache copies of recovered regions.
+7. `import_reviewed` (DECOMP-1A): re-verifies every entry of
+   `data/rom-ledger/reviewed-ranges.json` with `tools/rom_flow.py`; the file is
+   proposed by `tools/decomp1a_review.py` but never trusted.
 
-## Initial result
+## Current result (after DECOMP-1A)
 
 | Category | Bytes | % of ROM |
 |---|---:|---:|
-| CODE | 14,681 | 2.800 |
-| DATA | 38,631 | 7.368 |
+| CODE | 15,541 | 2.964 |
+| DATA | 38,663 | 7.374 |
 | GRAPHICS | 192 | 0.037 |
 | MUSIC | 0 | 0.000 |
 | COMPRESSED | 99,976 | 19.069 |
 | PADDING | 0 | 0.000 |
-| UNKNOWN | 370,808 | 70.726 |
+| UNKNOWN | 369,916 | 70.556 |
 | **Total** | **524,288** | 100 |
 
 | Coverage metric | Bytes | % of ROM |
 |---|---:|---:|
 | Recovered into reproducible assembly | 13,046 | 2.488 |
-| Structurally classified (primary class known) | 153,480 | 29.274 |
-| &nbsp;&nbsp;independently evidenced | 142,681 | 27.214 |
+| Structurally classified (primary class known) | 154,372 | 29.444 |
+| &nbsp;&nbsp;independently evidenced | 143,573 | 27.384 |
 | &nbsp;&nbsp;classified only by the recovery manifest | 10,799 | 2.060 |
-| Recovered and independently evidenced | 2,215 | 0.422 |
-| UNKNOWN | 370,808 | 70.726 |
-| of which contested | 32 | 0.006 |
+| Recovered and independently evidenced | 2,247 | 0.429 |
+| UNKNOWN | 369,916 | 70.556 |
+| of which contested | 0 | 0.000 |
 
-Recovered manifest, recalculated by the generator: 74 regions, 13,046 bytes (11,060 code, 1,986 data). 32 of the data bytes are the contested pair described below, so the ledger counts 11,060 recovered CODE and 1,954 recovered DATA bytes.
+Recovered manifest, recalculated by the generator: 74 regions, 13,046 bytes (11,060 code, 1,986 data); the ledger counts 11,060 recovered CODE and 1,986 recovered DATA bytes. DECOMP-1A adds no recovered assembly.
 
-The generator tallies 1,622 claims, 1,808 segments, 375 compatible nested overlaps, 0 partial overlaps and 1 contradictory pair; 0 claims were rejected.
+DECOMP-0's initial figures were CODE 14,681, DATA 38,631, UNKNOWN 370,808 (70.726 %), classified 153,480, independently evidenced 142,681 and 32 contested bytes. DECOMP-1A changed them to the figures above: +860 CODE bytes from reviewed control-flow evidence, +32 DATA bytes from correcting the `object-50` audit claim, and 0 contested bytes. See `docs/decomp-1a-existing-evidence.md`.
+
+The generator tallies 1639 claims, 1827 segments, 376 compatible nested overlaps, 0 partial overlaps and 0 contradictory pairs; 0 claims were rejected.
 
 ## 32-bank summary
 
 | Bank | File range | Code | Data | Graphics | Compressed | Unknown | Recovered | Classified |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
-| 0 | `00000-03FFF` | 2,419 | 0 | 0 | 0 | 13,965 | 1,531 | 14.8% |
-| 1 | `04000-07FFF` | 6,900 | 2,085 | 0 | 0 | 7,399 | 7,137 | 54.8% |
+| 0 | `00000-03FFF` | 2,464 | 0 | 0 | 0 | 13,920 | 1,531 | 15.0% |
+| 1 | `04000-07FFF` | 7,715 | 2,117 | 0 | 0 | 6,552 | 7,137 | 60.0% |
 | 2 | `08000-0BFFF` | 0 | 136 | 0 | 0 | 16,248 | 0 | 0.8% |
 | 3 | `0C000-0FFFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
 | 4 | `10000-13FFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
@@ -253,21 +260,20 @@ The generator tallies 1,622 claims, 1,808 segments, 375 compatible nested overla
 
 ## Contradictory claims
 
-One pair, 32 bytes (`0x06696-0x066B6`):
-
-* `data/rom-cache/thz3/object-50.json` routine `anim_cmd_dispatch` claims
-  `0x6680-0x66B6` as one `CODE` routine (hash matches those bytes);
-* `asm/recovered/regions.json` registers `animation_command_dispatch`
-  `0x6680-0x6696` as code and `animation_command_table` `0x6696-0x66B6` as data.
-
-The ledger keeps the 32 table bytes UNKNOWN/contested (still `recovered`).
-The likely explanation is a loose routine boundary in the audit, but that is a
-conclusion for a reviewer, not something the ledger assumes. Resolving it
-means correcting the audit boundary or the recovered split with evidence.
+None remain. DECOMP-0 reported one pair, 32 bytes (`0x06696-0x066B6`):
+`thz3/object-50.json` claimed `0x6680-0x66B6` as a single CODE routine while
+the recovered manifest splits it into dispatcher code and a pointer table.
+DECOMP-1A confirmed the recovered split from the ROM (the dispatcher ends in
+`JP (HL)` at `$6695`, right after `LD DE,$6696` and a doubled index; all 16 table
+words land on instruction starts of the recovered handlers) and corrected the
+audit at its source (`tools/object_50.py`): `anim_cmd_dispatch` is now
+`0x6680-0x6696` CODE and `anim_cmd_pointer_table` `0x6696-0x66B6` DATA. The
+contradiction detector is unchanged and still tested. See
+`docs/decomp-1a-existing-evidence.md`.
 
 ## Unresolved areas
 
-* 370,808 bytes (70.7 %) remain UNKNOWN. Twelve banks have no claim at all:
+* 369,916 bytes (70.6 %) remain UNKNOWN. Twelve banks have no claim at all:
   3, 4, 5, 6, 7, 10, 11, 13, 19, 25, 27, 31.
 * `MUSIC`, `PADDING` and uncompressed `GRAPHICS` (beyond palettes) are 0 bytes
   by evidence standard, not by absence in the ROM.
@@ -281,11 +287,11 @@ means correcting the audit boundary or the recovered split with evidence.
 
 Ordered by evidence per effort.
 
-1. **Classify the 211 hash-verified, kindless audit ranges** (14,310 bytes,
-   4,064 still UNKNOWN). Their unknown bytes lie in banks 0, 1, 12, 28, 29 and 30 (bank 1
-   holds 2,781 of them). A kind decision per range converts them without new reverse
-   engineering.
-2. **Resolve the object-50 / animation-table contradiction** (32 bytes) above.
+1. **Finish the kindless audit ranges** (3,172 bytes in 47 clusters still
+   UNKNOWN; evidence needed per cluster is in `unresolved` of
+   `reviewed-ranges.json` and `docs/decomp-1a-existing-evidence.md`).
+2. **Z80 PC traces of the unmodified game** (`tools/sms_frame_harness.py`) would
+   prove execution and bank for routines no verified caller reaches.
 3. **Bank 2 `0x08000-0x0BFFF` (16,248 bytes unknown):** the sound pointer table sits at
    `0x090E1`; derive track extents from the sound header format before
    attempting `MUSIC`.

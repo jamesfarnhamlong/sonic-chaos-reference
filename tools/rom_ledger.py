@@ -41,6 +41,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 import level_package as L  # noqa: E402
 import rom as R  # noqa: E402
+import rom_flow as F  # noqa: E402
 import tile_decompress as T  # noqa: E402
 
 FORMAT = 1
@@ -52,11 +53,12 @@ CATEGORIES = ("CODE", "DATA", "GRAPHICS", "MUSIC", "COMPRESSED", "PADDING", "UNK
 ZONES = 6            # six ROM zones x three acts (zone index 6 aliases zone 0's tables)
 ACTS_PER_ZONE = 3
 DEFAULT_OUTPUT = ROOT / "data" / "rom-ledger"
+REVIEWED = "data/rom-ledger/reviewed-ranges.json"
 DEFAULT_ROM = ROOT.parent / "source" / "Sonic Chaos (Europe).sms"
 REGEN = "python tools/rom_ledger.py <SonicChaos.sms>"
 
 # Evidence quality, strongest first.
-QUALITY = ("byte_verified_assembly", "decoder_verified", "structure_verified",
+QUALITY = ("byte_verified_assembly", "decoder_verified", "reviewed_flow_verified", "structure_verified",
            "manifest_hash_verified", "manifest_copy")
 QUALITY_RANK = {q: i for i, q in enumerate(QUALITY)}
 ENGINE_BANKS = (0, 1)   # file offset == CPU address (resident engine region)
@@ -475,6 +477,138 @@ def import_manifest_ranges(rom, root=ROOT, recovered_regions=()):
     return claims, unclassified, rejected, ignored
 
 
+# --- DECOMP-1A: reviewed classifications ------------------------------------------
+def dispatch_table_word(rom, region, index):
+    p = region["start"] + 2 * index
+    if p + 2 > region["end"]:
+        raise ValueError("dispatch table %s has no entry %d" % (region["name"], index))
+    return R.u16(rom, p)
+
+
+def import_reviewed(rom, root=ROOT, regions=None):
+    """Re-verify every reviewed code-flow claim; any stale or inconsistent entry raises.
+
+    Each review names its entry points and the proof that each is executed:
+    ``{"site": off}`` (a CALL/JP/JR at ``off`` inside proven code resolves to the
+    entry) or ``{"table": name, "index": i, "load_site": off}`` (word ``i`` of a
+    recovered dispatch table, whose address is loaded by proven code at
+    ``load_site``). Proven code is the recovered CODE regions plus the claimed
+    runs of reviews already verified; reviews are verified to a fixed point, so
+    file order does not matter. Control flow is then re-run confined to the
+    review's bounds and must fetch every claimed byte as an instruction without
+    touching a recovered DATA region.
+    """
+    path = Path(root) / REVIEWED
+    if not path.is_file():
+        return [], {"reviews": 0, "claims": 0, "unresolved": []}
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    if doc.get("rom_sha256") != ROM_SHA256 or doc.get("format") != 1:
+        raise ValueError("reviewed-ranges.json is for a different ROM or format")
+    if regions is None:
+        regions = json.loads((Path(root) / "asm" / "recovered" / "regions.json").read_text(encoding="utf-8"))
+    by_name = {r["name"]: r for r in regions}
+    proven = {}
+    for r in F.code_regions(regions):
+        for p, n, _ in F.region_instructions(rom, r):
+            proven[p] = n
+    data_bytes = set()
+    for r in regions:
+        if r["kind"] == "data":
+            data_bytes.update(range(r["start"], r["end"]))
+    loads = {}
+    for r in F.code_regions(regions):
+        for p, n, d in F.region_instructions(rom, r):
+            if d.op == F.OP.LD:
+                for kind, value in d.operands:
+                    if kind.name == "IMM":
+                        loads.setdefault(value, set()).add(p)
+
+    def jumps_after(site):
+        for r in F.code_regions(regions):
+            if r["start"] <= site < r["end"]:
+                return any(F.is_indirect_jump(d) for p, _, d in F.region_instructions(rom, r) if p > site)
+        return False
+
+    def seed_ok(seed):
+        via = seed["via"]
+        off = seed["offset"]
+        if "site" in via:
+            site = via["site"]
+            if site not in proven:
+                return False
+            d = F.decode(rom, site)
+            if d.op not in F.TRANSFER_OPS:
+                return False
+            target = F._addr_operand(d)
+            return target is not None and F.resolve_target(site, target) == off
+        region = by_name.get(via.get("table"))
+        if region is None or region["kind"] != "data" or region["start"] >= F.RESIDENT_END:
+            raise ValueError("review seed %s names a non-resident or unknown dispatch table" % hx(off))
+        if via["load_site"] not in loads.get(region["start"], ()):
+            raise ValueError("no recovered code loads the address of table %s at %s"
+                             % (region["name"], hx(via["load_site"])))
+        if not jumps_after(via["load_site"]):
+            raise ValueError("the routine loading table %s never jumps indirectly afterwards" % region["name"])
+        return dispatch_table_word(rom, region, via["index"]) == off
+
+    pending = list(doc["code_flow_reviews"])
+    verified, claims = [], []
+    while pending:
+        progress = False
+        for review in list(pending):
+            lo, hi = review["bounds"]
+            resident = hi <= F.RESIDENT_END          # banks 0 and 1 form one contiguous engine region
+            if not (0 <= lo < hi <= ROM_SIZE) or (not resident and lo // BANK_SIZE != (hi - 1) // BANK_SIZE):
+                raise ValueError("review %s: bounds outside one bank" % review["id"])
+            good = [s["offset"] for s in review["seeds"] if seed_ok(s)]
+            if not good:
+                continue
+            reached, notes = F.descend(rom, good, lo, hi)
+            covered = set()
+            for a, n in reached.items():
+                covered.update(range(a, a + n))
+            claimed = [c for c in review["claims"]]
+            wanted = set()
+            for c in claimed:
+                if c["primary"] != "CODE" or not lo <= c["start"] < c["end"] <= hi:
+                    raise ValueError("review %s: claim %s-%s is not CODE inside its bounds"
+                                     % (review["id"], hx(c["start"]), hx(c["end"])))
+                wanted.update(range(c["start"], c["end"]))
+            if not wanted <= covered:
+                continue                         # entry points not all proven yet
+            # run boundaries must fall on fetched instruction boundaries
+            for c in claimed:
+                if c["start"] not in reached or (c["end"] not in reached and c["end"] not in covered_end(reached)):
+                    raise ValueError("review %s: claim %s-%s splits an instruction"
+                                     % (review["id"], hx(c["start"]), hx(c["end"])))
+            if covered & data_bytes:
+                raise ValueError("review %s: flow reaches recovered DATA at %s"
+                                 % (review["id"], hx(min(covered & data_bytes))))
+            for c in claimed:
+                for a, n in reached.items():
+                    if c["start"] <= a < c["end"]:
+                        proven[a] = n
+                claims.append(make_claim(
+                    c["start"], c["end"], "CODE", "reviewed_ranges", REVIEWED, "reviewed_flow_verified",
+                    subtype=c.get("subtype", "routine"), subsystem=c.get("subsystem"),
+                    logical_content=c.get("logical_content"),
+                    name=" / ".join(a["name"] for a in review["audit_ranges"] if a.get("name")) or None))
+                claims[-1]["sources"] += sorted({a["source"] for a in review["audit_ranges"]})
+            pending.remove(review)
+            verified.append(review)
+            progress = True
+        if not progress:
+            raise ValueError("reviewed-ranges.json has unverifiable reviews: %s"
+                             % ", ".join(str(r["id"]) for r in pending))
+    summary = {"reviews": len(verified), "claims": len(claims),
+               "unresolved": doc.get("unresolved", [])}
+    return claims, summary
+
+
+def covered_end(reached):
+    return {a + n for a, n in reached.items()}
+
+
 # --- resolution -----------------------------------------------------------------
 def resolve(claims):
     """Reduce claims to one primary class per byte.
@@ -625,7 +759,7 @@ def bank_totals(segments):
     return banks
 
 
-def build_ledger(rom, root=ROOT):
+def build_ledger(rom, root=ROOT, reviewed=True):
     if len(rom) != ROM_SIZE or sha256(rom) != ROM_SHA256:
         raise ValueError("Expected Sonic Chaos (Europe) v1.2, %d bytes, SHA-256 %s" % (ROM_SIZE, ROM_SHA256))
     recovered, regions = import_recovered(root)
@@ -637,6 +771,10 @@ def build_ledger(rom, root=ROOT):
     raw += layout_claims
     manifest_claims, unclassified, rejected_ranges, ignored = import_manifest_ranges(rom, root, regions)
     raw += manifest_claims
+    review_summary = {"reviews": 0, "claims": 0, "unresolved": []}
+    if reviewed:
+        review_claims, review_summary = import_reviewed(rom, root, regions)
+        raw += review_claims
     rejected = rejected + rejected_ranges
     claims = dedupe_claims(raw)
     segments, overlaps = resolve(claims)
@@ -646,6 +784,16 @@ def build_ledger(rom, root=ROOT):
     unclassified_rows = [OrderedDict([("start", start), ("end", end), ("name", row["name"]),
                                       ("source", row["source"])])
                          for (start, end), row in sorted(unclassified.items())]
+    for row in unclassified_rows:
+        by_class = OrderedDict()
+        for seg in segments:
+            if seg["start"] < row["end"] and seg["end"] > row["start"]:
+                n = min(seg["end"], row["end"]) - max(seg["start"], row["start"])
+                by_class[seg["primary"]] = by_class.get(seg["primary"], 0) + n
+        row["bytes_by_class"] = OrderedDict(sorted(by_class.items()))
+        unknown_n = by_class.get("UNKNOWN", 0)
+        row["status"] = ("classified" if not unknown_n else
+                         "unresolved" if unknown_n == row["end"] - row["start"] else "partial")
     union = merge_ranges([(r["start"], r["end"]) for r in unclassified_rows])
     unk_in_union = sum(min(s["end"], hi) - max(s["start"], lo)
                        for lo, hi in union for s in segments
@@ -684,6 +832,11 @@ def build_ledger(rom, root=ROOT):
                  "not imported, listed as the cheapest next classifications"),
         ("count", len(unclassified_rows)), ("union_bytes", sum(hi - lo for lo, hi in union)),
         ("union_bytes_still_unknown", unk_in_union), ("ranges", unclassified_rows)])
+    ledger["reviewed"] = OrderedDict([
+        ("source", REVIEWED), ("reviews", review_summary["reviews"]), ("claims", review_summary["claims"]),
+        ("code_bytes", sum(c["end"] - c["start"] for c in claims if "reviewed_ranges" in c["importers"])),
+        ("unresolved_clusters", len(review_summary["unresolved"])),
+        ("unresolved_unknown_bytes", sum(u["unknown_bytes"] for u in review_summary["unresolved"]))])
     ledger["rejected_claims"] = rejected
     ledger["ignored_hashless_ranges"] = ignored
     ledger["claims"] = claims
@@ -750,9 +903,16 @@ def summary_markdown(ledger):
         lines.append("  - `%05X-%05X` %s vs %s (%s)" % (h["overlap"][0], h["overlap"][1], h["classes"][0],
                                                        h["classes"][1], " / ".join(str(n) for n in h["names"])))
     u = ledger["unclassified_range_claims"]
+    status = {}
+    for r in u["ranges"]:
+        status[r["status"]] = status.get(r["status"], 0) + 1
+    rv = ledger["reviewed"]
     lines += ["", "## Hash-verified ranges with no stated kind", "",
-              "%d ranges (%d bytes in union, %d still UNKNOWN) await a code/data decision." %
-              (u["count"], u["union_bytes"], u["union_bytes_still_unknown"]),
+              "%d ranges (%d bytes in union, %d still UNKNOWN): %d fully classified, %d partially, %d unresolved." %
+              (u["count"], u["union_bytes"], u["union_bytes_still_unknown"], status.get("classified", 0),
+               status.get("partial", 0), status.get("unresolved", 0)),
+              "", "Reviewed code-flow classifications (`%s`): %d reviews, %d CODE bytes; %d clusters (%d UNKNOWN bytes) unresolved." %
+              (rv["source"], rv["reviews"], rv["code_bytes"], rv["unresolved_clusters"], rv["unresolved_unknown_bytes"]),
               "", "Rejected claims: %d. Hashless ranges ignored: %d." %
               (len(ledger["rejected_claims"]), ledger["ignored_hashless_ranges"]),
               "", "## Largest UNKNOWN runs", "", "| File range | Bytes | Bank |", "|---|---:|---:|"]

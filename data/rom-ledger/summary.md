@@ -8,13 +8,13 @@ ROM: Sonic Chaos (Europe) v1.2, 524288 bytes, SHA-256 `eabc8db59746714262d2f91a9
 
 | Category | Bytes | % |
 |---|---:|---:|
-| CODE | 14681 | 2.800 |
-| DATA | 38631 | 7.368 |
+| CODE | 15541 | 2.964 |
+| DATA | 38663 | 7.374 |
 | GRAPHICS | 192 | 0.037 |
 | MUSIC | 0 | 0.000 |
 | COMPRESSED | 99976 | 19.069 |
 | PADDING | 0 | 0.000 |
-| UNKNOWN | 370808 | 70.726 |
+| UNKNOWN | 369916 | 70.556 |
 | **Total** | **524288** | 100 |
 
 ## Coverage
@@ -22,12 +22,12 @@ ROM: Sonic Chaos (Europe) v1.2, 524288 bytes, SHA-256 `eabc8db59746714262d2f91a9
 | Metric | Bytes | % |
 |---|---:|---:|
 | Recovered into reproducible assembly | 13046 | 2.488 |
-| Structurally classified (primary class known) | 153480 | 29.274 |
+| Structurally classified (primary class known) | 154372 | 29.444 |
 | of which classified only by the recovery manifest | 10799 | 2.060 |
-| of which independently evidenced | 142681 | 27.214 |
-| Recovered and independently evidenced | 2215 | 0.422 |
-| UNKNOWN | 370808 | 70.726 |
-| Contested (counted in UNKNOWN) | 32 | 0.006 |
+| of which independently evidenced | 143573 | 27.384 |
+| Recovered and independently evidenced | 2247 | 0.429 |
+| UNKNOWN | 369916 | 70.556 |
+| Contested (counted in UNKNOWN) | 0 | 0.000 |
 
 Recovered manifest: 74 regions, 13046 bytes (11060 code, 1986 data).
 
@@ -35,8 +35,8 @@ Recovered manifest: 74 regions, 13046 bytes (11060 code, 1986 data).
 
 | Bank | File range | Code | Data | Graphics | Music | Compressed | Padding | Unknown | Recovered | Classified % |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 0 | `00000-03FFF` | 2419 | 0 | 0 | 0 | 0 | 0 | 13965 | 1531 | 14.8 |
-| 1 | `04000-07FFF` | 6900 | 2085 | 0 | 0 | 0 | 0 | 7399 | 7137 | 54.8 |
+| 0 | `00000-03FFF` | 2464 | 0 | 0 | 0 | 0 | 0 | 13920 | 1531 | 15.0 |
+| 1 | `04000-07FFF` | 7715 | 2117 | 0 | 0 | 0 | 0 | 6552 | 7137 | 60.0 |
 | 2 | `08000-0BFFF` | 0 | 136 | 0 | 0 | 0 | 0 | 16248 | 0 | 0.8 |
 | 3 | `0C000-0FFFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
 | 4 | `10000-13FFF` | 0 | 0 | 0 | 0 | 0 | 0 | 16384 | 0 | 0.0 |
@@ -70,14 +70,15 @@ Recovered manifest: 74 regions, 13046 bytes (11060 code, 1986 data).
 
 ## Overlaps
 
-- compatible nested pairs: 375
+- compatible nested pairs: 376
 - compatible partial overlaps: 0
-- contradictory pairs: 1
-  - `06696-066B6` CODE vs DATA (anim_cmd_dispatch / animation_command_table)
+- contradictory pairs: 0
 
 ## Hash-verified ranges with no stated kind
 
-211 ranges (14310 bytes in union, 4064 still UNKNOWN) await a code/data decision.
+211 ranges (14310 bytes in union, 3172 still UNKNOWN): 156 fully classified, 7 partially, 48 unresolved.
+
+Reviewed code-flow classifications (`data/rom-ledger/reviewed-ranges.json`): 16 reviews, 860 CODE bytes; 47 clusters (3172 UNKNOWN bytes) unresolved.
 
 Rejected claims: 0. Hashless ranges ignored: 12.
 
@@ -106,7 +107,7 @@ Rejected claims: 0. Hashless ranges ignored: 12.
 | `79A3A-7BFFF` | 9670 | 30 |
 | `39990-3B6AC` | 7453 | 14 |
 | `24000-253BF` | 5056 | 9 |
-| `00000-01332` | 4915 | 0 |
 | `3C000-3D286` | 4743 | 15 |
 | `08000-090E0` | 4321 | 2 |
 | `3040F-314C0` | 4274 | 12 |
+| `0033E-01332` | 4085 | 0 |

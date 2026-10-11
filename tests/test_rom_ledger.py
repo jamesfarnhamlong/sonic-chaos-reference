@@ -178,7 +178,7 @@ class CommittedLedgerTests(unittest.TestCase):
         self.assertLess(len(text), 8 * 1024 * 1024)
         self.assertEqual(self.ledger["rom"]["sha256"], RL.ROM_SHA256)
         out = LEDGER.parent
-        self.assertEqual(sorted(p.name for p in out.iterdir()), ["ledger.json", "summary.md"])
+        self.assertEqual(sorted(p.name for p in out.iterdir()), ["ledger.json", "reviewed-ranges.json", "summary.md"])
         for p in out.iterdir():
             self.assertNotIn(b"\x00", p.read_bytes()[:4096], "binary data in " + p.name)
 
