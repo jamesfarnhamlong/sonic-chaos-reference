@@ -40,6 +40,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
 import level_package as L  # noqa: E402
+import player_scripts as PS  # noqa: E402
 import rom as R  # noqa: E402
 import rom_flow as F  # noqa: E402
 import tile_decompress as T  # noqa: E402
@@ -131,10 +132,13 @@ def dedupe_claims(claims):
 
 
 # --- Stage A: recovered assembly --------------------------------------------
-def import_recovered(root=ROOT):
-    """All registered regions of asm/recovered/regions.json (never hard-coded)."""
+def import_recovered(root=ROOT, drop_regions=()):
+    """All registered regions of asm/recovered/regions.json (never hard-coded).
+
+    ``drop_regions`` (names) lets an evidence tool ask what the ledger said before those regions existed.
+    """
     manifest = root / "asm" / "recovered" / "regions.json"
-    regions = json.loads(manifest.read_text(encoding="utf-8"))
+    regions = [r for r in json.loads(manifest.read_text(encoding="utf-8")) if r["name"] not in drop_regions]
     claims = []
     for r in regions:
         if r["end"] - r["start"] != r["bytes"]:
@@ -541,6 +545,8 @@ def import_reviewed(rom, root=ROOT, regions=None):
                 return False
             target = F._addr_operand(d)
             return target is not None and F.resolve_target(site, target) == off
+        if "player_script" in via:
+            return PS.seed_supported(rom, off, via["player_script"])
         region = by_name.get(via.get("table"))
         if region is None or region["kind"] != "data" or region["start"] >= F.RESIDENT_END:
             raise ValueError("review seed %s names a non-resident or unknown dispatch table" % hx(off))
@@ -759,10 +765,10 @@ def bank_totals(segments):
     return banks
 
 
-def build_ledger(rom, root=ROOT, reviewed=True):
+def build_ledger(rom, root=ROOT, reviewed=True, drop_regions=()):
     if len(rom) != ROM_SIZE or sha256(rom) != ROM_SHA256:
         raise ValueError("Expected Sonic Chaos (Europe) v1.2, %d bytes, SHA-256 %s" % (ROM_SIZE, ROM_SHA256))
-    recovered, regions = import_recovered(root)
+    recovered, regions = import_recovered(root, drop_regions)
     raw = list(recovered)
     raw += import_level_structures(rom)
     raw += import_collision(rom)

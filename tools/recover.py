@@ -88,6 +88,13 @@ REGIONS = [
  ('object_2f_mappings',0x3d287,0x3d2bd,'data'),
  ]
 
+# DECOMP-1C: regions tools/decomp1c_callbacks.py derives from the ROM (see docs/decomp-1c-player-callbacks.md).
+DERIVED_FILE = Path(__file__).resolve().parents[1] / 'data' / 'decomp1c' / 'derived-regions.json'
+DERIVED_COMMENTS = {
+ 'jp_stub_run': 'Run of three-byte JP stubs, each a supported entry: a player state script stores its address as a callback vector or has the engine execute it, or recovered/vector-reachable code calls it.',
+ 'dispatch_target': 'Routine entered only through player-callback dispatch (a supported JP stub or a script operand the engine executes); boundaries proven by confined descent.',
+}
+
 COMMENTS = {
 0x1333:'Main loop: wait for the frame ($062D), then test $D294 bit 7 and the bits of the flag byte $D293 in turn: bit 7 -> $1365, bit 6 clear -> $138A, bit 5 -> $14AE, bit 4 -> $1543, bit 2 -> $15F2, bit 1 -> $1673, bit 0 -> $1696 (bit 3 is not tested). With none selected it runs the gameplay update ($16B8, $173F) and loops.',
 0x1673:'Handler for $D293 bit 1: calls $4FCE, $3175, the level load sequence $2934, $3116, $314A, $285C, $189B, $794F and the camera vector routine $59B3, clears the bit and returns to the main loop.',
@@ -243,6 +250,11 @@ COMMENTS = {
 }
 
 def generate(rom_path, output):
+    global REGIONS
+    if DERIVED_FILE.exists():
+        derived = json.loads(DERIVED_FILE.read_text())
+        REGIONS = [r for r in REGIONS if not r[0].startswith(('callback_stubs_', 'dispatch_target_'))] + [(r['name'], r['start'], r['end'], 'code') for r in derived]
+        COMMENTS.update({r['start']: DERIVED_COMMENTS[r['role']] for r in derived})
     rom=load(rom_path);output.mkdir(parents=True,exist_ok=True)
     manifest=[]
     for name,start,end,kind in sorted(REGIONS,key=lambda x:x[1]):

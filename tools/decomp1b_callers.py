@@ -68,6 +68,14 @@ CANDIDATES = RECOVERED + (
 
 STUB_TABLE = (0x0380, 0x044F)
 
+# Regions DECOMP-1C added later; this report describes the evidence as it stood before them.
+LATER_PREFIXES = ("callback_stubs_", "dispatch_target_")
+
+
+def later_regions(root=ROOT):
+    regions = json.loads((root / "asm" / "recovered" / "regions.json").read_text(encoding="utf-8"))
+    return {r["name"] for r in regions if r["name"].startswith(LATER_PREFIXES)}
+
 
 def hx(v):
     return "$%04X" % v if v < 0x10000 else "$%05X" % v
@@ -334,7 +342,7 @@ def entry_support(rom, regions, ins, parent, start, end, entries):
 
 def simulate_candidates(rom, review_without):
     """What each candidate would add on top of the pre-DECOMP-1B evidence."""
-    names = {c[0] for c in RECOVERED}
+    names = {c[0] for c in RECOVERED} | later_regions()
     base = review_without
     base_bytes = sum(c["end"] - c["start"] for r in base["code_flow_reviews"] for c in r["claims"])
     base_seeds = {s["offset"] for r in base["code_flow_reviews"] for s in r["seeds"]}
@@ -343,7 +351,7 @@ def simulate_candidates(rom, review_without):
         extra = [OrderedDict([("name", name), ("start", lo), ("end", hi), ("bank", lo // RL.BANK_SIZE),
                               ("kind", "code"), ("bytes", hi - lo), ("instructions", 0), ("file", name + ".asm")])]
         try:
-            doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names)
+            doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names, script_seeds=False)
         except Exception as exc:  # a candidate that cannot be simulated is reported, not hidden
             rows.append(OrderedDict([("name", name), ("bounds", [lo, hi]), ("error", str(exc))]))
             continue
@@ -356,7 +364,7 @@ def simulate_candidates(rom, review_without):
             ("unresolved_clusters_after", len(doc["unresolved"]))]))
     extra = [OrderedDict([("name", n), ("start", lo), ("end", hi), ("bank", lo // RL.BANK_SIZE), ("kind", "code"),
                           ("bytes", hi - lo), ("instructions", 0), ("file", n + ".asm")]) for n, lo, hi, _ in RECOVERED]
-    doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names)
+    doc = RV.build(rom, ROOT, extra_regions=extra, drop_regions=names, script_seeds=False)
     claimed = sum(c["end"] - c["start"] for r in doc["code_flow_reviews"] for c in r["claims"])
     seeds = {s["offset"] for r in doc["code_flow_reviews"] for s in r["seeds"]}
     combined = OrderedDict([("regions", [n for n, _, _, _ in RECOVERED]),
@@ -371,12 +379,13 @@ def simulate_candidates(rom, review_without):
 
 def build(rom, root=ROOT):
     regions = json.loads((root / "asm" / "recovered" / "regions.json").read_text(encoding="utf-8"))
-    ledger = RL.build_ledger(rom, root, reviewed=False)
+    later = later_regions(root)
+    ledger = RL.build_ledger(rom, root, reviewed=False, drop_regions=later)
     classes = Classes(ledger)
     ins, parent, indirect, invalid = vector_descent(rom)
-    names = {c[0] for c in RECOVERED}
+    names = {c[0] for c in RECOVERED} | later
     # the dependency map describes why DECOMP-1A could not reach the ranges, so it uses the evidence without 1B
-    review_without = RV.build(rom, root, drop_regions=names)
+    review_without = RV.build(rom, root, drop_regions=names, script_seeds=False)
     prior_regions = [r for r in regions if r["name"] not in names]
     doc = OrderedDict()
     doc["format"] = 1

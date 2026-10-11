@@ -127,11 +127,14 @@ class CommittedEvidenceTests(unittest.TestCase):
                 self.assertEqual(s["recovery"], "recovered")
 
     def test_combined_simulation_matches_the_ledger(self):
+        # DECOMP-1B described the evidence before DECOMP-1C (player-script dispatch), so these are fixed 1B-era figures;
+        # the live ledger has moved on (docs/decomp-1c-player-callbacks.md) and must classify at least as much.
         combined = self.doc["candidates"]["selected_combined"]
         self.assertEqual(self.doc["candidates"]["baseline_code_bytes_claimed"], DECOMP1A_REVIEWED_BYTES)
-        self.assertEqual(DECOMP1A_REVIEWED_BYTES + combined["new_code_bytes_classified"], self.ledger["reviewed"]["code_bytes"])
-        self.assertEqual(combined["unresolved_unknown_bytes_after"], self.ledger["reviewed"]["unresolved_unknown_bytes"])
-        self.assertEqual(combined["unresolved_clusters_after"], self.ledger["reviewed"]["unresolved_clusters"])
+        self.assertEqual(DECOMP1A_REVIEWED_BYTES + combined["new_code_bytes_classified"], 1568)
+        self.assertEqual(combined["unresolved_unknown_bytes_after"], 2361)
+        self.assertEqual(combined["unresolved_clusters_after"], 36)
+        self.assertLessEqual(self.ledger["reviewed"]["unresolved_unknown_bytes"], combined["unresolved_unknown_bytes_after"])
 
     def test_priority_ranges_and_documented_remainder(self):
         ranges = self.ledger["unclassified_range_claims"]["ranges"]
@@ -141,9 +144,7 @@ class CommittedEvidenceTests(unittest.TestCase):
         for key in ((0x4C90, 0x4CB0), (0x4CB0, 0x4CF7), (0x4CF7, 0x4D3E), (0x4D3E, 0x4D5D), (0x5832, 0x5935),
                     (0x5935, 0x5956), (0x361D, 0x3657), (0x4FDC, 0x5082)):
             self.assertEqual(status[key], "classified", key)
-        # the player callback wrappers are reached only through script-vector data: still documented, not claimed
-        for key in ((0x3901, 0x393B), (0x3A37, 0x3A48)):
-            self.assertEqual(status[key], "unresolved", key)
+        # the player callback wrappers were left unresolved by DECOMP-1B; DECOMP-1C classified them (see test_decomp1c)
 
     def test_dependency_map_lists_every_priority_entry(self):
         entries = {e["entry"]: (r["name"], e) for r in self.doc["dependency_map"] for e in r["entries"]}

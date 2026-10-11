@@ -30,6 +30,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
 import rom_flow as F  # noqa: E402
+import player_scripts as PS  # noqa: E402
 import rom_ledger as RL  # noqa: E402
 
 DISPATCH_TABLES = ("floor_dispatch_table", "object_floor_dispatch",
@@ -59,10 +60,11 @@ def runs_of(offsets):
     return out
 
 
-def build(rom, root=ROOT, extra_regions=(), drop_regions=()):
+def build(rom, root=ROOT, extra_regions=(), drop_regions=(), script_seeds=True):
     """``extra_regions``/``drop_regions`` (DECOMP-1B) let a caller ask what a hypothetical recovered
-    region would support, or what the evidence was before one existed; the defaults change nothing."""
-    baseline = RL.build_ledger(rom, root, reviewed=False)
+    region would support, or what the evidence was before one existed; ``script_seeds=False`` (DECOMP-1C) leaves
+    out the player-script dispatch seeds. The defaults change nothing."""
+    baseline = RL.build_ledger(rom, root, reviewed=False, drop_regions=drop_regions)
     regions = json.loads((root / "asm" / "recovered" / "regions.json").read_text(encoding="utf-8"))
     regions = [r for r in regions if r["name"] not in drop_regions] + list(extra_regions)
     by_name = {r["name"]: r for r in regions}
@@ -91,6 +93,10 @@ def build(rom, root=ROOT, extra_regions=(), drop_regions=()):
         for i in range((region["end"] - region["start"]) // 2):
             table_seeds.setdefault(RL.dispatch_table_word(rom, region, i),
                                    {"table": name, "index": i, "load_site": loaders[0]})
+
+    # DECOMP-1C: words that parsed player scripts make the engine execute (callback vectors and command operands)
+    for off, via in (PS.dispatch_seeds(rom).items() if script_seeds else ()):
+        table_seeds.setdefault(off, {"player_script": via})
 
     state = {id(c): {"seeds": OrderedDict(), "reached": {}} for c in todo}
     changed = True
