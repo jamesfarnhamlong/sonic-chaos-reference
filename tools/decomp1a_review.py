@@ -61,13 +61,14 @@ def runs_of(offsets):
     return out
 
 
-def build(rom, root=ROOT, extra_regions=(), drop_regions=(), script_seeds=True, banked_seeds=True):
+def build(rom, root=ROOT, extra_regions=(), drop_regions=(), script_seeds=True, banked_seeds=True, conditional_banked=False):
     """``extra_regions``/``drop_regions`` (DECOMP-1B) let a caller ask what a hypothetical recovered
     region would support, or what the evidence was before one existed; ``script_seeds=False`` (DECOMP-1C) leaves
     out the player-script dispatch seeds; ``banked_seeds=False`` (DECOMP-1D) leaves out the bank-resolved seeds
     and the DECOMP-1D regions (name prefix ``banked_``), which reproduces the earlier evidence. Registered regions classify their own bytes first, as for DECOMP-1B/1C, so a byte
     range recovered with a banked entry no longer needs a review claim; the seeds remain available for ranges that are
-    not yet recovered. The defaults change nothing for evidence that does not depend on a banked entry."""
+    not yet recovered. The defaults change nothing for evidence that does not depend on a banked entry. ``conditional_banked=True`` (analysis only) also uses
+    entries whose only open condition is R1; the committed review never does."""
     regions = json.loads((root / "asm" / "recovered" / "regions.json").read_text(encoding="utf-8"))
     if not banked_seeds:
         drop_regions = set(drop_regions) | {r["name"] for r in regions if r["name"].startswith(BF.BANKED_PREFIX)}
@@ -107,7 +108,7 @@ def build(rom, root=ROOT, extra_regions=(), drop_regions=(), script_seeds=True, 
     # DECOMP-1D: bank-resolved entries (a resident CALL into slot 2 whose bank the ROM fixes) and the dispatch-table
     # words reached from them. Keyed by file offset, never by CPU address.
     if banked_seeds:
-        for off, via in BF.seed_support(rom, regions, BF.Context(baseline["claims"])).items():
+        for off, via in BF.seed_support(rom, regions, BF.Context(baseline["claims"]), conditional=conditional_banked).items():
             table_seeds.setdefault(off, via)
 
     state = {id(c): {"seeds": OrderedDict(), "reached": {}} for c in todo}

@@ -59,10 +59,12 @@ OUTPUT = ROOT / "data" / "decomp1d" / "banked-flow.json"
 NON_CODE = ("DATA", "GRAPHICS", "COMPRESSED", "MUSIC", "PADDING")
 
 RESIDUAL_ASSUMPTIONS = (
-    OrderedDict([("id", "R1"), ("text",
-        "The banked routines the IM 1 handler calls (listed in interrupt_model.irq.banked_callees) are not walked. "
-        "No byte sequence in banks 2-31 stores to the mapper shadow, but those routines could transfer into a "
-        "resident routine that does; that is not excluded.")]),
+    OrderedDict([("id", "R1"), ("status", "OPEN"), ("text",
+        "The banked routines the IM 1 handler calls ($850A and $8000 in bank $1D, $B45A in bank $0E, and the sound driver "
+        "reached by the two CALL $4000 with slot 1 = bank 2) are followed under the banks the handler maps, and the "
+        "followed code contains no store to the mapper shadow. Three computed jumps in them (file $8137 and $86E8 in the "
+        "bank-2 driver, $74027 in bank $1D) are not followed because their index range is not bounded by the code, so the "
+        "closure is open. While R1 is open the entry is conditional and classifies nothing.")]),
     OrderedDict([("id", "R2"), ("text",
         "Register-addressed stores (LD (HL),r / (IX+d) / block moves) that alias $FFFF or the shadow are not modelled; "
         "only absolute-address stores are.")]),
@@ -171,9 +173,15 @@ class Facts:
     """ROM-derived indices shared by every proof in one process (cached per ROM image)."""
     _cache = {}
 
+    UNIVERSE_ROOTS = ((VECTOR_RESET, "U", "U"), (VECTOR_IRQ, 1, "U"), (VECTOR_NMI, 1, "U"))
+
     def __init__(self, rom):
         self.rom = rom
-        self.descent = resident_descent(rom)
+        self.legacy_descent = resident_descent(rom)            # DECOMP-1B's rule: every slot-1 address is bank 1
+        setter = mapper_setter(rom, 0x1C6F)
+        self.walk = state_walk(rom, self.UNIVERSE_ROOTS, setter["shadow"] if setter else None, follow_restart=True)
+        # bank-corrected universe: resident instructions reached with slot 1 tracked through its own remaps
+        self.descent = OrderedDict((f, n) for f, n in self.walk["visited"].items() if f < F.RESIDENT_END)
         self.interrupt = None
 
     @classmethod
@@ -189,9 +197,9 @@ def region_instruction_list(rom, regions):
     return {r["name"]: F.region_instructions(rom, r) for r in F.code_regions(regions)}
 
 
-def all_decoded(rom, regions, facts):
-    """Instruction start -> length over recovered CODE and hardware-vector-reachable resident code."""
-    ins = dict(facts.descent)
+def all_decoded(rom, regions, facts, legacy=False):
+    """Instruction start -> length over recovered CODE and the statically reached code (bank-corrected unless ``legacy``)."""
+    ins = dict(facts.legacy_descent if legacy else facts.walk["visited"])
     for r in F.code_regions(regions):
         for p, n, _ in F.region_instructions(rom, r):
             ins[p] = n
@@ -264,9 +272,28 @@ def classify_word_hit(rom, offset, value, starts, instrs, ctx):
     return OrderedDict([("offset", offset), ("class", "unexplained")])
 
 
-def sequence_blockers(rom, interior, instrs, ctx):
+def target_index(rom, regions, facts, legacy=False):
+    """{resident file offset: [(site, op)]} over recovered code and the reached code (targets resolved under the
+    banks in force at each site; ``legacy`` uses DECOMP-1B's resident descent instead)."""
+    out = {}
+    recovered = {}
+    for r in F.code_regions(regions):
+        for p, n, _ in F.region_instructions(rom, r):
+            recovered[p] = n
+    for t, rows in transfer_sites(rom, recovered).items():
+        out.setdefault(t, []).extend(rows)
+    if legacy:
+        for t, rows in transfer_sites(rom, facts.legacy_descent).items():
+            out.setdefault(t, []).extend(rows)
+    else:
+        for t, rows in facts.walk["targets"].items():
+            if t < F.RESIDENT_END:
+                out.setdefault(t, []).extend(rows)
+    return {t: sorted(set(rows)) for t, rows in out.items()}
+
+
+def sequence_blockers(rom, interior, instrs, ctx, sites):
     """Entries into the middle of a setup sequence: decoded transfers and address literals that are not inert."""
-    sites = transfer_sites(rom, instrs)
     starts = sorted(instrs)
     blockers, benign = [], []
     for addr in interior:
@@ -303,7 +330,7 @@ def store_pattern_sites(rom, address, width=1):
     return sorted(set(out))
 
 
-def _walk_top_level(rom, roots, limit=2000):
+def _walk_top_level(rom, roots, shadow, limit=2000):
     """IM 1 / NMI top-level body with every CALL stepped over as an opaque callee that may remap slot 2.
 
     Returns (exits, dirty_stores, instructions, problems): ``exits`` lists (offset, slot2_matches_shadow) for every
@@ -328,8 +355,9 @@ def _walk_top_level(rom, roots, limit=2000):
                 break
             store = abs_store_a(d)
             if store == SLOT2_REGISTER:
-                dirty = not (prev_load is not None and prev_load[0] == "shadow")
-            prev_load = ("shadow", abs_load_a(d)) if abs_load_a(d) is not None else None
+                # a restoration is exactly LD A,(shadow) directly before LD ($FFFF),A; any other source address is a change
+                dirty = not (shadow is not None and prev_load == shadow)
+            prev_load = abs_load_a(d)
             if d.op in (OP.RET, OP.RETI, OP.RETN):
                 exits.append((pc, dirty))
                 if not F._has_cond(d):
@@ -351,57 +379,107 @@ def _walk_top_level(rom, roots, limit=2000):
     return exits, visited, problems
 
 
-def _closure(rom, root, shadow):
-    """Resident call closure of the IM 1 handler with a mapper-state-aware slot 1.
+def _mapped(cpu, s1, s2):
+    """File offset of a CPU address under the tracked slot-1/slot-2 banks, or None when unknown."""
+    if cpu < 0x4000:
+        return cpu
+    if cpu < 0x8000:
+        return s1 * BANK + cpu - 0x4000 if isinstance(s1, int) else None
+    if cpu < 0xC000:
+        return s2 * BANK + cpu - 0x8000 if isinstance(s2, int) else None
+    return None
 
-    Returns a dict of facts. Banked callees are recorded but not walked; ``restart`` edges (JP to the reset path
-    ``DI / LD SP,$DFF0``) discard the interrupted context and are not followed.
-    """
-    seen, walked = set(), set()
-    stores, banked, restart, problems = [], [], [], []
-    stack = [(root, 1)]          # R3: slot 1 is bank 1 when the handler starts
+
+def _preserves_a(d):
+    """True only for instructions that cannot change A (a deliberately small whitelist)."""
+    if d.op == OP.LD and d.operands and not (d.operands[0][0].name == "REG" and getattr(d.operands[0][1], "name", "") in ("A", "AF")):
+        return True
+    if d.op in (OP.INC, OP.DEC) and d.operands and not _is_reg(d.operands[0], "A"):
+        return True
+    if d.op in (OP.ADD, OP.ADC, OP.SBC) and d.operands and d.operands[0][0].name == "REG" and             getattr(d.operands[0][1], "name", "") in ("HL", "IX", "IY"):
+        return True
+    return d.op in (OP.PUSH, OP.EXX, OP.JP, OP.JR, OP.DJNZ, OP.CP, OP.BIT) or         (d.op == OP.EX and not any(getattr(o[1], "name", "") in ("AF", "AF'") for o in d.operands))
+
+
+def state_walk(rom, roots, shadow, follow_restart=False, limit=400000):
+    """Mapper-state-aware static walk. A state is (CPU pc, slot-1 bank, slot-2 bank); banks are known only from
+    ``LD A,n / LD (reg),A`` (A tracked through a whitelist of instructions that cannot change it) or a reload from the
+    shadow. CALL/JP/JR/DJNZ targets are followed under the current banks and a CALL also falls through with the banks
+    unchanged (the same assumption as rom_flow), except that a call to a recognised mapper setter sets slot 2 to A. A computed jump (``JP (HL)``) is never followed: its index range is
+    not bounded by the code, and guessing a table extent over-approximates into unrelated code, so the walk is
+    reported open at that site instead.
+
+    Returns a dict of facts; ``open_edges`` is non-empty when the walk could not be closed."""
+    seen, visited, targets = set(), OrderedDict(), {}
+    stores, restart, indirect, tables = [], [], [], []
+    open_edges, invalid, mapper_calls = [], [], []
+    stack = list(roots)
+    steps = 0
     while stack:
-        pc, s1 = stack.pop()
-        prev = None
+        cpu, s1, s2 = stack.pop()
+        a, trace = None, []
         while True:
-            if (pc, s1) in seen:
+            if (cpu, s1, s2) in seen:
                 break
-            seen.add((pc, s1))
-            walked.add(pc)
-            d = F.decode(rom, pc)
-            if F.is_invalid(d) or pc >= F.RESIDENT_END:
-                problems.append(("invalid_or_non_resident", pc))
+            seen.add((cpu, s1, s2))
+            steps += 1
+            if steps > limit:
+                open_edges.append(("step_limit", cpu))
+                return _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid)
+            f = _mapped(cpu, s1, s2)
+            if f is None:
+                open_edges.append(("unmapped_pc", cpu, s1, s2))
                 break
+            d = z80.decode(bytes(rom[f:f + 4]), cpu)
+            if F.is_invalid(d):
+                invalid.append((f, cpu))
+                break
+            visited[f] = d.len
+            trace.append((cpu, f, d))
+            a_in = a
             sa = abs_store_a(d)
-            if sa in MAPPER or sa == shadow:
-                stores.append((pc, sa))
-            if sa == 0xFFFE:
-                s1 = prev if isinstance(prev, int) else ("S" if prev == "shadow" else "U")
-            la = abs_load_a(d)
-            prev = "shadow" if la is not None else imm_load_a(d)
+            if sa in MAPPER or sa == shadow or sa == 0xD12A:
+                stores.append((f, sa))
+                if sa == 0xFFFE:
+                    s1 = a if isinstance(a, int) else "S" if a == "shadow" else "U"
+                elif sa == 0xFFFF:
+                    s2 = a if isinstance(a, int) else "S" if a == "shadow" else "U"
+            if sa is not None:
+                pass
+            elif abs_load_a(d) is not None:
+                a = "shadow" if abs_load_a(d) in (shadow, 0xD12A) else None
+            elif imm_load_a(d) is not None:
+                a = imm_load_a(d)
+            elif not _preserves_a(d):
+                a = None
             if d.op in (OP.CALL, OP.JP, OP.JR, OP.DJNZ):
                 t = F._addr_operand(d)
                 if t is None:
-                    problems.append(("indirect", pc))
-                elif t == RESTART:
-                    restart.append(pc)
-                elif t < 0x4000:
-                    stack.append((t, s1))
-                elif t < F.RESIDENT_END:
-                    if s1 == 1:
-                        stack.append((t, s1))
-                    elif isinstance(s1, int):
-                        banked.append((pc, t, "slot1=%d" % s1, file_offset(s1, t + 0x4000)))
-                    else:
-                        problems.append(("slot1_unknown", pc))
+                    # a computed target: the index range is not bounded by the code, so the walk is left open here
+                    indirect.append(f)
+                    open_edges.append(("indirect_jump", f))
+                elif t == RESTART and not follow_restart:
+                    restart.append(f)
                 else:
-                    banked.append((pc, t, "slot2", None))
-            elif d.op in (OP.JP,):
-                problems.append(("indirect", pc))
-            if is_ret(d) or F.is_terminal(d):
+                    tf = _mapped(t, s1, s2)
+                    if tf is None:
+                        open_edges.append(("unmapped_target", f, t))
+                    else:
+                        targets.setdefault(tf, []).append((f, d.op.name))
+                        stack.append((t, s1, s2))
+                    if d.op == OP.CALL and t < F.RESIDENT_END and mapper_setter(rom, t) is not None:
+                        # a call to a recognised mapper setter leaves slot 2 holding A (unknown if A is not a constant)
+                        s2 = a_in if isinstance(a_in, int) else "U"
+            if F.is_terminal(d):
                 break
-            pc += d.len
-    return walked, stores, banked, restart, problems
+            cpu += d.len
+    return _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid)
+
+
+def _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid):
+    return OrderedDict([("visited", visited), ("targets", targets), ("stores", stores), ("restart", sorted(set(restart))),
+                        ("indirect", sorted(set(indirect))), ("tables", tables), ("open_edges", open_edges),
+                        ("invalid", invalid)])
 
 
 def interrupt_model(rom):
@@ -411,7 +489,7 @@ def interrupt_model(rom):
     out = OrderedDict()
     reasons = []
     # NMI (pause button)
-    nmi_exits, nmi_pcs, nmi_problems = _walk_top_level(rom, [VECTOR_NMI])
+    nmi_exits, nmi_pcs, nmi_problems = _walk_top_level(rom, [VECTOR_NMI], shadow)
     nmi_stores = sorted(pc for pc in nmi_pcs if abs_store_a(F.decode(rom, pc)) in MAPPER or
                         (shadow is not None and abs_store_a(F.decode(rom, pc)) == shadow))
     nmi_calls = sorted(pc for pc in nmi_pcs if F.decode(rom, pc).op == OP.CALL)
@@ -423,7 +501,7 @@ def interrupt_model(rom):
     if not nmi_ok:
         reasons.append("nmi_handler_not_proven_mapper_neutral")
     # IM 1
-    exits, pcs, problems = _walk_top_level(rom, [VECTOR_IRQ])
+    exits, pcs, problems = _walk_top_level(rom, [VECTOR_IRQ], shadow)
     bad = [e for e, dirty in exits if dirty]
     restore_sites = sorted(pc for pc in pcs if abs_store_a(F.decode(rom, pc)) == SLOT2_REGISTER)
     restores = [pc for pc in restore_sites
@@ -438,20 +516,28 @@ def interrupt_model(rom):
                            ("exit_contract_holds", contract)])
     if not contract:
         reasons.append("irq_exit_contract_not_proven")
-    walked, stores, banked, restart, cproblems = _closure(rom, VECTOR_IRQ, shadow)
-    shadow_stores = sorted(pc for pc, a in stores if a == shadow)
-    out_irq["resident_closure"] = OrderedDict([
-        ("instructions", len(walked)),
+    walk = state_walk(rom, [(VECTOR_IRQ, 1, "U")], shadow)       # R3: slot 1 is bank 1 when the handler starts
+    stores = walk["stores"]
+    shadow_stores = sorted(f for f, a in stores if a == shadow)
+    entries = sorted({(tf, min(x[0] for x in sites if x[0] < F.RESIDENT_END)) for tf, sites in walk["targets"].items()
+                      if tf >= F.RESIDENT_END and any(x[0] < F.RESIDENT_END for x in sites)})
+    resident = sum(1 for f in walk["visited"] if f < F.RESIDENT_END)
+    r1_closed = not walk["open_edges"] and not walk["invalid"] and not shadow_stores
+    out_irq["closure"] = OrderedDict([
+        ("scope", "mapper-state-aware walk from the vector, following banked callees under the banks the handler maps"),
+        ("instructions", len(walk["visited"])), ("resident_instructions", resident),
+        ("banked_instructions", len(walk["visited"]) - resident),
         ("shadow_store_sites", shadow_stores),
-        ("register_stores", [OrderedDict([("offset", pc), ("register", MAPPER[a])]) for pc, a in sorted(stores) if a in MAPPER]),
-        ("restart_edges", sorted(restart)),
+        ("register_stores", [OrderedDict([("offset", f), ("register", MAPPER[a])]) for f, a in sorted(set(stores)) if a in MAPPER]),
+        ("restart_edges", walk["restart"]),
         ("restart_rule", "a JP to $0450 (DI / LD SP,$DFF0) discards the interrupted context and does not return to it"),
-        ("problems", sorted(set(cproblems)))])
-    out_irq["banked_callees"] = [OrderedDict([("call_site", s), ("cpu_target", t), ("mapping", m), ("file_offset", f)])
-                                 for s, t, m, f in sorted(set(banked))]
-    closure_ok = not shadow_stores and not cproblems
-    if not closure_ok:
-        reasons.append("shadow_store_or_unmodelled_edge_in_irq_closure")
+        ("banked_callee_entries", [OrderedDict([("file_offset", tf), ("first_resident_call_site", site)]) for tf, site in entries]),
+        ("computed_jumps_not_followed", walk["indirect"]),
+        ("open_edges", [list(e) for e in walk["open_edges"]]), ("undecodable", [list(e) for e in walk["invalid"]]),
+        ("closed", r1_closed)])
+    if shadow_stores:
+        reasons.append("shadow_store_in_irq_closure")
+    out["r1_closed"] = r1_closed
     out["irq"] = out_irq
     # ROM-wide shadow stores
     sites = [(o, k) for o, k in store_pattern_sites(rom, shadow, 1)] if shadow is not None else []
@@ -464,7 +550,6 @@ def interrupt_model(rom):
         ("outside_resident_engine", banked_sites)])
     if banked_sites:
         reasons.append("shadow_store_pattern_in_banked_rom")
-    out["banked_callee_scan_note"] = "see residual_assumptions R1"
     out["supported"] = not reasons
     out["reasons"] = reasons
     return out
@@ -502,7 +587,9 @@ def _site_context(rom, regions, caller):
 
 def prove_banked_call(rom, regions, caller, ctx=None, facts=None, interrupt=None):
     """Everything known about the slot-2 ``CALL`` at ``caller``. Always returns a record; ``status`` is
-    ``supported`` or ``unresolved`` and ``reasons`` explains the latter."""
+    ``supported``, ``conditional`` or ``unresolved``; ``reasons`` explains the latter. ``conditional`` means every check
+    passed except the interrupt handler's banked-callee closure (R1), which is open; only ``supported`` records may
+    classify anything."""
     facts = facts or Facts.of(rom)
     ctx = ctx or Context(None)
     d = F.decode(rom, caller) if 0 <= caller < len(rom) - 4 else None
@@ -566,15 +653,15 @@ def prove_banked_call(rom, regions, caller, ctx=None, facts=None, interrupt=None
         ("bank", value), ("cpu", target), ("file_offset", file_offset(value, target)),
         ("rule", "bank * $4000 + (cpu - $8000)")])
     instrs = all_decoded(rom, regions, facts)
-    blockers, benign = sequence_blockers(rom, [p_set, caller], instrs, ctx)
+    blockers, benign = sequence_blockers(rom, [p_set, caller], instrs, ctx, target_index(rom, regions, facts))
     if not ctx.available:
         blockers.append(OrderedDict([("kind", "no_structural_context"),
                                      ("note", "literal classification needs the ledger's independent claims")]))
     rec["sequence_integrity"] = OrderedDict([
         ("interior_addresses", [p_set, caller]), ("entries_into_sequence", blockers),
         ("inert_literals", benign),
-        ("scanned", "decoded CALL/JP/JR/DJNZ in recovered and hardware-vector-reachable code, and every 16-bit "
-                    "literal in the ROM")])
+        ("scanned", "decoded CALL/JP/JR/DJNZ in recovered code and in code reached from reset, IM 1 and NMI with the "
+                    "slot banks tracked (bank-corrected), and every 16-bit literal in the ROM")])
     if blockers:
         reasons.append("something_can_enter_the_sequence_midway")
     model = interrupt if interrupt is not None else (facts.interrupt or interrupt_cached(rom, facts))
@@ -583,11 +670,14 @@ def prove_banked_call(rom, regions, caller, ctx=None, facts=None, interrupt=None
                                            ("model", "data/decomp1d/banked-flow.json interrupt_model")])
     if not model["supported"]:
         reasons.extend(model["reasons"])
-    if model.get("irq") and model["irq"]["exit_restore_stores"]:
-        pass
+    rec["interrupt_safety"]["r1_closed"] = bool(model.get("r1_closed"))
     if not reasons:
-        rec["status"] = "supported"
-        rec["follow_safely"] = True
+        rec["status"] = "supported" if model.get("r1_closed") else "conditional"
+        if rec["status"] == "conditional":
+            rec["open_conditions"] = ["R1"]
+            rec["conditional_note"] = ("every check passed except the interrupt handler's banked-callee closure, which "
+                                       "contains computed jumps that are not followed; not accepted for classification")
+        rec["follow_safely"] = rec["status"] == "supported"
         rec["follow_rule"] = ("code executing in slot 2 cannot remap slot 2 without leaving itself, so a descent "
                               "confined to the destination bank may resolve same-bank slot-2 targets")
         rec["residual_assumptions"] = [a["id"] for a in RESIDUAL_ASSUMPTIONS]
@@ -641,8 +731,10 @@ def slot2_calls(rom, regions, facts):
     return out
 
 
-def supported_entries(rom, regions, ctx=None, facts=None):
-    """{destination file offset: [proof records]} for every supported banked call in recovered code."""
+def supported_entries(rom, regions, ctx=None, facts=None, conditional=False):
+    """{destination file offset: [proof records]} for every supported banked call in recovered code.
+
+    ``conditional=True`` also returns calls whose only open condition is R1: analysis only, never for classification."""
     facts = facts or Facts.of(rom)
     ctx = ctx or Context(None)
     out = {}
@@ -650,7 +742,7 @@ def supported_entries(rom, regions, ctx=None, facts=None):
         if op != "CALL" or not in_recovered:
             continue
         rec = prove_banked_call(rom, regions, site, ctx, facts)
-        if rec["status"] == "supported":
+        if rec["status"] == "supported" or (conditional and rec["status"] == "conditional"):
             out.setdefault(rec["destination"]["file_offset"], []).append(rec)
     return out
 
@@ -732,10 +824,10 @@ def find_tables(rom, entry_closure):
     return out
 
 
-def entry_closure(rom, regions, ctx=None, facts=None):
+def entry_closure(rom, regions, ctx=None, facts=None, conditional=False):
     """{destination: {instruction offset: length}} confined to the destination bank, from supported entries only."""
     out = {}
-    for dest in supported_entries(rom, regions, ctx, facts):
+    for dest in supported_entries(rom, regions, ctx, facts, conditional):
         lo = dest // BANK * BANK
         reached, _ = F.descend(rom, [dest], lo, lo + BANK)
         out.setdefault(dest, {}).update(reached)
@@ -747,15 +839,15 @@ def table_word_target(rom, table, index):
     return file_offset(table // BANK, w)
 
 
-def seed_support(rom, regions, ctx=None, facts=None):
+def seed_support(rom, regions, ctx=None, facts=None, conditional=False):
     """{file offset: via} DECOMP-1A review seeds proven by this module (empty when nothing is supported)."""
     facts = facts or Facts.of(rom)
     out = OrderedDict()
-    for dest, recs in sorted(supported_entries(rom, regions, ctx, facts).items()):
+    for dest, recs in sorted(supported_entries(rom, regions, ctx, facts, conditional).items()):
         out.setdefault(dest, OrderedDict([("banked_transfer", OrderedDict([
             ("caller", recs[0]["caller"]), ("bank", recs[0]["destination"]["bank"]),
             ("cpu", recs[0]["cpu_target"])]))]))
-    for dest, closure in sorted(entry_closure(rom, regions, ctx, facts).items()):
+    for dest, closure in sorted(entry_closure(rom, regions, ctx, facts, conditional).items()):
         for t in find_tables(rom, closure):
             for i in range(t["words"]):
                 off = table_word_target(rom, t["table"], i)
@@ -766,13 +858,13 @@ def seed_support(rom, regions, ctx=None, facts=None):
 
 
 # --- verification used by the ledger -----------------------------------------------------------------
-def verify_seed(rom, regions, offset, via, ctx, facts=None):
+def verify_seed(rom, regions, offset, via, ctx, facts=None, conditional=False):
     """Re-derive one banked seed; returns True or raises ValueError naming the stale/unsupported claim."""
     facts = facts or Facts.of(rom)
     if "banked_transfer" in via:
         c = via["banked_transfer"]
         rec = prove_banked_call(rom, regions, c["caller"], ctx, facts)
-        if rec["status"] != "supported":
+        if not (rec["status"] == "supported" or (conditional and rec["status"] == "conditional")):
             raise ValueError("banked seed %s: caller %s is not a supported banked transfer (%s)"
                              % (hx(offset), hx(c["caller"]), ", ".join(rec["reasons"])))
         d = rec["destination"]
@@ -782,7 +874,7 @@ def verify_seed(rom, regions, offset, via, ctx, facts=None):
         return True
     if "bank_table" in via:
         c = via["bank_table"]
-        for dest, closure in entry_closure(rom, regions, ctx, facts).items():
+        for dest, closure in entry_closure(rom, regions, ctx, facts, conditional).items():
             for t in find_tables(rom, closure):
                 if t["table"] == c["table"]:
                     if (t["words"], t["load_site"], t["consumer"]) != (c["words"], c["load_site"], c["consumer"]):
@@ -837,8 +929,11 @@ def prove_region(rom, regions, entry):
         ("unresolved_exits", [OrderedDict([("kind", k), ("offset", o)]) for k, o in notes if k in ("indirect", "invalid", "falls_off")])])
 
 
-def verify_registered_regions(rom, regions, ctx, facts=None):
-    """Every recovered region whose name starts with ``banked_`` must be a registered one with live evidence."""
+def verify_registered_regions(rom, regions, ctx, facts=None, conditional=False):
+    """Every recovered region whose name starts with ``banked_`` must be a registered one with live evidence.
+
+    While R1 is open the entry is only ``conditional``, so registering these regions in the ledger is refused
+    (``conditional=True`` is for analysis and tests)."""
     facts = facts or Facts.of(rom)
     by_name = {e["name"]: e for e in REGISTRY}
     for r in regions:
@@ -848,7 +943,7 @@ def verify_registered_regions(rom, regions, ctx, facts=None):
         if e is None or (r["start"], r["end"], r["kind"]) != (e["start"], e["end"], "code"):
             raise ValueError("recovered region %s is not a registered DECOMP-1D banked region" % r["name"])
         for ent in e["entries"]:
-            verify_seed(rom, regions, ent["offset"], ent["via"], ctx, facts)
+            verify_seed(rom, regions, ent["offset"], ent["via"], ctx, facts, conditional)
         proof = prove_region(rom, regions, e)
         if not (proof["every_byte_reached"] and proof["last_instruction_terminal"]
                 and proof["internal_targets_are_instruction_starts"] and not proof["touches_recovered_data"]):
@@ -901,116 +996,121 @@ def build(rom, root=ROOT):
     by_cpu = OrderedDict()
     for t in transfers:
         row = OrderedDict([("caller", t["caller"]), ("status", t["status"])])
-        if t["status"] == "supported":
+        if t["status"] in ("supported", "conditional"):
             row["bank"], row["file_offset"] = t["destination"]["bank"], t["destination"]["file_offset"]
         elif "unproven_bank_hint" in t:
             row["unproven_bank_hint"] = t["unproven_bank_hint"]["bank"]
         by_cpu.setdefault(hx(t["cpu_target"]), []).append(row)
-    banks_8000 = sorted({t["destination"]["bank"] for t in transfers if t["status"] == "supported" and t["cpu_target"] == 0x8000}
+    banks_8000 = sorted({t["destination"]["bank"] for t in transfers if t["status"] in ("supported", "conditional") and t["cpu_target"] == 0x8000}
                         | {t["unproven_bank_hint"]["bank"] for t in transfers if t["cpu_target"] == 0x8000 and "unproven_bank_hint" in t})
     doc["ambiguity"] = OrderedDict([
-        ("rule", "the CPU address never classifies anything: only a supported record names a file offset"),
+        ("rule", "the CPU address never classifies anything: only a supported record names a file offset (conditional records name one for analysis only)"),
         ("banks_seen_for_cpu_8000", banks_8000),
         ("note", "CALL $8000 reaches bank $1C from the gameplay frame update and bank $1D from the interrupt handler; "
-                 "only the former is supported"),
+                 "the former is only conditional (R1) and the latter is not claimed"),
         ("slot2_transfers_by_cpu_address", by_cpu)])
-    dests = supported_entries(rom, regions, ctx, facts)
-    doc["supported_entries"] = [OrderedDict([("file_offset", d), ("bank", r[0]["destination"]["bank"]),
-                                            ("cpu", r[0]["cpu_target"]), ("callers", [x["caller"] for x in r])])
-                                for d, r in sorted(dests.items())]
-    closures = entry_closure(rom, regions, ctx, facts)
+    accepted = supported_entries(rom, regions, ctx, facts)
+    cond = supported_entries(rom, regions, ctx, facts, conditional=True)
+
+    def rows(d):
+        return [OrderedDict([("file_offset", k), ("bank", r[0]["destination"]["bank"]), ("cpu", r[0]["cpu_target"]),
+                             ("callers", [x["caller"] for x in r])]) for k, r in sorted(d.items())]
+
+    doc["supported_entries"] = rows(accepted)
+    doc["conditional_entries"] = rows({k: v for k, v in cond.items() if k not in accepted})
     tables = []
-    for dest, closure in sorted(closures.items()):
+    for dest, closure in sorted(entry_closure(rom, regions, ctx, facts, conditional=True).items()):
         for t in find_tables(rom, closure):
             row = OrderedDict(t)
             row["entry"] = dest
+            row["entry_status"] = "supported" if dest in accepted else "conditional"
             row["words_resolved"] = [OrderedDict([("index", i), ("cpu", rom[t["table"] + 2 * i] | rom[t["table"] + 2 * i + 1] << 8),
                                                   ("file_offset", table_word_target(rom, t["table"], i))])
                                      for i in range(t["words"])]
             row["next_word_after_table"] = rom[t["end"]] | rom[t["end"] + 1] << 8
+            by = {}
+            for seg in baseline["segments"]:
+                if seg["start"] < t["end"] and seg["end"] > t["table"]:
+                    by[seg["primary"]] = by.get(seg["primary"], 0) + min(seg["end"], t["end"]) - max(seg["start"], t["table"])
+            row["ledger_classification"] = OrderedDict(sorted(by.items()))
             tables.append(row)
     doc["dispatch_tables"] = tables
-    doc["registered_regions"] = [prove_region(rom, regions, e) for e in REGISTRY]
-    doc["registered"] = [r["name"] for r in regions if r["name"].startswith(BANKED_PREFIX)]
-    doc["findings"] = findings(rom, tables, baseline["claims"], facts)
-    doc["ledger_effect"] = ledger_effect(rom, root, regions, RL)
+    doc["registry"] = [prove_region(rom, regions, e) for e in REGISTRY]
+    doc["registered_in_tree"] = [r["name"] for r in regions if r["name"].startswith(BANKED_PREFIX)]
+    doc["instruction_universe"] = universe_comparison(rom, regions, facts, ctx)
+    doc["conditional_classification"] = conditional_classification(rom, root, regions, ctx, facts, baseline, RL)
+    doc["interrupt_closure_open_edges"] = interrupt["irq"]["closure"]["open_edges"]
     return doc
 
 
-def findings(rom, tables, claims, facts):
-    """Observations that need a reviewer's decision; nothing here changes a classification."""
-    out = []
-    for t in tables:
-        over = [c for c in claims if c["primary"] == "CODE" and c["start"] < t["end"] and c["end"] > t["table"]
-                and c["start"] <= t["table"] and "audit_manifests" in c.get("importers", ())]
-        if over:
-            out.append(OrderedDict([
-                ("id", "F1"), ("kind", "table_inside_code_claim"),
-                ("table", [t["table"], t["end"]]),
-                ("claims", [OrderedDict([("start", c["start"]), ("end", c["end"]), ("names", c["names"]),
-                                         ("sources", c["sources"])]) for c in over]),
-                ("detail", "a hash-verified audit manifest claims this range as CODE although it contains the %d-word "
-                           "dispatch table; the table is not registered as DATA because that would make the ledger "
-                           "contradictory. Correct at the audit source (as DECOMP-1A did for object-50) after review."
-                           % t["words"])]))
-    skip = (0x5E0, 0x5F6)
-    ins = {}
-    for root in (VECTOR_RESET, VECTOR_IRQ, VECTOR_NMI):
-        queue = deque([root])
-        while queue:
-            p = queue.popleft()
-            if p in ins or not 0 <= p < F.RESIDENT_END:
-                continue
-            d = F.decode(rom, p)
-            if F.is_invalid(d) or p + d.len > F.RESIDENT_END:
-                continue
-            ins[p] = d.len
-            if d.op in F.TRANSFER_OPS and p not in skip:
-                a = F._addr_operand(d)
-                t = F.resolve_target(p, a) if a is not None else None
-                if t is not None and t < F.RESIDENT_END:
-                    queue.append(t)
-            if not F.is_terminal(d):
-                queue.append(p + d.len)
-    only = sorted(set(facts.descent) - set(ins))
-    out.append(OrderedDict([
-        ("id", "F2"), ("kind", "decomp1b_vector_reachability_slot1_edges"),
-        ("detail", "The IM 1 handler calls $4000 at $05E0 and $05F6 after mapping bank 2 into slot 1, so those calls enter "
-                   "file $8000+, not the bank-1 code at file $4000 that DECOMP-1B's resident descent follows."),
-        ("instructions_reached_only_through_these_edges", len(only)),
-        ("bytes_reached_only_through_these_edges", sum(facts.descent[p] for p in only)),
-        ("effect", "affects only the vector_reachability and dependency_map figures in data/decomp1b/callers.json; no ledger "
-                   "claim depends on them (reviews and recovered regions rest on recovered code). Reported, not changed, so "
-                   "the historical output still reproduces.")]))
-    return out
-
-
-EFFECT_KEYS = ("classified_bytes", "unknown_bytes", "recovered_bytes", "recovered_code_bytes",
-               "independent_structural_bytes", "classified_by_recovery_only_bytes",
-               "recovered_and_independently_classified_bytes", "contested_bytes")
-
-
-def ledger_effect(rom, root, regions, RL):
-    """Ledger totals with and without the DECOMP-1D regions (the evidence tools' own before/after)."""
-    names = {r["name"] for r in regions if r["name"].startswith(BANKED_PREFIX)}
-    before = RL.build_ledger(rom, root, drop_regions=names)
-    after = RL.build_ledger(rom, root)
-    rows = {(r["start"], r["end"], r["name"]): r for r in before["unclassified_range_claims"]["ranges"]}
-    changed = []
-    for r in after["unclassified_range_claims"]["ranges"]:
-        b = rows[(r["start"], r["end"], r["name"])]
-        if b["status"] != r["status"] or b["bytes_by_class"] != r["bytes_by_class"]:
-            changed.append(OrderedDict([("start", r["start"]), ("end", r["end"]), ("name", r["name"]),
-                                        ("before", OrderedDict([("status", b["status"]), ("bytes_by_class", b["bytes_by_class"])])),
-                                        ("after", OrderedDict([("status", r["status"]), ("bytes_by_class", r["bytes_by_class"])]))]))
+def universe_comparison(rom, regions, facts, ctx):
+    """DECOMP-1B's resident descent against the bank-corrected walk, and what each says about entries into the setup
+    sequences of the two established callers."""
+    legacy, corrected = facts.legacy_descent, facts.descent
+    only_legacy = sorted(set(legacy) - set(corrected))
+    only_corrected = sorted(set(corrected) - set(legacy))
+    banked = len(facts.walk["visited"]) - len(corrected)
+    checks = []
+    for caller in (0x16E7, 0x1737):
+        interior = [caller - 3, caller]
+        row = OrderedDict([("interior", interior)])
+        for label, legacy_flag in (("legacy", True), ("corrected", False)):
+            b, _ = sequence_blockers(rom, interior, all_decoded(rom, regions, facts, legacy_flag), ctx,
+                                     target_index(rom, regions, facts, legacy_flag))
+            row[label + "_entries_into_sequence"] = b
+        checks.append(row)
+    clean = all(not r["legacy_entries_into_sequence"] and not r["corrected_entries_into_sequence"] for r in checks)
     return OrderedDict([
-        ("note", "before = the same tree with the banked_ regions set aside; both include the committed reviewed-ranges.json"),
-        ("before", OrderedDict((k, before["totals"][k]) for k in EFFECT_KEYS)),
-        ("after", OrderedDict((k, after["totals"][k]) for k in EFFECT_KEYS)),
-        ("by_category_before", before["totals"]["by_category"]), ("by_category_after", after["totals"]["by_category"]),
-        ("recovered_regions", OrderedDict([("before", before["recovered_manifest"]["regions"]), ("after", after["recovered_manifest"]["regions"])])),
-        ("contradictory_pairs", after["overlaps"]["stats"]["contradictory_pairs"]),
-        ("audit_ranges_changed", changed)])
+        ("legacy_rule", "DECOMP-1B resident descent: every CPU address $4000-$7FFF is bank-1 file code"),
+        ("corrected_rule", "state walk from reset, IM 1 and NMI with slot 1 and slot 2 tracked through LD A,n / LD (reg),A"),
+        ("legacy", OrderedDict([("instructions", len(legacy)), ("bytes", sum(legacy.values()))])),
+        ("corrected_resident", OrderedDict([("instructions", len(corrected)), ("bytes", sum(corrected.values()))])),
+        ("corrected_banked_instructions_reached", banked),
+        ("only_in_legacy", OrderedDict([("instructions", len(only_legacy)), ("bytes", sum(legacy[p] for p in only_legacy))])),
+        ("only_in_corrected", OrderedDict([("instructions", len(only_corrected)), ("bytes", sum(corrected[p] for p in only_corrected))])),
+        ("open_edges", len(facts.walk["open_edges"])),
+        ("sequence_entry_checks", checks),
+        ("conclusion", "the changed instruction universe introduces no new entry into either setter/call sequence"
+                       if clean else "ENTRY INTRODUCED: see sequence_entry_checks"),
+        ("decomp1b_note", "data/decomp1b/callers.json is a historical milestone artifact and is not rewritten; its "
+                          "vector_reachability figures follow the legacy rule")])
+
+
+def conditional_classification(rom, root, regions, ctx, facts, baseline, RL):
+    """What the conditional entry would add if R1 were closed. Analysis only: none of it is in the ledger."""
+    import decomp1a_review as RV
+    accepted_doc = RV.build(rom, root)
+    cond_doc = RV.build(rom, root, conditional_banked=True)
+
+    def claims(d):
+        return {(c["start"], c["end"]) for r in d["code_flow_reviews"] for c in r["claims"]}
+
+    final = RL.build_ledger(rom, root)
+    per = []
+    totals = OrderedDict([("newly_classified_bytes", 0), ("recovered_bytes", 0), ("already_independently_code_bytes", 0)])
+    for e in REGISTRY:
+        new = ind = 0
+        for seg in final["segments"]:
+            lo, hi = max(seg["start"], e["start"]), min(seg["end"], e["end"])
+            if lo < hi:
+                if seg["primary"] == "UNKNOWN":
+                    new += hi - lo
+                elif seg["classification_basis"] == "independent":
+                    ind += hi - lo
+        per.append(OrderedDict([("region", e["name"]), ("bounds", [e["start"], e["end"]]), ("newly_classified_bytes", new),
+                                ("already_independently_classified_bytes", ind)]))
+        totals["newly_classified_bytes"] += new
+        totals["recovered_bytes"] += e["end"] - e["start"]
+        totals["already_independently_code_bytes"] += ind
+    return OrderedDict([
+        ("status", "deferred: not in the accepted ledger"),
+        ("blocking_assumption", "R1"),
+        ("promotion_condition", "close R1: bound the index of the computed jumps in interrupt_closure_open_edges and show the "
+                                "followed targets reach no shadow store; then add the regions below to tools/recover.py"),
+        ("regions_deferred", per), ("totals", totals),
+        ("review_claims_if_promoted", [list(x) for x in sorted(claims(cond_doc) - claims(accepted_doc))]),
+        ("seeds_if_promoted", [OrderedDict([("offset", o), ("kind", next(iter(v)))])
+                               for o, v in sorted(seed_support(rom, regions, ctx, facts, conditional=True).items())])])
 
 
 def main(argv=None):

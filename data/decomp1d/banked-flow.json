@@ -316,6 +316,7 @@
    "problems": [],
    "leaves_mapper_untouched": true
   },
+  "r1_closed": false,
   "irq": {
    "vector": 56,
    "top_level_instructions": 187,
@@ -335,8 +336,11 @@
    "top_level_problems": [],
    "exit_contract": "every RET reached from the vector, with callees treated as opaque and every register store other than LD A,(shadow) / LD ($FFFF),A treated as a change, leaves $FFFF equal to the shadow",
    "exit_contract_holds": true,
-   "resident_closure": {
-    "instructions": 1787,
+   "closure": {
+    "scope": "mapper-state-aware walk from the vector, following banked callees under the banks the handler maps",
+    "instructions": 2872,
+    "resident_instructions": 1787,
+    "banked_instructions": 1085,
     "shadow_store_sites": [],
     "register_stores": [
      {
@@ -388,40 +392,46 @@
      9362
     ],
     "restart_rule": "a JP to $0450 (DI / LD SP,$DFF0) discards the interrupted context and does not return to it",
-    "problems": []
-   },
-   "banked_callees": [
-    {
-     "call_site": 1412,
-     "cpu_target": 34058,
-     "mapping": "slot2",
-     "file_offset": null
-    },
-    {
-     "call_site": 1439,
-     "cpu_target": 46170,
-     "mapping": "slot2",
-     "file_offset": null
-    },
-    {
-     "call_site": 1478,
-     "cpu_target": 32768,
-     "mapping": "slot2",
-     "file_offset": null
-    },
-    {
-     "call_site": 1504,
-     "cpu_target": 16384,
-     "mapping": "slot1=2",
-     "file_offset": 32768
-    },
-    {
-     "call_site": 1526,
-     "cpu_target": 16384,
-     "mapping": "slot1=2",
-     "file_offset": 32768
-    }
-   ]
+    "banked_callee_entries": [
+     {
+      "file_offset": 32768,
+      "first_resident_call_site": 1504
+     },
+     {
+      "file_offset": 242778,
+      "first_resident_call_site": 1439
+     },
+     {
+      "file_offset": 475136,
+      "first_resident_call_site": 1478
+     },
+     {
+      "file_offset": 476426,
+      "first_resident_call_site": 1412
+     }
+    ],
+    "computed_jumps_not_followed": [
+     33079,
+     34536,
+     475175
+    ],
+    "open_edges": [
+     [
+      "indirect_jump",
+      34536
+     ],
+     [
+      "indirect_jump",
+      33079
+     ],
+     [
+      "indirect_jump",
+      475175
+     ]
+    ],
+    "undecodable": [],
+    "closed": false
+   }
   },
   "shadow_store_patterns": {
    "shadow": 53547,
@@ -489,14 +499,14 @@
    ],
    "outside_resident_engine": []
   },
-  "banked_callee_scan_note": "see residual_assumptions R1",
   "supported": true,
   "reasons": []
  },
  "residual_assumptions": [
   {
    "id": "R1",
-   "text": "The banked routines the IM 1 handler calls (listed in interrupt_model.irq.banked_callees) are not walked. No byte sequence in banks 2-31 stores to the mapper shadow, but those routines could transfer into a resident routine that does; that is not excluded."
+   "status": "OPEN",
+   "text": "The banked routines the IM 1 handler calls ($850A and $8000 in bank $1D, $B45A in bank $0E, and the sound driver reached by the two CALL $4000 with slot 1 = bank 2) are followed under the banks the handler maps, and the followed code contains no store to the mapper shadow. Three computed jumps in them (file $8137 and $86E8 in the bank-2 driver, $74027 in bank $1D) are not followed because their index range is not bounded by the code, so the closure is open. While R1 is open the entry is conditional and classifies nothing."
   },
   {
    "id": "R2",
@@ -553,7 +563,7 @@
   },
   {
    "caller": 5863,
-   "status": "supported",
+   "status": "conditional",
    "reasons": [],
    "instruction": {
     "bytes": "cd0080",
@@ -625,15 +635,20 @@
     ],
     "entries_into_sequence": [],
     "inert_literals": [],
-    "scanned": "decoded CALL/JP/JR/DJNZ in recovered and hardware-vector-reachable code, and every 16-bit literal in the ROM"
+    "scanned": "decoded CALL/JP/JR/DJNZ in recovered code and in code reached from reset, IM 1 and NMI with the slot banks tracked (bank-corrected), and every 16-bit literal in the ROM"
    },
    "interrupt_safety": {
     "supported": true,
     "reasons": [],
     "shadow": 53547,
-    "model": "data/decomp1d/banked-flow.json interrupt_model"
+    "model": "data/decomp1d/banked-flow.json interrupt_model",
+    "r1_closed": false
    },
-   "follow_safely": true,
+   "open_conditions": [
+    "R1"
+   ],
+   "conditional_note": "every check passed except the interrupt handler's banked-callee closure, which contains computed jumps that are not followed; not accepted for classification",
+   "follow_safely": false,
    "follow_rule": "code executing in slot 2 cannot remap slot 2 without leaving itself, so a descent confined to the destination bank may resolve same-bank slot-2 targets",
    "residual_assumptions": [
     "R1",
@@ -644,7 +659,7 @@
   },
   {
    "caller": 5943,
-   "status": "supported",
+   "status": "conditional",
    "reasons": [],
    "instruction": {
     "bytes": "cd0080",
@@ -729,15 +744,20 @@
       "literal": 5943
      }
     ],
-    "scanned": "decoded CALL/JP/JR/DJNZ in recovered and hardware-vector-reachable code, and every 16-bit literal in the ROM"
+    "scanned": "decoded CALL/JP/JR/DJNZ in recovered code and in code reached from reset, IM 1 and NMI with the slot banks tracked (bank-corrected), and every 16-bit literal in the ROM"
    },
    "interrupt_safety": {
     "supported": true,
     "reasons": [],
     "shadow": 53547,
-    "model": "data/decomp1d/banked-flow.json interrupt_model"
+    "model": "data/decomp1d/banked-flow.json interrupt_model",
+    "r1_closed": false
    },
-   "follow_safely": true,
+   "open_conditions": [
+    "R1"
+   ],
+   "conditional_note": "every check passed except the interrupt handler's banked-callee closure, which contains computed jumps that are not followed; not accepted for classification",
+   "follow_safely": false,
    "follow_rule": "code executing in slot 2 cannot remap slot 2 without leaving itself, so a descent confined to the destination bank may resolve same-bank slot-2 targets",
    "residual_assumptions": [
     "R1",
@@ -748,16 +768,16 @@
   }
  ],
  "not_examined": {
-  "slot2_transfers_from_slot_2_code": 101,
+  "slot2_transfers_from_slot_2_code": 94,
   "reason": "code that itself executes in slot 2 cannot remap slot 2, so its slot-2 targets are same-bank and are already resolved by the DECOMP-1A rule (rom_flow.resolve_target)"
  },
  "ambiguity": {
-  "rule": "the CPU address never classifies anything: only a supported record names a file offset",
+  "rule": "the CPU address never classifies anything: only a supported record names a file offset (conditional records name one for analysis only)",
   "banks_seen_for_cpu_8000": [
    28,
    29
   ],
-  "note": "CALL $8000 reaches bank $1C from the gameplay frame update and bank $1D from the interrupt handler; only the former is supported",
+  "note": "CALL $8000 reaches bank $1C from the gameplay frame update and bank $1D from the interrupt handler; the former is only conditional (R1) and the latter is not claimed",
   "slot2_transfers_by_cpu_address": {
    "$850A": [
     {
@@ -781,20 +801,21 @@
     },
     {
      "caller": 5863,
-     "status": "supported",
+     "status": "conditional",
      "bank": 28,
      "file_offset": 458752
     },
     {
      "caller": 5943,
-     "status": "supported",
+     "status": "conditional",
      "bank": 28,
      "file_offset": 458752
     }
    ]
   }
  },
- "supported_entries": [
+ "supported_entries": [],
+ "conditional_entries": [
   {
    "file_offset": 458752,
    "bank": 28,
@@ -813,6 +834,7 @@
    "load_site": 458941,
    "consumer": 458954,
    "entry": 458752,
+   "entry_status": "conditional",
    "words_resolved": [
     {
      "index": 0,
@@ -895,10 +917,13 @@
      "file_offset": 459070
     }
    ],
-   "next_word_after_table": 52677
+   "next_word_after_table": 52677,
+   "ledger_classification": {
+    "DATA": 32
+   }
   }
  ],
- "registered_regions": [
+ "registry": [
   {
    "name": "banked_entry_70000",
    "bounds": [
@@ -976,105 +1001,111 @@
    ]
   }
  ],
- "registered": [
-  "banked_entry_70000",
-  "banked_dispatch_7013E"
- ],
- "findings": [
-  {
-   "id": "F1",
-   "kind": "table_inside_code_claim",
-   "table": [
-    458955,
-    458987
-   ],
-   "claims": [
-    {
-     "start": 458752,
-     "end": 458987,
-     "names": [
-      "placement_creator_loop"
-     ],
-     "sources": [
-      "data/rom-cache/thz3/object-50.json"
-     ]
-    }
-   ],
-   "detail": "a hash-verified audit manifest claims this range as CODE although it contains the 16-word dispatch table; the table is not registered as DATA because that would make the ledger contradictory. Correct at the audit source (as DECOMP-1A did for object-50) after review."
+ "registered_in_tree": [],
+ "instruction_universe": {
+  "legacy_rule": "DECOMP-1B resident descent: every CPU address $4000-$7FFF is bank-1 file code",
+  "corrected_rule": "state walk from reset, IM 1 and NMI with slot 1 and slot 2 tracked through LD A,n / LD (reg),A",
+  "legacy": {
+   "instructions": 9214,
+   "bytes": 18642
   },
-  {
-   "id": "F2",
-   "kind": "decomp1b_vector_reachability_slot1_edges",
-   "detail": "The IM 1 handler calls $4000 at $05E0 and $05F6 after mapping bank 2 into slot 1, so those calls enter file $8000+, not the bank-1 code at file $4000 that DECOMP-1B's resident descent follows.",
-   "instructions_reached_only_through_these_edges": 1227,
-   "bytes_reached_only_through_these_edges": 2732,
-   "effect": "affects only the vector_reachability and dependency_map figures in data/decomp1b/callers.json; no ledger claim depends on them (reviews and recovered regions rest on recovered code). Reported, not changed, so the historical output still reproduces."
-  }
- ],
- "ledger_effect": {
-  "note": "before = the same tree with the banked_ regions set aside; both include the committed reviewed-ranges.json",
-  "before": {
-   "classified_bytes": 156887,
-   "unknown_bytes": 367401,
-   "recovered_bytes": 13988,
-   "recovered_code_bytes": 12002,
-   "independent_structural_bytes": 145346,
-   "classified_by_recovery_only_bytes": 11541,
-   "recovered_and_independently_classified_bytes": 2447,
-   "contested_bytes": 0
+  "corrected_resident": {
+   "instructions": 6667,
+   "bytes": 13718
   },
-  "after": {
-   "classified_bytes": 156895,
-   "unknown_bytes": 367393,
-   "recovered_bytes": 14199,
-   "recovered_code_bytes": 12213,
-   "independent_structural_bytes": 145346,
-   "classified_by_recovery_only_bytes": 11549,
-   "recovered_and_independently_classified_bytes": 2650,
-   "contested_bytes": 0
+  "corrected_banked_instructions_reached": 1268,
+  "only_in_legacy": {
+   "instructions": 2560,
+   "bytes": 4950
   },
-  "by_category_before": {
-   "CODE": 18056,
-   "DATA": 38663,
-   "GRAPHICS": 192,
-   "MUSIC": 0,
-   "COMPRESSED": 99976,
-   "PADDING": 0,
-   "UNKNOWN": 367401
+  "only_in_corrected": {
+   "instructions": 13,
+   "bytes": 26
   },
-  "by_category_after": {
-   "CODE": 18064,
-   "DATA": 38663,
-   "GRAPHICS": 192,
-   "MUSIC": 0,
-   "COMPRESSED": 99976,
-   "PADDING": 0,
-   "UNKNOWN": 367393
-  },
-  "recovered_regions": {
-   "before": 113,
-   "after": 115
-  },
-  "contradictory_pairs": 0,
-  "audit_ranges_changed": [
+  "open_edges": 13,
+  "sequence_entry_checks": [
    {
-    "start": 458752,
-    "end": 459078,
-    "name": "placement_scan",
-    "before": {
-     "status": "partial",
-     "bytes_by_class": {
-      "CODE": 318,
-      "UNKNOWN": 8
-     }
-    },
-    "after": {
-     "status": "classified",
-     "bytes_by_class": {
-      "CODE": 326
-     }
-    }
+    "interior": [
+     5860,
+     5863
+    ],
+    "legacy_entries_into_sequence": [],
+    "corrected_entries_into_sequence": []
+   },
+   {
+    "interior": [
+     5940,
+     5943
+    ],
+    "legacy_entries_into_sequence": [],
+    "corrected_entries_into_sequence": []
+   }
+  ],
+  "conclusion": "the changed instruction universe introduces no new entry into either setter/call sequence",
+  "decomp1b_note": "data/decomp1b/callers.json is a historical milestone artifact and is not rewritten; its vector_reachability figures follow the legacy rule"
+ },
+ "conditional_classification": {
+  "status": "deferred: not in the accepted ledger",
+  "blocking_assumption": "R1",
+  "promotion_condition": "close R1: bound the index of the computed jumps in interrupt_closure_open_edges and show the followed targets reach no shadow store; then add the regions below to tools/recover.py",
+  "regions_deferred": [
+   {
+    "region": "banked_entry_70000",
+    "bounds": [
+     458752,
+     458955
+    ],
+    "newly_classified_bytes": 0,
+    "already_independently_classified_bytes": 203
+   },
+   {
+    "region": "banked_dispatch_7013E",
+    "bounds": [
+     459070,
+     459078
+    ],
+    "newly_classified_bytes": 8,
+    "already_independently_classified_bytes": 0
+   }
+  ],
+  "totals": {
+   "newly_classified_bytes": 8,
+   "recovered_bytes": 211,
+   "already_independently_code_bytes": 203
+  },
+  "review_claims_if_promoted": [
+   [
+    459070,
+    459078
+   ]
+  ],
+  "seeds_if_promoted": [
+   {
+    "offset": 458752,
+    "kind": "banked_transfer"
+   },
+   {
+    "offset": 459070,
+    "kind": "bank_table"
+   },
+   {
+    "offset": 459071,
+    "kind": "bank_table"
    }
   ]
- }
+ },
+ "interrupt_closure_open_edges": [
+  [
+   "indirect_jump",
+   34536
+  ],
+  [
+   "indirect_jump",
+   33079
+  ],
+  [
+   "indirect_jump",
+   475175
+  ]
+ ]
 }

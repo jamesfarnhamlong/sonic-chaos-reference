@@ -28,7 +28,8 @@ REGIONS = ROOT / "asm" / "recovered" / "regions.json"
 ROM_PATH = Path(os.environ.get("SONIC_CHAOS_ROM", str(RL.DEFAULT_ROM)))
 
 SETTER = bytes([0x32, 0x2B, 0xD1, 0x32, 0xFF, 0xFF, 0xC9])          # LD ($D12B),A / LD ($FFFF),A / RET
-OK_INTERRUPTS = {"supported": True, "reasons": [], "irq": {"exit_restore_stores": [0x610]}}
+OK_INTERRUPTS = {"supported": True, "reasons": [], "r1_closed": True, "irq": {"exit_restore_stores": [0x610]}}
+OPEN_R1 = dict(OK_INTERRUPTS, r1_closed=False)
 
 
 def canonical_rom():
@@ -245,7 +246,7 @@ class SyntheticInterruptModel(unittest.TestCase):
         rom = image({0x1C6F: SETTER, 0x0038: irq, 0x0066: bytes([0xED, 0x45])})
         model = D.interrupt_model(rom)
         self.assertFalse(model["supported"])
-        self.assertIn("shadow_store_or_unmodelled_edge_in_irq_closure", model["reasons"])
+        self.assertIn("shadow_store_in_irq_closure", model["reasons"])
 
     def test_nmi_that_touches_the_mapper_is_rejected(self):
         rom = image({0x1C6F: SETTER, 0x0038: bytes([0xF3, 0xFB, 0xC9]), 0x0066: bytes([0x32, 0xFF, 0xFF, 0xED, 0x45])})
@@ -257,6 +258,70 @@ class SyntheticInterruptModel(unittest.TestCase):
         model = D.interrupt_model(rom)
         self.assertEqual(model["shadow_store_patterns"]["outside_resident_engine"], [0x9000])
         self.assertIn("shadow_store_pattern_in_banked_rom", model["reasons"])
+
+
+class SyntheticRestorationAndR1(unittest.TestCase):
+    """The exit restoration must read the shadow itself; R1 gates acceptance."""
+
+    @staticmethod
+    def irq(source_addr, extra=b""):
+        return bytes([0xF3, 0xF5, 0x3E, 0x03, 0x32, 0xFF, 0xFF]) + extra + \
+            bytes([0x3A, source_addr & 0xFF, source_addr >> 8, 0x32, 0xFF, 0xFF, 0xF1, 0xFB, 0xC9])
+
+    def model(self, irq):
+        return D.interrupt_model(image({0x1C6F: SETTER, 0x0038: irq, 0x0066: bytes([0xED, 0x45])}))
+
+    def test_reload_from_the_shadow_is_a_restoration(self):
+        m = self.model(self.irq(0xD12B))
+        self.assertTrue(m["irq"]["exit_contract_holds"])
+        self.assertEqual(m["irq"]["exit_restore_stores"], [0x0038 + 10])
+
+    def test_reload_from_another_address_is_not_a_restoration(self):
+        m = self.model(self.irq(0xD200))                          # LD A,($D200) / LD ($FFFF),A
+        self.assertFalse(m["irq"]["exit_contract_holds"])
+        self.assertFalse(m["supported"])
+        self.assertIn("irq_exit_contract_not_proven", m["reasons"])
+
+    def test_neighbouring_shadow_address_is_not_a_restoration(self):
+        self.assertFalse(self.model(self.irq(0xD12A))["irq"]["exit_contract_holds"])
+        self.assertFalse(self.model(self.irq(0xD12C))["irq"]["exit_contract_holds"])
+
+    def test_closed_closure_is_r1_closed(self):
+        m = self.model(self.irq(0xD12B))
+        self.assertTrue(m["r1_closed"])
+        self.assertTrue(m["irq"]["closure"]["closed"])
+
+    def test_computed_jump_in_the_handler_leaves_r1_open(self):
+        m = self.model(self.irq(0xD12B, bytes([0xE9])))          # a JP (HL) before the exit tail
+        self.assertFalse(m["r1_closed"])
+        self.assertEqual(m["irq"]["closure"]["computed_jumps_not_followed"], [0x0038 + 7])
+
+    def test_banked_callee_is_followed_under_the_banks_the_handler_maps(self):
+        # LD A,5 / LD ($FFFF),A / CALL $8000 : the callee at bank 5 stores to the shadow
+        irq = bytes([0xF3, 0xF5, 0x3E, 0x05, 0x32, 0xFF, 0xFF, 0xCD, 0x00, 0x80,
+                     0x3A, 0x2B, 0xD1, 0x32, 0xFF, 0xFF, 0xF1, 0xFB, 0xC9])
+        rom = image({0x1C6F: SETTER, 0x0038: irq, 0x0066: bytes([0xED, 0x45]), 5 * 0x4000: bytes([0x32, 0x2B, 0xD1, 0xC9])},
+                    size=0x20000)
+        m = D.interrupt_model(rom)
+        self.assertEqual(m["irq"]["closure"]["shadow_store_sites"], [5 * 0x4000])
+        self.assertIn("shadow_store_in_irq_closure", m["reasons"])
+        self.assertEqual([e["file_offset"] for e in m["irq"]["closure"]["banked_callee_entries"]], [5 * 0x4000])
+
+    def test_open_r1_makes_the_call_conditional_and_never_an_entry(self):
+        rom = prepared({0x0200: frame(5)}, interrupts=OPEN_R1)
+        regions = [region("a", 0x200, 0x209)]
+        rec = D.prove_banked_call(rom, regions, 0x205, D.Context([]))
+        self.assertEqual((rec["status"], rec["reasons"], rec["open_conditions"]), ("conditional", [], ["R1"]))
+        self.assertFalse(rec["follow_safely"])
+        self.assertEqual(rec["destination"]["file_offset"], 5 * 0x4000)       # the analysis is still complete
+        self.assertEqual(D.supported_entries(rom, regions, D.Context([])), {})
+        self.assertEqual(D.seed_support(rom, regions, D.Context([])), {})
+        self.assertEqual(sorted(D.supported_entries(rom, regions, D.Context([]), conditional=True)), [5 * 0x4000])
+        with self.assertRaisesRegex(ValueError, "not a supported banked transfer"):
+            D.verify_seed(rom, regions, 5 * 0x4000, {"banked_transfer": {"caller": 0x205, "bank": 5, "cpu": 0x8000}},
+                          D.Context([]))
+        self.assertTrue(D.verify_seed(rom, regions, 5 * 0x4000, {"banked_transfer": {"caller": 0x205, "bank": 5, "cpu": 0x8000}},
+                                      D.Context([]), conditional=True))
 
 
 class SyntheticBankTables(unittest.TestCase):
@@ -340,6 +405,11 @@ class SyntheticLedgerRules(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not a registered DECOMP-1D banked region"):
             D.verify_registered_regions(self.rom, rogue, self.ctx)
 
+    def test_registered_region_is_refused_while_the_entry_is_conditional(self):
+        rom = prepared({0x0200: frame(5)}, interrupts=OPEN_R1)
+        with self.assertRaises(ValueError):
+            D.verify_registered_regions(rom, [region("banked_entry_70000", 0x70000, 0x700CB)], self.ctx)
+
     def test_registered_region_with_moved_bounds_is_rejected(self):
         moved = [region("banked_entry_70000", 0x70000, 0x700CA)]
         with self.assertRaises(ValueError):
@@ -361,10 +431,11 @@ class CanonicalRomTests(unittest.TestCase):
         cls.evidence = load(EVIDENCE)
         cls.ctx = D.Context(cls.ledger["claims"])
 
-    def test_both_established_callers_prove_bank_1c(self):
+    def test_both_established_callers_resolve_to_bank_1c_but_stay_conditional(self):
         for caller, interior in ((0x16E7, [0x16E4, 0x16E7]), (0x1737, [0x1734, 0x1737])):
             rec = D.prove_banked_call(self.rom, self.regions, caller, self.ctx)
-            self.assertEqual((rec["status"], rec["reasons"]), ("supported", []), hex(caller))
+            self.assertEqual((rec["status"], rec["reasons"], rec["open_conditions"]), ("conditional", [], ["R1"]), hex(caller))
+            self.assertFalse(rec["follow_safely"])
             self.assertEqual(rec["region"], "gameplay_frame_update")
             self.assertEqual(rec["bank_selection"]["value"], 0x1C)
             self.assertEqual(rec["bank_selection"]["instruction"], caller - 5)
@@ -388,13 +459,25 @@ class CanonicalRomTests(unittest.TestCase):
         self.assertEqual({e["offset"] for e in m["irq"]["exits"]}, {0x0626, 0x0687})
         self.assertTrue(all(e["slot2_matches_shadow"] for e in m["irq"]["exits"]))
         self.assertEqual(m["irq"]["exit_restore_stores"], [0x0610])
-        self.assertEqual(m["irq"]["resident_closure"]["shadow_store_sites"], [])
-        self.assertEqual(m["irq"]["resident_closure"]["restart_edges"], [0x2492])
         self.assertEqual(m["shadow_store_patterns"]["outside_resident_engine"], [])
         self.assertTrue(m["nmi"]["leaves_mapper_untouched"])
-        # the handler itself calls $8000 under bank $1D: the CPU address alone proves nothing
-        self.assertIn({"call_site": 0x05C6, "cpu_target": 0x8000, "mapping": "slot2", "file_offset": None},
-                      [dict(x) for x in m["irq"]["banked_callees"]])
+        c = m["irq"]["closure"]
+        self.assertEqual(c["shadow_store_sites"], [])
+        self.assertEqual(c["restart_edges"], [0x2492])
+        self.assertEqual({e["file_offset"] for e in c["banked_callee_entries"]}, {0x8000, 0x3B45A, 0x74000, 0x7450A})
+
+    def test_r1_is_open_because_of_three_computed_jumps(self):
+        m = D.interrupt_model(self.rom)
+        c = m["irq"]["closure"]
+        self.assertFalse(m["r1_closed"])
+        self.assertFalse(c["closed"])
+        self.assertEqual(sorted(c["computed_jumps_not_followed"]), [0x8137, 0x86E8, 0x74027])
+        self.assertEqual(c["undecodable"], [])
+        self.assertEqual([a["id"] for a in self.evidence["residual_assumptions"]], ["R1", "R2", "R3", "R4"])
+        self.assertEqual(self.evidence["residual_assumptions"][0]["status"], "OPEN")
+
+    def test_the_genuine_restoration_is_the_shadow_reload_at_060d(self):
+        self.assertEqual(self.rom[0x60D:0x613].hex(), "3a2bd1" "32ffff")
 
     def test_handler_call_with_bank_1d_is_not_claimed(self):
         by = self.evidence["ambiguity"]["slot2_transfers_by_cpu_address"]["$8000"]
@@ -402,21 +485,23 @@ class CanonicalRomTests(unittest.TestCase):
         self.assertEqual(rows[0x05C6]["status"], "unresolved")
         self.assertEqual(rows[0x05C6]["unproven_bank_hint"], 0x1D)
         self.assertEqual(self.evidence["ambiguity"]["banks_seen_for_cpu_8000"], [0x1C, 0x1D])
-        entries = D.seed_support(self.rom, self.regions, self.ctx)
+        entries = D.seed_support(self.rom, self.regions, self.ctx, conditional=True)
         self.assertNotIn(0x74000, entries)
 
     def test_every_slot2_call_from_resident_code_is_accounted_for(self):
         facts = D.Facts.of(self.rom)
         sites = {s for s in D.slot2_calls(self.rom, self.regions, facts) if s < F.RESIDENT_END}
         self.assertEqual(sites, {t["caller"] for t in self.evidence["banked_transfers"]})
-        supported = {t["caller"] for t in self.evidence["banked_transfers"] if t["status"] == "supported"}
-        self.assertEqual(supported, {0x16E7, 0x1737})
+        by = {t["caller"]: t["status"] for t in self.evidence["banked_transfers"]}
+        self.assertEqual({c for c, st in by.items() if st == "conditional"}, {0x16E7, 0x1737})
+        self.assertNotIn("supported", by.values())
 
     def test_eight_bytes_are_dispatch_targets_not_data(self):
         self.assertEqual(self.rom[0x7013E:0x70146].hex(), "c9" "eb235e2356eb" "e9")
         table = self.evidence["dispatch_tables"][0]
         self.assertEqual((table["table"], table["end"], table["words"]), (0x700CB, 0x700EB, 16))
         self.assertEqual((table["load_site"], table["consumer"]), (0x700BD, 0x700CA))
+        self.assertEqual(table["entry_status"], "conditional")
         targets = [w["file_offset"] for w in table["words_resolved"]]
         self.assertEqual(targets, [0x7013F] + [0x7013E] * 15)
         self.assertEqual(table["next_word_after_table"], 0xCDC5)          # the bytes after the table are code (PUSH BC / CALL)
@@ -425,25 +510,38 @@ class CanonicalRomTests(unittest.TestCase):
         self.assertEqual(F.runs(reached), [(0x7013E, 0x70146)])
         self.assertEqual(notes, [("indirect", 0x70145)])
 
-    def test_seeds_are_keyed_by_file_offset(self):
-        seeds = D.seed_support(self.rom, self.regions, self.ctx)
+    def test_accepted_ledger_has_no_banked_entry_and_the_eight_bytes_stay_unknown(self):
+        self.assertEqual(D.seed_support(self.rom, self.regions, self.ctx), {})
+        self.assertEqual(self.evidence["supported_entries"], [])
+        self.assertEqual(self.evidence["registered_in_tree"], [])
+        self.assertEqual([r["name"] for r in self.regions if r["name"].startswith("banked_")], [])
+        seg = next(s for s in self.ledger["segments"] if s["start"] <= 0x7013E < s["end"])
+        self.assertEqual((seg["primary"], seg["start"], seg["end"]), ("UNKNOWN", 0x7013E, 0x70146))
+        self.assertEqual(self.ledger["totals"]["unknown_bytes"], 367401)
+
+    def test_conditional_seeds_are_keyed_by_file_offset(self):
+        seeds = D.seed_support(self.rom, self.regions, self.ctx, conditional=True)
         self.assertEqual(sorted(seeds), [0x70000, 0x7013E, 0x7013F])
         self.assertEqual(seeds[0x70000]["banked_transfer"], {"caller": 0x16E7, "bank": 0x1C, "cpu": 0x8000})
         for off, via in seeds.items():
-            self.assertTrue(D.verify_seed(self.rom, self.regions, off, via, self.ctx))
+            self.assertTrue(D.verify_seed(self.rom, self.regions, off, via, self.ctx, conditional=True))
+            with self.assertRaises(ValueError):                  # the ledger never accepts them while R1 is open
+                D.verify_seed(self.rom, self.regions, off, via, self.ctx)
 
-    def test_registered_regions_prove_out(self):
-        self.assertTrue(D.verify_registered_regions(self.rom, self.regions, self.ctx))
-        for r in self.evidence["registered_regions"]:
+    def test_deferred_regions_prove_out_but_cannot_be_registered(self):
+        self.assertTrue(D.verify_registered_regions(self.rom, [], self.ctx))
+        for r in self.evidence["registry"]:
             self.assertTrue(r["every_byte_reached"] and r["last_instruction_terminal"])
             self.assertTrue(r["internal_targets_are_instruction_starts"])
             self.assertFalse(r["touches_recovered_data"])
             self.assertTrue(all(u["kind"] == "indirect" for u in r["unresolved_exits"]))
-        names = {r["name"]: (r["start"], r["end"]) for r in self.regions if r["name"].startswith("banked_")}
-        self.assertEqual(names, {"banked_entry_70000": (0x70000, 0x700CB), "banked_dispatch_7013E": (0x7013E, 0x70146)})
+        wanted = [{"name": e["name"], "start": e["start"], "end": e["end"], "bank": 28, "kind": "code"} for e in D.REGISTRY]
+        self.assertTrue(D.verify_registered_regions(self.rom, self.regions + wanted, self.ctx, conditional=True))
+        with self.assertRaisesRegex(ValueError, "not a supported banked transfer"):
+            D.verify_registered_regions(self.rom, self.regions + wanted, self.ctx)
 
     def test_exits_of_the_entry_routine_land_on_recovered_instructions(self):
-        proof = next(r for r in self.evidence["registered_regions"] if r["name"] == "banked_entry_70000")
+        proof = next(r for r in self.evidence["registry"] if r["name"] == "banked_entry_70000")
         recovered = set()
         for r in F.code_regions(self.regions):
             recovered.update(p for p, _, _ in F.region_instructions(self.rom, r))
@@ -456,95 +554,78 @@ class CanonicalRomTests(unittest.TestCase):
         self.assertEqual(json.loads(json.dumps(doc)), self.evidence)
         self.assertTrue(same_text((json.dumps(doc, indent=1) + "\n").encode(), EVIDENCE.read_bytes()))
 
-    def test_residual_assumptions_are_recorded(self):
-        self.assertEqual([a["id"] for a in self.evidence["residual_assumptions"]], ["R1", "R2", "R3", "R4"])
+    def test_evidence_tier_is_static(self):
         self.assertIn("not an execution trace", self.evidence["evidence_tier"])
 
-    def test_ledger_effect_and_zero_contradictions(self):
-        eff = self.evidence["ledger_effect"]
-        self.assertEqual(eff["before"]["unknown_bytes"] - eff["after"]["unknown_bytes"], 8)
-        self.assertEqual(eff["after"]["recovered_bytes"] - eff["before"]["recovered_bytes"], 211)
-        self.assertEqual(eff["after"]["independent_structural_bytes"], eff["before"]["independent_structural_bytes"])
-        self.assertEqual(eff["contradictory_pairs"], 0)
+    def test_creator_table_is_data_at_the_audit_source(self):
+        """F1 corrected: object-50 now states CODE [$70000,$700CB) and DATA [$700CB,$700EB)."""
+        cache = load(ROOT / "data" / "rom-cache" / "thz3" / "object-50.json")
+        rows = {r["name"]: r for r in cache["routines"]}
+        self.assertEqual((rows["placement_creator_loop"]["rom_offset"], rows["placement_creator_loop"]["length"],
+                          rows["placement_creator_loop"]["kind"]), ("0x70000", 203, "code"))
+        t = rows["placement_dispatch_table"]
+        self.assertEqual((t["rom_offset"], t["length"], t["kind"], t["evidence"]), ("0x700CB", 32, "data", "DECODED DATA"))
+        self.assertEqual((t["proof"]["load_site"], t["proof"]["consumer"], t["proof"]["words"]), ("0x700BD", "0x700CA", 16))
+        self.assertEqual(rows["placement_create"]["rom_offset"], "0x700EB")
+        for lo, hi, cls in ((0x70000, 0x700CB, "CODE"), (0x700CB, 0x700EB, "DATA"), (0x700EB, 0x7013E, "CODE")):
+            for s in self.ledger["segments"]:
+                if s["start"] < hi and s["end"] > lo:
+                    self.assertEqual(s["primary"], cls, (hex(lo), hex(s["start"])))
+        self.assertEqual(self.evidence["dispatch_tables"][0]["ledger_classification"], {"DATA": 32})
         self.assertEqual(self.ledger["overlaps"]["stats"]["contradictory_pairs"], 0)
-        self.assertEqual(self.ledger["totals"]["unknown_bytes"], eff["after"]["unknown_bytes"])
-        self.assertEqual([c["name"] for c in eff["audit_ranges_changed"]], ["placement_scan"])
-        seg = next(s for s in self.ledger["segments"] if s["start"] <= 0x7013E < s["end"])
-        self.assertEqual((seg["primary"], seg["recovery"]), ("CODE", "recovered"))
-        self.assertEqual(seg["regions"], ["banked_dispatch_7013E"])
+        self.assertEqual(self.ledger["totals"]["by_category"]["DATA"], 38695)
+        self.assertEqual(self.ledger["totals"]["by_category"]["CODE"], 18024)
 
-    def test_code_data_distinctions_are_preserved(self):
-        banked = {"banked_entry_70000", "banked_dispatch_7013E"}
-        before = RL.build_ledger(self.rom, ROOT, drop_regions=banked)
-        after = RL.build_ledger(self.rom, ROOT)
+    def test_table_proof_agrees_with_the_audit_cache(self):
+        proof = D.find_tables(self.rom, F.descend(self.rom, [0x70000], 0x70000, 0x700CB)[0])
+        self.assertEqual([(t["table"], t["end"], t["words"]) for t in proof], [(0x700CB, 0x700EB, 16)])
 
-        def classes(ledger):
-            out = bytearray(len(self.rom))
-            for s in ledger["segments"]:
-                out[s["start"]:s["end"]] = bytes([RL.CATEGORIES.index(s["primary"])]) * s["length"]
-            return out
-
-        b, a = classes(before), classes(after)
-        diff = [o for o in range(len(self.rom)) if b[o] != a[o]]
-        self.assertEqual(diff, list(range(0x7013E, 0x70146)))
-        self.assertTrue(all(RL.CATEGORIES[b[o]] == "UNKNOWN" and RL.CATEGORIES[a[o]] == "CODE" for o in diff))
-        # the 32-byte table stays inside the audit CODE claim: a contradictory DATA claim was deliberately not made
-        self.assertEqual(RL.CATEGORIES[a[0x700CB]], "CODE")
-        self.assertEqual(self.evidence["findings"][0]["id"], "F1")
-        self.assertEqual(self.evidence["findings"][0]["table"], [0x700CB, 0x700EB])
-
-    def test_default_review_matches_the_committed_file_and_gains_only_the_banked_cluster(self):
-        with_banked = RV.build(self.rom, banked_seeds=True)
-        without = RV.build(self.rom, banked_seeds=False)
+    def test_default_review_matches_the_committed_file_and_conditional_review_adds_the_tail(self):
+        accepted = RV.build(self.rom)
         committed = load(ROOT / RL.REVIEWED)
-        self.assertEqual(json.loads(json.dumps(with_banked)), committed)
-        self.assertEqual(without["code_flow_reviews"], with_banked["code_flow_reviews"])
-        extra = [u for u in without["unresolved"] if u not in with_banked["unresolved"]]
-        self.assertEqual([u["bounds"] for u in extra], [[0x70000, 0x70146]])
-        self.assertEqual(extra[0]["unknown_runs"], [[0x7013E, 0x70146]])
-        self.assertEqual(len(without["unresolved"]), len(with_banked["unresolved"]) + 1)
-
-    def test_banked_seeds_classify_the_tail_when_the_region_is_not_registered(self):
-        """Evidence rules alone (no recovered region) give the same bytes as a reviewed flow claim."""
-        doc = RV.build(self.rom, drop_regions={"banked_entry_70000", "banked_dispatch_7013E"}, banked_seeds=True)
-        review = next(r for r in doc["code_flow_reviews"] if r["bounds"] == [0x70000, 0x70146])
+        self.assertEqual(json.loads(json.dumps(accepted)), committed)
+        self.assertEqual(json.loads(json.dumps(RV.build(self.rom, banked_seeds=False))), committed)
+        cond = RV.build(self.rom, conditional_banked=True)
+        review = next(r for r in cond["code_flow_reviews"] if r["bounds"] == [0x70000, 0x70146])
         self.assertEqual([(c["start"], c["end"]) for c in review["claims"]], [(0x7013E, 0x70146)])
-        kinds = sorted(next(iter(s["via"])) for s in review["seeds"])
+        kinds = sorted(next(iter(sd["via"])) for sd in review["seeds"])
         self.assertEqual(kinds, ["bank_table", "bank_table", "banked_transfer", "site"])
+        self.assertEqual(len(cond["unresolved"]) + 1, len(accepted["unresolved"]))
 
-    def test_importer_rejects_a_tampered_banked_seed(self):
+    def test_importer_refuses_conditional_seeds(self):
         import tempfile
-        doc = RV.build(self.rom, drop_regions={"banked_entry_70000", "banked_dispatch_7013E"}, banked_seeds=True)
-        base_regions = [r for r in self.regions if not r["name"].startswith("banked_")]
-        raw = RL.build_ledger(self.rom, ROOT, reviewed=False, drop_regions={"banked_entry_70000", "banked_dispatch_7013E"})["claims"]
+        cond = RV.build(self.rom, conditional_banked=True)
+        raw = RL.build_ledger(self.rom, ROOT, reviewed=False)["claims"]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "data" / "rom-ledger").mkdir(parents=True)
+            (root / "data" / "rom-ledger" / "reviewed-ranges.json").write_text(json.dumps(cond), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                RL.import_reviewed(self.rom, root, self.regions, raw)
 
-        def run(mutate):
-            d = copy.deepcopy(doc)
-            mutate(next(r for r in d["code_flow_reviews"] if r["bounds"] == [0x70000, 0x70146]))
-            with tempfile.TemporaryDirectory() as tmp:
-                root = Path(tmp)
-                (root / "data" / "rom-ledger").mkdir(parents=True)
-                (root / "data" / "rom-ledger" / "reviewed-ranges.json").write_text(json.dumps(d), encoding="utf-8")
-                return RL.import_reviewed(self.rom, root, base_regions, raw)
+    def test_tampered_banked_seeds_are_rejected_even_in_conditional_analysis(self):
+        seeds = D.seed_support(self.rom, self.regions, self.ctx, conditional=True)
 
-        claims, summary = run(lambda r: None)
-        self.assertIn((0x7013E, 0x70146), [(c["start"], c["end"]) for c in claims])
+        def bad(off, mutate):
+            via = copy.deepcopy(seeds[off])
+            mutate(via)
+            with self.assertRaises(ValueError, msg=str(via)):
+                D.verify_seed(self.rom, self.regions, off, via, self.ctx, conditional=True)
 
-        def stale_bank(r):
-            next(s for s in r["seeds"] if "banked_transfer" in s["via"])["via"]["banked_transfer"]["bank"] = 0x1D
+        bad(0x70000, lambda v: v["banked_transfer"].update(bank=0x1D))
+        bad(0x70000, lambda v: v["banked_transfer"].update(caller=0x16E4))
+        bad(0x70000, lambda v: v["banked_transfer"].update(cpu=0x8001))
+        bad(0x7013E, lambda v: v["bank_table"].update(index=0))
+        bad(0x7013E, lambda v: v["bank_table"].update(words=15))
+        bad(0x7013F, lambda v: v["bank_table"].update(consumer=0x700C9))
+        bad(0x7013F, lambda v: v["bank_table"].update(table=0x700CD))
 
-        def wrong_caller(r):
-            next(s for s in r["seeds"] if "banked_transfer" in s["via"])["via"]["banked_transfer"]["caller"] = 0x16E4
-
-        def wrong_word(r):
-            next(s for s in r["seeds"] if "bank_table" in s["via"])["via"]["bank_table"]["index"] = 0
-
-        def wrong_extent(r):
-            next(s for s in r["seeds"] if "bank_table" in s["via"])["via"]["bank_table"]["words"] = 15
-
-        for mutate in (stale_bank, wrong_caller, wrong_word, wrong_extent):
-            with self.assertRaises(ValueError, msg=mutate.__name__):
-                run(mutate)
+    def test_conditional_classification_is_documented_not_applied(self):
+        c = self.evidence["conditional_classification"]
+        self.assertEqual(c["blocking_assumption"], "R1")
+        self.assertEqual(c["totals"], {"newly_classified_bytes": 8, "recovered_bytes": 211, "already_independently_code_bytes": 203})
+        self.assertEqual(c["review_claims_if_promoted"], [[0x7013E, 0x70146]])
+        self.assertEqual([r["region"] for r in c["regions_deferred"]], ["banked_entry_70000", "banked_dispatch_7013E"])
 
     def test_historical_generators_still_reproduce_their_committed_output(self):
         b1 = json.dumps(B1.build(self.rom), indent=1) + "\n"
@@ -555,13 +636,29 @@ class CanonicalRomTests(unittest.TestCase):
         self.assertTrue(same_text(C1.derived_region_doc(c1).encode(),
                                   (ROOT / "data" / "decomp1c" / "derived-regions.json").read_bytes()))
 
-    def test_vector_descent_agrees_with_decomp1b(self):
+    def test_legacy_descent_is_decomp1bs_and_corrected_universe_is_reported(self):
         self.assertEqual(D.resident_descent(self.rom), B1.vector_descent(self.rom)[0])
+        u = self.evidence["instruction_universe"]
+        self.assertEqual(u["legacy"], {"instructions": 9214, "bytes": 18642})
+        self.assertEqual(u["only_in_legacy"], {"instructions": 2560, "bytes": 4950})
+        self.assertEqual(u["corrected_resident"], {"instructions": 6667, "bytes": 13718})
+        self.assertEqual(u["only_in_corrected"], {"instructions": 13, "bytes": 26})
 
-    def test_slot1_edges_finding_is_quantified(self):
-        f2 = next(f for f in self.evidence["findings"] if f["id"] == "F2")
-        self.assertEqual(f2["instructions_reached_only_through_these_edges"], 1227)
-        self.assertEqual(f2["bytes_reached_only_through_these_edges"], 2732)
+    def test_slot1_edges_are_the_difference_and_introduce_no_entry(self):
+        # the two handler calls to $4000 run with slot 1 = bank 2: legacy follows them into bank-1 file $4000
+        walk = D.state_walk(self.rom, [(0x38, 1, "U")], 0xD12B)
+        self.assertIn(0x8000, walk["targets"])
+        u = self.evidence["instruction_universe"]
+        self.assertIn("no new entry", u["conclusion"])
+        for row in u["sequence_entry_checks"]:
+            self.assertEqual(row["legacy_entries_into_sequence"], [])
+            self.assertEqual(row["corrected_entries_into_sequence"], [])
+
+    def test_ledger_changes_only_by_the_audit_correction(self):
+        t = self.ledger["totals"]
+        self.assertEqual((t["classified_bytes"], t["recovered_bytes"], t["contested_bytes"]), (156887, 13988, 0))
+        self.assertEqual(self.ledger["recovered_manifest"]["regions"], 113)
+        self.assertEqual(self.ledger["reviewed"]["unresolved_clusters"], 23)
 
 
 class DocumentationTests(unittest.TestCase):

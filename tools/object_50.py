@@ -96,7 +96,8 @@ EVIDENCE = {
 # --------------------------------------------------------------------------- #
 # (name, bank, first CPU, end CPU exclusive, kind, purpose)
 ROUTINES = [
-    ("placement_creator_loop", 0x1C, 0x8000, 0x80EB, "code", "walk object list, window/spawn-map test, dispatch"),
+    ("placement_creator_loop", 0x1C, 0x8000, 0x80CB, "code", "walk object list, window/spawn-map test, dispatch"),
+    ("placement_dispatch_table", 0x1C, 0x80CB, 0x80EB, "data", "16 creator dispatch words indexed by (record+5)*2; targets $813E/$813F"),
     ("placement_create", 0x1C, 0x80EB, 0x813C, "code", "allocate slot, copy record fields, occupancy token"),
     ("spawn_window_map", 0x1C, 0x8146, 0x8546, "data", "32x32 spawn-map (0/1 inner, 2 edge ring, 3 outside)"),
     ("object_scheduler", 0x00, 0x5DF1, 0x5E70, "code", "per-slot update; types >= $26 use bank $1E"),
@@ -237,6 +238,24 @@ STATE_FACTS = {
 }
 
 
+def dispatch_table_proof(rom: bytes) -> dict:
+    """Loader, consumer, word count and extent of the creator's dispatch table, recomputed from the ROM.
+
+    Confined descent from the bank-$1C entry over the creator loop must contain ``LD HL,$80CB`` followed by an
+    uninterrupted run to the word fetch and ``JP (HL)``; the extent is the run of valid slot-2 words up to the first
+    invalid word or known code (never inferred from the word pattern alone)."""
+    import decomp1d_banked_flow as BF
+    import rom_flow as F
+    reached, _ = F.descend(rom, [0x70000], 0x70000, 0x700CB)
+    tables = BF.find_tables(rom, reached)
+    if len(tables) != 1 or (tables[0]["table"], tables[0]["words"], tables[0]["end"]) != (0x700CB, 16, 0x700EB):
+        raise ValueError("creator dispatch table no longer proves out: %r" % tables)
+    t = tables[0]
+    return {"load_site": h(t["load_site"], 5), "consumer": h(t["consumer"], 5), "words": t["words"],
+            "targets": sorted({h(0x70000 + (u16(rom, t["table"] + 2 * i) - 0x8000), 5) for i in range(t["words"])}),
+            "extent_rule": "first word after the table is not a slot-2 address and the next bytes are the creator at $700EB"}
+
+
 def routine_table(rom: bytes) -> list[dict]:
     out = []
     for name, bank, start, end, kind, purpose in ROUTINES:
@@ -248,6 +267,7 @@ def routine_table(rom: bytes) -> list[dict]:
             "rom_offset": h(off, 5), "length": end - start,
             "first_16_bytes": raw[:16].hex(), "sha256": sha(raw),
             "evidence": "BYTE-VERIFIED ASSEMBLY" if kind == "code" else "DECODED DATA",
+            **({"proof": dispatch_table_proof(rom)} if name == "placement_dispatch_table" else {}),
         })
     return out
 

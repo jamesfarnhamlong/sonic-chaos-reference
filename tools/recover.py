@@ -64,9 +64,7 @@ REGIONS = [
  ('spike_object_handlers',0x32c7d,0x32d59,'code'),
  ('object_21_scripts',0x331b6,0x33210,'data'),
  ('object_21_handlers',0x33210,0x332f9,'code'),
- ('banked_entry_70000',0x70000,0x700cb,'code'),
  ('object_placement_create',0x700eb,0x7013e,'code'),
- ('banked_dispatch_7013E',0x7013e,0x70146,'code'),
  # Previously recovered regions retained where they do not overlap the above.
  ('loop_states',0x3c1b,0x3efd,'code'),
  ('spring_setters',0x480c,0x4892,'code'),
@@ -89,6 +87,13 @@ REGIONS = [
  ('object_2f_handlers',0x78b5b,0x78be1,'code'),
  ('object_2f_mappings',0x3d287,0x3d2bd,'data'),
  ]
+
+# DECOMP-1D regions that are proven except for assumption R1 (docs/decomp-1d-banked-entry.md). They are NOT registered:
+# the ledger refuses `banked_` regions while the entry is conditional. `--include-deferred` writes them for review.
+DEFERRED = [
+ ('banked_entry_70000',0x70000,0x700cb,'code'),
+ ('banked_dispatch_7013E',0x7013e,0x70146,'code'),
+]
 
 # DECOMP-1C: regions tools/decomp1c_callbacks.py derives from the ROM (see docs/decomp-1c-player-callbacks.md).
 DERIVED_FILE = Path(__file__).resolve().parents[1] / 'data' / 'decomp1c' / 'derived-regions.json'
@@ -266,8 +271,10 @@ def foreign_label(rom,regions,bank,target):
             p+=d.len
     return None
 
-def generate(rom_path, output):
+def generate(rom_path, output, include_deferred=False):
     global REGIONS
+    if include_deferred:
+        REGIONS = REGIONS + DEFERRED
     if DERIVED_FILE.exists():
         derived = json.loads(DERIVED_FILE.read_text())
         REGIONS = [r for r in REGIONS if not r[0].startswith(('callback_stubs_', 'dispatch_target_'))] + [(r['name'], r['start'], r['end'], 'code') for r in derived]
@@ -319,6 +326,7 @@ def generate(rom_path, output):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('rom')
     p.add_argument('--output',type=Path,default=Path('asm/recovered'))
-    a=p.parse_args();m=generate(a.rom,a.output)
+    p.add_argument('--include-deferred',action='store_true',help='also write the DECOMP-1D regions that are conditional on R1')
+    a=p.parse_args();m=generate(a.rom,a.output,a.include_deferred)
     print(json.dumps(dict(regions=len(m),bytes=sum(x['bytes'] for x in m),
                           instructions=sum(x['instructions'] for x in m))))

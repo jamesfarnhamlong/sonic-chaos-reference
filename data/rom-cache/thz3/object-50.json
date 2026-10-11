@@ -182,12 +182,35 @@
       "purpose": "walk object list, window/spawn-map test, dispatch",
       "bank": "0x1C",
       "cpu": "0x8000",
-      "cpu_end_exclusive": "0x80EB",
+      "cpu_end_exclusive": "0x80CB",
       "rom_offset": "0x70000",
-      "length": 235,
+      "length": 203,
       "first_16_bytes": "3a97d2875f1600214685197e23666f3a",
-      "sha256": "bacad4ae3395ca7197643c735e056ec3d40564f1000d488228f0015c9f0ff2c3",
+      "sha256": "eb0559494b703152a47988865f782377695510ba9fcc51b51f488d3013d9f380",
       "evidence": "BYTE-VERIFIED ASSEMBLY"
+    },
+    {
+      "name": "placement_dispatch_table",
+      "kind": "data",
+      "purpose": "16 creator dispatch words indexed by (record+5)*2; targets $813E/$813F",
+      "bank": "0x1C",
+      "cpu": "0x80CB",
+      "cpu_end_exclusive": "0x80EB",
+      "rom_offset": "0x700CB",
+      "length": 32,
+      "first_16_bytes": "3f813e813e813e813e813e813e813e81",
+      "sha256": "d17bcaa118af36c6e3d1cd09d061545dd0d88f3e92cb2b9ae9f3d43f15e2027f",
+      "evidence": "DECODED DATA",
+      "proof": {
+        "load_site": "0x700BD",
+        "consumer": "0x700CA",
+        "words": 16,
+        "targets": [
+          "0x7013E",
+          "0x7013F"
+        ],
+        "extent_rule": "first word after the table is not a slot-2 address and the next bytes are the creator at $700EB"
+      }
     },
     {
       "name": "placement_create",

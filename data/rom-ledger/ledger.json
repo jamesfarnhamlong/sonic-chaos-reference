@@ -26,37 +26,37 @@
  },
  "totals": {
   "by_category": {
-   "CODE": 18064,
-   "DATA": 38663,
+   "CODE": 18024,
+   "DATA": 38695,
    "GRAPHICS": 192,
    "MUSIC": 0,
    "COMPRESSED": 99976,
    "PADDING": 0,
-   "UNKNOWN": 367393
+   "UNKNOWN": 367401
   },
-  "recovered_bytes": 14199,
-  "recovered_code_bytes": 12213,
+  "recovered_bytes": 13988,
+  "recovered_code_bytes": 12002,
   "recovered_data_bytes": 1986,
   "contested_bytes": 0,
-  "classified_bytes": 156895,
+  "classified_bytes": 156887,
   "independent_structural_bytes": 145346,
-  "classified_by_recovery_only_bytes": 11549,
-  "recovered_and_independently_classified_bytes": 2650,
-  "unknown_bytes": 367393,
+  "classified_by_recovery_only_bytes": 11541,
+  "recovered_and_independently_classified_bytes": 2447,
+  "unknown_bytes": 367401,
   "total_bytes": 524288
  },
  "coverage": {
-  "recovered_assembly_bytes": 14199,
-  "recovered_assembly_pct": 2.708,
-  "structurally_classified_bytes": 156895,
-  "structurally_classified_pct": 29.925,
-  "unknown_bytes": 367393,
-  "unknown_pct": 70.075
+  "recovered_assembly_bytes": 13988,
+  "recovered_assembly_pct": 2.668,
+  "structurally_classified_bytes": 156887,
+  "structurally_classified_pct": 29.924,
+  "unknown_bytes": 367401,
+  "unknown_pct": 70.076
  },
  "recovered_manifest": {
-  "regions": 115,
-  "bytes": 14199,
-  "code_bytes": 12213,
+  "regions": 113,
+  "bytes": 13988,
+  "code_bytes": 12002,
   "data_bytes": 1986,
   "source": "asm/recovered/regions.json"
  },
@@ -570,17 +570,17 @@
    "start": 458752,
    "end": 475136,
    "by_category": {
-    "CODE": 326,
-    "DATA": 5869,
+    "CODE": 286,
+    "DATA": 5901,
     "GRAPHICS": 0,
     "MUSIC": 0,
     "COMPRESSED": 0,
     "PADDING": 0,
-    "UNKNOWN": 10189
+    "UNKNOWN": 10197
    },
-   "classified_bytes": 6195,
-   "recovered_bytes": 294,
-   "unknown_bytes": 10189,
+   "classified_bytes": 6187,
+   "recovered_bytes": 83,
+   "unknown_bytes": 10197,
    "contested_bytes": 0
   },
   {
@@ -640,7 +640,7 @@
  ],
  "overlaps": {
   "stats": {
-   "compatible_nested_pairs": 386,
+   "compatible_nested_pairs": 385,
    "compatible_partial_overlap_pairs": 0,
    "contradictory_pairs": 0
   },
@@ -651,7 +651,7 @@
   "note": "ranges whose SHA-256 matches the ROM but whose cache states no code/data kind; not imported, listed as the cheapest next classifications",
   "count": 211,
   "union_bytes": 14310,
-  "union_bytes_still_unknown": 1545,
+  "union_bytes_still_unknown": 1553,
   "ranges": [
    {
     "start": 827,
@@ -2290,9 +2290,11 @@
     "name": "placement_scan",
     "source": "data/rom-cache/viewport-semantics.json",
     "bytes_by_class": {
-     "CODE": 326
+     "CODE": 286,
+     "DATA": 32,
+     "UNKNOWN": 8
     },
-    "status": "classified"
+    "status": "partial"
    },
    {
     "start": 458987,
@@ -2784,8 +2786,8 @@
   "reviews": 29,
   "claims": 33,
   "code_bytes": 1910,
-  "unresolved_clusters": 22,
-  "unresolved_unknown_bytes": 1545
+  "unresolved_clusters": 23,
+  "unresolved_unknown_bytes": 1553
  },
  "rejected_claims": [],
  "ignored_hashless_ranges": 12,
@@ -36714,27 +36716,6 @@
    "end": 458955,
    "primary": "CODE",
    "subtype": null,
-   "subsystem": null,
-   "logical_content": null,
-   "recovered": true,
-   "evidence": "byte_verified_assembly",
-   "basis": "recovery_manifest",
-   "sources": [
-    "asm/recovered/banked_entry_70000.asm"
-   ],
-   "names": [
-    "banked_entry_70000"
-   ],
-   "importers": [
-    "recovered_assembly"
-   ],
-   "id": 1616
-  },
-  {
-   "start": 458752,
-   "end": 458987,
-   "primary": "CODE",
-   "subtype": null,
    "subsystem": "object-type-$50",
    "logical_content": null,
    "recovered": false,
@@ -36745,6 +36726,27 @@
    ],
    "names": [
     "placement_creator_loop"
+   ],
+   "importers": [
+    "audit_manifests"
+   ],
+   "id": 1616
+  },
+  {
+   "start": 458955,
+   "end": 458987,
+   "primary": "DATA",
+   "subtype": null,
+   "subsystem": "object-type-$50",
+   "logical_content": null,
+   "recovered": false,
+   "evidence": "manifest_hash_verified",
+   "basis": "independent",
+   "sources": [
+    "data/rom-cache/thz3/object-50.json"
+   ],
+   "names": [
+    "placement_dispatch_table"
    ],
    "importers": [
     "audit_manifests"
@@ -36794,27 +36796,6 @@
    "id": 1619
   },
   {
-   "start": 459070,
-   "end": 459078,
-   "primary": "CODE",
-   "subtype": null,
-   "subsystem": null,
-   "logical_content": null,
-   "recovered": true,
-   "evidence": "byte_verified_assembly",
-   "basis": "recovery_manifest",
-   "sources": [
-    "asm/recovered/banked_dispatch_7013E.asm"
-   ],
-   "names": [
-    "banked_dispatch_7013E"
-   ],
-   "importers": [
-    "recovered_assembly"
-   ],
-   "id": 1620
-  },
-  {
    "start": 459078,
    "end": 460102,
    "primary": "DATA",
@@ -36833,7 +36814,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1621
+   "id": 1620
   },
   {
    "start": 460102,
@@ -36852,7 +36833,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1622
+   "id": 1621
   },
   {
    "start": 460104,
@@ -36871,7 +36852,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1623
+   "id": 1622
   },
   {
    "start": 460106,
@@ -36890,7 +36871,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1624
+   "id": 1623
   },
   {
    "start": 460108,
@@ -36909,7 +36890,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1625
+   "id": 1624
   },
   {
    "start": 460110,
@@ -36928,7 +36909,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1626
+   "id": 1625
   },
   {
    "start": 460112,
@@ -36947,7 +36928,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1627
+   "id": 1626
   },
   {
    "start": 460134,
@@ -36968,7 +36949,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1628
+   "id": 1627
   },
   {
    "start": 460136,
@@ -36989,7 +36970,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1629
+   "id": 1628
   },
   {
    "start": 460138,
@@ -37010,7 +36991,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1630
+   "id": 1629
   },
   {
    "start": 460140,
@@ -37031,7 +37012,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1631
+   "id": 1630
   },
   {
    "start": 460142,
@@ -37052,7 +37033,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1632
+   "id": 1631
   },
   {
    "start": 460144,
@@ -37073,7 +37054,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1633
+   "id": 1632
   },
   {
    "start": 460146,
@@ -37094,7 +37075,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1634
+   "id": 1633
   },
   {
    "start": 460148,
@@ -37115,7 +37096,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1635
+   "id": 1634
   },
   {
    "start": 460150,
@@ -37136,7 +37117,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1636
+   "id": 1635
   },
   {
    "start": 460152,
@@ -37157,7 +37138,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1637
+   "id": 1636
   },
   {
    "start": 460154,
@@ -37178,7 +37159,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1638
+   "id": 1637
   },
   {
    "start": 460156,
@@ -37199,7 +37180,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1639
+   "id": 1638
   },
   {
    "start": 460158,
@@ -37220,7 +37201,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1640
+   "id": 1639
   },
   {
    "start": 460160,
@@ -37241,7 +37222,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1641
+   "id": 1640
   },
   {
    "start": 460162,
@@ -37262,7 +37243,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1642
+   "id": 1641
   },
   {
    "start": 460164,
@@ -37283,7 +37264,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1643
+   "id": 1642
   },
   {
    "start": 460166,
@@ -37304,7 +37285,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1644
+   "id": 1643
   },
   {
    "start": 460168,
@@ -37325,7 +37306,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1645
+   "id": 1644
   },
   {
    "start": 460206,
@@ -37346,7 +37327,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1646
+   "id": 1645
   },
   {
    "start": 460684,
@@ -37367,7 +37348,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1647
+   "id": 1646
   },
   {
    "start": 461054,
@@ -37388,7 +37369,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1648
+   "id": 1647
   },
   {
    "start": 461145,
@@ -37409,7 +37390,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1649
+   "id": 1648
   },
   {
    "start": 461695,
@@ -37430,7 +37411,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1650
+   "id": 1649
   },
   {
    "start": 462254,
@@ -37451,7 +37432,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1651
+   "id": 1650
   },
   {
    "start": 462336,
@@ -37472,7 +37453,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1652
+   "id": 1651
   },
   {
    "start": 462688,
@@ -37493,7 +37474,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1653
+   "id": 1652
   },
   {
    "start": 462986,
@@ -37514,7 +37495,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1654
+   "id": 1653
   },
   {
    "start": 463032,
@@ -37535,7 +37516,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1655
+   "id": 1654
   },
   {
    "start": 463348,
@@ -37556,7 +37537,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1656
+   "id": 1655
   },
   {
    "start": 463736,
@@ -37577,7 +37558,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1657
+   "id": 1656
   },
   {
    "start": 463845,
@@ -37598,7 +37579,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1658
+   "id": 1657
   },
   {
    "start": 464161,
@@ -37619,7 +37600,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1659
+   "id": 1658
   },
   {
    "start": 464432,
@@ -37640,7 +37621,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1660
+   "id": 1659
   },
   {
    "start": 464469,
@@ -37661,7 +37642,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1661
+   "id": 1660
   },
   {
    "start": 464641,
@@ -37682,7 +37663,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1662
+   "id": 1661
   },
   {
    "start": 464957,
@@ -37703,7 +37684,7 @@
    "importers": [
     "level_structures"
    ],
-   "id": 1663
+   "id": 1662
   },
   {
    "start": 476102,
@@ -37724,7 +37705,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1664
+   "id": 1663
   },
   {
    "start": 491761,
@@ -37745,7 +37726,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1665
+   "id": 1664
   },
   {
    "start": 491761,
@@ -37766,7 +37747,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1666
+   "id": 1665
   },
   {
    "start": 491781,
@@ -37787,7 +37768,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1667
+   "id": 1666
   },
   {
    "start": 491853,
@@ -37808,7 +37789,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1668
+   "id": 1667
   },
   {
    "start": 491929,
@@ -37829,7 +37810,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1669
+   "id": 1668
   },
   {
    "start": 491942,
@@ -37850,7 +37831,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1670
+   "id": 1669
   },
   {
    "start": 491965,
@@ -37871,7 +37852,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1671
+   "id": 1670
   },
   {
    "start": 492050,
@@ -37892,7 +37873,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1672
+   "id": 1671
   },
   {
    "start": 492050,
@@ -37913,7 +37894,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1673
+   "id": 1672
   },
   {
    "start": 492122,
@@ -37934,7 +37915,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1674
+   "id": 1673
   },
   {
    "start": 492122,
@@ -37955,7 +37936,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1675
+   "id": 1674
   },
   {
    "start": 492467,
@@ -37976,7 +37957,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1676
+   "id": 1675
   },
   {
    "start": 492467,
@@ -37997,7 +37978,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1677
+   "id": 1676
   },
   {
    "start": 492479,
@@ -38018,7 +37999,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1678
+   "id": 1677
   },
   {
    "start": 492479,
@@ -38039,7 +38020,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1679
+   "id": 1678
   },
   {
    "start": 492919,
@@ -38060,7 +38041,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1680
+   "id": 1679
   },
   {
    "start": 492919,
@@ -38081,7 +38062,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1681
+   "id": 1680
   },
   {
    "start": 493895,
@@ -38102,7 +38083,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1682
+   "id": 1681
   },
   {
    "start": 493895,
@@ -38123,7 +38104,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1683
+   "id": 1682
   },
   {
    "start": 493966,
@@ -38144,7 +38125,7 @@
    "importers": [
     "manifest_copies"
    ],
-   "id": 1684
+   "id": 1683
   },
   {
    "start": 493966,
@@ -38165,7 +38146,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1685
+   "id": 1684
   },
   {
    "start": 494362,
@@ -38186,7 +38167,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1686
+   "id": 1685
   },
   {
    "start": 494427,
@@ -38207,7 +38188,7 @@
    "importers": [
     "recovered_assembly"
    ],
-   "id": 1687
+   "id": 1686
   },
   {
    "start": 497035,
@@ -38228,7 +38209,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1688
+   "id": 1687
   },
   {
    "start": 497484,
@@ -38249,7 +38230,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1689
+   "id": 1688
   },
   {
    "start": 497521,
@@ -38270,7 +38251,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1690
+   "id": 1689
   },
   {
    "start": 497569,
@@ -38291,7 +38272,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1691
+   "id": 1690
   },
   {
    "start": 497601,
@@ -38312,7 +38293,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1692
+   "id": 1691
   },
   {
    "start": 497672,
@@ -38333,7 +38314,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1693
+   "id": 1692
   },
   {
    "start": 497704,
@@ -38354,7 +38335,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1694
+   "id": 1693
   },
   {
    "start": 497755,
@@ -38375,7 +38356,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1695
+   "id": 1694
   },
   {
    "start": 497923,
@@ -38396,7 +38377,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1696
+   "id": 1695
   },
   {
    "start": 497969,
@@ -38417,7 +38398,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1697
+   "id": 1696
   },
   {
    "start": 498017,
@@ -38438,7 +38419,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1698
+   "id": 1697
   },
   {
    "start": 498057,
@@ -38459,7 +38440,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1699
+   "id": 1698
   },
   {
    "start": 498071,
@@ -38480,7 +38461,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1700
+   "id": 1699
   },
   {
    "start": 498094,
@@ -38501,7 +38482,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1701
+   "id": 1700
   },
   {
    "start": 498185,
@@ -38522,7 +38503,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1702
+   "id": 1701
   },
   {
    "start": 498206,
@@ -38543,7 +38524,7 @@
    "importers": [
     "audit_manifests"
    ],
-   "id": 1703
+   "id": 1702
   }
  ],
  "segments": [
@@ -75920,16 +75901,13 @@
    "subtype": null,
    "subsystem": "object-type-$50",
    "logical_content": null,
-   "recovery": "recovered",
+   "recovery": "not_recovered",
    "classification_basis": "independent",
-   "evidence": "byte_verified_assembly",
-   "regions": [
-    "banked_entry_70000"
-   ],
+   "evidence": "manifest_hash_verified",
+   "regions": [],
    "contested": false,
    "claims": [
-    1616,
-    1617
+    1616
    ]
   },
   {
@@ -75939,7 +75917,7 @@
    "bank": 28,
    "cpu_paged": 32971,
    "cpu_resident": null,
-   "primary": "CODE",
+   "primary": "DATA",
    "subtype": null,
    "subsystem": "object-type-$50",
    "logical_content": null,
@@ -76004,20 +75982,16 @@
    "bank": 28,
    "cpu_paged": 33086,
    "cpu_resident": null,
-   "primary": "CODE",
+   "primary": "UNKNOWN",
    "subtype": null,
    "subsystem": null,
    "logical_content": null,
-   "recovery": "recovered",
-   "classification_basis": "recovery_manifest_only",
-   "evidence": "byte_verified_assembly",
-   "regions": [
-    "banked_dispatch_7013E"
-   ],
+   "recovery": "not_recovered",
+   "classification_basis": "none",
+   "evidence": null,
+   "regions": [],
    "contested": false,
-   "claims": [
-    1620
-   ]
+   "claims": []
   },
   {
    "start": 459078,
@@ -76036,7 +76010,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1621
+    1620
    ]
   },
   {
@@ -76056,7 +76030,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1622
+    1621
    ]
   },
   {
@@ -76076,7 +76050,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1623
+    1622
    ]
   },
   {
@@ -76096,7 +76070,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1624
+    1623
    ]
   },
   {
@@ -76116,7 +76090,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1625
+    1624
    ]
   },
   {
@@ -76136,7 +76110,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1626
+    1625
    ]
   },
   {
@@ -76156,7 +76130,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1627
+    1626
    ]
   },
   {
@@ -76194,7 +76168,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1628
+    1627
    ]
   },
   {
@@ -76214,7 +76188,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1629
+    1628
    ]
   },
   {
@@ -76234,7 +76208,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1630
+    1629
    ]
   },
   {
@@ -76254,7 +76228,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1631
+    1630
    ]
   },
   {
@@ -76274,7 +76248,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1632
+    1631
    ]
   },
   {
@@ -76294,7 +76268,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1633
+    1632
    ]
   },
   {
@@ -76314,7 +76288,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1634
+    1633
    ]
   },
   {
@@ -76334,7 +76308,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1635
+    1634
    ]
   },
   {
@@ -76354,7 +76328,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1636
+    1635
    ]
   },
   {
@@ -76374,7 +76348,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1637
+    1636
    ]
   },
   {
@@ -76394,7 +76368,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1638
+    1637
    ]
   },
   {
@@ -76414,7 +76388,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1639
+    1638
    ]
   },
   {
@@ -76434,7 +76408,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1640
+    1639
    ]
   },
   {
@@ -76454,7 +76428,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1641
+    1640
    ]
   },
   {
@@ -76474,7 +76448,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1642
+    1641
    ]
   },
   {
@@ -76494,7 +76468,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1643
+    1642
    ]
   },
   {
@@ -76514,7 +76488,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1644
+    1643
    ]
   },
   {
@@ -76534,7 +76508,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1645
+    1644
    ]
   },
   {
@@ -76572,7 +76546,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1646
+    1645
    ]
   },
   {
@@ -76592,7 +76566,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1647
+    1646
    ]
   },
   {
@@ -76612,7 +76586,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1648
+    1647
    ]
   },
   {
@@ -76632,7 +76606,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1649
+    1648
    ]
   },
   {
@@ -76652,7 +76626,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1650
+    1649
    ]
   },
   {
@@ -76672,7 +76646,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1651
+    1650
    ]
   },
   {
@@ -76692,7 +76666,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1652
+    1651
    ]
   },
   {
@@ -76712,7 +76686,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1653
+    1652
    ]
   },
   {
@@ -76732,7 +76706,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1654
+    1653
    ]
   },
   {
@@ -76752,7 +76726,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1655
+    1654
    ]
   },
   {
@@ -76772,7 +76746,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1656
+    1655
    ]
   },
   {
@@ -76792,7 +76766,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1657
+    1656
    ]
   },
   {
@@ -76812,7 +76786,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1658
+    1657
    ]
   },
   {
@@ -76832,7 +76806,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1659
+    1658
    ]
   },
   {
@@ -76852,7 +76826,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1660
+    1659
    ]
   },
   {
@@ -76872,7 +76846,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1661
+    1660
    ]
   },
   {
@@ -76892,7 +76866,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1662
+    1661
    ]
   },
   {
@@ -76912,7 +76886,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1663
+    1662
    ]
   },
   {
@@ -76968,7 +76942,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1664
+    1663
    ]
   },
   {
@@ -77026,8 +77000,8 @@
    ],
    "contested": false,
    "claims": [
-    1665,
-    1666
+    1664,
+    1665
    ]
   },
   {
@@ -77047,7 +77021,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1667
+    1666
    ]
   },
   {
@@ -77067,7 +77041,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1668
+    1667
    ]
   },
   {
@@ -77105,7 +77079,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1669
+    1668
    ]
   },
   {
@@ -77125,7 +77099,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1670
+    1669
    ]
   },
   {
@@ -77145,7 +77119,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1671
+    1670
    ]
   },
   {
@@ -77167,8 +77141,8 @@
    ],
    "contested": false,
    "claims": [
-    1672,
-    1673
+    1671,
+    1672
    ]
   },
   {
@@ -77190,8 +77164,8 @@
    ],
    "contested": false,
    "claims": [
-    1674,
-    1675
+    1673,
+    1674
    ]
   },
   {
@@ -77213,8 +77187,8 @@
    ],
    "contested": false,
    "claims": [
-    1676,
-    1677
+    1675,
+    1676
    ]
   },
   {
@@ -77236,8 +77210,8 @@
    ],
    "contested": false,
    "claims": [
-    1678,
-    1679
+    1677,
+    1678
    ]
   },
   {
@@ -77277,8 +77251,8 @@
    ],
    "contested": false,
    "claims": [
-    1680,
-    1681
+    1679,
+    1680
    ]
   },
   {
@@ -77300,8 +77274,8 @@
    ],
    "contested": false,
    "claims": [
-    1682,
-    1683
+    1681,
+    1682
    ]
   },
   {
@@ -77323,8 +77297,8 @@
    ],
    "contested": false,
    "claims": [
-    1684,
-    1685
+    1683,
+    1684
    ]
   },
   {
@@ -77364,7 +77338,7 @@
    ],
    "contested": false,
    "claims": [
-    1686
+    1685
    ]
   },
   {
@@ -77386,7 +77360,7 @@
    ],
    "contested": false,
    "claims": [
-    1687
+    1686
    ]
   },
   {
@@ -77424,7 +77398,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1688
+    1687
    ]
   },
   {
@@ -77444,7 +77418,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1689
+    1688
    ]
   },
   {
@@ -77464,7 +77438,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1690
+    1689
    ]
   },
   {
@@ -77484,7 +77458,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1691
+    1690
    ]
   },
   {
@@ -77504,7 +77478,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1692
+    1691
    ]
   },
   {
@@ -77524,7 +77498,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1693
+    1692
    ]
   },
   {
@@ -77544,7 +77518,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1694
+    1693
    ]
   },
   {
@@ -77564,7 +77538,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1695
+    1694
    ]
   },
   {
@@ -77584,7 +77558,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1696
+    1695
    ]
   },
   {
@@ -77604,7 +77578,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1697
+    1696
    ]
   },
   {
@@ -77624,7 +77598,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1698
+    1697
    ]
   },
   {
@@ -77644,7 +77618,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1699
+    1698
    ]
   },
   {
@@ -77664,7 +77638,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1700
+    1699
    ]
   },
   {
@@ -77684,7 +77658,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1701
+    1700
    ]
   },
   {
@@ -77704,7 +77678,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1702
+    1701
    ]
   },
   {
@@ -77724,7 +77698,7 @@
    "regions": [],
    "contested": false,
    "claims": [
-    1703
+    1702
    ]
   },
   {

@@ -62,7 +62,7 @@ A claim is imported only when **both boundaries and the class** are supported:
 
 | `evidence` | Meaning | Examples |
 |---|---|---|
-| `byte_verified_assembly` | registered in `asm/recovered/regions.json`; `tools/build_verify.py` reassembles the ROM byte for byte | the 115 recovered regions (74 before DECOMP-1B) |
+| `byte_verified_assembly` | registered in `asm/recovered/regions.json`; `tools/build_verify.py` reassembles the ROM byte for byte | the 113 recovered regions (74 before DECOMP-1B) |
 | `decoder_verified` | an existing decoder/loader consumes exactly these bytes and the extent is recomputed from the ROM on every run | level layout RLE streams (end at the `count 0` terminator), tile streams (header + payload + command bytes; the payload end must equal the command start or the stream is rejected), object lists (to the `$FF` terminator) |
 | `reviewed_flow_verified` | a reviewed CODE claim (`data/rom-ledger/reviewed-ranges.json`): every claimed byte is fetched as an instruction by static recursive descent from entry points supported by byte-verified code or a recovered dispatch table (statically reachable CODE; not an execution trace); the generator re-runs the proof on every build and fails on a stale entry | 29 reviews, 1,910 bytes (16 reviews, 794 bytes in DECOMP-1A; 26 / 1,568 after DECOMP-1B); includes the player-script dispatch seeds of DECOMP-1C |
 | `structure_verified` | fixed-size record/table read by a loader, or a committed export the ROM bytes must reproduce | act headers (22 B), art-load entries (7 B), palette records (16 B), collision profile arrays (32 B), sound/state/twist pointer tables |
@@ -84,7 +84,7 @@ Deliberately **not** done:
   `unclassified_range_claims` (211 ranges, 14,310 bytes in union; DECOMP-1A
   classified 794 of their UNKNOWN bytes by control-flow evidence; DECOMP-1B
   recovered four callers (1,568 bytes) and DECOMP-1C added the player-script dispatch seeds and recovered stubs and
-  handlers (1,910 bytes remain reviewed claims, the rest became recovered assembly); 1,545 remain UNKNOWN). Each range carries its final `status` and `bytes_by_class`.
+  handlers (1,910 bytes remain reviewed claims, the rest became recovered assembly); 1,553 remain UNKNOWN). Each range carries its final `status` and `bytes_by_class`.
 * Zone index 6 is not imported: the act-header table aliases it onto zone 0
   (six real zones x three acts = 18 acts).
 
@@ -171,34 +171,34 @@ Importers (all in `tools/rom_ledger.py`):
    `data/rom-ledger/reviewed-ranges.json` with `tools/rom_flow.py`; the file is
    proposed by `tools/decomp1a_review.py` but never trusted.
 
-## Current result (after DECOMP-1D, DECOMP-1C, DECOMP-1B, DECOMP-1A and the EEZ carrier claims)
+## Current result (after DECOMP-1C, DECOMP-1B, DECOMP-1A and the EEZ carrier claims)
 
 | Category | Bytes | % of ROM |
 |---|---:|---:|
-| CODE | 18,064 | 3.445 |
-| DATA | 38,663 | 7.374 |
+| CODE | 18,024 | 3.438 |
+| DATA | 38,695 | 7.380 |
 | GRAPHICS | 192 | 0.037 |
 | MUSIC | 0 | 0.000 |
 | COMPRESSED | 99,976 | 19.069 |
 | PADDING | 0 | 0.000 |
-| UNKNOWN | 367,393 | 70.075 |
+| UNKNOWN | 367,401 | 70.076 |
 | **Total** | **524,288** | 100 |
 
 | Coverage metric | Bytes | % of ROM |
 |---|---:|---:|
-| Recovered into reproducible assembly | 14,199 | 2.708 |
-| Structurally classified (primary class known) | 156,895 | 29.925 |
+| Recovered into reproducible assembly | 13,988 | 2.668 |
+| Structurally classified (primary class known) | 156,887 | 29.924 |
 | &nbsp;&nbsp;independently evidenced | 145,346 | 27.723 |
-| &nbsp;&nbsp;classified only by the recovery manifest | 11,549 | 2.203 |
-| Recovered and independently evidenced | 2,650 | 0.505 |
-| UNKNOWN | 367,393 | 70.075 |
+| &nbsp;&nbsp;classified only by the recovery manifest | 11,541 | 2.201 |
+| Recovered and independently evidenced | 2,447 | 0.467 |
+| UNKNOWN | 367,401 | 70.076 |
 | of which contested | 0 | 0.000 |
 
-Recovered manifest, recalculated by the generator: 115 regions, 14,199 bytes (12,213 code, 1,986 data); the ledger counts 12,213 recovered CODE and 1,986 recovered DATA bytes. DECOMP-1A added no recovered assembly; DECOMP-1B added four code regions (314 bytes, see `docs/decomp-1b-engine-callers.md`); DECOMP-1C added 22 JP-stub runs and 13 handler routines (628 bytes, see `docs/decomp-1c-player-callbacks.md`); DECOMP-1D added two bank-`$1C` regions (211 bytes, see `docs/decomp-1d-banked-entry.md`).
+Recovered manifest, recalculated by the generator: 113 regions, 13,988 bytes (12,002 code, 1,986 data); the ledger counts 12,002 recovered CODE and 1,986 recovered DATA bytes. DECOMP-1A added no recovered assembly; DECOMP-1B added four code regions (314 bytes, see `docs/decomp-1b-engine-callers.md`); DECOMP-1C added 22 JP-stub runs and 13 handler routines (628 bytes, see `docs/decomp-1c-player-callbacks.md`).
 
-History: the DECOMP-0 ledger had CODE 14,681, UNKNOWN 370,808 (70.726 %), classified 153,480, independently evidenced 142,681 and 32 contested bytes. The EEZ carrier-contract correction added seven hash-verified CODE claims from `data/rom-cache/eez/carrier-17.json` (+628 bytes: classified 154,108, UNKNOWN 370,180, independent 143,404). DECOMP-1A then added 794 CODE bytes of reviewed control-flow evidence and 32 DATA bytes by correcting the `object-50` audit claim (+826), and removed the contested bytes. See `docs/decomp-1a-existing-evidence.md`. DECOMP-1B then recovered four unrecovered callers in the main loop (314 bytes of byte-verified assembly, 209 of them previously UNKNOWN) and, through them, classified 774 further CODE bytes by control-flow evidence (+983 classified, UNKNOWN 368,371). See `docs/decomp-1b-engine-callers.md`. DECOMP-1C parsed the player animation scripts, recovered the 55 JP stubs they and recovered code prove entered and 13 handler routines, and classified 970 previously UNKNOWN CODE bytes (162 stub bytes, 406 handler bytes, 402 callee bytes reached through the script-dispatch seeds; UNKNOWN 367,401). Note: bytes that move from a reviewed flow claim to recovered assembly leave the "independently evidenced" count and join "classified only by the recovery manifest"; that is how this ledger defines the two figures, not a loss of evidence. See `docs/decomp-1c-player-callbacks.md`. DECOMP-1D proved the bank of the `CALL $8000` in the gameplay frame update (bank `$1C`, file `$70000`), recovered the 203-byte entry routine and the 8-byte dispatch tail (the only newly classified bytes: UNKNOWN 367,393). See `docs/decomp-1d-banked-entry.md`.
+History: the DECOMP-0 ledger had CODE 14,681, UNKNOWN 370,808 (70.726 %), classified 153,480, independently evidenced 142,681 and 32 contested bytes. The EEZ carrier-contract correction added seven hash-verified CODE claims from `data/rom-cache/eez/carrier-17.json` (+628 bytes: classified 154,108, UNKNOWN 370,180, independent 143,404). DECOMP-1A then added 794 CODE bytes of reviewed control-flow evidence and 32 DATA bytes by correcting the `object-50` audit claim (+826), and removed the contested bytes. See `docs/decomp-1a-existing-evidence.md`. DECOMP-1B then recovered four unrecovered callers in the main loop (314 bytes of byte-verified assembly, 209 of them previously UNKNOWN) and, through them, classified 774 further CODE bytes by control-flow evidence (+983 classified, UNKNOWN 368,371). See `docs/decomp-1b-engine-callers.md`. DECOMP-1C parsed the player animation scripts, recovered the 55 JP stubs they and recovered code prove entered and 13 handler routines, and classified 970 previously UNKNOWN CODE bytes (162 stub bytes, 406 handler bytes, 402 callee bytes reached through the script-dispatch seeds; UNKNOWN 367,401). Note: bytes that move from a reviewed flow claim to recovered assembly leave the "independently evidenced" count and join "classified only by the recovery manifest"; that is how this ledger defines the two figures, not a loss of evidence. See `docs/decomp-1c-player-callbacks.md`. DECOMP-1D corrected the `object-50` audit at its source: the creator's 16-word dispatch table `$700CB-$700EA` (32 bytes) is DATA, not CODE (CODE -32, DATA +32, UNKNOWN unchanged, 0 contradictions). The bank-`$1C` entry proof is conditional on assumption R1 and classifies nothing; see `docs/decomp-1d-banked-entry.md`.
 
-The generator tallies 1704 claims, 1925 segments, 386 compatible nested overlaps, 0 partial overlaps and 0 contradictory pairs; 0 claims were rejected.
+The generator tallies 1702 claims, 1924 segments, 385 compatible nested overlaps, 0 partial overlaps and 0 contradictory pairs; 0 claims were rejected.
 
 ## 32-bank summary
 
@@ -232,7 +232,7 @@ The generator tallies 1704 claims, 1925 segments, 386 compatible nested overlaps
 | 25 | `64000-67FFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
 | 26 | `68000-6BFFF` | 0 | 0 | 0 | 5,596 | 10,788 | 0 | 34.2% |
 | 27 | `6C000-6FFFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
-| 28 | `70000-73FFF` | 326 | 5,869 | 0 | 0 | 10,189 | 294 | 37.8% |
+| 28 | `70000-73FFF` | 286 | 5,901 | 0 | 0 | 10,197 | 83 | 37.8% |
 | 29 | `74000-77FFF` | 124 | 0 | 0 | 0 | 16,260 | 0 | 0.8% |
 | 30 | `78000-7BFFF` | 2,686 | 733 | 0 | 0 | 12,965 | 2,000 | 20.9% |
 | 31 | `7C000-7FFFF` | 0 | 0 | 0 | 0 | 16,384 | 0 | 0.0% |
@@ -241,7 +241,7 @@ The generator tallies 1704 claims, 1925 segments, 386 compatible nested overlaps
 
 ## Significant proven regions
 
-* **Recovered assembly:** 115 regions, 14,199 bytes (12,213 code, 1,986 data),
+* **Recovered assembly:** 113 regions, 13,988 bytes (12,002 code, 1,986 data),
   banks 0, 1, 12, 15, 28, 30. Dense in bank 1 (engine: terrain, collision, object
   dispatch) and bank 0 (player movement, state setters).
 * **Level layouts:** 23 RLE streams, 52,911 bytes: 18 acts (banks 18, 20, 21,
@@ -274,7 +274,7 @@ contradiction detector is unchanged and still tested. See
 
 ## Unresolved areas
 
-* 367,393 bytes (70.1 %) remain UNKNOWN. Twelve banks have no claim at all:
+* 367,401 bytes (70.1 %) remain UNKNOWN. Twelve banks have no claim at all:
   3, 4, 5, 6, 7, 10, 11, 13, 19, 25, 27, 31.
 * `MUSIC`, `PADDING` and uncompressed `GRAPHICS` (beyond palettes) are 0 bytes
   by evidence standard, not by absence in the ROM.
@@ -288,7 +288,7 @@ contradiction detector is unchanged and still tested. See
 
 Ordered by evidence per effort.
 
-1. **Finish the kindless audit ranges** (1,545 bytes in 22 clusters still
+1. **Finish the kindless audit ranges** (1,553 bytes in 23 clusters still
    UNKNOWN; evidence needed per cluster is in `unresolved` of
    `reviewed-ranges.json` and `docs/decomp-1a-existing-evidence.md`).
 2. **Z80 PC traces of the unmodified game** (`tools/sms_frame_harness.py`) would
