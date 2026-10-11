@@ -1,7 +1,7 @@
 """SS-A5 visual package: approval boards for NEW Special Stage compositions only (needs Pillow).
 
 Pixels are written only to the ignored `build/ss-approval/`; the committed `data/rom-cache/special-stages/art-approval.json` records subjects, sources,
-hashes, deduplication verdicts and the approval state (PENDING until James reviews the boards).  Object compositions use the exact original mapping records
+hashes, deduplication verdicts and the approval state (APPROVED by James for all boards).  Object compositions use the exact original mapping records
 (`mghz_object_census.frame_record`, asserted against the original SAT model) over the VRAM that the original loader produced in the stage; monitor icons,
 results/HUD and effects are EMULATED ORIGINAL FRAME crops.  No redraw, no invented animation.
 """
@@ -57,7 +57,7 @@ def canvas(w, h, title):
 
 def build(r, acts):
     OUT.mkdir(parents=True, exist_ok=True)
-    manifest = dict(format=1, rom_sha256=R.SHA256, research_base=F.BASE, approval='PENDING James; nothing here is approved or inherited', boards=[], dedup=[])
+    manifest = dict(format=1, rom_sha256=R.SHA256, research_base=F.BASE, approval='APPROVED by James (all Special Stage visual boards reviewed and approved; approval applies to these new compositions only)', boards=[], dedup=[])
     # --- 1. maps (five) -------------------------------------------------------------------------------------------------------
     for n in range(1, 6):
         a = acts[f'ss{n}']

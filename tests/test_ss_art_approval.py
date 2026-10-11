@@ -8,7 +8,7 @@ CACHE = ROOT / 'data/rom-cache/special-stages/art-approval.json'
 class ArtApproval(unittest.TestCase):
     def test_index(self):
         d = json.loads(CACHE.read_text(encoding='utf-8'))
-        self.assertTrue(d['approval'].startswith('PENDING'))
+        self.assertTrue(d['approval'].startswith('APPROVED by James'))
         ids = [b['id'] for b in d['boards']]
         for want in ('map-ss1', 'map-ss2', 'map-ss3', 'map-ss4', 'map-ss5', 'terrain-outdoor', 'terrain-interior', 'objects-new', 'monitors-emulated', 'goal-ring-in-situ', 'results'):
             self.assertIn(want, ids)

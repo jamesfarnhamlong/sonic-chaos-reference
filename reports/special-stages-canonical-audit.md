@@ -42,7 +42,7 @@ Palettes: SS1/2/4 bg 38 / sp 18; SS3 bg 39 / sp 19; SS5 bg 39 / sp 20. Music `$8
 | Spring Shoes `$2F`, springs `$26`, terrain springs | shared | zone-sweep + traces |
 | Death/failure in stages | **stage-specific rule** (`$49A0`, `$2846`) | source-traced |
 | Goal ring `$31`, results card, tally, continue/emerald reward | **new** | SS-A4/A5 |
-| Terrain art (`$64000`, `$65590`), per-stage ring/object art `$D40` streams, results cards | **new art** | boards PENDING |
+| Terrain art (`$64000`, `$65590`), per-stage ring/object art `$D40` streams, results cards | **new art** | boards APPROVED |
 
 ## Tests (all pass on this branch)
 
@@ -52,17 +52,16 @@ Palettes: SS1/2/4 bg 38 / sp 18; SS3 bg 39 / sp 19; SS5 bg 39 / sp 20. Music `$8
 
 See `docs/special-stages-goal-ring-audit.md` section 6 and `data/rom-cache/special-stages/natural-completions.json`. Every stage has a verified idle-timeout failure and a pit-death failure route returning to the next act. Replay-verified input-only completions exist for **SS1 (2288 frames), SS3 (2090), SS4 (2057), SS5 (1426)**. **SS2 (Spring Shoes climb) is unresolved**: the shoes are reached by input and the relaunch is verified, but no complete climb was found (best-first reached Y 1277 of 142; a steering controller loses the shoes when Sonic leaves the owner `$2F` object's range). Not simulated.
 
-## Visual boards needing James's approval (PENDING)
+## Visual boards: APPROVED by James
 
 `build/ss-approval/` (ignored), index `data/rom-cache/special-stages/art-approval.json`: five maps (`map-ss1-part1..4`, `map-ss2`, `map-ss3`, `map-ss4-part1..2`, `map-ss5`), `terrain-outdoor`, `terrain-interior`, `objects-new` (goal ring, five colourways), `monitors-emulated` (parameters 4/5/6), `goal-ring-in-situ`, `results`. Pixel-identical `$2F/$26` art is deduplicated.
 
 ## Unresolved
 
 - Whether the act-index-3 aliasing should be reproduced in the POC (canonical) or adapted.
-- Names for sounds `$8A/$86/$B5/$F8/$8F`; purpose of seven invincibility monitors in SS3.
-- Input-only natural completion for SS2.
+- Names for sounds `$8A/$86/$B5/$F8/$8F` and the purpose of SS3's seven invincibility monitors: open notes, **non-blocking**.
+- SS2 replay-verified natural completion: **non-blocking route automation only**. The SS2 gameplay contract is closed (Spring Shoes pickup/relaunch, platform layout, goal ring, failure routes); only an input-script generator for the full climb is missing.
 - Sound/PSG and exact mid-line timing are not modelled by the harness; all traces are approximate-harness evidence.
-- Visual approval.
 
 ## Proposed POC rollout
 
@@ -73,3 +72,7 @@ See `docs/special-stages-goal-ring-audit.md` section 6 and `data/rom-cache/speci
 5. **SS-P5 presentation:** boards-approved art, results card, widescreen adapters (viewport constants: camera lead `$78` is CENTER-relative; everything else WORLD).
 
 AGENTS candidate updates: add the Special Stage zone 8..12 indexing and entry/exit contract, the act-index-3 quirk, the two stage-specific overrides, the `D2CC`/`D2C3` reward semantics, and that tubes reuse EEZ transport unchanged.
+
+## Closure
+
+James approved all Special Stage visual boards (`art-approval.json` approval state updated; board hashes unchanged). No canonical behavior or POC code changed in the closure pass. Ready for Manager fast-forward to Research `main`.
