@@ -1,0 +1,1246 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "natural": {
+    "fixture": "One entry placement/camera write; original player, scheduler, camera and boss thereafter; 99 rings; RIGHT input then optionally release after update650.",
+    "updates": 781,
+    "stationary_probe": false,
+    "probe_after": 650,
+    "probe_x": 2198,
+    "hold_right": false,
+    "camera": [
+      [
+        1951,
+        334
+      ]
+    ],
+    "late_player_x": [
+      2197
+    ],
+    "late_boss_x_range": [
+      2113,
+      2143
+    ],
+    "event_counts": {
+      "body_bottom_damage": 1,
+      "child_damage": 2,
+      "child_init": 1,
+      "death": 1,
+      "decision": 97,
+      "hurt": 2,
+      "left_patrol": 224,
+      "overlap_D520": 19,
+      "right_patrol": 66,
+      "select_jump": 1
+    },
+    "late_child_damage_count": 2,
+    "late_body_overlaps": 0,
+    "late_jump_count": 0,
+    "selected_events": [
+      {
+        "u": 331,
+        "event": "hurt",
+        "slot": 54528,
+        "type": 1,
+        "state": 5,
+        "req": 5,
+        "frame": 5,
+        "param": 0,
+        "player": [
+          2184,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2184,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 392,
+        "event": "select_jump",
+        "slot": 55040,
+        "type": 94,
+        "state": 6,
+        "req": 6,
+        "frame": 1,
+        "param": 0,
+        "player": [
+          2137,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2172,
+          494
+        ],
+        "floor": 2,
+        "hurt": 128,
+        "target": 11
+      },
+      {
+        "u": 781,
+        "event": "hurt",
+        "slot": 54528,
+        "type": 1,
+        "state": 1,
+        "req": 1,
+        "frame": 11,
+        "param": 0,
+        "player": [
+          2197,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2197,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 781,
+        "event": "death",
+        "slot": 54528,
+        "type": 1,
+        "state": 1,
+        "req": 1,
+        "frame": 11,
+        "param": 0,
+        "player": [
+          2197,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2197,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 330,
+        "event": "overlap_D520",
+        "slot": 55040,
+        "type": 94,
+        "state": 6,
+        "req": 6,
+        "frame": 1,
+        "param": 0,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2208,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 403,
+        "event": "overlap_D520",
+        "slot": 55040,
+        "type": 94,
+        "state": 11,
+        "req": 11,
+        "frame": 4,
+        "param": 0,
+        "player": [
+          2148,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2172,
+          494
+        ],
+        "floor": 2,
+        "hurt": 128,
+        "target": 11
+      },
+      {
+        "u": 404,
+        "event": "overlap_D520",
+        "slot": 55040,
+        "type": 94,
+        "state": 11,
+        "req": 11,
+        "frame": 4,
+        "param": 0,
+        "player": [
+          2149,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2172,
+          494
+        ],
+        "floor": 2,
+        "hurt": 128,
+        "target": 11
+      }
+    ],
+    "child_damage_examples": [
+      {
+        "u": 780,
+        "event": "child_damage",
+        "slot": 55104,
+        "type": 95,
+        "state": 2,
+        "req": 2,
+        "frame": 14,
+        "param": 1,
+        "player": [
+          2197,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2187,
+          474
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 781,
+        "event": "child_damage",
+        "slot": 55104,
+        "type": 95,
+        "state": 2,
+        "req": 2,
+        "frame": 14,
+        "param": 1,
+        "player": [
+          2197,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2190,
+          471
+        ],
+        "floor": 0,
+        "hurt": 1,
+        "target": 0
+      }
+    ],
+    "child_parameters": [
+      1
+    ],
+    "early_state_samples": [
+      {
+        "u": 330,
+        "x": 2184,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 9,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 7,
+            "frame": 1,
+            "dur": 16,
+            "f4": 2,
+            "x": 2208,
+            "y": 494,
+            "vx": -192,
+            "vy": 0,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 331,
+        "x": 2184,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 0,
+        "hurt": 193,
+        "pending_hurt": 0,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 7,
+            "req": 6,
+            "frame": 4,
+            "dur": 16,
+            "f4": 2,
+            "x": 2208,
+            "y": 494,
+            "vx": -192,
+            "vy": 0,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 392,
+        "x": 2137,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 128,
+        "pending_hurt": 0,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 13,
+            "frame": 1,
+            "dur": 12,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": -1024,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 393,
+        "x": 2137,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 128,
+        "pending_hurt": 0,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 13,
+            "req": 13,
+            "frame": 1,
+            "dur": 224,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": -1024,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 402,
+        "x": 2146,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 128,
+        "pending_hurt": 0,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 11,
+            "req": 11,
+            "frame": 4,
+            "dur": 10,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": -1024,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 486,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 13,
+            "req": 13,
+            "frame": 5,
+            "dur": 224,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54529,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 584,
+        "x": 2199,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 1,
+            "dur": 16,
+            "f4": 2,
+            "x": 2149,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54530,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 742,
+        "x": 2197,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 1,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 1,
+            "dur": 16,
+            "f4": 2,
+            "x": 2143,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54532,
+            "cy": 0
+          },
+          {
+            "slot": 8,
+            "type": 95,
+            "state": 2,
+            "req": 2,
+            "frame": 16,
+            "dur": 1,
+            "f4": 0,
+            "x": 2073,
+            "y": 402,
+            "vx": 768,
+            "vy": 768,
+            "p3f": 1,
+            "cell": 0,
+            "cx": 0,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 780,
+        "x": 2197,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 1,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 10,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 3,
+            "dur": 6,
+            "f4": 2,
+            "x": 2124,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54532,
+            "cy": 0
+          },
+          {
+            "slot": 8,
+            "type": 95,
+            "state": 2,
+            "req": 2,
+            "frame": 14,
+            "dur": 1,
+            "f4": 0,
+            "x": 2187,
+            "y": 474,
+            "vx": 768,
+            "vy": -768,
+            "p3f": 1,
+            "cell": 0,
+            "cx": 0,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 781,
+        "x": 2197,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 1,
+        "floor": 0,
+        "hurt": 1,
+        "pending_hurt": 10,
+        "rings": 0,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 3,
+            "dur": 5,
+            "f4": 2,
+            "x": 2124,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54532,
+            "cy": 0
+          },
+          {
+            "slot": 8,
+            "type": 95,
+            "state": 2,
+            "req": 2,
+            "frame": 14,
+            "dur": 1,
+            "f4": 0,
+            "x": 2190,
+            "y": 471,
+            "vx": 768,
+            "vy": -768,
+            "p3f": 1,
+            "cell": 0,
+            "cx": 0,
+            "cy": 0
+          }
+        ]
+      }
+    ]
+  },
+  "stationary": {
+    "fixture": "One entry placement/camera write; original player, scheduler, camera and boss thereafter; 99 rings; RIGHT input then optionally release after update650.",
+    "updates": 12000,
+    "stationary_probe": true,
+    "probe_after": 200,
+    "probe_x": 2198,
+    "hold_right": false,
+    "camera": [
+      [
+        1951,
+        334
+      ]
+    ],
+    "late_player_x": [
+      2198
+    ],
+    "late_boss_x_range": [
+      2107,
+      2143
+    ],
+    "event_counts": {
+      "child_damage": 258,
+      "child_init": 66,
+      "decision": 2039,
+      "left_patrol": 4149,
+      "overlap_D520": 320,
+      "right_patrol": 4046,
+      "select_jump": 1
+    },
+    "late_child_damage_count": 258,
+    "late_body_overlaps": 0,
+    "late_jump_count": 0,
+    "selected_events": [
+      {
+        "u": 392,
+        "event": "select_jump",
+        "slot": 55040,
+        "type": 94,
+        "state": 6,
+        "req": 6,
+        "frame": 1,
+        "param": 0,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2172,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 11
+      },
+      {
+        "u": 330,
+        "event": "overlap_D520",
+        "slot": 55040,
+        "type": 94,
+        "state": 6,
+        "req": 6,
+        "frame": 1,
+        "param": 0,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2208,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 331,
+        "event": "overlap_D520",
+        "slot": 55040,
+        "type": 94,
+        "state": 7,
+        "req": 7,
+        "frame": 4,
+        "param": 0,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2208,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 332,
+        "event": "overlap_D520",
+        "slot": 55040,
+        "type": 94,
+        "state": 6,
+        "req": 6,
+        "frame": 1,
+        "param": 0,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2208,
+          494
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      }
+    ],
+    "child_damage_examples": [
+      {
+        "u": 780,
+        "event": "child_damage",
+        "slot": 55104,
+        "type": 95,
+        "state": 2,
+        "req": 2,
+        "frame": 14,
+        "param": 1,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2187,
+          474
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 781,
+        "event": "child_damage",
+        "slot": 55104,
+        "type": 95,
+        "state": 2,
+        "req": 2,
+        "frame": 14,
+        "param": 1,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2190,
+          471
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      },
+      {
+        "u": 936,
+        "event": "child_damage",
+        "slot": 55168,
+        "type": 95,
+        "state": 2,
+        "req": 2,
+        "frame": 14,
+        "param": 1,
+        "player": [
+          2198,
+          494
+        ],
+        "camera": [
+          1951,
+          334
+        ],
+        "actor": [
+          2187,
+          480
+        ],
+        "floor": 2,
+        "hurt": 0,
+        "target": 0
+      }
+    ],
+    "child_parameters": [
+      1
+    ],
+    "early_state_samples": [
+      {
+        "u": 330,
+        "x": 2184,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 9,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 7,
+            "frame": 1,
+            "dur": 16,
+            "f4": 2,
+            "x": 2208,
+            "y": 494,
+            "vx": -192,
+            "vy": 0,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 331,
+        "x": 2184,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 9,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 7,
+            "req": 6,
+            "frame": 4,
+            "dur": 16,
+            "f4": 2,
+            "x": 2208,
+            "y": 494,
+            "vx": -192,
+            "vy": 0,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 392,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 13,
+            "frame": 1,
+            "dur": 12,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": -1024,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 393,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 13,
+            "req": 13,
+            "frame": 1,
+            "dur": 224,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": -1024,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 402,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 11,
+            "req": 11,
+            "frame": 4,
+            "dur": 10,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": -1024,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54528,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 486,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 13,
+            "req": 13,
+            "frame": 5,
+            "dur": 224,
+            "f4": 2,
+            "x": 2172,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54529,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 584,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 1,
+            "dur": 16,
+            "f4": 2,
+            "x": 2149,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54530,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 742,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 0,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 1,
+            "dur": 16,
+            "f4": 2,
+            "x": 2143,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54532,
+            "cy": 0
+          },
+          {
+            "slot": 8,
+            "type": 95,
+            "state": 2,
+            "req": 2,
+            "frame": 16,
+            "dur": 1,
+            "f4": 0,
+            "x": 2073,
+            "y": 402,
+            "vx": 768,
+            "vy": 768,
+            "p3f": 1,
+            "cell": 0,
+            "cx": 0,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 780,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 10,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 3,
+            "dur": 6,
+            "f4": 2,
+            "x": 2124,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54532,
+            "cy": 0
+          },
+          {
+            "slot": 8,
+            "type": 95,
+            "state": 2,
+            "req": 2,
+            "frame": 14,
+            "dur": 1,
+            "f4": 0,
+            "x": 2187,
+            "y": 474,
+            "vx": 768,
+            "vy": -768,
+            "p3f": 1,
+            "cell": 0,
+            "cx": 0,
+            "cy": 0
+          }
+        ]
+      },
+      {
+        "u": 781,
+        "x": 2198,
+        "y": 494,
+        "cx": 1951,
+        "cy": 334,
+        "state": 5,
+        "floor": 2,
+        "hurt": 0,
+        "pending_hurt": 10,
+        "rings": 99,
+        "objects": [
+          {
+            "slot": 7,
+            "type": 94,
+            "state": 6,
+            "req": 6,
+            "frame": 3,
+            "dur": 5,
+            "f4": 2,
+            "x": 2124,
+            "y": 494,
+            "vx": 0,
+            "vy": 1456,
+            "p3f": 0,
+            "cell": 0,
+            "cx": 54532,
+            "cy": 0
+          },
+          {
+            "slot": 8,
+            "type": 95,
+            "state": 2,
+            "req": 2,
+            "frame": 14,
+            "dur": 1,
+            "f4": 0,
+            "x": 2190,
+            "y": 471,
+            "vx": 768,
+            "vy": -768,
+            "p3f": 1,
+            "cell": 0,
+            "cx": 0,
+            "cy": 0
+          }
+        ]
+      }
+    ]
+  },
+  "boundaries": {
+    "checks": 2963,
+    "patrol_screen_upper_bound": 204,
+    "bound_method": "All cached screen X0..191 and walking frames1..4 passed through original B114; largest 191+13=204. This is a conservative phase-independent bound, not the observed repeating endpoint.",
+    "jump_at_2172": [
+      [
+        2172,
+        1,
+        true
+      ],
+      [
+        2172,
+        2,
+        true
+      ],
+      [
+        2172,
+        3,
+        false
+      ],
+      [
+        2172,
+        4,
+        false
+      ],
+      [
+        2172,
+        5,
+        true
+      ]
+    ],
+    "ordinary_player_body_reach": 24,
+    "observed_first_jump_gap": 26
+  }
+}
