@@ -401,7 +401,7 @@ def _preserves_a(d):
     return d.op in (OP.PUSH, OP.EXX, OP.JP, OP.JR, OP.DJNZ, OP.CP, OP.BIT) or         (d.op == OP.EX and not any(getattr(o[1], "name", "") in ("AF", "AF'") for o in d.operands))
 
 
-def state_walk(rom, roots, shadow, follow_restart=False, limit=400000):
+def state_walk(rom, roots, shadow, follow_restart=False, limit=400000, dispatch=None):
     """Mapper-state-aware static walk. A state is (CPU pc, slot-1 bank, slot-2 bank); banks are known only from
     ``LD A,n / LD (reg),A`` (A tracked through a whitelist of instructions that cannot change it) or a reload from the
     shadow. CALL/JP/JR/DJNZ targets are followed under the current banks and a CALL also falls through with the banks
@@ -409,8 +409,15 @@ def state_walk(rom, roots, shadow, follow_restart=False, limit=400000):
     not bounded by the code, and guessing a table extent over-approximates into unrelated code, so the walk is
     reported open at that site instead.
 
+    ``dispatch`` ({file offset of a ``JP (HL)``: {"targets": [CPU targets], "complete": bool}}) supplies independently
+    proven destination sets (see ``tools/decomp1d_r1_closure.py``): only the listed targets are followed, under the banks
+    in force at the site. A ``JP (HL)`` that is not listed, or whose spec is not ``complete``, stays an open edge
+    (``indirect_jump`` / ``partial_dispatch``), so ``open_edges`` is never empty while a destination is unaccounted for.
+
     Returns a dict of facts; ``open_edges`` is non-empty when the walk could not be closed."""
+    dispatch = dispatch or {}
     seen, visited, targets = set(), OrderedDict(), {}
+    cpu_at = {}
     stores, restart, indirect, tables = [], [], [], []
     open_edges, invalid, mapper_calls = [], [], []
     stack = list(roots)
@@ -425,7 +432,7 @@ def state_walk(rom, roots, shadow, follow_restart=False, limit=400000):
             steps += 1
             if steps > limit:
                 open_edges.append(("step_limit", cpu))
-                return _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid)
+                return _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid, cpu_at)
             f = _mapped(cpu, s1, s2)
             if f is None:
                 open_edges.append(("unmapped_pc", cpu, s1, s2))
@@ -435,6 +442,7 @@ def state_walk(rom, roots, shadow, follow_restart=False, limit=400000):
                 invalid.append((f, cpu))
                 break
             visited[f] = d.len
+            cpu_at.setdefault(f, set()).add(cpu)
             trace.append((cpu, f, d))
             a_in = a
             sa = abs_store_a(d)
@@ -454,7 +462,19 @@ def state_walk(rom, roots, shadow, follow_restart=False, limit=400000):
                 a = None
             if d.op in (OP.CALL, OP.JP, OP.JR, OP.DJNZ):
                 t = F._addr_operand(d)
-                if t is None:
+                if t is None and d.op == OP.JP and f in dispatch:
+                    # a computed jump with a proven destination set: follow exactly those targets, nothing adjacent
+                    spec = dispatch[f]
+                    for dt in spec["targets"]:
+                        tf = _mapped(dt, s1, s2)
+                        if tf is None:
+                            open_edges.append(("unmapped_target", f, dt))
+                        else:
+                            targets.setdefault(tf, []).append((f, "JP(HL)"))
+                            stack.append((dt, s1, s2))
+                    if not spec.get("complete", False):
+                        open_edges.append(("partial_dispatch", f))
+                elif t is None:
                     # a computed target: the index range is not bounded by the code, so the walk is left open here
                     indirect.append(f)
                     open_edges.append(("indirect_jump", f))
@@ -473,13 +493,13 @@ def state_walk(rom, roots, shadow, follow_restart=False, limit=400000):
             if F.is_terminal(d):
                 break
             cpu += d.len
-    return _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid)
+    return _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid, cpu_at)
 
 
-def _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid):
+def _walk_result(visited, targets, stores, restart, indirect, tables, open_edges, invalid, cpu_at=None):
     return OrderedDict([("visited", visited), ("targets", targets), ("stores", stores), ("restart", sorted(set(restart))),
                         ("indirect", sorted(set(indirect))), ("tables", tables), ("open_edges", open_edges),
-                        ("invalid", invalid)])
+                        ("invalid", invalid), ("cpu_at", cpu_at or {})])
 
 
 def interrupt_model(rom):
