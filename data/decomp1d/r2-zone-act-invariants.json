@@ -1,0 +1,2446 @@
+{
+ "format": 1,
+ "task": "DECOMP-1D-R2",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "generator": "tools/decomp1d_r2_zone_act.py",
+ "base_commit": "2dcaa09beabe90329deed83af27f2912d19a232f",
+ "evidence_tier": "static ROM-derived evidence; index arithmetic, writer value computations and guards are executed by a fail-closed concrete interpreter; not an execution trace and not an emulator run",
+ "premises": [
+  "P1 Standard Sega mapper semantics (R4 of DECOMP-1D). Slot 0 is bank 0: the only stores to the slot-0 mapper register $FFFD are in the boot sequence (listed in the census). Slot 2 is bank $1D for the nested dispatcher (R1's assumption for the routine at $8000); a record pointer into slot 1 or 2 is never interpreted (its bank is unverified).",
+  "P2 Player and level inputs (collisions, ring pickups, pressed buttons) are adversarial: every transition the ROM permits is treated as possible. A path is *grounded* when every step is permitted by the code alone and none rests on a dependency this task did not discharge.",
+  "P3 Register-addressed writers whose pointer is computed (not an immediate) and block moves with an unresolved destination are listed, never assumed benign; this is DECOMP-1D assumption R2 and it stays open.",
+  "P4 The discovered-code universe is the DECOMP-1D walk; byte-pattern hits outside it (object-callback code in banked ROM) are reported separately and are classified by the same value-source analysis where the encoding is unambiguous."
+ ],
+ "census": {
+  "absolute_store_sites": {
+   "zone": 9,
+   "act": 8,
+   "saved_zone": 1
+  },
+  "wide_or_index_register_store_hits": [],
+  "mirror_alias_store_hits": [],
+  "slot0_mapper_register_stores": {
+   "in_discovered_code": [
+    {
+     "file_offset": "$000D",
+     "value": 0
+    },
+    {
+     "file_offset": "$046B",
+     "value": 0
+    }
+   ],
+   "outside_discovered_code": [
+    "$4FE4C"
+   ],
+   "slot0_is_bank_0_in_code": true
+  },
+  "pointer_materialisations": {
+   "scanned_value_range": [
+    "$D290",
+    "$D298"
+   ],
+   "hits": 39,
+   "resolved": 35,
+   "undiscovered_code": [
+    "$303E4",
+    "$303EA",
+    "$3C0D",
+    "$794B7"
+   ],
+   "unresolved": [],
+   "resolved_hits_that_write_a_target": []
+  },
+  "block_moves": {
+   "sites": 45,
+   "resolved": 8,
+   "resolved_that_touch_a_target": [
+    "$0029",
+    "$0462"
+   ],
+   "unresolved_in_discovered_code": [
+    "$2262",
+    "$245A",
+    "$2465",
+    "$3B4A7",
+    "$53F8",
+    "$81FF",
+    "$8201",
+    "$8208",
+    "$820A",
+    "$820C",
+    "$820E",
+    "$8240",
+    "$8242",
+    "$8244",
+    "$8246",
+    "$8280",
+    "$8282",
+    "$8284",
+    "$83F3"
+   ],
+   "undiscovered_code": 18
+  },
+  "boot_and_restart_ram_clear": [
+   {
+    "file_offset": 41,
+    "clears": [
+     "$C002",
+     "$DFEF"
+    ],
+    "writes_value_zero": true
+   },
+   {
+    "file_offset": 1122,
+    "clears": [
+     "$C002",
+     "$DFEF"
+    ],
+    "writes_value_zero": true
+   }
+  ],
+  "unclassified_or_undiscovered_store_sites": [],
+  "all_readers": [
+   {
+    "byte": "zone",
+    "file_offset": 5524,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 5586,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 6036,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 6267,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 6304,
+    "assigned": "A: zone-music index ($18A0)"
+   },
+   {
+    "byte": "zone",
+    "file_offset": 10668,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 10798,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 10835,
+    "assigned": "B: loader zone ($2A53)"
+   },
+   {
+    "byte": "zone",
+    "file_offset": 11611,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 12623,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 12846,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 13947,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 18311,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 18848,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 19182,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 19270,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 20055,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 20444,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 22893,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 22917,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 27229,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 27321,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 28287,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 28392,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 28498,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 30949,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 31055,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 31230,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 196825,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 203620,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 207113,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 458752,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 475616,
+    "assigned": "C: nested dispatcher zone ($741E0)"
+   },
+   {
+    "byte": "zone",
+    "file_offset": 476120,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 493079,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 494717,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 497488,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 497527,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 497609,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 498340,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 503829,
+    "assigned": null
+   },
+   {
+    "byte": "zone",
+    "file_offset": 506451,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 5428,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 6311,
+    "assigned": "A: zone-music index ($18A7)"
+   },
+   {
+    "byte": "act",
+    "file_offset": 10675,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 10804,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 10849,
+    "assigned": "B: loader act ($2A61)"
+   },
+   {
+    "byte": "act",
+    "file_offset": 11605,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 12630,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 12940,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 18585,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 19276,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 20069,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 20458,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 30956,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 31062,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 196832,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 197597,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 203626,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 204217,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 458767,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 493085,
+    "assigned": null
+   },
+   {
+    "byte": "act",
+    "file_offset": 495364,
+    "assigned": null
+   }
+  ]
+ },
+ "writers": {
+  "zone": [
+   {
+    "file_offset": 1741,
+    "bank": 0,
+    "cpu": 1741,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "const",
+    "value": 7,
+    "evidence": [
+     "LD A,7",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 1999,
+    "bank": 0,
+    "cpu": 1999,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "XOR A",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 2081,
+    "bank": 0,
+    "cpu": 2081,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "computed",
+    "evidence": [
+     "LD A,(HL)",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 5590,
+    "bank": 0,
+    "cpu": 5590,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "increment",
+    "evidence": [
+     "LD A,(0xd297)",
+     "INC A",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 6256,
+    "bank": 0,
+    "cpu": 6256,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "copy",
+    "source": "$D296",
+    "evidence": [
+     "LD A,(0xd296)",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 6295,
+    "bank": 0,
+    "cpu": 6295,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "computed",
+    "evidence": [
+     "LD A,B",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 10791,
+    "bank": 0,
+    "cpu": 10791,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "OR A",
+     "RET nz",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 11240,
+    "bank": 0,
+    "cpu": 11240,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "XOR A",
+     "LD (0xd293),A",
+     "LD (0xd297),A"
+    ]
+   },
+   {
+    "file_offset": 11349,
+    "bank": 0,
+    "cpu": 11349,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd297),A",
+    "kind": "computed",
+    "evidence": [
+     "AND 15",
+     "LD (0xd297),A"
+    ]
+   }
+  ],
+  "act": [
+   {
+    "file_offset": 1745,
+    "bank": 0,
+    "cpu": 1745,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "XOR A",
+     "LD (0xd298),A"
+    ]
+   },
+   {
+    "file_offset": 2002,
+    "bank": 0,
+    "cpu": 2002,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "XOR A",
+     "LD (0xd297),A",
+     "LD (0xd298),A"
+    ]
+   },
+   {
+    "file_offset": 2086,
+    "bank": 0,
+    "cpu": 2086,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "computed",
+    "evidence": [
+     "LD A,(HL)",
+     "LD (0xd298),A"
+    ]
+   },
+   {
+    "file_offset": 5432,
+    "bank": 0,
+    "cpu": 5432,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "increment",
+    "evidence": [
+     "LD A,(0xd298)",
+     "INC A",
+     "LD (0xd298),A"
+    ]
+   },
+   {
+    "file_offset": 5583,
+    "bank": 0,
+    "cpu": 5583,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "XOR A",
+     "LD (0xd298),A"
+    ]
+   },
+   {
+    "file_offset": 10794,
+    "bank": 0,
+    "cpu": 10794,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "OR A",
+     "RET nz",
+     "LD (0xd297),A",
+     "LD (0xd298),A"
+    ]
+   },
+   {
+    "file_offset": 11243,
+    "bank": 0,
+    "cpu": 11243,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "XOR A",
+     "LD (0xd293),A",
+     "LD (0xd297),A",
+     "LD (0xd298),A"
+    ]
+   },
+   {
+    "file_offset": 11374,
+    "bank": 0,
+    "cpu": 11374,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd298),A",
+    "kind": "const",
+    "value": 0,
+    "evidence": [
+     "XOR A",
+     "LD (0xd298),A"
+    ]
+   }
+  ],
+  "saved_zone": [
+   {
+    "file_offset": 6270,
+    "bank": 0,
+    "cpu": 6270,
+    "form": "LD (nn),A",
+    "mirror_alias": false,
+    "asm": "LD (0xd296),A",
+    "kind": "copy",
+    "source": "$D297",
+    "evidence": [
+     "LD A,(0xd297)",
+     "LD (0xd296),A"
+    ]
+   }
+  ]
+ },
+ "value_domains": {
+  "zone": {
+   "title_literal": 7,
+   "zero_literal_writers": [
+    "$07CF",
+    "$2A27",
+    "$2BE8"
+   ],
+   "level_select_pairs": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "level_select_index_domain": [
+    0,
+    17
+   ],
+   "rotation_rows_zone_act_character": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     1,
+     0,
+     2
+    ],
+    [
+     2,
+     0,
+     1
+    ]
+   ],
+   "special_stage_zone_emerald_byte_counts": {
+    "8": 128,
+    "9": 64,
+    "10": 32,
+    "11": 16,
+    "12": 16
+   },
+   "saved_zone_restore": "copy of $D296, itself a copy of the zone taken at the special-stage save ($187B), reached only after the $178F guard (zone < 6)",
+   "zone_increment": "zone + 1 after the act reset; the branch on zone >= 6 selects the end path ($15E8)"
+  },
+  "act": {
+   "zero_literal_writers": [
+    "$06D1",
+    "$07D2",
+    "$15CF",
+    "$2A2A",
+    "$2BEB",
+    "$2C6E"
+   ],
+   "level_select_acts": [
+    0,
+    1,
+    2
+   ],
+   "increment_sites": [
+    "$1538"
+   ],
+   "increment_guard": "none: no branch between $14AE and $1538 (flow facts)"
+  }
+ },
+ "flow_facts": {
+  "state_dispatch_d293": {
+   "7": [
+    "c",
+    "$1365"
+   ],
+   "6": [
+    "nc",
+    "$138A"
+   ],
+   "5": [
+    "c",
+    "$14AE"
+   ],
+   "4": [
+    "c",
+    "$1543"
+   ],
+   "2": [
+    "c",
+    "$15F2"
+   ],
+   "1": [
+    "c",
+    "$1673"
+   ],
+   "0": [
+    "c",
+    "$1696"
+   ]
+  },
+  "special_dispatch_d294": {
+   "8": [
+    "c",
+    "$1762"
+   ]
+  },
+  "special_sub_dispatch_d294": {
+   "6": [
+    "c",
+    "$183F"
+   ],
+   "5": [
+    "c",
+    "$1815"
+   ],
+   "3": [
+    "c",
+    "$17B0"
+   ]
+  },
+  "special_sub_dispatch_d293": {
+   "5": [
+    "c",
+    "$14AE"
+   ],
+   "4": [
+    "c",
+    "$1543"
+   ],
+   "2": [
+    "c",
+    "$15F2"
+   ],
+   "0": [
+    "c",
+    "$1696"
+   ]
+  },
+  "d293_setters": [
+   {
+    "file_offset": 1245,
+    "op": "LD (HL),0x42",
+    "assigns": 66
+   },
+   {
+    "file_offset": 1786,
+    "op": "LD (nn),A",
+    "feeder": "LD A,0x40",
+    "assigns": 64
+   },
+   {
+    "file_offset": 1802,
+    "op": "LD (nn),A",
+    "feeder": "XOR A",
+    "assigns": 0
+   },
+   {
+    "file_offset": 1829,
+    "op": "LD (nn),A",
+    "feeder": "LD A,0x40",
+    "assigns": 64
+   },
+   {
+    "file_offset": 1904,
+    "op": "LD (nn),A",
+    "feeder": "XOR A",
+    "assigns": 0
+   },
+   {
+    "file_offset": 2923,
+    "op": "SET 6,(HL)",
+    "sets": [
+     6
+    ]
+   },
+   {
+    "file_offset": 3133,
+    "op": "RES 6,(HL)",
+    "clears": [
+     6
+    ]
+   },
+   {
+    "file_offset": 4991,
+    "op": "RES 7,(HL)",
+    "clears": [
+     7
+    ]
+   },
+   {
+    "file_offset": 4993,
+    "op": "RES 6,(HL)",
+    "clears": [
+     6
+    ]
+   },
+   {
+    "file_offset": 4995,
+    "op": "RES 4,(HL)",
+    "clears": [
+     4
+    ]
+   },
+   {
+    "file_offset": 5092,
+    "op": "RES 2,(HL)",
+    "clears": [
+     2
+    ]
+   },
+   {
+    "file_offset": 5094,
+    "op": "SET 1,(HL)",
+    "sets": [
+     1
+    ]
+   },
+   {
+    "file_offset": 5096,
+    "op": "SET 6,(HL)",
+    "sets": [
+     6
+    ]
+   },
+   {
+    "file_offset": 5155,
+    "op": "SET 6,(HL)",
+    "sets": [
+     6
+    ]
+   },
+   {
+    "file_offset": 5203,
+    "op": "RES 6,(HL)",
+    "clears": [
+     6
+    ]
+   },
+   {
+    "file_offset": 5426,
+    "op": "RES 5,(HL)",
+    "clears": [
+     5
+    ]
+   },
+   {
+    "file_offset": 5438,
+    "op": "SET 1,(HL)",
+    "sets": [
+     1
+    ]
+   },
+   {
+    "file_offset": 5601,
+    "op": "RES 4,(HL)",
+    "clears": [
+     4
+    ]
+   },
+   {
+    "file_offset": 5603,
+    "op": "SET 1,(HL)",
+    "sets": [
+     1
+    ]
+   },
+   {
+    "file_offset": 5611,
+    "op": "RES 4,(HL)",
+    "clears": [
+     4
+    ]
+   },
+   {
+    "file_offset": 5613,
+    "op": "SET 7,(HL)",
+    "sets": [
+     7
+    ]
+   },
+   {
+    "file_offset": 5732,
+    "op": "RES 2,(HL)",
+    "clears": [
+     2
+    ]
+   },
+   {
+    "file_offset": 5734,
+    "op": "SET 1,(HL)",
+    "sets": [
+     1
+    ]
+   },
+   {
+    "file_offset": 5742,
+    "op": "RES 6,(HL)",
+    "clears": [
+     6
+    ]
+   },
+   {
+    "file_offset": 5777,
+    "op": "RES 1,(HL)",
+    "clears": [
+     1
+    ]
+   },
+   {
+    "file_offset": 5808,
+    "op": "RES 0,(HL)",
+    "clears": [
+     0
+    ]
+   },
+   {
+    "file_offset": 5968,
+    "op": "SET 0,(HL)",
+    "sets": [
+     0
+    ]
+   },
+   {
+    "file_offset": 6262,
+    "op": "SET 5,(HL)",
+    "sets": [
+     5
+    ]
+   },
+   {
+    "file_offset": 11209,
+    "op": "LD (nn),A",
+    "feeder": "LD A,0x40",
+    "assigns": 64
+   },
+   {
+    "file_offset": 11237,
+    "op": "LD (nn),A",
+    "feeder": "XOR A",
+    "assigns": 0
+   },
+   {
+    "file_offset": 11312,
+    "op": "LD (nn),A",
+    "feeder": "LD (0xd292),A",
+    "assigns": 0
+   },
+   {
+    "file_offset": 11432,
+    "op": "SET 1,(HL)",
+    "sets": [
+     1
+    ]
+   },
+   {
+    "file_offset": 11457,
+    "op": "RES 1,(HL)",
+    "clears": [
+     1
+    ]
+   },
+   {
+    "file_offset": 12466,
+    "op": "LD (nn),A",
+    "feeder": "LD A,0x40",
+    "assigns": 64
+   },
+   {
+    "file_offset": 13645,
+    "op": "LD (nn),A",
+    "feeder": "XOR A",
+    "assigns": 0
+   },
+   {
+    "file_offset": 15376,
+    "op": "SET 2,(HL)",
+    "sets": [
+     2
+    ]
+   },
+   {
+    "file_offset": 18858,
+    "op": "SET 2,(HL)",
+    "sets": [
+     2
+    ]
+   },
+   {
+    "file_offset": 197607,
+    "op": "SET 5,(HL)",
+    "sets": [
+     5
+    ]
+   },
+   {
+    "file_offset": 197613,
+    "op": "SET 4,(HL)",
+    "sets": [
+     4
+    ]
+   },
+   {
+    "file_offset": 506666,
+    "op": "LD (nn),A",
+    "feeder": "LD A,0x50",
+    "assigns": 80
+   },
+   {
+    "file_offset": 506734,
+    "op": "LD (nn),A",
+    "feeder": "LD A,0x50",
+    "assigns": 80
+   }
+  ],
+  "d294_setters": [
+   {
+    "file_offset": 6055,
+    "op": "LD (nn),A",
+    "feeder": "LD A,0x88",
+    "assigns": 136
+   },
+   {
+    "file_offset": 6160,
+    "op": "RES 3,(HL)",
+    "clears": [
+     3
+    ]
+   },
+   {
+    "file_offset": 6250,
+    "op": "LD (nn),A",
+    "feeder": "XOR A",
+    "assigns": 0
+   },
+   {
+    "file_offset": 10313,
+    "op": "SET 5,(HL)",
+    "sets": [
+     5
+    ]
+   },
+   {
+    "file_offset": 18880,
+    "op": "SET 5,(HL)",
+    "sets": [
+     5
+    ]
+   },
+   {
+    "file_offset": 496826,
+    "op": "SET 6,(HL)",
+    "sets": [
+     6
+    ]
+   }
+  ],
+  "d293_bit5_setters": [
+   "$1876",
+   "$303E7"
+  ],
+  "d293_bit4_setters": [
+   "$303ED",
+   "$7BB2A",
+   "$7BB6E"
+  ],
+  "d294_bit3_setters": [
+   "$17A7"
+  ],
+  "callers_special_stage_entry_178F": [
+   {
+    "file_offset": 12615,
+    "kind": "CALL",
+    "in_discovered_code": false
+   },
+   {
+    "file_offset": 19159,
+    "kind": "JP",
+    "in_discovered_code": true
+   }
+  ],
+  "callers_special_stage_save_187B": [
+   {
+    "file_offset": 6111,
+    "kind": "CALL",
+    "in_discovered_code": true
+   }
+  ],
+  "callers_music_189B": [
+   {
+    "file_offset": 1082,
+    "kind": "JP",
+    "in_discovered_code": false
+   },
+   {
+    "file_offset": 1775,
+    "kind": "CALL",
+    "in_discovered_code": true
+   },
+   {
+    "file_offset": 5765,
+    "kind": "CALL",
+    "in_discovered_code": true
+   },
+   {
+    "file_offset": 6135,
+    "kind": "CALL",
+    "in_discovered_code": true
+   },
+   {
+    "file_offset": 10323,
+    "kind": "JP cc",
+    "in_discovered_code": true
+   },
+   {
+    "file_offset": 11440,
+    "kind": "CALL",
+    "in_discovered_code": true
+   },
+   {
+    "file_offset": 15035,
+    "kind": "CALL",
+    "in_discovered_code": false
+   },
+   {
+    "file_offset": 18695,
+    "kind": "CALL",
+    "in_discovered_code": false
+   },
+   {
+    "file_offset": 19100,
+    "kind": "CALL",
+    "in_discovered_code": true
+   },
+   {
+    "file_offset": 28240,
+    "kind": "CALL",
+    "in_discovered_code": false
+   }
+  ],
+  "callers_loader_2A4F": [
+   {
+    "file_offset": 1767,
+    "kind": "CALL",
+    "in_discovered_code": true
+   },
+   {
+    "file_offset": 10571,
+    "kind": "CALL",
+    "in_discovered_code": true
+   }
+  ],
+  "ring_paths_to_special_stage": {
+   "single_ring_3138_to_call": {
+    "range": [
+     "$3138",
+     "$3147"
+    ],
+    "reads_act": false,
+    "reads_zone": false
+   },
+   "ten_ring_4AC0_to_jump": {
+    "range": [
+     "$4AC0",
+     "$4AD7"
+    ],
+    "reads_act": false,
+    "reads_zone": false
+   }
+  },
+  "act_increment_chain_14AE_to_1538": {
+   "branches_between": [],
+   "calls": [
+    "CALL 0x062d",
+    "CALL 0x18e1",
+    "CALL 0x1caf",
+    "CALL 0x1ceb",
+    "CALL 0x21da",
+    "CALL 0x297e",
+    "CALL 0x32f9",
+    "CALL 0x342a",
+    "CALL 0x4fce"
+   ]
+  }
+ },
+ "slot_lifetime": {
+  "clear_slot_types_call_sites_$1CEB": [
+   "$14B6",
+   "$154B",
+   "$157D",
+   "$1642",
+   "$17C1",
+   "$2CD8",
+   "$30CE"
+  ],
+  "slot_type_clear_routine": "$1CEB zeroes $D452/$D45A/$D462/$D46A and $D39B, nothing else",
+  "object_ram_wipe": "$297E zeroes $D300-$DBBF (LDIR $D301.., 2239 bytes)",
+  "calls_on_transition_paths": {
+   "zone_complete_$1543_to_$15D6": [
+    "CALL 0x062d",
+    "CALL 0x18e1",
+    "CALL 0x1caf",
+    "CALL 0x1ceb",
+    "CALL 0x21da",
+    "CALL 0x297e",
+    "CALL 0x32f9",
+    "CALL 0x342a",
+    "CALL 0x4fce"
+   ],
+   "act_complete_$14AE_to_$1538": [
+    "CALL 0x062d",
+    "CALL 0x18e1",
+    "CALL 0x1caf",
+    "CALL 0x1ceb",
+    "CALL 0x21da",
+    "CALL 0x297e",
+    "CALL 0x32f9",
+    "CALL 0x342a",
+    "CALL 0x4fce"
+   ],
+   "special_stage_start_$17B0_to_$17E5": [
+    "CALL 0x062d",
+    "CALL 0x187b",
+    "CALL 0x1ceb",
+    "CALL 0x2934",
+    "CALL 0x4fce"
+   ]
+  }
+ },
+ "intermediate_states": {
+  "adjacent_zone_act_store_pairs": [
+   {
+    "first": "zone",
+    "first_offset": "$06CD",
+    "second_offset": "$06D1",
+    "between": [
+     "XOR A"
+    ],
+    "call_or_ei_between": false
+   },
+   {
+    "first": "zone",
+    "first_offset": "$07CF",
+    "second_offset": "$07D2",
+    "between": [],
+    "call_or_ei_between": false
+   },
+   {
+    "first": "zone",
+    "first_offset": "$0821",
+    "second_offset": "$0826",
+    "between": [
+     "INC HL",
+     "LD A,(HL)"
+    ],
+    "call_or_ei_between": false
+   },
+   {
+    "first": "act",
+    "first_offset": "$15CF",
+    "second_offset": "$15D6",
+    "between": [
+     "LD A,(0xd297)",
+     "INC A"
+    ],
+    "call_or_ei_between": false
+   },
+   {
+    "first": "zone",
+    "first_offset": "$2A27",
+    "second_offset": "$2A2A",
+    "between": [],
+    "call_or_ei_between": false
+   },
+   {
+    "first": "zone",
+    "first_offset": "$2BE8",
+    "second_offset": "$2BEB",
+    "between": [],
+    "call_or_ei_between": false
+   },
+   {
+    "first": "zone",
+    "first_offset": "$2C55",
+    "second_offset": "$2C6E",
+    "between": [
+     "LD A,(HL)",
+     "AND 0x80",
+     "RLCA",
+     "INC A",
+     "LD (0xd2c8),A",
+     "INC HL",
+     "LD A,(HL)",
+     "LD (0xd2e4),A",
+     "INC HL",
+     "LD E,(HL)",
+     "INC HL",
+     "LD D,(HL)",
+     "LD (0xd2e5),DE",
+     "XOR A"
+    ],
+    "call_or_ei_between": false
+   }
+  ],
+  "interrupt_view": {
+   "closure_instructions": 3584,
+   "closure_open_edges": [
+    [
+     "partial_dispatch",
+     33079
+    ],
+    [
+     "partial_dispatch",
+     475175
+    ],
+    [
+     "partial_dispatch",
+     475633
+    ]
+   ],
+   "writer_sites_inside_closure": [],
+   "select_index_writers_inside_closure": [],
+   "readers_inside_closure": {
+    "zone": [
+     "$18A0",
+     "$741E0",
+     "$743D8"
+    ],
+    "act": [
+     "$18A7"
+    ]
+   },
+   "music_callers_inside_closure": [
+    "$2853"
+   ],
+   "loader_callers_inside_closure": [],
+   "consumer_entries_inside_closure": {
+    "music_189B": true,
+    "loader_2A4F": false,
+    "nested_741E0": true
+   }
+  },
+  "select_loop_view": {
+   "closure_instructions": 148,
+   "open_edges": 0,
+   "select_index_writers": [
+    "$080F",
+    "$08A8",
+    "$08B3",
+    "$0B7D",
+    "$0BD0"
+   ],
+   "writers_reachable_from_select_loop": [
+    "$08A8",
+    "$08B3"
+   ]
+  },
+  "rule": "an interrupt can run the music routine and the nested dispatcher (inside the IM 1 closure), so the transient pairs between two adjacent stores are consumer inputs for A and C; the loader runs on the main thread only"
+ },
+ "transition_model": {
+  "act_cap": 40,
+  "event_classes": {
+   "act_complete": "normal",
+   "level_select": "hidden_menu",
+   "rotation_demo": "attract_demo",
+   "special_stage_enter": "normal",
+   "special_stage_return": "normal",
+   "title_reset": "normal",
+   "zero_restart": "normal",
+   "zone_complete": "normal",
+   "zone_complete_in_special_stage": "normal"
+  },
+  "level_end_flag_by_act": {
+   "act_0_1": "$0020",
+   "act_2_to_255": "$0010"
+  },
+  "special_stage_entry_guard": {
+   "reads": [
+    "$D297",
+    "$D2C8",
+    "$D2CC"
+   ],
+   "reads_act": false,
+   "armed_only_when_character_1_zone_lt_6_emeralds_not_full": true,
+   "armed_for_all_sampled_such_inputs": true
+  },
+  "special_stage_return": {
+   "0": [
+    0,
+    true,
+    0,
+    96
+   ],
+   "3": [
+    3,
+    true,
+    0,
+    96
+   ],
+   "5": [
+    5,
+    true,
+    0,
+    96
+   ]
+  },
+  "zone_complete": {
+   "0": [
+    1,
+    0,
+    "$15DE"
+   ],
+   "4": [
+    5,
+    0,
+    "$15DE"
+   ],
+   "5": [
+    6,
+    0,
+    "$15E8"
+   ],
+   "6": [
+    7,
+    0,
+    "$15E8"
+   ],
+   "12": [
+    13,
+    0,
+    "$15E8"
+   ]
+  },
+  "states": {
+   "any": 1483,
+   "grounded": 115,
+   "normal": 115
+  },
+  "summary_any_path": {
+   "end": {
+    "zones": [
+     6,
+     9,
+     10,
+     11,
+     12,
+     13
+    ],
+    "acts": [
+     0,
+     0
+    ]
+   },
+   "play": {
+    "zones": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "acts": [
+     0,
+     40
+    ]
+   },
+   "ss": {
+    "zones": [
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "acts": [
+     0,
+     40
+    ]
+   },
+   "title": {
+    "zones": [
+     7
+    ],
+    "acts": [
+     0,
+     0
+    ]
+   }
+  },
+  "summary_grounded": {
+   "play": {
+    "zones": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "acts": [
+     0,
+     9
+    ]
+   },
+   "ss": {
+    "zones": [
+     8
+    ],
+    "acts": [
+     0,
+     8
+    ]
+   },
+   "title": {
+    "zones": [
+     7
+    ],
+    "acts": [
+     0,
+     0
+    ]
+   }
+  },
+  "summary_grounded_normal_play": {
+   "play": {
+    "zones": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "acts": [
+     0,
+     9
+    ]
+   },
+   "ss": {
+    "zones": [
+     8
+    ],
+    "acts": [
+     0,
+     8
+    ]
+   },
+   "title": {
+    "zones": [
+     7
+    ],
+    "acts": [
+     0,
+     0
+    ]
+   }
+  },
+  "states_cut_at_act_cap": {
+   "any": 6,
+   "grounded": 0,
+   "normal": 0
+  },
+  "grounded_rule": "an edge is grounded when every record it loads is one of the nine records of the proposed domain and a special stage is the one entered with no emerald bit set (the others need object-supplied masks)",
+  "act_growth_mechanism": {
+   "increment_unguarded": true,
+   "special_stage_entry_unguarded_by_act": true,
+   "explanation": "a 100-ring pickup arms the special stage whatever the act; its return raises D293 bit 5 and the act-complete path increments the act ($1538) with no bound"
+  }
+ },
+ "unresolved_dependencies": [
+  {
+   "id": "U1",
+   "title": "zone-complete trigger inside a special stage",
+   "text": "D293 bit 4 is raised by $303ED (guarded only by act >= 2) and by the $50 stores at $7BB2A/$7BB6E, all in object-callback code outside the discovered universe. The special-stage dispatcher ($176F) honours bit 4, so a zone-complete while the zone is 8..12 would run the zone increment on a special-stage zone. Not excluded; modelled as an ungrounded edge."
+  },
+  {
+   "id": "U2",
+   "title": "emerald masks are object-supplied",
+   "text": "$D2CC is written at $794A7 (OR with the object byte IX+$3F) and $7BB69 (OR $20). The masks are not derived here, so a special-stage zone above 8 (which needs emerald bits 0..3 set) is not grounded."
+  },
+  {
+   "id": "U3",
+   "title": "special stages loaded from a garbage record pointer",
+   "text": "For a special-stage zone (8..12) the loader's act-table walk leaves the nine records at act 9 (zones 8, 9, 11) or act 6 (zones 10, 12); the record pointer is then record data, read through an unverified bank. Whether such a stage can be left is not known."
+  },
+  {
+   "id": "U4",
+   "title": "allocator / kernel-vector route to a type-5 slot",
+   "text": "Inherited from DECOMP-1D-R1 (ALLOCATOR lemma): only the direct callers of $1CD3 are enumerated; the kernel vector $0374 can be entered through callback stubs with an unknown C."
+  },
+  {
+   "id": "U5",
+   "title": "register-addressed block moves",
+   "text": "Block moves whose destination is not an immediate (listed in the census) could, in principle, cover the zone/act bytes."
+  },
+  {
+   "id": "U6",
+   "title": "D2C8 and reaching 100 rings are player-supplied",
+   "text": "Treated as adversarial inputs (premise P2); the code permits both."
+  }
+ ],
+ "propositions": {
+  "A": {
+   "title": "zone-music table read at $18A0",
+   "status": "PARTIAL",
+   "consumer": {
+    "entry": "$18A0",
+    "physical_offset": 6304,
+    "bank": 0,
+    "slot": 0,
+    "read": "$18B2",
+    "table_base": "$18BA",
+    "table_entries": 39,
+    "table_end_rule": "the first CALL/JP target above the base ($18E1) is code"
+   },
+   "index_expression": "L = (3*zone + act) mod 256, H = 0, address = $18BA + L; executed from $18A0 for every pair",
+   "eight_bit_wrap": {
+    "wrapping_pairs_counted": 54485,
+    "example": [
+     1,
+     253,
+     0
+    ]
+   },
+   "valid_act_ranges_by_zone": {
+    "0": [
+     [
+      0,
+      38
+     ]
+    ],
+    "1": [
+     [
+      0,
+      35
+     ],
+     [
+      253,
+      255
+     ]
+    ],
+    "2": [
+     [
+      0,
+      32
+     ],
+     [
+      250,
+      255
+     ]
+    ],
+    "3": [
+     [
+      0,
+      29
+     ],
+     [
+      247,
+      255
+     ]
+    ],
+    "4": [
+     [
+      0,
+      26
+     ],
+     [
+      244,
+      255
+     ]
+    ],
+    "5": [
+     [
+      0,
+      23
+     ],
+     [
+      241,
+      255
+     ]
+    ],
+    "6": [
+     [
+      0,
+      20
+     ],
+     [
+      238,
+      255
+     ]
+    ],
+    "7": [
+     [
+      0,
+      17
+     ],
+     [
+      235,
+      255
+     ]
+    ],
+    "8": [
+     [
+      0,
+      14
+     ],
+     [
+      232,
+      255
+     ]
+    ],
+    "9": [
+     [
+      0,
+      11
+     ],
+     [
+      229,
+      255
+     ]
+    ],
+    "10": [
+     [
+      0,
+      8
+     ],
+     [
+      226,
+      255
+     ]
+    ],
+    "11": [
+     [
+      0,
+      5
+     ],
+     [
+      223,
+      255
+     ]
+    ],
+    "12": [
+     [
+      0,
+      2
+     ],
+     [
+      220,
+      255
+     ]
+    ],
+    "13": [
+     [
+      217,
+      255
+     ]
+    ]
+   },
+   "max_zone_valid_for_acts_0_to_2": 12,
+   "states_checked": 1483,
+   "state_violations_any_path": 1018,
+   "state_violations_grounded": 0,
+   "intermediate_pairs_checked": 247,
+   "intermediate_violations_any_path": 52,
+   "intermediate_violations_grounded": 0,
+   "smallest_violation_any_path": {
+    "state": [
+     13,
+     0,
+     "end",
+     0
+    ],
+    "index": 39,
+    "path_class": "any",
+    "path": [
+     {
+      "state": [
+       0,
+       0,
+       "play",
+       0
+      ],
+      "via": "initial",
+      "intermediate": []
+     },
+     {
+      "state": [
+       12,
+       0,
+       "ss",
+       0
+      ],
+      "via": "special_stage_enter",
+      "intermediate": []
+     },
+     {
+      "state": [
+       13,
+       0,
+       "end",
+       0
+      ],
+      "via": "zone_complete_in_special_stage",
+      "intermediate": [
+       [
+        12,
+        0
+       ]
+      ]
+     }
+    ]
+   },
+   "violations_in_forbidden_request_range": 203,
+   "first_forbidden_witness": {
+    "state": [
+     12,
+     14,
+     "ss",
+     0
+    ],
+    "index": 50,
+    "table_address": "$18EC",
+    "byte": 201,
+    "in_forbidden_range": true,
+    "grounded": false,
+    "kind": "state"
+   },
+   "smallest_forbidden_act_by_special_stage_zone": {
+    "8": 26,
+    "9": 23,
+    "10": 20,
+    "11": 17,
+    "12": 14
+   },
+   "writers": "all 18 absolute stores to the three bytes are classified (see writers); the act is unbounded through $1538",
+   "first_violating_act_by_special_stage_zone": {
+    "8": 15,
+    "9": 12,
+    "10": 9,
+    "11": 6,
+    "12": 3
+   }
+  },
+  "B": {
+   "title": "level loader record selection at $2A4F",
+   "status": "DISPROVEN",
+   "proposed_bounds": {
+    "zone_max": 15,
+    "act_max": 2
+   },
+   "consumer": {
+    "entry": "$2A4F",
+    "physical_offset": 10831,
+    "bank": 0,
+    "slot": 0,
+    "zone_table": "$2A9A",
+    "index_expression": "record = word[word[$2A9A + 2*zone (8-bit)] + 2*act (8-bit)]; record fields +6..+9 are the four initial slot types ($D452/$D45A/$D462/$D46A)"
+   },
+   "records_selected_by_proposed_domain": [
+    "$2AF6",
+    "$2B00",
+    "$2B0A",
+    "$2B14",
+    "$2B1E",
+    "$2B28",
+    "$2B32",
+    "$2B3C",
+    "$2B46"
+   ],
+   "slot_types_by_record": {
+    "$2AF6": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "$2B00": [
+     4,
+     0,
+     0,
+     0
+    ],
+    "$2B0A": [
+     5,
+     0,
+     0,
+     0
+    ],
+    "$2B14": [
+     2,
+     3,
+     14,
+     0
+    ],
+    "$2B1E": [
+     5,
+     0,
+     0,
+     11
+    ],
+    "$2B28": [
+     5,
+     6,
+     8,
+     13
+    ],
+    "$2B32": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "$2B3C": [
+     12,
+     0,
+     0,
+     0
+    ],
+    "$2B46": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "sufficiency": "zone <= 15 and act <= 2 select only these nine records (all 48 combinations executed)",
+   "safe_act_bound_by_zone": {
+    "0": 29,
+    "1": 26,
+    "2": 23,
+    "3": 20,
+    "4": 17,
+    "5": 14,
+    "6": 29,
+    "7": 11,
+    "8": 8,
+    "9": 8,
+    "10": 5,
+    "11": 8,
+    "12": 5,
+    "13": 29,
+    "14": 2,
+    "15": 2
+   },
+   "safe_act_bound_rule": "largest A such that acts 0..A all select one of the nine records; beyond it the word read is record data used as a pointer (an unverified-bank read, never interpreted here)",
+   "reachable_zone_values_any_path": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "reachable_act_range_any_path": [
+    0,
+    40
+   ],
+   "states_beyond_proposed_bounds_any_path": 1368,
+   "states_beyond_proposed_bounds_grounded": 78,
+   "states_beyond_proposed_bounds_normal_play": 78,
+   "grounded_counterexample": {
+    "state": [
+     0,
+     3,
+     "play",
+     0
+    ],
+    "path_class": "normal",
+    "path": [
+     {
+      "state": [
+       0,
+       0,
+       "play",
+       0
+      ],
+      "via": "initial",
+      "intermediate": []
+     },
+     {
+      "state": [
+       0,
+       1,
+       "play",
+       0
+      ],
+      "via": "act_complete",
+      "intermediate": []
+     },
+     {
+      "state": [
+       0,
+       2,
+       "play",
+       0
+      ],
+      "via": "act_complete",
+      "intermediate": []
+     },
+     {
+      "state": [
+       8,
+       2,
+       "ss",
+       0
+      ],
+      "via": "special_stage_enter",
+      "intermediate": []
+     },
+     {
+      "state": [
+       0,
+       3,
+       "play",
+       0
+      ],
+      "via": "special_stage_return",
+      "intermediate": [
+       [
+        0,
+        2
+       ]
+      ]
+     }
+    ]
+   },
+   "sub_claims": {
+    "sufficiency_of_zone_le_15_and_act_le_2": "PROVEN (all 48 combinations executed; nine records; slot types from them)",
+    "zone_le_15_whenever_the_loader_runs": "PARTIAL (every writer but U1 gives <= 12; U1 would reach 13)",
+    "act_le_2_whenever_the_loader_runs": "DISPROVEN (grounded counterexample)",
+    "invalid_combinations": "not rejected: the loader never validates; out-of-range acts alias the following zones' tables, and past the last pointer the record pointer is record data"
+   }
+  },
+  "C": {
+   "title": "nested dispatcher $741F1 in bank $1D",
+   "status": "PARTIAL",
+   "consumer": {
+    "entry": "$741F1",
+    "physical_offset": 475633,
+    "bank": 29,
+    "cpu": "$81F1",
+    "index_read_at": "$741E0",
+    "table_base": "$81F2",
+    "table_entries": 12,
+    "table_end": "$820A",
+    "table_end_rule": "words below the lowest destination (R1 region rule)"
+   },
+   "index_expression": "word at $81F2 + 2*(((2*zone) mod 256 + B) mod 128), B in {0,1}; zone is the only RAM read",
+   "zones_inside_table_exhaustive": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197
+   ],
+   "records_with_a_type_5_slot": [
+    "$2B0A",
+    "$2B1E",
+    "$2B28"
+   ],
+   "zones_whose_own_acts_select_a_type_5_record": [
+    2,
+    4,
+    5
+   ],
+   "states_outside_table_zone_with_type_5_any_path": 0,
+   "states_outside_table_zone_with_type_5_grounded": 0,
+   "states_outside_table_zone_with_unresolved_record": 420,
+   "unresolved_state_examples": [
+    {
+     "state": [
+      10,
+      6,
+      "ss",
+      0
+     ],
+     "why": "slot-2 bank unverified at $8000",
+     "grounded": false
+    },
+    {
+     "state": [
+      12,
+      6,
+      "ss",
+      0
+     ],
+     "why": "slot-2 bank unverified at $8000",
+     "grounded": false
+    },
+    {
+     "state": [
+      10,
+      6,
+      "ss",
+      1
+     ],
+     "why": "slot-2 bank unverified at $8000",
+     "grounded": false
+    },
+    {
+     "state": [
+      12,
+      6,
+      "ss",
+      1
+     ],
+     "why": "slot-2 bank unverified at $8000",
+     "grounded": false
+    },
+    {
+     "state": [
+      10,
+      6,
+      "ss",
+      2
+     ],
+     "why": "slot-2 bank unverified at $8000",
+     "grounded": false
+    },
+    {
+     "state": [
+      12,
+      6,
+      "ss",
+      2
+     ],
+     "why": "slot-2 bank unverified at $8000",
+     "grounded": false
+    }
+   ],
+   "exclusions": {
+    "type_5_records_in_zone_table_order": "records $2B0A, $2B1E, $2B28 only",
+    "construct_type_5_through_the_loader_with_zone_gt_5": "none within the nine records for any act the model reaches on a grounded path; special stages at act >= 9 / >= 6 read a garbage pointer (U3)",
+    "construct_type_5_through_the_allocator": "not excluded (U4)",
+    "survive_a_zone_change": "slot types are cleared by $1CEB and the object RAM by $297E before the reload on the zone-complete, act-complete and special-stage-start paths (slot_lifetime); title, restart and continue entries were not traced"
+   }
+  }
+ },
+ "r1_relationship": {
+  "r1_overall": "PARTIALLY CLOSED (unchanged)",
+  "dispatchers": {
+   "$08137": {
+    "closed_by_r2": "nothing: the zone-music route is not shown to stay inside the table",
+    "still_open": "ZONE/ACT lemma (A is PARTIAL: a table over-read in a special stage needs act >= 15 at zone 8, >= 12 at zone 9, >= 9 at zone 10, >= 6 at zone 11 or >= 3 at zone 12 - all behind U2/U3) and the SOUND TEST $D2BF lemma (untouched by R2)",
+    "other_dependencies": [
+     "sound-test closure has unresolved computed jumps (R1)",
+     "U1, U2, U3"
+    ]
+   },
+   "$74027": {
+    "closed_by_r2": "the record-fetch dependency is *not* closed as stated (act <= 2 is DISPROVEN); a weaker statement is: for zone <= 15 and act <= the per-zone safe bound the four slot types come from the nine records",
+    "still_open": "ALLOCATOR / kernel-vector lemma (every caller of $1CD3 passes C <= 20)",
+    "other_dependencies": [
+     "U3 (act beyond the safe bound), U4"
+    ]
+   },
+   "$741F1": {
+    "closed_by_r2": "the table extent (12 entries) and the zones that index inside it are exact; no grounded path puts a type-5 slot beside a zone outside the table",
+    "still_open": "type-5 slot creation by the allocator, zone-complete inside a special stage, and special stages at garbage records",
+    "other_dependencies": [
+     "U1, U3, U4"
+    ]
+   }
+  },
+  "r1_open_conditions_read": [
+   {
+    "site": 33079,
+    "status": "partial"
+   },
+   {
+    "site": 475175,
+    "status": "partial"
+   },
+   {
+    "site": 475633,
+    "status": "partial"
+   }
+  ],
+  "r1_verdict_read": "PARTIALLY CLOSED"
+ },
+ "verdict": {
+  "A": "PARTIAL",
+  "B": "DISPROVEN",
+  "C": "PARTIAL",
+  "r1_overall_changes": false,
+  "supported_bounds": {
+   "zone_values_on_grounded_paths": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+   ],
+   "zone_values_on_any_modelled_path": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "act_values_on_grounded_paths": [
+    0,
+    9
+   ],
+   "music_index_in_table_iff": "(3*zone + act) mod 256 <= 38",
+   "loader_safe_act_by_zone": {
+    "0": 29,
+    "1": 26,
+    "2": 23,
+    "3": 20,
+    "4": 17,
+    "5": 14,
+    "6": 29,
+    "7": 11,
+    "8": 8,
+    "9": 8,
+    "10": 5,
+    "11": 8,
+    "12": 5,
+    "13": 29,
+    "14": 2,
+    "15": 2
+   },
+   "nested_dispatcher_zones": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197
+   ]
+  },
+  "real_counterexamples": [
+   "B: act 3 reachable in normal play (new game, act 0 -> 1 -> 2, 100 rings, special stage, return)"
+  ],
+  "unresolved_writers": []
+ },
+ "ledger_effect": {
+  "changed": false,
+  "note": "No recovered region, seed or classification is added or changed."
+ }
+}
