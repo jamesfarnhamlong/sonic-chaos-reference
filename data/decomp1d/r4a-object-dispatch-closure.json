@@ -1,0 +1,1659 @@
+{
+ "format": 1,
+ "task": "DECOMP-1D-R4A residual object dispatch closure",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "generator": "tools/decomp1d_r4a_object_dispatch.py",
+ "base_commit": "8af1f0366a3620d20b0a1341017d272968c5cfbb",
+ "evidence_tier": "static ROM-derived evidence (decoded instructions, recursive descent, byte-search census, fail-closed interpreter); no controlled execution was needed and none is claimed; not hardware validation",
+ "premises": ["P1 Block ids are bytes: every value 0..255 is treated as possible in the layout RAM (the loader's layout and runtime edits are not enumerated); the lookups also produce id $FF with surface 0 when the cell pointer leaves $C000-$CFFF. The bounds below hold for every id.", "P2 The header table is the ROM table at physical $38000 (bank 14, CPU $8000): D2E0 is stored once, by the loader (physical $2A71), from the first word of the record it reads, and that word is $8000 in all nine verified records (every act of zones 0-15 with act <= 2, including the five stages). Records outside those nine (R3 U3) are not covered: for them D2E0 is whatever the record holds.", "P3 D364, D353 and D36B are written only by the instructions listed in writer_census (byte search of the whole image). Register-addressed stores and block moves with an unresolved destination (DECOMP-1D R2 census; inherited U5) are not excluded as writers by this task.", "P4 An interrupt does not run the lookup routines or change the variables between a lookup and its jump (IM 1 reach: interrupt_reach); the interrupt handler's own transfers into slot-2 code are recorded, not followed (R3 premise P3 restores the mapper).", "P5 Entry into each dispatcher's code is by the paths listed in entry_6972, entry_77EC and entry_points. Byte-search hits that are not instruction starts of the known-code universe (reset/IM 1/NMI, per-frame code, every object type's callback closure) are classified; those outside it are not shown to be data (R2 policy), are reported, and the conclusions assume they are not executed.", "P6 Standard Sega mapper semantics (DECOMP-1D R4) and the R3 mapper premises for slot 1 (bank 1) and the slot-2 banks the callers set."],
+ "reconciliation": {
+  "accepted_sources": ["reports/special-stages-canonical-audit.md", "docs/special-stages-foundation-audit.md", "docs/special-stages-followup-audit.md", "docs/special-stages-traversal-audit.md", "docs/special-stages-powerups-audit.md", "docs/special-stages-goal-ring-audit.md", "docs/special-stages-progression-audit.md", "data/rom-cache/special-stages/implementation-manifest.json", "data/rom-cache/special-stages/object-census.json", "data/rom-cache/special-stages/followup.json"],
+  "act3": {
+   "syntactically_permitted": "the entry gate $178F reads the character byte, the zone and the emerald mask; it does not read the act index",
+   "reachable_under_forced_state": "a forced entry at act index 2 returns to act index 3 (accepted SS-A1/progression audit; R2 proposition B; R3 return_reload)",
+   "reachable_through_original_gameplay": "NOT ESTABLISHED, and contradicted for ordinary entry by the accepted census",
+   "accepted_census": {
+    "act_index2_maximum_rings": {
+     "zone0_act2": 19,
+     "zone1_act2": 19,
+     "zone2_act2": 42,
+     "zone3_act2": 83,
+     "zone4_act2": 14,
+     "zone5_act2": 0
+    },
+    "any_act_index2_reaches_100": false,
+    "ring_counter_reset": "$2A4F (called by the level loader $2934) zeroes $D29A at every act load",
+    "note": "upper bound: every ring quadrant, $09 ring and +10 source collected with none lost"
+   },
+   "r2_claim": "R2 proposition B counterexample labelled 'normal play': 100 rings in an act-index-2 act, taken as a free input (R2 U6)",
+   "disposition": "R2's verdicts are not rewritten. Proposition B stays DISPROVEN as a statement about the syntactic and forced-state model. As a statement about original gameplay the accepted census governs: the act-3 return is dormant, because the census puts the maximum at 83 rings in any act-index-2 act. The census is an upper bound conditional on its ring-source completeness (every terrain quadrant, $09 ring and +10 monitor; $3138/$4AC0 as the only entry routes); R4A reuses it and does not re-derive it."
+  },
+  "object_universe": {
+   "accepted_placed_types": [16, 38, 47, 49],
+   "per_stage": {
+    "ss1": {
+     "zone": 8,
+     "r3_list_types": {
+      "10": 1,
+      "31": 1
+     },
+     "accepted_type_counts": {
+      "10": 1,
+      "31": 1
+     },
+     "equal": true,
+     "list_terminated": true
+    },
+    "ss2": {
+     "zone": 9,
+     "r3_list_types": {
+      "10": 1,
+      "2F": 7,
+      "31": 1
+     },
+     "accepted_type_counts": {
+      "10": 1,
+      "2F": 7,
+      "31": 1
+     },
+     "equal": true,
+     "list_terminated": true
+    },
+    "ss3": {
+     "zone": 10,
+     "r3_list_types": {
+      "10": 7,
+      "31": 1
+     },
+     "accepted_type_counts": {
+      "10": 7,
+      "31": 1
+     },
+     "equal": true,
+     "list_terminated": true
+    },
+    "ss4": {
+     "zone": 11,
+     "r3_list_types": {
+      "10": 6,
+      "26": 5,
+      "31": 1
+     },
+     "accepted_type_counts": {
+      "10": 6,
+      "26": 5,
+      "31": 1
+     },
+     "equal": true,
+     "list_terminated": true
+    },
+    "ss5": {
+     "zone": 12,
+     "r3_list_types": {
+      "10": 3,
+      "31": 1
+     },
+     "accepted_type_counts": {
+      "10": 3,
+      "31": 1
+     },
+     "equal": true,
+     "list_terminated": true
+    }
+   },
+   "all_stage_lists_equal": true,
+   "accepted_stage_surfaces": [0, 1, 2, 3, 7, 9, 10, 12, 13, 19, 20, 22, 29],
+   "disposition": "R3's placed-type set for the five stage lists equals the accepted census; R3 re-derived it, R4A adopts the accepted proof."
+  },
+  "r3_open_conditions_resolved_by_accepted_work": [
+   {
+    "r3": "U1-open: placed types of the five stages",
+    "accepted": "object-census.json (placements by stage)",
+    "status": "resolved, reused"
+   },
+   {
+    "r3": "act-3 'normal play' counterexample (R2 B)",
+    "accepted": "followup.json act_index2_reachability",
+    "status": "reconciled, not rewritten"
+   }
+  ],
+  "r3_open_conditions_not_resolved_by_accepted_work": ["out-of-domain placement lists and loader records (U1-open, U3): the accepted work covers only the five stages' own records", "the four computed jumps: closed here", "two further resident computed jumps listed in R3's frame-loop evidence ($5E9A, $6695), see adjacent notes", "graphics-decompressor termination: R4B"]
+ },
+ "header_domain": {
+  "table_physical": 229376,
+  "surfaces_present": [0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+  "surfaces_absent": [6, 8, 15, 17, 21, 31],
+  "ids_by_surface": {
+   "0": [0, 12, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 70, 132, 134, 136, 137, 152, 153, 154, 157, 158, 159, 169, 170, 171, 172, 173, 174, 176, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 252, 253, 254, 255],
+   "1": [1, 2, 8, 9, 10, 11, 13, 14, 15, 178, 244, 245, 246, 247, 248, 249, 250, 251],
+   "2": [3, 4, 5, 6, 7],
+   "3": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 33, 34],
+   "4": [161, 162, 163],
+   "5": [60, 61, 62, 63, 168],
+   "7": [64, 65, 66, 67, 68, 69],
+   "9": [48, 49],
+   "10": [50, 51, 52, 53],
+   "11": [177],
+   "12": [175, 185, 186, 187],
+   "13": [155, 156],
+   "14": [164, 165, 166],
+   "16": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 131],
+   "18": [30, 31, 32, 35],
+   "19": [116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130],
+   "20": [54, 55, 56, 57, 58, 59],
+   "22": [71],
+   "23": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115],
+   "24": [138, 139],
+   "25": [133, 135],
+   "26": [167],
+   "27": [160],
+   "28": [140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151],
+   "29": [184],
+   "30": [179, 180, 181, 182, 183]
+  },
+  "surface_31_block_ids": [],
+  "plane_flags_differ_for_ids": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85],
+  "bit_5_ids": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 161, 162]
+ },
+ "feeders": {
+  "writer_census": {
+   "D364": {
+    "address": 54116,
+    "writes": [30428, 30446, 30626, 30653],
+    "reads": [24919, 24945, 26974, 28903, 29049, 29106, 29180, 29214, 29271, 29346, 29682, 30636, 30683, 201927, 206758, 491715],
+    "address_constants": []
+   },
+   "D353": {
+    "address": 54099,
+    "writes": [30411, 30610, 30648],
+    "reads": [26962, 27971, 27991, 29446, 29472, 29481, 29507, 29527, 29533, 29607, 29624, 29853, 29979, 29999, 30005, 30069, 30782, 198911, 201954, 206357, 206438, 206499, 206650, 209313, 495799],
+    "address_constants": []
+   },
+   "D36B": {
+    "address": 54123,
+    "writes": [26965],
+    "reads": [17912, 26916, 27111, 27235, 27298, 27342, 27778, 27977, 28246, 201083, 201096, 496098],
+    "address_constants": []
+   },
+   "D2E0": {
+    "address": 53984,
+    "writes": [10865],
+    "reads": [28784, 30418, 30617],
+    "address_constants": []
+   }
+  },
+  "expected": {
+   "D364": [30428, 30446, 30626, 30653],
+   "D353": [30411, 30610, 30648],
+   "D36B": [26965],
+   "D2E0": [10865]
+  },
+  "lookup_sources": {
+   "$7666": "reads D2E0 + 2*id (word), then byte 0 of that header into D364 (76DC), byte +7 into D364 when bit 5 is set and (IX+0x25) is non-zero (76EE)",
+   "$7725": "same table, byte 0 of the header into D364 (77A2)",
+   "out of layout": "$77B0: D353 := $FF, D364 := 0 (77B8, 77BD)"
+  },
+  "d2e0": {
+   "writer": {
+    "file_offset": 10865,
+    "asm": "LD (0xd2e0),DE"
+   },
+   "verified_record_values": {
+    "$2AF6": 32768,
+    "$2B00": 32768,
+    "$2B0A": 32768,
+    "$2B14": 32768,
+    "$2B1E": 32768,
+    "$2B28": 32768,
+    "$2B32": 32768,
+    "$2B3C": 32768,
+    "$2B46": 32768
+   },
+   "all_equal": true,
+   "table_physical": 229376
+  },
+  "between_lookup_and_6972": {
+   "roots": ["$6F61"],
+   "instructions": 212,
+   "writer_instructions_reached": [],
+   "calls_a_lookup_entry": [],
+   "computed_jumps_not_followed": [],
+   "resident_to_slot2_transfers": []
+  },
+  "between_lookup_and_77EC": {
+   "roots": ["$70E7"],
+   "instructions": 139,
+   "writer_instructions_reached": [],
+   "calls_a_lookup_entry": [],
+   "computed_jumps_not_followed": [],
+   "resident_to_slot2_transfers": []
+  },
+  "interrupt_reach": {
+   "closure_instructions": 3584,
+   "writers_lookups_or_d2e0_store_inside": [],
+   "computed_jumps": [],
+   "open_edges": [
+    ["partial_dispatch", "$8137"],
+    ["partial_dispatch", "$74027"],
+    ["partial_dispatch", "$741F1"]
+   ]
+  },
+  "entry_6972": {
+   "expected_entries": [26891, 26906],
+   "transfers": [
+    {
+     "file_offset": 908,
+     "bytes": "c30b69",
+     "target": 26891,
+     "class": "instruction start in known code",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 908
+     }
+    },
+    {
+     "file_offset": 1040,
+     "bytes": "c31a69",
+     "target": 26906,
+     "class": "instruction start in known code",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 1040
+     }
+    },
+    {
+     "file_offset": 14710,
+     "bytes": "cd0b69",
+     "target": 26891,
+     "class": "outside known code (not shown to be data)",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 14710
+     }
+    },
+    {
+     "file_offset": 14831,
+     "bytes": "cd0b69",
+     "target": 26891,
+     "class": "outside known code (not shown to be data)",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 14831
+     }
+    },
+    {
+     "file_offset": 16216,
+     "bytes": "cd0b69",
+     "target": 26891,
+     "class": "outside known code (not shown to be data)",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 16216
+     }
+    },
+    {
+     "file_offset": 16395,
+     "bytes": "cd0b69",
+     "target": 26891,
+     "class": "instruction start in known code",
+     "context": {
+      "bank": 1,
+      "slot": 1,
+      "cpu": 16395,
+      "premise": "slot 1 holds bank 1 (DECOMP-1D R3)"
+     }
+    },
+    {
+     "file_offset": 26891,
+     "bytes": "cd1a69",
+     "target": 26906,
+     "class": "instruction start in known code",
+     "context": {
+      "bank": 1,
+      "slot": 1,
+      "cpu": 26891,
+      "premise": "slot 1 holds bank 1 (DECOMP-1D R3)"
+     }
+    }
+   ],
+   "targets_of_known_code_hits": [26891, 26906],
+   "known_code_hits_only_at_expected_entries": true,
+   "hits_inside_known_instructions": [],
+   "hits_outside_known_code": [14710, 14831, 16216]
+  },
+  "entry_77EC": {
+   "expected_entries": [30667],
+   "transfers": [
+    {
+     "file_offset": 800,
+     "bytes": "c3cb77",
+     "target": 30667,
+     "class": "instruction start in known code",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 800
+     }
+    },
+    {
+     "file_offset": 1444,
+     "bytes": "d2cb77",
+     "target": 30667,
+     "class": "inside a known instruction (operand or opcode bytes)",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 1444
+     }
+    },
+    {
+     "file_offset": 5124,
+     "bytes": "d2dd77",
+     "target": 30685,
+     "class": "inside a known instruction (operand or opcode bytes)",
+     "context": {
+      "bank": 0,
+      "slot": 0,
+      "cpu": 5124
+     }
+    },
+    {
+     "file_offset": 130121,
+     "bytes": "ecec77",
+     "target": 30700,
+     "class": "outside known code (not shown to be data)",
+     "context": {
+      "bank": 7,
+      "slot": 2,
+      "cpu": 48201
+     }
+    },
+    {
+     "file_offset": 145411,
+     "bytes": "ecec77",
+     "target": 30700,
+     "class": "outside known code (not shown to be data)",
+     "context": {
+      "bank": 8,
+      "slot": 2,
+      "cpu": 47107
+     }
+    },
+    {
+     "file_offset": 505431,
+     "bytes": "d4dd77",
+     "target": 30685,
+     "class": "inside a known instruction (operand or opcode bytes)",
+     "context": {
+      "bank": 30,
+      "slot": 2,
+      "cpu": 46679
+     }
+    }
+   ],
+   "targets_of_known_code_hits": [30667],
+   "known_code_hits_only_at_expected_entries": true,
+   "hits_inside_known_instructions": [1444, 5124, 505431],
+   "hits_outside_known_code": [130121, 145411]
+  }
+ },
+ "jumps": {
+  "$6972": {
+   "site": 26994,
+   "spec": {
+    "site": 26994,
+    "bank": null,
+    "bound": "AND 0x1f",
+    "destinations": [27057, 27058, 27227, 27228, 27229, 27253, 27280, 27342, 27363, 27412, 27427, 27436, 27478, 27512, 27513, 27562, 27717, 27725, 27778, 27878, 27970, 27971, 28246],
+    "invalid": [56777]
+   },
+   "index": "D364 & $1F",
+   "table_cpu": 26995,
+   "table_entries": 31,
+   "index_values_reached": [0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+   "index_31_reached": false,
+   "words_past_the_table": [56777, 6603],
+   "destinations_by_surface": {
+    "0": 27717,
+    "1": 27229,
+    "2": 27227,
+    "3": 27228,
+    "4": 27878,
+    "5": 27342,
+    "7": 27725,
+    "9": 27253,
+    "10": 27057,
+    "11": 27562,
+    "12": 27513,
+    "13": 27436,
+    "14": 27478,
+    "16": 27778,
+    "18": 27058,
+    "19": 27971,
+    "20": 27280,
+    "22": 27363,
+    "23": 28246,
+    "24": 27057,
+    "25": 27427,
+    "26": 27057,
+    "27": 27412,
+    "28": 27227,
+    "29": 27057,
+    "30": 27970
+   }
+  },
+  "$77EC": {
+   "site": 30700,
+   "spec": {
+    "site": 30700,
+    "bank": null,
+    "bound": "AND 0x1f",
+    "destinations": [30763, 30764, 30774, 30806],
+    "invalid": [56777]
+   },
+   "index": "D364 & $1F",
+   "table_cpu": 30701,
+   "table_entries": 31,
+   "index_values_reached": [0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13, 14, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+   "index_31_reached": false,
+   "words_past_the_table": [56777, 971],
+   "destinations_by_surface": {
+    "0": 30764,
+    "1": 30763,
+    "2": 30763,
+    "3": 30806,
+    "4": 30806,
+    "5": 30806,
+    "7": 30806,
+    "9": 30806,
+    "10": 30806,
+    "11": 30806,
+    "12": 30806,
+    "13": 30806,
+    "14": 30774,
+    "16": 30806,
+    "18": 30763,
+    "19": 30806,
+    "20": 30806,
+    "22": 30806,
+    "23": 30806,
+    "24": 30806,
+    "25": 30763,
+    "26": 30763,
+    "27": 30763,
+    "28": 30763,
+    "29": 30806,
+    "30": 30806
+   }
+  },
+  "$6C98": {
+   "site": 27800,
+   "pattern": ["LD A,(0xd36b)", "CP 0x83", "JR z,0x6cb9", "SUB 0x48", "RET c", "ADD A,A", "LD L,A", "LD H,0", "LD DE,0x6c99", "ADD HL,DE", "LD E,(HL)", "INC HL", "LD D,(HL)", "EX DE,HL", "JP (HL)"],
+   "index": "(D36B - $48) * 2 (8-bit), D36B = block id; $83 branches first",
+   "table_cpu": 27801,
+   "table_entries": 16,
+   "table_end_cpu": 27833,
+   "word_after_table": 56777,
+   "surface_16_block_ids": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 131],
+   "all_ids_inside_table_or_special_case": true,
+   "destination_by_block_id": {
+    "72": 27833,
+    "73": 27833,
+    "74": 27833,
+    "75": 27833,
+    "76": 27833,
+    "77": 27833,
+    "78": 27833,
+    "79": 27833,
+    "80": 27834,
+    "81": 27834,
+    "82": 27853,
+    "83": 27877,
+    "84": 27877,
+    "85": 27877,
+    "86": 27877,
+    "87": 27877,
+    "131": 27833
+   },
+   "destinations": [27833, 27834, 27853, 27877],
+   "interpreter_mismatches": [],
+   "entry_points": {
+    "jump_table_6972_entry_16": 27778,
+    "absolute_transfers_into_6C82_6C98": {
+     "expected_entries": [],
+     "transfers": [
+      {
+       "file_offset": 88739,
+       "bytes": "cc936c",
+       "target": 27795,
+       "class": "outside known code (not shown to be data)",
+       "context": {
+        "bank": 5,
+        "slot": 2,
+        "cpu": 39587
+       }
+      },
+      {
+       "file_offset": 113593,
+       "bytes": "d4906c",
+       "target": 27792,
+       "class": "outside known code (not shown to be data)",
+       "context": {
+        "bank": 6,
+        "slot": 2,
+        "cpu": 48057
+       }
+      }
+     ],
+     "targets_of_known_code_hits": [],
+     "known_code_hits_only_at_expected_entries": true,
+     "hits_inside_known_instructions": [],
+     "hits_outside_known_code": [88739, 113593]
+    },
+    "word_hits_6C82": [27027, 163261, 176794, 363875, 419147]
+   }
+  },
+  "$314F4": {
+   "site": 201972,
+   "spec": {
+    "site": 201972,
+    "bank": 12,
+    "bound": null,
+    "destinations": [38385, 38388, 38396, 38404, 38412, 38417, 38425, 38433, 38441, 38449, 38452, 38460, 38468, 38476, 38484, 38493, 38498, 38506, 38514, 38522, 38530, 38538, 38549, 38557, 38560, 38568, 38576, 38579, 38587, 38598, 38606, 38614, 38622, 38633, 38641, 38649, 38652, 38663, 38671, 38679, 38687, 38698, 38706, 38714, 38722],
+    "invalid": []
+   },
+   "gate": "D364 & $3F == $17 (surface $17, bit 5 clear)",
+   "gate_instructions": ["LD A,(0xd364)", "AND 0x3f", "CP 0x17", "JP nz,0x95e4"],
+   "index": "(D353 - $58) * 2 into one of four 28-word sub-tables",
+   "sub_table_pointers": [38141, 38197, 38253, 38309],
+   "entries_per_sub_table": 28,
+   "gate_block_ids": [88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115],
+   "index_values": [0, 27],
+   "all_ids_inside_sub_table": true,
+   "invalid_destinations": [],
+   "destinations": [38385, 38388, 38396, 38404, 38412, 38417, 38425, 38433, 38441, 38449, 38452, 38460, 38468, 38476, 38484, 38493, 38498, 38506, 38514, 38522, 38530, 38538, 38549, 38557, 38560, 38568, 38576, 38579, 38587, 38598, 38606, 38614, 38622, 38633, 38641, 38649, 38652, 38663, 38671, 38679, 38687, 38698, 38706, 38714, 38722],
+   "instructions_between_gate_and_d353_read": ["LD A,(IX+0x38)", "AND 3", "ADD A,A", "LD E,A", "LD D,0", "LD HL,0x94f5", "ADD HL,DE", "LD A,(HL)", "INC HL", "LD H,(HL)", "LD L,A"],
+   "transfers_between": [],
+   "between_gate_and_index": "no CALL/JP between $314C7 (D364 read) and $314E2 (D353 read): the same lookup supplies both"
+  }
+ },
+ "adjacent_resident_jumps": {
+  "$5E6F": {
+   "site": 24175,
+   "pattern": ["AND 15", "ADD A,A", "LD L,A", "LD H,0", "LD DE,0x5e70", "ADD HL,DE", "LD E,(HL)", "INC HL", "LD D,(HL)", "EX DE,HL", "JP (HL)"],
+   "index": "A & 15",
+   "table_cpu": 24176,
+   "table_entries": 16,
+   "table_end_cpu": 24208,
+   "destinations": [24208, 24312, 25197],
+   "bounded_by_instruction": true
+  },
+  "r3_frame_loop_computed_jumps_not_followed": ["$5E6F", "$5E9A", "$6695"],
+  "named_in_r3_open_list": ["$314F4", "$6972", "$6C98", "$77EC"],
+  "not_named_in_r3_open_list": ["$5E6F", "$5E9A", "$6695"],
+  "$5E9A": {
+   "asm": ["LD L,(IX+12)", "LD H,(IX+13)", "JP (HL)"],
+   "what": "JP (HL) with HL = (IX+12),(IX+13): the per-object callback pointer; zero returns",
+   "status": "OPEN - destinations are the callback vectors the scripts install (R3 callback_vectors); other writers of (IX+12)/(IX+13) were not censused in R3 or here"
+  },
+  "$6695": {
+   "asm": "JP (HL)",
+   "what": "script-command dispatcher: index = the byte after $FF, table $6696 of 16 words (DECOMP-1C HANDLER_TABLE)",
+   "status": "OPEN - the index is script data; the 16 handlers are DECOMP-1C's; not re-derived here"
+  }
+ },
+ "creation": {
+  "$6C98_and_$5E6F_destinations": {
+   "reach": {
+    "instructions": 76,
+    "sites": 1,
+    "creation_sites": [],
+    "destroy_markers": 1
+   },
+   "trigger_reach": {
+    "setters_or_callers_reached": [],
+    "calls_to_level_clear": []
+   },
+   "computed_jumps_left_open": [],
+   "resident_to_slot2_transfers": []
+  },
+  "$314F4_destinations": {
+   "reach": {
+    "instructions": 212,
+    "sites": 0,
+    "creation_sites": [],
+    "destroy_markers": 0
+   },
+   "trigger_reach": {
+    "setters_or_callers_reached": [],
+    "calls_to_level_clear": []
+   },
+   "computed_jumps_left_open": [],
+   "resident_to_slot2_transfers": []
+  },
+  "$6972_and_$77EC_destinations": {
+   "reach": {
+    "instructions": 1035,
+    "sites": 11,
+    "creation_sites": [
+     {
+      "file_offset": 18735,
+      "kind": "allocator $5E9C",
+      "asm": "CALL 0x5e9c",
+      "value": 6
+     },
+     {
+      "file_offset": 27250,
+      "kind": "allocator $5E9C",
+      "asm": "JP 0x5e9c",
+      "value": 58
+     },
+     {
+      "file_offset": 27546,
+      "kind": "allocator $5EB7",
+      "asm": "CALL 0x5eb7",
+      "value": 19
+     },
+     {
+      "file_offset": 27576,
+      "kind": "allocator $5E9C",
+      "asm": "CALL 0x5e9c",
+      "value": 55
+     },
+     {
+      "file_offset": 30866,
+      "kind": "allocator $5EB7",
+      "asm": "CALL 0x5eb7",
+      "value": 15
+     },
+     {
+      "file_offset": 30927,
+      "kind": "allocator $5E9C",
+      "asm": "CALL 0x5e9c",
+      "value": 7
+     },
+     {
+      "file_offset": 30932,
+      "kind": "allocator $5E9C",
+      "asm": "CALL 0x5e9c",
+      "value": 7
+     },
+     {
+      "file_offset": 30937,
+      "kind": "allocator $5E9C",
+      "asm": "CALL 0x5e9c",
+      "value": 7
+     },
+     {
+      "file_offset": 30942,
+      "kind": "allocator $5E9C",
+      "asm": "JP 0x5e9c",
+      "value": 7
+     }
+    ],
+    "destroy_markers": 0
+   },
+   "trigger_reach": {
+    "setters_or_callers_reached": [],
+    "calls_to_level_clear": []
+   },
+   "computed_jumps_left_open": [],
+   "resident_to_slot2_transfers": []
+  },
+  "surface_creation_map": {
+   "$6972": {
+    "0": {
+     "handler": 27717,
+     "instructions": 63,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "1": {
+     "handler": 27229,
+     "instructions": 24,
+     "created_types": [58],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "2": {
+     "handler": 27227,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "3": {
+     "handler": 27228,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "4": {
+     "handler": 27878,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "5": {
+     "handler": 27342,
+     "instructions": 151,
+     "created_types": [6],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "7": {
+     "handler": 27725,
+     "instructions": 61,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "9": {
+     "handler": 27253,
+     "instructions": 23,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "10": {
+     "handler": 27057,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "11": {
+     "handler": 27562,
+     "instructions": 169,
+     "created_types": [55],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "12": {
+     "handler": 27513,
+     "instructions": 38,
+     "created_types": [19],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "13": {
+     "handler": 27436,
+     "instructions": 137,
+     "created_types": [7],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "14": {
+     "handler": 27478,
+     "instructions": 16,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "16": {
+     "handler": 27778,
+     "instructions": 69,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "18": {
+     "handler": 27058,
+     "instructions": 126,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "19": {
+     "handler": 27971,
+     "instructions": 128,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "20": {
+     "handler": 27280,
+     "instructions": 33,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "22": {
+     "handler": 27363,
+     "instructions": 223,
+     "created_types": [15],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "23": {
+     "handler": 28246,
+     "instructions": 113,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "24": {
+     "handler": 27057,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "25": {
+     "handler": 27427,
+     "instructions": 4,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "26": {
+     "handler": 27057,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "27": {
+     "handler": 27412,
+     "instructions": 7,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "28": {
+     "handler": 27227,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "29": {
+     "handler": 27057,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "30": {
+     "handler": 27970,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    }
+   },
+   "$77EC": {
+    "0": {
+     "handler": 30764,
+     "instructions": 4,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "1": {
+     "handler": 30763,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "2": {
+     "handler": 30763,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "3": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "4": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "5": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "7": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "9": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "10": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "11": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "12": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "13": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "14": {
+     "handler": 30774,
+     "instructions": 13,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "16": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "18": {
+     "handler": 30763,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "19": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "20": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "22": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "23": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "24": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "25": {
+     "handler": 30763,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "26": {
+     "handler": 30763,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "27": {
+     "handler": 30763,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "28": {
+     "handler": 30763,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "29": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    },
+    "30": {
+     "handler": 30806,
+     "instructions": 1,
+     "created_types": [],
+     "unresolved_creation_sites": [],
+     "computed_jumps_left_open": []
+    }
+   }
+  },
+  "stage_surface_creation": {
+   "0": {
+    "floor_handler": 27717,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "1": {
+    "floor_handler": 27229,
+    "created_types": [58],
+    "second_table_creates": []
+   },
+   "2": {
+    "floor_handler": 27227,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "3": {
+    "floor_handler": 27228,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "7": {
+    "floor_handler": 27725,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "9": {
+    "floor_handler": 27253,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "10": {
+    "floor_handler": 27057,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "12": {
+    "floor_handler": 27513,
+    "created_types": [19],
+    "second_table_creates": []
+   },
+   "13": {
+    "floor_handler": 27436,
+    "created_types": [7],
+    "second_table_creates": []
+   },
+   "19": {
+    "floor_handler": 27971,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "20": {
+    "floor_handler": 27280,
+    "created_types": [],
+    "second_table_creates": []
+   },
+   "22": {
+    "floor_handler": 27363,
+    "created_types": [15],
+    "second_table_creates": []
+   },
+   "29": {
+    "floor_handler": 27057,
+    "created_types": [],
+    "second_table_creates": []
+   }
+  },
+  "site_values_not_in_r3_closure": [],
+  "destination_checks": {
+   "$6972": [
+    {
+     "cpu": 27057,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27058,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27227,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27228,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27229,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27253,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27280,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27342,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27363,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27412,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27427,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27436,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27478,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27513,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27562,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27717,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27725,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27778,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27878,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27970,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27971,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 28246,
+     "in_window": true,
+     "decodes": true
+    }
+   ],
+   "$77EC": [
+    {
+     "cpu": 30763,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 30764,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 30774,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 30806,
+     "in_window": true,
+     "decodes": true
+    }
+   ],
+   "$6C98": [
+    {
+     "cpu": 27833,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27834,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27853,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 27877,
+     "in_window": true,
+     "decodes": true
+    }
+   ],
+   "$314F4": [
+    {
+     "cpu": 38385,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38388,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38396,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38404,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38412,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38417,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38425,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38433,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38441,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38449,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38452,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38460,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38468,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38476,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38484,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38493,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38498,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38506,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38514,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38522,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38530,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38538,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38549,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38557,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38560,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38568,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38576,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38579,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38587,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38598,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38606,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38614,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38622,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38633,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38641,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38649,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38652,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38663,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38671,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38679,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38687,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38698,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38706,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38714,
+     "in_window": true,
+     "decodes": true
+    },
+    {
+     "cpu": 38722,
+     "in_window": true,
+     "decodes": true
+    }
+   ]
+  }
+ },
+ "natural_closure": {
+  "8": {
+   "placed_types": [16, 49],
+   "r3_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 49, 55, 58, 61],
+   "r4a_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 49, 55, 58, 61],
+   "unchanged": true,
+   "trigger_types_in_closure": []
+  },
+  "9": {
+   "placed_types": [16, 47, 49],
+   "r3_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 47, 49, 55, 58, 61],
+   "r4a_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 47, 49, 55, 58, 61],
+   "unchanged": true,
+   "trigger_types_in_closure": []
+  },
+  "10": {
+   "placed_types": [16, 49],
+   "r3_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 49, 55, 58, 61],
+   "r4a_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 49, 55, 58, 61],
+   "unchanged": true,
+   "trigger_types_in_closure": []
+  },
+  "11": {
+   "placed_types": [16, 38, 49],
+   "r3_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 38, 49, 55, 58, 61],
+   "r4a_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 38, 49, 55, 58, 61],
+   "unchanged": true,
+   "trigger_types_in_closure": []
+  },
+  "12": {
+   "placed_types": [16, 49],
+   "r3_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 49, 55, 58, 61],
+   "r4a_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 49, 55, 58, 61],
+   "unchanged": true,
+   "trigger_types_in_closure": []
+  }
+ },
+ "union_closure": [1, 2, 3, 5, 6, 7, 12, 15, 16, 17, 19, 38, 47, 49, 55, 58, 61],
+ "created_types_outside_accepted_placed_census": [3, 5, 6, 7, 12, 15, 17, 19, 55, 58, 61],
+ "verdicts": {
+  "$6972": {
+   "bounded": true,
+   "verdict": "CLOSED (premise-conditional: P1-P6)",
+   "reaches_out_of_table_word": false,
+   "reaches_level_clear_or_type_61": false
+  },
+  "$77EC": {
+   "bounded": true,
+   "verdict": "CLOSED (premise-conditional: P1-P6)",
+   "reaches_out_of_table_word": false,
+   "reaches_level_clear_or_type_61": false
+  },
+  "$6C98": {
+   "bounded": true,
+   "verdict": "CLOSED (premise-conditional: P1-P6)",
+   "reaches_out_of_table_word": false,
+   "reaches_level_clear_or_type_61": false
+  },
+  "$314F4": {
+   "bounded": true,
+   "verdict": "CLOSED (premise-conditional: P1-P6)",
+   "reaches_out_of_table_word": false,
+   "reaches_level_clear_or_type_61": false
+  },
+  "all_four_bounded": true,
+  "can_introduce_types_outside_accepted_census": false,
+  "can_reach_level_clear_callback_or_type_61": false,
+  "object_creation_closure": {
+   "status": "PARTIAL",
+   "basis": "the four named jumps are bounded and add no creation edge; the closure for the in-domain stages is unchanged (types $01, $02, $03, $05, $06, $07, $0C, $0F, $10, $11, $13, $26, $2F, $31, $37, $3A, $3D). The route status stays 'excluded_so_far' only because two further resident computed jumps ($5E9A, $6695) are open and out-of-domain placement lists are outside the accepted universe."
+  },
+  "u1": {
+   "r3": "PARTIAL",
+   "r4a": "PARTIAL",
+   "route_A_status": "excluded_so_far",
+   "route_A_why": "no trigger type in the resolved closure; 0 unresolved creation edge(s) and 2 open computed jump(s) ($5E9A, $6695) are not excluded",
+   "route_B_status": "excluded_so_far",
+   "route_B_why": "no trigger type in the resolved closure; 0 unresolved creation edge(s) and 2 open computed jump(s) ($5E9A, $6695) are not excluded",
+   "change": "the four jumps no longer keep U1 open; U1 stays PARTIAL for the reasons named in route_*_why and R3's out-of-domain items"
+  }
+ },
+ "stage_interface": {
+  "source_of_truth": "data/rom-cache/special-stages/implementation-manifest.json (not duplicated here)",
+  "usable_now": ["stage metadata, entry gate, exit contract and zone indexing (manifest indexing/entry/exit)", "the five stage layouts, block tables, start/camera/limits and ring/object placements (manifest stages, object-census)", "the surface handlers for the surfaces listed below (manifest surfaces, surface_consumers)", "object contracts $10 (monitors 4/5/6), $26, $2F, $31 (special-stage census, powerups, goal-ring, traversal audits)"],
+  "stage_surfaces": [0, 1, 2, 3, 7, 9, 10, 12, 13, 19, 20, 22, 29],
+  "stage_surfaces_that_reach_a_residual_dispatcher": {
+   "$6972/$77EC": "all of them: every stage surface dispatches through the shared floor/side tables (accepted, shared engine)",
+   "$6C98": "none: surface 16 is not present in the stage layouts",
+   "$314F4": "none: surface 23 is not present in the stage layouts"
+  },
+  "residual_dispatchers_affecting_ordinary_implementation": false,
+  "newly_established_object_creation_behaviour": "none"
+ },
+ "unresolved": [
+  {
+   "id": "R4A-1",
+   "text": "two resident computed jumps in R3's frame-loop evidence, $5E9A (per-object callback pointer) and $6695 (script command index), are not named in R3's open list and are not closed here."
+  },
+  {
+   "id": "R4A-2",
+   "text": "indirect writers of D364/D353/D36B/D2E0 (R2 U5: register-addressed block moves with unresolved destinations) are not excluded."
+  },
+  {
+   "id": "R4A-3",
+   "text": "records outside the nine verified ones can change D2E0 (R3 U3); the bounds hold for the verified records only."
+  },
+  {
+   "id": "R4A-4",
+   "text": "the interrupt handler's transfers into slot-2 code were recorded, not followed (R3 P3)."
+  },
+  {
+   "id": "R4A-5",
+   "text": "act-3 reachability through original gameplay rests on the accepted ring census (an upper bound over its recorded ring sources); not re-derived."
+  },
+  {
+   "id": "R4B",
+   "text": "termination of the graphics decompressor on out-of-table rows: not investigated here."
+  }
+ ],
+ "baseline": {
+  "structurally_classified_bytes": 156887,
+  "recovered_assembly_bytes": 13988,
+  "recovered_regions": 113,
+  "unknown_bytes": 367401,
+  "contradictory_claims": 0,
+  "changed_by_r4a": false
+ }
+}
