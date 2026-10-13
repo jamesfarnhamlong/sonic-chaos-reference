@@ -1,0 +1,1785 @@
+{
+  "schema_version": 1,
+  "audit": "FULLGAME-0 complete game gap audit",
+  "baselines": {
+    "research_main": "0bb7390813a8fa4320ef35253a2c39598eee8e08",
+    "poc_accepted": "3381cfd7341b8c9bedf70eeb623c1357d5969875"
+  },
+  "status_legend": {
+    "ACCEPTED": "Windows/gameplay accepted",
+    "IMPLEMENTED_UNVERIFIED": "Code exists, not passed acceptance",
+    "PARTIAL": "Some required functionality exists",
+    "MISSING": "Confirmed absent",
+    "UNRESOLVED": "Insufficient evidence",
+    "PC_ENHANCEMENT": "Not a canonical SMS requirement"
+  },
+  "evidence_labels": {
+    "POC-SRC": "confirmed in accepted POC source",
+    "RES": "confirmed in accepted Research",
+    "WIN-ACC": "documented as Windows accepted",
+    "NEEDS-WIN": "implemented, needs Windows verification",
+    "GAP": "confirmed missing/incomplete by static inspection",
+    "UNAVAIL": "evidence unavailable"
+  },
+  "kind_legend": {
+    "canonical_sms": "original SMS behaviour",
+    "gamemaker_adapter": "GameMaker/engine adapter or inherited engine code",
+    "pc_enhancement": "proposed/PC-only"
+  },
+  "paths": {
+    "poc:": "SonicChaos_POC @ 3381cfd7341b8c9bedf70eeb623c1357d5969875",
+    "ref:": "sonic-chaos-reference @ 0bb7390813a8fa4320ef35253a2c39598eee8e08"
+  },
+  "milestones": [
+    {
+      "id": "G0",
+      "name": "Completeness inventory",
+      "state": "this audit",
+      "scope": "FULLGAME-0"
+    },
+    {
+      "id": "G1",
+      "name": "Campaign/progression integration",
+      "scope": "natural 18-act spine, results/tally, New Game/title reset, SS2-SS5 gating"
+    },
+    {
+      "id": "G2",
+      "name": "Lives, score and continues",
+      "scope": "central life/score API, 1-UP monitor, sign prize, Game Over, Continue"
+    },
+    {
+      "id": "G3",
+      "name": "Missing original Sonic mechanics",
+      "scope": "state-coverage matrix, look up/down camera, Super Peel-Out"
+    },
+    {
+      "id": "G4",
+      "name": "Audio integration",
+      "scope": "request router, SFX mapping, music strategy"
+    },
+    {
+      "id": "G5",
+      "name": "Original presentation and intro",
+      "scope": "intro, title, character select, act cards"
+    },
+    {
+      "id": "G6",
+      "name": "Tails campaign",
+      "scope": "research series then core port"
+    },
+    {
+      "id": "G7",
+      "name": "PC saves, menus and options",
+      "scope": "act-boundary save v1, options, remap"
+    },
+    {
+      "id": "G8",
+      "name": "Bug/fidelity/compliance closure",
+      "scope": "deferred issues, cross-boss review, viewport pass"
+    },
+    {
+      "id": "G9",
+      "name": "Original Mode release candidate",
+      "scope": "full playthrough, packaging"
+    }
+  ],
+  "features": [
+    {
+      "id": "CAMP-01",
+      "subsystem": "campaign",
+      "kind": "gamemaker_adapter",
+      "name": "Title -> save-slot select -> first act",
+      "status": "PARTIAL",
+      "summary": "Title and 5-slot data-select are inherited openSonicSMS objects. START launches global.selectedAct from chaos_acts(). No ROM 'new game' routine ($04D4 -> $2A1F/$2A00) is modelled; 'New Game' and 'Continue' are not distinct.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_menu_data_select/Step_0.gml"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_zone_goto/SCR_zone_goto.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-progression-audit.md#2"
+        }
+      ],
+      "dependencies": [
+        "CAMP-02"
+      ],
+      "complexity": "Medium",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-02",
+      "subsystem": "campaign",
+      "kind": "gamemaker_adapter",
+      "name": "Natural act table covers all 18 acts",
+      "status": "MISSING",
+      "summary": "chaos_acts() lists only THZ1-3. The 15 other acts exist only in chaos_debug_entries() (developer selector). chaos_act_index_for_room() returns 0 for GPZ/SEZ/MGHZ/AQZ/EEZ rooms, so chaos_act_complete() never advances saved progression there and chaos_act_clamp() clamps saved zoneGoto to 3.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_level/SCR_chaos_level.gml (chaos_acts, chaos_act_clamp, chaos_act_index_for_room)"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml (chaos_debug_entries)"
+        },
+        {
+          "label": "GAP",
+          "ref": "verified by static read"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-03",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Act-clear chain: type $18 sign -> $19 -> state $20 -> clear flag",
+      "status": "ACCEPTED",
+      "summary": "Sign contact, timer stop, hop, $19 child, state $20 run, EDGE(RIGHT,+33) clear flag. Boss acts converge on the same state $20 tail. Windows accepted in all six zones.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: all six ordinary zones accepted"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_goal/SCR_chaos_goal.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/object-18-act-clear.md"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-04",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Post-clear sequence: 198-frame wait, results screen ($32F9), tally ($2D08)",
+      "status": "MISSING",
+      "summary": "Not implemented for ordinary acts. After the clear flag a non-debug session only draws a developer overlay ('ACT n COMPLETE!') and sits; it never changes room. Developer sessions return to the selector after 90 updates. The inherited OBJ_menu_point_counter is reachable only from legacy OBJ_plate and uses openSonic bonus tables, not ROM rules.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_chaos_controls/Step_0.gml, Draw_0.gml"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_menu_point_counter/*, objects/OBJ_plate/Alarm_3.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/object-18-act-clear.md (rows 7-10, section on timer/results)"
+        },
+        {
+          "label": "GAP",
+          "ref": "SCR_chaos_goal.gml header lists results screen/tally/bonus as deferred"
+        }
+      ],
+      "dependencies": [
+        "CAMP-02",
+        "RES-R0"
+      ],
+      "complexity": "Large",
+      "milestone": "G1",
+      "research_needed": "RES-R0: ordinary results card graphics, ROM score-byte display scale ($27E2/$27E5), exact tally pacing/skip, per-zone card tables ($2D84/$32CA/$A3A0)"
+    },
+    {
+      "id": "CAMP-05",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Next-act progression and zone rollover ($152F..$153E)",
+      "status": "PARTIAL",
+      "summary": "Saved progression advances for THZ rooms only. No automatic room transition after clear. Canonical next-zone order is recorded in AGENTS/Research per boss audit (THZ3->GPZ1 ... GPZ3->MGHZ1, MGHZ3->AQZ1, AQZ3->EEZ1, EEZ3->ending) but no natural-order table exists in the POC.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_level/SCR_chaos_level.gml (chaos_act_complete)"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/gpz3-boss-runtime-audit.md; docs/mghz3-boss-56-audit.md; docs/aqz3-boss-59-audit.md; docs/eez-boss-endgame-audit.md"
+        }
+      ],
+      "dependencies": [
+        "CAMP-02",
+        "CAMP-04"
+      ],
+      "complexity": "Medium",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-06",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Boss-act clear bonus ($0A param 0) and tally",
+      "status": "PARTIAL",
+      "summary": "chaos_boss_bonus() computes packed BCD (time/ring) into global.chaosBossBonus and each boss clear computes global.chaosBossClearScore = ring*10+steps+500 (POC-side formula, not shown ROM-derived). Sparkle trail is accepted. Neither value is read: no tally, no score award.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_boss/SCR_chaos_boss.gml (chaos_boss_bonus)"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/thz3-boss-support-audit.md"
+        }
+      ],
+      "dependencies": [
+        "CAMP-04"
+      ],
+      "complexity": "Medium",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-07",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Special Stage 1 entry (100 rings), play, results, return",
+      "status": "ACCEPTED",
+      "summary": "Shared ring-counter owner, +1 life wrap, 180-update entry, SS1 stage, $31 success, results cards, return to next ordinary act. Windows accepted at 3381cfd.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: SS1 accepted"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:data/rom-cache/special-stages/implementation-manifest.json"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-08",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Special Stages 2-5",
+      "status": "UNRESOLVED",
+      "summary": "SS2 is on an unaccepted local branch (not assessed per assignment). SS3-SS5 not started. Research package complete. chaos_ss_ring_counter_tick() deliberately skips entry whenever the selected stage is not SS1, so after SS1 success natural play never offers SS2+ (the full ending needs all five bits).",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml (chaos_ss_ring_counter_tick, 'only 8 is implemented')"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:data/rom-cache/special-stages/implementation-manifest.json"
+        },
+        {
+          "label": "UNAVAIL",
+          "ref": "SS2 worktree"
+        }
+      ],
+      "dependencies": [
+        "CAMP-07"
+      ],
+      "complexity": "Medium",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-09",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Emerald bits ($D2CC) and continues ($D2C3) carried through progression",
+      "status": "PARTIAL",
+      "summary": "Held in RAM globals chaosCollectedFlags/chaosContinues (created lazily). Written by SS1 success, EEZ sixth bit, developer selector. Not saved/loaded (SCR_save_game persists the legacy 'chaoEmerald' variable instead). chaosContinues has no consumer.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml:16-17,84-85,128"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_save_game/SCR_save_game.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-progression-audit.md#2-#3"
+        }
+      ],
+      "dependencies": [
+        "SAVE-01",
+        "LIFE-09"
+      ],
+      "complexity": "Small",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-10",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Ending routes (full / partial) and common title return",
+      "status": "ACCEPTED",
+      "summary": "Both Sonic routes Windows accepted. Handoff reads chaosCollectedFlags & 63. Integration with a natural emerald source is unverified because SS2-SS5 are absent.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: P5 accepted"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ending/SCR_chaos_ending.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/eez-ending-credits-audit.md"
+        }
+      ],
+      "dependencies": [
+        "CAMP-08"
+      ],
+      "complexity": "Small",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-11",
+      "subsystem": "campaign",
+      "kind": "canonical_sms",
+      "name": "Title return then New Game reset ($2A00: bits, rings, score)",
+      "status": "MISSING",
+      "summary": "OBJ_system (re-created by the title) resets life/score/ring and reloads the slot, but chaosCollectedFlags/chaosContinues are created only if absent and are never cleared. Bits earned in one run survive title return and would leak into the next run in the same process.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_system/Create_0.gml; objects/OBJ_menu_title/Create_0.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-progression-audit.md#2"
+        },
+        {
+          "label": "GAP",
+          "ref": "grep: no assignment to chaosCollectedFlags/chaosContinues other than SS1, EEZ boss, debug selector"
+        }
+      ],
+      "dependencies": [
+        "CAMP-01"
+      ],
+      "complexity": "Small",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "CAMP-12",
+      "subsystem": "campaign",
+      "kind": "gamemaker_adapter",
+      "name": "Developer-menu path vs genuine campaign path",
+      "status": "PARTIAL",
+      "summary": "chaosDebugSession disables SCR_save_game and progression writes, returns to the selector 90 updates after clear, applies emerald masks and an SS1->THZ2 return adapter. Every accepted zone was accepted through this path; the natural path has only ever been exercised for THZ1-3 data-select START.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_level/SCR_chaos_level.gml (chaos_act_complete)"
+        },
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: developer menu accepted infrastructure"
+        }
+      ],
+      "dependencies": [
+        "CAMP-02"
+      ],
+      "complexity": "Small",
+      "milestone": "G1",
+      "research_needed": null
+    },
+    {
+      "id": "LIFE-01",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "Life counter ownership and start value",
+      "status": "PARTIAL",
+      "summary": "global.life (default 3, legacy openSonic) is the single POC owner: HUD OBJ_count_lifes, OBJ_player_death, ring-100 award. ROM start value and BCD cap behaviour at campaign start are not documented.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_system/Create_0.gml:60; objects/OBJ_count_lifes/Draw_0.gml; objects/OBJ_player_death/Alarm_0.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-foundation-audit.md (ring counter $3138 / $3104)"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G2",
+      "research_needed": "RES-R0: ROM starting lives and new-game init values"
+    },
+    {
+      "id": "LIFE-02",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "100-ring extra life with ring wrap, cap 99",
+      "status": "ACCEPTED",
+      "summary": "chaos_ss_ring_counter_tick(): subtract 100 per carry, life = min(99, life+1). Accepted at SS1 including +10 monitors/Large Rings. Inherited 'hundred' path in OBJ_count_rings is bypassed inside Chaos levels (returns early).",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: SS1 natural 100-ring entry"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml:260-275; objects/OBJ_count_rings/Step_0.gml:1"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-foundation-audit.md"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G2",
+      "research_needed": null
+    },
+    {
+      "id": "LIFE-03",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "1-UP via type $10 monitor (parameter $02)",
+      "status": "PARTIAL",
+      "summary": "SCR_chaos_type10_reward() increments only the shadow variable global.chaosType10D299 (never read) and records request $A9. It never changes global.life, so a ROM 1-UP monitor gives no life and no HUD change. Research shows ring-100 ($3104) and parameter $02 execute the same BCD $D299 +1 / $A9 routine, so $D299 is the life counter. This is a confirmed extra-life ownership defect.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml:452-457"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/object-10.md (parameter $02 row); docs/special-stages-foundation-audit.md line 17"
+        },
+        {
+          "label": "GAP",
+          "ref": "grep chaosType10D299: written, never consumed"
+        }
+      ],
+      "dependencies": [
+        "LIFE-01"
+      ],
+      "complexity": "Small",
+      "milestone": "G2",
+      "research_needed": null
+    },
+    {
+      "id": "LIFE-04",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "Goal-sign ring-count prize (classes: continue / 10 rings / 1-UP) and retry state 6",
+      "status": "MISSING",
+      "summary": "Explicitly deferred in SCR_chaos_goal.gml. No prize is awarded in natural play. Research records tables $A919/$A962, class mapping and the retouch re-roll but flags class semantics and $D299/$D2C3 naming as provisional/conflicting.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_goal/SCR_chaos_goal.gml header"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/object-18-act-clear.md (prize section, unresolved list)"
+        }
+      ],
+      "dependencies": [
+        "LIFE-01",
+        "LIFE-09",
+        "RES-R0"
+      ],
+      "complexity": "Medium",
+      "milestone": "G2",
+      "research_needed": "RES-R0: reconcile $D299 (lives) vs $D2C3 (continues); confirm class 1/3 effects; $19 panel graphics/digits"
+    },
+    {
+      "id": "LIFE-05",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "Score accumulation from enemies/monitors/SS",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "summary": "global 'score' (legacy variable) gets +10 at several enemy sites, +100-point path for AQZ $3D, SS1 raw-unit tally (x10 display adapter). No central award function; no audit that every ROM score-table type awards. Bosses correctly award none.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_aqz_enemy, SCR_chaos_eez, SCR_chaos_sez_enemy, SCR_chaos_mghz_m3, SCR_chaos_ss1"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/object-10.md, object-21.md, object-27.md, mghz-object-24-2e-audit.md"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G2",
+      "research_needed": "RES-R0: display scale of score bytes (listed UNRESOLVED in object-18-act-clear.md)"
+    },
+    {
+      "id": "LIFE-06",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "Score-threshold extra life",
+      "status": "UNRESOLVED",
+      "summary": "No POC code and no Research statement either way. A bounded static check of the score-add routine ($262F) would settle whether the ROM awards lives at score thresholds.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "No document covers it"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "No code"
+        }
+      ],
+      "dependencies": [
+        "LIFE-05"
+      ],
+      "complexity": "Unknown",
+      "milestone": "G2",
+      "research_needed": "RES-R0: does $262F (or its callers) grant lives at score thresholds?"
+    },
+    {
+      "id": "LIFE-07",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "Death -> life loss -> act restart",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "summary": "Inherited OBJ_player_death: life-1, ring=0, fade, room_restart if life>0. Not compared with ROM ($49B6 path) for what resets (timer, rings, checkpoint, powers) or for the 'lives left' off-by-one (3 start lives = 3 attempts here).",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_player_death/Alarm_0.gml, Alarm_1.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/audio-request-audit.md ($96 death)"
+        }
+      ],
+      "dependencies": [
+        "LIFE-01"
+      ],
+      "complexity": "Small",
+      "milestone": "G2",
+      "research_needed": null
+    },
+    {
+      "id": "LIFE-08",
+      "subsystem": "lives",
+      "kind": "gamemaker_adapter",
+      "name": "Game Over screen",
+      "status": "PARTIAL",
+      "summary": "Inherited openSonic ROM_menu_game_over: legacy sprite for 90 updates then title. ROM zone-7 type $1F screen presentation and music $87 not extracted.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_menu_game_over/*"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-progression-audit.md#7; docs/audio-request-audit.md (game-over $87 at $13A5)"
+        }
+      ],
+      "dependencies": [
+        "LIFE-09"
+      ],
+      "complexity": "Medium",
+      "milestone": "G2",
+      "research_needed": "RES-R1: Game Over / Continue screen presentation (zone 7 type $1F)"
+    },
+    {
+      "id": "LIFE-09",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "Continue (consume $D2C3, restore lives to 3, clear score, keep $D2CC)",
+      "status": "MISSING",
+      "summary": "chaosContinues accrues from SS success and is drawn on the SS results card but nothing consumes it and no continue prompt exists. Semantics are documented (EMULATED); the prompt UI, countdown ($B4), accept ($A0) and music ($94) are only request-ID level.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml:128,229"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-progression-audit.md#2,#3; docs/audio-request-audit.md (Title/menus/continue row)"
+        }
+      ],
+      "dependencies": [
+        "LIFE-08",
+        "CAMP-09"
+      ],
+      "complexity": "Medium",
+      "milestone": "G2",
+      "research_needed": "RES-R1"
+    },
+    {
+      "id": "LIFE-10",
+      "subsystem": "lives",
+      "kind": "canonical_sms",
+      "name": "9:59 time-over rule",
+      "status": "UNRESOLVED",
+      "summary": "Inherited OBJ_count_time kills at 9:59. The ROM time limit rule is not documented in Research.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_count_time/Step_0.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "not covered"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G2",
+      "research_needed": "RES-R0 (include in score/timer static check)"
+    },
+    {
+      "id": "PLAY-01",
+      "subsystem": "player",
+      "kind": "canonical_sms",
+      "name": "Look up (state 3) incl. camera behaviour",
+      "status": "PARTIAL",
+      "summary": "Corrects AGENTS ('not implemented'): the Chaos core already has states 3/4 (Up/Down held while still) and the adapter selects SPR_player_up/down. No camera look-shift code was found in the viewport/adapter scripts (static search, not exhaustive). Research knows setter $46B0 and attack-bit behaviour but has no camera-offset study.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_core/SCR_chaos_core.gml:798-806; scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml:79-80"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/player-attack-badnik-audit.md section 8"
+        },
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md says not implemented -> needs Windows check"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G3",
+      "research_needed": "RES-R2: look up/down camera shift (delay, offset, speed, release) - bounded"
+    },
+    {
+      "id": "PLAY-02",
+      "subsystem": "player",
+      "kind": "canonical_sms",
+      "name": "Crouch / look down (state 4) and spin-dash charge entry",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "summary": "State 4 -> state $0F (charge) -> $10 (roll) implemented in the core and exercised through accepted zones.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_core/SCR_chaos_core.gml:775-796"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/player-attack-badnik-audit.md"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G3",
+      "research_needed": null
+    },
+    {
+      "id": "PLAY-03",
+      "subsystem": "player",
+      "kind": "canonical_sms",
+      "name": "Super Peel-Out (states $15 charge / $1A run)",
+      "status": "MISSING",
+      "summary": "No entry path in the POC: states 21/26 appear only as exclusions. Research has structural facts only: state numbers, setters $46CE/$46E2, attack-bit kept, aura object after a very long hold ('UNRESOLVED long hold'). Input combination, charge time, release speed table, animation frames, sound and aura are not extracted.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_core/SCR_chaos_core.gml:364,537 (exclusions only)"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/player-attack-badnik-audit.md section 8; docs/decomp-1a-existing-evidence.md:191"
+        },
+        {
+          "label": "GAP",
+          "ref": "AGENTS.md: 'not currently implemented'"
+        }
+      ],
+      "dependencies": [
+        "PLAY-05"
+      ],
+      "complexity": "Large",
+      "milestone": "G3",
+      "research_needed": "RES-R3: Super Peel-Out state machine (input, $15/$1A callbacks, speed, frames, sound, aura)"
+    },
+    {
+      "id": "PLAY-04",
+      "subsystem": "player",
+      "kind": "canonical_sms",
+      "name": "Full Sonic state-script coverage vs POC core",
+      "status": "UNRESOLVED",
+      "summary": "ROM has 61 Sonic state scripts. A literal-reference scan of SCR_chaos_core.gml finds 27 states never named ($00,$18,$19,$23,$24,$26,$27,$29-$3C). Some are plainly handled elsewhere (EEZ/ending/boss scripts) or unused; the scan is approximate. A one-day static state-coverage matrix would close this.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:data/sonic-state-scripts.csv; data/decomp1c/callbacks.json"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_core/SCR_chaos_core.gml"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G3",
+      "research_needed": null
+    },
+    {
+      "id": "PLAY-05",
+      "subsystem": "player",
+      "kind": "canonical_sms",
+      "name": "Player animation completeness",
+      "status": "UNRESOLVED",
+      "summary": "Spring/airborne/fall/hurt animation scheduler is accepted. Anything else (idle wait animation, look/crouch frames fidelity, peel-out frames, skid, push, death variants) is not enumerated against the ROM animation scripts.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: AQZ P1 animation scheduler"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/player-spring-airborne-state-closure.md; docs/player-animation-counter.md"
+        }
+      ],
+      "dependencies": [
+        "PLAY-04"
+      ],
+      "complexity": "Small",
+      "milestone": "G3",
+      "research_needed": null
+    },
+    {
+      "id": "PLAY-06",
+      "subsystem": "player",
+      "kind": "canonical_sms",
+      "name": "Isometric-platform fall presentation",
+      "status": "UNRESOLVED",
+      "summary": "Observation only ('may require a different presentation'). Research isometric-platform audit exists; no study of the fall animation. Not a confirmed missing mechanic.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:docs/isometric-platform-audit.md"
+        },
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md Known Deferred Issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "PLAY-07",
+      "subsystem": "player",
+      "kind": "canonical_sms",
+      "name": "Shared hurt-landing extra vy=0 write",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "summary": "Research confirmed the POC writes vy=0 on hurt landing where the ROM does not; classed a narrow shared-player task. Not shown fixed in accepted work.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:docs/natural-lost-ring-hurt-audit.md (c4c389c)"
+        },
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md Fidelity section"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "AUD-01",
+      "subsystem": "audio",
+      "kind": "canonical_sms",
+      "name": "Audio request ledger (70 IDs: 31 music, 37 SFX, 2 control)",
+      "status": "ACCEPTED",
+      "summary": "Accepted AUDIO-0. 24 music + 13 SFX + 2 control names verified, 31 numeric, 9 IDs without request sites.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:data/rom-cache/audio/request-ledger.json; docs/audio-request-audit.md"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G4",
+      "research_needed": null
+    },
+    {
+      "id": "AUD-02",
+      "subsystem": "audio",
+      "kind": "gamemaker_adapter",
+      "name": "Request-ID -> playback routing in POC",
+      "status": "PARTIAL",
+      "summary": "Only chaos_debug_audio_asset() maps IDs: $A4,$A6,$BF (+$F8 stop). 39 sites record chaosLastSoundRequest (17 distinct IDs) but most never call the router. Inherited openSonic code plays its own SFX by asset name (jump, spin, spin-dash, break, spring, ring, life, score) independent of ROM IDs.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml:95-112"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:grep chaosLastSoundRequest (39 sites)"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_player_char/Step_0.gml (audio_play_sound)"
+        }
+      ],
+      "dependencies": [
+        "AUD-01"
+      ],
+      "complexity": "Medium",
+      "milestone": "G4",
+      "research_needed": null
+    },
+    {
+      "id": "AUD-03",
+      "subsystem": "audio",
+      "kind": "canonical_sms",
+      "name": "Music (31 IDs)",
+      "status": "MISSING",
+      "summary": "sounds/ holds 21 assets, all inherited effects/stingers; zero music. Level, boss, SS ($8F/$8A/$86), ending ($8D/$9A/$98) and title ($82) music are intentionally silent today. Research parses streams but does not synthesise audio ('No PSG rendering').",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:sounds/ (21 resources)"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/audio-request-audit.md (evidence boundaries)"
+        },
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: unsupported audio stays silent"
+        }
+      ],
+      "dependencies": [
+        "AUD-02"
+      ],
+      "complexity": "Unknown",
+      "milestone": "G4",
+      "research_needed": "Strategy decision first (see unresolved Q6); then RES-R4 only if a ROM-driver playback path is chosen"
+    },
+    {
+      "id": "AUD-04",
+      "subsystem": "audio",
+      "kind": "canonical_sms",
+      "name": "Sound effects: ROM-ID fidelity",
+      "status": "PARTIAL",
+      "summary": "Inherited openSonic effects cover many events (names SFX_ring, SFX_sonic_jump, ...). Provenance/accuracy versus SMS sounds is unverified; most ROM SFX IDs have no asset.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:sounds/"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:data/rom-cache/audio/request-ledger.json"
+        }
+      ],
+      "dependencies": [
+        "AUD-02"
+      ],
+      "complexity": "Medium",
+      "milestone": "G4",
+      "research_needed": null
+    },
+    {
+      "id": "AUD-05",
+      "subsystem": "audio",
+      "kind": "canonical_sms",
+      "name": "Fades, loops and transitions",
+      "status": "PARTIAL",
+      "summary": "Ending fade events use recovered driver fields (accepted). Level/boss handoffs, 'no generic song-position stack', Silent Sneakers and clock timing are ledger facts with no runtime because there is no music engine.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:AGENTS.md audio section; docs/audio-request-audit.md"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ending/SCR_chaos_ending.gml"
+        }
+      ],
+      "dependencies": [
+        "AUD-03"
+      ],
+      "complexity": "Medium",
+      "milestone": "G4",
+      "research_needed": null
+    },
+    {
+      "id": "PRES-01",
+      "subsystem": "presentation",
+      "kind": "canonical_sms",
+      "name": "Original ROM intro animation",
+      "status": "MISSING",
+      "summary": "OBJ_menu_opening shows the inherited SPR_opening_sega for 120 updates. No ROM intro research exists in the repository.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_menu_opening/*"
+        },
+        {
+          "label": "RES",
+          "ref": "no intro document; only title entry $04B4->$3065 request $82 noted"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Large",
+      "milestone": "G5",
+      "research_needed": "RES-R5: intro/title sequence extraction"
+    },
+    {
+      "id": "PRES-02",
+      "subsystem": "presentation",
+      "kind": "canonical_sms",
+      "name": "Title screen",
+      "status": "MISSING",
+      "summary": "Inherited openSonic title (SPR_title) with START/OPTIONS. Not Sonic Chaos ROM art or flow.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_menu_title/*; sprites/SPR_title"
+        },
+        {
+          "label": "RES",
+          "ref": "not researched"
+        }
+      ],
+      "dependencies": [
+        "PRES-01"
+      ],
+      "complexity": "Medium",
+      "milestone": "G5",
+      "research_needed": "RES-R5"
+    },
+    {
+      "id": "PRES-03",
+      "subsystem": "presentation",
+      "kind": "canonical_sms",
+      "name": "Character selection (Sonic / Tails)",
+      "status": "MISSING",
+      "summary": "No selector UI; global.player fixed to 1 (KeyPress_18 forces it). Research knows request IDs only ($B4 change, $A0 accept).",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_player_char/KeyPress_18.gml; objects/OBJ_system/Create_0.gml:31"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/audio-request-audit.md"
+        }
+      ],
+      "dependencies": [
+        "PRES-02",
+        "TAIL-01"
+      ],
+      "complexity": "Medium",
+      "milestone": "G5",
+      "research_needed": "RES-R5"
+    },
+    {
+      "id": "PRES-04",
+      "subsystem": "presentation",
+      "kind": "canonical_sms",
+      "name": "Act title cards / level intro",
+      "status": "MISSING",
+      "summary": "No act-title-card resource or object in the POC. ROM level_intro_setup ($06C7) is located by DECOMP-1B but its presentation is not extracted.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "no card sprites/objects (static search)"
+        },
+        {
+          "label": "RES",
+          "ref": "ref:docs/decomp-1b-engine-callers.md:107"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Medium",
+      "milestone": "G5",
+      "research_needed": "RES-R5"
+    },
+    {
+      "id": "PRES-05",
+      "subsystem": "presentation",
+      "kind": "canonical_sms",
+      "name": "Special Stage results cards, continue and completion icons",
+      "status": "ACCEPTED",
+      "summary": "Recovered cards/icons; dynamic numbers and tally pacing are explicit adapters. SS1 accepted.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: SS1"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml:200-232"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G5",
+      "research_needed": null
+    },
+    {
+      "id": "PRES-06",
+      "subsystem": "presentation",
+      "kind": "canonical_sms",
+      "name": "Ending presentation integration",
+      "status": "ACCEPTED",
+      "summary": "Verified integration only: EEZ handoff -> ROM_chaos_ending -> ROM_menu_title; credits from ROM caches.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: P5"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_ending/SCR_chaos_ending.gml:1-12,69"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G5",
+      "research_needed": null
+    },
+    {
+      "id": "PRES-07",
+      "subsystem": "presentation",
+      "kind": "gamemaker_adapter",
+      "name": "In-level HUD fidelity",
+      "status": "UNRESOLVED",
+      "summary": "HUD objects (OBJ_count_*) are inherited and offset per act; no study compares layout, digits and icons with the SMS HUD.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_count_lifes/Draw_0.gml"
+        },
+        {
+          "label": "RES",
+          "ref": "only type $12 HUD slide-away covered"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "TAIL-01",
+      "subsystem": "tails",
+      "kind": "canonical_sms",
+      "name": "Playable Tails in the Chaos core",
+      "status": "MISSING",
+      "summary": "Chaos core and adapter are Sonic-only (global.player==1 gates, developer selector forces player=1). Retained SPR_tails_* and legacy flight in SCR_physics_speed/OBJ_player_char are openSonic-derived, not Sonic Chaos ROM behaviour.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml:459; scripts/SCR_player_sprites_tails; scripts/SCR_physics_speed:127"
+        },
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md: retained sprites do not imply playable support"
+        }
+      ],
+      "dependencies": [
+        "TAIL-02"
+      ],
+      "complexity": "Large",
+      "milestone": "G6",
+      "research_needed": null
+    },
+    {
+      "id": "TAIL-02",
+      "subsystem": "tails",
+      "kind": "canonical_sms",
+      "name": "Tails ROM research: states/physics/flight/art",
+      "status": "PARTIAL",
+      "summary": "Available: DECOMP-1C parsed 109 Sonic/Tails player scripts (Tails is object type 2); EEZ Tails ending scripts retained; $D2C8 character byte; SS entry Sonic-only; ending $8D shared Full Sonic/Tails. Missing: Tails movement tables, flight/carry rules, state callbacks, art extraction, per-zone object differences, ring/prize rules.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:AGENTS.md DECOMP-1C; docs/decomp-1c-player-callbacks.md; docs/eez-boss-endgame-audit.md:85-98; docs/special-stages-progression-audit.md#4"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Large",
+      "milestone": "G6",
+      "research_needed": "RES-R6: Tails campaign research series (movement/flight, art, boss/zone deltas, ending)"
+    },
+    {
+      "id": "TAIL-03",
+      "subsystem": "tails",
+      "kind": "canonical_sms",
+      "name": "Tails progression differences (no Special Stages, ending path)",
+      "status": "PARTIAL",
+      "summary": "Documented: only Sonic enters stages ($D2C8==1); full ending is Sonic with $3F; other characters take another path at $18ED. Unresearched: Tails lives/continue/sign-prize deltas.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:docs/special-stages-progression-audit.md#4; docs/special-stages-foundation-audit.md"
+        }
+      ],
+      "dependencies": [
+        "TAIL-02"
+      ],
+      "complexity": "Medium",
+      "milestone": "G6",
+      "research_needed": null
+    },
+    {
+      "id": "SAVE-01",
+      "subsystem": "pc",
+      "kind": "gamemaker_adapter",
+      "name": "Slot save/load (inherited openSonic INI, 5 slots)",
+      "status": "PARTIAL",
+      "summary": "Reusable: saveGameN.ini section 'classicMode' with life, chaoEmerald, score, zoneGoto, specialStageGoto, allZones; saves on act boundary for THZ; Delete button resets. Gaps: Chaos emerald bits, continues, character, 18-act progression, versioning; dev sessions correctly skip saves.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_save_game, SCR_load_game; objects/OBJ_system/Create_0.gml:96-120; objects/OBJ_menu_data_button_del/Step_0.gml"
+        }
+      ],
+      "dependencies": [
+        "CAMP-02",
+        "CAMP-09"
+      ],
+      "complexity": "Medium",
+      "milestone": "G7",
+      "research_needed": null
+    },
+    {
+      "id": "SAVE-02",
+      "subsystem": "pc",
+      "kind": "pc_enhancement",
+      "name": "Options persistence (settings.ini)",
+      "status": "PARTIAL",
+      "summary": "Persists screenSize, windowSize, buttons (touch), music (also gates inherited SFX), saveGame slot. No separate music/SFX volume, fullscreen, vsync or input settings.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:objects/OBJ_menu_options/Destroy_0.gml, Step_0.gml, Draw_0.gml; objects/OBJ_system/Create_0.gml:75-85"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G7",
+      "research_needed": null
+    },
+    {
+      "id": "SAVE-03",
+      "subsystem": "pc",
+      "kind": "pc_enhancement",
+      "name": "Keyboard / controller remapping",
+      "status": "MISSING",
+      "summary": "SCR_buttons hard-codes arrows, Space, A, Enter and gamepad 0 only.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_buttons/SCR_buttons.gml"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Medium",
+      "milestone": "G7",
+      "research_needed": null
+    },
+    {
+      "id": "SAVE-04",
+      "subsystem": "pc",
+      "kind": "pc_enhancement",
+      "name": "Display configuration",
+      "status": "PARTIAL",
+      "summary": "Window size 1-3x and screen size auto/16:9/4:3 exist via SCR_screen; no fullscreen toggle found by search; 348x196 widescreen logical view is accepted.",
+      "evidence": [
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_screen/SCR_screen.gml; objects/OBJ_menu_options"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G7",
+      "research_needed": null
+    },
+    {
+      "id": "SAVE-05",
+      "subsystem": "pc",
+      "kind": "pc_enhancement",
+      "name": "Mid-level savestates",
+      "status": "PC_ENHANCEMENT",
+      "summary": "Out of scope by assignment; do not design.",
+      "evidence": [
+        {
+          "label": "UNAVAIL",
+          "ref": "not audited by design"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Unknown",
+      "milestone": "G7",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-01",
+      "subsystem": "closure",
+      "kind": "gamemaker_adapter",
+      "name": "AQZ monitor-break explosion palette renders black",
+      "status": "MISSING",
+      "summary": "Open, cosmetic, gameplay unaffected. Palette source/index audit needed; do not revert AQZ backdrop.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-02",
+      "subsystem": "closure",
+      "kind": "gamemaker_adapter",
+      "name": "Goal/ending sign off-centre in multiple zones",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "summary": "Open presentation debt; pan target code is already viewport-centred (chaos_goal_pan_target_x). Remaining defect is per-zone presentation; fold into the viewport compliance pass.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        },
+        {
+          "label": "POC-SRC",
+          "ref": "poc:scripts/SCR_chaos_goal/SCR_chaos_goal.gml"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Medium",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-03",
+      "subsystem": "closure",
+      "kind": "gamemaker_adapter",
+      "name": "Cross-boss widescreen / fidelity review",
+      "status": "MISSING",
+      "summary": "Planned after all SS accepted. Accepted adapters: THZ3, GPZ3, MGHZ3, SEZ3, AQZ3, EEZ P4.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md roadmap 5"
+        }
+      ],
+      "dependencies": [
+        "CAMP-08"
+      ],
+      "complexity": "Medium",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-04",
+      "subsystem": "closure",
+      "kind": "gamemaker_adapter",
+      "name": "Final viewport / presentation compliance pass",
+      "status": "MISSING",
+      "summary": "Planned; includes sign centering, backdrop/effect palette interactions.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md roadmap 6"
+        }
+      ],
+      "dependencies": [
+        "BUG-01",
+        "BUG-02",
+        "BUG-03"
+      ],
+      "complexity": "Medium",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-05",
+      "subsystem": "closure",
+      "kind": "canonical_sms",
+      "name": "Downhill / fall presentation instability",
+      "status": "UNRESOLVED",
+      "summary": "Unreproduced; M2 traces byte-identical to M1. Needs deterministic capture before any change.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Unknown",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-06",
+      "subsystem": "closure",
+      "kind": "canonical_sms",
+      "name": "Older $21 rebound left/right oscillation",
+      "status": "UNRESOLVED",
+      "summary": "Visually unverified after AQZ P1 scheduler replacement.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-07",
+      "subsystem": "closure",
+      "kind": "canonical_sms",
+      "name": "Spring Shoes terrain lock; Spring Shoes/monitor contact oddities",
+      "status": "UNRESOLVED",
+      "summary": "Non-deterministic, unresolved canonical status.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Unknown",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-08",
+      "subsystem": "closure",
+      "kind": "gamemaker_adapter",
+      "name": "Shared dynamic-object slot model (crumble shard count)",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "summary": "Cosmetic extra shards; needs a shared canonical allocator if pursued.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Medium",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-09",
+      "subsystem": "closure",
+      "kind": "gamemaker_adapter",
+      "name": "Enemy spawn/despawn presentation near scroll/return paths",
+      "status": "UNRESOLVED",
+      "summary": "Needs concrete reproductions before global change.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-10",
+      "subsystem": "closure",
+      "kind": "canonical_sms",
+      "name": "Loop / curved-surface diagonal entry stopping",
+      "status": "UNRESOLVED",
+      "summary": "Original also misbehaves; fidelity baseline. Any smoothing is an optional QoL adapter.",
+      "evidence": [
+        {
+          "label": "WIN-ACC",
+          "ref": "AGENTS.md deferred issues"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Medium",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "BUG-11",
+      "subsystem": "closure",
+      "kind": "canonical_sms",
+      "name": "Verified-canonical items that must not be 'fixed'",
+      "status": "ACCEPTED",
+      "summary": "State $14 zero air acceleration; $14 strip pass-through; monitor pop/push cases; Silent Sneakers; terrain-ring probe feel.",
+      "evidence": [
+        {
+          "label": "RES",
+          "ref": "ref:AGENTS.md Confirmed shared-player/contact facts"
+        }
+      ],
+      "dependencies": [],
+      "complexity": "Small",
+      "milestone": "G8",
+      "research_needed": null
+    },
+    {
+      "id": "RC-01",
+      "subsystem": "release",
+      "kind": "gamemaker_adapter",
+      "name": "Original Mode release-candidate gate",
+      "status": "MISSING",
+      "summary": "End-to-end natural playthrough (both endings), regression suite, source archive, asset-provenance/distribution decision.",
+      "evidence": [
+        {
+          "label": "UNAVAIL",
+          "ref": "needs Windows and legal/product decision"
+        }
+      ],
+      "dependencies": [
+        "CAMP-04",
+        "LIFE-09",
+        "SAVE-01",
+        "BUG-04"
+      ],
+      "complexity": "Medium",
+      "milestone": "G9",
+      "research_needed": null
+    }
+  ],
+  "research_assignments": [
+    {
+      "id": "RES-R0",
+      "title": "Results / tally / sign prize / lives-score semantics",
+      "size": "Medium",
+      "unblocks": [
+        "CAMP-04",
+        "LIFE-04",
+        "LIFE-05",
+        "LIFE-06",
+        "LIFE-10",
+        "LIFE-01"
+      ],
+      "questions": [
+        "ordinary act results card graphics and zone tables ($2D84/$32CA/$A3A0)",
+        "score-byte display scale ($27E2/$27E5) and tally pacing/skip",
+        "reconcile $D299=lives vs $D2C3=continues in docs/object-18-act-clear.md",
+        "sign prize classes 1/2/3 effects",
+        "starting lives and $2A00 new-game init",
+        "does $262F grant lives at score thresholds",
+        "time-over rule"
+      ]
+    },
+    {
+      "id": "RES-R1",
+      "title": "Game Over and Continue screens",
+      "size": "Medium",
+      "unblocks": [
+        "LIFE-08",
+        "LIFE-09"
+      ],
+      "questions": [
+        "zone-7 type $1F screen presentation",
+        "continue prompt ($141D/$1487/$148E/$1491), trigger and input",
+        "game-over $87 / continue $94"
+      ]
+    },
+    {
+      "id": "RES-R2",
+      "title": "Look up / look down camera behaviour",
+      "size": "Small",
+      "unblocks": [
+        "PLAY-01"
+      ],
+      "questions": [
+        "camera offset, delay and speed while state 3/4 held"
+      ]
+    },
+    {
+      "id": "RES-R3",
+      "title": "Super Peel-Out state machine",
+      "size": "Medium",
+      "unblocks": [
+        "PLAY-03"
+      ],
+      "questions": [
+        "input combination",
+        "$15/$1A callbacks, charge time, release speed",
+        "frames, sound, aura object"
+      ]
+    },
+    {
+      "id": "RES-R4",
+      "title": "Music playback path (only if chosen)",
+      "size": "Unknown",
+      "unblocks": [
+        "AUD-03"
+      ],
+      "questions": [
+        "strategy decision precedes research"
+      ]
+    },
+    {
+      "id": "RES-R5",
+      "title": "Intro, title, character select, act title cards",
+      "size": "Large",
+      "unblocks": [
+        "PRES-01",
+        "PRES-02",
+        "PRES-03",
+        "PRES-04"
+      ],
+      "questions": [
+        "screen graphics/palettes/timing",
+        "demo/attract mode existence",
+        "level_intro_setup $06C7 presentation"
+      ]
+    },
+    {
+      "id": "RES-R6",
+      "title": "Tails campaign research series",
+      "size": "Large",
+      "unblocks": [
+        "TAIL-01",
+        "TAIL-02",
+        "TAIL-03"
+      ],
+      "questions": [
+        "Tails movement tables and flight",
+        "art extraction",
+        "zone/boss/object deltas",
+        "progression/prize differences"
+      ]
+    }
+  ],
+  "work_packages": [
+    {
+      "id": "WP-01",
+      "name": "CAMPAIGN-1 natural spine",
+      "milestone": "G1",
+      "complexity": "Medium",
+      "depends_on": [],
+      "needs_research": false,
+      "scope": "18-act natural order table (or reuse debug entries), non-debug clear -> next-act transition, boss/EEZ3 handoffs, New Game/title state reset, interim results (existing SS-style card with ROM timing), verifier",
+      "windows_gate": "James plays THZ1 -> THZ3 -> GPZ1 via data-select START"
+    },
+    {
+      "id": "WP-02",
+      "name": "RESULTS-LIVES research (RES-R0, RES-R1)",
+      "milestone": "G1/G2",
+      "complexity": "Medium",
+      "depends_on": [],
+      "needs_research": true
+    },
+    {
+      "id": "WP-03",
+      "name": "LIVES-1 central award API",
+      "milestone": "G2",
+      "complexity": "Small",
+      "depends_on": [
+        "WP-01"
+      ],
+      "needs_research": false,
+      "scope": "single award_life()/award_score() owner; wire type $10 param $02; keep ring-100; death/restart parity checks"
+    },
+    {
+      "id": "WP-04",
+      "name": "RESULTS-1 ordinary results + tally + sign prize",
+      "milestone": "G1/G2",
+      "complexity": "Large",
+      "depends_on": [
+        "WP-01",
+        "WP-02"
+      ],
+      "needs_research": true
+    },
+    {
+      "id": "WP-05",
+      "name": "GAMEOVER-CONTINUE-1",
+      "milestone": "G2",
+      "complexity": "Medium",
+      "depends_on": [
+        "WP-02",
+        "WP-03"
+      ],
+      "needs_research": true
+    },
+    {
+      "id": "WP-06",
+      "name": "SS2..SS5 (existing track)",
+      "milestone": "G1",
+      "complexity": "Medium",
+      "depends_on": [
+        "WP-01"
+      ],
+      "needs_research": false,
+      "note": "4 separate Windows gates; SS gate in chaos_ss_ring_counter_tick must be generalised"
+    },
+    {
+      "id": "WP-07",
+      "name": "SAVE-1 act-boundary save v1",
+      "milestone": "G7",
+      "complexity": "Small",
+      "depends_on": [
+        "WP-01",
+        "WP-03"
+      ],
+      "needs_research": false
+    },
+    {
+      "id": "WP-08",
+      "name": "STATE-COVERAGE matrix + look up/down",
+      "milestone": "G3",
+      "complexity": "Small",
+      "depends_on": [],
+      "needs_research": true
+    },
+    {
+      "id": "WP-09",
+      "name": "Super Peel-Out",
+      "milestone": "G3",
+      "complexity": "Large",
+      "depends_on": [
+        "WP-08"
+      ],
+      "needs_research": true
+    },
+    {
+      "id": "WP-10",
+      "name": "AUDIO-1 router and SFX map",
+      "milestone": "G4",
+      "complexity": "Medium",
+      "depends_on": [],
+      "needs_research": false
+    },
+    {
+      "id": "WP-11",
+      "name": "AUDIO-2 music strategy and execution",
+      "milestone": "G4",
+      "complexity": "Unknown",
+      "depends_on": [
+        "WP-10"
+      ],
+      "needs_research": true
+    },
+    {
+      "id": "WP-12",
+      "name": "PRESENTATION series (intro, title, select, cards)",
+      "milestone": "G5",
+      "complexity": "Large",
+      "depends_on": [
+        "WP-01"
+      ],
+      "needs_research": true
+    },
+    {
+      "id": "WP-13",
+      "name": "TAILS series",
+      "milestone": "G6",
+      "complexity": "Large",
+      "depends_on": [
+        "WP-12"
+      ],
+      "needs_research": true
+    },
+    {
+      "id": "WP-14",
+      "name": "OPTIONS-1 remap/fullscreen/volume",
+      "milestone": "G7",
+      "complexity": "Medium",
+      "depends_on": [],
+      "needs_research": false
+    },
+    {
+      "id": "WP-15",
+      "name": "CLOSURE-1 deferred bugs, cross-boss review, viewport pass",
+      "milestone": "G8",
+      "complexity": "Medium",
+      "depends_on": [
+        "WP-06"
+      ],
+      "needs_research": false
+    },
+    {
+      "id": "WP-16",
+      "name": "RC-1 Original Mode release candidate",
+      "milestone": "G9",
+      "complexity": "Medium",
+      "depends_on": [
+        "WP-01",
+        "WP-04",
+        "WP-05",
+        "WP-06",
+        "WP-07",
+        "WP-15"
+      ],
+      "needs_research": false
+    }
+  ],
+  "unresolved_questions": [
+    "Q1 ROM starting lives / new-game init values; which of $D299 and $D2C3 is lives vs continues (Research docs disagree).",
+    "Q2 Does the ROM grant extra lives from score thresholds?",
+    "Q3 Score display scale and whether the SMS HUD shows score.",
+    "Q4 ROM time-over rule (inherited 9:59 kill).",
+    "Q5 Exact user-reported extra-life defect (no repro provided). Confirmed candidate: 1-UP monitor never reaches global.life.",
+    "Q6 Music strategy (silence, tracker-style conversion, emulated driver) - product decision.",
+    "Q7 Does the ROM shift the camera on look up/down?",
+    "Q8 Super Peel-Out input combination and charge parameters.",
+    "Q9 Is Tails in scope for Original Mode v1?",
+    "Q10 Asset provenance/distribution policy for ROM-derived data in a PC release.",
+    "Q11 Do inherited SFX fire at the right moments versus ROM request sites?",
+    "Q12 Does the ROM have an attract/demo mode or act title cards?",
+    "Q13 SS2 status (unaccepted branch, not examined)."
+  ],
+  "unavailable_evidence": [
+    "SS2 local worktree/branch",
+    "Canonical ROM and any local-only ignored research caches (approval PNG boards)",
+    "GameMaker IDE / Windows play",
+    "POC repository default branch differs from accepted baseline: main is 03a6e7d, accepted tip is branch poc/special-stage-1 @ 3381cfd (audit used the exact commit)",
+    "User's extra-life defect reproduction",
+    "No tests or scripts were executed in this audit"
+  ]
+}
