@@ -1,0 +1,717 @@
+{
+ "format": 1,
+ "base_research_commit": "0bb7390813a8fa4320ef35253a2c39598eee8e08",
+ "fullgame0_commit": "e86b4de11f88970d7240a46d9c101d06707e6bff",
+ "poc_ss5": "a13c4c96fbc1cff44566efaf416b4c078fbae3cc",
+ "poc_fg1": "c0c4c9764b7e0b14976a85841e8349bf66de15ac",
+ "evidence_note": "STATIC-POC items are read-only observations of the accepted POC source, not ROM facts and not Windows acceptance; ROM facts are in campaign-contract.json",
+ "static_poc_observations": [
+  {
+   "id": "SP1",
+   "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+   "line": "414-420",
+   "finding": "chaos_acts() still lists exactly THZ1, THZ2, THZ3 at SS5 (the SS milestones did not add the campaign table)"
+  },
+  {
+   "id": "SP2",
+   "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "line": "478-479",
+   "finding": "type $10 parameter 2 (1-UP monitor) still only increments the shadow global.chaosType10D299 (never read); no life is awarded"
+  },
+  {
+   "id": "SP3",
+   "file": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml",
+   "line": "34-35,126,176,280",
+   "finding": "chaosContinues and chaosCollectedFlags are created lazily if absent, incremented by stage success and only DRAWN on the results card; nothing consumes a continue and New Game does not clear them"
+  },
+  {
+   "id": "SP4",
+   "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+   "line": "121",
+   "finding": "the EEZ boss reads chaosCollectedFlags lazily; the sixth bit is OR-ed at scripts/SCR_chaos_eez_boss line 258"
+  },
+  {
+   "id": "SP5",
+   "file": "objects/OBJ_player_death/Alarm_1.gml",
+   "line": "9",
+   "finding": "death with no lives goes to the inherited ROM_menu_game_over room (legacy sprite), not the ROM Game Over/continue flow"
+  },
+  {
+   "id": "SP6",
+   "file": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml",
+   "line": "342-355",
+   "finding": "chaos_ss_return_valid() fallback is a POC guard for invalid developer origins (records chaosSSReturnFault, saves nothing); it is not ROM behaviour"
+  },
+  {
+   "id": "SP7",
+   "file": "FG1 c0c4c97",
+   "line": "-",
+   "finding": "FG1 changes THZ foreground priority only (one wiring line in SCR_chaos_level); it does not touch campaign flow, lives, continues or progression"
+  }
+ ],
+ "ordered_dependency_ledger": [
+  {
+   "order": 1,
+   "id": "G1-A",
+   "milestone": "G1",
+   "title": "Run-state owner and New Game reset",
+   "depends_on": [],
+   "status": "CONFIRMED",
+   "contract": [
+    "T02",
+    "T10",
+    "RULES.lives",
+    "RULES.continues",
+    "RULES.emeralds",
+    "RAM map"
+   ],
+   "confirmed": [
+    "zone/act, lives, continues, rings, score, emeralds, character are the run state; one owner can hold them",
+    "New Game: zone 0 act 0; lives 3 (Sonic) / 5 (Tails); continues 0 / 3; rings, score, bonus bytes and EMERALDS cleared (only New Game and power-on clear emeralds)",
+    "Game Over and the ending leave the stale values until the next New Game"
+   ],
+   "gaps": [],
+   "poc_start": [
+    "SP3: lazily created globals never cleared by a New Game"
+   ],
+   "acceptance": [
+    "new_game_sonic",
+    "new_game_tails",
+    "death_continue_timeout",
+    "death_game_over_no_continue"
+   ]
+  },
+  {
+   "order": 2,
+   "id": "G1-B",
+   "milestone": "G1",
+   "title": "18-act table, loader parameters and restart rule",
+   "depends_on": [
+    "G1-A"
+   ],
+   "status": "CONFIRMED",
+   "contract": [
+    "T03",
+    "start_positions",
+    "RULES.checkpoints"
+   ],
+   "confirmed": [
+    "act order (zone 0..5) x (act 0..2); start camera/player positions come from a ROM table keyed by (zone, act) only",
+    "no checkpoints: every reload (new act, death, continue) uses the same start position",
+    "load resets rings, timer, power-ups, object RAM; score/lives/continues/emeralds/character are untouched by a load"
+   ],
+   "gaps": [],
+   "poc_start": [
+    "SP1: chaos_acts() has 3 entries"
+   ],
+   "acceptance": [
+    "restart_matrix",
+    "death_pit_lives3",
+    "campaign_spine"
+   ]
+  },
+  {
+   "order": 3,
+   "id": "G1-C",
+   "milestone": "G1",
+   "title": "Act-clear tail: 198-frame wait, results card, tally, fades, next act",
+   "depends_on": [
+    "G1-B"
+   ],
+   "status": "CONFIRMED (control flow); GAP (presentation)",
+   "contract": [
+    "T04",
+    "T15",
+    "palette_fade_answer"
+   ],
+   "confirmed": [
+    "exact wait sequence 60+96+30+12 (=198) -> results -> tally -> 48 -> fade request -> 96 -> palette fill -> 48 -> act += 1",
+    "tally: +10 raw per ring, then the bonus word +1 raw per step (button skips the pacing delay)",
+    "post-tally fade to white then black exists and is shared by ordinary clears and Special Stage returns"
+   ],
+   "gaps": [
+    "U4 (ordinary results card graphics/palettes/text)",
+    "U5 (sound requests)"
+   ],
+   "poc_start": [
+    "inherited developer overlay; SS results card is the Special Stage card"
+   ],
+   "acceptance": [
+    "clear_thz1_rings00",
+    "special_stage_success"
+   ]
+  },
+  {
+   "order": 4,
+   "id": "G1-D",
+   "milestone": "G1",
+   "title": "Sign prize and time/ring bonus",
+   "depends_on": [
+    "G1-C"
+   ],
+   "status": "CONFIRMED (tables, classes); GAP (art selectors)",
+   "contract": [
+    "T04",
+    "sign_prize_tables",
+    "RULES.lives",
+    "RULES.continues"
+   ],
+   "confirmed": [
+    "prize class by ring count: class 3 -> +1 CONTINUE, class 2 -> rings +$10 (no award), class 1 -> +1 LIFE, class 0 -> retry; tables per zone parity",
+    "bonus word = time entry x100 + (rings - $11) BCD, computed by the $19 child; 0 becomes $0777 and awards a life"
+   ],
+   "gaps": [
+    "U3 (odd-zone table exercised only by decode, art selectors $1B..$20)"
+   ],
+   "poc_start": [
+    "goal prize deferred in SCR_chaos_goal.gml (FULLGAME-0 LIFE-04)"
+   ],
+   "acceptance": [
+    "clear_thz1_rings15",
+    "clear_thz1_rings55",
+    "clear_thz1_rings09"
+   ]
+  },
+  {
+   "order": 5,
+   "id": "G1-E",
+   "milestone": "G1",
+   "title": "Zone rollover, act-3 boss bonus and end-of-game branch",
+   "depends_on": [
+    "G1-C"
+   ],
+   "status": "CONFIRMED (flow); GAP (U2 boss bonus object per zone)",
+   "contract": [
+    "T05",
+    "T06",
+    "act3_boss_bonus_table"
+   ],
+   "confirmed": [
+    "act index 2 clear -> (zone + 1, act 0) with results and the boss bonus 500/1000/1500/2000/2500 raw for zones 0..4",
+    "zone 5 act index 2 skips results and goes to zone 6 -> ending selector -> title"
+   ],
+   "gaps": [
+    "U2"
+   ],
+   "poc_start": [
+    "CAMP-06 POC formula ring*10+steps+500 is not ROM-derived"
+   ],
+   "acceptance": [
+    "campaign_spine"
+   ]
+  },
+  {
+   "order": 6,
+   "id": "G1-F",
+   "milestone": "G1",
+   "title": "Special Stage detour integration (entry, selection, return to the NEXT act)",
+   "depends_on": [
+    "G1-A",
+    "G1-C"
+   ],
+   "status": "CONFIRMED",
+   "contract": [
+    "T11",
+    "T12",
+    "T13",
+    "T14",
+    "T15",
+    "T16"
+   ],
+   "confirmed": [
+    "entry gate: Sonic, zone < 6, emeralds != $1F; selection = 8 + consecutive set low bits; failure costs nothing and the stage is offered again",
+    "return is always (origin zone, origin act + 1) through the SAME act-clear tail",
+    "stage success: emerald bit, continue +1, tally; extra lives can also be earned by ring wraps inside the stage",
+    "act-3 alias (T16) is FORCED-ONLY: entry needs 100 rings in an act-index-2 act, at most 83 exist; do not implement as a normal path"
+   ],
+   "gaps": [],
+   "poc_start": [
+    "SS1-SS5 accepted individually; SP6 guard fallback is POC-only"
+   ],
+   "acceptance": [
+    "ss_select_mask00",
+    "special_stage_success",
+    "special_stage_timeout",
+    "special_stage_death_act2",
+    "special_stage_death_act3_forced"
+   ]
+  },
+  {
+   "order": 7,
+   "id": "G1-G",
+   "milestone": "G1",
+   "title": "Ending selection and return to title",
+   "depends_on": [
+    "G1-E",
+    "G1-A"
+   ],
+   "status": "CONFIRMED",
+   "contract": [
+    "T06",
+    "T10"
+   ],
+   "confirmed": [
+    "Sonic with D2CC & $3F == $3F -> full ending; other Sonic flags (including $20 alone) -> partial; Tails -> its own ending; all return to the title; emeralds are not cleared until New Game"
+   ],
+   "gaps": [],
+   "poc_start": [
+    "CAMP-10 accepted endings reachable through the developer path only"
+   ],
+   "acceptance": [
+    "ending_sonic_full",
+    "ending_sonic_partial",
+    "ending_sonic_20_only",
+    "ending_tails"
+   ]
+  },
+  {
+   "order": 8,
+   "id": "G2-A",
+   "milestone": "G2",
+   "title": "Lives owner, awards and cap",
+   "depends_on": [
+    "G1-A"
+   ],
+   "status": "CONFIRMED",
+   "contract": [
+    "T07",
+    "T11",
+    "RULES.lives"
+   ],
+   "confirmed": [
+    "start 3/5, -1 per death at the start of the death sequence, game over when the post-death value is 0, +1 at: 100th ring, ten-ring monitor wrap, 1-UP monitor, sign prize class 1, equal-digit bonus word; cap 99; NOT from score",
+    "Special Stage failure and timeout cost no life"
+   ],
+   "gaps": [],
+   "poc_start": [
+    "SP2: 1-UP monitor writes an unread shadow variable"
+   ],
+   "acceptance": [
+    "ring100_sonic",
+    "ring100_tails",
+    "ring100_lives_cap",
+    "oneup_monitor",
+    "ring100_ten_monitor",
+    "death_pit_lives3"
+   ]
+  },
+  {
+   "order": 9,
+   "id": "G2-B",
+   "milestone": "G2",
+   "title": "Continues owner (awards, display, consumption)",
+   "depends_on": [
+    "G2-A"
+   ],
+   "status": "CONFIRMED",
+   "contract": [
+    "T08",
+    "T13",
+    "T17",
+    "RULES.continues"
+   ],
+   "confirmed": [
+    "D2C3 is the continue counter (NOT lives; corrects docs/object-18-act-clear.md): start 0 (Sonic) / 3 (Tails); +1 per 5,000 raw score for Sonic, per digit rule for Tails, per sign prize class 3, per stage success; consumed only when the continue screen is accepted; bit7 marks 'just used'"
+   ],
+   "gaps": [],
+   "poc_start": [
+    "SP3: accrues and is drawn, never consumed"
+   ],
+   "acceptance": [
+    "death_continue_accept_sonic",
+    "death_continue_accept_tails",
+    "score_continue_rule"
+   ]
+  },
+  {
+   "order": 10,
+   "id": "G2-C",
+   "milestone": "G2",
+   "title": "Death, restart and TIME OVER",
+   "depends_on": [
+    "G1-B",
+    "G2-A"
+   ],
+   "status": "CONFIRMED",
+   "contract": [
+    "T07"
+   ],
+   "confirmed": [
+    "pit/hurt/time over all use the same life-lost path; TIME OVER is 10:00 (D44B = $C0), shows the TIME OVER screen, costs a life; rings/timer/power-ups reset, score/emeralds/continues kept; same act restarts at its ROM start"
+   ],
+   "gaps": [
+    "U4 (TIME OVER screen graphics)"
+   ],
+   "poc_start": [
+    "LIFE-07 inherited death object; inherited 9:59 kill differs from the ROM 10:00 rule"
+   ],
+   "acceptance": [
+    "death_pit_lives3",
+    "death_time_over_lives3"
+   ]
+  },
+  {
+   "order": 11,
+   "id": "G2-D",
+   "milestone": "G2",
+   "title": "Continue screen and Game Over",
+   "depends_on": [
+    "G2-B",
+    "G2-C"
+   ],
+   "status": "CONFIRMED (flow, timings); GAP (presentation)",
+   "contract": [
+    "T08",
+    "T09"
+   ],
+   "confirmed": [
+    "last life with continues: countdown digit 9..0 at 116 frames per digit; button accepts (lives 3/5, score 0, same act, emeralds kept); expiry -> Game Over without consuming",
+    "no continues: Game Over (two 240-frame waits + 60) -> title"
+   ],
+   "gaps": [
+    "U4 (screens), U5 (sounds $94, $A0, $87)"
+   ],
+   "poc_start": [
+    "SP5: inherited legacy game-over room"
+   ],
+   "acceptance": [
+    "death_continue_accept_sonic",
+    "death_continue_timeout",
+    "death_game_over_no_continue"
+   ]
+  },
+  {
+   "order": 12,
+   "id": "G2-E",
+   "milestone": "G2",
+   "title": "Score owner and HUD",
+   "depends_on": [
+    "G1-C"
+   ],
+   "status": "CONFIRMED (units); GAP (display, per-object awards)",
+   "contract": [
+    "T17",
+    "RULES.score"
+   ],
+   "confirmed": [
+    "score is 3 BCD bytes of raw units; ring tally x10, bonus +1 per step, boss bonus table, stage rings x10, stage seconds x100; cleared at New Game and continue accept"
+   ],
+   "gaps": [
+    "U1 (display factor)",
+    "U7 (per-object awards)"
+   ],
+   "poc_start": [
+    "LIFE-05 legacy score global with an x10 adapter"
+   ],
+   "acceptance": [
+    "clear_thz1_rings55",
+    "campaign_spine"
+   ]
+  },
+  {
+   "order": 13,
+   "id": "G2-F",
+   "milestone": "G2",
+   "title": "Save / password",
+   "depends_on": [],
+   "status": "CONFIRMED ABSENT",
+   "contract": [
+    "RULES.saving"
+   ],
+   "confirmed": [
+    "the ROM has no cartridge RAM, password or save: progress exists in RAM for one run only; any save is a PC-only G7 feature"
+   ],
+   "gaps": [],
+   "poc_start": [
+    "inherited slot saves (SAVE-01)"
+   ],
+   "acceptance": []
+  },
+  {
+   "order": 14,
+   "id": "G6-pre",
+   "milestone": "G6 (not G1/G2)",
+   "title": "Tails differences needed before Tails can enter the campaign",
+   "depends_on": [
+    "G1-A"
+   ],
+   "status": "GAP",
+   "contract": [
+    "RULES.player_identity"
+   ],
+   "confirmed": [
+    "lives 5, continues 3, Tails cannot enter Special Stages, score-continue digit rule, own ending branch"
+   ],
+   "gaps": [
+    "U6"
+   ],
+   "poc_start": [
+    "TAIL-01 Sonic-only core"
+   ],
+   "acceptance": [
+    "new_game_tails",
+    "ring100_tails",
+    "death_continue_accept_tails",
+    "ending_tails"
+   ]
+  }
+ ],
+ "fullgame0_reconciliation": [
+  {
+   "id": "CAMP-01",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM contract T02 defines New Game; POC title/slots still inherited (STATIC-POC)",
+   "note": "New Game vs Continue: the ROM has no save, so 'Continue' means the in-run continue screen (T08)"
+  },
+  {
+   "id": "CAMP-02",
+   "fg0": "MISSING",
+   "g0": "MISSING",
+   "basis": "STATIC-POC SP1 at a13c4c9",
+   "note": "contract supplies the 18-act order and start-position table (G1-B)"
+  },
+  {
+   "id": "CAMP-03",
+   "fg0": "ACCEPTED",
+   "g0": "ACCEPTED",
+   "basis": "REUSED object-18 head; AGENTS",
+   "note": "sign chain unchanged"
+  },
+  {
+   "id": "CAMP-04",
+   "fg0": "MISSING",
+   "g0": "MISSING",
+   "basis": "STATIC-POC SP1/SP5; ROM tail T04 fully timed",
+   "note": "post-clear sequence is specified to the frame (198/…/96/48) incl. the post-tally fade"
+  },
+  {
+   "id": "CAMP-05",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM T04/T05/T06",
+   "note": "zone rollover rule and boss bonus table now stated"
+  },
+  {
+   "id": "CAMP-06",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM: type $0A + $2D55 table; STATIC-POC formula ring*10+steps+500 not ROM-derived",
+   "note": "ROM boss bonus = bonus word ($041F) tally + 500/1000/1500/2000/2500 raw; per-zone allocator of $0A is gap U2"
+  },
+  {
+   "id": "CAMP-07",
+   "fg0": "ACCEPTED",
+   "g0": "ACCEPTED",
+   "basis": "AGENTS (SS1 accepted)",
+   "note": "unchanged"
+  },
+  {
+   "id": "CAMP-08",
+   "fg0": "UNRESOLVED",
+   "g0": "SUPERSEDED",
+   "basis": "AGENTS: SS2-SS5 Windows-accepted individually",
+   "note": "do NOT classify SS2-SS5 as missing; natural end-to-end SS routing is not yet campaign-accepted; selection table verified in the oracle (ss_select_mask*)"
+  },
+  {
+   "id": "CAMP-09",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM RAM map",
+   "note": "D2CC = emeralds, D2C3 = continues (bit7 used flag); both run-scoped; clarifies Q1"
+  },
+  {
+   "id": "CAMP-10",
+   "fg0": "ACCEPTED",
+   "g0": "ACCEPTED",
+   "basis": "oracle ending_*",
+   "note": "selector is exactly D2CC & $3F == $3F for Sonic; $20 alone is partial"
+  },
+  {
+   "id": "CAMP-11",
+   "fg0": "MISSING",
+   "g0": "MISSING",
+   "basis": "STATIC-POC SP3; ROM T02/T10",
+   "note": "ROM clears emeralds/rings/score only at New Game; POC lazily-created globals are never cleared"
+  },
+  {
+   "id": "CAMP-12",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "oracle fixtures",
+   "note": "developer START_INDEX == the hidden level select's two stores; the act-3 alias is FORCED-ONLY"
+  },
+  {
+   "id": "LIFE-01",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM rules.lives",
+   "note": "RESOLVED in ROM: start 3 (Sonic)/5 (Tails), BCD, cap 99; POC owner unchanged"
+  },
+  {
+   "id": "LIFE-02",
+   "fg0": "ACCEPTED",
+   "g0": "ACCEPTED",
+   "basis": "oracle ring100_*",
+   "note": "ROM also awards +1 per ring wrap inside a Special Stage"
+  },
+  {
+   "id": "LIFE-03",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "STATIC-POC SP2 unchanged at SS5; ROM T11",
+   "note": "ROM: monitor parameter bit1 -> $3104 (+1 life, sound $A9)"
+  },
+  {
+   "id": "LIFE-04",
+   "fg0": "MISSING",
+   "g0": "MISSING",
+   "basis": "ROM T04 prize tables",
+   "note": "CORRECTION: class 3 is a CONTINUE (D2C3), class 1 a LIFE; docs/object-18-act-clear.md mislabels D2C3 as lives"
+  },
+  {
+   "id": "LIFE-05",
+   "fg0": "IMPLEMENTED_UNVERIFIED",
+   "g0": "IMPLEMENTED_UNVERIFIED",
+   "basis": "ROM RULES.score",
+   "note": "units defined; per-object awards (U7) and display factor (U1) open"
+  },
+  {
+   "id": "LIFE-06",
+   "fg0": "UNRESOLVED",
+   "g0": "RESOLVED",
+   "basis": "CONTROLLED score_continue_rule",
+   "note": "score thresholds award CONTINUES, never lives"
+  },
+  {
+   "id": "LIFE-07",
+   "fg0": "IMPLEMENTED_UNVERIFIED",
+   "g0": "IMPLEMENTED_UNVERIFIED",
+   "basis": "ROM T07",
+   "note": "reset set defined (lives-1, rings 0, timer 0, power-ups cleared; score/emeralds/continues kept); 3 lives = 3 attempts"
+  },
+  {
+   "id": "LIFE-08",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM T09",
+   "note": "flow and waits traced; graphics and $87 unresolved (U4/U5)"
+  },
+  {
+   "id": "LIFE-09",
+   "fg0": "MISSING",
+   "g0": "MISSING",
+   "basis": "ROM T08; STATIC-POC SP3",
+   "note": "semantics fully specified (consume on accept, 116 frames/digit, lives 3/5, score 0, emeralds kept, same act)"
+  },
+  {
+   "id": "LIFE-10",
+   "fg0": "UNRESOLVED",
+   "g0": "RESOLVED",
+   "basis": "oracle death_time_over_lives3",
+   "note": "ROM time over is 10:00 (not 9:59) and shows a TIME OVER screen; the inherited 9:59 kill is wrong"
+  },
+  {
+   "id": "TAIL-03",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM RULES.player_identity",
+   "note": "adds Tails lives 5 / continues 3, digit-sum continue rule, no Special Stages, own ending"
+  },
+  {
+   "id": "SAVE-01",
+   "fg0": "PARTIAL",
+   "g0": "PARTIAL",
+   "basis": "ROM RULES.saving",
+   "note": "ROM has no save; any slot save is a PC feature (G7)"
+  },
+  {
+   "id": "PRES-03",
+   "fg0": "MISSING",
+   "g0": "MISSING",
+   "basis": "ROM T02",
+   "note": "character select screen exists in ROM ($3065..$30E0, $3522..$356A); graphics not extracted (RES-R5)"
+  },
+  {
+   "id": "PRES-04",
+   "fg0": "MISSING",
+   "g0": "MISSING",
+   "basis": "not examined",
+   "note": "act title cards: not found in the G0 traces (the loader goes straight to play after a fade-in); still UNRESOLVED for RES-R5"
+  }
+ ],
+ "fullgame0_questions": [
+  {
+   "id": "Q1",
+   "fg0": "ROM starting lives / which of D299 and D2C3 is lives",
+   "g0": "RESOLVED",
+   "answer": "D299 = lives (3 Sonic / 5 Tails), D2C3 = continues (0 / 3); object-18-act-clear.md's 'lives' label for D2C3 is wrong"
+  },
+  {
+   "id": "Q2",
+   "fg0": "score-threshold extra life",
+   "g0": "RESOLVED",
+   "answer": "no life; a continue: Sonic every 5,000 raw (thousands digit becomes 0/5), Tails by a digit rule"
+  },
+  {
+   "id": "Q3",
+   "fg0": "score display scale",
+   "g0": "PARTIAL",
+   "answer": "HUD draws six BCD digits plus one fixed block at $3BA6 (probable x10); glyph not decoded (U1)"
+  },
+  {
+   "id": "Q4",
+   "fg0": "ROM time-over rule",
+   "g0": "RESOLVED",
+   "answer": "10:00 (D44B := $C0), death + TIME OVER screen"
+  },
+  {
+   "id": "Q12",
+   "fg0": "attract/demo mode or act title cards",
+   "g0": "PARTIAL",
+   "answer": "attract demos exist ($2BC3/$2C34 rotate three demos); no act title card was observed in the load path (U4/RES-R5)"
+  }
+ ],
+ "counts": {
+  "packages": 14,
+  "confirmed": 13,
+  "with_gaps": 7
+ },
+ "scenarios_available": [
+  "campaign_spine",
+  "clear_thz1_rings00",
+  "clear_thz1_rings09",
+  "clear_thz1_rings15",
+  "clear_thz1_rings55",
+  "death_continue_accept_sonic",
+  "death_continue_accept_tails",
+  "death_continue_timeout",
+  "death_game_over_no_continue",
+  "death_pit_lives3",
+  "death_time_over_lives3",
+  "ending_sonic_20_only",
+  "ending_sonic_full",
+  "ending_sonic_partial",
+  "ending_tails",
+  "new_game_sonic",
+  "new_game_tails",
+  "oneup_monitor",
+  "restart_matrix",
+  "ring100_act3_forced",
+  "ring100_all_emeralds",
+  "ring100_lives_cap",
+  "ring100_sonic",
+  "ring100_tails",
+  "ring100_ten_monitor",
+  "score_continue_rule",
+  "special_stage_death_act2",
+  "special_stage_death_act3_forced",
+  "special_stage_success",
+  "special_stage_timeout",
+  "ss_select_mask00",
+  "ss_select_mask01",
+  "ss_select_mask03",
+  "ss_select_mask07",
+  "ss_select_mask0F"
+ ]
+}

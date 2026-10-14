@@ -1,0 +1,5299 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "base_commit": "0bb7390813a8fa4320ef35253a2c39598eee8e08",
+ "evidence_classes": {
+  "SOURCE-TRACED": "read from the disassembly of the cited routine; byte regions hashed in `routines`",
+  "EMULATED": "observed in a whole-game run of the original ROM in the approximate SMS harness (named fixtures)",
+  "CONTROLLED": "an original routine executed alone with explicit RAM",
+  "REUSED": "accepted earlier Research, cited and not re-derived",
+  "UNRESOLVED": "not established"
+ },
+ "ram": [
+  {
+   "name": "menu",
+   "address": "D292",
+   "scope": "FLOW",
+   "role": "title/menu state flags (bit7 start requested, bit6 title active, bit5/4/3 attract and option sub-states); non-zero suppresses the HUD and the level timer",
+   "writers": "$04B4 set, $04D1 clear, $2B50.. state machine"
+  },
+  {
+   "name": "flow",
+   "address": "D293",
+   "scope": "FLOW",
+   "role": "main-loop dispatch flags: bit7 end path $1365, bit6 level frame enabled (0x40 = playing), bit5 act complete $14AE, bit4 zone complete $1543, bit2 life lost $15F2, bit1 level (re)load $1673, bit0 pause $1696",
+   "writers": "$83E7/$83ED (state $20 handler), $1534, $15E8, $4984/$49AA, $1869, $3C0D, $7BB2A/$7BB6E"
+  },
+  {
+   "name": "mode",
+   "address": "D294",
+   "scope": "FLOW",
+   "role": "stage mode: bit7 special stage active, bit6 success $183F, bit5 failure $1815, bit3 entering",
+   "writers": "$17A7 (=$88), $1869 (=0), $2846, Emerald object"
+  },
+  {
+   "name": "started",
+   "address": "D295",
+   "scope": "FLOW",
+   "role": "$FF once a game has been started from the title/character select (or hidden level select); cleared by $2C17 when START is pressed on the title; gates the zone/act reset inside $2A00",
+   "writers": "$2C18 (0), $3549 (FF), $086C (FF)"
+  },
+  {
+   "name": "saved_zone",
+   "address": "D296",
+   "scope": "ACT",
+   "role": "zone to restore after a special stage",
+   "writers": "$187E"
+  },
+  {
+   "name": "zone",
+   "address": "D297",
+   "scope": "RUN",
+   "role": "zone: 0 THZ, 1 GPZ, 2 SEZ, 3 MGHZ, 4 AQZ, 5 EEZ, 6 end-of-game, 7 title, 8..12 Special Stages 1..5",
+   "writers": "$07CF new game, $15D6 zone complete, $1870 stage return, $1897 stage entry, $06CD title, $2A27/$2BE8 restart paths, $2C55 attract, $0821 hidden level select"
+  },
+  {
+   "name": "act",
+   "address": "D298",
+   "scope": "RUN",
+   "role": "act index 0..2 (Act 1..3); unguarded +1 at $1538 on every act complete and every special-stage return",
+   "writers": "$1538 (+1), $15CF (0), $07D2, $06D1, $2A2A, $2BEB, $2C6E, $0826"
+  },
+  {
+   "name": "lives",
+   "address": "D299",
+   "scope": "RUN",
+   "role": "lives, packed BCD; game over when the post-death value is 0 (the life being played is part of the count)",
+   "writers": "$355D init (3 Sonic / 5 Tails), $15FB (-1 DAA), $3113 (+1 DAA, cap $99), $13D4 continue restore (3 Sonic / 5 Tails)"
+  },
+  {
+   "name": "rings",
+   "address": "D29A",
+   "scope": "ACT",
+   "role": "rings, packed BCD (wraps 99->00 at $3138)",
+   "writers": "$3138 +1, $4AC8 +$10 (monitor), $A9C5 sign prize +$10 (carry dropped, no award), $2A50 level load (=0), $2D15 tally (-1), $4937 hurt (=0)"
+  },
+  {
+   "name": "score",
+   "address": "D29D",
+   "scope": "RUN",
+   "role": "score, 3 bytes packed BCD little-endian (D29D units/tens, D29E hundreds/thousands, D29F ten-thousands/hundred-thousands); HUD draws these six digits then a fixed block at name-table $3BA6 (display = raw x 10 is probable, glyph not decoded)",
+   "writers": "$262F adder; cleared by $2A00 (new game) and $13DB (continue)"
+  },
+  {
+   "name": "bonus",
+   "address": "D2A6",
+   "scope": "ACT",
+   "role": "end-of-act time/ring bonus word consumed by the tally (+1 raw per step); set by the sign child $19 (0C:$AB52), the boss bonus object type $0A (0C:$9C96) and by the stage success callback ($94BD: seconds left << 8)",
+   "writers": "0C:$AB52, 0C:$9C96, 1E:$949D"
+  },
+  {
+   "name": "continues",
+   "address": "D2C3",
+   "scope": "RUN",
+   "role": "continues in bits 0..6 (mixed binary/BCD increments), bit7 = 'a continue was just used' (cleared by $13ED, set by $1491)",
+   "writers": "$3561 init (0 Sonic / 3 Tails), $26C9 score award, 0C:$A9D6 sign prize, 1E:$94C2 stage success, $1491 consume, $13ED clear bit7"
+  },
+  {
+   "name": "character",
+   "address": "D2C8",
+   "scope": "RUN",
+   "role": "1 = Sonic, 2 = Tails (the select cursor 0/1 is held here until $30C5 increments it)",
+   "writers": "$3072 (0), $357C/$358C cursor, $30C5 (+1), $2C5D attract"
+  },
+  {
+   "name": "emeralds",
+   "address": "D2CC",
+   "scope": "RUN",
+   "role": "Chaos Emerald bits: $01/$02/$04/$08/$10 = Special Stages 1..5, $20 = sixth (EEZ)",
+   "writers": "$2A1F cleared by new game, 1E:$94A7 (|= stage bit), 1E:$BB69 (|= $20)"
+  },
+  {
+   "name": "result_card",
+   "address": "D2CD",
+   "scope": "ACT",
+   "role": "results card selector: 0 ordinary, 1 stage failure card (also marks 'stage entered'), $FF stage success card; cleared by $33D7 when the card is drawn",
+   "writers": "$17AC (1), 1E:$94AC ($FF), $33D7 (0)"
+  },
+  {
+   "name": "timer",
+   "address": "D2BE",
+   "scope": "ACT",
+   "role": "D2BE run flag ($FF running, 0 stopped); D2C2 frame ticks 0..59; D2BF seconds BCD; D2C0 minutes BCD; counts UP in acts (10:00 sets D44B=$C0 and stops), counts DOWN from 59 in a special stage",
+   "writers": "$27EE tick, $2965/$296C reset on load, $1753 stop, $1758 start, 0C:$A8A8 sign contact stop"
+  },
+  {
+   "name": "timeover",
+   "address": "D44B",
+   "scope": "ACT",
+   "role": "$C0 set at 10:00; bit6 makes the player update call the death routine, bit7 makes the life-lost path show the TIME OVER screen",
+   "writers": "$281E, $49B1 (keeps bit7), $34CF/$351E"
+  },
+  {
+   "name": "powerup",
+   "address": "D532",
+   "scope": "ACT",
+   "role": "power-up id (player object field +$32) and D44C timer; inside the object RAM block $D300..$DBBF that $297E clears on every level load",
+   "writers": "monitor rewards $4AA0.., cleared by $297E"
+  },
+  {
+   "name": "continue_screen",
+   "address": "D2CA",
+   "scope": "FLOW",
+   "role": "continue countdown: D2CA frame ticks (0..$73), D2CB digit 9..0 (underflow to $FF ends the screen)",
+   "writers": "$13F6/$13FB/$1471"
+  },
+  {
+   "name": "hidden_menus",
+   "address": "D2CE",
+   "scope": "FLOW",
+   "role": "bit0 level select unlocked, bit1 sound test unlocked (title input codes at $0D02 / $0D0B); not a normal-play path",
+   "writers": "$0CA6, $0CDE, $0CF2"
+  }
+ ],
+ "flow_bits": {
+  "D293": {
+   "7": "end path $1365",
+   "6": "level frame enabled (cleared by $166E when no lives are left -> $138A)",
+   "5": "act complete $14AE",
+   "4": "zone complete $1543",
+   "2": "life lost $15F2",
+   "1": "level (re)load $1673",
+   "0": "pause $1696"
+  },
+  "D294": {
+   "7": "special stage active",
+   "6": "stage success $183F",
+   "5": "stage failure $1815",
+   "3": "stage entering"
+  }
+ },
+ "fields": [
+  "stage_index",
+  "rings",
+  "timer",
+  "score",
+  "lives",
+  "continues",
+  "emeralds",
+  "result_card",
+  "powerups",
+  "player_identity",
+  "restart_position"
+ ],
+ "transitions": [
+  {
+   "id": "T01",
+   "name": "Power-on / reset to title",
+   "trigger": "reset vector",
+   "routines": [
+    "$0029 clears $C001..$DFFF (LDIR BC=$1FEE)",
+    "$06C7 title init: zone := 7, act := 0, level loader $2A4F, flow := $40"
+   ],
+   "evidence": [
+    "REUSED docs/decomp-1d-r2-zone-act-invariants.md"
+   ],
+   "effects": {
+    "stage_index": "zone 7 (title), act 0",
+    "rings": "0",
+    "timer": "0",
+    "score": "0",
+    "lives": "0",
+    "continues": "0",
+    "emeralds": "0",
+    "result_card": "0",
+    "powerups": "none",
+    "player_identity": "D2C8 = 0 until character select",
+    "restart_position": "n/a"
+   },
+   "oracle": [
+    "new_game_sonic"
+   ],
+   "notes": "All run-scoped bytes are zero after power-on; there is no battery RAM (the only $FFFC stores are the start-up mapper writes at $0008/$0466)."
+  },
+  {
+   "id": "T02",
+   "name": "Title START -> character select -> New Game",
+   "trigger": "button 1/2 on the title (START is not read; the harness has no console key)",
+   "routines": [
+    "$2C17: D295 := 0, $0AD0 sound-test screen (only if D2CE bit1), $07CE: zone := 0, act := 0 (hidden level select, if D2CE bit0, overwrites the pair from the table at $082A and sets D295 := $FF)",
+    "$3065 character select: D2C8 := 0, cursor LEFT/RIGHT $356A, button 2 confirms; $3522 returns through $3549 (D295 := $FF, D293 := 0) and $3550: lives/continues = 3/0 (Sonic cursor) or 5/3 (Tails cursor)",
+    "$30C5: D2C8 += 1 (Sonic 1, Tails 2)",
+    "$04D4: $2A00 clears rings, score (D29D..F), D2A8..D2AD and the emerald byte D2CC; zone/act only if D295 = 0 (not the case here)",
+    "D293 := $42 -> level load T03"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED new_game_sonic / new_game_tails with dirty pre-state"
+   ],
+   "effects": {
+    "stage_index": "zone 0, act 0 (from $07CE)",
+    "rings": "0 ($2A00)",
+    "timer": "0:00, running ($2965..$2973)",
+    "score": "0 ($2A04..$2A0A)",
+    "lives": "3 Sonic / 5 Tails",
+    "continues": "0 Sonic / 3 Tails",
+    "emeralds": "0 ($2A1F)",
+    "result_card": "not written (stale $D2CD is consumed by the first results card)",
+    "powerups": "none",
+    "player_identity": "D2C8 = 1 Sonic / 2 Tails",
+    "restart_position": "start position of THZ1 (T03)"
+   },
+   "oracle": [
+    "new_game_sonic",
+    "new_game_tails"
+   ],
+   "notes": "Emerald flags are cleared here and ONLY here (and by power-on); Game Over, the ending and the title do not clear them."
+  },
+  {
+   "id": "T03",
+   "name": "Level (re)load - first load, next act, next zone, death restart, continue restart",
+   "trigger": "D293 bit1 -> $1673",
+   "routines": [
+    "$1673: $4FCE, $3175, $2934 (loader), $3116, $314A, $285C, $189B (zone music), $794F, $59B3, RES bit1",
+    "$2934: $297E clears the object RAM block $D300..$DBBF, $2A4F records the act record and sets rings := 0, $4E65.. start position + camera from the ROM table indexed by zone and act only, timer D2BF/D2C0 := 0 and D2BE := $FF (menu flag permitting)"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED restart_matrix (18 acts)"
+   ],
+   "effects": {
+    "stage_index": "unchanged by the load itself",
+    "rings": "0",
+    "timer": "00:00 and running; D2C2 ticks are NOT cleared",
+    "score": "unchanged",
+    "lives": "unchanged",
+    "continues": "unchanged",
+    "emeralds": "unchanged",
+    "result_card": "unchanged",
+    "powerups": "cleared (object RAM block, includes D532/D44C/D44B)",
+    "player_identity": "player object type rewritten from D2C8",
+    "restart_position": "ROM table (zone, act) only; no checkpoint storage exists"
+   },
+   "oracle": [
+    "restart_matrix",
+    "death_pit_lives3"
+   ],
+   "notes": "The start position is read from a ROM table indexed by (D297, D298) at $4E65..$4E94; no store of a mid-level position exists, and all 18 acts restart at the fresh-load position after a death."
+  },
+  {
+   "id": "T04",
+   "name": "Act complete, act index 0 or 1 (sign chain -> next act)",
+   "trigger": "goal sign `$18` contact -> $19 child -> player state $20 -> $83A6 sets D293 bit5 (REUSED docs/object-18-act-clear.md); then $14AE",
+   "routines": [
+    "head (REUSED): contact stops the timer (0C:$A8A8), landing prize by ring count (0C:$A8FA / tables $A919, $A962 selected by zone parity), $19 computes D2A6 (time/ring bonus)",
+    "$14AE: wait 60, $1CEB, wait 96 with fade slots D492/D494 requested, $18E1, wait 30, sound 0, $297E/$4FCE/$21DA/$342A, wait 12 (198 frames in all)",
+    "$32F9 results card (D2CD = 0) + $2D55 (returns unless act index 2) + $2D08 tally: -1 ring per step awards +10 raw ($27E5), then D2A6 counts down awarding +1 raw per step ($27E2)",
+    "$14FF..$1521: wait 48, fade slots requested again, wait 96, $342A palette fill",
+    "$1524, wait 48; $152F: RES 5, act += 1, SET 1 -> T03"
+   ],
+   "evidence": [
+    "REUSED head",
+    "SOURCE-TRACED tail",
+    "EMULATED clear_thz1_rings00/15/55/09 and campaign_spine"
+   ],
+   "effects": {
+    "stage_index": "act + 1 (zone unchanged)",
+    "rings": "tally drains to 0; loader zeroes",
+    "timer": "stopped at contact, reset by the next load",
+    "score": "+10 raw per ring after the prize, + bonus word (time entry x100 + (rings-$11)) raw",
+    "lives": "+1 for prize class 1 (rings 55/65/77/88/95/97/99 in THZ-parity zones)",
+    "continues": "+1 for prize class 3 (rings 15/30/40/60) - a CONTINUE, not a life",
+    "emeralds": "unchanged",
+    "result_card": "0 -> ordinary card",
+    "powerups": "cleared by the reload",
+    "player_identity": "unchanged",
+    "restart_position": "next act's ROM start"
+   },
+   "oracle": [
+    "clear_thz1_rings00",
+    "clear_thz1_rings15",
+    "clear_thz1_rings55",
+    "clear_thz1_rings09",
+    "campaign_spine"
+   ],
+   "notes": "Act and zone are NOT stored in two places: $1538 is the only increment, there is no guard on the act byte."
+  },
+  {
+   "id": "T05",
+   "name": "Zone complete, act index 2, zones 0..4 (boss -> next zone)",
+   "trigger": "player state $20 tail (boss defeat chain, REUSED) sets D293 bit4 -> $1543",
+   "routines": [
+    "$1543: wait 60, $1CEB, fade slots, wait 96, $18E1, wait 30, sound 0, $1CEB/$297E/$4FCE/$21DA/$342A, wait 12",
+    "$1594: zone < 5 -> $32F9 results card then $2D55 act-3 boss bonus loop (table $2D84: 50,100,150,200,250,600 iterations x +10 raw -> 500/1000/1500/2000/2500/6000 raw, index = zone) and $2D08 tally",
+    "$15CE: act := 0, zone += 1, then D293 bit4 off + bit1 on (zone < 6) -> T03"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED campaign_spine (flag injected, everything after is ROM)"
+   ],
+   "effects": {
+    "stage_index": "(zone+1, act 0)",
+    "rings": "tally drains, loader zeroes",
+    "timer": "reset by load",
+    "score": "+boss bonus 500/1000/1500/2000/2500 raw for zones 0..4 + ring/time tally",
+    "lives": "unchanged",
+    "continues": "unchanged unless a score threshold is crossed",
+    "emeralds": "unchanged",
+    "result_card": "0",
+    "powerups": "cleared",
+    "player_identity": "unchanged",
+    "restart_position": "next zone act 1 start"
+   },
+   "oracle": [
+    "campaign_spine"
+   ],
+   "notes": "The 6000-raw table entry (index 5) belongs to zone 5 and is never used: zone >= 5 skips the results screen."
+  },
+  {
+   "id": "T06",
+   "name": "Final zone complete (EEZ act index 2) -> ending -> title",
+   "trigger": "D293 bit4 at zone 5 -> $1543 -> $1594 skips $32F9 -> $15CE",
+   "routines": [
+    "$15CE: act := 0, zone := 6, D293 bit4 off, bit7 on",
+    "$1365 end path: $297E, $4FCE, $18ED ending selector, $1CAF, $18E1, wait 60, clear D293 bits 7/6/4/2, JP $04B4 (title)",
+    "$18ED: Sonic ($D2C8=1): ($D2CC & $3F) == $3F -> $18FE full ending (credits, END.); otherwise $1A41 partial ('TRY AGAIN'); any other character -> $1ACD (Tails ending)"
+   ],
+   "evidence": [
+    "REUSED docs/eez-boss-endgame-audit.md, docs/eez-ending-credits-audit.md",
+    "EMULATED ending_sonic_full / ending_sonic_partial / ending_sonic_20_only / ending_tails"
+   ],
+   "effects": {
+    "stage_index": "zone 6, act 0, then the title (zone 7)",
+    "rings": "n/a",
+    "timer": "n/a",
+    "score": "no results card, no tally",
+    "lives": "unchanged",
+    "continues": "unchanged",
+    "emeralds": "unchanged until the NEXT New Game (T02)",
+    "result_card": "n/a",
+    "powerups": "n/a",
+    "player_identity": "unchanged",
+    "restart_position": "n/a"
+   },
+   "oracle": [
+    "ending_sonic_full",
+    "ending_sonic_partial",
+    "ending_sonic_20_only",
+    "ending_tails"
+   ],
+   "notes": "Full vs partial depends only on D2CC & $3F == $3F. The sixth bit ($20) is set by the final-zone $61 object only when flags are exactly $1F (REUSED); a $20-only mask is therefore a partial ending."
+  },
+  {
+   "id": "T07",
+   "name": "Death with lives remaining (hurt-with-no-rings, pit, crush, drown, TIME OVER at 10:00)",
+   "trigger": "death routine $4984 (zone < 8) sets D293 bit2 (and $3C0D for the pit rule); time over: $27EE sets D44B := $C0 at 10:00, $362A calls $4984",
+   "routines": [
+    "$15F2: $1753 stop timer, lives := lives - 1 (DAA), $3116 HUD, death animation loop until D51D = 2 (forced state $1F), wait 60, $1CA8/$1CEB/$1CAF/$18E1, wait 90",
+    "D44B bit7 set -> $3495 TIME OVER screen",
+    "lives != 0 -> RES bit2, SET bit1 -> T03 (same zone/act)"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED death_pit_lives3, death_time_over_lives3"
+   ],
+   "effects": {
+    "stage_index": "unchanged (same act restarts)",
+    "rings": "0",
+    "timer": "reset to 00:00",
+    "score": "kept",
+    "lives": "-1",
+    "continues": "kept",
+    "emeralds": "kept",
+    "result_card": "unchanged",
+    "powerups": "cleared",
+    "player_identity": "unchanged",
+    "restart_position": "ROM start of the act"
+   },
+   "oracle": [
+    "death_pit_lives3",
+    "death_time_over_lives3"
+   ],
+   "notes": "The life that was being played counts: 3 lives = 3 attempts. Time over is 10:00, not 9:59. A Special Stage death or timeout does NOT use this path (T14)."
+  },
+  {
+   "id": "T08",
+   "name": "Death on the last life, continues available",
+   "trigger": "lives reach 0 -> $166B clears D293 bit6 -> main loop $138A",
+   "routines": [
+    "$138A: $297E, $4FCE, $21DA, $13ED: RES bit7 of D2C3; if D2C3 low bits are zero return (-> Game Over T09)",
+    "$13F5: continue screen: player object redrawn, countdown digit D2CB from 9, 116 ($74) frames per digit, sound $94; button 1/2 -> sound $A0, $1491: D2C3 := (D2C3 - 1) | $80, wait 180",
+    "after accept or expiry $1450..$1461: RES D293 bit6, fade slots ($1CAF), $18E1, wait 60",
+    "$1396 BIT7 set -> $13C9: lives := 3 (Sonic) / 5 (other), score := 0, RES bit2, SET bit1 and bit6 -> T03 at the CURRENT zone and act"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED death_continue_accept_sonic / _tails"
+   ],
+   "effects": {
+    "stage_index": "unchanged (act restarts)",
+    "rings": "0",
+    "timer": "reset",
+    "score": "0",
+    "lives": "3 Sonic / 5 Tails",
+    "continues": "-1, bit7 left set",
+    "emeralds": "KEPT",
+    "result_card": "unchanged",
+    "powerups": "cleared",
+    "player_identity": "unchanged",
+    "restart_position": "ROM start of the act"
+   },
+   "oracle": [
+    "death_continue_accept_sonic",
+    "death_continue_accept_tails"
+   ],
+   "notes": "Continue never returns to Act 1/zone start; it restarts the act in which the last life was lost."
+  },
+  {
+   "id": "T09",
+   "name": "Game Over (no continue, or the continue countdown expires)",
+   "trigger": "$13ED returns with no continue taken -> $139D",
+   "routines": [
+    "$139D: $21DA, $3436 Game Over screen, sound $87, wait 2 x 240 frames, $1CAF, $18E1, wait 60, JP $04B4 (title)",
+    "continue countdown expiry: D2CB underflows to $FF -> $13ED returns with D2C3 bit7 cleared -> the same Game Over path"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED death_continue_timeout, death_game_over_no_continue"
+   ],
+   "effects": {
+    "stage_index": "title (zone 7 after the title init)",
+    "rings": "stale until New Game",
+    "timer": "stale",
+    "score": "stale until New Game",
+    "lives": "0 (stale)",
+    "continues": "stale (an unused continue is NOT consumed by a timed-out screen)",
+    "emeralds": "stale until New Game",
+    "result_card": "n/a",
+    "powerups": "n/a",
+    "player_identity": "re-chosen at the next character select",
+    "restart_position": "n/a"
+   },
+   "oracle": [
+    "death_continue_timeout",
+    "death_game_over_no_continue"
+   ],
+   "notes": "A new game after Game Over starts from T02 with every run-scoped field reset."
+  },
+  {
+   "id": "T10",
+   "name": "Return to title then New Game (dirty state)",
+   "trigger": "T06/T09 end in JP $04B4; START again",
+   "routines": [
+    "$04B4 title; $2C17 -> T02"
+   ],
+   "evidence": [
+    "EMULATED new_game_sonic dirty pre-state, death_continue_timeout.then_new_game"
+   ],
+   "effects": {
+    "stage_index": "zone 0 act 0",
+    "rings": "0",
+    "timer": "0",
+    "score": "0",
+    "lives": "3/5",
+    "continues": "0/3",
+    "emeralds": "0",
+    "result_card": "stale",
+    "powerups": "none",
+    "player_identity": "re-chosen",
+    "restart_position": "THZ1 start"
+   },
+   "oracle": [
+    "new_game_sonic",
+    "death_continue_timeout",
+    "death_game_over_no_continue"
+   ],
+   "notes": "Run state is reset at New Game, never at the title entry."
+  },
+  {
+   "id": "T11",
+   "name": "Ring 100 (life award) and the Special Stage entry gate",
+   "trigger": "$3138 wraps D29A 99 -> 00 (also the ten-ring monitor $4AC0 when the result is < $10)",
+   "routines": [
+    "$3104: sound $A9, lives := min(99, lives + 1) (DAA)",
+    "$178F gate: D2C8 == 1 (Sonic), zone < 6, (D2CC & $1F) != $1F; otherwise return (life still awarded)",
+    "$17A2: $1753 stop timer, D294 := $88, D2CD := 1"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED ring100_sonic / ring100_tails / ring100_all_emeralds / ring100_ten_monitor / ring100_lives_cap / oneup_monitor"
+   ],
+   "effects": {
+    "stage_index": "unchanged until T12",
+    "rings": "wraps to 00 ($3138) or keeps the post-wrap value 05 (monitor)",
+    "timer": "stopped when a stage is entered",
+    "score": "unchanged",
+    "lives": "+1 (cap 99)",
+    "continues": "unchanged",
+    "emeralds": "unchanged",
+    "result_card": "1 when a stage is entered",
+    "powerups": "unchanged",
+    "player_identity": "Sonic only may enter",
+    "restart_position": "n/a"
+   },
+   "oracle": [
+    "ring100_sonic",
+    "ring100_tails",
+    "ring100_all_emeralds",
+    "ring100_ten_monitor",
+    "ring100_lives_cap",
+    "oneup_monitor"
+   ],
+   "notes": "The act index is NOT read by the gate (T16)."
+  },
+  {
+   "id": "T12",
+   "name": "Special Stage entry",
+   "trigger": "D294 = $88 -> main loop $1762 -> $17B0",
+   "routines": [
+    "$17B0: sound $8A, wait 30, $1CEB, fade slots, wait 150, $187B: D296 := zone, zone := 8 + number of consecutive set low bits of D2CC (max 4), $4FCE/$2934 load, timer D2BF := $59 counting down ($17F1), D294 bit3 off"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED ss_select_mask00..0F, special_stage_success"
+   ],
+   "effects": {
+    "stage_index": "zone 8..12 (stage), saved zone kept in D296; act index unchanged",
+    "rings": "0 in the stage",
+    "timer": "0:59 countdown",
+    "score": "unchanged",
+    "lives": "unchanged (+1 per ring wrap inside the stage)",
+    "continues": "unchanged",
+    "emeralds": "unchanged",
+    "result_card": "1",
+    "powerups": "cleared by the load",
+    "player_identity": "Sonic",
+    "restart_position": "stage start"
+   },
+   "oracle": [
+    "ss_select_mask00",
+    "ss_select_mask01",
+    "ss_select_mask03",
+    "ss_select_mask07",
+    "ss_select_mask0F",
+    "special_stage_success"
+   ],
+   "notes": "Selection is strictly sequential and uses the CONSECUTIVE low bits of D2CC; a failed stage is offered again."
+  },
+  {
+   "id": "T13",
+   "name": "Special Stage success",
+   "trigger": "stage Emerald object (type $31) collected",
+   "routines": [
+    "1E:$94A0..: D2CC |= parameter bit; D2C3 := (D2C3 + 1) & $7F; D2A6 := D2BF << 8; D2CD := $FF; D294 bit6",
+    "$183F: sound $8A, wait 30, fade slots, wait 120, then $1869"
+   ],
+   "evidence": [
+    "REUSED docs/special-stages-progression-audit.md",
+    "EMULATED special_stage_success (input-only route)"
+   ],
+   "effects": {
+    "stage_index": "-> T15",
+    "rings": "stage rings are tallied (x10 raw), then zero",
+    "timer": "seconds left x100 raw bonus",
+    "score": "+rings x10 + seconds x100 raw",
+    "lives": "kept (+ any ring-wrap lives earned inside the stage)",
+    "continues": "+1",
+    "emeralds": "| stage bit",
+    "result_card": "$FF -> emerald results card",
+    "powerups": "cleared",
+    "player_identity": "Sonic",
+    "restart_position": "n/a"
+   },
+   "oracle": [
+    "special_stage_success"
+   ],
+   "notes": "A same-update timeout or death does not undo success (REUSED SS1 contract)."
+  },
+  {
+   "id": "T14",
+   "name": "Special Stage failure (timer underflow or death)",
+   "trigger": "$2846 (timer 0 - 1) or the shared death setup $49A0 (zone >= 8) sets D294 bit5 -> $1815",
+   "routines": [
+    "$1815: $1753, player death state, $18E1, fade slots, wait 30 -> $1869"
+   ],
+   "evidence": [
+    "REUSED",
+    "EMULATED special_stage_timeout / special_stage_death_act2"
+   ],
+   "effects": {
+    "stage_index": "-> T15",
+    "rings": "0",
+    "timer": "n/a",
+    "score": "unchanged (stage rings may still be tallied)",
+    "lives": "NOT decremented",
+    "continues": "unchanged",
+    "emeralds": "unchanged (stage offered again at the next 100 rings)",
+    "result_card": "1 -> failure card",
+    "powerups": "cleared",
+    "player_identity": "Sonic",
+    "restart_position": "n/a"
+   },
+   "oracle": [
+    "special_stage_timeout",
+    "special_stage_death_act2"
+   ],
+   "notes": "No retry, no life cost."
+  },
+  {
+   "id": "T15",
+   "name": "Return from a Special Stage to the NEXT ordinary act",
+   "trigger": "$1869",
+   "routines": [
+    "$1869: D294 := 0, zone := D296, D293 |= $20 -> T04 tail ($14AE..$153E): results card (success or failure card), tally, FADES, act += 1, reload"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "EMULATED special_stage_success / timeout / death"
+   ],
+   "effects": {
+    "stage_index": "(origin zone, origin act + 1)",
+    "rings": "0",
+    "timer": "reset",
+    "score": "+ tally",
+    "lives": "as T13/T14",
+    "continues": "as T13/T14",
+    "emeralds": "as T13/T14",
+    "result_card": "0 after the card",
+    "powerups": "cleared",
+    "player_identity": "unchanged",
+    "restart_position": "next act ROM start"
+   },
+   "oracle": [
+    "special_stage_success",
+    "special_stage_timeout",
+    "special_stage_death_act2"
+   ],
+   "notes": "Identical code path to T04: the same fades and the same $14AE sequence run (the post-tally fade question, section 'Palette fade' of the narrative)."
+  },
+  {
+   "id": "T16",
+   "name": "FORCED-ONLY: Special Stage entered at act index 2 returns to act index 3",
+   "trigger": "100th ring while D298 = 2 (not reachable by ordinary play)",
+   "routines": [
+    "$178F does not read D298; $1869 -> T04 tail increments D298 to 3 and pays the act-3 boss bonus ($2D55 sees D298 = 2 before the increment)"
+   ],
+   "evidence": [
+    "REUSED docs/special-stages-followup-audit.md section 5 (census: maximum rings in act-index-2 acts THZ3 19, GPZ3 19, SEZ3 42, MGHZ3 83, AQZ3 14, EEZ3 0)",
+    "EMULATED ring100_act3_forced, special_stage_death_act3_forced"
+   ],
+   "effects": {
+    "stage_index": "(zone, act 3): the loader selects the adjacent record, i.e. the NEXT zone's act-1 data under the old zone number",
+    "rings": "0",
+    "timer": "reset",
+    "score": "+ boss bonus of the zone (500 raw for THZ)",
+    "lives": "as T14",
+    "continues": "as T14",
+    "emeralds": "as T14",
+    "result_card": "0",
+    "powerups": "cleared",
+    "player_identity": "unchanged",
+    "restart_position": "(110,384) for zone 0 act 3"
+   },
+   "oracle": [
+    "ring100_act3_forced",
+    "special_stage_death_act3_forced"
+   ],
+   "forced_only": true,
+   "notes": "Entry needs the ring counter to wrap inside act index 2 (Act 3 of a zone); every act-index-2 act holds at most 83 rings (MGHZ3), so ordinary play cannot enter. A fixture (START_INDEX act 2 + injected 100th ring) can. NOT normal behaviour; do not implement as a campaign path."
+  },
+  {
+   "id": "T17",
+   "name": "Score and continue awards",
+   "trigger": "every score addition goes through $262F",
+   "routines": [
+    "$262F adds the three-byte BCD increment at HL; $266F: if the thousands digit changed: Sonic -> +1 continue when the new thousands digit is 0 or 5 (every 5,000 raw); other characters -> a digit-sum-mod-3 rule over the thousands/ten-thousands/hundred-thousands digits ($2691..$26BD), i.e. +1 continue every 3,000 raw (33 awards per 100,000 raw)"
+   ],
+   "evidence": [
+    "SOURCE-TRACED",
+    "CONTROLLED score_continue_rule"
+   ],
+   "effects": {
+    "stage_index": "n/a",
+    "rings": "n/a",
+    "timer": "n/a",
+    "score": "n/a",
+    "lives": "NO life is awarded by score",
+    "continues": "+1 per threshold (binary +1 of a byte whose bit7 is preserved)",
+    "emeralds": "n/a",
+    "result_card": "n/a",
+    "powerups": "n/a",
+    "player_identity": "Sonic vs Tails rule",
+    "restart_position": "n/a"
+   },
+   "oracle": [
+    "score_continue_rule",
+    "campaign_spine"
+   ],
+   "notes": "The earlier hypothesis of a score-driven extra LIFE is disproved: the award increments D2C3 (continues)."
+  },
+  {
+   "id": "T18",
+   "name": "Hidden level select / sound test and attract demos (non-campaign)",
+   "trigger": "title input codes (D2CE) / idle title (D292 attract sub-states)",
+   "routines": [
+    "$0CA6 / $0CDE set D2CE bit0 / bit1; $0AD0 + $07D5 level select writes zone, act and D295 := $FF ($086C); $2BC3.. attract rotates demos via $2C34 and returns with zone := act := 0"
+   ],
+   "evidence": [
+    "SOURCE-TRACED"
+   ],
+   "effects": {
+    "stage_index": "level select: any of the 18 (zone, act) pairs; attract: demo acts",
+    "rings": "level select starts with the New Game values",
+    "timer": "n/a",
+    "score": "n/a",
+    "lives": "n/a",
+    "continues": "n/a",
+    "emeralds": "n/a",
+    "result_card": "n/a",
+    "powerups": "n/a",
+    "player_identity": "n/a",
+    "restart_position": "n/a"
+   },
+   "oracle": [],
+   "notes": "These are developer/test fixtures of the ORIGINAL ROM, not part of the natural campaign; START_INDEX in the oracle reproduces the level select's two stores."
+  }
+ ],
+ "rules": {
+  "lives": {
+   "initial": "3 Sonic / 5 Tails (character-select cursor 0 / 1)",
+   "max": 99,
+   "decrement": "$15FB once per death (before the animation), BCD DAA",
+   "increments": [
+    "100th ring ($3138 -> $3104)",
+    "ten-ring monitor wrap ($4AC0 result < $10 -> $3104)",
+    "1-UP monitor (D3A3 bit1 -> $4ADA -> $3104)",
+    "sign prize class 1 via vector $03F2 -> $3104",
+    "sign retouch roll, class 1 (0C:$A8FA)",
+    "a time/ring bonus word whose digits are all equal, including the $0777 substituted for a zero bonus, via $03F2 (0C:$AB66)"
+   ],
+   "not_awarded_by": [
+    "score thresholds (these give continues)",
+    "Special Stage success (gives a continue)",
+    "Special Stage failure or timeout (costs nothing)"
+   ],
+   "game_over": "post-death lives == 0"
+  },
+  "continues": {
+   "initial": "0 Sonic / 3 Tails",
+   "bit7": "'continue used' flag, set by $1491, cleared by $13ED",
+   "increments": [
+    "score threshold ($26BD)",
+    "sign prize class 3 (0C:$A9CF, BCD INC with DAA, bit7 cleared)",
+    "Special Stage success (1E:$94BC)"
+   ],
+   "consumed": "only by accepting the continue screen ($1491); a timed-out screen consumes nothing",
+   "cap": "display shows min(7 bits, 8) icons ($337F); the byte itself has no other cap"
+  },
+  "emeralds": {
+   "cleared_by": "power-on and New Game only",
+   "set_by": "Special Stage success (bit n) and the final-zone $61 object (bit5 when flags == $1F)",
+   "selection": "stage = 8 + count of consecutive set low bits (max 4); refused when (D2CC & $1F) == $1F",
+   "ending": "Sonic: D2CC & $3F == $3F full ending, otherwise partial; other characters: own ending"
+  },
+  "timer": {
+   "act": "counts up; 10:00 sets D44B=$C0 -> death (TIME OVER screen); stops at sign contact; reset by every level load",
+   "stage": "59 s countdown, underflow = stage failure",
+   "tick": "D2C2 counts 60 frames per second and is not cleared by a load"
+  },
+  "rings": {
+   "wrap": "99+1 -> 00 awards a life and may enter a stage",
+   "scope": "act: zeroed by every level load; never carried between acts; tally drains it to 0",
+   "prize": "rings +$10 (class 2) drops the BCD carry and awards nothing"
+  },
+  "score": {
+   "units": "raw BCD; ring tally +10 raw per ring, time/ring bonus word +1 raw per step, act-3 boss bonus 50/100/150/200/250 steps x10 raw by zone, stage rings x10 raw, stage seconds x100 raw",
+   "cleared": "New Game and continue accept",
+   "hud": "six BCD digits + fixed block at $3BA6 (display factor probable x10, not decoded)"
+  },
+  "player_identity": {
+   "character": "D2C8 1 Sonic / 2 Tails, fixed for the run; only Sonic enters Special Stages; the ending path differs"
+  },
+  "checkpoints": {
+   "exists": false,
+   "evidence": "restart position comes only from the ROM table at $4E65..$4E94 keyed by (zone, act); 18/18 acts restart at the fresh-load position after a death"
+  },
+  "saving": {
+   "exists": false,
+   "evidence": "no cartridge RAM: the only $FFFC writes are the start-up mapper writes at $0008/$0466; progress lives in RAM only (REUSED special-stages-progression-audit.md)"
+  }
+ },
+ "outcomes": [
+  {
+   "event": "act clear",
+   "where": "act index 0 or 1, any zone",
+   "result": "act := act + 1, same zone; results + tally + fades; rings 0, timer reset, powerups cleared; score += tally; lives/continues by sign prize class",
+   "transition": "T04"
+  },
+  {
+   "event": "act clear",
+   "where": "act index 2, zone 0..4",
+   "result": "(zone + 1, act 0); results + boss bonus + tally; score += boss bonus",
+   "transition": "T05"
+  },
+  {
+   "event": "act clear",
+   "where": "act index 2, zone 5",
+   "result": "zone 6 -> ending selector -> title; no results",
+   "transition": "T06"
+  },
+  {
+   "event": "death",
+   "where": "lives after decrement > 0",
+   "result": "same (zone, act) reloads at its ROM start; lives -1, rings 0, timer reset, powerups cleared, score/continues/emeralds kept",
+   "transition": "T07"
+  },
+  {
+   "event": "death or TIME OVER",
+   "where": "lives after decrement == 0 and continues > 0",
+   "result": "continue screen; button -> lives 3 (5), score 0, continues -1, same (zone, act); no button -> Game Over",
+   "transition": "T08/T09"
+  },
+  {
+   "event": "death or TIME OVER",
+   "where": "lives after decrement == 0 and continues == 0",
+   "result": "Game Over screen -> title",
+   "transition": "T09"
+  },
+  {
+   "event": "100th ring",
+   "where": "Sonic, zone < 6, emeralds != $1F, act index 0 or 1",
+   "result": "life +1, Special Stage n (n = 1 + consecutive set bits), then return to (zone, act + 1)",
+   "transition": "T11/T12/T15"
+  },
+  {
+   "event": "100th ring",
+   "where": "Tails, or emeralds == $1F",
+   "result": "life +1 only",
+   "transition": "T11"
+  },
+  {
+   "event": "100th ring",
+   "where": "act index 2",
+   "result": "FORCED-ONLY: not reachable (<= 83 rings per such act); a fixture returns to act index 3 and pays the boss bonus",
+   "transition": "T16"
+  },
+  {
+   "event": "Special Stage success",
+   "where": "any",
+   "result": "emerald bit, continue +1, tally, return to (zone, act + 1)",
+   "transition": "T13/T15"
+  },
+  {
+   "event": "Special Stage failure / timeout",
+   "where": "any",
+   "result": "no emerald, no life cost, tally of stage rings, return to (zone, act + 1)",
+   "transition": "T14/T15"
+  },
+  {
+   "event": "New Game",
+   "where": "from the title",
+   "result": "zone 0 act 0, lives 3 (5), continues 0 (3), rings/score/emeralds 0",
+   "transition": "T02/T10"
+  }
+ ],
+ "unresolved": [
+  {
+   "id": "U1",
+   "item": "Display factor of the HUD score and the card text ('RING n x 100')",
+   "state": "partial: the HUD draws six BCD digits plus a fixed block at name-table $3BA6; whether it is a literal '0' glyph (x10 display) is not decoded",
+   "blocks": "G2 score display only"
+  },
+  {
+   "id": "U2",
+   "item": "Which boss objects allocate the bonus object type $0A (0C:$9C58..$9C96, which calls $041F) in each zone's act 3",
+   "state": "evidenced for AQZ3 $59 and EEZ $61 in earlier audits; THZ3/GPZ3/SEZ3/MGHZ3 not traced here; the spine injects the flag so it contains no boss time bonus",
+   "blocks": "exact act-3 score for natural boss play"
+  },
+  {
+   "id": "U3",
+   "item": "Sign prize table for zones with odd parity (table $A962) semantics beyond the class mapping, and the $A8FA retouch re-roll for every zone",
+   "state": "decoded in docs/object-18-act-clear.md for the THZ table; the oracle exercises only zone 0",
+   "blocks": "G2 sign prize completeness"
+  },
+  {
+   "id": "U4",
+   "item": "Presentation of the ordinary results card, continue screen, Game Over screen, TIME OVER screen and the act-clear fades (tile data, palettes, text)",
+   "state": "control flow and timings traced; graphics not extracted (card tilemaps at $A58C/$A60C, $3436/$345B/$3478/$3495 draw routines)",
+   "blocks": "G1/G2 presentation"
+  },
+  {
+   "id": "U5",
+   "item": "Sound request meanings ($87 Game Over, $94 continue, $A0 accept, $89/$97 clear, $A9 life, $B4 tally step, $8A stage)",
+   "state": "request numbers observed; names/assets unresolved (AUDIO-0)",
+   "blocks": "audio only"
+  },
+  {
+   "id": "U6",
+   "item": "Tails-specific campaign differences beyond lives/continues start, the score-continue rule and the ending branch",
+   "state": "unresearched (movement, signs, bosses, art)",
+   "blocks": "G6"
+  },
+  {
+   "id": "U7",
+   "item": "Whether any enemy/monitor/boss score table awards use a path other than $262F",
+   "state": "all adds found go through $262F (JP at 1:$5F81 and CALL $2F0C); award values per object type not enumerated",
+   "blocks": "G2 score parity"
+  },
+  {
+   "id": "U8",
+   "item": "Timing equality between the harness frame counter and the real console for the 198/96/48-frame waits",
+   "state": "waits are counted loop iterations of the frame wait $062D; the harness is approximate for VDP timing only",
+   "blocks": "none"
+  }
+ ],
+ "routines": [
+  {
+   "name": "main_loop_dispatch",
+   "start": "1333",
+   "end": "1365",
+   "length": 50,
+   "sha256": "8800e92ff5633f5b2d12c01e90d7e48f4590fb539e8cd001a5ca84e2f961fea1"
+  },
+  {
+   "name": "end_path",
+   "start": "1365",
+   "end": "138A",
+   "length": 37,
+   "sha256": "19c21c72c08a051f0aa0cbc1fa19326862ee0f054a8798fbeb6b8205ec031075"
+  },
+  {
+   "name": "game_over_and_continue_restore",
+   "start": "138A",
+   "end": "13ED",
+   "length": 99,
+   "sha256": "44003a147c3bb99b78376cdb09d3f9643a47288cfa120966fe0d5e95ce024291"
+  },
+  {
+   "name": "continue_screen",
+   "start": "13ED",
+   "end": "14AE",
+   "length": 193,
+   "sha256": "a60cf7f561f9905123c637349d22d62ce6c4f90728b4f176f3d6ae67bcd756cc"
+  },
+  {
+   "name": "act_clear_sequence",
+   "start": "14AE",
+   "end": "1543",
+   "length": 149,
+   "sha256": "30ad4626a11dcf0f3cefbc193551827c21db41a8a13edce092917f94ae70c46f"
+  },
+  {
+   "name": "zone_clear_sequence",
+   "start": "1543",
+   "end": "15F2",
+   "length": 175,
+   "sha256": "46b9f946a53cc5ccb7e9d9974f84fa82f711f37ff0c42f66427684b3eae13f23"
+  },
+  {
+   "name": "life_lost",
+   "start": "15F2",
+   "end": "1673",
+   "length": 129,
+   "sha256": "4bbd54fc356e58f520851572d397ab06160c128abcb6b207674c3bed748e4f72"
+  },
+  {
+   "name": "level_reload",
+   "start": "1673",
+   "end": "1696",
+   "length": 35,
+   "sha256": "0c339c5c2b0411a47aa8c75e93f5ecbfd784d8458a7dcb1faf538faa303aa181"
+  },
+  {
+   "name": "stage_mode_dispatch",
+   "start": "1762",
+   "end": "178F",
+   "length": 45,
+   "sha256": "6b5c6512bbb9e1bd2fb75fb2e2fd3785019367b09c6cbb91bbb75747dc609470"
+  },
+  {
+   "name": "stage_entry_gate",
+   "start": "178F",
+   "end": "17B0",
+   "length": 33,
+   "sha256": "e170ebaa71f3f5da008b9bb4d82e8d269ceefad74e8c27fe73efcca2a526f4d6"
+  },
+  {
+   "name": "stage_entry_sequence",
+   "start": "17B0",
+   "end": "1815",
+   "length": 101,
+   "sha256": "9f4c17af46f9d2d1a8718e09dbd8d27440fbdb403566d2deb9dede147b8d476a"
+  },
+  {
+   "name": "stage_failure",
+   "start": "1815",
+   "end": "183F",
+   "length": 42,
+   "sha256": "1bf02390ecdf75fc5c6dc923a740a63d2d45f430000719ea7c9b9894549ed8a7"
+  },
+  {
+   "name": "stage_success_and_return",
+   "start": "183F",
+   "end": "187B",
+   "length": 60,
+   "sha256": "a69ea6ffee7fd4c2b7b6ac5b9e90f2da58a29c29eb19767c3ce438e64cb4bdd8"
+  },
+  {
+   "name": "stage_selector",
+   "start": "187B",
+   "end": "189B",
+   "length": 32,
+   "sha256": "3b1a49ec73fcaa1a7e4e3649ae9193532ac7c52bd8a799c5480977e6d5b123ca"
+  },
+  {
+   "name": "zone_music_select",
+   "start": "189B",
+   "end": "18E1",
+   "length": 70,
+   "sha256": "b5ca6fd87f022d0efcf63d5cfaacb5f7c56d85e03181b2b1cd5059044a1aa7a9"
+  },
+  {
+   "name": "ending_selector_head",
+   "start": "18ED",
+   "end": "1900",
+   "length": 19,
+   "sha256": "760ebaacb8826553ed077a4d65bef9330393220dfb5fdea835913a7234d3f35b"
+  },
+  {
+   "name": "new_game_reset",
+   "start": "2A00",
+   "end": "2A2E",
+   "length": 46,
+   "sha256": "175edd1f73dfa9829d6e32619073fc376db8e92c58bce9d46f0dd89fe07e2eef"
+  },
+  {
+   "name": "level_loader",
+   "start": "2934",
+   "end": "297E",
+   "length": 74,
+   "sha256": "f41c6553ffd54c9b81822abf4035310b12f7d4c9fd354357a0dbcd51dd5f0869"
+  },
+  {
+   "name": "object_ram_clear",
+   "start": "297E",
+   "end": "2993",
+   "length": 21,
+   "sha256": "221571d85dc13c524103a824b32b25eadbeef1c8e1ad6d705563d831253d7aaf"
+  },
+  {
+   "name": "level_start_record",
+   "start": "2A4F",
+   "end": "2A5A",
+   "length": 11,
+   "sha256": "a1b260d53b6f70d9203c3aef8ffeb5e81d0e0a34797d9ef5e630b4c94e6f8f83"
+  },
+  {
+   "name": "title_new_game_init",
+   "start": "2C17",
+   "end": "2C34",
+   "length": 29,
+   "sha256": "17c34e2ce40f5ece5057304db75070cade0c1c4460081f56418a85b40b150e7a"
+  },
+  {
+   "name": "zone_act_reset",
+   "start": "07CE",
+   "end": "07DB",
+   "length": 13,
+   "sha256": "05e6db5691c7f2d39cedb86ea54dae4ddaac107cef5fa6a27b1fafb2687f66a6"
+  },
+  {
+   "name": "score_adder_and_continue_award",
+   "start": "262F",
+   "end": "26D6",
+   "length": 167,
+   "sha256": "2b27ea7996e73134aadf77838bae7d00e893af0d421b89a5e2b7cd5c615ba8d6"
+  },
+  {
+   "name": "timer_tick",
+   "start": "27EE",
+   "end": "285C",
+   "length": 110,
+   "sha256": "9458af94ea62ab24d255b4a930fb05e75e65119bde32b1dc684cdc6136d3402a"
+  },
+  {
+   "name": "tally",
+   "start": "2D08",
+   "end": "2D55",
+   "length": 77,
+   "sha256": "98a654fd67b6e0f0c3c806699f3d3053d92c0f7347d54ed578ec0b4597ada71d"
+  },
+  {
+   "name": "act3_boss_bonus_tally",
+   "start": "2D55",
+   "end": "2D90",
+   "length": 59,
+   "sha256": "5773cbae3b1758bfaafdabdd56045a00b965b5227713d905895353bf813bcdc7"
+  },
+  {
+   "name": "character_select_init",
+   "start": "3522",
+   "end": "356A",
+   "length": 72,
+   "sha256": "c697c2e73ec90395505e7bf4a85720051dc490a426dd4ec691c27c78f099bb26"
+  },
+  {
+   "name": "results_screen",
+   "start": "32F9",
+   "end": "3436",
+   "length": 317,
+   "sha256": "9c383043dba36f8ac06b829e1d0f49bb14291666088fd3591c5809f900109e94"
+  },
+  {
+   "name": "life_award",
+   "start": "3104",
+   "end": "3116",
+   "length": 18,
+   "sha256": "b1469744efe7700651903c97e7e90a6d5de9bf3e0f77538f745707933d9078a7"
+  },
+  {
+   "name": "ring_pickup",
+   "start": "3138",
+   "end": "3175",
+   "length": 61,
+   "sha256": "98f5bb1dbeaefffbf7074ed624b057309d085b556afa817a42f1cceaf379a72b"
+  },
+  {
+   "name": "monitor_ring_and_life_rewards",
+   "start": "4AA3",
+   "end": "4AE1",
+   "length": 62,
+   "sha256": "35ef080996581aca2112583d49492551eea54fd749c08245fc3332f4eaf2b334"
+  },
+  {
+   "name": "start_position_lookup",
+   "start": "4E65",
+   "end": "4E98",
+   "length": 51,
+   "sha256": "c3331f1f39eda443f780b9d72d7b252962d04c36dae182b9689acead78fd1801"
+  },
+  {
+   "name": "death_mode_split",
+   "start": "49A0",
+   "end": "49BD",
+   "length": 29,
+   "sha256": "cfa39454e88128704ed5051710da5b1d9c9fb58efa119d3a6cc36cd0aa14cc3e"
+  },
+  {
+   "name": "pit_death_rule",
+   "start": "3C06",
+   "end": "3C15",
+   "length": 15,
+   "sha256": "4c31a01cbb3638e9b530ff31523f3b545acd88e9ab064b953f2f060930c7bfd1"
+  }
+ ],
+ "writer_census": [
+  {
+   "name": "lives",
+   "address": "D299",
+   "sites": [
+    {
+     "file": "013D4",
+     "bank": "00",
+     "cpu": "13D4",
+     "kind": "ST A,(nn)",
+     "role": "continue restore: lives := 3 (Sonic) / 5"
+    },
+    {
+     "file": "015F5",
+     "bank": "00",
+     "cpu": "15F5",
+     "kind": "LD A,(nn)",
+     "role": "life lost: read"
+    },
+    {
+     "file": "015FB",
+     "bank": "00",
+     "cpu": "15FB",
+     "kind": "ST A,(nn)",
+     "role": "life lost: lives - 1 (DAA)"
+    },
+    {
+     "file": "0165B",
+     "bank": "00",
+     "cpu": "165B",
+     "kind": "LD A,(nn)",
+     "role": "lives == 0 test after death"
+    },
+    {
+     "file": "03109",
+     "bank": "00",
+     "cpu": "3109",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03113",
+     "bank": "00",
+     "cpu": "3113",
+     "kind": "ST A,(nn)",
+     "role": "$3104 award: lives + 1 (cap $99)"
+    },
+    {
+     "file": "0311B",
+     "bank": "00",
+     "cpu": "311B",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03128",
+     "bank": "00",
+     "cpu": "3128",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0355D",
+     "bank": "00",
+     "cpu": "355D",
+     "kind": "ST A,(nn)",
+     "role": "character select init: 3 Sonic / 5 Tails"
+    }
+   ]
+  },
+  {
+   "name": "continues",
+   "address": "D2C3",
+   "sites": [
+    {
+     "file": "01396",
+     "bank": "00",
+     "cpu": "1396",
+     "kind": "LD A,(nn)",
+     "role": "game over/continue branch test (bit7)"
+    },
+    {
+     "file": "013ED",
+     "bank": "00",
+     "cpu": "13ED",
+     "kind": "LD HL,nn",
+     "role": "continue check: RES bit7, test low bits"
+    },
+    {
+     "file": "01491",
+     "bank": "00",
+     "cpu": "1491",
+     "kind": "LD HL,nn",
+     "role": "continue accepted: DEC, SET bit7"
+    },
+    {
+     "file": "026BD",
+     "bank": "00",
+     "cpu": "26BD",
+     "kind": "LD A,(nn)",
+     "role": "score award: read"
+    },
+    {
+     "file": "026C9",
+     "bank": "00",
+     "cpu": "26C9",
+     "kind": "ST A,(nn)",
+     "role": "score award: +1 (bit7 kept)"
+    },
+    {
+     "file": "02F08",
+     "bank": "00",
+     "cpu": "2F08",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02F0F",
+     "bank": "00",
+     "cpu": "2F0F",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0337F",
+     "bank": "00",
+     "cpu": "337F",
+     "kind": "LD A,(nn)",
+     "role": "results card: draw icons"
+    },
+    {
+     "file": "03561",
+     "bank": "00",
+     "cpu": "3561",
+     "kind": "ST A,(nn)",
+     "role": "character select init: 0 Sonic / 3 Tails"
+    },
+    {
+     "file": "329CF",
+     "bank": "0C",
+     "cpu": "A9CF",
+     "kind": "LD A,(nn)",
+     "role": "sign prize class 3: read"
+    },
+    {
+     "file": "329D6",
+     "bank": "0C",
+     "cpu": "A9D6",
+     "kind": "ST A,(nn)",
+     "role": "sign prize class 3: +1 (BCD INC, bit7 dropped)"
+    },
+    {
+     "file": "794BC",
+     "bank": "1E",
+     "cpu": "94BC",
+     "kind": "LD A,(nn)",
+     "role": "stage success: read"
+    },
+    {
+     "file": "794C2",
+     "bank": "1E",
+     "cpu": "94C2",
+     "kind": "ST A,(nn)",
+     "role": "stage success: +1"
+    }
+   ]
+  },
+  {
+   "name": "emeralds",
+   "address": "D2CC",
+   "sites": [
+    {
+     "file": "0179A",
+     "bank": "00",
+     "cpu": "179A",
+     "kind": "LD A,(nn)",
+     "role": "stage entry gate: read"
+    },
+    {
+     "file": "01883",
+     "bank": "00",
+     "cpu": "1883",
+     "kind": "LD A,(nn)",
+     "role": "stage selector: read"
+    },
+    {
+     "file": "018F4",
+     "bank": "00",
+     "cpu": "18F4",
+     "kind": "LD A,(nn)",
+     "role": "ending selector: read"
+    },
+    {
+     "file": "02A1F",
+     "bank": "00",
+     "cpu": "2A1F",
+     "kind": "ST A,(nn)",
+     "role": "New Game: cleared"
+    },
+    {
+     "file": "033F1",
+     "bank": "00",
+     "cpu": "33F1",
+     "kind": "LD A,(nn)",
+     "role": "results card icons: read"
+    },
+    {
+     "file": "794A0",
+     "bank": "1E",
+     "cpu": "94A0",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "794A7",
+     "bank": "1E",
+     "cpu": "94A7",
+     "kind": "ST A,(nn)",
+     "role": "stage Emerald object: |= bit"
+    },
+    {
+     "file": "7BB21",
+     "bank": "1E",
+     "cpu": "BB21",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "7BB64",
+     "bank": "1E",
+     "cpu": "BB64",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "7BB69",
+     "bank": "1E",
+     "cpu": "BB69",
+     "kind": "ST A,(nn)",
+     "role": "final-zone $61 object: |= $20"
+    }
+   ]
+  },
+  {
+   "name": "result_card",
+   "address": "D2CD",
+   "sites": [
+    {
+     "file": "017AC",
+     "bank": "00",
+     "cpu": "17AC",
+     "kind": "ST A,(nn)",
+     "role": "stage entry: := 1"
+    },
+    {
+     "file": "03308",
+     "bank": "00",
+     "cpu": "3308",
+     "kind": "LD A,(nn)",
+     "role": "results card selector"
+    },
+    {
+     "file": "033C3",
+     "bank": "00",
+     "cpu": "33C3",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "033D7",
+     "bank": "00",
+     "cpu": "33D7",
+     "kind": "ST A,(nn)",
+     "role": "results card drawn: := 0"
+    },
+    {
+     "file": "794AC",
+     "bank": "1E",
+     "cpu": "94AC",
+     "kind": "ST A,(nn)",
+     "role": "stage success: := $FF"
+    }
+   ]
+  },
+  {
+   "name": "bonus",
+   "address": "D2A6",
+   "sites": [
+    {
+     "file": "026ED",
+     "bank": "00",
+     "cpu": "26ED",
+     "kind": "LD HL,nn",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02D28",
+     "bank": "00",
+     "cpu": "2D28",
+     "kind": "LD HL,(nn)",
+     "role": "tally: read bonus word"
+    },
+    {
+     "file": "02D41",
+     "bank": "00",
+     "cpu": "2D41",
+     "kind": "ST HL,(nn)",
+     "role": "tally: store counted-down bonus"
+    },
+    {
+     "file": "31C96",
+     "bank": "0C",
+     "cpu": "9C96",
+     "kind": "ST HL,(nn)",
+     "role": "type $0A bonus object: := bonus ($041F)"
+    },
+    {
+     "file": "32B52",
+     "bank": "0C",
+     "cpu": "AB52",
+     "kind": "ST HL,(nn)",
+     "role": "$19 sign child: := bonus"
+    },
+    {
+     "file": "32B69",
+     "bank": "0C",
+     "cpu": "AB69",
+     "kind": "LD HL,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "7949D",
+     "bank": "1E",
+     "cpu": "949D",
+     "kind": "ST HL,(nn)",
+     "role": "stage success: := seconds << 8"
+    }
+   ]
+  },
+  {
+   "name": "rings",
+   "address": "D29A",
+   "sites": [
+    {
+     "file": "026DC",
+     "bank": "00",
+     "cpu": "26DC",
+     "kind": "LD HL,nn",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02A01",
+     "bank": "00",
+     "cpu": "2A01",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02A50",
+     "bank": "00",
+     "cpu": "2A50",
+     "kind": "ST A,(nn)",
+     "role": "level load: := 0"
+    },
+    {
+     "file": "02CBB",
+     "bank": "00",
+     "cpu": "2CBB",
+     "kind": "ST A,(nn)",
+     "role": "attract demo setup := $20"
+    },
+    {
+     "file": "02D0C",
+     "bank": "00",
+     "cpu": "2D0C",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02D15",
+     "bank": "00",
+     "cpu": "2D15",
+     "kind": "ST A,(nn)",
+     "role": "tally: -1 per step"
+    },
+    {
+     "file": "03138",
+     "bank": "00",
+     "cpu": "3138",
+     "kind": "LD A,(nn)",
+     "role": "ring pickup +1 (wrap)"
+    },
+    {
+     "file": "0313E",
+     "bank": "00",
+     "cpu": "313E",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0315C",
+     "bank": "00",
+     "cpu": "315C",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03169",
+     "bank": "00",
+     "cpu": "3169",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "04915",
+     "bank": "01",
+     "cpu": "4915",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "04937",
+     "bank": "01",
+     "cpu": "4937",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "04AC2",
+     "bank": "01",
+     "cpu": "4AC2",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "04AC8",
+     "bank": "01",
+     "cpu": "4AC8",
+     "kind": "ST A,(nn)",
+     "role": "ten-ring monitor +$10"
+    },
+    {
+     "file": "04ACE",
+     "bank": "01",
+     "cpu": "4ACE",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0629E",
+     "bank": "01",
+     "cpu": "629E",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "329BE",
+     "bank": "0C",
+     "cpu": "A9BE",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "329C5",
+     "bank": "0C",
+     "cpu": "A9C5",
+     "kind": "ST A,(nn)",
+     "role": "sign prize class 2: +$10"
+    },
+    {
+     "file": "329FD",
+     "bank": "0C",
+     "cpu": "A9FD",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    }
+   ]
+  },
+  {
+   "name": "score_lo",
+   "address": "D29D",
+   "sites": [
+    {
+     "file": "013D8",
+     "bank": "00",
+     "cpu": "13D8",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02643",
+     "bank": "00",
+     "cpu": "2643",
+     "kind": "LD DE,nn",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "026FE",
+     "bank": "00",
+     "cpu": "26FE",
+     "kind": "LD HL,nn",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02708",
+     "bank": "00",
+     "cpu": "2708",
+     "kind": "LD HL,nn",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02A04",
+     "bank": "00",
+     "cpu": "2A04",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    }
+   ]
+  },
+  {
+   "name": "score_mid",
+   "address": "D29E",
+   "sites": [
+    {
+     "file": "013DB",
+     "bank": "00",
+     "cpu": "13DB",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0266F",
+     "bank": "00",
+     "cpu": "266F",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02683",
+     "bank": "00",
+     "cpu": "2683",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02691",
+     "bank": "00",
+     "cpu": "2691",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02A07",
+     "bank": "00",
+     "cpu": "2A07",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    }
+   ]
+  },
+  {
+   "name": "score_hi",
+   "address": "D29F",
+   "sites": [
+    {
+     "file": "013DE",
+     "bank": "00",
+     "cpu": "13DE",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0263C",
+     "bank": "00",
+     "cpu": "263C",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0269E",
+     "bank": "00",
+     "cpu": "269E",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "026A7",
+     "bank": "00",
+     "cpu": "26A7",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02A0A",
+     "bank": "00",
+     "cpu": "2A0A",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    }
+   ]
+  },
+  {
+   "name": "character",
+   "address": "D2C8",
+   "sites": [
+    {
+     "file": "013C9",
+     "bank": "00",
+     "cpu": "13C9",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "01402",
+     "bank": "00",
+     "cpu": "1402",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0178F",
+     "bank": "00",
+     "cpu": "178F",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "018ED",
+     "bank": "00",
+     "cpu": "18ED",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0267C",
+     "bank": "00",
+     "cpu": "267C",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02951",
+     "bank": "00",
+     "cpu": "2951",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02C5D",
+     "bank": "00",
+     "cpu": "2C5D",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02F2B",
+     "bank": "00",
+     "cpu": "2F2B",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03072",
+     "bank": "00",
+     "cpu": "3072",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03095",
+     "bank": "00",
+     "cpu": "3095",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "030C2",
+     "bank": "00",
+     "cpu": "30C2",
+     "kind": "LD HL,nn",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0330E",
+     "bank": "00",
+     "cpu": "330E",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0336D",
+     "bank": "00",
+     "cpu": "336D",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03550",
+     "bank": "00",
+     "cpu": "3550",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03576",
+     "bank": "00",
+     "cpu": "3576",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0357C",
+     "bank": "00",
+     "cpu": "357C",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03585",
+     "bank": "00",
+     "cpu": "3585",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0358C",
+     "bank": "00",
+     "cpu": "358C",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "03595",
+     "bank": "00",
+     "cpu": "3595",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "071A0",
+     "bank": "01",
+     "cpu": "71A0",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "07245",
+     "bank": "01",
+     "cpu": "7245",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "3046D",
+     "bank": "0C",
+     "cpu": "846D",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "32E88",
+     "bank": "0C",
+     "cpu": "AE88",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "32E8F",
+     "bank": "0C",
+     "cpu": "AE8F",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "32E99",
+     "bank": "0C",
+     "cpu": "AE99",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "32E9D",
+     "bank": "0C",
+     "cpu": "AE9D",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "32EA8",
+     "bank": "0C",
+     "cpu": "AEA8",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    }
+   ]
+  },
+  {
+   "name": "started",
+   "address": "D295",
+   "sites": [
+    {
+     "file": "0086C",
+     "bank": "00",
+     "cpu": "086C",
+     "kind": "ST A,(nn)",
+     "role": "hidden level select done: := $FF"
+    },
+    {
+     "file": "02A22",
+     "bank": "00",
+     "cpu": "2A22",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "02C18",
+     "bank": "00",
+     "cpu": "2C18",
+     "kind": "ST A,(nn)",
+     "role": "title START: := 0"
+    },
+    {
+     "file": "03549",
+     "bank": "00",
+     "cpu": "3549",
+     "kind": "ST A,(nn)",
+     "role": "character select done: := $FF"
+    }
+   ]
+  },
+  {
+   "name": "saved_zone",
+   "address": "D296",
+   "sites": [
+    {
+     "file": "0186D",
+     "bank": "00",
+     "cpu": "186D",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0187E",
+     "bank": "00",
+     "cpu": "187E",
+     "kind": "ST A,(nn)",
+     "role": "stage entry: := zone"
+    }
+   ]
+  },
+  {
+   "name": "timeover",
+   "address": "D44B",
+   "sites": [
+    {
+     "file": "01653",
+     "bank": "00",
+     "cpu": "1653",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0281E",
+     "bank": "00",
+     "cpu": "281E",
+     "kind": "ST A,(nn)",
+     "role": "timer 10:00: := $C0"
+    },
+    {
+     "file": "034CF",
+     "bank": "00",
+     "cpu": "34CF",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0351E",
+     "bank": "00",
+     "cpu": "351E",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "0362A",
+     "bank": "00",
+     "cpu": "362A",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "049AC",
+     "bank": "01",
+     "cpu": "49AC",
+     "kind": "LD A,(nn)",
+     "role": "unclassified (not read in this package)"
+    },
+    {
+     "file": "049B1",
+     "bank": "01",
+     "cpu": "49B1",
+     "kind": "ST A,(nn)",
+     "role": "unclassified (not read in this package)"
+    }
+   ]
+  }
+ ],
+ "writer_census_caveat": "byte census of absolute stores/loads and immediate pointer loads only; register-addressed writes through computed pointers and block clears (the power-on LDIR, $297E) are not enumerated. 'unclassified' means not read in this package, not benign.",
+ "start_positions": [
+  {
+   "zone": 0,
+   "act": 0,
+   "record": "4F06",
+   "camera_x": 38,
+   "camera_y": 530,
+   "player_x": 142,
+   "player_y": 654
+  },
+  {
+   "zone": 0,
+   "act": 1,
+   "record": "4F0E",
+   "camera_x": 6,
+   "camera_y": 274,
+   "player_x": 110,
+   "player_y": 398
+  },
+  {
+   "zone": 0,
+   "act": 2,
+   "record": "4F16",
+   "camera_x": 0,
+   "camera_y": 112,
+   "player_x": 110,
+   "player_y": 224
+  },
+  {
+   "zone": 1,
+   "act": 0,
+   "record": "4F1E",
+   "camera_x": 0,
+   "camera_y": 272,
+   "player_x": 110,
+   "player_y": 384
+  },
+  {
+   "zone": 1,
+   "act": 1,
+   "record": "4F26",
+   "camera_x": 0,
+   "camera_y": 336,
+   "player_x": 110,
+   "player_y": 448
+  },
+  {
+   "zone": 1,
+   "act": 2,
+   "record": "4F2E",
+   "camera_x": 75,
+   "camera_y": 240,
+   "player_x": 187,
+   "player_y": 352
+  },
+  {
+   "zone": 2,
+   "act": 0,
+   "record": "4F36",
+   "camera_x": 0,
+   "camera_y": 608,
+   "player_x": 110,
+   "player_y": 718
+  },
+  {
+   "zone": 2,
+   "act": 1,
+   "record": "4F3E",
+   "camera_x": 0,
+   "camera_y": 742,
+   "player_x": 110,
+   "player_y": 846
+  },
+  {
+   "zone": 2,
+   "act": 2,
+   "record": "4F46",
+   "camera_x": 0,
+   "camera_y": 702,
+   "player_x": 110,
+   "player_y": 821
+  },
+  {
+   "zone": 3,
+   "act": 0,
+   "record": "4F4E",
+   "camera_x": 0,
+   "camera_y": 80,
+   "player_x": 78,
+   "player_y": 192
+  },
+  {
+   "zone": 3,
+   "act": 1,
+   "record": "4F56",
+   "camera_x": 0,
+   "camera_y": 447,
+   "player_x": 112,
+   "player_y": 558
+  },
+  {
+   "zone": 3,
+   "act": 2,
+   "record": "4F5E",
+   "camera_x": 0,
+   "camera_y": 48,
+   "player_x": 110,
+   "player_y": 160
+  },
+  {
+   "zone": 4,
+   "act": 0,
+   "record": "4F66",
+   "camera_x": 0,
+   "camera_y": 99,
+   "player_x": 110,
+   "player_y": 206
+  },
+  {
+   "zone": 4,
+   "act": 1,
+   "record": "4F6E",
+   "camera_x": 0,
+   "camera_y": 447,
+   "player_x": 110,
+   "player_y": 558
+  },
+  {
+   "zone": 4,
+   "act": 2,
+   "record": "4F76",
+   "camera_x": 0,
+   "camera_y": 132,
+   "player_x": 110,
+   "player_y": 238
+  },
+  {
+   "zone": 5,
+   "act": 0,
+   "record": "4F7E",
+   "camera_x": 126,
+   "camera_y": 752,
+   "player_x": 238,
+   "player_y": 864
+  },
+  {
+   "zone": 5,
+   "act": 1,
+   "record": "4F86",
+   "camera_x": 58,
+   "camera_y": 318,
+   "player_x": 170,
+   "player_y": 430
+  },
+  {
+   "zone": 5,
+   "act": 2,
+   "record": "4F8E",
+   "camera_x": 0,
+   "camera_y": 176,
+   "player_x": 110,
+   "player_y": 288
+  }
+ ],
+ "sign_prize_tables": {
+  "selection": "LD A,($D297); INC A; RRCA; carry -> table $A919 (zones 0,2,4), no carry -> table $A962 (zones 1,3,5)",
+  "zones_0_2_4": [
+   [
+    "15",
+    "30",
+    "40",
+    "60"
+   ],
+   [
+    "09",
+    "19",
+    "29",
+    "39",
+    "49",
+    "59",
+    "69",
+    "79",
+    "89"
+   ],
+   [
+    "99",
+    "97",
+    "95",
+    "88",
+    "77",
+    "65",
+    "55"
+   ],
+   [
+    "16",
+    "28",
+    "32",
+    "44",
+    "58"
+   ]
+  ],
+  "zones_1_3_5": [
+   [
+    "00",
+    "24",
+    "48",
+    "72"
+   ],
+   [
+    "10",
+    "20",
+    "30",
+    "40",
+    "50",
+    "60",
+    "70",
+    "80",
+    "90"
+   ],
+   [
+    "98",
+    "96",
+    "94",
+    "87",
+    "77",
+    "33",
+    "11"
+   ],
+   [
+    "18",
+    "36",
+    "45",
+    "81",
+    "89"
+   ]
+  ],
+  "class_rule": "class = 3 - (index of the first CPIR match // 16); no match = $FF; class 3 -> D2C3 + 1 (continue), 2 -> rings + $10, 1 -> $03F2 -> $3104 (life), 0 -> retry",
+  "correction": "docs/object-18-act-clear.md labels class 3 as 'lives' (D2C3): D2C3 is the CONTINUE counter (G0-R); class 1 ($03F2 -> $3104) is the life award"
+ },
+ "act3_boss_bonus_table": {
+  "iterations": [
+   50,
+   100,
+   150,
+   200,
+   250,
+   600
+  ],
+  "raw_units_each": 10,
+  "raw_total": [
+   500,
+   1000,
+   1500,
+   2000,
+   2500,
+   6000
+  ],
+  "used_zones": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "note": "index 5 (EEZ) is unreachable: zone 5 skips the results screen"
+ },
+ "palette_fade_answer": {
+  "question": "Is there a palette fade or other transition after the Special Stage results tally and before the next ordinary act loads?",
+  "answer": "YES - PROVEN (source-traced + emulated): the Special Stage return runs the ordinary act-clear tail `$14AE`..`$153E`, so after the tally returns the ROM waits 48 frames, requests the fade slots D492/D494 (`$1507..$1517`), waits 96 frames, fills the palette buffer (`$342A`), resets the slots (`$1CAF`), waits 48 frames and only then increments the act (`$1534`) and reloads (`$1673`). The summed CRAM brightness steps up to full white (288) in three 5-frame steps and then down to black (0) in three steps before the act increment; the loader then fades the new act in.",
+  "code_path": [
+   "$1869 sets D293 bit5",
+   "$1333 -> $14AE",
+   "$14FC CALL $32F9 (results + $2D08 tally) returns",
+   "$14FF wait 48",
+   "$1507 D492/D494 := 0|bit6|bit4 (fade request)",
+   "$1519 wait 96",
+   "$1521 CALL $342A (D472..D491 := $3F)",
+   "$1524 CALL $1CAF (slots := 0|bit6)",
+   "$1527 wait 48",
+   "$152F RES 5, act += 1, SET 1 -> $1673 reload"
+  ],
+  "emulated": {
+   "clear_thz1_rings00": {
+    "tally_returned": 596,
+    "fade_request": 691,
+    "palette_fill_3f": 787,
+    "act_incremented": 835,
+    "palette_steps_after_tally": [
+     [
+      694,
+      201
+     ],
+     [
+      699,
+      252
+     ],
+     [
+      704,
+      288
+     ],
+     [
+      794,
+      192
+     ],
+     [
+      799,
+      96
+     ],
+     [
+      804,
+      0
+     ]
+    ],
+    "first_change_after_tally": 98,
+    "to_white_frame": 704,
+    "to_black_frame": 804,
+    "black_to_act_increment": 31,
+    "origin": "frames relative to the $14AE act-clear sequence entry"
+   },
+   "special_stage_success": {
+    "tally_returned": 1179,
+    "fade_request": 1273,
+    "palette_fill_3f": 1369,
+    "act_incremented": 1417,
+    "palette_steps_after_tally": [
+     [
+      1277,
+      201
+     ],
+     [
+      1282,
+      252
+     ],
+     [
+      1287,
+      288
+     ],
+     [
+      1372,
+      192
+     ],
+     [
+      1377,
+      96
+     ],
+     [
+      1382,
+      0
+     ]
+    ],
+    "first_change_after_tally": 98,
+    "to_white_frame": 1287,
+    "to_black_frame": 1382,
+    "black_to_act_increment": 35,
+    "origin": "frames relative to the $14AE act-clear sequence entry"
+   },
+   "special_stage_timeout": {
+    "tally_returned": 275,
+    "fade_request": 371,
+    "palette_fill_3f": 467,
+    "act_incremented": 515,
+    "palette_steps_after_tally": [
+     [
+      377,
+      201
+     ],
+     [
+      382,
+      252
+     ],
+     [
+      387,
+      288
+     ],
+     [
+      472,
+      192
+     ],
+     [
+      477,
+      96
+     ],
+     [
+      482,
+      0
+     ]
+    ],
+    "first_change_after_tally": 102,
+    "to_white_frame": 387,
+    "to_black_frame": 482,
+    "black_to_act_increment": 33,
+    "origin": "frames relative to the $14AE act-clear sequence entry"
+   }
+  },
+  "caveats": [
+   "CRAM is written by the ROM's own palette routine; the harness VDP is approximate, so the exact frame offsets of CRAM visibility are EMULATED (the 48/96/48 waits are source-exact).",
+   "Brightness is the sum of the 32 CRAM entries' 2-bit channels (0 = black, 288 = all white): it proves a fade to white then black, not the exact palette colours of each step.",
+   "The fade BEFORE the results card (act-clear white flash and results fade-in) is separate and was already known."
+  ],
+  "status": "resolved"
+ },
+ "expectations": [
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "$3550..$355D: B := 3 (Sonic cursor) / 5 (Tails cursor)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "$3560/$3561: C := 0 / 3",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.character",
+   "op": "==",
+   "value": 1,
+   "why": "$30C5 increments the cursor into D2C8",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.act",
+   "op": "==",
+   "value": 0,
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.score_bcd",
+   "op": "==",
+   "value": "000000",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.flow",
+   "op": "==",
+   "value": "40",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "in_play.started",
+   "op": "==",
+   "value": "FF",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "checkpoints.new_game_init.emeralds",
+   "op": "==",
+   "value": "1F",
+   "why": "fixture: dirty pre-state is really present when $04D4 runs",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_sonic",
+   "path": "checkpoints.new_game_init.rings_bcd",
+   "op": "==",
+   "value": "55",
+   "why": "fixture: dirty rings present before $2A00",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.lives_bcd",
+   "op": "==",
+   "value": "05",
+   "why": "$3550..$355D: B := 3 (Sonic cursor) / 5 (Tails cursor)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.continues_raw",
+   "op": "==",
+   "value": "03",
+   "why": "$3560/$3561: C := 0 / 3",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.character",
+   "op": "==",
+   "value": 2,
+   "why": "$30C5 increments the cursor into D2C8",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.act",
+   "op": "==",
+   "value": 0,
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.score_bcd",
+   "op": "==",
+   "value": "000000",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.flow",
+   "op": "==",
+   "value": "40",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "in_play.started",
+   "op": "==",
+   "value": "FF",
+   "why": "T02 reset values ($07CE, $2A00, $3549)",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "checkpoints.new_game_init.emeralds",
+   "op": "==",
+   "value": "1F",
+   "why": "fixture: dirty pre-state is really present when $04D4 runs",
+   "ok": true
+  },
+  {
+   "scenario": "new_game_tails",
+   "path": "checkpoints.new_game_init.rings_bcd",
+   "op": "==",
+   "value": "55",
+   "why": "fixture: dirty rings present before $2A00",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 1,
+   "why": "$1538: act += 1",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "act clear does not change the zone",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "tally drains and $2A50 zeroes rings",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.emeralds",
+   "op": "==",
+   "value": "03",
+   "why": "emerald byte is run-scoped and survives the act clear",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.powerup",
+   "op": "==",
+   "value": "00",
+   "why": "object RAM block cleared by $297E (fixture set D532 := 4)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "start.powerup",
+   "op": "==",
+   "value": "04",
+   "why": "fixture check",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.character",
+   "op": "==",
+   "value": 1,
+   "why": "player identity kept",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "sign prize class 1 -> $3104 (+1 life) only for rings 55",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "sign prize class 3 -> D2C3 + 1 (a continue) only for rings 15",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "end_in_play.score_bcd",
+   "op": "==",
+   "value": "000989",
+   "why": "tally: +10 raw per ring then the bonus word (time entry 9 x100 + (rings-11)) +1 raw per step",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "flag_raised.bonus",
+   "op": "==",
+   "value": "0989",
+   "why": "$041F bonus word computed by the $19 child",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "relative_frames.flag_bit5_set",
+   "op": "==",
+   "value": 309,
+   "why": "contact -> flag, REUSED object-18 timeline (+309)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "relative_frames.results_screen",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.act_clear_sequence",
+    "equals": 198
+   },
+   "why": "$14AE waits 60+96+30+12 frames before $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "relative_frames.palette_fill_3f",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.fade_request",
+    "equals": 96
+   },
+   "why": "$1507 .. $1521: wait 96",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "relative_frames.progress_act",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.palette_fill_3f",
+    "equals": 48
+   },
+   "why": "$1524 wait 48 then $152F",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "post_tally_fade.to_white_frame",
+   "op": ">",
+   "value": 0,
+   "why": "palette fades to full white after the tally",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings00",
+   "path": "post_tally_fade.to_black_frame",
+   "op": ">",
+   "value": 0,
+   "why": "and then to black before the next act loads",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 1,
+   "why": "$1538: act += 1",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "act clear does not change the zone",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "tally drains and $2A50 zeroes rings",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.emeralds",
+   "op": "==",
+   "value": "03",
+   "why": "emerald byte is run-scoped and survives the act clear",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.powerup",
+   "op": "==",
+   "value": "00",
+   "why": "object RAM block cleared by $297E (fixture set D532 := 4)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "start.powerup",
+   "op": "==",
+   "value": "04",
+   "why": "fixture check",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.character",
+   "op": "==",
+   "value": 1,
+   "why": "player identity kept",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "sign prize class 1 -> $3104 (+1 life) only for rings 55",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.continues_raw",
+   "op": "==",
+   "value": "01",
+   "why": "sign prize class 3 -> D2C3 + 1 (a continue) only for rings 15",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "end_in_play.score_bcd",
+   "op": "==",
+   "value": "001054",
+   "why": "tally: +10 raw per ring then the bonus word (time entry 9 x100 + (rings-11)) +1 raw per step",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "flag_raised.bonus",
+   "op": "==",
+   "value": "0904",
+   "why": "$041F bonus word computed by the $19 child",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "relative_frames.flag_bit5_set",
+   "op": "==",
+   "value": 309,
+   "why": "contact -> flag, REUSED object-18 timeline (+309)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "relative_frames.results_screen",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.act_clear_sequence",
+    "equals": 198
+   },
+   "why": "$14AE waits 60+96+30+12 frames before $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "relative_frames.palette_fill_3f",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.fade_request",
+    "equals": 96
+   },
+   "why": "$1507 .. $1521: wait 96",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "relative_frames.progress_act",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.palette_fill_3f",
+    "equals": 48
+   },
+   "why": "$1524 wait 48 then $152F",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "post_tally_fade.to_white_frame",
+   "op": ">",
+   "value": 0,
+   "why": "palette fades to full white after the tally",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "post_tally_fade.to_black_frame",
+   "op": ">",
+   "value": 0,
+   "why": "and then to black before the next act loads",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 1,
+   "why": "$1538: act += 1",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "act clear does not change the zone",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "tally drains and $2A50 zeroes rings",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.emeralds",
+   "op": "==",
+   "value": "03",
+   "why": "emerald byte is run-scoped and survives the act clear",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.powerup",
+   "op": "==",
+   "value": "00",
+   "why": "object RAM block cleared by $297E (fixture set D532 := 4)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "start.powerup",
+   "op": "==",
+   "value": "04",
+   "why": "fixture check",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.character",
+   "op": "==",
+   "value": 1,
+   "why": "player identity kept",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "sign prize class 1 -> $3104 (+1 life) only for rings 55",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "sign prize class 3 -> D2C3 + 1 (a continue) only for rings 15",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "end_in_play.score_bcd",
+   "op": "==",
+   "value": "001494",
+   "why": "tally: +10 raw per ring then the bonus word (time entry 9 x100 + (rings-11)) +1 raw per step",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "flag_raised.bonus",
+   "op": "==",
+   "value": "0944",
+   "why": "$041F bonus word computed by the $19 child",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "relative_frames.flag_bit5_set",
+   "op": "==",
+   "value": 309,
+   "why": "contact -> flag, REUSED object-18 timeline (+309)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "relative_frames.results_screen",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.act_clear_sequence",
+    "equals": 198
+   },
+   "why": "$14AE waits 60+96+30+12 frames before $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "relative_frames.palette_fill_3f",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.fade_request",
+    "equals": 96
+   },
+   "why": "$1507 .. $1521: wait 96",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "relative_frames.progress_act",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.palette_fill_3f",
+    "equals": 48
+   },
+   "why": "$1524 wait 48 then $152F",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "post_tally_fade.to_white_frame",
+   "op": ">",
+   "value": 0,
+   "why": "palette fades to full white after the tally",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "post_tally_fade.to_black_frame",
+   "op": ">",
+   "value": 0,
+   "why": "and then to black before the next act loads",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 1,
+   "why": "$1538: act += 1",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "act clear does not change the zone",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "tally drains and $2A50 zeroes rings",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.emeralds",
+   "op": "==",
+   "value": "03",
+   "why": "emerald byte is run-scoped and survives the act clear",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.powerup",
+   "op": "==",
+   "value": "00",
+   "why": "object RAM block cleared by $297E (fixture set D532 := 4)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "start.powerup",
+   "op": "==",
+   "value": "04",
+   "why": "fixture check",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.character",
+   "op": "==",
+   "value": 1,
+   "why": "player identity kept",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "sign prize class 1 -> $3104 (+1 life) only for rings 55",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "sign prize class 3 -> D2C3 + 1 (a continue) only for rings 15",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "end_in_play.score_bcd",
+   "op": "==",
+   "value": "001098",
+   "why": "tally: +10 raw per ring then the bonus word (time entry 9 x100 + (rings-11)) +1 raw per step",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "flag_raised.bonus",
+   "op": "==",
+   "value": "0908",
+   "why": "$041F bonus word computed by the $19 child",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "relative_frames.flag_bit5_set",
+   "op": "==",
+   "value": 309,
+   "why": "contact -> flag, REUSED object-18 timeline (+309)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "relative_frames.results_screen",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.act_clear_sequence",
+    "equals": 198
+   },
+   "why": "$14AE waits 60+96+30+12 frames before $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "relative_frames.palette_fill_3f",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.fade_request",
+    "equals": 96
+   },
+   "why": "$1507 .. $1521: wait 96",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "relative_frames.progress_act",
+   "op": "-",
+   "value": {
+    "b": "relative_frames.palette_fill_3f",
+    "equals": 48
+   },
+   "why": "$1524 wait 48 then $152F",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "post_tally_fade.to_white_frame",
+   "op": ">",
+   "value": 0,
+   "why": "palette fades to full white after the tally",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "post_tally_fade.to_black_frame",
+   "op": ">",
+   "value": 0,
+   "why": "and then to black before the next act loads",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings15",
+   "path": "flag_raised.continues_raw",
+   "op": "==",
+   "value": "01",
+   "why": "class 3 prize lands at the sign (before the results)",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings55",
+   "path": "flag_raised.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "class 1 prize lands at the sign",
+   "ok": true
+  },
+  {
+   "scenario": "clear_thz1_rings09",
+   "path": "flag_raised.rings_bcd",
+   "op": "==",
+   "value": "19",
+   "why": "class 2: rings + $10 (carry dropped) before the tally",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.0.after.zone",
+   "op": "==",
+   "value": 0,
+   "why": "next (zone, act) after (0,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.0.after.act",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (0,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.0.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.1.after.zone",
+   "op": "==",
+   "value": 0,
+   "why": "next (zone, act) after (0,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.1.after.act",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (0,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.1.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.2.after.zone",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (0,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.2.after.act",
+   "op": "==",
+   "value": 0,
+   "why": "next (zone, act) after (0,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.2.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.3.after.zone",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (1,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.3.after.act",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (1,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.3.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.4.after.zone",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (1,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.4.after.act",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (1,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.4.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.5.after.zone",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (1,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.5.after.act",
+   "op": "==",
+   "value": 0,
+   "why": "next (zone, act) after (1,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.5.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.6.after.zone",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (2,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.6.after.act",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (2,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.6.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.7.after.zone",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (2,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.7.after.act",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (2,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.7.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.8.after.zone",
+   "op": "==",
+   "value": 3,
+   "why": "next (zone, act) after (2,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.8.after.act",
+   "op": "==",
+   "value": 0,
+   "why": "next (zone, act) after (2,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.8.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.9.after.zone",
+   "op": "==",
+   "value": 3,
+   "why": "next (zone, act) after (3,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.9.after.act",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (3,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.9.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.10.after.zone",
+   "op": "==",
+   "value": 3,
+   "why": "next (zone, act) after (3,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.10.after.act",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (3,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.10.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.11.after.zone",
+   "op": "==",
+   "value": 4,
+   "why": "next (zone, act) after (3,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.11.after.act",
+   "op": "==",
+   "value": 0,
+   "why": "next (zone, act) after (3,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.11.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.12.after.zone",
+   "op": "==",
+   "value": 4,
+   "why": "next (zone, act) after (4,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.12.after.act",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (4,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.12.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.13.after.zone",
+   "op": "==",
+   "value": 4,
+   "why": "next (zone, act) after (4,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.13.after.act",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (4,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.13.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.14.after.zone",
+   "op": "==",
+   "value": 5,
+   "why": "next (zone, act) after (4,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.14.after.act",
+   "op": "==",
+   "value": 0,
+   "why": "next (zone, act) after (4,2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.14.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.15.after.zone",
+   "op": "==",
+   "value": 5,
+   "why": "next (zone, act) after (5,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.15.after.act",
+   "op": "==",
+   "value": 1,
+   "why": "next (zone, act) after (5,0)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.15.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.16.after.zone",
+   "op": "==",
+   "value": 5,
+   "why": "next (zone, act) after (5,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.16.after.act",
+   "op": "==",
+   "value": 2,
+   "why": "next (zone, act) after (5,1)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.16.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "$32F9 runs for every non-final clear",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.17.results_shown",
+   "op": "==",
+   "value": 0,
+   "why": "zone 5 skips the results screen ($1597 CP 5)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.17.after.zone",
+   "op": "==",
+   "value": 6,
+   "why": "$15D6 zone := 6 -> end path",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "events.end_path.count",
+   "op": "==",
+   "value": 1,
+   "why": "$1365 once",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "events.ending_partial.count",
+   "op": "==",
+   "value": 1,
+   "why": "no emeralds -> partial ending",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "events.results_screen.count",
+   "op": "==",
+   "value": 17,
+   "why": "17 results screens in 18 clears",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "events.act3_bonus_tally.count",
+   "op": "==",
+   "value": 17,
+   "why": "$2D55 runs in each results screen (returns at once unless act index 2)",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "final.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "no life is gained or lost in a clean run",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.2.at_flag.zone",
+   "op": "==",
+   "value": 0,
+   "why": "act index 2 of zone 0",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.2.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "zone < 5 shows results",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.5.at_flag.zone",
+   "op": "==",
+   "value": 1,
+   "why": "act index 2 of zone 1",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.5.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "zone < 5 shows results",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.8.at_flag.zone",
+   "op": "==",
+   "value": 2,
+   "why": "act index 2 of zone 2",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.8.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "zone < 5 shows results",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.11.at_flag.zone",
+   "op": "==",
+   "value": 3,
+   "why": "act index 2 of zone 3",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.11.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "zone < 5 shows results",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.14.at_flag.zone",
+   "op": "==",
+   "value": 4,
+   "why": "act index 2 of zone 4",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.14.results_shown",
+   "op": "==",
+   "value": 1,
+   "why": "zone < 5 shows results",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.0.after.score_bcd",
+   "op": "==",
+   "value": "000989",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.1.after.score_bcd",
+   "op": "==",
+   "value": "001978",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.2.after.score_bcd",
+   "op": "==",
+   "value": "002478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.3.after.score_bcd",
+   "op": "==",
+   "value": "002478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.4.after.score_bcd",
+   "op": "==",
+   "value": "002478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.5.after.score_bcd",
+   "op": "==",
+   "value": "003478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.6.after.score_bcd",
+   "op": "==",
+   "value": "003478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.7.after.score_bcd",
+   "op": "==",
+   "value": "003478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.8.after.score_bcd",
+   "op": "==",
+   "value": "004978",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.9.after.score_bcd",
+   "op": "==",
+   "value": "004978",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.10.after.score_bcd",
+   "op": "==",
+   "value": "004978",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.11.after.score_bcd",
+   "op": "==",
+   "value": "006978",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.12.after.score_bcd",
+   "op": "==",
+   "value": "006978",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.13.after.score_bcd",
+   "op": "==",
+   "value": "006978",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.14.after.score_bcd",
+   "op": "==",
+   "value": "009478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.15.after.score_bcd",
+   "op": "==",
+   "value": "009478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.16.after.score_bcd",
+   "op": "==",
+   "value": "009478",
+   "why": "running score: THZ1/THZ2 sign bonus 989 raw (0 rings, <0:30), boss bonus table for act index 2, injected acts pay nothing",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.11.after.continues_raw",
+   "op": "==",
+   "value": "01",
+   "why": "score crossed 5,000 raw (4978 -> 6978) -> Sonic continue award",
+   "ok": true
+  },
+  {
+   "scenario": "campaign_spine",
+   "path": "acts.10.after.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "before the crossing no continue",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "before.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "fixture",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "checkpoints.life_decremented.lives_bcd",
+   "op": "==",
+   "value": "02",
+   "why": "$15FB: lives - 1",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.lives_bcd",
+   "op": "==",
+   "value": "02",
+   "why": "one life lost",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.zone",
+   "op": "==",
+   "value": 0,
+   "why": "same zone",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.act",
+   "op": "==",
+   "value": 0,
+   "why": "same act",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "rings reset by the reload",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.powerup",
+   "op": "==",
+   "value": "00",
+   "why": "power-up cleared",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.emeralds",
+   "op": "==",
+   "value": "07",
+   "why": "emeralds kept",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.score_bcd",
+   "op": "==",
+   "value": "001230",
+   "why": "score kept on death",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "continues kept",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.time",
+   "op": "startswith",
+   "value": "00:00.",
+   "why": "timer restarted at 0:00",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.player.x",
+   "op": "==",
+   "value": 142,
+   "why": "ROM start position of THZ1 (no checkpoint)",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "end.player.y",
+   "op": "==",
+   "value": 654,
+   "why": "ROM start position of THZ1 (no checkpoint)",
+   "ok": true
+  },
+  {
+   "scenario": "death_pit_lives3",
+   "path": "counts.time_over_screen",
+   "op": "absent",
+   "value": null,
+   "why": "a pit death shows no TIME OVER screen",
+   "ok": true
+  },
+  {
+   "scenario": "death_time_over_lives3",
+   "path": "counts.time_over_screen",
+   "op": "==",
+   "value": 1,
+   "why": "D44B bit7 -> $3495",
+   "ok": true
+  },
+  {
+   "scenario": "death_time_over_lives3",
+   "path": "end.lives_bcd",
+   "op": "==",
+   "value": "02",
+   "why": "TIME OVER costs one life",
+   "ok": true
+  },
+  {
+   "scenario": "death_time_over_lives3",
+   "path": "end.time",
+   "op": "startswith",
+   "value": "00:00.",
+   "why": "timer restarted",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "checkpoints.continue_accepted.continues_raw",
+   "op": "==",
+   "value": "02",
+   "why": "state before $1491 decrements",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "end.continues_raw",
+   "op": "==",
+   "value": "81",
+   "why": "$1491: (2 - 1) | $80",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "end.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "$13C9: lives := 3 for Sonic",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "end.score_bcd",
+   "op": "==",
+   "value": "000000",
+   "why": "$13D8..$13DE: score cleared",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "end.emeralds",
+   "op": "==",
+   "value": "07",
+   "why": "emeralds kept",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "end.zone",
+   "op": "==",
+   "value": 0,
+   "why": "restarts the same zone",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "end.act",
+   "op": "==",
+   "value": 0,
+   "why": "restarts the same act",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_sonic",
+   "path": "counts.game_over_screen",
+   "op": "absent",
+   "value": null,
+   "why": "no Game Over when a continue is taken",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_tails",
+   "path": "end.lives_bcd",
+   "op": "==",
+   "value": "05",
+   "why": "$13C9: lives := 5 for the other character",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_tails",
+   "path": "end.continues_raw",
+   "op": "==",
+   "value": "81",
+   "why": "same consume rule",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_accept_tails",
+   "path": "end.character",
+   "op": "==",
+   "value": 2,
+   "why": "character kept",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "counts.continue_screen",
+   "op": "==",
+   "value": 1,
+   "why": "continue screen shown",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "counts.game_over_screen",
+   "op": "==",
+   "value": 1,
+   "why": "countdown expiry -> Game Over",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "counts.continue_accepted",
+   "op": "absent",
+   "value": null,
+   "why": "no button",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "end.continues_raw",
+   "op": "==",
+   "value": "02",
+   "why": "an unused continue is not consumed (bit7 cleared by $13ED)",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "end.emeralds",
+   "op": "==",
+   "value": "07",
+   "why": "emeralds still set at the title",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "new_game_in_play.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "New Game clears emeralds",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "new_game_in_play.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "New Game lives",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "new_game_in_play.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "New Game continues",
+   "ok": true
+  },
+  {
+   "scenario": "death_continue_timeout",
+   "path": "new_game_in_play.score_bcd",
+   "op": "==",
+   "value": "000000",
+   "why": "New Game score",
+   "ok": true
+  },
+  {
+   "scenario": "death_game_over_no_continue",
+   "path": "counts.continue_screen",
+   "op": "absent",
+   "value": null,
+   "why": "no continues -> no continue screen",
+   "ok": true
+  },
+  {
+   "scenario": "death_game_over_no_continue",
+   "path": "counts.game_over_screen",
+   "op": "==",
+   "value": 1,
+   "why": "$139D Game Over",
+   "ok": true
+  },
+  {
+   "scenario": "death_game_over_no_continue",
+   "path": "counts.title",
+   "op": "==",
+   "value": 1,
+   "why": "-> title",
+   "ok": true
+  },
+  {
+   "scenario": "death_game_over_no_continue",
+   "path": "new_game_in_play.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "New Game clears emeralds",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_sonic",
+   "path": "after_award.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "$3104 +1",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_sonic",
+   "path": "after_award.mode",
+   "op": "==",
+   "value": "88",
+   "why": "$17A7",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_sonic",
+   "path": "after_award.result_card",
+   "op": "==",
+   "value": "01",
+   "why": "$17AC",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_sonic",
+   "path": "stage.zone",
+   "op": "==",
+   "value": 8,
+   "why": "no emeralds -> Special Stage 1 = zone 8",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_sonic",
+   "path": "stage.saved_zone",
+   "op": "==",
+   "value": 0,
+   "why": "$187E",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_tails",
+   "path": "after_award.lives_bcd",
+   "op": "==",
+   "value": "06",
+   "why": "5 + 1",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_tails",
+   "path": "stage_entered",
+   "op": "==",
+   "value": false,
+   "why": "$178F: D2C8 != 1 refuses entry",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_all_emeralds",
+   "path": "after_award.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "life still awarded",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_all_emeralds",
+   "path": "stage_entered",
+   "op": "==",
+   "value": false,
+   "why": "$179A..$17A1: all five bits set -> refused",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_ten_monitor",
+   "path": "after_award.rings_bcd",
+   "op": "==",
+   "value": "05",
+   "why": "$4AC5 keeps the post-wrap value",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_ten_monitor",
+   "path": "after_award.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "$4AD4 -> $3104",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_ten_monitor",
+   "path": "stage_entered",
+   "op": "==",
+   "value": true,
+   "why": "$4AD7 JP $178F",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_lives_cap",
+   "path": "after_award.lives_bcd",
+   "op": "==",
+   "value": "99",
+   "why": "$310C: cap at $99",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_lives_cap",
+   "path": "stage_entered",
+   "op": "==",
+   "value": true,
+   "why": "cap does not stop the stage",
+   "ok": true
+  },
+  {
+   "scenario": "oneup_monitor",
+   "path": "after_award.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "$4ADA -> $3104",
+   "ok": true
+  },
+  {
+   "scenario": "oneup_monitor",
+   "path": "stage_entered",
+   "op": "==",
+   "value": false,
+   "why": "no ring wrap",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_act3_forced",
+   "path": "before.act",
+   "op": "==",
+   "value": 2,
+   "why": "fixture: act index 2",
+   "ok": true
+  },
+  {
+   "scenario": "ring100_act3_forced",
+   "path": "stage_entered",
+   "op": "==",
+   "value": true,
+   "why": "$178F does not read the act index (FORCED-ONLY, see T16)",
+   "ok": true
+  },
+  {
+   "scenario": "ss_select_mask00",
+   "path": "stage.zone",
+   "op": "==",
+   "value": 8,
+   "why": "$187B: 8 + consecutive set low bits",
+   "ok": true
+  },
+  {
+   "scenario": "ss_select_mask01",
+   "path": "stage.zone",
+   "op": "==",
+   "value": 9,
+   "why": "$187B: 8 + consecutive set low bits",
+   "ok": true
+  },
+  {
+   "scenario": "ss_select_mask03",
+   "path": "stage.zone",
+   "op": "==",
+   "value": 10,
+   "why": "$187B: 8 + consecutive set low bits",
+   "ok": true
+  },
+  {
+   "scenario": "ss_select_mask07",
+   "path": "stage.zone",
+   "op": "==",
+   "value": 11,
+   "why": "$187B: 8 + consecutive set low bits",
+   "ok": true
+  },
+  {
+   "scenario": "ss_select_mask0F",
+   "path": "stage.zone",
+   "op": "==",
+   "value": 12,
+   "why": "$187B: 8 + consecutive set low bits",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "entry.before_ring.lives_bcd",
+   "op": "==",
+   "value": "03",
+   "why": "before the 100th ring",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "entry.stage_playable.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "+1 at the ring wrap",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "entry.stage_playable.zone",
+   "op": "==",
+   "value": 8,
+   "why": "Special Stage 1",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "exit_state.mode",
+   "op": "==",
+   "value": "C0",
+   "why": "success + stage active",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "exit_state.emeralds",
+   "op": "==",
+   "value": "01",
+   "why": "1E:$94A7",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "exit_state.continues_raw",
+   "op": "==",
+   "value": "01",
+   "why": "1E:$94C2 +1",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "exit_state.result_card",
+   "op": "==",
+   "value": "FF",
+   "why": "1E:$94AC",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "back in the origin zone",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 1,
+   "why": "NEXT act, not the same act",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.rings_bcd",
+   "op": "==",
+   "value": "00",
+   "why": "rings do not carry",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.emeralds",
+   "op": "==",
+   "value": "01",
+   "why": "emerald kept",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.continues_raw",
+   "op": "==",
+   "value": "01",
+   "why": "continue kept",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.powerup",
+   "op": "==",
+   "value": "00",
+   "why": "power-ups do not carry",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.result_card",
+   "op": "==",
+   "value": "00",
+   "why": "card consumed",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.score_bcd",
+   "op": ">",
+   "value": "000000",
+   "why": "tally added score",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "counts.life_award",
+   "op": "==",
+   "value": 2,
+   "why": "the accepted input-only SS1 route wraps the ring counter twice inside the stage",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "end_in_play.lives_bcd",
+   "op": "==",
+   "value": "06",
+   "why": "lives earned in the stage persist after the return (04 + 2)",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "post_tally_fade.to_white_frame",
+   "op": ">",
+   "value": 0,
+   "why": "post-tally fade to white also runs after a stage",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_success",
+   "path": "post_tally_fade.to_black_frame",
+   "op": ">",
+   "value": 0,
+   "why": "and to black before the act is loaded",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_timeout",
+   "path": "exit_state.mode",
+   "op": "==",
+   "value": "A0",
+   "why": "failure + stage active",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_timeout",
+   "path": "exit_state.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "no emerald",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_timeout",
+   "path": "exit_state.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "no life lost",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_timeout",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 1,
+   "why": "next act",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_timeout",
+   "path": "end_in_play.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "no life lost",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_timeout",
+   "path": "end_in_play.continues_raw",
+   "op": "==",
+   "value": "00",
+   "why": "no continue",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_death_act2",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 2,
+   "why": "origin act index 1 -> act index 2 (Act 3)",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_death_act2",
+   "path": "end_in_play.zone",
+   "op": "==",
+   "value": 0,
+   "why": "zone kept",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_death_act2",
+   "path": "exit_state.lives_bcd",
+   "op": "==",
+   "value": "04",
+   "why": "no life lost on a stage death",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_death_act3_forced",
+   "path": "end_in_play.act",
+   "op": "==",
+   "value": 3,
+   "why": "FORCED-ONLY alias: act index 3",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_death_act3_forced",
+   "path": "end_in_play.score_bcd",
+   "op": "==",
+   "value": "000500",
+   "why": "act-3 boss bonus (zone 0: 50 x 10 raw) paid on the stage return",
+   "ok": true
+  },
+  {
+   "scenario": "special_stage_death_act3_forced",
+   "path": "end_in_play.player.y",
+   "op": "==",
+   "value": 384,
+   "why": "zone 0 act 3 loads the zone-1 act-0 data (start y 384)",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "counts.zone_results_gate",
+   "op": "==",
+   "value": 1,
+   "why": "$1594 reached",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "counts.results_screen",
+   "op": "absent",
+   "value": null,
+   "why": "zone 5 skips $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "checkpoints.end_path.zone",
+   "op": "==",
+   "value": 6,
+   "why": "$15D6 zone := 6",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "checkpoints.end_path.flow",
+   "op": "==",
+   "value": "C0",
+   "why": "bit7 end path",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "counts.ending_full_sonic",
+   "op": "==",
+   "value": 1,
+   "why": "ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "counts.title",
+   "op": "==",
+   "value": 1,
+   "why": "returns to the title",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "title.emeralds",
+   "op": "==",
+   "value": "3F",
+   "why": "emerald byte is left as it was",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "next_new_game.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "New Game clears emeralds",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "next_new_game.zone",
+   "op": "==",
+   "value": 0,
+   "why": "New Game starts at zone 0 (fixture disabled)",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "counts.zone_results_gate",
+   "op": "==",
+   "value": 1,
+   "why": "$1594 reached",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "counts.results_screen",
+   "op": "absent",
+   "value": null,
+   "why": "zone 5 skips $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "checkpoints.end_path.zone",
+   "op": "==",
+   "value": 6,
+   "why": "$15D6 zone := 6",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "checkpoints.end_path.flow",
+   "op": "==",
+   "value": "C0",
+   "why": "bit7 end path",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "counts.ending_partial_sonic",
+   "op": "==",
+   "value": 1,
+   "why": "ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "counts.title",
+   "op": "==",
+   "value": 1,
+   "why": "returns to the title",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "title.emeralds",
+   "op": "==",
+   "value": "1F",
+   "why": "emerald byte is left as it was",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "next_new_game.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "New Game clears emeralds",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "next_new_game.zone",
+   "op": "==",
+   "value": 0,
+   "why": "New Game starts at zone 0 (fixture disabled)",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "counts.zone_results_gate",
+   "op": "==",
+   "value": 1,
+   "why": "$1594 reached",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "counts.results_screen",
+   "op": "absent",
+   "value": null,
+   "why": "zone 5 skips $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "checkpoints.end_path.zone",
+   "op": "==",
+   "value": 6,
+   "why": "$15D6 zone := 6",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "checkpoints.end_path.flow",
+   "op": "==",
+   "value": "C0",
+   "why": "bit7 end path",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "counts.ending_partial_sonic",
+   "op": "==",
+   "value": 1,
+   "why": "ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "counts.title",
+   "op": "==",
+   "value": 1,
+   "why": "returns to the title",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "title.emeralds",
+   "op": "==",
+   "value": "20",
+   "why": "emerald byte is left as it was",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "next_new_game.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "New Game clears emeralds",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "next_new_game.zone",
+   "op": "==",
+   "value": 0,
+   "why": "New Game starts at zone 0 (fixture disabled)",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "counts.zone_results_gate",
+   "op": "==",
+   "value": 1,
+   "why": "$1594 reached",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "counts.results_screen",
+   "op": "absent",
+   "value": null,
+   "why": "zone 5 skips $32F9",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "checkpoints.end_path.zone",
+   "op": "==",
+   "value": 6,
+   "why": "$15D6 zone := 6",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "checkpoints.end_path.flow",
+   "op": "==",
+   "value": "C0",
+   "why": "bit7 end path",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "counts.ending_tails",
+   "op": "==",
+   "value": 1,
+   "why": "ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "counts.title",
+   "op": "==",
+   "value": 1,
+   "why": "returns to the title",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "title.emeralds",
+   "op": "==",
+   "value": "3F",
+   "why": "emerald byte is left as it was",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "next_new_game.emeralds",
+   "op": "==",
+   "value": "00",
+   "why": "New Game clears emeralds",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "next_new_game.zone",
+   "op": "==",
+   "value": 0,
+   "why": "New Game starts at zone 0 (fixture disabled)",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "counts.ending_partial_sonic",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_full",
+   "path": "counts.ending_tails",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "counts.ending_full_sonic",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_partial",
+   "path": "counts.ending_tails",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "counts.ending_full_sonic",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_sonic_20_only",
+   "path": "counts.ending_tails",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "counts.ending_full_sonic",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "ending_tails",
+   "path": "counts.ending_partial_sonic",
+   "op": "absent",
+   "value": null,
+   "why": "exactly one ending branch",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.0.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.1.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.2.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.3.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.4.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.5.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.6.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.7.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.8.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.9.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.10.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.11.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.12.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.13.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.14.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.15.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.16.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.17.same",
+   "op": "==",
+   "value": true,
+   "why": "death restart position == fresh load position",
+   "ok": true
+  },
+  {
+   "scenario": "restart_matrix",
+   "path": "acts.0.fresh_start.0",
+   "op": "==",
+   "value": 142,
+   "why": "THZ1 start x from the ROM table",
+   "ok": true
+  },
+  {
+   "scenario": "score_continue_rule",
+   "path": "rules.sonic.awarded",
+   "op": "==",
+   "value": 20,
+   "why": "Sonic: +1 continue every 5,000 raw",
+   "ok": true
+  },
+  {
+   "scenario": "score_continue_rule",
+   "path": "rules.sonic.new_thousands_digit_set",
+   "op": "==",
+   "value": [
+    "0",
+    "5"
+   ],
+   "why": "Sonic rule: new thousands digit 0 or 5",
+   "ok": true
+  },
+  {
+   "scenario": "score_continue_rule",
+   "path": "rules.tails.awarded",
+   "op": "==",
+   "value": 33,
+   "why": "other character: digit-sum rule",
+   "ok": true
+  },
+  {
+   "scenario": "score_continue_rule",
+   "path": "rules.sonic.period_thousands",
+   "op": "==",
+   "value": [
+    5
+   ],
+   "why": "Sonic: every 5,000 raw",
+   "ok": true
+  },
+  {
+   "scenario": "score_continue_rule",
+   "path": "rules.tails.period_thousands",
+   "op": "==",
+   "value": [
+    3
+   ],
+   "why": "Tails: every 3,000 raw (digit sum mod 3 == thousands count mod 3)",
+   "ok": true
+  }
+ ],
+ "expectation_failures": []
+}
