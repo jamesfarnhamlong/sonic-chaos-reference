@@ -1,0 +1,1354 @@
+{
+ "act_title_card": {
+  "act_object": {
+   "cols": 12,
+   "delay_busy_loop": "0200",
+   "maps": [
+    {
+     "act": 0,
+     "source_cpu": "B49F",
+     "source_sha256": "ababc2f15617806a630e49515773afb48329257586634ef88ee3a86e615df052",
+     "tiles": [53, 54, 15, 16, 55, 56, 13, 18, 8, 57, 58, 8, 59, 60, 22, 23, 22, 23, 29, 18, 8, 61, 58, 8, 62, 63, 34, 35, 41, 23, 23, 8, 8, 61, 58, 8, 51, 18, 44, 45, 52, 46, 51, 18, 8, 61, 58, 8]
+    },
+    {
+     "act": 1,
+     "source_cpu": "B4CF",
+     "source_sha256": "de341e5f3866cf0878425e445a8d2b3a93e60b9866ae3a38d124d4953a680a12",
+     "tiles": [53, 54, 15, 16, 55, 56, 13, 18, 8, 86, 87, 8, 59, 60, 22, 23, 22, 23, 29, 18, 8, 88, 86, 8, 62, 63, 34, 35, 41, 23, 23, 8, 8, 89, 90, 8, 51, 18, 44, 45, 52, 46, 51, 18, 8, 86, 86, 8]
+    },
+    {
+     "act": 2,
+     "source_cpu": "B4FF",
+     "source_sha256": "0a83a900272cc7f98445aa01182853cc62f169edf4667d786f2950292edcb10c",
+     "tiles": [53, 54, 15, 16, 55, 56, 13, 18, 8, 86, 87, 8, 59, 60, 22, 23, 22, 23, 29, 18, 8, 91, 92, 8, 62, 63, 34, 35, 41, 23, 23, 8, 8, 93, 94, 8, 51, 18, 44, 45, 52, 46, 51, 18, 8, 86, 92, 8]
+    }
+   ],
+   "mode": 1,
+   "rows": 4,
+   "start_col": 31,
+   "start_name_table_address": "3B3E",
+   "start_row": 12,
+   "steps": 21,
+   "type_byte": 17
+  },
+  "arrow_delay_busy_loop": "0400",
+  "arrow_iterations": 29,
+  "arrows": [
+   {
+    "cols": 3,
+    "direction_cols_per_iteration": -1,
+    "id": "arrow_left",
+    "rows": 2,
+    "source_cpu": "B193",
+    "start_col": 29,
+    "start_name_table_address": "387A",
+    "start_row": 1,
+    "tiles": [2, 3, 4, 5, 6, 7]
+   },
+   {
+    "cols": 3,
+    "direction_cols_per_iteration": 1,
+    "id": "arrow_right",
+    "rows": 2,
+    "source_cpu": "B199",
+    "start_col": 1,
+    "start_name_table_address": "3D42",
+    "start_row": 21,
+    "tiles": [66, 67, 68, 69, 70, 71]
+   }
+  ],
+  "attribute_d2d3": 1,
+  "fills": [
+   {
+    "entry": 257,
+    "name_table_address": "3800",
+    "row": 0,
+    "words": 128
+   },
+   {
+    "entry": 264,
+    "name_table_address": "3900",
+    "row": 4,
+    "words": 512
+   },
+   {
+    "entry": 321,
+    "name_table_address": "3D00",
+    "row": 20,
+    "words": 128
+   }
+  ],
+  "palette_record": 33,
+  "sound_request": "88",
+  "tile_stream": {
+   "bank": 19,
+   "cpu_start": "A7E5",
+   "decoded_sha256": "6a933a4aab0e32850ff73b19c703300b73dd75caf84e6277bd14ea24cde1a1de",
+   "file_start": "4E7E5",
+   "tile_count": 95,
+   "tile_sha256": ["66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925", "a32669d0664b1d9af16c73e09897d6d2083e298df0fb6cf35b7ffea7c725ad91", "6c36ffe571edf0b1b70ba895fe077876020d3a827333f0a9012c03d0c251d6d3", "b55e5d6547eac57eafa4ef15337eb5b44f3f47cff332a9cefc1eda821b9c32e9", "1338bff885bb29a76568cb902553a97df5bd78bea4460283b73a93a08c7f888d", "18186fd3c9200ad67adff69ed186f1628b6067258e419f436c78f6db174fb7cf", "0505aa7ea81fdad17223e20b88237b83ea39e004ec6e70dbd5ce1b9f1ba3a981", "de3c115c2c73af710776fe67eeca815e6ee751cbf579ef51656993633a14cf94", "d3d6c24e8d23979708d44adfa31910241f34ddd1c32d3ec359a83b6ba133ed2f", "31e39c65523e609439fab68dce853ce1ea351c21ef8a54d47d5b03c0b8f221be", "1c8c2ba83e3cee2e0bbd57db65dc079639b7f0589447d289942a3b51dfd37ba6", "ca34fbf124d8173f7c904af144ec0b048d6b0202f5386a1e9f3db0ba6bb9b5b3", "24c61e2e36cbcf90548de63e9c1506eeda215bf67e201815b4c5c9db657a8492", "676c180f21ca30f5597807e091d62d2c40ce39eabcff4aae44df64e05bad4a22", "a757e87b499c2cef4ac169e02f963d14dad2ca12d78cf8f276cf3dbd6a8ae8a8", "754f7c1ae2a859d4caebfe2515a1254fe684eca144aa3fd3a389ffbddcb7b392", "4648801218fd52cd8c5180e46825addc7360fcf8575744d4a326b6559ec1611e", "670b9dc7ae83b32ec308bee433523b0b0fb23fde1c24c20193221fc83992617e", "ffb2d734e95fdd4e3b1297c82f4048b73c5ae744a91f6de9c70df6a134fc78d6", "1ae4adc608f3ffe0171e8588fbf9b0f4eb079805f38a082d477296598fca071c", "91269b10229e6a059dbf63941a5a52f880fddda55ab7b3224668dd366a3b84ff", "1529374d35d98f60dc15846830a2a3eb8c137cc898d3f7732d6124b6a2922441", "c609b0e09e0551bb9deeeb4844d245c4d019922a978f7af9fa0a55f5a35e9e82", "fb9d16ef0b9f70e98d7abe8501ee52bbe50cd0b9bbcf5cc8a9eba6c46d9f9097", "dd8912feeae15a2e5d62dfa9e480de005cc2496cb57f59e0f7131c1105be5cd1", "de06f56abacb2029f2582720d93aa3a089553f25df96af379b9fc058dcd547bb", "257ab8c3b5eea517abb84e23f2150b317e321904bdef8b38c829a8d73be9f76a", "3aa8da5567dd5088e7fc55a1366bede08fdeffb88ed7009853d2ded4ce2247a7", "4d22c7591777270b65890d5ec286c2dccf348ec56e9642a90e033c648bf91794", "4faebda0d4c36c41897c4792e9ae4bcda2de074fa0d4ba457d5e50107ecbe445", "f7be7f5116da1e223c9635f76a9c1ddf75b739fb8b3278bcb6874285f6de5c10", "aefc4286a78830bc33fc8d13d0c61d6ae8793414311d5b55c28efa5cd116f494", "c005568e666a7959ef20bae2d0316b552a0c6b294af9fb4bfe0f8b65fbbadba8", "893244a7d8b8327fcfe4ab28a977952baeb03fb0da7f0a0003e9b028b0130508", "af335baa5a219ed8dd53e47be64c99479f8fb5453b209b6d2e34aae456e6dfe2", "a842f6358b2c2f33273cac020354f7ce41239f67b3f1d79ab676742848f01599", "cb974a9f85ea6959cb3c605812c85d6c58289630c8902fca7bd1de49de6554b6", "cca112e310b27af6f17b11ad32f99031ab9338ee4eb061ece78b4efc5bd5d063", "c259df5f99d5950846ad1f10cbc08b659050ce3cdaed8f14a936ce7cdeba2791", "a939633b065369d1d44b0e01effe9cb23a513cf2c2a9c61430a345ee39b37234", "5414951d5138dc53ebbecad4f72a1ad3451fe44d45b5d0c10bd58a1290b24daa", "6fe491e9e376ef4c3266c44cbb2f1a068c1e57ae31cbf68aa88e0bdb41ebc9ae", "43e1df261cdd0e605a6512b7d69eba852432241747d808054c7784b8dbe07c76", "a56aa6e466cb2627bc3a7989ec223914d2aa632ae54e8ec8cc50e78c257b7593", "7a41bace613b5f2611b3bf9c36732c244c28106aae14a8c6bb682ccfe77788ea", "3e615ac4ee085e9f7cb111922d6a258c8126e80a920c47e819c58e0591e4579a", "4a790a675b0161dfbf790a18ad8504307ea520a72ea4d355c268baccc6594041", "e6f336fabbedacff539115e147122b48d3e04cbbd22ca5bab2083961eed15a7d", "5b938b3b1b1fe62c5244cb078bbdc0c4a0dfe669a5f1350722f98c30651ef0cd", "9f48fc5a370b77d169411076d104e288e561f418acf4ed32f8b0ed2fef953c1d", "a74e21bd187f20e1eed8c2f910ba78cad9937315f749a41a865d57f0b7e1d4e6", "671d7a649408f24add1048e2918c4e223693288422bd2e47763b42e02fa75437", "df00b892e4969e9e9f47da7ca7554ce8a09b27a1e098cdb29de6bc68afd6141e", "285466506181a0fc0114782ed1e674376e05b315af08829b8b76cf7e2a44634c", "b4d507f6ddab305a7915f0b74289eb4af134fe595a4992acf18ad0ac356aeba5", "549a675fa375a3ad919c2e4d1b86adfb31bf620c3873c858d2d72836f0760be1", "a5a328704204bc58eccd1cd020b3cb67edf38108e208c2615352e7f6249260f0", "0e768aa397a17b9437f82efc98a8cf8376d4d058b5011a2261dff82c1dbd4dce", "035213bd7e2f991f32cd428e9e8ea337272e3fee6209c0948db8b2eca73b8ada", "c83fb7eea4cccf0e75d17f6a762a55aa0303c103552865996e055b331bfe6ebb", "a79079573b36fee6ca920459ba10df7ab7a41861bc4f3de9ff1d05d37dbda673", "d8ca1fb22053543f8b38e706a6e9a2ccbbabc18501aabb71d273010c1f747a13", "79c2a609abe90043411ff0faf9a133242afcc865f8f94386c7c2a1fe380e71b2", "d34ef3a212ba689c2b64d983cda5d1b321e31604b2337c03be4a314a0a4b3e34", "708b994930927377086d20be176f732f7cd205f48cf383fce3276a904820a27a", "6bd25f5d5bc8ca90d74d76e96509d85351800e38ce101abf0ffa81c8a7e755a7", "6befe5f979a80b9f07402dfd90727c4d30683b8b85e3e0dacb0a6af32ab94a4a", "a1b85d09ef4bfdf664c4623fe55845182cee7e1be37064bd7f23364d7a50dc27", "01e951229701d7517a7af7d4bc788d338af8989e24f07675b55eaabcc715d01e", "60af2819e3c3b081e1c466dfa0ef1d3cf2402d61c42d76da72633331e486756b", "ca03a4442775ff2b368fbfa22cee0943004327cff2005d80ed59429af15e80b4", "d8cb8d47e23856ce4b628ba2907f44bf2cc1b39ba68bd655233d97bb358ff9c8", "0b2ca27813841d59007d7806830903f3ed71808827bae8730c809c241a46af19", "c585a5cf148914d5e8530e5ff69b1cc26d52c8ce5063e7d0fc1d717d28037dda", "c820a51aabb34518e3f448bfe40fc4705c66a3b4fbd2058fce18cfa5118e79c5", "e5fdb12d47a67d75a69c5e12cf60da6ed72621e182a79ec49b45324ddf4af23f", "f0a170b62578645208202991b57cf8bc99f071740782f30dd74b54dd2ec38bb9", "465d8040ae8582c0bcf813083d1deb62d6f1bbf86d8c6fcc42585a5250411960", "51a94e876903e717a5c467a8435a2baa2ab32a0d728066cc792b8851a277d8a9", "3f2a6e59d6d9e4c8cb5d11e1be5a5ff4633355344f49f8885f44563f6ddf9533", "64095a2624e3077f0e7415f89384fa7b5e6b829722601c67867af2aba8d12b42", "3f5cd683732a3a223c4f49fc58065723dcaecc7ebed42b29cf8c4d902c9909b7", "3090e58827229ce00ccc49d85497f1ec5b50289a17e2a025b1c1fe179f611b43", "831f1f3fd4c047d33a97d191623b56acd9af84116762346e9475e1a6f3e7c632", "416d0b296d399c0f0f4daf459f94bbd2a225120ac197f2ef2df75a32e497dce7", "2b5fd2a99efa6c6ff573fff34ed3caf728eeeecff6a7a40cb73a182e98c56970", "acecc87ede2c93e1490476e91f04d33f96ea19835d86d7ce52cd00785334f3dd", "c141b2b377e5f6b665635ebac1bf3eebee0499d51526a91acd4aaf8a0264985a", "e47baa8a5d07ecb5923fe8d3eef941503f2b97a7ac2ecf89185fd2f15c3a7573", "1a1547b86488c855b565c09bcdcd4054599181038958bdb9de4b280c7a8478ff", "d7fd01f49f3f26cdb59c23b6520457f9e23344d6e3b7f572b2140fd7ff34026e", "b6d531f572e533115364ccb089d65c6f8231a68b25aecf5b47c4629005ecbc22", "91dda8810aa85720728ccaf236985046e346c83c91409ba299b523d558b1e368", "a2e21afd35a8ebb4d9e98a91bb7712e0b16bad426e3939e5143a32690b96cef1", "4ddedb4f32e85206183246b58f5309a27e55a648c292d6c80d8e62de1e014ec0"],
+   "vram_destination": "2000"
+  },
+  "waits": {
+   "after_fade_out": 30,
+   "after_fade_request": 30,
+   "hold": 180,
+   "skip_mask": "B0 on D137"
+  },
+  "zone_object": {
+   "col": 0,
+   "cols": 32,
+   "delay_busy_loop": "0200",
+   "dest_name_table_address": "39C0",
+   "maps": [
+    {
+     "source_cpu": "B19F",
+     "source_sha256": "50138fe21792e4ceea31291d334f99e94ec068564b996ec07877adf0cbb1b257",
+     "tiles": [8, 8, 8, 8, 9, 10, 11, 12, 13, 14, 15, 16, 11, 12, 15, 16, 17, 15, 18, 13, 18, 8, 11, 12, 17, 13, 19, 13, 19, 8, 8, 8, 8, 8, 8, 8, 20, 21, 22, 23, 24, 25, 22, 23, 22, 23, 22, 23, 26, 27, 28, 29, 18, 8, 30, 31, 26, 24, 8, 24, 8, 8, 8, 8, 8, 8, 8, 8, 32, 33, 34, 35, 36, 37, 38, 39, 34, 35, 34, 35, 40, 8, 35, 23, 8, 8, 41, 23, 40, 23, 8, 23, 8, 8, 8, 8, 8, 8, 8, 8, 42, 43, 44, 45, 46, 47, 44, 48, 44, 45, 44, 45, 49, 50, 45, 51, 18, 8, 52, 46, 49, 51, 18, 51, 18, 8, 8, 8],
+     "zone": 0
+    },
+    {
+     "source_cpu": "B21F",
+     "source_sha256": "e2be1f89a5d5c6e8778d6d4d2da412399ed710a7a0fe2345ea646540ac56d425",
+     "tiles": [8, 8, 8, 8, 8, 8, 72, 73, 17, 72, 73, 74, 75, 13, 19, 15, 16, 13, 76, 15, 16, 13, 19, 17, 15, 18, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 77, 19, 26, 77, 19, 22, 23, 24, 8, 22, 23, 24, 78, 22, 23, 24, 8, 26, 27, 28, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 79, 80, 40, 79, 80, 81, 31, 23, 8, 34, 35, 36, 82, 34, 35, 23, 8, 40, 8, 35, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 83, 84, 49, 83, 84, 52, 46, 51, 18, 44, 45, 46, 8, 44, 45, 51, 18, 49, 50, 45, 8, 8, 8, 8, 8, 8],
+     "zone": 1
+    },
+    {
+     "source_cpu": "B29F",
+     "source_sha256": "ba91c2c0bb4462a3fdeacc64b30a019ce11004d4b3e030f01b35a071206332e5",
+     "tiles": [8, 8, 8, 8, 8, 15, 18, 13, 19, 13, 18, 13, 18, 13, 76, 17, 55, 56, 72, 73, 8, 13, 18, 72, 73, 72, 73, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 27, 28, 24, 8, 29, 18, 29, 18, 24, 78, 26, 22, 23, 77, 19, 8, 29, 18, 77, 19, 77, 19, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 35, 23, 8, 23, 8, 23, 8, 36, 82, 40, 41, 23, 79, 80, 8, 23, 8, 79, 80, 79, 80, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 50, 45, 51, 18, 51, 18, 51, 18, 46, 8, 49, 52, 46, 83, 84, 8, 51, 18, 83, 84, 83, 84, 8, 8, 8, 8, 8],
+     "zone": 2
+    },
+    {
+     "source_cpu": "B31F",
+     "source_sha256": "a5fb539140e5b4c3a8472f16f89e071ee5b6c7c06fb893d490dfc96b6e2a746b",
+     "tiles": [8, 8, 55, 85, 13, 18, 72, 73, 11, 12, 74, 75, 8, 72, 73, 13, 14, 13, 18, 13, 18, 55, 56, 8, 11, 12, 17, 13, 19, 13, 19, 8, 8, 8, 22, 23, 29, 18, 77, 19, 30, 31, 22, 23, 8, 77, 19, 24, 25, 29, 18, 29, 18, 22, 23, 8, 30, 31, 26, 24, 8, 24, 8, 8, 8, 8, 41, 23, 23, 8, 79, 8, 41, 23, 81, 31, 8, 79, 80, 36, 37, 23, 8, 23, 8, 41, 23, 8, 41, 23, 40, 23, 8, 23, 8, 8, 8, 8, 52, 46, 51, 18, 83, 18, 52, 46, 52, 46, 8, 83, 84, 46, 47, 51, 18, 51, 18, 52, 46, 8, 52, 46, 49, 51, 18, 51, 18, 8],
+     "zone": 3
+    },
+    {
+     "source_cpu": "B39F",
+     "source_sha256": "60fd341bfc183b6cf0dff2e535a09ce640e2d9d8286dfa9a3aa2faeb7c7b0c56",
+     "tiles": [8, 8, 8, 8, 8, 8, 74, 75, 15, 16, 11, 12, 74, 75, 8, 13, 76, 13, 19, 74, 75, 55, 56, 13, 18, 9, 10, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 22, 23, 22, 23, 22, 23, 22, 23, 8, 24, 78, 24, 8, 22, 23, 22, 23, 29, 18, 20, 21, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 81, 31, 38, 39, 34, 35, 81, 31, 8, 36, 82, 23, 8, 81, 31, 41, 23, 23, 8, 32, 33, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 52, 46, 44, 48, 44, 45, 52, 46, 8, 46, 8, 51, 18, 52, 46, 52, 46, 51, 18, 42, 43, 8, 8, 8, 8, 8],
+     "zone": 4
+    },
+    {
+     "source_cpu": "B41F",
+     "source_sha256": "120c32cc2fd26ccda3311a0df85b604e47a456b5c4379efc3b2aa1b9601adee8",
+     "tiles": [8, 8, 8, 8, 8, 13, 18, 13, 19, 13, 18, 72, 73, 9, 10, 13, 14, 17, 72, 73, 8, 13, 18, 72, 73, 72, 73, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 29, 18, 24, 8, 29, 18, 77, 19, 20, 21, 24, 25, 26, 77, 19, 8, 29, 18, 77, 19, 77, 19, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 23, 8, 23, 8, 23, 8, 79, 8, 32, 33, 36, 37, 40, 79, 8, 8, 23, 8, 79, 80, 79, 80, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 51, 18, 51, 18, 51, 18, 83, 18, 42, 43, 46, 47, 49, 83, 18, 8, 51, 18, 83, 84, 83, 84, 8, 8, 8, 8, 8],
+     "zone": 5
+    }
+   ],
+   "mode": 0,
+   "row": 7,
+   "rows": 4,
+   "steps": 32,
+   "table_cpu": "32CA",
+   "type_byte": 16
+  }
+ },
+ "adapter": {
+  "rgb_expansion": "channel * 85 (accepted harness expansion); the ROM stores 2 bits per channel",
+  "rom_native": {
+   "backdrop": "CRAM[16 + (R7 & 15)]: R7 = 0, so sprite-palette entry 0. Results card: record 4 entry 0 = $3F (white, same as the fill tile and the bg index 13). Act title card: only the BG slot is faded in, so the sprite palette is still black: black left column and black border.",
+   "name_table_cells": [32, 24],
+   "screen_px": [256, 192],
+   "tile_px": 8,
+   "vdp_r0": "26 (bit 5: leftmost 8-px column shows the backdrop)"
+  },
+  "status": "GAMEMAKER PRESENTATION ADAPTER PROPOSAL - not ROM data; the ROM facts are in every other section",
+  "tally_rate": {
+   "button_held_mean": 6.013,
+   "cpu_bound": true,
+   "note": "a step is ~19.5k T-states without a button and ~9.9k with one; per 50 Hz frame the same code gives ~1.19x more steps. Choose the adapter rate from the target frame rate; do not treat the per-frame figure as a ROM constant.",
+   "ring_and_bonus_mean": 3.067,
+   "unit": "steps per NTSC harness frame"
+  },
+  "widescreen_348x196": {
+   "centre_offset_px": [46, 2],
+   "keep_left_mask_column": true,
+   "logical_px": [348, 196],
+   "note": "centre the 256x192 image; paint the 46-px side bars and 2-px top/bottom bars with the ROM backdrop colour of the same frame and run them through the same CRAM ramp as the image (the backdrop is part of CRAM, so it fades with the card)"
+  }
+ },
+ "base_commit": "db23e5400db923025d2179aba5a01535c6f64b89",
+ "boss_bonus_steps": [50, 100, 150, 200, 250, 600],
+ "card_palette": {
+  "background_record": 3,
+  "requests": "$33AB: D492 := bit7|bit4, D493 := 3; D494 := bit7|bit4, D495 := 4",
+  "sprite_record": 4
+ },
+ "card_variants": {
+  "banner_other__vs__banner_stage": {
+   "differing_cell_count": 100,
+   "differing_cells": [
+    [0, 2, 147, 33],
+    [0, 3, 148, 75],
+    [0, 4, 85, 76],
+    [0, 5, 86, 87],
+    [0, 6, 80, 88],
+    [0, 7, 80, 87],
+    [0, 8, 33, 76],
+    [0, 9, 75, 81],
+    [0, 10, 76, 82],
+    [0, 11, 33, 80],
+    [0, 12, 83, 85],
+    [0, 13, 84, 86],
+    [0, 14, 85, 80],
+    [0, 15, 86, 33],
+    [0, 16, 75, 33],
+    [0, 17, 76, 75],
+    [0, 18, 33, 76],
+    [0, 19, 87, 147],
+    [0, 20, 88, 148],
+    [0, 23, 75, 81],
+    [0, 24, 76, 82],
+    [0, 25, 75, 87],
+    [0, 27, 87, 33],
+    [0, 28, 76, 33],
+    [0, 29, 87, 33],
+    [0, 30, 88, 33],
+    [1, 2, 149, 33],
+    [1, 3, 150, 89],
+    [1, 4, 91, 90],
+    [1, 5, 92, 98],
+    [1, 6, 93, 99],
+    [1, 7, 93, 100],
+    [1, 8, 33, 76],
+    [1, 9, 89, 94],
+    [1, 10, 90, 95],
+    [1, 11, 33, 93],
+    [1, 12, 96, 91],
+    [1, 13, 97, 92],
+    [1, 14, 91, 93],
+    [1, 15, 92, 33],
+    [1, 16, 89, 33],
+    [1, 17, 90, 89],
+    [1, 18, 33, 90],
+    [1, 19, 98, 149],
+    [1, 20, 99, 150],
+    [1, 23, 89, 94],
+    [1, 24, 90, 156],
+    [1, 25, 89, 100],
+    [1, 26, 90, 76],
+    [1, 27, 100, 33],
+    [1, 28, 76, 33],
+    [1, 29, 98, 33],
+    [1, 30, 101, 33],
+    [2, 2, 151, 33],
+    [2, 3, 152, 33],
+    [2, 4, 107, 102],
+    [2, 5, 97, 108],
+    [2, 6, 105, 109],
+    [2, 7, 105, 92],
+    [2, 9, 33, 106],
+    [2, 10, 102, 33],
+    [2, 11, 33, 105],
+    [2, 12, 104, 107],
+    [2, 13, 92, 97],
+    [2, 14, 107, 105],
+    [2, 15, 97, 33],
+    [2, 17, 102, 33],
+    [2, 18, 33, 102],
+    [2, 19, 108, 151],
+    [2, 20, 109, 152],
+    [2, 23, 33, 106],
+    [2, 24, 102, 101],
+    [2, 25, 33, 92],
+    [2, 26, 102, 33],
+    [2, 27, 92, 33],
+    [2, 29, 92, 33],
+    [2, 30, 110, 33],
+    [3, 2, 153, 33],
+    [3, 3, 154, 111],
+    [3, 4, 114, 112],
+    [3, 6, 116, 33],
+    [3, 7, 155, 118],
+    [3, 9, 111, 117],
+    [3, 10, 112, 76],
+    [3, 11, 33, 116],
+    [3, 14, 114, 155],
+    [3, 15, 115, 76],
+    [3, 16, 111, 33],
+    [3, 17, 112, 111],
+    [3, 18, 33, 112],
+    [3, 19, 115, 153],
+    [3, 20, 33, 154],
+    [3, 23, 111, 117],
+    [3, 24, 112, 157],
+    [3, 25, 111, 118],
+    [3, 26, 112, 76],
+    [3, 27, 118, 33],
+    [3, 28, 76, 33],
+    [3, 29, 118, 33],
+    [3, 30, 119, 33]
+   ],
+   "same_geometry": true,
+   "same_source": false
+  },
+  "banner_sonic__vs__banner_stage": {
+   "differing_cell_count": 93,
+   "differing_cells": [
+    [0, 2, 75, 33],
+    [0, 3, 76, 75],
+    [0, 4, 75, 76],
+    [0, 5, 77, 87],
+    [0, 6, 78, 88],
+    [0, 7, 79, 87],
+    [0, 8, 80, 76],
+    [0, 11, 33, 80],
+    [0, 12, 83, 85],
+    [0, 13, 84, 86],
+    [0, 14, 85, 80],
+    [0, 15, 86, 33],
+    [0, 16, 75, 33],
+    [0, 17, 76, 75],
+    [0, 18, 33, 76],
+    [0, 19, 87, 147],
+    [0, 20, 88, 148],
+    [0, 23, 75, 81],
+    [0, 24, 76, 82],
+    [0, 25, 75, 87],
+    [0, 27, 87, 33],
+    [0, 28, 76, 33],
+    [0, 29, 87, 33],
+    [0, 30, 88, 33],
+    [1, 2, 89, 33],
+    [1, 3, 90, 89],
+    [1, 4, 91, 90],
+    [1, 5, 92, 98],
+    [1, 6, 91, 99],
+    [1, 7, 92, 100],
+    [1, 8, 93, 76],
+    [1, 11, 33, 93],
+    [1, 12, 96, 91],
+    [1, 13, 97, 92],
+    [1, 14, 91, 93],
+    [1, 15, 92, 33],
+    [1, 16, 89, 33],
+    [1, 17, 90, 89],
+    [1, 18, 33, 90],
+    [1, 19, 98, 149],
+    [1, 20, 99, 150],
+    [1, 23, 89, 94],
+    [1, 24, 90, 156],
+    [1, 25, 89, 100],
+    [1, 26, 90, 76],
+    [1, 27, 100, 33],
+    [1, 28, 76, 33],
+    [1, 29, 98, 33],
+    [1, 30, 101, 33],
+    [2, 3, 102, 33],
+    [2, 4, 103, 102],
+    [2, 5, 102, 108],
+    [2, 6, 104, 109],
+    [2, 8, 105, 33],
+    [2, 11, 33, 105],
+    [2, 12, 104, 107],
+    [2, 13, 92, 97],
+    [2, 14, 107, 105],
+    [2, 15, 97, 33],
+    [2, 17, 102, 33],
+    [2, 18, 33, 102],
+    [2, 19, 108, 151],
+    [2, 20, 109, 152],
+    [2, 23, 33, 106],
+    [2, 24, 102, 101],
+    [2, 25, 33, 92],
+    [2, 26, 102, 33],
+    [2, 27, 92, 33],
+    [2, 29, 92, 33],
+    [2, 30, 110, 33],
+    [3, 2, 111, 33],
+    [3, 3, 112, 111],
+    [3, 4, 113, 112],
+    [3, 5, 112, 115],
+    [3, 6, 114, 33],
+    [3, 7, 115, 118],
+    [3, 8, 116, 76],
+    [3, 11, 33, 116],
+    [3, 14, 114, 155],
+    [3, 15, 115, 76],
+    [3, 16, 111, 33],
+    [3, 17, 112, 111],
+    [3, 18, 33, 112],
+    [3, 19, 115, 153],
+    [3, 20, 33, 154],
+    [3, 23, 111, 117],
+    [3, 24, 112, 157],
+    [3, 25, 111, 118],
+    [3, 26, 112, 76],
+    [3, 27, 118, 33],
+    [3, 28, 76, 33],
+    [3, 29, 118, 33],
+    [3, 30, 119, 33]
+   ],
+   "same_geometry": true,
+   "same_source": false
+  },
+  "labels_ordinary__vs__labels_stage": {
+   "differing_cell_count": 10,
+   "differing_cells": [
+    [3, 3, 130, 33],
+    [3, 4, 120, 121],
+    [3, 5, 131, 121],
+    [3, 6, 131, 158],
+    [3, 7, 132, 131],
+    [4, 3, 133, 33],
+    [4, 4, 134, 142],
+    [4, 5, 135, 126],
+    [4, 6, 135, 159],
+    [4, 7, 136, 135]
+   ],
+   "same_geometry": true,
+   "same_source": false
+  },
+  "panel_ordinary__vs__panel_stage": {
+   "differing_cell_count": 0,
+   "differing_cells": [],
+   "same_geometry": true,
+   "same_source": true
+  }
+ },
+ "draw_plan": {
+  "blocks": [
+   {
+    "col": 0,
+    "cols": 32,
+    "condition": "D2CD == 0 and D2C8 == 1",
+    "description": "SONIC HAS PASSED banner",
+    "entry_kind": "tile id byte; attribute byte = D2D3 constant",
+    "id": "banner_sonic",
+    "instructions": {
+     "bc": "3318",
+     "de": "331B",
+     "hl": "3315"
+    },
+    "name_table_address": "3880",
+    "routine": "$2383",
+    "row": 2,
+    "rows": 4,
+    "source_bank": 19,
+    "source_bytes": 128,
+    "source_cpu": "A58C",
+    "source_file": "4E58C",
+    "source_sha256": "8562983fd988abe2bc81ceccc72093a637a72d1aff9684a78d0c7faf01b23c1d",
+    "tiles": [33, 33, 75, 76, 75, 77, 78, 79, 80, 81, 82, 33, 83, 84, 85, 86, 75, 76, 33, 87, 88, 85, 86, 75, 76, 75, 76, 87, 76, 87, 88, 33, 33, 33, 89, 90, 91, 92, 91, 92, 93, 94, 95, 33, 96, 97, 91, 92, 89, 90, 33, 98, 99, 91, 92, 89, 90, 89, 90, 100, 76, 98, 101, 33, 33, 33, 33, 102, 103, 102, 104, 92, 105, 106, 33, 33, 104, 92, 107, 97, 33, 102, 33, 108, 109, 107, 97, 33, 102, 33, 102, 92, 33, 92, 110, 33, 33, 33, 111, 112, 113, 112, 114, 115, 116, 117, 76, 33, 114, 115, 114, 115, 111, 112, 33, 115, 33, 114, 115, 111, 112, 111, 112, 118, 76, 118, 119, 33]
+   },
+   {
+    "col": 0,
+    "cols": 32,
+    "condition": "D2CD == 0 and D2C8 != 1",
+    "description": "banner for D2C8 != 1 (Tails)",
+    "entry_kind": "tile id byte; attribute byte = D2D3 constant",
+    "id": "banner_other",
+    "instructions": {
+     "bc": "3326",
+     "de": "3329",
+     "hl": "3323"
+    },
+    "name_table_address": "3880",
+    "routine": "$2383",
+    "row": 2,
+    "rows": 4,
+    "source_bank": 19,
+    "source_bytes": 128,
+    "source_cpu": "A60C",
+    "source_file": "4E60C",
+    "source_sha256": "27462d6b988614d7570976f1cd66aa81770ee7178830c35575ed951d6e89d3e8",
+    "tiles": [33, 33, 147, 148, 85, 86, 80, 80, 33, 75, 76, 33, 83, 84, 85, 86, 75, 76, 33, 87, 88, 85, 86, 75, 76, 75, 76, 87, 76, 87, 88, 33, 33, 33, 149, 150, 91, 92, 93, 93, 33, 89, 90, 33, 96, 97, 91, 92, 89, 90, 33, 98, 99, 91, 92, 89, 90, 89, 90, 100, 76, 98, 101, 33, 33, 33, 151, 152, 107, 97, 105, 105, 33, 33, 102, 33, 104, 92, 107, 97, 33, 102, 33, 108, 109, 107, 97, 33, 102, 33, 102, 92, 33, 92, 110, 33, 33, 33, 153, 154, 114, 115, 116, 155, 76, 111, 112, 33, 114, 115, 114, 115, 111, 112, 33, 115, 33, 114, 115, 111, 112, 111, 112, 118, 76, 118, 119, 33]
+   },
+   {
+    "col": 3,
+    "cols": 8,
+    "condition": "D2CD == 0",
+    "description": "RING / SPEED / SCORE / CONTINUE labels",
+    "entry_kind": "tile id byte; attribute byte = D2D3 constant",
+    "id": "labels_ordinary",
+    "instructions": {
+     "bc": "3332",
+     "de": "3335",
+     "hl": "332F"
+    },
+    "name_table_address": "3A06",
+    "routine": "$2383",
+    "row": 8,
+    "rows": 11,
+    "source_bank": 19,
+    "source_bytes": 88,
+    "source_cpu": "A68C",
+    "source_file": "4E68C",
+    "source_sha256": "7fbe7fc93b06f02c14174f257c327a18d6997171298e84b8d616fefdf79801ff",
+    "tiles": [33, 33, 33, 33, 120, 121, 122, 123, 33, 33, 33, 33, 125, 126, 127, 128, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 130, 120, 131, 131, 132, 33, 33, 33, 133, 134, 135, 135, 136, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 130, 137, 138, 120, 131, 33, 33, 33, 133, 139, 140, 125, 135, 33, 33, 33, 33, 33, 33, 33, 33, 137, 138, 122, 121, 121, 122, 141, 131, 139, 140, 127, 142, 126, 127, 140, 135]
+   },
+   {
+    "col": 21,
+    "cols": 5,
+    "condition": "D2CD == 0",
+    "description": "'x 100' / 'x 10' multiplier panel",
+    "entry_kind": "tile id byte; attribute byte = D2D3 constant",
+    "id": "panel_ordinary",
+    "instructions": {
+     "bc": "333E",
+     "de": "3341",
+     "hl": "333B"
+    },
+    "name_table_address": "3A2A",
+    "routine": "$2383",
+    "row": 8,
+    "rows": 5,
+    "source_bank": 19,
+    "source_bytes": 25,
+    "source_cpu": "A6EC",
+    "source_file": "4E6EC",
+    "source_sha256": "9bf7f7a237474c2e70e4b9cd8b567ea5a9c6278b0790d74aa3628e18e7428aa3",
+    "tiles": [124, 33, 3, 1, 1, 129, 33, 4, 2, 2, 33, 33, 33, 33, 33, 124, 33, 33, 3, 1, 129, 33, 33, 4, 2]
+   },
+   {
+    "col": 0,
+    "cols": 32,
+    "condition": "D2CD != 0",
+    "description": "Special Stage card banner",
+    "entry_kind": "tile id byte; attribute byte = D2D3 constant",
+    "id": "banner_stage",
+    "instructions": {
+     "bc": "334C",
+     "de": "334F",
+     "hl": "3349"
+    },
+    "name_table_address": "3880",
+    "routine": "$2383",
+    "row": 2,
+    "rows": 4,
+    "source_bank": 19,
+    "source_bytes": 128,
+    "source_cpu": "A705",
+    "source_file": "4E705",
+    "source_sha256": "45bcf7d27fe2f335447d2353dca2d2c44d2c93a4309e50e19a58e0f33a700977",
+    "tiles": [33, 33, 33, 75, 76, 87, 88, 87, 76, 81, 82, 80, 85, 86, 80, 33, 33, 75, 76, 147, 148, 85, 86, 81, 82, 87, 76, 33, 33, 33, 33, 33, 33, 33, 33, 89, 90, 98, 99, 100, 76, 94, 95, 93, 91, 92, 93, 33, 33, 89, 90, 149, 150, 91, 92, 94, 156, 100, 76, 33, 33, 33, 33, 33, 33, 33, 33, 33, 102, 108, 109, 92, 33, 106, 33, 105, 107, 97, 105, 33, 33, 33, 102, 151, 152, 107, 97, 106, 101, 92, 33, 33, 33, 33, 33, 33, 33, 33, 33, 111, 112, 115, 33, 118, 76, 117, 76, 116, 114, 115, 155, 76, 33, 111, 112, 153, 154, 114, 115, 117, 157, 118, 76, 33, 33, 33, 33, 33]
+   },
+   {
+    "col": 3,
+    "cols": 8,
+    "condition": "D2CD != 0",
+    "description": "Special Stage card labels",
+    "entry_kind": "tile id byte; attribute byte = D2D3 constant",
+    "id": "labels_stage",
+    "instructions": {
+     "bc": "3358",
+     "de": "335B",
+     "hl": "3355"
+    },
+    "name_table_address": "3A06",
+    "routine": "$2383",
+    "row": 8,
+    "rows": 11,
+    "source_bank": 19,
+    "source_bytes": 88,
+    "source_cpu": "A785",
+    "source_file": "4E785",
+    "source_sha256": "e2c34890599c8712239600414c04e2120f4ba49449d89387e3fd82b3f2f1fc57",
+    "tiles": [33, 33, 33, 33, 120, 121, 122, 123, 33, 33, 33, 33, 125, 126, 127, 128, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 121, 121, 158, 131, 33, 33, 33, 33, 142, 126, 159, 135, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 130, 137, 138, 120, 131, 33, 33, 33, 133, 139, 140, 125, 135, 33, 33, 33, 33, 33, 33, 33, 33, 137, 138, 122, 121, 121, 122, 141, 131, 139, 140, 127, 142, 126, 127, 140, 135]
+   },
+   {
+    "col": 21,
+    "cols": 5,
+    "condition": "D2CD != 0",
+    "description": "multiplier panel (same source as ordinary)",
+    "entry_kind": "tile id byte; attribute byte = D2D3 constant",
+    "id": "panel_stage",
+    "instructions": {
+     "bc": "3364",
+     "de": "3367",
+     "hl": "3361"
+    },
+    "name_table_address": "3A2A",
+    "routine": "$2383",
+    "row": 8,
+    "rows": 5,
+    "source_bank": 19,
+    "source_bytes": 25,
+    "source_cpu": "A6EC",
+    "source_file": "4E6EC",
+    "source_sha256": "9bf7f7a237474c2e70e4b9cd8b567ea5a9c6278b0790d74aa3628e18e7428aa3",
+    "tiles": [124, 33, 3, 1, 1, 129, 33, 4, 2, 2, 33, 33, 33, 33, 33, 124, 33, 33, 3, 1, 129, 33, 33, 4, 2]
+   }
+  ],
+  "continues": {
+   "col0": 14,
+   "condition": "D2C8 == 1 selects the 'sonic' icon",
+   "count": "min(D2C3 & $7F, 8)",
+   "first_name_table_address": "3C5C",
+   "icon": {
+    "cols": 2,
+    "entry_kind": "tile id byte; attribute byte = D2D3",
+    "rows": 2
+   },
+   "icons": {
+    "other": {
+     "source_cpu": "A530",
+     "source_file": "4E530",
+     "source_sha256": "5721b0fa81588120a002c28914c1fef3f18ae8513ec12e08078f492bb769cf98",
+     "tiles": [24, 25, 26, 27]
+    },
+    "sonic": {
+     "source_cpu": "A52C",
+     "source_file": "4E52C",
+     "source_sha256": "cce8f71c0da99fd0aa8a2dbaa703cf66d2f22f605a222b8302b62de4dbb4f059",
+     "tiles": [20, 21, 22, 23]
+    }
+   },
+   "pitch_cells": 2,
+   "pitch_name_table_bytes": 4,
+   "routine": "$337F loop (initial) and $2F17..$2F39 (award during tally)",
+   "row0": 17
+  },
+  "digit_glyph_table": {
+   "entries": [
+    {
+     "bottom": 2,
+     "digit": 0,
+     "top": 1
+    },
+    {
+     "bottom": 4,
+     "digit": 1,
+     "top": 3
+    },
+    {
+     "bottom": 6,
+     "digit": 2,
+     "top": 5
+    },
+    {
+     "bottom": 8,
+     "digit": 3,
+     "top": 7
+    },
+    {
+     "bottom": 10,
+     "digit": 4,
+     "top": 9
+    },
+    {
+     "bottom": 12,
+     "digit": 5,
+     "top": 11
+    },
+    {
+     "bottom": 14,
+     "digit": 6,
+     "top": 13
+    },
+    {
+     "bottom": 16,
+     "digit": 7,
+     "top": 15
+    },
+    {
+     "bottom": 18,
+     "digit": 8,
+     "top": 17
+    },
+    {
+     "bottom": 19,
+     "digit": 9,
+     "top": 17
+    },
+    {
+     "bottom": 33,
+     "digit": "blank",
+     "top": 33
+    }
+   ],
+   "note": "digit n: top tile id, bottom tile id; entry 10 is the blank used for zero suppression",
+   "source_cpu": "A516",
+   "source_file": "4E516"
+  },
+  "emeralds": {
+   "condition": "slot i drawn when bit i of D2CC is set (RRCA test), i = 0..4; bit 5 is never drawn here",
+   "first_name_table_address": "3D10",
+   "icon": {
+    "cols": 2,
+    "entry_kind": "16-bit name-table entry from ROM (palette bit 11 included)",
+    "rows": 2
+   },
+   "pitch_name_table_bytes": 8,
+   "routine": "$33F1",
+   "slots": [
+    {
+     "col": 8,
+     "entries": [2355, 2356, 2365, 2366],
+     "row": 20,
+     "slot": 0,
+     "source_cpu": "A55C",
+     "source_file": "4E55C",
+     "source_sha256": "d24deb24904a9cc9568d6b097a4065833c05493e99c40a205552b59197beae3b"
+    },
+    {
+     "col": 12,
+     "entries": [2357, 2358, 2367, 2368],
+     "row": 20,
+     "slot": 1,
+     "source_cpu": "A564",
+     "source_file": "4E564",
+     "source_sha256": "b5396ca3d630cd970ae2fb3151494089a308d31faf06cf31d8a36c64bbb18db5"
+    },
+    {
+     "col": 16,
+     "entries": [2359, 2360, 2369, 2370],
+     "row": 20,
+     "slot": 2,
+     "source_cpu": "A56C",
+     "source_file": "4E56C",
+     "source_sha256": "59c71dd62082d3d3e138f7a32597c29a15137dcb2c7271609fba8761c7d28d4e"
+    },
+    {
+     "col": 20,
+     "entries": [2361, 2362, 2371, 2372],
+     "row": 20,
+     "slot": 3,
+     "source_cpu": "A574",
+     "source_file": "4E574",
+     "source_sha256": "ebaa3af8a3e323d91614eee276c8f394e0cbb444dedd4b24a5a311ad90be59ea"
+    },
+    {
+     "col": 24,
+     "entries": [399, 400, 401, 402],
+     "row": 20,
+     "slot": 4,
+     "source_cpu": "A57C",
+     "source_file": "4E57C",
+     "source_sha256": "2fa06740dcc0db00e0a97edcd19e11cfc09494aede752f5a978123ff0e2d6a66"
+    }
+   ]
+  },
+  "fill": {
+   "cells": 768,
+   "condition": "always",
+   "description": "whole 32x24 screen filled with one entry",
+   "entry": 289,
+   "id": "screen_fill",
+   "instructions": {
+    "bc": "32FF",
+    "de": "3302",
+    "hl": "32FC"
+   },
+   "name_table_address": "3800",
+   "routine": "$1D8A"
+  },
+  "number_fields": [
+   {
+    "bytes": 1,
+    "cell": {
+     "cols": 1,
+     "note": "digit n = glyph top tile at (col,row), bottom tile at (col,row+1); next digit one column right",
+     "rows": 2
+    },
+    "col": 18,
+    "digits": 2,
+    "draw_call": "$26D6",
+    "id": "rings",
+    "leading_zero_blank": 1,
+    "name_table_address": "3A24",
+    "ram": "D29A",
+    "row": 8,
+    "type_code": 1
+   },
+   {
+    "bytes": 2,
+    "cell": {
+     "cols": 1,
+     "note": "digit n = glyph top tile at (col,row), bottom tile at (col,row+1); next digit one column right",
+     "rows": 2
+    },
+    "col": 16,
+    "digits": 4,
+    "draw_call": "$26E7",
+    "id": "bonus",
+    "leading_zero_blank": 3,
+    "name_table_address": "3AE0",
+    "ram": "D2A6",
+    "row": 11,
+    "type_code": 2
+   },
+   {
+    "bytes": 3,
+    "cell": {
+     "cols": 1,
+     "note": "digit n = glyph top tile at (col,row), bottom tile at (col,row+1); next digit one column right",
+     "rows": 2
+    },
+    "col": 13,
+    "digits": 6,
+    "draw_call": "$26F8",
+    "id": "score",
+    "leading_zero_blank": 5,
+    "name_table_address": "3B9A",
+    "ram": "D29D",
+    "row": 14,
+    "type_code": 3
+   }
+  ],
+  "score_trailing_zero": {
+   "col": 19,
+   "cols": 1,
+   "name_table_address": "3BA6",
+   "note": "always drawn after the score digits: glyph '0' (table index 0) via $2383; the score therefore reads six BCD digits + a fixed 0 (display factor x10)",
+   "row": 14,
+   "rows": 2,
+   "skipped_digits_when": "D29D | D29E | D29F == 0 (digits are not drawn at all)",
+   "source_cpu": "A516"
+  }
+ },
+ "evidence_classes": {
+  "BYTE_VERIFIED_ASSEMBLY": "routine regions with offsets, lengths, hashes (and hand disassembly recorded in the specification)",
+  "CONTROLLED_VARIANT": "D2CD forced at $32F9 (stage card layout), 5 RAM presets",
+  "DECODED_DATA": "draw plan operands, tilemaps, glyph table, icons, palette records, tile stream, boss table, waits",
+  "EMULATED_ORIGINAL_FRAME": "all frame offsets, CRAM series, sound requests, tally cadence",
+  "MODEL_VERIFIED_AGAINST_ORIGINAL_CODE": "compose_name_table, render_indexed, fade_series, title_states compared with emulated VRAM/CRAM in every scenario",
+  "SOURCE_TRACED_BEHAVIOR": "fade engine passes, number drawing, tally award rule, title animator modes 0 and 1",
+  "UNRESOLVED": "see unresolved"
+ },
+ "format": 1,
+ "palette_records": {
+  "3": {
+   "cpu": "B67D",
+   "file_start": "3B67D",
+   "sha256": "241caaa6b35bd3cd244791c8f98386d64ba2e35bab5f55c7cef265f56b88a90b",
+   "sms_colours": [48, 15, 40, 27, 6, 58, 0, 0, 51, 34, 0, 42, 0, 63, 53, 32]
+  },
+  "33": {
+   "cpu": "B85D",
+   "file_start": "3B85D",
+   "sha256": "3dc64b88e1b619d09e6f23ef8fed2a4a411fb91273cfc50275092aa5abdaa7af",
+   "sms_colours": [56, 16, 0, 0, 0, 0, 0, 0, 0, 0, 48, 3, 63, 15, 3, 0]
+  },
+  "4": {
+   "cpu": "B68D",
+   "file_start": "3B68D",
+   "sha256": "c527937aec0f72e5ce57b2101c58f70753b173a328d0c13354815fc4612ce33d",
+   "sms_colours": [63, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 12, 8, 4]
+  },
+  "5": {
+   "cpu": "B69D",
+   "file_start": "3B69D",
+   "sha256": "d2fbe2e5434f87d148d06302b5284cdbc8ca2d07199e6744cf057fb12d2f7c95",
+   "sms_colours": [63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63]
+  }
+ },
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "routines": [
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1543",
+   "cpu_start": "14AE",
+   "file_start": "014AE",
+   "first16": "063cfbcd2d0610facdeb1c3e0432d4d2",
+   "length": 149,
+   "name": "act_clear_tail",
+   "role": "main-loop branch for D293 bit 5: fades, results, tally, act += 1, reload request",
+   "sha256": "30ad4626a11dcf0f3cefbc193551827c21db41a8a13edce092917f94ae70c46f"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "15F2",
+   "cpu_start": "1543",
+   "file_start": "01543",
+   "first16": "063cfbcd2d0610facdeb1c3e0432d4d2",
+   "length": 175,
+   "name": "zone_clear_tail",
+   "role": "main-loop branch for D293 bit 4 (act index 2): same tail, zone gate, zone += 1",
+   "sha256": "46b9f946a53cc5ccb7e9d9974f84fa82f711f37ff0c42f66427684b3eae13f23"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "33F1",
+   "cpu_start": "32F9",
+   "file_start": "032F9",
+   "first16": "cdcb79210038010003112101cd8a1d3a",
+   "length": 248,
+   "name": "results_card",
+   "role": "card draw: tile load, fill, banner, labels, panel, continue icons, numbers, fade-in, 60-wait, tally",
+   "sha256": "c218b2489fc31306058a0896598912708e08c87be49f6f680e967288cdd2033b"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "342A",
+   "cpu_start": "33F1",
+   "file_start": "033F1",
+   "first16": "3accd2b7c83210d121103d115ca50605",
+   "length": 57,
+   "name": "emerald_icons",
+   "role": "up to five 2x2 emerald icons from D2CC bits 0..4",
+   "sha256": "d87170ded96248a5a24f1737b57ac65d0bb887ca173ed62157566176f211617c"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "3436",
+   "cpu_start": "342A",
+   "file_start": "0342A",
+   "first16": "06202172d43e3f772310fcc9f3cd507a",
+   "length": 12,
+   "name": "palette_white_fill",
+   "role": "fills the palette buffer D472..D491 with $3F",
+   "sha256": "710976c37089d9034509aa489bafe4d117097661ded7e1ff4f03c76fdd574180"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "79DF",
+   "cpu_start": "79CB",
+   "file_start": "079CB",
+   "first16": "f33e13cd6f1c210020cd501d219c94af",
+   "length": 20,
+   "name": "results_tile_loader",
+   "role": "bank 19, VRAM $2000, tile stream $949C through the $24C2 decoder",
+   "sha256": "789d50786fc17d31c04c853890a840eb32c9bfb21094a7c68371abfe514a2f78"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2D55",
+   "cpu_start": "2D08",
+   "file_start": "02D08",
+   "first16": "af3210d13a9ad2fe0028153d27329ad2",
+   "length": 77,
+   "name": "tally_loops",
+   "role": "ring loop (10 raw per ring) then bonus-word loop (1 raw per step)",
+   "sha256": "98a654fd67b6e0f0c3c806699f3d3053d92c0f7347d54ed578ec0b4597ada71d"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2D84",
+   "cpu_start": "2D55",
+   "file_start": "02D55",
+   "first16": "3a98d2fe02c03a97d28721842d16005f",
+   "length": 47,
+   "name": "tally_boss_bonus",
+   "role": "act index 2 only: N steps of 10 raw (N from the table at $2D84)",
+   "sha256": "b179e863ac7e76de90c1b39687f1f9289fe82dd8ec356f73e6ab42244708f7da"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2D90",
+   "cpu_start": "2D84",
+   "file_start": "02D84",
+   "first16": "320064009600c800fa005802dd7e00b7",
+   "length": 12,
+   "name": "tally_boss_table",
+   "role": "six 16-bit step counts, one per zone",
+   "sha256": "043f523a1b4e3ff131428e24f3ba1c69ab6d32c32e64c34e5fe7332d82d06506"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2EFB",
+   "cpu_start": "2EE6",
+   "file_start": "02EE6",
+   "first16": "3a10d13c3210d13a37d1b7c0c506fff5",
+   "length": 21,
+   "name": "tally_pacing",
+   "role": "step counter D110 and the 255-iteration delay (skipped when a button is held)",
+   "sha256": "fefd3cf1becc9d677b0489f4a85f8cf8d4a7c2e7c24c5f28d7a9bb947b78d4cf"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2F49",
+   "cpu_start": "2EFB",
+   "file_start": "02EFB",
+   "first16": "21e227180821e527180321eb273ac3d2",
+   "length": 78,
+   "name": "tally_award",
+   "role": "score add via $262F, continue icon redraw, sound $B4 every 16th step",
+   "sha256": "8259f2307dfd985800fdeae3ec2bf1f97dc03db076d3caf691a85ef4d9ddaeca"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "26D6",
+   "cpu_start": "262F",
+   "file_start": "0262F",
+   "first16": "3a92d2b7c0ed5b9dd2ed53a0d23a9fd2",
+   "length": 167,
+   "name": "score_add",
+   "role": "BCD score add, continue award rule (D2C8 dependent)",
+   "sha256": "2b27ea7996e73134aadf77838bae7d00e893af0d421b89a5e2b7cd5c615ba8d6"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "27DF",
+   "cpu_start": "26D6",
+   "file_start": "026D6",
+   "first16": "f33e0132bad2219ad211243acd2627fb",
+   "length": 265,
+   "name": "number_draw",
+   "role": "ring, bonus and score fields: BCD to digits, zero suppression, 1x2 glyph cells",
+   "sha256": "ab69d67f502ac409695250997382172f85980ae87066a324352a08ed337ffed6"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1CBD",
+   "cpu_start": "1CAF",
+   "file_start": "01CAF",
+   "first16": "2192d43600cbf623233600cbf6c93a96",
+   "length": 14,
+   "name": "fade_slot_reset",
+   "role": "D492/D494 := bit 6 only (fade to black)",
+   "sha256": "f1ae4c770bb027577bea548c994334fa013959801a49a825649e62f9c75caccc"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1CD3",
+   "cpu_start": "1CBD",
+   "file_start": "01CBD",
+   "first16": "3a96d4b7c82172d41100c0012000cd9c",
+   "length": 22,
+   "name": "palette_upload",
+   "role": "D496 != 0: D472 -> CRAM (32 bytes)",
+   "sha256": "f6dcae7b923da3ca5cb6d4e1686650e11bd8e8520a2d38f29ca40d7b3fa6de93"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1D06",
+   "cpu_start": "1CEB",
+   "file_start": "01CEB",
+   "first16": "af3252d4325ad43262d4326ad4210000",
+   "length": 27,
+   "name": "animation_freeze",
+   "role": "clears four sprite animation slots, D39B (terrain animation pointer), D131/D132",
+   "sha256": "bab91b8f675e3c3efb62c6e68d3163494e1a894efef72a0943c26073396d31f2"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "18ED",
+   "cpu_start": "18E1",
+   "file_start": "018E1",
+   "first16": "2109de360c233601233602c93ac8d23d",
+   "length": 12,
+   "name": "sound_regs",
+   "role": "DE09..DE0B := 12,1,2",
+   "sha256": "c741d938a54fc425937a5a2e4c4b6d9c439fd5b6ddfb957f696967c3b03d4931"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2993",
+   "cpu_start": "297E",
+   "file_start": "0297E",
+   "first16": "2100d31101d301bf083600edb0af3231",
+   "length": 21,
+   "name": "object_clear",
+   "role": "zeroes D300..DBBF, D131/D132",
+   "sha256": "221571d85dc13c524103a824b32b25eadbeef1c8e1ad6d705563d831253d7aaf"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "4FDC",
+   "cpu_start": "4FCE",
+   "file_start": "04FCE",
+   "first16": "215ed1115fd10132013600edb0c93a97",
+   "length": 14,
+   "name": "camera_clear",
+   "role": "zeroes D15E..D28F",
+   "sha256": "5df3d51a292784f1fcdd46ccbdeec8263ac9a4ca3e019f0e4d59ab1eb3400c7a"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "220E",
+   "cpu_start": "21DA",
+   "file_start": "021DA",
+   "first16": "11c000cd2d06f3210038018003cd8a1d",
+   "length": 52,
+   "name": "name_table_clear",
+   "role": "frame wait, name table $3800 x $380 words := 0, VRAM $1800 x 32, SAT buffer Y := $F0",
+   "sha256": "4284e62602d1f25e35e0c3cc1e279ca228f8c4902ab5166e9f5b33be7a83741e"
+  },
+  {
+   "bank": 14,
+   "cpu_end_exclusive": "B63E",
+   "cpu_start": "B45A",
+   "file_start": "3B45A",
+   "first16": "21d5d2343ad4d2bed03600dd2192d4fd",
+   "length": 484,
+   "name": "fade_engine",
+   "role": "every 5th frame: per-slot palette step (to white, to black, in from black, in from white, copy)",
+   "sha256": "731304e4d403cbd897f415c7b9d9c3e4ca66ce5b9250a38e7f25a1dbfd5b1b2d"
+  },
+  {
+   "bank": 14,
+   "cpu_end_exclusive": "B64D",
+   "cpu_start": "B63E",
+   "file_start": "3B63E",
+   "first16": "dd7e016f260029292929114db619c900",
+   "length": 15,
+   "name": "fade_palette_select",
+   "role": "slot +1 -> table address $B64D + 16*index",
+   "sha256": "415eecd6642bb4e68655c5546ddf3495fcf2854e40c909ac56dec42c39449ebd"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "0590",
+   "cpu_start": "058A",
+   "file_start": "0058A",
+   "first16": "cdbd1ccd5124cd150d3a93d2cb47202f",
+   "length": 6,
+   "name": "fade_isr_hook",
+   "role": "frame interrupt: palette upload, input scan",
+   "sha256": "4fdbafd2f810dce8240dc81b47790d3a26a5892c3dd7584325e91c2e72ae6f08"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1696",
+   "cpu_start": "1673",
+   "file_start": "01673",
+   "first16": "cdce4fcd7531cd3429cd1631cd4a31cd",
+   "length": 35,
+   "name": "level_reload_branch",
+   "role": "D293 bit 1: $4FCE, $3175 (title card), $2934 loader, $794F fade-in request",
+   "sha256": "0c339c5c2b0411a47aa8c75e93f5ecbfd784d8458a7dcb1faf538faa303aa181"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "31E2",
+   "cpu_start": "3175",
+   "file_start": "03175",
+   "first16": "cd7e29cdda21cd127a21003801800011",
+   "length": 109,
+   "name": "act_title_card",
+   "role": "name-table fills, fade-in request, sound $88, arrows, text, 180-frame hold, fade-out",
+   "sha256": "ec6baa3f6501568ed25a0f366284400e450c22b7ded0526c9a0e8db0dd9a1207"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "3225",
+   "cpu_start": "31E2",
+   "file_start": "031E2",
+   "first16": "061d217a382210d121423d2212d1c501",
+   "length": 67,
+   "name": "act_title_arrows",
+   "role": "29 iterations of two 2x3 arrow blocks sliding along rows 1 and 21",
+   "sha256": "5cb7c83f70701d97e8ca80e87684cce3c938daa36fb34a52e25ea34c0e140b10"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "32CA",
+   "cpu_start": "3225",
+   "file_start": "03225",
+   "first16": "3e13cd6f1cdd2100d73a97d221ca3287",
+   "length": 165,
+   "name": "act_title_text",
+   "role": "zone-name object (32x4) then act-number object (12x4) built by the $2D90 name-table animator",
+   "sha256": "6e14a3c37e08b9a24e77183006523febd43ac2079862e83e75ec2ac8b47e1c76"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "32D6",
+   "cpu_start": "32CA",
+   "file_start": "032CA",
+   "first16": "9fb11fb29fb21fb39fb31fb42fb52fb5",
+   "length": 12,
+   "name": "act_title_zone_table",
+   "role": "six pointers (bank 19) to the 32x4 zone-name maps",
+   "sha256": "76ef1377e14aa309e953a42b5ba2ac7a460a8fd694ddbad86d165714d61e4393"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "32F4",
+   "cpu_start": "32EE",
+   "file_start": "032EE",
+   "first16": "0b78b120fbc9c9c9c9c9c9cdcb792100",
+   "length": 6,
+   "name": "act_title_delay",
+   "role": "DEC BC / JR NZ busy delay (CPU time, not frames)",
+   "sha256": "f465bfe2b709dcf03851ef0ca723e66c43d8d7b57f1a10ff707622a9a7de79b7"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2EE6",
+   "cpu_start": "2D90",
+   "file_start": "02D90",
+   "first16": "dd7e00b7c8dd7e0afe03ca7c2efe02ca",
+   "length": 342,
+   "name": "name_table_animator",
+   "role": "per-update scroller for objects D700.. (modes 0..3)",
+   "sha256": "aeb7403927421118002965424e0f98c2a7a7bc8f0c0c41369fc12bf87ebc7842"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7A26",
+   "cpu_start": "7A12",
+   "file_start": "07A12",
+   "first16": "f33e13cd6f1c210020cd501d21e5a7af",
+   "length": 20,
+   "name": "title_tile_loader",
+   "role": "bank 19, VRAM $2000, tile stream $A7E5",
+   "sha256": "95616ace318cc7e8840fa4172ec4542a1d91fdb7ea633575e045800f23b4c47e"
+  }
+ ],
+ "sound_requests_in_path": {
+  "clear_stop": "00 at $14E3/$157A",
+  "note": "numbers only; meanings unresolved (U5)",
+  "stage_card": "86 at $33C9 when D2CD == $FF (then 240-frame wait)",
+  "tally_tick": "B4 at $2F43 when (D110 & 15) == 0"
+ },
+ "step_values_bcd": {
+  "bonus": "010000",
+  "boss": "100000",
+  "ring": "100000",
+  "unused_27E8": "500000"
+ },
+ "tile_stream": {
+  "bank": 19,
+  "command_file_range": ["4E4EE", "4E516"],
+  "cpu_start": "949C",
+  "decoded_length": 5120,
+  "decoded_sha256": "a936f148e1f89b18fd3a987ebfd1c45a98fa74954392b0fb7a574dbe86a0c5a1",
+  "file_start": "4D49C",
+  "first_tile_index": 256,
+  "header": "0100a0005210",
+  "payload_file_range": ["4D4A2", "4E4EE"],
+  "stream_file_end_exclusive": "4E516",
+  "stream_sha256": "1b5c2ce123ae8ac5a07990e30096d8ca0fd4f7355a74ffa4dc10c87be940e9bb",
+  "tile_count": 160,
+  "tile_sha256": ["66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925", "3f875396e770cb8810f51f8341bb9d41782257b17ca0c5240615922382eb735b", "ac4a0ce31a896b00d43abf2a3d8631035b628f10fff4bb634d0d7c64863e6c0b", "e44fd78f4091b94d864a5f1cf51eaa679d6aeb1d80f57d6d2772863fe2d05a10", "31a01b1365f5637f4ad550e5b2aca65b073223fe7c95610bfafa5f4164a39d44", "ea9e5679be438c38f6de5da046bb2859ba31f179458c73d6347b331669248bb9", "03f328b45df1c5ec6a22907366ae0763f2dda75243d0cc1da3167fe9a6a03f46", "43409950a232edb51d251800b4880f5e560485e1774136fe32f6be2160ae75f9", "111ca6f5222d4ddb7f4f2a1c39f39f3f3b263c1eb1a24b10d2b4c32e7d157a56", "2442e4a1e3b5ede46d6982873440354010ef40ad070e50008cf80d7a2cc83c93", "6cbe05ddffcc2beec850528a0bdd63863408e21466da9178dc48adac243e33f7", "c39e47d66c074bf106613fbd5f5d258d5f8f3947c6fe7ba93b0dbad9b34eb26c", "18ab727dc54a97cf977cc940710841fe45a213266c9e8128ff1d9d2dd54545bc", "425f598b58cab352d34461b11aeb54054b5909d4610433734ae8f8c5384376d7", "bba004ad77340c25aa1bf5ef24e3f19628bf239673a05dbd9dd416e7ce45f206", "4f970996560f3b71ebdc4b1ae96f0be22a1783ccbc8111b7101f818bc21ba87c", "b6f83b253f8d00b6e04a284370f63eaa492b415db0dbe582e2069cc8d39ecc71", "852a757654c37cd1882bd8f7d6c78718ccc7b4e434618ab3babc27906aa5a9f8", "d2150209cb5bafe982ab479367813a561b92c03602cdfb8e3da5d28aca8b91d3", "cc6f78f5c32f9bfdb8b7f664407edb1d492587ae16178c8a108f7c7c229be5fd", "b70f7ab73105d0c3172859c4d4900e5d6cfc4aa4551dc8df689bf41595f10474", "9a9489fb5b93fd5d119fb39ab289added0a9b682c4708a9a47adba781877772e", "231d5ee1dad734dc584ae69801a565021d6e64f8c72fa6a0e2163bc17dd2ea6b", "2a256703eef6e3e564bd258d2a197f537c152b6cbdbe7a51f8b9cb5ff09191be", "223abf859f2e29bc668a2f963259afb23ad2beb260a599c13cc98c454205ad49", "52e7a1e3c9b88844680c560b3002dd5e0ace8123116601738697a0d89c6c5802", "00d88f6b6b828ce3e0e2a861475b17594cd9ed843179d5d5057524d469cfe30e", "f8b4c353e28bb65720290578dc2a8076c327a73c0fa387bcab480ba9b8298aa1", "b4a47d24cc465342a1b11a2e2ec25f6a2f2142296f47888fb9e69a6c3de59893", "38d1567d2e0c456732c00a55fab5ae0bf7cec4156e47c991a6836d6725f6639e", "9a4508d5942e241393341392908ae0b8895ea872bf357533364ebe4398163379", "f9d2bc2ea8345a97d8a514eae7f50c165175355a80ca805309429d83748f7ee2", "6496d7a0239f481305c4b0ca637c0f17dbeea92bf0807e36c355c6e9269ca5e4", "d3d6c24e8d23979708d44adfa31910241f34ddd1c32d3ec359a83b6ba133ed2f", "ee176c0523ecfa27dc2e20931df76c3c106bf5f10470957823b7b450ba27ad09", "5058602247a2d34f6cfe0550a5decd6c2f96f604ca307e3fec1f480c098e8e86", "44310630a11df04101b071e2967268e4661b4f0db40f03744e903ad1fc4a4fd1", "722a99d160470cea4626f3182be3ee222c9041dd95e22b6fbfd12791e932f6b3", "c3395869c67b78c065e9c858b680972740de729b77855de4a5c3e1c70a8a6efc", "25bdd0cff44d5231dcf2a4ed6ed5e63589d8850560b323269f50052a75bb2dbb", "1fa1755a6516fbdde8c5e22a4ee0a2980a8640d05e7872b43351143c0117a61a", "d3eb3bb5dba0848a47878e8bdf29dd01ac6f324db831f0110d75ae0d7ea3b07e", "d20d061e93abeb1061beea459258b90c06b6a3e3b3863408301e6148919d134a", "22e3a85ce563014dd6ef057bc5adaaf628fa8d1c967a8aa906a0780437820c19", "14df91e38cbcc3cbcfc7b0ca2a9d3eec12054e1e6425e913238de899bc2c270a", "23cd4a9cf57ff889498f5f73d03f964f15212dacb471591a1c91e434252a8077", "e8aca85add054a45a3c4409350c77131165556645b1fcb0129f041fbf58960e7", "28f31b6797e115a728248207c748bc0d94894bc1ae7c627fb7a1c38886402b6c", "c6ece5d4c61d9e8918f4dee5cdfe40fc2ceb8c308c78c8183e740ad05bde135a", "3dff85d05a1e8b0058bd62618815b34dfc4b8b857ecc63e50bf60ab9f6c5eb2f", "e69799f1bae278372f4e8564fc34a4645f32d64f7dca7959610990d5fd6d1033", "8ea04bae2ae8b8e9d8719fcbba2961fd19e66a4ee519c19e72d4ee1ecdfa993e", "f8fb97085af8e499ad91f43ead3bcd5503426d220f486f7653d384bd614da45b", "178da794dc94d00c35015b041624c1535885ac1ddd35ec61c78cc9912a24f8c5", "743d4c4fe8bc331d82bdd2f2c271af59e720197cdd534ee5fec174c4b13ed20e", "d417ff3ff662de6ba6acad403385f8f66bd15b02fe256818b2a1959ae8d22fc4", "53b8b94d42a6088e07828ea773a617a9be235293b2cf8fa49e86054885b8c511", "4a5be2757338fda6b0448a0b71785d39696fae1cdc0522421d2ef0c8befc2ec3", "4a06c963097c459f135a31cf1c9c510e522fb5fb48368402d67580f93b2ccd46", "38ed3e8f7271acbe1393584095fa98e78aad66a7b5125ba306d67d887741cd82", "f0459492ef5bd3ddc4705e8f2b5757338da790548ba409b2423f7e4426ed5a06", "44dde68054acf13284d86f3d81b3ff1bba8ea8a8f682c73aca823b75af914222", "b672c448c7dcc81531361104d579d8e104b23ef9d5de56713a067bd1b7ab1e42", "259270fa0d615d1649744f8842a31e8f969275be9e92db842db98598dd619289", "ccb2e7e87a187785434a2c5a383bb8326a9adceaf16062a33921834c56daaace", "fee0f5c24c04d01b3887463c7202b01490ca06e3b03d89d7939d9ff1cf49be64", "dcfe6898941cd7807c1e9ed4a1a4f070c4ae187edf2b7f15783d3800dd4da550", "5a6d5f84c5defa7c80210e34513b377c12d5b9286f74589d18895d4bf6742870", "095c997b1327c72e234a763b3445c70cc102a41d2c3f581d8befcbb2d8f34fdf", "7e5ead9b4f64e36ff568f7dbf5b0a320d0f36442ad1937e8e629a032a9b1cef6", "291e4035718bb4728a3b7e12280e398c2c05cca1a1b72c6fc9955e5cf6a72f68", "e12272e17b591b935cab30fdbd300f60c6d6626351eb8caa32aaaff9a8e87b1c", "ad3e5770935e0c738f5837e4353796079ce630174a73ea2268b777fda57e740a", "5d5b139b64ea1ee1d95dbc7e798d5d11089d1f1c49581f82f5db3f9b45ea58f2", "6d1747edb212d076d2a8863197ef783016e5578214eed756c83c17a8e5407136", "754f7c1ae2a859d4caebfe2515a1254fe684eca144aa3fd3a389ffbddcb7b392", "ffb2d734e95fdd4e3b1297c82f4048b73c5ae744a91f6de9c70df6a134fc78d6", "4648801218fd52cd8c5180e46825addc7360fcf8575744d4a326b6559ec1611e", "549a675fa375a3ad919c2e4d1b86adfb31bf620c3873c858d2d72836f0760be1", "a5a328704204bc58eccd1cd020b3cb67edf38108e208c2615352e7f6249260f0", "670b9dc7ae83b32ec308bee433523b0b0fb23fde1c24c20193221fc83992617e", "0b2ca27813841d59007d7806830903f3ed71808827bae8730c809c241a46af19", "c585a5cf148914d5e8530e5ff69b1cc26d52c8ce5063e7d0fc1d717d28037dda", "ca34fbf124d8173f7c904af144ec0b048d6b0202f5386a1e9f3db0ba6bb9b5b3", "24c61e2e36cbcf90548de63e9c1506eeda215bf67e201815b4c5c9db657a8492", "c820a51aabb34518e3f448bfe40fc4705c66a3b4fbd2058fce18cfa5118e79c5", "e5fdb12d47a67d75a69c5e12cf60da6ed72621e182a79ec49b45324ddf4af23f", "676c180f21ca30f5597807e091d62d2c40ce39eabcff4aae44df64e05bad4a22", "f0a170b62578645208202991b57cf8bc99f071740782f30dd74b54dd2ec38bb9", "3aa8da5567dd5088e7fc55a1366bede08fdeffb88ed7009853d2ded4ce2247a7", "4d22c7591777270b65890d5ec286c2dccf348ec56e9642a90e033c648bf91794", "c609b0e09e0551bb9deeeb4844d245c4d019922a978f7af9fa0a55f5a35e9e82", "fb9d16ef0b9f70e98d7abe8501ee52bbe50cd0b9bbcf5cc8a9eba6c46d9f9097", "257ab8c3b5eea517abb84e23f2150b317e321904bdef8b38c829a8d73be9f76a", "465d8040ae8582c0bcf813083d1deb62d6f1bbf86d8c6fcc42585a5250411960", "1ae4adc608f3ffe0171e8588fbf9b0f4eb079805f38a082d477296598fca071c", "f7be7f5116da1e223c9635f76a9c1ddf75b739fb8b3278bcb6874285f6de5c10", "aefc4286a78830bc33fc8d13d0c61d6ae8793414311d5b55c28efa5cd116f494", "dd8912feeae15a2e5d62dfa9e480de005cc2496cb57f59e0f7131c1105be5cd1", "51a94e876903e717a5c467a8435a2baa2ab32a0d728066cc792b8851a277d8a9", "4faebda0d4c36c41897c4792e9ae4bcda2de074fa0d4ba457d5e50107ecbe445", "d3e2d78f85a4a22ad2117cdf14dfcd482cbc2d6d744b4cfd972845960004736e", "a842f6358b2c2f33273cac020354f7ce41239f67b3f1d79ab676742848f01599", "af335baa5a219ed8dd53e47be64c99479f8fb5453b209b6d2e34aae456e6dfe2", "6fe491e9e376ef4c3266c44cbb2f1a068c1e57ae31cbf68aa88e0bdb41ebc9ae", "5414951d5138dc53ebbecad4f72a1ad3451fe44d45b5d0c10bd58a1290b24daa", "3f2a6e59d6d9e4c8cb5d11e1be5a5ff4633355344f49f8885f44563f6ddf9533", "3f5cd683732a3a223c4f49fc58065723dcaecc7ebed42b29cf8c4d902c9909b7", "cb974a9f85ea6959cb3c605812c85d6c58289630c8902fca7bd1de49de6554b6", "3090e58827229ce00ccc49d85497f1ec5b50289a17e2a025b1c1fe179f611b43", "c715237aa6471cd628bd0638e3d036a635f535d32e19771104ca831f69dd8573", "a74e21bd187f20e1eed8c2f910ba78cad9937315f749a41a865d57f0b7e1d4e6", "3e615ac4ee085e9f7cb111922d6a258c8126e80a920c47e819c58e0591e4579a", "7a41bace613b5f2611b3bf9c36732c244c28106aae14a8c6bb682ccfe77788ea", "df00b892e4969e9e9f47da7ca7554ce8a09b27a1e098cdb29de6bc68afd6141e", "4a790a675b0161dfbf790a18ad8504307ea520a72ea4d355c268baccc6594041", "9f48fc5a370b77d169411076d104e288e561f418acf4ed32f8b0ed2fef953c1d", "831f1f3fd4c047d33a97d191623b56acd9af84116762346e9475e1a6f3e7c632", "671d7a649408f24add1048e2918c4e223693288422bd2e47763b42e02fa75437", "bc73538fb54fc9e9cb2d73a58bedb03bdca88686cbea64265bd544d340394359", "8c85494860e27c66adaa5a51dce9185e719686e03ff0ed0cd35a2ab773da7ab8", "e12ac61f1eb99e06e838f461bb0de020e3e3c794ba339ccdd12c2b81864b0f16", "a0e88eacfb3a45b3d280313c979075ab74d77ab6cffd9b4b9aa1daa8255cf238", "de1351470bd70a1a9902f9b4f4a0df6895617de9850dcb21182780e3c628cfa7", "6f2a2809d7ff7b975526379ae250ab229f0f6bece8fa99becca93a4f92ed7ff1", "5ecc294055ba0f870e62b92472feeb92c96b06f8abe251a4f6e1b43ef5e7f2ca", "202c3308c0f803fa76f543475d166e535e14113cfcd0aac226cbb5a6c4672b54", "e9a25f93ba17740957ee98253cdbc58af38b7ad3bd375544d79a24fb1c47746f", "b6ecf442bcc98a758fbd0c0c4e2aed39377622544dfac3277af7246f409190fe", "95ed4b2636ffe215af80f477881f16ef65cd00d6221a550f0ee02959382b3798", "58fbee33d4907a30a422fb7af5938ef0aff97eb856f6f3911e72bdf561fddba2", "7aa0a52576f2c826100eac19bfcc5aef6f3f1b5eeff7a1cf0cf9dbecf4ed7be2", "db2b12d7f6c74231421d854df444ca847163aa357207bb2db6b366ccef68ff01", "2c070d5f7eda8300ac3fe4cf6e43c76283588b6f2328361ffd27d6e0bba61e4f", "6be9d736514a5f4765ef00a7fa56deab19b061243d9bcc1fb8d32c8c9dc584b5", "388167289fbcfedc4f8c41055b0cc0b920d08e21b6376a6cbf52b96445a3e942", "675636b21fb0ff771790d1e9336e92dad56979adbf67c6d50d23ac1a9238ccac", "b2fa886e4c129e398e12f8e935e7e638e64de3a9fa9d90bb37d89fb8e2f90ca6", "c317330396100c9f83d83699ffa09978b14e87401b00d99e61691c60e7b0545b", "4a949efeb214fb1065681e409befd290164b26c300c7771a6a4372b988f178a6", "0e552551d8b3c5a4b0a2b83852fe4108c3de28df4687913156d5038f5fd5f7d3", "b536d5a3a592bf4564ed9452c9fa581a8558a540d97ecfa51f10bc2b141f4e30", "1c06554ea926a06b36532b74cbc0426677fc7e4f7d067153ae70d6724fb9f43c", "78653b95cc37b8e347708439fd35f03d3c7368f845ade636485c6f6e0456baea", "d17bbd66ff7790ae23f51af165faf8ac2ff04861fc742cbffd3dcc340ef46895", "93e5d606a6df9754b153ab5b331507828295c0a34829012a43345595e7e50d17", "5145cb0e0031c22dea59fe980aef2c406253efd804973c5496a4de2774cb2ba6", "f6c133e755bcca158caa7c231e5a2b3707944c55af2722771f8ce1b86523b8a0", "06a40d9eb50441a47a9ece33b2fe038d492d4a4920fc34801ec08a6bb0785152", "91269b10229e6a059dbf63941a5a52f880fddda55ab7b3224668dd366a3b84ff", "1529374d35d98f60dc15846830a2a3eb8c137cc898d3f7732d6124b6a2922441", "c005568e666a7959ef20bae2d0316b552a0c6b294af9fb4bfe0f8b65fbbadba8", "893244a7d8b8327fcfe4ab28a977952baeb03fb0da7f0a0003e9b028b0130508", "43e1df261cdd0e605a6512b7d69eba852432241747d808054c7784b8dbe07c76", "a56aa6e466cb2627bc3a7989ec223914d2aa632ae54e8ec8cc50e78c257b7593", "6fbae3bc8712752946a2acb77ea65689c0a317298d3d989f3e6c5c6dc04005cf", "742a19b2d7b957ddd76977fa60a4fe79ec3572617ca5d4d6722ed8697e5dfcdd", "416d0b296d399c0f0f4daf459f94bbd2a225120ac197f2ef2df75a32e497dce7", "de29e9a906bd88049a32b75875d445aa12ce98556cf49a1367d22e38026540ce", "ae9dcc5c6763135f61d0b80e3414c2d8cad1a2cd6afd5fa65f257b21f00ee341"],
+  "vram_destination": "2000"
+ },
+ "unresolved": [
+  {
+   "id": "U4-1",
+   "item": "meaning of the sound request numbers in this path ($B4 tally tick, $86 stage card, $88 title card, 0 stop, level-music table at $18BA)",
+   "state": "numbers only (see U5 / AUDIO-0)"
+  },
+  {
+   "id": "U4-2",
+   "item": "cycle-exact rates of CPU-bound waits (tally steps, title busy loops $32EE) on a real console; harness gives NTSC-frame figures only",
+   "state": "EMULATED, not cycle-proven"
+  },
+  {
+   "id": "U4-3",
+   "item": "sub-frame placement of each act-title animator update and arrow iteration (the name-table states and their order are exact; the frame each state is first visible is harness-measured)",
+   "state": "MEASURED"
+  },
+  {
+   "id": "U4-4",
+   "item": "the frozen gameplay frame that is faded to white before the card is level/act specific (VRAM, SAT, CRAM at the clear entry); it cannot be reproduced from ROM tables alone",
+   "state": "ADAPTER must capture the last gameplay frame"
+  },
+  {
+   "id": "U4-5",
+   "item": "what drives the sprite change in [0,60) after the clear entry (HUD ring icon, SAT entries 12 and 13); inferred ISR animation slot D452..D46A, cleared by $1CEB",
+   "state": "INFERRED"
+  },
+  {
+   "id": "U4-6",
+   "item": "D2CC bit 5 (sixth emerald bit) is never drawn on this card; only bits 0..4 have icons",
+   "state": "DECODED (by design of $33F1); semantics belong to the ending research"
+  },
+  {
+   "id": "U4-7",
+   "item": "label wording is graphics only (read from tiles: RING, SPEED, SCORE, CONTINUE, 'x 100', 'x 10'); there is no text string in the ROM for it",
+   "state": "DECODED GRAPHICS"
+  },
+  {
+   "id": "U4-8",
+   "item": "D2D3 (attribute byte of every 1-byte-per-cell draw) is 1 in every observed card and title; its only zero writer is $34EA (ending TRY AGAIN screen); the ending -> title -> new game -> clear path was not run here",
+   "state": "OBSERVED, one path unexercised"
+  },
+  {
+   "id": "U4-9",
+   "item": "act-title animator modes 2 and 3 and the $2E80 type-$11 variant are not reached by the title card (not decoded beyond their bytes)",
+   "state": "NOT NEEDED"
+  },
+  {
+   "id": "U4-10",
+   "item": "zone 5 act index 2 skips the card (ending selector); the ending screens are outside this task",
+   "state": "G0 / EEZ-ending research"
+  },
+  {
+   "id": "U4-11",
+   "item": "how the level palette cycling entries interact with the fade passes beyond the entries listed per act (animated entries are masked in the fade comparison)",
+   "state": "MASKED, listed per scenario"
+  }
+ ],
+ "wait_loops": {
+  "act_clear_after_card": {
+   "address": "14FF",
+   "frames": 48
+  },
+  "act_clear_after_sound_regs": {
+   "address": "14DB",
+   "frames": 30
+  },
+  "act_clear_black_wait": {
+   "address": "1527",
+   "frames": 48
+  },
+  "act_clear_blank_wait": {
+   "address": "14F4",
+   "frames": 12
+  },
+  "act_clear_fade_to_white_wait": {
+   "address": "14D0",
+   "frames": 96
+  },
+  "act_clear_wait_before_fade": {
+   "address": "14AE",
+   "frames": 60
+  },
+  "act_clear_white_hold": {
+   "address": "1519",
+   "frames": 96
+  },
+  "boss_bonus_after_loop": {
+   "address": "2D7B",
+   "frames": 12
+  },
+  "card_after_tally": {
+   "address": "33E8",
+   "frames": 48
+  },
+  "card_before_tally": {
+   "address": "33DA",
+   "frames": 60
+  },
+  "card_stage_success_hold": {
+   "address": "33CE",
+   "frames": 240
+  },
+  "title_after_fade_out": {
+   "address": "31D9",
+   "frames": 30
+  },
+  "title_after_fade_request": {
+   "address": "31B1",
+   "frames": 30
+  },
+  "title_hold": {
+   "address": "31C4",
+   "frames": 180
+  },
+  "zone_clear_after_card": {
+   "address": "159E",
+   "frames": 48
+  },
+  "zone_clear_after_sound_regs": {
+   "address": "1570",
+   "frames": 30
+  },
+  "zone_clear_black_wait": {
+   "address": "15C6",
+   "frames": 48
+  },
+  "zone_clear_blank_wait": {
+   "address": "158C",
+   "frames": 12
+  },
+  "zone_clear_fade_to_white_wait": {
+   "address": "1565",
+   "frames": 96
+  },
+  "zone_clear_wait_before_fade": {
+   "address": "1543",
+   "frames": 60
+  },
+  "zone_clear_white_hold": {
+   "address": "15B8",
+   "frames": 96
+  }
+ }
+}

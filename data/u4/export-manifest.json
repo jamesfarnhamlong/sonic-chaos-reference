@@ -1,0 +1,375 @@
+{
+ "assets": {
+  "blocks/banner_other.png": {
+   "height": 32,
+   "index_sha256": "3e9350a29f6c09dbb0f2f9095722e6fa769291a36cd1e7331d219b0b41fa5f7a",
+   "kind": "tilemap block",
+   "note": "attribute high byte D2D3 = 1; BG palette",
+   "width": 256
+  },
+  "blocks/banner_sonic.png": {
+   "height": 32,
+   "index_sha256": "f5b1743145b3bca0758cba31582895d1f72320649021300963af3c08bd9edbbb",
+   "kind": "tilemap block",
+   "note": "attribute high byte D2D3 = 1; BG palette",
+   "width": 256
+  },
+  "blocks/banner_stage.png": {
+   "height": 32,
+   "index_sha256": "ff1d3ec33306bf2d66cb9425fcad55be30b180ee17e1b33e7164c149112e1fa4",
+   "kind": "tilemap block",
+   "note": "attribute high byte D2D3 = 1; BG palette",
+   "width": 256
+  },
+  "blocks/continue_icon_other.png": {
+   "height": 16,
+   "index_sha256": "f483112ebcc67ee1ae1d51a65de43be533121328b1c68b70e130092ac2d76244",
+   "kind": "icon",
+   "note": "",
+   "width": 16
+  },
+  "blocks/continue_icon_sonic.png": {
+   "height": 16,
+   "index_sha256": "eaa76e090b032aaa10e621770d73addd4544e8d0c38c78cae53c49d518c9d37a",
+   "kind": "icon",
+   "note": "",
+   "width": 16
+  },
+  "blocks/digit_glyphs.png": {
+   "height": 16,
+   "index_sha256": "ae3d5542c47cd81cf81816854be5273f1cd2fc570079104dd23cbcd998ce107a",
+   "kind": "glyph strip",
+   "note": "0..9 then the blank used for zero suppression; each glyph 8x16",
+   "width": 88
+  },
+  "blocks/emerald_icon_0.png": {
+   "height": 16,
+   "index_sha256": "e78da5a8acd7a26b9e567a4d15cada7ffc880fed3236a1e72cc8617edd51cbd8",
+   "kind": "icon",
+   "note": "entries carry palette bit 11 (sprite palette indices 16..31)",
+   "width": 16
+  },
+  "blocks/emerald_icon_1.png": {
+   "height": 16,
+   "index_sha256": "a396d9598127204825d30ec5ca342f1b85c315ccfb699cadaeb48aecca5aa411",
+   "kind": "icon",
+   "note": "entries carry palette bit 11 (sprite palette indices 16..31)",
+   "width": 16
+  },
+  "blocks/emerald_icon_2.png": {
+   "height": 16,
+   "index_sha256": "0c5336333d119101fd70acbe27927bbb5dbc85bba322e371ea9c632755694be2",
+   "kind": "icon",
+   "note": "entries carry palette bit 11 (sprite palette indices 16..31)",
+   "width": 16
+  },
+  "blocks/emerald_icon_3.png": {
+   "height": 16,
+   "index_sha256": "504ca684715013898fc4667b31554c285f40deab8dd445e915cd881834a9b6ef",
+   "kind": "icon",
+   "note": "entries carry palette bit 11 (sprite palette indices 16..31)",
+   "width": 16
+  },
+  "blocks/emerald_icon_4.png": {
+   "height": 16,
+   "index_sha256": "d28c06d31dfcaded4acb3d97f48f38113633d22e9885c44015142231a46f5f1e",
+   "kind": "icon",
+   "note": "entries carry palette bit 11 (sprite palette indices 16..31)",
+   "width": 16
+  },
+  "blocks/labels_ordinary.png": {
+   "height": 88,
+   "index_sha256": "20c50bcc8f5999a40a06d7a1a62b49a5ba18d0d847620f4df0cfaf9172bea133",
+   "kind": "tilemap block",
+   "note": "attribute high byte D2D3 = 1; BG palette",
+   "width": 64
+  },
+  "blocks/labels_stage.png": {
+   "height": 88,
+   "index_sha256": "7c958c343900858b40526064eb41e77c46fdcc5247cac3b6726825c96cf2d73e",
+   "kind": "tilemap block",
+   "note": "attribute high byte D2D3 = 1; BG palette",
+   "width": 64
+  },
+  "blocks/panel_ordinary.png": {
+   "height": 40,
+   "index_sha256": "b869ec50c3f04fb60ea31c44ace630436a0ac5a10c6a5c7995931af7b1d3a9fc",
+   "kind": "tilemap block",
+   "note": "attribute high byte D2D3 = 1; BG palette",
+   "width": 40
+  },
+  "blocks/panel_stage.png": {
+   "height": 40,
+   "index_sha256": "b869ec50c3f04fb60ea31c44ace630436a0ac5a10c6a5c7995931af7b1d3a9fc",
+   "kind": "tilemap block",
+   "note": "attribute high byte D2D3 = 1; BG palette",
+   "width": 40
+  },
+  "blocks/screen_fill_tile.png": {
+   "height": 8,
+   "index_sha256": "d7659e736405aff65a1b07649b7ffc16075fc1c43827ae547c5261aaa2ce5553",
+   "kind": "tile",
+   "note": "",
+   "width": 8
+  },
+  "card_tiles_vram2000.png": {
+   "height": 80,
+   "index_sha256": "4c4cdddd24aee1009ea3d6321cdfb7100cda0f6ff39f83924625d28b6bef6ef3",
+   "kind": "tile sheet",
+   "note": "160 tiles, 16 per row, tile index = 256 + sheet position; palette indices 0..15 (BG record 3)",
+   "width": 128
+  },
+  "frames/other_example.png": {
+   "height": 192,
+   "index_sha256": "0dad43df7e4d152ef65398e883dce88b9fda5c7c5185d517167eb89ed3a8974a",
+   "kind": "composed 256x192 frame",
+   "note": "{\"bonus\": 2324, \"continues\": 3, \"d2c8\": 2, \"d2cd\": 0, \"emeralds\": 31, \"rings\": 37, \"score\": [80, 52, 18]}",
+   "width": 256
+  },
+  "frames/other_static.png": {
+   "height": 192,
+   "index_sha256": "650fdb53f4dcc30eda21ea17c10cd31bd046091c26f985aa9e7ba50fc11b3c6b",
+   "kind": "composed 256x192 frame",
+   "note": "{\"bonus\": 0, \"continues\": 0, \"d2c8\": 2, \"d2cd\": 0, \"emeralds\": 0, \"rings\": 0, \"score\": [0, 0, 0]}",
+   "width": 256
+  },
+  "frames/sonic_example.png": {
+   "height": 192,
+   "index_sha256": "9e6f879c43f778689ab9ce6c42ac4a8fd8a90439e9a4f42b077e2da648a49d55",
+   "kind": "composed 256x192 frame",
+   "note": "{\"bonus\": 2324, \"continues\": 3, \"d2c8\": 1, \"d2cd\": 0, \"emeralds\": 31, \"rings\": 37, \"score\": [80, 52, 18]}",
+   "width": 256
+  },
+  "frames/sonic_static.png": {
+   "height": 192,
+   "index_sha256": "7bea1845ee11dc8fbc392538381a37bb4f98c0a1247593175b009b13cdae44d6",
+   "kind": "composed 256x192 frame",
+   "note": "{\"bonus\": 0, \"continues\": 0, \"d2c8\": 1, \"d2cd\": 0, \"emeralds\": 0, \"rings\": 0, \"score\": [0, 0, 0]}",
+   "width": 256
+  },
+  "frames/stage_static.png": {
+   "height": 192,
+   "index_sha256": "d723b894937e9312546272c91684d58f352678b143d6c7363f7c0ea4a5f4802d",
+   "kind": "composed 256x192 frame",
+   "note": "{\"bonus\": 0, \"continues\": 0, \"d2c8\": 1, \"d2cd\": 1, \"emeralds\": 0, \"rings\": 0, \"score\": [0, 0, 0]}",
+   "width": 256
+  },
+  "palettes.json": {
+   "kind": "palettes+ramps",
+   "sha256": "54bfa9937b46dfc8c407aabc1198cb0e0a9d1af5759a9f7637bbd553ec6f35ef"
+  },
+  "title/act_number_0.png": {
+   "height": 32,
+   "index_sha256": "c2f95a70ec993a1129302f8c9e62961e2c9f50bf1792411e4e9d2f0164309b8a",
+   "kind": "tilemap block",
+   "note": "12x4 block; final column = start column 31 minus 20",
+   "width": 96
+  },
+  "title/act_number_1.png": {
+   "height": 32,
+   "index_sha256": "ab51fe50f690e572f4089b48860c45e7eabd10641e9f71afa9379178a79269d0",
+   "kind": "tilemap block",
+   "note": "12x4 block; final column = start column 31 minus 20",
+   "width": 96
+  },
+  "title/act_number_2.png": {
+   "height": 32,
+   "index_sha256": "59f025d3cf6e64582ea7081dede86c1ab2f12b25fbce2376d6e970a11274d01c",
+   "kind": "tilemap block",
+   "note": "12x4 block; final column = start column 31 minus 20",
+   "width": 96
+  },
+  "title/arrow_left.png": {
+   "height": 16,
+   "index_sha256": "400e1103d01a4793d62c5854fc5525862c8c04196cfe544b2cca7ae45aeaeeac",
+   "kind": "tilemap block",
+   "note": "",
+   "width": 24
+  },
+  "title/arrow_right.png": {
+   "height": 16,
+   "index_sha256": "7b1836d6d0d6f194f93e7773f753d8016faecc5431c06c44086e7cef400fecfa",
+   "kind": "tilemap block",
+   "note": "",
+   "width": 24
+  },
+  "title/frame_zone0_act0.png": {
+   "height": 192,
+   "index_sha256": "5a4ac52bfa3d252db93eb8fe2987118edfbb3b289864f4e0a8af31dbe27cdbf3",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone0_act1.png": {
+   "height": 192,
+   "index_sha256": "0441824de6b6e25a919ef78b1a0e1afecebd104458f46dd96fdf79ec9f0bc876",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone0_act2.png": {
+   "height": 192,
+   "index_sha256": "0430622f0845460678565465d0873c6b596f12234f96fde4e1e6fb2cd4da4ceb",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone1_act0.png": {
+   "height": 192,
+   "index_sha256": "5f58a2ff5e32a11759d880cb904a8ec393c455a9e00879d650f2f80f3828861b",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone1_act1.png": {
+   "height": 192,
+   "index_sha256": "058fd93cf90f06e39b528063a37b370f7c3bcb0e7d5b2bdafe7fb171981b1d32",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone1_act2.png": {
+   "height": 192,
+   "index_sha256": "d3fa69b3c7a609aa5973f0bdbabd5ad41759f30a9a3ccaefa92bbc201f71cd08",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone2_act0.png": {
+   "height": 192,
+   "index_sha256": "56fea75872249ef124d6a3fdc7790887bc362d5391b4b48ef6f5415af8ec7802",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone2_act1.png": {
+   "height": 192,
+   "index_sha256": "3faad59a44cd817320833deba147b58007c68bf0d91622c03a0ac51f54ae3ed7",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone2_act2.png": {
+   "height": 192,
+   "index_sha256": "263e07d611694739db63e454f0844a580d3dffbbf3d6e92f047a2eb68ff4342b",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone3_act0.png": {
+   "height": 192,
+   "index_sha256": "bcdca085fd412a3f7b3ad60662edead66c98435207db8fef6f07a37d7c9fd15b",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone3_act1.png": {
+   "height": 192,
+   "index_sha256": "03c3aff85beabdf464824a0a561d96db64658c1c17eadd46e93fa227c1443a60",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone3_act2.png": {
+   "height": 192,
+   "index_sha256": "cd3726913afc45cd9f7823f54a45ded6d1db9149244df4434d9787e95a7a880d",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone4_act0.png": {
+   "height": 192,
+   "index_sha256": "ef2abd010b724d02f2b0a34dfe00be7dbd1b14acf39df56852b79abfbb9445d7",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone4_act1.png": {
+   "height": 192,
+   "index_sha256": "97fb37bec9b5756ef23677cc5d0c3bb208f5367a0431eefd67803c1f3e54bde1",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone4_act2.png": {
+   "height": 192,
+   "index_sha256": "315a9d70df75e7eeb16f9e31bc42dba36c680e0144cfe5fe4bfc50087e3ac9dc",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone5_act0.png": {
+   "height": 192,
+   "index_sha256": "266f675da7b79219e0e41dc92f8910c1a1ccdb344ea31962fa3c0758511306a9",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone5_act1.png": {
+   "height": 192,
+   "index_sha256": "8d8debb3ac5656d6d30a149ab3a74e6c7c26f9628c043d0daf86ef30575fc342",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/frame_zone5_act2.png": {
+   "height": 192,
+   "index_sha256": "8f1104510bc1411e4dd1ed247030e968ecdab73ca03f2c44935e0619a478563c",
+   "kind": "composed 256x192 final title frame",
+   "note": "name table after the last animator update (hold)",
+   "width": 256
+  },
+  "title/title_tiles_vram2000.png": {
+   "height": 48,
+   "index_sha256": "446561f1aca837572b9c5498371cd16b40e03b0e020f5cf5e9755d5e79560f82",
+   "kind": "tile sheet",
+   "note": "95 tiles, 16 per row, tile index = 256 + sheet position; palette = BG record $21",
+   "width": 128
+  },
+  "title/zone_name_0.png": {
+   "height": 32,
+   "index_sha256": "90496a1e8b624f0c8bc78917a38b24799d81f87e73f8e89ab127ef4948efb0d9",
+   "kind": "tilemap block",
+   "note": "32x4 name-table block as drawn at col 0,row 7",
+   "width": 256
+  },
+  "title/zone_name_1.png": {
+   "height": 32,
+   "index_sha256": "4afa190f0f4a43eb71f7a8cdc4014d634a05260a7534b12ac812e0d78b697545",
+   "kind": "tilemap block",
+   "note": "32x4 name-table block as drawn at col 0,row 7",
+   "width": 256
+  },
+  "title/zone_name_2.png": {
+   "height": 32,
+   "index_sha256": "b94ccdc59c05c48b4709459feedc754945516e2aea52670f0919ee46ca231654",
+   "kind": "tilemap block",
+   "note": "32x4 name-table block as drawn at col 0,row 7",
+   "width": 256
+  },
+  "title/zone_name_3.png": {
+   "height": 32,
+   "index_sha256": "f9437eeeb07b94cecb79b387973a5df17c588cfb3f1a730f6300156c0147c082",
+   "kind": "tilemap block",
+   "note": "32x4 name-table block as drawn at col 0,row 7",
+   "width": 256
+  },
+  "title/zone_name_4.png": {
+   "height": 32,
+   "index_sha256": "944e7b4ff4fef1ee2c40be3bcc9c8e928a748a9f25cb14ca56690e30ed279e70",
+   "kind": "tilemap block",
+   "note": "32x4 name-table block as drawn at col 0,row 7",
+   "width": 256
+  },
+  "title/zone_name_5.png": {
+   "height": 32,
+   "index_sha256": "98119844448a87889bf3968d2ec77e17fa91ecfea55505a6ba8264b8c3f8b7a8",
+   "kind": "tilemap block",
+   "note": "32x4 name-table block as drawn at col 0,row 7",
+   "width": 256
+  }
+ },
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "rows_hash": "sha256 of the row-major palette-index bytes (0..31)"
+}
