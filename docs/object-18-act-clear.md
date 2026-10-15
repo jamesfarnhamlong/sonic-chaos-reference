@@ -1,5 +1,15 @@
 # THZ1/THZ2 object type `$18` (goal sign) and the act-clear chain
 
+> **Correction (G0-R, 2026-10-15) - superseded evidence.** This document, as first written, treated `$D2C3` as *lives*. The ROM shows the opposite:
+> `$D299` is **lives** (BCD; start 3 Sonic / 5 Tails; `-1` at `$15FB`, `+1` at `$3113`) and `$D2C3` is the **continue counter** (bits 0-6; start 0 / 3;
+> bit 7 = "a continue was just used", set by `$1491`, cleared by `$13ED`). The bit-7 test at `$1396` selects the *continue-restore* branch (`$13C9`), not a
+> game-over flag. Consequences for this document: prize **class 3** (ring counts 15 30 40 60) awards a **continue**, class 1 (`$03F2` -> `$3104`) the **life**, and the
+> "retry" re-roll value 3 is a continue as well. The original text and the tool output (`lives_D2C3` keys in `data/rom-cache/object-18-act-clear.json`,
+> `tools/object_18.py`) are kept unchanged as the historical investigation record; read those names as "D2C3 (continues)". Evidence: `docs/g0-campaign-contract.md`,
+> `data/g0/campaign-contract.json` (`sign_prize_tables.correction`, writer census) and oracle scenarios `clear_thz1_rings15` (continues 00 -> 01) and
+> `clear_thz1_rings55` (lives 03 -> 04).
+
+
 Research only. ROM: Sonic Chaos (Europe) v1.2, SHA-256
 `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607` (verified; never committed).
 `SonicChaos_POC` was not touched.
@@ -237,14 +247,14 @@ Model: `vy = $FC00` → `vy += $10` per update (clamp `$0600`), `y += vy`; land 
 
 | Class | THZ ring counts (BCD) | Effect | Art selector `$D3B3` (Sonic / other) |
 |---:|---|---|---|
-| 3 | 15 30 40 60 | `$D2C3 += 1` (lives; bit 7 is the game-over flag) | `$1D` / `$1B` |
+| 3 | 15 30 40 60 | `$D2C3 += 1` (**continue**; bit 7 is the 'continue used' flag - see correction) ~~(lives; bit 7 is the game-over flag)~~ *superseded* | `$1D` / `$1B` |
 | 2 | 09 19 29 39 49 59 69 79 89 | `$D29A += $10` (BCD, carry dropped) | `$1E` |
-| 1 | 55 65 77 88 95 97 99 | vector `$03F2` → `$3104`: sound `$A9`, `$D299 += 1` (max `$99`; identity **UNRESOLVED**) | `$1B` / `$1D` |
+| 1 | 55 65 77 88 95 97 99 | vector `$03F2` → `$3104`: sound `$A9`, `$D299 += 1` (max `$99`; `$D299` is **lives** - identity resolved by G0-R; originally recorded as UNRESOLVED) | `$1B` / `$1D` |
 | 0 | 16 28 32 44 58 | retry: `+$35 = $FF`, `$D3B3 = $20`, back to **state 3** | `$20` |
 | `$FF` | the other 71 counts | none | `$1F` |
 
 After a retry, the next touch goes to state 6 (64 spin updates) and `$A8FA` rolls `+$34 = ($D12F & 7) + 1` (frame counter): 1 → `$D299`,
-2 → rings +10, 3 → extra life, 4..8 → nothing (`$1F`). Class 2..3 effects and the art selector number are the only recovered semantics; the
+2 → rings +10, 3 → extra life (per the G0-R correction the class-3 effect is a **continue**, `$D2C3`, as in the table above; class 1 is the life), 4..8 → nothing (`$1F`). Class 2..3 effects and the art selector number are the only recovered semantics; the
 graphics behind `$1B..$20` were not decoded (**UNRESOLVED**). The prize is decided on the ring count at landing, before the bonus value of the child.
 
 ### Type `$19` child (CONTROLLED + EMULATED)
@@ -358,7 +368,7 @@ and the harness frame offset differs by one (contact at emulated frame 67 vs 66,
 
 ## 14. Unresolved
 
-* Semantic names of `$D299`, `$D2C3` (treated as lives: bit 7 is the game-over flag at `$1396`), `$D2A6`, and of the prize classes.
+* ~~Semantic names of `$D299`, `$D2C3` (treated as lives: bit 7 is the game-over flag at `$1396`)~~ - **resolved by G0-R, see the correction note**; still open: `$D2A6` and the remaining prize-class art/semantics.
 * The graphics behind art selectors `$1B/$1D/$1E/$1F/$20` (only numbers recovered; `$12` is the sign art from earlier work).
 * Sound requests `$F8/$AA/$AB/$BC/$89/$97/$B4` are numbers only.
 * RAM `$D4A3` (set `$FF` by the state-4 first record) and the role of `$D445` in THZ.

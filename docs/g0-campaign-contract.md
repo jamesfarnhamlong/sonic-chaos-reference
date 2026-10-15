@@ -149,6 +149,7 @@ Classification words follow the Manager legend; STATIC-POC rows are source obser
 
 * **Correction of an accepted document**: `docs/object-18-act-clear.md` calls `D2C3` "lives". This package proves it is the continue counter; the old document is
   left unchanged (annotate or supersede at integration).
+* **Limitation (explicit):** the 18-act spine injects the act-clear flag for 15 acts (THZ1/THZ2 use the real sign chain, THZ3 forced player state `$20`). It proves the common progression path and the shared `$14AE`/`$1543` tail, **not** natural play through every sign and boss.
 * The oracle uses the accepted input-only SS1 route and the accepted THZ sign fixture; the 15 non-THZ acts raise the act-clear flag directly (flagged in the
   scenario, not a natural boss/sign playthrough).
 * `docs/special-stages-progression-audit.md` section 5 says the next act "always"; confirmed - and note the stage can also pay lives in-stage (ring wraps).
