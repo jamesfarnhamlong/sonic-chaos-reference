@@ -1,0 +1,954 @@
+{
+ "anchors": [
+  {
+   "actual": "3a98d2fe0230062193d2cbeec92193d2cb",
+   "bank": 12,
+   "cpu": "83DD",
+   "expected": "3a98d2fe0230062193d2cbeec92193d2cb",
+   "file": "303DD",
+   "name": "zone_clear_flag_state20",
+   "note": "act index (D298) < 2 -> D293 bit 5, else bit 4",
+   "ok": true
+  },
+  {
+   "actual": "3e203202d50e893a98d2fe0220020e97793204dec9",
+   "bank": null,
+   "cpu": "4892",
+   "expected": "3e203202d50e893a98d2fe0220020e97793204dec9",
+   "file": "04892",
+   "name": "state20_request",
+   "note": "D502 := $20; sound $89, or $97 when D298 = 2",
+   "ok": true
+  },
+  {
+   "actual": "dd360201dd7e3fb7c0dd360202cd1f0422",
+   "bank": 12,
+   "cpu": "9C86",
+   "expected": "dd360201dd7e3fb7c0dd360202cd1f0422",
+   "file": "31C86",
+   "name": "bonus_obj_state0_callback",
+   "note": "$0A state 0: request state 1; parameter != 0 -> stay (sparkle); parameter 0 -> state 2, CALL $041F, D2A6 := HL (no zero replacement, no life)",
+   "ok": true
+  },
+  {
+   "actual": "dd7e00fe562830cd7d033a22d5cb4fc82a74d12280d2cd",
+   "bank": 30,
+   "cpu": "81BD",
+   "expected": "dd7e00fe562830cd7d033a22d5cb4fc82a74d12280d2cd",
+   "file": "781BD",
+   "name": "release_floor_gate_shared",
+   "note": "$81BD: type $56 -> $81F4 branch; else CALL $037D, floor bit 1 required",
+   "ok": true
+  },
+  {
+   "actual": "2a74d12280d2cd5c03dd6625dd6e2722",
+   "bank": 30,
+   "cpu": "81CD",
+   "expected": "2a74d12280d2cd5c03dd6625dd6e2722",
+   "file": "781CD",
+   "name": "release_limits_pan",
+   "note": "D280 := camera X; CALL $035C (release pan); D282 := saved right limit (+$25/+$27)",
+   "ok": true
+  },
+  {
+   "actual": "cdf5030e0a2600cd2c03dd363f80dd363e00c33e03cd",
+   "bank": 30,
+   "cpu": "81DF",
+   "expected": "cdf5030e0a2600cd2c03dd363f80dd363e00c33e03cd",
+   "file": "781DF",
+   "name": "release_tail_81DF",
+   "note": "CALL $03F5, allocate $0A parameter 0, +$3F := $80, +$3E := 0, JP $033E (convert to $0F)",
+   "ok": true
+  },
+  {
+   "actual": "cd5c03dd6625dd6e272282d22a11d5111c0dafed52d83a22d5cb4fc8",
+   "bank": 30,
+   "cpu": "81F4",
+   "expected": "cd5c03dd6625dd6e272282d22a11d5111c0dafed52d83a22d5cb4fc8",
+   "file": "781F4",
+   "name": "release_mghz_branch_81F4",
+   "note": "MGHZ3: restore right limit, player X >= $0D1C and floor bit 1, then JR $81DF (no left-limit write)",
+   "ok": true
+  },
+  {
+   "actual": "3a22d5cb4fc82a74d12280d2018007ed4382d2116000ed537ed2cd5c03cd2b04dd3600ffdd363e000e0a2600cd2c03c3f503",
+   "bank": 30,
+   "cpu": "9D26",
+   "expected": "3a22d5cb4fc82a74d12280d2018007ed4382d2116000ed537ed2cd5c03cd2b04dd3600ffdd363e000e0a2600cd2c03c3f503",
+   "file": "79D26",
+   "name": "gpz_head_release_9D26",
+   "note": "GPZ3 head state 14: floor bit 1; limits camera..$0780; $035C; $042B; type $FF; $0A parameter 0; JP $03F5",
+   "ok": true
+  },
+  {
+   "actual": "3a00d5fe0120073accd2fe1f28053e503293",
+   "bank": 30,
+   "cpu": "BB1A",
+   "expected": "3a00d5fe0120073accd2fe1f28053e503293",
+   "file": "7BB1A",
+   "name": "eez_61_state5_early_clear",
+   "note": "Sonic (D500 = 1) with D2CC = $1F waits; every other case D293 := $50",
+   "ok": true
+  },
+  {
+   "actual": "cd99813accd2f62032ccd23e503293d2dd3600ffc97c",
+   "bank": 30,
+   "cpu": "BB61",
+   "expected": "cd99813accd2f62032ccd23e503293d2dd3600ffc97c",
+   "file": "7BB61",
+   "name": "eez_61_state7_final",
+   "note": "D2CC |= $20; D293 := $50; type := $FF",
+   "ok": true
+  },
+  {
+   "actual": "3a98d2fe02c03a97d28721842d16005f194e2346c5cd052ff3cdf826fbcde62ec10b78b120ee060cfbcd2d0610fac932",
+   "bank": null,
+   "cpu": "2D55",
+   "expected": "3a98d2fe02c03a97d28721842d16005f194e2346c5cd052ff3cdf826fbcde62ec10b78b120ee060cfbcd2d0610fac932",
+   "file": "02D55",
+   "name": "boss_bonus_loop_2D55",
+   "note": "act index 2 only; steps from $2D84 + zone * 2",
+   "ok": true
+  },
+  {
+   "actual": "320064009600c800fa005802",
+   "bank": null,
+   "cpu": "2D84",
+   "expected": "320064009600c800fa005802",
+   "file": "02D84",
+   "name": "boss_bonus_table_2D84",
+   "note": "50 100 150 200 250 600 steps of 10 raw",
+   "ok": true
+  },
+  {
+   "actual": "3a97d2fe053033cdf9320630fbcd2d0610fa2192d43600cbf6cbe62194d43600cbf6cbe60660fbcd",
+   "bank": null,
+   "cpu": "1594",
+   "expected": "3a97d2fe053033cdf9320630fbcd2d0610fa2192d43600cbf6cbe62194d43600cbf6cbe60660fbcd",
+   "file": "01594",
+   "name": "zone_results_gate_1594",
+   "note": "zone >= 5 skips the results screen $32F9",
+   "ok": true
+  },
+  {
+   "actual": "ff040a0400000001",
+   "bank": 30,
+   "cpu": "BA12",
+   "expected": "ff040a0400000001",
+   "file": "7BA12",
+   "name": "eez_61_state5_spawn_op",
+   "note": "script op FF 04: spawn type $0A, dx +4, dy 0, parameter 1 (the second spawn, dx -4, follows at $BA37-ish)",
+   "ok": true
+  }
+ ],
+ "base_commit": "1fb25857470f7c867d763c435a324befea751c12",
+ "bonus_object_0A": {
+  "evidence": "SOURCE (decoded states, $9C86 anchor) + CONTROLLED + EMULATED",
+  "script_state0": [
+   {
+    "callback": "9C86",
+    "cpu": "9C5E",
+    "duration": 224,
+    "frame": 0,
+    "op": "record"
+   },
+   {
+    "cmd": "00",
+    "cpu": "9C62",
+    "op": "restart_state"
+   }
+  ],
+  "script_state2": [
+   {
+    "callback": "032F",
+    "cpu": "9C64",
+    "duration": 8,
+    "frame": 0,
+    "op": "record"
+   },
+   {
+    "cmd": "01",
+    "cpu": "9C68",
+    "op": "call",
+    "target": "9C99"
+   },
+   {
+    "cmd": "04",
+    "cpu": "9C6C",
+    "dx": 0,
+    "dy": -12,
+    "op": "spawn",
+    "parameter": "FF",
+    "type": "0A"
+   },
+   {
+    "callback": "032F",
+    "cpu": "9C74",
+    "duration": 8,
+    "frame": 0,
+    "op": "record"
+   },
+   {
+    "cmd": "01",
+    "cpu": "9C78",
+    "op": "call",
+    "target": "9C99"
+   },
+   {
+    "cmd": "04",
+    "cpu": "9C7C",
+    "dx": 0,
+    "dy": -8,
+    "op": "spawn",
+    "parameter": "FF",
+    "type": "0A"
+   },
+   {
+    "cmd": "00",
+    "cpu": "9C84",
+    "op": "restart_state"
+   }
+  ],
+  "semantics": {
+   "first_run": "the object is allocated in the boss's defeat update; its first update (state 0 callback) is the NEXT update, so D2A6 reads the timer and D29A of that update",
+   "no_zero_replacement": "D2A6 is stored exactly as $041F returns it: H|L = 0 stays 0 (the sign child $19 replaces 0 by $0777 and grants a life for equal digits; $0A does neither)",
+   "parameter_0": "state 0 callback: request state 1, then (parameter == 0) request state 2, HL := $041F, D2A6 := HL, copy the player's X/Y; state 2 is a sparkle emitter every 8 updates ($0A parameter $FF at player Y - 12 / Y - 8) that never ends",
+   "parameter_nonzero": "the callback returns after `LD (IX+2),1`: no D2A6 write (state 1 script: sparkle, 28 updates)"
+  },
+  "states": [
+   {
+    "script": "9C5E",
+    "state": 0
+   },
+   {
+    "script": "9BE8",
+    "state": 1
+   },
+   {
+    "script": "9C64",
+    "state": 2
+   }
+  ],
+  "writers_of_D2A6": ["0C:AB52 sign child $19 (zero -> $0777, equal-digit life)", "0C:9C96 boss bonus object $0A parameter 0", "1E:$94BD Special Stage success (seconds left << 8)", "tally decrement $2D08 loops"]
+ },
+ "bonus_object_allocation_sites": {
+  "immediate_creator_calls": [
+   {
+    "bytes": "0e0a2600cd2c03",
+    "cpu": "81E2",
+    "file": "781E2",
+    "meaning": "LD C,$0A / LD H,0 / CALL $032C"
+   },
+   {
+    "bytes": "0e0a2600cd2c03",
+    "cpu": "9D4E",
+    "file": "79D4E",
+    "meaning": "LD C,$0A / LD H,0 / CALL $032C"
+   }
+  ],
+  "note": "the only other source of a $0A object is the object's own script ($0A parameter 0 state 2 spawns $0A parameter $FF sparkles) and the EEZ $61 state-5 script (parameter 1)",
+  "scanned": "every `LD C,$0A` / `LD A,$0A` / `LD BC,$000A` / `LD DE,$000A` within 16 bytes of CALL/JP $032C, $032F or $0332 in banks $0C, $1D, $1E, $1F: exactly the two sites above",
+  "script_spawn_ops": [
+   {
+    "cmd": "04",
+    "cpu": "BA12",
+    "dx": 4,
+    "dy": 0,
+    "op": "spawn",
+    "parameter": "01",
+    "type": "0A"
+   },
+   {
+    "cmd": "04",
+    "cpu": "BA2D",
+    "dx": -4,
+    "dy": 0,
+    "op": "spawn",
+    "parameter": "01",
+    "type": "0A"
+   }
+  ]
+ },
+ "bonus_word_inputs": {
+  "formula": "L = ((D29A - $11) DAA) + entry.L (DAA); H = entry.H; carry -> H + 1 (never happens: all entry.L = 0)",
+  "rings_byte": "D29A (BCD)",
+  "time_table": [
+   {
+    "h": "09",
+    "l": "00",
+    "limit_bcd_mmss": "0029"
+   },
+   {
+    "h": "08",
+    "l": "00",
+    "limit_bcd_mmss": "0059"
+   },
+   {
+    "h": "07",
+    "l": "00",
+    "limit_bcd_mmss": "0129"
+   },
+   {
+    "h": "06",
+    "l": "00",
+    "limit_bcd_mmss": "0159"
+   },
+   {
+    "h": "05",
+    "l": "00",
+    "limit_bcd_mmss": "0229"
+   },
+   {
+    "h": "04",
+    "l": "00",
+    "limit_bcd_mmss": "0259"
+   },
+   {
+    "h": "03",
+    "l": "00",
+    "limit_bcd_mmss": "0329"
+   },
+   {
+    "h": "02",
+    "l": "00",
+    "limit_bcd_mmss": "0359"
+   },
+   {
+    "h": "01",
+    "l": "00",
+    "limit_bcd_mmss": "0459"
+   },
+   {
+    "h": "00",
+    "l": "00",
+    "limit_bcd_mmss": "FFFF"
+   }
+  ],
+  "timer_bytes": "D2BF = seconds BCD, D2C0 = minutes BCD"
+ },
+ "fixed_boss_bonus": {
+  "note": "$2D55 reads word [zone] (D297) and awards N steps of 10 raw before the tally loops; zone 5 never reaches it (results skipped)",
+  "raw_units": [500, 1000, 1500, 2000, 2500, 6000],
+  "steps": [50, 100, 150, 200, 250, 600],
+  "unused_zone": 5,
+  "used_zones": [0, 1, 2, 3, 4]
+ },
+ "g0_spine_disclosure": {
+  "fixtures": ["ARRIVAL sign placement (THZ1, THZ2)", "RAM forced player state $20 (THZ3)", "RAM act-clear flag (other 15 acts)"],
+  "injected_or_forced": 16,
+  "natural_sign_chain": 2,
+  "note": "the 6 act-index-2 rows of the spine are a forced player state $20 (THZ3) or an injected D293 flag: none of them contains a boss defeat, a $0A object or a D2A6 write",
+  "rows": [
+   {
+    "act": 0,
+    "how": "real sign chain",
+    "zone": 0
+   },
+   {
+    "act": 1,
+    "how": "real sign chain",
+    "zone": 0
+   },
+   {
+    "act": 2,
+    "how": "forced player state $20 (shared tail of the boss path)",
+    "zone": 0
+   },
+   {
+    "act": 0,
+    "how": "act-clear flag raised",
+    "zone": 1
+   },
+   {
+    "act": 1,
+    "how": "act-clear flag raised",
+    "zone": 1
+   },
+   {
+    "act": 2,
+    "how": "act-clear flag raised",
+    "zone": 1
+   },
+   {
+    "act": 0,
+    "how": "act-clear flag raised",
+    "zone": 2
+   },
+   {
+    "act": 1,
+    "how": "act-clear flag raised",
+    "zone": 2
+   },
+   {
+    "act": 2,
+    "how": "act-clear flag raised",
+    "zone": 2
+   },
+   {
+    "act": 0,
+    "how": "act-clear flag raised",
+    "zone": 3
+   },
+   {
+    "act": 1,
+    "how": "act-clear flag raised",
+    "zone": 3
+   },
+   {
+    "act": 2,
+    "how": "act-clear flag raised",
+    "zone": 3
+   },
+   {
+    "act": 0,
+    "how": "act-clear flag raised",
+    "zone": 4
+   },
+   {
+    "act": 1,
+    "how": "act-clear flag raised",
+    "zone": 4
+   },
+   {
+    "act": 2,
+    "how": "act-clear flag raised",
+    "zone": 4
+   },
+   {
+    "act": 0,
+    "how": "act-clear flag raised",
+    "zone": 5
+   },
+   {
+    "act": 1,
+    "how": "act-clear flag raised",
+    "zone": 5
+   },
+   {
+    "act": 2,
+    "how": "act-clear flag raised",
+    "zone": 5
+   }
+  ],
+  "source": "data/g0/campaign-oracle.json campaign_spine.acts"
+ },
+ "poc_source_read": {
+  "commit": "d9275feeca1a799928b6eb1a866d32275c4024b5",
+  "entries": [
+   {
+    "fact": "chaos_boss_bonus(seconds, rings): H = max(0, 9 - floor(seconds / 30)); L = (rings - 11) mod 100; steps = H * 100 + L",
+    "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+    "lines": "173-179, 220-228",
+    "versus_rom": "ROM bucket limits are strict mm:ss BCD 0:29, 0:59, 1:29, ... 3:59, 4:59 (not floor(s/30)); the POC formula flips one second early on every boundary and has no 4:59 last bucket"
+   },
+   {
+    "fact": "global.chaosBossClearScore = ring * 10 + steps + 500",
+    "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml (and gpz/mghz/sez boss scripts)",
+    "lines": "223 / 205 / 313 / 361",
+    "versus_rom": "the fixed boss bonus is zone dependent 500/1000/1500/2000/2500 (table $2D84), not a constant 500; and it is a results-tally component, not a pre-computed clear score"
+   },
+   {
+    "fact": "chaos_act_complete: results only for act < 3; act 3 keeps the developer return (90 ticks) or zoneGoto progression + SCR_save_game",
+    "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+    "lines": "476-493",
+    "versus_rom": "the ROM runs the same results/tally/title tail for act index 2 (D293 bit 4 -> $1543) with the fixed boss bonus first"
+   },
+   {
+    "fact": "chaos_results_bonus: G1-D corrected ROM word incl. the sign child's zero -> 777 replacement",
+    "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+    "lines": "29-40",
+    "versus_rom": "correct for the sign child $19; the boss object $0A has NO zero replacement (zero stays zero) and no equal-digit life"
+   }
+  ],
+  "note": "read-only; not run; not ROM evidence"
+ },
+ "release_callback_references": {
+  "81BD": {
+   "references": [
+    {
+     "context": "00e000bd81ff",
+     "cpu": "9620",
+     "kind": "data_word"
+    },
+    {
+     "context": "a8e000bd81ff",
+     "cpu": "A857",
+     "kind": "data_word"
+    }
+   ],
+   "script_owners": [
+    {
+     "script": "961E",
+     "site": "9620",
+     "state": 5,
+     "type": "50"
+    },
+    {
+     "script": "961E",
+     "site": "9620",
+     "state": 5,
+     "type": "54"
+    },
+    {
+     "script": "961E",
+     "site": "9620",
+     "state": 5,
+     "type": "56"
+    },
+    {
+     "script": "961E",
+     "site": "9620",
+     "state": 5,
+     "type": "60"
+    },
+    {
+     "script": "A7F0",
+     "site": "A857",
+     "state": 5,
+     "type": "59"
+    }
+   ]
+  },
+  "9D26": {
+   "references": [
+    {
+     "context": "03e000269dff",
+     "cpu": "9D20",
+     "kind": "data_word"
+    }
+   ],
+   "script_owners": [
+    {
+     "script": "9CB5",
+     "site": "9D20",
+     "state": 14,
+     "type": "51"
+    }
+   ]
+  }
+ },
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "routines": [
+  {
+   "bank": null,
+   "cpu_end_exclusive": "5EB7",
+   "cpu_start": "5E9C",
+   "file_start": "05E9C",
+   "first16": "fd2140d50610114000fd7e00b72805fd",
+   "length": 27,
+   "name": "creator_5E9C",
+   "role": "vector $032C: C = type, H = parameter, first free slot from $D540 (16 slots); no free slot -> RET with nothing created",
+   "sha256": "75ab05f0ff5297a75768adff3d94fdfdaa4767e87b1dddf52baaaf2b37d663e7"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "48A7",
+   "cpu_start": "4892",
+   "file_start": "04892",
+   "first16": "3e203202d50e893a98d2fe0220020e97",
+   "length": 21,
+   "name": "player_state20_4892",
+   "role": "vector $03F5: D502 := $20, request $89 (act index != 2) or $97 (act index 2)",
+   "sha256": "ad096870119cd9ba85752ef79e929464752fe25e3208d07812cbb1ef106e0e3f"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1543",
+   "cpu_start": "14AE",
+   "file_start": "014AE",
+   "first16": "063cfbcd2d0610facdeb1c3e0432d4d2",
+   "length": 149,
+   "name": "act_clear_tail_14AE",
+   "role": "main-loop tail for D293 bit 5 (act index 0/1)",
+   "sha256": "30ad4626a11dcf0f3cefbc193551827c21db41a8a13edce092917f94ae70c46f"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "15F2",
+   "cpu_start": "1543",
+   "file_start": "01543",
+   "first16": "063cfbcd2d0610facdeb1c3e0432d4d2",
+   "length": 175,
+   "name": "zone_clear_tail_1543",
+   "role": "main-loop tail for D293 bit 4 (act index 2): fades, results gate $1594, zone increment $15CE",
+   "sha256": "46b9f946a53cc5ccb7e9d9974f84fa82f711f37ff0c42f66427684b3eae13f23"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2D55",
+   "cpu_start": "2D08",
+   "file_start": "02D08",
+   "first16": "af3210d13a9ad2fe0028153d27329ad2",
+   "length": 77,
+   "name": "tally_loops_2D08",
+   "role": "ring loop (10 raw per ring) then the D2A6 bonus-word loop (1 raw per step)",
+   "sha256": "98a654fd67b6e0f0c3c806699f3d3053d92c0f7347d54ed578ec0b4597ada71d"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2D84",
+   "cpu_start": "2D55",
+   "file_start": "02D55",
+   "first16": "3a98d2fe02c03a97d28721842d16005f",
+   "length": 47,
+   "name": "boss_bonus_loop_2D55",
+   "role": "act index 2 only: N steps of 10 raw before the tally loops",
+   "sha256": "b179e863ac7e76de90c1b39687f1f9289fe82dd8ec356f73e6ab42244708f7da"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2D90",
+   "cpu_start": "2D84",
+   "file_start": "02D84",
+   "first16": "320064009600c800fa005802dd7e00b7",
+   "length": 12,
+   "name": "boss_bonus_table_2D84",
+   "role": "six 16-bit step counts, one per zone",
+   "sha256": "043f523a1b4e3ff131428e24f3ba1c69ab6d32c32e64c34e5fe7332d82d06506"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "62AD",
+   "cpu_start": "6276",
+   "file_start": "06276",
+   "first16": "aff521ad62878716005f195e23562322",
+   "length": 55,
+   "name": "bonus_word_6276",
+   "role": "$041F: time bucket + (D29A - $11) -> HL",
+   "sha256": "4acadba93d4d13894f1eebd871d4e120495b5838a2a364d11430523ae349dc69"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "62D5",
+   "cpu_start": "62AD",
+   "file_start": "062AD",
+   "first16": "29000009590000082901000759010006",
+   "length": 40,
+   "name": "bonus_time_table_62AD",
+   "role": "ten 4-byte entries: limit mm:ss BCD, L, H",
+   "sha256": "0095da7fd3153e67ac67620896f8b3252bb8e3f19e4c82fe7d83263bbf08fb57"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "8400",
+   "cpu_start": "83A6",
+   "file_start": "303A6",
+   "first16": "ddcb04beafdd7718dd7719ddcb04a6ed",
+   "length": 90,
+   "name": "state20_handler_83A6",
+   "role": "player state $20 handler: run right, sets D293 bit 5 (act index < 2) or bit 4 (act index 2) beyond cameraX + $120",
+   "sha256": "b1d9c1a6cfb619b32a569a0a4c6146ae8e68393548178522d3336a53c00bdf61"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "9CAC",
+   "cpu_start": "9C58",
+   "file_start": "31C58",
+   "first16": "5e9ce89b649ce000869cff0008002f03",
+   "length": 84,
+   "name": "bonus_object_0A",
+   "role": "type $0A: 3-entry state table, state-0 and sparkle-emitter scripts, state-0 callback (D2A6 for parameter 0), player-position copy",
+   "sha256": "3f43cacb2a10da0982162b8dc52ebc7d71ebdf0afafeb36a7d6d70385512515e"
+  },
+  {
+   "bank": 30,
+   "cpu_end_exclusive": "8212",
+   "cpu_start": "81BD",
+   "file_start": "781BD",
+   "first16": "dd7e00fe562830cd7d033a22d5cb4fc8",
+   "length": 85,
+   "name": "boss_release_81BD",
+   "role": "shared state-5 release: floor gate, camera/limits, $03F5, allocate $0A parameter 0, convert to $0F; $81F4 = MGHZ3 branch",
+   "sha256": "3414b6424c067ac3925823e6d73f1d3f5631840e92ff39ee583050f276efdfe0"
+  },
+  {
+   "bank": 30,
+   "cpu_end_exclusive": "9632",
+   "cpu_start": "961E",
+   "file_start": "7961E",
+   "first16": "e000bd81ff00ff0904001001099a1002",
+   "length": 20,
+   "name": "boss_state5_script_961E",
+   "role": "script of state 5 of $50/$54/$56/$60: record whose callback is $81BD",
+   "sha256": "40a5f65fd357aa1f21377cdb7ed8d93987e1d97d898cb1b1c0c6d6a7679f40e9"
+  },
+  {
+   "bank": 30,
+   "cpu_end_exclusive": "A85B",
+   "cpu_start": "A7F0",
+   "file_start": "7A7F0",
+   "first16": "ff0434f8ff000008010a2f03ff043408",
+   "length": 107,
+   "name": "aqz_state5_script_A7F0",
+   "role": "script of state 5 of $59 (callback record at $A857 -> $81BD)",
+   "sha256": "391ed9bcdf3c06e3c34a90c5677ccd8c0105a5bc9199a5019305f450e57f5300"
+  },
+  {
+   "bank": 30,
+   "cpu_end_exclusive": "9D58",
+   "cpu_start": "9D26",
+   "file_start": "79D26",
+   "first16": "3a22d5cb4fc82a74d12280d2018007ed",
+   "length": 50,
+   "name": "gpz_head_release_9D26",
+   "role": "GPZ3 head state 14 grounded release: limits, $0A parameter 0, $03F5",
+   "sha256": "c15a5df9d48d3605189b44e2213299896761be843d363035e58ff91d221eed0d"
+  },
+  {
+   "bank": 30,
+   "cpu_end_exclusive": "BA37",
+   "cpu_start": "B9FF",
+   "file_start": "7B9FF",
+   "first16": "ff0e0204051abb04061abb04071abbff",
+   "length": 56,
+   "name": "eez_61_state5_script_B9FF",
+   "role": "$61 state 5 script: two spawns of type $0A parameter 1 (dx +4/-4) after 24 updates",
+   "sha256": "47179180dcc65c968bddf51894009f84edf695aab46682523dd0a93eb95b6855"
+  },
+  {
+   "bank": 30,
+   "cpu_end_exclusive": "BB51",
+   "cpu_start": "BB1A",
+   "file_start": "7BB1A",
+   "first16": "3a00d5fe0120073accd2fe1f28053e50",
+   "length": 55,
+   "name": "eez_61_state5_callback_BB1A",
+   "role": "$61 state 5 callback: early clear D293 := $50 unless Sonic with D2CC = $1F",
+   "sha256": "c355dbd184a1bba76509f2645251ac00e74d63595ce92fb9e633a90e10bbdf50"
+  },
+  {
+   "bank": 30,
+   "cpu_end_exclusive": "BB76",
+   "cpu_start": "BB61",
+   "file_start": "7BB61",
+   "first16": "cd99813accd2f62032ccd23e503293d2",
+   "length": 21,
+   "name": "eez_61_final_BB61",
+   "role": "$61 state 7: D2CC |= $20, D293 := $50, type := $FF",
+   "sha256": "48f76b413761adbee632363830e1791c8c8f9ed2b5143b265e7d7af13c00195d"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "15F2",
+   "cpu_start": "1594",
+   "file_start": "01594",
+   "first16": "3a97d2fe053033cdf9320630fbcd2d06",
+   "length": 94,
+   "name": "zone_results_gate_1594",
+   "role": "zone >= 5 skips the results card",
+   "sha256": "ceff253f12a7bdd51b6af3d98f7394b4fb16d8a77e9f6f9e952fed752f0b5606"
+  }
+ ],
+ "schema": "u2-act3-boss-bonus-static/1",
+ "shared_release_users": {
+  "note": "type $60 (EEZ mid boss) lists the same state-5 script but its observed route never enters state 5 (UNVERIFIED reachability); $5E/$5F/$62 do not",
+  "type_state_pairs": [
+   {
+    "state": 5,
+    "type": "50"
+   },
+   {
+    "state": 5,
+    "type": "54"
+   },
+   {
+    "state": 5,
+    "type": "56"
+   },
+   {
+    "state": 5,
+    "type": "59"
+   },
+   {
+    "state": 5,
+    "type": "60"
+   }
+  ]
+ },
+ "tiers": {
+  "CONTROLLED": "Z80 oracle",
+  "EMULATED": "unmodified ROM in the harness with disclosed fixtures",
+  "FIXTURE": "named injected values",
+  "POC_SOURCE_READ": "G1-D d9275feeca1a799928b6eb1a866d32275c4024b5, read only",
+  "SOURCE": "decoded ROM bytes, hashes, anchors, script decode"
+ },
+ "type_state_tables": {
+  "0A": {
+   "bank": 12,
+   "state_scripts": ["9C5E", "9BE8", "9C64"],
+   "states": 3,
+   "table": "9C58"
+  },
+  "0F": {
+   "bank": 12,
+   "state_scripts": ["9FD3", "9FD9", "9FD9", "A00B", "A038"],
+   "states": 5,
+   "table": "9FC9"
+  },
+  "12": {
+   "bank": 12,
+   "state_scripts": ["A259", "A25F"],
+   "states": 2,
+   "table": "A255"
+  },
+  "34": {
+   "bank": 30,
+   "state_scripts": ["8BE7", "8BED", "8C13"],
+   "states": 3,
+   "table": "8BE1"
+  },
+  "50": {
+   "bank": 30,
+   "state_scripts": ["95B1", "95BA", "95C0", "95C6", "95CC", "961E", "9632", "9640", "967A", "9688", "9694", "96B6", "96C0", "96CE", "9708", "9716", "9720", "9742", "9624"],
+   "states": 19,
+   "table": "958B"
+  },
+  "51": {
+   "bank": 30,
+   "state_scripts": ["9A64", "9B45", "9B56", "9B67", "9B78", "9B9C", "9BA1", "9BBF", "9BC5", "9BE9", "9C20", "9C4E", "9C74", "9C86", "9CB5", "9D58", "9D7E", "9D87", "9DBE", "9DD3", "9DF9"],
+   "states": 21,
+   "table": "9A3A"
+  },
+  "54": {
+   "bank": 30,
+   "state_scripts": ["95B1", "95BA", "95C0", "A1F6", "95CC", "961E", "A1FC", "A202", "A23C", "A24E", "A25D", "A267", "A281"],
+   "states": 13,
+   "table": "A1DC"
+  },
+  "55": {
+   "bank": 30,
+   "state_scripts": ["A45D", "A463", "A469", "A46F"],
+   "states": 4,
+   "table": "A455"
+  },
+  "56": {
+   "bank": 30,
+   "state_scripts": ["95B1", "95BA", "95C0", "A4DE", "95CC", "961E", "A4E4", "A4F1", "A510", "A51C", "A543", "A558", "A56D"],
+   "states": 13,
+   "table": "A4C4"
+  },
+  "57": {
+   "bank": 30,
+   "state_scripts": ["A6DF", "A6E5", "A6FA", "A709"],
+   "states": 4,
+   "table": "A6D7"
+  },
+  "58": {
+   "bank": 30,
+   "state_scripts": ["A78E", "A794"],
+   "states": 2,
+   "table": "A78A"
+  },
+  "59": {
+   "bank": 30,
+   "state_scripts": ["95B1", "95BA", "95C0", "A7E4", "A7EA", "A7F0", "A85B", "A86D", "A873", "A879", "A894", "A8BA", "A8FA", "A900", "A918", "A977", "A97D", "A883", "A983", "A996", "A8B1"],
+   "states": 21,
+   "table": "A7BA"
+  },
+  "5A": {
+   "bank": 30,
+   "state_scripts": ["AC12", "AC18", "AC22", "AC2C", "AC32"],
+   "states": 5,
+   "table": "AC08"
+  },
+  "5B": {
+   "bank": 30,
+   "state_scripts": ["AD2F", "AD35"],
+   "states": 2,
+   "table": "AD2B"
+  },
+  "5C": {
+   "bank": 30,
+   "state_scripts": ["AD6C", "AD72", "AD7C", "AD88", "AD90", "AD82"],
+   "states": 6,
+   "table": "AD60"
+  },
+  "5D": {
+   "bank": 30,
+   "state_scripts": ["AED9", "AEDF"],
+   "states": 2,
+   "table": "AED5"
+  },
+  "5E": {
+   "bank": 30,
+   "state_scripts": ["AF68", "95BA", "95C0", "AF9C", "95CC", "AF71", "AFA2", "AFB0", "AFBE", "AFCC", "AFE5", "AFBE", "B000", "B009"],
+   "states": 14,
+   "table": "AF4C"
+  },
+  "5F": {
+   "bank": 30,
+   "state_scripts": ["B36B", "B371", "B393", "B39B", "B3AD", "B3BD", "B3CB"],
+   "states": 7,
+   "table": "B35D"
+  },
+  "60": {
+   "bank": 30,
+   "state_scripts": ["B573", "95BA", "95C0", "B58F", "95CC", "961E", "B595", "B595", "B595", "B59B", "B5A3", "B5D7", "B616"],
+   "states": 13,
+   "table": "B559"
+  },
+  "61": {
+   "bank": 30,
+   "state_scripts": ["B959", "B95F", "B96F", "B9A7", "B9DD", "B9FF", "BA37", "BA45"],
+   "states": 8,
+   "table": "B949"
+  },
+  "62": {
+   "bank": 30,
+   "state_scripts": ["BB7C", "BB82", "BBA0"],
+   "states": 3,
+   "table": "BB76"
+  }
+ },
+ "zones": {
+  "0": {
+   "controller": "50",
+   "gate": "floor bit 1 ($D522 bit 1)",
+   "mechanism": "release_81BD",
+   "owner_state": 5,
+   "producer": "$81BD via state-5 script $961E",
+   "zone": "THZ"
+  },
+  "1": {
+   "controller": "51",
+   "gate": "floor bit 1 ($D522 bit 1)",
+   "mechanism": "gpz_head_release_9D26",
+   "owner_state": 14,
+   "producer": "$9D26 head state 14 (grounded)",
+   "zone": "GPZ"
+  },
+  "2": {
+   "controller": "54",
+   "gate": "floor bit 1",
+   "mechanism": "release_81BD",
+   "owner_state": 5,
+   "producer": "$81BD via state-5 script $961E",
+   "zone": "SEZ"
+  },
+  "3": {
+   "controller": "56",
+   "gate": "player X >= $0D1C (3356) AND floor bit 1; no left-limit write",
+   "mechanism": "release_81BD",
+   "owner_state": 5,
+   "producer": "$81BD -> $81F4 branch -> $81DF",
+   "zone": "MGHZ"
+  },
+  "4": {
+   "controller": "59",
+   "gate": "floor bit 1",
+   "mechanism": "release_81BD",
+   "owner_state": 5,
+   "producer": "$81BD via state-5 script $A7F0 (record $A857)",
+   "zone": "AQZ"
+  },
+  "5": {
+   "bonus_object": "script spawns $0A parameter 1 (sparkles) 24 updates into state 5; parameter 1 never writes D2A6; results card skipped",
+   "controller": "61",
+   "gate": "state 5: any case except Sonic with D2CC == $1F; state 7: after contact",
+   "mechanism": "eez_61_direct_flag",
+   "owner_state": "5 or 7",
+   "producer": "NONE: $61 writes D293 := $50 directly (state 5 early clear BB28, or state 7 final BB6C)",
+   "zone": "EEZ"
+  }
+ }
+}

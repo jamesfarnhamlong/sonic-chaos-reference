@@ -1,0 +1,1302 @@
+{
+ "base_commit": "1fb25857470f7c867d763c435a324befea751c12",
+ "evidence": "EMULATED ORIGINAL FRAMES with FIXTURE-driven player placement (harness list per record); frames are harness frames of the run that contains the chain",
+ "fights": {
+  "AQZ3": {
+   "D293_writes": [
+    [3582, 64, 80]
+   ],
+   "D2A6_sets": [
+    {
+     "frame": 3384,
+     "rings": 71,
+     "time": [0, 64],
+     "word": 2102
+    }
+   ],
+   "bonus_compute_inputs": [
+    {
+     "D2A6_before": 0,
+     "frame": 3383,
+     "rings": 71,
+     "time": [0, 64]
+    }
+   ],
+   "bonus_objects_created": [
+    [3383, 0],
+    [3393, 255],
+    [3401, 255],
+    [3410, 255],
+    [3419, 255],
+    [3429, 255],
+    [3439, 255],
+    [3449, 255],
+    [3459, 255],
+    [3469, 255],
+    [3479, 255],
+    [3488, 255],
+    [3496, 255],
+    [3505, 255],
+    [3514, 255],
+    [3522, 255],
+    [3530, 255],
+    [3538, 255],
+    [3546, 255],
+    [3555, 255],
+    [3563, 255],
+    [3571, 255],
+    [3579, 255]
+   ],
+   "boss_state_path": [
+    [1032, 89, 1],
+    [1041, 89, 2],
+    [1132, 89, 3],
+    [1133, 89, 6],
+    [1455, 89, 7],
+    [1528, 89, 8],
+    [1614, 89, 9],
+    [1615, 89, 10],
+    [1631, 89, 9],
+    [1679, 89, 17],
+    [1695, 89, 9],
+    [1696, 89, 10],
+    [1712, 89, 9],
+    [1760, 89, 17],
+    [1776, 89, 9],
+    [1777, 89, 10],
+    [1793, 89, 9],
+    [1841, 89, 17],
+    [1857, 89, 9],
+    [1858, 89, 10],
+    [1874, 89, 9],
+    [1922, 89, 17],
+    [1938, 89, 9],
+    [1939, 89, 10],
+    [1955, 89, 9],
+    [2003, 89, 17],
+    [2019, 89, 9],
+    [2020, 89, 10],
+    [2036, 89, 9],
+    [2084, 89, 17],
+    [2100, 89, 9],
+    [2101, 89, 10],
+    [2117, 89, 9],
+    [2165, 89, 17],
+    [2181, 89, 9],
+    [2182, 89, 10],
+    [2198, 89, 9],
+    [2246, 89, 17],
+    [2262, 89, 9],
+    [2263, 89, 10],
+    [2279, 89, 9],
+    [2327, 89, 17],
+    [2343, 89, 9],
+    [2344, 89, 10],
+    [2360, 89, 9],
+    [2408, 89, 17],
+    [2424, 89, 9],
+    [2425, 89, 10],
+    [2431, 89, 20],
+    [2435, 89, 9],
+    [2447, 89, 20],
+    [2451, 89, 9],
+    [2463, 89, 20],
+    [2467, 89, 9],
+    [2479, 89, 20],
+    [2483, 89, 9],
+    [2489, 89, 17],
+    [2496, 89, 20],
+    [2497, 89, 17],
+    [2513, 89, 20],
+    [2514, 89, 17],
+    [2530, 89, 20],
+    [2531, 89, 17],
+    [2547, 89, 20],
+    [2548, 89, 17],
+    [2564, 89, 20],
+    [2565, 89, 17],
+    [2581, 89, 20],
+    [2582, 89, 17],
+    [2598, 89, 9],
+    [2599, 89, 10],
+    [2600, 89, 20],
+    [2601, 89, 11],
+    [2697, 89, 12],
+    [2843, 89, 13],
+    [2913, 89, 14],
+    [2950, 89, 18],
+    [2982, 89, 15],
+    [3214, 89, 19],
+    [3247, 89, 16],
+    [3249, 89, 5]
+   ],
+   "controller_type": 89,
+   "counts": {
+    "D2A6_sets": 1,
+    "bonus_objects_param0": 1,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 1,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "EMULATED (natural boss defeat chain, synthetic player driver)",
+   "fixtures": ["ZoneGame arena placement (1800,238)", "synthetic attack writes", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first $03F5 player-state-$20 request (hook frame)",
+    "base_frame": 3382,
+    "offsets": {
+     "D2A6_set": [2],
+     "boss_bonus_loop": [474],
+     "flag_bit4_set": [199],
+     "results_card": [398],
+     "state20_request": [0],
+     "tally_loops": [551],
+     "zone_clear_tail": [200],
+     "zone_increment": [1076],
+     "zone_results_gate": [398]
+    }
+   },
+   "harness": "tools/aqz59_game.py build (first fight_9 chain)",
+   "label": "AQZ3",
+   "next_start": {
+    "act": 0,
+    "camera_target": [126, 752],
+    "player": [238, 864],
+    "zone": 5
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 3806,
+    "score_before": 0,
+    "zone_act_after": [5, 0],
+    "zone_act_before": [4, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 2500,
+    "at_zone_increment": 3806,
+    "fixed_bonus": 2500,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 1306,
+    "word_at_tally": 2102,
+    "word_units": 836
+   },
+   "state20_requests": [
+    {
+     "act_index": 2,
+     "bank": 30,
+     "caller": "81E2",
+     "frame": 3382,
+     "parent_type": 89
+    }
+   ],
+   "tail_frames": {
+    "boss_bonus_loop": [3856],
+    "flag_bit4_set": [3581],
+    "results_card": [3780],
+    "tally_loops": [3933],
+    "zone_clear_tail": [3582],
+    "zone_increment": [4458],
+    "zone_results_gate": [3780]
+   },
+   "zone": 4
+  },
+  "EEZ3_sonic_flags00": {
+   "D293_writes": [
+    [2916, 64, 80],
+    [3115, 80, 192]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [
+    [2783, 97, 1],
+    [2784, 97, 2],
+    [2784, 98, 1],
+    [2785, 97, 3],
+    [2881, 97, 4],
+    [2882, 98, 2],
+    [2916, 97, 5]
+   ],
+   "character_in": 1,
+   "controller_type": 97,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 0,
+    "flag_bit4_set": 0,
+    "results_card": 0,
+    "tally_loops": 0,
+    "zone_increment": 1
+   },
+   "emerald_flags_in": 0,
+   "evidence_class": "EMULATED (natural boss chain, synthetic player driver)",
+   "fixtures": ["ZoneGame arena placement (2050,430)", "synthetic contact writes", "RAM D2CC := $00, D2C8 := 1", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 2916,
+    "offsets": {
+     "D2A6_set": [],
+     "end_path": [199],
+     "ending_partial_sonic": [200],
+     "ending_selector": [200],
+     "state20_request": [],
+     "title_entry": [2015],
+     "zone_clear_tail": [-1],
+     "zone_increment": [198],
+     "zone_results_gate": [198]
+    }
+   },
+   "harness": "tools/eez_boss_game.py build",
+   "label": "EEZ3_sonic_flags00",
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 0,
+    "score_before": 0,
+    "zone_act_after": [6, 0],
+    "zone_act_before": [5, 2]
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "end_path": [3115],
+    "ending_partial_sonic": [3116],
+    "ending_selector": [3116],
+    "title_entry": [4931],
+    "zone_clear_tail": [2915],
+    "zone_increment": [3114],
+    "zone_results_gate": [3114]
+   },
+   "zone": 5
+  },
+  "EEZ3_sonic_flags1F": {
+   "D293_writes": [
+    [2917, 64, 80],
+    [3116, 80, 192]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [
+    [2783, 97, 1],
+    [2784, 97, 2],
+    [2784, 98, 1],
+    [2785, 97, 3],
+    [2881, 97, 4],
+    [2882, 98, 2],
+    [2916, 97, 5]
+   ],
+   "character_in": 1,
+   "controller_type": 97,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 0,
+    "flag_bit4_set": 0,
+    "results_card": 0,
+    "tally_loops": 0,
+    "zone_increment": 1
+   },
+   "emerald_flags_in": 31,
+   "evidence_class": "EMULATED (natural boss chain, synthetic player driver)",
+   "fixtures": ["ZoneGame arena placement (2050,430)", "synthetic contact writes", "RAM D2CC := $1F, D2C8 := 1", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 2917,
+    "offsets": {
+     "D2A6_set": [],
+     "end_path": [199],
+     "ending_full_sonic": [200],
+     "ending_selector": [200],
+     "state20_request": [],
+     "title_entry": [9907],
+     "zone_clear_tail": [0],
+     "zone_increment": [198],
+     "zone_results_gate": [198]
+    }
+   },
+   "harness": "tools/eez_boss_game.py build",
+   "label": "EEZ3_sonic_flags1F",
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [31, 63],
+    "lives": [3, 3],
+    "score_after": 0,
+    "score_before": 0,
+    "zone_act_after": [6, 0],
+    "zone_act_before": [5, 2]
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "end_path": [3116],
+    "ending_full_sonic": [3117],
+    "ending_selector": [3117],
+    "title_entry": [12824],
+    "zone_clear_tail": [2917],
+    "zone_increment": [3115],
+    "zone_results_gate": [3115]
+   },
+   "zone": 5
+  },
+  "EEZ3_sonic_flags3F": {
+   "D293_writes": [
+    [2916, 64, 80],
+    [3115, 80, 192]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [
+    [2783, 97, 1],
+    [2784, 97, 2],
+    [2784, 98, 1],
+    [2785, 97, 3],
+    [2881, 97, 4],
+    [2882, 98, 2],
+    [2916, 97, 5]
+   ],
+   "character_in": 1,
+   "controller_type": 97,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 0,
+    "flag_bit4_set": 0,
+    "results_card": 0,
+    "tally_loops": 0,
+    "zone_increment": 1
+   },
+   "emerald_flags_in": 63,
+   "evidence_class": "EMULATED (natural boss chain, synthetic player driver)",
+   "fixtures": ["ZoneGame arena placement (2050,430)", "synthetic contact writes", "RAM D2CC := $3F, D2C8 := 1", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 2916,
+    "offsets": {
+     "D2A6_set": [],
+     "end_path": [199],
+     "ending_full_sonic": [200],
+     "ending_selector": [200],
+     "state20_request": [],
+     "title_entry": [9907],
+     "zone_clear_tail": [-1],
+     "zone_increment": [198],
+     "zone_results_gate": [198]
+    }
+   },
+   "harness": "tools/eez_boss_game.py build",
+   "label": "EEZ3_sonic_flags3F",
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [63, 63],
+    "lives": [3, 3],
+    "score_after": 0,
+    "score_before": 0,
+    "zone_act_after": [6, 0],
+    "zone_act_before": [5, 2]
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "end_path": [3115],
+    "ending_full_sonic": [3116],
+    "ending_selector": [3116],
+    "title_entry": [12823],
+    "zone_clear_tail": [2915],
+    "zone_increment": [3114],
+    "zone_results_gate": [3114]
+   },
+   "zone": 5
+  },
+  "GPZ3": {
+   "D293_writes": [
+    [2283, 64, 80]
+   ],
+   "D2A6_sets": [
+    {
+     "frame": 2161,
+     "rings": 71,
+     "time": [0, 32],
+     "word": 2358
+    }
+   ],
+   "bonus_compute_inputs": [
+    {
+     "D2A6_before": 0,
+     "frame": 2160,
+     "rings": 71,
+     "time": [0, 32]
+    }
+   ],
+   "bonus_objects_created": [
+    [2160, 0],
+    [2170, 255],
+    [2178, 255],
+    [2186, 255],
+    [2194, 255],
+    [2202, 255],
+    [2210, 255],
+    [2218, 255],
+    [2226, 255],
+    [2234, 255],
+    [2242, 255],
+    [2250, 255],
+    [2258, 255],
+    [2266, 255],
+    [2274, 255],
+    [2282, 255]
+   ],
+   "boss_state_path": [
+    [1839, 81, 13],
+    [1839, 81, 10],
+    [1839, 81, 18],
+    [1893, 81, 7],
+    [1899, 81, 13],
+    [1900, 81, 14],
+    [1901, 81, 16],
+    [1917, 81, 17]
+   ],
+   "controller_type": 81,
+   "counts": {
+    "D2A6_sets": 1,
+    "bonus_objects_param0": 1,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 1,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "EMULATED (natural boss defeat chain, synthetic player driver)",
+   "fixtures": ["arena ARRIVAL (camera 1500,96 / player 1604,238)", "synthetic player placement/attack writes", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first $03F5 player-state-$20 request (hook frame)",
+    "base_frame": 2159,
+    "offsets": {
+     "D2A6_set": [2],
+     "boss_bonus_loop": [398],
+     "flag_bit4_set": [123],
+     "results_card": [322],
+     "state20_request": [0],
+     "tally_loops": [435],
+     "zone_clear_tail": [124],
+     "zone_increment": [992],
+     "zone_results_gate": [322]
+    }
+   },
+   "harness": "tools/gpz51_fullgame.py build",
+   "label": "GPZ3",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 608],
+    "player": [110, 718],
+    "zone": 2
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 2406,
+    "score_before": 0,
+    "zone_act_after": [2, 0],
+    "zone_act_before": [1, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 1000,
+    "at_zone_increment": 2406,
+    "fixed_bonus": 1000,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 1406,
+    "word_at_tally": 2358,
+    "word_units": 936
+   },
+   "state20_requests": [
+    {
+     "act_index": 2,
+     "bank": 30,
+     "caller": "5E55",
+     "frame": 2159,
+     "parent_type": 255
+    }
+   ],
+   "tail_frames": {
+    "boss_bonus_loop": [2557],
+    "flag_bit4_set": [2282],
+    "results_card": [2481],
+    "tally_loops": [2594],
+    "zone_clear_tail": [2283],
+    "zone_increment": [3151],
+    "zone_results_gate": [2481]
+   },
+   "zone": 1
+  },
+  "MGHZ3": {
+   "D293_writes": [
+    [1488, 64, 80]
+   ],
+   "D2A6_sets": [
+    {
+     "frame": 1488,
+     "rings": 71,
+     "time": [0, 9],
+     "word": 2358
+    }
+   ],
+   "bonus_compute_inputs": [
+    {
+     "D2A6_before": 0,
+     "frame": 1487,
+     "rings": 71,
+     "time": [0, 9]
+    }
+   ],
+   "bonus_objects_created": [
+    [1487, 0]
+   ],
+   "boss_state_path": [
+    [950, 86, 1],
+    [951, 86, 2],
+    [1051, 86, 3],
+    [1052, 86, 11],
+    [1108, 86, 12],
+    [1124, 86, 6],
+    [1174, 86, 9],
+    [1208, 86, 7],
+    [1242, 86, 9],
+    [1279, 86, 6],
+    [1332, 86, 9],
+    [1336, 86, 4]
+   ],
+   "controller_type": 86,
+   "counts": {
+    "D2A6_sets": 1,
+    "bonus_objects_param0": 1,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 1,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "EMULATED (natural boss defeat chain, synthetic player driver)",
+   "fixtures": ["arena ARRIVAL (camera 2940,256 / player 3044,430)", "synthetic attack writes", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first $03F5 player-state-$20 request (hook frame)",
+    "base_frame": 1486,
+    "offsets": {
+     "D2A6_set": [2],
+     "boss_bonus_loop": [276],
+     "flag_bit4_set": [1],
+     "results_card": [200],
+     "state20_request": [0],
+     "tally_loops": [340],
+     "zone_clear_tail": [2],
+     "zone_increment": [897],
+     "zone_results_gate": [200]
+    }
+   },
+   "harness": "tools/mghz56_fullgame.py build",
+   "label": "MGHZ3",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 99],
+    "player": [110, 206],
+    "zone": 4
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 3406,
+    "score_before": 0,
+    "zone_act_after": [4, 0],
+    "zone_act_before": [3, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 2000,
+    "at_zone_increment": 3406,
+    "fixed_bonus": 2000,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 1406,
+    "word_at_tally": 2358,
+    "word_units": 936
+   },
+   "state20_requests": [
+    {
+     "act_index": 2,
+     "bank": 30,
+     "caller": "81E2",
+     "frame": 1486,
+     "parent_type": 86
+    }
+   ],
+   "tail_frames": {
+    "boss_bonus_loop": [1762],
+    "flag_bit4_set": [1487],
+    "results_card": [1686],
+    "tally_loops": [1826],
+    "zone_clear_tail": [1488],
+    "zone_increment": [2383],
+    "zone_results_gate": [1686]
+   },
+   "zone": 3
+  },
+  "SEZ3": {
+   "D293_writes": [
+    [2036, 64, 80]
+   ],
+   "D2A6_sets": [
+    {
+     "frame": 1800,
+     "rings": 71,
+     "time": [0, 20],
+     "word": 2358
+    }
+   ],
+   "bonus_compute_inputs": [
+    {
+     "D2A6_before": 0,
+     "frame": 1799,
+     "rings": 71,
+     "time": [0, 20]
+    }
+   ],
+   "bonus_objects_created": [
+    [1799, 0],
+    [1809, 255],
+    [1817, 255],
+    [1825, 255],
+    [1833, 255],
+    [1841, 255],
+    [1849, 255],
+    [1857, 255],
+    [1865, 255],
+    [1873, 255],
+    [1881, 255],
+    [1889, 255],
+    [1897, 255],
+    [1905, 255],
+    [1913, 255],
+    [1921, 255],
+    [1929, 255],
+    [1937, 255],
+    [1945, 255],
+    [1953, 255],
+    [1961, 255],
+    [1969, 255],
+    [1977, 255],
+    [1985, 255],
+    [1993, 255],
+    [2001, 255],
+    [2009, 255],
+    [2017, 255],
+    [2025, 255],
+    [2033, 255]
+   ],
+   "boss_state_path": [
+    [1034, 84, 1],
+    [1035, 84, 2],
+    [1134, 84, 3],
+    [1135, 84, 6],
+    [1391, 84, 9],
+    [1392, 84, 10],
+    [1393, 84, 7],
+    [1432, 84, 8],
+    [1458, 84, 9],
+    [1459, 84, 10],
+    [1460, 84, 7],
+    [1499, 84, 8],
+    [1524, 84, 9],
+    [1525, 84, 10],
+    [1526, 84, 11],
+    [1561, 84, 12],
+    [1594, 84, 8],
+    [1630, 84, 9],
+    [1631, 84, 10],
+    [1632, 84, 7],
+    [1651, 84, 4]
+   ],
+   "controller_type": 84,
+   "counts": {
+    "D2A6_sets": 1,
+    "bonus_objects_param0": 1,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 1,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "EMULATED (natural boss defeat chain, synthetic player driver)",
+   "fixtures": ["ZoneGame arena placement (3060,620)", "synthetic attack writes", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first $03F5 player-state-$20 request (hook frame)",
+    "base_frame": 1798,
+    "offsets": {
+     "D2A6_set": [2],
+     "boss_bonus_loop": [512],
+     "flag_bit4_set": [237],
+     "results_card": [436],
+     "state20_request": [0],
+     "tally_loops": [563],
+     "zone_clear_tail": [238],
+     "zone_increment": [1120],
+     "zone_results_gate": [436]
+    }
+   },
+   "harness": "tools/sez54_fullgame.py build (fight)",
+   "label": "SEZ3",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 80],
+    "player": [78, 192],
+    "zone": 3
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 2906,
+    "score_before": 0,
+    "zone_act_after": [3, 0],
+    "zone_act_before": [2, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 1500,
+    "at_zone_increment": 2906,
+    "fixed_bonus": 1500,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 1406,
+    "word_at_tally": 2358,
+    "word_units": 936
+   },
+   "state20_requests": [
+    {
+     "act_index": 2,
+     "bank": 30,
+     "caller": "81E2",
+     "frame": 1798,
+     "parent_type": 84
+    }
+   ],
+   "tail_frames": {
+    "boss_bonus_loop": [2310],
+    "flag_bit4_set": [2035],
+    "results_card": [2234],
+    "tally_loops": [2361],
+    "zone_clear_tail": [2036],
+    "zone_increment": [2918],
+    "zone_results_gate": [2234]
+   },
+   "zone": 2
+  },
+  "THZ3": {
+   "D293_writes": [
+    [1815, 64, 80]
+   ],
+   "D2A6_sets": [
+    {
+     "frame": 1629,
+     "rings": 71,
+     "time": [0, 9],
+     "word": 2358
+    }
+   ],
+   "bonus_compute_inputs": [
+    {
+     "D2A6_before": 0,
+     "frame": 1628,
+     "rings": 71,
+     "time": [0, 9]
+    }
+   ],
+   "bonus_objects_created": [
+    [1628, 0],
+    [1638, 255],
+    [1646, 255],
+    [1654, 255],
+    [1662, 255],
+    [1670, 255],
+    [1678, 255],
+    [1686, 255],
+    [1694, 255],
+    [1702, 255],
+    [1710, 255],
+    [1718, 255],
+    [1726, 255],
+    [1734, 255],
+    [1742, 255],
+    [1750, 255],
+    [1758, 255],
+    [1766, 255],
+    [1774, 255],
+    [1782, 255],
+    [1790, 255],
+    [1798, 255],
+    [1806, 255],
+    [1814, 255]
+   ],
+   "boss_state_path": [
+    [1120, 80, 1],
+    [1136, 80, 2],
+    [1220, 80, 3],
+    [1221, 80, 18],
+    [1289, 80, 6],
+    [1326, 80, 8],
+    [1346, 80, 6],
+    [1348, 80, 8],
+    [1368, 80, 6],
+    [1370, 80, 8],
+    [1390, 80, 6],
+    [1392, 80, 8],
+    [1412, 80, 6],
+    [1414, 80, 8],
+    [1434, 80, 6],
+    [1436, 80, 8],
+    [1456, 80, 6],
+    [1458, 80, 8],
+    [1478, 80, 6],
+    [1480, 80, 4]
+   ],
+   "controller_type": 80,
+   "counts": {
+    "D2A6_sets": 1,
+    "bonus_objects_param0": 1,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 1,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "EMULATED (natural boss defeat chain, synthetic player driver)",
+   "fixtures": ["arena ARRIVAL (camera 1500,80 / player 1604,238)", "synthetic player placement/attack writes at update boundaries", "rings preset $47"],
+   "frames_relative_to_defeat": {
+    "base_event": "first $03F5 player-state-$20 request (hook frame)",
+    "base_frame": 1627,
+    "offsets": {
+     "D2A6_set": [2],
+     "boss_bonus_loop": [462],
+     "flag_bit4_set": [187],
+     "results_card": [386],
+     "state20_request": [0],
+     "tally_loops": [486],
+     "zone_clear_tail": [188],
+     "zone_increment": [1043],
+     "zone_results_gate": [386]
+    }
+   },
+   "harness": "tools/thz3_boss_support.py defeat_chain",
+   "label": "THZ3",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 272],
+    "player": [110, 384],
+    "zone": 1
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 1906,
+    "score_before": 0,
+    "zone_act_after": [1, 0],
+    "zone_act_before": [0, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 500,
+    "at_zone_increment": 1906,
+    "fixed_bonus": 500,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 1406,
+    "word_at_tally": 2358,
+    "word_units": 936
+   },
+   "state20_requests": [
+    {
+     "act_index": 2,
+     "bank": 30,
+     "caller": "81E2",
+     "frame": 1627,
+     "parent_type": 80
+    }
+   ],
+   "tail_frames": {
+    "boss_bonus_loop": [2089],
+    "flag_bit4_set": [1814],
+    "results_card": [2013],
+    "tally_loops": [2113],
+    "zone_clear_tail": [1815],
+    "zone_increment": [2670],
+    "zone_results_gate": [2013]
+   },
+   "zone": 0
+  }
+ },
+ "injected_clears": {
+  "AQZ3_injected_flag": {
+   "D293_writes": [
+    [1099, 64, 80]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [],
+   "controller_type": 65535,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 0,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "FIXTURE + EMULATED (D293 bit 4 written by RAM at gameplay start; no boss exists)",
+   "fixtures": ["START_INDEX zone 4 act 2 (natural RQ4 start record)", "RAM D29A := $47", "RAM D293 |= $10 after 150 frames (what tools/g0_scenarios.py campaign_spine did)"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 1099,
+    "offsets": {
+     "D2A6_set": [],
+     "boss_bonus_loop": [273],
+     "results_card": [197],
+     "state20_request": [],
+     "tally_loops": [350],
+     "zone_increment": [603],
+     "zone_results_gate": [197]
+    }
+   },
+   "label": "AQZ3_injected_flag",
+   "next_start": {
+    "act": 0,
+    "camera_target": [126, 752],
+    "player": [238, 864],
+    "zone": 5
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 2970,
+    "score_before": 0,
+    "zone_act_after": [5, 0],
+    "zone_act_before": [4, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 2500,
+    "at_zone_increment": 2970,
+    "fixed_bonus": 2500,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 470,
+    "word_at_tally": 0,
+    "word_units": 0
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "boss_bonus_loop": [1372],
+    "results_card": [1296],
+    "tally_loops": [1449],
+    "zone_increment": [1702],
+    "zone_results_gate": [1296]
+   },
+   "zone": 4
+  },
+  "GPZ3_injected_flag": {
+   "D293_writes": [
+    [1101, 64, 80]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [],
+   "controller_type": 65535,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 0,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "FIXTURE + EMULATED (D293 bit 4 written by RAM at gameplay start; no boss exists)",
+   "fixtures": ["START_INDEX zone 1 act 2 (natural RQ4 start record)", "RAM D29A := $47", "RAM D293 |= $10 after 150 frames (what tools/g0_scenarios.py campaign_spine did)"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 1101,
+    "offsets": {
+     "D2A6_set": [],
+     "boss_bonus_loop": [273],
+     "results_card": [197],
+     "state20_request": [],
+     "tally_loops": [310],
+     "zone_increment": [563],
+     "zone_results_gate": [197]
+    }
+   },
+   "label": "GPZ3_injected_flag",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 608],
+    "player": [110, 718],
+    "zone": 2
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 1470,
+    "score_before": 0,
+    "zone_act_after": [2, 0],
+    "zone_act_before": [1, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 1000,
+    "at_zone_increment": 1470,
+    "fixed_bonus": 1000,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 470,
+    "word_at_tally": 0,
+    "word_units": 0
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "boss_bonus_loop": [1374],
+    "results_card": [1298],
+    "tally_loops": [1411],
+    "zone_increment": [1664],
+    "zone_results_gate": [1298]
+   },
+   "zone": 1
+  },
+  "MGHZ3_injected_flag": {
+   "D293_writes": [
+    [1105, 64, 80]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [],
+   "controller_type": 65535,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 0,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "FIXTURE + EMULATED (D293 bit 4 written by RAM at gameplay start; no boss exists)",
+   "fixtures": ["START_INDEX zone 3 act 2 (natural RQ4 start record)", "RAM D29A := $47", "RAM D293 |= $10 after 150 frames (what tools/g0_scenarios.py campaign_spine did)"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 1105,
+    "offsets": {
+     "D2A6_set": [],
+     "boss_bonus_loop": [274],
+     "results_card": [198],
+     "state20_request": [],
+     "tally_loops": [338],
+     "zone_clear_tail": [0],
+     "zone_increment": [591],
+     "zone_results_gate": [198]
+    }
+   },
+   "label": "MGHZ3_injected_flag",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 99],
+    "player": [110, 206],
+    "zone": 4
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 2470,
+    "score_before": 0,
+    "zone_act_after": [4, 0],
+    "zone_act_before": [3, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 2000,
+    "at_zone_increment": 2470,
+    "fixed_bonus": 2000,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 470,
+    "word_at_tally": 0,
+    "word_units": 0
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "boss_bonus_loop": [1379],
+    "results_card": [1303],
+    "tally_loops": [1443],
+    "zone_clear_tail": [1105],
+    "zone_increment": [1696],
+    "zone_results_gate": [1303]
+   },
+   "zone": 3
+  },
+  "SEZ3_injected_flag": {
+   "D293_writes": [
+    [1101, 64, 80]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [],
+   "controller_type": 65535,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 0,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "FIXTURE + EMULATED (D293 bit 4 written by RAM at gameplay start; no boss exists)",
+   "fixtures": ["START_INDEX zone 2 act 2 (natural RQ4 start record)", "RAM D29A := $47", "RAM D293 |= $10 after 150 frames (what tools/g0_scenarios.py campaign_spine did)"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 1101,
+    "offsets": {
+     "D2A6_set": [],
+     "boss_bonus_loop": [273],
+     "results_card": [197],
+     "state20_request": [],
+     "tally_loops": [324],
+     "zone_increment": [577],
+     "zone_results_gate": [197]
+    }
+   },
+   "label": "SEZ3_injected_flag",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 80],
+    "player": [78, 192],
+    "zone": 3
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 1970,
+    "score_before": 0,
+    "zone_act_after": [3, 0],
+    "zone_act_before": [2, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 1500,
+    "at_zone_increment": 1970,
+    "fixed_bonus": 1500,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 470,
+    "word_at_tally": 0,
+    "word_units": 0
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "boss_bonus_loop": [1374],
+    "results_card": [1298],
+    "tally_loops": [1425],
+    "zone_increment": [1678],
+    "zone_results_gate": [1298]
+   },
+   "zone": 2
+  },
+  "THZ3_injected_flag": {
+   "D293_writes": [
+    [1103, 64, 80]
+   ],
+   "D2A6_sets": [],
+   "bonus_compute_inputs": [],
+   "bonus_objects_created": [],
+   "boss_state_path": [],
+   "controller_type": 65535,
+   "counts": {
+    "D2A6_sets": 0,
+    "bonus_objects_param0": 0,
+    "boss_bonus_loop": 1,
+    "flag_bit4_set": 0,
+    "results_card": 1,
+    "tally_loops": 1,
+    "zone_increment": 1
+   },
+   "evidence_class": "FIXTURE + EMULATED (D293 bit 4 written by RAM at gameplay start; no boss exists)",
+   "fixtures": ["START_INDEX zone 0 act 2 (natural RQ4 start record)", "RAM D29A := $47", "RAM D293 |= $10 after 150 frames (what tools/g0_scenarios.py campaign_spine did)"],
+   "frames_relative_to_defeat": {
+    "base_event": "first D293 clear write (polled frame)",
+    "base_frame": 1103,
+    "offsets": {
+     "D2A6_set": [],
+     "boss_bonus_loop": [274],
+     "results_card": [198],
+     "state20_request": [],
+     "tally_loops": [298],
+     "zone_clear_tail": [0],
+     "zone_increment": [551],
+     "zone_results_gate": [198]
+    }
+   },
+   "label": "THZ3_injected_flag",
+   "next_start": {
+    "act": 0,
+    "camera_target": [0, 272],
+    "player": [110, 384],
+    "zone": 1
+   },
+   "retained": {
+    "continues": [0, 0],
+    "emeralds": [0, 0],
+    "lives": [3, 3],
+    "score_after": 970,
+    "score_before": 0,
+    "zone_act_after": [1, 0],
+    "zone_act_before": [0, 2]
+   },
+   "score": {
+    "at_boss_bonus_loop": 0,
+    "at_tally_loops": 500,
+    "at_zone_increment": 970,
+    "fixed_bonus": 500,
+    "ring_units": 470,
+    "rings_bcd_at_tally": "47",
+    "tally_total": 470,
+    "word_at_tally": 0,
+    "word_units": 0
+   },
+   "state20_requests": [],
+   "tail_frames": {
+    "boss_bonus_loop": [1377],
+    "results_card": [1301],
+    "tally_loops": [1401],
+    "zone_clear_tail": [1103],
+    "zone_increment": [1654],
+    "zone_results_gate": [1301]
+   },
+   "zone": 0
+  }
+ },
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "schema": "u2-act3-boss-bonus-observed/1"
+}
