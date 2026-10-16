@@ -1,0 +1,1539 @@
+{
+ "adapter": {
+  "proposal": {
+   "bonus_handoff": "G1-C owns D2A6 (child update 147). G1-D must (a) apply the class-2 ring prize BEFORE that update so global.ring is the post-prize value, (b) give the equal-digit life only from the child code path (once), (c) never add a bonus-based award to the class reward",
+   "landing_call": "chaos_goal_sign_land(sign, zone, playerType, rings, retryUsed, rollByte) -> {class, selector, effect}; apply effects to lives/continues/rings exactly once at that update",
+   "lives_continues": "D299 lives (BCD, cap $99, sound $A9 even at the cap); D2C3 continues (BCD, bit 7 cleared, wraps 79 -> 00, no sound, no cap)",
+   "optional_presentation": "a 348x196 view changes nothing in the face data: the face is anchor-relative. Do not alter the sign pan or the sign x registration here (GOAL-FOLLOWUP-1 stays parked)",
+   "sign_fields": {
+    "awarded": "true once the landing reward ran; never recompute on the retouch spin",
+    "faceSelector": "$12 until a landing, then the selector chosen by the table above",
+    "faceUploadAge": "frames since the landing update, 0..3 (4+ = complete)",
+    "prizeClass": "+$34: 0..8 or 255",
+    "retryUsed": "+$35 != 0"
+   }
+  },
+  "rom_native": {
+   "distinct_faces": ["eggman ($12 = $1C)", "sonic ($1B)", "tails ($1D)", "ring ($1E)", "bird ($1F)", "blank ($20)"],
+   "face_origin_relative_to_sign_anchor": [-16, -48],
+   "face_size_px": [32, 32],
+   "face_visible_frames": "frame 1 only (rest and idle); spin frames 2..4 and 5 never show a prize face",
+   "no_second_retry": "the re-roll class is (D12F & 7) + 1 = 1..8: class 0 cannot occur, so there are at most two landings and the second one is final",
+   "retry": "class 0 shows the blank panel ($20) in state 3, the player is free and the timer stays stopped; the next contact is a 64-update spin with the blank panel and then the re-roll",
+   "selector_for_first_pass_class": {
+    "0": "$20",
+    "1": "sonic: $1B, tails: $1D",
+    "2": "$1E",
+    "255": "$1F",
+    "3": "sonic: $1D, tails: $1B"
+   },
+   "sprite_palette": "the level's sprite palette (record per zone in sprite_palettes.zones)",
+   "sprite_pieces": "8 pieces of 8x16 (x -16,-8,0,8 at y -48 and y -32); the post (tiles $7A,$7C at x -8,0 / y -16) is not selector dependent",
+   "update_counts": {
+    "contact_to_bonus_word_and_equal_digit_life": 278,
+    "contact_to_child_spawn": 131,
+    "contact_to_landing": 130,
+    "contact_to_player_state_20": 280,
+    "face_upload_frames": 4,
+    "face_upload_order": ["tiles $6A..$6D (pieces 0,1: top row, left half)", "tiles $6E..$71 (pieces 2,3: top row, right half)", "tiles $72..$75 (pieces 4,5: bottom row, left half)", "tiles $76..$79 (pieces 6,7: bottom row, right half)"],
+    "note": "the landing update writes D3B3 and the first four tiles in the same frame; the panel completes three frames later",
+    "retouch_request_to_landing": 65,
+    "retouch_spin_updates": 64
+   }
+  },
+  "status": "GAMEMAKER ADAPTER PROPOSAL (names are suggestions); every number marked rom_native is reproduced by sign-prize-observed.json"
+ },
+ "anchors": [
+  {
+   "actual": "cdd15dcdc27a",
+   "bank": null,
+   "cpu": "16D0",
+   "expected": "cdd15dcdc27a",
+   "file": "016D0",
+   "name": "loader_called_after_object_pass",
+   "note": "level frame update $16B8: CALL $5DD1 (all objects) then CALL $7AC2 (dynamic graphics), once per update; the alternate branch calls it at $1723",
+   "ok": true
+  },
+  {
+   "actual": "11a67b",
+   "bank": null,
+   "cpu": "7B5F",
+   "expected": "11a67b",
+   "file": "07B5F",
+   "name": "loader_pointer_table_base",
+   "note": "LD DE,$7BA6 (selector table, index = selector - $10)",
+   "ok": true
+  },
+  {
+   "actual": "fe0438023e04",
+   "bank": null,
+   "cpu": "7AF5",
+   "expected": "fe0438023e04",
+   "file": "07AF5",
+   "name": "loader_four_tile_cap",
+   "note": "CP 4 / JR C / LD A,4: at most four tiles per call",
+   "ok": true
+  },
+  {
+   "actual": "0e20",
+   "bank": null,
+   "cpu": "7AFC",
+   "expected": "0e20",
+   "file": "07AFC",
+   "name": "loader_tile_bytes",
+   "note": "LD C,$20: 32 bytes per tile",
+   "ok": true
+  },
+  {
+   "actual": "e61f",
+   "bank": null,
+   "cpu": "7B24",
+   "expected": "e61f",
+   "file": "07B24",
+   "name": "loader_bank_mask",
+   "note": "AND $1F: bank number of the remapped branch",
+   "ok": true
+  },
+  {
+   "actual": "af32b3d3",
+   "bank": null,
+   "cpu": "7B92",
+   "expected": "af32b3d3",
+   "file": "07B92",
+   "name": "loader_finish_clear",
+   "note": "XOR A / LD (D3B3),A: the selector is cleared when the list ends",
+   "ok": true
+  },
+  {
+   "actual": "3e1232b3d3",
+   "bank": 12,
+   "cpu": "A87D",
+   "expected": "3e1232b3d3",
+   "file": "3287D",
+   "name": "wake_selector_12",
+   "note": "LD A,$12 / LD (D3B3),A",
+   "ok": true
+  },
+  {
+   "actual": "dd360205dd7e35b7c216aa",
+   "bank": 12,
+   "cpu": "A8FA",
+   "expected": "dd360205dd7e35b7c216aa",
+   "file": "328FA",
+   "name": "landing_state5_retouch",
+   "note": "state 5; A := +$35; JP NZ,$AA16 (retouch re-roll)",
+   "ok": true
+  },
+  {
+   "actual": "3a97d23c0f30492119a9cdfaa9c3a2a9",
+   "bank": 12,
+   "cpu": "A909",
+   "expected": "3a97d23c0f30492119a9cdfaa9c3a2a9",
+   "file": "32909",
+   "name": "parity_select",
+   "note": "A := ($D297 + 1) >> 1 (carry = bit 0); odd -> $A919",
+   "ok": true
+  },
+  {
+   "actual": "dd7e34b72844",
+   "bank": 12,
+   "cpu": "A9A2",
+   "expected": "dd7e34b72844",
+   "file": "329A2",
+   "name": "dispatch_class_zero",
+   "note": "class 0 -> $A9EC (retry)",
+   "ok": true
+  },
+  {
+   "actual": "3d2010cdf2033a00d5fe013e1b28313e1d182d",
+   "bank": 12,
+   "cpu": "A9A8",
+   "expected": "3d2010cdf2033a00d5fe013e1b28313e1d182d",
+   "file": "329A8",
+   "name": "dispatch_class_one_life",
+   "note": "class 1: CALL $03F2; Sonic (D500 = 1) -> $1B else $1D",
+   "ok": true
+  },
+  {
+   "actual": "3d200e3a9ad206108027329ad23e1e181c",
+   "bank": 12,
+   "cpu": "A9BB",
+   "expected": "3d200e3a9ad206108027329ad23e1e181c",
+   "file": "329BB",
+   "name": "dispatch_class_two_rings",
+   "note": "class 2: D29A := (D29A + $10) DAA, carry dropped; selector $1E",
+   "ok": true
+  },
+  {
+   "actual": "3d20173ac3d23c27e67f32c3d23a00d5fe013e1d28063e1b1802",
+   "bank": 12,
+   "cpu": "A9CC",
+   "expected": "3d20173ac3d23c27e67f32c3d23a00d5fe013e1d28063e1b1802",
+   "file": "329CC",
+   "name": "dispatch_class_three_continue",
+   "note": "class 3: D2C3 := ((D2C3 + 1) DAA) & $7F; Sonic -> $1D else $1B",
+   "ok": true
+  },
+  {
+   "actual": "3e1f32b3d3c9",
+   "bank": 12,
+   "cpu": "A9E6",
+   "expected": "3e1f32b3d3c9",
+   "file": "329E6",
+   "name": "class_none_art",
+   "note": "everything else (class $FF, 4..8): selector $1F, no reward",
+   "ok": true
+  },
+  {
+   "actual": "dd3635ff3e2032b3d3dd360203c9",
+   "bank": 12,
+   "cpu": "A9EC",
+   "expected": "dd3635ff3e2032b3d3dd360203c9",
+   "file": "329EC",
+   "name": "retry_setup",
+   "note": "+$35 := $FF; D3B3 := $20; state 3",
+   "ok": true
+  },
+  {
+   "actual": "0140003a9ad2edb1200c3200dc790f0f0f0fe60f18023effdd7734c9",
+   "bank": 12,
+   "cpu": "A9FA",
+   "expected": "0140003a9ad2edb1200c3200dc790f0f0f0fe60f18023effdd7734c9",
+   "file": "329FA",
+   "name": "lookup_cpir",
+   "note": "CPIR over 64 bytes; class = (C >> 4) & 15; no match $FF; stores the count at $DC00",
+   "ok": true
+  },
+  {
+   "actual": "3a2fd1e6073cdd7734c3a2a9",
+   "bank": 12,
+   "cpu": "AA16",
+   "expected": "3a2fd1e6073cdd7734c3a2a9",
+   "file": "32A16",
+   "name": "reroll",
+   "note": "+$34 := ($D12F & 7) + 1; JP $A9A2",
+   "ok": true
+  },
+  {
+   "actual": "3ea93204de3a99d2fe992806c6",
+   "bank": null,
+   "cpu": "3104",
+   "expected": "3ea93204de3a99d2fe992806c6",
+   "file": "03104",
+   "name": "life_cap",
+   "note": "sound $A9; D299 = $99 -> no increment; else ADD 1, DAA",
+   "ok": true
+  },
+  {
+   "actual": "cd1f047cb5200321770722a6d2",
+   "bank": 12,
+   "cpu": "AB48",
+   "expected": "cd1f047cb5200321770722a6d2",
+   "file": "32B48",
+   "name": "child_bonus_state3",
+   "note": "CALL $041F; H|L = 0 -> HL := $0777; D2A6 := HL",
+   "ok": true
+  },
+  {
+   "actual": "447de60fb8200d7d0f0f0f0fe60fb82003cdf203",
+   "bank": 12,
+   "cpu": "AB55",
+   "expected": "447de60fb8200d7d0f0f0f0fe60fb82003cdf203",
+   "file": "32B55",
+   "name": "child_equal_digits",
+   "note": "B := H; low digit and high digit of L must both equal H -> CALL $03F2",
+   "ok": true
+  },
+  {
+   "actual": "3a9ad2d6112785276f30037c3c27c9",
+   "bank": null,
+   "cpu": "629E",
+   "expected": "3a9ad2d6112785276f30037c3c27c9",
+   "file": "0629E",
+   "name": "bonus_rings_term",
+   "note": "A := (D29A - $11) DAA + L (DAA); carry -> H + 1 DAA",
+   "ok": true
+  }
+ ],
+ "base_commit": "87ae62b76de35e41c9bb837c1125a54210f2f85c",
+ "bonus_interaction": {
+  "class_one_then_equal_digit": "both are separate $03F2 calls: a class-1 sign (or a class-1 roll) AND an equal-digit bonus word give +2 lives (cap $99 each)",
+  "order": "landing at +130 updates (class reward, ring prize) -> child spawn at +131 -> child update 147 (+278): D2A6 + equal-digit life -> player state $20 at +279 -> act flag -> tally (rings x 10, then bonus x 1)",
+  "ring_prize_changes_bonus": "class 2 adds 10 rings BEFORE the child reads D29A: the bonus L digit pair and the tally ring count both include the prize"
+ },
+ "bonus_word": {
+  "comparison_with_poc_g1c": {
+   "consequence": "the ROM's last bucket (H = 1) ends at 4:59 (299 s); the POC loop ends it at 4:29 (269 s), so 4:29..4:58 gives H = 0 there and H = 1 in the ROM",
+   "differs_at_index": [8],
+   "poc_formula": "chaos_results_bonus: H = 9 - i for the first i < 9 with seconds < 29 + 30 * i",
+   "poc_limits_seconds": [29, 59, 89, 119, 149, 179, 209, 239, 269],
+   "rom_limits_seconds": [29, 59, 89, 119, 149, 179, 209, 239, 299]
+  },
+  "equal_digit_rule": "H = low digit of L = high digit of L (all three digits equal) -> CALL $03F2 (life +1, sound $A9, cap $99)",
+  "evidence": "DECODED DATA ($62AD) + BYTE-VERIFIED ASSEMBLY ($6276, $AB48)",
+  "ring_basis": "D29A at that moment, i.e. AFTER a class-2 ring prize",
+  "rule": "H := entry.H of the first entry whose limit is greater than D2C0:D2BF (BCD mm:ss, strict); L := ((D29A - $11) DAA) + entry.L (DAA); a carry would add 1 to H",
+  "time_table": [
+   {
+    "h": "09",
+    "index": 0,
+    "l": "00",
+    "limit_bcd_mmss": "0029"
+   },
+   {
+    "h": "08",
+    "index": 1,
+    "l": "00",
+    "limit_bcd_mmss": "0059"
+   },
+   {
+    "h": "07",
+    "index": 2,
+    "l": "00",
+    "limit_bcd_mmss": "0129"
+   },
+   {
+    "h": "06",
+    "index": 3,
+    "l": "00",
+    "limit_bcd_mmss": "0159"
+   },
+   {
+    "h": "05",
+    "index": 4,
+    "l": "00",
+    "limit_bcd_mmss": "0229"
+   },
+   {
+    "h": "04",
+    "index": 5,
+    "l": "00",
+    "limit_bcd_mmss": "0259"
+   },
+   {
+    "h": "03",
+    "index": 6,
+    "l": "00",
+    "limit_bcd_mmss": "0329"
+   },
+   {
+    "h": "02",
+    "index": 7,
+    "l": "00",
+    "limit_bcd_mmss": "0359"
+   },
+   {
+    "h": "01",
+    "index": 8,
+    "l": "00",
+    "limit_bcd_mmss": "0459"
+   },
+   {
+    "h": "00",
+    "index": 9,
+    "l": "00",
+    "limit_bcd_mmss": "FFFF"
+   }
+  ],
+  "written": "D2A6 := HL at the child's state-3 callback (child update 147; +278 updates after the contact)",
+  "zero_rule": "H|L = 0 -> $0777"
+ },
+ "composed_frame1": {
+  "12": {
+   "face_h": 32,
+   "face_index_sha256": "554246d1505acd93b82d9e2a6fe7c3ebfbf45e90a56a1c00e40f760a26f72a14",
+   "face_w": 32,
+   "face_x": -16,
+   "face_y": -48,
+   "frame1_h": 48,
+   "frame1_index_sha256": "e828708a65ad0b8a8bb1acfdee15f555224524d0164a65e52808c5983c87acef",
+   "frame1_w": 32,
+   "nonzero_face_pixels": 942
+  },
+  "1B": {
+   "face_h": 32,
+   "face_index_sha256": "6a1deb11b103e65b0d776c9b072396d6f0b92b0ae3a73b1a13a9e7604beb664a",
+   "face_w": 32,
+   "face_x": -16,
+   "face_y": -48,
+   "frame1_h": 48,
+   "frame1_index_sha256": "749b26b8b6a6c2f3817195582ad2c6f45ae44e13ec173926d7875264522c10f6",
+   "frame1_w": 32,
+   "nonzero_face_pixels": 942
+  },
+  "1C": {
+   "face_h": 32,
+   "face_index_sha256": "554246d1505acd93b82d9e2a6fe7c3ebfbf45e90a56a1c00e40f760a26f72a14",
+   "face_w": 32,
+   "face_x": -16,
+   "face_y": -48,
+   "frame1_h": 48,
+   "frame1_index_sha256": "e828708a65ad0b8a8bb1acfdee15f555224524d0164a65e52808c5983c87acef",
+   "frame1_w": 32,
+   "nonzero_face_pixels": 942
+  },
+  "1D": {
+   "face_h": 32,
+   "face_index_sha256": "4f3a5cbeecacac6c10086fcfd24417a933c1f35bea0a2ce35234e4ac8003815d",
+   "face_w": 32,
+   "face_x": -16,
+   "face_y": -48,
+   "frame1_h": 48,
+   "frame1_index_sha256": "c04afeebc699b994a6b3d06c56f9263b0face14b08cdab54bc8972a403253671",
+   "frame1_w": 32,
+   "nonzero_face_pixels": 942
+  },
+  "1E": {
+   "face_h": 32,
+   "face_index_sha256": "4effc5a92a98f958e30edca7c68b834f8b483b304481590f177fc540c8efbf2a",
+   "face_w": 32,
+   "face_x": -16,
+   "face_y": -48,
+   "frame1_h": 48,
+   "frame1_index_sha256": "47ada82485f01289b72803eb20f9b381d18b78a1a9f9e0f8b92e0fc7bde68551",
+   "frame1_w": 32,
+   "nonzero_face_pixels": 942
+  },
+  "1F": {
+   "face_h": 32,
+   "face_index_sha256": "2258c1b9a69561c329eba7b40a77f241703851629b8bdd0773e6ef171099a1c1",
+   "face_w": 32,
+   "face_x": -16,
+   "face_y": -48,
+   "frame1_h": 48,
+   "frame1_index_sha256": "fbbcd89409b4010df679b6b9d09891b962a7c8e4f6088a796ac513093be44d94",
+   "frame1_w": 32,
+   "nonzero_face_pixels": 942
+  },
+  "20": {
+   "face_h": 32,
+   "face_index_sha256": "eea2ef0d619fafe196825a4d9aef40fb3be4d7e3783e9e0248023631d80e375e",
+   "face_w": 32,
+   "face_x": -16,
+   "face_y": -48,
+   "frame1_h": 48,
+   "frame1_index_sha256": "23bdf71908b3fae5e92b3841d410dba747f95962cfee11a74cf911b2ddb9ac7a",
+   "frame1_w": 32,
+   "nonzero_face_pixels": 942
+  }
+ },
+ "evidence_legend": {
+  "BYTE_VERIFIED": "instruction fragments compared with the constants in tools/u3_sign_prizes.py (anchors)",
+  "DECODED": "numbers read from ROM bytes",
+  "MODEL": "pure Python functions of the decoded tables, re-checked against Z80 execution in sign-prize-controlled.json"
+ },
+ "face_selector_constants": {
+  "continue_": [29, 27],
+  "life": [27, 29],
+  "none": 31,
+  "note": "[Sonic (D500 = 1), other (Tails, D500 = 2)]; immediates read from $A9B4/$A9B8/$A9C9/$A9DF/$A9E3/$A9E7/$A9F1",
+  "retry": 32,
+  "rings": 30
+ },
+ "face_selector_immediates": {
+  "A9B4": "1B",
+  "A9B8": "1D",
+  "A9C9": "1E",
+  "A9DF": "1D",
+  "A9E3": "1B",
+  "A9E7": "1F",
+  "A9F1": "20"
+ },
+ "fixed_frames_with_selector_12": {
+  "frames": {
+   "2": {
+    "h": 48,
+    "index_sha256": "fa7c2eba15f26810625ac5af71a6b3c979d1054c72d7c51b09c8e65d294586f8",
+    "w": 16
+   },
+   "3": {
+    "h": 48,
+    "index_sha256": "1bfc4ca598d1bfeaa25440e62ed5e7660a0968de5cd3cbdcdb8456151152f2a4",
+    "w": 16
+   },
+   "4": {
+    "h": 48,
+    "index_sha256": "afd7b1bd7ddc039f946fceef28ef08cca3f8fa4a37010fe9d38af6277314c5dd",
+    "w": 16
+   },
+   "5": {
+    "h": 48,
+    "index_sha256": "23bdf71908b3fae5e92b3841d410dba747f95962cfee11a74cf911b2ddb9ac7a",
+    "w": 32
+   }
+  },
+  "note": "frames 2..4 (side views) and 5 (back) use only tiles $7A..$A9, never rewritten by $1B..$20"
+ },
+ "loader": {
+  "bytes_per_tile": 32,
+  "end_of_list": "a $FF entry runs $7B92: D3B3, D3B4, D3B5, D3B6, D3B8 := 0",
+  "entry_bytes": 6,
+  "entry_layout": "[bank|remap<<7, tiles, vram_lo, vram_hi, src_lo, src_hi]",
+  "evidence": "BYTE-VERIFIED ASSEMBLY ($7AC2..$7BA6) + SOURCE-TRACED BEHAVIOR",
+  "first_call": "entry pointer fetched ($7B51/$7B6D) and the first four tiles written in the SAME call",
+  "note": "the caller is the main-loop frame step: one call per displayed frame (observed: four consecutive frames for a 16-tile entry)",
+  "ram": {
+   "D3B3": "requested selector (0 = idle)",
+   "D3B4": "current entry bank byte (0 = none)",
+   "D3B5": "tiles left in the current entry",
+   "D3B6": "source CPU pointer",
+   "D3B8": "VRAM destination",
+   "D3BA": "next list entry pointer"
+  },
+  "selector_index": "selector - $10, 2 bytes per selector",
+  "selector_table_cpu": "7BA6",
+  "tiles_per_call": 4
+ },
+ "prize_tables": {
+  "bytes": {
+   "A919": [21, 48, 64, 96, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 9, 25, 41, 57, 73, 89, 105, 121, 137, 255, 255, 255, 255, 255, 255, 255, 153, 151, 149, 136, 119, 101, 85, 255, 255, 255, 255, 255, 255, 255, 255, 255, 22, 40, 50, 68, 88, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255],
+   "A962": [0, 36, 72, 114, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 16, 32, 48, 64, 80, 96, 112, 128, 144, 255, 255, 255, 255, 255, 255, 255, 152, 150, 148, 135, 119, 51, 17, 255, 255, 255, 255, 255, 255, 255, 255, 255, 24, 54, 69, 129, 137, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255]
+  },
+  "class_rule": "class = ((63 - index of first CPIR match) >> 4) & 15 = 3 - index // 16; no match -> $FF",
+  "class_vector_by_decimal_count": {
+   "A919": [255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 255, 255, 255, 255, 255, 3, 0, 255, 255, 2, 255, 255, 255, 255, 255, 255, 255, 255, 0, 2, 3, 255, 0, 255, 255, 255, 255, 255, 255, 2, 3, 255, 255, 255, 0, 255, 255, 255, 255, 2, 255, 255, 255, 255, 255, 1, 255, 255, 0, 2, 3, 255, 255, 255, 255, 1, 255, 255, 255, 2, 255, 255, 255, 255, 255, 255, 255, 1, 255, 2, 255, 255, 255, 255, 255, 255, 255, 255, 1, 2, 255, 255, 255, 255, 255, 1, 255, 1, 255, 1],
+   "A962": [3, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 1, 255, 255, 255, 255, 255, 255, 0, 255, 2, 255, 255, 255, 3, 255, 255, 255, 255, 255, 2, 255, 255, 1, 255, 255, 0, 255, 255, 255, 2, 255, 255, 255, 255, 0, 255, 255, 3, 255, 2, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 255, 255, 255, 255, 255, 255, 255, 255, 255, 2, 255, 3, 255, 255, 255, 255, 1, 255, 255, 2, 0, 255, 255, 255, 255, 255, 1, 255, 0, 2, 255, 255, 255, 1, 255, 1, 255, 1, 255]
+  },
+  "counts_by_class": {
+   "A919": {
+    "0": ["16", "28", "32", "44", "58"],
+    "1": ["55", "65", "77", "88", "95", "97", "99"],
+    "2": ["09", "19", "29", "39", "49", "59", "69", "79", "89"],
+    "255": ["00", "01", "02", "03", "04", "05", "06", "07", "08", "10", "11", "12", "13", "14", "17", "18", "20", "21", "22", "23", "24", "25", "26", "27", "31", "33", "34", "35", "36", "37", "38", "41", "42", "43", "45", "46", "47", "48", "50", "51", "52", "53", "54", "56", "57", "61", "62", "63", "64", "66", "67", "68", "70", "71", "72", "73", "74", "75", "76", "78", "80", "81", "82", "83", "84", "85", "86", "87", "90", "91", "92", "93", "94", "96", "98"],
+    "3": ["15", "30", "40", "60"]
+   },
+   "A962": {
+    "0": ["18", "36", "45", "81", "89"],
+    "1": ["11", "33", "77", "87", "94", "96", "98"],
+    "2": ["10", "20", "30", "40", "50", "60", "70", "80", "90"],
+    "255": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "12", "13", "14", "15", "16", "17", "19", "21", "22", "23", "25", "26", "27", "28", "29", "31", "32", "34", "35", "37", "38", "39", "41", "42", "43", "44", "46", "47", "49", "51", "52", "53", "54", "55", "56", "57", "58", "59", "61", "62", "63", "64", "65", "66", "67", "68", "69", "71", "73", "74", "75", "76", "78", "79", "82", "83", "84", "85", "86", "88", "91", "92", "93", "95", "97", "99"],
+    "3": ["00", "24", "48", "72"]
+   }
+  },
+  "counts_per_class": {
+   "A919": {
+    "0": 5,
+    "1": 7,
+    "2": 9,
+    "255": 75,
+    "3": 4
+   },
+   "A962": {
+    "0": 5,
+    "1": 7,
+    "2": 9,
+    "255": 75,
+    "3": 4
+   }
+  },
+  "duplicates_inside_a_table": {
+   "A919": [],
+   "A962": []
+  },
+  "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY ($A909 parity, $A9FA CPIR)",
+  "rows_by_class_3_to_0": {
+   "A919": [
+    ["15", "30", "40", "60"],
+    ["09", "19", "29", "39", "49", "59", "69", "79", "89"],
+    ["99", "97", "95", "88", "77", "65", "55"],
+    ["16", "28", "32", "44", "58"]
+   ],
+   "A962": [
+    ["00", "24", "48", "72"],
+    ["10", "20", "30", "40", "50", "60", "70", "80", "90"],
+    ["98", "96", "94", "87", "77", "33", "11"],
+    ["18", "36", "45", "81", "89"]
+   ]
+  },
+  "selection": "A := ($D297 + 1); RRCA; carry set -> $A919 else $A962: zone parity, NOT act and NOT character",
+  "zone_names": {
+   "0": "THZ",
+   "1": "GPZ",
+   "2": "SEZ",
+   "3": "MGHZ",
+   "4": "AQZ",
+   "5": "EEZ"
+  },
+  "zone_to_table": {
+   "0": "A919",
+   "1": "A962",
+   "2": "A919",
+   "3": "A962",
+   "4": "A919",
+   "5": "A962"
+  }
+ },
+ "reward_effects": {
+  "continue_": "D2C3 := ((D2C3 + 1) DAA) & $7F: the counter wraps 79 -> 00 and bit 7 (continue-used flag) is cleared; NO cap and NO sound",
+  "evidence": "BYTE-VERIFIED ASSEMBLY ($A9A2..$AA16) + CONTROLLED (sign-prize-controlled.json)",
+  "first_pass": {
+   "0": {
+    "effect": "retry",
+    "selector_other": 32,
+    "selector_sonic": 32
+   },
+   "1": {
+    "effect": "life",
+    "selector_other": 29,
+    "selector_sonic": 27
+   },
+   "2": {
+    "effect": "rings",
+    "selector_other": 30,
+    "selector_sonic": 30
+   },
+   "3": {
+    "effect": "continue",
+    "selector_other": 27,
+    "selector_sonic": 29
+   }
+  },
+  "life": "CALL $03F2 -> $3104: sound $A9, D299 + 1 (DAA) unless D299 = $99; the sound is requested even at the cap",
+  "no_prize": {
+   "effect": "none",
+   "selector": 31
+  },
+  "retouch_roll": {
+   "classes": {
+    "1": {
+     "effect": "life",
+     "selector_other": 29,
+     "selector_sonic": 27
+    },
+    "2": {
+     "effect": "rings",
+     "selector_other": 30,
+     "selector_sonic": 30
+    },
+    "3": {
+     "effect": "continue",
+     "selector_other": 27,
+     "selector_sonic": 29
+    },
+    "4": {
+     "effect": "none",
+     "selector_other": 31,
+     "selector_sonic": 31
+    },
+    "5": {
+     "effect": "none",
+     "selector_other": 31,
+     "selector_sonic": 31
+    },
+    "6": {
+     "effect": "none",
+     "selector_other": 31,
+     "selector_sonic": 31
+    },
+    "7": {
+     "effect": "none",
+     "selector_other": 31,
+     "selector_sonic": 31
+    },
+    "8": {
+     "effect": "none",
+     "selector_other": 31,
+     "selector_sonic": 31
+    }
+   },
+   "formula": "+$34 := ($D12F & 7) + 1; JP $A9A2",
+   "probability": "3 of 8 rolls reward (life, rings, continue each 1/8); 5 of 8 (classes 4..8) give nothing and show $1F; class 0 can never come out"
+  },
+  "retry": "class 0: +$35 := $FF, D3B3 := $20, requested state 3 (no reward, no child, no sound)",
+  "rings": "D29A := (D29A + $10) DAA, carry dropped (90 -> 00); no sound; the child bonus (and the tally) then read the NEW ring count"
+ },
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "routines": [
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7BA6",
+   "cpu_start": "7AC2",
+   "file_start": "07AC2",
+   "first16": "3ab3d3b7c83ab4d3b7cc517b3ab3d3b7",
+   "length": 228,
+   "name": "dyn_loader",
+   "role": "dynamic graphics loader: D3B3 selector -> list -> 4 tiles per call to VRAM (bank byte bit 7 = remap through the $0100 table)",
+   "sha256": "4e38aedf882d0dfc9a08b07ed4501d02659b936e2aedf5cb628c98168d18d6d4"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7BCA",
+   "cpu_start": "7BA6",
+   "file_start": "07BA6",
+   "first16": "ca7bca7bcb7bd87beb7bf87b057c127c",
+   "length": 36,
+   "name": "dyn_selector_table",
+   "role": "18 little-endian list pointers for selectors $10..$21",
+   "sha256": "cddad45fedf20c600c53e95f36c5dfed361b1f3314fc0448515e32beb3f8369f"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7C71",
+   "cpu_start": "7BCA",
+   "file_start": "07BCA",
+   "first16": "ff0d10400dbc960930400f4086ff0a48",
+   "length": 167,
+   "name": "dyn_lists",
+   "role": "selector lists, six bytes per entry [bank, tiles, vram_lo, vram_hi, src_lo, src_hi], $FF ends a list",
+   "sha256": "d088a4654220d21e92f30e24111b6674df79a190b7964795d44617df7e0591e6"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A88E",
+   "cpu_start": "A867",
+   "file_start": "32867",
+   "first16": "ddcb03feafdd7734dd7735c9ddcb0476",
+   "length": 39,
+   "name": "sign_wake_states",
+   "role": "states 0..2: clear class/retry bytes, wait for on-screen, D3B3 := $12",
+   "sha256": "d83aa65b7c788b33bae72aff630caaebb1ebd59517a5d3cd65edeb791b959e83"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A8C8",
+   "cpu_start": "A88E",
+   "file_start": "3288E",
+   "first16": "3a02d5fe1828062a16d57cb5c8cdc4a8",
+   "length": 58,
+   "name": "sign_contact_state3",
+   "role": "state 3 contact test, timer stop, state 4 (first touch) or 6 (retouch)",
+   "sha256": "b32f8dde6d48cab7814ba0b8a8c4700d2bde48b2560a10cfdd14456391c92c52"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A8CE",
+   "cpu_start": "A8C8",
+   "file_start": "328C8",
+   "first16": "3eff32a3d4c9111000010006cd5003cd",
+   "length": 6,
+   "name": "sign_state4_marker",
+   "role": "D4A3 := $FF (purpose unresolved)",
+   "sha256": "10f33b3d9cfeda15b420ad24ea7b670ff45152a7720eed452cf12c965d094417"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A8FA",
+   "cpu_start": "A8CE",
+   "file_start": "328CE",
+   "first16": "111000010006cd5003cd3803dd6e3cdd",
+   "length": 44,
+   "name": "sign_hop_landing",
+   "role": "state-4 hop physics; at the saved Y calls $A8FA",
+   "sha256": "21856dbf8e250514e59789b189a2bb39035c206237b26831baf3ed97290c5d0e"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A919",
+   "cpu_start": "A8FA",
+   "file_start": "328FA",
+   "first16": "dd360205dd7e35b7c216aaafdd77343a",
+   "length": 31,
+   "name": "sign_landing_prize",
+   "role": "landing: state 5, retouch test (+$35), zone parity table select",
+   "sha256": "66122494219b7b53342009c966e487aa8f9e37e0aab66fca6bb7d11ae1759871"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A959",
+   "cpu_start": "A919",
+   "file_start": "32919",
+   "first16": "15304060ffffffffffffffffffffffff",
+   "length": 64,
+   "name": "sign_prize_table_odd",
+   "role": "64-byte BCD ring-count table used when (zone + 1) is odd",
+   "sha256": "a400c282f3f7e6625ddb395f9a27ff49991f9bd7f44537560c66b931c2aaf77c"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A962",
+   "cpu_start": "A959",
+   "file_start": "32959",
+   "first16": "2162a9cdfaa9c3a2a900244872ffffff",
+   "length": 9,
+   "name": "sign_prize_select_even",
+   "role": "even-parity branch: HL := $A962, CALL $A9FA, JP $A9A2",
+   "sha256": "a0d6fc8d70526d9b4f2cf4cba1da8845b1bae2475fa2753a16e8fa7d3f6edcc2"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A9A2",
+   "cpu_start": "A962",
+   "file_start": "32962",
+   "first16": "00244872ffffffffffffffffffffffff",
+   "length": 64,
+   "name": "sign_prize_table_even",
+   "role": "64-byte BCD ring-count table used when (zone + 1) is even",
+   "sha256": "3a0d4b966d01a1014cb9f2924a64d76bab4926c56d1869b15f07d17021f7e782"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A9EC",
+   "cpu_start": "A9A2",
+   "file_start": "329A2",
+   "first16": "dd7e34b728443d2010cdf2033a00d5fe",
+   "length": 74,
+   "name": "sign_prize_dispatch",
+   "role": "class -> reward ($03F2 life, rings +$10, continue +1) and D3B3 face selector",
+   "sha256": "f311bd63deeeb5b79a7635eca944f3487d58bb2e676e10bfbc24b186e53ab024"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "A9FA",
+   "cpu_start": "A9EC",
+   "file_start": "329EC",
+   "first16": "dd3635ff3e2032b3d3dd360203c90140",
+   "length": 14,
+   "name": "sign_retry_setup",
+   "role": "class 0: +$35 := $FF, D3B3 := $20, state 3",
+   "sha256": "6c2eb86b411ba2c77fc946086267ef9f16e68dda8ab74ffc963fe492b7454c1b"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "AA16",
+   "cpu_start": "A9FA",
+   "file_start": "329FA",
+   "first16": "0140003a9ad2edb1200c3200dc790f0f",
+   "length": 28,
+   "name": "sign_prize_lookup",
+   "role": "CPIR over a 64-byte table, class = C >> 4 (also stores the ring count at $DC00)",
+   "sha256": "21146a16e701d3134096f70f04a1b3ab07180555121c3d23b09f6edd20ed39a7"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "AA22",
+   "cpu_start": "AA16",
+   "file_start": "32A16",
+   "first16": "3a2fd1e6073cdd7734c3a2a9dd6615dd",
+   "length": 12,
+   "name": "sign_retouch_reroll",
+   "role": "+$34 := ($D12F & 7) + 1, then the common dispatch",
+   "sha256": "4fced8442bc5365ed0543394fbff1e09262d2272344aea9c6ba00b22cfc80fb2"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "AA47",
+   "cpu_start": "AA22",
+   "file_start": "32A22",
+   "first16": "dd6615dd6e14119900afed52221cd1dd",
+   "length": 37,
+   "name": "sign_camera_pan",
+   "role": "sign pan target (signX - $80, signY - $99), vector $0359",
+   "sha256": "ac4de7e5f5a6dab82d4f5b3638a826a4e9ddd62966dffa87572da6a76ae5004b"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "AA4F",
+   "cpu_start": "AA47",
+   "file_start": "32A47",
+   "first16": "0e192600cd2c03c959aa5faa65aa78aa",
+   "length": 8,
+   "name": "child19_spawn_vector",
+   "role": "state 5 script call: spawn type $19",
+   "sha256": "17babded4f080cdc1556d23f19720fa554e15d207b454e5927d2559fc269256a"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "AB9F",
+   "cpu_start": "AA4F",
+   "file_start": "32A4F",
+   "first16": "59aa5faa65aa78aa81aa010087aaff00",
+   "length": 336,
+   "name": "child19_states",
+   "role": "type $19 table, scripts, state callbacks and constants (digit cycling, slide-in)",
+   "sha256": "6dd036dd15a55ef535c1f18c9ca17f15093c6fdab8c660002d38205763af93d1"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "AB8C",
+   "cpu_start": "AB48",
+   "file_start": "32B48",
+   "first16": "cd1f047cb5200321770722a6d2447de6",
+   "length": 68,
+   "name": "child19_bonus_state3",
+   "role": "state 3: $041F bonus word, zero -> $0777, equal digits -> $03F2, panel digits",
+   "sha256": "210d5092ec87e865977b1dc848dd2fab2a4b9d759e762ebcf9107da171cfee30"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "62AD",
+   "cpu_start": "6276",
+   "file_start": "06276",
+   "first16": "aff521ad62878716005f195e23562322",
+   "length": 55,
+   "name": "bonus_word_6276",
+   "role": "$041F target: time bucket index, H/L word",
+   "sha256": "4acadba93d4d13894f1eebd871d4e120495b5838a2a364d11430523ae349dc69"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "62D5",
+   "cpu_start": "62AD",
+   "file_start": "062AD",
+   "first16": "29000009590000082901000759010006",
+   "length": 40,
+   "name": "bonus_time_table",
+   "role": "ten 4-byte entries: limit word (BCD mmss), L byte, H byte",
+   "sha256": "0095da7fd3153e67ac67620896f8b3252bb8e3f19e4c82fe7d83263bbf08fb57"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "3138",
+   "cpu_start": "3104",
+   "file_start": "03104",
+   "first16": "3ea93204de3a99d2fe992806c6012732",
+   "length": 52,
+   "name": "life_award_3104",
+   "role": "sound $A9, D299 + 1 capped at $99, HUD digits when D292 = 0",
+   "sha256": "a1eea829e8c4030cde252d4776bf9c394d45f788bfd133fbc73a66b296cd62d1"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "03F5",
+   "cpu_start": "03F2",
+   "file_start": "003F2",
+   "first16": "c30431c39248c3483ac36861c3061dc3",
+   "length": 3,
+   "name": "vectors_03F2_041F",
+   "role": "JP $3104",
+   "sha256": "39eb0b74ce68453f746dbbca0dcd4aefe7cd7798e0cd71cc89780b1945cfb4fb"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "0422",
+   "cpu_start": "041F",
+   "file_start": "0041F",
+   "first16": "c37662c31a40c38449c31f6cc3b359c3",
+   "length": 3,
+   "name": "vectors_041F",
+   "role": "JP $6276",
+   "sha256": "475e4cd3d459ee9dc76b1f5f552d6150e473cb58cccf9c8fb9d7bf2ec2c6ec59"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7F60",
+   "cpu_start": "7F3C",
+   "file_start": "07F3C",
+   "first16": "15061506150616071607160717081708",
+   "length": 36,
+   "name": "level_sprite_palette_index",
+   "role": "(zone * 3 + act) * 2 -> [background palette, sprite palette]",
+   "sha256": "cd522bd78d05c9959cb113175f5299420eaf52be176c42e060a908ac60ade6b1"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7979",
+   "cpu_start": "794F",
+   "file_start": "0794F",
+   "first16": "3a97d2478780473a98d2806f26002911",
+   "length": 42,
+   "name": "sprite_loader_vector_check",
+   "role": "palette index loader $794F",
+   "sha256": "c21afec2d5aed969b7b4d5c58dc012bd5ee37b6ba20bb77630c6754d6700e3ed"
+  }
+ ],
+ "schema": "u3-sign-prize-static/1",
+ "selector_identities": {
+  "note": "$1C is byte-identical to the first block of $12 (the sign's default Eggman face); no routine writes $1C to D3B3",
+  "same_face_as_12": ["1C"]
+ },
+ "selector_roles": {
+  "12": {
+   "face": "Dr. Robotnik",
+   "role": "default face, written by $A87D when the sign wakes (tiles $6A..$79 face + $7A..$A9 fixed spin/back/pole)"
+  },
+  "1B": {
+   "face": "Sonic",
+   "role": "life (Sonic) / continue (Tails)"
+  },
+  "1C": {
+   "face": "Dr. Robotnik",
+   "role": "never selected (identical to $12 face block)"
+  },
+  "1D": {
+   "face": "Tails",
+   "role": "life (Tails) / continue (Sonic)"
+  },
+  "1E": {
+   "face": "gold ring",
+   "role": "ring prize (+10 rings), both characters"
+  },
+  "1F": {
+   "face": "blue bird",
+   "role": "no prize (class $FF, retouch classes 4..8)"
+  },
+  "20": {
+   "face": "blank panel (index 10 fill)",
+   "role": "retry (class 0): blank grey panel"
+  }
+ },
+ "selectors": {
+  "12": {
+   "entries": [
+    {
+     "bank": 13,
+     "bank_byte": 13,
+     "list_cpu": "7BCB",
+     "remap": false,
+     "source_cpu": "96BC",
+     "source_file": "356BC",
+     "tile_base": 106,
+     "tiles": 16,
+     "vram": "0D40"
+    },
+    {
+     "bank": 9,
+     "bank_byte": 9,
+     "list_cpu": "7BD1",
+     "remap": false,
+     "source_cpu": "8640",
+     "source_file": "24640",
+     "tile_base": 122,
+     "tiles": 48,
+     "vram": "0F40"
+    }
+   ],
+   "face_index_histogram": {
+    "0": 82,
+    "10": 174,
+    "11": 50,
+    "12": 85,
+    "3": 96,
+    "4": 66,
+    "6": 122,
+    "7": 74,
+    "8": 58,
+    "9": 217
+   },
+   "face_source_cpu": "96BC",
+   "face_source_file": "356BC",
+   "face_tile_bytes_sha256": "b168f0ebdfe2dcafdb8c4fb5c52decdb8ab61cdf93689c884999da6210bc206b",
+   "face_tile_index_sha256": "7c1e7f96d32aea376665af69c22deca1e06ea7e896007c75ab0571f18d7fbfbb",
+   "list_cpu": "7BCB"
+  },
+  "1B": {
+   "entries": [
+    {
+     "bank": 13,
+     "bank_byte": 13,
+     "list_cpu": "7C47",
+     "remap": false,
+     "source_cpu": "94BC",
+     "source_file": "354BC",
+     "tile_base": 106,
+     "tiles": 16,
+     "vram": "0D40"
+    }
+   ],
+   "face_index_histogram": {
+    "0": 82,
+    "1": 110,
+    "10": 190,
+    "11": 81,
+    "12": 162,
+    "2": 100,
+    "3": 82,
+    "4": 31,
+    "5": 21,
+    "6": 51,
+    "7": 98,
+    "9": 16
+   },
+   "face_source_cpu": "94BC",
+   "face_source_file": "354BC",
+   "face_tile_bytes_sha256": "d5c3c3b6a2c9ba0d96365f696957620a5f9f372223f1ba4bd737f04417074c1c",
+   "face_tile_index_sha256": "d8b97222dadb053c2149c8fe3f804f1bf577bd1b8413414fe7d7cca8aee97751",
+   "list_cpu": "7C47"
+  },
+  "1C": {
+   "entries": [
+    {
+     "bank": 13,
+     "bank_byte": 13,
+     "list_cpu": "7C4E",
+     "remap": false,
+     "source_cpu": "96BC",
+     "source_file": "356BC",
+     "tile_base": 106,
+     "tiles": 16,
+     "vram": "0D40"
+    }
+   ],
+   "face_index_histogram": {
+    "0": 82,
+    "10": 174,
+    "11": 50,
+    "12": 85,
+    "3": 96,
+    "4": 66,
+    "6": 122,
+    "7": 74,
+    "8": 58,
+    "9": 217
+   },
+   "face_source_cpu": "96BC",
+   "face_source_file": "356BC",
+   "face_tile_bytes_sha256": "b168f0ebdfe2dcafdb8c4fb5c52decdb8ab61cdf93689c884999da6210bc206b",
+   "face_tile_index_sha256": "7c1e7f96d32aea376665af69c22deca1e06ea7e896007c75ab0571f18d7fbfbb",
+   "list_cpu": "7C4E"
+  },
+  "1D": {
+   "entries": [
+    {
+     "bank": 13,
+     "bank_byte": 13,
+     "list_cpu": "7C55",
+     "remap": false,
+     "source_cpu": "98BC",
+     "source_file": "358BC",
+     "tile_base": 106,
+     "tiles": 16,
+     "vram": "0D40"
+    }
+   ],
+   "face_index_histogram": {
+    "0": 82,
+    "1": 60,
+    "10": 205,
+    "11": 95,
+    "2": 215,
+    "3": 80,
+    "4": 59,
+    "6": 47,
+    "7": 143,
+    "9": 38
+   },
+   "face_source_cpu": "98BC",
+   "face_source_file": "358BC",
+   "face_tile_bytes_sha256": "3f1c9ae61037f3c6a5f60c99c71b961cd45aff28223dce02d06d65f83c787bb7",
+   "face_tile_index_sha256": "ee929a175012ad4acb5a5b9d697d83fa3e4f948c1c6cf2f83c9e08540314715f",
+   "list_cpu": "7C55"
+  },
+  "1E": {
+   "entries": [
+    {
+     "bank": 13,
+     "bank_byte": 13,
+     "list_cpu": "7C5C",
+     "remap": false,
+     "source_cpu": "9ABC",
+     "source_file": "35ABC",
+     "tile_base": 106,
+     "tiles": 16,
+     "vram": "0D40"
+    }
+   ],
+   "face_index_histogram": {
+    "0": 82,
+    "1": 66,
+    "10": 196,
+    "11": 56,
+    "12": 18,
+    "2": 408,
+    "3": 40,
+    "4": 59,
+    "6": 35,
+    "7": 64
+   },
+   "face_source_cpu": "9ABC",
+   "face_source_file": "35ABC",
+   "face_tile_bytes_sha256": "04bbe24e2e08604e5980c86cd98688a43b52759538f1435b3fe3a64a90dbe9bf",
+   "face_tile_index_sha256": "bc12d2996d9fd8addb12846d3d06fd90d68e83cd7f0f1463e0b7f122bc235aba",
+   "list_cpu": "7C5C"
+  },
+  "1F": {
+   "entries": [
+    {
+     "bank": 13,
+     "bank_byte": 13,
+     "list_cpu": "7C63",
+     "remap": false,
+     "source_cpu": "9CBC",
+     "source_file": "35CBC",
+     "tile_base": 106,
+     "tiles": 16,
+     "vram": "0D40"
+    }
+   ],
+   "face_index_histogram": {
+    "0": 82,
+    "1": 42,
+    "10": 192,
+    "11": 64,
+    "12": 281,
+    "13": 2,
+    "14": 20,
+    "2": 106,
+    "3": 66,
+    "4": 3,
+    "5": 15,
+    "6": 47,
+    "7": 100,
+    "9": 4
+   },
+   "face_source_cpu": "9CBC",
+   "face_source_file": "35CBC",
+   "face_tile_bytes_sha256": "192aa683f01a19f6203c74e4c30d05061571677cea40af0c50bb728ecdbf74eb",
+   "face_tile_index_sha256": "1bdd9965b47cb2d1e1d9195823501ede5373a4098520d39f7cf10d916f193471",
+   "list_cpu": "7C63"
+  },
+  "20": {
+   "entries": [
+    {
+     "bank": 13,
+     "bank_byte": 13,
+     "list_cpu": "7C6A",
+     "remap": false,
+     "source_cpu": "9EBC",
+     "source_file": "35EBC",
+     "tile_base": 106,
+     "tiles": 16,
+     "vram": "0D40"
+    }
+   ],
+   "face_index_histogram": {
+    "0": 82,
+    "10": 690,
+    "11": 118,
+    "6": 60,
+    "7": 74
+   },
+   "face_source_cpu": "9EBC",
+   "face_source_file": "35EBC",
+   "face_tile_bytes_sha256": "5742789b516659127d2784fd5c1b93aff53b23077e7abf8ecb67b805e748a499",
+   "face_tile_index_sha256": "c14d2c3b933993e3db23cd3117750e3b268825c66cc6faffee8c304f54a54ffc",
+   "list_cpu": "7C6A"
+  }
+ },
+ "sign_mapping": {
+  "evidence": "DECODED DATA (bank $0F)",
+  "face_pieces": "frame 1 only: eight pieces tiles $6A,$6C..$78 form a 32 x 32 panel at x -16..+15, y -48..-17 (anchor relative); frame 5 (other side) uses fixed tiles $9A..$A9",
+  "frames": [
+   {
+    "extent_word": "0000",
+    "frame": 0,
+    "pieces": [],
+    "record_cpu": "A0E4",
+    "record_file": "3E0E4",
+    "sha256": "5607fd0973658cceca7f972f8913e0469d509c83510072f0c007bd66558f9072"
+   },
+   {
+    "extent_word": "2A0C",
+    "frame": 1,
+    "pieces": [
+     {
+      "selector_dependent": true,
+      "tile": 106,
+      "x": -16,
+      "y": -48
+     },
+     {
+      "selector_dependent": true,
+      "tile": 108,
+      "x": -8,
+      "y": -48
+     },
+     {
+      "selector_dependent": true,
+      "tile": 110,
+      "x": 0,
+      "y": -48
+     },
+     {
+      "selector_dependent": true,
+      "tile": 112,
+      "x": 8,
+      "y": -48
+     },
+     {
+      "selector_dependent": true,
+      "tile": 114,
+      "x": -16,
+      "y": -32
+     },
+     {
+      "selector_dependent": true,
+      "tile": 116,
+      "x": -8,
+      "y": -32
+     },
+     {
+      "selector_dependent": true,
+      "tile": 118,
+      "x": 0,
+      "y": -32
+     },
+     {
+      "selector_dependent": true,
+      "tile": 120,
+      "x": 8,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 122,
+      "x": -8,
+      "y": -16
+     },
+     {
+      "selector_dependent": false,
+      "tile": 124,
+      "x": 0,
+      "y": -16
+     }
+    ],
+    "record_cpu": "8EBA",
+    "record_file": "3CEBA",
+    "sha256": "3c518bfc988fb4d190d8cb02d857210626f1f31fe2f351afe5dda70cd512d6ce"
+   },
+   {
+    "extent_word": "3008",
+    "frame": 2,
+    "pieces": [
+     {
+      "selector_dependent": false,
+      "tile": 126,
+      "x": -8,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 128,
+      "x": 0,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 130,
+      "x": -8,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 132,
+      "x": 0,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 134,
+      "x": -8,
+      "y": -16
+     },
+     {
+      "selector_dependent": false,
+      "tile": 136,
+      "x": 0,
+      "y": -16
+     }
+    ],
+    "record_cpu": "8EC5",
+    "record_file": "3CEC5",
+    "sha256": "7c640ed9e5c944c164ec1990814645eb01c6ce2626c465de6bfb5172ab7c7fc5"
+   },
+   {
+    "extent_word": "3008",
+    "frame": 3,
+    "pieces": [
+     {
+      "selector_dependent": false,
+      "tile": 138,
+      "x": -8,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 140,
+      "x": 0,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 142,
+      "x": -8,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 144,
+      "x": 0,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 122,
+      "x": -8,
+      "y": -16
+     },
+     {
+      "selector_dependent": false,
+      "tile": 124,
+      "x": 0,
+      "y": -16
+     }
+    ],
+    "record_cpu": "8ED0",
+    "record_file": "3CED0",
+    "sha256": "f8f77821f17068d6e04b4737afde33949a251fa8e8118dd2f5fa2ff08575c1cc"
+   },
+   {
+    "extent_word": "3008",
+    "frame": 4,
+    "pieces": [
+     {
+      "selector_dependent": false,
+      "tile": 146,
+      "x": -8,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 148,
+      "x": 0,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 150,
+      "x": -8,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 152,
+      "x": 0,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 134,
+      "x": -8,
+      "y": -16
+     },
+     {
+      "selector_dependent": false,
+      "tile": 136,
+      "x": 0,
+      "y": -16
+     }
+    ],
+    "record_cpu": "8EDB",
+    "record_file": "3CEDB",
+    "sha256": "70f98563986124a141c96c83de84f63260aad2a7f50320f283eb22c4ed2d00e8"
+   },
+   {
+    "extent_word": "2A0D",
+    "frame": 5,
+    "pieces": [
+     {
+      "selector_dependent": false,
+      "tile": 154,
+      "x": -16,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 156,
+      "x": -8,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 158,
+      "x": 0,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 160,
+      "x": 8,
+      "y": -48
+     },
+     {
+      "selector_dependent": false,
+      "tile": 162,
+      "x": -16,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 164,
+      "x": -8,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 166,
+      "x": 0,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 168,
+      "x": 8,
+      "y": -32
+     },
+     {
+      "selector_dependent": false,
+      "tile": 122,
+      "x": -8,
+      "y": -16
+     },
+     {
+      "selector_dependent": false,
+      "tile": 124,
+      "x": 0,
+      "y": -16
+     }
+    ],
+    "record_cpu": "8EE6",
+    "record_file": "3CEE6",
+    "sha256": "8f916df165a1a1f92083f3b7a7d8bf961d9e2a55e59adc7b645812ceef876dfd"
+   }
+  ],
+  "sprite_mode": "8x16: each piece uses tile and tile + 1; tile numbers are VRAM tile ids (no base added)",
+  "table_cpu": "8EAE",
+  "type_pointer_file": "3C030"
+ },
+ "sprite_palettes": {
+  "evidence": "DECODED DATA ($7F3C index table, $3B64D records)",
+  "note": "the sign is a sprite: its colours are the level's sprite palette (CRAM 16..31), one record per zone, act independent",
+  "zones": {
+   "0": {
+    "act_independent": true,
+    "background_index": [21, 21, 21],
+    "sprite_colours": [56, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 12, 8, 4],
+    "sprite_index": 6
+   },
+   "1": {
+    "act_independent": true,
+    "background_index": [22, 22, 22],
+    "sprite_colours": [0, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 12, 8, 4],
+    "sprite_index": 7
+   },
+   "2": {
+    "act_independent": true,
+    "background_index": [23, 23, 23],
+    "sprite_colours": [48, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 55, 34, 0],
+    "sprite_index": 8
+   },
+   "3": {
+    "act_independent": true,
+    "background_index": [24, 24, 24],
+    "sprite_colours": [25, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 12, 8, 4],
+    "sprite_index": 9
+   },
+   "4": {
+    "act_independent": true,
+    "background_index": [25, 25, 25],
+    "sprite_colours": [16, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 42, 21, 29],
+    "sprite_index": 10
+   },
+   "5": {
+    "act_independent": true,
+    "background_index": [26, 26, 26],
+    "sprite_colours": [0, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 12, 8, 4],
+    "sprite_index": 11
+   }
+  }
+ }
+}
