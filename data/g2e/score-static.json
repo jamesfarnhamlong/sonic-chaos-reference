@@ -1,0 +1,1962 @@
+{
+ "add_routine": {
+  "byte_checks": {
+   "bcd_add_three_bytes_adc_daa": {
+    "bytes_sha256_prefix": "f181f8b6e0c5",
+    "cpu": "0x2642",
+    "length": 20
+   },
+   "carry_out_branch": {
+    "bytes_sha256_prefix": "c1d5f8449a83",
+    "cpu": "0x2656",
+    "length": 2
+   },
+   "carry_out_writes_dead_cap": {
+    "bytes_sha256_prefix": "bc7b6df24afd",
+    "cpu": "0x2658",
+    "length": 15
+   },
+   "character_test_sonic": {
+    "bytes_sha256_prefix": "2e776612099f",
+    "cpu": "0x267C",
+    "length": 7
+   },
+   "continue_increment_bit7_kept": {
+    "bytes_sha256_prefix": "225657bd0219",
+    "cpu": "0x26BD",
+    "length": 16
+   },
+   "gate_d292_nonzero_returns": {
+    "bytes_sha256_prefix": "22db961ccd7a",
+    "cpu": "0x262F",
+    "length": 5
+   },
+   "mod3_helper": {
+    "bytes_sha256_prefix": "1468e94b0391",
+    "cpu": "0x26CD",
+    "length": 9
+   },
+   "no_carry_flag_one": {
+    "bytes_sha256_prefix": "075d8b501d98",
+    "cpu": "0x2667",
+    "length": 2
+   },
+   "save_previous_score": {
+    "bytes_sha256_prefix": "0668babb0957",
+    "cpu": "0x2634",
+    "length": 14
+   },
+   "sonic_award_digit_0_or_5": {
+    "bytes_sha256_prefix": "3cffd535b44c",
+    "cpu": "0x2683",
+    "length": 14
+   },
+   "store_flag_d2bb": {
+    "bytes_sha256_prefix": "74b65b2be7cf",
+    "cpu": "0x2669",
+    "length": 3
+   },
+   "thousands_changed_test": {
+    "bytes_sha256_prefix": "04546c7d0b70",
+    "cpu": "0x266F",
+    "length": 13
+   }
+  },
+  "listing": [
+   [
+    "0x262F",
+    "LD A,(0xd292)"
+   ],
+   [
+    "0x2632",
+    "OR A"
+   ],
+   [
+    "0x2633",
+    "RET nz"
+   ],
+   [
+    "0x2634",
+    "LD DE,(0xd29d)"
+   ],
+   [
+    "0x2638",
+    "LD (0xd2a0),DE"
+   ],
+   [
+    "0x263C",
+    "LD A,(0xd29f)"
+   ],
+   [
+    "0x263F",
+    "LD (0xd2a2),A"
+   ],
+   [
+    "0x2642",
+    "XOR A"
+   ],
+   [
+    "0x2643",
+    "LD DE,0xd29d"
+   ],
+   [
+    "0x2646",
+    "LD A,(DE)"
+   ],
+   [
+    "0x2647",
+    "ADC A,(HL)"
+   ],
+   [
+    "0x2648",
+    "DAA"
+   ],
+   [
+    "0x2649",
+    "LD (DE),A"
+   ],
+   [
+    "0x264A",
+    "INC DE"
+   ],
+   [
+    "0x264B",
+    "INC HL"
+   ],
+   [
+    "0x264C",
+    "LD A,(DE)"
+   ],
+   [
+    "0x264D",
+    "ADC A,(HL)"
+   ],
+   [
+    "0x264E",
+    "DAA"
+   ],
+   [
+    "0x264F",
+    "LD (DE),A"
+   ],
+   [
+    "0x2650",
+    "INC DE"
+   ],
+   [
+    "0x2651",
+    "INC HL"
+   ],
+   [
+    "0x2652",
+    "LD A,(DE)"
+   ],
+   [
+    "0x2653",
+    "ADC A,(HL)"
+   ],
+   [
+    "0x2654",
+    "DAA"
+   ],
+   [
+    "0x2655",
+    "LD (DE),A"
+   ],
+   [
+    "0x2656",
+    "JR nc,0x2667"
+   ],
+   [
+    "0x2658",
+    "LD HL,0xd2a3"
+   ],
+   [
+    "0x265B",
+    "LD (HL),0x90"
+   ],
+   [
+    "0x265D",
+    "INC HL"
+   ],
+   [
+    "0x265E",
+    "LD (HL),0x99"
+   ],
+   [
+    "0x2660",
+    "INC HL"
+   ],
+   [
+    "0x2661",
+    "LD (HL),0x99"
+   ],
+   [
+    "0x2663",
+    "LD A,2"
+   ],
+   [
+    "0x2665",
+    "JR 0x2669"
+   ],
+   [
+    "0x2667",
+    "LD A,1"
+   ],
+   [
+    "0x2669",
+    "LD (0xd2bb),A"
+   ],
+   [
+    "0x266C",
+    "JP 0x266f"
+   ],
+   [
+    "0x266F",
+    "LD A,(0xd29e)"
+   ],
+   [
+    "0x2672",
+    "AND 0xf0"
+   ],
+   [
+    "0x2674",
+    "LD B,A"
+   ],
+   [
+    "0x2675",
+    "LD A,(0xd2a1)"
+   ],
+   [
+    "0x2678",
+    "AND 0xf0"
+   ],
+   [
+    "0x267A",
+    "CP B"
+   ],
+   [
+    "0x267B",
+    "RET z"
+   ],
+   [
+    "0x267C",
+    "LD A,(0xd2c8)"
+   ],
+   [
+    "0x267F",
+    "DEC A"
+   ],
+   [
+    "0x2680",
+    "JP nz,0x2691"
+   ],
+   [
+    "0x2683",
+    "LD A,(0xd29e)"
+   ],
+   [
+    "0x2686",
+    "AND 0xf0"
+   ],
+   [
+    "0x2688",
+    "JP z,0x26bd"
+   ],
+   [
+    "0x268B",
+    "CP 0x50"
+   ],
+   [
+    "0x268D",
+    "JP z,0x26bd"
+   ],
+   [
+    "0x2690",
+    "RET"
+   ],
+   [
+    "0x2691",
+    "LD A,(0xd29e)"
+   ],
+   [
+    "0x2694",
+    "RRCA"
+   ],
+   [
+    "0x2695",
+    "RRCA"
+   ],
+   [
+    "0x2696",
+    "RRCA"
+   ],
+   [
+    "0x2697",
+    "RRCA"
+   ],
+   [
+    "0x2698",
+    "AND 15"
+   ],
+   [
+    "0x269A",
+    "CALL 0x26cd"
+   ],
+   [
+    "0x269D",
+    "LD E,A"
+   ],
+   [
+    "0x269E",
+    "LD A,(0xd29f)"
+   ],
+   [
+    "0x26A1",
+    "AND 15"
+   ],
+   [
+    "0x26A3",
+    "CALL 0x26cd"
+   ],
+   [
+    "0x26A6",
+    "LD D,A"
+   ],
+   [
+    "0x26A7",
+    "LD A,(0xd29f)"
+   ],
+   [
+    "0x26AA",
+    "RRCA"
+   ],
+   [
+    "0x26AB",
+    "RRCA"
+   ],
+   [
+    "0x26AC",
+    "RRCA"
+   ],
+   [
+    "0x26AD",
+    "RRCA"
+   ],
+   [
+    "0x26AE",
+    "AND 15"
+   ],
+   [
+    "0x26B0",
+    "CALL 0x26cd"
+   ],
+   [
+    "0x26B3",
+    "ADD A,E"
+   ],
+   [
+    "0x26B4",
+    "ADD A,D"
+   ],
+   [
+    "0x26B5",
+    "CALL 0x26cd"
+   ],
+   [
+    "0x26B8",
+    "OR A"
+   ],
+   [
+    "0x26B9",
+    "JP z,0x26bd"
+   ],
+   [
+    "0x26BC",
+    "RET"
+   ],
+   [
+    "0x26BD",
+    "LD A,(0xd2c3)"
+   ],
+   [
+    "0x26C0",
+    "LD B,A"
+   ],
+   [
+    "0x26C1",
+    "INC A"
+   ],
+   [
+    "0x26C2",
+    "AND 0x7f"
+   ],
+   [
+    "0x26C4",
+    "LD C,A"
+   ],
+   [
+    "0x26C5",
+    "LD A,B"
+   ],
+   [
+    "0x26C6",
+    "AND 0x80"
+   ],
+   [
+    "0x26C8",
+    "OR C"
+   ],
+   [
+    "0x26C9",
+    "LD (0xd2c3),A"
+   ],
+   [
+    "0x26CC",
+    "RET"
+   ],
+   [
+    "0x26CD",
+    "OR A"
+   ],
+   [
+    "0x26CE",
+    "RET z"
+   ],
+   [
+    "0x26CF",
+    "LD B,3"
+   ],
+   [
+    "0x26D1",
+    "SUB B"
+   ],
+   [
+    "0x26D2",
+    "JR nc,0x26d1"
+   ],
+   [
+    "0x26D4",
+    "ADD A,B"
+   ],
+   [
+    "0x26D5",
+    "RET"
+   ]
+  ],
+  "range_cpu": [
+   "0x262F",
+   "0x26D6"
+  ],
+  "semantics": {
+   "gate": "D292 != 0 (title, menu, attract flow bits) returns before anything is changed",
+   "input": "HL = pointer to a three-byte packed-BCD amount (little endian); the routine adds it to D29D..D29F",
+   "threshold": "after the add, if the thousands digit (high nibble of D29E) differs from the saved previous score: Sonic (D2C8 == 1) awards a continue when the new digit is 0 or 5; any other character awards when (thousands + ten-thousands + hundred-thousands digit) mod 3 == 0; the award is a binary +1 of D2C3 with bit 7 kept",
+   "wrap": "ADC/DAA on three bytes: the sum is taken modulo 1,000,000 raw. Carry out of the top byte does NOT saturate; it only writes D2A3..D2A5 := 90 99 99 and D2BB := 2 (both never read anywhere in the ROM, see readers)"
+  },
+  "sha256": "2b27ea7996e73134aadf77838bae7d00e893af0d421b89a5e2b7cd5c615ba8d6"
+ },
+ "award_table": {
+  "base": "0x27E2",
+  "entries": [
+   {
+    "bcd_bytes_le": "010000",
+    "cpu": "0x27E2",
+    "displayed_points": 10,
+    "raw_units": 1
+   },
+   {
+    "bcd_bytes_le": "100000",
+    "cpu": "0x27E5",
+    "displayed_points": 100,
+    "raw_units": 10
+   },
+   {
+    "bcd_bytes_le": "500000",
+    "cpu": "0x27E8",
+    "displayed_points": 500,
+    "raw_units": 50
+   },
+   {
+    "bcd_bytes_le": "100000",
+    "cpu": "0x27EB",
+    "displayed_points": 100,
+    "raw_units": 10
+   }
+  ],
+  "referenced_by_ld_hl_in_fixed_code": {
+   "0x27E2": [
+    "0x2EFB"
+   ],
+   "0x27E5": [
+    "0x2F00"
+   ],
+   "0x27E8": [],
+   "0x27EB": [
+    "0x2F05",
+    "0x5F7E"
+   ]
+  },
+  "roles": {
+   "0x27E2": "results word loop step (+1 raw = 10 displayed)",
+   "0x27E5": "results ring loop step (+10 raw = 100 displayed)",
+   "0x27E8": "NEVER REFERENCED (+50 raw = 500 displayed is dead data)",
+   "0x27EB": "act-3 boss bonus loop step AND the enemy/monitor conversion award (+10 raw = 100 displayed)"
+  }
+ },
+ "conversion_gate": {
+  "listing": [
+   [
+    "0x5F3D",
+    "LD A,(IX+0x21)"
+   ],
+   [
+    "0x5F40",
+    "AND 15"
+   ],
+   [
+    "0x5F42",
+    "RET z"
+   ],
+   [
+    "0x5F43",
+    "LD A,(0xd532)"
+   ],
+   [
+    "0x5F46",
+    "CP 6"
+   ],
+   [
+    "0x5F48",
+    "JR z,0x5f50"
+   ],
+   [
+    "0x5F4A",
+    "LD A,(0xd503)"
+   ],
+   [
+    "0x5F4D",
+    "BIT 1,A"
+   ],
+   [
+    "0x5F4F",
+    "RET z"
+   ],
+   [
+    "0x5F50",
+    "LD (IX+0x3f),0x80"
+   ],
+   [
+    "0x5F54",
+    "CALL 0x5f77"
+   ],
+   [
+    "0x5F57",
+    "LD (IX),15"
+   ],
+   [
+    "0x5F5B",
+    "XOR A"
+   ],
+   [
+    "0x5F5C",
+    "LD (IX+1),A"
+   ],
+   [
+    "0x5F5F",
+    "LD (IX+2),A"
+   ],
+   [
+    "0x5F62",
+    "LD (IX+4),A"
+   ],
+   [
+    "0x5F65",
+    "LD (IX+7),A"
+   ],
+   [
+    "0x5F68",
+    "LD (IX+14),A"
+   ],
+   [
+    "0x5F6B",
+    "LD (IX+15),A"
+   ],
+   [
+    "0x5F6E",
+    "LD (IX+0x3e),0"
+   ],
+   [
+    "0x5F72",
+    "LD (IX+0x3f),0"
+   ],
+   [
+    "0x5F76",
+    "RET"
+   ],
+   [
+    "0x5F77",
+    "LD A,(IX)"
+   ],
+   [
+    "0x5F7A",
+    "CP 0x50"
+   ],
+   [
+    "0x5F7C",
+    "RET nc"
+   ],
+   [
+    "0x5F7D",
+    "RET z"
+   ],
+   [
+    "0x5F7E",
+    "LD HL,0x27eb"
+   ],
+   [
+    "0x5F81",
+    "JP 0x262f"
+   ]
+  ],
+  "range_cpu": [
+   "0x5F3D",
+   "0x5F84"
+  ],
+  "semantics": {
+   "$5F3D (vector $0323)": "needs (IX+$21 & $0F) != 0 (contact bits from $6328) AND (D532 == 6 OR D503 bit 1); then falls into the conversion. Anything else returns with no score and no state change",
+   "$5F54 (vector $033E)": "the conversion itself: calls the gate $5F77, then turns the slot into type $0F, zeroes state/request/script fields/flags and clears the placement token (+$3E) and parameter (+$3F). No condition",
+   "$5F77 gate": "CP $50 / RET NC: any type >= $50 returns with no score (the following RET Z is dead code). Every type 0..$4F adds the single flat amount at $27EB (+10 raw = 100 displayed) through $262F by JP. There is no per-type score table",
+   "$5FA0 (vector $034D)": "NOT a score path: overlap helper $6328 followed by the surface/solid-contact dispatch at $5FB9 (nine entries: RET, push-back handlers)"
+  },
+  "sha256": "e61e594fa96ac8f259cb8223bf66569819ce9dcb5fe383e1ff4a731f0c9d1882",
+  "vectors": {
+   "0x0323": "0x5F3D",
+   "0x033E": "0x5F54",
+   "0x034D": "0x5FA0"
+  }
+ },
+ "conversion_sites": [
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0xB14C",
+   "site_cpu": "0xB18B",
+   "site_file": "0x3318B",
+   "types_states": {
+    "0x20": [
+     4
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0xB412",
+   "site_cpu": "0xB41A",
+   "site_file": "0x3341A",
+   "types_states": {
+    "0x23": [
+     1
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0xB439",
+   "site_cpu": "0xB441",
+   "site_file": "0x33441",
+   "types_states": {
+    "0x23": [
+     2
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0xB573",
+   "site_cpu": "0xB598",
+   "site_file": "0x33598",
+   "types_states": {
+    "0x25": [
+     1,
+     2
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0x89AC",
+   "site_cpu": "0x89B9",
+   "site_file": "0x789B9",
+   "types_states": {
+    "0x27": [
+     1
+    ],
+    "0x29": [
+     1
+    ],
+    "0x2A": [
+     1
+    ],
+    "0x2B": [
+     1
+    ],
+    "0x2C": [
+     1
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0x89F3",
+   "site_cpu": "0x8A0E",
+   "site_file": "0x78A0E",
+   "types_states": {
+    "0x27": [
+     2
+    ],
+    "0x29": [
+     2
+    ],
+    "0x2A": [
+     2
+    ],
+    "0x2B": [
+     2
+    ],
+    "0x2C": [
+     2
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0x8A29",
+   "site_cpu": "0x8A3F",
+   "site_file": "0x78A3F",
+   "types_states": {
+    "0x27": [
+     3
+    ],
+    "0x29": [
+     3
+    ],
+    "0x2A": [
+     3
+    ],
+    "0x2B": [
+     3
+    ],
+    "0x2C": [
+     3
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5F3D_attack_gated",
+   "nearest_entry_cpu": "0x932B",
+   "site_cpu": "0x9338",
+   "site_file": "0x79338",
+   "types_states": {
+    "0x3D": [
+     1,
+     2
+    ]
+   },
+   "vector": "0x0323"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xA16C",
+   "site_cpu": "0xA1C7",
+   "site_file": "0x321C7",
+   "types_states": {
+    "0x10": [
+     2
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xA16C",
+   "site_cpu": "0xA1D0",
+   "site_file": "0x321D0",
+   "types_states": {
+    "0x10": [
+     2
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xB268",
+   "site_cpu": "0xB2DA",
+   "site_file": "0x332DA",
+   "types_states": {
+    "0x21": [
+     3,
+     6
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xB268",
+   "site_cpu": "0xB2E2",
+   "site_file": "0x332E2",
+   "types_states": {
+    "0x21": [
+     3,
+     6
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xB4F0",
+   "site_cpu": "0xB50A",
+   "site_file": "0x3350A",
+   "types_states": {
+    "0x24": [
+     3
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0x81BD",
+   "site_cpu": "0x81F1",
+   "site_file": "0x781F1",
+   "types_states": {
+    "0x33": [
+     5
+    ],
+    "0x40": [
+     5
+    ],
+    "0x41": [
+     5
+    ],
+    "0x42": [
+     5
+    ],
+    "0x43": [
+     5
+    ],
+    "0x44": [
+     5
+    ],
+    "0x45": [
+     5
+    ],
+    "0x46": [
+     5
+    ],
+    "0x47": [
+     5
+    ],
+    "0x48": [
+     5
+    ],
+    "0x49": [
+     5
+    ],
+    "0x4A": [
+     5
+    ],
+    "0x4B": [
+     5
+    ],
+    "0x4C": [
+     5
+    ],
+    "0x4D": [
+     5
+    ],
+    "0x4E": [
+     5
+    ],
+    "0x4F": [
+     5
+    ],
+    "0x50": [
+     5
+    ],
+    "0x60": [
+     5
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0x9029",
+   "site_cpu": "0x904F",
+   "site_file": "0x7904F",
+   "types_states": {
+    "0x38": [
+     2
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xA49D",
+   "site_cpu": "0xA4A1",
+   "site_file": "0x7A4A1",
+   "types_states": {
+    "0x55": [
+     2
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xA77F",
+   "site_cpu": "0xA787",
+   "site_file": "0x7A787",
+   "types_states": {
+    "0x57": [
+     1
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xAD24",
+   "site_cpu": "0xAD28",
+   "site_file": "0x7AD28",
+   "types_states": {
+    "0x5A": [
+     4
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xAEA3",
+   "site_cpu": "0xAEAE",
+   "site_file": "0x7AEAE",
+   "types_states": {
+    "0x5C": [
+     4
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5F54_conversion",
+   "nearest_entry_cpu": "0xB463",
+   "site_cpu": "0xB467",
+   "site_file": "0x7B467",
+   "types_states": {
+    "0x5F": [
+     4
+    ]
+   },
+   "vector": "0x033E"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x0C",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0xA16C",
+   "site_cpu": "0xA177",
+   "site_file": "0x32177",
+   "types_states": {
+    "0x10": [
+     2
+    ]
+   },
+   "vector": "0x034D"
+  },
+  {
+   "bank": "0x1E",
+   "entry": null,
+   "kind": "5FA0_solid_contact_not_score",
+   "site_cpu": "0x814D",
+   "site_file": "0x7814D",
+   "types": [],
+   "vector": "0x034D"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0x8B64",
+   "site_cpu": "0x8B74",
+   "site_file": "0x78B74",
+   "types_states": {
+    "0x2F": [
+     1
+    ]
+   },
+   "vector": "0x034D"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0x9997",
+   "site_cpu": "0x99BC",
+   "site_file": "0x799BC",
+   "types_states": {
+    "0x33": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x40": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x41": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x42": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x43": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x44": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x45": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x46": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x47": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x48": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x49": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x4A": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x4B": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x4C": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x4D": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x4E": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x4F": [
+     8,
+     11,
+     14,
+     17
+    ],
+    "0x50": [
+     8,
+     11,
+     14,
+     17
+    ]
+   },
+   "vector": "0x034D"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0xA087",
+   "site_cpu": "0xA3EC",
+   "site_file": "0x7A3EC",
+   "types_states": {
+    "0x51": [
+     20
+    ],
+    "0x52": [
+     20
+    ],
+    "0x53": [
+     20
+    ]
+   },
+   "vector": "0x034D"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0xA4A4",
+   "site_cpu": "0xA639",
+   "site_file": "0x7A639",
+   "types_states": {
+    "0x55": [
+     3
+    ]
+   },
+   "vector": "0x034D"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0xA79A",
+   "site_cpu": "0xAAD0",
+   "site_file": "0x7AAD0",
+   "types_states": {
+    "0x58": [
+     0
+    ]
+   },
+   "vector": "0x034D"
+  },
+  {
+   "awards_after_gate": false,
+   "bank": "0x1E",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0xB217",
+   "site_cpu": "0xB30C",
+   "site_file": "0x7B30C",
+   "types_states": {
+    "0x5E": [
+     5
+    ]
+   },
+   "vector": "0x034D"
+  },
+  {
+   "awards_after_gate": true,
+   "bank": "0x1E",
+   "kind": "5FA0_solid_contact_not_score",
+   "nearest_entry_cpu": "0xB73F",
+   "site_cpu": "0xB787",
+   "site_file": "0x7B787",
+   "types_states": {
+    "0x2D": [
+     3
+    ],
+    "0x2E": [
+     3
+    ]
+   },
+   "vector": "0x034D"
+  }
+ ],
+ "evidence": "DECODED DATA / BYTE-VERIFIED ASSEMBLY (byte checks asserted at generation time)",
+ "format": 1,
+ "hud": {
+  "digit_field": {
+   "col": 13,
+   "digits": 6,
+   "leading_zero_blank": 5,
+   "name_table_address": "0x3B9A",
+   "row": 14,
+   "rule": "the six raw digits are drawn most significant first as 8x16 glyphs (two stacked tiles); the first five zero digits are replaced by the blank glyph, the last raw digit is always drawn; if D29D|D29E|D29F == 0 the digit loop is skipped entirely and the previous contents of the field stay on screen"
+  },
+  "digit_glyph_table": {
+   "blank_pair": [
+    33,
+    33
+   ],
+   "pairs_top_bottom_tile_ids": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     5,
+     6
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     11,
+     12
+    ],
+    [
+     13,
+     14
+    ],
+    [
+     15,
+     16
+    ],
+    [
+     17,
+     18
+    ],
+    [
+     17,
+     19
+    ]
+   ],
+   "source": "bank $13 slot 2, CPU $A516"
+  },
+  "draw_sites": [
+   "$2D1F (ring step)",
+   "$2D4B (word step)",
+   "$2D6E (boss step)",
+   "$33A8 (card draw)"
+  ],
+  "fixed_block": {
+   "column": 19,
+   "equals_digit_0_glyph": true,
+   "meaning": "a literal '0' glyph: the displayed score is the raw BCD score x 10 (u4 doc section 7: 'ring = 100, bonus step = 10')",
+   "name_table_address": "0x3BA6",
+   "row": 14,
+   "size_cols_rows": [
+    1,
+    2
+   ],
+   "source_cpu": "0xA516",
+   "tile_ids": [
+    1,
+    2
+   ]
+  },
+  "gameplay_hud": "none: D29D..D29F are read only by $262F and $26F8; $26F8 is called only from the results card and its three tally loops",
+  "invalid_bcd": "$27AD returns carry on any nibble > 9 and the field is not drawn (cannot happen through $262F)",
+  "max_displayed": 9999990
+ },
+ "of_which_placed_or_script_spawned": [
+  "0x10",
+  "0x20",
+  "0x21",
+  "0x23",
+  "0x24",
+  "0x25",
+  "0x27",
+  "0x2C",
+  "0x38",
+  "0x3D"
+ ],
+ "placements": {
+  "counts": {
+   "0x10": {
+    "0.0": 5,
+    "0.1": 5,
+    "0.2": 1,
+    "1.0": 4,
+    "1.1": 10,
+    "1.2": 2,
+    "10.0": 7,
+    "10.1": 7,
+    "10.2": 7,
+    "11.0": 6,
+    "11.1": 6,
+    "11.2": 6,
+    "12.0": 3,
+    "12.1": 3,
+    "12.2": 3,
+    "2.0": 6,
+    "2.1": 5,
+    "2.2": 2,
+    "3.0": 4,
+    "3.1": 4,
+    "4.0": 8,
+    "4.1": 4,
+    "4.2": 2,
+    "5.0": 4,
+    "5.1": 3,
+    "6.0": 5,
+    "6.1": 5,
+    "6.2": 1,
+    "8.0": 1,
+    "8.1": 1,
+    "8.2": 1,
+    "9.0": 1,
+    "9.1": 1,
+    "9.2": 1
+   },
+   "0x20": {
+    "2.0": 4,
+    "2.1": 3
+   },
+   "0x21": {
+    "0.0": 6,
+    "0.1": 5,
+    "3.0": 6,
+    "3.1": 9,
+    "6.0": 6,
+    "6.1": 5
+   },
+   "0x23": {
+    "2.0": 4,
+    "2.1": 4
+   },
+   "0x24": {
+    "3.0": 8,
+    "3.1": 4
+   },
+   "0x25": {
+    "1.0": 5,
+    "1.1": 7
+   },
+   "0x27": {
+    "0.0": 3,
+    "0.1": 4,
+    "6.0": 3,
+    "6.1": 4
+   },
+   "0x2C": {
+    "1.0": 4,
+    "1.1": 3,
+    "5.0": 1,
+    "5.1": 8
+   },
+   "0x38": {
+    "5.0": 3,
+    "5.1": 4
+   },
+   "0x3D": {
+    "4.0": 9,
+    "4.1": 10
+   },
+   "0x50": {
+    "0.2": 1,
+    "6.2": 1
+   },
+   "0x51": {
+    "1.2": 1
+   },
+   "0x54": {
+    "2.2": 1
+   },
+   "0x56": {
+    "3.2": 1
+   },
+   "0x59": {
+    "4.2": 1
+   },
+   "0x5E": {
+    "5.2": 1
+   },
+   "0x60": {
+    "5.2": 1
+   }
+  },
+  "variants": [
+   {
+    "aux0": "0x00",
+    "aux1": "0x00",
+    "first": "0.2",
+    "flags": "0x00",
+    "parameter": "0x01",
+    "placements": 17,
+    "type": "0x10"
+   },
+   {
+    "aux0": "0x00",
+    "aux1": "0x00",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x02",
+    "placements": 14,
+    "type": "0x10"
+   },
+   {
+    "aux0": "0x00",
+    "aux1": "0x00",
+    "first": "0.1",
+    "flags": "0x00",
+    "parameter": "0x03",
+    "placements": 11,
+    "type": "0x10"
+   },
+   {
+    "aux0": "0x00",
+    "aux1": "0x00",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x04",
+    "placements": 32,
+    "type": "0x10"
+   },
+   {
+    "aux0": "0x00",
+    "aux1": "0x00",
+    "first": "9.0",
+    "flags": "0x00",
+    "parameter": "0x05",
+    "placements": 15,
+    "type": "0x10"
+   },
+   {
+    "aux0": "0x00",
+    "aux1": "0x00",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x06",
+    "placements": 45,
+    "type": "0x10"
+   },
+   {
+    "aux0": "0xA4",
+    "aux1": "0xA4",
+    "first": "2.0",
+    "flags": "0x00",
+    "parameter": "0x00",
+    "placements": 5,
+    "type": "0x20"
+   },
+   {
+    "aux0": "0xA4",
+    "aux1": "0xA4",
+    "first": "2.0",
+    "flags": "0x00",
+    "parameter": "0x01",
+    "placements": 2,
+    "type": "0x20"
+   },
+   {
+    "aux0": "0x86",
+    "aux1": "0x98",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x02",
+    "placements": 2,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x86",
+    "aux1": "0x98",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x03",
+    "placements": 6,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x86",
+    "aux1": "0x98",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x04",
+    "placements": 8,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x86",
+    "aux1": "0x98",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x06",
+    "placements": 4,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x86",
+    "aux1": "0x98",
+    "first": "0.0",
+    "flags": "0x00",
+    "parameter": "0x08",
+    "placements": 2,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.1",
+    "flags": "0x10",
+    "parameter": "0x01",
+    "placements": 3,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.1",
+    "flags": "0x10",
+    "parameter": "0x02",
+    "placements": 1,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.1",
+    "flags": "0x10",
+    "parameter": "0x03",
+    "placements": 1,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.1",
+    "flags": "0x10",
+    "parameter": "0x04",
+    "placements": 4,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.0",
+    "flags": "0x10",
+    "parameter": "0x06",
+    "placements": 2,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.0",
+    "flags": "0x10",
+    "parameter": "0x08",
+    "placements": 2,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.0",
+    "flags": "0x10",
+    "parameter": "0x0A",
+    "placements": 1,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x7C",
+    "aux1": "0x8E",
+    "first": "3.0",
+    "flags": "0x10",
+    "parameter": "0x16",
+    "placements": 1,
+    "type": "0x21"
+   },
+   {
+    "aux0": "0x86",
+    "aux1": "0x86",
+    "first": "2.0",
+    "flags": "0x00",
+    "parameter": "0x00",
+    "placements": 8,
+    "type": "0x23"
+   },
+   {
+    "aux0": "0xA0",
+    "aux1": "0xA0",
+    "first": "3.0",
+    "flags": "0x00",
+    "parameter": "0x00",
+    "placements": 6,
+    "type": "0x24"
+   },
+   {
+    "aux0": "0xA0",
+    "aux1": "0xA0",
+    "first": "3.0",
+    "flags": "0x00",
+    "parameter": "0x01",
+    "placements": 6,
+    "type": "0x24"
+   },
+   {
+    "aux0": "0x96",
+    "aux1": "0xA8",
+    "first": "1.1",
+    "flags": "0x00",
+    "parameter": "0x04",
+    "placements": 1,
+    "type": "0x25"
+   },
+   {
+    "aux0": "0x96",
+    "aux1": "0xA8",
+    "first": "1.0",
+    "flags": "0x00",
+    "parameter": "0x07",
+    "placements": 2,
+    "type": "0x25"
+   },
+   {
+    "aux0": "0x96",
+    "aux1": "0xA8",
+    "first": "1.1",
+    "flags": "0x00",
+    "parameter": "0x08",
+    "placements": 2,
+    "type": "0x25"
+   },
+   {
+    "aux0": "0x96",
+    "aux1": "0xA8",
+    "first": "1.0",
+    "flags": "0x00",
+    "parameter": "0x09",
+    "placements": 1,
+    "type": "0x25"
+   },
+   {
+    "aux0": "0x96",
+    "aux1": "0xA8",
+    "first": "1.0",
+    "flags": "0x00",
+    "parameter": "0x0A",
+    "placements": 3,
+    "type": "0x25"
+   },
+   {
+    "aux0": "0x96",
+    "aux1": "0xA8",
+    "first": "1.0",
+    "flags": "0x00",
+    "parameter": "0x0B",
+    "placements": 3,
+    "type": "0x25"
+   },
+   {
+    "aux0": "0xAA",
+    "aux1": "0xAA",
+    "first": "0.0",
+    "flags": "0x10",
+    "parameter": "0x00",
+    "placements": 14,
+    "type": "0x27"
+   },
+   {
+    "aux0": "0x8C",
+    "aux1": "0x8C",
+    "first": "1.0",
+    "flags": "0x00",
+    "parameter": "0x00",
+    "placements": 7,
+    "type": "0x2C"
+   },
+   {
+    "aux0": "0x94",
+    "aux1": "0x94",
+    "first": "5.0",
+    "flags": "0x00",
+    "parameter": "0x00",
+    "placements": 3,
+    "type": "0x2C"
+   },
+   {
+    "aux0": "0x94",
+    "aux1": "0x94",
+    "first": "5.1",
+    "flags": "0x00",
+    "parameter": "0x01",
+    "placements": 6,
+    "type": "0x2C"
+   },
+   {
+    "aux0": "0x72",
+    "aux1": "0x72",
+    "first": "5.0",
+    "flags": "0x00",
+    "parameter": "0x00",
+    "placements": 6,
+    "type": "0x38"
+   },
+   {
+    "aux0": "0x72",
+    "aux1": "0x72",
+    "first": "5.0",
+    "flags": "0x00",
+    "parameter": "0x01",
+    "placements": 1,
+    "type": "0x38"
+   },
+   {
+    "aux0": "0x70",
+    "aux1": "0x70",
+    "first": "4.0",
+    "flags": "0x00",
+    "parameter": "0x00",
+    "placements": 8,
+    "type": "0x3D"
+   },
+   {
+    "aux0": "0x70",
+    "aux1": "0x70",
+    "first": "4.0",
+    "flags": "0x00",
+    "parameter": "0x04",
+    "placements": 6,
+    "type": "0x3D"
+   },
+   {
+    "aux0": "0x70",
+    "aux1": "0x70",
+    "first": "4.0",
+    "flags": "0x00",
+    "parameter": "0x08",
+    "placements": 5,
+    "type": "0x3D"
+   }
+  ],
+  "zones_note": "zones 0..5 = THZ GPZ SEZ MGHZ AQZ EEZ; zone 6 repeats the THZ lists; zones 8..12 are the Special Stages (monitors only)"
+ },
+ "research_base": "30655e088421ac10eab456e8fa8a3cb2aae8040b",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "script_spawners_of_score_types": {
+  "0x38": [
+   "0x38"
+  ]
+ },
+ "state_table_aliases_never_placed_or_script_spawned": [
+  "0x29",
+  "0x2A",
+  "0x2B",
+  "0x33",
+  "0x40",
+  "0x41",
+  "0x42",
+  "0x43",
+  "0x44",
+  "0x45",
+  "0x46",
+  "0x47",
+  "0x48",
+  "0x49",
+  "0x4A",
+  "0x4B",
+  "0x4C",
+  "0x4D",
+  "0x4E",
+  "0x4F"
+ ],
+ "types_reaching_a_conversion_below_0x50": [
+  "0x10",
+  "0x20",
+  "0x21",
+  "0x23",
+  "0x24",
+  "0x25",
+  "0x27",
+  "0x29",
+  "0x2A",
+  "0x2B",
+  "0x2C",
+  "0x33",
+  "0x38",
+  "0x3D",
+  "0x40",
+  "0x41",
+  "0x42",
+  "0x43",
+  "0x44",
+  "0x45",
+  "0x46",
+  "0x47",
+  "0x48",
+  "0x49",
+  "0x4A",
+  "0x4B",
+  "0x4C",
+  "0x4D",
+  "0x4E",
+  "0x4F"
+ ],
+ "writer_census": {
+  "callers": {
+   "262F": [
+    "0x02F0C",
+    "0x05F81"
+   ],
+   "26D6_draw_rings": [
+    "0x02D1C",
+    "0x033A2"
+   ],
+   "26E7_draw_word": [
+    "0x02D48",
+    "0x033A5"
+   ],
+   "26F8_draw_score": [
+    "0x02D1F",
+    "0x02D4B",
+    "0x02D6E",
+    "0x033A8"
+   ],
+   "2EFB_word_step": [
+    "0x02D44"
+   ],
+   "2F00_ring_step": [
+    "0x02D18"
+   ],
+   "2F05_boss_step": [
+    "0x02D6A"
+   ]
+  },
+  "dead_state": {
+   "D2A3..D2A5": "written once per overflow ($2658) and never read by any instruction operand; the 7-byte copy at $2728 only reads them as padding",
+   "D2BB": "written at $2667/$2669 (1 normal, 2 overflow) and never read"
+  },
+  "dead_state_reader_scan": {
+   "D2A3": [
+    "0x02658"
+   ],
+   "D2A4": [],
+   "D2A5": [],
+   "D2BB": [
+    "0x02669"
+   ]
+  },
+  "references": {
+   "D29D": {
+    "0x013D8": "new game: clear",
+    "0x02634": "$262F: save previous (LD DE,(D29D))",
+    "0x02643": "$262F: BCD add destination pointer",
+    "0x026FE": "$26F8: draw source pointer",
+    "0x02708": "$26F8: draw source pointer",
+    "0x02A04": "continue accepted: clear"
+   },
+   "D29E": {
+    "0x013DB": "new game: clear",
+    "0x0266F": "$262F: threshold digit test (new)",
+    "0x02683": "$262F: Sonic test",
+    "0x02691": "$262F: other-character digit sum",
+    "0x02A07": "continue accepted: clear"
+   },
+   "D29F": {
+    "0x013DE": "new game: clear",
+    "0x0263C": "$262F: save previous",
+    "0x0269E": "$262F: other-character digit sum",
+    "0x026A7": "$262F: other-character digit sum",
+    "0x02A0A": "continue accepted: clear"
+   }
+  },
+  "references_found_offsets": {
+   "D29D": [
+    "0x013D8",
+    "0x02634",
+    "0x02643",
+    "0x026FE",
+    "0x02708",
+    "0x02A04"
+   ],
+   "D29E": [
+    "0x013DB",
+    "0x0266F",
+    "0x02683",
+    "0x02691",
+    "0x02A07"
+   ],
+   "D29F": [
+    "0x013DE",
+    "0x0263C",
+    "0x0269E",
+    "0x026A7",
+    "0x02A0A"
+   ]
+  }
+ }
+}

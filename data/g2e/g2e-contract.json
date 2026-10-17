@@ -1,0 +1,91 @@
+{
+ "acceptance_checks": [
+  "THZ1 natural run with the attack posture forced awards 100 points to each of: first $21, first monitor, second $21 (observed census: ROM score bytes 10, 20, 30 raw)",
+  "defeating the same placement twice (revisit) never adds a second 100",
+  "a boss hit adds nothing; the AQZ3 boss run keeps the score at 0 until the tally",
+  "an MGHZ $24 landing adds exactly 100 even if the player never touches it; an EEZ $38 self-destruct adds exactly 100",
+  "a monitor with only invincibility (D532 == 6) and no attack bit adds nothing",
+  "score 999,900 displayed + 100 wraps to 0 and grants one continue for both characters"
+ ],
+ "format": 1,
+ "poc_commit": "b4737e834982b2985c6fdcb8d4d76cb78c9092c8",
+ "research_base": "30655e088421ac10eab456e8fa8a3cb2aae8040b",
+ "rules": [
+  {
+   "id": "S1",
+   "rule": "One owner: the existing GameMaker `score`, in DISPLAYED points (ROM raw x 10, always a multiple of 10). One writer: a single `chaos_score_award_raw(raw)` = `chaos_continue_score_add(raw * 10)`. No other statement may modify `score` except the two resets (S6)."
+  },
+  {
+   "id": "S2",
+   "rule": "Enemy/monitor award is the single flat value raw 10 = 100 points for every converted object whose ROM type is below $50. Types >= $50 (all bosses) award nothing; type 0 cannot occur in a live slot. There is no per-type table."
+  },
+  {
+   "id": "S3",
+   "rule": "Award exactly once, in the same update the slot becomes type $0F (the call site of the existing SCR_chaos_enemy_score_100_bytes). Defeated placements stay occupied for the act load; deletion, lifetime sleep and scrolling never award."
+  },
+  {
+   "id": "S4",
+   "rule": "Eligibility is the existing per-type conversion logic, unchanged (E01..E09). Do not add an attack requirement to $24 and $38, and do not accept D532 == 6 alone for monitors."
+  },
+  {
+   "id": "S5",
+   "rule": "Raw ring step 10, word step 1 and act-3 fixed step 10 stay as they are (already correct)."
+  },
+  {
+   "id": "S6",
+   "rule": "Resets: New Game (run-state initialiser) and an accepted Continue set `score` to 0; nothing else does. Death, Game Over and act changes keep it."
+  },
+  {
+   "id": "S7",
+   "rule": "Wrap: keep `score` modulo 10,000,000 displayed points (raw modulo 1,000,000) inside the single writer, AFTER evaluating the continue threshold on the unwrapped before/after pair; the wrap itself awards a continue for both characters (thousands digit 9 -> 0)."
+  },
+  {
+   "id": "S8",
+   "rule": "Threshold: keep the G2-B writer. For single awards of at most 10 raw it is exact for Sonic. For Tails it differs from the ROM only at the wrap (the ROM awards at 1,000,000 as well as at 999,000); this needs no code before G6."
+  },
+  {
+   "id": "H1",
+   "rule": "There is NO live score HUD in the original: the score is drawn only on the results card (and its three tally loops). Do not add an in-level score display. The results-card drawing already matches (six raw digits, five leading blanks, constant '0' glyph, field skipped while score == 0)."
+  },
+  {
+   "id": "H2",
+   "rule": "Optional exact parity: at the instant the score wraps to exactly zero during a tally the ROM does not redraw the field (the old digits remain). Reproduce only if a pixel-exact tally is required; it is unreachable in normal play."
+  }
+ ],
+ "smallest_poc_changes": [
+  {
+   "change": "add `function chaos_score_award_raw(cp_raw){ SCR_chaos_enemy_score_100_bytes(); return chaos_continue_score_add(cp_raw*10); }` and the S7 wrap inside chaos_continue_score_add",
+   "files": [
+    "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml"
+   ],
+   "id": "P1"
+  },
+  {
+   "change": "replace the bytes-only call by chaos_score_award_raw(10) (also covers $2C through inheritance)",
+   "files": [
+    "objects/OBJ_chaos_object_10/Step_0.gml",
+    "objects/OBJ_chaos_object_21/Step_0.gml",
+    "objects/OBJ_chaos_object_25/Step_0.gml",
+    "objects/OBJ_chaos_object_27/Step_0.gml"
+   ],
+   "id": "P2"
+  },
+  {
+   "change": "replace chaos_continue_score_add(10) by chaos_score_award_raw(10)",
+   "files": [
+    "scripts/SCR_chaos_sez_enemy",
+    "scripts/SCR_chaos_aqz_enemy",
+    "scripts/SCR_chaos_eez"
+   ],
+   "id": "P3"
+  },
+  {
+   "change": "forward `(cp_b.score - cp_score) * 10` (or call chaos_score_award_raw(10) per conversion) instead of the raw difference",
+   "files": [
+    "scripts/SCR_chaos_mghz_m3/SCR_chaos_mghz_m3.gml"
+   ],
+   "id": "P4"
+  }
+ ],
+ "title": "G2-E proposed implementation contract (presentation-neutral, for POC review)"
+}

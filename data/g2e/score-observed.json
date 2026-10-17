@@ -1,0 +1,677 @@
+{
+ "evidence": "EMULATED ORIGINAL FRAME (tools/sms_frame_harness through tools/g0_rig; NTSC, approximate VDP; unmodified ROM; fixtures are RAM writes noted per block)",
+ "format": 1,
+ "natural_census": {
+  "acts": [
+   {
+    "act": "0.0",
+    "award_events": [
+     {
+      "frame": 217,
+      "score_before_bcd_le": "000000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 825,
+      "score_before_bcd_le": "100000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 1048,
+      "score_before_bcd_le": "200000",
+      "table": "0x27EB"
+     }
+    ],
+    "final_score_bcd_le": "300000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 217,
+      "lives": 3,
+      "token": 27,
+      "type": "0x21",
+      "x": 783,
+      "y": 590
+     },
+     {
+      "frame": 825,
+      "lives": 3,
+      "token": 13,
+      "type": "0x10",
+      "x": 2688,
+      "y": 686
+     },
+     {
+      "frame": 1048,
+      "lives": 4,
+      "token": 30,
+      "type": "0x21",
+      "x": 3135,
+      "y": 878
+     }
+    ],
+    "lives_at_end": 4,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "0.1",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "0.2",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "1.0",
+    "award_events": [
+     {
+      "frame": 722,
+      "score_before_bcd_le": "000000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 2334,
+      "score_before_bcd_le": "100000",
+      "table": "0x27EB"
+     }
+    ],
+    "final_score_bcd_le": "200000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 722,
+      "lives": 3,
+      "token": 20,
+      "type": "0x25",
+      "x": 2583,
+      "y": 526
+     },
+     {
+      "frame": 2334,
+      "lives": 2,
+      "token": 20,
+      "type": "0x25",
+      "x": 2583,
+      "y": 526
+     }
+    ],
+    "lives_at_end": 1,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "1.1",
+    "award_events": [
+     {
+      "frame": 642,
+      "score_before_bcd_le": "000000",
+      "table": "0x27EB"
+     }
+    ],
+    "final_score_bcd_le": "100000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 642,
+      "lives": 3,
+      "token": 24,
+      "type": "0x25",
+      "x": 1655,
+      "y": 846
+     }
+    ],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "1.2",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "2.0",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 0,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "2.1",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "2.2",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "3.0",
+    "award_events": [
+     {
+      "frame": 677,
+      "score_before_bcd_le": "000000",
+      "table": "0x27EB"
+     }
+    ],
+    "final_score_bcd_le": "100000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 677,
+      "lives": 3,
+      "token": 25,
+      "type": "0x21",
+      "x": 2607,
+      "y": 398
+     }
+    ],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "3.1",
+    "award_events": [
+     {
+      "frame": 303,
+      "score_before_bcd_le": "000000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 388,
+      "score_before_bcd_le": "100000",
+      "table": "0x27EB"
+     }
+    ],
+    "final_score_bcd_le": "200000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 303,
+      "lives": 3,
+      "token": 29,
+      "type": "0x21",
+      "x": 1015,
+      "y": 590
+     },
+     {
+      "frame": 388,
+      "lives": 3,
+      "token": 30,
+      "type": "0x21",
+      "x": 1200,
+      "y": 590
+     }
+    ],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "3.2",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 0,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "4.0",
+    "award_events": [
+     {
+      "frame": 423,
+      "score_before_bcd_le": "000000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 593,
+      "score_before_bcd_le": "100000",
+      "table": "0x27EB"
+     }
+    ],
+    "final_score_bcd_le": "200000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 423,
+      "lives": 3,
+      "token": 3,
+      "type": "0x10",
+      "x": 624,
+      "y": 462
+     },
+     {
+      "frame": 593,
+      "lives": 3,
+      "token": 4,
+      "type": "0x10",
+      "x": 1168,
+      "y": 558
+     }
+    ],
+    "lives_at_end": 2,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "4.1",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "4.2",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 885,
+      "lives": 3,
+      "token": 0,
+      "type": "0x5A",
+      "x": 1960,
+      "y": 216
+     },
+     {
+      "frame": 976,
+      "lives": 3,
+      "token": 0,
+      "type": "0x5A",
+      "x": 1962,
+      "y": 220
+     },
+     {
+      "frame": 1015,
+      "lives": 3,
+      "token": 0,
+      "type": "0x5A",
+      "x": 1961,
+      "y": 216
+     },
+     {
+      "frame": 1082,
+      "lives": 3,
+      "token": 0,
+      "type": "0x5A",
+      "x": 1960,
+      "y": 216
+     },
+     {
+      "frame": 1172,
+      "lives": 3,
+      "token": 0,
+      "type": "0x5A",
+      "x": 1962,
+      "y": 220
+     },
+     {
+      "frame": 1210,
+      "lives": 3,
+      "token": 0,
+      "type": "0x5A",
+      "x": 1961,
+      "y": 216
+     }
+    ],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "5.0",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 3,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "5.1",
+    "award_events": [
+     {
+      "frame": 222,
+      "score_before_bcd_le": "000000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 229,
+      "score_before_bcd_le": "100000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 607,
+      "score_before_bcd_le": "200000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 925,
+      "score_before_bcd_le": "300000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 2130,
+      "score_before_bcd_le": "400000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 2136,
+      "score_before_bcd_le": "500000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 2516,
+      "score_before_bcd_le": "600000",
+      "table": "0x27EB"
+     },
+     {
+      "frame": 2837,
+      "score_before_bcd_le": "700000",
+      "table": "0x27EB"
+     }
+    ],
+    "final_score_bcd_le": "800000",
+    "frames_from_play": 3500,
+    "gate_events": [
+     {
+      "frame": 222,
+      "lives": 3,
+      "token": 19,
+      "type": "0x2C",
+      "x": 688,
+      "y": 570
+     },
+     {
+      "frame": 229,
+      "lives": 3,
+      "token": 22,
+      "type": "0x2C",
+      "x": 720,
+      "y": 571
+     },
+     {
+      "frame": 607,
+      "lives": 3,
+      "token": 27,
+      "type": "0x38",
+      "x": 1972,
+      "y": 558
+     },
+     {
+      "frame": 925,
+      "lives": 3,
+      "token": 28,
+      "type": "0x38",
+      "x": 2338,
+      "y": 558
+     },
+     {
+      "frame": 2130,
+      "lives": 2,
+      "token": 19,
+      "type": "0x2C",
+      "x": 688,
+      "y": 571
+     },
+     {
+      "frame": 2136,
+      "lives": 2,
+      "token": 22,
+      "type": "0x2C",
+      "x": 720,
+      "y": 570
+     },
+     {
+      "frame": 2516,
+      "lives": 2,
+      "token": 27,
+      "type": "0x38",
+      "x": 1972,
+      "y": 558
+     },
+     {
+      "frame": 2837,
+      "lives": 2,
+      "token": 28,
+      "type": "0x38",
+      "x": 2337,
+      "y": 558
+     }
+    ],
+    "lives_at_end": 1,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   },
+   {
+    "act": "5.2",
+    "award_events": [],
+    "final_score_bcd_le": "000000",
+    "frames_from_play": 3500,
+    "gate_events": [],
+    "lives_at_end": 0,
+    "score_field_draws_total": 0,
+    "score_field_draws_while_playing": 0
+   }
+  ],
+  "fixture": "new game, character Sonic, hold RIGHT, D503 bit 1 forced at every player update (attack posture), up to 3,500 frames or the act-clear flag; no other input, no teleport"
+ },
+ "research_base": "30655e088421ac10eab456e8fa8a3cb2aae8040b",
+ "results_card": {
+  "cases": [
+   {
+    "card_start": {
+     "continues": 0,
+     "field_text": "      0",
+     "score_ram": "000000"
+    },
+    "case": "zero",
+    "rings_bcd": "00",
+    "score_in_bcd_le": "000000",
+    "tally_return": {
+     "continues": 0,
+     "field_text": "   9890",
+     "score_ram": "890900"
+    },
+    "time_word_zeroed": false
+   },
+   {
+    "card_start": {
+     "continues": 0,
+     "field_text": "    100",
+     "score_ram": "100000"
+    },
+    "case": "ten_raw",
+    "rings_bcd": "00",
+    "score_in_bcd_le": "100000",
+    "tally_return": {
+     "continues": 0,
+     "field_text": "   9990",
+     "score_ram": "990900"
+    },
+    "time_word_zeroed": false
+   },
+   {
+    "card_start": {
+     "continues": 0,
+     "field_text": " 123400",
+     "score_ram": "402301"
+    },
+    "case": "raw_12340",
+    "rings_bcd": "00",
+    "score_in_bcd_le": "402301",
+    "tally_return": {
+     "continues": 0,
+     "field_text": " 133290",
+     "score_ram": "293301"
+    },
+    "time_word_zeroed": false
+   },
+   {
+    "card_start": {
+     "continues": 0,
+     "field_text": "9999900",
+     "score_ram": "909999"
+    },
+    "case": "raw_999990",
+    "rings_bcd": "00",
+    "score_in_bcd_le": "909999",
+    "tally_return": {
+     "continues": 1,
+     "field_text": "   9790",
+     "score_ram": "790900"
+    },
+    "time_word_zeroed": false
+   },
+   {
+    "card_start": {
+     "continues": 0,
+     "field_text": "9999990",
+     "score_ram": "999999"
+    },
+    "case": "raw_999999",
+    "rings_bcd": "00",
+    "score_in_bcd_le": "999999",
+    "tally_return": {
+     "continues": 1,
+     "field_text": "   9880",
+     "score_ram": "880900"
+    },
+    "time_word_zeroed": false
+   },
+   {
+    "card_start": {
+     "continues": 0,
+     "field_text": "9999900",
+     "score_ram": "909999"
+    },
+    "case": "wrap_to_zero_one_ring",
+    "rings_bcd": "01",
+    "score_in_bcd_le": "909999",
+    "tally_return": {
+     "continues": 1,
+     "field_text": "9999900",
+     "score_ram": "000000"
+    },
+    "time_word_zeroed": true
+   },
+   {
+    "card_start": {
+     "continues": 0,
+     "field_text": "9999900",
+     "score_ram": "909999"
+    },
+    "case": "wrap_past_zero_25_rings",
+    "rings_bcd": "25",
+    "score_in_bcd_le": "909999",
+    "tally_return": {
+     "continues": 1,
+     "field_text": "   2400",
+     "score_ram": "400200"
+    },
+    "time_word_zeroed": true
+   }
+  ],
+  "fixture": "run_clear on THZ1 with the score preset; the time word is zeroed at $2D08 where noted. field_text = the 7 cells at name-table columns 13..19, rows 14..15 decoded through the glyph table"
+ },
+ "revisit": {
+  "acts": [
+   {
+    "act": "0.0",
+    "first_defeat": {
+     "token": 27,
+     "type": "0x21",
+     "x": 783
+    },
+    "revisit_passes": [
+     {
+      "gate_events_for_same_token": 0,
+      "pass": 1,
+      "player_x_end": 985
+     },
+     {
+      "gate_events_for_same_token": 0,
+      "pass": 2,
+      "player_x_end": 311
+     },
+     {
+      "gate_events_for_same_token": 0,
+      "pass": 3,
+      "player_x_end": 985
+     }
+    ],
+    "score_after_first": "100000",
+    "score_end": "100000"
+   },
+   {
+    "act": "1.0",
+    "first_defeat": {
+     "token": 20,
+     "type": "0x25",
+     "x": 2583
+    },
+    "revisit_passes": [
+     {
+      "gate_events_for_same_token": 0,
+      "pass": 1,
+      "player_x_end": 2784
+     },
+     {
+      "gate_events_for_same_token": 0,
+      "pass": 2,
+      "player_x_end": 2122
+     },
+     {
+      "gate_events_for_same_token": 0,
+      "pass": 3,
+      "player_x_end": 2786
+     }
+    ],
+    "score_after_first": "100000",
+    "score_end": "100000"
+   }
+  ],
+  "fixture": "after the first defeat the player is teleported 600 px left of the defeated enemy and walks through it three times with the attack posture"
+ },
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607"
+}

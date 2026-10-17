@@ -1,0 +1,161 @@
+{
+ "evidence": "POC SOURCE (read only; static reading, not run)",
+ "format": 1,
+ "poc_commit": "b4737e834982b2985c6fdcb8d4d76cb78c9092c8",
+ "probes": [
+  {
+   "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "id": "type_bytes_only",
+   "line": 457,
+   "matches": 1,
+   "role": "records the ROM bytes 10 00 00 in three globals; does not touch `score`"
+  },
+  {
+   "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "id": "score_writer",
+   "line": 502,
+   "matches": 1,
+   "role": "the single POC score writer (units = displayed points = raw x 10) with the G2-B continue test"
+  },
+  {
+   "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "id": "units_comment",
+   "line": 498,
+   "matches": 1,
+   "role": "documents the unit"
+  },
+  {
+   "file": "objects/OBJ_chaos_object_10/Step_0.gml",
+   "id": "monitor_10",
+   "line": 88,
+   "matches": 1,
+   "role": "monitor break: bytes only"
+  },
+  {
+   "file": "objects/OBJ_chaos_object_21/Step_0.gml",
+   "id": "enemy_21",
+   "line": 94,
+   "matches": 1,
+   "role": "type $21 defeat: bytes only"
+  },
+  {
+   "file": "objects/OBJ_chaos_object_25/Step_0.gml",
+   "id": "enemy_25",
+   "line": 33,
+   "matches": 1,
+   "role": "type $25 defeat: bytes only"
+  },
+  {
+   "file": "objects/OBJ_chaos_object_27/Step_0.gml",
+   "id": "enemy_27_2c",
+   "line": 60,
+   "matches": 1,
+   "role": "type $27 and (inherited) $2C defeat: bytes only"
+  },
+  {
+   "file": "scripts/SCR_chaos_sez_enemy/SCR_chaos_sez_enemy.gml",
+   "id": "enemy_20_23",
+   "line": 108,
+   "matches": 1,
+   "role": "SEZ $20/$23 defeat: adds 10 units"
+  },
+  {
+   "file": "scripts/SCR_chaos_aqz_enemy/SCR_chaos_aqz_enemy.gml",
+   "id": "enemy_3d",
+   "line": 52,
+   "matches": 1,
+   "role": "AQZ $3D defeat: adds 10 units"
+  },
+  {
+   "file": "scripts/SCR_chaos_eez/SCR_chaos_eez.gml",
+   "id": "enemy_38",
+   "line": 536,
+   "matches": 1,
+   "role": "EEZ $38 conversion: adds 10 units"
+  },
+  {
+   "file": "scripts/SCR_chaos_mghz_m3/SCR_chaos_mghz_m3.gml",
+   "id": "enemy_24_add",
+   "line": 94,
+   "matches": 1,
+   "role": "MGHZ $24 landing: M3 counter +10"
+  },
+  {
+   "file": "scripts/SCR_chaos_mghz_m3/SCR_chaos_mghz_m3.gml",
+   "id": "enemy_24_post",
+   "line": 234,
+   "matches": 1,
+   "role": "M3 counter difference forwarded to the writer (10 units)"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "id": "tally_boss",
+   "line": 164,
+   "matches": 1,
+   "role": "boss bonus step: 10 raw"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "id": "tally_ring",
+   "line": 171,
+   "matches": 1,
+   "role": "ring step: 10 raw"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "id": "tally_word",
+   "line": 172,
+   "matches": 1,
+   "role": "word step: 1 raw"
+  },
+  {
+   "file": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml",
+   "id": "tally_writer",
+   "line": 175,
+   "matches": 1,
+   "role": "raw x 10: the correct scaling"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "id": "card_digits",
+   "line": 109,
+   "matches": 1,
+   "role": "results card draws floor(score/10) as the raw digits and then the constant zero glyph"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "id": "card_skip_zero",
+   "line": 110,
+   "matches": 1,
+   "role": "digits skipped while the score is zero (as the ROM)"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "id": "card_trailing_zero",
+   "line": 112,
+   "matches": 1,
+   "role": "fixed glyph drawn"
+  },
+  {
+   "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "id": "reset_continue",
+   "line": 521,
+   "matches": 1,
+   "role": "continue accepted: score 0"
+  },
+  {
+   "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+   "id": "reset_new_game",
+   "line": 576,
+   "matches": 1,
+   "role": "run-state initialiser"
+  },
+  {
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "id": "m3_boss_none",
+   "line": 230,
+   "matches": 1,
+   "role": "bosses add nothing at defeat (correct)"
+  }
+ ]
+}
