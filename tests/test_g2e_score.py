@@ -135,10 +135,40 @@ class CommittedData(unittest.TestCase):
     def test_tails_wrap_award_breaks_the_3000_period(self):
         sw = CONTROLLED["score_adder"]["cycle_sweep"]
         self.assertTrue(sw["tails_wrap_award_is_1000_raw_after_the_999000_award"])
+        self.assertEqual(sw["tails_last_three_new_thousand_values"], [996, 999, 0])
         # the POC's stateless formula pays Tails at 999,000 but not at the wrap; the ROM pays at both
         self.assertEqual(poc_threshold(998990, 10, 3000), 1)
         self.assertEqual(poc_threshold(999990, 10, 3000), 0)
-        self.assertEqual(G.model_add(999990, 10, 2, 0)[1], 1)
+
+    def test_tails_two_separate_award_events_near_the_wrap(self):
+        # event 1: 998,990 -> 999,000 raw pays one continue; event 2: 999,990 -> 0 pays one more; neither event pays two
+        after1, c1 = G.model_add(998990, 10, 2, 0)
+        self.assertEqual((after1, c1), (999000, 1))
+        after2, c2 = G.model_add(999990, 10, 2, c1)
+        self.assertEqual((after2, c2), (0, 2))
+        _, c_between = G.model_add(999000, 10, 2, c1)
+        self.assertEqual(c_between, c1)                                    # nothing between the two events
+        # the same two crossings on the original adder (committed controlled rows)
+        corners = {(c["before"], c["character"]): c for c in CONTROLLED["score_adder"]["corners"]}
+        self.assertEqual(corners[(998990, 2)]["after"], 999000)
+        self.assertEqual(corners[(998990, 2)]["continues_after"], 1)
+        self.assertEqual(corners[(999990, 2)]["after"], 0)
+        self.assertEqual(corners[(999990, 2)]["continues_after"], 1)       # fixture starts each row at D2C3 = 0: exactly one per event
+        # Sonic: unchanged, one award at the wrap and none at 999,000
+        self.assertEqual(G.model_add(998990, 10, 1, 0)[1], 0)
+        self.assertEqual(G.model_add(999990, 10, 1, 0)[1], 1)
+
+    def test_contract_states_both_tails_events(self):
+        rules = {r["id"]: r["rule"] for r in CONTRACT["rules"]}
+        self.assertIn("TWO separate award events", rules["S8"])
+        self.assertIn("999,000", rules["S8"])
+        self.assertNotIn("needs no code before G6", rules["S8"])
+        self.assertIn("BOTH characters", rules["S7"])
+        self.assertTrue(any("two events" in c for c in CONTRACT["acceptance_checks"]))
+        self.assertTrue(any("one continue for both characters" in c for c in CONTRACT["acceptance_checks"]))
+        doc = (ROOT / "docs" / "g2e-score-owner-hud.md").read_text(encoding="utf-8")
+        self.assertIn("in G2-E scope", doc)
+        self.assertNotIn("needs no code before G6", doc)
 
     def test_poc_formula_matches_the_rom_for_sonic_across_the_cycle(self):
         for k in range(1000):

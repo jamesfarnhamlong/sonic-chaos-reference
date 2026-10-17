@@ -927,8 +927,8 @@ def contract():
             {"id": "S4", "rule": "Eligibility is the existing per-type conversion logic, unchanged (E01..E09). Do not add an attack requirement to $24 and $38, and do not accept D532 == 6 alone for monitors."},
             {"id": "S5", "rule": "Raw ring step 10, word step 1 and act-3 fixed step 10 stay as they are (already correct)."},
             {"id": "S6", "rule": "Resets: New Game (run-state initialiser) and an accepted Continue set `score` to 0; nothing else does. Death, Game Over and act changes keep it."},
-            {"id": "S7", "rule": "Wrap: keep `score` modulo 10,000,000 displayed points (raw modulo 1,000,000) inside the single writer, AFTER evaluating the continue threshold on the unwrapped before/after pair; the wrap itself awards a continue for both characters (thousands digit 9 -> 0)."},
-            {"id": "S8", "rule": "Threshold: keep the G2-B writer. For single awards of at most 10 raw it is exact for Sonic. For Tails it differs from the ROM only at the wrap (the ROM awards at 1,000,000 as well as at 999,000); this needs no code before G6."},
+            {"id": "S7", "rule": "Wrap: keep `score` modulo 10,000,000 displayed points (raw modulo 1,000,000) inside the single writer, AFTER evaluating the continue threshold on the unwrapped before/after pair. The wrap itself is a threshold crossing (thousands digit 9 -> 0) and awards one continue to BOTH characters; it is implemented in G2-E as part of the shared score owner."},
+            {"id": "S8", "rule": "Threshold, both characters, G2-E scope: Sonic is unchanged (one continue each time the thousands digit becomes 0 or 5, i.e. every 5,000 raw, including the wrap). Tails earns one continue each time floor(raw/1000) becomes a multiple of 3 (every 3,000 raw), so TWO separate award events occur near the end of a cycle: one when the score crosses 999,000 raw and one when it wraps to 0 at 1,000,000 raw, 1,000 raw later; each pays exactly one continue and neither event pays two. The stateless floor(raw/3000) formula of the G2-B writer misses the second event and must be extended (for example by also paying when the score wraps). Broader Tails gameplay (movement, signs, bosses, art) remains G6 and is outside this contract."},
             {"id": "H1", "rule": "There is NO live score HUD in the original: the score is drawn only on the results card (and its three tally loops). Do not add an in-level score display. The results-card drawing already matches (six raw digits, five leading blanks, constant '0' glyph, field skipped while score == 0)."},
             {"id": "H2", "rule": "Optional exact parity: at the instant the score wraps to exactly zero during a tally the ROM does not redraw the field (the old digits remain). Reproduce only if a pixel-exact tally is required; it is unreachable in normal play."},
         ],
@@ -945,6 +945,7 @@ def contract():
             "an MGHZ $24 landing adds exactly 100 even if the player never touches it; an EEZ $38 self-destruct adds exactly 100",
             "a monitor with only invincibility (D532 == 6) and no attack bit adds nothing",
             "score 999,900 displayed + 100 wraps to 0 and grants one continue for both characters",
+            "Tails, continues 0: 9,989,900 -> 9,990,000 displayed (998,990 -> 999,000 raw) grants one continue; then 9,999,900 -> 0 displayed (999,990 -> 0 raw) grants exactly one more (total 2, two events)",
         ],
     }
 

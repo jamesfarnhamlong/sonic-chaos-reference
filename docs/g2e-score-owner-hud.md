@@ -94,7 +94,7 @@ Type census from the placement lists (zones 0-6 and the Special Stages): `$10` 1
 
 ## 6. Thresholds (G2-B)
 
-Every award above is `+10 raw` and enters the same `$262F`, so the G2-B writer is the right place. For single awards of at most 10 raw the POC's stateless formula (`floor(score_raw / period)` before and after) equals the ROM for Sonic at every one of the 1,000 crossings and for Tails at every crossing inside the cycle (tested). The two differ only for Tails at the wrap: the ROM pays at 999,000 **and** at 1,000,000, the POC formula only at 999,000. This needs no code before G6. Larger single adds would behave differently (the ROM pays at most once, only when the thousands digit changed), but no ROM source adds more than 50 raw.
+Every award above is `+10 raw` and enters the same `$262F`, so the G2-B writer is the right place. For single awards of at most 10 raw the POC's stateless formula (`floor(score_raw / period)` before and after) equals the ROM for Sonic at every one of the 1,000 crossings and for Tails at every crossing inside the cycle (tested). The two differ only for Tails at the wrap, and that difference is **in G2-E scope** (Manager decision): the shared score owner must pay the wrap award for both characters. For Tails there are two separate award events near the end of a cycle, each paying exactly one continue: (1) when the score crosses 999,000 raw (thousands value 999, a multiple of 3) and (2) 1,000 raw later when it wraps to 0 (thousands value 0, also a multiple of 3). The POC's stateless formula pays only event 1 (`floor(1,000,000 / 3000)` equals `floor(999,990 / 3000)`), so it needs the wrap added (contract rules S7 and S8). Sonic is unchanged: 5,000 raw divides 1,000,000, so the wrap is simply his 200th award. Broader Tails gameplay remains G6. Larger single adds would behave differently (the ROM pays at most once, only when the thousands digit changed), but no ROM source adds more than 50 raw.
 
 ## 7. Proposed G2-E implementation contract
 
@@ -103,7 +103,7 @@ Machine-readable: `data/g2e/g2e-contract.json`.
 1. **One owner, one writer.** `score` stays in displayed points. Add `chaos_score_award_raw(raw)` = `chaos_continue_score_add(raw * 10)`; nothing else modifies `score` except the two resets (new game, accepted continue).
 2. **Flat award.** Every converted object with ROM type below `$50` awards raw 10 = 100 points; bosses award nothing; no per-type table.
 3. **Once, at conversion.** Call it in the update where the object becomes `$0F`, at the existing bytes-only call (monitor, `$21`, `$25`, `$27`/`$2C`), and replace `add(10)` by it for `$20/$23`, `$3D`, `$38`; for `$24` forward `10 x` the counter difference. Eligibility stays the existing per-type logic: no attack requirement on `$24`/`$38`, no invincibility-only monitors.
-4. **Wrap** inside the writer: after evaluating the threshold on the unwrapped pair, `score = score mod 10,000,000`.
+4. **Wrap** inside the writer: after evaluating the threshold on the unwrapped pair, `score = score mod 10,000,000`; the wrap pays one continue to both characters (for Tails this is a second event after the 999,000 award).
 5. **No live HUD.** Do not add an in-level score display.
 6. **Acceptance checks** (also in the JSON): the THZ1 attack run scores 100/100/100 for `$21`, monitor, `$21`; no second award for a defeated placement; a boss adds 0; `$24` landing and `$38` self-destruct add exactly 100 without the player attacking; invincibility-only monitor adds 0; 999,900 + 100 wraps to 0 with one continue for both characters.
 
@@ -118,7 +118,7 @@ Machine-readable: `data/g2e/g2e-contract.json`.
 - Objects created by callbacks (not by script commands) were not enumerated; any such object still reaches the same 20 sites, so the award rule is complete, but the list of which zones place which type could grow.
 - Child chain of the EEZ `$38` parameter-1 producer depends on the shared 11-slot pool (EEZ objects audit).
 - The wrap, and the stale field at an exact zero, are verified on the ROM but reachable only after ~1,000,000 raw points; the POC need not reproduce the stale field.
-- Tails-specific behaviour beyond the threshold rule belongs to G6.
+- Tails-specific behaviour beyond the shared threshold and wrap rule belongs to G6.
 
 **Corrections to earlier Research text (not edited there):**
 - `docs/object-10.md` and `docs/eez-objects-audit.md` say `$5F77` selects a per-type score-table entry. It does not: every type below `$50` uses the one entry `$27EB`.
