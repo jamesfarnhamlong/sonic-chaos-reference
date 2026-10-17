@@ -1,0 +1,682 @@
+{
+ "d448_writers": [
+  {
+   "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "line": 433,
+   "text": "cp_c.vy = -1728; cp_c.d448=255;"
+  },
+  {
+   "file": "scripts/SCR_chaos_anim_counter/SCR_chaos_anim_counter.gml",
+   "line": 5,
+   "text": "// ascent) $D448 bit 0 selects which even durations load (the ROM sets it for strong springs: upright terrain spring, $21 top contact, ...), and the POC supplie"
+  },
+  {
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "line": 56,
+   "text": "cp_c.vy=-1024; cp_c.d448=0; cp_c.next=11; cp_c.move=(cp_c.move|1)&~2;"
+  },
+  {
+   "file": "scripts/SCR_chaos_core/SCR_chaos_core.gml",
+   "line": 225,
+   "text": "cp_c.d448 = 0; cp_c.sound = 2;"
+  },
+  {
+   "file": "scripts/SCR_chaos_core/SCR_chaos_core.gml",
+   "line": 231,
+   "text": "if (cp_kind == 9) cp_c.d448 = 255;"
+  },
+  {
+   "file": "scripts/SCR_chaos_spring/SCR_chaos_spring.gml",
+   "line": 25,
+   "text": "cp_c.d448 = cp_strong ? 255 : 0;"
+  }
+ ],
+ "evidence": "POC SOURCE (READ-ONLY, text parsed, nothing executed)",
+ "frame_to_sprite_cases": {
+  "0x01": {
+   "aqz": "SPR_chaos_aqz_player_frame_01",
+   "thz": "SPR_chaos_player_frame_01"
+  },
+  "0x02": {
+   "aqz": "SPR_chaos_aqz_player_frame_02",
+   "thz": "SPR_chaos_player_frame_02"
+  },
+  "0x03": {
+   "aqz": "SPR_chaos_aqz_player_frame_03",
+   "thz": "SPR_chaos_player_frame_03"
+  },
+  "0x04": {
+   "aqz": "SPR_chaos_aqz_player_frame_04",
+   "thz": "SPR_chaos_player_frame_04"
+  },
+  "0x05": {
+   "aqz": "SPR_chaos_aqz_player_frame_05",
+   "thz": "SPR_chaos_player_frame_05"
+  },
+  "0x06": {
+   "aqz": "SPR_chaos_aqz_player_frame_06",
+   "thz": "SPR_chaos_player_frame_06"
+  },
+  "0x1C": {
+   "aqz": "SPR_chaos_aqz_player_frame_1C",
+   "thz": "SPR_chaos_player_frame_1C"
+  },
+  "0x1D": {
+   "aqz": "SPR_chaos_aqz_player_frame_1D",
+   "thz": "SPR_chaos_player_frame_1D"
+  },
+  "0x1E": {
+   "aqz": "SPR_chaos_aqz_player_frame_1E",
+   "thz": "SPR_chaos_player_frame_1E"
+  },
+  "0x1F": {
+   "aqz": "SPR_chaos_aqz_player_frame_1F",
+   "thz": "SPR_chaos_player_frame_1F"
+  },
+  "0x20": {
+   "aqz": "SPR_chaos_aqz_player_frame_20",
+   "thz": "SPR_chaos_player_frame_20"
+  },
+  "0x21": {
+   "aqz": "SPR_chaos_aqz_player_frame_21",
+   "thz": "SPR_chaos_player_frame_21"
+  },
+  "0x25": {
+   "aqz": "SPR_chaos_aqz_player_frame_25",
+   "thz": "SPR_chaos_player_frame_25"
+  },
+  "0x26": {
+   "aqz": "SPR_chaos_aqz_player_frame_26",
+   "thz": "SPR_chaos_player_frame_26"
+  },
+  "0x27": {
+   "aqz": "SPR_chaos_aqz_player_frame_27",
+   "thz": "SPR_chaos_player_frame_27"
+  },
+  "0x28": {
+   "aqz": "SPR_chaos_aqz_player_frame_28",
+   "thz": "SPR_chaos_player_frame_28"
+  },
+  "0x29": {
+   "aqz": "SPR_chaos_aqz_player_frame_29",
+   "thz": "SPR_chaos_player_frame_29"
+  },
+  "0x61": {
+   "aqz": "SPR_chaos_aqz_player_frame_61",
+   "thz": "SPR_chaos_player_frame_61"
+  }
+ },
+ "legacy_player_resources": {
+  "SPR_player_mask": {
+   "frames": 2,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  },
+  "SPR_sonic_falling": {
+   "frames": 2,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  },
+  "SPR_sonic_jump": {
+   "frames": 1,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  },
+  "SPR_sonic_run": {
+   "frames": 4,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  },
+  "SPR_sonic_spin": {
+   "frames": 5,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  },
+  "SPR_sonic_stop": {
+   "frames": 1,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  },
+  "SPR_sonic_wait": {
+   "frames": 4,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  },
+  "SPR_sonic_walk": {
+   "frames": 6,
+   "height": 40,
+   "width": 40,
+   "xorigin": 20,
+   "yorigin": 20
+  }
+ },
+ "pixel_parity_with_rom_frames": {
+  "0x01": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_01",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x02": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_02",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x03": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_03",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x04": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_04",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x05": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_05",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x06": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_06",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x07": {
+   "poc_resource": null
+  },
+  "0x08": {
+   "poc_resource": null
+  },
+  "0x09": {
+   "poc_resource": null
+  },
+  "0x0A": {
+   "poc_resource": null
+  },
+  "0x0B": {
+   "poc_resource": null
+  },
+  "0x1C": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_1C",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x1D": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_1D",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x1E": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_1E",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x1F": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_1F",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x20": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_20",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x21": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_21",
+   "rgba_equal": true,
+   "size_equal": true
+  },
+  "0x3C": {
+   "poc_resource": null
+  },
+  "0x3D": {
+   "poc_resource": null
+  },
+  "0x3E": {
+   "poc_resource": null
+  },
+  "0x3F": {
+   "poc_resource": null
+  },
+  "0x5E": {
+   "poc_resource": null
+  },
+  "0x61": {
+   "frames": 1,
+   "origin_equal": true,
+   "poc_resource": "SPR_chaos_player_frame_61",
+   "rgba_equal": true,
+   "size_equal": true
+  }
+ },
+ "poc_commit": "b4737e834982b2985c6fdcb8d4d76cb78c9092c8",
+ "presentation_supported_states": {
+  "decimal": [9, 10, 11, 14, 16, 20, 27, 28, 33],
+  "hex": ["0x09", "0x0A", "0x0B", "0x0E", "0x10", "0x14", "0x1B", "0x1C", "0x21"],
+  "meaning": "core `next` values whose presentation is driven by chaos_player_animation_program; every other state uses the legacy GameMaker sprite chooser"
+ },
+ "programs_by_state": {
+  "0x09": [
+   [5, 0, 0, 33074],
+   [1, 0, 0, 33080]
+  ],
+  "0x0A": [
+   [5, 0, 0, 33090],
+   [1, 0, 0, 33096]
+  ],
+  "0x0B": [
+   [2, 16, 0, 33098],
+   [3, 2, 0, 33104],
+   [0, 4, 28, 33107],
+   [0, 4, 29, 33111],
+   [0, 4, 30, 33115],
+   [0, 4, 31, 33119],
+   [0, 4, 32, 33123],
+   [0, 4, 33, 33127],
+   [4, 2, 0, 33131],
+   [0, 4, 28, 33135],
+   [0, 4, 29, 33139],
+   [0, 6, 30, 33143],
+   [0, 6, 31, 33147],
+   [0, 6, 32, 33151],
+   [0, 8, 33, 33155],
+   [1, 0, 0, 33159],
+   [0, 4, 97, 33161],
+   [1, 0, 0, 33165]
+  ],
+  "0x0E": [
+   [0, 8, 2, 33248],
+   [0, 8, 3, 33252],
+   [0, 8, 4, 33256],
+   [0, 8, 5, 33260],
+   [0, 8, 6, 33264],
+   [0, 8, 1, 33268],
+   [0, 8, 2, 33272],
+   [0, 8, 3, 33276],
+   [0, 8, 4, 33280],
+   [0, 8, 5, 33284],
+   [0, 8, 6, 33288],
+   [0, 8, 1, 33292],
+   [0, 8, 2, 33296],
+   [0, 8, 3, 33300],
+   [0, 8, 4, 33304],
+   [0, 8, 5, 33308],
+   [0, 8, 6, 33312],
+   [0, 8, 1, 33316],
+   [0, 8, 2, 33320],
+   [0, 8, 3, 33324],
+   [0, 8, 4, 33328],
+   [0, 8, 5, 33332],
+   [0, 8, 6, 33336],
+   [0, 8, 1, 33340],
+   [0, 8, 2, 33344],
+   [0, 8, 3, 33348],
+   [0, 8, 4, 33352],
+   [0, 8, 5, 33356],
+   [0, 8, 6, 33360],
+   [1, 0, 0, 33364]
+  ],
+  "0x10": [
+   [5, 0, 0, 33580],
+   [1, 0, 0, 33586]
+  ],
+  "0x14": [
+   [0, 4, 28, 33222],
+   [0, 4, 29, 33226],
+   [0, 4, 30, 33230],
+   [0, 4, 31, 33234],
+   [0, 4, 32, 33238],
+   [0, 4, 33, 33242],
+   [1, 0, 0, 33246]
+  ],
+  "0x1B": [
+   [5, 0, 0, 33082],
+   [1, 0, 0, 33088]
+  ],
+  "0x1C": [
+   [0, 8, 28, 33172],
+   [0, 8, 29, 33176],
+   [0, 8, 30, 33180],
+   [0, 8, 31, 33184],
+   [0, 8, 32, 33188],
+   [0, 8, 33, 33192],
+   [1, 0, 0, 33196]
+  ]
+ },
+ "rom_backed_player_resources": {
+  "SPR_chaos_aqz_base_chaos_player_state_11": {
+   "frames": 3,
+   "height": 32,
+   "width": 24,
+   "xorigin": 16,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_01": {
+   "frames": 1,
+   "height": 32,
+   "width": 32,
+   "xorigin": 16,
+   "yorigin": 31
+  },
+  "SPR_chaos_aqz_player_frame_02": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 15,
+   "yorigin": 31
+  },
+  "SPR_chaos_aqz_player_frame_03": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 14,
+   "yorigin": 31
+  },
+  "SPR_chaos_aqz_player_frame_04": {
+   "frames": 1,
+   "height": 32,
+   "width": 32,
+   "xorigin": 14,
+   "yorigin": 31
+  },
+  "SPR_chaos_aqz_player_frame_05": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 15,
+   "yorigin": 31
+  },
+  "SPR_chaos_aqz_player_frame_06": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 16,
+   "yorigin": 31
+  },
+  "SPR_chaos_aqz_player_frame_1C": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_1D": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_1E": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_1F": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_20": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_21": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_25": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_26": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_27": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_28": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_29": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_aqz_player_frame_61": {
+   "frames": 1,
+   "height": 48,
+   "width": 16,
+   "xorigin": 9,
+   "yorigin": 44
+  },
+  "SPR_chaos_eez_player_5F": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 16,
+   "yorigin": 32
+  },
+  "SPR_chaos_eez_player_60": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 16,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_01": {
+   "frames": 1,
+   "height": 32,
+   "width": 32,
+   "xorigin": 16,
+   "yorigin": 31
+  },
+  "SPR_chaos_player_frame_02": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 15,
+   "yorigin": 31
+  },
+  "SPR_chaos_player_frame_03": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 14,
+   "yorigin": 31
+  },
+  "SPR_chaos_player_frame_04": {
+   "frames": 1,
+   "height": 32,
+   "width": 32,
+   "xorigin": 14,
+   "yorigin": 31
+  },
+  "SPR_chaos_player_frame_05": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 15,
+   "yorigin": 31
+  },
+  "SPR_chaos_player_frame_06": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 16,
+   "yorigin": 31
+  },
+  "SPR_chaos_player_frame_1C": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_1D": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_1E": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_1F": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_20": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_21": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_25": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_26": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_27": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_28": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_29": {
+   "frames": 1,
+   "height": 32,
+   "width": 24,
+   "xorigin": 12,
+   "yorigin": 32
+  },
+  "SPR_chaos_player_frame_61": {
+   "frames": 1,
+   "height": 48,
+   "width": 16,
+   "xorigin": 9,
+   "yorigin": 44
+  },
+  "SPR_chaos_player_state_11": {
+   "frames": 3,
+   "height": 32,
+   "width": 24,
+   "xorigin": 16,
+   "yorigin": 32
+  }
+ },
+ "rom_resource_registration_cases": ["SPR_chaos_aqz_base_chaos_player_state_11", "SPR_chaos_aqz_player_frame_01", "SPR_chaos_aqz_player_frame_02", "SPR_chaos_aqz_player_frame_03", "SPR_chaos_aqz_player_frame_04", "SPR_chaos_aqz_player_frame_05", "SPR_chaos_aqz_player_frame_06", "SPR_chaos_aqz_player_frame_1C", "SPR_chaos_aqz_player_frame_1D", "SPR_chaos_aqz_player_frame_1E", "SPR_chaos_aqz_player_frame_1F", "SPR_chaos_aqz_player_frame_20", "SPR_chaos_aqz_player_frame_21", "SPR_chaos_aqz_player_frame_25", "SPR_chaos_aqz_player_frame_26", "SPR_chaos_aqz_player_frame_27", "SPR_chaos_aqz_player_frame_28", "SPR_chaos_aqz_player_frame_29", "SPR_chaos_aqz_player_frame_61", "SPR_chaos_eez_player_5F", "SPR_chaos_eez_player_60", "SPR_chaos_player_frame_01", "SPR_chaos_player_frame_02", "SPR_chaos_player_frame_03", "SPR_chaos_player_frame_04", "SPR_chaos_player_frame_05", "SPR_chaos_player_frame_06", "SPR_chaos_player_frame_1C", "SPR_chaos_player_frame_1D", "SPR_chaos_player_frame_1E", "SPR_chaos_player_frame_1F", "SPR_chaos_player_frame_20", "SPR_chaos_player_frame_21", "SPR_chaos_player_frame_25", "SPR_chaos_player_frame_26", "SPR_chaos_player_frame_27", "SPR_chaos_player_frame_28", "SPR_chaos_player_frame_29", "SPR_chaos_player_frame_61", "SPR_chaos_player_state_11"],
+ "state_12_branch": {
+  "image_index_branch": "else if (cp_state12_visual) { image_index = 0; image_speed = 0; }",
+  "line": "else if (cp_state12_visual) cp_sprite = SPR_player_jump;   // state $12's script is the single spring-pose record $0B"
+ },
+ "state_12_in_presentation": false,
+ "strip_marker_in_selector": {
+  "marker_flag_available": "cp_c.special & 1 (set at cp_kind == 25, cleared by SCR_cc_fall / SCR_cc_jump / SCR_cc_anim_update on a non-$19 previous surface)",
+  "previous_surface_available": "cp_c.previous & 31 == 25",
+  "selector_tracking_wrap": "cp_a.selector >= (cp_state == 5 ? 6 : 4) -> 0 (ordinary wrap only, no strip branch)"
+ },
+ "walk_run_in_presentation": {
+  "shadow_tracks_frames": "chaos_player_animation_update tracks selector/frame (cp_a.frame = selector + 1 / 7) for states 5/6 but never presents them; art is the legacy SPR_player_walk/run",
+  "state_5_walk_supported": false,
+  "state_6_run_supported": false
+ }
+}

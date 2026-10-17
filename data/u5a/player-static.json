@@ -1,0 +1,3405 @@
+{
+ "frames": {
+  "evidence": "DECODED DATA + deterministic reconstruction (bank-$0F mapping, interrupt-side tile loader table $104B; THZ1 sprite palette)",
+  "frames": {
+   "0x01": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 16,
+     "max_y": 1,
+     "min_x": -16,
+     "min_y": -31,
+     "width": 32
+    },
+    "canvas_height": 32,
+    "canvas_width": 32,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 16,
+    "gamemaker_origin_y": 31,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 00 80 07",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B", "0x0C", "0x0D"],
+     "source_cpu": "0x8000",
+     "source_rom": "0x10000",
+     "table_entry_rom": "0x0104F",
+     "tile_bytes_sha256": "758012b0b7b282f6e7fa9825e2ab5e0516e8ff7b2088040845c2587fabe48e62",
+     "tile_count": 14,
+     "transfer_blocks_64_bytes": 7,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_walk_fall",
+    "index_sha256": "88556a81627f0195e5007b51b3f3cd8d8db33857ebe395a112f57c7c98eeecba",
+    "mapping_frame_cpu": "0x818C",
+    "mapping_frame_rom": "0x3C18C",
+    "mapping_record": {
+     "coords_cpu": "0xA123",
+     "coords_rom": "0x3E123",
+     "frame_cpu": "0x818C",
+     "frame_rom": "0x3C18C",
+     "piece_count": 7,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -16,
+       "relative_y": -31,
+       "tile_offset": "0x00",
+       "x_offset": -16,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -8,
+       "relative_y": -31,
+       "tile_offset": "0x02",
+       "x_offset": -8,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 0,
+       "relative_y": -31,
+       "tile_offset": "0x04",
+       "x_offset": 0,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -16,
+       "relative_y": -15,
+       "tile_offset": "0x06",
+       "x_offset": -16,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -8,
+       "relative_y": -15,
+       "tile_offset": "0x08",
+       "x_offset": -8,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 0,
+       "relative_y": -15,
+       "tile_offset": "0x0A",
+       "x_offset": 0,
+       "y_offset": -16
+      },
+      {
+       "index": 6,
+       "relative_x": 8,
+       "relative_y": -15,
+       "tile_offset": "0x0C",
+       "x_offset": 8,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "07 08 18 23 A1 01 00 00 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A", "0x0C"],
+     "x_origin": 0,
+     "y_origin": 1
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 384,
+    "rgba_sha256_thz1_palette": "1c03e423ba8e3c972767f3b9b709ffc598c7afd399c9bd522bfabbdf7979c748",
+    "tile_bytes_sha256": "758012b0b7b282f6e7fa9825e2ab5e0516e8ff7b2088040845c2587fabe48e62",
+    "used_by": "walk $05 selector frames; also the ordinary fall $0E records (2,3,4,5,6,1)"
+   },
+   "0x02": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 9,
+     "max_y": 1,
+     "min_x": -15,
+     "min_y": -31,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 15,
+    "gamemaker_origin_y": 31,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 C0 81 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x81C0",
+     "source_rom": "0x101C0",
+     "table_entry_rom": "0x01053",
+     "tile_bytes_sha256": "f073c93ff30655932b47ed754aaefa5c9ae6529183e54bf4e6ef2379d359cea5",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_walk_fall",
+    "index_sha256": "b149cbea3a5eb8430e533dadb8219c65cabd21f801803f7c6577d143e6b45f4a",
+    "mapping_frame_cpu": "0x8197",
+    "mapping_frame_rom": "0x3C197",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x8197",
+     "frame_rom": "0x3C197",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -15,
+       "relative_y": -31,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -7,
+       "relative_y": -31,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 1,
+       "relative_y": -31,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -15,
+       "relative_y": -15,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -7,
+       "relative_y": -15,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 1,
+       "relative_y": -15,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 01 00 FD FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -3,
+     "y_origin": 1
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 357,
+    "rgba_sha256_thz1_palette": "34549bf4e1ba6ec4344dff63f3aaf3468ce7d4e69e407d2b0e9e94cc7ee13b9d",
+    "tile_bytes_sha256": "f073c93ff30655932b47ed754aaefa5c9ae6529183e54bf4e6ef2379d359cea5",
+    "used_by": "walk $05 selector frames; also the ordinary fall $0E records (2,3,4,5,6,1)"
+   },
+   "0x03": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 10,
+     "max_y": 1,
+     "min_x": -14,
+     "min_y": -31,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 14,
+    "gamemaker_origin_y": 31,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 40 83 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x8340",
+     "source_rom": "0x10340",
+     "table_entry_rom": "0x01057",
+     "tile_bytes_sha256": "0fecaf05e2d985d68297a5f660ef8d2b77bc1e7ed0bcee7ef1722d4cdbf5820d",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_walk_fall",
+    "index_sha256": "2569a5feab0cafa8eaa0d72dc254293c83a8946d2fe341a9c6ff4c7183fd88b3",
+    "mapping_frame_cpu": "0x81A2",
+    "mapping_frame_rom": "0x3C1A2",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x81A2",
+     "frame_rom": "0x3C1A2",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -14,
+       "relative_y": -31,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -6,
+       "relative_y": -31,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 2,
+       "relative_y": -31,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -14,
+       "relative_y": -15,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -6,
+       "relative_y": -15,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 2,
+       "relative_y": -15,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 01 00 FE FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -2,
+     "y_origin": 1
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 422,
+    "rgba_sha256_thz1_palette": "85dd1bea5fe072a5da9c26fcf5f3d38efd406c9a32e576abb0bc2e408e5831be",
+    "tile_bytes_sha256": "0fecaf05e2d985d68297a5f660ef8d2b77bc1e7ed0bcee7ef1722d4cdbf5820d",
+    "used_by": "walk $05 selector frames; also the ordinary fall $0E records (2,3,4,5,6,1)"
+   },
+   "0x04": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 18,
+     "max_y": 1,
+     "min_x": -14,
+     "min_y": -31,
+     "width": 32
+    },
+    "canvas_height": 32,
+    "canvas_width": 32,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 14,
+    "gamemaker_origin_y": 31,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 C0 84 07",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B", "0x0C", "0x0D"],
+     "source_cpu": "0x84C0",
+     "source_rom": "0x104C0",
+     "table_entry_rom": "0x0105B",
+     "tile_bytes_sha256": "33ff31397084c0ac0aa33574ccaea1050d70bdcadedc32417eb851f4b5a2e506",
+     "tile_count": 14,
+     "transfer_blocks_64_bytes": 7,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_walk_fall",
+    "index_sha256": "8ab70c35067b69a7f7c49b7e480631cd0e5b0f670b78a0b89f267378f55c8427",
+    "mapping_frame_cpu": "0x81AD",
+    "mapping_frame_rom": "0x3C1AD",
+    "mapping_record": {
+     "coords_cpu": "0xA123",
+     "coords_rom": "0x3E123",
+     "frame_cpu": "0x81AD",
+     "frame_rom": "0x3C1AD",
+     "piece_count": 7,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -14,
+       "relative_y": -31,
+       "tile_offset": "0x00",
+       "x_offset": -16,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -6,
+       "relative_y": -31,
+       "tile_offset": "0x02",
+       "x_offset": -8,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 2,
+       "relative_y": -31,
+       "tile_offset": "0x04",
+       "x_offset": 0,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -14,
+       "relative_y": -15,
+       "tile_offset": "0x06",
+       "x_offset": -16,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -6,
+       "relative_y": -15,
+       "tile_offset": "0x08",
+       "x_offset": -8,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 2,
+       "relative_y": -15,
+       "tile_offset": "0x0A",
+       "x_offset": 0,
+       "y_offset": -16
+      },
+      {
+       "index": 6,
+       "relative_x": 10,
+       "relative_y": -15,
+       "tile_offset": "0x0C",
+       "x_offset": 8,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "07 08 18 23 A1 01 00 02 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A", "0x0C"],
+     "x_origin": 2,
+     "y_origin": 1
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 388,
+    "rgba_sha256_thz1_palette": "162e2c4679ab1702263fcb2b7a76e38a5973dc1b8eeafbf04ee266f6db6abd26",
+    "tile_bytes_sha256": "33ff31397084c0ac0aa33574ccaea1050d70bdcadedc32417eb851f4b5a2e506",
+    "used_by": "walk $05 selector frames; also the ordinary fall $0E records (2,3,4,5,6,1)"
+   },
+   "0x05": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 9,
+     "max_y": 1,
+     "min_x": -15,
+     "min_y": -31,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 15,
+    "gamemaker_origin_y": 31,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 80 86 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x8680",
+     "source_rom": "0x10680",
+     "table_entry_rom": "0x0105F",
+     "tile_bytes_sha256": "3599bfdf2b110b380dec452cf0baac00bd80095350d01394561e62c4ac098573",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_walk_fall",
+    "index_sha256": "766761b98c21c6d0fbe63d560146353313af9154c4b7a058ae99f5ab6ac627d3",
+    "mapping_frame_cpu": "0x81B8",
+    "mapping_frame_rom": "0x3C1B8",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x81B8",
+     "frame_rom": "0x3C1B8",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -15,
+       "relative_y": -31,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -7,
+       "relative_y": -31,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 1,
+       "relative_y": -31,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -15,
+       "relative_y": -15,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -7,
+       "relative_y": -15,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 1,
+       "relative_y": -15,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 01 00 FD FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -3,
+     "y_origin": 1
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 359,
+    "rgba_sha256_thz1_palette": "5d68ee0f9dbd61e68fb4729cff4f5026096034242c32f8f00a8f7a9912c43f10",
+    "tile_bytes_sha256": "3599bfdf2b110b380dec452cf0baac00bd80095350d01394561e62c4ac098573",
+    "used_by": "walk $05 selector frames; also the ordinary fall $0E records (2,3,4,5,6,1)"
+   },
+   "0x06": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 8,
+     "max_y": 1,
+     "min_x": -16,
+     "min_y": -31,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 16,
+    "gamemaker_origin_y": 31,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 00 88 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x8800",
+     "source_rom": "0x10800",
+     "table_entry_rom": "0x01063",
+     "tile_bytes_sha256": "d2d455a6e7d1156a70d09ff1920d6c54f8388b96c31fc76f821a9fa06b6f4576",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_walk_fall",
+    "index_sha256": "1c7a22bbe1eac09e615ca460873f1912206e303e9dc04f623e3854a744a6d148",
+    "mapping_frame_cpu": "0x81C3",
+    "mapping_frame_rom": "0x3C1C3",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x81C3",
+     "frame_rom": "0x3C1C3",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -16,
+       "relative_y": -31,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -8,
+       "relative_y": -31,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 0,
+       "relative_y": -31,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -16,
+       "relative_y": -15,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -8,
+       "relative_y": -15,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 0,
+       "relative_y": -15,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 01 00 FC FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -4,
+     "y_origin": 1
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 373,
+    "rgba_sha256_thz1_palette": "62036fe587c2deaf42e82bf9c858df915128c078109827c584e80133197275a6",
+    "tile_bytes_sha256": "d2d455a6e7d1156a70d09ff1920d6c54f8388b96c31fc76f821a9fa06b6f4576",
+    "used_by": "walk $05 selector frames; also the ordinary fall $0E records (2,3,4,5,6,1)"
+   },
+   "0x07": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 11,
+     "max_y": 3,
+     "min_x": -13,
+     "min_y": -29,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 13,
+    "gamemaker_origin_y": 29,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 80 89 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x8980",
+     "source_rom": "0x10980",
+     "table_entry_rom": "0x01067",
+     "tile_bytes_sha256": "55a687ee184e05016c1cdca60edb12b28993e33bde9014329aa377844dd3d8e9",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_run",
+    "index_sha256": "14708d59368caebed62347389cdd504e7bcea10150a1ca561cce371d9ad2b773",
+    "mapping_frame_cpu": "0x81CE",
+    "mapping_frame_rom": "0x3C1CE",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x81CE",
+     "frame_rom": "0x3C1CE",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -13,
+       "relative_y": -29,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -5,
+       "relative_y": -29,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 3,
+       "relative_y": -29,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -13,
+       "relative_y": -13,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -5,
+       "relative_y": -13,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 3,
+       "relative_y": -13,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 03 00 FF FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -1,
+     "y_origin": 3
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 364,
+    "rgba_sha256_thz1_palette": "15280047dbb4ec83177c2e32a7214a708b2464b2e8bc6d7239d6cb6dc78a0a2a",
+    "tile_bytes_sha256": "55a687ee184e05016c1cdca60edb12b28993e33bde9014329aa377844dd3d8e9",
+    "used_by": "run $06 selector frames (marker clear or previous surface not $19)"
+   },
+   "0x08": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 11,
+     "max_y": 3,
+     "min_x": -13,
+     "min_y": -29,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 13,
+    "gamemaker_origin_y": 29,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 00 8B 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x8B00",
+     "source_rom": "0x10B00",
+     "table_entry_rom": "0x0106B",
+     "tile_bytes_sha256": "38962d37b50716bbba2a9d342680769258f5fd09686c55515760a39c09d55e8b",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_run",
+    "index_sha256": "ed0f3909fa889b4c528a6a50aa466634fa1f28af7638c583da3554948ff3e01d",
+    "mapping_frame_cpu": "0x81D9",
+    "mapping_frame_rom": "0x3C1D9",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x81D9",
+     "frame_rom": "0x3C1D9",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -13,
+       "relative_y": -29,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -5,
+       "relative_y": -29,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 3,
+       "relative_y": -29,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -13,
+       "relative_y": -13,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -5,
+       "relative_y": -13,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 3,
+       "relative_y": -13,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 03 00 FF FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -1,
+     "y_origin": 3
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 353,
+    "rgba_sha256_thz1_palette": "e344b9f2e86c5026a418c12f1d475316852981eb7d0e918a7aff5e4d35b9acfe",
+    "tile_bytes_sha256": "38962d37b50716bbba2a9d342680769258f5fd09686c55515760a39c09d55e8b",
+    "used_by": "run $06 selector frames (marker clear or previous surface not $19)"
+   },
+   "0x09": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 11,
+     "max_y": 3,
+     "min_x": -13,
+     "min_y": -29,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 13,
+    "gamemaker_origin_y": 29,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 80 8C 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x8C80",
+     "source_rom": "0x10C80",
+     "table_entry_rom": "0x0106F",
+     "tile_bytes_sha256": "a3abd9652e132dc2e78863aa474d19cef61a062706e9cae50d80854f94568672",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_run",
+    "index_sha256": "a8b63f302afd4f9e45d769649bcd5fe0e4fc2171064bed1604baff91558972cd",
+    "mapping_frame_cpu": "0x81E4",
+    "mapping_frame_rom": "0x3C1E4",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x81E4",
+     "frame_rom": "0x3C1E4",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -13,
+       "relative_y": -29,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -5,
+       "relative_y": -29,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 3,
+       "relative_y": -29,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -13,
+       "relative_y": -13,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -5,
+       "relative_y": -13,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 3,
+       "relative_y": -13,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 03 00 FF FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -1,
+     "y_origin": 3
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 367,
+    "rgba_sha256_thz1_palette": "d5f56043156824842d5d4de605df0c2e0f3de0706244c367ccef5b3549307f4a",
+    "tile_bytes_sha256": "a3abd9652e132dc2e78863aa474d19cef61a062706e9cae50d80854f94568672",
+    "used_by": "run $06 selector frames (marker clear or previous surface not $19)"
+   },
+   "0x0A": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 11,
+     "max_y": 3,
+     "min_x": -13,
+     "min_y": -29,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 13,
+    "gamemaker_origin_y": 29,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 00 8E 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x8E00",
+     "source_rom": "0x10E00",
+     "table_entry_rom": "0x01073",
+     "tile_bytes_sha256": "47927c597578b52d67a4fe537e39e4bc874d71ba268932e0d474d6b490cc1aeb",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "ordinary_run",
+    "index_sha256": "2e725a49b3999fc9af2ad316b896d9abfab182fb2ef785af81892e3be813d327",
+    "mapping_frame_cpu": "0x81EF",
+    "mapping_frame_rom": "0x3C1EF",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x81EF",
+     "frame_rom": "0x3C1EF",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -13,
+       "relative_y": -29,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -5,
+       "relative_y": -29,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 3,
+       "relative_y": -29,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -13,
+       "relative_y": -13,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -5,
+       "relative_y": -13,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 3,
+       "relative_y": -13,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 03 00 FF FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -1,
+     "y_origin": 3
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 364,
+    "rgba_sha256_thz1_palette": "907b3b0081ef05d6fd2e4a51d18beabbabd6f480bbf9b71ecadb95854e1e28dc",
+    "tile_bytes_sha256": "47927c597578b52d67a4fe537e39e4bc874d71ba268932e0d474d6b490cc1aeb",
+    "used_by": "run $06 selector frames (marker clear or previous surface not $19)"
+   },
+   "0x0B": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 14,
+     "max_y": 0,
+     "min_x": -10,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 10,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 80 8F 05",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09"],
+     "source_cpu": "0x8F80",
+     "source_rom": "0x10F80",
+     "table_entry_rom": "0x01077",
+     "tile_bytes_sha256": "bc08e8cbd33edb0d64e06a379d2f5ee8a633b726e845c8e48533f05fdb2ad3c7",
+     "tile_count": 10,
+     "transfer_blocks_64_bytes": 5,
+     "vram_destination": "0x0000"
+    },
+    "group": "stand_and_spring_shoes",
+    "index_sha256": "bd3ad757934adf404349e4d653d8b4a2f3dca6da664b6d002390a06bdcfa422a",
+    "mapping_frame_cpu": "0x81FA",
+    "mapping_frame_rom": "0x3C1FA",
+    "mapping_record": {
+     "coords_cpu": "0xA13F",
+     "coords_rom": "0x3E13F",
+     "frame_cpu": "0x81FA",
+     "frame_rom": "0x3C1FA",
+     "piece_count": 5,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -10,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -2,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": -10,
+       "relative_y": -16,
+       "tile_offset": "0x04",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 3,
+       "relative_x": -2,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": 6,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "05 08 18 3F A1 00 00 02 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08"],
+     "x_origin": 2,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 341,
+    "rgba_sha256_thz1_palette": "d08dfaa45c23f5a7bb29fea669190f1618bebf4f9c615ebac9188e1da2abc6c8",
+    "tile_bytes_sha256": "bc08e8cbd33edb0d64e06a379d2f5ee8a633b726e845c8e48533f05fdb2ad3c7",
+    "used_by": "idle frame (states $00/$01, 180-update record) AND the single record of state $12 (Spring Shoes)"
+   },
+   "0x1C": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 0,
+     "min_x": -12,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 00 A8 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xA800",
+     "source_rom": "0x12800",
+     "table_entry_rom": "0x010BB",
+     "tile_bytes_sha256": "eb2c7297e0671b415db4943c799159d682ec3dd719032eaf49d424e71344b610",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "tumble",
+    "index_sha256": "94b5b0afcee0563055ac10f64132a4565636a1bd5ecf439c582a44760a80e738",
+    "mapping_frame_cpu": "0x82B5",
+    "mapping_frame_rom": "0x3C2B5",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x82B5",
+     "frame_rom": "0x3C2B5",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -32,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -16,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 00 00 00 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 332,
+    "rgba_sha256_thz1_palette": "2a90f63e986959087dd2ef5954bcb838587289a17391912c1b96d2e55648ea12",
+    "tile_bytes_sha256": "eb2c7297e0671b415db4943c799159d682ec3dd719032eaf49d424e71344b610",
+    "used_by": "weak spring $0B ($D448 bit 0 clear, 4 updates each), diagonal $1C (8 each), strip fall $14 (4 each)"
+   },
+   "0x1D": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 0,
+     "min_x": -12,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 80 A9 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xA980",
+     "source_rom": "0x12980",
+     "table_entry_rom": "0x010BF",
+     "tile_bytes_sha256": "14fb8c96ddbf8d00d1010a43e3c410b3dc4b0f0f3ee1a60f69fecd832ebcf638",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "tumble",
+    "index_sha256": "e9b514e424a4796aa5a517c164f7bfd0bab3209d31ab4fcde8e9a2fc3e5e4937",
+    "mapping_frame_cpu": "0x82C0",
+    "mapping_frame_rom": "0x3C2C0",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x82C0",
+     "frame_rom": "0x3C2C0",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -32,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -16,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 00 00 00 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 283,
+    "rgba_sha256_thz1_palette": "40d9958df3fd87b2bba7aa12b792f312d4910fe7fed7fdddfe079fca2e106330",
+    "tile_bytes_sha256": "14fb8c96ddbf8d00d1010a43e3c410b3dc4b0f0f3ee1a60f69fecd832ebcf638",
+    "used_by": "weak spring $0B ($D448 bit 0 clear, 4 updates each), diagonal $1C (8 each), strip fall $14 (4 each)"
+   },
+   "0x1E": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 0,
+     "min_x": -12,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 00 AB 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xAB00",
+     "source_rom": "0x12B00",
+     "table_entry_rom": "0x010C3",
+     "tile_bytes_sha256": "7bc6fa8a1c9a14142311a18c4e01975db691ddcb4c2685d4af1a9cd11094a3d4",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "tumble",
+    "index_sha256": "a343175dbb5ab5c3ebc3eb0d4915349717a365b4084cf9319634656ccf128237",
+    "mapping_frame_cpu": "0x82CB",
+    "mapping_frame_rom": "0x3C2CB",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x82CB",
+     "frame_rom": "0x3C2CB",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -32,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -16,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 00 00 00 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 348,
+    "rgba_sha256_thz1_palette": "1e434ec97472df078589ca7b229081292a4fb1f21dc8a2e6e26de15478fa2309",
+    "tile_bytes_sha256": "7bc6fa8a1c9a14142311a18c4e01975db691ddcb4c2685d4af1a9cd11094a3d4",
+    "used_by": "weak spring $0B ($D448 bit 0 clear, 4 updates each), diagonal $1C (8 each), strip fall $14 (4 each)"
+   },
+   "0x1F": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 0,
+     "min_x": -12,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 80 AC 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xAC80",
+     "source_rom": "0x12C80",
+     "table_entry_rom": "0x010C7",
+     "tile_bytes_sha256": "7a5b56d9b5c1d59b5cf769dc13599278af0f667bd65ed435588f2cfc814d7dc4",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "tumble",
+    "index_sha256": "676900f3f13e1645bfbe8e47a7a37daec1b3fe3d960049f86a3a00895bc4855d",
+    "mapping_frame_cpu": "0x82D6",
+    "mapping_frame_rom": "0x3C2D6",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x82D6",
+     "frame_rom": "0x3C2D6",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -32,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -16,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 00 00 00 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 320,
+    "rgba_sha256_thz1_palette": "78cba96b77774d9ad59b3b13902d81218c526a550d365be70bb51735be9f92fa",
+    "tile_bytes_sha256": "7a5b56d9b5c1d59b5cf769dc13599278af0f667bd65ed435588f2cfc814d7dc4",
+    "used_by": "weak spring $0B ($D448 bit 0 clear, 4 updates each), diagonal $1C (8 each), strip fall $14 (4 each)"
+   },
+   "0x20": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 0,
+     "min_x": -12,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 00 AE 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xAE00",
+     "source_rom": "0x12E00",
+     "table_entry_rom": "0x010CB",
+     "tile_bytes_sha256": "93f904f5eebbe8a52a10bff6ca632b0090b6225e54405a27925c81846b6bb658",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "tumble",
+    "index_sha256": "f69b92e6aba764398d3a674f9f53d7c33b3ce4f80ead21b32539199b71af3447",
+    "mapping_frame_cpu": "0x82E1",
+    "mapping_frame_rom": "0x3C2E1",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x82E1",
+     "frame_rom": "0x3C2E1",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -32,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -16,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 00 00 00 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 288,
+    "rgba_sha256_thz1_palette": "da7322ce2f76e2e2259c0a5b0c3ffa61476d3cf58c3b3bc4ecacd46019abe9b3",
+    "tile_bytes_sha256": "93f904f5eebbe8a52a10bff6ca632b0090b6225e54405a27925c81846b6bb658",
+    "used_by": "weak spring $0B ($D448 bit 0 clear, 4 updates each), diagonal $1C (8 each), strip fall $14 (4 each)"
+   },
+   "0x21": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 0,
+     "min_x": -12,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x04",
+     "raw_entry": "04 80 AF 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xAF80",
+     "source_rom": "0x12F80",
+     "table_entry_rom": "0x010CF",
+     "tile_bytes_sha256": "ed76140709bdd0b40ba4be66948d58774148f9362221725a649aaec5c1188a37",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "tumble",
+    "index_sha256": "970a83bbfb101c2afd2957eae98b8648668d9e8cf4125f807cf581de11e27e1d",
+    "mapping_frame_cpu": "0x82EC",
+    "mapping_frame_rom": "0x3C2EC",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x82EC",
+     "frame_rom": "0x3C2EC",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -32,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -16,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 00 00 00 00 B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 353,
+    "rgba_sha256_thz1_palette": "2bb8033ff62ecca033a83aa3986cae84040e013b78525828e92ddaf6ca6b7d51",
+    "tile_bytes_sha256": "ed76140709bdd0b40ba4be66948d58774148f9362221725a649aaec5c1188a37",
+    "used_by": "weak spring $0B ($D448 bit 0 clear, 4 updates each), diagonal $1C (8 each), strip fall $14 (4 each)"
+   },
+   "0x3C": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 4,
+     "min_x": -12,
+     "min_y": -28,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 28,
+    "graphics_transfer": {
+     "bank": "0x05",
+     "raw_entry": "05 40 9F 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0x9F40",
+     "source_rom": "0x15F40",
+     "table_entry_rom": "0x0113B",
+     "tile_bytes_sha256": "bf915eff62ce547451897ac44fd91712a79cf5cc23d176edaab140e2b6606bfa",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "strip_walk_run",
+    "index_sha256": "73098c29d19511f208b1647e51bf4b5bc367e0d797b7e6085a0fe90ba1898334",
+    "mapping_frame_cpu": "0x8415",
+    "mapping_frame_rom": "0x3C415",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x8415",
+     "frame_rom": "0x3C415",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -28,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -28,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -28,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -12,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -12,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -12,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 0C 20 0B A1 04 00 00 00 B7 85",
+     "raw_word_1": "0x200C",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 4
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 319,
+    "rgba_sha256_thz1_palette": "7d2984de79a28f6da769f510f45a75c04cb1b6b3a73dc827ca1be71798467d20",
+    "tile_bytes_sha256": "bf915eff62ce547451897ac44fd91712a79cf5cc23d176edaab140e2b6606bfa",
+    "used_by": "walk $05 / run $06 selector frames while the +$24 bit 0 strip marker is set on surface $19"
+   },
+   "0x3D": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 4,
+     "min_x": -12,
+     "min_y": -28,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 28,
+    "graphics_transfer": {
+     "bank": "0x05",
+     "raw_entry": "05 C0 A0 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xA0C0",
+     "source_rom": "0x160C0",
+     "table_entry_rom": "0x0113F",
+     "tile_bytes_sha256": "71baa22958d4d2ad63b8fce2ca5f938c017f5ca40c8d8c9649a1d5440e27028c",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "strip_walk_run",
+    "index_sha256": "8d25f1816ac249d6f6c0de32722b41664c93950a8753eaa471d10cd941c1b2d8",
+    "mapping_frame_cpu": "0x8420",
+    "mapping_frame_rom": "0x3C420",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x8420",
+     "frame_rom": "0x3C420",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -28,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -28,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -28,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -12,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -12,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -12,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 0C 20 0B A1 04 00 00 00 B7 85",
+     "raw_word_1": "0x200C",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 4
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 313,
+    "rgba_sha256_thz1_palette": "fb980c09c240f8831c9c8ad00985cd4712dabbeee6fd511d3548b64b20d2af7e",
+    "tile_bytes_sha256": "71baa22958d4d2ad63b8fce2ca5f938c017f5ca40c8d8c9649a1d5440e27028c",
+    "used_by": "walk $05 / run $06 selector frames while the +$24 bit 0 strip marker is set on surface $19"
+   },
+   "0x3E": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 4,
+     "min_x": -12,
+     "min_y": -28,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 28,
+    "graphics_transfer": {
+     "bank": "0x05",
+     "raw_entry": "05 40 A2 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xA240",
+     "source_rom": "0x16240",
+     "table_entry_rom": "0x01143",
+     "tile_bytes_sha256": "45caa9843292883cd32c66c3c329b12f4099d6152a229f63a854de2ebc0a5449",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "strip_walk_run",
+    "index_sha256": "a72bd326117dc840cdcdb7588c53a7166dd54feaf447c960eed94fd2ede537cf",
+    "mapping_frame_cpu": "0x842B",
+    "mapping_frame_rom": "0x3C42B",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x842B",
+     "frame_rom": "0x3C42B",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -28,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -28,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -28,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -12,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -12,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -12,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 0C 20 0B A1 04 00 00 00 B7 85",
+     "raw_word_1": "0x200C",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 4
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 334,
+    "rgba_sha256_thz1_palette": "1d3c7cbc80f477e1fd23e9fe3231b07aefd8e494f5424a6bea20016c8e2978d9",
+    "tile_bytes_sha256": "45caa9843292883cd32c66c3c329b12f4099d6152a229f63a854de2ebc0a5449",
+    "used_by": "walk $05 / run $06 selector frames while the +$24 bit 0 strip marker is set on surface $19"
+   },
+   "0x3F": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 12,
+     "max_y": 4,
+     "min_x": -12,
+     "min_y": -28,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 12,
+    "gamemaker_origin_y": 28,
+    "graphics_transfer": {
+     "bank": "0x05",
+     "raw_entry": "05 C0 A3 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xA3C0",
+     "source_rom": "0x163C0",
+     "table_entry_rom": "0x01147",
+     "tile_bytes_sha256": "106728ed5577a121f287701c6f4ace8b175499fff37fca35093c79be7885b620",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "strip_walk_run",
+    "index_sha256": "b961372f6953eeddcfff5e6789b9346fc44dad5ad85efcf9b91ddb695d9bb313",
+    "mapping_frame_cpu": "0x8436",
+    "mapping_frame_rom": "0x3C436",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x8436",
+     "frame_rom": "0x3C436",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -12,
+       "relative_y": -28,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -4,
+       "relative_y": -28,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 4,
+       "relative_y": -28,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -12,
+       "relative_y": -12,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -4,
+       "relative_y": -12,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 4,
+       "relative_y": -12,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 0C 20 0B A1 04 00 00 00 B7 85",
+     "raw_word_1": "0x200C",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": 0,
+     "y_origin": 4
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 341,
+    "rgba_sha256_thz1_palette": "0387568ad9dcc35b3ec7113106598b5655c81c9242c06613ce9087f15660e126",
+    "tile_bytes_sha256": "106728ed5577a121f287701c6f4ace8b175499fff37fca35093c79be7885b620",
+    "used_by": "walk $05 / run $06 selector frames while the +$24 bit 0 strip marker is set on surface $19"
+   },
+   "0x5E": {
+    "bounds_relative_to_player_anchor": {
+     "height": 32,
+     "max_x": 8,
+     "max_y": 0,
+     "min_x": -16,
+     "min_y": -32,
+     "width": 24
+    },
+    "canvas_height": 32,
+    "canvas_width": 24,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 16,
+    "gamemaker_origin_y": 32,
+    "graphics_transfer": {
+     "bank": "0x07",
+     "raw_entry": "07 40 B6 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xB640",
+     "source_rom": "0x1F640",
+     "table_entry_rom": "0x011C3",
+     "tile_bytes_sha256": "ef3c878e865130de5690d957e3da361d38cb3deac78b3a5d08fedf3647781d1e",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "side_push",
+    "index_sha256": "4be60af933e01fe272dc9132d1108c04406310613096fe6bcd7c252045b98aec",
+    "mapping_frame_cpu": "0x858B",
+    "mapping_frame_rom": "0x3C58B",
+    "mapping_record": {
+     "coords_cpu": "0xA10B",
+     "coords_rom": "0x3E10B",
+     "frame_cpu": "0x858B",
+     "frame_rom": "0x3C58B",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -16,
+       "relative_y": -32,
+       "tile_offset": "0x00",
+       "x_offset": -12,
+       "y_offset": -32
+      },
+      {
+       "index": 1,
+       "relative_x": -8,
+       "relative_y": -32,
+       "tile_offset": "0x02",
+       "x_offset": -4,
+       "y_offset": -32
+      },
+      {
+       "index": 2,
+       "relative_x": 0,
+       "relative_y": -32,
+       "tile_offset": "0x04",
+       "x_offset": 4,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -16,
+       "relative_y": -16,
+       "tile_offset": "0x06",
+       "x_offset": -12,
+       "y_offset": -16
+      },
+      {
+       "index": 4,
+       "relative_x": -8,
+       "relative_y": -16,
+       "tile_offset": "0x08",
+       "x_offset": -4,
+       "y_offset": -16
+      },
+      {
+       "index": 5,
+       "relative_x": 0,
+       "relative_y": -16,
+       "tile_offset": "0x0A",
+       "x_offset": 4,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "06 08 18 0B A1 00 00 FC FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08", "0x0A"],
+     "x_origin": -4,
+     "y_origin": 0
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 336,
+    "rgba_sha256_thz1_palette": "486bc0e7a83c1c04d28b1ef8998328e45163cf77f39766f87ed7b27961762f0e",
+    "tile_bytes_sha256": "ef3c878e865130de5690d957e3da361d38cb3deac78b3a5d08fedf3647781d1e",
+    "used_by": "walk selector side-contact frame ($D523 & $0C), duration 2"
+   },
+   "0x61": {
+    "bounds_relative_to_player_anchor": {
+     "height": 48,
+     "max_x": 7,
+     "max_y": 4,
+     "min_x": -9,
+     "min_y": -44,
+     "width": 16
+    },
+    "canvas_height": 48,
+    "canvas_width": 16,
+    "facing": "right-facing art; +$04 bit 4 mirrors the pieces (horizontal flip of the right-facing image)",
+    "gamemaker_origin_x": 9,
+    "gamemaker_origin_y": 44,
+    "graphics_transfer": {
+     "bank": "0x05",
+     "raw_entry": "05 C0 A7 06",
+     "resulting_tile_indices": ["0x00", "0x01", "0x02", "0x03", "0x04", "0x05", "0x06", "0x07", "0x08", "0x09", "0x0A", "0x0B"],
+     "source_cpu": "0xA7C0",
+     "source_rom": "0x167C0",
+     "table_entry_rom": "0x011CF",
+     "tile_bytes_sha256": "b8a566a4f786853bdf8a8a0e60ab8aecef13ff53df2d7bc1b6b1e89945b52042",
+     "tile_count": 12,
+     "transfer_blocks_64_bytes": 6,
+     "vram_destination": "0x0000"
+    },
+    "group": "tall_strong_spring",
+    "index_sha256": "0f920489afeadf0e67c7dc93d7f113dc0a7be451a29e8057922a4a395a8df077",
+    "mapping_frame_cpu": "0x85AC",
+    "mapping_frame_rom": "0x3C5AC",
+    "mapping_record": {
+     "coords_cpu": "0xA4E3",
+     "coords_rom": "0x3E4E3",
+     "frame_cpu": "0x85AC",
+     "frame_rom": "0x3C5AC",
+     "piece_count": 5,
+     "pieces": [
+      {
+       "index": 0,
+       "relative_x": -9,
+       "relative_y": -44,
+       "tile_offset": "0x00",
+       "x_offset": -8,
+       "y_offset": -48
+      },
+      {
+       "index": 1,
+       "relative_x": -1,
+       "relative_y": -44,
+       "tile_offset": "0x02",
+       "x_offset": 0,
+       "y_offset": -48
+      },
+      {
+       "index": 2,
+       "relative_x": -9,
+       "relative_y": -28,
+       "tile_offset": "0x04",
+       "x_offset": -8,
+       "y_offset": -32
+      },
+      {
+       "index": 3,
+       "relative_x": -1,
+       "relative_y": -28,
+       "tile_offset": "0x06",
+       "x_offset": 0,
+       "y_offset": -32
+      },
+      {
+       "index": 4,
+       "relative_x": -9,
+       "relative_y": -12,
+       "tile_offset": "0x08",
+       "x_offset": -8,
+       "y_offset": -16
+      }
+     ],
+     "raw_11": "05 08 18 E3 A4 04 00 FF FF B7 85",
+     "raw_word_1": "0x1808",
+     "tile_list_cpu": "0x85B7",
+     "tile_list_rom": "0x3C5B7",
+     "tile_offsets": ["0x00", "0x02", "0x04", "0x06", "0x08"],
+     "x_origin": -1,
+     "y_origin": 4
+    },
+    "mapping_table_cpu": "0x80C8",
+    "non_transparent_pixels": 303,
+    "rgba_sha256_thz1_palette": "b9112eda599ef627bee70f6b6e47473382fa501e2ada0b867a6ae090b36f0bae",
+    "tile_bytes_sha256": "b8a566a4f786853bdf8a8a0e60ab8aecef13ff53df2d7bc1b6b1e89945b52042",
+    "used_by": "strong spring $0B ($D448 bit 0 set)"
+   }
+  },
+  "object_type": "0x01",
+  "palette_note": "pixels are identical in every act (see sprite_palettes); RGBA hash uses the THZ1 record, index hash is palette independent"
+ },
+ "research_base": "c30c06e6c428b64e843ea5834ff52b7bc3304708",
+ "reused_evidence": {
+  "boss_bounce_t50": {
+   "frames_first_segment": [
+    {
+     "frame": "0x1C",
+     "updates": 4
+    },
+    {
+     "frame": "0x1D",
+     "updates": 4
+    },
+    {
+     "frame": "0x1E",
+     "updates": 4
+    }
+   ],
+   "source": "player-spring-airborne.json stomp_and_boss/type50_boss_top_bounce"
+  },
+  "cache_sha256": {
+   "gpz-surface19": "70bb99346e0612480425503f1b0eb7fffb8ca57d6ddc7241d14d22e6df348ae2",
+   "player-fall-control": "ff8d9524845f90d5a23c72db2528b68d6ea573311e195cfcc53ebcc23656e971",
+   "player-spring-airborne": "e84b3a97675ce433c818c91e0f920b33e9abb6dcf9e3f5af31c7cdfbfb1d681a",
+   "powerup-shoes": "4482e0b80b91bd598221a92729a9f6fd31425588b62b83b80bae71547700594e",
+   "spring-shoes-presentation": "f48512ce1aee6cd91e01e3b01448b7ae12925a7f2d5dce63464a5f74aaf722db"
+  },
+  "spring_shoes_state_12": {
+   "bounce_period_updates": [81, 81, 81],
+   "facing": "+$04 bit 4 follows Left/Right (left_right run: values {0,16}); Sonic never mirrored by anything else",
+   "first_state_12_update": 12,
+   "player_f4_values_without_input": [0],
+   "player_frame_values_in_state_12": [11],
+   "player_timer_cycle_first_12": [4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1],
+   "script": [
+    {
+     "callback": "0x03B0",
+     "duration": 4,
+     "frame": 11,
+     "raw": "040bb003"
+    },
+    {
+     "command": "00 restart/hold state",
+     "raw": "ff00"
+    }
+   ],
+   "script_cpu": "0x8346",
+   "shoe_frame_changes_per_bounce": 2,
+   "source": "data/rom-cache/spring-shoes-presentation.json part_a_presentation (EMULATED ORIGINAL FRAME, MGHZ1 shoes (1552,238))"
+  },
+  "strip_fall_14": {
+   "setter_4663": {
+    "0x463C": "requested $0E, vy := +$0100, +$03 bit0 set, bit1 cleared, +$24 bit0 CLEARED, +$22 bit1 cleared, $D3BC := 0; a no-op when the CURRENT state is $0A (normal jump)",
+    "0x4663": "requested $14, vy := +$0100, +$03 bit0 set, bit1 cleared, +$24 bit0 RETAINED, +$22 bit1 cleared, $D3BC := 0; no jump exemption; vx, x, y, plane, +$24 bit1 untouched"
+   },
+   "source": "player-fall-control.json part_a_state_14 (GPZ2 / MGHZ1)"
+  },
+  "weak_spring_t26": {
+   "entry_d448": 0,
+   "source": "data/rom-cache/player-spring-airborne.json emulated_flights_thz/t26_weak_fixed",
+   "state_segment": {
+    "first_update": 7,
+    "frames": [
+     {
+      "frame": "0x1C",
+      "updates": 4
+     },
+     {
+      "frame": "0x1D",
+      "updates": 4
+     },
+     {
+      "frame": "0x1E",
+      "updates": 4
+     },
+     {
+      "frame": "0x1F",
+      "updates": 4
+     },
+     {
+      "frame": "0x20",
+      "updates": 4
+     },
+     {
+      "frame": "0x21",
+      "updates": 4
+     },
+     {
+      "frame": "0x1C",
+      "updates": 4
+     },
+     {
+      "frame": "0x1D",
+      "updates": 4
+     },
+     {
+      "frame": "0x1E",
+      "updates": 4
+     },
+     {
+      "frame": "0x1F",
+      "updates": 4
+     },
+     {
+      "frame": "0x20",
+      "updates": 4
+     },
+     {
+      "frame": "0x21",
+      "updates": 4
+     },
+     {
+      "frame": "0x1C",
+      "updates": 4
+     },
+     {
+      "frame": "0x1D",
+      "updates": 2
+     }
+    ],
+    "updates": 54
+   }
+  }
+ },
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "scope": "U5-A parts A-C: strip animation, Spring Shoes pose, weak-spring tumble",
+ "selectors": {
+  "evidence": "BYTE-VERIFIED ASSEMBLY (the complete selector bodies are matched byte for byte; bank $0C, slot 2)",
+  "marker": {
+   "cleared_by": ["walk/run selector when the previous surface is not $19", "normal jump $45ED", "ordinary fall setter $463C", "surface-zero handler $6C45"],
+   "player_byte": "+$24 bit 0 (RAM $D524)",
+   "retained_by": "strip-fall setter $4663",
+   "see": "docs/gpz-surface19-audit.md, docs/player-fall-control-audit.md",
+   "set_by": "surface $19 handler $6B23 (floor sample, every contact pass)"
+  },
+  "run_selector": {
+   "cpu": "0x8F45",
+   "duration": 4,
+   "ordinary": {
+    "base_frame": 7,
+    "cycle_length": 4,
+    "frames": [7, 8, 9, 10]
+   },
+   "rom": "0x30F45",
+   "sha256": "20257c0023b48f01659add404d221df50dacaa9bc4107ff90253385526f2070e",
+   "side_contact_branch": false,
+   "strip": {
+    "base_frame": 60,
+    "cycle_length": 4,
+    "frames": [60, 61, 62, 63]
+   }
+  },
+  "shared_index": {
+   "consequence": "walk and run share ONE index: a $05 <-> $06 change keeps the phase (index mod 4 entering run or strip, mod 6 for ordinary walk)",
+   "ram": "0xD52F",
+   "rule": "INC; if >= cycle_length then 0; frame := index + base_frame"
+  },
+  "walk_selector": {
+   "cpu": "0x8EE1",
+   "duration_by_abs_x_speed_high_byte": [10, 8, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+   "duration_loaded_only_when_the_record_reloads": true,
+   "order": "side contact ($D523 & $0C) -> frame $5E, duration 2 (before any strip test); else marker bit 0 set and previous surface ($D36C & $1F) == $19 -> strip set; else marker cleared and $D3BC zeroed; then the shared index $D52F",
+   "ordinary": {
+    "base_frame": 1,
+    "cycle_length": 6,
+    "frames": [1, 2, 3, 4, 5, 6]
+   },
+   "rom": "0x30EE1",
+   "sha256": "72640fe8859da19f40a038c932e6099bf55653dbf6c929e998b5e328359f3612",
+   "side_contact": {
+    "duration": 2,
+    "frame": 94
+   },
+   "strip": {
+    "base_frame": 60,
+    "cycle_length": 4,
+    "frames": [60, 61, 62, 63]
+   }
+  }
+ },
+ "sprite_palettes": {
+  "acts": {
+   "aqz1": {
+    "act": 0,
+    "record": "1020351B063A003F0701152A1F2A151D",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 10,
+    "zone": 4
+   },
+   "aqz2": {
+    "act": 1,
+    "record": "1020351B063A003F0701152A1F2A151D",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 10,
+    "zone": 4
+   },
+   "aqz3": {
+    "act": 2,
+    "record": "1020351B063A003F0701152A1F2A151D",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 10,
+    "zone": 4
+   },
+   "eez1": {
+    "act": 0,
+    "record": "0020351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 11,
+    "zone": 5
+   },
+   "eez2": {
+    "act": 1,
+    "record": "0020351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 11,
+    "zone": 5
+   },
+   "eez3": {
+    "act": 2,
+    "record": "0020351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 11,
+    "zone": 5
+   },
+   "gpz1": {
+    "act": 0,
+    "record": "0020351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 7,
+    "zone": 1
+   },
+   "gpz2": {
+    "act": 1,
+    "record": "0020351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 7,
+    "zone": 1
+   },
+   "gpz3": {
+    "act": 2,
+    "record": "0020351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 7,
+    "zone": 1
+   },
+   "mghz1": {
+    "act": 0,
+    "record": "1920351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 9,
+    "zone": 3
+   },
+   "mghz2": {
+    "act": 1,
+    "record": "1920351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 9,
+    "zone": 3
+   },
+   "mghz3": {
+    "act": 2,
+    "record": "1920351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 9,
+    "zone": 3
+   },
+   "sez1": {
+    "act": 0,
+    "record": "3020351B063A003F0701152A1F372200",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 8,
+    "zone": 2
+   },
+   "sez2": {
+    "act": 1,
+    "record": "3020351B063A003F0701152A1F372200",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 8,
+    "zone": 2
+   },
+   "sez3": {
+    "act": 2,
+    "record": "3020351B063A003F0701152A1F372200",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 8,
+    "zone": 2
+   },
+   "thz1": {
+    "act": 0,
+    "record": "3820351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 6,
+    "zone": 0
+   },
+   "thz2": {
+    "act": 1,
+    "record": "3820351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 6,
+    "zone": 0
+   },
+   "thz3": {
+    "act": 2,
+    "record": "3820351B063A003F0701152A1F0C0804",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 6,
+    "zone": 0
+   },
+   "title": {
+    "act": 0,
+    "record": "0020351B063A003F0701152A1F2A151F",
+    "sonic_used_entries": ["20", "35", "1B", "06", "3A", "00", "3F", "07", "01", "15", "2A"],
+    "sprite_palette_index": 41,
+    "zone": 7
+   }
+  },
+  "distinct_sonic_colour_sets": 1,
+  "entries_12_to_15_differ_between_zones": "not used by any Sonic frame above",
+  "entry_0": "transparent for sprites (record byte 0 differs per zone: backdrop, never drawn)",
+  "evidence": "DECODED DATA (palette selector table $7F3C, 16-byte records, SMS %--BBGGRR)",
+  "indices_used_by_frame": {
+   "0x01": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x02": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x03": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x04": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x05": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x06": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x07": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x08": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x09": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x0A": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x0B": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x1C": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x1D": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x1E": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x1F": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x20": [1, 2, 3, 4, 6, 7, 9, 10, 11],
+   "0x21": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x3C": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x3D": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x3E": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x3F": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x5E": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+   "0x61": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  },
+  "indices_used_union": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  "sonic_colours_identical_in_all_acts": true
+ },
+ "state_programs": {
+  "0x00": {
+   "program": [
+    {
+     "args": "8f03",
+     "command": "FF 01"
+    },
+    {
+     "callback": "0x0395",
+     "duration": 180,
+     "frame": 11,
+     "frame_hex": "0x0B"
+    },
+    {
+     "args": "02",
+     "command": "FF 03"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x807D",
+   "why": "power-on / new-level idle"
+  },
+  "0x01": {
+   "program": [
+    {
+     "callback": "0x0395",
+     "duration": 180,
+     "frame": 11,
+     "frame_hex": "0x0B"
+    },
+    {
+     "args": "02",
+     "command": "FF 03"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x8081",
+   "why": "idle: one 180-update record of frame $0B, then FF 03 02 (request state 2)"
+  },
+  "0x05": {
+   "program": [
+    {
+     "args": "e18ee903",
+     "command": "FF 05",
+     "selector": "0x8EE1"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x810E",
+   "why": "walk: FF 05 selector $8EE1"
+  },
+  "0x06": {
+   "program": [
+    {
+     "args": "458fd403",
+     "command": "FF 05",
+     "selector": "0x8F45"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x8116",
+   "why": "run: FF 05 selector $8F45"
+  },
+  "0x0B": {
+   "play_order_d448_bit0_clear_weak": {
+    "cycle_updates": 82,
+    "frame_cadence": [
+     {
+      "frame": "0x1C",
+      "updates": 4
+     },
+     {
+      "frame": "0x1D",
+      "updates": 4
+     },
+     {
+      "frame": "0x1E",
+      "updates": 4
+     },
+     {
+      "frame": "0x1F",
+      "updates": 4
+     },
+     {
+      "frame": "0x20",
+      "updates": 4
+     },
+     {
+      "frame": "0x21",
+      "updates": 4
+     },
+     {
+      "frame": "0x1C",
+      "updates": 4
+     },
+     {
+      "frame": "0x1D",
+      "updates": 4
+     },
+     {
+      "frame": "0x1E",
+      "updates": 4
+     },
+     {
+      "frame": "0x1F",
+      "updates": 4
+     },
+     {
+      "frame": "0x20",
+      "updates": 4
+     },
+     {
+      "frame": "0x21",
+      "updates": 4
+     },
+     {
+      "frame": "0x1C",
+      "updates": 4
+     },
+     {
+      "frame": "0x1D",
+      "updates": 4
+     },
+     {
+      "frame": "0x1E",
+      "updates": 6
+     },
+     {
+      "frame": "0x1F",
+      "updates": 6
+     },
+     {
+      "frame": "0x20",
+      "updates": 6
+     },
+     {
+      "frame": "0x21",
+      "updates": 8
+     }
+    ]
+   },
+   "play_order_d448_bit0_set_strong": {
+    "cycle_updates": 4,
+    "frame_cadence": [
+     {
+      "frame": "0x61",
+      "updates": 4
+     }
+    ]
+   },
+   "program": [
+    {
+     "args": "8f818981",
+     "command": "FF 08"
+    },
+    {
+     "args": "02",
+     "command": "FF 0E"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 28,
+     "frame_hex": "0x1C"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 29,
+     "frame_hex": "0x1D"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 30,
+     "frame_hex": "0x1E"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 31,
+     "frame_hex": "0x1F"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 32,
+     "frame_hex": "0x20"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 33,
+     "frame_hex": "0x21"
+    },
+    {
+     "args": "5381",
+     "command": "FF 0F"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 28,
+     "frame_hex": "0x1C"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 4,
+     "frame": 29,
+     "frame_hex": "0x1D"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 6,
+     "frame": 30,
+     "frame_hex": "0x1E"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 6,
+     "frame": 31,
+     "frame_hex": "0x1F"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 6,
+     "frame": 32,
+     "frame_hex": "0x20"
+    },
+    {
+     "callback": "0x039E",
+     "duration": 8,
+     "frame": 33,
+     "frame_hex": "0x21"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x814A",
+   "why": "spring ascent (weak/strong)"
+  },
+  "0x0E": {
+   "play_order": {
+    "cycle_updates": 232,
+    "frame_cadence": [
+     {
+      "frame": "0x02",
+      "updates": 8
+     },
+     {
+      "frame": "0x03",
+      "updates": 8
+     },
+     {
+      "frame": "0x04",
+      "updates": 8
+     },
+     {
+      "frame": "0x05",
+      "updates": 8
+     },
+     {
+      "frame": "0x06",
+      "updates": 8
+     },
+     {
+      "frame": "0x01",
+      "updates": 8
+     },
+     {
+      "frame": "0x02",
+      "updates": 8
+     },
+     {
+      "frame": "0x03",
+      "updates": 8
+     },
+     {
+      "frame": "0x04",
+      "updates": 8
+     },
+     {
+      "frame": "0x05",
+      "updates": 8
+     },
+     {
+      "frame": "0x06",
+      "updates": 8
+     },
+     {
+      "frame": "0x01",
+      "updates": 8
+     },
+     {
+      "frame": "0x02",
+      "updates": 8
+     },
+     {
+      "frame": "0x03",
+      "updates": 8
+     },
+     {
+      "frame": "0x04",
+      "updates": 8
+     },
+     {
+      "frame": "0x05",
+      "updates": 8
+     },
+     {
+      "frame": "0x06",
+      "updates": 8
+     },
+     {
+      "frame": "0x01",
+      "updates": 8
+     },
+     {
+      "frame": "0x02",
+      "updates": 8
+     },
+     {
+      "frame": "0x03",
+      "updates": 8
+     },
+     {
+      "frame": "0x04",
+      "updates": 8
+     },
+     {
+      "frame": "0x05",
+      "updates": 8
+     },
+     {
+      "frame": "0x06",
+      "updates": 8
+     },
+     {
+      "frame": "0x01",
+      "updates": 8
+     },
+     {
+      "frame": "0x02",
+      "updates": 8
+     },
+     {
+      "frame": "0x03",
+      "updates": 8
+     },
+     {
+      "frame": "0x04",
+      "updates": 8
+     },
+     {
+      "frame": "0x05",
+      "updates": 8
+     },
+     {
+      "frame": "0x06",
+      "updates": 8
+     }
+    ]
+   },
+   "program": [
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 2,
+     "frame_hex": "0x02"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 3,
+     "frame_hex": "0x03"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 4,
+     "frame_hex": "0x04"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 5,
+     "frame_hex": "0x05"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 6,
+     "frame_hex": "0x06"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 1,
+     "frame_hex": "0x01"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 2,
+     "frame_hex": "0x02"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 3,
+     "frame_hex": "0x03"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 4,
+     "frame_hex": "0x04"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 5,
+     "frame_hex": "0x05"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 6,
+     "frame_hex": "0x06"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 1,
+     "frame_hex": "0x01"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 2,
+     "frame_hex": "0x02"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 3,
+     "frame_hex": "0x03"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 4,
+     "frame_hex": "0x04"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 5,
+     "frame_hex": "0x05"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 6,
+     "frame_hex": "0x06"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 1,
+     "frame_hex": "0x01"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 2,
+     "frame_hex": "0x02"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 3,
+     "frame_hex": "0x03"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 4,
+     "frame_hex": "0x04"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 5,
+     "frame_hex": "0x05"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 6,
+     "frame_hex": "0x06"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 1,
+     "frame_hex": "0x01"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 2,
+     "frame_hex": "0x02"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 3,
+     "frame_hex": "0x03"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 4,
+     "frame_hex": "0x04"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 5,
+     "frame_hex": "0x05"
+    },
+    {
+     "callback": "0x03AD",
+     "duration": 8,
+     "frame": 6,
+     "frame_hex": "0x06"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x81E0",
+   "why": "ordinary fall"
+  },
+  "0x12": {
+   "play_order": {
+    "cycle_updates": 4,
+    "frame_cadence": [
+     {
+      "frame": "0x0B",
+      "updates": 4
+     }
+    ]
+   },
+   "program": [
+    {
+     "callback": "0x03B0",
+     "duration": 4,
+     "frame": 11,
+     "frame_hex": "0x0B"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x8346",
+   "why": "Spring Shoes: ONE record, frame $0B, duration 4, FF 00"
+  },
+  "0x14": {
+   "play_order": {
+    "cycle_updates": 24,
+    "frame_cadence": [
+     {
+      "frame": "0x1C",
+      "updates": 4
+     },
+     {
+      "frame": "0x1D",
+      "updates": 4
+     },
+     {
+      "frame": "0x1E",
+      "updates": 4
+     },
+     {
+      "frame": "0x1F",
+      "updates": 4
+     },
+     {
+      "frame": "0x20",
+      "updates": 4
+     },
+     {
+      "frame": "0x21",
+      "updates": 4
+     }
+    ]
+   },
+   "program": [
+    {
+     "callback": "0x03F8",
+     "duration": 4,
+     "frame": 28,
+     "frame_hex": "0x1C"
+    },
+    {
+     "callback": "0x03F8",
+     "duration": 4,
+     "frame": 29,
+     "frame_hex": "0x1D"
+    },
+    {
+     "callback": "0x03F8",
+     "duration": 4,
+     "frame": 30,
+     "frame_hex": "0x1E"
+    },
+    {
+     "callback": "0x03F8",
+     "duration": 4,
+     "frame": 31,
+     "frame_hex": "0x1F"
+    },
+    {
+     "callback": "0x03F8",
+     "duration": 4,
+     "frame": 32,
+     "frame_hex": "0x20"
+    },
+    {
+     "callback": "0x03F8",
+     "duration": 4,
+     "frame": 33,
+     "frame_hex": "0x21"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x81C6",
+   "why": "strip fall: tumble set, 4 updates each"
+  },
+  "0x1C": {
+   "play_order": {
+    "cycle_updates": 48,
+    "frame_cadence": [
+     {
+      "frame": "0x1C",
+      "updates": 8
+     },
+     {
+      "frame": "0x1D",
+      "updates": 8
+     },
+     {
+      "frame": "0x1E",
+      "updates": 8
+     },
+     {
+      "frame": "0x1F",
+      "updates": 8
+     },
+     {
+      "frame": "0x20",
+      "updates": 8
+     },
+     {
+      "frame": "0x21",
+      "updates": 8
+     }
+    ]
+   },
+   "program": [
+    {
+     "callback": "0x03B6",
+     "duration": 8,
+     "frame": 28,
+     "frame_hex": "0x1C"
+    },
+    {
+     "callback": "0x03B6",
+     "duration": 8,
+     "frame": 29,
+     "frame_hex": "0x1D"
+    },
+    {
+     "callback": "0x03B6",
+     "duration": 8,
+     "frame": 30,
+     "frame_hex": "0x1E"
+    },
+    {
+     "callback": "0x03B6",
+     "duration": 8,
+     "frame": 31,
+     "frame_hex": "0x1F"
+    },
+    {
+     "callback": "0x03B6",
+     "duration": 8,
+     "frame": 32,
+     "frame_hex": "0x20"
+    },
+    {
+     "callback": "0x03B6",
+     "duration": 8,
+     "frame": 33,
+     "frame_hex": "0x21"
+    },
+    {
+     "args": "",
+     "command": "FF 00"
+    }
+   ],
+   "script_cpu": "0x8194",
+   "why": "diagonal spring: tumble set, 8 updates each"
+  }
+ },
+ "strip_census": {
+  "acts_with_strips": ["gpz1", "gpz2", "mghz1", "mghz2", "mghz3"],
+  "blocks": "$85/$87 (header $59: one-way bit 6 + type $19, vertical profile 32, modifier 0)",
+  "cells_by_act": {
+   "gpz1": 21,
+   "gpz2": 24,
+   "mghz1": 56,
+   "mghz2": 26,
+   "mghz3": 41
+  },
+  "evidence": "DECODED DATA (layout cells x collision header flags & $1F, tools/mghz_foundation.six_zone_surfaces)",
+  "surface_type": "0x19"
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "title": "U5-A existing-evidence versus new-findings matrix",
+ "research_base": "c30c06e6c428b64e843ea5834ff52b7bc3304708",
+ "poc_commit": "b4737e834982b2985c6fdcb8d4d76cb78c9092c8",
+ "classes": {
+  "canonical_rom_data": "decoded ROM tables / byte-verified assembly",
+  "emulator_observation": "EMULATED ORIGINAL FRAME (approximate harness, NTSC timing)",
+  "poc_existing": "POC SOURCE at the stated commit, read only",
+  "status": ["IMPLEMENTED", "MISSING_RESOURCE", "MISSING_BRANCH", "MISMATCH", "NO_CHANGE_NEEDED", "NOT_PRESENT_IN_ROM", "ABSENT_FROM_POC"]
+ },
+ "rows": [
+  {
+   "id": "A1", "part": "A", "item": "Strip walk/run frames $3C-$3F (marker +$24 bit 0 and previous surface $19)",
+   "existing_research": ["docs/gpz-surface19-audit.md", "docs/player-fall-control-audit.md"],
+   "new": ["selectors.walk_selector/run_selector", "frames.0x3C..0x3F", "cases gpz2_strip_run_right, mghz1_upper_strip_run_left/right"],
+   "canonical_rom_data": "data/u5a/player-static.json: selectors, frames, sprite_palettes, strip_census",
+   "emulator_observation": "data/u5a/player-observed.json: gpz2_strip_run_right, mghz1_upper_strip_run_right, mghz1_upper_strip_run_left (4 updates per frame, order $3F,$3C,$3D,$3E from the shared index)",
+   "poc_existing": "no resource for $3C-$3F; walk/run states 5/6 are not presented from ROM frames (legacy SPR_player_walk/run); marker and strip fall gameplay already implemented",
+   "status": "MISSING_RESOURCE",
+   "outstanding": ["ordinary run frames $07-$0A and walk $01-$06 are also not presented from ROM art for non-strip running (outside this task)", "side-contact frame $5E (walk, duration 2) has no resource"]
+  },
+  {
+   "id": "A2", "part": "A", "item": "Strip marker lifetime and strip-fall entry ($4663 / $14)",
+   "existing_research": ["docs/gpz-surface19-audit.md", "docs/player-fall-control-audit.md"],
+   "new": ["cases gpz2_strip_walk_plus3_right, gpz2_strip_run_then_release, gpz2_ordinary_run_marker_set"],
+   "canonical_rom_data": "selectors.marker; state_programs 0x14",
+   "emulator_observation": "walk +3.0 requests $14 on update 1; run->walk->$14 chain; a marker set on ordinary floor is cleared by the selector",
+   "poc_existing": "SCR_cc_strip_suffix / SCR_cc_fall / SCR_cc_jump / SCR_cc_anim_update clear and use the marker as in the ROM",
+   "status": "IMPLEMENTED", "outstanding": []
+  },
+  {
+   "id": "A3", "part": "A", "item": "Terrain strip versus type-$28 platforms, $1C decks",
+   "existing_research": ["docs/isometric-platform-audit.md", "docs/sez-platform-28-audit.md"],
+   "new": ["cases gpz2_platform28_stand, gpz2_platform28_walk_right, gpz1_platform28_moving_stand, gpz2_deck_1c_walk_run"],
+   "canonical_rom_data": "marker is written only by surface $19 handler $6B23 (docs/gpz-surface19-audit.md consumer inventory)",
+   "emulator_observation": "riding or walking on type $28 (static $83 and moving $89) or a surface-$1C deck uses idle $0B / walk $01-$06 / run $07-$0A and never the strip set; marker stays 0",
+   "poc_existing": "no platform-specific player animation exists or is needed",
+   "status": "NO_CHANGE_NEEDED", "outstanding": ["type $24/$2E/$3F platform riders were not run (same mechanism: no write of +$24)"]
+  },
+  {
+   "id": "B1", "part": "B", "item": "Spring Shoes pose: Sonic frame $0B held in state $12",
+   "existing_research": ["docs/spring-shoes-presentation-audit.md", "docs/powerup-shoes-audit.md"],
+   "new": ["frames.0x0B", "state_programs.0x12"],
+   "canonical_rom_data": "state $12 script $8346: one record (4, frame $0B) then FF 00; frame $0B = 5 pieces, 24x32, origin (10,32), 10 tiles from bank $04 $8F80",
+   "emulator_observation": "data/rom-cache/spring-shoes-presentation.json traces: player frame always 11, timer 4..1, facing only from Left/Right",
+   "poc_existing": "SCR_chaos_core_sprites chooses SPR_player_jump (legacy SPR_sonic_jump, image 0) for state $12; state 18 is not in chaos_player_animation_supported",
+   "status": "MISMATCH", "outstanding": ["James's report (jump sprite instead of the upright pose) is explained by the resource choice; the earlier unresolved P6 'too active' remark is not explained by this (the POC shows a single static jump frame)"]
+  },
+  {
+   "id": "B2", "part": "B", "item": "Attached footwear object animation and bounce timing",
+   "existing_research": ["docs/spring-shoes-presentation-audit.md section 1"],
+   "new": [], "canonical_rom_data": "type $2F scripts (frames 3 x12 then 4)", "emulator_observation": "unchanged from the existing audit",
+   "poc_existing": "OBJ_chaos_object_2F mirrors the cadence", "status": "NO_CHANGE_NEEDED", "outstanding": []
+  },
+  {
+   "id": "C1", "part": "C", "item": "Weak mapped spring ($26 parameter != 0 / span aux1 != 0, boss $50 bounce): $0B with $D448 bit 0 clear, frames $1C-$21",
+   "existing_research": ["docs/player-spring-airborne-state-closure.md section 3.1 / 4"],
+   "new": ["poc_source.programs_by_state.0x0B", "mirror over 26 scenarios"],
+   "canonical_rom_data": "state_programs.0x0B: 82-update cycle, 4 updates per frame; strong ($D448 bit 0 set) shows $61",
+   "emulator_observation": "data/rom-cache/player-spring-airborne.json emulated_flights_thz/t26_weak_fixed and 25 further scenarios",
+   "poc_existing": "program case 11 + SPR_chaos_player_frame_1C..21 are pixel- and origin-identical to the ROM frames; literal transcription of the POC selector reproduces the ROM frame on 2,081 presented updates (0 mismatches)",
+   "status": "IMPLEMENTED", "outstanding": ["the reported missing tumble cannot be derived from source: request a one-off POC trace (state, next, d448, visual_anim.state/active/frame, sprite_index) during a weak mapped-spring bounce"]
+  },
+  {
+   "id": "C2", "part": "C", "item": "Strip fall $14: tumble set $1C-$21, 4 updates per frame",
+   "existing_research": ["docs/player-fall-control-audit.md"],
+   "new": ["cases gpz2_strip_walk_plus3_right, gpz2_strip_run_then_release"],
+   "canonical_rom_data": "state_programs.0x14: 24-update cycle",
+   "emulator_observation": "tumble starts the update after the request; first frame lasts 4 updates",
+   "poc_existing": "program case 20; 81 presented updates reproduced exactly",
+   "status": "IMPLEMENTED", "outstanding": []
+  },
+  {
+   "id": "D1", "part": "D", "item": "Start-up sequence from power-on: opening cinematic -> title -> attract demos -> opening",
+   "existing_research": ["docs/g0-campaign-contract.md T01/T18 (attract demos, D292 bits)", "docs/u4-ordinary-results.md section 8 (act title cards)"],
+   "new": ["dispatcher, handlers, census"],
+   "canonical_rom_data": "data/u5a/opening-static.json: dispatcher, handlers, opening_routine, title_routine, attract_table",
+   "emulator_observation": "data/u5a/startup-census.json: opening 871 frames, title 1,310, demo 1,230; demos THZ1 Sonic, GPZ1 Tails, SEZ1 Sonic; button 1/2 skips the opening to the title",
+   "poc_existing": "OBJ_menu_opening shows an inherited Sega logo animation (SPR_opening_sega); ROM_menu_title; no cinematic, no attract demo",
+   "status": "ABSENT_FROM_POC", "outstanding": ["which sequence James calls the 'introduction' is not stated: the cinematic is the only unskippable-by-default scene before the title and is the recommended reading; alternatives A2/A3 are listed in startup-census.json"]
+  },
+  {
+   "id": "D2", "part": "D", "item": "Opening cinematic data: zone 7 act 0 level, scripted Sonic/Tails run, type $1F machine, fades, camera",
+   "existing_research": [],
+   "new": ["opening-static.json", "opening-replay.json", "opening-observed.json"],
+   "canonical_rom_data": "level header/layout/art/palettes, state-$29 script, type $1F scripts and callbacks, window table, mapping frames",
+   "emulator_observation": "738 updates; model equals observation on 24 columns; 159 sampled frames pixel-identical (background and sprites)",
+   "poc_existing": "none", "status": "ABSENT_FROM_POC",
+   "outstanding": ["placement window that creates the machine (observed at update 40)", "camera Y ramp rule (8,8,8,9..15)", "hardware 50 Hz pacing", "audio request $90 has no wired PC asset", "type $1F states 6/7 not exercised"]
+  },
+  {
+   "id": "D3", "part": "D", "item": "Sega logo / licence screen before the cinematic",
+   "existing_research": [], "new": ["no_sega_logo"],
+   "canonical_rom_data": "no code path or tile stream", "emulator_observation": "harness frames 1-80 black; first colour at frame 91",
+   "poc_existing": "OBJ_menu_opening / SPR_opening_sega (94x31, 51 frames, drawn at image_speed 0.6, fade-out alarm 80 steps, room change alarm 120 steps) - project derived from Open Sonic SMS",
+   "status": "NOT_PRESENT_IN_ROM", "outstanding": ["keep/remove decision belongs to Manager (non-canonical presentation)"]
+  }
+ ]
+}

@@ -1,0 +1,187 @@
+{
+ "alternatives": [
+  {
+   "d292_bit": 5,
+   "evidence": "STATIC + OBSERVED (this package)",
+   "id": "A1",
+   "name": "Opening cinematic",
+   "pc_poc": "none",
+   "present": true,
+   "routine": "$06C7 (via handler $2B77)",
+   "what": "zone 7 act 0 run by the ordinary level engine: Sonic runs right, a flying machine (type $1F) dives in, hovers ahead of him and leaves; Tails follows; 738 updates (871 harness frames from power-on to the title flag)"
+  },
+  {
+   "d292_bit": 4,
+   "evidence": "STATIC + observed frames",
+   "id": "A2",
+   "name": "Title screen",
+   "pc_poc": "ROM_menu_title (accepted, visibly 4:3)",
+   "present": true,
+   "routine": "$0719 (handler $2B9F)",
+   "what": "Sonic and Tails logo, SONIC CHAOS, (c) 1993 SEGA, blinking PRESS START BUTTON, sound requests $BE/$BF/$99; 1,310 harness frames; owned by earlier title work (PRES-FOLLOWUP-1 / G5)"
+  },
+  {
+   "d292_bit": 3,
+   "evidence": "STATIC + observed zone sequence",
+   "id": "A3",
+   "name": "Attract demo",
+   "pc_poc": "none",
+   "present": true,
+   "routine": "$2BC3 / $2C34",
+   "what": "three rotating recorded runs THZ1 (Sonic), GPZ1 (Tails), SEZ1 (Sonic); recorded input pointers in the ROM (region-dependent table D12D); 1,080 updates each (1,230 harness frames)"
+  },
+  {
+   "d292_bit": null,
+   "evidence": "U4-A (docs/u4-ordinary-results.md section 8)",
+   "id": "A4",
+   "name": "Act title card",
+   "pc_poc": "implemented in G1-C",
+   "present": true,
+   "routine": "$3175",
+   "what": "zone name and act number cards between results and gameplay - NOT an opening"
+  },
+  {
+   "d292_bit": null,
+   "evidence": "OBSERVED: harness frames 1-80 are black, no logo tiles or text are loaded before the scene",
+   "id": "A5",
+   "name": "Sega logo / licence screen",
+   "pc_poc": "OBJ_menu_opening / SPR_opening_sega (inherited openSonicSMS art)",
+   "present": false,
+   "routine": null,
+   "what": "absent from this ROM"
+  }
+ ],
+ "cycle_frames_opening_to_opening": [3411, 3414],
+ "demo_zones_in_order": [0, 1, 2],
+ "evidence": "EMULATED ORIGINAL FRAME (power-on, no input; harness NTSC timing, +/-1 frame; real Europe hardware is 50 Hz, the game's own timing is in updates)",
+ "first_cycle_frames": {
+  "attract_demo": 1230,
+  "opening": 871,
+  "title": 1310
+ },
+ "no_sega_logo": {
+  "frames_1_to_80_all_black": true,
+  "reading": "CRAM stays all-zero until the scene fade-in; the first colours appear at harness frame 91. No logo, text or tile stream precedes the cinematic; the POC's OBJ_menu_opening / SPR_opening_sega is inherited openSonicSMS art, not a ROM resource"
+ },
+ "opening_start_frames": [9, 3420, 6834],
+ "research_base": "c30c06e6c428b64e843ea5834ff52b7bc3304708",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "sequence_from_power_on": [
+  {
+   "act": 0,
+   "d292": "0x00",
+   "first_frame": 1,
+   "frames": 8,
+   "next_frame": 9,
+   "zone": 0
+  },
+  {
+   "act": 0,
+   "d292": "0x20",
+   "first_frame": 9,
+   "frames": 871,
+   "next_frame": 880,
+   "zone": 0
+  },
+  {
+   "act": 0,
+   "d292": "0x10",
+   "first_frame": 880,
+   "frames": 1310,
+   "next_frame": 2190,
+   "zone": 7
+  },
+  {
+   "act": 0,
+   "d292": "0x08",
+   "first_frame": 2190,
+   "frames": 1230,
+   "next_frame": 3420,
+   "zone": 0
+  },
+  {
+   "act": 0,
+   "d292": "0x20",
+   "first_frame": 3420,
+   "frames": 873,
+   "next_frame": 4293,
+   "zone": 0
+  },
+  {
+   "act": 0,
+   "d292": "0x10",
+   "first_frame": 4293,
+   "frames": 1310,
+   "next_frame": 5603,
+   "zone": 7
+  },
+  {
+   "act": 0,
+   "d292": "0x08",
+   "first_frame": 5603,
+   "frames": 1231,
+   "next_frame": 6834,
+   "zone": 1
+  },
+  {
+   "act": 0,
+   "d292": "0x20",
+   "first_frame": 6834,
+   "frames": 872,
+   "next_frame": 7706,
+   "zone": 0
+  },
+  {
+   "act": 0,
+   "d292": "0x10",
+   "first_frame": 7706,
+   "frames": 1310,
+   "next_frame": 9016,
+   "zone": 7
+  },
+  {
+   "act": 0,
+   "d292": "0x08",
+   "first_frame": 9016,
+   "frames": 1227,
+   "next_frame": 10243,
+   "zone": 2
+  }
+ ],
+ "skip_test": {
+  "button": "1 held on harness frames 300..303",
+  "d292_changes": [
+   {
+    "act": 0,
+    "d292": "0x00",
+    "frame": 1,
+    "updates_so_far": 0,
+    "zone": 0
+   },
+   {
+    "act": 0,
+    "d292": "0x20",
+    "frame": 9,
+    "updates_so_far": 0,
+    "zone": 0
+   },
+   {
+    "act": 0,
+    "d292": "0xA0",
+    "frame": 302,
+    "updates_so_far": 220,
+    "zone": 7
+   },
+   {
+    "act": 0,
+    "d292": "0x10",
+    "frame": 363,
+    "updates_so_far": 220,
+    "zone": 7
+   }
+  ],
+  "frames_from_press_to_title_flag": 63,
+  "reading": "bit 7 (START requested) is set by $063C from button 1/2; $0796 leaves the opening loop at once; the handler then fades to black ($1CAF), waits 30 frames and enters the TITLE (D292 bit 4); it does NOT start a game",
+  "updates_run_before_the_opening_exited": 220
+ }
+}
