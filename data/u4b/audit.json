@@ -1,0 +1,165 @@
+{
+ "format": 1,
+ "poc": {
+  "commit": "b91b833aff15e9668f9c7404c2b70dbc003f9f19",
+  "items": [
+   {
+    "files": ["sprites/SPR_chaos_results_tiles/8321efec-123d-52f5-af5b-9d62744d48ad.png"],
+    "frames_png_sha256": ["44a7f8b237c7afcaa9270d9bee5d2ad88dcaa84c77a619d6c022c8b11125bfe8"],
+    "height": 80,
+    "kind": "sprite",
+    "note": "160-tile results stream sheet; shares tiles with the TIME OVER stream (see shared_graphics), not with Game Over/Continue",
+    "origin": "ROM-derived (U4-A export imported by G1-C)",
+    "resource": "SPR_chaos_results_tiles",
+    "width": 128
+   },
+   {
+    "files": ["sprites/SPR_chaos_ss_continue/284846cd-ed8a-5f18-805d-7cd3e694c657.png"],
+    "frames_png_sha256": ["6580113f0dd1f3d467a9cd6e7313ae5691b54f63a03df499a19308f9b0e1af73"],
+    "height": 16,
+    "kind": "sprite",
+    "note": "the 2x2 results-card continue icon, not the Continue screen",
+    "origin": "ROM-derived (U4-A continue icon)",
+    "resource": "SPR_chaos_ss_continue",
+    "width": 16
+   },
+   {
+    "files": ["sprites/SPR_chaos_title_tiles/df1974c6-f365-51b1-8ce0-260a969b359c.png"],
+    "frames_png_sha256": ["edd2a7c4101249fce83a61ec5fdfcc44a144f0f9cae34d199a38dcb7c6e25c23"],
+    "height": 48,
+    "kind": "sprite",
+    "note": "95-tile act title stream sheet",
+    "origin": "ROM-derived (U4-A act title stream)",
+    "resource": "SPR_chaos_title_tiles",
+    "width": 128
+   },
+   {
+    "files": ["sprites/SPR_menu_game_over/e3485a9b-1765-4a4a-8d6d-43f535821b5d.png"],
+    "frames_png_sha256": ["1e4c054b8625ec1270ee3e7ebaa306b2782320fb8b7f2dff095f477e8be45a50"],
+    "height": 16,
+    "kind": "sprite",
+    "note": "141x16 'GAME OVER' strip from the original GameMaker template, drawn by OBJ_menu_game_over at (250,215); not the ROM presentation",
+    "origin": "INHERITED, not from the ROM",
+    "resource": "SPR_menu_game_over",
+    "width": 141
+   },
+   {
+    "exists": true,
+    "kind": "object event",
+    "note": "draws SPR_menu_game_over; no fade, no tile, no title transition, no sound request",
+    "origin": "INHERITED",
+    "resource": "objects/OBJ_menu_game_over/Draw_0.gml",
+    "sha256": "fbd42bc5833d9a544e843e55cfe5e190476b24b699dc4b60e6b4aa60d56bd0c4"
+   },
+   {
+    "exists": true,
+    "kind": "object event",
+    "note": "plays inherited SND_sonic_death, alarm[0]=100, alarm[1]=150",
+    "origin": "INHERITED",
+    "resource": "objects/OBJ_player_death/Create_0.gml",
+    "sha256": "e0f8bf0bacf0c8b02bf5341cbd71553111b5a94dcf2000b6aa3657c38633252a"
+   },
+   {
+    "exists": true,
+    "kind": "object event",
+    "note": "global.life > 0 -> room_restart(), else room_goto(ROM_menu_game_over); there is no Continue branch",
+    "origin": "INHERITED",
+    "resource": "objects/OBJ_player_death/Alarm_1.gml",
+    "sha256": "974999844d614a61ae2393864e2b8e45b8d7f9692fb6ffc63fe45abf755b743a"
+   },
+   {
+    "exists": true,
+    "kind": "sound",
+    "note": "inherited death jingle; not asserted to be request $96",
+    "origin": "INHERITED",
+    "resource": "sounds/SND_sonic_death/SND_sonic_death.yy",
+    "sha256": "d191e5519598d630f1bf01c4dd78c3025c008178d9fab3de7206e4cfc3580256"
+   },
+   {
+    "exists": true,
+    "kind": "room",
+    "note": "inherited game-over room",
+    "origin": "INHERITED",
+    "resource": "rooms/ROM_menu_game_over/ROM_menu_game_over.yy",
+    "sha256": "cd7d9493a0d3df89134cf7a0df2db660c4f04f9fbbe8902a6e8d073538beece3"
+   }
+  ],
+  "no_resource_for": ["TIME OVER screen", "Continue screen (banner, countdown digits, star frame, character animation)", "ROM Game Over card", "requests $87 $94 $A0 (and $B4 as countdown tick, $96 as request)"],
+  "text_probes_in_gml": {
+   "$d44b": 0,
+   "chaosContinues": 18,
+   "continue_screen": 0,
+   "time over": 0,
+   "timeover": 0
+  }
+ },
+ "research_evidence": [
+  {
+   "covers": "section 7 and T07/T08/T09 transitions: death, TIME OVER at 10:00, Continue (10 digits x 116 updates, button -> lives 3/5, score 0, continues -1) and Game Over -> title; timings only, no graphics",
+   "exists": true,
+   "path": "docs/g0-campaign-contract.md",
+   "sha256": "325c751fab8f409d3037ffac4fc31ff061b71a4bd491f5c750d620a5b3bd99fb"
+  },
+  {
+   "covers": "oracle scenarios death_pit_lives3, death_time_over_lives3, death_continue_accept_sonic/_tails, death_continue_timeout, death_game_over_no_continue: run-state and frame checkpoints",
+   "exists": true,
+   "path": "data/g0/campaign-oracle.json",
+   "sha256": "4db86b0fc85997d94a92dc626874bbeef8128580482a7e6470a8c5ddb889101a"
+  },
+  {
+   "covers": "numeric request ledger: $87 $94 $A0 $B4 $96 call sites; no audible meaning claimed",
+   "exists": true,
+   "path": "docs/audio-request-audit.md",
+   "sha256": "3de4e10c2e6480c77c5213a54a26f2d7682b0335798b14fb54e1c24e6b5d0ecd"
+  },
+  {
+   "covers": "machine-readable request ledger with call-site triggers and driver pointers",
+   "exists": true,
+   "path": "data/rom-cache/audio/request-ledger.json",
+   "sha256": "d9e3688d8f83c1f793149ac9f90c3fcd83539b23ddbd3a8f17a12d3419034514"
+  },
+  {
+   "covers": "U4-A: shared card tile stream, fade engine, act title card; explicitly leaves TIME OVER, Continue and Game Over unextracted",
+   "exists": true,
+   "path": "docs/u4-ordinary-results.md",
+   "sha256": "1865c00a8ebe9ff778b45f2e83ee1f7c68868eaff9e3b8c28fde411de3891e12"
+  },
+  {
+   "covers": "U4-A decoded results data (160-tile stream, palette records 3/4/$21, fade constants)",
+   "exists": true,
+   "path": "data/u4/ordinary-results-static.json",
+   "sha256": "7458e2fa9a1fef93a24d86adcd2f40c381d9734a322575a99f6a9e7afe2b607b"
+  },
+  {
+   "covers": "U4-A fade-engine model reused here (fade_series) and the tile decoder wrapper",
+   "exists": true,
+   "path": "tools/u4_results.py",
+   "sha256": "c68e74365fc27848c89de0baa1d579a710407a9ed425a09d3c6c258bf22abfdd"
+  },
+  {
+   "covers": "persistent whole-game emulation session reused for every observed scenario",
+   "exists": true,
+   "path": "tools/g0_rig.py",
+   "sha256": "f096df5ccc1d068c69e6adbbcdaedaad7ab46f8dea3c25daec1ec6754f88485d"
+  },
+  {
+   "covers": "player animation script parser (state $35 is statically present for both player types)",
+   "exists": true,
+   "path": "tools/player_scripts.py",
+   "sha256": "56ebcb62fb6f296eaaa3d6737694542dfb6e96b069a0c0a01b5bbbbcc27d7128"
+  },
+  {
+   "covers": "player mapping/frame-record parser reused for the Continue-screen character frames",
+   "exists": true,
+   "path": "tools/thz1_object_assets.py",
+   "sha256": "31225abd5d88d9164d8270ac13f3b57cff584177330c173e18a32388d03b1ad3"
+  },
+  {
+   "covers": "dynamic player tile transfer ($104B table, 12 tiles to VRAM $0000) already decoded for state $11; same mechanism here",
+   "exists": true,
+   "path": "docs/player-state-11-graphics.md",
+   "sha256": "6592a0c535319659dc7a587902a7da2f5200fac233afb3cbe9e07dfbfb369947"
+  }
+ ],
+ "research_main": "fdfe8effcf1c03d5ffd621d47c81f56038c5aeb7"
+}

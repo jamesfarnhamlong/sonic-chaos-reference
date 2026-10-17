@@ -1,0 +1,68 @@
+{
+ "format": 1,
+ "music_fade_regs": {
+  "addresses": ["DE09", "DE0A", "DE0B"],
+  "called_at": ["$1458 (continue exit)", "$13BB (Game Over before the title)", "$34C3 (TIME OVER fade-out)", "$1648 (life-lost fade)"],
+  "site": "$18E1",
+  "values": [12, 1, 2]
+ },
+ "note": "request numbers and trigger points only; no meaning beyond the AUDIO-0 ledger is claimed and no unrelated music or effect is substituted",
+ "requests": [
+  {
+   "driver_category": "music",
+   "friendly_name": "Player death music",
+   "ledger_sites": ["49B6", "957B"],
+   "name_status": "context-supported",
+   "operand_read_from_code": true,
+   "poc_support": "NOT IMPLEMENTED as a request; inherited SND_sonic_death is not asserted to be $96",
+   "request": "$96",
+   "store_cpu": "49B6",
+   "trigger": "player death routine $4984, zone < 8; fires on every death (time over, pit, hurt without rings): the same request that precedes the life-lost loop"
+  },
+  {
+   "driver_category": "music",
+   "friendly_name": "Continue-screen music",
+   "ledger_sites": ["141D"],
+   "name_status": "context-supported",
+   "operand_read_from_code": true,
+   "poc_support": "UNSUPPORTED: no verified audio resource in the POC (G2-A) for this request",
+   "request": "$94",
+   "store_cpu": "141D",
+   "trigger": "Continue screen entry: sound written after the screen is drawn and before the 16-update set-up loop"
+  },
+  {
+   "driver_category": "sfx",
+   "friendly_name": "Results tally / continue countdown feedback",
+   "ledger_sites": ["1487", "2F45", "3581", "3591"],
+   "name_status": "context-supported",
+   "operand_read_from_code": true,
+   "poc_support": "NOT VERIFIED: no ROM-verified countdown tick asset wired",
+   "request": "$B4",
+   "store_cpu": "1487",
+   "trigger": "each countdown digit change 8..0 ($1482 redraw then the request); nine times per unanswered countdown, none for digit 9 or the expiry"
+  },
+  {
+   "driver_category": "sfx",
+   "friendly_name": null,
+   "ledger_sites": ["148E", "3566"],
+   "name_status": "unresolved",
+   "operand_read_from_code": true,
+   "poc_support": "UNSUPPORTED: no verified audio resource in the POC (G2-A) for this request",
+   "request": "$A0",
+   "store_cpu": "148E",
+   "trigger": "button edge accepted by the countdown loop ($146A..$148C): once, before D2C3 is decremented"
+  },
+  {
+   "driver_category": "music",
+   "friendly_name": "Game over music",
+   "ledger_sites": ["13A5"],
+   "name_status": "context-supported",
+   "operand_read_from_code": true,
+   "poc_support": "UNSUPPORTED: no verified audio resource in the POC (G2-A) for this request",
+   "request": "$87",
+   "store_cpu": "13A5",
+   "trigger": "Game Over screen, written after the card draw and fade request, before the two 240-update holds ($139D branch: no continue, or an expired countdown)"
+  }
+ ],
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607"
+}

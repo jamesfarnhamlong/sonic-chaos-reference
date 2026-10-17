@@ -1,0 +1,1454 @@
+{
+ "base_commit": "fdfe8effcf1c03d5ffd621d47c81f56038c5aeb7",
+ "countdown": {
+  "accept_button_mask": "30",
+  "accept_sound": "A0",
+  "accept_sound_site": "$148E",
+  "accept_test_site": "$146A LD A,(D147); AND $30; JR NZ,$148C",
+  "compare_site": "$1476 CP $74",
+  "digit_redraw_call": "$1482",
+  "expiry_compare": 255,
+  "expiry_site": "$147F CP $FF after DEC (D2CB)",
+  "initial_digit": 9,
+  "initial_digit_site": "$13F9 LD A,9",
+  "music_request": "94",
+  "music_site": "$141D",
+  "tick_sound": "B4",
+  "tick_sound_site": "$1487",
+  "ticks_per_digit_compare": 116
+ },
+ "evidence_classes": [
+  {
+   "cls": "DECODED DATA",
+   "what": "tile streams, tilemap cells, glyph table, palette records, player scripts/mappings/tile transfers read from ROM bytes"
+  },
+  {
+   "cls": "BYTE-VERIFIED ASSEMBLY",
+   "what": "routine regions with offset/length/SHA-256; operands of the draw, loader, fade-request, wait and sound instructions parsed from the code bytes"
+  },
+  {
+   "cls": "SOURCE-TRACED BEHAVIOUR",
+   "what": "hand disassembly of $15F2..$1673, $138A..$14AB, $3436..$34D3, $27EE..$2884, $4984..$49C3, $361D..$3657, $2349..$23F7, $2451..$2496"
+  },
+  {
+   "cls": "MODEL VERIFIED AGAINST THE ORIGINAL CODE",
+   "what": "Python composition (name table, tiles, palette, sprite SAT/pixels) and the U4 fade model compared with emulated VRAM/CRAM/SAT/rendered pixels"
+  },
+  {
+   "cls": "EMULATED ORIGINAL FRAME",
+   "what": "tools/g0_rig.py runs of the unmodified ROM: event frames, sound writes, CRAM series, button-edge outcomes (harness frames, +/-1)"
+  },
+  {
+   "cls": "CONTROLLED VARIANT",
+   "what": "RAM presets of lives/continues/score/clock/player Y and scripted one-frame button edges; stated per scenario"
+  },
+  {
+   "cls": "UNRESOLVED",
+   "what": "see the unresolved list"
+  }
+ ],
+ "fade_requests": {
+  "continue": [
+   {
+    "flags": "80",
+    "meaning": "fade in from black (bit 7 only)",
+    "record": 36,
+    "site": "1431",
+    "slot": "D492 (background)"
+   },
+   {
+    "flags": "80",
+    "meaning": "fade in from black (bit 7 only)",
+    "record": 7,
+    "site": "143B",
+    "slot": "D494 (sprite)"
+   }
+  ],
+  "game_over": [
+   {
+    "flags": "80",
+    "meaning": "fade in from black (bit 7 only)",
+    "record": 34,
+    "site": "3446",
+    "slot": "D492 (background)"
+   },
+   {
+    "flags": "80",
+    "meaning": "fade in from black (bit 7 only)",
+    "record": 7,
+    "site": "3450",
+    "slot": "D494 (sprite)"
+   }
+  ],
+  "time_over": [
+   {
+    "flags": "80",
+    "meaning": "fade in from black (bit 7 only)",
+    "record": 35,
+    "site": "34AE",
+    "slot": "D492 (background)"
+   }
+  ]
+ },
+ "format": 1,
+ "lives_restore": {
+  "other": 5,
+  "site": "$13CC LD B,3 / $13D1 LD B,5 selected by D2C8 DEC (type 1 -> 3)",
+  "sonic": 3
+ },
+ "name_table_fill": {
+  "cleared_bytes": 32,
+  "note": "every cell not drawn by a block holds tile 192; both new tile streams are then loaded at VRAM $1800, so tile 192 is stream tile 0",
+  "sat_y_fill": "F0",
+  "site": "$21DA LD DE,$00C0 ... CALL $1D8A (BC = $0380 words at $3800); then VRAM $1800 x 32 bytes := 0",
+  "tile_cleared_vram": "1800",
+  "word": 192,
+  "words": 896
+ },
+ "palette_records": {
+  "34": {
+   "cpu": "B86D",
+   "file_start": "3B86D",
+   "sha256": "d0de8dd26c236e112ee29cfc8be5ba817eefac645f387095e422ecd2769e0dc3",
+   "sms_colours": [0, 63, 0, 0, 32, 57, 0, 10, 0, 0, 0, 0, 0, 63, 0, 0]
+  },
+  "35": {
+   "cpu": "B87D",
+   "file_start": "3B87D",
+   "sha256": "066d9639d92956405fa1d88d1c8e73b3221a588397bd0bb1729d85bfc16e99e5",
+   "sms_colours": [48, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  },
+  "36": {
+   "cpu": "B88D",
+   "file_start": "3B88D",
+   "sha256": "d0de8dd26c236e112ee29cfc8be5ba817eefac645f387095e422ecd2769e0dc3",
+   "sms_colours": [0, 63, 0, 0, 32, 57, 0, 10, 0, 0, 0, 0, 0, 63, 0, 0]
+  },
+  "7": {
+   "cpu": "B6BD",
+   "file_start": "3B6BD",
+   "sha256": "7b1cf823b46c85eb478eddbb9a36367970b7d813c152935a004219c6181ef4b8",
+   "sms_colours": [0, 32, 53, 27, 6, 58, 0, 63, 7, 1, 21, 42, 31, 12, 8, 4]
+  }
+ },
+ "player_art": {
+  "1": {
+   "accept_loops_to": "891F",
+   "accept_run": [
+    {
+     "callback": "8946",
+     "frame": 7,
+     "updates": 4
+    },
+    {
+     "callback": "8946",
+     "frame": 8,
+     "updates": 4
+    },
+    {
+     "callback": "8946",
+     "frame": 9,
+     "updates": 4
+    },
+    {
+     "callback": "8946",
+     "frame": 10,
+     "updates": 4
+    }
+   ],
+   "accept_script_cpu": "891F",
+   "frames": {
+    "10": {
+     "frame": 10,
+     "mapping_frame_cpu": "81EF",
+     "mapping_frame_rom": "3C1EF",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -13,
+       "rel_y": -29,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -29,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -29,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -13,
+       "rel_y": -13,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -13,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -13,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "47927c597578b52d67a4fe537e39e4bc874d71ba268932e0d474d6b490cc1aeb",
+     "tile_source_bank": 4,
+     "tile_source_cpu": "8E00",
+     "tile_source_rom": "10E00",
+     "tile_table_entry_rom": "01073",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": -1,
+     "y_origin": 3
+    },
+    "17": {
+     "frame": 17,
+     "mapping_frame_cpu": "823C",
+     "mapping_frame_rom": "3C23C",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -14,
+       "rel_y": -32,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -6,
+       "rel_y": -32,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": -14,
+       "rel_y": -16,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -6,
+       "rel_y": -16,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": 2,
+       "rel_y": -16,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 10,
+       "rel_y": -16,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "150d61aea90bbec919ed7a810e54e26b28ff6cee378582fa21a066e777fb10ba",
+     "tile_source_bank": 4,
+     "tile_source_cpu": "9700",
+     "tile_source_rom": "11700",
+     "tile_table_entry_rom": "0108F",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": 2,
+     "y_origin": 0
+    },
+    "18": {
+     "frame": 18,
+     "mapping_frame_cpu": "8247",
+     "mapping_frame_rom": "3C247",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -14,
+       "rel_y": -32,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -6,
+       "rel_y": -32,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": -14,
+       "rel_y": -16,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -6,
+       "rel_y": -16,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": 2,
+       "rel_y": -16,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 10,
+       "rel_y": -16,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "bdc9a30e429b5d349273c07729cb353516b2e22862a7fe2628ffe13dc73736c6",
+     "tile_source_bank": 4,
+     "tile_source_cpu": "9880",
+     "tile_source_rom": "11880",
+     "tile_table_entry_rom": "01093",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": 2,
+     "y_origin": 0
+    },
+    "7": {
+     "frame": 7,
+     "mapping_frame_cpu": "81CE",
+     "mapping_frame_rom": "3C1CE",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -13,
+       "rel_y": -29,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -29,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -29,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -13,
+       "rel_y": -13,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -13,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -13,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "55a687ee184e05016c1cdca60edb12b28993e33bde9014329aa377844dd3d8e9",
+     "tile_source_bank": 4,
+     "tile_source_cpu": "8980",
+     "tile_source_rom": "10980",
+     "tile_table_entry_rom": "01067",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": -1,
+     "y_origin": 3
+    },
+    "8": {
+     "frame": 8,
+     "mapping_frame_cpu": "81D9",
+     "mapping_frame_rom": "3C1D9",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -13,
+       "rel_y": -29,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -29,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -29,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -13,
+       "rel_y": -13,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -13,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -13,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "38962d37b50716bbba2a9d342680769258f5fd09686c55515760a39c09d55e8b",
+     "tile_source_bank": 4,
+     "tile_source_cpu": "8B00",
+     "tile_source_rom": "10B00",
+     "tile_table_entry_rom": "0106B",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": -1,
+     "y_origin": 3
+    },
+    "9": {
+     "frame": 9,
+     "mapping_frame_cpu": "81E4",
+     "mapping_frame_rom": "3C1E4",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -13,
+       "rel_y": -29,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -29,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -29,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -13,
+       "rel_y": -13,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": -5,
+       "rel_y": -13,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 3,
+       "rel_y": -13,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "a3abd9652e132dc2e78863aa474d19cef61a062706e9cae50d80854f94568672",
+     "tile_source_bank": 4,
+     "tile_source_cpu": "8C80",
+     "tile_source_rom": "10C80",
+     "tile_table_entry_rom": "0106F",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": -1,
+     "y_origin": 3
+    }
+   },
+   "idle": [
+    {
+     "callback": "8933",
+     "frame": 17,
+     "updates": 8
+    },
+    {
+     "callback": "8933",
+     "frame": 18,
+     "updates": 8
+    }
+   ],
+   "idle_loops_to": "8913",
+   "idle_script_cpu": "8913",
+   "idle_script_file": "30913",
+   "mapping_table_cpu": "80C8",
+   "name": "Sonic",
+   "run_callback": "8946",
+   "sprite_palette_record": 7,
+   "state": 53,
+   "tile_table_cpu": "104B",
+   "type": 1
+  },
+  "2": {
+   "accept_loops_to": "8EBE",
+   "accept_run": [
+    {
+     "callback": "8946",
+     "frame": 7,
+     "updates": 4
+    },
+    {
+     "callback": "8946",
+     "frame": 8,
+     "updates": 4
+    },
+    {
+     "callback": "8946",
+     "frame": 9,
+     "updates": 4
+    }
+   ],
+   "accept_script_cpu": "8EBE",
+   "frames": {
+    "15": {
+     "frame": 15,
+     "mapping_frame_cpu": "870B",
+     "mapping_frame_rom": "3C70B",
+     "piece_count": 5,
+     "pieces": [
+      {
+       "rel_x": -8,
+       "rel_y": -32,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": 0,
+       "rel_y": -32,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": -16,
+       "rel_y": -16,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -8,
+       "rel_y": -16,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": 0,
+       "rel_y": -16,
+       "tile_offset": 8
+      }
+     ],
+     "tile_count": 10,
+     "tile_sha256": "51f3af98c98b188c204ddea33634f0b1bbda74a3b62411d33e5af4a1b99d26a3",
+     "tile_source_bank": 6,
+     "tile_source_cpu": "8640",
+     "tile_source_rom": "18640",
+     "tile_table_entry_rom": "0120B",
+     "transfer_blocks_64": 5,
+     "vram_destination": "0000",
+     "x_origin": -4,
+     "y_origin": 0
+    },
+    "16": {
+     "frame": 16,
+     "mapping_frame_cpu": "8716",
+     "mapping_frame_rom": "3C716",
+     "piece_count": 5,
+     "pieces": [
+      {
+       "rel_x": -8,
+       "rel_y": -32,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": 0,
+       "rel_y": -32,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": -16,
+       "rel_y": -16,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -8,
+       "rel_y": -16,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": 0,
+       "rel_y": -16,
+       "tile_offset": 8
+      }
+     ],
+     "tile_count": 10,
+     "tile_sha256": "137061f1d3d84e21f137eb7e1c06133c64939970d2c7f6ac5787eaa6432d2cb9",
+     "tile_source_bank": 6,
+     "tile_source_cpu": "8780",
+     "tile_source_rom": "18780",
+     "tile_table_entry_rom": "0120F",
+     "transfer_blocks_64": 5,
+     "vram_destination": "0000",
+     "x_origin": -4,
+     "y_origin": 0
+    },
+    "7": {
+     "frame": 7,
+     "mapping_frame_cpu": "86B3",
+     "mapping_frame_rom": "3C6B3",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -12,
+       "rel_y": -32,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -4,
+       "rel_y": -32,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": 4,
+       "rel_y": -32,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -12,
+       "rel_y": -16,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": -4,
+       "rel_y": -16,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 4,
+       "rel_y": -16,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "22269102d5c694f1d6057d4a9080dd46e3f61423dba623b607063ae577b51ff6",
+     "tile_source_bank": 5,
+     "tile_source_cpu": "B240",
+     "tile_source_rom": "17240",
+     "tile_table_entry_rom": "011EB",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "8": {
+     "frame": 8,
+     "mapping_frame_cpu": "86BE",
+     "mapping_frame_rom": "3C6BE",
+     "piece_count": 6,
+     "pieces": [
+      {
+       "rel_x": -12,
+       "rel_y": -32,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": -4,
+       "rel_y": -32,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": 4,
+       "rel_y": -32,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -12,
+       "rel_y": -16,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": -4,
+       "rel_y": -16,
+       "tile_offset": 8
+      },
+      {
+       "rel_x": 4,
+       "rel_y": -16,
+       "tile_offset": 10
+      }
+     ],
+     "tile_count": 12,
+     "tile_sha256": "163549189af8c3070a6b597a321c267b02cad2df06b15df444e09f734cc70a55",
+     "tile_source_bank": 5,
+     "tile_source_cpu": "B3C0",
+     "tile_source_rom": "173C0",
+     "tile_table_entry_rom": "011EF",
+     "transfer_blocks_64": 6,
+     "vram_destination": "0000",
+     "x_origin": 0,
+     "y_origin": 0
+    },
+    "9": {
+     "frame": 9,
+     "mapping_frame_cpu": "86C9",
+     "mapping_frame_rom": "3C6C9",
+     "piece_count": 5,
+     "pieces": [
+      {
+       "rel_x": -4,
+       "rel_y": -32,
+       "tile_offset": 0
+      },
+      {
+       "rel_x": 4,
+       "rel_y": -32,
+       "tile_offset": 2
+      },
+      {
+       "rel_x": -12,
+       "rel_y": -16,
+       "tile_offset": 4
+      },
+      {
+       "rel_x": -4,
+       "rel_y": -16,
+       "tile_offset": 6
+      },
+      {
+       "rel_x": 4,
+       "rel_y": -16,
+       "tile_offset": 8
+      }
+     ],
+     "tile_count": 10,
+     "tile_sha256": "70af8a847047096aa87750d6bcde317973a7d3c72d0767e11e1e00f96ffa8f07",
+     "tile_source_bank": 5,
+     "tile_source_cpu": "B540",
+     "tile_source_rom": "17540",
+     "tile_table_entry_rom": "011F3",
+     "transfer_blocks_64": 5,
+     "vram_destination": "0000",
+     "x_origin": 0,
+     "y_origin": 0
+    }
+   },
+   "idle": [
+    {
+     "callback": "8ECE",
+     "frame": 15,
+     "updates": 8
+    },
+    {
+     "callback": "8ECE",
+     "frame": 16,
+     "updates": 8
+    }
+   ],
+   "idle_loops_to": "8EB2",
+   "idle_script_cpu": "8EB2",
+   "idle_script_file": "30EB2",
+   "mapping_table_cpu": "85BF",
+   "name": "Tails",
+   "run_callback": "8946",
+   "sprite_palette_record": 7,
+   "state": 53,
+   "tile_table_cpu": "11CF",
+   "type": 2
+  }
+ },
+ "player_object": {
+  "accept_flag": "D526 := $FF at $149B read by the state-$35 callback",
+  "requested_state": "35",
+  "state": "35",
+  "type_source": "D2C8 -> D500 at $1405 (1 = Sonic, 2 = Tails)",
+  "x_site": "$1410 LD (IX+$11),$80",
+  "x_word_low": "80",
+  "y_site": "$1414 LD (IX+$14),$A0",
+  "y_word_low": "A0"
+ },
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "routines": [
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2885",
+   "cpu_start": "27EE",
+   "file_start": "027EE",
+   "first16": "3abed2b7c821c2d2343e3c96c0772194",
+   "length": 151,
+   "name": "timer_update",
+   "role": "clock tick: seconds/minutes BCD, 10:00 sets D44B := $C0 and stops the clock (D2BE := 0), special-stage countdown branch at $2826",
+   "sha256": "6e9bb53b07eb26dd7e2328d447bef981b895145f733fc4639102b6b88146f0af"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "3657",
+   "cpu_start": "361D",
+   "file_start": "0361D",
+   "first16": "dd2100d53a00d5b7c8ddcb04be3a4bd4",
+   "length": 58,
+   "name": "player_update",
+   "role": "per-update player entry; D44B bit 6 calls the death routine $4984 (TIME OVER) before the engine update",
+   "sha256": "394729c8763aaab5b5265514f23fb20f3784a884d52b92e2aa176eb1f0fb0b69"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "49C3",
+   "cpu_start": "4984",
+   "file_start": "04984",
+   "first16": "dd36021fddcb03c6dd3604002100fb22",
+   "length": 63,
+   "name": "death_routine",
+   "role": "player death: state $1F, D293 bit 2, keeps D44B bit 7, requests sound $96 (zone < 8)",
+   "sha256": "4bcdb9fd1be9f82f1952f256f91904b38f00d8048c4dc71b8b6b9b66eb15393b"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1673",
+   "cpu_start": "15F2",
+   "file_start": "015F2",
+   "first16": "cd53173a99d2d601273299d2cd1631cd",
+   "length": 129,
+   "name": "life_lost_branch",
+   "role": "main-loop D293 bit 2: lives -1 at once, death animation loop, fade slots, TIME OVER gate, lives test, reload or last-life branch",
+   "sha256": "4bbd54fc356e58f520851572d397ab06160c128abcb6b207674c3bed748e4f72"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "13C9",
+   "cpu_start": "138A",
+   "file_start": "0138A",
+   "first16": "cd7e29cdce4fcdda21cded133ac3d2cb",
+   "length": 63,
+   "name": "game_over_branch",
+   "role": "main-loop D293 bit 6 clear: clears, $13ED continue test, Game Over screen + sound $87, waits, fade, title",
+   "sha256": "74ffa46e69f3a50031ed9aa01a1dbdb2cb9f0ff36ca1f0745d87f08b596e5e17"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "13ED",
+   "cpu_start": "13C9",
+   "file_start": "013C9",
+   "first16": "3ac8d206033d28020605783299d2af32",
+   "length": 36,
+   "name": "continue_restore",
+   "role": "continue accepted: lives 3 (type 1) / 5, score := 0, D293 reload flags, back to the main loop",
+   "sha256": "cb461aa67f2f310faecd689de108b33a9269673080a22f57bff9adc1bab854db"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1464",
+   "cpu_start": "13ED",
+   "file_start": "013ED",
+   "first16": "21c3d2cbbe7eb7c8af32cad23e0932cb",
+   "length": 119,
+   "name": "continue_screen",
+   "role": "continue test (D2C3 bit 7 cleared), object init, screen draw, sound $94, 16+30 frame set-up, fade-in requests, countdown call, exit fade",
+   "sha256": "cc200555dd3ab148bf64e711f0b53d91cd0d58ba74e912fa3dbb2694a38b4e53"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "148C",
+   "cpu_start": "1464",
+   "file_start": "01464",
+   "first16": "cd2d06cd1d363a47d1e630201b21cad2",
+   "length": 40,
+   "name": "continue_countdown",
+   "role": "frame wait, player update, button test D147 & $30, 116-update digit, digit redraw, sound $B4, expiry",
+   "sha256": "c4b9eca58a3e07a9df2bd2f3aed2b5eac725adc7440bbe42ef8f1d31919d6f57"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "14AB",
+   "cpu_start": "148C",
+   "file_start": "0148C",
+   "first16": "3ea03204de21c3d2cbbe35cbfe3eff32",
+   "length": 31,
+   "name": "continue_accept",
+   "role": "accept: sound $A0, D2C3 -1 with bit 7 set, D526 := $FF (player run script), 180-update wait",
+   "sha256": "c72ca1fe3da53aec5c0fb53eff418cce8414653ca2431daab49a18b8f4521477"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "345B",
+   "cpu_start": "3436",
+   "file_start": "03436",
+   "first16": "f3cd507a21103a01110311c5becd4923",
+   "length": 37,
+   "name": "game_over_screen",
+   "role": "tile load (bank 19 stream $B5AF), 3x17 GAME OVER block, fade-in requests (BG record $22, sprite record 7)",
+   "sha256": "fb78271502bb34423aba2b866156ff2f5ecde033a94ce7c9996dae872c7c3481"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "3478",
+   "cpu_start": "345B",
+   "file_start": "0345B",
+   "first16": "f3cd507a21d238010f03112bbfcd4923",
+   "length": 29,
+   "name": "continue_draw",
+   "role": "tile load (same stream), 3x15 CONTINUE block and 2x6 digit/star frame",
+   "sha256": "e350f531b2081a8464fcb56f455019ed09c4310f9bb981abe5c7e3048d33d967"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "3495",
+   "cpu_start": "3478",
+   "file_start": "03478",
+   "first16": "f33e13cd6f1c3acbd287875f1600219d",
+   "length": 29,
+   "name": "continue_digit_draw",
+   "role": "bank 19 page, 1x2 digit glyph from the table at $BF9D + 4*digit",
+   "sha256": "dfe598c60dc5f0d22015298c521eb388e7dedf14ad5085ab784186a56949ded4"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "34D3",
+   "cpu_start": "3495",
+   "file_start": "03495",
+   "first16": "f3cd7e29cdce4fcdda21cd287a21903a",
+   "length": 62,
+   "name": "time_over_screen",
+   "role": "clears, tile load (bank 16 stream $8A70), 4x17 TIME OVER block, fade-in (BG record $23), 180-wait, fade out, 90-wait, D44B := 0",
+   "sha256": "998343a60f6bdff99602947ec51163b005b3c3136973a2ba45fb6885b467379e"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7A3C",
+   "cpu_start": "7A28",
+   "file_start": "07A28",
+   "first16": "f33e10cd6f1c210018cd501d21708aaf",
+   "length": 20,
+   "name": "time_over_loader",
+   "role": "bank $10, VRAM $1800, tile stream $8A70 through the $24C2 decoder",
+   "sha256": "3a11937378ac7b9484cd1f37e8a5ffe15fe4116d8b088727683557f4e285fc21"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "7A64",
+   "cpu_start": "7A50",
+   "file_start": "07A50",
+   "first16": "f33e13cd6f1c210018cd501d21afb5af",
+   "length": 20,
+   "name": "game_over_loader",
+   "role": "bank $13, VRAM $1800, tile stream $B5AF through the $24C2 decoder",
+   "sha256": "c753ffe7b51d21a38d0ddb31eca22e8df2908d3110780c6039444da0fe89a254"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2383",
+   "cpu_start": "2349",
+   "file_start": "02349",
+   "first16": "cdc723c5e541cd501d1ad3be13231a00",
+   "length": 58,
+   "name": "blit_2byte",
+   "role": "B rows x C columns of 2-byte name-table cells from DE to the name table at HL (wraps at $3F00 -> $3800)",
+   "sha256": "ed1527fb32e0923dd717c54109ed7df07e382b4f5f95eec5086379fcc4d25a7d"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "23F7",
+   "cpu_start": "23C7",
+   "file_start": "023C7",
+   "first16": "c57de6c0473a74d10f0f85e63eb06fe5",
+   "length": 48,
+   "name": "blit_address_adjust",
+   "role": "adds the camera scroll (D174/D176) to the name-table address; zero after $4FCE",
+   "sha256": "d8dd0a22e0a7afa0169af708144655dc62b41e2f6e524922fcea5d030425f8e9"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "2496",
+   "cpu_start": "2451",
+   "file_start": "02451",
+   "first16": "2145d11146d1010f00edb82155d11156",
+   "length": 69,
+   "name": "input_edge_detect",
+   "role": "per interrupt: D137 current (pressed = 1), D147/D157 = newly pressed this interrupt (bit 6 masked), history shift",
+   "sha256": "3a4e3686da710c0a48a4c845b2a7cab58e05bcbc234e3bc98214dd70fc61fe4a"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "063C",
+   "cpu_start": "062D",
+   "file_start": "0062D",
+   "first16": "fbaf324fd42135d17eb728fc3600c93a",
+   "length": 15,
+   "name": "frame_wait",
+   "role": "EI; waits for the interrupt to set D135, clears it",
+   "sha256": "c66c1b360269883bb59046b10f104440708a54440a8b97417d6bfdbb0a271de3"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "18ED",
+   "cpu_start": "18E1",
+   "file_start": "018E1",
+   "first16": "2109de360c233601233602c93ac8d23d",
+   "length": 12,
+   "name": "sound_regs",
+   "role": "DE09..DE0B := 12,1,2 (music fade parameters)",
+   "sha256": "c741d938a54fc425937a5a2e4c4b6d9c439fd5b6ddfb957f696967c3b03d4931"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "1CBD",
+   "cpu_start": "1CAF",
+   "file_start": "01CAF",
+   "first16": "2192d43600cbf623233600cbf6c93a96",
+   "length": 14,
+   "name": "fade_slot_reset",
+   "role": "D492/D494 := bit 6 only (fade to black)",
+   "sha256": "f1ae4c770bb027577bea548c994334fa013959801a49a825649e62f9c75caccc"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "220E",
+   "cpu_start": "21DA",
+   "file_start": "021DA",
+   "first16": "11c000cd2d06f3210038018003cd8a1d",
+   "length": 52,
+   "name": "name_table_clear",
+   "role": "frame wait, name table $3800 x $380 words := $00C0 (LD DE,$00C0), VRAM $1800 x 32 bytes := 0, SAT buffer Y := $F0",
+   "sha256": "4284e62602d1f25e35e0c3cc1e279ca228f8c4902ab5166e9f5b33be7a83741e"
+  },
+  {
+   "bank": null,
+   "cpu_end_exclusive": "3522",
+   "cpu_start": "34D3",
+   "file_start": "034D3",
+   "first16": "f3cd7e29cdce4fcdda21cd3c7a21903a",
+   "length": 79,
+   "name": "try_again_screen_out_of_scope",
+   "role": "ending TRY AGAIN card (sound $98, 1-byte cells D2D3 := 0); outside this task, listed so it is not mistaken for Game Over",
+   "sha256": "0d583f1a6aea7d464116f550fc8bf3a93badc83046e4609531168267af818c77"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "8946",
+   "cpu_start": "8933",
+   "file_start": "30933",
+   "first16": "3a26d53cc0211f89dd750edd740fdd36",
+   "length": 19,
+   "name": "player_state35_callback_sonic",
+   "role": "continue-screen idle callback (type 1): D526 == $FF switches the script to the run records",
+   "sha256": "650d6c60f0579031619109f85a940b0a097d3cb5bba0ea788d6b7f3ec1d0a1f9"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "895A",
+   "cpu_start": "8946",
+   "file_start": "30946",
+   "first16": "cd3803dd6e16dd661711100019dd7516",
+   "length": 20,
+   "name": "player_state35_run_callback",
+   "role": "run callback: $0338 movement, X speed (+$16/$17) += $0010 per update",
+   "sha256": "de5eb5b10447b9266709565b23fa8b161cc60a4c5fb02d3b29e358d9033a7c0c"
+  },
+  {
+   "bank": 12,
+   "cpu_end_exclusive": "8EE1",
+   "cpu_start": "8ECE",
+   "file_start": "30ECE",
+   "first16": "3a26d53cc021be8edd750edd740fdd36",
+   "length": 19,
+   "name": "player_state35_callback_tails",
+   "role": "continue-screen idle callback (type 2)",
+   "sha256": "c4fabf31cc29e1baded26dc6e5ededba6c805b75bcfd504eee45bb9cbb09ff89"
+  }
+ ],
+ "screens": {
+  "continue": {
+   "blocks": [
+    {
+     "bank": 19,
+     "call_site": "3468",
+     "cells": [225, 226, 227, 228, 229, 230, 231, 232, 233, 229, 230, 234, 235, 236, 237, 238, 193, 239, 240, 239, 240, 241, 242, 243, 239, 240, 244, 240, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 251, 252, 249, 256, 257, 248],
+     "cells_sha256": "3879a53e32e34e4fb88b35de2badb492cbe4e5fc62ec27df6f9c9a712ebd5caf",
+     "col": 9,
+     "cols": 15,
+     "file_start": "4FF2B",
+     "nt_address": "38D2",
+     "row": 3,
+     "rows": 3,
+     "source_cpu": "BF2B"
+    },
+    {
+     "bank": 19,
+     "call_site": "3474",
+     "cells": [258, 193, 263, 263, 193, 258, 261, 193, 264, 278, 193, 261],
+     "cells_sha256": "ed84dcb92c92545f2b7faa8b75f6e9c14ad198b1a61122dc7953b89482fc0195",
+     "col": 13,
+     "cols": 6,
+     "file_start": "4FF85",
+     "nt_address": "3ADA",
+     "row": 11,
+     "rows": 2,
+     "source_cpu": "BF85"
+    }
+   ],
+   "digit_draw": {
+    "bank": 19,
+    "col": 16,
+    "cols": 1,
+    "glyphs": [
+     {
+      "bottom": 264,
+      "digit": 0,
+      "source_cpu": "BF9D",
+      "top": 263
+     },
+     {
+      "bottom": 266,
+      "digit": 1,
+      "source_cpu": "BFA1",
+      "top": 265
+     },
+     {
+      "bottom": 267,
+      "digit": 2,
+      "source_cpu": "BFA5",
+      "top": 263
+     },
+     {
+      "bottom": 268,
+      "digit": 3,
+      "source_cpu": "BFA9",
+      "top": 263
+     },
+     {
+      "bottom": 270,
+      "digit": 4,
+      "source_cpu": "BFAD",
+      "top": 269
+     },
+     {
+      "bottom": 272,
+      "digit": 5,
+      "source_cpu": "BFB1",
+      "top": 271
+     },
+     {
+      "bottom": 274,
+      "digit": 6,
+      "source_cpu": "BFB5",
+      "top": 273
+     },
+     {
+      "bottom": 276,
+      "digit": 7,
+      "source_cpu": "BFB9",
+      "top": 275
+     },
+     {
+      "bottom": 277,
+      "digit": 8,
+      "source_cpu": "BFBD",
+      "top": 263
+     },
+     {
+      "bottom": 278,
+      "digit": 9,
+      "source_cpu": "BFC1",
+      "top": 263
+     }
+    ],
+    "index": "D2CB (9 first drawn by the 2x6 block, 8..0 drawn by $3478)",
+    "nt_address": "3AE0",
+    "row": 11,
+    "rows": 2,
+    "stride_bytes": 4,
+    "table_cpu": "BF9D"
+   }
+  },
+  "game_over": {
+   "blocks": [
+    {
+     "bank": 19,
+     "call_site": "3443",
+     "cells": [194, 195, 196, 197, 198, 199, 200, 201, 193, 202, 203, 204, 205, 200, 201, 200, 206, 207, 208, 209, 210, 211, 212, 213, 201, 193, 211, 212, 214, 215, 213, 201, 216, 217, 218, 219, 220, 1228, 220, 1228, 221, 1225, 193, 222, 1227, 1733, 223, 221, 1225, 1228, 224],
+     "cells_sha256": "0075d5ff09f6be7894b90c7946e6325177f4ad58c52306c4eea4f3445a71d988",
+     "col": 8,
+     "cols": 17,
+     "file_start": "4FEC5",
+     "nt_address": "3A10",
+     "row": 8,
+     "rows": 3,
+     "source_cpu": "BEC5"
+    }
+   ]
+  },
+  "time_over": {
+   "blocks": [
+    {
+     "bank": 16,
+     "call_site": "34AB",
+     "cells": [193, 194, 195, 196, 197, 198, 199, 192, 192, 200, 201, 202, 203, 198, 199, 198, 204, 205, 206, 207, 208, 209, 210, 199, 192, 192, 208, 209, 211, 212, 210, 199, 213, 214, 215, 216, 217, 218, 209, 209, 192, 192, 192, 219, 220, 221, 222, 209, 192, 223, 224, 225, 226, 227, 228, 229, 230, 199, 192, 192, 231, 232, 233, 234, 230, 199, 229, 235],
+     "cells_sha256": "7a88115b3454d68415dcd6a5b17ca9441dc0c2eeb66e19cec3037c9acd50f179",
+     "col": 8,
+     "cols": 17,
+     "file_start": "40F16",
+     "nt_address": "3A90",
+     "row": 10,
+     "rows": 4,
+     "source_cpu": "8F16"
+    }
+   ]
+  }
+ },
+ "shared_tiles_with_results_stream": {
+  "gameover_continue": {
+   "count": 0,
+   "note": "[tile index in this stream's VRAM layout, tile index of the first identical tile in the U4 results stream (VRAM $2000 + 256)]",
+   "shared_with_u4_results_stream": []
+  },
+  "time_over": {
+   "count": 29,
+   "note": "[tile index in this stream's VRAM layout, tile index of the first identical tile in the U4 results stream (VRAM $2000 + 256)]",
+   "shared_with_u4_results_stream": [
+    [192, 289],
+    [195, 336],
+    [196, 334],
+    [198, 343],
+    [199, 332],
+    [200, 331],
+    [201, 333],
+    [202, 340],
+    [204, 344],
+    [205, 405],
+    [207, 349],
+    [208, 347],
+    [209, 348],
+    [210, 356],
+    [213, 354],
+    [214, 355],
+    [215, 407],
+    [217, 361],
+    [218, 360],
+    [219, 359],
+    [220, 358],
+    [225, 409],
+    [227, 372],
+    [228, 370],
+    [229, 371],
+    [230, 374],
+    [231, 369],
+    [232, 368],
+    [234, 351]
+   ]
+  }
+ },
+ "sound_requests": {
+  "continue_accept": [
+   {
+    "store_cpu": "148E",
+    "value": "A0"
+   }
+  ],
+  "continue_countdown": [
+   {
+    "store_cpu": "1487",
+    "value": "B4"
+   }
+  ],
+  "continue_screen": [
+   {
+    "store_cpu": "141D",
+    "value": "94"
+   }
+  ],
+  "death_routine": [
+   {
+    "store_cpu": "49B6",
+    "value": "96"
+   }
+  ],
+  "game_over_branch": [
+   {
+    "store_cpu": "13A5",
+    "value": "87"
+   }
+  ],
+  "life_lost_branch": [],
+  "time_over_screen": []
+ },
+ "sprite_placement": {
+  "camera": "zero (D15E.. cleared by $4FCE)",
+  "object_screen_x": 128,
+  "object_screen_y": 160,
+  "palette": "sprite record 7 (D495 request)",
+  "pattern_base": 0,
+  "sat_x": "screen X + relative X",
+  "sat_y": "screen Y + relative Y (the VDP draws one line lower)",
+  "size": "8x16",
+  "verified": "observed SAT/VRAM/pixels equal the composition in every capture"
+ },
+ "streams_overlap": {
+  "blank_tile_present": {
+   "gameover_continue": true,
+   "time_over": false,
+   "u4_act_title": true,
+   "u4_results_160": true
+  },
+  "gameover_continue__time_over": {
+   "a_tiles": 87,
+   "b_tiles": 44,
+   "shared_non_blank_tiles": 0
+  },
+  "gameover_continue__u4_act_title": {
+   "a_tiles": 87,
+   "b_tiles": 95,
+   "shared_non_blank_tiles": 0
+  },
+  "gameover_continue__u4_results_160": {
+   "a_tiles": 87,
+   "b_tiles": 160,
+   "shared_non_blank_tiles": 0
+  },
+  "time_over__u4_act_title": {
+   "a_tiles": 44,
+   "b_tiles": 95,
+   "shared_non_blank_tiles": 32
+  },
+  "time_over__u4_results_160": {
+   "a_tiles": 44,
+   "b_tiles": 160,
+   "shared_non_blank_tiles": 29
+  },
+  "u4_results_160__u4_act_title": {
+   "a_tiles": 160,
+   "b_tiles": 95,
+   "shared_non_blank_tiles": 50
+  }
+ },
+ "tile_streams": {
+  "gameover_continue": {
+   "bank": 19,
+   "bank_register_writer": "CALL $1C6F (D12B + $FFFF)",
+   "decoded_length": 2784,
+   "decoded_sha256": "1cb9cf97ab345b527db71d912165ca218b2bb1f5fa61416dbecc00abcc98ada1",
+   "decoder": "$24C2 with A = 0 (no $0100 remap)",
+   "file_start": "4F5AF",
+   "first_tile_index": 192,
+   "header": "010057000009",
+   "id": "gameover_continue",
+   "loader_cpu": "7A50",
+   "source_cpu": "B5AF",
+   "stream_file_end_exclusive": "4FEC5",
+   "stream_sha256": "f14d407743cee8e2c028f1f43051c276586436ea7723d156df541d5bcb57e3e8",
+   "tile_count": 87,
+   "tile_sha256": ["66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925", "376bc706301c4180166fb99670ca3427c826a90a0e7d784053c0782007d1aa27", "714f9c36459c38d6c66a2a7b6005e1c50eb501c40f4e418e86454a93dfa16236", "151b4a964e91cb243253c9508edbe107aee1e8848dacf0fbaf7d2c2a0c9c0603", "1530e2b85b230fdb4e467de08534173db3982d7b62da9d8482912c7c96dca99e", "1a5d3b4caf35ed04c18d474df734f2c77407d7296270693adb7e3fb7a9b6e6a2", "a4effe21240f9d1975f78471a82c7a9d3b09fa0328208b5292282fecc55be5f0", "9515f3799e6d512248b4d6dc035a385347b83b225fe90a26307eb62079afd54b", "0eb87311af3e77eba37bb0b314100847daa7db04c2090b35bf7480fac634d5f5", "3103e2f9aa23b36e329ee6928dcd5c4f19e8129b7e8604feb7e6d906f3487fb2", "f201d3c37a972dcfc03b7933bc55e3b0cbbfed7ec01e9eabe55d79fe925e878b", "4d56c8b0b1787aa85fc9daf49eaed6adab926fe06d4c6771c905e36a533ca4f7", "8cca85f488333450c7c51e23a2110c33de626513caef36e76a615bb0ae27f4fc", "3bab8bd60c272844bb55e265b35923fddae06a91b7aaa5429e69db2e2e88c79b", "f77c67b8acd6e0191405a02032188e283825544542a0cc9e86297f0929c518b2", "af0b20669aeaf44a99662b90da4ca6e317322cf63b87a82f0ae5eba654bb0c81", "ff5aba439fe54faee1850eb72ce0cc40c0d301928ef1bc930efa3d971dc0eb5a", "6bf982384a33e07d2e333534cea9d1c9ee88c74ffc00efb8caff34495fdf8adb", "792dbdcd97b550451c4f816776b9163951238c9b4cbe2b01624236da1c3743cb", "3c31c1a7ff805796c186a109998c6ef762e0900070ec4cb325310fbdaebb1c14", "5590aca39f3aef710bc4c52a4aed9443fe06667c358d43ccd0113cf4669835a4", "3fba7738c09c29266f9ac48bdddbe13ec38ab84a6be2d9fe3eb1e467644658f3", "7b01e6b636aad98db1780de1deb07689b601d353652bf78118e69a5cc924370d", "a0730400b5884f3caf542a4c676d5318ed527788656402496984507344e47dd1", "29dedd95cd6721aeb113290fca17ee747a8f584f2f8f5db2f0351a44e91ae199", "cb1bf86165709126e0be84d4c547ce9cf8cd880062d3e46cfdfe9a95e23c4ef0", "141a3cafb721a5e1983d1d40eeb789d2e15a3da64db5390a23a143f129ba2783", "eb644ca40350a626fec0cfea80763e0387d13b795da384fb3f6cf0ddc96387a5", "351172b2ee96da4dae2326e8250549f08358bb16a0df0e3d2bda419b9a92c348", "4973ec4069ac5d35efb93fb3d4bb28c6965310ce234a3e10e2a5498c6ccf468a", "19644937b83181d46d5f565fab1fefdc81a1872e82cfd730ddb70485b8eb73ae", "b90d5e1ac7a1709b6ec43195998b97b9fbdaa723df8ff6c8243070f0fd79c5fa", "5151d5c49b2ad38f1090f72adedff5910f2724f97ed9ba79c927f2109ec7b12c", "d5281e504af27705fdcc30e8ebcdb0dcd6a56830eaedb14c9cd0872beb024499", "ef52040bbb693ee315345d16a0179588017c3773d41f1cd6804df1ce8f80e11c", "2b282346227bf953b727975813b753fe32b0efac8c5fa1757abfeb6abf0171bd", "212cce5b106cb8af2218020146acd55496f3cf672911fd8b9e5b46bd55069dea", "12da3c566e9104e641548e186d325779ccbdabc34e4b5ba2f0caef17e7bb0b99", "c41e1f5a6c52dbf34f7997933593acab23f264b074df50fc6a12a58f233e619b", "f9b4a35bdaa585ce86ff8b796ebe72c511c447647e4e012353fb6d9659f39073", "3139d9eefb3e6581a3fc8622533c31001f98adb3a3cd274b2f44efe3961973f1", "ce8b6d5840ddf369ff8160bac438c619fdfcdb4599ceb969acdedf0cece9a6b7", "86deae93fcac94b2a069c2413858cb74efdbedbec3af79dce9dd3d303d7e753b", "d22b8c23b8192d19aff81a26779c6fe3bae303981ac60c7efc786c6434978d39", "d938356bd40c7e630b2a03c840a16712c16ca993653664469130d025232d3cfb", "53c266867ce29521c604eb10e1d89ed8608d5d701daa808d68932da692698d6d", "4ab64dbbfbb64e966759a9cb729c223f310300369e2fe3c2632d19122f49668a", "61fb33b82dba9586f29ab04d0942e5f7fb0a9a2173cd6ff853282280f0c399a1", "0cc8bccec5a7b2ecd1f3e8ddf7dc7a4674b0a1bee3e3d5d0e7f3c033dd4b950e", "a789cc892325ae01c741bb30781bb96101c09692a76b0510d2b7988f2d4d5d26", "78137ffc57992077844164e35435226168125f7163fc45c813df0c2f287f3345", "f8cc0746b90eedcece2897f28403193bb0b0d84c113889828d6ab635ab516460", "59a09e4b5dab6f1900075e804cbcafe31a43f84eb424581e3ade455e7f83f824", "c48e1217c9a82edaaffc5d053bb0d6a3f7bea6826c5f32236b6f54214acf7d03", "b7c57ac2d6f6e0f4c285a8103c9fb9388a8bac479a99d8aaaa8991254bf7c0a2", "c36c28f2c0c0fa864611541f9f725618c30dcbf444bc9438750baafd89eb09b3", "61236e2dbd8581e996c02fd3819b09e101c4ee8a5ef2a4119ea1583206589fa8", "949f551b9b110dc9262b65d151ee67df1f9571fa195858bad7988e2b65268377", "9b31730a328a150d1aa6af268984fa2fdbf1afb2ed93645c0a37b225fa83f461", "1cfcab8e353a25fe7026a25ba792a86ae2aae8a238a24279d2ac95c2d99bf5f3", "d077ab99817ff05d692479047b48808e1f87407931c9121e31a4c6b278ebb8f7", "0dd2394ba835df3518d261bb8560e53cd295cd97ef4567a0819980fe2992edef", "c33102911a094d91b827b4163261347083aa331bbfda07895bb79bafc0f26820", "ec75df52bd8da6a204dfda575e869d3e479157029c5d1e31501313f8bdd3e98e", "c45e2f1f4f3a9387fe37846f548192b04bafafe20e51856e87f8f2e7a4034e90", "d8b0f1bbb33c6659c10d8e30c5ef6f22f87814d9613874e56e6d342e90a8828e", "1be5bb4365b1301f946293382b14b866886d67c9db36a87ff8a5ee9682185e2e", "7a86eaa2f60a7759f76d416841aa2a603e3da2a13894ea464fb7db3dfebc3e76", "d04b94d625d758927535bb38531207465bc99dbf6f654dbc5ee6d28dcf818420", "4bb6c44c01b0ad8bb1c32a15b2a1727cea8349a0afc2c9bb1ed93710226a4231", "15311f3d8dc4b437f7e44e09b55d9f69eec411d0e7500b17b40262e4c7cfc8d5", "e5a7db675f501aae86b0c9c3d40839acdfd636f7168e97bf4e2c1dcf15b22499", "647d42d7734a3c3ecce91ecb59b3a3776d032c46596bb19d9055b5b395d5a4ca", "628336e7366957516d3bc68052757bec32c7244ba9a91f075f299391aa643324", "36ace9558e110fcf80ba9ffa833b46ed71f23fe8c71def5053eb0c00c88a78c1", "63dc502d7284731272272279531258059b70a6de05bb70541c5a3e5ba1d4a237", "a30e4c356f6b28f53365f5d3ab923844cfee33ed3324f9d104cfae195ef72a5a", "45d7a9ee5b60bf0c34b666ec26aef8d762b3b27a3e05e0a6a1897da9961a5c21", "f5c149776c3737f3d4e0d096fc4f078d75bf34d8a4f4ab044d777aa91398e359", "51c880f102216b4bac17c6247686aaac96b87145f6313d39544d67bcd916b83b", "51f1a5af1aa9b327baf0e195712fd93af6492f11f158cf532f2b1edc96c13eb3", "892e6978b86d6a2b22a6f7fb811ceee9f60dbe231f70edba792e670d16aa74ad", "dcb10e4758117aec177e46a7ef772774776800fc9d6ac6f778f2f64faf902759", "9566be3ad9d827f1e96481d3dc4afcd7fab324efea9f90848873fa8b6e5794d8", "a9aa2253d281d729fecc59efdad162fe00b5e512d4c5d5b34b48f5194136ad6d", "21d7fa21fd81e810f1beac26c5d3577fe607da9d382e5942f933943518eb3a89", "1cf7a468d8ed0cac25dac6a56c73a42918e8e9052f547b2882b31d24a5149695"],
+   "vram_destination": "1800"
+  },
+  "time_over": {
+   "bank": 16,
+   "bank_register_writer": "CALL $1C6F (D12B + $FFFF)",
+   "decoded_length": 1408,
+   "decoded_sha256": "cefc2a6cf13def90d88f6f9f91a74d9ea1918e165acb0507e31843d50645921a",
+   "decoder": "$24C2 with A = 0 (no $0100 remap)",
+   "file_start": "40A70",
+   "first_tile_index": 192,
+   "header": "01002c009b04",
+   "id": "time_over",
+   "loader_cpu": "7A28",
+   "source_cpu": "8A70",
+   "stream_file_end_exclusive": "40F16",
+   "stream_sha256": "3b3f13f05a3d1d93fc010aca03d8b01bfc20843948b899936a2694466c2d40c4",
+   "tile_count": 44,
+   "tile_sha256": ["d3d6c24e8d23979708d44adfa31910241f34ddd1c32d3ec359a83b6ba133ed2f", "31e39c65523e609439fab68dce853ce1ea351c21ef8a54d47d5b03c0b8f221be", "562d7a92cd6d492214224db0866884bc8fc58091db374984a7652b7f45043f13", "670b9dc7ae83b32ec308bee433523b0b0fb23fde1c24c20193221fc83992617e", "549a675fa375a3ad919c2e4d1b86adfb31bf620c3873c858d2d72836f0760be1", "2b5fd2a99efa6c6ff573fff34ed3caf728eeeecff6a7a40cb73a182e98c56970", "676c180f21ca30f5597807e091d62d2c40ce39eabcff4aae44df64e05bad4a22", "ffb2d734e95fdd4e3b1297c82f4048b73c5ae744a91f6de9c70df6a134fc78d6", "754f7c1ae2a859d4caebfe2515a1254fe684eca144aa3fd3a389ffbddcb7b392", "4648801218fd52cd8c5180e46825addc7360fcf8575744d4a326b6559ec1611e", "24c61e2e36cbcf90548de63e9c1506eeda215bf67e201815b4c5c9db657a8492", "835094a1f485f870f5498705950ebf648141562579b1d5458940efba0dbb41bd", "f0a170b62578645208202991b57cf8bc99f071740782f30dd74b54dd2ec38bb9", "91269b10229e6a059dbf63941a5a52f880fddda55ab7b3224668dd366a3b84ff", "58c714d38b6729712c8621a8a8e844b2775844a248d0799ac26e1edd9a54e0e7", "257ab8c3b5eea517abb84e23f2150b317e321904bdef8b38c829a8d73be9f76a", "c609b0e09e0551bb9deeeb4844d245c4d019922a978f7af9fa0a55f5a35e9e82", "fb9d16ef0b9f70e98d7abe8501ee52bbe50cd0b9bbcf5cc8a9eba6c46d9f9097", "4faebda0d4c36c41897c4792e9ae4bcda2de074fa0d4ba457d5e50107ecbe445", "fa1922b18e682d5b962e29e71cbe862cc8f1907478b16301f577260a3e180e71", "bd59557a82e8a378656e255137706fd60b6a4f05c6a738cf098357234d6c1bc8", "dd8912feeae15a2e5d62dfa9e480de005cc2496cb57f59e0f7131c1105be5cd1", "51a94e876903e717a5c467a8435a2baa2ab32a0d728066cc792b8851a277d8a9", "c005568e666a7959ef20bae2d0316b552a0c6b294af9fb4bfe0f8b65fbbadba8", "0303f84fdc755dc2792881a26d6ebe76f192d816aa13f5c83b80e2db4bc4abdd", "5414951d5138dc53ebbecad4f72a1ad3451fe44d45b5d0c10bd58a1290b24daa", "6fe491e9e376ef4c3266c44cbb2f1a068c1e57ae31cbf68aa88e0bdb41ebc9ae", "af335baa5a219ed8dd53e47be64c99479f8fb5453b209b6d2e34aae456e6dfe2", "a842f6358b2c2f33273cac020354f7ce41239f67b3f1d79ab676742848f01599", "024efb1c2449340e674307c863ae3ff7414d8e9abf826e3b38155ffee1f9da66", "19da383a55c03aa83500e27f5287cbdf82b9dcf011e7dfef66577984b52077e9", "a8908242cadd272a334ea4e91b024e9e1046edf7297f6c6d721de2016a63e1cf", "7076f0ca0c46348b2ca25bf62db487bb669b144f32a65e29fc870ef8c089c233", "43e1df261cdd0e605a6512b7d69eba852432241747d808054c7784b8dbe07c76", "d3f7638a0d90e8bd3a9a81b1258746d74696b3ee185b32118d338c63141ddda3", "9f48fc5a370b77d169411076d104e288e561f418acf4ed32f8b0ed2fef953c1d", "df00b892e4969e9e9f47da7ca7554ce8a09b27a1e098cdb29de6bc68afd6141e", "4a790a675b0161dfbf790a18ad8504307ea520a72ea4d355c268baccc6594041", "671d7a649408f24add1048e2918c4e223693288422bd2e47763b42e02fa75437", "7a41bace613b5f2611b3bf9c36732c244c28106aae14a8c6bb682ccfe77788ea", "3e615ac4ee085e9f7cb111922d6a258c8126e80a920c47e819c58e0591e4579a", "d40bd32c6601006af86dfdb0aaccc24355ce55464f52df3db5f6f49a2839c4b8", "1ae4adc608f3ffe0171e8588fbf9b0f4eb079805f38a082d477296598fca071c", "e6f336fabbedacff539115e147122b48d3e04cbbd22ca5bab2083961eed15a7d"],
+   "vram_destination": "1800"
+  }
+ },
+ "time_over_trigger": {
+  "d44b_value": "C0",
+  "minutes_compare": "10",
+  "note": "minutes BCD after +1 minus $10 == 0 -> 10:00; stops the clock D2BE := 0",
+  "site": "$281C LD A,$C0 : LD (D44B),A"
+ },
+ "unresolved": [
+  {
+   "id": "U4B-1",
+   "item": "meaning/timbre of requests $87, $94, $A0 (and $B4, $96): numbers and trigger points only; no audio is extracted or substituted",
+   "state": "OPEN - AUDIO-0/U5, does not block the screens"
+  },
+  {
+   "id": "U4B-2",
+   "item": "cycle-exact cadence on real hardware: the Continue digit, hold and fade waits are `$062D` frame waits, but the harness shows each as n or n-1 frames and the player-update body is CPU-bound; the +/-1 figures are harness measurements",
+   "state": "EMULATED, not cycle-proven"
+  },
+  {
+   "id": "U4B-3",
+   "item": "a 7-pixel sprite row at screen line 0 (x 1..7) appears in the emulated Game Over and Continue frames: unused SAT entries are parked at Y=$E0 or Y=$F0 ($21DA writes $F0; the player engine rewrites the first entries to $E0), and an 8x16 sprite at Y=$F0 wraps its last row onto line 0 showing leftover player tile data (X 1..7). Whether real hardware / the TV overscan shows it is unverified; TIME OVER shows none",
+   "state": "EMULATOR OBSERVATION, hardware unverified; recommend the POC does not draw it"
+  },
+  {
+   "id": "U4B-4",
+   "item": "the frozen level frame faded to black before TIME OVER / Continue / Game Over is level specific (death animation, camera, palettes); only the post-fade black screens are reproducible from tables",
+   "state": "ADAPTER must keep the last gameplay frame"
+  },
+  {
+   "id": "U4B-5",
+   "item": "real-time duration of the death sequence before the screens ($15F2..$164B: animation loop until D51D == 2, 60 + 90 waits, fade passes) depends on the death type (pit fall distance, hurt arc); only the fixed waits are decoded",
+   "state": "PARTIAL: waits decoded, animation length per death type measured only for the pit/time-over fixtures"
+  },
+  {
+   "id": "U4B-6",
+   "item": "POC input mapping: the original accepts a NEW press edge of either fire button (D147 & $30, one edge per interrupt); a PC adapter must not accept a held button or a key-repeat",
+   "state": "DECODED, adapter decision"
+  },
+  {
+   "id": "U4B-7",
+   "item": "Continue availability when D2C3 bit 7 is set at the death (a continue was just used): `$13ED` clears bit 7 first, so a just-used flag never blocks a new Continue screen; verified only through the code and the scenarios above, not through an accepted-continue-then-die run",
+   "state": "SOURCE-TRACED"
+  },
+  {
+   "id": "U4B-8",
+   "item": "the two-digit field always shows tens digit 0 (cell pair fixed in the 2x6 block); a counter above 9 digits does not exist, so no larger layout is decoded",
+   "state": "DECODED"
+  },
+  {
+   "id": "U4B-9",
+   "item": "the ending TRY AGAIN card ($34D3, sound $98) is a different screen (stream bank $16 $B1E4, 1-byte cells) and is not part of this package",
+   "state": "OUT OF SCOPE"
+  },
+  {
+   "id": "U4B-10",
+   "item": "`docs/u4-ordinary-results.md` lists `$21DA` as clearing the name table `:= 0`; the operand is `LD DE,$00C0`, so the fill word is $00C0 (tile 192, which `$21DA` also zeroes). Harmless to U4-A (its card refills VRAM tile 256+), but corrected here",
+   "state": "NOTE on an accepted document; U4-A text left unchanged"
+  },
+  {
+   "id": "U4B-11",
+   "item": "TIME OVER is reached by presetting the clock to 09:59.59 (RAM) and letting the original `$27EE` roll it to 10:00; no real ten-minute act was played. The trigger operands (BCD `$10` minutes, D44B := $C0) are decoded from the code",
+   "state": "CONTROLLED VARIANT + BYTE-VERIFIED trigger"
+  }
+ ],
+ "wait_loops": {
+  "continue_accept_hold": {
+   "address": "149E",
+   "iterations": 180
+  },
+  "continue_after_fade_request": {
+   "address": "1445",
+   "iterations": 30
+  },
+  "continue_exit_fade_wait": {
+   "address": "145B",
+   "iterations": 60
+  },
+  "continue_setup_updates": {
+   "address": "1425",
+   "iterations": 16
+  },
+  "death_after_fade_wait": {
+   "address": "164B",
+   "iterations": 90
+  },
+  "death_animation_end_wait": {
+   "address": "1637",
+   "iterations": 60
+  },
+  "game_over_fade_wait": {
+   "address": "13BE",
+   "iterations": 60
+  },
+  "game_over_hold_1": {
+   "address": "13A8",
+   "iterations": 240
+  },
+  "game_over_hold_2": {
+   "address": "13B0",
+   "iterations": 240
+  },
+  "time_over_after_fade_wait": {
+   "address": "34C6",
+   "iterations": 90
+  },
+  "time_over_hold": {
+   "address": "34B8",
+   "iterations": 180
+  }
+ }
+}
