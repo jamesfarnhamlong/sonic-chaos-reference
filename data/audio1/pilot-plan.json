@@ -1,0 +1,375 @@
+{
+ "schema_version": 1,
+ "task": "AUDIO-1",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "base_main": "b6467ba0ad79fad0937f750083a5261e7ea64e8f",
+ "evidence_classes": {
+  "verified": "executed in this task on the hash-verified ROM with the committed harness (tools/audio1_psg_trace.py); re-runnable locally",
+  "source-traced": "read from ROM bytes/disassembly or the accepted AUDIO-0 ledger, not executed end to end",
+  "proposed": "design recommendation, not demonstrated",
+  "unresolved": "evidence missing"
+ },
+ "layers": {
+  "sms_hardware": "SN76489-compatible PSG behind port $7F (tone periods, attenuation, noise control, LFSR).",
+  "original_driver_behaviour": "Sound-bank driver executed from CPU $4000: mailbox, arbitration, headers, streams, tempo, steal, fade, reset.",
+  "documented_adapter_decisions": "PC choices: update rate, clock, resampling, loop cut points, mixing, OGG/runtime delivery. Must stay labelled adapter.",
+  "original_driver_behaviour_note": "The driver, not the request name, defines behaviour."
+ },
+ "driver_tick": {
+  "nominal_hz": 60,
+  "evidence": "source-traced+verified",
+  "detail": "IRQ ROM $005E0 calls the driver every frame; when $D12D==0 (PAL) it calls again every fifth frame ($005EA..$005F6): 6 calls per 5 frames = 60/s. NTSC ($D12D==1) = one call per 60 Hz frame. In the repo harness 72 entries per 60 frames were counted."
+ },
+ "pilot": [
+  {
+   "request_id": 144,
+   "request_hex": "0x90",
+   "category": "music",
+   "header_rom": 47339,
+   "header_rom_hex": "0x0B8EB",
+   "priority_byte": 128,
+   "canonical_context": "Opening cinematic (intro index) and Electric Egg Zone act 3",
+   "context_evidence": [
+    "AUDIO-0 ledger: UpdateMusic table $189B/$18B3 rows zone5/act2 and zone7/act0..2 return $90",
+    "docs/audio-request-audit.md (accepted)",
+    "AGENTS.md live section: intro/EEZ3 $90 (opening cinematic evidence is U5-A; not re-derived here)"
+   ],
+   "claims": [
+    {
+     "text": "Header at ROM $0B8EB: 4 channels (tone0, tone1, tone2, noise), duration multiplier 1, tempo byte $1C (28), tone transposes -13/-13/-13, noise 0.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Playing alone, the driver reaches an exact RAM recurrence at update 803 with period 19768 updates (329.5 s at 60 updates/s); the next period's PSG byte stream is identical.",
+     "evidence": "verified"
+    },
+    {
+     "text": "In the repo SMS frame harness the unattended ROM requests $90 at boot (driver tick 35). Replaying only the mailbox, pause and fade inputs (fade = DE09/DE0A/DE0B 12/1/2, ROM $18E1), the isolated driver emits PSG bytes identical to the game IRQ path for all 4559 captured ticks (includes 3 game fades and 44 requests).",
+     "evidence": "verified"
+    },
+    {
+     "text": "Commands executed in 3000 updates: E0,E1,E7,F0,F5,F6,F7 (custom ADSR, detune, tie, vibrato/pitch-env, volume-envelope select, jump, repeat).",
+     "evidence": "verified"
+    },
+    {
+     "text": "Music is not stopped by the driver at the end of the intro section: channels jump to loop targets and play indefinitely until a new request, fade or $F8.",
+     "evidence": "verified"
+    },
+    {
+     "text": "The fade that ends the opening is a game-side direct fade (ROM $18E1), not a request ID; the POC must reproduce it as a fade adapter event.",
+     "evidence": "source-traced"
+    }
+   ],
+   "driver_state_required": "Idle driver (reset RAM $DE00..$DF8F, DE03=$80), sound banks 2/3 mapped, mailbox DE04=$90. No prior SFX.",
+   "timing": {
+    "tick_hz_nominal": 60,
+    "tempo_dilation": "every DE02 (=28) ticks all four music duration counters gain +1 tick; effective music clock 27/28",
+    "first_psg_write_update": 1
+   },
+   "looping_restart": {
+    "loops": true,
+    "mechanism": "per-channel F6 absolute jump (and F7 counted repeat) inside the stream; no driver-level loop flag",
+    "exact_recurrence": {
+     "first_seen_update": 803,
+     "next_period_psg_writes_identical": true,
+     "period_updates": 19768,
+     "repeat_update": 20571,
+     "writes_per_period": 129056
+    },
+    "restart": "re-request $90 reinitialises all four channels from the header"
+   },
+   "unresolved": [
+    "Real-time length of the original opening before the game fade (approximate-harness frames only; hardware cadence not captured).",
+    "Whether the POC cinematic ends music by the original fade or a longer scene; adapter decision needed.",
+    "Which PSG clock (NTSC/PAL) a Europe-hardware reference capture should use."
+   ],
+   "validation": [
+    "Regenerate summary hash with tools/audio1_psg_trace.py --pilot --check.",
+    "Render local VGM (--vgm 0x90) through two independent SN76489 renderers and compare note onsets.",
+    "Capture the same request from a cycle-accurate emulator running the ROM and compare per-tick PSG writes."
+   ]
+  },
+  {
+   "request_id": 130,
+   "request_hex": "0x82",
+   "category": "music",
+   "header_rom": 38463,
+   "header_rom_hex": "0x0963F",
+   "priority_byte": 128,
+   "canonical_context": "Title screen / character selection",
+   "context_evidence": [
+    "AUDIO-0 ledger direct site ROM $030BC (title scene $3065 reached from $04B4)"
+   ],
+   "claims": [
+    {
+     "text": "Header at ROM $0963F: 4 channels, tempo byte 6 (header and ROM table $090C2 agree), tone transposes -12, noise 0.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Exact RAM recurrence from update 130, period 6912 updates (115.20 s at 60); next-period PSG byte stream identical.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Observed channel-0/1 loop jumps are every 1382.67 updates, consistent with 1152 base ticks stretched by the 6/5 tempo dilation.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Title entry request site ROM $030BC; character left/right uses SFX $B4, acceptance $A0 (AUDIO-0).",
+     "evidence": "source-traced"
+    }
+   ],
+   "driver_state_required": "Idle driver at title entry; no stage music active (music init resets all channels and SFX).",
+   "timing": {
+    "tick_hz_nominal": 60,
+    "tempo_dilation": "every 6th tick adds +1 to each music duration counter (effective 5/6 clock)",
+    "first_psg_write_update": 1
+   },
+   "looping_restart": {
+    "loops": true,
+    "mechanism": "per-channel F6 jumps",
+    "exact_recurrence": {
+     "first_seen_update": 130,
+     "next_period_psg_writes_identical": true,
+     "period_updates": 6912,
+     "repeat_update": 7042,
+     "writes_per_period": 42972
+    },
+    "restart": "re-request restarts from header, not from the interrupted note"
+   },
+   "unresolved": [
+    "Whether title music is re-requested on return from options/demo paths (not traced).",
+    "Fade or $F8 at title exit not independently captured."
+   ],
+   "validation": [
+    "Same as $90.",
+    "Confirm B4/A0 SFX over title music use the same steal rule as the ring/spring pilot."
+   ]
+  },
+  {
+   "request_id": 129,
+   "request_hex": "0x81",
+   "category": "music",
+   "header_rom": 37225,
+   "header_rom_hex": "0x09169",
+   "priority_byte": 128,
+   "canonical_context": "Turquoise Hill Zone music (all three acts)",
+   "context_evidence": [
+    "AUDIO-0 ledger zone_act_table rows zone0/act0..2 via UpdateMusic ROM $189B/$18B3"
+   ],
+   "claims": [
+    {
+     "text": "Header at ROM $09169: 4 channels, tempo byte 0 (no dilation), tone transposes -12, noise 0.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Exact RAM recurrence from update 1093, period 2688 updates (44.8 s at 60); next-period PSG byte stream identical.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Re-request restarts from the stream header (pointer reset verified); there is no resume-from-position path.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Unattended attract flow requests $81 at driver tick 2568; the isolated driver reproduces the game PSG bytes through the following SFX traffic (see $90 in-situ claim; approximate harness).",
+     "evidence": "verified"
+    },
+    {
+     "text": "Stage restore after invincibility/shoes is a fresh $81 request via UpdateMusic (AUDIO-0).",
+     "evidence": "source-traced"
+    }
+   ],
+   "driver_state_required": "Idle driver; D4A3 == 0 in the game for UpdateMusic to issue the table request.",
+   "timing": {
+    "tick_hz_nominal": 60,
+    "tempo_dilation": "none (tempo byte 0)",
+    "first_psg_write_update": 1
+   },
+   "looping_restart": {
+    "loops": true,
+    "mechanism": "per-channel F6 jumps and F7 repeats",
+    "exact_recurrence": {
+     "first_seen_update": 1093,
+     "next_period_psg_writes_identical": true,
+     "period_updates": 2688,
+     "repeat_update": 3781,
+     "writes_per_period": 16613
+    },
+    "restart": "fresh start from header"
+   },
+   "unresolved": [
+    "Intro/lead-in versus loop boundary for a seamless OGG: state recurs from update 1093 but channel 0 first jumps at update 2785; the cut point must be chosen from the recurrence, not channel 0."
+   ],
+   "validation": [
+    "Same as $90.",
+    "Loop-seam check: render two periods, confirm the second equals the first sample-for-sample."
+   ]
+  },
+  {
+   "request_id": 191,
+   "request_hex": "0xBF",
+   "category": "sfx",
+   "header_rom": 58230,
+   "header_rom_hex": "0x0E376",
+   "priority_byte": 56,
+   "canonical_context": "Ring / Large Ring collection feedback",
+   "context_evidence": [
+    "AUDIO-0 ledger: ordinary terrain ring collection and Large Ring (ROM $07640), lost-ring pickup, script callbacks"
+   ],
+   "claims": [
+    {
+     "text": "Header at ROM $0E376: one stream, latch $C0 (tone 2), stream CPU $A380, priority byte $38.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Occupies SFX slot $DF30 for 20 updates (active updates 1..20, inactive at 21), then clears priority DE0F.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Over $81 it flags music channel index 2 ($DEA0 bit 2) at the request update; the flag clears 20 updates later and the music channel is left silenced until its next note.",
+     "evidence": "verified"
+    },
+    {
+     "text": "In-situ attract flow issues $BF 14 times over running music; each is reproduced byte-identically by the isolated driver (approximate harness).",
+     "evidence": "verified"
+    },
+    {
+     "text": "Equal-priority requests are accepted: a second $BF or an $A6 restarts the SFX on the same slot.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Ring-counter wrap writes $A9 after $BF and replaces the pending mailbox byte (AUDIO-0).",
+     "evidence": "source-traced"
+    }
+   ],
+   "driver_state_required": "Any state; audible only through tone 2; music tone 2 suppressed while active.",
+   "timing": {
+    "tick_hz_nominal": 60,
+    "active_updates": 20,
+    "seconds_at_60": 0.333,
+    "first_psg_write_update": 1
+   },
+   "looping_restart": {
+    "loops": false,
+    "mechanism": "stream ends with F2 (end of track) which restores the stolen channel",
+    "restart": "retrigger restarts the stream"
+   },
+   "unresolved": [
+    "Mixed loudness relative to music under a hardware-like PSG mixer.",
+    "Sample-exact start offset inside the 60 Hz frame (driver is tick-quantised)."
+   ],
+   "validation": [
+    "Regenerate summary; compare to emulator capture of a ring pickup.",
+    "Verify stolen-channel recovery against music at several request phases."
+   ]
+  },
+  {
+   "request_id": 166,
+   "request_hex": "0xA6",
+   "category": "sfx",
+   "header_rom": 57284,
+   "header_rom_hex": "0x0DFC4",
+   "priority_byte": 56,
+   "canonical_context": "Spring / rebound feedback",
+   "context_evidence": [
+    "AUDIO-0 ledger: vertical spring setter $480C, horizontal setters $4849/$4868, terrain and script callbacks"
+   ],
+   "claims": [
+    {
+     "text": "Header at ROM $0DFC4: one stream, latch $C0 (tone 2), stream CPU $9FCE, priority byte $38.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Occupies SFX slot $DF30 for 40 updates (active 1..40); uses E6 (volume), F0 (pitch envelope), F5 (envelope select), F8/F9 (call/return) five times.",
+     "evidence": "verified"
+    },
+    {
+     "text": "In-situ attract flow issues $A6 at driver tick 2889 over $81; reproduced byte-identically.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Steals music tone 2 exactly like $BF; music tone 2 recovers at its next note after update 40.",
+     "evidence": "verified"
+    },
+    {
+     "text": "Spring Shoes relaunch uses $C2, a different SFX (AUDIO-0).",
+     "evidence": "source-traced"
+    }
+   ],
+   "driver_state_required": "Any state; vertical spring only passes non-rising vy before the request (game-side guard).",
+   "timing": {
+    "tick_hz_nominal": 60,
+    "active_updates": 40,
+    "seconds_at_60": 0.667,
+    "first_psg_write_update": 1
+   },
+   "looping_restart": {
+    "loops": false,
+    "mechanism": "F2 end-of-track",
+    "restart": "retrigger restarts"
+   },
+   "unresolved": [
+    "Exact pitch glide interpretation (periods alternate 320/467 and 210) is a driver output; no audible comparison against a hardware capture yet."
+   ],
+   "validation": [
+    "Same as $BF."
+   ]
+  }
+ ],
+ "toolchain": [
+  {
+   "step": 1,
+   "name": "verify ROM",
+   "tool": "tools/audio1_psg_trace.py (load_rom)",
+   "output": "SHA-256 gate"
+  },
+  {
+   "step": 2,
+   "name": "execute driver, log PSG writes",
+   "tool": "tools/audio1_psg_trace.py --dump/--vgm",
+   "output": "ignored build/audio1/*.json|*.vgm",
+   "committed": false
+  },
+  {
+   "step": 3,
+   "name": "metadata-only summary",
+   "tool": "tools/audio1_psg_trace.py --pilot [--check]",
+   "output": "data/audio1/pilot-trace-summary.json",
+   "committed": true
+  },
+  {
+   "step": 4,
+   "name": "in-situ cross-check",
+   "tool": "tools/audio1_psg_trace.py --insitu",
+   "output": "stdout",
+   "committed": false
+  },
+  {
+   "step": 5,
+   "name": "render VGM with a licensed renderer",
+   "tool": "proposed: libgme or MAME sn76496 core",
+   "output": "ignored build/audio1/*.wav|*.ogg",
+   "committed": false,
+   "evidence": "proposed"
+  }
+ ],
+ "local_commands": [
+  "python tools/audio1_psg_trace.py \"$env:SONIC_CHAOS_ROM\" --pilot --check",
+  "python tools/audio1_psg_trace.py \"$env:SONIC_CHAOS_ROM\" --insitu",
+  "python tools/audio1_psg_trace.py \"$env:SONIC_CHAOS_ROM\" --vgm 0x81 --frames 3781 --out build/audio1/81.vgm",
+  "python -m unittest discover -s tests -p test_audio1_psg.py -v"
+ ],
+ "gates": [
+  "Hash gate passes",
+  "Committed summary regenerates byte-identically",
+  "Loop seam: two rendered periods identical",
+  "Independent emulator PSG capture agrees per tick with the harness",
+  "Two independent PSG renderers agree on note onsets and durations",
+  "Manager approves asset-handling plan before any generated audio is placed in a project"
+ ],
+ "distribution": {
+  "commit_rom": false,
+  "commit_generated_audio": false,
+  "commit_vgm": false,
+  "generated_assets_location": "ignored build/audio1/"
+ }
+}

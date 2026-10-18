@@ -1,0 +1,275 @@
+{
+ "method": "original driver executed via kosarev/z80, banks 2/3 mapped, one $4000 call per update; not an SMS emulator",
+ "psg_ticks_per_second_nominal": 60,
+ "requests": [
+  {
+   "exact_driver_state_recurrence": {
+    "first_seen_update": 803,
+    "next_period_psg_writes_identical": true,
+    "period_updates": 19768,
+    "repeat_update": 20571,
+    "writes_per_period": 129056
+   },
+   "first_psg_write_update": 1,
+   "header": {
+    "channel_count": 4,
+    "channels": [
+     {
+      "latch": "0x80",
+      "stream_cpu": 30977,
+      "transpose": -13,
+      "volume": 0
+     },
+     {
+      "latch": "0xa0",
+      "stream_cpu": 31451,
+      "transpose": -13,
+      "volume": 0
+     },
+     {
+      "latch": "0xc0",
+      "stream_cpu": 31793,
+      "transpose": -13,
+      "volume": 0
+     },
+     {
+      "latch": "0xe0",
+      "stream_cpu": 32264,
+      "transpose": 0,
+      "volume": 0
+     }
+    ],
+    "duration_multiplier": 1,
+    "envelope_table_cpu": 18941,
+    "header_rom": 47339,
+    "kind": "music",
+    "priority_byte": 128,
+    "tempo_byte": 28
+   },
+   "music_channels_inactive_within_span": false,
+   "psg_write_count": 17750,
+   "request_id": "0x90",
+   "stream_commands_executed": {
+    "0xE0": 10,
+    "0xE1": 2,
+    "0xE7": 2,
+    "0xF0": 4,
+    "0xF5": 6,
+    "0xF6": 4,
+    "0xF7": 29
+   },
+   "updates_simulated": 3000,
+   "write_log_sha256": "c7b6af4b18d6235cf8febed9aee8db0a6ca9c4d612ec35e4fbd05ade8effe3ae",
+   "write_log_sha256_note": "hash of (update:u32le, byte) records for the simulated span; not audio"
+  },
+  {
+   "exact_driver_state_recurrence": {
+    "first_seen_update": 130,
+    "next_period_psg_writes_identical": true,
+    "period_updates": 6912,
+    "repeat_update": 7042,
+    "writes_per_period": 42972
+   },
+   "first_psg_write_update": 1,
+   "header": {
+    "channel_count": 4,
+    "channels": [
+     {
+      "latch": "0x80",
+      "stream_cpu": 22101,
+      "transpose": -12,
+      "volume": 0
+     },
+     {
+      "latch": "0xa0",
+      "stream_cpu": 22182,
+      "transpose": -12,
+      "volume": 0
+     },
+     {
+      "latch": "0xc0",
+      "stream_cpu": 22275,
+      "transpose": -12,
+      "volume": 0
+     },
+     {
+      "latch": "0xe0",
+      "stream_cpu": 22333,
+      "transpose": 0,
+      "volume": 0
+     }
+    ],
+    "duration_multiplier": 1,
+    "envelope_table_cpu": 18941,
+    "header_rom": 38463,
+    "kind": "music",
+    "priority_byte": 128,
+    "tempo_byte": 6
+   },
+   "music_channels_inactive_within_span": false,
+   "psg_write_count": 18661,
+   "request_id": "0x82",
+   "stream_commands_executed": {
+    "0xE1": 2,
+    "0xE7": 50,
+    "0xF0": 1,
+    "0xF5": 5,
+    "0xF6": 22
+   },
+   "updates_simulated": 3000,
+   "write_log_sha256": "b86b204b87517b4e14059c3f382aa95d1778e09f9be67fad0d01c2cac96e1a2d",
+   "write_log_sha256_note": "hash of (update:u32le, byte) records for the simulated span; not audio"
+  },
+  {
+   "exact_driver_state_recurrence": {
+    "first_seen_update": 1093,
+    "next_period_psg_writes_identical": true,
+    "period_updates": 2688,
+    "repeat_update": 3781,
+    "writes_per_period": 16613
+   },
+   "first_psg_write_update": 1,
+   "header": {
+    "channel_count": 4,
+    "channels": [
+     {
+      "latch": "0x80",
+      "stream_cpu": 20863,
+      "transpose": -12,
+      "volume": 0
+     },
+     {
+      "latch": "0xa0",
+      "stream_cpu": 21368,
+      "transpose": -12,
+      "volume": 0
+     },
+     {
+      "latch": "0xc0",
+      "stream_cpu": 21523,
+      "transpose": -12,
+      "volume": 0
+     },
+     {
+      "latch": "0xe0",
+      "stream_cpu": 21882,
+      "transpose": 0,
+      "volume": 0
+     }
+    ],
+    "duration_multiplier": 1,
+    "envelope_table_cpu": 18941,
+    "header_rom": 37225,
+    "kind": "music",
+    "priority_byte": 128,
+    "tempo_byte": 0
+   },
+   "music_channels_inactive_within_span": false,
+   "psg_write_count": 18517,
+   "request_id": "0x81",
+   "stream_commands_executed": {
+    "0xE0": 2,
+    "0xE7": 4,
+    "0xF0": 9,
+    "0xF5": 26,
+    "0xF6": 4,
+    "0xF7": 47
+   },
+   "updates_simulated": 3000,
+   "write_log_sha256": "1775f19104204d89be809f46c8352ddcbc7b0f4d522add6303d659aa920317a7",
+   "write_log_sha256_note": "hash of (update:u32le, byte) records for the simulated span; not audio"
+  },
+  {
+   "first_psg_write_update": 1,
+   "header": {
+    "duration_multiplier": 1,
+    "envelope_table_cpu": 18941,
+    "header_rom": 58230,
+    "kind": "sfx",
+    "priority_byte": 56,
+    "stream_count": 1,
+    "streams": [
+     {
+      "latch": "0xc0",
+      "stream_cpu": 41856,
+      "transpose": 0,
+      "volume": 0
+     }
+    ]
+   },
+   "last_active_update": 20,
+   "priority_stored_while_active": 56,
+   "psg_write_count": 62,
+   "request_id": "0xBF",
+   "sfx_slots_used": [
+    "0xdf30"
+   ],
+   "steal_over_0x81": {
+    "first_steal_flag_update": 200,
+    "music": "0x81",
+    "request_update": 200,
+    "sfx": "0xBF",
+    "steal_flag_cleared_update": 220,
+    "stolen_music_channel_indices": [
+     2
+    ]
+   },
+   "stream_commands_executed": {
+    "0xE0": 1,
+    "0xF0": 1,
+    "0xF2": 1
+   },
+   "updates_simulated": 3000,
+   "write_log_sha256": "2ece1a5e0c04ea59a4e6ae109a4c69cf8f25a78a6a910ba56ce2abb98caf38b1",
+   "write_log_sha256_note": "hash of (update:u32le, byte) records for the simulated span; not audio"
+  },
+  {
+   "first_psg_write_update": 1,
+   "header": {
+    "duration_multiplier": 1,
+    "envelope_table_cpu": 18941,
+    "header_rom": 57284,
+    "kind": "sfx",
+    "priority_byte": 56,
+    "stream_count": 1,
+    "streams": [
+     {
+      "latch": "0xc0",
+      "stream_cpu": 40910,
+      "transpose": 0,
+      "volume": 0
+     }
+    ]
+   },
+   "last_active_update": 40,
+   "priority_stored_while_active": 56,
+   "psg_write_count": 122,
+   "request_id": "0xA6",
+   "sfx_slots_used": [
+    "0xdf30"
+   ],
+   "steal_over_0x81": {
+    "first_steal_flag_update": 200,
+    "music": "0x81",
+    "request_update": 200,
+    "sfx": "0xA6",
+    "steal_flag_cleared_update": 240,
+    "stolen_music_channel_indices": [
+     2
+    ]
+   },
+   "stream_commands_executed": {
+    "0xE6": 5,
+    "0xF0": 10,
+    "0xF2": 1,
+    "0xF5": 10,
+    "0xF8": 5,
+    "0xF9": 5
+   },
+   "updates_simulated": 3000,
+   "write_log_sha256": "863373e56f247d79b0bb30bc0b4573b6908833ed0bce1c30b6ac16405b77b4c5",
+   "write_log_sha256_note": "hash of (update:u32le, byte) records for the simulated span; not audio"
+  }
+ ],
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607"
+}
