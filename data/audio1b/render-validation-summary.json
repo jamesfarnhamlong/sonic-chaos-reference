@@ -1,0 +1,2370 @@
+{
+ "determinism": {
+  "gme_default": {
+   "fresh_process": true,
+   "fresh_process_error": null,
+   "pcm_sha256": "66f037c97f67fa1dd5bfe7af9798a2aa2ec55c315372a505969d1f70f3c4e92a",
+   "renderer": "gme_default",
+   "same_process_twice": true,
+   "vgm_regenerates_identically": true,
+   "vgm_sha256": "7a2f3ea1ee2d8e56be0747da0ca38ffaa5bf2048824043b6841353d544732113"
+  },
+  "gme_flat": {
+   "fresh_process": true,
+   "fresh_process_error": null,
+   "pcm_sha256": "04a222d1f68ae3f5c9e2bd68f6a711af446e16b52ce150a666bfee51477683b0",
+   "renderer": "gme_flat",
+   "same_process_twice": true,
+   "vgm_regenerates_identically": true,
+   "vgm_sha256": "7a2f3ea1ee2d8e56be0747da0ca38ffaa5bf2048824043b6841353d544732113"
+  },
+  "libvgm_mame": {
+   "fresh_process": true,
+   "fresh_process_error": null,
+   "pcm_sha256": "7a2db8ce6f715df7efb8b91ddee7a3109d14404b83ea3020e8ea9162e1031256",
+   "renderer": "libvgm_mame",
+   "same_process_twice": true,
+   "vgm_regenerates_identically": true,
+   "vgm_sha256": "7a2f3ea1ee2d8e56be0747da0ca38ffaa5bf2048824043b6841353d544732113"
+  },
+  "libvgm_maxim": {
+   "fresh_process": true,
+   "fresh_process_error": null,
+   "pcm_sha256": "74beabd3daa1a9c8e4fdda09e2919a9e27aeb3d49e61c36c27b2468428916a6c",
+   "renderer": "libvgm_maxim",
+   "same_process_twice": true,
+   "vgm_regenerates_identically": true,
+   "vgm_sha256": "7a2f3ea1ee2d8e56be0747da0ca38ffaa5bf2048824043b6841353d544732113"
+  }
+ },
+ "environment": {
+  "machine": "x86_64",
+  "numpy": "2.5.3",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "python": "3.13.16",
+  "renderer_pins": {
+   "game_music_emu": {
+    "commit": "9e23d10f9fd2a6a2f33b10912dd8dc7153258995",
+    "licence": "LGPL-2.1",
+    "tag": "0.6.5"
+   },
+   "libvgm": {
+    "commit": "a6eed945ecf4e5a25cf82004779c6f7e4fd5c319",
+    "licence": "no top-level licence file; sn76496.c BSD-3-Clause (Salmoria); sn76489.c (Maxim) states none"
+   }
+  }
+ },
+ "export_roundtrip": {
+  "81_thz": "ok",
+  "82_title": "ok",
+  "90_opening": "ok",
+  "A6_spring": "ok",
+  "BF_ring": "ok"
+ },
+ "independent_z80_kss": {
+  "81": {
+   "audible_tick_pattern_mismatches": {
+    "tone0": 3,
+    "tone1": 55,
+    "tone2": 11
+   },
+   "median_abs_cents": 1.028,
+   "off_per_channel": {
+    "0": 0,
+    "1": 0,
+    "2": 0
+   },
+   "p95_abs_cents": 1.562,
+   "request_id": "0x81",
+   "ticks": 900,
+   "windows": 362,
+   "windows_off_by_more_than_25_cents": 0
+  },
+  "82": {
+   "audible_tick_pattern_mismatches": {
+    "tone0": 9,
+    "tone1": 9,
+    "tone2": 0
+   },
+   "median_abs_cents": 1.419,
+   "off_per_channel": {
+    "0": 0,
+    "1": 0,
+    "2": 0
+   },
+   "p95_abs_cents": 1.663,
+   "request_id": "0x82",
+   "ticks": 900,
+   "windows": 64,
+   "windows_off_by_more_than_25_cents": 0
+  },
+  "90": {
+   "audible_tick_pattern_mismatches": {
+    "tone0": 6,
+    "tone1": 1,
+    "tone2": 22
+   },
+   "median_abs_cents": 1.127,
+   "off_per_channel": {
+    "0": 15,
+    "1": 0,
+    "2": 59
+   },
+   "p95_abs_cents": 318.75,
+   "request_id": "0x90",
+   "ticks": 900,
+   "windows": 283,
+   "windows_off_by_more_than_25_cents": 74
+  },
+  "A6": {
+   "audible_tick_pattern_mismatches": {
+    "tone2": 1
+   },
+   "median_abs_cents": 1.514,
+   "off_per_channel": {
+    "0": 0,
+    "1": 0,
+    "2": 0
+   },
+   "p95_abs_cents": 2.729,
+   "request_id": "0xA6",
+   "ticks": 37,
+   "windows": 36,
+   "windows_off_by_more_than_25_cents": 0
+  },
+  "BF": {
+   "audible_tick_pattern_mismatches": {
+    "tone2": 1
+   },
+   "median_abs_cents": 1.662,
+   "off_per_channel": {
+    "0": 0,
+    "1": 0,
+    "2": 0
+   },
+   "p95_abs_cents": 3.656,
+   "request_id": "0xBF",
+   "ticks": 21,
+   "windows": 14,
+   "windows_off_by_more_than_25_cents": 0
+  }
+ },
+ "loop_81": {
+  "gme_flat": {
+   "lead_in_ticks": 1093,
+   "per_channel_period1_vs_2": {
+    "noise": {
+     "equal_sample_fraction": 0.0019,
+     "sample_exact": false
+    },
+    "tone0": {
+     "equal_sample_fraction": 0.0422,
+     "sample_exact": false
+    },
+    "tone1": {
+     "equal_sample_fraction": 0.0313,
+     "sample_exact": false
+    },
+    "tone2": {
+     "equal_sample_fraction": 0.09,
+     "sample_exact": false
+    }
+   },
+   "period_pairs": [
+    {
+     "differing_sample_fraction": 0.9994,
+     "differing_ticks": 2688,
+     "max_abs_diff": 34172,
+     "of_ticks": 2688,
+     "periods": "1->2",
+     "rms_diff_over_rms_signal": 1.4496,
+     "sample_exact": false
+    },
+    {
+     "differing_sample_fraction": 0.9993,
+     "differing_ticks": 2688,
+     "max_abs_diff": 32853,
+     "of_ticks": 2688,
+     "periods": "2->3",
+     "rms_diff_over_rms_signal": 1.4056,
+     "sample_exact": false
+    }
+   ],
+   "period_ticks": 2688,
+   "periods_rendered": 3,
+   "psg_bytes_identical_next_period": true,
+   "rendered_seconds": 152.62,
+   "renderer": "gme_flat",
+   "request_id": "0x81",
+   "seam_scan": {
+    "best_jump": 5,
+    "candidates": 1400,
+    "fraction_below_p99_9_ordinary_step": 0.699,
+    "median_jump": 4850
+   },
+   "seam_when_looping_body_2": {
+    "natural_continuation_jump": 154,
+    "ordinary_step_max": 14661,
+    "ordinary_step_p99_9": 7940.0,
+    "wrap_jump": 1629
+   },
+   "tick_rms_correlation_period1_vs_2": 0.87902
+  },
+  "libvgm_mame": {
+   "lead_in_ticks": 1093,
+   "per_channel_period1_vs_2": {
+    "noise": {
+     "equal_sample_fraction": 0.9981,
+     "sample_exact": false
+    },
+    "tone0": {
+     "equal_sample_fraction": 0.1809,
+     "sample_exact": false
+    },
+    "tone1": {
+     "equal_sample_fraction": 0.7696,
+     "sample_exact": false
+    },
+    "tone2": {
+     "equal_sample_fraction": 0.8629,
+     "sample_exact": false
+    }
+   },
+   "period_pairs": [
+    {
+     "differing_sample_fraction": 0.8394,
+     "differing_ticks": 2647,
+     "max_abs_diff": 31518,
+     "of_ticks": 2688,
+     "periods": "1->2",
+     "rms_diff_over_rms_signal": 1.356,
+     "sample_exact": false
+    },
+    {
+     "differing_sample_fraction": 0.9059,
+     "differing_ticks": 2648,
+     "max_abs_diff": 31518,
+     "of_ticks": 2688,
+     "periods": "2->3",
+     "rms_diff_over_rms_signal": 1.4863,
+     "sample_exact": false
+    }
+   ],
+   "period_ticks": 2688,
+   "periods_rendered": 3,
+   "psg_bytes_identical_next_period": true,
+   "rendered_seconds": 152.62,
+   "renderer": "libvgm_mame",
+   "request_id": "0x81",
+   "seam_scan": {
+    "best_jump": 0,
+    "candidates": 1400,
+    "fraction_below_p99_9_ordinary_step": 0.905,
+    "median_jump": 4096
+   },
+   "seam_when_looping_body_2": {
+    "natural_continuation_jump": 1640,
+    "ordinary_step_max": 23434,
+    "ordinary_step_p99_9": 12277.0,
+    "wrap_jump": 7725
+   },
+   "tick_rms_correlation_period1_vs_2": 0.96797
+  }
+ },
+ "noise_variant": {
+  "reference_synth_sega": {
+   "sega16": 1.0,
+   "ti15": 0.57
+  },
+  "vgm_header_sega_0009_w16/gme_default": {
+   "sega16": 0.915,
+   "ti15": 0.52
+  },
+  "vgm_header_sega_0009_w16/gme_flat": {
+   "sega16": 0.906,
+   "ti15": 0.545
+  },
+  "vgm_header_sega_0009_w16/libvgm_mame": {
+   "sega16": 1.0,
+   "ti15": 0.57
+  },
+  "vgm_header_sega_0009_w16/libvgm_maxim": {
+   "sega16": 0.582,
+   "ti15": 0.565
+  },
+  "vgm_header_ti_0003_w15/gme_default": {
+   "sega16": 0.535,
+   "ti15": 0.929
+  },
+  "vgm_header_ti_0003_w15/gme_flat": {
+   "sega16": 0.55,
+   "ti15": 0.921
+  },
+  "vgm_header_ti_0003_w15/libvgm_mame": {
+   "sega16": 0.577,
+   "ti15": 1.0
+  },
+  "vgm_header_ti_0003_w15/libvgm_maxim": {
+   "sega16": 0.565,
+   "ti15": 0.601
+  }
+ },
+ "opening_harness": {
+  "evidence": "EMULATED ORIGINAL FRAMES (approximate harness, PAL-like cadence 1.2 ticks/update; not hardware)",
+  "scenarios": {
+   "natural": {
+    "music_fade_18E1": {
+     "driver_ticks_since_request": 922,
+     "updates_since_request": 768
+    },
+    "request_189B": {
+     "driver_ticks_since_request": 0,
+     "updates_since_request": 0
+    },
+    "scene_end_fade_1CAF": {
+     "driver_ticks_since_request": 886,
+     "updates_since_request": 738
+    },
+    "title_0719": {
+     "driver_ticks_since_request": 959,
+     "updates_since_request": 799
+    }
+   },
+   "skip_pressed_at_update_300": {
+    "music_fade_18E1": {
+     "driver_ticks_since_request": 396,
+     "updates_since_request": 330
+    },
+    "request_189B": {
+     "driver_ticks_since_request": 0,
+     "updates_since_request": 0
+    },
+    "scene_end_fade_1CAF": {
+     "driver_ticks_since_request": 360,
+     "updates_since_request": 300
+    },
+    "title_0719": {
+     "driver_ticks_since_request": 434,
+     "updates_since_request": 361
+    }
+   },
+   "skip_pressed_at_update_600": {
+    "music_fade_18E1": {
+     "driver_ticks_since_request": 756,
+     "updates_since_request": 630
+    },
+    "request_189B": {
+     "driver_ticks_since_request": 0,
+     "updates_since_request": 0
+    },
+    "scene_end_fade_1CAF": {
+     "driver_ticks_since_request": 720,
+     "updates_since_request": 600
+    },
+    "title_0719": {
+     "driver_ticks_since_request": 794,
+     "updates_since_request": 661
+    }
+   },
+   "skip_pressed_at_update_70": {
+    "music_fade_18E1": {
+     "driver_ticks_since_request": 120,
+     "updates_since_request": 100
+    },
+    "request_189B": {
+     "driver_ticks_since_request": 0,
+     "updates_since_request": 0
+    },
+    "scene_end_fade_1CAF": {
+     "driver_ticks_since_request": 84,
+     "updates_since_request": 70
+    },
+    "title_0719": {
+     "driver_ticks_since_request": 158,
+     "updates_since_request": 131
+    }
+   }
+  }
+ },
+ "opening_render": {
+  "natural_nominal_60hz_adapter": {
+   "cadence_ticks_per_update": 1.0,
+   "fade_ticks": 23,
+   "fade_written_before_tick": 769,
+   "music_inactive_at_tick": 791,
+   "pcm_sha256": "50d1a5a65ab078805fdbb402dd714cbed045200990264a1ce49a279091955f07",
+   "rendered_ticks": 791,
+   "scene_end_updates": 738,
+   "seconds": 13.183,
+   "wait_updates": 30
+  },
+  "natural_pal_cadence_original": {
+   "cadence_ticks_per_update": 1.2,
+   "fade_ticks": 23,
+   "fade_written_before_tick": 923,
+   "music_inactive_at_tick": 945,
+   "pcm_sha256": "e18c1f3819bfa656344c6d8835c9d03c902b13d9adf6b885afc1efd9ef39c5ba",
+   "rendered_ticks": 945,
+   "scene_end_updates": 738,
+   "seconds": 15.75,
+   "wait_updates": 30
+  },
+  "skip_at_update_300": {
+   "cadence_ticks_per_update": 1.0,
+   "fade_ticks": 23,
+   "fade_written_before_tick": 331,
+   "music_inactive_at_tick": 353,
+   "pcm_sha256": "f49d6a0e911e76540984475102d6469b02a6a3d1bcdddb724faa4d221848fefd",
+   "rendered_ticks": 353,
+   "scene_end_updates": 300,
+   "seconds": 5.883,
+   "wait_updates": 30
+  }
+ },
+ "per_sample": {
+  "81_thz": {
+   "agreement": {
+    "rms_vs_reference": {
+     "gme_default": 0.784,
+     "gme_flat": 0.811,
+     "libvgm_mame": 0.998,
+     "libvgm_maxim": 0.972,
+     "reference": 1.0
+    },
+    "tick_rms_correlation": {
+     "gme_flat~gme_default": 0.9996,
+     "libvgm_mame~gme_default": 0.9787,
+     "libvgm_mame~gme_flat": 0.9806,
+     "libvgm_mame~libvgm_maxim": 0.9594,
+     "libvgm_maxim~gme_default": 0.9654,
+     "libvgm_maxim~gme_flat": 0.9642,
+     "reference~gme_default": 0.9781,
+     "reference~gme_flat": 0.9801,
+     "reference~libvgm_mame": 0.9975,
+     "reference~libvgm_maxim": 0.96
+    },
+    "waveform_correlation_with_reference": {
+     "gme_default": 0.0397,
+     "gme_flat": -0.0122,
+     "libvgm_mame": 0.825,
+     "libvgm_maxim": -0.5319
+    }
+   },
+   "gme_default": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 852,
+      "first_mismatch_ticks": [
+       49,
+       85,
+       817,
+       853
+      ],
+      "measured_audible_ticks": 856,
+      "mismatched_ticks": 4
+     },
+     "voice1": {
+      "expected_audible_ticks": 783,
+      "first_mismatch_ticks": [
+       49,
+       85,
+       108,
+       168,
+       192
+      ],
+      "measured_audible_ticks": 837,
+      "mismatched_ticks": 54
+     },
+     "voice2": {
+      "expected_audible_ticks": 800,
+      "first_mismatch_ticks": [
+       49,
+       85,
+       428,
+       530,
+       722
+      ],
+      "measured_audible_ticks": 810,
+      "mismatched_ticks": 10
+     },
+     "voice3": {
+      "expected_audible_ticks": 677,
+      "first_mismatch_ticks": [
+       88,
+       90,
+       94,
+       96,
+       136
+      ],
+      "measured_audible_ticks": 736,
+      "mismatched_ticks": 59
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 0.627,
+     "median_abs_cents": 0.099,
+     "p95_abs_cents": 0.309,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 47
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 138
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 177
+      }
+     },
+     "windows": 362,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -1.6e-05,
+     "frames": 661500,
+     "headroom_db": 3.69,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 21432,
+     "rms": 0.15519,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 3
+   },
+   "gme_flat": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 852,
+      "first_mismatch_ticks": [
+       49,
+       85,
+       817,
+       853
+      ],
+      "measured_audible_ticks": 856,
+      "mismatched_ticks": 4
+     },
+     "voice1": {
+      "expected_audible_ticks": 783,
+      "first_mismatch_ticks": [
+       49,
+       85,
+       180,
+       192,
+       204
+      ],
+      "measured_audible_ticks": 837,
+      "mismatched_ticks": 54
+     },
+     "voice2": {
+      "expected_audible_ticks": 800,
+      "first_mismatch_ticks": [
+       49,
+       85,
+       428,
+       530,
+       722
+      ],
+      "measured_audible_ticks": 810,
+      "mismatched_ticks": 10
+     },
+     "voice3": {
+      "expected_audible_ticks": 677,
+      "first_mismatch_ticks": [
+       88,
+       90,
+       94,
+       96,
+       129
+      ],
+      "measured_audible_ticks": 737,
+      "mismatched_ticks": 60
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 0.943,
+     "median_abs_cents": 0.219,
+     "p95_abs_cents": 0.473,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 47
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 138
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 177
+      }
+     },
+     "windows": 362,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": 6.3e-05,
+     "frames": 661500,
+     "headroom_db": 5.11,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 18195,
+     "rms": 0.16059,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 9
+   },
+   "libvgm_mame": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 852,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 852,
+      "mismatched_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 783,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 783,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 800,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 800,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 677,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 677,
+      "mismatched_ticks": 0
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 1.287,
+     "median_abs_cents": 0.279,
+     "p95_abs_cents": 1.202,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 47
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 138
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 177
+      }
+     },
+     "windows": 362,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.013177,
+     "frames": 661500,
+     "headroom_db": 3.9,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 20920,
+     "rms": 0.19768,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 5
+   },
+   "libvgm_maxim": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 852,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 852,
+      "mismatched_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 783,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 783,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 800,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 800,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 677,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 677,
+      "mismatched_ticks": 0
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 5.984,
+     "median_abs_cents": 0.245,
+     "p95_abs_cents": 1.082,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 47
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 138
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 177
+      }
+     },
+     "windows": 362,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.006545,
+     "frames": 661500,
+     "headroom_db": 5.03,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 18366,
+     "rms": 0.19249,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   }
+  },
+  "82_title": {
+   "agreement": {
+    "rms_vs_reference": {
+     "gme_default": 0.782,
+     "gme_flat": 0.814,
+     "libvgm_mame": 1.009,
+     "libvgm_maxim": 0.949,
+     "reference": 1.0
+    },
+    "tick_rms_correlation": {
+     "gme_flat~gme_default": 0.9995,
+     "libvgm_mame~gme_default": 0.9845,
+     "libvgm_mame~gme_flat": 0.9851,
+     "libvgm_mame~libvgm_maxim": 0.9492,
+     "libvgm_maxim~gme_default": 0.958,
+     "libvgm_maxim~gme_flat": 0.9573,
+     "reference~gme_default": 0.9631,
+     "reference~gme_flat": 0.9653,
+     "reference~libvgm_mame": 0.9756,
+     "reference~libvgm_maxim": 0.9719
+    },
+    "waveform_correlation_with_reference": {
+     "gme_default": 0.072,
+     "gme_flat": 0.036,
+     "libvgm_mame": 0.7795,
+     "libvgm_maxim": -0.8364
+    }
+   },
+   "gme_default": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 890,
+      "first_mismatch_ticks": [
+       112,
+       314,
+       342,
+       544,
+       573
+      ],
+      "measured_audible_ticks": 898,
+      "mismatched_ticks": 8
+     },
+     "voice1": {
+      "expected_audible_ticks": 813,
+      "first_mismatch_ticks": [
+       116,
+       332,
+       360,
+       512,
+       562
+      ],
+      "measured_audible_ticks": 822,
+      "mismatched_ticks": 9
+     },
+     "voice2": {
+      "expected_audible_ticks": 900,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 900,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 712,
+      "first_mismatch_ticks": [
+       21,
+       44,
+       57,
+       71,
+       82
+      ],
+      "measured_audible_ticks": 787,
+      "mismatched_ticks": 75
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 0.717,
+     "median_abs_cents": 0.29,
+     "p95_abs_cents": 0.568,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 54
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 10
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 64,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -1.5e-05,
+     "frames": 661500,
+     "headroom_db": 5.2,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 18016,
+     "rms": 0.12616,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 3
+   },
+   "gme_flat": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 890,
+      "first_mismatch_ticks": [
+       112,
+       314,
+       342,
+       544,
+       573
+      ],
+      "measured_audible_ticks": 898,
+      "mismatched_ticks": 8
+     },
+     "voice1": {
+      "expected_audible_ticks": 813,
+      "first_mismatch_ticks": [
+       116,
+       332,
+       360,
+       512,
+       562
+      ],
+      "measured_audible_ticks": 822,
+      "mismatched_ticks": 9
+     },
+     "voice2": {
+      "expected_audible_ticks": 900,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 900,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 712,
+      "first_mismatch_ticks": [
+       21,
+       44,
+       57,
+       71,
+       82
+      ],
+      "measured_audible_ticks": 787,
+      "mismatched_ticks": 75
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 1.283,
+     "median_abs_cents": 0.344,
+     "p95_abs_cents": 1.17,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 54
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 10
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 64,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": 0.000143,
+     "frames": 661500,
+     "headroom_db": 6.02,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 16382,
+     "rms": 0.13136,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 3
+   },
+   "libvgm_mame": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 890,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 890,
+      "mismatched_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 813,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 813,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 900,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 900,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 712,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 712,
+      "mismatched_ticks": 0
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 1.717,
+     "median_abs_cents": 0.132,
+     "p95_abs_cents": 1.557,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 54
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 10
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 64,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.011449,
+     "frames": 661500,
+     "headroom_db": 4.96,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 18514,
+     "rms": 0.16284,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 5
+   },
+   "libvgm_maxim": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 890,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 890,
+      "mismatched_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 813,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 813,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 900,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 900,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 712,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 712,
+      "mismatched_ticks": 0
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 1.498,
+     "median_abs_cents": 0.106,
+     "p95_abs_cents": 1.364,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 54
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 10
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 64,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.005816,
+     "frames": 661500,
+     "headroom_db": 6.25,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 15964,
+     "rms": 0.1531,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   }
+  },
+  "90_opening": {
+   "agreement": {
+    "rms_vs_reference": {
+     "gme_default": 0.787,
+     "gme_flat": 0.814,
+     "libvgm_mame": 1.003,
+     "libvgm_maxim": 0.977,
+     "reference": 1.0
+    },
+    "tick_rms_correlation": {
+     "gme_flat~gme_default": 0.9993,
+     "libvgm_mame~gme_default": 0.9783,
+     "libvgm_mame~gme_flat": 0.9794,
+     "libvgm_mame~libvgm_maxim": 0.9769,
+     "libvgm_maxim~gme_default": 0.969,
+     "libvgm_maxim~gme_flat": 0.9688,
+     "reference~gme_default": 0.7105,
+     "reference~gme_flat": 0.7252,
+     "reference~libvgm_mame": 0.7349,
+     "reference~libvgm_maxim": 0.6949
+    },
+    "waveform_correlation_with_reference": {
+     "gme_default": -0.1923,
+     "gme_flat": -0.2209,
+     "libvgm_mame": 0.5493,
+     "libvgm_maxim": -0.5258
+    }
+   },
+   "gme_default": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 894,
+      "first_mismatch_ticks": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "measured_audible_ticks": 900,
+      "mismatched_ticks": 6
+     },
+     "voice1": {
+      "expected_audible_ticks": 897,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 897,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 884,
+      "first_mismatch_ticks": [
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "measured_audible_ticks": 891,
+      "mismatched_ticks": 23
+     },
+     "voice3": {
+      "expected_audible_ticks": 570,
+      "first_mismatch_ticks": [
+       184,
+       185,
+       186,
+       187,
+       188
+      ],
+      "measured_audible_ticks": 587,
+      "mismatched_ticks": 253
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 997.994,
+     "median_abs_cents": 0.338,
+     "p95_abs_cents": 299.83,
+     "per_channel": {
+      "0": {
+       "first_off_tick": 813,
+       "off": 14,
+       "windows": 15
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 140
+      },
+      "2": {
+       "first_off_tick": 14,
+       "off": 59,
+       "windows": 127
+      }
+     },
+     "windows": 282,
+     "windows_off_by_more_than_25_cents": 73
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -1.4e-05,
+     "frames": 661500,
+     "headroom_db": 4.0,
+     "leading_silent_frames": 4,
+     "non_silent": true,
+     "peak": 20668,
+     "rms": 0.16379,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 22414
+   },
+   "gme_flat": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 894,
+      "first_mismatch_ticks": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "measured_audible_ticks": 900,
+      "mismatched_ticks": 6
+     },
+     "voice1": {
+      "expected_audible_ticks": 897,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 897,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 884,
+      "first_mismatch_ticks": [
+       2,
+       3,
+       4,
+       5,
+       6
+      ],
+      "measured_audible_ticks": 891,
+      "mismatched_ticks": 23
+     },
+     "voice3": {
+      "expected_audible_ticks": 570,
+      "first_mismatch_ticks": [
+       184,
+       185,
+       186,
+       187,
+       188
+      ],
+      "measured_audible_ticks": 587,
+      "mismatched_ticks": 253
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 998.161,
+     "median_abs_cents": 0.517,
+     "p95_abs_cents": 299.57,
+     "per_channel": {
+      "0": {
+       "first_off_tick": 813,
+       "off": 14,
+       "windows": 15
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 140
+      },
+      "2": {
+       "first_off_tick": 14,
+       "off": 59,
+       "windows": 127
+      }
+     },
+     "windows": 282,
+     "windows_off_by_more_than_25_cents": 73
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": 0.000128,
+     "frames": 661500,
+     "headroom_db": 4.71,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 19042,
+     "rms": 0.16958,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 22096
+   },
+   "libvgm_mame": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 894,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 894,
+      "mismatched_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 897,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 897,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 884,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 884,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 570,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 570,
+      "mismatched_ticks": 0
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 1.804,
+     "median_abs_cents": 0.51,
+     "p95_abs_cents": 1.37,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 15
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 140
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 128
+      }
+     },
+     "windows": 283,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.010755,
+     "frames": 661500,
+     "headroom_db": 3.47,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 21986,
+     "rms": 0.20885,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 5
+   },
+   "libvgm_maxim": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 894,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 894,
+      "mismatched_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 897,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 897,
+      "mismatched_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 884,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 884,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 570,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 570,
+      "mismatched_ticks": 0
+     }
+    },
+    "pitch": {
+     "max_abs_cents": 1.635,
+     "median_abs_cents": 0.475,
+     "p95_abs_cents": 1.267,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 15
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 140
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 128
+      }
+     },
+     "windows": 283,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.005089,
+     "frames": 661500,
+     "headroom_db": 4.54,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 19428,
+     "rms": 0.20352,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   }
+  },
+  "A6_spring": {
+   "agreement": {
+    "rms_vs_reference": {
+     "gme_default": 0.809,
+     "gme_flat": 0.828,
+     "libvgm_mame": 0.998,
+     "libvgm_maxim": 0.999,
+     "reference": 1.0
+    },
+    "tick_rms_correlation": {
+     "gme_flat~gme_default": 1.0,
+     "libvgm_mame~gme_default": 0.9998,
+     "libvgm_mame~gme_flat": 0.9998,
+     "libvgm_mame~libvgm_maxim": 1.0,
+     "libvgm_maxim~gme_default": 0.9998,
+     "libvgm_maxim~gme_flat": 0.9998,
+     "reference~gme_default": 0.9998,
+     "reference~gme_flat": 0.9998,
+     "reference~libvgm_mame": 1.0,
+     "reference~libvgm_maxim": 1.0
+    },
+    "waveform_correlation_with_reference": {
+     "gme_default": 0.8044,
+     "gme_flat": 0.7526,
+     "libvgm_mame": 0.9999,
+     "libvgm_maxim": -0.9151
+    }
+   },
+   "gme_default": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 36,
+      "first_mismatch_ticks": [
+       37
+      ],
+      "measured_audible_ticks": 37,
+      "mismatched_ticks": 1
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 36,
+     "channel_active_ticks_driver": 40,
+     "delta_ms": 0.317,
+     "delta_samples": 14,
+     "expected_audible_samples": 26460,
+     "last_sample_above_1pct_peak": 26474,
+     "request_id": "0xA6"
+    },
+    "pitch": {
+     "max_abs_cents": null,
+     "median_abs_cents": null,
+     "p95_abs_cents": null,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 0,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 1.893,
+     "median_abs_cents": 1.342,
+     "p95_abs_cents": 1.878,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 36
+      }
+     },
+     "windows": 36,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -1.5e-05,
+     "frames": 27195,
+     "headroom_db": 10.88,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 9366,
+     "rms": 0.08395,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 304
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   },
+   "gme_flat": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 36,
+      "first_mismatch_ticks": [
+       37
+      ],
+      "measured_audible_ticks": 37,
+      "mismatched_ticks": 1
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 36,
+     "channel_active_ticks_driver": 40,
+     "delta_ms": 0.317,
+     "delta_samples": 14,
+     "expected_audible_samples": 26460,
+     "last_sample_above_1pct_peak": 26474,
+     "request_id": "0xA6"
+    },
+    "pitch": {
+     "max_abs_cents": null,
+     "median_abs_cents": null,
+     "p95_abs_cents": null,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 0,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 1.684,
+     "median_abs_cents": 0.501,
+     "p95_abs_cents": 1.682,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 36
+      }
+     },
+     "windows": 36,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": 1.3e-05,
+     "frames": 27195,
+     "headroom_db": 12.22,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 8029,
+     "rms": 0.08593,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   },
+   "libvgm_mame": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 36,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 36,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 36,
+     "channel_active_ticks_driver": 40,
+     "delta_ms": 0.0,
+     "delta_samples": 0,
+     "expected_audible_samples": 26460,
+     "last_sample_above_1pct_peak": 26460,
+     "request_id": "0xA6"
+    },
+    "pitch": {
+     "max_abs_cents": null,
+     "median_abs_cents": null,
+     "p95_abs_cents": null,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 0,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 2.041,
+     "median_abs_cents": 0.668,
+     "p95_abs_cents": 1.791,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 36
+      }
+     },
+     "windows": 36,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": 0.000313,
+     "frames": 27195,
+     "headroom_db": 12.04,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 8192,
+     "rms": 0.10357,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 735
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   },
+   "libvgm_maxim": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 36,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 36,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 36,
+     "channel_active_ticks_driver": 40,
+     "delta_ms": 0.0,
+     "delta_samples": 0,
+     "expected_audible_samples": 26460,
+     "last_sample_above_1pct_peak": 26460,
+     "request_id": "0xA6"
+    },
+    "pitch": {
+     "max_abs_cents": null,
+     "median_abs_cents": null,
+     "p95_abs_cents": null,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      }
+     },
+     "windows": 0,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 5.505,
+     "median_abs_cents": 0.693,
+     "p95_abs_cents": 1.827,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 36
+      }
+     },
+     "windows": 36,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.000309,
+     "frames": 27195,
+     "headroom_db": 12.04,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 8192,
+     "rms": 0.10363,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 735
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   }
+  },
+  "BF_ring": {
+   "agreement": {
+    "rms_vs_reference": {
+     "gme_default": 0.776,
+     "gme_flat": 0.83,
+     "libvgm_mame": 0.998,
+     "libvgm_maxim": 0.997,
+     "reference": 1.0
+    },
+    "tick_rms_correlation": {
+     "gme_flat~gme_default": 0.9994,
+     "libvgm_mame~gme_default": 0.9981,
+     "libvgm_mame~gme_flat": 0.9989,
+     "libvgm_mame~libvgm_maxim": 1.0,
+     "libvgm_maxim~gme_default": 0.998,
+     "libvgm_maxim~gme_flat": 0.9988,
+     "reference~gme_default": 0.998,
+     "reference~gme_flat": 0.9988,
+     "reference~libvgm_mame": 1.0,
+     "reference~libvgm_maxim": 1.0
+    },
+    "waveform_correlation_with_reference": {
+     "gme_default": -0.4307,
+     "gme_flat": -0.4417,
+     "libvgm_mame": 0.9994,
+     "libvgm_maxim": -0.8843
+    }
+   },
+   "gme_default": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 20,
+      "first_mismatch_ticks": [
+       21
+      ],
+      "measured_audible_ticks": 21,
+      "mismatched_ticks": 1
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 20,
+     "channel_active_ticks_driver": 20,
+     "delta_ms": 0.68,
+     "delta_samples": 30,
+     "expected_audible_samples": 14700,
+     "last_sample_above_1pct_peak": 14730,
+     "request_id": "0xBF"
+    },
+    "pitch": {
+     "max_abs_cents": 0.112,
+     "median_abs_cents": 0.1,
+     "p95_abs_cents": 0.111,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 2
+      }
+     },
+     "windows": 2,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 1.682,
+     "median_abs_cents": 0.328,
+     "p95_abs_cents": 1.623,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 14
+      }
+     },
+     "windows": 14,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -1.5e-05,
+     "frames": 15435,
+     "headroom_db": 13.2,
+     "leading_silent_frames": 4,
+     "non_silent": true,
+     "peak": 7167,
+     "rms": 0.11874,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 250
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   },
+   "gme_flat": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 20,
+      "first_mismatch_ticks": [
+       21
+      ],
+      "measured_audible_ticks": 21,
+      "mismatched_ticks": 1
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 20,
+     "channel_active_ticks_driver": 20,
+     "delta_ms": 0.272,
+     "delta_samples": 12,
+     "expected_audible_samples": 14700,
+     "last_sample_above_1pct_peak": 14712,
+     "request_id": "0xBF"
+    },
+    "pitch": {
+     "max_abs_cents": 0.035,
+     "median_abs_cents": 0.03,
+     "p95_abs_cents": 0.035,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 2
+      }
+     },
+     "windows": 2,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 1.864,
+     "median_abs_cents": 0.899,
+     "p95_abs_cents": 1.851,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 14
+      }
+     },
+     "windows": 14,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": 3.8e-05,
+     "frames": 15435,
+     "headroom_db": 12.25,
+     "leading_silent_frames": 3,
+     "non_silent": true,
+     "peak": 7998,
+     "rms": 0.12701,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 0
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   },
+   "libvgm_mame": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 20,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 20,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 20,
+     "channel_active_ticks_driver": 20,
+     "delta_ms": 0.023,
+     "delta_samples": 1,
+     "expected_audible_samples": 14700,
+     "last_sample_above_1pct_peak": 14701,
+     "request_id": "0xBF"
+    },
+    "pitch": {
+     "max_abs_cents": 0.9,
+     "median_abs_cents": 0.858,
+     "p95_abs_cents": 0.896,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 2
+      }
+     },
+     "windows": 2,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 3.49,
+     "median_abs_cents": 1.464,
+     "p95_abs_cents": 3.398,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 14
+      }
+     },
+     "windows": 14,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": 0.00019,
+     "frames": 15435,
+     "headroom_db": 12.04,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 8192,
+     "rms": 0.1526,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 734
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   },
+   "libvgm_maxim": {
+    "durations": {
+     "voice0": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice1": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     },
+     "voice2": {
+      "expected_audible_ticks": 20,
+      "first_mismatch_ticks": [],
+      "measured_audible_ticks": 20,
+      "mismatched_ticks": 0
+     },
+     "voice3": {
+      "expected_audible_ticks": 0,
+      "measured_audible_ticks": 0
+     }
+    },
+    "length": {
+     "audible_ticks_from_registers": 20,
+     "channel_active_ticks_driver": 20,
+     "delta_ms": 0.0,
+     "delta_samples": 0,
+     "expected_audible_samples": 14700,
+     "last_sample_above_1pct_peak": 14700,
+     "request_id": "0xBF"
+    },
+    "pitch": {
+     "max_abs_cents": 0.789,
+     "median_abs_cents": 0.754,
+     "p95_abs_cents": 0.786,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 2
+      }
+     },
+     "windows": 2,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "pitch_tick_level": {
+     "max_abs_cents": 3.182,
+     "median_abs_cents": 1.241,
+     "p95_abs_cents": 3.166,
+     "per_channel": {
+      "0": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "1": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 0
+      },
+      "2": {
+       "first_off_tick": null,
+       "off": 0,
+       "windows": 14
+      }
+     },
+     "windows": 14,
+     "windows_off_by_more_than_25_cents": 0
+    },
+    "sanity": {
+     "clipped_frames": 0,
+     "dc_offset": -0.000187,
+     "frames": 15435,
+     "headroom_db": 12.04,
+     "leading_silent_frames": 0,
+     "non_silent": true,
+     "peak": 8192,
+     "rms": 0.15243,
+     "stereo_channels_identical": true,
+     "trailing_silent_frames": 735
+    },
+    "stems_sum_vs_mix_max_abs_diff": 0
+   }
+  }
+ },
+ "primary_renderer": "libvgm_mame",
+ "psg_clock_hz": 3546893,
+ "renderers": [
+  "libvgm_mame",
+  "libvgm_maxim",
+  "gme_flat",
+  "gme_default"
+ ],
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "sample_rate": 44100,
+ "samples_per_tick": 735,
+ "steal_audio": [
+  {
+   "music": "0x81",
+   "other_channels_max_abs_diff_lsb": 0.0,
+   "request_tick": 200,
+   "sfx": "0xBF",
+   "sfx_active_ticks": 20,
+   "tone2_envelope_correlation_gate": 1.0,
+   "tone2_envelope_correlation_naive_mix": 0.9983,
+   "tone2_envelope_max_err_gate_pct_of_peak": 0.16,
+   "tone2_envelope_max_err_naive_pct_of_peak": 7.93,
+   "tone2_pitch_agreement_gate": 1.0,
+   "tone2_pitch_agreement_naive_mix": 0.212,
+   "tone2_resume_tick": 229,
+   "tone2_silenced_ticks": 29,
+   "tone2_ticks_after_resume_envelope_correlation": 1.0
+  },
+  {
+   "music": "0x81",
+   "other_channels_max_abs_diff_lsb": 0.0,
+   "request_tick": 331,
+   "sfx": "0xBF",
+   "sfx_active_ticks": 20,
+   "tone2_envelope_correlation_gate": 1.0,
+   "tone2_envelope_correlation_naive_mix": 0.9407,
+   "tone2_envelope_max_err_gate_pct_of_peak": 0.06,
+   "tone2_envelope_max_err_naive_pct_of_peak": 31.87,
+   "tone2_pitch_agreement_gate": 0.885,
+   "tone2_pitch_agreement_naive_mix": 0.692,
+   "tone2_resume_tick": 353,
+   "tone2_silenced_ticks": 22,
+   "tone2_ticks_after_resume_envelope_correlation": 1.0
+  },
+  {
+   "music": "0x81",
+   "other_channels_max_abs_diff_lsb": 0.0,
+   "request_tick": 702,
+   "sfx": "0xBF",
+   "sfx_active_ticks": 20,
+   "tone2_envelope_correlation_gate": 1.0,
+   "tone2_envelope_correlation_naive_mix": 1.0,
+   "tone2_envelope_max_err_gate_pct_of_peak": 0.08,
+   "tone2_envelope_max_err_naive_pct_of_peak": 1.52,
+   "tone2_pitch_agreement_gate": 0.914,
+   "tone2_pitch_agreement_naive_mix": 0.743,
+   "tone2_resume_tick": 733,
+   "tone2_silenced_ticks": 31,
+   "tone2_ticks_after_resume_envelope_correlation": 1.0
+  },
+  {
+   "music": "0x81",
+   "other_channels_max_abs_diff_lsb": 0.0,
+   "request_tick": 200,
+   "sfx": "0xA6",
+   "sfx_active_ticks": 40,
+   "tone2_envelope_correlation_gate": 1.0,
+   "tone2_envelope_correlation_naive_mix": 0.9484,
+   "tone2_envelope_max_err_gate_pct_of_peak": 0.15,
+   "tone2_envelope_max_err_naive_pct_of_peak": 34.96,
+   "tone2_pitch_agreement_gate": 0.947,
+   "tone2_pitch_agreement_naive_mix": 0.456,
+   "tone2_resume_tick": 253,
+   "tone2_silenced_ticks": 53,
+   "tone2_ticks_after_resume_envelope_correlation": 1.0
+  },
+  {
+   "music": "0x81",
+   "other_channels_max_abs_diff_lsb": 0.0,
+   "request_tick": 331,
+   "sfx": "0xA6",
+   "sfx_active_ticks": 40,
+   "tone2_envelope_correlation_gate": 1.0,
+   "tone2_envelope_correlation_naive_mix": 0.8749,
+   "tone2_envelope_max_err_gate_pct_of_peak": 0.38,
+   "tone2_envelope_max_err_naive_pct_of_peak": 39.58,
+   "tone2_pitch_agreement_gate": 0.913,
+   "tone2_pitch_agreement_naive_mix": 0.435,
+   "tone2_resume_tick": 373,
+   "tone2_silenced_ticks": 42,
+   "tone2_ticks_after_resume_envelope_correlation": 1.0
+  },
+  {
+   "music": "0x81",
+   "other_channels_max_abs_diff_lsb": 0.0,
+   "request_tick": 702,
+   "sfx": "0xA6",
+   "sfx_active_ticks": 40,
+   "tone2_envelope_correlation_gate": 1.0,
+   "tone2_envelope_correlation_naive_mix": 0.8672,
+   "tone2_envelope_max_err_gate_pct_of_peak": 0.17,
+   "tone2_envelope_max_err_naive_pct_of_peak": 39.64,
+   "tone2_pitch_agreement_gate": 0.957,
+   "tone2_pitch_agreement_naive_mix": 0.66,
+   "tone2_resume_tick": 745,
+   "tone2_silenced_ticks": 43,
+   "tone2_ticks_after_resume_envelope_correlation": 1.0
+  }
+ ],
+ "steal_driver_rule": {
+  "81/A6": {
+   "matches": 24,
+   "max_silent_ticks_after_sfx": 21,
+   "mismatches": [],
+   "music": "0x81",
+   "phases": 24,
+   "sfx": "0xA6",
+   "sfx_channel_active_ticks": 40
+  },
+  "81/BF": {
+   "matches": 24,
+   "max_silent_ticks_after_sfx": 18,
+   "mismatches": [],
+   "music": "0x81",
+   "phases": 24,
+   "sfx": "0xBF",
+   "sfx_channel_active_ticks": 20
+  },
+  "82/A6": {
+   "matches": 24,
+   "max_silent_ticks_after_sfx": 14,
+   "mismatches": [],
+   "music": "0x82",
+   "phases": 24,
+   "sfx": "0xA6",
+   "sfx_channel_active_ticks": 40
+  },
+  "82/BF": {
+   "matches": 24,
+   "max_silent_ticks_after_sfx": 13,
+   "mismatches": [],
+   "music": "0x82",
+   "phases": 24,
+   "sfx": "0xBF",
+   "sfx_channel_active_ticks": 20
+  },
+  "90/BF": {
+   "matches": 24,
+   "max_silent_ticks_after_sfx": 12,
+   "mismatches": [],
+   "music": "0x90",
+   "phases": 24,
+   "sfx": "0xBF",
+   "sfx_channel_active_ticks": 20
+  }
+ },
+ "ticks_per_second": 60
+}
