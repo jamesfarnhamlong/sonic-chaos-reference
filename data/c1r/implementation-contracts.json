@@ -1,0 +1,354 @@
+{
+ "format": "c1r-implementation-contracts/1",
+ "package": "C1-I",
+ "status": "PROPOSED - not authorised",
+ "poc_parent": "ac021e1ef2665c8668de13959f5ccc4653f312d1",
+ "research_base": "b6467ba0ad79fad0937f750083a5261e7ea64e8f",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "decisions_required_before_dispatch": [
+  {
+   "id": "D1",
+   "question": "How should the original X leads (104 facing right / 136 facing left, authored for a 256 px window) be mapped onto the 348 px view?",
+   "options": [
+    {
+     "id": "D1-A",
+     "name": "CENTER-relative",
+     "rule": "target screen X = viewW/2 - 24 (right-facing) or viewW/2 + 8 (left-facing); zone +/-8",
+     "effect": "keeps the original offset from the view centre: 150/182 at 348 px; visible space ahead grows by 46 px in both directions"
+    },
+    {
+     "id": "D1-B",
+     "name": "EDGE-relative",
+     "rule": "target screen X = 104 / 136 from the left edge",
+     "effect": "all extra width appears to the right: look-ahead right-facing 244 px, left-facing 212 px behind"
+    },
+    {
+     "id": "D1-C",
+     "name": "keep GameMaker native horizontal follow",
+     "rule": "no change",
+     "effect": "retains the current lack of facing lead; only vertical changes"
+    }
+   ],
+   "recommendation": "D1-A: it reuses the existing CENTER(n) category of the accepted viewport adapter and treats the change as a documented adapter. ROM does not say which was intended (docs/viewport-semantics-audit.md: unresolved)."
+  },
+  {
+   "id": "D2",
+   "question": "Should the GM view top be the canonical camera (status quo) or canonical camera + 17 (the ROM's R9 bias)?",
+   "options": [
+    {
+     "id": "D2-A",
+     "name": "status quo",
+     "rule": "view top = canonical camera; follow model runs in canonical camera space",
+     "effect": "Sonic's foot sits at screen line 80+17..112+17 = 97..129 instead of 80..112 (17 px low); minimal blast radius"
+    },
+    {
+     "id": "D2-B",
+     "name": "view = canonical + 17",
+     "rule": "all canonical consumers read camera = view - 17",
+     "effect": "exact framing; touches 79 view-Y reads in 64 files and 55 chaos_vp_current() calls"
+    }
+   ],
+   "recommendation": "D2-A for C1-I; revisit B only as a separate, fully regression-tested package."
+  },
+  {
+   "id": "D3",
+   "question": "View height 196 vs 192",
+   "options": [
+    {
+     "id": "D3-A",
+     "name": "extra 4 rows at the bottom",
+     "rule": "zone is measured from the view top; 'vertical is not widened'",
+     "effect": "ROM zone numbers unchanged"
+    }
+   ],
+   "recommendation": "D3-A (only one option compatible with the existing viewport policy)."
+  },
+  {
+   "id": "D4",
+   "question": "Mapped-object X policy (+1 px terrain-space bias): sign only, class-wide, or none?",
+   "options": [
+    {
+     "id": "D4-A",
+     "name": "leave 0 (accepted)",
+     "rule": "no change",
+     "effect": "sign X stays as accepted"
+    },
+    {
+     "id": "D4-B",
+     "name": "class-wide +1 with a Windows comparison round",
+     "rule": "TYPE*_RENDER_X = 1 for types 10/18/21/27",
+     "effect": "possible 1 px right shift of all mapped objects"
+    }
+   ],
+   "recommendation": "D4-A for C1-I; raise B as a separate cross-class question."
+  }
+ ],
+ "items": [
+  {
+   "id": "I1",
+   "title": "ROM follow camera (X and Y) replacing GameMaker's native follow in ordinary acts",
+   "size": "moderate (one new script, one Step_2 branch; no collision or movement change)",
+   "rom_requirement": [
+    "tools/c1r_camera_model.py is the executable contract: leads (X `$68/$88`, Y `$60`) slew 1 px/update, zones +/-8 (X) and +/-16 (Y), step cap 7, low-byte compare, dropped crossing steps at limits (left/top inclusive, right/bottom exclusive), pan mode skips everything.",
+    "Initial Y lead `$78` at level load, X lead initial `$78`."
+   ],
+   "rom_evidence": [
+    "B-06",
+    "B-07",
+    "B-09",
+    "B-10",
+    "data/c1r/camera-look-trace.json"
+   ],
+   "poc_integration_points": [
+    "objects/OBJ_chaos_zone/Step_2.gml:13-20 (replace the rigid End Step lock and the GM object follow)",
+    "scripts/SCR_player_view/SCR_player_view.gml (switch the view object off for ordinary acts)",
+    "OBJ_chaos_zone/Create_0.gml:84-101 (seed leads at level start)",
+    "existing *_owns_camera guards in Step_2.gml:13 stay"
+   ],
+   "modification_scope": "1 new script (chaos_camera_follow), edits to 3 existing files; MGHZ/AQZ/EEZ special cases (VSpeed=0, +/-7 cap) become redundant for THZ/GPZ/SEZ/MGHZ and are replaced by the same model; special stages untouched.",
+   "fixtures": [
+    "data/c1r/camera-look-trace.json: replay each scenario's player X/Y/facing/lead-target series through the GML port; per-update camera X/Y and both leads must equal the recorded work_x/work_y/lead_x/lead_y exactly (3,557 updates).",
+    "tools/c1r_camera_model.py is the reference implementation (Python)."
+   ],
+   "acceptance": [
+    "Fixture replay: 0 mismatches",
+    "Windows: standing on flat ground then falling/rising: Sonic rests at the original screen offsets; turning shows the 32-update lead slew; boss arenas, sign pan and special stages unchanged"
+   ],
+   "risks": [
+    "Camera-dependent systems (lifecycle bands, instance_activate_region, death line `playerY-camY >= $D0`, MGHZ oil plunge, AQZ/EEZ scroll) all read the view; the model must keep view top = canonical camera (decision D2-A)",
+    "fast falls: step cap 7 lets Sonic outrun the camera (original behaviour; MGHZ already does this)"
+   ],
+   "dependencies": [
+    "D1",
+    "D2",
+    "D3"
+   ],
+   "blockers": [],
+   "regression_identities": [
+    "sign pan (B-11)",
+    "boss owners (B-12)",
+    "viewport lifecycle verifiers",
+    "EEZ/AQZ scroll"
+   ]
+  },
+  {
+   "id": "I2",
+   "title": "Look-up / look-down camera lead hooks",
+   "size": "routine",
+   "rom_requirement": [
+    "Y lead target `D289` is a persistent value: `$B8` in state 3 and `$30` in state 4 only when the support owner is 0; `$60` in states 0,1,5,`$0F`,`$10`,`$15`,`$19`,`$1A`, in the walk request (landing/hurt recovery) and at the jump launch; unchanged in every other state (table B-05)."
+   ],
+   "rom_evidence": [
+    "B-01",
+    "B-02",
+    "B-03",
+    "B-04",
+    "B-05"
+   ],
+   "poc_integration_points": [
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:802-815 (states 1-4 block)",
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:169-190 (SCR_cc_stand/walk/jump)",
+    "core struct: add camera_lead_target (default `$60`, init per level)"
+   ],
+   "modification_scope": "about 25 lines in SCR_chaos_core.gml plus the I1 consumer; no movement change.",
+   "fixtures": [
+    "look_up_hold_release, look_down_hold_release, look_up_then_walk scenarios: lead_target series per update must match (value and update index, after the one-update callback lag)",
+    "release hysteresis: final screen Y 112 after look-up, 80 after look-down"
+   ],
+   "acceptance": [
+    "Fixture lead_target and camera series equal",
+    "Windows: hold Up/Down on flat ground, release, jump from stand, ride a platform (no look)"
+   ],
+   "risks": [
+    "support owner (D3C0) must come from the existing platform carry code; verify on MGHZ `$28` platform"
+   ],
+   "dependencies": [
+    "I1",
+    "A-01",
+    "A-02"
+   ],
+   "blockers": [
+    "platform trace before acceptance (B-03 is BYTE-VERIFIED only)"
+   ]
+  },
+  {
+   "id": "I3",
+   "title": "Peel-Out (states $15/$1A) and removal of the look-up jump",
+   "size": "moderate (new core states, no collision change)",
+   "rom_requirement": [
+    "State 3 + fresh button (Sonic only) -> `$46CE`: vx 0, request 21 (`$15`), sound request `$AC`, no jump.",
+    "State 21: lead `$60`, terrain pass, side push-out +/-4, `$48BC`, screen clamp, `$AC` re-request on fresh button, release when Up is not held -> `$46E2`.",
+    "`$46E2`: max X speed `$0700`, vx = +/-`$0700` (facing bit), request 26 (`$1A`), sound request `$BE`, invulnerable (`D503` bit 7) for 12 updates.",
+    "State 26: lead `$60`, shared movement, `$4281`, side contact clears bits 1 and 7 and walks, floor block `$19` -> run, else walk/run exits (`$37F4`)."
+   ],
+   "rom_evidence": [
+    "A-03",
+    "A-04",
+    "A-05",
+    "data/c1r/camera-look-trace.json peel_out_ordinary / peel_out_hold_right"
+   ],
+   "poc_integration_points": [
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:554 (SCR_cc_shared jump)",
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:761-835 (SCR_cc_tick)",
+    "scripts/SCR_chaos_visual_p1/SCR_chaos_visual_p1.gml (presentation of 21/26 already owned)",
+    "attack-posture code must leave bit 1 untouched"
+   ],
+   "modification_scope": "about 60 lines in SCR_chaos_core.gml (two states, one interception); presentation already exists; sound ids as requests only.",
+   "fixtures": [
+    "peel_out_ordinary: states 21 from update 22, 26 from update 85, vx 1792 at the release update, friction series, D503 bit 7 for 12 updates",
+    "peel_out_hold_right: vx constant 1792 until the ramp at x about 393 (state 27 launch)"
+   ],
+   "acceptance": [
+    "Fixture series equal (state, vx, move byte) on the same terrain",
+    "Windows: Up + jump never jumps; charge, release with Up, run, wall hit, loop entry from 26 (observe only)"
+   ],
+   "risks": [
+    "state 26 can reach loops/ramps/springs: only the shared handlers are used, but a Windows pass must try them",
+    "invulnerability must not enable contact kills (bit 7 only; attack bit untouched)"
+   ],
+   "dependencies": [
+    "I2 (lead rewrite in 21/26)"
+   ],
+   "blockers": [],
+   "excluded": [
+    "long-hold aura (A-06)",
+    "Tails state 24 flight"
+   ]
+  },
+  {
+   "id": "I4",
+   "title": "Idle wait (state 2) timer and presentation",
+   "size": "routine",
+   "rom_requirement": [
+    "180 updates in state 0/1 (record `0B x180`) then request state 2; state 2 script `0C x64; 20 x (0D x16, 0E x16); 0F x64; 10 x16; 11 x16; 12 x16; jump $80B3`; exits per `$36F0` (A-10)."
+   ],
+   "rom_evidence": [
+    "A-08",
+    "A-09",
+    "A-10",
+    "data/c1r/camera-look-trace.json idle_wait (180 rows in state 1)"
+   ],
+   "poc_integration_points": [
+    "scripts/SCR_chaos_visual_p1 (add state 2 program, own-state list)",
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:761 (request on timeout; the core state may stay 1 if the Designer keeps ring-probe parity from the presentation counter)",
+    "new sprites SPR_chaos_player_frame_0C..12"
+   ],
+   "modification_scope": "7 sprite resources + about 30 lines; ring-probe parity unaffected (all state-2 record durations are even).",
+   "fixtures": [
+    "idle_wait trace: first state-2 update after exactly 180 state-1 updates"
+   ],
+   "acceptance": [
+    "Windows: 3 s idle -> look-around cycle; any input exits; jump works from state 2"
+   ],
+   "risks": [
+    "the shadow animation counter used by the terrain-ring probe (docs/player-animation-counter.md) must keep following the executing state's record durations"
+   ],
+   "dependencies": [],
+   "blockers": [
+    "frames $0C-$12 must be imported from the ROM tile tables (A-09)"
+   ]
+  },
+  {
+   "id": "I6",
+   "title": "Goal-sign resource crop and draw offset",
+   "size": "routine (resource regeneration + one constant)",
+   "rom_requirement": [
+    "Sign frames are 32x48 with 48 opaque rows (face rows 0-31, post 32-47); origin (16,48); derived draw offset +18 for a bottom-origin canvas."
+   ],
+   "rom_evidence": [
+    "C-02",
+    "C-03",
+    "data/c1r/sign-registration.json"
+   ],
+   "poc_integration_points": [
+    "POC_notes/import_sign_prizes.py:51-55 (remove `out.crop((0,4,32,52))` and the margin note)",
+    "POC_notes/import_type18_assets.py (base sprites)",
+    "scripts/SCR_chaos_render_adapter/SCR_chaos_render_adapter.gml:11 (22 -> 18)"
+   ],
+   "modification_scope": "regenerate 12 sprites (6 base x 5 frames + 6 prize sets x 48 frames; two importers); constant 22 -> 18.",
+   "fixtures": [
+    "tools/c1r_sign_registration.py ROM --poc POC: after the change xor_same_position must be 0 for all 5 base frames (and the prize frames against the same composite)"
+   ],
+   "acceptance": [
+    "Alpha mask == ROM composite, rows 0..47",
+    "Windows: sign face top no longer flat; sign sits exactly where it did before on the ground (visible rows 4..47 unchanged)"
+   ],
+   "risks": [
+    "must change the constant and the resources in the same release (either alone shifts the sign 4 px)"
+   ],
+   "dependencies": [],
+   "blockers": [],
+   "decision": "D4 (X policy) is NOT part of I6"
+  }
+ ],
+ "optional_or_blocked": [
+  {
+   "id": "I5",
+   "title": "Ledge-edge pose (state $19)",
+   "status": "BLOCKED on Research R-C1-1",
+   "why": "`D368` semantics and a natural reproduction are not established (A-11)."
+  },
+  {
+   "id": "I7",
+   "title": "Facing bit for airborne states",
+   "status": "OPTIONAL - only if C2 does not take it",
+   "why": "contract exists in docs/player-spring-airborne-state-closure.md section 11 item 4 (D-06)."
+  },
+  {
+   "id": "I8",
+   "title": "Peel-out long-hold aura",
+   "status": "DEFERRED",
+   "why": "A-06; needs a 30 s charge."
+  }
+ ],
+ "excluded_deliberately": [
+  {
+   "id": "X1",
+   "what": "loop-entry rule, Y anchor, low-speed bailout, speed caps (D-01..D-04)",
+   "why": "changes accepted loop mechanics; needs the VISUAL-1 contract merged and a separate differential package"
+  },
+  {
+   "id": "X2",
+   "what": "terrain sticking, slope, spring oscillation (D-05, D-07, D-09)",
+   "why": "track C2; no C1-R evidence of a camera/control cause"
+  },
+  {
+   "id": "X3",
+   "what": "17 px vertical window bias (decision D2-B)",
+   "why": "79 view-Y reads; separate regression package"
+  },
+  {
+   "id": "X4",
+   "what": "mapped-object X +1 px (decision D4)",
+   "why": "cross-class question, not a sign-only fix"
+  },
+  {
+   "id": "X5",
+   "what": "special-stage and boss camera owners",
+   "why": "accepted; inert-guard test only"
+  }
+ ],
+ "release_shape": {
+  "recommended_order": [
+   "I6 (independent, smallest)",
+   "I1 + I2 together (one camera change)",
+   "I3",
+   "I4"
+  ],
+  "single_windows_session": true,
+  "windows_f5_checklist": [
+   "Stand on flat ground 10 s: foot at screen line 112 (follow rest), look-around after 3 s",
+   "Hold Up 3 s then release; hold Down 3 s then release; compare with trace (first move about 33 updates, return delay about 35)",
+   "Walk left/right: lead slews over about 32 updates",
+   "Up+jump -> peel-out charge; release Up -> dash 7 px/update; Right held keeps speed; wall hit stops",
+   "Jump from stand: camera target resets",
+   "MGHZ platform ride: look-up does not move the camera",
+   "Sign pan and results unchanged; sign face top complete; sign still on the ground",
+   "Boss arenas THZ3/GPZ3/SEZ3/MGHZ3/AQZ3/EEZ3 camera unchanged; special stages unchanged"
+  ]
+ },
+ "verification_plan": {
+  "python": "python tools/c1r_camera_model.py is the reference; tests/test_c1r_audit.py (no ROM needed) replays 3,557 updates; Designer ports the replay to a GameMaker/Node verifier like verify_viewport_adapter.js",
+  "cost": "trace regeneration about 30 s, model replay under 1 s, sign tool about 2 s; no full-ROM replay required"
+ }
+}

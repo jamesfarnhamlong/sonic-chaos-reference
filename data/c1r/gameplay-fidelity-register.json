@@ -1,0 +1,1496 @@
+{
+ "format": "c1r-gameplay-fidelity-register/1",
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "poc_commit": "ac021e1ef2665c8668de13959f5ccc4653f312d1",
+ "research_base": "b6467ba0ad79fad0937f750083a5261e7ea64e8f",
+ "legend": {
+  "classification": [
+   "MATCH",
+   "ADAPTER",
+   "MISMATCH",
+   "MISSING",
+   "UNVERIFIED"
+  ],
+  "evidence_classes": [
+   "ROM_SOURCE",
+   "EMULATED",
+   "CONTROLLED",
+   "PRIOR_RESEARCH",
+   "POC_SOURCE",
+   "WINDOWS_ACCEPTANCE"
+  ],
+  "tracks": [
+   "C1-I",
+   "C1-I-optional",
+   "research-first",
+   "separate-research",
+   "resolved",
+   "deferred",
+   "decision"
+  ],
+  "note": "MATCH never means 'no bug observed': match_basis states what supports it. SOURCE_COMPARED rows were not differentially executed in C1-R."
+ },
+ "counts": {
+  "rows": 50,
+  "by_classification": {
+   "MATCH": 12,
+   "ADAPTER": 8,
+   "MISMATCH": 10,
+   "MISSING": 11,
+   "UNVERIFIED": 9
+  },
+  "by_track": {
+   "C1-I": 15,
+   "C1-I-optional": 0,
+   "research-first": 1,
+   "separate-research": 6,
+   "resolved": 16,
+   "deferred": 8,
+   "decision": 4
+  }
+ },
+ "rows": [
+  {
+   "id": "A-01",
+   "subsystem": "player/look-up",
+   "rom_ref": "states 1,2,5.. -> 3: `$36C6/$36F0/$3783` -> `$46B0`; state 3 callback `$3713`; exit `$3753`->`$45B3`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "tools/c1r audit disassembly 36C6-3759 (docs/c1r section 2.1)"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_core/SCR_chaos_core.gml:802-815"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json look_up_hold_release"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Up held while standing (state 0/1/2/19) and no Left/Right and zero X speed requests state 3 (`$46B0`, X speed zeroed, attack bit untouched). Up has priority over Down. State 3 returns to walk if Left/Right, to crouch (4) if Down, to stand (`$45B3`) when Up is released.",
+   "current_poc_behaviour": "SCR_cc_tick states 1-4 block implements the same order: walk on Left/Right, Up -> 3 (vx = 0), Down -> 4 (roll/attack bits cleared), release -> SCR_cc_stand. VISUAL-P1 presents state 3 with ROM frame `$13`.",
+   "classification": "MATCH",
+   "existing_coverage": "VISUAL-P1 presentation accepted on Windows; trace row look_up_hold_release shows ROM states 1->3->1",
+   "user_visible_impact": "none expected",
+   "implementation_risk": "low",
+   "recommended_action": "Keep; add the camera lead hook (B-01) in the same block.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:802-815"
+   ],
+   "related": [],
+   "match_basis": "SOURCE_COMPARED: ROM disassembly read against the POC GML; no differential run in C1-R"
+  },
+  {
+   "id": "A-02",
+   "subsystem": "player/crouch",
+   "rom_ref": "`$46BB`, state 4 callback `$3759`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "46BB-46CD, 3759-3782"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_core/SCR_chaos_core.gml:802-815"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json look_down_hold_release"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Down held while standing requests state 4 (X speed zero, rolling/hurt bits cleared). In state 4 a fresh button press starts spin-dash charge (`$4701`); Up while crouching returns to look-up (`$46B0`); Down released -> stand. Left/Right are not read.",
+   "current_poc_behaviour": "Same transitions (state 4 excluded from the walk test; Up -> 3; Down released -> stand; button press -> state 15 spin-dash charge at SCR_cc_tick:779).",
+   "classification": "MATCH",
+   "existing_coverage": "VISUAL-P1 presentation (frame `$14`) accepted",
+   "user_visible_impact": "none expected",
+   "implementation_risk": "low",
+   "recommended_action": "Keep; add the camera lead hook (B-02).",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:778-782",
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:802-815"
+   ],
+   "related": [],
+   "match_basis": "SOURCE_COMPARED: ROM disassembly read against the POC GML; no differential run in C1-R"
+  },
+  {
+   "id": "A-03",
+   "subsystem": "player/look-up+button",
+   "rom_ref": "state 3 callback `$3713`: `LD A,(IX)` / DEC / `D147 & $30` -> `JP $46CE` (Sonic, type 1)",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "3713-3739"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_core/SCR_chaos_core.gml:554 (SCR_cc_shared)"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json peel_out_ordinary: state 3 -> request $15 on the update the button is pressed"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "In state 3 a NEW button press (`D147 & $30`) is intercepted BEFORE the shared movement `$3FEF`: Sonic starts Peel-Out (state `$15`), no jump. (Tails takes `$473C` instead; not audited.) The ordinary jump request `$45ED` is only reached from `$3FEF`.",
+   "current_poc_behaviour": "SCR_cc_shared performs SCR_cc_jump for ANY state when a button is pressed (SCR_chaos_core.gml:554), so Up + jump from look-up is an ordinary jump. Peel-Out does not exist in the core.",
+   "classification": "MISMATCH",
+   "existing_coverage": "none (never exercised: no POC test presses a button in state 3)",
+   "user_visible_impact": "High: Up+jump is a natural input and gives a different move than the original",
+   "implementation_risk": "low",
+   "recommended_action": "Intercept state 3 + pressed button before SCR_cc_shared (C1-I item I3).",
+   "track": "C1-I",
+   "dependencies": [
+    "A-04"
+   ],
+   "poc_refs": [
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:554"
+   ],
+   "related": []
+  },
+  {
+   "id": "A-04",
+   "subsystem": "player/peel-out charge",
+   "rom_ref": "`$46CE` setter, state `$15` callback `$396D`, script `$8256`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "46CE-46E1, 396D-39B5"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json peel_out_ordinary / peel_out_hold_right"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-attack-badnik-audit.md section 2.1; docs/visual0-sonic-state-frame-catalogue.md state 15"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "`$46CE`: X speed := 0, hurt bit cleared, request `$15`, sound request `$AC`. Callback `$396D` every update: `+$04` bit 7 cleared, camera Y lead target := `$60`, terrain pass `$690B`, wall push-out (`D523` bit 3: X += 4, bit 2: X -= 4), `$48BC`, screen clamp `$4281`, a fresh button press re-requests sound `$AC`, and **the dash is released when Up (D137 bit 0) is no longer held** - the button need not stay held, there is no charge timer. Attack bit `$D503` bit 1 is neither set nor cleared.",
+   "current_poc_behaviour": "No core state 21/26: SCR_cc_tick has no branch; grep finds no peel-out entry outside VISUAL-P1 presentation (`chaos_visual_p1_state` owns 21/26 but the core never enters them).",
+   "classification": "MISSING",
+   "existing_coverage": "VISUAL-P1 ships the 07-0A frames and the animation program for state 21; no behaviour test",
+   "user_visible_impact": "Medium: original move absent",
+   "implementation_risk": "medium",
+   "recommended_action": "Implement states 21/26 in the core (C1-I item I3).",
+   "track": "C1-I",
+   "dependencies": [
+    "A-03",
+    "B-01"
+   ],
+   "poc_refs": [
+    "scripts/SCR_chaos_core/SCR_chaos_core.gml:761-815",
+    "scripts/SCR_chaos_visual_p1/SCR_chaos_visual_p1.gml:4-17"
+   ],
+   "related": []
+  },
+  {
+   "id": "A-05",
+   "subsystem": "player/peel-out run",
+   "rom_ref": "`$46E2` release, state `$1A` callback `$39B6`, entry call `$8313`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "46E2-4700, 39B6-39E5, 37F4-3830"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json peel_out_ordinary (speed 1792 -> friction), peel_out_hold_right (speed held 1792), D503 bit 7 for 12 updates"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "`$46E2`: max X speed `D373` := `$0700`, X speed := +/-`$0700` by facing (`+$04` bit 4 set -> `$F900`), request `$1A`, sound `$BE`. Entry call `$8313` sets invulnerability (`D503` bit 7) with timer `D3B1` = `$0C` (observed: 12 updates, then cleared). Callback `$39B6`: lead := `$60`, shared movement `$3FEF`, `$4281`; a side contact (`D523 & $0C`) clears bits 1 and 7 and requests walk (`$45CE`); floor block `$19` -> run (`$47A9`); otherwise the walk/run exit logic `$37F4`. With no direction held the ordinary friction slows Sonic (observed 1792 -> 0 over about 60 updates); with Right held the speed stays 1792.",
+   "current_poc_behaviour": "Absent (see A-04).",
+   "classification": "MISSING",
+   "existing_coverage": "trace fixtures only",
+   "user_visible_impact": "Medium",
+   "implementation_risk": "medium",
+   "recommended_action": "Implement with A-04 (C1-I item I3). Sound requests are `$AC`/`$BE` request ids only (audio is not an authorised runtime task).",
+   "track": "C1-I",
+   "dependencies": [
+    "A-04"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "A-06",
+   "subsystem": "player/peel-out long hold",
+   "rom_ref": "state `$15` script `$8256`: `FF 0E D2` loop then `FF 01 $82CC`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "script bytes 0x30256.. and routine bytes at 0x82CC"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json peel_out_long_hold: aura object type 5 appears 1,764 updates after state 15 starts; D503 becomes 0x82; sound id $BF"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "After the script's 60 + 24 updates of ramp plus 210 loops of 8 updates (60 + 24 + 1,680 = 1,764 updates; observed object appearance exactly 1,764 harness frames after entry) a callback requests sound `$BF` and creates object type 5 (the star aura); `D503` shows bits 7 and 1 (invulnerable, attack posture) for the rest of the charge and the early run. Resolves the UNRESOLVED 'aura after a very long charge' of docs/player-attack-badnik-audit.md section 13.",
+   "current_poc_behaviour": "Absent.",
+   "classification": "MISSING",
+   "existing_coverage": "trace only",
+   "user_visible_impact": "Negligible (needs a 30 s charge)",
+   "implementation_risk": "low",
+   "recommended_action": "Defer; optional with I3 if trivial. Documented so nobody mistakes it for a bug.",
+   "track": "deferred",
+   "dependencies": [
+    "A-04"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "A-07",
+   "subsystem": "player/spin dash",
+   "rom_ref": "`$4701` / `$4719`, callbacks `$39E6` (charge) `$3A23` (roll)",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "4701-473B, 39E6-3A36"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_core/SCR_chaos_core.gml:778-795"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-attack-badnik-audit.md"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Charge: X speed 0, attack bit set, state `$0F`; release (Down no longer held) sets speed +/-`$0700`, max `$0700`, state `$10`. Callbacks set the camera lead `$60`.",
+   "current_poc_behaviour": "Implemented with the same constants (maximum 1792, vx +/-1792).",
+   "classification": "MATCH",
+   "existing_coverage": "accepted since early packages",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "Keep.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "A-08",
+   "subsystem": "player/idle wait",
+   "rom_ref": "state 1 script `$8081`: record `0B x180` then `FF 03 02` + `FF 00`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "script bytes 0x30081"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json idle_wait: exactly 180 camera updates in state 1, then state 2"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-animation-counter.md section 5; docs/visual-p1-presentation.md section 6"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Standing sprite (frame `$0B`) for 180 updates; the script then requests state `$02` (look-around cycle). State 2 returns to 1 only through input (jump, walk, look, crouch).",
+   "current_poc_behaviour": "The core never requests state 2; VISUAL-P1 deliberately holds frame `$0B` (documented limitation).",
+   "classification": "MISSING",
+   "existing_coverage": "trace idle_wait; no POC test",
+   "user_visible_impact": "Medium: a 3 s idle shows the original look-around",
+   "implementation_risk": "low",
+   "recommended_action": "Add the 180-update counter and state-2 presentation program (C1-I item I4).",
+   "track": "C1-I",
+   "dependencies": [
+    "A-09"
+   ],
+   "poc_refs": [
+    "scripts/SCR_chaos_visual_p1/SCR_chaos_visual_p1.gml:23-24"
+   ],
+   "related": []
+  },
+  {
+   "id": "A-09",
+   "subsystem": "player/idle frames",
+   "rom_ref": "frames `$0C-$10` (state 2), `$11,$12` (state 2 tail)",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/visual0-sonic-state-frame-catalogue.md (on claude/eager-hopper-xo4388 41318f5)"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "sprites/ listing at ac021e1"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "State 2 script: `0C x64`, loop 20 x (`0D x16`, `0E x16`), `0F x64`, `10 x16`, `11 x16`, `12 x16`, jump to `$80B3`.",
+   "current_poc_behaviour": "No SPR_chaos_player_frame_0C..12; `$11/$12` exist only as SPR_chaos_continue_sonic_11/12 (different palette).",
+   "classification": "MISSING",
+   "existing_coverage": "none",
+   "user_visible_impact": "required by A-08",
+   "implementation_risk": "low",
+   "recommended_action": "Import 7 frames from the ROM tile tables with the catalogue canvas/origin data.",
+   "track": "C1-I",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "A-10",
+   "subsystem": "player/idle callback",
+   "rom_ref": "`$36F0`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "36F0-3712"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "State 2: shared movement `$3FEF`; a fresh button -> jump `$45ED`; Left/Right -> walk `$45CE`; Up -> look-up; Down -> crouch. It does not write the camera lead.",
+   "current_poc_behaviour": "Generic code handles all four exits; the jump branch at SCR_chaos_core.gml:803 exists but is unreachable because state 2 is never requested.",
+   "classification": "MATCH",
+   "existing_coverage": "n/a",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "Becomes live with A-08.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [
+    "A-08"
+   ],
+   "match_basis": "SOURCE_COMPARED: ROM disassembly read against the POC GML; no differential run in C1-R"
+  },
+  {
+   "id": "A-11",
+   "subsystem": "player/ledge-edge pose",
+   "rom_ref": "stand tail `$4A33` (called from `$45B3`), state `$19` callback `$3BC6`, script `$808A` (frames `$19-$1B`)",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "4A33-4A73, 3BC6-3BEF"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/visual0-sonic-state-frame-catalogue.md: state 19 'not seen in THZ1 play'"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "12 seeded random THZ1 runs never entered state 19 (negative evidence only)"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Every stand request `$45B3` ends in `$4A33`: it probes the terrain 18 px below the foot at X-4 and X+4 (`$7666`, result byte `D368`); if the two results differ by 16 or more it requests state `$19` and sets/clears `+$04` bit 4 toward the lower/higher side; equal results request stand. State 19 (callback `$3BC6`) returns to walk on any speed or Left/Right, otherwise look-up/crouch/stay. NEWLY FOUND: not listed in AGENTS or any earlier register.",
+   "current_poc_behaviour": "No state 25 in the core or presentation; frames `$19-$1B` have no POC sprite.",
+   "classification": "MISSING",
+   "existing_coverage": "none",
+   "user_visible_impact": "Medium: the edge-balance pose when braking at a ledge",
+   "implementation_risk": "medium",
+   "recommended_action": "Research first (R-C1-1): establish the meaning of `D368`, the exact side rule and a natural THZ reproduction before implementation.",
+   "track": "research-first",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "A-12",
+   "subsystem": "player/walk-run-brake-roll",
+   "rom_ref": "states 5-9, `$37F4`, `$386F`, `$389A`, `$38C5`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/movement.md, reports/differential-verification.json, docs/audit-2026-09-21.md"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_core/SCR_chaos_core.gml:816-835"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Walk/run/skid/roll transition tables as recovered (equality test for run, brake on opposite direction, roll on Down above a speed threshold, strip fall).",
+   "current_poc_behaviour": "SCR_cc_tick mirrors the recovered branches (comments cite the ROM tests).",
+   "classification": "MATCH",
+   "existing_coverage": "earlier CPU differential (physics) and accepted Windows sessions",
+   "user_visible_impact": "none expected",
+   "implementation_risk": "low",
+   "recommended_action": "No action.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "A-13",
+   "subsystem": "player/push frame",
+   "rom_ref": "walk selector `$8EE1` side flag -> frame `$5E`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-animation-counter.md section 4"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "SPR_chaos_player_frame_5E present"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "There is no dedicated pushing STATE: walk uses a fixed 2-update record and frame `$5E` while a side contact is set.",
+   "current_poc_behaviour": "VISUAL-P1 reproduces the walk selector and has the `$5E` sprite.",
+   "classification": "MATCH",
+   "existing_coverage": "VISUAL-P1 Windows 8/8",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "No action.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "WINDOWS_ACCEPTANCE (VISUAL-P1) + source"
+  },
+  {
+   "id": "A-14",
+   "subsystem": "player/control suppression - hurt",
+   "rom_ref": "`$4942`, `$494F`, `$48F7`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-hurt-ring-scatter-audit.md, docs/platform-spike-collision-audit.md section 4"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Hurt movement locks control until landing; invulnerable window `$78`; contact flags per `$48BC`.",
+   "current_poc_behaviour": "SCR_cc_hurt_enter/tick implement the recovered entry; `hurt_rom` keeps the lock until landing.",
+   "classification": "MATCH",
+   "existing_coverage": "accepted hurt/ring packages",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "No action.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "A-15",
+   "subsystem": "player/control suppression - act clear and sign",
+   "rom_ref": "`$83A6`, `$A88E`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/object-18-act-clear.md"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_core/SCR_chaos_core.gml:745-760"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "State `$20` ignores input; the sign pan, edge clamp and freeze follow docs/object-18-act-clear.md.",
+   "current_poc_behaviour": "SCR_cc_state32_tick and SCR_chaos_goal implement them; widescreen clear threshold is an explicit adapter.",
+   "classification": "ADAPTER",
+   "existing_coverage": "G0-R/G1 packages Windows accepted",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "No action.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "A-16",
+   "subsystem": "player/special fall and strip",
+   "rom_ref": "state `$14`, `$4663`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-fall-control-audit.md A1-A10 (A10 death line UNRESOLVED)"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Left/Right read but no acceleration or friction in `$14`; landing requests walk; death line is screen-relative (`+$D0`).",
+   "current_poc_behaviour": "Not re-inspected in C1-R; MGHZ packages implemented `$14`.",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "MGHZ M1 Windows follow-up",
+   "user_visible_impact": "unknown",
+   "implementation_risk": "low",
+   "recommended_action": "Re-check only together with the camera bottom-limit decision (B-09 / D-10).",
+   "track": "separate-research",
+   "dependencies": [
+    "B-09"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "A-17",
+   "subsystem": "player/monitor top contact and wall push",
+   "rom_ref": "`$5FA0`, `D523` guard",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-fall-control-audit.md B1-B8 (POC DIVERGENCE at 82ebc89)"
+    }
+   ],
+   "confidence": "low",
+   "canonical_rom_behaviour": "A monitor is a solid floor from above; one-update wall push then `D523` guard stops pushes.",
+   "current_poc_behaviour": "Status at ac021e1 not re-inspected (a monitor-contact package exists in the workspace).",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "unknown",
+   "user_visible_impact": "possible 'sticking' near monitors",
+   "implementation_risk": "medium",
+   "recommended_action": "Fold into the C2 terrain/interactable audit.",
+   "track": "separate-research",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "A-18",
+   "subsystem": "player/attack posture predicate",
+   "rom_ref": "`D503` bit 1, `D532 == 6`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-attack-badnik-audit.md"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "docs/attack-posture.md in POC"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Attack = `D503` bit 1 or invincibility; not airborne.",
+   "current_poc_behaviour": "Migrated to chaosAttackPosture in an earlier package.",
+   "classification": "MATCH",
+   "existing_coverage": "accepted package",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "No action. Peel-out (A-04/A-05) must leave bit 1 untouched.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "B-01",
+   "subsystem": "camera/look-up",
+   "rom_ref": "`$3713` writes `D289` := `$B8`; lead slew `$58E1`; follow `$5894`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "3713-3721, 58E1-5934, 5894-58E0"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json look_up_hold_release (model replay 0 mismatches over 3,557 updates)"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "While state 3 runs (and the platform-owner byte `D3C0` is 0) the Y lead TARGET is `$B8` (184). The working lead `D28D` moves toward it 1 px per update. The vertical follow keeps Sonic's screen Y (`playerY - camY`) inside [lead-16, lead+16): the camera starts to move only when the zone edge passes Sonic, then follows at <=7 px/update (in practice 1 px/update, the lead slew). From a standing rest at screen Y 112: first camera move after 33 lead steps (update 35 in the trace, which includes the 2-update state-entry lag), final screen Y 168, camera 56 px up after 150 updates (88 px from rest 80). There is NO explicit timer or hard limit besides the lead and the stage limits.",
+   "current_poc_behaviour": "No look-up camera. Vertical camera is rigid: view Y := clamp(round(player.y - viewH/1.5)).",
+   "classification": "MISSING",
+   "existing_coverage": "model + trace fixture",
+   "user_visible_impact": "High: signature original feature",
+   "implementation_risk": "medium",
+   "recommended_action": "Implement the Y-lead machinery (C1-I item I1/I2).",
+   "track": "C1-I",
+   "dependencies": [
+    "B-06",
+    "A-01"
+   ],
+   "poc_refs": [
+    "objects/OBJ_chaos_zone/Step_2.gml:13-20"
+   ],
+   "related": []
+  },
+  {
+   "id": "B-02",
+   "subsystem": "camera/look-down",
+   "rom_ref": "`$3759` writes `D289` := `$30`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "3759-3763"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json look_down_hold_release"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "In state 4 (crouch) with `D3C0` = 0 the Y lead target is `$30` (48). Camera moves immediately if Sonic is already at the lower zone edge (screen Y 112): 48 px down after 150 updates, final screen Y 64.",
+   "current_poc_behaviour": "No crouch camera.",
+   "classification": "MISSING",
+   "existing_coverage": "model + trace",
+   "user_visible_impact": "High",
+   "implementation_risk": "medium",
+   "recommended_action": "As B-01.",
+   "track": "C1-I",
+   "dependencies": [
+    "B-06",
+    "A-02"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "B-03",
+   "subsystem": "camera/platform exception",
+   "rom_ref": "`LD A,(D3C0) / OR A / JR NZ` at `$3713` and `$3759`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "3713-371E, 3759-3764"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/mghz-m1-windows-followup.md: D3C0 = support owner slot (non-zero while riding a `$28` platform)"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Riding a type `$28` platform (or any support owner) disables the look-up and look-down lead changes; the lead target is left at its previous value.",
+   "current_poc_behaviour": "n/a.",
+   "classification": "MISSING",
+   "existing_coverage": "bytes only (not traced: needs a platform scene)",
+   "user_visible_impact": "Low",
+   "implementation_risk": "low",
+   "recommended_action": "Implement with B-01/B-02: skip the writes when the core's support owner is set. Trace in MGHZ/SEZ before acceptance.",
+   "track": "C1-I",
+   "dependencies": [
+    "B-01"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "B-04",
+   "subsystem": "camera/release and lag",
+   "rom_ref": "stand callback `$36C6` writes `D289` := `$60` every update",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "36C6-36C8"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json (release: camera begins to return 35 updates after the button is released, ends 90 updates later; look-down release rests at screen Y 80, not 112)"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "On release the target jumps to `$60` at once but the lead slews 1 px/update; the camera follows only after the zone edge passes Sonic, so the return is delayed (about 32-35 updates after look-up) and ends at the zone edge: after look-up Sonic rests at screen Y 112, after look-down at 80 (hysteresis).",
+   "current_poc_behaviour": "n/a",
+   "classification": "MISSING",
+   "existing_coverage": "model + trace",
+   "user_visible_impact": "Medium: determines the feel",
+   "implementation_risk": "low",
+   "recommended_action": "Falls out of the model; do not add a separate reset timer.",
+   "track": "C1-I",
+   "dependencies": [
+    "B-01"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "B-05",
+   "subsystem": "camera/reset on state change",
+   "rom_ref": "`D289` writers (13 sites)",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "byte scan of `32 89 D2`: 36C8 (states 0/1), 371B(`$B8`), 3761(`$30`), 3785(walk), 3973(`$15`), 39B8(`$1A`), 39EC(`$0F`), 3A25(`$10`), 3BC8(`$19`), 3EFF(loop helper), 45E9(`$45CE` walk request), 462F(jump `$45ED`), 507B(init `$78`)"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "The lead target is a persistent register: rewritten to `$60` by states 0,1,5,`$0F`,`$10`,`$15`,`$19`,`$1A`, by every walk request (landing, hurt recovery) and by the jump launch; NOT written by 2, 6-9, `$0A`, `$0B`, `$0E`, `$1B`, `$1C`, hurt, death. So rolling, running and airborne states keep the previous target, look-up/down end when any writing state runs, and hurt does not reset it until the next landing.",
+   "current_poc_behaviour": "n/a",
+   "classification": "MISSING",
+   "existing_coverage": "bytes + trace (walk, jump from stand)",
+   "user_visible_impact": "Medium",
+   "implementation_risk": "low",
+   "recommended_action": "Implement as a per-state table (contract I2).",
+   "track": "C1-I",
+   "dependencies": [
+    "B-01"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "B-06",
+   "subsystem": "camera/vertical follow",
+   "rom_ref": "`$5894-$58E0`, `$58E1`, `$4CF7`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "5894-58E0, 4CF7-4D3D"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json 3,557 consecutive camera updates reproduced exactly by tools/c1r_camera_model.py"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "objects/OBJ_chaos_zone/Step_2.gml:13-20, scripts/SCR_player_view/SCR_player_view.gml"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Lead target `D289` (rest `$60` = 96), working lead `D28D` slews 1 px/update, zone [lead-16, lead+16) on the low byte of playerY-camY, step = distance outside the zone capped at 7 (-8 survives), top limit inclusive, bottom exclusive, a crossing step is DROPPED. Rest screen Y: 112 after a fall, 80 after a rise (anywhere in 80..112).",
+   "current_poc_behaviour": "Rigid lock: view Y := clamp(round(player.y - viewH/1.5), 0, room_h - viewH) every End Step (anchor about 130.7 px below the view top at 196 px height); no dead zone, no 7 px cap (except MGHZ/AQZ/EEZ where VSpeed is zeroed and, for MGHZ only, a +/-7 cap).",
+   "classification": "MISMATCH",
+   "existing_coverage": "G1-B marked 'inherited camera follow'; verification/verify_viewport_adapter.js covers lifecycle, not follow",
+   "user_visible_impact": "High: Sonic sits 36-68 px lower on screen than in the original; fast falls/rises behave differently",
+   "implementation_risk": "high",
+   "recommended_action": "Replace with the model (C1-I item I1).",
+   "track": "C1-I",
+   "dependencies": [
+    "D2"
+   ],
+   "poc_refs": [
+    "objects/OBJ_chaos_zone/Step_2.gml:13-20"
+   ],
+   "related": []
+  },
+  {
+   "id": "B-07",
+   "subsystem": "camera/horizontal follow",
+   "rom_ref": "`$5832`, `$58E1`, `$4CB0`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "5832-5893, 58E1-5916"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json (X leads 104 right-facing, 136 left-facing, slew 1 px/update, replayed by the model)"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/viewport-semantics-audit.md section 3"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "X lead target `$68` (104) when `+$04` bit 4 is clear, `$88` (136) when set, `$78` in pan mode (follow itself is skipped in pan mode); working lead slews 1 px/update; zone lead +/-8; step cap 7; low-byte compare.",
+   "current_poc_behaviour": "GameMaker native object follow: HBorder = round(viewW/2.3) (151 at 348), VSpeed/HSpeed -1 (instant), no facing lead (SCR_player_view.gml). Widescreen behaviour of the lead is therefore not a ROM-derived adapter - it is GameMaker's.",
+   "classification": "MISMATCH",
+   "existing_coverage": "G1-B inherited; sign pan (B-11) separate",
+   "user_visible_impact": "High: camera framing ahead of Sonic differs when turning",
+   "implementation_risk": "high",
+   "recommended_action": "Replace with the model plus an explicit widescreen lead mapping (decision D1) (C1-I item I1).",
+   "track": "C1-I",
+   "dependencies": [
+    "D1"
+   ],
+   "poc_refs": [
+    "scripts/SCR_player_view/SCR_player_view.gml"
+   ],
+   "related": []
+  },
+  {
+   "id": "B-08",
+   "subsystem": "camera/vertical window bias",
+   "rom_ref": "`$4D3E`: `R9 = (camY + 17) mod 224`; `R8 = -(camX+1)`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "4D3E-4D5C"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/mapped-object-screen-registration.md section 1; docs/rq4-campaign-start-registration.md section 3"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "objects/OBJ_chaos_zone/Create_0.gml:96-101"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "The visible terrain window starts at world row camY+17 (columns from camX+1); sprites are placed at anchor-camera+1. Sonic's feet are therefore at screen line anchor-camY (112 at rest), world row anchor+17.",
+   "current_poc_behaviour": "The GM view top equals the canonical camera record (no +17). Objects carry their own +18 draw offsets so terrain/object relations are right, but the whole picture is 17 px lower relative to the screen than the original (foot at line 129 + follow differences).",
+   "classification": "ADAPTER",
+   "existing_coverage": "RQ4 handed this to G1-B as an open adapter decision",
+   "user_visible_impact": "Medium: vertical framing 17 px lower",
+   "implementation_risk": "high",
+   "recommended_action": "Decision D2: keep canonical camera = view top (recommended; 79 view-Y consumers in 64 files, 55 chaos_vp_current calls) and record the offset as a documented adapter.",
+   "track": "decision",
+   "dependencies": [
+    "D2"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "B-09",
+   "subsystem": "camera/limits and boundary handling",
+   "rom_ref": "`$4CB0`, `$4CF7`; limits `D27C/D27E/D280/D282`",
+   "evidence": [
+    {
+     "class": "ROM_SOURCE",
+     "ref": "4CB0-4D3D"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/viewport-semantics-audit.md section 2.2/3 (114 CONTROLLED cases)"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Left/top inclusive, right/bottom exclusive; a step that would cross is dropped (the camera can stop up to 6 px short of the limit when the step is large). THZ top 8, bottom worldH-240.",
+   "current_poc_behaviour": "GameMaker room clamp (view cannot leave the room) plus per-zone adapters (EEZ/AQZ/boss owners); the death line differs (docs/player-fall-control-audit.md A10: POC 1043 vs canonical 992 for MGHZ1).",
+   "classification": "ADAPTER",
+   "existing_coverage": "viewport adapter verifiers",
+   "user_visible_impact": "Low-medium (edge of map, pits)",
+   "implementation_risk": "medium",
+   "recommended_action": "Implement the dropped-step rule inside the model; settle A10 with the same package or leave deferred.",
+   "track": "C1-I",
+   "dependencies": [
+    "B-06"
+   ],
+   "poc_refs": [],
+   "related": [
+    "D-10",
+    "A-16"
+   ]
+  },
+  {
+   "id": "B-10",
+   "subsystem": "camera/level start",
+   "rom_ref": "loader `$4E57`, init `$4DAD`, lead init `$5074-$507B`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/rq4-campaign-start-registration.md"
+    },
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json idle_wait row 0: THZ1 cam (38,530), Y lead starts 120 and slews to 96 over 24 updates (camera Y +12)"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "objects/OBJ_chaos_zone/Create_0.gml:96-101"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Camera at entry = the record; Y lead starts at `$78` and slews to the standing target `$60`, so THZ1 settles from screen Y 124 to 112.",
+   "current_poc_behaviour": "G1-B seeds the camera record; the follow afterwards is the GM rule (B-06).",
+   "classification": "MATCH",
+   "existing_coverage": "G1-B Windows accepted (record only)",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "Model initial lead `$78` (D2 independent).",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "WINDOWS_ACCEPTANCE (G1-B, record only) + ROM"
+  },
+  {
+   "id": "B-11",
+   "subsystem": "camera/sign pan",
+   "rom_ref": "`$0359`, `$5956`, `$83A6`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/viewport-semantics-audit.md 2.2; docs/object-18-act-clear.md"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_goal/SCR_chaos_goal.gml:176-255"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Pan mode: follow disabled on both axes, 1 px/update per axis to (signX-$80, signY-$99), right limit exclusive (camera stops at 3831 in THZ1).",
+   "current_poc_behaviour": "chaos_goal_pan_step reproduces the ROM rules; widescreen target is CENTER(0) with a world-right clamp (explicit adapter).",
+   "classification": "ADAPTER",
+   "existing_coverage": "G0-R/G1 accepted",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "Keep. The follow model must hand over exactly at pan start (pan_mode skips the lead slew).",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "B-12",
+   "subsystem": "camera/scripted and boss",
+   "rom_ref": "boss framework vectors `$0353/$0356/$035C/$042B`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/object-50.md, docs/mghz3-boss-56-audit.md, docs/sez3-boss-54-audit.md, docs/aqz3-boss-59-audit.md"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Boss arenas lock/raise the limits and pan the camera.",
+   "current_poc_behaviour": "Per-boss camera owners (`*_owns_camera`) gate the End Step follow in Step_2.gml:13.",
+   "classification": "ADAPTER",
+   "existing_coverage": "per-boss accepted packages",
+   "user_visible_impact": "none",
+   "implementation_risk": "medium",
+   "recommended_action": "Keep every owner guard; the new follow must be inert whenever an owner is active (acceptance test).",
+   "track": "resolved",
+   "dependencies": [
+    "B-06"
+   ],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "B-13",
+   "subsystem": "camera/special stages",
+   "rom_ref": "`$5894..$58E0` 'same scheme' for SS4/SS5",
+   "evidence": [
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml:97 (measured constants)"
+    }
+   ],
+   "confidence": "low",
+   "canonical_rom_behaviour": "Special-stage follow uses the same routine with its own limits.",
+   "current_poc_behaviour": "Own measured follow; not touched by Step_2 (chaos_is_ss exits first).",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "SS packages",
+   "user_visible_impact": "unknown",
+   "implementation_risk": "low",
+   "recommended_action": "Out of scope for C1-I; do not change SS cameras.",
+   "track": "deferred",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "B-14",
+   "subsystem": "camera/viewport distinction",
+   "rom_ref": "256x192 window",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/viewport-semantics-audit.md; POC SCR_chaos_viewport"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "348x196 view"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "All follow constants are authored for a 256x192 window. Nothing in the ROM defines a wide-screen offset.",
+   "current_poc_behaviour": "348x196 adapter: lifecycle bands, right edge and clamps follow the real view width; the player lead is GM's.",
+   "classification": "ADAPTER",
+   "existing_coverage": "viewport verifiers",
+   "user_visible_impact": "n/a",
+   "implementation_risk": "n/a",
+   "recommended_action": "Any widescreen mapping of the leads (D1) is a documented adapter, never ROM behaviour.",
+   "track": "decision",
+   "dependencies": [
+    "D1"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "B-15",
+   "subsystem": "camera/documentation correction",
+   "rom_ref": "viewport-semantics-audit.md section 3 'Follow (Y) ... lead `$78`, dead zone `$68..$98`'",
+   "evidence": [
+    {
+     "class": "EMULATED",
+     "ref": "data/c1r/camera-look-trace.json lead_y rests at 96"
+    },
+    {
+     "class": "ROM_SOURCE",
+     "ref": "D289 writer scan"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "`$78` is only the INITIAL working lead; ordinary play settles at `$60` (zone `$50..$70`), `$B8` while looking up, `$30` while crouching. The earlier statement omitted the `D289` writers.",
+   "current_poc_behaviour": "n/a",
+   "classification": "MISMATCH",
+   "existing_coverage": "this audit",
+   "user_visible_impact": "Documentation only",
+   "implementation_risk": "low",
+   "recommended_action": "Corrected here; the old document is left untouched (historical).",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [
+    "B-06"
+   ]
+  },
+  {
+   "id": "C-01",
+   "subsystem": "sign/placement and anchor",
+   "rom_ref": "type `$18` records, state 3 `$A88E`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/object-18-act-clear.md sections 2-4"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "objects/OBJ_chaos_object_18/Create_0.gml"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "World anchor = placement record; contact box dx +/-20, dy -42..+playerExtY.",
+   "current_poc_behaviour": "Canonical anchor and contact preserved; render adapter is draw-only.",
+   "classification": "MATCH",
+   "existing_coverage": "G0-R/U3/G2 accepted",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "No action.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "C-02",
+   "subsystem": "sign/resource crop",
+   "rom_ref": "mapping `$8EBA` frame 1: 10 pieces, canvas x -16..15, y -48..-1 (48 opaque rows)",
+   "evidence": [
+    {
+     "class": "CONTROLLED",
+     "ref": "data/c1r/sign-registration.json (tools/c1r_sign_registration.py): POC alpha mask == ROM composite minus its top 4 rows, shifted up 4, xor = 0 for all 5 frames"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "POC_notes/import_sign_prizes.py:51-55 (`out.crop((0,4,32,52))`), POC_notes/import_type18_assets.py:31-32 ('margin4 then bottom-align')"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/u3-sign-prize-presentation.md section 'Compositing' - 'parked GOAL-FOLLOWUP-1'"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "The sign is 32x48 pixels; the face occupies the top 32 rows (pieces 0-7), the post the lower 16.",
+   "current_poc_behaviour": "All 12 sign sprites (6 base sprites of 5 frames + 6 per-zone prize sets of 48 frames) have opaque rows 0..43 only: the inherited resource conversion (margin 4, bottom-align, crop 4) removed the TOP 4 ROM rows (48 px in frames 1/5) and moved the art 4 px up inside the 32x48 canvas.",
+   "classification": "MISMATCH",
+   "existing_coverage": "proven by SIGN fixture; Windows report 'cropping'",
+   "user_visible_impact": "Medium: sign face top is flattened",
+   "implementation_risk": "low",
+   "recommended_action": "Re-export the 12 resources without the crop (C1-I item I6).",
+   "track": "C1-I",
+   "dependencies": [
+    "C-03"
+   ],
+   "poc_refs": [
+    "sprites/SPR_chaos_object_18",
+    "POC_notes/import_sign_prizes.py:51-55"
+   ],
+   "related": []
+  },
+  {
+   "id": "C-03",
+   "subsystem": "sign/draw offset",
+   "rom_ref": "terrain row = anchor + mapping_y + 18 (`docs/mapped-object-screen-registration.md`)",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/mapped-object-screen-registration.md"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_render_adapter/SCR_chaos_render_adapter.gml:11"
+    },
+    {
+     "class": "CONTROLLED",
+     "ref": "data/c1r/sign-registration.json"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "For a bottom-origin 32x48 canvas whose last row is the post's last row the derived draw offset is +18.",
+   "current_poc_behaviour": "TYPE18_RENDER_Y_ADAPTER = 22 = 18 + 4: it exactly compensates the 4-row canvas shift of C-02, so the VISIBLE pixels already land at the ROM-derived position (visible top at anchor-26 in both).",
+   "classification": "ADAPTER",
+   "existing_coverage": "SIGN fixture",
+   "user_visible_impact": "none beyond C-02",
+   "implementation_risk": "low",
+   "recommended_action": "Change to 18 together with C-02 (never alone: it would sink the crop).",
+   "track": "C1-I",
+   "dependencies": [
+    "C-02"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "C-04",
+   "subsystem": "sign/x registration",
+   "rom_ref": "terrain col = anchor + mapping_x + 1 (`R8 = -(camX+1)`)",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/mapped-object-screen-registration.md; docs/u3-sign-prize-presentation.md 'face origin (113,106)' at camera (3831,405)"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "TYPE18_RENDER_X = 0 (type `$09` uses +1; types `$10/$21/$27` use 0)"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "All sprites sit 1 px right of anchor+mapping in terrain space.",
+   "current_poc_behaviour": "X offset 0 for type `$18` (as for the accepted `$10/$21/$27`); only type `$09` carries +1.",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "no Windows measurement of the sign X",
+   "user_visible_impact": "possible 1 px",
+   "implementation_risk": "low",
+   "recommended_action": "Manager decision D4: class-wide X policy for mapped objects; do not change the sign alone.",
+   "track": "decision",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [
+    "C-02"
+   ]
+  },
+  {
+   "id": "C-05",
+   "subsystem": "sign/animation frame offsets and hop",
+   "rom_ref": "frames 1-5; hop (state 4)",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/object-18-act-clear.md section 5 (hop apex 126 px)"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "objects/OBJ_chaos_object_18/Draw_0.gml:1-11"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Hop and spin frames are anchor-relative; the pieces share the same canvas for all frames.",
+   "current_poc_behaviour": "Frames and hop implemented from the research; draw-only hop offset.",
+   "classification": "MATCH",
+   "existing_coverage": "G1/G2 accepted",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "No action.",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "C-06",
+   "subsystem": "sign/prize selection and reward",
+   "rom_ref": "`$A9..` prize tables",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/u3-sign-prize-presentation.md; docs/g0-campaign-contract.md"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Selection and reward per U3.",
+   "current_poc_behaviour": "Implemented and accepted.",
+   "classification": "MATCH",
+   "existing_coverage": "G2 accepted",
+   "user_visible_impact": "none",
+   "implementation_risk": "low",
+   "recommended_action": "Must not change (I6 touches resources only).",
+   "track": "resolved",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [],
+   "match_basis": "PRIOR_DIFFERENTIAL: earlier accepted Research/POC differential evidence, not re-run in C1-R"
+  },
+  {
+   "id": "C-07",
+   "subsystem": "sign/foreground priority",
+   "rom_ref": "6 of 942 face pixels hidden in SEZ1",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/u3-sign-prize-presentation.md section 'Compositing and foreground priority'"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Foreground-priority background tiles hide face pixels in SEZ act 1 only.",
+   "current_poc_behaviour": "Not re-inspected.",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "none",
+   "user_visible_impact": "negligible",
+   "implementation_risk": "low",
+   "recommended_action": "Deferred.",
+   "track": "deferred",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-01",
+   "subsystem": "loop/entry Y anchor",
+   "rom_ref": "`$3EAB`: `Y := (Y & ~31) + 4`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/visual1-loop-shards.md A2/A8 (41318f5)"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "docs/visual-p3-loop-presentation.md section 7 (anchor 1 px above ROM)"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Entry snaps X to a multiple of 32 and Y to (Y&~31)+4.",
+   "current_poc_behaviour": "Legacy loop-entry origin leaves the anchor 1 px above the ROM on every tick (X exact).",
+   "classification": "MISMATCH",
+   "existing_coverage": "VISUAL-P3 differential (110 ticks)",
+   "user_visible_impact": "1 px offset against terrain",
+   "implementation_risk": "medium",
+   "recommended_action": "Do not include in C1-I: it is a loop-entry change. Bundle with D-02/D-03/D-04 as a separate loop-entry package.",
+   "track": "deferred",
+   "dependencies": [
+    "D-02"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-02",
+   "subsystem": "loop/entry rule",
+   "rom_ref": "`$6CBA/$6CCD` foot-block transition `$51 -> $52`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/visual1-loop-shards.md A2, A8"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "data/visual1/loop-contract.json"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Entry on the previous/current foot-block transition, plane 0/1, floor flag; no speed or facing gate; raw entry speed.",
+   "current_poc_behaviour": "Bottom-crossing X window with |hspeed| >= 0.25, possible airborne entry, per-loop plane array.",
+   "classification": "MISMATCH",
+   "existing_coverage": "VISUAL-1 contract; POC differential",
+   "user_visible_impact": "Entry from jump or at odd speeds",
+   "implementation_risk": "high",
+   "recommended_action": "Separate loop-entry package (needs the VISUAL-1 contract merged to Research main first).",
+   "track": "deferred",
+   "dependencies": [
+    "D-01"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-03",
+   "subsystem": "loop/low-speed route",
+   "rom_ref": "`$0356` borrow bailout, state `$1D`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/visual1-loop-shards.md A3, A9"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Bailout when the cursor borrows below `$90`; X nudge; state `$1D`.",
+   "current_poc_behaviour": "Release when speed goes negative; jump latch.",
+   "classification": "MISMATCH",
+   "existing_coverage": "VISUAL-P3 'slow entry' check passes the POC behaviour, not the ROM's",
+   "user_visible_impact": "Slow-walk loop entry differs",
+   "implementation_risk": "medium",
+   "recommended_action": "Same loop-entry package.",
+   "track": "deferred",
+   "dependencies": [
+    "D-02"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-04",
+   "subsystem": "loop/speed caps",
+   "rom_ref": "route exit `speed := D373`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/visual1-loop-shards.md A8"
+    }
+   ],
+   "confidence": "high",
+   "canonical_rom_behaviour": "Raw speed; exit at progress >= `$180`.",
+   "current_poc_behaviour": "Speed capped at 8 px, exit speed capped, sample clamp 394, traversal one update shorter (110 vs 111).",
+   "classification": "MISMATCH",
+   "existing_coverage": "VISUAL-P3",
+   "user_visible_impact": "minor",
+   "implementation_risk": "medium",
+   "recommended_action": "Same loop-entry package.",
+   "track": "deferred",
+   "dependencies": [
+    "D-02"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-05",
+   "subsystem": "terrain/sticking and vibration",
+   "rom_ref": "terrain pass `$690B`, side sensors",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/visual-p1-closure.md: unchanged gameplay state on 22,983 compared updates, no collision fix claimed"
+    },
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "AGENTS.md track C2"
+    }
+   ],
+   "confidence": "low",
+   "canonical_rom_behaviour": "Not characterised in C1-R.",
+   "current_poc_behaviour": "Observed historically; possible mixture of presentation facing jitter and collision.",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "none specific",
+   "user_visible_impact": "annoying when it occurs",
+   "implementation_risk": "high",
+   "recommended_action": "Belongs to track C2; C1-R found no camera- or control-state cause (the rigid POC camera cannot jitter by itself).",
+   "track": "separate-research",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-06",
+   "subsystem": "spring rebound facing oscillation",
+   "rom_ref": "`+$04` bit 4 rules",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-spring-airborne-state-closure.md section 11 item 4 (candidate cause: sign(vx) facing)"
+    },
+    {
+     "class": "POC_SOURCE",
+     "ref": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml:60-100 (legacy sprite selection outside VISUAL-P1-owned states)"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Facing is the `+$04` bit 4 flag: `$0B` follows held Left/Right, `$0E/$1C/$14` never update it.",
+   "current_poc_behaviour": "VISUAL-P1 fixed the owned states (0,1,3-8,15,21,26,30-32); airborne `$09/$0A/$0B/$0E/$1C/$14` still use the legacy selection and `sign(vx)`.",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "P1 differential covers owned states only",
+   "user_visible_impact": "left/right flip after a rebound",
+   "implementation_risk": "medium",
+   "recommended_action": "Candidate C1-I-optional only if C2 does not take it first; the contract already exists in the spring closure document.",
+   "track": "separate-research",
+   "dependencies": [
+    "D-08"
+   ],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-07",
+   "subsystem": "slope/low-speed contact",
+   "rom_ref": "`$69B2`, `$6A02`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/movement.md; docs/collision-geometry-audit.md"
+    }
+   ],
+   "confidence": "low",
+   "canonical_rom_behaviour": "Recovered; collision geometry audited.",
+   "current_poc_behaviour": "Not re-opened in C1-R.",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "none new",
+   "user_visible_impact": "unknown",
+   "implementation_risk": "high",
+   "recommended_action": "Track C2.",
+   "track": "separate-research",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-08",
+   "subsystem": "airborne/spring presentation set",
+   "rom_ref": "frames `$02-$06,$01` (fall), `$1C-$21` (tumble), `$61`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-spring-airborne-state-closure.md section 11"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "State-derived sprite/timing for `$0B/$0E/$1C/$14` (82-update `$0B` program, 232-update fall).",
+   "current_poc_behaviour": "Legacy flag-derived sprite choice outside P1-owned states.",
+   "classification": "MISMATCH",
+   "existing_coverage": "contract exists",
+   "user_visible_impact": "visual",
+   "implementation_risk": "medium",
+   "recommended_action": "Presentation track (VISUAL-P4 style); not part of C1-I.",
+   "track": "deferred",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": [
+    "D-06"
+   ]
+  },
+  {
+   "id": "D-09",
+   "subsystem": "ceiling-spring dispatch correction C1",
+   "rom_ref": "blocks `$3A/$3B` from the ring-probe point",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-spring-airborne-state-closure.md section 11 item 6"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Dispatch also from the terrain-ring probe point.",
+   "current_poc_behaviour": "Not re-inspected.",
+   "classification": "UNVERIFIED",
+   "existing_coverage": "AQZ3 natural run fixture",
+   "user_visible_impact": "AQZ3 corridor",
+   "implementation_risk": "medium",
+   "recommended_action": "Track C2.",
+   "track": "separate-research",
+   "dependencies": [],
+   "poc_refs": [],
+   "related": []
+  },
+  {
+   "id": "D-10",
+   "subsystem": "death line vs camera bottom",
+   "rom_ref": "screen-relative death `playerY - camY >= $D0`",
+   "evidence": [
+    {
+     "class": "PRIOR_RESEARCH",
+     "ref": "docs/player-fall-control-audit.md A9/A10"
+    }
+   ],
+   "confidence": "medium",
+   "canonical_rom_behaviour": "Death when the screen Y reaches `$D0` (208) with the canonical camera bottom (784 for MGHZ1 => 992).",
+   "current_poc_behaviour": "POC camera bottom 832 => death line 1043 (UNRESOLVED decision).",
+   "classification": "ADAPTER",
+   "existing_coverage": "none",
+   "user_visible_impact": "pit death height",
+   "implementation_risk": "low",
+   "recommended_action": "Settle together with the boundary rule B-09 if the Manager wants it in C1-I.",
+   "track": "decision",
+   "dependencies": [
+    "B-09"
+   ],
+   "poc_refs": [],
+   "related": []
+  }
+ ]
+}
