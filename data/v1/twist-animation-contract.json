@@ -1,0 +1,118 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "research_base": "c2692337649fcbd8b75c4ceff4645d9d61e2a59e",
+ "accepted_poc_parent": "ac021e1ef2665c8668de13959f5ccc4653f312d1",
+ "scope": "Presentation of player state $22 (twist strip, surface type $17) in THZ1-3 and MGHZ2. Mechanics (entry, dispatch tables, vector math, exit) are accepted and MUST NOT change.",
+ "rom": {
+  "script_cpu": "0x8425 (bank $0C, file 0x30425)",
+  "callback_each_record": "0x94C1",
+  "records": [
+   {
+    "duration": 3,
+    "frame": "0x25"
+   },
+   {
+    "duration": 3,
+    "frame": "0x26"
+   },
+   {
+    "duration": 3,
+    "frame": "0x27"
+   },
+   {
+    "duration": 3,
+    "frame": "0x28"
+   },
+   {
+    "duration": 3,
+    "frame": "0x29"
+   }
+  ],
+  "loop": "FF 00 restart; cycle = 15 updates",
+  "frame_formula": "frame = 0x25 + ((updates_since_entry // 3) mod 5)",
+  "first_update_of_state_shows": "0x25 for updates 0,1,2",
+  "restart_on_tile_change": false,
+  "restart_on_reentry": true,
+  "reverse_on_left": false,
+  "facing": "object +$04 bit 4 is INHERITED from the entering state and never written by the strip code (0 writes to IX+4 in $94C1..$9829); draw mirrored iff the bit is set",
+  "rotation": "none: the ROM never rotates a sprite; the 'twisting' look is five authored frames + foreground-priority background tiles",
+  "variants": "MGHZ (zone 3) selects variants 2/3 for right/left, other zones 0/1; the script, frames, durations and facing rule are identical in every variant"
+ },
+ "poc_target": {
+  "state": "core state 34 ($22)",
+  "sprites": [
+   "SPR_chaos_player_frame_25",
+   "SPR_chaos_player_frame_26",
+   "SPR_chaos_player_frame_27",
+   "SPR_chaos_player_frame_28",
+   "SPR_chaos_player_frame_29"
+  ],
+  "sprite_canvas": "24x32 origin (12,32), RGBA equal to the ROM composites (VISUAL-0 catalogue)",
+  "animation_program_row_format": "[type, count, frame, script_cpu_decimal]; type 0 = record, type 1 = restart",
+  "animation_program": [
+   [
+    0,
+    3,
+    37,
+    33829
+   ],
+   [
+    0,
+    3,
+    38,
+    33833
+   ],
+   [
+    0,
+    3,
+    39,
+    33837
+   ],
+   [
+    0,
+    3,
+    40,
+    33841
+   ],
+   [
+    0,
+    3,
+    41,
+    33845
+   ],
+   [
+    1,
+    0,
+    0,
+    33849
+   ]
+  ],
+  "hooks": [
+   "add 34 to chaos_player_animation_supported (SCR_chaos_player_animation.gml:5)",
+   "add `case 34` to chaos_player_animation_program",
+   "chaos_player_animation_present already draws supported states from chaos_player_frame_sprite() with image_angle 0 and xscale from player_flags bit 4",
+   "the legacy chooser (SCR_chaos_adapter.gml:57-58 facing from sign(vx) that WRITES player_flags bit 4; :78 SPR_player_spin; :88 image_angle; :101 image_speed) must no longer run for state 34"
+  ],
+  "must_not_change": [
+   "SCR_cc_twist_* (SCR_chaos_core.gml:238-345)",
+   "global.chaosTwistHandlers",
+   "state transitions, speeds, positions",
+   "terrain-ring shadow counter (presentation layer must not feed it)"
+  ]
+ },
+ "verification": [
+  "oracle: frame_at(n) for n in 0..300 equals the executing frame in every entry of data/v1/twist-audit.json emulated_scenarios (frame_rule_holds_every_update)",
+  "JS harness: run SCR_cc_twist_tick for 95 updates (THZ1 right) and compare the published sprite name sequence with frame_at; assert image_angle == 0 and image_xscale follows the entering facing bit for all updates",
+  "MGHZ2 chute: vx changes sign inside the strip; assert image_xscale and player_flags bit 4 are unchanged for every update of state 34",
+  "negative control: legacy path must fail the same assertions (SPR_sonic_spin, image_angle != 0)",
+  "state-differential: all core fields identical to the accepted parent for the same input script (presentation-only change)"
+ ],
+ "windows_f5": [
+  "THZ1 right run (Act 1 strip): five curled-ball frames cycle at a steady rhythm independent of speed; the sprite never rotates; no quill/sphere frame is held longer than the others",
+  "THZ1/THZ2 left run through the strip: same cycle, mirrored the way Sonic faced when entering",
+  "descending half of the THZ arch (blocks $62-$6C,$73): Sonic is hidden behind the ribbon exactly while the foreground priority tiles overlap him (about 54 of 95 updates have hidden pixels; 6 are fully hidden)",
+  "MGHZ2 chute: no mirror flip mid-ride; sprite disappears behind the partial priority cells at the two bends",
+  "exit: ball frames hand over to the ordinary roll cycle with no pop in position"
+ ]
+}

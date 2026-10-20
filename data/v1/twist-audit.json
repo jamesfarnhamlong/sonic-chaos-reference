@@ -1,0 +1,1264 @@
+{
+ "format": 1,
+ "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "evidence": "DECODED DATA + BYTE-VERIFIED ASSEMBLY + EMULATED ORIGINAL FRAME (+ SYNTHETIC CONTROL placement)",
+ "static": {
+  "script": {
+   "cpu": "0x8425",
+   "rom": "0x30425",
+   "records": [
+    {
+     "duration": 3,
+     "frame": "0x25",
+     "callback": "0x94C1"
+    },
+    {
+     "duration": 3,
+     "frame": "0x26",
+     "callback": "0x94C1"
+    },
+    {
+     "duration": 3,
+     "frame": "0x27",
+     "callback": "0x94C1"
+    },
+    {
+     "duration": 3,
+     "frame": "0x28",
+     "callback": "0x94C1"
+    },
+    {
+     "duration": 3,
+     "frame": "0x29",
+     "callback": "0x94C1"
+    }
+   ],
+   "tail": {
+    "command": "FF 00",
+    "meaning": "restart the script (state-$22 program loops forever)"
+   },
+   "cycle_updates": 15
+  },
+  "frame_ids": [
+   "0x25",
+   "0x26",
+   "0x27",
+   "0x28",
+   "0x29"
+  ],
+  "direct_writers_in_twist_code": {
+   "IX+6_frame_writes": 0,
+   "IX+4_flag_writes": 0,
+   "IX+2_state_requests": [
+    "0x09",
+    "0x0A"
+   ]
+  },
+  "entry": {
+   "entry_code": "0x6E56..0x6F60 (fixed bank)",
+   "sound_request_A5_before_speed_test": true,
+   "right_entry_tiles": [
+    "0x59",
+    "0x5C"
+   ],
+   "left_entry_tiles": [
+    "0x73",
+    "0x72",
+    "0x6B"
+   ],
+   "right_speed_gate_non_mghz": "speed >= 0x0300 (SBC HL,$0300; carry returns)",
+   "right_speed_gate_mghz": "zone index 3: speed below 0x0500 is RAISED to 0x0500, then entry (no minimum)",
+   "left_speed_gate": "speed < 0xFD00 (strict, all zones)",
+   "eligible_prior_states": [
+    "0x05",
+    "0x06",
+    "0x09",
+    "0x10",
+    "0x1A"
+   ],
+   "variant_by_zone": {
+    "non_MGHZ": {
+     "right": 0,
+     "left": 1
+    },
+    "MGHZ(zone 3)": {
+     "right": 2,
+     "left": 3
+    }
+   },
+   "magnitude": "high byte of (abs(x speed 8.8) << 5): equals speed_px * 32 truncated",
+   "angle": {
+    "right": "0x40",
+    "left": "0xC0"
+   },
+   "facing_flag_ix4_bit4_written_by_entry": false
+  },
+  "census": {
+   "thz1": {
+    "cells": 22,
+    "distinct_blocks": 22,
+    "cell_x": [
+     96,
+     104
+    ],
+    "cell_y": [
+     15,
+     18
+    ],
+    "entry_block_cells": [
+     [
+      96,
+      18,
+      "0x59"
+     ],
+     [
+      97,
+      18,
+      "0x5C"
+     ],
+     [
+      103,
+      18,
+      "0x6B"
+     ],
+     [
+      104,
+      18,
+      "0x73"
+     ]
+    ]
+   },
+   "thz2": {
+    "cells": 66,
+    "distinct_blocks": 22,
+    "cell_x": [
+     65,
+     96
+    ],
+    "cell_y": [
+     5,
+     9
+    ],
+    "entry_block_cells": [
+     [
+      65,
+      8,
+      "0x59"
+     ],
+     [
+      66,
+      8,
+      "0x5C"
+     ],
+     [
+      72,
+      8,
+      "0x6B"
+     ],
+     [
+      73,
+      8,
+      "0x73"
+     ],
+     [
+      77,
+      9,
+      "0x59"
+     ],
+     [
+      78,
+      9,
+      "0x5C"
+     ],
+     [
+      84,
+      9,
+      "0x6B"
+     ],
+     [
+      85,
+      9,
+      "0x73"
+     ],
+     [
+      88,
+      9,
+      "0x59"
+     ],
+     [
+      89,
+      9,
+      "0x5C"
+     ],
+     [
+      95,
+      9,
+      "0x6B"
+     ],
+     [
+      96,
+      9,
+      "0x73"
+     ]
+    ]
+   },
+   "thz3": {
+    "cells": 22,
+    "distinct_blocks": 22,
+    "cell_x": [
+     28,
+     36
+    ],
+    "cell_y": [
+     1,
+     4
+    ],
+    "entry_block_cells": [
+     [
+      28,
+      4,
+      "0x59"
+     ],
+     [
+      29,
+      4,
+      "0x5C"
+     ],
+     [
+      35,
+      4,
+      "0x6B"
+     ],
+     [
+      36,
+      4,
+      "0x73"
+     ]
+    ]
+   },
+   "mghz2": {
+    "cells": 28,
+    "distinct_blocks": 28,
+    "cell_x": [
+     73,
+     76
+    ],
+    "cell_y": [
+     12,
+     22
+    ],
+    "entry_block_cells": [
+     [
+      73,
+      12,
+      "0x59"
+     ],
+     [
+      75,
+      13,
+      "0x5C"
+     ],
+     [
+      74,
+      19,
+      "0x6B"
+     ],
+     [
+      75,
+      22,
+      "0x72"
+     ],
+     [
+      76,
+      22,
+      "0x73"
+     ]
+    ]
+   }
+  },
+  "block_priority": {
+   "thz1": {
+    "mapping_rom": "0x44000",
+    "blocks_with_priority": {
+     "0x62": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x63": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x64": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x65": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x66": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x67": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x68": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x69": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6A": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6B": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6C": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x73": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     }
+    }
+   },
+   "thz2": {
+    "mapping_rom": "0x44000",
+    "blocks_with_priority": {
+     "0x62": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x63": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x64": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x65": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x66": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x67": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x68": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x69": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6A": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6B": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6C": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x73": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     }
+    }
+   },
+   "thz3": {
+    "mapping_rom": "0x44000",
+    "blocks_with_priority": {
+     "0x62": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x63": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x64": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x65": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x66": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x67": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x68": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x69": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6A": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6B": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x6C": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     },
+     "0x73": {
+      "priority_cells_of_16": 16,
+      "mask": "PPPPPPPPPPPPPPPP"
+     }
+    }
+   },
+   "mghz2": {
+    "mapping_rom": "0x50000",
+    "blocks_with_priority": {
+     "0x5D": {
+      "priority_cells_of_16": 3,
+      "mask": "....P...P...P..."
+     },
+     "0x5F": {
+      "priority_cells_of_16": 4,
+      "mask": "P...P...P...P..."
+     },
+     "0x60": {
+      "priority_cells_of_16": 6,
+      "mask": "...P...P..PP..PP"
+     },
+     "0x61": {
+      "priority_cells_of_16": 4,
+      "mask": "P...P...P...P..."
+     },
+     "0x62": {
+      "priority_cells_of_16": 3,
+      "mask": "...........P..PP"
+     },
+     "0x63": {
+      "priority_cells_of_16": 13,
+      "mask": ".PPP.PPPPPPPPPP."
+     },
+     "0x64": {
+      "priority_cells_of_16": 2,
+      "mask": "P...P..........."
+     },
+     "0x65": {
+      "priority_cells_of_16": 2,
+      "mask": "...........P...P"
+     },
+     "0x66": {
+      "priority_cells_of_16": 14,
+      "mask": ".PPPPPPPPPPPPPP."
+     },
+     "0x67": {
+      "priority_cells_of_16": 3,
+      "mask": "PP..P..........."
+     },
+     "0x68": {
+      "priority_cells_of_16": 4,
+      "mask": "...P...P...P...P"
+     },
+     "0x69": {
+      "priority_cells_of_16": 5,
+      "mask": "PP..P...P...P..."
+     },
+     "0x6A": {
+      "priority_cells_of_16": 4,
+      "mask": "...P...P...P...P"
+     },
+     "0x6C": {
+      "priority_cells_of_16": 2,
+      "mask": "...P...P........"
+     },
+     "0x72": {
+      "priority_cells_of_16": 2,
+      "mask": "..PP............"
+     },
+     "0x73": {
+      "priority_cells_of_16": 4,
+      "mask": "PPPP............"
+     }
+    }
+   }
+  },
+  "thz_priority_sets_identical_across_acts": true
+ },
+ "emulated_scenarios": {
+  "THZ1_right_run": {
+   "placement": "(3000,558) vx +0x0400 state 6, RIGHT held",
+   "entered": true,
+   "entry_update": 30,
+   "updates_in_state": 95,
+   "entry": {
+    "x": 3078,
+    "y": 558,
+    "vx": 857,
+    "angle": 64,
+    "magnitude": 108,
+    "variant": 0,
+    "facing_bit4": 0
+   },
+   "prior_state": "0x05",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    0
+   ],
+   "vx_range": [
+    708,
+    857
+   ],
+   "angles_seen": [
+    0,
+    40,
+    64,
+    88
+   ],
+   "variants_seen": [
+    0
+   ],
+   "exit": {
+    "x": 3363,
+    "y": 558,
+    "next_state": "0x09",
+    "facing_bit4_after": 0
+   }
+  },
+  "THZ1_left_run_facing_left": {
+   "placement": "(3430,558) vx -0x0400 state 6, facing bit set, LEFT held",
+   "entered": true,
+   "entry_update": 19,
+   "updates_in_state": 80,
+   "entry": {
+    "x": 3354,
+    "y": 558,
+    "vx": -1016,
+    "angle": 192,
+    "magnitude": 128,
+    "variant": 1,
+    "facing_bit4": 16
+   },
+   "prior_state": "0x06",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    16
+   ],
+   "vx_range": [
+    -1016,
+    -840
+   ],
+   "angles_seen": [
+    0,
+    168,
+    192,
+    216
+   ],
+   "variants_seen": [
+    1
+   ],
+   "exit": {
+    "x": 3070,
+    "y": 558,
+    "next_state": "0x09",
+    "facing_bit4_after": 16
+   }
+  },
+  "THZ1_left_run_facing_flag_clear": {
+   "placement": "same, facing bit clear (proves the strip never writes it)",
+   "entered": true,
+   "entry_update": 19,
+   "updates_in_state": 80,
+   "entry": {
+    "x": 3354,
+    "y": 558,
+    "vx": -1016,
+    "angle": 192,
+    "magnitude": 128,
+    "variant": 1,
+    "facing_bit4": 0
+   },
+   "prior_state": "0x06",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    0
+   ],
+   "vx_range": [
+    -1016,
+    -840
+   ],
+   "angles_seen": [
+    0,
+    168,
+    192,
+    216
+   ],
+   "variants_seen": [
+    1
+   ],
+   "exit": {
+    "x": 3070,
+    "y": 558,
+    "next_state": "0x09",
+    "facing_bit4_after": 16
+   }
+  },
+  "THZ2_right_run": {
+   "placement": "(2000,238) vx +0x0400",
+   "entered": true,
+   "entry_update": 21,
+   "updates_in_state": 80,
+   "entry": {
+    "x": 2083,
+    "y": 238,
+    "vx": 1016,
+    "angle": 64,
+    "magnitude": 128,
+    "variant": 0,
+    "facing_bit4": 0
+   },
+   "prior_state": "0x06",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    0
+   ],
+   "vx_range": [
+    840,
+    1016
+   ],
+   "angles_seen": [
+    0,
+    40,
+    64,
+    88
+   ],
+   "variants_seen": [
+    0
+   ],
+   "exit": {
+    "x": 2368,
+    "y": 238,
+    "next_state": "0x09",
+    "facing_bit4_after": 0
+   }
+  },
+  "THZ2_left_run": {
+   "placement": "(2470,238) vx -0x0400",
+   "entered": true,
+   "entry_update": 28,
+   "updates_in_state": 80,
+   "entry": {
+    "x": 2360,
+    "y": 238,
+    "vx": -1016,
+    "angle": 192,
+    "magnitude": 128,
+    "variant": 1,
+    "facing_bit4": 16
+   },
+   "prior_state": "0x06",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    16
+   ],
+   "vx_range": [
+    -1016,
+    -840
+   ],
+   "angles_seen": [
+    0,
+    168,
+    192,
+    216
+   ],
+   "variants_seen": [
+    1
+   ],
+   "exit": {
+    "x": 2076,
+    "y": 238,
+    "next_state": "0x09",
+    "facing_bit4_after": 16
+   }
+  },
+  "THZ3_right_run": {
+   "placement": "(820,110) vx +0x0400",
+   "entered": true,
+   "entry_update": 21,
+   "updates_in_state": 80,
+   "entry": {
+    "x": 903,
+    "y": 110,
+    "vx": 1016,
+    "angle": 64,
+    "magnitude": 128,
+    "variant": 0,
+    "facing_bit4": 0
+   },
+   "prior_state": "0x06",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    0
+   ],
+   "vx_range": [
+    840,
+    1016
+   ],
+   "angles_seen": [
+    0,
+    40,
+    64,
+    88
+   ],
+   "variants_seen": [
+    0
+   ],
+   "exit": {
+    "x": 1187,
+    "y": 110,
+    "next_state": "0x09",
+    "facing_bit4_after": 0
+   }
+  },
+  "THZ1_slow_walk_0x0200": {
+   "placement": "(3000,558) vx +0x0200 state 5 (below the 0x0300 gate; the run state accelerates past it before the strip)",
+   "entered": true,
+   "entry_update": 30,
+   "updates_in_state": 95,
+   "entry": {
+    "x": 3078,
+    "y": 558,
+    "vx": 857,
+    "angle": 64,
+    "magnitude": 108,
+    "variant": 0,
+    "facing_bit4": 0
+   },
+   "prior_state": "0x05",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    0
+   ],
+   "vx_range": [
+    708,
+    857
+   ],
+   "angles_seen": [
+    0,
+    40,
+    64,
+    88
+   ],
+   "variants_seen": [
+    0
+   ],
+   "exit": {
+    "x": 3363,
+    "y": 558,
+    "next_state": "0x09",
+    "facing_bit4_after": 0
+   }
+  },
+  "MGHZ2_right_run": {
+   "placement": "(2270,366) vx +0x0400 state 5",
+   "entered": true,
+   "entry_update": 18,
+   "updates_in_state": 93,
+   "entry": {
+    "x": 2342,
+    "y": 366,
+    "vx": 1270,
+    "angle": 64,
+    "magnitude": 160,
+    "variant": 2,
+    "facing_bit4": 0
+   },
+   "prior_state": "0x06",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    0
+   ],
+   "vx_range": [
+    -1050,
+    1270
+   ],
+   "angles_seen": [
+    0,
+    64,
+    80,
+    96,
+    104,
+    112,
+    120,
+    128,
+    168
+   ],
+   "variants_seen": [
+    2
+   ],
+   "exit": {
+    "x": 2467,
+    "y": 686,
+    "next_state": "0x09",
+    "facing_bit4_after": 0
+   },
+   "vy_range_inside": [
+    0,
+    1270
+   ],
+   "note": "vx goes negative inside the chute while the facing bit stays clear: a vx-sign facing rule (POC legacy path) would flip Sonic here, the ROM does not"
+  },
+  "MGHZ2_right_slow_0x0200": {
+   "placement": "(2270,366) vx +0x0200 state 5: entry speed raised to 0x0500 by the zone-3 rule",
+   "entered": true,
+   "entry_update": 26,
+   "updates_in_state": 93,
+   "entry": {
+    "x": 2341,
+    "y": 366,
+    "vx": 1270,
+    "angle": 64,
+    "magnitude": 160,
+    "variant": 2,
+    "facing_bit4": 0
+   },
+   "prior_state": "0x05",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    0
+   ],
+   "vx_range": [
+    -1050,
+    1270
+   ],
+   "angles_seen": [
+    0,
+    64,
+    80,
+    96,
+    104,
+    112,
+    120,
+    128,
+    168
+   ],
+   "variants_seen": [
+    2
+   ],
+   "exit": {
+    "x": 2467,
+    "y": 686,
+    "next_state": "0x09",
+    "facing_bit4_after": 0
+   }
+  },
+  "MGHZ2_left_from_bottom_LEFT_held_3000f": {
+   "placement": "(2560,686) vx -0x0400 state 6, LEFT held: the bottom entry swings up the chute and re-enters",
+   "entered": true,
+   "entry_update": 26,
+   "updates_in_state": 199,
+   "entry": {
+    "x": 2456,
+    "y": 686,
+    "vx": -1009,
+    "angle": 192,
+    "magnitude": 127,
+    "variant": 3,
+    "facing_bit4": 16
+   },
+   "prior_state": "0x06",
+   "frame_rule_holds_every_update": true,
+   "frame_sequence_first_17": [
+    "0x25",
+    "0x25",
+    "0x25",
+    "0x26",
+    "0x26",
+    "0x26",
+    "0x27",
+    "0x27",
+    "0x27",
+    "0x28",
+    "0x28",
+    "0x28",
+    "0x29",
+    "0x29",
+    "0x29",
+    "0x25",
+    "0x25"
+   ],
+   "facing_bit4_values_inside": [
+    16
+   ],
+   "vx_range": [
+    -1009,
+    1277
+   ],
+   "angles_seen": [
+    0,
+    4,
+    40,
+    64,
+    80,
+    96,
+    112,
+    128,
+    168,
+    192,
+    220,
+    240
+   ],
+   "variants_seen": [
+    2,
+    3
+   ],
+   "exit": {
+    "x": 2465,
+    "y": 686,
+    "next_state": "0x09",
+    "facing_bit4_after": 0
+   }
+  }
+ },
+ "foreground_priority_hiding": {
+  "THZ1_right_run": {
+   "twist_updates": 95,
+   "updates_with_any_hidden_pixel": 54,
+   "updates_fully_hidden": 6,
+   "max_hidden_pixels": 381,
+   "sprite_pixels_min_max": [
+    316,
+    411
+   ],
+   "hidden_profile_every_10_updates": [
+    [
+     30,
+     373,
+     0
+    ],
+    [
+     40,
+     358,
+     0
+    ],
+    [
+     50,
+     335,
+     0
+    ],
+    [
+     60,
+     411,
+     0
+    ],
+    [
+     70,
+     347,
+     6
+    ],
+    [
+     80,
+     335,
+     123
+    ],
+    [
+     90,
+     411,
+     313
+    ],
+    [
+     100,
+     351,
+     348
+    ],
+    [
+     110,
+     335,
+     114
+    ],
+    [
+     120,
+     411,
+     7
+    ]
+   ]
+  },
+  "MGHZ2_right_run": {
+   "twist_updates": 93,
+   "updates_with_any_hidden_pixel": 39,
+   "updates_fully_hidden": 3,
+   "max_hidden_pixels": 340,
+   "sprite_pixels_min_max": [
+    270,
+    411
+   ],
+   "hidden_profile_every_10_updates": [
+    [
+     18,
+     353,
+     0
+    ],
+    [
+     28,
+     347,
+     0
+    ],
+    [
+     38,
+     335,
+     0
+    ],
+    [
+     48,
+     411,
+     6
+    ],
+    [
+     58,
+     361,
+     338
+    ],
+    [
+     68,
+     335,
+     283
+    ],
+    [
+     78,
+     411,
+     31
+    ],
+    [
+     88,
+     364,
+     0
+    ],
+    [
+     98,
+     335,
+     0
+    ],
+    [
+     108,
+     411,
+     0
+    ]
+   ]
+  }
+ },
+ "level_art_animation_probe": {
+  "THZ1": {
+   "bg_tiles_changed_during_strip": [],
+   "bg_palette_changed_updates": 0
+  },
+  "MGHZ2": {
+   "bg_tiles_changed_during_strip": [],
+   "bg_palette_changed_updates": 84
+  },
+  "MGHZ_ambient_cycle": {
+   "scenario": "MGHZ2 standing still 400 harness frames",
+   "bg_palette_change_events": 40,
+   "changed_colour_indices": [
+    4,
+    11
+   ],
+   "period_frames": 10,
+   "conclusion": "level-wide ambient cycle, independent of the strip"
+  },
+  "note": "BG tile indices >= 0x20 and < 0x100 only; sprite pattern tiles (index 256+) stream the player frame and are excluded"
+ }
+}
