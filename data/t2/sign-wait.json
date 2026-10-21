@@ -1,0 +1,130 @@
+{
+ "description": "Pre-contact sign wait: Sonic runs RIGHT from 420 px (MGHZ2: 260 px, the ledge starts there) before the type-$18 sign until 150 px before it, then LEFT is held for 320 updates. The sign is never touched. Records when the sign callback starts raising the left limit and how far back Sonic can walk.",
+ "evidence": "EMULATED + SYNTHETIC start (position injected)",
+ "zones": {
+  "THZ1": {
+   "zone": "THZ",
+   "act": 1,
+   "sign_anchor": [
+    3960,
+    558
+   ],
+   "updates": 480,
+   "left_limit_first_tracks_camera": {
+    "update": 159,
+    "camera_x": 3692,
+    "limL": 3688,
+    "player_x": 3808,
+    "sign_minus_camera": 268,
+    "sign_minus_player": 152
+   },
+   "turn_around": {
+    "update": 161,
+    "player_x": 3816,
+    "camera_x": 3700,
+    "limL": 3696,
+    "player_screen_x": 116
+   },
+   "player_screen_x_min_while_walking_back": 13,
+   "player_screen_x_max_while_walking_back": 118,
+   "camera_x_min_after_turn": 3700,
+   "camera_x_at_turn": 3700,
+   "left_limit_final": 3770,
+   "player_world_x_final": 3786,
+   "sign_contacted_during_trace": false
+  },
+  "MGHZ2": {
+   "zone": "MGHZ",
+   "act": 2,
+   "sign_anchor": [
+    3968,
+    270
+   ],
+   "updates": 348,
+   "left_limit_first_tracks_camera": {
+    "update": 27,
+    "camera_x": 3699,
+    "limL": 3695,
+    "player_x": 3815,
+    "sign_minus_camera": 269,
+    "sign_minus_player": 153
+   },
+   "turn_around": {
+    "update": 29,
+    "player_x": 3823,
+    "camera_x": 3707,
+    "limL": 3703,
+    "player_screen_x": 116
+   },
+   "player_screen_x_min_while_walking_back": 13,
+   "player_screen_x_max_while_walking_back": 118,
+   "camera_x_min_after_turn": 3707,
+   "camera_x_at_turn": 3707,
+   "left_limit_final": 3777,
+   "player_world_x_final": 3793,
+   "sign_contacted_during_trace": false
+  },
+  "GPZ2": {
+   "zone": "GPZ",
+   "act": 2,
+   "sign_anchor": [
+    3968,
+    686
+   ],
+   "updates": 388,
+   "left_limit_first_tracks_camera": {
+    "update": 67,
+    "camera_x": 3699,
+    "limL": 3695,
+    "player_x": 3815,
+    "sign_minus_camera": 269,
+    "sign_minus_player": 153
+   },
+   "turn_around": {
+    "update": 69,
+    "player_x": 3823,
+    "camera_x": 3707,
+    "limL": 3703,
+    "player_screen_x": 116
+   },
+   "player_screen_x_min_while_walking_back": 13,
+   "player_screen_x_max_while_walking_back": 121,
+   "camera_x_min_after_turn": 3707,
+   "camera_x_at_turn": 3707,
+   "left_limit_final": 3777,
+   "player_world_x_final": 3793,
+   "sign_contacted_during_trace": false
+  },
+  "SEZ2": {
+   "zone": "SEZ",
+   "act": 2,
+   "sign_anchor": [
+    3960,
+    398
+   ],
+   "updates": 414,
+   "left_limit_first_tracks_camera": {
+    "update": 94,
+    "camera_x": 3689,
+    "limL": 3685,
+    "player_x": 3805,
+    "sign_minus_camera": 271,
+    "sign_minus_player": 155
+   },
+   "turn_around": {
+    "update": 97,
+    "player_x": 3817,
+    "camera_x": 3701,
+    "limL": 3697,
+    "player_screen_x": 116
+   },
+   "player_screen_x_min_while_walking_back": 13,
+   "player_screen_x_max_while_walking_back": 118,
+   "camera_x_min_after_turn": 3701,
+   "camera_x_at_turn": 3701,
+   "left_limit_final": 3770,
+   "player_world_x_final": 3786,
+   "sign_contacted_during_trace": false
+  }
+ }
+}

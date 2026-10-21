@@ -1,0 +1,846 @@
+{
+ "description": "Per zone: RIGHT held from BACK px left of the boss anchor (arrival_distance_left_of_anchor); 260 updates after the arena lock RIGHT stays held, then LEFT 130 updates, then RIGHT 130 updates (player boundary probes). No state of the boss is forced.",
+ "evidence": "EMULATED + SYNTHETIC arrival (position/camera injected at the start; everything after is the unmodified ROM)",
+ "zones": {
+  "THZ": {
+   "zone": "THZ",
+   "boss_type": "0x50",
+   "anchor_placement": [
+    1936,
+    238
+   ],
+   "arrival_distance_left_of_anchor": 480,
+   "updates": 582,
+   "created": {
+    "update": 66,
+    "boss_world_x": 1936,
+    "boss_screen_x": 342,
+    "boss_state": 0,
+    "player_world_x": 1710,
+    "player_screen_x": 116,
+    "camera": [
+     1594,
+     131
+    ],
+    "boss_minus_player": 226,
+    "note": "screen X = world X - committed camera X on the 256 px window; >= 256 is off-screen right"
+   },
+   "first_anchor_on_screen": {
+    "update": 181,
+    "boss_world_x": 1930,
+    "boss_screen_x": 255,
+    "player_world_x": 1896,
+    "player_screen_x": 221,
+    "camera": [
+     1675,
+     118
+    ],
+    "boss_state": 18,
+    "phase": "approach",
+    "boss_right_of_player": true
+   },
+   "right_limit_first_changed": {
+    "update": 83,
+    "camera": [
+     1662,
+     131
+    ],
+    "limit_right": 1658,
+    "was": 2304,
+    "ahead_of_camera_by": -4,
+    "player_screen_x": 116
+   },
+   "arena_lock_right_limit": {
+    "update": 83,
+    "camera": [
+     1662,
+     131
+    ],
+    "limits_L_R_T_B": [
+     1658,
+     1658,
+     8,
+     272
+    ],
+    "boss_world_x": 1936,
+    "boss_screen_x": 274,
+    "player_world_x": 1778,
+    "player_screen_x": 116,
+    "boss_state": 1
+   },
+   "pan": {
+    "start_update": 168,
+    "start_camera": [
+     1663,
+     130
+    ],
+    "end_camera": [
+     1679,
+     78
+    ],
+    "limits_during_L_R_T_B": [
+     1658,
+     1680,
+     8,
+     78
+    ],
+    "end_update": 220,
+    "boss_screen_x_at_start": 273,
+    "boss_world_x_at_start": 1936,
+    "max_camera_step": 2,
+    "boss_world_x_at_pan_end": 1910,
+    "boss_screen_x_at_pan_end": 231
+   },
+   "player_screen_x_range_approach_after_lock": [
+    116,
+    248
+   ],
+   "player_world_x_range_approach_after_lock": [
+    1778,
+    1910
+   ],
+   "player_screen_x_range_left_after_lock": [
+    14,
+    119
+   ],
+   "player_world_x_range_left_after_lock": [
+    1693,
+    1798
+   ],
+   "player_screen_x_range_right_after_lock": [
+    15,
+    61
+   ],
+   "player_world_x_range_right_after_lock": [
+    1694,
+    1740
+   ],
+   "max_player_screen_x_any_update": 248,
+   "max_player_screen_x_before_lock": 120,
+   "player_x_exceeded_boss_anchor": null,
+   "max_camera_step_x_any_update": 8,
+   "clamp_edges_screen_x": [
+    16,
+    247
+   ],
+   "act_reloaded_at_update": null
+  },
+  "GPZ": {
+   "zone": "GPZ",
+   "boss_type": "0x51",
+   "anchor_placement": [
+    1728,
+    270
+   ],
+   "arrival_distance_left_of_anchor": 480,
+   "updates": 616,
+   "created": {
+    "update": 67,
+    "boss_world_x": 1728,
+    "boss_screen_x": 338,
+    "boss_state": 0,
+    "player_world_x": 1506,
+    "player_screen_x": 116,
+    "camera": [
+     1390,
+     50
+    ],
+    "boss_minus_player": 222,
+    "note": "screen X = world X - committed camera X on the 256 px window; >= 256 is off-screen right"
+   },
+   "first_anchor_on_screen": {
+    "update": 120,
+    "boss_world_x": 1856,
+    "boss_screen_x": 254,
+    "player_world_x": 1718,
+    "player_screen_x": 116,
+    "camera": [
+     1602,
+     161
+    ],
+    "boss_state": 0,
+    "phase": "approach",
+    "boss_right_of_player": true
+   },
+   "right_limit_first_changed": {
+    "update": 68,
+    "camera": [
+     1394,
+     50
+    ],
+    "limit_right": 1664,
+    "was": 2304,
+    "ahead_of_camera_by": 270,
+    "player_screen_x": 116
+   },
+   "arena_lock_right_limit": {
+    "update": 134,
+    "camera": [
+     1658,
+     161
+    ],
+    "limits_L_R_T_B": [
+     0,
+     1664,
+     8,
+     272
+    ],
+    "boss_world_x": 1856,
+    "boss_screen_x": 198,
+    "player_world_x": 1774,
+    "player_screen_x": 116,
+    "boss_state": 0
+   },
+   "pan": {
+    "start_update": 197,
+    "start_camera": [
+     1662,
+     161
+    ],
+    "end_camera": [
+     1663,
+     97
+    ],
+    "limits_during_L_R_T_B": [
+     0,
+     1664,
+     8,
+     272
+    ],
+    "end_update": 261,
+    "boss_screen_x_at_start": 194,
+    "boss_world_x_at_start": 1856,
+    "max_camera_step": 1,
+    "boss_world_x_at_pan_end": 1856,
+    "boss_screen_x_at_pan_end": 193
+   },
+   "player_screen_x_range_approach_after_lock": [
+    116,
+    248
+   ],
+   "player_world_x_range_approach_after_lock": [
+    1774,
+    1911
+   ],
+   "player_screen_x_range_left_after_lock": [
+    183,
+    246
+   ],
+   "player_world_x_range_left_after_lock": [
+    1846,
+    1909
+   ],
+   "player_screen_x_range_right_after_lock": [
+    179,
+    249
+   ],
+   "player_world_x_range_right_after_lock": [
+    1842,
+    1912
+   ],
+   "max_player_screen_x_any_update": 249,
+   "max_player_screen_x_before_lock": 116,
+   "player_x_exceeded_boss_anchor": [
+    155
+   ],
+   "max_camera_step_x_any_update": 4,
+   "clamp_edges_screen_x": [
+    16,
+    247
+   ],
+   "act_reloaded_at_update": null
+  },
+  "SEZ": {
+   "zone": "SEZ",
+   "boss_type": "0x54",
+   "anchor_placement": [
+    3200,
+    622
+   ],
+   "arrival_distance_left_of_anchor": 480,
+   "updates": 580,
+   "created": {
+    "update": 67,
+    "boss_world_x": 3200,
+    "boss_screen_x": 338,
+    "boss_state": 0,
+    "player_world_x": 2978,
+    "player_screen_x": 116,
+    "camera": [
+     2862,
+     514
+    ],
+    "boss_minus_player": 222,
+    "note": "screen X = world X - committed camera X on the 256 px window; >= 256 is off-screen right"
+   },
+   "first_anchor_on_screen": {
+    "update": 169,
+    "boss_world_x": 3136,
+    "boss_screen_x": 209,
+    "player_world_x": 3173,
+    "player_screen_x": 246,
+    "camera": [
+     2927,
+     513
+    ],
+    "boss_state": 3,
+    "phase": "approach",
+    "boss_right_of_player": false
+   },
+   "right_limit_first_changed": {
+    "update": 83,
+    "camera": [
+     2926,
+     514
+    ],
+    "limit_right": 2922,
+    "was": 3840,
+    "ahead_of_camera_by": -4,
+    "player_screen_x": 116
+   },
+   "arena_lock_right_limit": {
+    "update": 83,
+    "camera": [
+     2926,
+     514
+    ],
+    "limits_L_R_T_B": [
+     2922,
+     2922,
+     8,
+     784
+    ],
+    "boss_world_x": 3200,
+    "boss_screen_x": 274,
+    "player_world_x": 3042,
+    "player_screen_x": 116,
+    "boss_state": 1
+   },
+   "pan": {
+    "start_update": 168,
+    "start_camera": [
+     2926,
+     514
+    ],
+    "end_camera": [
+     2975,
+     462
+    ],
+    "limits_during_L_R_T_B": [
+     2922,
+     2922,
+     8,
+     462
+    ],
+    "end_update": 220,
+    "boss_screen_x_at_start": 274,
+    "boss_world_x_at_start": 3200,
+    "max_camera_step": 1,
+    "boss_world_x_at_pan_end": 3136,
+    "boss_screen_x_at_pan_end": 161
+   },
+   "player_screen_x_range_approach_after_lock": [
+    116,
+    248
+   ],
+   "player_world_x_range_approach_after_lock": [
+    3042,
+    3223
+   ],
+   "player_screen_x_range_left_after_lock": [
+    45,
+    247
+   ],
+   "player_world_x_range_left_after_lock": [
+    3020,
+    3222
+   ],
+   "player_screen_x_range_right_after_lock": [
+    15,
+    99
+   ],
+   "player_world_x_range_right_after_lock": [
+    2990,
+    3074
+   ],
+   "max_player_screen_x_any_update": 248,
+   "max_player_screen_x_before_lock": 116,
+   "player_x_exceeded_boss_anchor": [
+    169
+   ],
+   "max_camera_step_x_any_update": 4,
+   "clamp_edges_screen_x": [
+    16,
+    247
+   ],
+   "act_reloaded_at_update": null
+  },
+  "MGHZ": {
+   "zone": "MGHZ",
+   "boss_type": "0x56",
+   "anchor_placement": [
+    3269,
+    288
+   ],
+   "arrival_distance_left_of_anchor": 480,
+   "updates": 317,
+   "created": {
+    "update": 67,
+    "boss_world_x": 3269,
+    "boss_screen_x": 338,
+    "boss_state": 0,
+    "player_world_x": 3047,
+    "player_screen_x": 116,
+    "camera": [
+     2931,
+     258
+    ],
+    "boss_minus_player": 222,
+    "note": "screen X = world X - committed camera X on the 256 px window; >= 256 is off-screen right"
+   },
+   "first_anchor_on_screen": {
+    "update": 187,
+    "boss_world_x": 3269,
+    "boss_screen_x": 255,
+    "player_world_x": 3252,
+    "player_screen_x": 238,
+    "camera": [
+     3014,
+     275
+    ],
+    "boss_state": 11,
+    "phase": "approach",
+    "boss_right_of_player": true
+   },
+   "right_limit_first_changed": {
+    "update": 83,
+    "camera": [
+     2995,
+     258
+    ],
+    "limit_right": 2991,
+    "was": 3584,
+    "ahead_of_camera_by": -4,
+    "player_screen_x": 116
+   },
+   "arena_lock_right_limit": {
+    "update": 83,
+    "camera": [
+     2995,
+     258
+    ],
+    "limits_L_R_T_B": [
+     2991,
+     2991,
+     8,
+     528
+    ],
+    "boss_world_x": 3269,
+    "boss_screen_x": 274,
+    "player_world_x": 3111,
+    "player_screen_x": 116,
+    "boss_state": 1
+   },
+   "pan": {
+    "start_update": 168,
+    "start_camera": [
+     2995,
+     294
+    ],
+    "end_camera": [
+     3047,
+     256
+    ],
+    "limits_during_L_R_T_B": [
+     2991,
+     2991,
+     8,
+     256
+    ],
+    "end_update": 220,
+    "boss_screen_x_at_start": 274,
+    "boss_world_x_at_start": 3269,
+    "max_camera_step": 2,
+    "boss_world_x_at_pan_end": 3269,
+    "boss_screen_x_at_pan_end": 222
+   },
+   "player_screen_x_range_approach_after_lock": [
+    116,
+    248
+   ],
+   "player_world_x_range_approach_after_lock": [
+    3111,
+    3287
+   ],
+   "max_player_screen_x_any_update": 248,
+   "max_player_screen_x_before_lock": 116,
+   "player_x_exceeded_boss_anchor": [
+    198
+   ],
+   "max_camera_step_x_any_update": 4,
+   "clamp_edges_screen_x": [
+    16,
+    247
+   ],
+   "act_reloaded_at_update": 325
+  },
+  "AQZ": {
+   "zone": "AQZ",
+   "boss_type": "0x59",
+   "anchor_placement": [
+    1856,
+    238
+   ],
+   "arrival_distance_left_of_anchor": 480,
+   "updates": 600,
+   "created": {
+    "update": 67,
+    "boss_world_x": 1856,
+    "boss_screen_x": 338,
+    "boss_state": 0,
+    "player_world_x": 1634,
+    "player_screen_x": 116,
+    "camera": [
+     1518,
+     80
+    ],
+    "boss_minus_player": 222,
+    "note": "screen X = world X - committed camera X on the 256 px window; >= 256 is off-screen right"
+   },
+   "first_anchor_on_screen": {
+    "update": 88,
+    "boss_world_x": 1856,
+    "boss_screen_x": 254,
+    "player_world_x": 1718,
+    "player_screen_x": 116,
+    "camera": [
+     1602,
+     129
+    ],
+    "boss_state": 1,
+    "phase": "approach",
+    "boss_right_of_player": true
+   },
+   "right_limit_first_changed": {
+    "update": 99,
+    "camera": [
+     1646,
+     129
+    ],
+    "limit_right": 1642,
+    "was": 2304,
+    "ahead_of_camera_by": -4,
+    "player_screen_x": 116
+   },
+   "arena_lock_right_limit": {
+    "update": 99,
+    "camera": [
+     1646,
+     129
+    ],
+    "limits_L_R_T_B": [
+     1642,
+     1642,
+     8,
+     272
+    ],
+    "boss_world_x": 1856,
+    "boss_screen_x": 210,
+    "player_world_x": 1762,
+    "player_screen_x": 116,
+    "boss_state": 1
+   },
+   "pan": {
+    "start_update": 168,
+    "start_camera": [
+     1646,
+     129
+    ],
+    "end_camera": [
+     1727,
+     78
+    ],
+    "limits_during_L_R_T_B": [
+     1642,
+     1642,
+     8,
+     78
+    ],
+    "end_update": 249,
+    "boss_screen_x_at_start": 210,
+    "boss_world_x_at_start": 1856,
+    "max_camera_step": 2,
+    "boss_world_x_at_pan_end": 1856,
+    "boss_screen_x_at_pan_end": 129
+   },
+   "player_screen_x_range_approach_after_lock": [
+    116,
+    249
+   ],
+   "player_world_x_range_approach_after_lock": [
+    1762,
+    1976
+   ],
+   "player_screen_x_range_left_after_lock": [
+    15,
+    208
+   ],
+   "player_world_x_range_left_after_lock": [
+    1742,
+    1935
+   ],
+   "player_screen_x_range_right_after_lock": [
+    16,
+    157
+   ],
+   "player_world_x_range_right_after_lock": [
+    1743,
+    1884
+   ],
+   "max_player_screen_x_any_update": 249,
+   "max_player_screen_x_before_lock": 116,
+   "player_x_exceeded_boss_anchor": [
+    123
+   ],
+   "max_camera_step_x_any_update": 4,
+   "clamp_edges_screen_x": [
+    16,
+    247
+   ],
+   "act_reloaded_at_update": null
+  },
+  "EEZ": {
+   "zone": "EEZ",
+   "boss_type": "0x5E",
+   "anchor_placement": [
+    2080,
+    494
+   ],
+   "arrival_distance_left_of_anchor": 260,
+   "updates": 508,
+   "created": {
+    "update": 11,
+    "boss_world_x": 2080,
+    "boss_screen_x": 340,
+    "boss_state": 0,
+    "player_world_x": 1855,
+    "player_screen_x": 115,
+    "camera": [
+     1740,
+     274
+    ],
+    "boss_minus_player": 225,
+    "note": "screen X = world X - committed camera X on the 256 px window; >= 256 is off-screen right"
+   },
+   "first_anchor_on_screen": {
+    "update": 33,
+    "boss_world_x": 2080,
+    "boss_screen_x": 254,
+    "player_world_x": 1942,
+    "player_screen_x": 116,
+    "camera": [
+     1826,
+     361
+    ],
+    "boss_state": 1,
+    "phase": "approach",
+    "boss_right_of_player": true
+   },
+   "right_limit_first_changed": {
+    "update": 44,
+    "camera": [
+     1870,
+     387
+    ],
+    "limit_right": 1866,
+    "was": 3328,
+    "ahead_of_camera_by": -4,
+    "player_screen_x": 116
+   },
+   "arena_lock_right_limit": {
+    "update": 44,
+    "camera": [
+     1870,
+     387
+    ],
+    "limits_L_R_T_B": [
+     1866,
+     1866,
+     8,
+     784
+    ],
+    "boss_world_x": 2080,
+    "boss_screen_x": 210,
+    "player_world_x": 1986,
+    "player_screen_x": 116,
+    "boss_state": 1
+   },
+   "pan": {
+    "start_update": 112,
+    "start_camera": [
+     1870,
+     387
+    ],
+    "end_camera": [
+     1951,
+     334
+    ],
+    "limits_during_L_R_T_B": [
+     1866,
+     1866,
+     8,
+     334
+    ],
+    "end_update": 193,
+    "boss_screen_x_at_start": 210,
+    "boss_world_x_at_start": 2080,
+    "max_camera_step": 1,
+    "boss_world_x_at_pan_end": 2208,
+    "boss_screen_x_at_pan_end": 257
+   },
+   "player_screen_x_range_approach_after_lock": [
+    116,
+    248
+   ],
+   "player_world_x_range_approach_after_lock": [
+    1986,
+    2199
+   ],
+   "player_screen_x_range_left_after_lock": [
+    13,
+    248
+   ],
+   "player_world_x_range_left_after_lock": [
+    1964,
+    2199
+   ],
+   "player_screen_x_range_right_after_lock": [
+    15,
+    95
+   ],
+   "player_world_x_range_right_after_lock": [
+    1966,
+    2046
+   ],
+   "max_player_screen_x_any_update": 248,
+   "max_player_screen_x_before_lock": 116,
+   "player_x_exceeded_boss_anchor": [
+    68
+   ],
+   "max_camera_step_x_any_update": 4,
+   "clamp_edges_screen_x": [
+    16,
+    247
+   ],
+   "act_reloaded_at_update": null
+  }
+ },
+ "tables": {
+  "trigger_table_97A1": {
+   "semantics": "strict |playerX-bossX| < dx and |playerY-bossY| < dy (CALL $0383/$0386), then $0356 lowers the right limit to the camera",
+   "rows": [
+    {
+     "row": 0,
+     "zone_or_encounter": "THZ",
+     "dx": 160,
+     "dy": 256
+    },
+    {
+     "row": 1,
+     "zone_or_encounter": "GPZ",
+     "dx": 128,
+     "dy": 304
+    },
+    {
+     "row": 2,
+     "zone_or_encounter": "SEZ",
+     "dx": 160,
+     "dy": 304
+    },
+    {
+     "row": 3,
+     "zone_or_encounter": "MGHZ",
+     "dx": 160,
+     "dy": 304
+    },
+    {
+     "row": 4,
+     "zone_or_encounter": "AQZ",
+     "dx": 96,
+     "dy": 304
+    },
+    {
+     "row": 5,
+     "zone_or_encounter": "EEZ first ($5E)",
+     "dx": 96,
+     "dy": 304
+    },
+    {
+     "row": 6,
+     "zone_or_encounter": "EEZ second ($60)",
+     "dx": 96,
+     "dy": 304
+    },
+    {
+     "row": 7,
+     "zone_or_encounter": "unused",
+     "dx": 96,
+     "dy": 304
+    }
+   ]
+  },
+  "pan_table_9808": {
+   "semantics": "camera pan target = boss anchor + (dx, dy) at state 2->3 ($9808 row, then $0359 pan on); the right limit is exclusive so X settles one pixel short",
+   "rows": [
+    {
+     "row": 0,
+     "zone_or_encounter": "THZ",
+     "dx": -256,
+     "dy": -160
+    },
+    {
+     "row": 1,
+     "zone_or_encounter": "GPZ",
+     "dx": -192,
+     "dy": -160
+    },
+    {
+     "row": 2,
+     "zone_or_encounter": "SEZ",
+     "dx": -224,
+     "dy": -160
+    },
+    {
+     "row": 3,
+     "zone_or_encounter": "MGHZ",
+     "dx": -208,
+     "dy": -32
+    },
+    {
+     "row": 4,
+     "zone_or_encounter": "AQZ",
+     "dx": -128,
+     "dy": -160
+    },
+    {
+     "row": 5,
+     "zone_or_encounter": "EEZ first ($5E)",
+     "dx": -128,
+     "dy": -160
+    },
+    {
+     "row": 6,
+     "zone_or_encounter": "EEZ second ($60)",
+     "dx": -128,
+     "dy": -160
+    },
+    {
+     "row": 7,
+     "zone_or_encounter": "unused",
+     "dx": -128,
+     "dy": 160
+    }
+   ]
+  }
+ }
+}

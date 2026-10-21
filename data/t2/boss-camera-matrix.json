@@ -1,0 +1,497 @@
+{
+ "sources": [
+  "data/t2/boss-arrival.json",
+  "data/t2/owner-map.json",
+  "data/t1/transition-audit.json",
+  "docs/*-boss-*-audit.md"
+ ],
+ "note": "pan/trigger rows are BYTE-VERIFIED tables ($97A1/$9808). Emulated numbers come from one arrival script per zone (RIGHT held, boss state never forced) and are SYNTHETIC at the start only.",
+ "zones": {
+  "THZ3": {
+   "boss_type": "$50",
+   "activation_code": "shared states 0-5 ($9765..), bank $1E",
+   "trigger": "strict |dx|<160, |dy|<256",
+   "lock": "right limit := camera at the trigger (limit trails the camera by one scroll step)",
+   "pan_target": "anchor + (-256, -160)",
+   "pan_settle": "settles (1679,78) per T1; HUD slot ($12) must disappear first (97 updates)",
+   "release": "$81BD: floor bit 1 gate; D280 := camera; pan off; D282 := saved 2304; player state $20 follows; $0A bonus object",
+   "camera_after_release": "follow resumes, <= 7 px/update (T1)",
+   "player_boundary": "none: generic O-P1 clamp = arena (the POC's 1695..1926 rectangle is that clamp expressed in world terms at 256)",
+   "emulated_arrival": {
+    "arrival_distance_left_of_anchor": 480,
+    "created": {
+     "update": 66,
+     "boss_world_x": 1936,
+     "boss_screen_x": 342,
+     "player_world_x": 1710,
+     "player_screen_x": 116,
+     "camera_x": 1594
+    },
+    "first_anchor_on_screen": {
+     "update": 181,
+     "boss_world_x": 1930,
+     "boss_screen_x": 255,
+     "player_world_x": 1896,
+     "player_screen_x": 221,
+     "camera": [
+      1675,
+      118
+     ],
+     "boss_right_of_player": true
+    },
+    "right_limit_first_changed": {
+     "update": 83,
+     "camera": [
+      1662,
+      131
+     ],
+     "limit_right": 1658,
+     "was": 2304,
+     "ahead_of_camera_by": -4,
+     "player_screen_x": 116
+    },
+    "arena_lock": {
+     "update": 83,
+     "camera": [
+      1662,
+      131
+     ],
+     "boss_world_x": 1936,
+     "boss_screen_x": 274,
+     "player_world_x": 1778,
+     "player_screen_x": 116
+    },
+    "pan": {
+     "start_update": 168,
+     "start_camera": [
+      1663,
+      130
+     ],
+     "end_camera": [
+      1679,
+      78
+     ],
+     "limits_during_L_R_T_B": [
+      1658,
+      1680,
+      8,
+      78
+     ],
+     "end_update": 220,
+     "boss_screen_x_at_start": 273,
+     "boss_world_x_at_start": 1936,
+     "max_camera_step": 2,
+     "boss_world_x_at_pan_end": 1910,
+     "boss_screen_x_at_pan_end": 231
+    },
+    "max_player_screen_x_any_update": 248,
+    "max_player_screen_x_before_lock": 120
+   }
+  },
+  "GPZ3": {
+   "boss_type": "$51",
+   "activation_code": "own intro $9A64..; head object; segments",
+   "trigger": "creation: world-fixed lock (below); table row 1 is not used for the lock",
+   "lock": "right limit := 1664 (WORLD) AT CREATION, 270 px ahead of the camera; the camera runs into the limit by itself",
+   "pan_target": "LOCKED_CAMERA (1664,96) via $9AED vector $0359 (equals the row-1 offset from the head's 1856)",
+   "pan_settle": "settles (1663,96/97); camera-ready gate: |diff| < 4 per axis",
+   "release": "head-gone release: D280 := camera, D282 := $0780 (1920), D27E := 96; pan off + enable ($035C, $042B)",
+   "camera_after_release": "follow",
+   "player_boundary": "none: generic O-P1 clamp",
+   "emulated_arrival": {
+    "arrival_distance_left_of_anchor": 480,
+    "created": {
+     "update": 67,
+     "boss_world_x": 1728,
+     "boss_screen_x": 338,
+     "player_world_x": 1506,
+     "player_screen_x": 116,
+     "camera_x": 1390
+    },
+    "first_anchor_on_screen": {
+     "update": 120,
+     "boss_world_x": 1856,
+     "boss_screen_x": 254,
+     "player_world_x": 1718,
+     "player_screen_x": 116,
+     "camera": [
+      1602,
+      161
+     ],
+     "boss_right_of_player": true
+    },
+    "right_limit_first_changed": {
+     "update": 68,
+     "camera": [
+      1394,
+      50
+     ],
+     "limit_right": 1664,
+     "was": 2304,
+     "ahead_of_camera_by": 270,
+     "player_screen_x": 116
+    },
+    "arena_lock": {
+     "update": 134,
+     "camera": [
+      1658,
+      161
+     ],
+     "boss_world_x": 1856,
+     "boss_screen_x": 198,
+     "player_world_x": 1774,
+     "player_screen_x": 116
+    },
+    "pan": {
+     "start_update": 197,
+     "start_camera": [
+      1662,
+      161
+     ],
+     "end_camera": [
+      1663,
+      97
+     ],
+     "limits_during_L_R_T_B": [
+      0,
+      1664,
+      8,
+      272
+     ],
+     "end_update": 261,
+     "boss_screen_x_at_start": 194,
+     "boss_world_x_at_start": 1856,
+     "max_camera_step": 1,
+     "boss_world_x_at_pan_end": 1856,
+     "boss_screen_x_at_pan_end": 193
+    },
+    "max_player_screen_x_any_update": 249,
+    "max_player_screen_x_before_lock": 116
+   }
+  },
+  "SEZ3": {
+   "boss_type": "$54",
+   "activation_code": "shared states 0-5",
+   "trigger": "strict |dx|<160, |dy|<304",
+   "lock": "right limit := camera at the trigger",
+   "pan_target": "anchor + (-224, -160)",
+   "pan_settle": "settles (2975,462); combat starts at once, no camera-arrival gate",
+   "release": "$81BD: D280 := camera; D282 := saved 3840",
+   "camera_after_release": "follow resumes <= 7 px/update",
+   "player_boundary": "none: generic O-P1 clamp (sez3-boss-54-audit: no SEZ-specific world arena)",
+   "emulated_arrival": {
+    "arrival_distance_left_of_anchor": 480,
+    "created": {
+     "update": 67,
+     "boss_world_x": 3200,
+     "boss_screen_x": 338,
+     "player_world_x": 2978,
+     "player_screen_x": 116,
+     "camera_x": 2862
+    },
+    "first_anchor_on_screen": {
+     "update": 169,
+     "boss_world_x": 3136,
+     "boss_screen_x": 209,
+     "player_world_x": 3173,
+     "player_screen_x": 246,
+     "camera": [
+      2927,
+      513
+     ],
+     "boss_right_of_player": false
+    },
+    "right_limit_first_changed": {
+     "update": 83,
+     "camera": [
+      2926,
+      514
+     ],
+     "limit_right": 2922,
+     "was": 3840,
+     "ahead_of_camera_by": -4,
+     "player_screen_x": 116
+    },
+    "arena_lock": {
+     "update": 83,
+     "camera": [
+      2926,
+      514
+     ],
+     "boss_world_x": 3200,
+     "boss_screen_x": 274,
+     "player_world_x": 3042,
+     "player_screen_x": 116
+    },
+    "pan": {
+     "start_update": 168,
+     "start_camera": [
+      2926,
+      514
+     ],
+     "end_camera": [
+      2975,
+      462
+     ],
+     "limits_during_L_R_T_B": [
+      2922,
+      2922,
+      8,
+      462
+     ],
+     "end_update": 220,
+     "boss_screen_x_at_start": 274,
+     "boss_world_x_at_start": 3200,
+     "max_camera_step": 1,
+     "boss_world_x_at_pan_end": 3136,
+     "boss_screen_x_at_pan_end": 161
+    },
+    "max_player_screen_x_any_update": 248,
+    "max_player_screen_x_before_lock": 116
+   }
+  },
+  "MGHZ3": {
+   "boss_type": "$56",
+   "activation_code": "shared states 0-5, release branch $81F4",
+   "trigger": "strict |dx|<160, |dy|<304",
+   "lock": "right limit := camera at the trigger",
+   "pan_target": "anchor + (-208, -32)",
+   "pan_settle": "settles (3060,256) per T1/audit",
+   "release": "$81F4 branch: NO left-limit write; D282 := saved 3584; gated on WORLD X >= 3356 and floor bit 1",
+   "camera_after_release": "follow resumes, then waits for Sonic X >= 3356 (T1)",
+   "player_boundary": "none: generic O-P1 clamp. The arena floor ends: holding RIGHT walks Sonic into the pit (data/t2/boss-arrival.json run ended in a fall)",
+   "emulated_arrival": {
+    "arrival_distance_left_of_anchor": 480,
+    "created": {
+     "update": 67,
+     "boss_world_x": 3269,
+     "boss_screen_x": 338,
+     "player_world_x": 3047,
+     "player_screen_x": 116,
+     "camera_x": 2931
+    },
+    "first_anchor_on_screen": {
+     "update": 187,
+     "boss_world_x": 3269,
+     "boss_screen_x": 255,
+     "player_world_x": 3252,
+     "player_screen_x": 238,
+     "camera": [
+      3014,
+      275
+     ],
+     "boss_right_of_player": true
+    },
+    "right_limit_first_changed": {
+     "update": 83,
+     "camera": [
+      2995,
+      258
+     ],
+     "limit_right": 2991,
+     "was": 3584,
+     "ahead_of_camera_by": -4,
+     "player_screen_x": 116
+    },
+    "arena_lock": {
+     "update": 83,
+     "camera": [
+      2995,
+      258
+     ],
+     "boss_world_x": 3269,
+     "boss_screen_x": 274,
+     "player_world_x": 3111,
+     "player_screen_x": 116
+    },
+    "pan": {
+     "start_update": 168,
+     "start_camera": [
+      2995,
+      294
+     ],
+     "end_camera": [
+      3047,
+      256
+     ],
+     "limits_during_L_R_T_B": [
+      2991,
+      2991,
+      8,
+      256
+     ],
+     "end_update": 220,
+     "boss_screen_x_at_start": 274,
+     "boss_world_x_at_start": 3269,
+     "max_camera_step": 2,
+     "boss_world_x_at_pan_end": 3269,
+     "boss_screen_x_at_pan_end": 222
+    },
+    "max_player_screen_x_any_update": 248,
+    "max_player_screen_x_before_lock": 116
+   }
+  },
+  "AQZ3": {
+   "boss_type": "$59",
+   "activation_code": "shared states 0-5",
+   "trigger": "strict |dx|<96, |dy|<304",
+   "lock": "right limit := camera at the trigger",
+   "pan_target": "anchor + (-128, -160)",
+   "pan_settle": "settles (1727,78); combat init runs while the camera still moves; no arrival gate",
+   "release": "$81BD: D280 := camera; D282 := saved natural right limit 2304; player state $20",
+   "camera_after_release": "follow",
+   "player_boundary": "none: generic O-P1 clamp; no boss-owned world rectangle",
+   "emulated_arrival": {
+    "arrival_distance_left_of_anchor": 480,
+    "created": {
+     "update": 67,
+     "boss_world_x": 1856,
+     "boss_screen_x": 338,
+     "player_world_x": 1634,
+     "player_screen_x": 116,
+     "camera_x": 1518
+    },
+    "first_anchor_on_screen": {
+     "update": 88,
+     "boss_world_x": 1856,
+     "boss_screen_x": 254,
+     "player_world_x": 1718,
+     "player_screen_x": 116,
+     "camera": [
+      1602,
+      129
+     ],
+     "boss_right_of_player": true
+    },
+    "right_limit_first_changed": {
+     "update": 99,
+     "camera": [
+      1646,
+      129
+     ],
+     "limit_right": 1642,
+     "was": 2304,
+     "ahead_of_camera_by": -4,
+     "player_screen_x": 116
+    },
+    "arena_lock": {
+     "update": 99,
+     "camera": [
+      1646,
+      129
+     ],
+     "boss_world_x": 1856,
+     "boss_screen_x": 210,
+     "player_world_x": 1762,
+     "player_screen_x": 116
+    },
+    "pan": {
+     "start_update": 168,
+     "start_camera": [
+      1646,
+      129
+     ],
+     "end_camera": [
+      1727,
+      78
+     ],
+     "limits_during_L_R_T_B": [
+      1642,
+      1642,
+      8,
+      78
+     ],
+     "end_update": 249,
+     "boss_screen_x_at_start": 210,
+     "boss_world_x_at_start": 1856,
+     "max_camera_step": 2,
+     "boss_world_x_at_pan_end": 1856,
+     "boss_screen_x_at_pan_end": 129
+    },
+    "max_player_screen_x_any_update": 249,
+    "max_player_screen_x_before_lock": 116
+   }
+  },
+  "EEZ3": {
+   "boss_type": "$5E then $60",
+   "activation_code": "two consecutive encounters; boss anchor shifted +128 at setup",
+   "trigger": "strict |dx|<96, |dy|<304 (second encounter row: strict |dx|<96, |dy|<304)",
+   "lock": "right limit := min(old right, camera); old right saved",
+   "pan_target": "anchor + (-128,-160) nominal (1952,334)/(2336,334)",
+   "pan_settle": "settles (1951,333)/(2335,333); bottom limit 334",
+   "release": "handoffs release pan and restore the saved right limits; no player $20 / act clear; the chain continues to the ending",
+   "camera_after_release": "not a normal follow release: scripted chain",
+   "player_boundary": "none: viewport-relative O-P1; the audit forbids a THZ-style fixed world arena",
+   "emulated_arrival": {
+    "arrival_distance_left_of_anchor": 260,
+    "created": {
+     "update": 11,
+     "boss_world_x": 2080,
+     "boss_screen_x": 340,
+     "player_world_x": 1855,
+     "player_screen_x": 115,
+     "camera_x": 1740
+    },
+    "first_anchor_on_screen": {
+     "update": 33,
+     "boss_world_x": 2080,
+     "boss_screen_x": 254,
+     "player_world_x": 1942,
+     "player_screen_x": 116,
+     "camera": [
+      1826,
+      361
+     ],
+     "boss_right_of_player": true
+    },
+    "right_limit_first_changed": {
+     "update": 44,
+     "camera": [
+      1870,
+      387
+     ],
+     "limit_right": 1866,
+     "was": 3328,
+     "ahead_of_camera_by": -4,
+     "player_screen_x": 116
+    },
+    "arena_lock": {
+     "update": 44,
+     "camera": [
+      1870,
+      387
+     ],
+     "boss_world_x": 2080,
+     "boss_screen_x": 210,
+     "player_world_x": 1986,
+     "player_screen_x": 116
+    },
+    "pan": {
+     "start_update": 112,
+     "start_camera": [
+      1870,
+      387
+     ],
+     "end_camera": [
+      1951,
+      334
+     ],
+     "limits_during_L_R_T_B": [
+      1866,
+      1866,
+      8,
+      334
+     ],
+     "end_update": 193,
+     "boss_screen_x_at_start": 210,
+     "boss_world_x_at_start": 2080,
+     "max_camera_step": 1,
+     "boss_world_x_at_pan_end": 2208,
+     "boss_screen_x_at_pan_end": 257
+    },
+    "max_player_screen_x_any_update": 248,
+    "max_player_screen_x_before_lock": 116
+   }
+  }
+ }
+}

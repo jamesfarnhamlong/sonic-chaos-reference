@@ -1,0 +1,36 @@
+{
+ "description": "Clamp scope: with the camera frozen by a bare limit lock (D280 = D282 = camera, no sign, no boss) Sonic is still held to [cam+16, cam+247]. The clamp ($4141) therefore belongs to the player step, not to any object.",
+ "evidence": "BYTE-VERIFIED ($4141 gate bytes) + EMULATED + SYNTHETIC lock",
+ "gate_bytes_4141": "dd7e01fe2930",
+ "gate_decoded": "LD A,(IX+1); CP $29; JR NC,$4169 (states >= $29 skip the clamp)",
+ "cases": {
+  "THZ3": {
+   "synthetic_lock_camera_x": 1560,
+   "start_player_x": 1660,
+   "camera_x_after": [
+    1560
+   ],
+   "player_screen_x_min": {
+    "left": 14,
+    "right": 15,
+    "jump_left": 110,
+    "jump_right": 67
+   },
+   "player_screen_x_max": {
+    "left": 100,
+    "right": 249,
+    "jump_left": 248,
+    "jump_right": 200
+   },
+   "states_seen": [
+    1,
+    5,
+    6,
+    8,
+    10
+   ]
+  }
+ },
+ "states_excluded_by_gate": ">= 0x29",
+ "state_20_handler": "$83A6 does not call $4141/$4281 (viewport-semantics-audit section 4)"
+}

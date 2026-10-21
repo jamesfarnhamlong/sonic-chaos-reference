@@ -1,0 +1,150 @@
+{
+ "classes": [
+  "canonical ROM behaviour",
+  "intentional widescreen adapter",
+  "confirmed mismatch",
+  "unverified"
+ ],
+ "rows": [
+  {
+   "id": "T2-01",
+   "scope": "THZ3 boss, camera modes 1-2 (creation to HUD wait)",
+   "finding": "No player screen clamp is applied between boss creation and the pan (mode 3 has only a world-rectangle clamp). Sonic runs past the locked screen edge.",
+   "classification": "confirmed mismatch",
+   "gameplay_impact": "Report 1: Sonic leaves the visible screen while the camera is locked",
+   "evidence": "POC-SOURCE MODEL data/t2/poc-model.json (256: 52 updates beyond the view, max screen X 443; 348: 94 updates, 441); ROM: max screen X 249 in all six zones (data/t2/boss-arrival.json)",
+   "poc_path": "SCR_chaos_adapter.gml:199 clamp predicate lists goal contact, GPZ3, MGHZ3, SEZ3, AQZ3 only; EEZ3 is a separate block at :212; THZ3 appears nowhere except the mode-3 world rectangle at :203",
+   "recommendation": "route every locked owner through one bounds predicate (section 5 of the report)"
+  },
+  {
+   "id": "T2-02",
+   "scope": "THZ3 boss entry",
+   "finding": "The boss appears to Sonic's left: with T2-01 Sonic passes the spawn x (1936) at update 123 in both widths; at 348 the extended arena (to 2018) keeps him right of the boss for the whole fight.",
+   "classification": "confirmed mismatch",
+   "gameplay_impact": "Report 2",
+   "evidence": "POC-SOURCE MODEL: first_update_player_right_of_boss_spawn_x 123 (256 and 348); 348: 208 updates right of the boss anchor. ROM: boss created at screen X 342 and enters through screen X 255 with Sonic clamped at <= 249",
+   "poc_path": "chaos_boss_clamp / CHAOS_BOSS_ARENA_RIGHT + chaos_boss_arena_extra",
+   "recommendation": "fix T2-01 first; after it, at 256 the case cannot occur. At 348 it can only occur within the last 2 px of the viewport clamp (RIGHT-9 = 1938 vs spawn 1936); decide D-T2-2 before touching the boss position"
+  },
+  {
+   "id": "T2-03",
+   "scope": "Goal sign wait (all 12 ordinary acts; reported at MGHZ2)",
+   "finding": "C1-I added the ROM 'raise left limit' while the awake sign is in state 3, but the player clamp is still enabled only from sign contact (chaosGoalContact). Before contact the camera cannot scroll back and Sonic can walk off its left edge.",
+   "classification": "confirmed mismatch",
+   "gameplay_impact": "Report 3: backtracking near the end of MGHZ2 leaves Sonic offscreen with the camera locked",
+   "evidence": "POC-SOURCE MODEL (THZ1 sign): player screen X reaches -494 (256) / -448 (348) with the left limit tracking the camera; ROM (4 acts): minimum screen X 13, camera stays",
+   "poc_path": "OBJ_chaos_object_18/Step_0.gml:9 (raise) vs SCR_chaos_adapter.gml:199 (clamp gate)",
+   "recommendation": "bounds predicate must include O1_SIGN_WAIT"
+  },
+  {
+   "id": "T2-04",
+   "scope": "Architecture",
+   "finding": "The ROM clamp is a property of the player step (state < $29), not of any owner. The POC keeps a hand-maintained disjunction of owners; any new camera lock that forgets to join it is unprotected.",
+   "classification": "confirmed mismatch",
+   "gameplay_impact": "Root cause class behind T2-01 and T2-03",
+   "evidence": "BYTE-VERIFIED $4141 + EMULATED bare limit lock (data/t2/clamp-scope.json: screen X 14..249 with no sign and no boss)",
+   "poc_path": "SCR_chaos_adapter.gml:199, :203, :212",
+   "recommendation": "single owner-independent predicate; see report section 5"
+  },
+  {
+   "id": "T2-05",
+   "scope": "THZ3 boss, camera mode 1 and mode 4",
+   "finding": "Creation and release re-centre the camera on Sonic (T1-01/T1-02). Not re-measured here as a snap: in the T2 arrival script Sonic is left of centre so the left limit absorbs it (step 0).",
+   "classification": "confirmed mismatch",
+   "gameplay_impact": "Camera pop at creation (Sonic ahead of centre) and at release (33 px example in T1)",
+   "evidence": "T1 register + POC-SOURCE MODEL (conditional on Sonic position)",
+   "poc_path": "SCR_chaos_boss.gml chaos_boss_camera_step modes 1 and 4",
+   "recommendation": "keep T1 PKG-T1A: left-limit raise only, bounded takeover/release"
+  },
+  {
+   "id": "T2-06",
+   "scope": "Boss entry geometry, THZ3 / GPZ3 / MGHZ3 / AQZ3 / EEZ3",
+   "finding": "In the ROM the boss is created off-screen right (screen X 338-342, Sonic at 115-116) and its anchor first reaches the screen at X 254-255, with Sonic (clamped to <= 249) to its left. AQZ3 and EEZ3 bosses are already inside the window at X 254 before the arena locks; THZ3 and MGHZ3 first show at the pan.",
+   "classification": "canonical ROM behaviour",
+   "gameplay_impact": "Defines 'approaches from the right'",
+   "evidence": "data/t2/boss-arrival.json (EMULATED + SYNTHETIC start)",
+   "poc_path": "chaos_boss_creation_band uses EDGE(RIGHT,+32..+95): equivalent",
+   "recommendation": "none"
+  },
+  {
+   "id": "T2-14",
+   "scope": "SEZ3 boss entry",
+   "finding": "The SEZ3 boss is not slid in: at state 3 its anchor jumps from the placement (3200,622) to (3136,430), screen X 209. With Sonic hugging the right clamp (X 246-247) the boss therefore appears to Sonic's LEFT.",
+   "classification": "canonical ROM behaviour",
+   "gameplay_impact": "A report of 'boss on the left' is original behaviour in SEZ3 when Sonic stands at the right edge; it is not a THZ3-style error",
+   "evidence": "data/t2/boss-arrival.json SEZ first_anchor_on_screen (update 169, boss_right_of_player false); trace rows 168-169",
+   "poc_path": "-",
+   "recommendation": "do not generalise T2-02 to SEZ3"
+  },
+  {
+   "id": "T2-07",
+   "scope": "THZ3 at widths > 256",
+   "finding": "The locked/pan camera is a world camera (1679). At 348 the boss spawn (1936) is already inside the view at the lock (screen X 337), and at pan end it sits at screen 257, so it is visible before it 'enters'. The ROM puts it at 256 = the right edge.",
+   "classification": "intentional widescreen adapter",
+   "gameplay_impact": "Boss cannot arrive from beyond the right edge at wide widths without a moved boss or a moved camera, neither ROM-backed",
+   "evidence": "POC-SOURCE MODEL (348: boss screen X 337 at lock); ROM table row 0 offset -256",
+   "poc_path": "chaos_boss_camera_step mode 3 (CHAOS_BOSS_CAMERA_X 1679)",
+   "recommendation": "do not move the boss or the camera target; decision D-T2-2"
+  },
+  {
+   "id": "T2-08",
+   "scope": "Clamp edges in the POC",
+   "finding": "POC clamp is EDGE(LEFT,+16)..EDGE(RIGHT,-9) full-width with no speed compensation (ROM slack: screen X 13..16 and 247..249).",
+   "classification": "intentional widescreen adapter",
+   "gameplay_impact": "<= 2 px",
+   "evidence": "data/t2/clamp-scope.json vs SCR_chaos_goal.gml chaos_goal_clamp_player",
+   "poc_path": "SCR_chaos_goal.gml",
+   "recommendation": "keep"
+  },
+  {
+   "id": "T2-09",
+   "scope": "SEZ3, MGHZ3, AQZ3, GPZ3 and EEZ3 player bounds",
+   "finding": "The existing owner predicates (chaos_54/56/59_owns_camera, GPZ3 active, EEZ separate block) do apply the viewport clamp, matching the ROM relation.",
+   "classification": "canonical ROM behaviour",
+   "gameplay_impact": "none expected",
+   "evidence": "SCR_chaos_adapter.gml:199, :212; ROM max screen X 249 in all six zones",
+   "poc_path": "same",
+   "recommendation": "keep behaviour; fold into the single predicate"
+  },
+  {
+   "id": "T2-10",
+   "scope": "Zone start: black period and fade",
+   "finding": "ROM: about 34 harness frames of black while the loader scrolls the camera, then a 3-step palette fade (5-frame cadence). POC: OBJ_effect_fade_in, a 20-step linear alpha fade created in OBJ_chaos_zone Create (inherited template).",
+   "classification": "unverified",
+   "gameplay_impact": "Possible source of the brief black flash; cause not isolated",
+   "evidence": "data/t2/zone-start.json (EMULATED, harness frames); POC read only",
+   "poc_path": "OBJ_effect_fade_in, OBJ_chaos_zone/Create_0.gml:43",
+   "recommendation": "Windows probe R-T2-3 before any palette work"
+  },
+  {
+   "id": "T2-11",
+   "scope": "Zone start: apparent fall",
+   "finding": "ROM: GPZ1, MGHZ1, EEZ1 start airborne and drop 14-15 px to the floor at harness frames 30-40 (state 14 -> 5 -> 1); THZ1/SEZ1/AQZ1 start grounded with a 7 px anchor flicker during the first fade step. These are canonical and mostly hidden under the fade.",
+   "classification": "canonical ROM behaviour",
+   "gameplay_impact": "A short drop at the start of three zones is original",
+   "evidence": "data/t2/zone-start.json",
+   "poc_path": "-",
+   "recommendation": "do not 'fix'; compare POC only after the R-T2-3 capture"
+  },
+  {
+   "id": "T2-12",
+   "scope": "Zone start: POC view/camera at first frames",
+   "finding": "C1-I seeds the follow camera in Create (chaos_camera_ordinary_begin) and a wide start X; whether the first rendered frames use the final camera Y/X and whether the fade covers them was not executed.",
+   "classification": "unverified",
+   "gameplay_impact": "Flash / drop candidates",
+   "evidence": "POC read only",
+   "poc_path": "SCR_chaos_camera.gml chaos_camera_ordinary_begin",
+   "recommendation": "R-T2-3 capture of view X/Y/alpha for 60 updates in THZ1, GPZ1, MGHZ1"
+  },
+  {
+   "id": "T2-13",
+   "scope": "State $20 run-off",
+   "finding": "Sonic is exempt from the clamp and leaves the screen to EDGE(RIGHT,+33); POC exempts state 32 / next 32.",
+   "classification": "canonical ROM behaviour",
+   "gameplay_impact": "none",
+   "evidence": "viewport-semantics-audit section 4 + T1",
+   "poc_path": "SCR_chaos_adapter.gml:199 (cp_c.state != 32 && cp_c.next != 32)",
+   "recommendation": "keep"
+  }
+ ]
+}

@@ -1,0 +1,926 @@
+{
+ "description": "every absolute-address camera/limit/control access and every camera-vector call in the ROM (pattern scan; loads, stores, immediates) with the owning region where known",
+ "counts": {
+  "all": 97,
+  "stores_and_calls": 54
+ },
+ "vectors": {
+  "0x0353": "raise_left_limit_to_camera",
+  "0x0356": "lower_right_limit_to_camera",
+  "0x0359": "pan_on",
+  "0x035C": "pan_off_enable",
+  "0x0407": "freeze_camera",
+  "0x042B": "enable_camera"
+ },
+ "addresses": {
+  "0xD27C": "limit_top",
+  "0xD27E": "limit_bottom",
+  "0xD280": "limit_left",
+  "0xD282": "limit_right",
+  "0xD15E": "ctl_D15E",
+  "0xD15F": "ctl_D15F",
+  "0xD2DA": "pan_target_x",
+  "0xD2DC": "pan_target_y",
+  "0xD284": "work_cam_x",
+  "0xD286": "work_cam_y"
+ },
+ "rows": [
+  {
+   "file": "0x00552",
+   "bank": "0x00",
+   "cpu": "0x0552",
+   "op": "load8",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0055B",
+   "bank": "0x00",
+   "cpu": "0x055B",
+   "op": "store8",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0055F",
+   "bank": "0x00",
+   "cpu": "0x055F",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x00570",
+   "bank": "0x00",
+   "cpu": "0x0570",
+   "op": "load16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x00576",
+   "bank": "0x00",
+   "cpu": "0x0576",
+   "op": "load16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x006DB",
+   "bank": "0x00",
+   "cpu": "0x06DB",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x016C0",
+   "bank": "0x00",
+   "cpu": "0x16C0",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "-"
+  },
+  {
+   "file": "0x016F0",
+   "bank": "0x00",
+   "cpu": "0x16F0",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "-"
+  },
+  {
+   "file": "0x0293F",
+   "bank": "0x00",
+   "cpu": "0x293F",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "-"
+  },
+  {
+   "file": "0x04C91",
+   "bank": "0x01",
+   "cpu": "0x4C91",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CB6",
+   "bank": "0x01",
+   "cpu": "0x4CB6",
+   "op": "load16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CBE",
+   "bank": "0x01",
+   "cpu": "0x4CBE",
+   "op": "load16",
+   "target": "limit_left",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CCB",
+   "bank": "0x01",
+   "cpu": "0x4CCB",
+   "op": "load8",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CD8",
+   "bank": "0x01",
+   "cpu": "0x4CD8",
+   "op": "load16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CDB",
+   "bank": "0x01",
+   "cpu": "0x4CDB",
+   "op": "load16",
+   "target": "limit_right",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CE8",
+   "bank": "0x01",
+   "cpu": "0x4CE8",
+   "op": "load8",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CF3",
+   "bank": "0x01",
+   "cpu": "0x4CF3",
+   "op": "store16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04CFD",
+   "bank": "0x01",
+   "cpu": "0x4CFD",
+   "op": "load16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04D05",
+   "bank": "0x01",
+   "cpu": "0x4D05",
+   "op": "load16",
+   "target": "limit_top",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04D12",
+   "bank": "0x01",
+   "cpu": "0x4D12",
+   "op": "load8",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04D1F",
+   "bank": "0x01",
+   "cpu": "0x4D1F",
+   "op": "load16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04D22",
+   "bank": "0x01",
+   "cpu": "0x4D22",
+   "op": "load16",
+   "target": "limit_bottom",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04D2F",
+   "bank": "0x01",
+   "cpu": "0x4D2F",
+   "op": "load8",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04D3A",
+   "bank": "0x01",
+   "cpu": "0x4D3A",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04DAF",
+   "bank": "0x01",
+   "cpu": "0x4DAF",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04E05",
+   "bank": "0x01",
+   "cpu": "0x4E05",
+   "op": "store16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04E0E",
+   "bank": "0x01",
+   "cpu": "0x4E0E",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04E1C",
+   "bank": "0x01",
+   "cpu": "0x4E1C",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04E35",
+   "bank": "0x01",
+   "cpu": "0x4E35",
+   "op": "store16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04E3E",
+   "bank": "0x01",
+   "cpu": "0x4E3E",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04FCE",
+   "bank": "0x01",
+   "cpu": "0x4FCE",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04FD1",
+   "bank": "0x01",
+   "cpu": "0x4FD1",
+   "op": "ld_de_imm",
+   "target": "ctl_D15F",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x04FF9",
+   "bank": "0x01",
+   "cpu": "0x4FF9",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0504A",
+   "bank": "0x01",
+   "cpu": "0x504A",
+   "op": "store16",
+   "target": "limit_left",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05053",
+   "bank": "0x01",
+   "cpu": "0x5053",
+   "op": "store16",
+   "target": "limit_top",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0505C",
+   "bank": "0x01",
+   "cpu": "0x505C",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05065",
+   "bank": "0x01",
+   "cpu": "0x5065",
+   "op": "store16",
+   "target": "limit_bottom",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05832",
+   "bank": "0x01",
+   "cpu": "0x5832",
+   "op": "load8",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05837",
+   "bank": "0x01",
+   "cpu": "0x5837",
+   "op": "store8",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0584B",
+   "bank": "0x01",
+   "cpu": "0x584B",
+   "op": "load16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0586D",
+   "bank": "0x01",
+   "cpu": "0x586D",
+   "op": "store16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0588D",
+   "bank": "0x01",
+   "cpu": "0x588D",
+   "op": "store16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0589B",
+   "bank": "0x01",
+   "cpu": "0x589B",
+   "op": "load16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x058BB",
+   "bank": "0x01",
+   "cpu": "0x58BB",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x058D9",
+   "bank": "0x01",
+   "cpu": "0x58D9",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x058E3",
+   "bank": "0x01",
+   "cpu": "0x58E3",
+   "op": "load8",
+   "target": "ctl_D15F",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05956",
+   "bank": "0x01",
+   "cpu": "0x5956",
+   "op": "load16",
+   "target": "pan_target_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05965",
+   "bank": "0x01",
+   "cpu": "0x5965",
+   "op": "store16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05974",
+   "bank": "0x01",
+   "cpu": "0x5974",
+   "op": "load16",
+   "target": "pan_target_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05977",
+   "bank": "0x01",
+   "cpu": "0x5977",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0597D",
+   "bank": "0x01",
+   "cpu": "0x597D",
+   "op": "store16",
+   "target": "work_cam_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0598C",
+   "bank": "0x01",
+   "cpu": "0x598C",
+   "op": "load16",
+   "target": "pan_target_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x0598F",
+   "bank": "0x01",
+   "cpu": "0x598F",
+   "op": "store16",
+   "target": "limit_left",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x05992",
+   "bank": "0x01",
+   "cpu": "0x5992",
+   "op": "load16",
+   "target": "pan_target_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059A0",
+   "bank": "0x01",
+   "cpu": "0x59A0",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059AA",
+   "bank": "0x01",
+   "cpu": "0x59AA",
+   "op": "store16",
+   "target": "work_cam_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059B3",
+   "bank": "0x01",
+   "cpu": "0x59B3",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059B9",
+   "bank": "0x01",
+   "cpu": "0x59B9",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059C1",
+   "bank": "0x01",
+   "cpu": "0x59C1",
+   "op": "store16",
+   "target": "limit_left",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059C5",
+   "bank": "0x01",
+   "cpu": "0x59C5",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059CA",
+   "bank": "0x01",
+   "cpu": "0x59CA",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15F",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059CF",
+   "bank": "0x01",
+   "cpu": "0x59CF",
+   "op": "store16",
+   "target": "pan_target_x",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059D3",
+   "bank": "0x01",
+   "cpu": "0x59D3",
+   "op": "store16",
+   "target": "pan_target_y",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059D8",
+   "bank": "0x01",
+   "cpu": "0x59D8",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15E",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059DD",
+   "bank": "0x01",
+   "cpu": "0x59DD",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15F",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059E3",
+   "bank": "0x01",
+   "cpu": "0x59E3",
+   "op": "load16",
+   "target": "limit_left",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059EE",
+   "bank": "0x01",
+   "cpu": "0x59EE",
+   "op": "store16",
+   "target": "limit_left",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059F3",
+   "bank": "0x01",
+   "cpu": "0x59F3",
+   "op": "load16",
+   "target": "limit_right",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x059FE",
+   "bank": "0x01",
+   "cpu": "0x59FE",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "engine/camera ($0570 vblank commit, $4C90.. limits, $5832 follow, $5956 pan)"
+  },
+  {
+   "file": "0x303CB",
+   "bank": "0x0C",
+   "cpu": "0x83CB",
+   "op": "call",
+   "target": "freeze_camera",
+   "region": "player state $20 handler $83A6: freeze at d>$F8"
+  },
+  {
+   "file": "0x304BE",
+   "bank": "0x0C",
+   "cpu": "0x84BE",
+   "op": "store8",
+   "target": "ctl_D15E",
+   "region": "player state routine (D15E write)"
+  },
+  {
+   "file": "0x31172",
+   "bank": "0x0C",
+   "cpu": "0x9172",
+   "op": "ld_hl_imm",
+   "target": "ctl_D15F",
+   "region": "EEZ tube state: D15F write"
+  },
+  {
+   "file": "0x328C4",
+   "bank": "0x0C",
+   "cpu": "0xA8C4",
+   "op": "call",
+   "target": "raise_left_limit_to_camera",
+   "region": "goal sign $18 state-3 callback (every update the sign runs)"
+  },
+  {
+   "file": "0x32A43",
+   "bank": "0x0C",
+   "cpu": "0xAA43",
+   "op": "call",
+   "target": "pan_on",
+   "region": "goal sign $18 contact: pan on"
+  },
+  {
+   "file": "0x78199",
+   "bank": "0x1E",
+   "cpu": "0x8199",
+   "op": "call",
+   "target": "raise_left_limit_to_camera",
+   "region": "shared boss lock helper $8199"
+  },
+  {
+   "file": "0x7819C",
+   "bank": "0x1E",
+   "cpu": "0x819C",
+   "op": "load16",
+   "target": "limit_right",
+   "region": "shared boss lock helper $8199"
+  },
+  {
+   "file": "0x781D0",
+   "bank": "0x1E",
+   "cpu": "0x81D0",
+   "op": "store16",
+   "target": "limit_left",
+   "region": "shared boss release $81BD/$81F4 (THZ3, SEZ3, MGHZ3 branch, AQZ3)"
+  },
+  {
+   "file": "0x781D3",
+   "bank": "0x1E",
+   "cpu": "0x81D3",
+   "op": "call",
+   "target": "pan_off_enable",
+   "region": "shared boss release $81BD/$81F4 (THZ3, SEZ3, MGHZ3 branch, AQZ3)"
+  },
+  {
+   "file": "0x781DC",
+   "bank": "0x1E",
+   "cpu": "0x81DC",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "shared boss release $81BD/$81F4 (THZ3, SEZ3, MGHZ3 branch, AQZ3)"
+  },
+  {
+   "file": "0x781F4",
+   "bank": "0x1E",
+   "cpu": "0x81F4",
+   "op": "call",
+   "target": "pan_off_enable",
+   "region": "shared boss release $81BD/$81F4 (THZ3, SEZ3, MGHZ3 branch, AQZ3)"
+  },
+  {
+   "file": "0x781FD",
+   "bank": "0x1E",
+   "cpu": "0x81FD",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "shared boss release $81BD/$81F4 (THZ3, SEZ3, MGHZ3 branch, AQZ3)"
+  },
+  {
+   "file": "0x79583",
+   "bank": "0x1E",
+   "cpu": "0x9583",
+   "op": "store16",
+   "target": "limit_bottom",
+   "region": "bottom-limit write in the $9583 handler (arena bottom lock)"
+  },
+  {
+   "file": "0x79799",
+   "bank": "0x1E",
+   "cpu": "0x9799",
+   "op": "call",
+   "target": "lower_right_limit_to_camera",
+   "region": "boss shared states 1/2 ($9771 trigger, $97C1 pan setup; all zones)"
+  },
+  {
+   "file": "0x797F9",
+   "bank": "0x1E",
+   "cpu": "0x97F9",
+   "op": "store16",
+   "target": "limit_bottom",
+   "region": "boss shared states 1/2 ($9771 trigger, $97C1 pan setup; all zones)"
+  },
+  {
+   "file": "0x797FD",
+   "bank": "0x1E",
+   "cpu": "0x97FD",
+   "op": "call",
+   "target": "pan_on",
+   "region": "boss shared states 1/2 ($9771 trigger, $97C1 pan setup; all zones)"
+  },
+  {
+   "file": "0x79AA1",
+   "bank": "0x1E",
+   "cpu": "0x9AA1",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "GPZ3 $51 intro (right limit 1664, pan)"
+  },
+  {
+   "file": "0x79AF3",
+   "bank": "0x1E",
+   "cpu": "0x9AF3",
+   "op": "call",
+   "target": "pan_on",
+   "region": "GPZ3 $51 intro (right limit 1664, pan)"
+  },
+  {
+   "file": "0x79D2F",
+   "bank": "0x1E",
+   "cpu": "0x9D2F",
+   "op": "store16",
+   "target": "limit_left",
+   "region": "GPZ3 $51 release"
+  },
+  {
+   "file": "0x79D35",
+   "bank": "0x1E",
+   "cpu": "0x9D35",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "GPZ3 $51 release"
+  },
+  {
+   "file": "0x79D3C",
+   "bank": "0x1E",
+   "cpu": "0x9D3C",
+   "op": "store16",
+   "target": "limit_bottom",
+   "region": "GPZ3 $51 release"
+  },
+  {
+   "file": "0x79D40",
+   "bank": "0x1E",
+   "cpu": "0x9D40",
+   "op": "call",
+   "target": "pan_off_enable",
+   "region": "GPZ3 $51 release"
+  },
+  {
+   "file": "0x79D43",
+   "bank": "0x1E",
+   "cpu": "0x9D43",
+   "op": "call",
+   "target": "enable_camera",
+   "region": "GPZ3 $51 release"
+  },
+  {
+   "file": "0x7B232",
+   "bank": "0x1E",
+   "cpu": "0xB232",
+   "op": "store16",
+   "target": "limit_left",
+   "region": "EEZ3 $5E/$60 release"
+  },
+  {
+   "file": "0x7B235",
+   "bank": "0x1E",
+   "cpu": "0xB235",
+   "op": "call",
+   "target": "pan_off_enable",
+   "region": "EEZ3 $5E/$60 release"
+  },
+  {
+   "file": "0x7B23E",
+   "bank": "0x1E",
+   "cpu": "0xB23E",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "EEZ3 $5E/$60 release"
+  },
+  {
+   "file": "0x7B92D",
+   "bank": "0x1E",
+   "cpu": "0xB92D",
+   "op": "call",
+   "target": "pan_off_enable",
+   "region": "EEZ3 later encounter release"
+  },
+  {
+   "file": "0x7B936",
+   "bank": "0x1E",
+   "cpu": "0xB936",
+   "op": "store16",
+   "target": "limit_right",
+   "region": "EEZ3 later encounter release"
+  }
+ ],
+ "player_clamp": {
+  "entry": "$4141 (bank 1)",
+  "bytes_verified": {
+   "state_gate": "LD A,(IX+1) / CP $29 / JR NC (skip)",
+   "left": "A=low byte of playerX-cam; CP $10 -> JP C,$4244 (X := cam+$10)",
+   "right": "CP $F8 -> JP NC,$4251 (X := cam+$F7)"
+  },
+  "state_gate_below": 41,
+  "left_edge": 16,
+  "right_edge": 247,
+  "calls_cached_camera": "ED 5B 74 D1 = LD DE,(D174): the COMMITTED camera, not the working target D284",
+  "bytes": {}
+ },
+ "boss_tables": {
+  "trigger_table_97A1": {
+   "semantics": "strict |playerX-bossX| < dx and |playerY-bossY| < dy (CALL $0383/$0386), then $0356 lowers the right limit to the camera",
+   "rows": [
+    {
+     "row": 0,
+     "zone_or_encounter": "THZ",
+     "dx": 160,
+     "dy": 256
+    },
+    {
+     "row": 1,
+     "zone_or_encounter": "GPZ",
+     "dx": 128,
+     "dy": 304
+    },
+    {
+     "row": 2,
+     "zone_or_encounter": "SEZ",
+     "dx": 160,
+     "dy": 304
+    },
+    {
+     "row": 3,
+     "zone_or_encounter": "MGHZ",
+     "dx": 160,
+     "dy": 304
+    },
+    {
+     "row": 4,
+     "zone_or_encounter": "AQZ",
+     "dx": 96,
+     "dy": 304
+    },
+    {
+     "row": 5,
+     "zone_or_encounter": "EEZ first ($5E)",
+     "dx": 96,
+     "dy": 304
+    },
+    {
+     "row": 6,
+     "zone_or_encounter": "EEZ second ($60)",
+     "dx": 96,
+     "dy": 304
+    },
+    {
+     "row": 7,
+     "zone_or_encounter": "unused",
+     "dx": 96,
+     "dy": 304
+    }
+   ]
+  },
+  "pan_table_9808": {
+   "semantics": "camera pan target = boss anchor + (dx, dy) at state 2->3 ($9808 row, then $0359 pan on); the right limit is exclusive so X settles one pixel short",
+   "rows": [
+    {
+     "row": 0,
+     "zone_or_encounter": "THZ",
+     "dx": -256,
+     "dy": -160
+    },
+    {
+     "row": 1,
+     "zone_or_encounter": "GPZ",
+     "dx": -192,
+     "dy": -160
+    },
+    {
+     "row": 2,
+     "zone_or_encounter": "SEZ",
+     "dx": -224,
+     "dy": -160
+    },
+    {
+     "row": 3,
+     "zone_or_encounter": "MGHZ",
+     "dx": -208,
+     "dy": -32
+    },
+    {
+     "row": 4,
+     "zone_or_encounter": "AQZ",
+     "dx": -128,
+     "dy": -160
+    },
+    {
+     "row": 5,
+     "zone_or_encounter": "EEZ first ($5E)",
+     "dx": -128,
+     "dy": -160
+    },
+    {
+     "row": 6,
+     "zone_or_encounter": "EEZ second ($60)",
+     "dx": -128,
+     "dy": -160
+    },
+    {
+     "row": 7,
+     "zone_or_encounter": "unused",
+     "dx": -128,
+     "dy": 160
+    }
+   ]
+  }
+ }
+}

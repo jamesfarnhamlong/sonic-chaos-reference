@@ -1,0 +1,443 @@
+{
+ "description": "POC C1-I (69527335) THZ3 boss arrival through the shipped functions in the node VM harness: Sonic starts at x=1560 on the flat floor (ROM clamp edges would be camera+16 / camera+247), RIGHT held. No boss state is forced. Wide views reuse the same input.",
+ "evidence": "POC-SOURCE MODEL (node VM, shipped GML); not GameMaker; not Windows",
+ "poc_commit": "69527335011bacf22ff16bd25d3a94874a1fa563",
+ "thz3": [
+  {
+   "view_width": 256,
+   "updates": 330,
+   "input": "right held",
+   "boss_created": {
+    "u": 64,
+    "player_x": 1701,
+    "player_screen_x": 116,
+    "boss_x": 1936,
+    "boss_screen_x": 351,
+    "camera_x": 1585,
+    "boss_state": 1,
+    "camera_mode": 1
+   },
+   "boss_first_anchor_inside_view": {
+    "u": 185,
+    "player_x": 1897,
+    "player_screen_x": 227,
+    "boss_x": 1924,
+    "boss_screen_x": 254,
+    "camera_x": 1670,
+    "boss_state": 18,
+    "camera_mode": 3
+   },
+   "arena_lock_mode2": {
+    "u": 83,
+    "player_x": 1777,
+    "player_screen_x": 132,
+    "boss_x": 1936,
+    "boss_screen_x": 291,
+    "camera_x": 1645,
+    "boss_state": 2,
+    "camera_mode": 2
+   },
+   "pan_mode3": {
+    "u": 161,
+    "player_x": 2089,
+    "player_screen_x": 443,
+    "boss_x": 1936,
+    "boss_screen_x": 290,
+    "camera_x": 1646,
+    "boss_state": 3,
+    "camera_mode": 3
+   },
+   "player_screen_x_max_before_lock": 128,
+   "player_screen_x_max_after_lock": 443,
+   "player_world_x_max_after_lock": 2089,
+   "first_update_player_right_of_boss_spawn_x": 123,
+   "first_update_player_beyond_view_right": 114,
+   "updates_player_beyond_view_right": 52,
+   "updates_player_right_of_boss_anchor": 39,
+   "camera_step_at_first_mode1_update": 0,
+   "player_screen_x_change_at_first_mode1_update": 4,
+   "camera_step_max": 4,
+   "camera_step_max_update": 49,
+   "final": {
+    "u": 330,
+    "player_x": 1825,
+    "player_screen_x": 146,
+    "boss_x": 1852,
+    "boss_screen_x": 173,
+    "camera_x": 1679,
+    "boss_state": 6,
+    "camera_mode": 3
+   },
+   "screen_x_samples": [
+    [
+     20,
+     112,
+     472,
+     1464,
+     0
+    ],
+    [
+     40,
+     112,
+     430,
+     1506,
+     0
+    ],
+    [
+     60,
+     112,
+     363,
+     1573,
+     0
+    ],
+    [
+     80,
+     128,
+     299,
+     1637,
+     1
+    ],
+    [
+     100,
+     200,
+     291,
+     1645,
+     2
+    ],
+    [
+     120,
+     280,
+     291,
+     1645,
+     2
+    ],
+    [
+     140,
+     360,
+     291,
+     1645,
+     2
+    ],
+    [
+     160,
+     440,
+     291,
+     1645,
+     2
+    ],
+    [
+     180,
+     235,
+     262,
+     1665,
+     3
+    ],
+    [
+     200,
+     210,
+     238,
+     1679,
+     3
+    ],
+    [
+     220,
+     200,
+     228,
+     1679,
+     3
+    ],
+    [
+     240,
+     191,
+     218,
+     1679,
+     3
+    ],
+    [
+     260,
+     181,
+     208,
+     1679,
+     3
+    ],
+    [
+     280,
+     170,
+     198,
+     1679,
+     3
+    ],
+    [
+     300,
+     161,
+     188,
+     1679,
+     3
+    ],
+    [
+     320,
+     151,
+     178,
+     1679,
+     3
+    ]
+   ]
+  },
+  {
+   "view_width": 348,
+   "updates": 330,
+   "input": "right held",
+   "boss_created": {
+    "u": 52,
+    "player_x": 1655,
+    "player_screen_x": 162,
+    "boss_x": 1936,
+    "boss_screen_x": 443,
+    "camera_x": 1493,
+    "boss_state": 1,
+    "camera_mode": 1
+   },
+   "boss_first_anchor_inside_view": {
+    "u": 80,
+    "player_x": 1765,
+    "player_screen_x": 174,
+    "boss_x": 1936,
+    "boss_screen_x": 345,
+    "camera_x": 1591,
+    "boss_state": 1,
+    "camera_mode": 1
+   },
+   "arena_lock_mode2": {
+    "u": 83,
+    "player_x": 1777,
+    "player_screen_x": 178,
+    "boss_x": 1936,
+    "boss_screen_x": 337,
+    "camera_x": 1599,
+    "boss_state": 2,
+    "camera_mode": 2
+   },
+   "pan_mode3": {
+    "u": 149,
+    "player_x": 2041,
+    "player_screen_x": 441,
+    "boss_x": 1936,
+    "boss_screen_x": 336,
+    "camera_x": 1600,
+    "boss_state": 3,
+    "camera_mode": 3
+   },
+   "player_screen_x_max_before_lock": 174,
+   "player_screen_x_max_after_lock": 441,
+   "player_world_x_max_after_lock": 2041,
+   "first_update_player_right_of_boss_spawn_x": 123,
+   "first_update_player_beyond_view_right": 126,
+   "updates_player_beyond_view_right": 94,
+   "updates_player_right_of_boss_anchor": 208,
+   "camera_step_at_first_mode1_update": 0,
+   "player_screen_x_change_at_first_mode1_update": 4,
+   "camera_step_max": 7,
+   "camera_step_max_update": 2,
+   "final": {
+    "u": 330,
+    "player_x": 2018,
+    "player_screen_x": 339,
+    "boss_x": 1846,
+    "boss_screen_x": 167,
+    "camera_x": 1679,
+    "boss_state": 6,
+    "camera_mode": 3
+   },
+   "screen_x_samples": [
+    [
+     20,
+     157,
+     517,
+     1419,
+     0
+    ],
+    [
+     40,
+     158,
+     476,
+     1460,
+     0
+    ],
+    [
+     60,
+     174,
+     425,
+     1511,
+     1
+    ],
+    [
+     80,
+     174,
+     345,
+     1591,
+     1
+    ],
+    [
+     100,
+     246,
+     337,
+     1599,
+     2
+    ],
+    [
+     120,
+     326,
+     337,
+     1599,
+     2
+    ],
+    [
+     140,
+     406,
+     337,
+     1599,
+     2
+    ],
+    [
+     160,
+     407,
+     320,
+     1611,
+     3
+    ],
+    [
+     180,
+     387,
+     290,
+     1631,
+     3
+    ],
+    [
+     200,
+     367,
+     260,
+     1651,
+     3
+    ],
+    [
+     220,
+     347,
+     230,
+     1671,
+     3
+    ],
+    [
+     240,
+     339,
+     212,
+     1679,
+     3
+    ],
+    [
+     260,
+     339,
+     202,
+     1679,
+     3
+    ],
+    [
+     280,
+     339,
+     192,
+     1679,
+     3
+    ],
+    [
+     300,
+     339,
+     182,
+     1679,
+     3
+    ],
+    [
+     320,
+     339,
+     172,
+     1679,
+     3
+    ]
+   ]
+  }
+ ],
+ "sign_wait": [
+  {
+   "view_width": 256,
+   "sign_anchor": [
+    3960,
+    558
+   ],
+   "contact_during_trace": false,
+   "left_limit_first_raised": {
+    "u": 21,
+    "camera_x": 3675,
+    "player_x": 3787,
+    "sign_screen_x": 285
+   },
+   "turn_around": {
+    "u": 33,
+    "player_x": 3810,
+    "player_screen_x": 112,
+    "camera_x": 3698,
+    "left_limit": 3696
+   },
+   "player_screen_x_min_walking_back": -494,
+   "player_screen_x_max_walking_back": 113,
+   "player_world_x_min_walking_back": 3224,
+   "camera_x_min_walking_back": 3699,
+   "updates_with_player_left_of_view": 249,
+   "updates_with_player_left_of_clamp16": 253,
+   "final": {
+    "u": 353,
+    "phase": "left",
+    "px": 3340,
+    "psx": -378,
+    "cx": 3718,
+    "left_limit": 3718,
+    "contact": false,
+    "state": 3
+   }
+  },
+  {
+   "view_width": 348,
+   "sign_anchor": [
+    3960,
+    558
+   ],
+   "contact_during_trace": false,
+   "left_limit_first_raised": {
+    "u": 1,
+    "camera_x": 3620,
+    "player_x": 3770,
+    "sign_screen_x": 340
+   },
+   "turn_around": {
+    "u": 33,
+    "player_x": 3810,
+    "player_screen_x": 158,
+    "camera_x": 3652,
+    "left_limit": 3650
+   },
+   "player_screen_x_min_walking_back": -448,
+   "player_screen_x_max_walking_back": 159,
+   "player_world_x_min_walking_back": 3224,
+   "camera_x_min_walking_back": 3653,
+   "updates_with_player_left_of_view": 237,
+   "updates_with_player_left_of_clamp16": 241,
+   "final": {
+    "u": 353,
+    "phase": "left",
+    "px": 3340,
+    "psx": -332,
+    "cx": 3672,
+    "left_limit": 3672,
+    "contact": false,
+    "state": 3
+   }
+  }
+ ]
+}

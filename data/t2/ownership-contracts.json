@@ -1,0 +1,113 @@
+{
+ "rom": "Sonic Chaos (Europe) v1.2, SHA-256 eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+ "vocabulary": "WORLD, EDGE(side,n), CENTER(n), PLAYER_DIST(n), LOCKED_CAMERA(c) as in docs/viewport-semantics-audit.md section 9; EDGE(RIGHT,0) = camera + view width",
+ "owners": [
+  {
+   "id": "O0_ORDINARY_FOLLOW",
+   "rom": "$4C90 -> $5832/$58E1, limits $4CB0/$4CF7",
+   "active": "D15E bit7 set and D15F bit0 clear",
+   "writes": "D284/D286 (committed to D174/D176 at vblank $0570)",
+   "limits": "D27C/D280 inclusive, D27E/D282 exclusive; a crossing step is dropped",
+   "player_bounds": "O-P1 (ROM clamp)",
+   "ends": "any later owner",
+   "evidence": "BYTE-VERIFIED (c1r) + EMULATED"
+  },
+  {
+   "id": "O1_SIGN_WAIT",
+   "rom": "goal sign $18 state-3 callback $A8C4 -> vector $0353 (bank $0C)",
+   "active": "every update the awake sign object runs state 3 (sign anchor inside the lifetime window: screen X < 288 on 256 px)",
+   "writes": "D280 := max(D280, camera); follow stays on",
+   "limits": "left raised every update; right untouched",
+   "player_bounds": "O-P1: Sonic cannot walk back off the screen; measured minimum screen X 13 in THZ1/MGHZ2/GPZ2/SEZ2",
+   "ends": "contact (state 4) -> O2",
+   "evidence": "data/t2/sign-wait.json (4 acts, EMULATED) + BYTE-VERIFIED call site"
+  },
+  {
+   "id": "O2_SIGN_PAN",
+   "rom": "$AA43 vector $0359 / $5956",
+   "active": "D15F bit0 set after sign contact until the act ends",
+   "writes": "camera 1 px/update per axis to (signX-128, signY-153); right limit := target when moving right",
+   "limits": "exclusive right limit: X settles at target-1",
+   "player_bounds": "O-P1 until player state $20 (about +280 updates)",
+   "ends": "state $20 freeze ($83CB vector $0407) -> O3",
+   "evidence": "viewport-semantics-audit section 2 (EMULATED), unchanged"
+  },
+  {
+   "id": "O3_ACT_CLEAR_RUN",
+   "rom": "player state $20 handler $83A6",
+   "active": "player state $20",
+   "writes": "at d > $F8 vector $0407: D15E bit7 cleared, D280 := camera (frozen)",
+   "limits": "frozen camera",
+   "player_bounds": "NONE (state $20 does not call $4141/$4281): Sonic legitimately leaves the screen; flag at d > $120 = EDGE(RIGHT,+33)",
+   "ends": "next-level load",
+   "evidence": "BYTE-VERIFIED + EMULATED (T1)"
+  },
+  {
+   "id": "O4_BOSS_PRETRIGGER",
+   "rom": "shared boss state 1 $9771 (bank $1E) -> $8199 -> vector $0353",
+   "active": "boss object exists, states 0/1",
+   "writes": "D280 := max(D280, camera) every update; the old right limit is saved in boss +$25/+$27",
+   "limits": "left raised each update; follow still scrolls right",
+   "player_bounds": "O-P1",
+   "ends": "trigger -> O5",
+   "evidence": "BYTE-VERIFIED + EMULATED (data/t2/boss-arrival.json, six zones)"
+  },
+  {
+   "id": "O5_BOSS_LOCK",
+   "rom": "$9799 vector $0356, state 2",
+   "active": "trigger: strict |dx|<table, |dy|<table ($97A1 rows)",
+   "writes": "D282 := camera (right limit at the camera: the right screen edge becomes the arena wall)",
+   "limits": "left = camera (raised), right = camera: the camera cannot move",
+   "player_bounds": "O-P1: the clamp is the arena. No world rectangle exists in the ROM",
+   "ends": "HUD slot wait -> O6",
+   "evidence": "BYTE-VERIFIED + EMULATED"
+  },
+  {
+   "id": "O6_BOSS_PAN",
+   "rom": "state 2 -> 3 table $9808 + vector $0359 / $5956",
+   "active": "D15F bit0",
+   "writes": "camera to boss anchor + (dx,dy), 1 px/update/axis; D27E (bottom) written first; right limit := target while moving right",
+   "limits": "exclusive right limit: X settles at target-1",
+   "player_bounds": "O-P1",
+   "ends": "boss state 5 release -> O7",
+   "evidence": "data/t2/owner-map.json boss_tables + data/t2/boss-arrival.json"
+  },
+  {
+   "id": "O7_BOSS_RELEASE",
+   "rom": "shared $81BD (THZ3, SEZ3, AQZ3; MGHZ3 branch $81F4); GPZ3 $9D2F; EEZ3 $B232/$B92D",
+   "active": "defeat conversion",
+   "writes": "D280 := camera (not MGHZ3), vector $035C (pan off, enable), D282 := saved right limit (+$25/+$27)",
+   "limits": "follow resumes, <= 7 px/update",
+   "player_bounds": "O-P1 until player state $20",
+   "ends": "O3",
+   "evidence": "BYTE-VERIFIED + data/t1/transition-audit.json"
+  },
+  {
+   "id": "O8_ZONE_SPECIAL",
+   "rom": "GPZ3 world-fixed lock $9AA1; EEZ3 two encounters; EEZ tube D15F; AQZ/EEZ scroll",
+   "active": "zone-specific",
+   "writes": "see matrix",
+   "limits": "see matrix",
+   "player_bounds": "O-P1",
+   "ends": "zone-specific",
+   "evidence": "data/t2/boss-camera-matrix.json"
+  }
+ ],
+ "player_bounds": {
+  "id": "O-P1",
+  "rom": "$4141 (called from the shared player step $3FEF, vector $0404) and $4281",
+  "gate": "player state < $29 (CP $29 / JR NC); state $20 is excluded because its handler never calls it",
+  "rule": "e = (playerX - D174) AND $FF; e < $10 -> X := cam+$10 (minus this update's X speed), X speed := 0; e >= $F8 -> X := cam+$F7 (same compensation)",
+  "scope": "UNCONDITIONAL: not owned by the sign, a boss or any object. Proven with a bare limit lock (D280 = D282 = camera) and no object: data/t2/clamp-scope.json",
+  "observed_range_screen_x": "[13..16, 247..249] (the compensation order leaves 1-2 px of slack)",
+  "reads": "the COMMITTED camera D174, so it uses the previous update's camera exactly as a Z80-ordered POC step would",
+  "widescreen_form": "EDGE(LEFT,+16) .. EDGE(RIGHT,-9) of the live view, full-width integers (the 8-bit low-byte form teleports a player at d >= 256: do not port it)"
+ },
+ "legitimate_off_screen_phases": [
+  "player state $20 (act-clear run-off): flag at EDGE(RIGHT,+33)",
+  "player states >= $29 (the clamp is skipped by the ROM gate)",
+  "death / pit falls (camera bottom limit)",
+  "EEZ tube states $16/$17 and other scripted transports (own handlers)"
+ ],
+ "update_order": "ROM $16B8: camera ($16CA) -> player ($16CD) -> objects ($16D0). The player clamp therefore reads the camera committed by the PREVIOUS update; POC order (adapter step, objects phase, then zone End Step camera) has the same relation."
+}
