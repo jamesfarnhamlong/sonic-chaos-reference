@@ -1,0 +1,308 @@
+{
+ "description": "S0: why a stage entered through its zone-title screen flashes black and Level Select does not (source reading of final V1/T1 03db5e1c + POC-SOURCE MODEL of the start fall). Mechanism is established from source; the order the player perceives is not observed.",
+ "poc_commit": "03db5e1c53497e76bf9e8f511b1c98ec0443be90",
+ "routes": {
+  "zone_title": "results/title phases -> loader_black -> chaosResultsIncoming=true -> room_goto -> zone Create: level_in armed AND OBJ_effect_fade_in created -> first Draw captures the frame and deactivates all instances (fade object frozen at alpha 0.95) -> 19 updates of the captured frame through black, 1/3, 2/3 -> update 20: everything resumes, fade object continues from 0.95 over the live level",
+  "death_respawn": "same handoff (SCR_chaos_death.gml:43): the same flash is predicted after a respawn",
+  "level_select": "chaos_debug_launch -> room_goto: only OBJ_effect_fade_in, running from update 1 (alpha 1 -> 0 in 20 steps, gameplay live): monotone fade, no dip",
+  "data_select_start": "legacy fade_out (alpha +0.07) then room_goto: same as Level Select on arrival"
+ },
+ "predicted_brightness": {
+  "zone_title": "0 for updates 1-9; 1/3 (10-14); 2/3 (15-19); then ~0.05 at update 20-21 (dip); then linear to 1.0 by update ~40",
+  "level_select": "alpha 0.95 at update 1 falling 0.05 per update: monotone to 1.0 by update 20"
+ },
+ "rom_reference": {
+  "source": "data/t2/zone-start.json (EMULATED)",
+  "black_frames": "0-33 (palette sums 0)",
+  "dim_steps": "frames 34, 39, 44 (three 5-frame steps)",
+  "GPZ1_MGHZ1": "player state 14 from frame 30, +14 px over frames 30-37, floor contact frame 39-40: the drop is mostly under black/the dimmest step",
+  "THZ1": "no drop; 7 px anchor flicker 654/661 in frames 35-38 under the first dim step (T2-11)",
+  "gameplay_runs_during_fade": true
+ },
+ "poc_start_fall": {
+  "THZ1": {
+   "start": [
+    142,
+    654
+   ],
+   "camera_record": [
+    38,
+    530
+   ],
+   "first_floor_contact_update": 2,
+   "y_first": 654,
+   "y_at_landing": 654,
+   "drop_px": 0,
+   "y_series_first_12": [
+    654,
+    654,
+    654,
+    654,
+    654,
+    654,
+    654,
+    654,
+    654,
+    654,
+    654,
+    654
+   ],
+   "states_first_12": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "camera_y_first_12": [
+    530,
+    530,
+    530,
+    530,
+    530,
+    530,
+    530,
+    530,
+    530,
+    530,
+    530,
+    530
+   ]
+  },
+  "GPZ1": {
+   "start": [
+    110,
+    384
+   ],
+   "camera_record": [
+    0,
+    272
+   ],
+   "first_floor_contact_update": 12,
+   "y_first": 384,
+   "y_at_landing": 398,
+   "drop_px": 14,
+   "y_series_first_12": [
+    384,
+    385,
+    386,
+    387,
+    388,
+    389,
+    391,
+    393,
+    395,
+    397,
+    399,
+    398
+   ],
+   "states_first_12": [
+    1,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14
+   ],
+   "camera_y_first_12": [
+    272,
+    272,
+    272,
+    272,
+    272,
+    272,
+    272,
+    272,
+    272,
+    272,
+    274,
+    274
+   ]
+  },
+  "MGHZ1": {
+   "start": [
+    78,
+    192
+   ],
+   "camera_record": [
+    0,
+    80
+   ],
+   "first_floor_contact_update": 12,
+   "y_first": 192,
+   "y_at_landing": 206,
+   "drop_px": 14,
+   "y_series_first_12": [
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    199,
+    201,
+    203,
+    205,
+    207,
+    206
+   ],
+   "states_first_12": [
+    1,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14,
+    14
+   ],
+   "camera_y_first_12": [
+    80,
+    80,
+    80,
+    80,
+    80,
+    80,
+    80,
+    80,
+    80,
+    80,
+    82,
+    82
+   ]
+  }
+ },
+ "poc_only_exposure": [
+  "gameplay is frozen for the 19 level_in updates (deactivate_all) - the ROM runs the player during its fade",
+  "the fall therefore happens after the freeze, under the resumed fade object (alpha 0.95..), instead of under black",
+  "the resumed fade object adds a second fade on top of the finished SMS-style fade (dip to ~0.05)"
+ ],
+ "capture": {
+  "file": "<working_directory>/s0_entry_trace.csv",
+  "columns": [
+   "u",
+   "room",
+   "route",
+   "results_phase",
+   "results_age",
+   "fade_exists",
+   "fade_alpha",
+   "player_y",
+   "core_state",
+   "floor",
+   "view_y",
+   "lum"
+  ],
+  "rows": "first 90 Draw events after Room Start, one file per entry",
+  "routes": [
+   "Level Select -> GPZ1",
+   "Level Select -> MGHZ1",
+   "death respawn in GPZ1",
+   "zone title -> GPZ1 (after THZ3)"
+  ],
+  "confirms": "in the zone-title and respawn routes: fade_exists flips false at update 1-2 and true at results_age 20 with fade_alpha 0.90-0.95, lum drops by > 0.25 within 2 updates of that release; the Level Select routes show lum monotone"
+ },
+ "anchors": [
+  {
+   "file": "objects/OBJ_chaos_zone/Create_0.gml",
+   "anchor": "chaos_act_load_begin();",
+   "line": 1,
+   "why": "first statement of every ordinary-act room start"
+  },
+  {
+   "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+   "anchor": "chaos_results_room_begin();",
+   "line": 656,
+   "why": "called from chaos_act_load_begin (line 654)"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "anchor": "global.chaosResults={phase:\"level_in\",age:0}",
+   "line": 24,
+   "why": "armed only when global.chaosResultsIncoming was set before the room change"
+  },
+  {
+   "file": "objects/OBJ_chaos_zone/Create_0.gml",
+   "anchor": "instance_create(0,0,OBJ_effect_fade_in);",
+   "line": 43,
+   "why": "legacy black fade object, created unconditionally, after the level_in arming"
+  },
+  {
+   "file": "objects/OBJ_effect_fade_in/Create_0.gml",
+   "anchor": "alpha = 1;",
+   "line": 2,
+   "why": "starts fully black"
+  },
+  {
+   "file": "objects/OBJ_effect_fade_in/Step_0.gml",
+   "anchor": "alpha -= 0.050",
+   "line": 2,
+   "why": "20 steps to clear; it is a Step-driven object, not time based"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "anchor": "instance_deactivate_all(true)",
+   "line": 243,
+   "why": "first level_in Draw: captures application_surface, then freezes every instance except the controls (the fade object included)"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "anchor": "else if(cp_phase==\"level_in\")",
+   "line": 253,
+   "why": "draws the captured frame through the SMS-style in_black steps: 0 (black), 1/3, 2/3 at ages 1-9, 10-14, 15-19"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "anchor": "case \"level_in\":if(cp_s.age>=20)",
+   "line": 198,
+   "why": "age 20: instance_activate_all(): player, zone, ring manager AND the frozen fade object resume"
+  },
+  {
+   "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+   "anchor": "global.chaosResultsIncoming=true;return true",
+   "line": 190,
+   "why": "end of the zone-title / loader_black phase: sets the flag, then room_goto(next act)"
+  },
+  {
+   "file": "scripts/SCR_chaos_death/SCR_chaos_death.gml",
+   "anchor": "global.chaosResultsIncoming=true;room_goto",
+   "line": 43,
+   "why": "death / continue respawn uses the same handoff"
+  },
+  {
+   "file": "scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml",
+   "anchor": "    room_goto(cp_entry.room);",
+   "line": 73,
+   "why": "Level Select: no flag, so no level_in and no freeze"
+  },
+  {
+   "file": "objects/OBJ_menu_data_select/Alarm_2.gml",
+   "anchor": "SCR_zone_goto",
+   "line": 3,
+   "why": "Data Select START: legacy fade_out then room_goto, no flag"
+  },
+  {
+   "file": "objects/OBJ_chaos_controls/Draw_0.gml",
+   "anchor": "chaos_results_scene_draw(global.chaosResults,false)",
+   "line": 2,
+   "why": "controls (depth -10000) draw the capture above the level and below the fade object (depth -999999)"
+  }
+ ]
+}

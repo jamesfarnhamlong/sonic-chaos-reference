@@ -15,9 +15,9 @@
 const fs = require('fs'), path = require('path'), cp = require('child_process');
 const POC = process.env.POC || 'E:/AI/Codex/Sonic Chaos/SonicChaos_POC_c1i';
 const {loadHost} = require(path.join(POC, 'verification/chaos_world_harness.js'));
-const OUT = path.resolve(__dirname, '..', 'data', 't3', 'poc-series.json');
+const OUT = process.env.T3_OUT ? path.resolve(process.env.T3_OUT) : path.resolve(__dirname, '..', 'data', 't3', 'poc-series.json');   // T3_OUT: record a re-baseline beside, not over, the historical file
 const FRAMES = 450;
-const WIDTHS = [[256, 192], [348, 196]];
+const WIDTHS = process.env.T3_WIDTHS ? process.env.T3_WIDTHS.split(',').map(x => x.split('x').map(Number)) : [[256, 192], [348, 196]];   // e.g. T3_WIDTHS=256x192,348x196,400x225
 const BACK = {THZ3: 376, GPZ3: 480, SEZ3: 480, MGHZ3: 480, AQZ3: 480, EEZ3: 260};   // THZ3: the act floor starts at X 1480 (T2), so the run starts at 1560
 
 function common(h, roomName, rw, rh, x0, camY, viewW, viewH) {
@@ -42,14 +42,14 @@ const BUILD = {
         const p = h.newPlayer(x0, ay, {state: 1, move: 0, bg: 2, contacts: 2});
         const boss = h.create(h.ids.OBJ_chaos_object_50, ax, ay);
         g.chaosCam = c.chaos_cam_new(w.cam.x, w.cam.y, viewW);
-        return {h, c, g, w, p, sample: () => { const b = boss.chaosBoss; return {act: b.state !== -1, mode: b.camera_mode, bs: b.state, bx: Math.floor(b.xu / 256), by: b.y, bfr: b.frame, right: b.camera_right, left: b.camera_min}; }};
+        return {h, c, g, w, p, ctrl: () => boss.chaosBoss, sample: () => { const b = boss.chaosBoss; return {act: b.state !== -1, mode: b.camera_mode, bs: b.state, bx: Math.floor(b.xu / 256), by: b.y, bfr: b.frame, right: b.camera_right, left: b.camera_min}; }};
     },
     GPZ3(viewW, viewH) {
         const h = loadHost(), ax = 1728, ay = 270, x0 = ax - BACK.GPZ3, {c, g, w} = common(h, 'gpz3', 2560, 512, x0, 96, viewW, viewH);
         const p = h.newPlayer(x0, ay, {state: 1, move: 0, bg: 2, contacts: 2});
         const boss = h.create(h.ids.OBJ_chaos_object_51, ax, ay);
         g.chaosCam = c.chaos_cam_new(w.cam.x, w.cam.y, viewW);
-        return {h, c, g, w, p, sample: () => { const b = boss.chaosBoss51, s = b.head; return {act: b.active, mode: b.camera_mode, bs: s.state, bx: Math.floor(s.xu / 256), by: Math.floor(s.yu / 256), bfr: s.frame, right: b.camera_right, left: b.camera_left}; }};
+        return {h, c, g, w, p, ctrl: () => boss.chaosBoss51, sample: () => { const b = boss.chaosBoss51, s = b.head; return {act: b.active, mode: b.camera_mode, bs: s.state, bx: Math.floor(s.xu / 256), by: Math.floor(s.yu / 256), bfr: s.frame, right: b.camera_right, left: b.camera_left}; }};
     },
     SEZ3(viewW, viewH) {
         const L = require(path.join(POC, 'verification/sez54_lib.js'));
@@ -59,7 +59,7 @@ const BUILD = {
         c.chaos_54_register(c.SCR_chaos_sez3_objects().find(r => r[3] === 0x54));
         const p = h.newPlayer(x0, ay, {state: 1, move: 0, bg: 2, contacts: 2});
         g.chaosCam = c.chaos_cam_new(w.cam.x, w.cam.y, viewW);
-        return {h, c, g, w, p, sample: () => {
+        return {h, c, g, w, p, ctrl: () => g.chaosSez54, sample: () => {
             const b = g.chaosSez54, s = g.chaosS2.slots.find(q => q.boss && q.type === 0x54);
             return {act: b.active, mode: b.camera_mode, bs: s ? s.state : -1, bx: s ? c.chaos_54_x(s) : null, by: s ? c.chaos_54_y(s) : null, bfr: s ? s.frame : null, right: b.camera_right, left: b.camera_left};
         }};
@@ -78,7 +78,7 @@ const BUILD = {
         c.global.chaosM3.initial = false;
         g.chaosPan = c.chaos_goal_pan_new(); g.chaosCamLeft = 0; c.__view_get = () => viewH;
         g.chaosCam = c.chaos_cam_new(w.cam.x, w.cam.y, viewW);
-        return {h, c, g, w, p, sample: () => {
+        return {h, c, g, w, p, ctrl: () => inst.chaosBoss56, sample: () => {
             const b = inst.chaosBoss56, s = c.global.chaosM3.slots.find(q => q.boss && q.type === 0x56);
             return {act: b.active, mode: b.camera_mode, bs: s ? s.state : -1, bx: s ? c.chaos_56_x(s) : null, by: s ? c.chaos_56_y(s) : null, bfr: s ? s.frame : null, right: b.camera_right, left: b.camera_left};
         }};
@@ -90,7 +90,7 @@ const BUILD = {
         g.chaosAqz59 = undefined; c.chaos_59_register(c.SCR_chaos_aqz3_objects().find(r => r[3] === 0x59));
         const p = h.newPlayer(x0, ay, {state: 1, move: 0, bg: 2, contacts: 2});
         g.chaosCam = c.chaos_cam_new(w.cam.x, w.cam.y, viewW);
-        return {h, c, g, w, p, sample: () => {
+        return {h, c, g, w, p, ctrl: () => g.chaosAqz59, sample: () => {
             const b = g.chaosAqz59, bs = g.chaosS2.slots.filter(q => q.boss59 && q.type >= 0x59 && q.type <= 0x5D);
             const s = bs.find(q => q.type === 0x59) || bs[0], k = bs.find(q => q.type === 0x5A);
             return {act: b.active, mode: b.camera_mode, bs: s ? s.state : -1, bx: s ? c.chaos_59_x(s) : null, by: s ? c.chaos_59_y(s) : null, bfr: s ? s.frame : null, right: b.camera_right, left: b.camera_left,
@@ -106,7 +106,7 @@ const BUILD = {
         c.chaos_eez_boss_register(row); g.chaosEezBoss.collected = 63;
         const p = h.newPlayer(x0, ay, {state: 1, move: 0, bg: 2, contacts: 2});
         g.chaosCam = c.chaos_cam_new(w.cam.x, w.cam.y, viewW);
-        return {h, c, g, w, p, sample: () => {
+        return {h, c, g, w, p, ctrl: () => g.chaosEezBoss, sample: () => {
             const b = g.chaosEezBoss, sl = ((g.chaosCarrier && g.chaosCarrier.slots) || []).filter(q => q && q.boss_actor && q.type >= 0x5E && q.type <= 0x63);
             const s = sl.find(q => q.type === 0x5E || q.type === 0x60) || sl[0];
             return {act: b.active, mode: b.mode, bs: s ? s.state : -1, bx: s ? c.chaos_eez_boss_x(s) : null, by: s ? c.chaos_eez_boss_y(s) : null, bfr: s ? s.frame : null, right: b.right, left: b.left, bot: b.bottom, enc: b.encounter};
@@ -125,7 +125,7 @@ function stepOrder(c) {
     c.chaos_59_camera_step();
 }
 
-function run(zone, viewW, viewH, scenario, stopX = 0) {
+function run(zone, viewW, viewH, scenario, stopX = 0, step = stepOrder) {
     const S = BUILD[zone](viewW, viewH), {h, c, w, p} = S, core = p.chaosCore;
     const cols = {};
     let lockU = null;
@@ -133,7 +133,7 @@ function run(zone, viewW, viewH, scenario, stopX = 0) {
         p.x = Math.floor(core.xu / 256); p.y = Math.floor(core.yu / 256) + 5;
         const right = !(scenario === 'stop' && lockU !== null) && !(stopX && Math.floor(core.xu / 256) >= stopX);
         h.frame({right});
-        stepOrder(c);
+        step(c, S);
         const s = S.sample();
         if (lockU === null && s.mode >= 2) lockU = u;
         const row = Object.assign({u, px: Math.floor(core.xu / 256), py: Math.floor(core.yu / 256), cx: w.cam.x, cy: w.cam.y, pst: core.state, vx: core.vx}, s);
@@ -172,6 +172,7 @@ function build() {
     };
 }
 
+if (require.main !== module) { module.exports = {BUILD, run, stepOrder, FRAMES, WIDTHS}; return; }
 const text = JSON.stringify(build()) + '\n';
 if (process.argv.includes('--write')) { fs.mkdirSync(path.dirname(OUT), {recursive: true}); fs.writeFileSync(OUT, text); console.log('wrote', OUT, text.length); }
 else if (process.argv.includes('--check')) {
