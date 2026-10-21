@@ -1,0 +1,191 @@
+{
+ "description": "T3 discrepancy register. Fields follow the AGENTS.md Fidelity Register vocabulary (status: proven-match, adapter-difference, proven-gap, not-audited, unresolved).",
+ "poc_commit": "69527335011bacf22ff16bd25d3a94874a1fa563",
+ "rows": [
+  {
+   "id": "T3-01",
+   "scope": "GPZ3 boss intro, 348 px (reported observation 1: camera rolls backwards)",
+   "finding": "The camera runs forward to the canonical right limit (X 1663; 1662 at the first pan update), then the pan retreats 92 px to the width-adjusted fight target 1571, at 1 px/update for 91 updates (u218..u309). The clamp carries Sonic with it: world X 1976 -> 1911. The head, invisible until the end of the pan, then appears at screen X 283 (193 at 256). At 256 the camera never moves left after the approach (retreat 12 = the takeover snap only); the ROM never moves left (retreat 0).",
+   "rom_datum": "GPZ3 $9A99: D282 := 1664 (exclusive; right edge 1920) at creation, head 1728 -> 1856; pan target LOCKED_CAMERA(1664,96) settles (1663,97); the camera runs INTO the limit and stops; no leftward camera motion (rom_hold x_retreat 0)",
+   "poc_code_path": "SCR_chaos_gpz_boss.gml:114 camera_right=1664 (not width-adjusted) vs :24 chaos_51_fight_camera_target = 1664-(W-256); :293 approach from either side at 1 px/update",
+   "comparison_method": "POC-SOURCE MODEL data/t3/poc-series.json GPZ3 w348 hold vs w256 vs rom-series.json (EMULATED)",
+   "status": "proven-gap",
+   "gameplay_impact": "The camera scrolls back 92 px with Sonic dragged left by the viewport clamp, while the boss head is still invisible; visible on every approach that carries the camera to the limit (Sonic beyond boss X 1745)",
+   "proposed_work_group": "T3-A (GPZ3 limit)",
+   "acceptance_proof": "camera X non-decreasing from creation to fight; final camera (1571,112) at 348 and (1663,96) at 256; right screen edge 1919 at the fight in both",
+   "evidence": [
+    "A-GPZ-3",
+    "A-GPZ-1"
+   ]
+  },
+  {
+   "id": "T3-02",
+   "scope": "GPZ3, SEZ3, AQZ3, MGHZ3 creation-time camera takeover (256 and 348)",
+   "finding": "At boss creation the ordinary C1-I follow is replaced by a rigid centre follow. At 256 the camera steps backwards in ONE update: GPZ3 [-12, -11], SEZ3 [-12, -16], AQZ3 [-12, -19] (X,Y); MGHZ3 Y -7 per update for 4 updates ([0, -7] at the creation update). At 348 the same takeover is bounded to 4 px/update (GPZ3 [-4, -4], SEZ3 [-4, -4], AQZ3 [-4, -4]). THZ3 and EEZ3 have none. The ROM has no takeover: the ordinary follow keeps running (rom steps at creation [4, 0], SEZ3 [4, 0]).",
+   "rom_datum": "ROM boss states 0/1 never change the follow; only the left limit is raised each update ($9771 -> $8199 -> $0353)",
+   "poc_code_path": "SCR_chaos_camera.gml:98 chaos_camera_follow_allowed returns false once the boss is active; per-zone modes 1-2: SCR_chaos_{gpz:298,sez:592,mghz:519,aqz:627}",
+   "comparison_method": "POC-SOURCE MODEL (creation_update_step in data/t3/boss-walkon-summary.json)",
+   "status": "proven-gap",
+   "gameplay_impact": "A one-frame backward camera snap of 12 px and a Sonic position jump of 12-16 px on screen the moment the boss appears (256); a small bounded slide at 348",
+   "proposed_work_group": "T3-A (shared follow continuity)",
+   "acceptance_proof": "|camera step| at the creation update <= 7 (the ROM cap) at 256 and <= 7 at 348; no negative X step at creation; Sonic screen X changes by <= his own movement + the ROM follow step",
+   "evidence": [
+    "A-SH-1",
+    "A-GPZ-4",
+    "A-SEZ-3",
+    "A-AQZ-2",
+    "A-MGH-3"
+   ]
+  },
+  {
+   "id": "T3-03",
+   "scope": "MGHZ3 boss intro (reported observation 2: camera pans upwards)",
+   "finding": "Two vertical movements, only the second is in the ROM. (1) At creation the POC camera Y goes UP 29 px at 256 (32 px at 348) in 4 (8) updates to player.y - h/1.5 (Y 238/235) because modes 1-2 keep the pre-C1-I vertical rule; the ordinary follow had Sonic at screen Y 99. (2) The pan then moves Y back DOWN 18 px (21 px at 348) to 256 while X pans. In the ROM (Sonic standing, 'stop') the camera Y changes 2 px in total ([256, 258]) because the ordinary follow already holds Y within the pan target's zone.",
+   "rom_datum": "pan table $9808 row 3: anchor + (-208,-32) = (3061,256); bottom limit 256 written first; the camera Y at the trigger comes from the ordinary follow (Y 258 in the ROM run)",
+   "poc_code_path": "SCR_chaos_mghz_boss.gml:437 chaos_56_follow_y = clamp(round(player.y-h/1.5)), capped 7 (256) / 4 (wide) per update; :519 mode-1/2 branch",
+   "comparison_method": "POC-SOURCE MODEL data/t3/poc-series.json MGHZ3 w256/w348 stop vs rom-series.json MGHZ3 stop",
+   "status": "proven-gap",
+   "gameplay_impact": "An extra upward scroll of about 30 px as the boss appears (floor drops to Sonic screen Y 128), then a partial scroll back down during the pan",
+   "proposed_work_group": "T3-A",
+   "acceptance_proof": "camera Y changes at most the ROM follow step (<= 7) per update from creation; |total Y travel| from creation to pan end <= |Y(trigger) - 256| + 2; pan end Y = 256 at both widths",
+   "evidence": [
+    "A-MGH-3"
+   ]
+  },
+  {
+   "id": "T3-04",
+   "scope": "MGHZ3 timing at 348 vs 256",
+   "finding": "Creation is measured from the live right edge (u90 vs u102); the HUD wait that gates the pan is the same 100 updates after creation, so the pan starts at u190 vs u202. The wide pan is bounded to 4 px/update: 8 updates (X 2939 -> 2968, Y 239 -> 256) against 78 at 256 (1 px/update, X 2982 -> 3060). The boss starts descending (state 11) at the pan start in both: at 256 the camera is still panning for 76 updates of the fight, at 348 for 6. The boss ends at screen X 301 (209 at 256).",
+   "rom_datum": "pan 1 px/axis/update; state 11 starts at the pan (ROM rom_hold: u170, pan u168..u220)",
+   "poc_code_path": "SCR_chaos_mghz_boss.gml:477 (4 px wide pan), :69 (target 3269-(W-48))",
+   "comparison_method": "POC-SOURCE MODEL",
+   "status": "adapter-difference",
+   "gameplay_impact": "Different pan duration and a different boss position on screen; combat is not gated by the pan in the ROM or the POC",
+   "proposed_work_group": "decision D-T3-3",
+   "acceptance_proof": "if the ROM rate is kept: pan updates at 348 = max(|dX|,|dY|) = 29 (still <= the 256 value)",
+   "evidence": [
+    "A-MGH-1",
+    "A-MGH-2"
+   ]
+  },
+  {
+   "id": "T3-05",
+   "scope": "AQZ3 arena lock missing (not reported; found by this audit)",
+   "finding": "The POC trigger sets mode 2 but never lowers the right limit to the camera and never raises the left limit; the right limit stays 2304 until the pan, so the camera keeps following Sonic. With RIGHT held it reaches X 1893 at the pan start (ROM: 1646), then the pan retreats 166 px at 1 px/update over 165 updates (348: 76 px). A player who stops at the trigger still sees 101 px (348: 22). In the model Sonic then stays at world X 2043 (core next state $1F) while the camera retreats past him (screen X 315 of 256); the cause was not examined and may be harness-specific, so it is not used as evidence.",
+   "rom_datum": "AQZ3 $9771 -> $8199/$0353 each update, trigger -> $0356 (ROM: limit 1642 with the camera at 1646 on u99; data/t2/boss-arrival.json AQZ)",
+   "poc_code_path": "SCR_chaos_aqz_boss.gml:285 case $9771 copies limit_right only; compare SCR_chaos_sez_boss.gml:247 and SCR_chaos_mghz_boss.gml:192",
+   "comparison_method": "POC-SOURCE MODEL (AQZ3 w256/w348 hold and stop) vs EMULATED rom hold",
+   "status": "proven-gap",
+   "gameplay_impact": "AQZ3 boss intro: the camera scrolls ahead of the arena and then rolls back, and the arena is not bounded to the trigger view",
+   "proposed_work_group": "T3-B (AQZ3 lock)",
+   "acceptance_proof": "right limit <= camera + 8 from the trigger update; camera X constant from trigger to pan start; Sonic screen X <= W-6 for every update; no negative camera X step before the fight",
+   "evidence": [
+    "A-AQZ-1",
+    "A-AQZ-2"
+   ]
+  },
+  {
+   "id": "T3-06",
+   "scope": "EEZ3 boss pan start (not reported; model-derived)",
+   "finding": "The first pan update clamps the camera Y to the new bottom limit: largest Y step in the pan 49 px at 256 and 25 px at 348, in ONE update at the pan start (Y 382 -> 333). The ROM writes the bottom limit first and then pans 1 px/update (Y 387 -> 334; largest Y step in the pan 1).",
+   "rom_datum": "EEZ3 state 2 -> 3: D27E := target Y, then the shared pan; no clamp of the current Y",
+   "poc_code_path": "SCR_chaos_eez_boss.gml:323 cp_y=min(cp_y,cp_b.bottom-1)",
+   "comparison_method": "POC-SOURCE MODEL EEZ3 vs EMULATED",
+   "status": "unresolved",
+   "gameplay_impact": "A 25-49 px vertical camera jump at the start of the EEZ3 boss pan if the model is faithful; needs a Windows capture",
+   "proposed_work_group": "T3-C (EEZ3 pan)",
+   "acceptance_proof": "camera Y step <= 1 per update (256) during the pan; <= 4 at 348 if the wide adapter is kept",
+   "evidence": [
+    "A-EEZ-4"
+   ]
+  },
+  {
+   "id": "T3-07",
+   "scope": "Boss-arrival classification (relocated / walks in / revealed by the camera)",
+   "finding": "ROM: THZ3 walks in from the right by its own motion; GPZ3 relocates at creation then emerges in place; SEZ3 relocates at state 3 and drops from above; MGHZ3 is revealed by the pan while it descends; AQZ3 hides the body above the screen and flies the $5A parts in from the right; EEZ3 relocates at state 3, stays invisible through state 12 and appears at the right edge when state 6 starts, then walks in. No universal screen-edge rule exists.",
+   "rom_datum": "rom-series.json relocations and first_visible per zone (EMULATED + frame extents BYTE-VERIFIED)",
+   "poc_code_path": "data/t3/boss-framing-matrix.json entry_mode",
+   "comparison_method": "EMULATED",
+   "status": "proven-match",
+   "gameplay_impact": "Defines what 'canonical' means per zone for the presentation decisions",
+   "proposed_work_group": "decision D-T3-2",
+   "acceptance_proof": "n/a (descriptive)",
+   "evidence": []
+  },
+  {
+   "id": "T3-08",
+   "scope": "Boss exposed earlier / more completely by the wider view (item 6)",
+   "finding": "With the ROM camera unchanged a 348 px window shows the first visible frame with more of the sprite: THZ3 40 of 40 columns (256: 5), MGHZ3 32 of 32 (4), EEZ3 32 columns (15); AQZ3 parts appear 90 updates earlier. GPZ3 and SEZ3 are unchanged (the sprite appears fully in place at 256 too). The POC at 348 shows THZ3 with 38 columns at screen X 330, MGHZ3 32 columns at 322, GPZ3 at screen X 283; EEZ3 shows 15 columns (the relocation keeps the ROM sliver) and AQZ3 hides the parts until the pan has settled 16 updates.",
+   "rom_datum": "ROM sliver entries: THZ3 5 columns, MGHZ3 4, EEZ3 15, AQZ3 1 (data/t3/rom-series.json, frame-extents.json)",
+   "poc_code_path": "A-THZ-2, A-EEZ-1, A-AQZ-3/4",
+   "comparison_method": "EMULATED + POC-SOURCE MODEL",
+   "status": "adapter-difference",
+   "gameplay_impact": "THZ3 and MGHZ3 bosses pop into the right edge region instead of sliding in; no boss is visible before it exists or before its state allows it",
+   "proposed_work_group": "decision D-T3-2",
+   "acceptance_proof": "first-visible anchor screen X and columns recorded per width",
+   "evidence": [
+    "A-THZ-2",
+    "A-EEZ-1",
+    "A-AQZ-3"
+   ]
+  },
+  {
+   "id": "T3-09",
+   "scope": "Horizontal framing of Sonic during modes 1-2",
+   "finding": "Because the left limit is raised to the camera and the target is the view centre, the camera stalls until Sonic passes the centre. Sonic's screen X when the arena right limit is lowered (the lock): MGHZ3 ROM 116, POC 256 132, POC 348 178; SEZ3 ROM 116, POC 256 132, POC 348 178. In the ROM Sonic stays on the follow lead (116) until the lock.",
+   "rom_datum": "ROM follow zone lead +- 8 around 104/136 (CENTER-24/+8 at wide by decision D1-A)",
+   "poc_code_path": "SCR_chaos_*_boss.gml mode 1-2 branches",
+   "comparison_method": "POC-SOURCE MODEL",
+   "status": "proven-gap",
+   "gameplay_impact": "Cosmetic: Sonic drifts 16 px (256) / 28 px (348) right of his usual screen position before the lock",
+   "proposed_work_group": "T3-A",
+   "acceptance_proof": "Sonic screen X at the lock within the follow zone",
+   "evidence": [
+    "A-SEZ-3",
+    "A-MGH-3",
+    "A-AQZ-2"
+   ]
+  },
+  {
+   "id": "T3-10",
+   "scope": "THZ3 (T2/T1 cross-reference; not re-derived)",
+   "finding": "T2-01/T2-02/T1-01: no screen clamp in modes 1-2 (Sonic max screen X 443 at 256 and 441 at 348; 54 / 96 updates beyond the clamp), centre follow, Y frozen at 126 until the pan (ROM follows Y to 131). The pan, the walk-on world positions and the state 18 -> 6 position (world 1902) are ROM-faithful at both widths.",
+   "rom_datum": "T2 section 1",
+   "poc_code_path": "A-THZ-3, A-THZ-4, A-THZ-5, A-SH-2",
+   "comparison_method": "T2 + POC-SOURCE MODEL",
+   "status": "proven-gap",
+   "gameplay_impact": "see T2-01..T2-05",
+   "proposed_work_group": "T2/T1 camera-module package (D-T2-3)",
+   "acceptance_proof": "see T2 test plan",
+   "evidence": [
+    "A-THZ-3"
+   ]
+  },
+  {
+   "id": "T3-11",
+   "scope": "Camera release for all six bosses",
+   "finding": "Not re-traced in T3. T1 traced THZ3, SEZ3 and MGHZ3 (defeat forced); GPZ3/AQZ3/EEZ3 remain contracts from their own audits. Code-level classification is in docs/t3-boss-walkon-framing-audit.md section 8.",
+   "rom_datum": "T1 section T1.3; T2 matrix",
+   "poc_code_path": "SCR_chaos_boss.gml:255; gpz $9D26; sez/mghz/aqz $81BD handlers; eez release",
+   "comparison_method": "not re-traced",
+   "status": "not-audited",
+   "gameplay_impact": "unknown for GPZ3/AQZ3/EEZ3",
+   "proposed_work_group": "separate T3-R probe",
+   "acceptance_proof": "n/a",
+   "evidence": []
+  },
+  {
+   "id": "T3-12",
+   "scope": "V1/T1 Package B (final SHA not supplied)",
+   "finding": "All POC statements are about C1-I 69527335. The final V1/T1 SHA was not supplied; if V1/T1 touched the boss camera (PKG-T1A: THZ3 mode 1/4) the THZ3 rows may be stale. Re-baseline with: POC=<final checkout> node tools/t3_poc_boss_run.js --check, then python tools/t3_register.py --verify-anchors <final checkout>.",
+   "rom_datum": "n/a",
+   "poc_code_path": "n/a",
+   "comparison_method": "limitation",
+   "status": "unresolved",
+   "gameplay_impact": "Possible stale THZ3 numbers",
+   "proposed_work_group": "Manager: supply SHA",
+   "acceptance_proof": "tools re-run is a no-op diff when nothing relevant changed",
+   "evidence": []
+  }
+ ]
+}

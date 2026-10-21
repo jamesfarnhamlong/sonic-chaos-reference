@@ -1,0 +1,306 @@
+{
+ "description": "Camera/arrival adapters and rules of the accepted POC C1-I, classified. 'kind' separates recovered ROM behaviour, deliberate widescreen adapters (documented in the code header), legacy non-ROM rules (inherited from the pre-C1-I zone cameras, not documented as an adapter and not matched to the ROM) and omissions of a ROM rule. line_at_c1i is the line in the C1-I checkout; anchor is the text to search after a re-baseline.",
+ "poc_commit": "69527335011bacf22ff16bd25d3a94874a1fa563",
+ "rows": [
+  {
+   "id": "A-THZ-1",
+   "zone": "THZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "anchor": "function chaos_boss_creation_band",
+   "line_at_c1i": 14,
+   "what": "creation band measured from the live right edge, not from a 256 px window",
+   "rom_basis": "ROM creates the object in the outer spawn ring of the 256 px window ($80EB, object-50.json placement_window)"
+  },
+  {
+   "id": "A-THZ-2",
+   "zone": "THZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "anchor": "function chaos_boss_clamp",
+   "line_at_c1i": 32,
+   "what": "arena right edge and patrol right turn extended by W-256 (world rectangle)",
+   "rom_basis": "none: the ROM arena is the screen clamp at the locked camera; T2 shows the viewport clamp gives the same rectangle"
+  },
+  {
+   "id": "A-THZ-3",
+   "zone": "THZ3",
+   "kind": "legacy non-ROM rule",
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "anchor": "cp_x=max(cp_b.camera_min,min(room_width-cp_vp.w,round(instance_find(OBJ_player,0).x-cp_vp.w/2)))",
+   "line_at_c1i": 246,
+   "what": "mode 1 follows Sonic by centring him (never back-scrolling); Y is frozen at the creation value for modes 1-2",
+   "rom_basis": "ROM keeps the ordinary $5832 follow (lead 104/136, zone +-8/+-16, cap 7) and only raises the left limit (state 1 $9771 -> $8199)"
+  },
+  {
+   "id": "A-THZ-4",
+   "zone": "THZ3",
+   "kind": "ROM-recovered",
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "anchor": "cp_x=cp_vp.left+sign(CHAOS_BOSS_CAMERA_X-cp_vp.left)",
+   "line_at_c1i": 250,
+   "what": "mode 3 pan 1 px/update/axis to (1679,78) at every width",
+   "rom_basis": "table $9808 row 0: anchor + (-256,-160), exclusive right limit"
+  },
+  {
+   "id": "A-THZ-5",
+   "zone": "THZ3",
+   "kind": "ROM-recovered",
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "anchor": "if (chaos_boss_x(cp_b)-cp_b.camera_x <= 223)",
+   "line_at_c1i": 119,
+   "what": "state 18 ends when the anchor is 223 px right of the LIVE camera (world 1902 after the pan), at every width",
+   "rom_basis": "state 18 exit (object-50.json state_18_exit)"
+  },
+  {
+   "id": "A-THZ-6",
+   "zone": "THZ3",
+   "kind": "legacy non-ROM rule",
+   "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+   "anchor": "cp_x=clamp(round(instance_find(OBJ_player,0).x-cp_vp.w/2),cp_vp.left,room_width-cp_vp.w)",
+   "line_at_c1i": 255,
+   "what": "mode 4 (release) centres on Sonic in one update",
+   "rom_basis": "ROM resumes the ordinary follow, <= 7 px/update (T1-02)"
+  },
+  {
+   "id": "A-GPZ-1",
+   "zone": "GPZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml",
+   "anchor": "function chaos_51_fight_camera_target",
+   "line_at_c1i": 24,
+   "what": "fight camera X target 1664-(W-256) (1572 at 348): keeps the canonical RIGHT edge 1919 and exposes the extra width to the LEFT",
+   "rom_basis": "ROM target is LOCKED_CAMERA(1664,96), settles (1663,97)"
+  },
+  {
+   "id": "A-GPZ-2",
+   "zone": "GPZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml",
+   "anchor": "function chaos_51_fight_camera_y",
+   "line_at_c1i": 28,
+   "what": "fight camera Y 96 -> 112 for wide, tall views (presentation only)",
+   "rom_basis": "ROM target Y 96"
+  },
+  {
+   "id": "A-GPZ-3",
+   "zone": "GPZ3",
+   "kind": "omission of a ROM rule",
+   "file": "scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml",
+   "anchor": "cp_b.camera_right=1664; cp_s.xu=1856*256;",
+   "line_at_c1i": 114,
+   "what": "the creation callback writes the CANONICAL right limit 1664 (exclusive camera limit, right edge 1920) at every width; the adapter in A-GPZ-1 is not applied to the limit",
+   "rom_basis": "ROM $9A99 writes D282 = 1664 and relocates the head 1728 -> 1856 (one update after creation); the limit is WORLD-fixed 270 px ahead of the camera"
+  },
+  {
+   "id": "A-GPZ-4",
+   "zone": "GPZ3",
+   "kind": "legacy non-ROM rule",
+   "file": "scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml",
+   "anchor": "var cp_follow_x=clamp(round(instance_find(OBJ_player,0).x-cp_vp.w/2),cp_b.camera_left,cp_b.camera_right-1);",
+   "line_at_c1i": 298,
+   "what": "modes 1 and 4: centre on Sonic horizontally; vertical target player.y - h/1.5; one-update snap at 256, 4 px/update at wide",
+   "rom_basis": "ROM keeps the ordinary follow throughout the approach (no mode-1 owner)"
+  },
+  {
+   "id": "A-GPZ-5",
+   "zone": "GPZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml",
+   "anchor": "if (cp_vp.w>256 && !cp_b.camera_owned && cp_b.last_view_valid)",
+   "line_at_c1i": 283,
+   "what": "first takeover starts from the last normal view, not from GameMaker's object-follow value",
+   "rom_basis": "none (continuity of the adapter)"
+  },
+  {
+   "id": "A-GPZ-6",
+   "zone": "GPZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml",
+   "anchor": "if (cp_vp.w>256) cp_x+=sign(cp_target-1-cp_x);",
+   "line_at_c1i": 293,
+   "what": "mode 2/3 approach to the width-adjusted target from EITHER side at 1 px/update (no snap)",
+   "rom_basis": "ROM pan is 1 px/update/axis toward (1664,96)"
+  },
+  {
+   "id": "A-SEZ-1",
+   "zone": "SEZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_sez_boss/SCR_chaos_sez_boss.gml",
+   "anchor": "function chaos_54_target_x",
+   "line_at_c1i": 81,
+   "what": "pan target X = 3232 - W (canonical RIGHT edge kept; extra width to the left); Y stays 462",
+   "rom_basis": "ROM target (2976,462), settles (2975,462)"
+  },
+  {
+   "id": "A-SEZ-2",
+   "zone": "SEZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_sez_boss/SCR_chaos_sez_boss.gml",
+   "anchor": "cp_x+=clamp(cp_tx-1-cp_x,-4,4); cp_y+=clamp(cp_ty-cp_y,-4,4);",
+   "line_at_c1i": 550,
+   "what": "wide pan bounded to 4 px/update per axis",
+   "rom_basis": "ROM pan is 1 px/axis/update"
+  },
+  {
+   "id": "A-SEZ-3",
+   "zone": "SEZ3",
+   "kind": "legacy non-ROM rule",
+   "file": "scripts/SCR_chaos_sez_boss/SCR_chaos_sez_boss.gml",
+   "anchor": "var cp_fx2=chaos_54_follow_x(cp_b,cp_vp,cp_px),cp_fy2=chaos_54_follow_y(cp_vp,cp_py);",
+   "line_at_c1i": 592,
+   "what": "modes 1-2: X centres on Sonic (left limit raised, so the camera stalls until Sonic passes the centre); Y = player.y - h/1.5 (snap at 256, 4 px/update wide)",
+   "rom_basis": "ROM keeps the ordinary follow (lead 104, Y lead 96/120, zone +-8/+-16, cap 7)"
+  },
+  {
+   "id": "A-SEZ-4",
+   "zone": "SEZ3",
+   "kind": "ROM-recovered",
+   "file": "scripts/SCR_chaos_sez_boss/SCR_chaos_sez_boss.gml",
+   "anchor": "if (cp_b.camera_right >= cp_vp.left) cp_b.camera_right=cp_vp.left;",
+   "line_at_c1i": 247,
+   "what": "trigger lowers the right limit to the camera ($0356)",
+   "rom_basis": "shared boss state 1/2 ($9771/$9799)"
+  },
+  {
+   "id": "A-MGH-1",
+   "zone": "MGHZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_mghz_boss/SCR_chaos_mghz_boss.gml",
+   "anchor": "function chaos_56_target_x",
+   "line_at_c1i": 69,
+   "what": "pan target X = 3269 - (W-48): boss stays at RIGHT-48 (209 at 256, 301 at 348); canonical right edge kept",
+   "rom_basis": "ROM target (3061,256), settles (3060,256)"
+  },
+  {
+   "id": "A-MGH-2",
+   "zone": "MGHZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_mghz_boss/SCR_chaos_mghz_boss.gml",
+   "anchor": "cp_x+=clamp(cp_tx-1-cp_x,-4,4); cp_y+=clamp(cp_ty-cp_y,-4,4);",
+   "line_at_c1i": 477,
+   "what": "wide pan bounded to 4 px/update per axis",
+   "rom_basis": "ROM pan is 1 px/axis/update"
+  },
+  {
+   "id": "A-MGH-3",
+   "zone": "MGHZ3",
+   "kind": "legacy non-ROM rule",
+   "file": "scripts/SCR_chaos_mghz_boss/SCR_chaos_mghz_boss.gml",
+   "anchor": "var cp_fx2=chaos_56_follow_x(cp_b,cp_vp,cp_px),cp_fy2=chaos_56_follow_y(cp_vp,cp_py,cp_y);",
+   "line_at_c1i": 519,
+   "what": "modes 1-2: Y target player.y - h/1.5 capped 7 (256) / 4 (wide) per update; X centres on Sonic with the left limit raised",
+   "rom_basis": "ROM keeps the ordinary follow; the pan Y target is 256 only from state 3"
+  },
+  {
+   "id": "A-MGH-4",
+   "zone": "MGHZ3",
+   "kind": "ROM-recovered",
+   "file": "scripts/SCR_chaos_mghz_boss/SCR_chaos_mghz_boss.gml",
+   "anchor": "if (cp_b.camera_right >= cp_vp.left) cp_b.camera_right=cp_vp.left;",
+   "line_at_c1i": 192,
+   "what": "trigger lowers the right limit to the camera ($0356)",
+   "rom_basis": "shared boss state 1/2"
+  },
+  {
+   "id": "A-AQZ-1",
+   "zone": "AQZ3",
+   "kind": "omission of a ROM rule",
+   "file": "scripts/SCR_chaos_aqz_boss/SCR_chaos_aqz_boss.gml",
+   "anchor": "case $9771:",
+   "line_at_c1i": 285,
+   "what": "state 1 copies the right limit but never raises the left limit to the camera ($8199 -> $0353) and never lowers the right limit to the camera at the trigger ($0356)",
+   "rom_basis": "ROM: right limit := camera at the trigger (u99: limit 1642 with the camera at 1646), left raised every update (data/t2/boss-arrival.json AQZ)"
+  },
+  {
+   "id": "A-AQZ-2",
+   "zone": "AQZ3",
+   "kind": "legacy non-ROM rule",
+   "file": "scripts/SCR_chaos_aqz_boss/SCR_chaos_aqz_boss.gml",
+   "anchor": "var cp_fx2=chaos_59_follow_x(cp_b,cp_vp,cp_px),cp_fy2=chaos_59_follow_y(cp_vp,cp_py);",
+   "line_at_c1i": 627,
+   "what": "modes 1-2 centre on Sonic horizontally (limit = camera_right, which is never lowered, see A-AQZ-1) and use player.y - h/1.5 vertically",
+   "rom_basis": "ROM keeps the ordinary follow"
+  },
+  {
+   "id": "A-AQZ-3",
+   "zone": "AQZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_aqz_boss/SCR_chaos_aqz_boss.gml",
+   "anchor": "cp_s.view_dx=cp_b.intro_dx;",
+   "line_at_c1i": 55,
+   "what": "the $5A parts get a fixed VIEW-space translation intro_dx = W-256+ceil(wait/2) when the intro callback $AC38 runs; draw AND contact use the translated X; canonical xu is never changed",
+   "rom_basis": "ROM spawns the parts at WORLD 2048 = EDGE(RIGHT,+65) of the settled 256 px camera"
+  },
+  {
+   "id": "A-AQZ-4",
+   "zone": "AQZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_aqz_boss/SCR_chaos_aqz_boss.gml",
+   "anchor": "if (cp_b.intro_stable >= 16) cp_b.intro_ready=true;",
+   "line_at_c1i": 610,
+   "what": "at wide the $5A parts are hidden and skipped until the pan has been settled for 16 updates",
+   "rom_basis": "none"
+  },
+  {
+   "id": "A-EEZ-1",
+   "zone": "EEZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml",
+   "anchor": "chaos_eez_boss_setx(cp_s,cp_x+128+max(0,cp_v.w-256))",
+   "line_at_c1i": 150,
+   "what": "state 3 relocation adds W-256 to the canonical +128 (2208 at 256, 2300 at 348): a WORLD coordinate change that keeps the boss off-screen right at the settled camera",
+   "rom_basis": "ROM relocates 2080 -> 2208 (screen 337 before the pan, 257 after)"
+  },
+  {
+   "id": "A-EEZ-2",
+   "zone": "EEZ3",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml",
+   "anchor": "(cp_v.w>256 && floor(cp_c.xu/256)>=cp_x",
+   "line_at_c1i": 143,
+   "what": "wide trigger also fires when Sonic is right of the boss inside the view",
+   "rom_basis": "ROM trigger: strict |dx| < 96, |dy| < 304"
+  },
+  {
+   "id": "A-EEZ-3",
+   "zone": "EEZ3",
+   "kind": "ROM-recovered",
+   "file": "scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml",
+   "anchor": "cp_target=floor(cp_v.w/2)+((cp_core.player_flags&16) != 0 ? 8 : -24);",
+   "line_at_c1i": 325,
+   "what": "follow with the ROM zone/lead/cap form (CENTER-relative leads at wide), left/right/bottom limits written by the boss",
+   "rom_basis": "$5832/$58E1 with the boss limits"
+  },
+  {
+   "id": "A-EEZ-4",
+   "zone": "EEZ3",
+   "kind": "omission of a ROM rule",
+   "file": "scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml",
+   "anchor": "cp_y+=sign(cp_b.pan_y-cp_y);cp_y=min(cp_y,cp_b.bottom-1);",
+   "line_at_c1i": 323,
+   "what": "the pan clamps the camera Y to the new bottom limit in the first pan update",
+   "rom_basis": "ROM pans 1 px/update from the current Y (387 -> 334 in 53 updates, no clamp)"
+  },
+  {
+   "id": "A-SH-1",
+   "zone": "ALL",
+   "kind": "legacy non-ROM rule",
+   "file": "scripts/SCR_chaos_camera/SCR_chaos_camera.gml",
+   "anchor": "function chaos_camera_follow_allowed",
+   "line_at_c1i": 98,
+   "what": "the C1-I ordinary follow is switched off as soon as ANY boss owner is active (THZ3 mode != 0, GPZ3 active, MGHZ3/SEZ3/AQZ3 active); the ROM has no such owner switch before the pan",
+   "rom_basis": "ROM O4/O5: the ordinary follow keeps running with the left limit raised and, after the trigger, the right limit at the camera (data/t2/owner-map.json)"
+  },
+  {
+   "id": "A-SH-2",
+   "zone": "ALL",
+   "kind": "deliberate widescreen adapter",
+   "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+   "anchor": "chaos_56_owns_camera() || chaos_54_owns_camera() || chaos_59_owns_camera()",
+   "line_at_c1i": 199,
+   "what": "player edge clamp EDGE(LEFT,+16)..EDGE(RIGHT,-9) of the live view as full-width integers, applied from boss creation for GPZ3/MGHZ3/SEZ3/AQZ3 (T2-04: THZ3 is not in the list)",
+   "rom_basis": "$4141: unconditional below state $29"
+  }
+ ]
+}
