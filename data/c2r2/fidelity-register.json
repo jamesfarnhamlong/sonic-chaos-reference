@@ -1,0 +1,78 @@
+{
+  "researchParent": "1e34a2a666a83e107942678fe0c0497fffb3ff05",
+  "poc": "4eb684911c5785667181b9d3f940b1dc820e66d1",
+  "sources": {
+    "asm/recovered/movement_core.asm": "792c5f7fe084af9b07afa7ba6618e7a0268e92e0f2facfd859e4a11c0fa4e2cb",
+    "asm/recovered/movement_tables.asm": "b71f39093286ab0062509b1d73b239afd5b623c89c262ec7a96c51de636ee5cd",
+    "asm/recovered/spring_setters.asm": "3e0e37a2a5dc39755beda6938f1ce3f5c44ad9218b524dc933bd98500e04d531",
+    "asm/recovered/spring_contacts.asm": "edd190f1afa8136d8e75375ef862e60718fed827f55ffbe797e311d59a0ee205",
+    "asm/recovered/spring_state_updates.asm": "8a4a7f73c180e9c661bd583ef0ea47ae3d12c21980b1318740096ee91c41c196",
+    "asm/recovered/terrain_update.asm": "50e4730ad5bcb775e2dfd5c9a1f10bf7423a07bc2be2c612ecba68f0e556d98d",
+    "data/movement-tables.csv": "15d3aeafb842b3dc3b952070147f6f93ff61289cefeaa8f4d507d71e7d854aee",
+    "data/rom-cache/spring-interaction.json": "5ef9a40de16af3a98ac6d9c5ead1ff9b003610978b683c13fdac1e9aa3ba7ef8",
+    "data/rom-cache/player-attack-badnik.json": "2b08e9f61b761d25e3f9f36f2a55147edc7a6d3db282cf7ce1dd1a51e4988b27",
+    "data/rom-cache/platform-spike-collision.json": "52b95c57a196c877e5a71c25f91592e2a17e5c3469ad6cf207f35be0ea9e4e63"
+  },
+  "findings": [
+    {
+      "id": "C2R2-X-FRICTION-CYCLE",
+      "status": "proven-match",
+      "scope": "Sonic states $0B/$0E; no input, ordinary zero-modifier X integration",
+      "rom": "$4223->$4196; $41A9..$41B3; $402A; no_direction CSV states 0B/0E",
+      "poc": "SCR_chaos_core: SCR_cc_input / SCR_cc_x",
+      "method": "Recovered-assembly reduced semantic model vs shipped GML, 22 cases x32; seeded live spring and patrol traces",
+      "confidence": "high for isolated arithmetic; no whole-scene ROM execution",
+      "impact": "1/16 pixel peak-to-peak X cycle; historical visible symptom identity unproven",
+      "proposal": "Preserve arithmetic; no clamp",
+      "limitation": "Windows appearance and natural reachability not verified"
+    },
+    {
+      "id": "C2R2-HISTORICAL-VISIBLE-OSCILLATION",
+      "status": "unresolved",
+      "scope": "Historical spring/Badnik report; act unknown",
+      "rom": "No exact matching cached replay",
+      "poc": "adapter, core, live $21, mapped $26, staged contacts",
+      "method": "96 sequences at 256/348, complete traces and uninstrumented replay",
+      "confidence": "source behavior proven; historical identity unknown",
+      "impact": "Historical report potentially material",
+      "proposal": "Obtain reachable input replay; optionally authorise developer-gated capture",
+      "limitation": "Combined overlay is synthetic and produces hurt, not launch/stomp; no large oscillation reproduced"
+    },
+    {
+      "id": "C2R2-GLOBAL-CONTACT-ORDER",
+      "status": "unresolved",
+      "scope": "Multiple simultaneous contacts, support and object pool",
+      "rom": "Player pass then slot scheduler; inherited attack/platform audits",
+      "poc": "SCR_chaos_objects_phase; legacy $21 Step; adapter ownership",
+      "method": "Source writer/order map, 8 staged callback controls",
+      "confidence": "high current-source order, limited full ROM equivalence",
+      "impact": "Last nibble/request can determine next player pass",
+      "proposal": "Pair canonical slots and natural route before any scheduler change",
+      "limitation": "Live flying enemy/support overlap not exercised"
+    },
+    {
+      "id": "C2R2-VIEWPORT-AND-LOOP",
+      "status": "adapter-difference",
+      "scope": "256/348 activation, loop bypass and host camera",
+      "rom": "Cached canonical activation contracts",
+      "poc": "placement/lifetime, adapter and object phase",
+      "method": "Paired width source-host grid",
+      "confidence": "bounded",
+      "impact": "Availability/order may differ; no causal oscillation proof",
+      "proposal": "Preserve accepted adapter pending evidence",
+      "limitation": "Mocked camera is not Windows follow"
+    },
+    {
+      "id": "C2R2-SLOPE-STICKING",
+      "status": "unresolved",
+      "scope": "Historical slope symptom",
+      "rom": "$69B2 / retained $D377 and $459D; no matching route trace",
+      "poc": "SCR_cc_input/ramp/floor",
+      "method": "Source map plus three zero-speed retained-delta controls",
+      "confidence": "insufficient dynamic slope evidence",
+      "impact": "Historical only",
+      "proposal": "Acquire exact route and compare per-update probes",
+      "limitation": "No new natural slope or all-zone audit"
+    }
+  ]
+}
