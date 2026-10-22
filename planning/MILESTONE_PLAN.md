@@ -1,6 +1,6 @@
 # Sonic Chaos — MILESTONE_PLAN
 
-**Planning edition 0.1 | 22 October 2026 | Manager-san #5 | no new implementation authorised**
+**Planning edition 0.2 | 22 October 2026 | M0/M1 Research reconciliation | no new implementation authorised**
 
 ## Principle
 
@@ -12,8 +12,8 @@
 
 | Proposed group | Type & dependencies | Scope of ONE themed delivery | Chief's essential acceptance |
 |---|---|---|---|
-| **M0 — Master reconciliation** | **Read-only; now drafted / outstanding local audit** | Compare a **user-supplied copy** of installed root AGENTS, original G0–G10 roadmap, Research source/caches, GitHub accepted closures, Q1/Q2/Q3 issue ledgers and **user-supplied local** archive inventories (cloud agents cannot access Windows drive paths). Confirm full list, freeze Q3 baseline, remove duplicate/stale OPEN items; update the three planning files. | Manager reviews one summary; **no F5 and no ZIP**. |
-| **M1 — Tails + frontend contracts** | **Research-only**, after M0; can also preflight audio concurrently if credits allow | One contract for original Tails animation and moves, palette/frame extraction and hashes, character-specific run/reward/ending differences, *plus* the original title/character-select/attract resource and input contracts. Identify true original character options. | Evidence review, missing asset report and executable source-model tests; **no runtime package**. |
+| **M0 — Master reconciliation** | **Research checkpoint; accessible scope reconciled, historical archive limits retained** | Mounted root AGENTS and Q3 inventory read; closures supersede old pending opening/Continue/Q1–Q3 items; G0–G10 mapped in `docs/m0-reconciliation-report.md`. Root hash discrepancy retained, no installation. | Manager reviews summary and remaining archive limits; **no F5 and no ZIP**. |
+| **M1 — Tails + frontend contracts** | **Research checkpoint, static evidence with explicit gates** | `docs/m1-tails-frontend-contract.md`, census and `docs/m1-audio-readiness.md`:89 mappings,54 scripts,11 existing authentic resources, original separate choice, title99/choice82, audio dependencies. No new ROM execution or runtime acceptance. | Review focused evidence checks; complete character callbacks/equipment and dynamic title/choice proof before dependent edits; **no runtime package**. |
 | **M2 — Playable Tails** | **One integrated implementation**, requires M1 | Import genuine Tails sprites/animation scripts; implement necessary canonical states, controls, collisions, equipment and transitions; link Tails campaign, starts/continues/score, terminal route and ending. Keep title user path to Sonic while Tails is under construction; developer-only Tails tests permitted. | Tails ordinary locomotion/flight or swim as proven, at least one boss and hazard, transitions, Special Stage restrictions, death/continue and **natural Tails full-campaign/ending gate** when practical; verify unchanged Sonic samples. May use a short first candidate and longer playthrough gate without a second ZIP. |
 | **M3 — Authentic title + character select** | **One frontend implementation**, requires accepted playable Tails before unlocking | ROM title artwork/motion, character-select presentation, menu defaults/controls, Sonic/Tails dispatch, title→new run and return loops, preserve authentic opening. Attract demos may be included **if** M1 has complete evidence and they are regression-safe; otherwise group with M6. | Startup cinematic→title→select Sonic/Tails→distinct initial values/THZ1; back/options/navigation; continue/game over/ending→usable title; no dead Tails option. |
 | **M4 — Audio foundation / first live sounds** | **Research decision then one coherent implementation**, can start audio research during M1/M2 | Choose approved PSG/audio fidelity strategy; make one request-ID dispatcher, source metadata, resource/restoration policy, sound test coexistence, stop/fade/pause/restart ownership. Wire authenticated opening/title/THZ and ring/spring pilot once each. Do not claim full audio coverage. | Audible and timed pilot scene transitions; no overlapping/leaking tracks; ring/spring once; pause/title/SS/ending stop policies; mute and Sound Test controls. |
@@ -23,6 +23,8 @@
 | **M8 — Extras/side projects** | **Parked** | Vita/YoYo Loader, full disassembly/decomp, SMS/GG performance patch, alternate modes or enhanced features. | Separate feasibility/acceptance; never block authentic SMS widescreen finish. |
 
 ### Where to spend the remaining credits
+
+M0/M1 deliverables now exist. The next decision is M2, not automatic continuation: first close bounded Tails callback/equipment/branch evidence and private import prerequisites from the contract's dependency matrix, then one integrated character candidate. Preserve Sonic-only public entry until Tails is accepted. M3 requires full title/choice animation proof; attract may defer to M6. M4 must cover actual title99 alongside choice82 and resolve production renderer/loop policy. Existing five previews alone are insufficient.
 
 1. **One concentrated M0/M1 research commission** to reconcile archives AND produce an implementable Tails/frontend evidence contract, rather than a chain of tiny sprite tasks. First reconcile this drafted trio against live Windows root AGENTS; do not perform another huge historical regression sweep.
 2. **One sizeable Tails implementation candidate**, not per-character-animation ZIPs. If missing ROM frames block progression, finish authentic extraction rather than replacing them with inherited temp animation.
@@ -40,6 +42,8 @@
 - **Decision checkpoint:** Chief chooses next milestone after every acceptance; any unresolved/parked issue remains in `FIDELITY_REGISTER.md` without causing scope creep.
 
 ## Immediate ready-to-send brief for the next research agent (M0+M1 preflight)
+
+**Historical commissioning text below is retained. This commission has now produced the linked M0/M1 checkpoint; it is not a fresh assignment.** Remaining evidence gates are listed in the contract, not an invitation to repeat the entire reconciliation.
 
 **Only after Manager authorises the work:** “Read the latest **uploaded** Windows-root AGENTS and supplied historic source/archive indexes; reconcile `MASTER_ROADMAP.md`, `FIDELITY_REGISTER.md`, and `MILESTONE_PLAN.md` against accepted POC `7476affc`, Research `8eacc666` and later verified topic commits. Mark accepted/pending/unknown without rewriting closure history. Then produce one ROM-backed Tails+title/character-select asset/state/flow contract with exact source references, original art/palette/frame coverage, code callsites, tests and bounded implementation recommendations. Investigate audio dependency readiness using existing AUDIO-A0/1B sources **without implementing audio**. Make Research-only documents/tests in an isolated branch and stop; no POC changes, ROM/private asset uploads, compiled build or root AGENTS edit.”
 

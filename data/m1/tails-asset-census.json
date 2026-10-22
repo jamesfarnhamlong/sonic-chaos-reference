@@ -1,0 +1,7417 @@
+{
+  "schema_version": 1,
+  "evidence": "new static private-ROM decode; no new ROM execution or Windows test",
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "poc_commit": "7476affc6ed7626dabf69b446cdab0c9c3d7492e",
+  "tails_mapping": {
+    "mapping_table_cpu": "0x85BF",
+    "mapping_rom": "0x3C5BF",
+    "frames": {
+      "1": {
+        "mapping_frame_cpu": "0x8671",
+        "mapping_frame_rom": "0x3C671",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x011D3",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xA940",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "f895afe6bc3673707df54ea1e28b6a18cf778600d4cb9d49d52c026193ec60a1"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "b4a83111a06c13f3600f95ab3360463690f622487587e6ccaa14c7a00abaeecd",
+        "non_transparent_pixels": 327,
+        "rgba_sha256_palette7": "f13aebd85094180cfa62961ab70ca92ab2a7702fe73bad81f8c2676a889ab564"
+      },
+      "2": {
+        "mapping_frame_cpu": "0x867C",
+        "mapping_frame_rom": "0x3C67C",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x011D7",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xAAC0",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "82801f9274d00c215b5d19065765af5b0459bce1c4ce6df94d83ce9594d9309d"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "71c5861dbd743e523ed4cf454f477db933d8290973e1a29e42eaea15ea0d88bf",
+        "non_transparent_pixels": 310,
+        "rgba_sha256_palette7": "f9c7763d2e7449740e79f674c337ac011e926cf7ddd121ee66732f7a91ca3e71"
+      },
+      "3": {
+        "mapping_frame_cpu": "0x8687",
+        "mapping_frame_rom": "0x3C687",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x011DB",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xAC80",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "930a6df7cd7dce68c608ab58bfea2357a05160bf4dfb9e77c606417535648810"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "16b3fa8882628984d082aa38ef4e6b1e9895de9e2924ae749869237abbcb937f",
+        "non_transparent_pixels": 305,
+        "rgba_sha256_palette7": "4d7795b304690abc5e2bbdf26bfb6ee0708786d91cbc39947bf30de9e5be2d36"
+      },
+      "4": {
+        "mapping_frame_cpu": "0x8692",
+        "mapping_frame_rom": "0x3C692",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x011DF",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xADC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "25ceb33e0e1266f4bf6a46e84f512c8064209f92a291818e2bce2e41730531f1"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "2e9f9a55f2935a8aecd6601b1994af96fdbb558ccb213f6228e26bbb5ffd7616",
+        "non_transparent_pixels": 289,
+        "rgba_sha256_palette7": "c6dde1dee95fcaafff2b4e93397b77c0955a794877492b19982a22660d979c41"
+      },
+      "5": {
+        "mapping_frame_cpu": "0x869D",
+        "mapping_frame_rom": "0x3C69D",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x011E3",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xAF40",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "16cb3bb953f1c3162dc9e1a371bea900e58e6385c36fdd5897288c9a70e8100c"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "9d04b0048f8136176ec53aefc018bcd960ad6a932f2c21ba2a8573c5e1b8488b",
+        "non_transparent_pixels": 314,
+        "rgba_sha256_palette7": "a28b439c583d08b481f49e29e03e7cd9381797ffed836e4e222570fe80a2168b"
+      },
+      "6": {
+        "mapping_frame_cpu": "0x86A8",
+        "mapping_frame_rom": "0x3C6A8",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x011E7",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xB100",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "3a1eb4553aecf5f610f05101b269548ed3fd8eb525457aba1c6dac4dbd6df12a"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "c2bd9c4c014cb1f88115c1801b8acd07745b3f9df80645806cf567038304d83a",
+        "non_transparent_pixels": 317,
+        "rgba_sha256_palette7": "05bf0a3950ef89fd42632bb2c96fb519af40c7a4c5407b8b7152460d532435a1"
+      },
+      "7": {
+        "mapping_frame_cpu": "0x86B3",
+        "mapping_frame_rom": "0x3C6B3",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x011EB",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xB240",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "22269102d5c694f1d6057d4a9080dd46e3f61423dba623b607063ae577b51ff6"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "cb2e0d22764e2f0b5dd0cfd6ccf6e1043860d5d18dd07edbe308b31bf9b06698",
+        "non_transparent_pixels": 307,
+        "rgba_sha256_palette7": "3803840ee3683cfab6cb379b3fa7e3027b008dfb13cb890668d5021dbf8ad18f"
+      },
+      "8": {
+        "mapping_frame_cpu": "0x86BE",
+        "mapping_frame_rom": "0x3C6BE",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x011EF",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xB3C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "163549189af8c3070a6b597a321c267b02cad2df06b15df444e09f734cc70a55"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "acfad3cebbbf4bbb1ee43720f467b7c40625f33bab8dc456385327240baffa72",
+        "non_transparent_pixels": 277,
+        "rgba_sha256_palette7": "914afb10549321bc9dd31b31bfb12a126d6eb645b7b7a4d351ad3532dcbbdbc7"
+      },
+      "9": {
+        "mapping_frame_cpu": "0x86C9",
+        "mapping_frame_rom": "0x3C6C9",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x011F3",
+        "tile_source": {
+          "bank": 5,
+          "cpu": "0xB540",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "70af8a847047096aa87750d6bcde317973a7d3c72d0767e11e1e00f96ffa8f07"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "ae24d65f2becc1840ee70dd328497a6eaf9613d3781641e22caf3180b95a5453",
+        "non_transparent_pixels": 269,
+        "rgba_sha256_palette7": "1a9406033ed489a312a4abcf02d94264b9fee44931c28e0a5f3379bf8086caaf"
+      },
+      "10": {
+        "mapping_frame_cpu": "0x86D4",
+        "mapping_frame_rom": "0x3C6D4",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x011F7",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8000",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "fa80005d66478cfbb56342c6431d60f1c8757eedfd8e0bd30e1b69982eb200ad"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "858efdd7e2009ec8a728afa7f002f7c7f0e5ba340b9050bd46a0f2a0af088890",
+        "non_transparent_pixels": 346,
+        "rgba_sha256_palette7": "15a88d16c7ee141349455addfaea82cffec069146ad5194378be01350c0d395f"
+      },
+      "11": {
+        "mapping_frame_cpu": "0x86DF",
+        "mapping_frame_rom": "0x3C6DF",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x011FB",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8140",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "13445a1eeaf1ba369baade5f5492fe8cdc5ccdf742e596525c14b3797c6ce15d"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "032d3d916b0a80b5da9883cf37378f948ea13062f92ad5531075eaf93e689511",
+        "non_transparent_pixels": 346,
+        "rgba_sha256_palette7": "1a622e82e5880489d5981a15f207ca863d8660fd8541fd6442ba2463409df8d1"
+      },
+      "12": {
+        "mapping_frame_cpu": "0x86EA",
+        "mapping_frame_rom": "0x3C6EA",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x011FF",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8280",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "a0c9e7bc2a26c59b404a6c88be372dcbd5a7e1212be6f932a91f8d5f3b5a5ccd"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "d143f38f27510abf35d0cbb1f0e4c0623789545a068e2a6127a0ef06bab5327e",
+        "non_transparent_pixels": 347,
+        "rgba_sha256_palette7": "b82e641674803008f59d4d36d00081e7b788a19f8092130c728eee5a65be5f5f"
+      },
+      "13": {
+        "mapping_frame_cpu": "0x86F5",
+        "mapping_frame_rom": "0x3C6F5",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x01203",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x83C0",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "55e03d797ba033bfec1ff0c0e89f823e87f6dc94d7b60ee14d4bd12bf4dbf6cb"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "5ca1a76e2343b13aa995992ab4cf06a9466225c95765755927a5c1d3c418c012",
+        "non_transparent_pixels": 315,
+        "rgba_sha256_palette7": "54330b0c1040c9e02cc2fcc9d5c58b6522c2244ac8afd8d6eba4b449bb74bc2c"
+      },
+      "14": {
+        "mapping_frame_cpu": "0x8700",
+        "mapping_frame_rom": "0x3C700",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x01207",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8500",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "26fa734eecd2fcf3f21ff273c4aee96ecd5db0bb50cd28813b8e0255c47a97b7"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "51ab65b729995b43b9af2b7297c06541acffa81e8ab408dadc720c1dc864fb11",
+        "non_transparent_pixels": 315,
+        "rgba_sha256_palette7": "d7bf5c23458b8120462ca47d880fcd5a52f07cce1d2f83e8723e5bf80142705e"
+      },
+      "15": {
+        "mapping_frame_cpu": "0x870B",
+        "mapping_frame_rom": "0x3C70B",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x0120B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8640",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "51f3af98c98b188c204ddea33634f0b1bbda74a3b62411d33e5af4a1b99d26a3"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "4f600392519911b0a0095c0da39429d31f3d21f33d724203a974cde84f20d827",
+        "non_transparent_pixels": 325,
+        "rgba_sha256_palette7": "f3c2bf5bc7d08c69cf9e5f9568044e68584855073673a30bd9de742f0efda3fe"
+      },
+      "16": {
+        "mapping_frame_cpu": "0x8716",
+        "mapping_frame_rom": "0x3C716",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x0120F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8780",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "137061f1d3d84e21f137eb7e1c06133c64939970d2c7f6ac5787eaa6432d2cb9"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "6fa5d76f30ee897bd58eea441b105318cfe2d6631e7781ebe090a6d7d80909d9",
+        "non_transparent_pixels": 320,
+        "rgba_sha256_palette7": "08ea22937ee5438409b31089b5fd2e7a32da931d14e6088d8ddc4bc6352aaca3"
+      },
+      "17": {
+        "mapping_frame_cpu": "0x8721",
+        "mapping_frame_rom": "0x3C721",
+        "piece_count": 3,
+        "tile_table_entry_rom": "0x01213",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x88C0",
+          "blocks_64_bytes": 3,
+          "tiles": 6,
+          "sha256": "3092dc290767683e55a293ac8e5b9bf59ece2eb4ed6832ec1b9f42d67e00e531"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -16,
+          "max_x": 10,
+          "max_y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "gamemaker_origin": [
+          14,
+          16
+        ],
+        "canvas": [
+          24,
+          16
+        ],
+        "index_sha256": "4c66046ab3201a80e1b3a52597decbd9b80401c718bbfc991b6e69acb97dbb8d",
+        "non_transparent_pixels": 266,
+        "rgba_sha256_palette7": "c83d75f2a7b75bddb2edf51f5f130f21016b53e0ec7f737dd9c6133a29ebfa7d"
+      },
+      "18": {
+        "mapping_frame_cpu": "0x872C",
+        "mapping_frame_rom": "0x3C72C",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01217",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8980",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "5e46309434091c7b1fc9c5fed83ebc4cfbcfdc1e72ad4fb48744829bff977ddf"
+        },
+        "bounds": {
+          "min_x": -11,
+          "min_y": -27,
+          "max_x": 13,
+          "max_y": 5,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          11,
+          27
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "b0b3a070ab4cf52224431108fc5f2a9b9ecbe0f9e3d01441988d89a55e1a116a",
+        "non_transparent_pixels": 321,
+        "rgba_sha256_palette7": "fb5911e6827b52ef16d92e6915bf647185ffa3948a504ba6f88be00cf53953e5"
+      },
+      "19": {
+        "mapping_frame_cpu": "0x8737",
+        "mapping_frame_rom": "0x3C737",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0121B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8B00",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "4dc3148055b338ba4821b2829ee94e832cc23542514f7f006d2cf849d850ed26"
+        },
+        "bounds": {
+          "min_x": -11,
+          "min_y": -27,
+          "max_x": 13,
+          "max_y": 5,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          11,
+          27
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "5246b44ee748787c822c96c69dee76f924b311e4c07dc9bdeca06435e3835a48",
+        "non_transparent_pixels": 333,
+        "rgba_sha256_palette7": "23ed4df67100e562663df09b0188f3787cd177410eb8d5e322e398890abb5664"
+      },
+      "20": {
+        "mapping_frame_cpu": "0x8742",
+        "mapping_frame_rom": "0x3C742",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0121F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8C80",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "a43649a67d9fcd53bc38053b07ea1e841fdf0cfe115d5db258abb3ab4d50ccc1"
+        },
+        "bounds": {
+          "min_x": -11,
+          "min_y": -27,
+          "max_x": 13,
+          "max_y": 5,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          11,
+          27
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "6b94c7977b49d967ea3bedf250ca47565e0e06c315f9e968a0662ed36895ab08",
+        "non_transparent_pixels": 321,
+        "rgba_sha256_palette7": "7e7d88b17a86b0d6bfb5484357647faff109c335422c985dcd983fc991df71b7"
+      },
+      "21": {
+        "mapping_frame_cpu": "0x874D",
+        "mapping_frame_rom": "0x3C74D",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x01223",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8E00",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "0f7b4dda24df68b03077b0d4653d61311c7090057a4b82c083ddeed37d3864e7"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "6b547e70bdbe8d313c084ce5f15370938195c4459427ecccfb5f4f46d07e801c",
+        "non_transparent_pixels": 364,
+        "rgba_sha256_palette7": "215e37646e044e7cc6cb005cb6e3465219dffadf1c987d6a66148d4693a8559f"
+      },
+      "22": {
+        "mapping_frame_cpu": "0x8758",
+        "mapping_frame_rom": "0x3C758",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x01227",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x8FC0",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "96d5f33f7ff6e814c6f2d044cca74eba36e6e3980f6439e3f352723b2de14971"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "f6ba855e4f0201f631efb35c811c45b971a02f3cae2018a01f870d0379c46053",
+        "non_transparent_pixels": 352,
+        "rgba_sha256_palette7": "de721c5bb3cd43be5e45ffd72de82581c3c674b06725df96208cb3f7eb2bb9a6"
+      },
+      "23": {
+        "mapping_frame_cpu": "0x8763",
+        "mapping_frame_rom": "0x3C763",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0122B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9180",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "d164dd514e04aaf5ef02a94636b3c859d816f9df3ee17caaa7281926b7923133"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "3fd906fda698646b822831e43cd28faa8bcf4c981a00d1e7f10111ac12f97ee0",
+        "non_transparent_pixels": 378,
+        "rgba_sha256_palette7": "17341e603e86bc3c7669e89f27b5ba978f1372c03de7cd26e5fd2d8efd8ea629"
+      },
+      "24": {
+        "mapping_frame_cpu": "0x876E",
+        "mapping_frame_rom": "0x3C76E",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0122F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9300",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "c0d636da6129777f712230729fe89fd66190a43ca272840dfb2bd7bb12c44812"
+        },
+        "bounds": {
+          "min_x": -11,
+          "min_y": -32,
+          "max_x": 13,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          11,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "5eb6b5ac7a41394c9a4b9b38ef517f1efad6dcf59d2c0e4b69a8a429f708a10d",
+        "non_transparent_pixels": 374,
+        "rgba_sha256_palette7": "5cf53c30d1353090b213f545f2b6f864dec3db313bd8c9ae3eb2f318542de529"
+      },
+      "25": {
+        "mapping_frame_cpu": "0x8779",
+        "mapping_frame_rom": "0x3C779",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01233",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9480",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "a1605ec65baeb862242d1852701c155d02fe9c4a23a2cdb69bfb0add1c5c0a04"
+        },
+        "bounds": {
+          "min_x": -11,
+          "min_y": -32,
+          "max_x": 13,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          11,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "865c6f850f40742d0bc679dd9c74bec00bcac710d7fc6feaf7164279f5c64d89",
+        "non_transparent_pixels": 321,
+        "rgba_sha256_palette7": "20d9e8791c4dada68926baa639729cb57d716638049dc5bb9201251963e7b966"
+      },
+      "26": {
+        "mapping_frame_cpu": "0x8784",
+        "mapping_frame_rom": "0x3C784",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x01237",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9600",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "800cbeb515b0e554bd41b17176d71e5f16e66d212afafcdf472cd8c98d69e8c9"
+        },
+        "bounds": {
+          "min_x": -11,
+          "min_y": -32,
+          "max_x": 13,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          11,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "5a373055322bc3e7d90bec9d50ef1eaed7a1571fe39bf6049001f2585bb350c7",
+        "non_transparent_pixels": 314,
+        "rgba_sha256_palette7": "9af3fbfbadae4c56d34efdbd42644c8a0bae8273c2b5b2ade19fa35bf9ce1b00"
+      },
+      "27": {
+        "mapping_frame_cpu": "0x878F",
+        "mapping_frame_rom": "0x3C78F",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0123B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9740",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "7ca1d97c76e76b67df9b96d3e8a064e8a9fcd9e36db6dc3577ea7f33524b60de"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "c5d3dcee5e1d033ac075db17efb491e5f965b233af8bf6c6ff46975f9f079a47",
+        "non_transparent_pixels": 330,
+        "rgba_sha256_palette7": "833a075779e0cd143ca38500e46ba1c3998f80cc3c8c5ce8573c87e20aa93841"
+      },
+      "28": {
+        "mapping_frame_cpu": "0x879A",
+        "mapping_frame_rom": "0x3C79A",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0123F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x98C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "06054a83ec1afc777d4ccb749769092975bf7fd196ebdd9caed1e580d1619ed8"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "42a472829696c63da63affa3131da145a76cde6e7432ccccb411c00f1066b655",
+        "non_transparent_pixels": 244,
+        "rgba_sha256_palette7": "a8191146f3fcb4d4c679a6caba7c204cd6c19d414a2bfe33c3326b96e8d6e98f"
+      },
+      "29": {
+        "mapping_frame_cpu": "0x87A5",
+        "mapping_frame_rom": "0x3C7A5",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01243",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9A40",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "d8999ecf7a285012f33424d7020695524ac1fcd6d583a4253bbbf1d8793249fd"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "44cdeab674063106104767f6c92788c88feb1ddad15b80faeaf79e601241a2e5",
+        "non_transparent_pixels": 220,
+        "rgba_sha256_palette7": "bd2aeacd9dddb1da188ce9aec72a63d14365b207e863de4e3c7b4cb2a8477e08"
+      },
+      "30": {
+        "mapping_frame_cpu": "0x87B0",
+        "mapping_frame_rom": "0x3C7B0",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01247",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9BC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "7fd759a92f63f2f0a9f82cc316e3a11918f6f247453cea1fbb39b9329f427857"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "0492825cb1211fc7a12e8a72b5bf18925e895ea8766c6bcbfae6be06e39f8372",
+        "non_transparent_pixels": 248,
+        "rgba_sha256_palette7": "bc4f52ecb031bcebe876e7288d54c127bab2e909df5483ea0ab695e6d14f39be"
+      },
+      "31": {
+        "mapping_frame_cpu": "0x87BB",
+        "mapping_frame_rom": "0x3C7BB",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0124B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9D40",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "ac0c39fbc62dafa7b07a505703fef8f186988cebe216b1c4d67490550721cee8"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "4e251a4e79255c9e0ea199624d54e2e64d657889018ae985998f731b4302edc3",
+        "non_transparent_pixels": 260,
+        "rgba_sha256_palette7": "599bef064f4a4d52db9427c4e2c61c52a92f78b6f8b48596de03083c793e01ed"
+      },
+      "32": {
+        "mapping_frame_cpu": "0x87C6",
+        "mapping_frame_rom": "0x3C7C6",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0124F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0x9EC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "ea02b98e94ce2f040f7a7e05c0a4d130d5b8753c53a936708ea40845d61c9e08"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "e941c60594c898aaba2980f289623e46d752753d697b8e68747869edfbb0c531",
+        "non_transparent_pixels": 233,
+        "rgba_sha256_palette7": "1360f74c9dce27f9f35b6a624dd2f902d863b799a4dfb25691e2f8c1f4fba849"
+      },
+      "33": {
+        "mapping_frame_cpu": "0x87D1",
+        "mapping_frame_rom": "0x3C7D1",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01253",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xA040",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "c18d58ff08ec847fe793a6c52cae7516d54c82f569e5075df2aa5d34a8f5dca2"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "fdf7cb9c8eef076ddd779f4182c81c4ada756733b391438d745d24ae91fb1a83",
+        "non_transparent_pixels": 341,
+        "rgba_sha256_palette7": "883e42058ed8401bd2ff6c13329223f50e2b92199bc29cae7161c3dcb91d5988"
+      },
+      "34": {
+        "mapping_frame_cpu": "0x87DC",
+        "mapping_frame_rom": "0x3C7DC",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01257",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xA1C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "32f52b489b63aff804464b5ea3452e3e63adf8a6a8be711b96893312d969f8cb"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "59e096201c6b6d86d99893409ec2e46bc86f8f47703ec0d8f2ebfafb63fe977b",
+        "non_transparent_pixels": 366,
+        "rgba_sha256_palette7": "58b2db0452011861b46af47bf9315b7da675198e1bbd50e9839196020244607d"
+      },
+      "35": {
+        "mapping_frame_cpu": "0x87E7",
+        "mapping_frame_rom": "0x3C7E7",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0125B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xA340",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "c6a071782e5b72f6e36788949f3cf2b377abfc37b5832ce38de01c9676107689"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -32,
+          "max_x": 16,
+          "max_y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          32
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "4a7fe496a37eb1229743b5a60fc57a88025f8d4a78a3f0dc13f60a6af64d7c59",
+        "non_transparent_pixels": 339,
+        "rgba_sha256_palette7": "785e4bdf677d599881ec880c7f3b921b4f69c259b31678cc18b9c60cc7573035"
+      },
+      "36": {
+        "mapping_frame_cpu": "0x87F2",
+        "mapping_frame_rom": "0x3C7F2",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0125F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xA4C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "e4586508e4d0f594fc5ecc4926d1f571a31eb5ec276483ad9f7272f33d4bed2a"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -29,
+          "max_x": 10,
+          "max_y": 3,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          14,
+          29
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "f39a532cd04eafabbf22d3d065e7634347fa29346dad07aed7d8846b762c61a4",
+        "non_transparent_pixels": 248,
+        "rgba_sha256_palette7": "605b009313f2399be0e9bc8918e4928a5ae85315a53d1ea9a49dd9b926875f16"
+      },
+      "37": {
+        "mapping_frame_cpu": "0x87FD",
+        "mapping_frame_rom": "0x3C7FD",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01263",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xA640",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "b3aeabafb4747a9a841eff3aad88dc3c4cc7e0b889e7ec87b20420e5ea537b23"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -29,
+          "max_x": 10,
+          "max_y": 3,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          14,
+          29
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "880ba09b13adee29e67679e339554fb8c915da0af6053cb80e222e9a958f61d2",
+        "non_transparent_pixels": 236,
+        "rgba_sha256_palette7": "bd96e59136982bc5adf225e5b082d9c6434e89810c0c42563d7cc4437393f6c5"
+      },
+      "38": {
+        "mapping_frame_cpu": "0x8808",
+        "mapping_frame_rom": "0x3C808",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01267",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xA7C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "576d9cf200d1759041d22b0d38558b80eef106a29f9aa67c64fe4103fa5df657"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -29,
+          "max_x": 10,
+          "max_y": 3,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          14,
+          29
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "6a1e348cfe435149c31cc47fd502aa17aa453e51ca48cae710a9fe40f9dcec04",
+        "non_transparent_pixels": 244,
+        "rgba_sha256_palette7": "db7db5b28c3b204d71eb6d7c518998391bb56e8b794d98141f0100559dc9742c"
+      },
+      "39": {
+        "mapping_frame_cpu": "0x8813",
+        "mapping_frame_rom": "0x3C813",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0126B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xA940",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "57cda7150bb9eaa5e8cdeba5e4e38f5114726fed1a4a00dd6ced65547eb28b60"
+        },
+        "bounds": {
+          "min_x": -15,
+          "min_y": -28,
+          "max_x": 9,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          15,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "e920ee8e7f2b2d37016a502fa9e5040e6eea301b3d42952ce026a26b8f2ba70f",
+        "non_transparent_pixels": 306,
+        "rgba_sha256_palette7": "9745f7737e71982e42a583e244c54698279ca31aa50b5bd09e701fa195f78e2a"
+      },
+      "40": {
+        "mapping_frame_cpu": "0x881E",
+        "mapping_frame_rom": "0x3C81E",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0126F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xAAC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "2e4d2db0edad5be3bed0d8e7cce186b0f539871ff4c02d1de931282dfb27c3ac"
+        },
+        "bounds": {
+          "min_x": -15,
+          "min_y": -28,
+          "max_x": 9,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          15,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "2ca43fa56595e8cef5f813a64f5277ccb24c984f01bfae5fa5d5565323fa4d84",
+        "non_transparent_pixels": 308,
+        "rgba_sha256_palette7": "60ad199b687cf2b43a85cfaf375e4c1be2eb0e2760835d45881a50d132af2e87"
+      },
+      "41": {
+        "mapping_frame_cpu": "0x8829",
+        "mapping_frame_rom": "0x3C829",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01273",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xAC40",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "9d8098c42ddb2e241de1ceafe332ae1c173c6b594672dbe63bbec4c9c543c7ef"
+        },
+        "bounds": {
+          "min_x": -15,
+          "min_y": -28,
+          "max_x": 9,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          15,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "3fa6951db6efb1b341203207b0e8e514a5b60be4fd90c742066c399c7c52c094",
+        "non_transparent_pixels": 325,
+        "rgba_sha256_palette7": "2f2ec463e6530c0d1c4818229ab950cbb09ff2d0741de51104ff17758a4c64dd"
+      },
+      "42": {
+        "mapping_frame_cpu": "0x8834",
+        "mapping_frame_rom": "0x3C834",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01277",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xADC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "52ffa7722f804bc21f6c1b011574116fff890acb9fe515daa17d49e4f6b767ed"
+        },
+        "bounds": {
+          "min_x": -15,
+          "min_y": -28,
+          "max_x": 9,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          15,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "5f1ce44ab39bc11e923f596e30ef861e0ffa9575721e4781c2e9fc545c1e5711",
+        "non_transparent_pixels": 287,
+        "rgba_sha256_palette7": "99942d850123910ec02d6f2e137faea50d01adb34e3b507fc0b4f11e538b0d5a"
+      },
+      "43": {
+        "mapping_frame_cpu": "0x883F",
+        "mapping_frame_rom": "0x3C83F",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0127B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xAF40",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "57e59c86aab487b87d69a0ed1884ad0cc8eefb8fe2fe922cd7ce72b2d3726af4"
+        },
+        "bounds": {
+          "min_x": -15,
+          "min_y": -28,
+          "max_x": 9,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          15,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "56bb693dcc697678e21e10f325f31dfb8dfd688a510f3eaa1bffc56f7714a014",
+        "non_transparent_pixels": 313,
+        "rgba_sha256_palette7": "cb4771f265d321d1487f1f8f34838f98664e6774a543135947751acf69e9845f"
+      },
+      "44": {
+        "mapping_frame_cpu": "0x884A",
+        "mapping_frame_rom": "0x3C84A",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0127F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xB0C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "655bfe1a9d22b116cac91a3cc72a208838b0cb0b78bf48c646cae507bc1215c4"
+        },
+        "bounds": {
+          "min_x": -15,
+          "min_y": -28,
+          "max_x": 9,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          15,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "1ddb3afe7e507447cfc2b715a9925f5838d412a353deb1458479fb4f794ec3df",
+        "non_transparent_pixels": 311,
+        "rgba_sha256_palette7": "0735d6b68169104440e6b44987011b1657117009e516c9f83bb0a7d24ec3acc2"
+      },
+      "45": {
+        "mapping_frame_cpu": "0x8855",
+        "mapping_frame_rom": "0x3C855",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01283",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xB240",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "84622534c8b7c7d965e2194a70a4700468a99b7b38d8819166f883f1f83e758f"
+        },
+        "bounds": {
+          "min_x": -13,
+          "min_y": -26,
+          "max_x": 11,
+          "max_y": 6,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          13,
+          26
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "83f3ee4f163ff8198fa81f78ffbb55d23f9a6f3cf5f0eff6e1c4f8f57ddcac43",
+        "non_transparent_pixels": 316,
+        "rgba_sha256_palette7": "24a187edb5030bd3d982ea8c5bd6d46639b8e324e2d527949becb290b395fe77"
+      },
+      "46": {
+        "mapping_frame_cpu": "0x8860",
+        "mapping_frame_rom": "0x3C860",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01287",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xB3C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "5a6f750a9d0e680befbb1b7f7e4fb511beb479e4063225434e0acc985912c519"
+        },
+        "bounds": {
+          "min_x": -13,
+          "min_y": -26,
+          "max_x": 11,
+          "max_y": 6,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          13,
+          26
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "6891a6680fab9ab918eb4f0cc61746c17f647c152befa83cb6eeb1f81524bd32",
+        "non_transparent_pixels": 299,
+        "rgba_sha256_palette7": "a792d4ad0e4baefbbf5ea0fede4c36e2738b3104cf213409c9a29fc215da40e5"
+      },
+      "47": {
+        "mapping_frame_cpu": "0x886B",
+        "mapping_frame_rom": "0x3C86B",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0128B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xB540",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "4f9b2d86158daa5c98e5198afdc82fa6119530ee9a2a543fc9bbdbf7c3c4efbc"
+        },
+        "bounds": {
+          "min_x": -13,
+          "min_y": -26,
+          "max_x": 11,
+          "max_y": 6,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          13,
+          26
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "921f683a13d51f029b525e6250f6029a04c56e121792641873c9af0bdb98b546",
+        "non_transparent_pixels": 293,
+        "rgba_sha256_palette7": "83ba3e5e9b6d5f1b287d07f5604461d23099fb13395bf56cb5ace274530d6964"
+      },
+      "48": {
+        "mapping_frame_cpu": "0x8876",
+        "mapping_frame_rom": "0x3C876",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0128F",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xB6C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "994fb240011671955bac8d757acc3f3ed6ec5a4d56ab7cb02111348fd6bfdd32"
+        },
+        "bounds": {
+          "min_x": -13,
+          "min_y": -26,
+          "max_x": 11,
+          "max_y": 6,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          13,
+          26
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "55968a76c8ccf8650e93ab693b972a5cacd0185665569862c9d1489628c42d5e",
+        "non_transparent_pixels": 279,
+        "rgba_sha256_palette7": "572795a8b82b1326f1610445f98f8a3c07a0af5e7ef2e197c554528168221bb7"
+      },
+      "49": {
+        "mapping_frame_cpu": "0x8881",
+        "mapping_frame_rom": "0x3C881",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01293",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xB840",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "0789c0abf4b8562d7c8fa766c34854361dbe40f6c55cce134fea06413a5a26fb"
+        },
+        "bounds": {
+          "min_x": -13,
+          "min_y": -26,
+          "max_x": 11,
+          "max_y": 6,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          13,
+          26
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "8d936d16c74d072cf8eec64ecebb729070a79d74b9ddfa94236a8c4af2a4bac4",
+        "non_transparent_pixels": 300,
+        "rgba_sha256_palette7": "4ccf07952d09b360aa0898cd847d9c817e476e21e68c2154ff68645833cc169f"
+      },
+      "50": {
+        "mapping_frame_cpu": "0x888C",
+        "mapping_frame_rom": "0x3C88C",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01297",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xB9C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "14b69a4cdbcb7c5cec7155d9e9bf10711e64fff171689cc6edca4f0eeb114d3c"
+        },
+        "bounds": {
+          "min_x": -13,
+          "min_y": -26,
+          "max_x": 11,
+          "max_y": 6,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          13,
+          26
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "d260dde05f4e05aded11997bf36c47473d54b2719a9d24bba96c87dfd731fc27",
+        "non_transparent_pixels": 305,
+        "rgba_sha256_palette7": "249021fd111902827b40e7bc327adf9f50493ae1a9a59d46ada5aa96f4cc03fa"
+      },
+      "51": {
+        "mapping_frame_cpu": "0x8897",
+        "mapping_frame_rom": "0x3C897",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x0129B",
+        "tile_source": {
+          "bank": 6,
+          "cpu": "0xBB40",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "8c79523438a8432da10268b85841e98a4b5cd46304d21a4b9829dbc8e6191d10"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -32,
+          "max_x": 12,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "b8034ebc17b2450e92d4a0841322818a8212082f62c07f40f1ba369a7e02c2fa",
+        "non_transparent_pixels": 299,
+        "rgba_sha256_palette7": "d1d03008d98361b9511f8c1c7aca4b5f5e2438b54c6e9331b6b7234a54c73da8"
+      },
+      "52": {
+        "mapping_frame_cpu": "0x88A2",
+        "mapping_frame_rom": "0x3C8A2",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0129F",
+        "tile_source": {
+          "bank": 10,
+          "cpu": "0x8000",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "226a8b275d1ab1024191fe2a19fa72a9f38093b496900cc011a2815b6198d07c"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -32,
+          "max_x": 10,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          14,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "4f985294ae9c4c337d56fec74ab1e8511666670a86c4ef442c2ac91d5b2ee9c5",
+        "non_transparent_pixels": 270,
+        "rgba_sha256_palette7": "a4f82311ccd3b454804969668dcdfe61811f422520df2a163f22cc8a09704483"
+      },
+      "53": {
+        "mapping_frame_cpu": "0x88AD",
+        "mapping_frame_rom": "0x3C8AD",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012A3",
+        "tile_source": {
+          "bank": 10,
+          "cpu": "0x8180",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "aad3b94a3f52ecc7034f265071b49fd01ee891f1917713bdc03c55ceb3c15ade"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -32,
+          "max_x": 10,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          14,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "5c4d4b1a07ebadaf85a310eb52f295a9511479473737f472a7cfd2e84b306f0c",
+        "non_transparent_pixels": 253,
+        "rgba_sha256_palette7": "58ddf1a210964c6a19258921cd459a9cd78871f6a3694d252a2a4f4433ea3cd4"
+      },
+      "54": {
+        "mapping_frame_cpu": "0x88B8",
+        "mapping_frame_rom": "0x3C8B8",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x012A7",
+        "tile_source": {
+          "bank": 10,
+          "cpu": "0x8300",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "85cd8e677c72193df66781c07c6814d688fb53d9a63631e5d47db19f293e68d0"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -32,
+          "max_x": 10,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          14,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "3102e0121ad031da4db374458c591180e30c6e1da0f1a48c55692305a34958ea",
+        "non_transparent_pixels": 249,
+        "rgba_sha256_palette7": "78b860deb91df7af053200e9be1d3ad982aff594d16d22169d3558fa509a1794"
+      },
+      "55": {
+        "mapping_frame_cpu": "0x88C3",
+        "mapping_frame_rom": "0x3C8C3",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x012AB",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8000",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "60697c61b9bb03e41c310480b89841c378c4f6bdb70dca54cd4976601cb1b703"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -30,
+          "max_x": 16,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "474a42f4d43e95a7a40d53daaac9a206ebaf61174b64d31d9f8437b5f7b13baa",
+        "non_transparent_pixels": 306,
+        "rgba_sha256_palette7": "860ae1577d33d2bb7133c91ea393aac4311f664d90f92aa217b99e8a8360e90e"
+      },
+      "56": {
+        "mapping_frame_cpu": "0x88CE",
+        "mapping_frame_rom": "0x3C8CE",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x012AF",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x81C0",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "9a584c22d035bb2553a1ce979560deb60acfacf2ea6d7a7c8a77bb7216f94090"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -30,
+          "max_x": 16,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "dd0dd8f7eec7d12e05ad44f4049ee78527512604211068f601d28d969c5736b9",
+        "non_transparent_pixels": 308,
+        "rgba_sha256_palette7": "5fc0e3d7b8658c9cdc1335d5641fd6faa5886f6e0533fe5654cf80d7c3caff56"
+      },
+      "57": {
+        "mapping_frame_cpu": "0x88D9",
+        "mapping_frame_rom": "0x3C8D9",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x012B3",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x83C0",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "b6828554adc3db30e439c71167d8f6311c7899c5c1233af429583df8a86e3a70"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -30,
+          "max_x": 16,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "5639d601c61388611317cebf62c3c4b3d993e3f0101a8f11127bbe356863a176",
+        "non_transparent_pixels": 325,
+        "rgba_sha256_palette7": "b995cf1c34b62c37101722536bc12d67d468a75dc3ee32871bb6f95e84b79963"
+      },
+      "58": {
+        "mapping_frame_cpu": "0x88E4",
+        "mapping_frame_rom": "0x3C8E4",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x012B7",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8580",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "bc1714b1b3af9ef4d2afe5e2a473d8a20110d5f8d600f0e5a5cd2ee19ea895f4"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -30,
+          "max_x": 16,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "5838d97d7005181c08b9e6182a44ef29e8af73e1a97df5f9411fe9bd50b4813b",
+        "non_transparent_pixels": 287,
+        "rgba_sha256_palette7": "9930222182991c53befc2f2c588e12e2a5e8c40cfee40e212f49468e97738a24"
+      },
+      "59": {
+        "mapping_frame_cpu": "0x88EF",
+        "mapping_frame_rom": "0x3C8EF",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x012BB",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8740",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "474b3856296d32f0ba14f3b01a93cbc750001a9d1bbcb3c5ed7715255697e1b7"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -30,
+          "max_x": 16,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "a5d81d9f9c31e0ba09f30e2a1788be75d06f2c6d0f30460e19d23669ce412af6",
+        "non_transparent_pixels": 313,
+        "rgba_sha256_palette7": "087dec6ac095d06af951da8dbaa70414f5b2d6b06d4506531e8238ecd7e066b6"
+      },
+      "60": {
+        "mapping_frame_cpu": "0x88FA",
+        "mapping_frame_rom": "0x3C8FA",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012BF",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8940",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "63747089d711c3c0e2dd22cff765da12e0dee6e94a665f95912b5a99b16cbdcb"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -30,
+          "max_x": 16,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "df6c61ec84a4e79dc4e7366956b80a589a26946f824682b79ad82655925fc2f1",
+        "non_transparent_pixels": 311,
+        "rgba_sha256_palette7": "4637faae139617d0df1a87c4858d9c678da279ec20322ee84ad1076acea90032"
+      },
+      "61": {
+        "mapping_frame_cpu": "0x8905",
+        "mapping_frame_rom": "0x3C905",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012C3",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8AC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "90cc424af3daf9d1aa1079ea4e406d9167746bf15bb9c075cbea0773c9eef791"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          24
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "20d459639e3ec65274a43446d40d88c05984662afdb9f7f07e6c9ee9bd285dc4",
+        "non_transparent_pixels": 327,
+        "rgba_sha256_palette7": "72373635241c65b83388d03452211b20d80ea9008c0ac90c21f510e0aa71bbed"
+      },
+      "62": {
+        "mapping_frame_cpu": "0x8910",
+        "mapping_frame_rom": "0x3C910",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x012C7",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8C40",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "dd944e3f756f9b8060c6ae67ed934c2d7306ef34c8f78d8618172ee45420f133"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          24
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "8a2b6b7fe781e7809e62ec52e70efdab4a6a97ba455fb27a791489c92caf2257",
+        "non_transparent_pixels": 310,
+        "rgba_sha256_palette7": "678ffeb8a327cbe2d6e72a96adea9a7e913424d0549f2a057bc5325cdcd36c4d"
+      },
+      "63": {
+        "mapping_frame_cpu": "0x891B",
+        "mapping_frame_rom": "0x3C91B",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x012CB",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8E00",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "7d9cbfc84c238efd416d80639911c9f778b16684dfff33e9b3367f35a7a162b7"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "9794adf221572209d08bdaa737d26469a06df9a3989be2f94262e1e508e7744a",
+        "non_transparent_pixels": 305,
+        "rgba_sha256_palette7": "c6bc7046488312bcd8866f4963d876d9584510fcb6edca3949c644e14485eaa3"
+      },
+      "64": {
+        "mapping_frame_cpu": "0x8926",
+        "mapping_frame_rom": "0x3C926",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012CF",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x8F40",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "33bb0984e662a582d1da586959ebba577a447837e11ab6a4ffb46737094e6a27"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          24
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "0b971bcf6c34b4ba122e72ca81a60e5fd168a0fa2ddb51e9595e605a507ac464",
+        "non_transparent_pixels": 289,
+        "rgba_sha256_palette7": "eaef109b7df731618adac6b4351960ad4d19626487c72b622c988b46a7cdeaf8"
+      },
+      "65": {
+        "mapping_frame_cpu": "0x8931",
+        "mapping_frame_rom": "0x3C931",
+        "piece_count": 7,
+        "tile_table_entry_rom": "0x012D3",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x90C0",
+          "blocks_64_bytes": 7,
+          "tiles": 14,
+          "sha256": "16dfc93f471397b5df32311195710cf128c66d56b29223319f41390d92ed8401"
+        },
+        "bounds": {
+          "min_x": -16,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          16,
+          24
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "8afade048366bd71c4f5f71b85b7a73b6b366d343bba8383ea48233885af3d6e",
+        "non_transparent_pixels": 314,
+        "rgba_sha256_palette7": "9e468b32a4cfe00725ac81c654e395b074a40828971ed389691f822c28dfe76e"
+      },
+      "66": {
+        "mapping_frame_cpu": "0x893C",
+        "mapping_frame_rom": "0x3C93C",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x012D7",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x9280",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "71b24fb58a47d32ab0c88afbdea1800e7e539031d797a1d14bd3bd086c71fdf6"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "308f5efc9b2edf9eafe08a95e4c2e9267502e33eb1406175f57a705743d0b00b",
+        "non_transparent_pixels": 317,
+        "rgba_sha256_palette7": "35cebe638a2a5f7276e0aa3c79e08e7f2f9597b08ec6c5cadbeae0e4e55e76e3"
+      },
+      "67": {
+        "mapping_frame_cpu": "0x8947",
+        "mapping_frame_rom": "0x3C947",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012DB",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x93C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "054d54fa54a84d5a9e8ddd1a3efcbb99f297d4663c2824b71876ca3b9c19116e"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -30,
+          "max_x": 12,
+          "max_y": 2,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          30
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "1dfe50e5e980c865c250833e949a2cc121b129821c1cf587dd92197e631f3f16",
+        "non_transparent_pixels": 306,
+        "rgba_sha256_palette7": "85065b6703e53532837c31e395bddc3ae692b370d8a03d95f51bc98ee8ef61cc"
+      },
+      "68": {
+        "mapping_frame_cpu": "0x8952",
+        "mapping_frame_rom": "0x3C952",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012DF",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x9540",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "92fea65a9be76e1bce12b21e3f35cc09a6e7d2e899d4f2bc0f900da2b7282c14"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -30,
+          "max_x": 12,
+          "max_y": 2,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          30
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "d9bd7f90db86a96390606d1a755f7fd5006aac609f1146b5f2343b1bbcfb21f5",
+        "non_transparent_pixels": 308,
+        "rgba_sha256_palette7": "f76f8d07af167f37e301ea3d457d0942cd48031f7e4cbadb0a7711bb9ad45437"
+      },
+      "69": {
+        "mapping_frame_cpu": "0x895D",
+        "mapping_frame_rom": "0x3C95D",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012E3",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x96C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "4a48f6cc8168e8b89985ade051b749e94b6a37a0f2b5af8a535b09daefba1b78"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -30,
+          "max_x": 12,
+          "max_y": 2,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          30
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "356fb9f0b5d31f4cf35e7c9a97406b3875c8308fd7f846da801d84efbff30014",
+        "non_transparent_pixels": 325,
+        "rgba_sha256_palette7": "c2b49c8675a6bfb9e03e947f930e79f4946cbd084bd3cb9541798245c67aef38"
+      },
+      "70": {
+        "mapping_frame_cpu": "0x8968",
+        "mapping_frame_rom": "0x3C968",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012E7",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x9840",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "dbe4ede24e93da15806f556abab53f04bffa09c21da3073a7efc760b7c9e2ff3"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -30,
+          "max_x": 12,
+          "max_y": 2,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          30
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "97303202415b38b44c140081aa8b3bfec79a782a8015c48ae51b1dcc8459d6d2",
+        "non_transparent_pixels": 287,
+        "rgba_sha256_palette7": "ccce3dbb79ed36adb65e03d3394990c585e3805b206b3bc7b4f010cd8d5caac3"
+      },
+      "71": {
+        "mapping_frame_cpu": "0x8973",
+        "mapping_frame_rom": "0x3C973",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012EB",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x99C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "aa816252851bb87501c21155dba93cb79f09ace238b9885032f66fa8654f09c7"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -30,
+          "max_x": 12,
+          "max_y": 2,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          30
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "7833995b1f7c7652ba1737ffc4674f4959ec527b84260744b062085b79ef17d0",
+        "non_transparent_pixels": 313,
+        "rgba_sha256_palette7": "fd1a91626fa6f72016c06433ca48d33d98aacbb64e7813973e3cf442e3ba83f4"
+      },
+      "72": {
+        "mapping_frame_cpu": "0x897E",
+        "mapping_frame_rom": "0x3C97E",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012EF",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x9B40",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "1c060032c435bdf1ab0e1682d7b7e8383a49d1bee29a1eeb938f24e72febf1f5"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -30,
+          "max_x": 12,
+          "max_y": 2,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          30
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "7090c4c479e18ccc5e46d1c3b0b504ec54ec487b1a81f502c53bd82015995aad",
+        "non_transparent_pixels": 311,
+        "rgba_sha256_palette7": "687880a650b6f68720b17daef4b5db82d66825f9f55a9e525412225b4f85568d"
+      },
+      "73": {
+        "mapping_frame_cpu": "0x8989",
+        "mapping_frame_rom": "0x3C989",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012F3",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x9CC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "f8b5325335d005601bb8e165ca10ca0844416a68ca54dd8e62b12fba95b8e065"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "951220908df01e2c5bf20832f6b5d333e4e919652bc1397f651ccbc6f57c9810",
+        "non_transparent_pixels": 316,
+        "rgba_sha256_palette7": "a88bf6dc452ee1efd4bcdfd61395c88034b8be7afb429e2d9bb1ca8e67576498"
+      },
+      "74": {
+        "mapping_frame_cpu": "0x8994",
+        "mapping_frame_rom": "0x3C994",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012F7",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x9E40",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "3dd1092407448fffb8af0713d6fe9011d3d214c3a88d8568f554aa751d9531a2"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "8728cb50e73fa3abc7831152cec000244c2c086c480ae319330f3fab33827f12",
+        "non_transparent_pixels": 299,
+        "rgba_sha256_palette7": "a01a5aed739c0f76b4e67608aa3666a3d31e0dc163f7fbe8bae2c0a05a319157"
+      },
+      "75": {
+        "mapping_frame_cpu": "0x899F",
+        "mapping_frame_rom": "0x3C99F",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012FB",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0x9FC0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "4091fe7911bce6131953294b952418d248bb1332269dad18c4673bba5125a157"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "9a6fa7cb1f3b552e8d98073ea4dcf64bef2933d293e8460ee7acf69e399dcb7a",
+        "non_transparent_pixels": 293,
+        "rgba_sha256_palette7": "ec1f77313ad7db4ccb2b86118583cc0c915fb5057e20d3e9e06c4c06d5153881"
+      },
+      "76": {
+        "mapping_frame_cpu": "0x89AA",
+        "mapping_frame_rom": "0x3C9AA",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x012FF",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xA140",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "441afc20509cf5a002e3bb5c16f77e5e5af23849892eff5750226aff351cdf12"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "747ad896f71a73910b1cdb8427a55839bc3002fdb5e13a9b5474bc2d487d91d3",
+        "non_transparent_pixels": 279,
+        "rgba_sha256_palette7": "7e0aa2e27d31e57cc98c9a7166b2ccc83bc1e5c715684c0c8eb7250725bc5e68"
+      },
+      "77": {
+        "mapping_frame_cpu": "0x89B5",
+        "mapping_frame_rom": "0x3C9B5",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01303",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xA2C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "206dd06ecaa493463aa25b736186181f052ecc134d01a088b8f849206ab020bc"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "4d5cbc170033c5bf88c35ee9ec23923e13716eab90dab416b815086cb3c8a8c3",
+        "non_transparent_pixels": 300,
+        "rgba_sha256_palette7": "49e140e2be6add6bb623eb9f297bbaa43d0bf2e207d904a2de49d5ba5eba9dfe"
+      },
+      "78": {
+        "mapping_frame_cpu": "0x89C0",
+        "mapping_frame_rom": "0x3C9C0",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01307",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xA440",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "49befca5e6e6cfb70e48dfc44776d201c23e791f09af6c1519079e8e2cf5868a"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -24,
+          "max_x": 16,
+          "max_y": 8,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          24
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "93e7a6ffe06b5c2cd29a913a83f2c6985a0873c5640ea7deb39a552251ba7877",
+        "non_transparent_pixels": 305,
+        "rgba_sha256_palette7": "3e4474155d1c6c0cfe61c61aa661b5c137444c7c073c9dc49135422d392a76ba"
+      },
+      "79": {
+        "mapping_frame_cpu": "0x89CB",
+        "mapping_frame_rom": "0x3C9CB",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x0130B",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xA5C0",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "943044510543e294d113b2e1468ad938546b97fd6f90679b1721d0b79737577f"
+        },
+        "bounds": {
+          "min_x": -17,
+          "min_y": -30,
+          "max_x": 15,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          17,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "0dabf9f1c5546d2a24ec2e3d8ef3b4b5d36797fdab7f590f50a1e8dc5c74364f",
+        "non_transparent_pixels": 306,
+        "rgba_sha256_palette7": "3ec870ac74d1d19163054b329deadfdc3c2c8abeb6f81d02bfe35a9475ca8334"
+      },
+      "80": {
+        "mapping_frame_cpu": "0x89D6",
+        "mapping_frame_rom": "0x3C9D6",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x0130F",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xA7C0",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "94b19ae339ccffdee56f3f82bf295549e2f7787cd7a881b04b6f0a4bc0bc9756"
+        },
+        "bounds": {
+          "min_x": -17,
+          "min_y": -30,
+          "max_x": 15,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          17,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "2267cce5cb02f3793226166f4299bad89da4145d2e908b9a72835223b4856078",
+        "non_transparent_pixels": 308,
+        "rgba_sha256_palette7": "c5f7787f18371352d90f897d744e455a56dd767915913046da3a531527c607bc"
+      },
+      "81": {
+        "mapping_frame_cpu": "0x89E1",
+        "mapping_frame_rom": "0x3C9E1",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x01313",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xA9C0",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "7fe070404593a923becf83a786ef44f4ca729a176f77f6462f8c9e1558131af4"
+        },
+        "bounds": {
+          "min_x": -17,
+          "min_y": -30,
+          "max_x": 15,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          17,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "641dba931bbe1e171275cfdbebb6ecdd56dafa9fa63df2f618468287000cdfe3",
+        "non_transparent_pixels": 325,
+        "rgba_sha256_palette7": "e1d63cac1d09d33228afe5f308842ba7a9b1699232a031d3ed6861e8aab4d632"
+      },
+      "82": {
+        "mapping_frame_cpu": "0x89EC",
+        "mapping_frame_rom": "0x3C9EC",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x01317",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xABC0",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "78b6cbc78988728a6b97836d74882c592474b904454ab15b903715273b97a3e9"
+        },
+        "bounds": {
+          "min_x": -17,
+          "min_y": -30,
+          "max_x": 15,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          17,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "138a9685fb2b966a795cb7b08205c471daaef058f227dc616ada435207c37765",
+        "non_transparent_pixels": 287,
+        "rgba_sha256_palette7": "aa9997b39bdb2b2bb3e71a4680f79ed5730f6a704c20e8fda06505ce48d0ae42"
+      },
+      "83": {
+        "mapping_frame_cpu": "0x89F7",
+        "mapping_frame_rom": "0x3C9F7",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x0131B",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xADC0",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "5a40cd151be36a1aae61e1d7a9d2098eb2b1dae36754bacd1faeba71eaf44205"
+        },
+        "bounds": {
+          "min_x": -17,
+          "min_y": -30,
+          "max_x": 15,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          17,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "2e988a5cafbedd15bfc61925c8ce72f5e8cf2010ded1bfe1dd4b027010a93a4f",
+        "non_transparent_pixels": 313,
+        "rgba_sha256_palette7": "265e248a4145710043d4c0d50fdba94c5cd67b7716b4381a755cc6b26b3b2666"
+      },
+      "84": {
+        "mapping_frame_cpu": "0x8A02",
+        "mapping_frame_rom": "0x3CA02",
+        "piece_count": 8,
+        "tile_table_entry_rom": "0x0131F",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xAFC0",
+          "blocks_64_bytes": 8,
+          "tiles": 16,
+          "sha256": "208159a3ac6444f8b14618c395b060c32a1bd9f68e9600c0923aa4b598f294f1"
+        },
+        "bounds": {
+          "min_x": -17,
+          "min_y": -30,
+          "max_x": 15,
+          "max_y": 2,
+          "width": 32,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          17,
+          30
+        ],
+        "canvas": [
+          32,
+          32
+        ],
+        "index_sha256": "7b4be372dbe615f10c38b054001b2a34560d141ba175eb1e0547b37841c56856",
+        "non_transparent_pixels": 311,
+        "rgba_sha256_palette7": "34b17ac5451606e4c1ebdcfb3d7bfc8ab29096e7d84e2db5a288ac9127603257"
+      },
+      "85": {
+        "mapping_frame_cpu": "0x8A0D",
+        "mapping_frame_rom": "0x3CA0D",
+        "piece_count": 5,
+        "tile_table_entry_rom": "0x01323",
+        "tile_source": {
+          "bank": 8,
+          "cpu": "0xB1C0",
+          "blocks_64_bytes": 5,
+          "tiles": 10,
+          "sha256": "4aaa55cb886a904d3bbdb8338bf10a8503fa2fd9f4f69f4880219117bfe57deb"
+        },
+        "bounds": {
+          "min_x": -14,
+          "min_y": -32,
+          "max_x": 10,
+          "max_y": 0,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          14,
+          32
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "e51a8e482fbb538aff878102d52a50a5eda67b8a99fd91ee2554388d82fdf3cf",
+        "non_transparent_pixels": 318,
+        "rgba_sha256_palette7": "59c24c36e8efe29aa372d38248bf77d54f35454169cd07724ff15611033fd21a"
+      },
+      "86": {
+        "mapping_frame_cpu": "0x8A18",
+        "mapping_frame_rom": "0x3CA18",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x01327",
+        "tile_source": {
+          "bank": 10,
+          "cpu": "0x8440",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "97c46348e10cadf3fc23790bd6945dbd525b4305e290ed64dc623c19d4434eb6"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -28,
+          "max_x": 12,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "adf6d5f1e48f81c6657cd871c586524181f60263cf950184133d2c67e93f8af2",
+        "non_transparent_pixels": 432,
+        "rgba_sha256_palette7": "669864b75ddcaec214d9cc9953efe1c848ac4df6a9ba966b63ae6bcfbbed618b"
+      },
+      "87": {
+        "mapping_frame_cpu": "0x8A23",
+        "mapping_frame_rom": "0x3CA23",
+        "piece_count": 6,
+        "tile_table_entry_rom": "0x0132B",
+        "tile_source": {
+          "bank": 10,
+          "cpu": "0x85C0",
+          "blocks_64_bytes": 6,
+          "tiles": 12,
+          "sha256": "7ac909f89565ac0cea6bd68307728466cd15a59b32f05e98a0ecd9d52c5390bf"
+        },
+        "bounds": {
+          "min_x": -12,
+          "min_y": -28,
+          "max_x": 12,
+          "max_y": 4,
+          "width": 24,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          12,
+          28
+        ],
+        "canvas": [
+          24,
+          32
+        ],
+        "index_sha256": "e0bb33f05b5c63663c8287128444876fe47f2407ce149af9a8e0768f2d3e7a52",
+        "non_transparent_pixels": 428,
+        "rgba_sha256_palette7": "ccdabea0cd356c433fd193edae5dc59a65521fddc016756351f849c69cfd0bf4"
+      },
+      "88": {
+        "mapping_frame_cpu": "0x8A2E",
+        "mapping_frame_rom": "0x3CA2E",
+        "piece_count": 4,
+        "tile_table_entry_rom": "0x0132F",
+        "tile_source": {
+          "bank": 10,
+          "cpu": "0x8740",
+          "blocks_64_bytes": 4,
+          "tiles": 8,
+          "sha256": "939d290c2c37e8026fb30b68a68d4146667febd93ac871eb5206e0c9a054cee2"
+        },
+        "bounds": {
+          "min_x": -8,
+          "min_y": -32,
+          "max_x": 8,
+          "max_y": 0,
+          "width": 16,
+          "height": 32
+        },
+        "gamemaker_origin": [
+          8,
+          32
+        ],
+        "canvas": [
+          16,
+          32
+        ],
+        "index_sha256": "76c7b81d7b0b4f80f4fedfab80f471ce435f0bd097e28d142cdeff1ebe519ea0",
+        "non_transparent_pixels": 327,
+        "rgba_sha256_palette7": "c7b848d487ce239e3b2ffa40824a5a034c3e2554ac470b938cbfffb4bd602703"
+      },
+      "0": {
+        "piece_count": 0,
+        "mapping_frame_cpu": "0xA0E4",
+        "role": "blank mapping; no pixel canvas"
+      }
+    }
+  },
+  "palette_rgba_sha256": {
+    "7": "d94b1e83c71b7750f6a579bb19198bbf44c76b692220378d1d365e3b3ee47550",
+    "41": "db3ce3cf8a6ebfe56a8c9f75987ee67e44bd0f644dd4dd83d9315168be0665b4"
+  },
+  "tails_state_table": "0C:89BB",
+  "tails_states": {
+    "00": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "01": {
+      "script_cpu": "0x8A3A",
+      "ops": [
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "02": {
+      "script_cpu": "0x8A4D",
+      "ops": [
+        {
+          "at": "0x8A4D",
+          "duration": 128,
+          "frame": 10,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A51",
+          "duration": 128,
+          "frame": 10,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A55",
+          "duration": 8,
+          "frame": 11,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A59",
+          "duration": 16,
+          "frame": 12,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A5D",
+          "duration": 16,
+          "frame": 10,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A61",
+          "duration": 8,
+          "frame": 11,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A65",
+          "duration": 16,
+          "frame": 12,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A69",
+          "duration": 128,
+          "frame": 10,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A6D",
+          "duration": 128,
+          "frame": 10,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A71",
+          "duration": 128,
+          "frame": 13,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A75",
+          "duration": 128,
+          "frame": 13,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A79",
+          "duration": 4,
+          "frame": 14,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A7D",
+          "command": "FF 0E",
+          "args": "F0"
+        },
+        {
+          "at": "0x8A80",
+          "duration": 16,
+          "frame": 15,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A84",
+          "duration": 16,
+          "frame": 16,
+          "callback": "0x03E0"
+        },
+        {
+          "at": "0x8A88",
+          "command": "FF 0F",
+          "args": "808A",
+          "target": "0x8A80"
+        },
+        {
+          "at": "0x8A8C",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "03": {
+      "script_cpu": "0x8A8E",
+      "ops": [
+        {
+          "at": "0x8A8E",
+          "duration": 6,
+          "frame": 13,
+          "callback": "0x03BC"
+        },
+        {
+          "at": "0x8A92",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "04": {
+      "script_cpu": "0x8A94",
+      "ops": [
+        {
+          "at": "0x8A94",
+          "duration": 6,
+          "frame": 17,
+          "callback": "0x03B9"
+        },
+        {
+          "at": "0x8A98",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "05": {
+      "script_cpu": "0x8A9A",
+      "ops": [
+        {
+          "at": "0x8A9A",
+          "command": "FF 05",
+          "args": "B48CE903",
+          "selector": "0x8CB4",
+          "callback": "0x03E9"
+        },
+        {
+          "at": "0x8AA0",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "06": {
+      "script_cpu": "0x8AA2",
+      "ops": [
+        {
+          "at": "0x8AA2",
+          "command": "FF 05",
+          "args": "058DD403",
+          "selector": "0x8D05",
+          "callback": "0x03D4"
+        },
+        {
+          "at": "0x8AA8",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "07": {
+      "script_cpu": "0x8AAA",
+      "ops": [
+        {
+          "at": "0x8AAA",
+          "duration": 8,
+          "frame": 21,
+          "callback": "0x03E3"
+        },
+        {
+          "at": "0x8AAE",
+          "duration": 224,
+          "frame": 22,
+          "callback": "0x03E3"
+        },
+        {
+          "at": "0x8AB2",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "08": {
+      "script_cpu": "0x8AB4",
+      "ops": [
+        {
+          "at": "0x8AB4",
+          "duration": 8,
+          "frame": 21,
+          "callback": "0x03E6"
+        },
+        {
+          "at": "0x8AB8",
+          "duration": 224,
+          "frame": 22,
+          "callback": "0x03E6"
+        },
+        {
+          "at": "0x8ABC",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "09": {
+      "script_cpu": "0x8ABE",
+      "ops": [
+        {
+          "at": "0x8ABE",
+          "command": "FF 05",
+          "args": "768FC503",
+          "selector": "0x8F76",
+          "callback": "0x03C5"
+        },
+        {
+          "at": "0x8AC4",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "0A": {
+      "script_cpu": "0x8ACE",
+      "ops": [
+        {
+          "at": "0x8ACE",
+          "command": "FF 05",
+          "args": "768FB303",
+          "selector": "0x8F76",
+          "callback": "0x03B3"
+        },
+        {
+          "at": "0x8AD4",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "0B": {
+      "script_cpu": "0x8AD6",
+      "ops": [
+        {
+          "at": "0x8AD6",
+          "command": "FF 08",
+          "args": "8F81158B"
+        },
+        {
+          "at": "0x8ADC",
+          "command": "FF 0E",
+          "args": "02"
+        },
+        {
+          "at": "0x8ADF",
+          "duration": 4,
+          "frame": 27,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8AE3",
+          "duration": 4,
+          "frame": 28,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8AE7",
+          "duration": 4,
+          "frame": 29,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8AEB",
+          "duration": 4,
+          "frame": 30,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8AEF",
+          "duration": 4,
+          "frame": 31,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8AF3",
+          "duration": 4,
+          "frame": 32,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8AF7",
+          "command": "FF 0F",
+          "args": "DF8A",
+          "target": "0x8ADF"
+        },
+        {
+          "at": "0x8AFB",
+          "duration": 4,
+          "frame": 27,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8AFF",
+          "duration": 4,
+          "frame": 28,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8B03",
+          "duration": 6,
+          "frame": 29,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8B07",
+          "duration": 6,
+          "frame": 30,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8B0B",
+          "duration": 6,
+          "frame": 31,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8B0F",
+          "duration": 8,
+          "frame": 32,
+          "callback": "0x039E"
+        },
+        {
+          "at": "0x8B13",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "0C": {
+      "script_cpu": "0x8B35",
+      "ops": [
+        {
+          "at": "0x8B35",
+          "command": "FF 05",
+          "args": "3D90CB03",
+          "selector": "0x903D",
+          "callback": "0x03CB"
+        },
+        {
+          "at": "0x8B3B",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "0D": {
+      "script_cpu": "0x8B3D",
+      "ops": [
+        {
+          "at": "0x8B3D",
+          "command": "FF 05",
+          "args": "3D90D103",
+          "selector": "0x903D",
+          "callback": "0x03D1"
+        },
+        {
+          "at": "0x8B43",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "0E": {
+      "script_cpu": "0x8B67",
+      "ops": [
+        {
+          "at": "0x8B67",
+          "duration": 8,
+          "frame": 2,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B6B",
+          "duration": 8,
+          "frame": 3,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B6F",
+          "duration": 8,
+          "frame": 4,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B73",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B77",
+          "duration": 8,
+          "frame": 6,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B7B",
+          "duration": 8,
+          "frame": 1,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B7F",
+          "duration": 8,
+          "frame": 2,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B83",
+          "duration": 8,
+          "frame": 3,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B87",
+          "duration": 8,
+          "frame": 4,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B8B",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B8F",
+          "duration": 8,
+          "frame": 6,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B93",
+          "duration": 8,
+          "frame": 1,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B97",
+          "duration": 8,
+          "frame": 2,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B9B",
+          "duration": 8,
+          "frame": 3,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8B9F",
+          "duration": 8,
+          "frame": 4,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BA3",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BA7",
+          "duration": 8,
+          "frame": 6,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BAB",
+          "duration": 8,
+          "frame": 1,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BAF",
+          "duration": 8,
+          "frame": 2,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BB3",
+          "duration": 8,
+          "frame": 3,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BB7",
+          "duration": 8,
+          "frame": 4,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BBB",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BBF",
+          "duration": 8,
+          "frame": 6,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BC3",
+          "duration": 8,
+          "frame": 1,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BC7",
+          "duration": 8,
+          "frame": 2,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BCB",
+          "duration": 8,
+          "frame": 3,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BCF",
+          "duration": 8,
+          "frame": 4,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BD3",
+          "duration": 8,
+          "frame": 5,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BD7",
+          "duration": 8,
+          "frame": 6,
+          "callback": "0x03AD"
+        },
+        {
+          "at": "0x8BDB",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "0F": {
+      "script_cpu": "0x8BDD",
+      "ops": [
+        {
+          "at": "0x8BDD",
+          "duration": 2,
+          "frame": 33,
+          "callback": "0x03DD"
+        },
+        {
+          "at": "0x8BE1",
+          "duration": 2,
+          "frame": 34,
+          "callback": "0x03DD"
+        },
+        {
+          "at": "0x8BE5",
+          "duration": 2,
+          "frame": 35,
+          "callback": "0x03DD"
+        },
+        {
+          "at": "0x8BE9",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "10": {
+      "script_cpu": "0x8BEB",
+      "ops": [
+        {
+          "at": "0x8BEB",
+          "command": "FF 05",
+          "args": "768FA403",
+          "selector": "0x8F76",
+          "callback": "0x03A4"
+        },
+        {
+          "at": "0x8BF1",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "11": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "12": {
+      "script_cpu": "0x8BF3",
+      "ops": [
+        {
+          "at": "0x8BF3",
+          "duration": 4,
+          "frame": 10,
+          "callback": "0x03B0"
+        },
+        {
+          "at": "0x8BF7",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "13": {
+      "script_cpu": "0x8B45",
+      "ops": [
+        {
+          "at": "0x8B45",
+          "command": "FF 05",
+          "args": "3D90CE03",
+          "selector": "0x903D",
+          "callback": "0x03CE"
+        },
+        {
+          "at": "0x8B4B",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "14": {
+      "script_cpu": "0x8B4D",
+      "ops": [
+        {
+          "at": "0x8B4D",
+          "duration": 4,
+          "frame": 27,
+          "callback": "0x03F8"
+        },
+        {
+          "at": "0x8B51",
+          "duration": 4,
+          "frame": 28,
+          "callback": "0x03F8"
+        },
+        {
+          "at": "0x8B55",
+          "duration": 4,
+          "frame": 29,
+          "callback": "0x03F8"
+        },
+        {
+          "at": "0x8B59",
+          "duration": 4,
+          "frame": 30,
+          "callback": "0x03F8"
+        },
+        {
+          "at": "0x8B5D",
+          "duration": 4,
+          "frame": 31,
+          "callback": "0x03F8"
+        },
+        {
+          "at": "0x8B61",
+          "duration": 4,
+          "frame": 32,
+          "callback": "0x03F8"
+        },
+        {
+          "at": "0x8B65",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "15": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "16": {
+      "script_cpu": "0x8BF9",
+      "ops": [
+        {
+          "at": "0x8BF9",
+          "duration": 1,
+          "frame": 86,
+          "callback": "0x0449"
+        },
+        {
+          "at": "0x8BFD",
+          "command": "FF 01",
+          "args": "5E83",
+          "routine": "0x835E"
+        },
+        {
+          "at": "0x8C01",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "17": {
+      "script_cpu": "0x8C03",
+      "ops": [
+        {
+          "at": "0x8C03",
+          "command": "FF 05",
+          "args": "38914C04",
+          "selector": "0x9138",
+          "callback": "0x044C"
+        },
+        {
+          "at": "0x8C09",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "18": {
+      "script_cpu": "0x8C5D",
+      "ops": [
+        {
+          "at": "0x8C5D",
+          "command": "FF 01",
+          "args": "6F8C",
+          "routine": "0x8C6F"
+        },
+        {
+          "at": "0x8C61",
+          "duration": 4,
+          "frame": 18,
+          "callback": "0x03EC"
+        },
+        {
+          "at": "0x8C65",
+          "duration": 4,
+          "frame": 19,
+          "callback": "0x03EC"
+        },
+        {
+          "at": "0x8C69",
+          "duration": 4,
+          "frame": 20,
+          "callback": "0x03EC"
+        },
+        {
+          "at": "0x8C6D",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "19": {
+      "script_cpu": "0x8A43",
+      "ops": [
+        {
+          "at": "0x8A43",
+          "duration": 8,
+          "frame": 25,
+          "callback": "0x0392"
+        },
+        {
+          "at": "0x8A47",
+          "duration": 8,
+          "frame": 26,
+          "callback": "0x0392"
+        },
+        {
+          "at": "0x8A4B",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "1A": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "1B": {
+      "script_cpu": "0x8AC6",
+      "ops": [
+        {
+          "at": "0x8AC6",
+          "command": "FF 05",
+          "args": "768FC803",
+          "selector": "0x8F76",
+          "callback": "0x03C8"
+        },
+        {
+          "at": "0x8ACC",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "1C": {
+      "script_cpu": "0x8B1B",
+      "ops": [
+        {
+          "at": "0x8B1B",
+          "duration": 8,
+          "frame": 27,
+          "callback": "0x03B6"
+        },
+        {
+          "at": "0x8B1F",
+          "duration": 8,
+          "frame": 28,
+          "callback": "0x03B6"
+        },
+        {
+          "at": "0x8B23",
+          "duration": 8,
+          "frame": 29,
+          "callback": "0x03B6"
+        },
+        {
+          "at": "0x8B27",
+          "duration": 8,
+          "frame": 30,
+          "callback": "0x03B6"
+        },
+        {
+          "at": "0x8B2B",
+          "duration": 8,
+          "frame": 31,
+          "callback": "0x03B6"
+        },
+        {
+          "at": "0x8B2F",
+          "duration": 8,
+          "frame": 32,
+          "callback": "0x03B6"
+        },
+        {
+          "at": "0x8B33",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "1D": {
+      "script_cpu": "0x8C17",
+      "ops": [
+        {
+          "at": "0x8C17",
+          "command": "FF 05",
+          "args": "0B90DA03",
+          "selector": "0x900B",
+          "callback": "0x03DA"
+        },
+        {
+          "at": "0x8C1D",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "1E": {
+      "script_cpu": "0x8C1F",
+      "ops": [
+        {
+          "at": "0x8C1F",
+          "duration": 6,
+          "frame": 23,
+          "callback": "0x03AA"
+        },
+        {
+          "at": "0x8C23",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "1F": {
+      "script_cpu": "0x8C25",
+      "ops": [
+        {
+          "at": "0x8C25",
+          "duration": 128,
+          "frame": 24,
+          "callback": "0x03A7"
+        },
+        {
+          "at": "0x8C29",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "20": {
+      "script_cpu": "0x8C39",
+      "ops": [
+        {
+          "at": "0x8C39",
+          "command": "FF 05",
+          "args": "E18EA683",
+          "selector": "0x8EE1",
+          "callback": "0x83A6"
+        },
+        {
+          "at": "0x8C3F",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "21": {
+      "script_cpu": "0x8C41",
+      "ops": [
+        {
+          "at": "0x8C41",
+          "duration": 3,
+          "frame": 36,
+          "callback": "0x916B"
+        },
+        {
+          "at": "0x8C45",
+          "duration": 3,
+          "frame": 37,
+          "callback": "0x916B"
+        },
+        {
+          "at": "0x8C49",
+          "duration": 3,
+          "frame": 38,
+          "callback": "0x916B"
+        },
+        {
+          "at": "0x8C4D",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "22": {
+      "script_cpu": "0x8C4F",
+      "ops": [
+        {
+          "at": "0x8C4F",
+          "duration": 3,
+          "frame": 36,
+          "callback": "0x94C1"
+        },
+        {
+          "at": "0x8C53",
+          "duration": 3,
+          "frame": 37,
+          "callback": "0x94C1"
+        },
+        {
+          "at": "0x8C57",
+          "duration": 3,
+          "frame": 38,
+          "callback": "0x94C1"
+        },
+        {
+          "at": "0x8C5B",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "23": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "24": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "25": {
+      "script_cpu": "0x8C0B",
+      "ops": [
+        {
+          "at": "0x8C0B",
+          "command": "FF 06",
+          "args": "AE"
+        },
+        {
+          "at": "0x8C0E",
+          "duration": 16,
+          "frame": 51,
+          "callback": "0x836F"
+        },
+        {
+          "at": "0x8C12",
+          "command": "FF 03",
+          "args": "0E"
+        },
+        {
+          "at": "0x8C15",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "26": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "27": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "28": {
+      "script_cpu": "0x8C2B",
+      "ops": [
+        {
+          "at": "0x8C2B",
+          "duration": 24,
+          "frame": 24,
+          "callback": "0x0443"
+        },
+        {
+          "at": "0x8C2F",
+          "command": "FF 04",
+          "args": "0C0000000003"
+        },
+        {
+          "at": "0x8C37",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "29": {
+      "script_cpu": "0x8480",
+      "ops": [
+        {
+          "at": "0x8480",
+          "command": "FF 02",
+          "args": "00060000"
+        },
+        {
+          "at": "0x8486",
+          "command": "FF 0E",
+          "args": "96"
+        },
+        {
+          "at": "0x8489",
+          "command": "FF 05",
+          "args": "458F3803",
+          "selector": "0x8F45",
+          "callback": "0x0338"
+        },
+        {
+          "at": "0x848F",
+          "command": "FF 0F",
+          "args": "8984",
+          "target": "0x8489"
+        },
+        {
+          "at": "0x8493",
+          "command": "FF 01",
+          "args": "BD84",
+          "routine": "0x84BD"
+        },
+        {
+          "at": "0x8497",
+          "command": "FF 0E",
+          "args": "0F"
+        },
+        {
+          "at": "0x849A",
+          "command": "FF 05",
+          "args": "458F3803",
+          "selector": "0x8F45",
+          "callback": "0x0338"
+        },
+        {
+          "at": "0x84A0",
+          "command": "FF 0F",
+          "args": "9A84",
+          "target": "0x849A"
+        },
+        {
+          "at": "0x84A4",
+          "command": "FF 01",
+          "args": "C284",
+          "routine": "0x84C2"
+        },
+        {
+          "at": "0x84A8",
+          "command": "FF 0E",
+          "args": "2D"
+        },
+        {
+          "at": "0x84AB",
+          "command": "FF 02",
+          "args": "00040000"
+        },
+        {
+          "at": "0x84B1",
+          "command": "FF 05",
+          "args": "E18E3803",
+          "selector": "0x8EE1",
+          "callback": "0x0338"
+        },
+        {
+          "at": "0x84B7",
+          "command": "FF 0F",
+          "args": "AB84",
+          "target": "0x84AB"
+        },
+        {
+          "at": "0x84BB",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "2A": {
+      "script_cpu": "0x8A27",
+      "ops": [
+        {
+          "at": "0x8A27",
+          "duration": 32,
+          "frame": 88,
+          "callback": "0x8A35"
+        },
+        {
+          "at": "0x8A2B",
+          "duration": 32,
+          "frame": 86,
+          "callback": "0x8A35"
+        },
+        {
+          "at": "0x8A2F",
+          "duration": 32,
+          "frame": 87,
+          "callback": "0x8A35"
+        },
+        {
+          "at": "0x8A33",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "2B": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "2C": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "2D": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "2E": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "2F": {
+      "script_cpu": "0x8A36",
+      "ops": [
+        {
+          "at": "0x8A36",
+          "command": "FF 01",
+          "args": "8F03",
+          "routine": "0x038F"
+        },
+        {
+          "at": "0x8A3A",
+          "duration": 8,
+          "frame": 10,
+          "callback": "0x0395"
+        },
+        {
+          "at": "0x8A3E",
+          "command": "FF 03",
+          "args": "02"
+        },
+        {
+          "at": "0x8A41",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "30": {
+      "script_cpu": "0x8C82",
+      "ops": [
+        {
+          "at": "0x8C82",
+          "duration": 6,
+          "frame": 1,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8C86",
+          "command": "FF 01",
+          "args": "6D84",
+          "routine": "0x846D"
+        },
+        {
+          "at": "0x8C8A",
+          "duration": 6,
+          "frame": 2,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8C8E",
+          "command": "FF 01",
+          "args": "6D84",
+          "routine": "0x846D"
+        },
+        {
+          "at": "0x8C92",
+          "duration": 6,
+          "frame": 3,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8C96",
+          "command": "FF 01",
+          "args": "6D84",
+          "routine": "0x846D"
+        },
+        {
+          "at": "0x8C9A",
+          "duration": 6,
+          "frame": 4,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8C9E",
+          "command": "FF 01",
+          "args": "6D84",
+          "routine": "0x846D"
+        },
+        {
+          "at": "0x8CA2",
+          "duration": 6,
+          "frame": 5,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8CA6",
+          "command": "FF 01",
+          "args": "6D84",
+          "routine": "0x846D"
+        },
+        {
+          "at": "0x8CAA",
+          "duration": 6,
+          "frame": 6,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8CAE",
+          "command": "FF 01",
+          "args": "6D84",
+          "routine": "0x846D"
+        },
+        {
+          "at": "0x8CB2",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "31": {
+      "script_cpu": "0x8D36",
+      "ops": [
+        {
+          "at": "0x8D36",
+          "command": "FF 0E",
+          "args": "05"
+        },
+        {
+          "at": "0x8D39",
+          "duration": 6,
+          "frame": 1,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D3D",
+          "duration": 6,
+          "frame": 2,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D41",
+          "duration": 6,
+          "frame": 3,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D45",
+          "duration": 6,
+          "frame": 4,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D49",
+          "duration": 6,
+          "frame": 5,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D4D",
+          "duration": 6,
+          "frame": 6,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D51",
+          "command": "FF 0F",
+          "args": "398D",
+          "target": "0x8D39"
+        },
+        {
+          "at": "0x8D55",
+          "command": "FF 0E",
+          "args": "06"
+        },
+        {
+          "at": "0x8D58",
+          "duration": 4,
+          "frame": 7,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D5C",
+          "duration": 4,
+          "frame": 8,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D60",
+          "duration": 4,
+          "frame": 9,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D64",
+          "command": "FF 0F",
+          "args": "588D",
+          "target": "0x8D58"
+        },
+        {
+          "at": "0x8D68",
+          "duration": 4,
+          "frame": 27,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D6C",
+          "duration": 4,
+          "frame": 28,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D70",
+          "duration": 4,
+          "frame": 29,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D74",
+          "duration": 4,
+          "frame": 30,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D78",
+          "duration": 4,
+          "frame": 31,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D7C",
+          "duration": 4,
+          "frame": 32,
+          "callback": "0x8D82"
+        },
+        {
+          "at": "0x8D80",
+          "command": "FF 00",
+          "args": ""
+        }
+      ]
+    },
+    "32": {
+      "script_cpu": "0x8D8C",
+      "ops": [
+        {
+          "at": "0x8D8C",
+          "command": "FF 0E",
+          "args": "08"
+        },
+        {
+          "at": "0x8D8F",
+          "duration": 4,
+          "frame": 7,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8D93",
+          "duration": 4,
+          "frame": 8,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8D97",
+          "duration": 4,
+          "frame": 9,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8D9B",
+          "command": "FF 0F",
+          "args": "8F8D",
+          "target": "0x8D8F"
+        },
+        {
+          "at": "0x8D9F",
+          "duration": 8,
+          "frame": 21,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8DA3",
+          "duration": 32,
+          "frame": 22,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8DA7",
+          "command": "FF 02",
+          "args": "000000FF"
+        },
+        {
+          "at": "0x8DAD",
+          "duration": 4,
+          "frame": 18,
+          "callback": "0x8DBD"
+        },
+        {
+          "at": "0x8DB1",
+          "duration": 4,
+          "frame": 19,
+          "callback": "0x8DBD"
+        },
+        {
+          "at": "0x8DB5",
+          "duration": 4,
+          "frame": 20,
+          "callback": "0x8DBD"
+        },
+        {
+          "at": "0x8DB9",
+          "command": "FF 07",
+          "args": "AD8D",
+          "target": "0x8DAD"
+        }
+      ]
+    },
+    "33": {
+      "script_cpu": "0x8DD7",
+      "ops": [
+        {
+          "at": "0x8DD7",
+          "command": "FF 02",
+          "args": "00000000"
+        },
+        {
+          "at": "0x8DDD",
+          "command": "FF 01",
+          "args": "FD8D",
+          "routine": "0x8DFD"
+        },
+        {
+          "at": "0x8DE1",
+          "duration": 4,
+          "frame": 27,
+          "callback": "0x8E06"
+        },
+        {
+          "at": "0x8DE5",
+          "duration": 4,
+          "frame": 28,
+          "callback": "0x8E06"
+        },
+        {
+          "at": "0x8DE9",
+          "duration": 4,
+          "frame": 29,
+          "callback": "0x8E06"
+        },
+        {
+          "at": "0x8DED",
+          "duration": 4,
+          "frame": 30,
+          "callback": "0x8E06"
+        },
+        {
+          "at": "0x8DF1",
+          "duration": 4,
+          "frame": 31,
+          "callback": "0x8E06"
+        },
+        {
+          "at": "0x8DF5",
+          "duration": 4,
+          "frame": 32,
+          "callback": "0x8E06"
+        },
+        {
+          "at": "0x8DF9",
+          "command": "FF 07",
+          "args": "E18D",
+          "target": "0x8DE1"
+        }
+      ]
+    },
+    "34": {
+      "script_cpu": "0x8E1F",
+      "ops": [
+        {
+          "at": "0x8E1F",
+          "command": "FF 0B",
+          "args": "047F"
+        },
+        {
+          "at": "0x8E23",
+          "command": "FF 02",
+          "args": "00000000"
+        },
+        {
+          "at": "0x8E29",
+          "duration": 16,
+          "frame": 85,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8E2D",
+          "command": "FF 01",
+          "args": "B188",
+          "routine": "0x88B1"
+        },
+        {
+          "at": "0x8E31",
+          "command": "FF 06",
+          "args": "BA"
+        },
+        {
+          "at": "0x8E34",
+          "command": "FF 0E",
+          "args": "03"
+        },
+        {
+          "at": "0x8E37",
+          "duration": 6,
+          "frame": 25,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8E3B",
+          "duration": 6,
+          "frame": 26,
+          "callback": "0x032F"
+        },
+        {
+          "at": "0x8E3F",
+          "command": "FF 0F",
+          "args": "378E",
+          "target": "0x8E37"
+        },
+        {
+          "at": "0x8E43",
+          "command": "FF 01",
+          "args": "A888",
+          "routine": "0x88A8"
+        },
+        {
+          "at": "0x8E47",
+          "command": "FF 02",
+          "args": "C0FF0000"
+        },
+        {
+          "at": "0x8E4D",
+          "command": "FF 0E",
+          "args": "08"
+        },
+        {
+          "at": "0x8E50",
+          "duration": 4,
+          "frame": 7,
+          "callback": "0x0338"
+        },
+        {
+          "at": "0x8E54",
+          "duration": 4,
+          "frame": 8,
+          "callback": "0x0338"
+        },
+        {
+          "at": "0x8E58",
+          "duration": 4,
+          "frame": 9,
+          "callback": "0x0338"
+        },
+        {
+          "at": "0x8E5C",
+          "command": "FF 0F",
+          "args": "508E",
+          "target": "0x8E50"
+        },
+        {
+          "at": "0x8E60",
+          "command": "FF 02",
+          "args": "00FD0000"
+        },
+        {
+          "at": "0x8E66",
+          "duration": 16,
+          "frame": 23,
+          "callback": "0x0338"
+        },
+        {
+          "at": "0x8E6A",
+          "command": "FF 01",
+          "args": "A888",
+          "routine": "0x88A8"
+        },
+        {
+          "at": "0x8E6E",
+          "command": "FF 04",
+          "args": "0C0000000003"
+        },
+        {
+          "at": "0x8E76",
+          "duration": 4,
+          "frame": 27,
+          "callback": "0x88C6"
+        },
+        {
+          "at": "0x8E7A",
+          "duration": 4,
+          "frame": 28,
+          "callback": "0x88C6"
+        },
+        {
+          "at": "0x8E7E",
+          "duration": 4,
+          "frame": 29,
+          "callback": "0x88C6"
+        },
+        {
+          "at": "0x8E82",
+          "command": "FF 04",
+          "args": "0C0000F4FF03"
+        },
+        {
+          "at": "0x8E8A",
+          "duration": 4,
+          "frame": 30,
+          "callback": "0x88C6"
+        },
+        {
+          "at": "0x8E8E",
+          "duration": 4,
+          "frame": 31,
+          "callback": "0x88C6"
+        },
+        {
+          "at": "0x8E92",
+          "duration": 4,
+          "frame": 32,
+          "callback": "0x88C6"
+        },
+        {
+          "at": "0x8E96",
+          "command": "FF 07",
+          "args": "6E8E",
+          "target": "0x8E6E"
+        }
+      ]
+    },
+    "35": {
+      "script_cpu": "0x8EB2",
+      "ops": [
+        {
+          "at": "0x8EB2",
+          "duration": 8,
+          "frame": 15,
+          "callback": "0x8ECE"
+        },
+        {
+          "at": "0x8EB6",
+          "duration": 8,
+          "frame": 16,
+          "callback": "0x8ECE"
+        },
+        {
+          "at": "0x8EBA",
+          "command": "FF 07",
+          "args": "B28E",
+          "target": "0x8EB2"
+        }
+      ]
+    }
+  },
+  "poc_resources": [
+    {
+      "resource": "SPR_chaos_continue_tails_07",
+      "metadata_path": "sprites/SPR_chaos_continue_tails_07/SPR_chaos_continue_tails_07.yy",
+      "width": 24,
+      "height": 32,
+      "frames": 1,
+      "origin": [
+        12,
+        32
+      ],
+      "metadata_sha256": "cdae34846f2629d66ee1ca54dc9781e572d775d7ac57a1eaf4c04bd55f989b9b",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_continue_tails_08",
+      "metadata_path": "sprites/SPR_chaos_continue_tails_08/SPR_chaos_continue_tails_08.yy",
+      "width": 24,
+      "height": 32,
+      "frames": 1,
+      "origin": [
+        12,
+        32
+      ],
+      "metadata_sha256": "7555adf3c602be52d196d7905cb350713220108ddb82a31184a5636f8a3335a3",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_continue_tails_09",
+      "metadata_path": "sprites/SPR_chaos_continue_tails_09/SPR_chaos_continue_tails_09.yy",
+      "width": 24,
+      "height": 32,
+      "frames": 1,
+      "origin": [
+        12,
+        32
+      ],
+      "metadata_sha256": "c5f4d95f987e0a68414f789aca8a048f781ae4776460429b93df8335ade47d35",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_continue_tails_0F",
+      "metadata_path": "sprites/SPR_chaos_continue_tails_0F/SPR_chaos_continue_tails_0F.yy",
+      "width": 24,
+      "height": 32,
+      "frames": 1,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "13c31023266e3c1ba543a8f4daf869b74e3d1c0c2961a67b93ac1f7713fe32fd",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_continue_tails_10",
+      "metadata_path": "sprites/SPR_chaos_continue_tails_10/SPR_chaos_continue_tails_10.yy",
+      "width": 24,
+      "height": 32,
+      "frames": 1,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "b1ecb8636d9775ed04030c2f68e25375a89392e36c20afde8d473ac4423896dc",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_opening_tails_01",
+      "metadata_path": "sprites/SPR_chaos_opening_tails_01/SPR_chaos_opening_tails_01.yy",
+      "width": 32,
+      "height": 32,
+      "frames": 3,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "1320e1389f93a573bbc30c4c213e594538825cf82730bdceea35f3c8dc9df76e",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_opening_tails_02",
+      "metadata_path": "sprites/SPR_chaos_opening_tails_02/SPR_chaos_opening_tails_02.yy",
+      "width": 32,
+      "height": 32,
+      "frames": 3,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "401ec84109d1fd724fe901d0b13fce29c806d0b01d442848b86f530da2a3ce16",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_opening_tails_03",
+      "metadata_path": "sprites/SPR_chaos_opening_tails_03/SPR_chaos_opening_tails_03.yy",
+      "width": 24,
+      "height": 32,
+      "frames": 3,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "b514d507a299eceb5a76196c48695e42f4f944373946911fd75254284f3cfb78",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_opening_tails_04",
+      "metadata_path": "sprites/SPR_chaos_opening_tails_04/SPR_chaos_opening_tails_04.yy",
+      "width": 32,
+      "height": 32,
+      "frames": 3,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "506b6c88e264f3443c36b1b16b89d288ddb88b6258a2e913c13a3ac19a500f50",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_opening_tails_05",
+      "metadata_path": "sprites/SPR_chaos_opening_tails_05/SPR_chaos_opening_tails_05.yy",
+      "width": 32,
+      "height": 32,
+      "frames": 3,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "fb8139fb69a844ba0f327c799fdd55cb73661661fd2ae392a61fd8967a32e548",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_chaos_opening_tails_06",
+      "metadata_path": "sprites/SPR_chaos_opening_tails_06/SPR_chaos_opening_tails_06.yy",
+      "width": 24,
+      "height": 32,
+      "frames": 3,
+      "origin": [
+        16,
+        32
+      ],
+      "metadata_sha256": "7e5ef69df789e301ddddb32994b23af4af9e360d61f338984f895a7ed85f805a",
+      "provenance": "authenticated imported opening/Continue resource"
+    },
+    {
+      "resource": "SPR_tails_break",
+      "metadata_path": "sprites/SPR_tails_break/SPR_tails_break.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 2,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "892ea82c8000d6bf0d032873c41bc7c5e703e5594c2be12976daa2fef5e28a2e",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_death",
+      "metadata_path": "sprites/SPR_tails_death/SPR_tails_death.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "7a0bd7e75fb115115e98e00958a93b810ed8730f5f7d7665d0aae80ededf574d",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_down",
+      "metadata_path": "sprites/SPR_tails_down/SPR_tails_down.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "c74540fddc1719f6507efe68e237bd3bde5acee4a119c23f7cfe00540416bf8f",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_falling",
+      "metadata_path": "sprites/SPR_tails_falling/SPR_tails_falling.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "179f8626513c035fec1a431cd71631ed46efd721a7f70ee1db6153c279adf769",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_fly",
+      "metadata_path": "sprites/SPR_tails_fly/SPR_tails_fly.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 3,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "294ccf8b3c4f58e19c56c3b6fa4676221f601c3a9e971432faadd4d171a5d720",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_jump",
+      "metadata_path": "sprites/SPR_tails_jump/SPR_tails_jump.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "51c3022290e21d1ce48525ead24a1a8a68543f523dd267ab211d57952ede07ce",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_run",
+      "metadata_path": "sprites/SPR_tails_run/SPR_tails_run.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 4,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "9a28cb3edd9e20f4df0d034a43b5b67d2013f4d847e819e172321a2668d9bec0",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_spin",
+      "metadata_path": "sprites/SPR_tails_spin/SPR_tails_spin.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 3,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "43742af5d871b3dcdc39f5cca63b7ed19ad355ca38a33fd2204a1cfcf1ab0f26",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_spin_dash",
+      "metadata_path": "sprites/SPR_tails_spin_dash/SPR_tails_spin_dash.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 3,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "341e97928518fa38b30903ade1b79888dee3bce8dbc979acbd252e99accf12d5",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_stop",
+      "metadata_path": "sprites/SPR_tails_stop/SPR_tails_stop.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "5b4a6b4dad7cf343081393996dd67b9300c612243ba051a7ade02ccad6a92514",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_break",
+      "metadata_path": "sprites/SPR_tails_super_break/SPR_tails_super_break.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 2,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "4af808b121084425233ee484a40411d885b2a5eface0c521773fc508b3ccda90",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_down",
+      "metadata_path": "sprites/SPR_tails_super_down/SPR_tails_super_down.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "d3b8e3c7178eb824518a0ab311d6a3413d49490ac67abde96c1b895e896e46ac",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_falling",
+      "metadata_path": "sprites/SPR_tails_super_falling/SPR_tails_super_falling.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "71eaa2e5f6fec83e45787ff48b2d96f2c7eaf9ee65d23c4d62501e3cc8d98e2e",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_fly",
+      "metadata_path": "sprites/SPR_tails_super_fly/SPR_tails_super_fly.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 3,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "c02f804a5db7ca1e821f4472dc522d04790342fcdfc488771ab6fff7341f8582",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_jump",
+      "metadata_path": "sprites/SPR_tails_super_jump/SPR_tails_super_jump.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "134dab3bfd6af94330904c35172dda5d1878841c8e44e08a181b6d7102ada555",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_run",
+      "metadata_path": "sprites/SPR_tails_super_run/SPR_tails_super_run.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 4,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "b679ce25fe07567a25fc351c8d14b584b4a36d92eb9e5b6822436631f7eb812b",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_spin",
+      "metadata_path": "sprites/SPR_tails_super_spin/SPR_tails_super_spin.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 3,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "983cbf2ec984e5eb97a220d7147c8d7c24c1ab7046830a0d5fc509c17803db91",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_spin_dash",
+      "metadata_path": "sprites/SPR_tails_super_spin_dash/SPR_tails_super_spin_dash.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 3,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "4cb424a9479ac6413ff595b0043851370bf49330297c4b1d2965a96b0b13b736",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_stop",
+      "metadata_path": "sprites/SPR_tails_super_stop/SPR_tails_super_stop.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "54d514450347602cec32d8a4322cdc0d9a7893223349af544e9fc8a8dd2f7a5c",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_transform",
+      "metadata_path": "sprites/SPR_tails_super_transform/SPR_tails_super_transform.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 3,
+      "origin": [
+        20,
+        22
+      ],
+      "metadata_sha256": "7c17f2c790d10978f882edbe774591f14860193363a2a108c634fe81d282c199",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_up",
+      "metadata_path": "sprites/SPR_tails_super_up/SPR_tails_super_up.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "58dbb9b50b553ddd7e0c3acd77ffed2bcd4b9fdd34b622b6d795660191ff0c6c",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_wait",
+      "metadata_path": "sprites/SPR_tails_super_wait/SPR_tails_super_wait.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 4,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "a7feada4f0b0a402ce158dcfd84608f4294c5a73087d669b7c45b2602e876d04",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_walk",
+      "metadata_path": "sprites/SPR_tails_super_walk/SPR_tails_super_walk.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 6,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "b0b4a95171ad2cdd422a7994d9fc7ed8f8c0126a7a9497edf0a95f30faa25fa6",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_super_water_swim",
+      "metadata_path": "sprites/SPR_tails_super_water_swim/SPR_tails_super_water_swim.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 5,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "59ec88ebb74d7f6701ce40b8b8a3e38953393425c9245a4f072c9666184cb12f",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_up",
+      "metadata_path": "sprites/SPR_tails_up/SPR_tails_up.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "b8e2ccf6448d5409eb64e5b0a12c9d0375f3379c5ac2652cc1f57b74e9d4a082",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_wait",
+      "metadata_path": "sprites/SPR_tails_wait/SPR_tails_wait.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 4,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "0d74dbf529b6191b2dc60459d6e00a6f8f0c847f46624a7809b3d97742cced65",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_walk",
+      "metadata_path": "sprites/SPR_tails_walk/SPR_tails_walk.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 6,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "05d177e84253408c8cacdc19e3ffb02109cac89e093ff4186be9820b402db72b",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_water_air",
+      "metadata_path": "sprites/SPR_tails_water_air/SPR_tails_water_air.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 1,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "f9a51535d8d9a574659efdb3e319d71c9ffdeb750935406e7eec4d0c40aee8e3",
+      "provenance": "inherited; authenticity not established by name"
+    },
+    {
+      "resource": "SPR_tails_water_swim",
+      "metadata_path": "sprites/SPR_tails_water_swim/SPR_tails_water_swim.yy",
+      "width": 40,
+      "height": 40,
+      "frames": 5,
+      "origin": [
+        20,
+        20
+      ],
+      "metadata_sha256": "33d968b0091846d5c7159868caaa5508fbe5a8dcbbcb476717d71b3c3f9ae42c",
+      "provenance": "inherited; authenticity not established by name"
+    }
+  ],
+  "poc_reference_owners": [
+    {
+      "path": "scripts/SCR_chaos_death/SCR_chaos_death.gml",
+      "references": [
+        "SPR_chaos_continue_tails_07",
+        "SPR_chaos_continue_tails_08",
+        "SPR_chaos_continue_tails_09",
+        "SPR_chaos_continue_tails_0F",
+        "SPR_chaos_continue_tails_10"
+      ]
+    },
+    {
+      "path": "scripts/SCR_chaos_opening/SCR_chaos_opening.gml",
+      "references": [
+        "SPR_chaos_opening_tails_01",
+        "SPR_chaos_opening_tails_02",
+        "SPR_chaos_opening_tails_03",
+        "SPR_chaos_opening_tails_04",
+        "SPR_chaos_opening_tails_05",
+        "SPR_chaos_opening_tails_06"
+      ]
+    },
+    {
+      "path": "scripts/SCR_player_sprites_tails/SCR_player_sprites_tails.gml",
+      "references": [
+        "SPR_tails_break",
+        "SPR_tails_death",
+        "SPR_tails_down",
+        "SPR_tails_falling",
+        "SPR_tails_fly",
+        "SPR_tails_jump",
+        "SPR_tails_run",
+        "SPR_tails_spin",
+        "SPR_tails_spin_dash",
+        "SPR_tails_stop",
+        "SPR_tails_super_break",
+        "SPR_tails_super_down",
+        "SPR_tails_super_falling",
+        "SPR_tails_super_fly",
+        "SPR_tails_super_jump",
+        "SPR_tails_super_run",
+        "SPR_tails_super_spin",
+        "SPR_tails_super_spin_dash",
+        "SPR_tails_super_stop",
+        "SPR_tails_super_transform",
+        "SPR_tails_super_up",
+        "SPR_tails_super_wait",
+        "SPR_tails_super_walk",
+        "SPR_tails_up",
+        "SPR_tails_wait",
+        "SPR_tails_walk",
+        "SPR_tails_water_air",
+        "SPR_tails_water_swim"
+      ]
+    }
+  ],
+  "code_contracts": [
+    {
+      "bank": 0,
+      "start": "3713",
+      "end_exclusive": "3759",
+      "sha256": "da8243ca579208c9c318b3a435c97e9a101a85926b08fb62d4abe00c76b7141a",
+      "instructions": [
+        [
+          "0x3713",
+          "LD A,(0xd3c0)"
+        ],
+        [
+          "0x3716",
+          "OR A"
+        ],
+        [
+          "0x3717",
+          "JR nz,0x371e"
+        ],
+        [
+          "0x3719",
+          "LD A,0xb8"
+        ],
+        [
+          "0x371B",
+          "LD (0xd289),A"
+        ],
+        [
+          "0x371E",
+          "LD A,(IX)"
+        ],
+        [
+          "0x3721",
+          "DEC A"
+        ],
+        [
+          "0x3722",
+          "JR z,0x3734"
+        ],
+        [
+          "0x3724",
+          "LD A,(0xd443)"
+        ],
+        [
+          "0x3727",
+          "OR A"
+        ],
+        [
+          "0x3728",
+          "JR nz,0x373c"
+        ],
+        [
+          "0x372A",
+          "LD A,(0xd147)"
+        ],
+        [
+          "0x372D",
+          "AND 0x30"
+        ],
+        [
+          "0x372F",
+          "JP nz,0x473c"
+        ],
+        [
+          "0x3732",
+          "JR 0x373c"
+        ],
+        [
+          "0x3734",
+          "LD A,(0xd147)"
+        ],
+        [
+          "0x3737",
+          "AND 0x30"
+        ],
+        [
+          "0x3739",
+          "JP nz,0x46ce"
+        ],
+        [
+          "0x373C",
+          "CALL 0x3fef"
+        ],
+        [
+          "0x373F",
+          "LD A,(0xd502)"
+        ],
+        [
+          "0x3742",
+          "CP 3"
+        ],
+        [
+          "0x3744",
+          "RET nz"
+        ],
+        [
+          "0x3745",
+          "LD HL,0xd137"
+        ],
+        [
+          "0x3748",
+          "LD A,(HL)"
+        ],
+        [
+          "0x3749",
+          "AND 12"
+        ],
+        [
+          "0x374B",
+          "JP nz,0x45ce"
+        ],
+        [
+          "0x374E",
+          "BIT 1,(HL)"
+        ],
+        [
+          "0x3750",
+          "JP nz,0x46bb"
+        ],
+        [
+          "0x3753",
+          "BIT 0,(HL)"
+        ],
+        [
+          "0x3755",
+          "JP z,0x45b3"
+        ],
+        [
+          "0x3758",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "473C",
+      "end_exclusive": "4775",
+      "sha256": "cfa41f5c514a8fbb93201c736ac2f73bf1debbbf82baf5f1e90583fcde257e84",
+      "instructions": [
+        [
+          "0x473C",
+          "LD HL,0"
+        ],
+        [
+          "0x473F",
+          "LD (0xd516),HL"
+        ],
+        [
+          "0x4742",
+          "LD HL,0xff00"
+        ],
+        [
+          "0x4745",
+          "LD (0xd518),HL"
+        ],
+        [
+          "0x4748",
+          "LD HL,(0xd514)"
+        ],
+        [
+          "0x474B",
+          "DEC HL"
+        ],
+        [
+          "0x474C",
+          "DEC HL"
+        ],
+        [
+          "0x474D",
+          "DEC HL"
+        ],
+        [
+          "0x474E",
+          "DEC HL"
+        ],
+        [
+          "0x474F",
+          "LD (0xd514),HL"
+        ],
+        [
+          "0x4752",
+          "LD HL,0x12c"
+        ],
+        [
+          "0x4755",
+          "LD (0xd3a1),HL"
+        ],
+        [
+          "0x4758",
+          "RES 1,(IX+3)"
+        ],
+        [
+          "0x475C",
+          "RES 6,(IX+3)"
+        ],
+        [
+          "0x4760",
+          "RES 1,(IX+0x22)"
+        ],
+        [
+          "0x4764",
+          "RES 1,(IX+0x21)"
+        ],
+        [
+          "0x4768",
+          "RES 1,(IX+0x23)"
+        ],
+        [
+          "0x476C",
+          "XOR A"
+        ],
+        [
+          "0x476D",
+          "LD (0xd3c0),A"
+        ],
+        [
+          "0x4770",
+          "LD (IX+2),0x18"
+        ],
+        [
+          "0x4774",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "3EFD",
+      "end_exclusive": "3FC8",
+      "sha256": "eed66991de85bd2146b85c21a0f138f7abad55e8951a5a57eb3a2addaacdf3e8",
+      "instructions": [
+        [
+          "0x3EFD",
+          "LD A,0x60"
+        ],
+        [
+          "0x3EFF",
+          "LD (0xd289),A"
+        ],
+        [
+          "0x3F02",
+          "CALL 0x4b46"
+        ],
+        [
+          "0x3F05",
+          "LD A,(0xd443)"
+        ],
+        [
+          "0x3F08",
+          "OR A"
+        ],
+        [
+          "0x3F09",
+          "JP nz,0x463c"
+        ],
+        [
+          "0x3F0C",
+          "LD A,(0xd137)"
+        ],
+        [
+          "0x3F0F",
+          "LD HL,1"
+        ],
+        [
+          "0x3F12",
+          "BIT 3,A"
+        ],
+        [
+          "0x3F14",
+          "JR nz,0x3f20"
+        ],
+        [
+          "0x3F16",
+          "LD HL,0xffff"
+        ],
+        [
+          "0x3F19",
+          "BIT 2,A"
+        ],
+        [
+          "0x3F1B",
+          "JR nz,0x3f20"
+        ],
+        [
+          "0x3F1D",
+          "LD HL,0"
+        ],
+        [
+          "0x3F20",
+          "LD DE,(0xd511)"
+        ],
+        [
+          "0x3F24",
+          "ADD HL,DE"
+        ],
+        [
+          "0x3F25",
+          "LD (0xd511),HL"
+        ],
+        [
+          "0x3F28",
+          "CALL 0x3f86"
+        ],
+        [
+          "0x3F2B",
+          "LD A,(0xd137)"
+        ],
+        [
+          "0x3F2E",
+          "LD HL,1"
+        ],
+        [
+          "0x3F31",
+          "BIT 1,A"
+        ],
+        [
+          "0x3F33",
+          "JR nz,0x3f3f"
+        ],
+        [
+          "0x3F35",
+          "LD HL,0xffff"
+        ],
+        [
+          "0x3F38",
+          "BIT 0,A"
+        ],
+        [
+          "0x3F3A",
+          "JR nz,0x3f3f"
+        ],
+        [
+          "0x3F3C",
+          "LD HL,0"
+        ],
+        [
+          "0x3F3F",
+          "LD (0xd518),HL"
+        ],
+        [
+          "0x3F42",
+          "LD DE,(0xd514)"
+        ],
+        [
+          "0x3F46",
+          "ADD HL,DE"
+        ],
+        [
+          "0x3F47",
+          "LD (0xd514),HL"
+        ],
+        [
+          "0x3F4A",
+          "CALL 0x3fa7"
+        ],
+        [
+          "0x3F4D",
+          "LD DE,0xfff4"
+        ],
+        [
+          "0x3F50",
+          "LD (0xd49a),DE"
+        ],
+        [
+          "0x3F54",
+          "LD (0xd49e),DE"
+        ],
+        [
+          "0x3F58",
+          "CALL 0x690b"
+        ],
+        [
+          "0x3F5B",
+          "CALL 0x48bc"
+        ],
+        [
+          "0x3F5E",
+          "CALL 0x48a7"
+        ],
+        [
+          "0x3F61",
+          "LD A,(0xd441)"
+        ],
+        [
+          "0x3F64",
+          "RLCA"
+        ],
+        [
+          "0x3F65",
+          "JP c,0x3f83"
+        ],
+        [
+          "0x3F68",
+          "LD HL,(0xd3a1)"
+        ],
+        [
+          "0x3F6B",
+          "DEC HL"
+        ],
+        [
+          "0x3F6C",
+          "LD (0xd3a1),HL"
+        ],
+        [
+          "0x3F6F",
+          "LD A,H"
+        ],
+        [
+          "0x3F70",
+          "OR L"
+        ],
+        [
+          "0x3F71",
+          "JP z,0x3f83"
+        ],
+        [
+          "0x3F74",
+          "BIT 1,(IX+0x23)"
+        ],
+        [
+          "0x3F78",
+          "JP nz,0x3f83"
+        ],
+        [
+          "0x3F7B",
+          "BIT 6,(IX+4)"
+        ],
+        [
+          "0x3F7F",
+          "JP nz,0x3f83"
+        ],
+        [
+          "0x3F82",
+          "RET"
+        ],
+        [
+          "0x3F83",
+          "JP 0x463c"
+        ],
+        [
+          "0x3F86",
+          "LD HL,(0xd51a)"
+        ],
+        [
+          "0x3F89",
+          "LD BC,0x14"
+        ],
+        [
+          "0x3F8C",
+          "XOR A"
+        ],
+        [
+          "0x3F8D",
+          "SBC HL,BC"
+        ],
+        [
+          "0x3F8F",
+          "JR c,0x3fa1"
+        ],
+        [
+          "0x3F91",
+          "LD HL,(0xd51a)"
+        ],
+        [
+          "0x3F94",
+          "LD BC,0xf4"
+        ],
+        [
+          "0x3F97",
+          "XOR A"
+        ],
+        [
+          "0x3F98",
+          "SBC HL,BC"
+        ],
+        [
+          "0x3F9A",
+          "RET c"
+        ],
+        [
+          "0x3F9B",
+          "DEC DE"
+        ],
+        [
+          "0x3F9C",
+          "LD (0xd511),DE"
+        ],
+        [
+          "0x3FA0",
+          "RET"
+        ],
+        [
+          "0x3FA1",
+          "INC DE"
+        ],
+        [
+          "0x3FA2",
+          "LD (0xd511),DE"
+        ],
+        [
+          "0x3FA6",
+          "RET"
+        ],
+        [
+          "0x3FA7",
+          "LD HL,(0xd51c)"
+        ],
+        [
+          "0x3FAA",
+          "LD BC,0x18"
+        ],
+        [
+          "0x3FAD",
+          "XOR A"
+        ],
+        [
+          "0x3FAE",
+          "SBC HL,BC"
+        ],
+        [
+          "0x3FB0",
+          "JR c,0x3fc2"
+        ],
+        [
+          "0x3FB2",
+          "LD HL,(0xd51c)"
+        ],
+        [
+          "0x3FB5",
+          "LD BC,0xc0"
+        ],
+        [
+          "0x3FB8",
+          "XOR A"
+        ],
+        [
+          "0x3FB9",
+          "SBC HL,BC"
+        ],
+        [
+          "0x3FBB",
+          "RET c"
+        ],
+        [
+          "0x3FBC",
+          "DEC DE"
+        ],
+        [
+          "0x3FBD",
+          "LD (0xd514),DE"
+        ],
+        [
+          "0x3FC1",
+          "RET"
+        ],
+        [
+          "0x3FC2",
+          "INC DE"
+        ],
+        [
+          "0x3FC3",
+          "LD (0xd514),DE"
+        ],
+        [
+          "0x3FC7",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 12,
+      "start": "8C6F",
+      "end_exclusive": "8C82",
+      "sha256": "c0e4d0786aec4ffe1f01971f829d1666c93dfa13e490ad97296e0275bd43ffc9",
+      "instructions": [
+        [
+          "0x8C6F",
+          "LD A,(0xd522)"
+        ],
+        [
+          "0x8C72",
+          "AND 15"
+        ],
+        [
+          "0x8C74",
+          "JR nz,0x8c7c"
+        ],
+        [
+          "0x8C76",
+          "LD A,0xb0"
+        ],
+        [
+          "0x8C78",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x8C7B",
+          "RET"
+        ],
+        [
+          "0x8C7C",
+          "LD A,0xc0"
+        ],
+        [
+          "0x8C7E",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x8C81",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 12,
+      "start": "8CB4",
+      "end_exclusive": "8CEC",
+      "sha256": "7a23a546d74d0c4f4033f0dd22d73fdf9826e8ba95c5bcb6a3fd980a734cab8f",
+      "instructions": [
+        [
+          "0x8CB4",
+          "LD A,(IX+0x23)"
+        ],
+        [
+          "0x8CB7",
+          "AND 12"
+        ],
+        [
+          "0x8CB9",
+          "JR nz,0x8cfc"
+        ],
+        [
+          "0x8CBB",
+          "LD C,1"
+        ],
+        [
+          "0x8CBD",
+          "LD B,6"
+        ],
+        [
+          "0x8CBF",
+          "BIT 0,(IX+0x24)"
+        ],
+        [
+          "0x8CC3",
+          "JR z,0x8cc9"
+        ],
+        [
+          "0x8CC5",
+          "LD C,0x34"
+        ],
+        [
+          "0x8CC7",
+          "LD B,3"
+        ],
+        [
+          "0x8CC9",
+          "LD HL,0xd52f"
+        ],
+        [
+          "0x8CCC",
+          "INC (HL)"
+        ],
+        [
+          "0x8CCD",
+          "LD A,(HL)"
+        ],
+        [
+          "0x8CCE",
+          "CP B"
+        ],
+        [
+          "0x8CCF",
+          "JR c,0x8cd3"
+        ],
+        [
+          "0x8CD1",
+          "XOR A"
+        ],
+        [
+          "0x8CD2",
+          "LD (HL),A"
+        ],
+        [
+          "0x8CD3",
+          "ADD A,C"
+        ],
+        [
+          "0x8CD4",
+          "LD (IX+6),A"
+        ],
+        [
+          "0x8CD7",
+          "LD A,(0xd517)"
+        ],
+        [
+          "0x8CDA",
+          "AND A"
+        ],
+        [
+          "0x8CDB",
+          "JP p,0x8ce0"
+        ],
+        [
+          "0x8CDE",
+          "NEG"
+        ],
+        [
+          "0x8CE0",
+          "LD L,A"
+        ],
+        [
+          "0x8CE1",
+          "LD H,0"
+        ],
+        [
+          "0x8CE3",
+          "LD DE,0x8cec"
+        ],
+        [
+          "0x8CE6",
+          "ADD HL,DE"
+        ],
+        [
+          "0x8CE7",
+          "LD A,(HL)"
+        ],
+        [
+          "0x8CE8",
+          "LD (IX+7),A"
+        ],
+        [
+          "0x8CEB",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 12,
+      "start": "8CFC",
+      "end_exclusive": "8D36",
+      "sha256": "0086150e841af9ee9746a08a478e1d4605854030714030299a70dc9f6cae7d5c",
+      "instructions": [
+        [
+          "0x8CFC",
+          "LD (IX+6),0x55"
+        ],
+        [
+          "0x8D00",
+          "LD (IX+7),2"
+        ],
+        [
+          "0x8D04",
+          "RET"
+        ],
+        [
+          "0x8D05",
+          "LD C,7"
+        ],
+        [
+          "0x8D07",
+          "BIT 0,(IX+0x24)"
+        ],
+        [
+          "0x8D0B",
+          "JR z,0x8d22"
+        ],
+        [
+          "0x8D0D",
+          "LD A,(0xd36c)"
+        ],
+        [
+          "0x8D10",
+          "AND 0x1f"
+        ],
+        [
+          "0x8D12",
+          "CP 0x19"
+        ],
+        [
+          "0x8D14",
+          "JR z,0x8d20"
+        ],
+        [
+          "0x8D16",
+          "RES 0,(IX+0x24)"
+        ],
+        [
+          "0x8D1A",
+          "XOR A"
+        ],
+        [
+          "0x8D1B",
+          "LD (0xd3bc),A"
+        ],
+        [
+          "0x8D1E",
+          "JR 0x8d22"
+        ],
+        [
+          "0x8D20",
+          "LD C,0x34"
+        ],
+        [
+          "0x8D22",
+          "LD HL,0xd52f"
+        ],
+        [
+          "0x8D25",
+          "INC (HL)"
+        ],
+        [
+          "0x8D26",
+          "LD A,(HL)"
+        ],
+        [
+          "0x8D27",
+          "CP 3"
+        ],
+        [
+          "0x8D29",
+          "JR c,0x8d2d"
+        ],
+        [
+          "0x8D2B",
+          "XOR A"
+        ],
+        [
+          "0x8D2C",
+          "LD (HL),A"
+        ],
+        [
+          "0x8D2D",
+          "ADD A,C"
+        ],
+        [
+          "0x8D2E",
+          "LD (IX+6),A"
+        ],
+        [
+          "0x8D31",
+          "LD (IX+7),2"
+        ],
+        [
+          "0x8D35",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "3065",
+      "end_exclusive": "30E0",
+      "sha256": "532a59e68976006fe4ec628545fc98856c1c432dad796f390abda6a85af22cdd",
+      "instructions": [
+        [
+          "0x3065",
+          "CALL 0x297e"
+        ],
+        [
+          "0x3068",
+          "CALL 0x4fce"
+        ],
+        [
+          "0x306B",
+          "CALL 0x21da"
+        ],
+        [
+          "0x306E",
+          "CALL 0x79b7"
+        ],
+        [
+          "0x3071",
+          "XOR A"
+        ],
+        [
+          "0x3072",
+          "LD (0xd2c8),A"
+        ],
+        [
+          "0x3075",
+          "LD HL,0x3800"
+        ],
+        [
+          "0x3078",
+          "LD BC,0x1820"
+        ],
+        [
+          "0x307B",
+          "LD DE,0x8e9c"
+        ],
+        [
+          "0x307E",
+          "CALL 0x2349"
+        ],
+        [
+          "0x3081",
+          "LD HL,0xd492"
+        ],
+        [
+          "0x3084",
+          "LD (HL),0"
+        ],
+        [
+          "0x3086",
+          "SET 7,(HL)"
+        ],
+        [
+          "0x3088",
+          "INC HL"
+        ],
+        [
+          "0x3089",
+          "LD (HL),0x1e"
+        ],
+        [
+          "0x308B",
+          "LD HL,0xd494"
+        ],
+        [
+          "0x308E",
+          "LD (HL),0"
+        ],
+        [
+          "0x3090",
+          "SET 7,(HL)"
+        ],
+        [
+          "0x3092",
+          "INC HL"
+        ],
+        [
+          "0x3093",
+          "LD (HL),7"
+        ],
+        [
+          "0x3095",
+          "LD A,(0xd2c8)"
+        ],
+        [
+          "0x3098",
+          "INC A"
+        ],
+        [
+          "0x3099",
+          "LD (0xd500),A"
+        ],
+        [
+          "0x309C",
+          "LD A,0x30"
+        ],
+        [
+          "0x309E",
+          "LD (0xd501),A"
+        ],
+        [
+          "0x30A1",
+          "LD (0xd502),A"
+        ],
+        [
+          "0x30A4",
+          "LD HL,0x80"
+        ],
+        [
+          "0x30A7",
+          "LD (0xd511),HL"
+        ],
+        [
+          "0x30AA",
+          "LD HL,0x88"
+        ],
+        [
+          "0x30AD",
+          "LD (0xd514),HL"
+        ],
+        [
+          "0x30B0",
+          "LD A,0x40"
+        ],
+        [
+          "0x30B2",
+          "LD (0xd293),A"
+        ],
+        [
+          "0x30B5",
+          "LD C,0x10"
+        ],
+        [
+          "0x30B7",
+          "CALL 0x1cd3"
+        ],
+        [
+          "0x30BA",
+          "LD A,0x82"
+        ],
+        [
+          "0x30BC",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x30BF",
+          "CALL 0x3522"
+        ],
+        [
+          "0x30C2",
+          "LD HL,0xd2c8"
+        ],
+        [
+          "0x30C5",
+          "INC (HL)"
+        ],
+        [
+          "0x30C6",
+          "LD B,0x1e"
+        ],
+        [
+          "0x30C8",
+          "EI"
+        ],
+        [
+          "0x30C9",
+          "CALL 0x062d"
+        ],
+        [
+          "0x30CC",
+          "DJNZ 0x30c8"
+        ],
+        [
+          "0x30CE",
+          "CALL 0x1ceb"
+        ],
+        [
+          "0x30D1",
+          "CALL 0x1caf"
+        ],
+        [
+          "0x30D4",
+          "CALL 0x18e1"
+        ],
+        [
+          "0x30D7",
+          "LD B,0x5a"
+        ],
+        [
+          "0x30D9",
+          "EI"
+        ],
+        [
+          "0x30DA",
+          "CALL 0x062d"
+        ],
+        [
+          "0x30DD",
+          "DJNZ 0x30d9"
+        ],
+        [
+          "0x30DF",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "3522",
+      "end_exclusive": "3595",
+      "sha256": "2dd6d1e2a77d178861e5a3c7585398a7e976ceae8e2da802629cf987e0093117",
+      "instructions": [
+        [
+          "0x3522",
+          "CALL 0x062d"
+        ],
+        [
+          "0x3525",
+          "CALL 0x356a"
+        ],
+        [
+          "0x3528",
+          "CALL 0x3595"
+        ],
+        [
+          "0x352B",
+          "CALL 0x361d"
+        ],
+        [
+          "0x352E",
+          "CALL 0x5dd1"
+        ],
+        [
+          "0x3531",
+          "LD A,(0xd147)"
+        ],
+        [
+          "0x3534",
+          "BIT 5,A"
+        ],
+        [
+          "0x3536",
+          "JR z,0x3522"
+        ],
+        [
+          "0x3538",
+          "LD B,6"
+        ],
+        [
+          "0x353A",
+          "PUSH BC"
+        ],
+        [
+          "0x353B",
+          "CALL 0x062d"
+        ],
+        [
+          "0x353E",
+          "CALL 0x361d"
+        ],
+        [
+          "0x3541",
+          "CALL 0x5dd1"
+        ],
+        [
+          "0x3544",
+          "POP BC"
+        ],
+        [
+          "0x3545",
+          "DJNZ 0x353a"
+        ],
+        [
+          "0x3547",
+          "LD A,0xff"
+        ],
+        [
+          "0x3549",
+          "LD (0xd295),A"
+        ],
+        [
+          "0x354C",
+          "XOR A"
+        ],
+        [
+          "0x354D",
+          "LD (0xd293),A"
+        ],
+        [
+          "0x3550",
+          "LD A,(0xd2c8)"
+        ],
+        [
+          "0x3553",
+          "LD BC,0x300"
+        ],
+        [
+          "0x3556",
+          "OR A"
+        ],
+        [
+          "0x3557",
+          "JR z,0x355c"
+        ],
+        [
+          "0x3559",
+          "LD BC,0x503"
+        ],
+        [
+          "0x355C",
+          "LD A,B"
+        ],
+        [
+          "0x355D",
+          "LD (0xd299),A"
+        ],
+        [
+          "0x3560",
+          "LD A,C"
+        ],
+        [
+          "0x3561",
+          "LD (0xd2c3),A"
+        ],
+        [
+          "0x3564",
+          "LD A,0xa0"
+        ],
+        [
+          "0x3566",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x3569",
+          "RET"
+        ],
+        [
+          "0x356A",
+          "LD A,(0xd147)"
+        ],
+        [
+          "0x356D",
+          "BIT 2,A"
+        ],
+        [
+          "0x356F",
+          "JR nz,0x3576"
+        ],
+        [
+          "0x3571",
+          "BIT 3,A"
+        ],
+        [
+          "0x3573",
+          "JR nz,0x3585"
+        ],
+        [
+          "0x3575",
+          "RET"
+        ],
+        [
+          "0x3576",
+          "LD A,(0xd2c8)"
+        ],
+        [
+          "0x3579",
+          "OR A"
+        ],
+        [
+          "0x357A",
+          "RET z"
+        ],
+        [
+          "0x357B",
+          "DEC A"
+        ],
+        [
+          "0x357C",
+          "LD (0xd2c8),A"
+        ],
+        [
+          "0x357F",
+          "LD A,0xb4"
+        ],
+        [
+          "0x3581",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x3584",
+          "RET"
+        ],
+        [
+          "0x3585",
+          "LD A,(0xd2c8)"
+        ],
+        [
+          "0x3588",
+          "CP 1"
+        ],
+        [
+          "0x358A",
+          "RET nc"
+        ],
+        [
+          "0x358B",
+          "INC A"
+        ],
+        [
+          "0x358C",
+          "LD (0xd2c8),A"
+        ],
+        [
+          "0x358F",
+          "LD A,0xb4"
+        ],
+        [
+          "0x3591",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x3594",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "0719",
+      "end_exclusive": "0796",
+      "sha256": "87bcb1b22d0f0a68b8dc120a7bcf5b8d4bf8b65186b8f6dc0e10925b19519425",
+      "instructions": [
+        [
+          "0x0719",
+          "DI"
+        ],
+        [
+          "0x071A",
+          "CALL 0x297e"
+        ],
+        [
+          "0x071D",
+          "CALL 0x21da"
+        ],
+        [
+          "0x0720",
+          "CALL 0x2f49"
+        ],
+        [
+          "0x0723",
+          "LD A,0x40"
+        ],
+        [
+          "0x0725",
+          "LD (0xd293),A"
+        ],
+        [
+          "0x0728",
+          "LD HL,0xd492"
+        ],
+        [
+          "0x072B",
+          "LD (HL),0"
+        ],
+        [
+          "0x072D",
+          "SET 7,(HL)"
+        ],
+        [
+          "0x072F",
+          "INC HL"
+        ],
+        [
+          "0x0730",
+          "LD (HL),0x1b"
+        ],
+        [
+          "0x0732",
+          "LD HL,0xd494"
+        ],
+        [
+          "0x0735",
+          "LD (HL),0"
+        ],
+        [
+          "0x0737",
+          "SET 7,(HL)"
+        ],
+        [
+          "0x0739",
+          "INC HL"
+        ],
+        [
+          "0x073A",
+          "LD (HL),0x1c"
+        ],
+        [
+          "0x073C",
+          "LD B,0x18"
+        ],
+        [
+          "0x073E",
+          "EI"
+        ],
+        [
+          "0x073F",
+          "CALL 0x062d"
+        ],
+        [
+          "0x0742",
+          "DJNZ 0x073e"
+        ],
+        [
+          "0x0744",
+          "LD A,0xbe"
+        ],
+        [
+          "0x0746",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x0749",
+          "CALL 0x2f77"
+        ],
+        [
+          "0x074C",
+          "LD B,12"
+        ],
+        [
+          "0x074E",
+          "EI"
+        ],
+        [
+          "0x074F",
+          "CALL 0x062d"
+        ],
+        [
+          "0x0752",
+          "DJNZ 0x074e"
+        ],
+        [
+          "0x0754",
+          "LD A,0x99"
+        ],
+        [
+          "0x0756",
+          "LD (0xde04),A"
+        ],
+        [
+          "0x0759",
+          "XOR A"
+        ],
+        [
+          "0x075A",
+          "LD (0xd12f),A"
+        ],
+        [
+          "0x075D",
+          "LD BC,0x1e"
+        ],
+        [
+          "0x0760",
+          "CALL 0x07b8"
+        ],
+        [
+          "0x0763",
+          "LD BC,0x474"
+        ],
+        [
+          "0x0766",
+          "CALL 0x079f"
+        ],
+        [
+          "0x0769",
+          "CALL 0x0c99"
+        ],
+        [
+          "0x076C",
+          "CALL 0x0cd1"
+        ],
+        [
+          "0x076F",
+          "XOR A"
+        ],
+        [
+          "0x0770",
+          "LD (0xd293),A"
+        ],
+        [
+          "0x0773",
+          "RET"
+        ],
+        [
+          "0x0774",
+          "CALL 0x0c81"
+        ],
+        [
+          "0x0777",
+          "CALL 0x0cb9"
+        ],
+        [
+          "0x077A",
+          "LD A,0x1b"
+        ],
+        [
+          "0x077C",
+          "CALL 0x1c6f"
+        ],
+        [
+          "0x077F",
+          "LD A,(0xd12f)"
+        ],
+        [
+          "0x0782",
+          "LD DE,0xbcd0"
+        ],
+        [
+          "0x0785",
+          "AND 0x20"
+        ],
+        [
+          "0x0787",
+          "JR z,0x078c"
+        ],
+        [
+          "0x0789",
+          "LD DE,0xbcf4"
+        ],
+        [
+          "0x078C",
+          "LD HL,0x3d4e"
+        ],
+        [
+          "0x078F",
+          "LD BC,0x112"
+        ],
+        [
+          "0x0792",
+          "CALL 0x2349"
+        ],
+        [
+          "0x0795",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "2F49",
+      "end_exclusive": "2F77",
+      "sha256": "a231516ed1ba1ccdb12bc3330a99a09e30d7610fcb27b798b2b06ae759f283ed",
+      "instructions": [
+        [
+          "0x2F49",
+          "CALL 0x297e"
+        ],
+        [
+          "0x2F4C",
+          "CALL 0x4fce"
+        ],
+        [
+          "0x2F4F",
+          "LD HL,0x3800"
+        ],
+        [
+          "0x2F52",
+          "LD BC,0x380"
+        ],
+        [
+          "0x2F55",
+          "LD DE,0x80"
+        ],
+        [
+          "0x2F58",
+          "CALL 0x1d8a"
+        ],
+        [
+          "0x2F5B",
+          "CALL 0x798d"
+        ],
+        [
+          "0x2F5E",
+          "LD HL,0x388e"
+        ],
+        [
+          "0x2F61",
+          "LD BC,0xe12"
+        ],
+        [
+          "0x2F64",
+          "LD DE,0xba14"
+        ],
+        [
+          "0x2F67",
+          "CALL 0x2349"
+        ],
+        [
+          "0x2F6A",
+          "LD HL,0x3de8"
+        ],
+        [
+          "0x2F6D",
+          "LD BC,0x10a"
+        ],
+        [
+          "0x2F70",
+          "LD DE,0xbc0c"
+        ],
+        [
+          "0x2F73",
+          "CALL 0x2349"
+        ],
+        [
+          "0x2F76",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "798D",
+      "end_exclusive": "79CB",
+      "sha256": "2f580451334bcc336f16cc4beb664925f8d07cfa4105be8d8239df6f3a537e9d",
+      "instructions": [
+        [
+          "0x798D",
+          "DI"
+        ],
+        [
+          "0x798E",
+          "LD A,0x1b"
+        ],
+        [
+          "0x7990",
+          "CALL 0x1c6f"
+        ],
+        [
+          "0x7993",
+          "LD HL,0x1000"
+        ],
+        [
+          "0x7996",
+          "CALL 0x1d50"
+        ],
+        [
+          "0x7999",
+          "LD HL,0x9e00"
+        ],
+        [
+          "0x799C",
+          "XOR A"
+        ],
+        [
+          "0x799D",
+          "CALL 0x24c2"
+        ],
+        [
+          "0x79A0",
+          "LD A,9"
+        ],
+        [
+          "0x79A2",
+          "CALL 0x1c6f"
+        ],
+        [
+          "0x79A5",
+          "LD HL,0xbec0"
+        ],
+        [
+          "0x79A8",
+          "LD DE,0x200"
+        ],
+        [
+          "0x79AB",
+          "LD BC,0x80"
+        ],
+        [
+          "0x79AE",
+          "CALL 0x1d9c"
+        ],
+        [
+          "0x79B1",
+          "LD A,0x1b"
+        ],
+        [
+          "0x79B3",
+          "CALL 0x1c6f"
+        ],
+        [
+          "0x79B6",
+          "RET"
+        ],
+        [
+          "0x79B7",
+          "DI"
+        ],
+        [
+          "0x79B8",
+          "LD A,0x13"
+        ],
+        [
+          "0x79BA",
+          "CALL 0x1c6f"
+        ],
+        [
+          "0x79BD",
+          "LD HL,0x1800"
+        ],
+        [
+          "0x79C0",
+          "CALL 0x1d50"
+        ],
+        [
+          "0x79C3",
+          "LD HL,0x8000"
+        ],
+        [
+          "0x79C6",
+          "XOR A"
+        ],
+        [
+          "0x79C7",
+          "CALL 0x24c2"
+        ],
+        [
+          "0x79CA",
+          "RET"
+        ]
+      ]
+    },
+    {
+      "bank": 0,
+      "start": "4ADF",
+      "end_exclusive": "4B02",
+      "sha256": "52a6efeb86b11f8fa6c35b4773b1cf578c324c8d8632310446ca8602c1dc46fb",
+      "instructions": [
+        [
+          "0x4ADF",
+          "RES 3,(HL)"
+        ],
+        [
+          "0x4AE1",
+          "LD A,(0xd500)"
+        ],
+        [
+          "0x4AE4",
+          "DEC A"
+        ],
+        [
+          "0x4AE5",
+          "RET nz"
+        ],
+        [
+          "0x4AE6",
+          "LD A,4"
+        ],
+        [
+          "0x4AE8",
+          "LD (0xd532),A"
+        ],
+        [
+          "0x4AEB",
+          "LD HL,0x12c"
+        ],
+        [
+          "0x4AEE",
+          "LD A,(0xd297)"
+        ],
+        [
+          "0x4AF1",
+          "CP 8"
+        ],
+        [
+          "0x4AF3",
+          "JR nz,0x4af8"
+        ],
+        [
+          "0x4AF5",
+          "LD HL,0x1770"
+        ],
+        [
+          "0x4AF8",
+          "LD (0xd44c),HL"
+        ],
+        [
+          "0x4AFB",
+          "LD IX,0xd500"
+        ],
+        [
+          "0x4AFF",
+          "JP 0x4775"
+        ]
+      ]
+    }
+  ],
+  "stage_palettes": [
+    {
+      "zone": 0,
+      "act": 0,
+      "sprite_record": 6,
+      "palette_sha256": "c6715cef80884efccdc74a30c6c85023858169524ded2be963e16badb1f677e2"
+    },
+    {
+      "zone": 0,
+      "act": 1,
+      "sprite_record": 6,
+      "palette_sha256": "c6715cef80884efccdc74a30c6c85023858169524ded2be963e16badb1f677e2"
+    },
+    {
+      "zone": 0,
+      "act": 2,
+      "sprite_record": 6,
+      "palette_sha256": "c6715cef80884efccdc74a30c6c85023858169524ded2be963e16badb1f677e2"
+    },
+    {
+      "zone": 1,
+      "act": 0,
+      "sprite_record": 7,
+      "palette_sha256": "7b1cf823b46c85eb478eddbb9a36367970b7d813c152935a004219c6181ef4b8"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "sprite_record": 7,
+      "palette_sha256": "7b1cf823b46c85eb478eddbb9a36367970b7d813c152935a004219c6181ef4b8"
+    },
+    {
+      "zone": 1,
+      "act": 2,
+      "sprite_record": 7,
+      "palette_sha256": "7b1cf823b46c85eb478eddbb9a36367970b7d813c152935a004219c6181ef4b8"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "sprite_record": 8,
+      "palette_sha256": "c6fb1ef6001f6eed5bb39bfa51af1dd1245ab6ab2bedcf410951bd7c571bae02"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "sprite_record": 8,
+      "palette_sha256": "c6fb1ef6001f6eed5bb39bfa51af1dd1245ab6ab2bedcf410951bd7c571bae02"
+    },
+    {
+      "zone": 2,
+      "act": 2,
+      "sprite_record": 8,
+      "palette_sha256": "c6fb1ef6001f6eed5bb39bfa51af1dd1245ab6ab2bedcf410951bd7c571bae02"
+    },
+    {
+      "zone": 3,
+      "act": 0,
+      "sprite_record": 9,
+      "palette_sha256": "11c89b95cd4c01dfc85583c9cbc0c598f816908c07ef97ad2d80c5e67c1e519f"
+    },
+    {
+      "zone": 3,
+      "act": 1,
+      "sprite_record": 9,
+      "palette_sha256": "11c89b95cd4c01dfc85583c9cbc0c598f816908c07ef97ad2d80c5e67c1e519f"
+    },
+    {
+      "zone": 3,
+      "act": 2,
+      "sprite_record": 9,
+      "palette_sha256": "11c89b95cd4c01dfc85583c9cbc0c598f816908c07ef97ad2d80c5e67c1e519f"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "sprite_record": 10,
+      "palette_sha256": "1455970434767163f3fd070e379494ce1ac876ee5621dbb4b9d6acd298c771c5"
+    },
+    {
+      "zone": 4,
+      "act": 1,
+      "sprite_record": 10,
+      "palette_sha256": "1455970434767163f3fd070e379494ce1ac876ee5621dbb4b9d6acd298c771c5"
+    },
+    {
+      "zone": 4,
+      "act": 2,
+      "sprite_record": 10,
+      "palette_sha256": "1455970434767163f3fd070e379494ce1ac876ee5621dbb4b9d6acd298c771c5"
+    },
+    {
+      "zone": 5,
+      "act": 0,
+      "sprite_record": 11,
+      "palette_sha256": "7b1cf823b46c85eb478eddbb9a36367970b7d813c152935a004219c6181ef4b8"
+    },
+    {
+      "zone": 5,
+      "act": 1,
+      "sprite_record": 11,
+      "palette_sha256": "7b1cf823b46c85eb478eddbb9a36367970b7d813c152935a004219c6181ef4b8"
+    },
+    {
+      "zone": 5,
+      "act": 2,
+      "sprite_record": 11,
+      "palette_sha256": "7b1cf823b46c85eb478eddbb9a36367970b7d813c152935a004219c6181ef4b8"
+    }
+  ],
+  "frontend_streams": [
+    {
+      "role": "title",
+      "bank": 27,
+      "cpu": "9E00",
+      "rom_offset": 450048,
+      "decoded_tiles": 297,
+      "decoded_sha256": "bfeca0d144c1495b8a844f8bc84e8c18aa80760307d17f02f664c7230b07251c"
+    },
+    {
+      "role": "character_choice",
+      "bank": 19,
+      "cpu": "8000",
+      "rom_offset": 311296,
+      "decoded_tiles": 153,
+      "decoded_sha256": "239da9c31563a7d559846fd23dbd35299fcf220e368e971a715b1fc178d58cca"
+    }
+  ],
+  "title": {
+    "evidence": "BYTE-VERIFIED ASSEMBLY (landmarks)",
+    "region": {
+      "cpu": "0x0719",
+      "end_cpu_exclusive": "0x0774",
+      "rom": "0x00719",
+      "length": 91,
+      "sha256": "c4f09bb99071f0e342f0d3b59174f5e638aea03a50ac912c85a435f58876b16a"
+    },
+    "waits": [
+      {
+        "B": 24,
+        "label": "24 waits after fade slots D492/D494 requests"
+      },
+      {
+        "sound": "$BE -> $DE04",
+        "B": 12
+      },
+      {
+        "sound": "$99 -> $DE04",
+        "label": "title music"
+      },
+      {
+        "BC": 30,
+        "loop": "$07B8"
+      },
+      {
+        "BC": 1140,
+        "loop": "$079F",
+        "updates": 1140
+      }
+    ],
+    "overlay": "$0774 draws the PRESS START BUTTON text (D12F & $20 blink)"
+  },
+  "attract": {
+    "evidence": "DECODED DATA ($2C34: D2E3 := (D2E3+1) mod 3; table chosen by D12D; byte 0 & $0F zone, bit 7 -> character 2; byte 1 -> D2E4; word -> D2E5)",
+    "rows": [
+      {
+        "table": "D12D_zero",
+        "row": 0,
+        "zone": 2,
+        "character": 1,
+        "frames_byte_D2E4": 31,
+        "input_pointer_D2E5": "0x9400"
+      },
+      {
+        "table": "D12D_zero",
+        "row": 1,
+        "zone": 0,
+        "character": 1,
+        "frames_byte_D2E4": 31,
+        "input_pointer_D2E5": "0x8000"
+      },
+      {
+        "table": "D12D_zero",
+        "row": 2,
+        "zone": 1,
+        "character": 2,
+        "frames_byte_D2E4": 31,
+        "input_pointer_D2E5": "0x8A00"
+      },
+      {
+        "table": "D12D_nonzero",
+        "row": 0,
+        "zone": 2,
+        "character": 1,
+        "frames_byte_D2E4": 31,
+        "input_pointer_D2E5": "0xB200"
+      },
+      {
+        "table": "D12D_nonzero",
+        "row": 1,
+        "zone": 0,
+        "character": 1,
+        "frames_byte_D2E4": 31,
+        "input_pointer_D2E5": "0x9E00"
+      },
+      {
+        "table": "D12D_nonzero",
+        "row": 2,
+        "zone": 1,
+        "character": 2,
+        "frames_byte_D2E4": 31,
+        "input_pointer_D2E5": "0xA800"
+      }
+    ],
+    "demo_order_after_boot": "D2E3 starts 0 so the first attract demo is row 1",
+    "demo_length_updates": 1080
+  },
+  "limitations": [
+    "Static table entries do not prove natural reachability.",
+    "Script FF08 alternatives and selector-generated frames require callback interpretation.",
+    "All 89 mappings decoded; not all are reachable gameplay poses.",
+    "Palette 7 is Continue; palette 41 is opening. Stage palette variation needs separate binding."
+  ]
+}

@@ -1,13 +1,13 @@
 # Sonic Chaos — MASTER_ROADMAP
 
-**Planning edition 0.1 | 22 October 2026 | Manager-san #5 | proposed, not implementation authority**
+**Planning edition 0.2 | 22 October 2026 | M0/M1 Research reconciliation | proposed, not implementation authority**
 
 ## Authority and evidence rules
 
 - **Frozen accepted POC:** [`poc/q3-p1-world-presentation@7476affc6ed7626dabf69b446cdab0c9c3d7492e`](https://github.com/jamesfarnhamlong/SonicChaos_POC/commit/7476affc6ed7626dabf69b446cdab0c9c3d7492e). Direct child of Q2-P1 `d2f0612`; Chief accepted Package A's four categories and Package B's two corrections. FINAL private archive reported: `SonicChaos_Q3P1_20261022_FINAL_PRIVATE.zip`, SHA-256 `b409be469f27e8b6270c510281dc601f04b471c8d3432f47ebe639e10e43c859` (not downloaded in this planning review).
 - **ROM source of truth:** Sonic Chaos (SMS, Europe v1.2), private hash `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607`; use Research's recovered assembly/cache and authentic assets, not invented behaviour. Do not publish ROM or private extracted pixels/audio.
-- **Source hierarchy:** latest Windows acceptance and Q3 closure > current Manager AGENTS candidate > scoped committed POC/Research documentation > older AGENTS archive. Historical G0–G10 labels are useful planning references, *not current task authorisation*.
-- **Reconciliation limitation:** this first roadmap is based on the supplied `AGENTS_ARCHIVE_20261020.md`, `AGENTS_Manager5_20261022_Q3P1_FINAL_CLOSED_REVIEW_NEXT.md`, Q1 fidelity audit, audio preflight, and live GitHub Q3/G2/AUDIO-A0/OPENING closures. The user's newly installed Windows-root AGENTS and every historical **local** release/archive were not directly opened here. Supply the current root AGENTS and any missing archive manifests to the next agent; cloud agents cannot read the Windows drive by path. Confirm their latest content and deduplicate any additional outstanding items before treating this as exhaustive.
+- **Source hierarchy:** Manager controls authorisation; ROM/data establishes original behaviour; scoped Windows acceptance establishes accepted playable scope. None substitutes for the other. Closures supersede older pending implementation claims. Historical G0–G10 labels remain planning references, *not task authorisation*.
+- **Reconciliation scope:** M0/M1 read the mounted Windows root AGENTS (SHA-256 `e124ad0709a8d54315b961da1ffeeaa11dc99c1899492673f7352fcf248d8fff9`), historical AGENTS archive, accepted closures and Q3 FINAL inventory. Root differs from both earlier recorded hashes and remains untouched. Inventory receipt claims were read; ZIP CRC/hash/payload were not independently rerun. Historical private archives are not exhaustively reconciled. See [M0 report](../docs/m0-reconciliation-report.md) for limits. Cloud successors need supplied private inputs; local agents first check actual access.
 
 ## A. Current accepted state — DO NOT RECOMMISSION
 
@@ -29,6 +29,8 @@ Reconcile installed root AGENTS, historic `ROADMAP/FULLGAME_0/CROSSZONE/SHARED_M
 
 ### 1. Tails technical and asset foundation — next grouped Research preflight
 
+M1 static evidence is now in [the contract](../docs/m1-tails-frontend-contract.md) and [asset census](../data/m1/tails-asset-census.json): 89 mapping entries, 54 state scripts, 18 palette bindings, 11 authenticated POC opening/Continue resources and 29 inherited Tails-named resources. Flight enters via look-up plus fresh action, is blocked underwater and uses state `$18`; inherited swim/super art does not establish SMS features. Remaining gates: character callback/equipment controls, branch/selector closure and private deterministic import. Static decoding is not a new ROM run or Windows acceptance.
+
 - Audit *original SMS Tails* player states, controls and movement (including actual flight/swim behaviour only after recovered ROM evidence), attack, collisions, speed/power-up differences, animations/frame timing, zone start/end rules, lives/continues/score thresholds and ending path. Reuse original Research cache; explicitly separate established POC shared mechanics from character-specific missing behaviour.
 - Inventory, decode and hash authentic Tails player frames and mappings; account for palettes, origins, frame scripts, underwater, hurt/death, boss/transport poses and opening/ending uses. Replace **inherited/temp GameMaker sprite references** only when the corresponding authentic frame contracts exist.
 - Protect previously accepted Sonic gameplay. No playable-Tails claim from inherited `SCR_player_sprites_tails` alone, and no fabricated frames. Provide one integrated implementable asset/movement contract rather than commissioning per-sprite fixes.
@@ -41,6 +43,8 @@ Reconcile installed root AGENTS, historic `ROADMAP/FULLGAME_0/CROSSZONE/SHARED_M
 - **Dependency gate:** unlock Tails in the real title flow only after his gameplay route is accepted. If scope proves too large, stage one Tails-implementation candidate and one integrated front-end candidate; never ship a dead Tails option.
 
 ### 3. Authentic music and effects — ORIGINAL-GAME REQUIREMENT, not QoL
+
+M1 readiness is [documented](../docs/m1-audio-readiness.md), reusing AUDIO-1/1B topic checkpoints without promotion. Recommended hybrid stems need measured seams and note-onset recovery; command recurrence does not imply PCM continuity. Title `$0719` requests `$99`; separate character choice requests `$82`, despite the historic preview filename. Cover `$99` in the future pilot and decide renderer/clock/fade fidelity before generation/wiring.
 
 - **Audio-preparation preflight can run in parallel with Tails asset research:** reconcile AUDIO-0 catalogue, Q2-era local `audio1-poc-preflight.md` (supplied source in this planning workspace), Research AUDIO-1B renderer validation, 5 preview WAV provenance, original PSG music/SFX arbitration, interrupt/restore, fades, intro/loop points, driver ticks versus accepted 60-update GameMaker runtime, and private-asset distribution/restoration. Nothing about five preview files proves production-ready 70-ID coverage.
 - Choose an explicitly approved approach: verified rendered PCM with documented limitations, stems/channels with arbitration, or another validated player. Do **not** silently substitute approximated tracks or replace original timing to make a loop fit.
@@ -65,4 +69,4 @@ Enhanced modes, additional visual/audio upgrades, alternate UI, other playable c
 
 **Original-game feature-complete candidate** requires a Chief-accepted Sonic campaign (already achieved), an accepted **playable Tails campaign + proper original title/character selection**, original audio implemented to an explicitly agreed fidelity tier, major source-backed original presentation (including attract mode if verified) and no unresolved critical progression/contact blockers. Remaining canonical oddities or low-priority presentation deviations may be documented/parked. **Production-ready PC release** has a further QoL, debug-removal, copyright/private-asset distribution and packaging gate.
 
-**Not authorised by this file:** runtime implementation, Q4 launch, ROM distribution, updating remote AGENTS or GitHub branches. See `MILESTONE_PLAN.md` for one proposed grouped assignment sequence and `FIDELITY_REGISTER.md` for deferred issues.
+**Not authorised by this file:** runtime implementation, Q4 launch, ROM distribution, root AGENTS changes or main promotion. The current Manager assignment separately authorises the Research topic checkpoint commit/push only. See `MILESTONE_PLAN.md` for proposed groups and `FIDELITY_REGISTER.md` for deferred issues. The M0 report maps G0–G10, superseded gaps and remaining archive limits; historical bug records remain intact.

@@ -1,6 +1,6 @@
 # Sonic Chaos — FIDELITY_REGISTER
 
-**Planning edition 0.1 | 22 October 2026 | Manager-san #5 | review ledger, not a claim of exhaustive ROM verification**
+**Planning edition 0.2 | 22 October 2026 | M0/M1 Research reconciliation | review ledger, not exhaustive ROM verification**
 
 ## Status convention
 
@@ -21,6 +21,10 @@ When source and user experience disagree, record **both**, not a synthetic unive
 | `C2R3-SPIKE-WIDTH-PHASE` | **OPEN-SOURCE / low–medium** | A moving spike was raised in 256 source host but hidden at 348 due to object activation phase; canonical lifecycle implications unproven. Do not unify width rules without evidence. |
 | `THZ1-NATURAL-MAPPED-SPRING` | **UNVERIFIED / low** | Research Q2 C2-R3 reached a natural mapped patrol stomp but never completed a naturally reached mapped `$26` spring launch in its eight routes. This is a coverage gap, not a proven defect. |
 | `SS3-SS5-JUNCTION-TIMING` | **OPEN-OBS / low** | Chief found timing difficult, later reported SS routes felt fine; potential wireless controller/GameMaker latency is a hypothesis only. Original routing uses **held** direction + position/first-decision latch; retain the canonical window unless a new paired mismatch is proven. |
+| `HIST-HURT-LANDING-VY` | **OPEN-SOURCE / low, M6** | Historical Research `c4c389c` / `docs/player-hurt-ring-scatter-audit.md` and local deferred reference identify extra hurt-landing vy=0. Current Q3 `SCR_cc_hurt_tick` still contains that write. This is not the cause of canonical stationary ring recollection. Require narrow paired landing trace and focused Windows hurt/recovery before correction. |
+| `HIST-SEZ-SHOES-CONTACT` | **OPEN-OBS / medium, M6** | Local deferred reference: Spring Shoes fall/contact lock and variable monitor breaks. No exact current-route reproduction or independent closure found; zero steering in state14 is canonical. Group with rebound/contact evidence, not a SEZ-only physics patch. |
+| `HIST-SLOPE-FALL-PRESENTATION` | **OPEN-OBS / low–medium, M6** | Historical downhill/ball/fall visual instability and possible alternate isometric-platform fall. U5-A source matches scoped weak-spring tumble; VISUAL-P1 accepted art and unchanged gameplay do not reproduce every old route. Need exact state/pose/input capture, then focused F5 if changed. |
+| `HIST-TERRAIN-RING-FEEL` | **OPEN-OBS / low, parked** | Deferred reference says narrow/floaty downhill pickup felt similar in emulator. Preserve canonical probe; no proven defect or change authorised. |
 
 ## 2. Bosses, camera and presentation
 
@@ -36,6 +40,9 @@ When source and user experience disagree, record **both**, not a synthetic unive
 | `THZ-LOOP-ANCHOR` | **OPEN-SOURCE / low** | Historical entry ±1px and occasional one-tick sprite publication lag, despite accepted 42-frame original loop artwork. Park unless visibly impactful. |
 | `CARD-WIDE-FRAMING` | **CLOSED-348** | Q2 native-size title/results background extension Chief-approved; preserve original text/palette/timing. |
 | `PRE-TITLE-CINEMATIC` | **CLOSED-348, SILENT** | Authentic opening sequence accepted; missing accompanying music is audio FEATURE-GAP, not a cinematic regression. |
+| `HIST-AQZ-MONITOR-PUFF` | **OPEN-OBS / low, M6** | Local `docs/DEFERRED_ISSUES_REFERENCE.md` and ROADMAP VIS-01 record black break puff against canonical blue backdrop. This reconciliation did not establish a current reproduction or exact superseding effect-palette acceptance. Trace current effect owner/palette before changes; never revert the backdrop to conceal it. |
+| `HIST-ENEMY-LIFECYCLE` | **OPEN-OBS / low, M6** | Same deferred reference reports abrupt spawn/despawn on scrolling/return. Preserve canonical sleep bands and type27 triggered keepalive; require exact enemy/placement/camera route, no global activation widening. |
+| `XZ-022A-THZ-FOREGROUND` | **CLOSED-348 / historical scope** | Root archived CROSSZONE-FG1/INTEGRATION-1: accepted THZ priority pass and ring-box redraw, combined6/6 Windows including SS5 fixture return. Do not recommission or equate unidentified SLZ1 with this closed issue. XZ-022B withdrawn, not a GPZ defect. |
 
 ## 3. Objects, effects, rewards and audio
 
@@ -47,6 +54,12 @@ When source and user experience disagree, record **both**, not a synthetic unive
 | `IN-GAME-AUDIO` | **FEATURE-GAP / high for completion** | 70 classified sound request IDs and five AUDIO-A0 preview WAVs exist, but they are **Sound Test previews**, not authentic gameplay music loops/arbitration/fades. Plan audio evidence/dispatcher/pilot/expanded library separately; no imaginary audio parity. [Audio closure](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/7476affc6ed7626dabf69b446cdab0c9c3d7492e/docs/audio-a0-closure.md). |
 | `TAILS-AUTHENTIC-PLAYER` | **FEATURE-GAP / high for completion** | Inherited GameMaker sprites remain in `SCR_player_sprites_tails`; canonical SMS frames/state transitions and playable campaign not integrated/accepted. Research authentic assets and mechanics before implementation. |
 | `TITLE-CHAR-SELECT-ATTRACT` | **FEATURE-GAP / high for completion** | Inherited `SPR_title` draw and a New Game path forcing Sonic; original title and character-select presentation, Tails entry and attract demos need ROM-backed integration. Existing pre-title cinematic/Level Select are complete in their own scopes. |
+| `M1-TAILS-FLIGHT` | **SOURCE-ONLY / M2 gate** | New static `$3713/$473C/$3EFD` decode: look-up plus fresh action, water blocks entry, state18 timer300, direct held-direction motion; no swim feature justified. Complete callback/equipment controls before runtime edits. [Contract](../docs/m1-tails-frontend-contract.md). Chief flight/water/contact/timeout gate remains unexecuted. |
+| `M1-TAILS-ASSETS` | **PARTIAL / M2 gate** | Census decodes89 mappings/54 scripts and18 palette bindings;11 authenticated imported opening/Continue resources,29 inherited Tails-named resources. No new PNGs. Private exporter, branch/selector closure, palette binding and resource restoration required; no playable claim. [Census](../data/m1/tails-asset-census.json). |
+| `M1-FRONTEND-CHOICE` | **SOURCE-ONLY / M3 gate** | Separate SMS screen verified at3065/3522: Sonic default, fresh Left/Right clamped0/1, Button2 confirm. Public integration requires accepted Tails and full title/choice picture/timing proof. No dead option. |
+| `M1-TITLE-AUDIO-ID` | **SOURCE-ONLY / M4 prerequisite** | Title0756 requests99; choice30BC requests82. Historic82 preview name unchanged; add authenticated99 to pilot, retain unknown friendly-name status. No live audio correction made. |
+| `M1-ATTRACT-RECORDINGS` | **PARTIAL / M3 or M6** | Tables2C72/2C7E point to bank31 recordings; cached order THZ1 Sonic→GPZ1 Tails→SEZ1 Sonic. Input decoder/abort/reset isolation still requires proof before public integration. |
+| `HIST-DYNAMIC-POOL-OCCUPANCY` | **PARTIAL / M6 evidence prerequisite** | Historical SEZ20/23 occupancy can reduce crumble allocations; VISUAL-P2/Q3 implement shared occupancy for instantiated occupants, not universal ROM scheduler parity. Need current owner/slot comparison before claiming all-pool closure or changing counts. |
 
 ## 4. Inherited automated failure ledger — NEVER call these green
 
@@ -63,4 +76,4 @@ When source and user experience disagree, record **both**, not a synthetic unive
 - One group per causal family: **Tails movement + authentic animation**, **title+character selection**, **sound dispatch + lifecycle**, **remaining original presentation**, **contact/physics with a reproduced trace**, **other object scheduler + fragments**. Do not use this register as authorisation for single-bug ZIPs.
 - Record both human test and source comparator with exact width, route, date and SHA. 256×192 is the **ROM/source-model** target, **not** a mandatory Windows F5 mode. Windows test baseline is 348×196.
 - Remove/close an OPEN record only after concrete evidence. For original quirks and constrained widescreen rules, prefer `KNOWN-ADAPTER` or documented canon over speculative “fix”.
-- This ledger reconciles accessible sources only; install/refresh from the current Windows root AGENTS, Research/POC archives and any private release manifest **before declaring the register exhaustive**.
+- M0 read the mounted root AGENTS and Q3 FINAL inventory; older archive coverage remains incomplete. The changed root hash is recorded without installing a candidate. See [M0 reconciliation](../docs/m0-reconciliation-report.md) for G0–G10, superseded opening/Continue gaps and exact acceptance authorities. This register is not exhaustive. Each open row retains its next evidence prerequisite; M2 handles character work, M3 frontend, M4/M5 audio, and M6 only separately selected fidelity fixes.
