@@ -1,0 +1,1190 @@
+{
+  "format": "q1-qa-plan-v1",
+  "research_parent": "715ab1b1aa22f723690d042fae2c2117e9a16b6f",
+  "poc": "4eb684911c5785667181b9d3f940b1dc820e66d1",
+  "poc_branch": "poc/c2-e1-contact-extent",
+  "target": {
+    "width": 348,
+    "height": 196,
+    "runner": "GameMaker F5"
+  },
+  "plan_only": true,
+  "windows_executed": false,
+  "generation_note": "Initialises a blank plan. Do not regenerate over completed QA records; preserve filled run evidence separately.",
+  "source_constraints": [
+    {
+      "id": "RAM-ONLY-RUN",
+      "evidence": "save_guard",
+      "effect": "Keep the same live process paused between sessions; no natural save/resume after closure"
+    },
+    {
+      "id": "SS-ACT3-CONTEXT",
+      "evidence": "ss_context/ss_return",
+      "effect": "Act3 has no next-room context; natural reachability unverified, forced entry excluded"
+    },
+    {
+      "id": "SS-DEVELOPER-ORIGIN",
+      "evidence": "select",
+      "effect": "Establish an explicit Act1 origin for predictable optional direct-stage returns"
+    }
+  ],
+  "status_values": [
+    "PASS",
+    "FAIL",
+    "NOT TESTED",
+    "BLOCKED"
+  ],
+  "status_rules": {
+    "PASS": "Observed specified behavior, with route/run/evidence recorded",
+    "FAIL": "Observed specified behavior fail; attach reproduction and expected/actual",
+    "NOT TESTED": "Not attempted or not sufficiently observed",
+    "BLOCKED": "Cannot attempt/continue; record dependency or obstacle; not an automatic game defect"
+  },
+  "historical_acceptance_is_q1_pass": false,
+  "acts": [
+    {
+      "id": "THZ1",
+      "index": 1,
+      "name": "Turquoise Hill 1",
+      "room": "ROM_chaos_thz1",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Turquoise Hill 2",
+      "special_detour_return": "Turquoise Hill 2",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "THZ2",
+      "index": 2,
+      "name": "Turquoise Hill 2",
+      "room": "ROM_chaos_thz2",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Turquoise Hill 3",
+      "special_detour_return": "Turquoise Hill 3",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "THZ3",
+      "index": 3,
+      "name": "Turquoise Hill 3",
+      "room": "ROM_chaos_thz3",
+      "normal_exit": "boss defeat -> run-off -> results/title",
+      "expected_destination": "Gigalopolis 1",
+      "special_detour_return": null,
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "thz_boss"
+      ]
+    },
+    {
+      "id": "GPZ1",
+      "index": 4,
+      "name": "Gigalopolis 1",
+      "room": "ROM_chaos_gpz1",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Gigalopolis 2",
+      "special_detour_return": "Gigalopolis 2",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "GPZ2",
+      "index": 5,
+      "name": "Gigalopolis 2",
+      "room": "ROM_chaos_gpz2",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Gigalopolis 3",
+      "special_detour_return": "Gigalopolis 3",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "GPZ3",
+      "index": 6,
+      "name": "Gigalopolis 3",
+      "room": "ROM_chaos_gpz3",
+      "normal_exit": "boss defeat -> run-off -> results/title",
+      "expected_destination": "Sleeping Egg 1",
+      "special_detour_return": null,
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "gpz_boss"
+      ]
+    },
+    {
+      "id": "SEZ1",
+      "index": 7,
+      "name": "Sleeping Egg 1",
+      "room": "ROM_chaos_sez1",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Sleeping Egg 2",
+      "special_detour_return": "Sleeping Egg 2",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "SEZ2",
+      "index": 8,
+      "name": "Sleeping Egg 2",
+      "room": "ROM_chaos_sez2",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Sleeping Egg 3",
+      "special_detour_return": "Sleeping Egg 3",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "SEZ3",
+      "index": 9,
+      "name": "Sleeping Egg 3",
+      "room": "ROM_chaos_sez3",
+      "normal_exit": "boss defeat -> run-off -> results/title",
+      "expected_destination": "Mecha Green Hill 1",
+      "special_detour_return": null,
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "sez_boss"
+      ]
+    },
+    {
+      "id": "MGHZ1",
+      "index": 10,
+      "name": "Mecha Green Hill 1",
+      "room": "ROM_chaos_mghz1",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Mecha Green Hill 2",
+      "special_detour_return": "Mecha Green Hill 2",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "MGHZ2",
+      "index": 11,
+      "name": "Mecha Green Hill 2",
+      "room": "ROM_chaos_mghz2",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Mecha Green Hill 3",
+      "special_detour_return": "Mecha Green Hill 3",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "MGHZ3",
+      "index": 12,
+      "name": "Mecha Green Hill 3",
+      "room": "ROM_chaos_mghz3",
+      "normal_exit": "boss defeat -> run-off -> results/title",
+      "expected_destination": "Aqua Planet 1",
+      "special_detour_return": null,
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "mghz_boss"
+      ]
+    },
+    {
+      "id": "AQZ1",
+      "index": 13,
+      "name": "Aqua Planet 1",
+      "room": "ROM_chaos_aqz1",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Aqua Planet 2",
+      "special_detour_return": "Aqua Planet 2",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "AQZ2",
+      "index": 14,
+      "name": "Aqua Planet 2",
+      "room": "ROM_chaos_aqz2",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Aqua Planet 3",
+      "special_detour_return": "Aqua Planet 3",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "AQZ3",
+      "index": 15,
+      "name": "Aqua Planet 3",
+      "room": "ROM_chaos_aqz3",
+      "normal_exit": "boss defeat -> run-off -> results/title",
+      "expected_destination": "Electric Egg 1",
+      "special_detour_return": null,
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "aqz_boss"
+      ]
+    },
+    {
+      "id": "EEZ1",
+      "index": 16,
+      "name": "Electric Egg 1",
+      "room": "ROM_chaos_eez1",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Electric Egg 2",
+      "special_detour_return": "Electric Egg 2",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "EEZ2",
+      "index": 17,
+      "name": "Electric Egg 2",
+      "room": "ROM_chaos_eez2",
+      "normal_exit": "goal sign -> run-off -> results/title",
+      "expected_destination": "Electric Egg 3",
+      "special_detour_return": "Electric Egg 3",
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "act_table",
+        "act_complete",
+        "results_begin",
+        "results_next",
+        "goal_child"
+      ]
+    },
+    {
+      "id": "EEZ3",
+      "index": 18,
+      "name": "Electric Egg 3",
+      "room": "ROM_chaos_eez3",
+      "normal_exit": "three encounters -> terminal Sonic ending -> title",
+      "expected_destination": "Sonic ending, then title",
+      "special_detour_return": null,
+      "individual_act": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "normal_transition": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "continuous_visit": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "exit_observed": null,
+      "source_refs": [
+        "eez_terminal",
+        "ending_consumer",
+        "ending",
+        "ending_return"
+      ]
+    }
+  ],
+  "smoke": [
+    {
+      "id": "Q1-S00",
+      "session": "A",
+      "title": "Set WIDE and check title/New Game entry",
+      "route": "Title -> Options -> screen size WIDE; return -> New Game; see Turquoise Hill 1. Return to title to begin the shortcut smoke checks.",
+      "acts": [],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "EEZ3-FULLCHAIN-F5",
+      "session": "A",
+      "title": "Electric Egg 3 full natural chain",
+      "route": "Level Select: CHAOS EMERALDS 0, Electric Egg ACT-3. Play from its normal start: first encounter -> travel/camera handoff -> second -> travel/camera handoff -> final encounter -> defeat -> partial ending -> title. No phase shortcuts.",
+      "acts": [
+        "EEZ3"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S02",
+      "session": "B",
+      "title": "Turquoise Hill: sign and ordinary handoff",
+      "route": "CHAOS EMERALDS 5 for bounded smoke only. Turquoise Hill ACT-1: normal movement/slope, one available spring or Badnik contact, goal sign and results -> Turquoise Hill 2.",
+      "acts": [
+        "THZ1"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S03",
+      "session": "B",
+      "title": "Turquoise Hill boss -> Gigalopolis",
+      "route": "Turquoise Hill ACT-3: approach/fight/defeat; partial-edge entry, release/run-off/results -> Gigalopolis 1; confirm arrival control.",
+      "acts": [
+        "THZ3"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S04",
+      "session": "B",
+      "title": "Gigalopolis boss -> Sleeping Egg",
+      "route": "Gigalopolis ACT-3: approach/backtrack briefly before lock; defeat, release and results -> Sleeping Egg 1.",
+      "acts": [
+        "GPZ3"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S05",
+      "session": "C",
+      "title": "Sleeping Egg: crumble/support and sign",
+      "route": "Sleeping Egg ACT-1: an encountered crumble ledge/support release, goal/results -> Sleeping Egg 2. If the representative interaction is not reached, leave that observation NOT TESTED.",
+      "acts": [
+        "SEZ1"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S06",
+      "session": "C",
+      "title": "Sleeping Egg boss -> Mecha Green Hill",
+      "route": "Sleeping Egg ACT-3: entry/fight/defeat; follow/run-off/results -> Mecha Green Hill 1. Sample an available platform or ceiling/spike interaction there; note route.",
+      "acts": [
+        "SEZ3"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S07",
+      "session": "C",
+      "title": "Mecha Green Hill boss -> Aqua Planet",
+      "route": "Mecha Green Hill ACT-3: vertical camera takeover/fight/defeat/release/results -> Aqua Planet 1. Log known pit/tree reveal separately.",
+      "acts": [
+        "MGHZ3"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S08",
+      "session": "D",
+      "title": "Aqua Planet: water and ordinary handoff",
+      "route": "Aqua Planet ACT-1: cross water, jump/swim and land on a reachable platform; goal/results -> Aqua Planet 2. Note any unreached representative observation separately.",
+      "acts": [
+        "AQZ1"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    },
+    {
+      "id": "Q1-S09",
+      "session": "D",
+      "title": "Aqua Planet boss -> Electric Egg gameplay",
+      "route": "Aqua Planet ACT-3: approach lock/fight/defeat, victory scrolling/results -> Electric Egg 1. Observe carrier/platform contact and detach if reached; then goal/results -> Electric Egg 2.",
+      "acts": [
+        "AQZ3",
+        "EEZ1"
+      ],
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "observations": []
+    }
+  ],
+  "issues": [
+    {
+      "id": "EEZ3-FULLCHAIN-F5",
+      "priority": 0,
+      "state": "OPEN",
+      "description": "Required Q1 Windows chain; source tests cannot close it",
+      "q1_observation": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "auto_fails_unrelated_tests": false,
+      "correction_authorised": false
+    },
+    {
+      "id": "PRES-ENTRY-MGHZ3",
+      "priority": 3,
+      "state": "OPEN",
+      "description": "Known pit/tree/double-spike reveal discrepancy; document, no correction",
+      "q1_observation": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "auto_fails_unrelated_tests": false,
+      "correction_authorised": false
+    },
+    {
+      "id": "HIST-SPRING-BADNIK-OSCILLATION",
+      "priority": 2,
+      "state": "OPEN",
+      "description": "Historical visible oscillation remains unresolved; C2-R2 tiny canonical cycle is separate",
+      "q1_observation": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "auto_fails_unrelated_tests": false,
+      "correction_authorised": false
+    },
+    {
+      "id": "HIST-SLOPE-STICKING",
+      "priority": 2,
+      "state": "OPEN",
+      "description": "Historical observation remains unresolved",
+      "q1_observation": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "auto_fails_unrelated_tests": false,
+      "correction_authorised": false
+    },
+    {
+      "id": "HIST-DIAGONAL-STATIC-SPIKE",
+      "priority": 2,
+      "state": "OPEN",
+      "description": "Historical unusual contact observation remains unresolved",
+      "q1_observation": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "auto_fails_unrelated_tests": false,
+      "correction_authorised": false
+    },
+    {
+      "id": "STATE20-TIMING-LAG",
+      "priority": 3,
+      "state": "OPEN",
+      "description": "Approximately seven-update ROM/POC progression lag; no per-frame Windows timing task",
+      "q1_observation": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "auto_fails_unrelated_tests": false,
+      "correction_authorised": false
+    },
+    {
+      "id": "C2R3-SPIKE-WIDTH-PHASE",
+      "priority": 2,
+      "state": "OPEN",
+      "description": "Source width activation/phase difference; canonical lifecycle unresolved",
+      "q1_observation": {
+        "status": "NOT TESTED",
+        "run_id": null,
+        "evidence": null,
+        "notes": ""
+      },
+      "auto_fails_unrelated_tests": false,
+      "correction_authorised": false
+    }
+  ],
+  "continuous_run": {
+    "status": "NOT TESTED",
+    "run_id": null,
+    "evidence": null,
+    "notes": "Same live run may be paused. Natural deaths/continues recorded. Level Select, debug/restart keys, title-return/New Game or process closure end uninterrupted qualification. Special detours must be logged; do not mark skipped sign routes tested.",
+    "origin": "TITLE_NEW_GAME",
+    "shortcut_used": false,
+    "closed_and_reloaded": false
+  },
+  "optional_specials": [
+    {
+      "id": "SS1",
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "origin": null,
+      "return_room": null
+    },
+    {
+      "id": "SS2",
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "origin": null,
+      "return_room": null
+    },
+    {
+      "id": "SS3",
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "origin": null,
+      "return_room": null
+    },
+    {
+      "id": "SS4",
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "origin": null,
+      "return_room": null
+    },
+    {
+      "id": "SS5",
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": "",
+      "origin": null,
+      "return_room": null
+    }
+  ],
+  "optional_endings": [
+    {
+      "id": "SONIC-PARTIAL",
+      "precondition": "Fewer than six completion bits at terminal handoff",
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": ""
+    },
+    {
+      "id": "SONIC-FULL",
+      "precondition": "Developer five-bit preset or five natural SS completions, then collect final EEZ Emerald to reach six bits",
+      "status": "NOT TESTED",
+      "run_id": null,
+      "evidence": null,
+      "notes": ""
+    }
+  ],
+  "sources": {
+    "act_table": {
+      "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+      "line": 415,
+      "sha256": "df49c841e7a011fd71baaf48ca451cfe446fb9fdc7dc627e481ec7d58028766c",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_level/SCR_chaos_level.gml#L415"
+    },
+    "new_game": {
+      "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+      "line": 568,
+      "sha256": "df49c841e7a011fd71baaf48ca451cfe446fb9fdc7dc627e481ec7d58028766c",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_level/SCR_chaos_level.gml#L568"
+    },
+    "goal": {
+      "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+      "line": 498,
+      "sha256": "df49c841e7a011fd71baaf48ca451cfe446fb9fdc7dc627e481ec7d58028766c",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_level/SCR_chaos_level.gml#L498"
+    },
+    "act_complete": {
+      "file": "scripts/SCR_chaos_level/SCR_chaos_level.gml",
+      "line": 476,
+      "sha256": "df49c841e7a011fd71baaf48ca451cfe446fb9fdc7dc627e481ec7d58028766c",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_level/SCR_chaos_level.gml#L476"
+    },
+    "title_new": {
+      "file": "objects/OBJ_menu_title_options/Alarm_1.gml",
+      "line": 2,
+      "sha256": "e759801bed4a857b69e024274695a6de156dcdfd9efe5a0d4d023e99d49c08ef",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/objects/OBJ_menu_title_options/Alarm_1.gml#L2"
+    },
+    "title_select": {
+      "file": "objects/OBJ_menu_title_options/Alarm_2.gml",
+      "line": 2,
+      "sha256": "59996781e82413cf7cd1118cfa92fd19b68ddce066a8dfde9b7a794d059d7a03",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/objects/OBJ_menu_title_options/Alarm_2.gml#L2"
+    },
+    "wide": {
+      "file": "scripts/SCR_screen/SCR_screen.gml",
+      "line": 61,
+      "sha256": "4f981877457a7288bec2bd18253aaaa6ed83b9512c6b22b70c56d2069be10d0a",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_screen/SCR_screen.gml#L61"
+    },
+    "options": {
+      "file": "objects/OBJ_menu_options/Step_0.gml",
+      "line": 64,
+      "sha256": "86e8804c960f8f4b142a7df899c58955de6fed1a3fd137a1e539445ec84bc2c6",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/objects/OBJ_menu_options/Step_0.gml#L64"
+    },
+    "pause": {
+      "file": "objects/OBJ_virtual_controller/Step_0.gml",
+      "line": 74,
+      "sha256": "989f9702c2806b10d8f80c0f54b4ae225493af96f3ca06e61b376c7a76ad98bd",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/objects/OBJ_virtual_controller/Step_0.gml#L74"
+    },
+    "pause_menu": {
+      "file": "objects/OBJ_pause/Step_0.gml",
+      "line": 52,
+      "sha256": "d7482aa967a2b4fa163bfa728ce39094d918ca8e4ba76941a2de4c91944f4afe",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/objects/OBJ_pause/Step_0.gml#L52"
+    },
+    "select": {
+      "file": "scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml",
+      "line": 61,
+      "sha256": "905d3d643e631c7f11f18fbf00345e35636328fa545c6e492bd560217cd472f0",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml#L61"
+    },
+    "select_entries": {
+      "file": "scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml",
+      "line": 2,
+      "sha256": "905d3d643e631c7f11f18fbf00345e35636328fa545c6e492bd560217cd472f0",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml#L2"
+    },
+    "emerald_preset": {
+      "file": "scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml",
+      "line": 89,
+      "sha256": "905d3d643e631c7f11f18fbf00345e35636328fa545c6e492bd560217cd472f0",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_debug_select/SCR_chaos_debug_select.gml#L89"
+    },
+    "results_begin": {
+      "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+      "line": 43,
+      "sha256": "e23f3e3e9479c450c6bad2313d28f9ec518d587e14a2ac0425837dca91eff526",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_results/SCR_chaos_results.gml#L43"
+    },
+    "results_next": {
+      "file": "scripts/SCR_chaos_results/SCR_chaos_results.gml",
+      "line": 207,
+      "sha256": "e23f3e3e9479c450c6bad2313d28f9ec518d587e14a2ac0425837dca91eff526",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_results/SCR_chaos_results.gml#L207"
+    },
+    "goal_child": {
+      "file": "objects/OBJ_chaos_object_19/Step_0.gml",
+      "line": 10,
+      "sha256": "cebae2fa580e3cb2a0541a8408cb98634d587d1b4a6b9b6ef50485cc7a30f85c",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/objects/OBJ_chaos_object_19/Step_0.gml#L10"
+    },
+    "thz_boss": {
+      "file": "scripts/SCR_chaos_boss/SCR_chaos_boss.gml",
+      "line": 125,
+      "sha256": "ce23ea6945b4a8b2439f73126442dcf209b5d0eafda2947da77f14f3c1eb2654",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_boss/SCR_chaos_boss.gml#L125"
+    },
+    "gpz_boss": {
+      "file": "scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml",
+      "line": 188,
+      "sha256": "a697cf8cbae7c7ac31683705d3df7a3a8a81cc97cf3cba6c9b499ec670591339",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_gpz_boss/SCR_chaos_gpz_boss.gml#L188"
+    },
+    "sez_boss": {
+      "file": "scripts/SCR_chaos_sez_boss/SCR_chaos_sez_boss.gml",
+      "line": 221,
+      "sha256": "b7ea14b853e691a7b5cbdea9408a5c8ce281f9b344be1e2140a65873f6d77765",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_sez_boss/SCR_chaos_sez_boss.gml#L221"
+    },
+    "mghz_boss": {
+      "file": "scripts/SCR_chaos_mghz_boss/SCR_chaos_mghz_boss.gml",
+      "line": 250,
+      "sha256": "2972716d51d4704f9b8ca8a9271c4f2536c2cd9f482ac37624594521a786e766",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_mghz_boss/SCR_chaos_mghz_boss.gml#L250"
+    },
+    "aqz_boss": {
+      "file": "scripts/SCR_chaos_aqz_boss/SCR_chaos_aqz_boss.gml",
+      "line": 173,
+      "sha256": "011a994fc85f6ee61f874239ac625c8b67cd17a59ddf6748a259e53b732cd88c",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_aqz_boss/SCR_chaos_aqz_boss.gml#L173"
+    },
+    "eez_camera": {
+      "file": "scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml",
+      "line": 317,
+      "sha256": "aa30d4e76f00f53220da1aed737bee63c348389ee363492deb91b0daa4400cdb",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml#L317"
+    },
+    "eez_terminal": {
+      "file": "scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml",
+      "line": 403,
+      "sha256": "aa30d4e76f00f53220da1aed737bee63c348389ee363492deb91b0daa4400cdb",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml#L403"
+    },
+    "eez_final_emerald": {
+      "file": "scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml",
+      "line": 258,
+      "sha256": "aa30d4e76f00f53220da1aed737bee63c348389ee363492deb91b0daa4400cdb",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_eez_boss/SCR_chaos_eez_boss.gml#L258"
+    },
+    "ending": {
+      "file": "scripts/SCR_chaos_ending/SCR_chaos_ending.gml",
+      "line": 3,
+      "sha256": "cd59bd37c29c7d8a380e110f414384b25d406eb1bd8de043485c2e5a73fb2f30",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_ending/SCR_chaos_ending.gml#L3"
+    },
+    "ending_return": {
+      "file": "scripts/SCR_chaos_ending/SCR_chaos_ending.gml",
+      "line": 58,
+      "sha256": "cd59bd37c29c7d8a380e110f414384b25d406eb1bd8de043485c2e5a73fb2f30",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_ending/SCR_chaos_ending.gml#L58"
+    },
+    "ending_consumer": {
+      "file": "objects/OBJ_chaos_zone/Step_2.gml",
+      "line": 7,
+      "sha256": "331fead11675c2d9dfc77e98d3339f7bacbad0d75f14fb12edee8d2d5b175cad",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/objects/OBJ_chaos_zone/Step_2.gml#L7"
+    },
+    "ss_entry": {
+      "file": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml",
+      "line": 305,
+      "sha256": "557d7d648b165f53cfa6366ce10174ed398779a4430eacbfde77b615afbe542d",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml#L305"
+    },
+    "ss_context": {
+      "file": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml",
+      "line": 272,
+      "sha256": "557d7d648b165f53cfa6366ce10174ed398779a4430eacbfde77b615afbe542d",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml#L272"
+    },
+    "ss_return": {
+      "file": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml",
+      "line": 341,
+      "sha256": "557d7d648b165f53cfa6366ce10174ed398779a4430eacbfde77b615afbe542d",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml#L341"
+    },
+    "ss_reward": {
+      "file": "scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml",
+      "line": 125,
+      "sha256": "557d7d648b165f53cfa6366ce10174ed398779a4430eacbfde77b615afbe542d",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_ss1/SCR_chaos_ss1.gml#L125"
+    },
+    "save_guard": {
+      "file": "scripts/SCR_save_game/SCR_save_game.gml",
+      "line": 3,
+      "sha256": "538e16916ba8e436c9dea73acc2024b632ff9512c7ad03b8daf01d60db5595c0",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_save_game/SCR_save_game.gml#L3"
+    },
+    "death": {
+      "file": "scripts/SCR_chaos_death/SCR_chaos_death.gml",
+      "line": 36,
+      "sha256": "34d81f7eb0e55fe26ea4aa56e4e8cfacea87048858bff5f35256cbe6d7af1833",
+      "url": "https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/4eb684911c5785667181b9d3f940b1dc820e66d1/scripts/SCR_chaos_death/SCR_chaos_death.gml#L36"
+    }
+  }
+}
