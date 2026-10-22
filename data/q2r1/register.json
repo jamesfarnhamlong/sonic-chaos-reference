@@ -1,0 +1,337 @@
+{
+  "schema": 1,
+  "task": "Q2-R1",
+  "poc_commit": "4eb684911c5785667181b9d3f940b1dc820e66d1",
+  "research_parent": "d1253cac423a2b632874874b293fa40565eee73e",
+  "branch": "research/q2-r1-campaign-defect-triage",
+  "new_rom_execution": false,
+  "new_windows_execution": false,
+  "source_host_not_gamemaker": true,
+  "source_comparison_sizes": [
+    [
+      256,
+      196
+    ],
+    [
+      348,
+      196
+    ]
+  ],
+  "ss3_reference_size": [
+    256,
+    192
+  ],
+  "windows_acceptance_size": [
+    348,
+    196
+  ],
+  "provenance": [
+    {
+      "repo": "research",
+      "file": "asm/recovered/dispatch_target_03783.asm",
+      "sha256": "9c8e02397407c15138d92d0d85231d49d50ea9a4f315e0a101282dbdad22997b"
+    },
+    {
+      "repo": "research",
+      "file": "asm/recovered/standing_walk_setters.asm",
+      "sha256": "9776459906262a892c0f1d4efce508027fc5f85b1ba1a70a6b81e820baff0920"
+    },
+    {
+      "repo": "research",
+      "file": "asm/recovered/player_state_setters.asm",
+      "sha256": "b7be525aa40b25404539517b79c11823168092ee6ccd3103b6dcf0c2ccba0124"
+    },
+    {
+      "repo": "research",
+      "file": "asm/recovered/object_player_overlap.asm",
+      "sha256": "88839436bd41bfcbdccadeebce2f88594ed964e4cc7196308323b4f5c7a13ac4"
+    },
+    {
+      "repo": "research",
+      "file": "data/movement-tables.csv",
+      "sha256": "15d3aeafb842b3dc3b952070147f6f93ff61289cefeaa8f4d507d71e7d854aee"
+    },
+    {
+      "repo": "research",
+      "file": "data/rom-cache/aqz/water-runtime.json",
+      "sha256": "56d36f104a7bd3959dcd304079cd18e5cff234dc3482cb56126c4cadb4d87e1b"
+    },
+    {
+      "repo": "research",
+      "file": "data/rom-cache/special-stages/object-census.json",
+      "sha256": "bf5cce9e86a1a33e38ffff8764c41ac43217013c18a38db03a85ca2999b9ec01"
+    },
+    {
+      "repo": "research",
+      "file": "data/rom-cache/special-stages/natural-inputs.json",
+      "sha256": "aca787764eb3884c4a7722bf6cc4e1f609ee0352fc76049d9935781c16cf61d5"
+    },
+    {
+      "repo": "research",
+      "file": "docs/aqz-water-environment-audit.md",
+      "sha256": "890ccd39d71a3bea7be621af2626afaaa5bc455246309b557fb8b5b7aab75629"
+    },
+    {
+      "repo": "research",
+      "file": "docs/player-fall-control-audit.md",
+      "sha256": "ac9140fbcf09934a394adbd04134aea172224e96ce6e22ac22d2c28798a41c3d"
+    },
+    {
+      "repo": "research",
+      "file": "docs/special-stages-followup-audit.md",
+      "sha256": "67cec1b9869fda04c04bffe365163a25481a92bcf3a693db9e94027e67709b36"
+    },
+    {
+      "repo": "research",
+      "file": "docs/special-stages-traversal-audit.md",
+      "sha256": "81f32bf280d1aec3d712201bcbe5bef2430f089147952877f170848b11a4f420"
+    },
+    {
+      "repo": "poc",
+      "file": "scripts/SCR_chaos_core/SCR_chaos_core.gml",
+      "sha256": "dcc1948f2598e4878f41dce7a45eec0181ee38a5d913566ec6d6b98441f09cd8"
+    },
+    {
+      "repo": "poc",
+      "file": "scripts/SCR_chaos_visual_p1/SCR_chaos_visual_p1.gml",
+      "sha256": "1a82808a99bdbd701d8ae6a6d86e1a52aa11128ec9ebabbd453a0c4043cc2501"
+    },
+    {
+      "repo": "poc",
+      "file": "scripts/SCR_chaos_player_animation/SCR_chaos_player_animation.gml",
+      "sha256": "4475b1dff912f9443fb51d1675871402ebf5ee83f164c1bfed57b9a9b22feb4c"
+    },
+    {
+      "repo": "poc",
+      "file": "scripts/SCR_chaos_adapter/SCR_chaos_adapter.gml",
+      "sha256": "7a5137158114fb057baad261192288e554d58d6fec3fd0217f9c154ee8540a11"
+    },
+    {
+      "repo": "poc",
+      "file": "scripts/SCR_chaos_eez/SCR_chaos_eez.gml",
+      "sha256": "77367c014426b93c0c720a6b0914273d710ac585e7b1e61d65010f3b46a1b597"
+    },
+    {
+      "repo": "poc",
+      "file": "scripts/SCR_chaos_render_adapter/SCR_chaos_render_adapter.gml",
+      "sha256": "ece467c34a61312b13547a1a715b1d54ab8ed2be0c138ba1cd90ec589af97547"
+    },
+    {
+      "repo": "poc",
+      "file": "objects/OBJ_chaos_object_10/Step_0.gml",
+      "sha256": "209d205f1e4a7e695fb242f36de4ad5009f539a5f407bfa808d574b247a19093"
+    },
+    {
+      "repo": "poc",
+      "file": "verification/chaos_world_harness.js",
+      "sha256": "0e115796fbb2487a95ccb7f5e5085ea946d65f0722ab87e5772081a9158767fb"
+    },
+    {
+      "repo": "poc",
+      "file": "verification/monitor-support-fixtures.json",
+      "sha256": "25c1cfec9d2a14e42019f6cebded0cbe360626053ffa930da1007aa9ee7a0948"
+    },
+    {
+      "repo": "poc",
+      "file": "verification/verify_monitor_support.js",
+      "sha256": "00dceb87c3810419b4267fa52c1283505c57e7f6444bcf2c1358448246d4b635"
+    },
+    {
+      "repo": "poc",
+      "file": "verification/verify_ss3_play.js",
+      "sha256": "716848c645f6aa28805c066546b02c5ba85f8604a17cc000dc91b2beb472f5aa"
+    },
+    {
+      "repo": "poc",
+      "file": "verification/verify_ss5_play.js",
+      "sha256": "a6158246c8626c85926e26ca998f7ef54c81c59c44ab1efdf145f810d2500638"
+    }
+  ],
+  "findings": [
+    {
+      "id": "Q2R1-AQZ-FACING",
+      "scope": "AQZ1/AQZ2 underwater walk-to-charge",
+      "status": "proven-gap",
+      "confidence": "high for seeded transition; partial attribution to complete human sequence",
+      "rom": [
+        "$3788..$3791 calls $48A7 if requested5",
+        "$45CE..$45E4 walk setter facing",
+        "$4701 charge preserves facing",
+        "$4719..$4732 release reads bit4"
+      ],
+      "poc": [
+        "SCR_chaos_core.gml:174,708,815-823,853",
+        "SCR_chaos_visual_p1.gml:81-95"
+      ],
+      "fixture": "dash-traces.json.gz; tools/q2r1_dash.js; tools/q2r1_validate.js",
+      "method": "24 shipped-source sequences vs reduced canonical facing/release contract; independent uninstrumented replay",
+      "first_divergence": "update0 missing retained input-facing bit; update5 VX -1792 rather than +1792 (mirrored case also)",
+      "negative_controls": "16 same-sign wet/dry cases; dry THZ map differs from wet AQZ map",
+      "impact": "Wrong world-X dash release despite intended/drawn facing",
+      "proposed_group": "Q2-FACING-OWNERSHIP",
+      "remaining": "No natural entry replay of fast sequence; indefinite movement not proven; Windows correction acceptance pending",
+      "windows_result": "NOT TESTED"
+    },
+    {
+      "id": "Q2R1-SS3-MONITOR",
+      "scope": "SS3 seven actual type10/param06 monitors",
+      "status": "unresolved",
+      "confidence": "high census/shared cached contract; no human trap attribution",
+      "rom": [
+        "object-census.json ss3",
+        "$6328 overlap / $5FA0 projection",
+        "monitor-support-fixtures.json cached original callbacks"
+      ],
+      "poc": [
+        "OBJ_chaos_object_10/Step_0.gml:46-83",
+        "SCR_chaos_render_adapter.gml:9"
+      ],
+      "fixture": "ss3-traces.json.gz; gate/results.json",
+      "method": "2 original cached-input route replays +28 local player approach seeds +existing cached monitor verifier",
+      "first_divergence": null,
+      "negative_controls": "Natural route completes at both widths; 12 attacking approaches break; contacted nonattack approaches escape; final local approach blocked by geometry",
+      "impact": "Chief reports upper-left side standing overlap; persistent trapping or layering cause unproven",
+      "proposed_group": null,
+      "remaining": "Which monitor and preceding input/movement state unknown; no rendered paired comparison",
+      "windows_result": "NOT TESTED"
+    },
+    {
+      "id": "Q2R1-SS3-JUNCTION",
+      "scope": "SS3 held/new press",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "SCR_chaos_eez.gml:38-77; special-stages-followup-audit §3",
+      "remaining": "Established held Up branch and latch; particular failure untraced",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-SS5-DOWN",
+      "scope": "SS5 junction timing",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "SCR_chaos_eez.gml:38-77; verification/verify_ss5_play.js",
+      "remaining": "Held Down rule established; lag/update timing sensitive; no new SS5 replay",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-REBOUND",
+      "scope": "Cross-zone enemy/monitor impacts",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "OBJ_chaos_object_10/Step_0.gml:72 onward; player-attack-badnik-audit.md",
+      "remaining": "Separate callbacks/state gates; no common divergent event proven",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-BOSS1-RIGHT",
+      "scope": "Unknown zone/encounter",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "Human campaign report",
+      "remaining": "Obtain encounter identity",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-GOAL-CENTER",
+      "scope": "Goal signs",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "Human campaign report",
+      "remaining": "Need world placement/camera/art comparison",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-BREAKABLE-ANIM",
+      "scope": "Outside THZ",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "Human campaign report; VISUAL-P2 scope",
+      "remaining": "Identify block/zone; accepted THZ2 scope is narrower",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-SLZ1-PRIORITY",
+      "scope": "Unresolved user zone label SLZ1",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "Human campaign report",
+      "remaining": "Do not infer canonical zone",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-CARD-COMPOSITION",
+      "scope": "Zone title/results widescreen",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "Human campaign report",
+      "remaining": "Deferred presentation comparison",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "Q2R1-CONTINUES",
+      "scope": "Continue awards",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "SCR_chaos_adapter.gml:473-493; SCR_chaos_ss1.gml goal_phase",
+      "remaining": "Need score/award ledger; no numeric excess proven",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    },
+    {
+      "id": "PRES-ENTRY-MGHZ3",
+      "scope": "MGHZ3 pit/tree reveal",
+      "status": "unresolved",
+      "confidence": "human report / bounded source context; unproven new defect",
+      "evidence": "Accepted C3-BX/Q1 documentation",
+      "remaining": "Carry prior known presentation discrepancy, no change",
+      "proposed_group": null,
+      "windows_result": "NOT TESTED",
+      "disposition": "OPEN; separate bounded follow-up"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "Q2-FACING-OWNERSHIP",
+      "authorised": false,
+      "scope": "Restore applicable canonical walking facing and prevent related presentation writers from overwriting gameplay direction",
+      "excludes": "No acceleration/dash speed/water/map/collision changes",
+      "regression_risks": [
+        "state-specific facing",
+        "strip/fallback publication",
+        "Peel-Out",
+        "neutral/both-direction input",
+        "camera/shoe readers"
+      ],
+      "acceptance": "Focused source gates then Chief fast underwater release sequences both acts at348x196"
+    }
+  ],
+  "verification": {
+    "dash_cases": 24,
+    "dash_discrepancies": 8,
+    "dash_controls": 16,
+    "uninstrumented_replays": 24,
+    "ss3_input_routes": 2,
+    "ss3_route_updates_each": 2090,
+    "ss3_local_approaches": 28,
+    "monitor_cached_checks": 75805,
+    "full_historical_sweep": false,
+    "windows": "NOT TESTED"
+  }
+}
