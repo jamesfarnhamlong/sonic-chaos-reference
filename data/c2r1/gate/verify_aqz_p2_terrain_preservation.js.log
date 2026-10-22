@@ -1,0 +1,432 @@
+node:assert:149
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+... Skipped lines
+
+  '// 14.5: integer ROM movement core. No GameMaker instance or sprite dependencies.\n' +
+    '// These functions are also executed unchanged by verification/verify_core.js.\n' +
+    '// Units: coordinates 16.8; velocities signed 8.8; ONE original update per call.\n' +
+    'function SCR_cc_s16(cp_n) { return ((cp_n + 32768) & 65535) - 32768; }\n' +
+    'function SCR_cc_new(cp_x, cp_y) {\n' +
+...
+    '        route_progress:0, route_x:0, route_y:0, terrain_escape:false,\n' +
++   '        carrier_owner:0,carrier_selector:0,carrier_screen_y:0,carrier_jump_timer:0,transport_marker:0,transport_block:0,transport_latch:0,camera_control:0,\n' +
+    '        input_delta:0, surface_delta:0, maximum:1024, water:0,\n' +
+    '        held:0, pressed:0, jump_ticks:0, sound:0, unsupported:0,\n' +
+    '        hazard:0, angle:0, magnitude:0, twist_variant:0, level:0,\n' +
+    '        state11_active:false, state11_camera_y:0,\n' +
+    '        state11_anim_tick:0, state11_frame:56, hurt_ticks:0, zone:0,\n' +
+...
+    '        // SEZ S2: the +$07 animation counter the adapter computed for this update (parity picks the $753E probe depth) and the booster-pad effect count of this update.\n' +
++   '        probe_counter:0, presentation_counter:-1, terrain_vertical:0, booster:0, camera_y:0, air_active:false, air_ticks:0,\n' +
++   '        // C1-I: persistent Y lead target D289 (docs/c1r-gameplay-fidelity-audit.md section 3; $78 until the first stand callback), Peel-Out permission (Sonic only), ROM sound request id (a request, never audio).\n' +
++   '        lead_target:120, peel_out_allowed:false, rom_sound:0};\n' +
+-   '        probe_counter:0, presentation_counter:-1, terrain_vertical:0, booster:0, camera_y:0, air_active:false, air_ticks:0};\n' +
+    '}\n' +
+    'function SCR_cc_merge(cp_c) {\n' +
+    '    cp_c.contacts = cp_c.bg;\n' +
+    '    if (cp_c.support != 0 || ((cp_c.move & 2) == 0 && (cp_c.player_flags & 128) == 0))\n' +
+    '        cp_c.contacts |= (cp_c.objects >> 4) & 15;\n' +
+...
+    '    var cp_eligible=false;for (var cp_i=0;cp_i<array_length(cp_states);cp_i++) if (cp_states[cp_i] == cp_c.state) cp_eligible=true;\n' +
++   '    if (chaos_tube_zone(cp_c.zone) && cp_c.state == $21) cp_eligible=true; // $91DF->$038C->$690B->$753E\n' +
+    '    if (!cp_eligible) return 0;\n' +
+    '    // $753E -> $749D: the tile is sampled at the counter-parity point, but\n' +
+    '    // D368 is the vertical profile left by the last $7666 terrain sample.\n' +
+    '    var cp_counter=cp_c.probe_counter;\n' +
+    '    if (cp_c.presentation_counter >= 0) cp_counter=cp_c.presentation_counter;\n' +
+...
+    '    }\n' +
++   '    return (cp_c.zone == 2 || cp_c.zone == 4 || cp_c.zone == 5) ? chaos_sez_terrain_probe(cp_c) : 0;\n' +
+-   '    return (cp_c.zone == 2 || cp_c.zone == 4) ? chaos_sez_terrain_probe(cp_c) : 0;\n' +
+    '}\n' +
++   'function SCR_c'... 46660 more characters
+-   'function SCR_cc_stand(cp_c) {\n' +
+-   '    cp_c.move &= ~3; cp_c.next = 1; cp_c.vx = 0; cp_c.maximum = 1024;\n' +
+-   '}\n' +
+-   'function SCR_cc_walk(cp_c) {\n' +
+-   '    cp_c.move &= ~67; cp_c.next = 5; cp_c.maximum = 1024;\n' +
+-   '}\n' +
+-   'function SCR_cc_fall(cp_c) {\n' +
+-   '    if (cp_c.state == 10) return;\n' +
+-   '    cp_c.next = 14; cp_c.vy = 256; cp_c.move = (cp_c.move | 1) & ~2; cp_c.bg &= ~2;\n' +
+-   '    cp_c.special &= ~1; cp_c.surface_counter = 0;\n' +
+-   '}\n' +
+-   'function SCR_cc_roll(cp_c) {\n' +
+-   '    if (((cp_c.vx & 65535) >> 8) == 0) {\n' +
+-   '        cp_c.vx = 0; cp_c.next = 4; cp_c.move &= ~66; return;\n' +
+-   '    }\n' +
+-   '    cp_c.next = 9; cp_c.maximum = 1536; '... 41281 more characters
+
+    at Object.<anonymous> (E:\AI\Codex\Sonic Chaos\SonicChaos_POC_c3bx1\verification\verify_aqz_p2_terrain_preservation.js:6:41)
+    at Module._compile (node:internal/modules/cjs/loader:1760:14)
+    at Object..js (node:internal/modules/cjs/loader:1892:10)
+    at Module.load (node:internal/modules/cjs/loader:1480:32)
+    at Module._load (node:internal/modules/cjs/loader:1299:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '// 14.5: integer ROM movement core. No GameMaker instance or sprite dependencies.\n' +
+    '// These functions are also executed unchanged by verification/verify_core.js.\n' +
+    '// Units: coordinates 16.8; velocities signed 8.8; ONE original update per call.\n' +
+    'function SCR_cc_s16(cp_n) { return ((cp_n + 32768) & 65535) - 32768; }\n' +
+    'function SCR_cc_new(cp_x, cp_y) {\n' +
+    '    return {xu:round(cp_x*256), yu:round(cp_y*256), vx:0, vy:0,\n' +
+    '        state:1, next:1, move:0, bg:0, contacts:0, objects:0, support:0,\n' +
+    '        player_flags:0, plane:0, previous:0, tile:255, modifier:0,\n' +
+    '        foot_block:255, special:0, surface_counter:0, frame_counter:0,\n' +
+    '        route_progress:0, route_x:0, route_y:0, terrain_escape:false,\n' +
+    '        carrier_owner:0,carrier_selector:0,carrier_screen_y:0,carrier_jump_timer:0,transport_marker:0,transport_block:0,transport_latch:0,camera_control:0,\n' +
+    '        input_delta:0, surface_delta:0, maximum:1024, water:0,\n' +
+    '        held:0, pressed:0, jump_ticks:0, sound:0, unsupported:0,\n' +
+    '        hazard:0, angle:0, magnitude:0, twist_variant:0, level:0,\n' +
+    '        state11_active:false, state11_camera_y:0,\n' +
+    '        state11_anim_tick:0, state11_frame:56, hurt_ticks:0, zone:0,\n' +
+    '        camera_x:0, act_clear:false, clear_dx:289,\n' +
+    '        // Damage ($48F7 / $48BC, platform-spike milestone): rings and the immunity inputs are supplied by the adapter each update; the core never reads GameMaker globals.\n' +
+    '        rings:0, shield:false, immune:false, invuln:0, damage_request:0, box_contacts:0, box_ready:0, contact:0, contact_nib:0, stage_contact:0, stage_nib:0, stage_request:0, hurt_rom:false,\n' +
+    '        hurt_pending:false, hurt_death:false, hurt_rings_lost:0, hurt_scatter:0, hurt_shield:false, crush_death:false,\n' +
+    '        // Footwear (docs/powerup-shoes-audit.md): queued reward mask $D3A3, Rocket hurt result, Spring Shoes owner events for the object adapter, relaunch snapshot for the object phase.\n' +
+    '        reward_queue:0, hurt_rocket:false, owner_event:0, shoe_bounced:false, shoe_prev_vy:0, state11_exit:false,\n' +
+    '        // SEZ S2: the +$07 animation counter the adapter computed for this update (parity picks the $753E probe depth) and the booster-pad effect count of this update.\n' +
+    '        probe_counter:0, presentation_counter:-1, terrain_vertical:0, booster:0, camera_y:0, air_active:false, air_ticks:0,\n' +
+    '        // C1-I: persistent Y lead target D289 (docs/c1r-gameplay-fidelity-audit.md section 3; $78 until the first stand callback), Peel-Out permission (Sonic only), ROM sound request id (a request, never audio).\n' +
+    '        lead_target:120, peel_out_allowed:false, rom_sound:0};\n' +
+    '}\n' +
+    'function SCR_cc_merge(cp_c) {\n' +
+    '    cp_c.contacts = cp_c.bg;\n' +
+    '    if (cp_c.support != 0 || ((cp_c.move & 2) == 0 && (cp_c.player_flags & 128) == 0))\n' +
+    '        cp_c.contacts |= (cp_c.objects >> 4) & 15;\n' +
+    '}\n' +
+    '// $4141: camera boundary clipping belongs to the widescreen adapter, not this function.\n' +
+    'function SCR_cc_input(cp_c) {\n' +
+    '    if (cp_c.state >= 30) return; // states >=41 are outside this bounded translation\n' +
+    '    var cp_table = cp_c.water ? 3 : 0;\n' +
+    '    var cp_pair = (cp_c.held & 4) ? 0 : 1;\n' +
+    '    if ((cp_c.held & 12) == 0) {\n' +
+    '        cp_c.input_delta = 0;\n' +
+    '        if (cp_c.vx == 0) return; // original retains surface delta here\n' +
+    '        cp_table = 2;\n' +
+    '        cp_pair = cp_c.vx < 0 ? 0 : 1;\n' +
+    '    } else if (cp_c.vx < 0) cp_table++;\n' +
+    '    var cp_delta = global.chaosMovementTables[cp_table][cp_c.state][cp_pair];\n' +
+    '    if ((((abs(cp_c.vx) + 128) & 65535) >> 8) == 0) cp_delta *= 2;\n' +
+    '    cp_c.input_delta = SCR_cc_s16(cp_delta);\n' +
+    '    cp_c.surface_delta = global.chaosSurfaceDeltas[floor(cp_c.modifier / 2)];\n' +
+    '}\n' +
+    '// $402A: high-byte limits are deliberately not a symmetric floating point clamp.\n' +
+    'function SCR_cc_x(cp_c) {\n' +
+    '    var cp_v = SCR_cc_s16(cp_c.vx + cp_c.input_delta + cp_c.surface_delta);\n' +
+    '    var cp_block = cp_v < 0 ? 8 : 4;\n' +
+    '    if ((cp_c.contacts & cp_block) != 0) {\n' +
+    '        cp_c.vx = 0; cp_c.input_delta = 0; return;\n' +
+    '    }\n' +
+    '    var cp_hi = (cp_v & 65535) >> 8;\n' +
+    '    var cp_max_hi = (cp_c.maximum & 65535) >> 8;\n' +
+    '    if (cp_v >= 0 && cp_hi >= cp_max_hi) cp_v = cp_c.maximum;\n' +
+    '    if (cp_v < 0 && cp_hi < ((-cp_max_hi) & 255)) cp_v = -cp_c.maximum;\n' +
+    '    cp_c.vx = cp_v;\n' +
+    '    cp_c.xu = (cp_c.xu + cp_v) & 16777215;\n' +
+    '}\n' +
+    '// $4097: +7/+9 downward contact integration precedes floor projection.\n' +
+    'function SCR_cc_y(cp_c) {\n' +
+    '    var cp_v = cp_c.vy;\n' +
+    '    if (cp_c.state != 17) {\n' +
+    '        if ((cp_c.move & 1) != 0) {\n' +
+    '            var cp_g = cp_c.state == 11 ? 24 : (cp_c.state == 27 ? 36 : 48);\n' +
+    '            if (cp_c.water) cp_g /= 2;\n' +
+    '            cp_v = SCR_cc_s16(cp_v + cp_g);\n' +
+    '            var cp_terminal = cp_c.water ? 1024 : 1792;\n' +
+    '            if (cp_v >= cp_terminal) cp_v = cp_terminal;\n' +
+    '        } else {\n' +
+    '            if (cp_c.support != 0) return;\n' +
+    '            cp_v = SCR_cc_s16(abs(cp_v));\n' +
+    '        }\n' +
+    '    }\n' +
+    '    if ((cp_c.bg & 2) != 0) cp_v = (cp_c.modifier == 10 || cp_c.modifier == 12) ? 2304 : 1792;\n' +
+    '    cp_c.vy = cp_v;\n' +
+    '    cp_c.yu = (cp_c.yu + cp_v) & 16777215;\n' +
+    '}\n' +
+    '// $7666: caller passes effective probe Y, including the original +18.\n' +
+    'function SCR_cc_lookup(cp_x, cp_y, cp_plane) {\n' +
+    '    var cp_ax = floor(cp_x) & 65535;\n' +
+    '    var cp_ay = floor(cp_y) & 65535;\n' +
+    '    if ((cp_ay & 32768) != 0) cp_ay = 0;\n' +
+    "    // ROM row-offset table: the row stride is the act's map width (128 in THZ1/THZ2, 80 in THZ3); columns past the width wrap into the next row exactly as the ROM does.\n" +
+    '    var cp_w = 128;\n' +
+    '    if (variable_global_exists("chaosMapWidth")) cp_w = global.chaosMapWidth; // set by chaos_level_install_layout (128 in THZ1/THZ2, 80 in THZ3)\n' +
+    '    var cp_index = (((cp_ay >> 5) & 127)*cp_w + ((cp_ax >> 5) & 255));\n' +
+    '    var cp_address = (49153 + cp_index) & 65535;\n' +
+    "    // GAMEMAKER PRESENTATION ADAPTER: the ROM lookup wraps columns beyond the current act's map width into the next row.\n" +
+    '    // Only during state $20, keep those beyond-map columns open so the recovered EDGE(RIGHT,+33) run can finish.\n' +
+    '    // THZ1/2 have 128 columns (4096 px); THZ3 has 80 (2560 px).\n' +
+    '    if (global.chaosBeyondMapOpen && cp_ax >= cp_w*32) return {tile:255, flags:0, modifier:0,\n' +
+    '        vertical:0, horizontal:0, ax:cp_ax, ay:cp_ay, index:-1};\n' +
+    '    if ((cp_address & 61440) != 49152) return {tile:255, flags:0, modifier:0,\n' +
+    '        vertical:0, horizontal:0, ax:cp_ax, ay:cp_ay, index:-1};\n' +
+    '    var cp_tile = global.chaosTileIds[cp_index];\n' +
+    '    var cp_h = global.chaosHeaders0[cp_tile];\n' +
+    '    if ((cp_h[0] & 32) != 0 && cp_plane != 0) cp_h = global.chaosHeaders1[cp_tile];\n' +
+    '    return {tile:cp_tile, flags:cp_h[0], modifier:cp_h[1],\n' +
+    '        vertical:cp_h[2][cp_ax & 31], horizontal:cp_h[3][cp_ay & 31],\n' +
+    '        ax:cp_ax, ay:cp_ay, index:cp_index};\n' +
+    '}\n' +
+    '// $6F61/$7056 ordinary path only (special IX+$24 branches are not implemented).\n' +
+    'function SCR_cc_project_floor(cp_c, cp_s) {\n' +
+    '    if ((cp_c.previous & 192) == 0 || cp_c.vy < 0) return;\n' +
+    '    var cp_solid = (cp_c.previous & 128) != 0;\n' +
+    '    // $6FBB: retained strip bit plus REQUESTED $14 bypasses any one-way support.\n' +
+    '    if (!cp_solid && (cp_c.special & 1) != 0 && cp_c.next == 20) { cp_c.bg &= ~2; SCR_cc_merge(cp_c); return; }\n' +
+    '    // $7010..$7055: previous bit6-only flags plus retained oil bit. Probe\n' +
+    '    // four pixels lower; no shallow-penetration clamp and no speed/state edit.\n' +
+    '    if (!cp_solid && (cp_c.special & 2) != 0) {\n' +
+    '        cp_c.bg &= ~2;\n' +
+    '        // $7010 increments D35A without looking up another block/profile.\n' +
+    '        var cp_total_sink = (cp_s.vertical + ((cp_s.ay+4) & 31)) & 255;\n' +
+    '        if (cp_total_sink >= 32) {\n' +
+    '            cp_c.yu = (cp_c.yu - (cp_total_sink-32)*256 + cp_c.surface_counter*256)&16777215;\n' +
+    '            cp_c.bg |= 2; cp_c.modifier = cp_s.modifier;\n' +
+    '        }\n' +
+    '        SCR_cc_merge(cp_c); return;\n' +
+    '    }\n' +
+    '    var cp_raw = cp_s.vertical;\n' +
+    '    var cp_mod = cp_s.modifier;\n' +
+    '    if ((cp_solid && (cp_raw & 63) == 32) || (!cp_solid && (cp_raw & 63) == 0)) {\n' +
+    '        if (cp_s.index >= (variable_global_exists("chaosMapWidth") ? global.chaosMapWidth : 128)) {\n' +
+    '            var cp_above = SCR_cc_lookup(cp_s.ax, cp_s.ay-32, cp_c.plane);\n' +
+    '            var cp_upper = cp_above.vertical & 63;\n' +
+    '            if ((cp_above.flags & 64) != 0) {\n' +
+    '                if ((cp_above.flags & 31) != 9 && cp_upper != 0) cp_raw = cp_upper + 32;\n' +
+    '            } else if ((cp_above.flags & 128) != 0) {\n' +
+    '                cp_mod = cp_above.modifier;\n' +
+    '                cp_c.yu = (cp_c.yu - cp_upper*256) & 16777215;\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '    if (!cp_solid) cp_c.bg &= ~2;\n' +
+    '    var cp_value = cp_raw;\n' +
+    '    if (cp_solid) {\n' +
+    '        if ((cp_raw & 64) != 0 && (cp_c.previous & 31) == 28) cp_value = 32;\n' +
+    '        cp_value &= 63;\n' +
+    '    }\n' +
+    '    var cp_total = (cp_value + (cp_s.ay & 31)) & 255;\n' +
+    '    if (cp_total >= 32 && (cp_solid || cp_total-32 < (((cp_c.vy >> 8)+9) & 255))) {\n' +
+    '        cp_c.yu = (cp_c.yu - (cp_total-32)*256) & 16777215;\n' +
+    '        cp_c.bg |= 2;\n' +
+    '        cp_c.modifier = cp_mod;\n' +
+    '        SCR_cc_merge(cp_c);\n' +
+    '    }\n' +
+    '}\n' +
+    '// $753E final special probe: ceiling $3A/$3B dispatch precedes the existing SEZ/AQZ\n' +
+    '// booster adapter. Tile lookup and last terrain profile are separate ROM registers.\n' +
+    'function SCR_cc_terrain_probe(cp_c) {\n' +
+    '    var cp_states=[0,1,2,3,4,5,6,7,8,9,10,11,14,15,16,17,18,20,21,23,25,26,27,28,29,30];\n' +
+    '    var cp_eligible=false;for (var cp_i=0;cp_i<array_length(cp_states);cp_i++) if (cp_states[cp_i] == cp_c.state) cp_eligible=true;\n' +
+    '    if (chaos_tube_zone(cp_c.zone) && cp_c.state == $21) cp_eligible=true; // $91DF->$038C->$690B->$753E\n' +
+    '    if (!cp_eligible) return 0;\n' +
+    '    // $753E -> $749D: the tile is sampled at the counter-parity point, but\n' +
+    '    // D368 is the vertical profile left by the last $7666 terrain sample.\n' +
+    '    var cp_counter=cp_c.probe_counter;\n' +
+    '    if (cp_c.presentation_counter >= 0) cp_counter=cp_c.presentation_counter;\n' +
+    '    var cp_point=[floor(cp_c.xu/256),max(0,floor(cp_c.yu/256)+((cp_counter & 1) != 0 ? 2 : -8))];\n' +
+    '    var cp_s=SCR_cc_lookup(cp_point[0],cp_point[1],cp_c.plane);\n' +
+    '    if ((cp_s.tile & 254) == 58) {\n' +
+    '        cp_s.vertical=cp_c.terrain_vertical;\n' +
+    '        SCR_cc_ceiling_spring(cp_c,cp_s);\n' +
+    '    }\n' +
+    '    return (cp_c.zone == 2 || cp_c.zone == 4 || cp_c.zone == 5) ? chaos_sez_terrain_probe(cp_c) : 0;\n' +
+    '}\n' +
+    'function SCR_c'... 46660 more characters,
+  expected: '// 14.5: integer ROM movement core. No GameMaker instance or sprite dependencies.\n' +
+    '// These functions are also executed unchanged by verification/verify_core.js.\n' +
+    '// Units: coordinates 16.8; velocities signed 8.8; ONE original update per call.\n' +
+    'function SCR_cc_s16(cp_n) { return ((cp_n + 32768) & 65535) - 32768; }\n' +
+    'function SCR_cc_new(cp_x, cp_y) {\n' +
+    '    return {xu:round(cp_x*256), yu:round(cp_y*256), vx:0, vy:0,\n' +
+    '        state:1, next:1, move:0, bg:0, contacts:0, objects:0, support:0,\n' +
+    '        player_flags:0, plane:0, previous:0, tile:255, modifier:0,\n' +
+    '        foot_block:255, special:0, surface_counter:0, frame_counter:0,\n' +
+    '        route_progress:0, route_x:0, route_y:0, terrain_escape:false,\n' +
+    '        input_delta:0, surface_delta:0, maximum:1024, water:0,\n' +
+    '        held:0, pressed:0, jump_ticks:0, sound:0, unsupported:0,\n' +
+    '        hazard:0, angle:0, magnitude:0, twist_variant:0, level:0,\n' +
+    '        state11_active:false, state11_camera_y:0,\n' +
+    '        state11_anim_tick:0, state11_frame:56, hurt_ticks:0, zone:0,\n' +
+    '        camera_x:0, act_clear:false, clear_dx:289,\n' +
+    '        // Damage ($48F7 / $48BC, platform-spike milestone): rings and the immunity inputs are supplied by the adapter each update; the core never reads GameMaker globals.\n' +
+    '        rings:0, shield:false, immune:false, invuln:0, damage_request:0, box_contacts:0, box_ready:0, contact:0, contact_nib:0, stage_contact:0, stage_nib:0, stage_request:0, hurt_rom:false,\n' +
+    '        hurt_pending:false, hurt_death:false, hurt_rings_lost:0, hurt_scatter:0, hurt_shield:false, crush_death:false,\n' +
+    '        // Footwear (docs/powerup-shoes-audit.md): queued reward mask $D3A3, Rocket hurt result, Spring Shoes owner events for the object adapter, relaunch snapshot for the object phase.\n' +
+    '        reward_queue:0, hurt_rocket:false, owner_event:0, shoe_bounced:false, shoe_prev_vy:0, state11_exit:false,\n' +
+    '        // SEZ S2: the +$07 animation counter the adapter computed for this update (parity picks the $753E probe depth) and the booster-pad effect count of this update.\n' +
+    '        probe_counter:0, presentation_counter:-1, terrain_vertical:0, booster:0, camera_y:0, air_active:false, air_ticks:0};\n' +
+    '}\n' +
+    'function SCR_cc_merge(cp_c) {\n' +
+    '    cp_c.contacts = cp_c.bg;\n' +
+    '    if (cp_c.support != 0 || ((cp_c.move & 2) == 0 && (cp_c.player_flags & 128) == 0))\n' +
+    '        cp_c.contacts |= (cp_c.objects >> 4) & 15;\n' +
+    '}\n' +
+    '// $4141: camera boundary clipping belongs to the widescreen adapter, not this function.\n' +
+    'function SCR_cc_input(cp_c) {\n' +
+    '    if (cp_c.state >= 30) return; // states >=41 are outside this bounded translation\n' +
+    '    var cp_table = cp_c.water ? 3 : 0;\n' +
+    '    var cp_pair = (cp_c.held & 4) ? 0 : 1;\n' +
+    '    if ((cp_c.held & 12) == 0) {\n' +
+    '        cp_c.input_delta = 0;\n' +
+    '        if (cp_c.vx == 0) return; // original retains surface delta here\n' +
+    '        cp_table = 2;\n' +
+    '        cp_pair = cp_c.vx < 0 ? 0 : 1;\n' +
+    '    } else if (cp_c.vx < 0) cp_table++;\n' +
+    '    var cp_delta = global.chaosMovementTables[cp_table][cp_c.state][cp_pair];\n' +
+    '    if ((((abs(cp_c.vx) + 128) & 65535) >> 8) == 0) cp_delta *= 2;\n' +
+    '    cp_c.input_delta = SCR_cc_s16(cp_delta);\n' +
+    '    cp_c.surface_delta = global.chaosSurfaceDeltas[floor(cp_c.modifier / 2)];\n' +
+    '}\n' +
+    '// $402A: high-byte limits are deliberately not a symmetric floating point clamp.\n' +
+    'function SCR_cc_x(cp_c) {\n' +
+    '    var cp_v = SCR_cc_s16(cp_c.vx + cp_c.input_delta + cp_c.surface_delta);\n' +
+    '    var cp_block = cp_v < 0 ? 8 : 4;\n' +
+    '    if ((cp_c.contacts & cp_block) != 0) {\n' +
+    '        cp_c.vx = 0; cp_c.input_delta = 0; return;\n' +
+    '    }\n' +
+    '    var cp_hi = (cp_v & 65535) >> 8;\n' +
+    '    var cp_max_hi = (cp_c.maximum & 65535) >> 8;\n' +
+    '    if (cp_v >= 0 && cp_hi >= cp_max_hi) cp_v = cp_c.maximum;\n' +
+    '    if (cp_v < 0 && cp_hi < ((-cp_max_hi) & 255)) cp_v = -cp_c.maximum;\n' +
+    '    cp_c.vx = cp_v;\n' +
+    '    cp_c.xu = (cp_c.xu + cp_v) & 16777215;\n' +
+    '}\n' +
+    '// $4097: +7/+9 downward contact integration precedes floor projection.\n' +
+    'function SCR_cc_y(cp_c) {\n' +
+    '    var cp_v = cp_c.vy;\n' +
+    '    if (cp_c.state != 17) {\n' +
+    '        if ((cp_c.move & 1) != 0) {\n' +
+    '            var cp_g = cp_c.state == 11 ? 24 : (cp_c.state == 27 ? 36 : 48);\n' +
+    '            if (cp_c.water) cp_g /= 2;\n' +
+    '            cp_v = SCR_cc_s16(cp_v + cp_g);\n' +
+    '            var cp_terminal = cp_c.water ? 1024 : 1792;\n' +
+    '            if (cp_v >= cp_terminal) cp_v = cp_terminal;\n' +
+    '        } else {\n' +
+    '            if (cp_c.support != 0) return;\n' +
+    '            cp_v = SCR_cc_s16(abs(cp_v));\n' +
+    '        }\n' +
+    '    }\n' +
+    '    if ((cp_c.bg & 2) != 0) cp_v = (cp_c.modifier == 10 || cp_c.modifier == 12) ? 2304 : 1792;\n' +
+    '    cp_c.vy = cp_v;\n' +
+    '    cp_c.yu = (cp_c.yu + cp_v) & 16777215;\n' +
+    '}\n' +
+    '// $7666: caller passes effective probe Y, including the original +18.\n' +
+    'function SCR_cc_lookup(cp_x, cp_y, cp_plane) {\n' +
+    '    var cp_ax = floor(cp_x) & 65535;\n' +
+    '    var cp_ay = floor(cp_y) & 65535;\n' +
+    '    if ((cp_ay & 32768) != 0) cp_ay = 0;\n' +
+    "    // ROM row-offset table: the row stride is the act's map width (128 in THZ1/THZ2, 80 in THZ3); columns past the width wrap into the next row exactly as the ROM does.\n" +
+    '    var cp_w = 128;\n' +
+    '    if (variable_global_exists("chaosMapWidth")) cp_w = global.chaosMapWidth; // set by chaos_level_install_layout (128 in THZ1/THZ2, 80 in THZ3)\n' +
+    '    var cp_index = (((cp_ay >> 5) & 127)*cp_w + ((cp_ax >> 5) & 255));\n' +
+    '    var cp_address = (49153 + cp_index) & 65535;\n' +
+    "    // GAMEMAKER PRESENTATION ADAPTER: the ROM lookup wraps columns beyond the current act's map width into the next row.\n" +
+    '    // Only during state $20, keep those beyond-map columns open so the recovered EDGE(RIGHT,+33) run can finish.\n' +
+    '    // THZ1/2 have 128 columns (4096 px); THZ3 has 80 (2560 px).\n' +
+    '    if (global.chaosBeyondMapOpen && cp_ax >= cp_w*32) return {tile:255, flags:0, modifier:0,\n' +
+    '        vertical:0, horizontal:0, ax:cp_ax, ay:cp_ay, index:-1};\n' +
+    '    if ((cp_address & 61440) != 49152) return {tile:255, flags:0, modifier:0,\n' +
+    '        vertical:0, horizontal:0, ax:cp_ax, ay:cp_ay, index:-1};\n' +
+    '    var cp_tile = global.chaosTileIds[cp_index];\n' +
+    '    var cp_h = global.chaosHeaders0[cp_tile];\n' +
+    '    if ((cp_h[0] & 32) != 0 && cp_plane != 0) cp_h = global.chaosHeaders1[cp_tile];\n' +
+    '    return {tile:cp_tile, flags:cp_h[0], modifier:cp_h[1],\n' +
+    '        vertical:cp_h[2][cp_ax & 31], horizontal:cp_h[3][cp_ay & 31],\n' +
+    '        ax:cp_ax, ay:cp_ay, index:cp_index};\n' +
+    '}\n' +
+    '// $6F61/$7056 ordinary path only (special IX+$24 branches are not implemented).\n' +
+    'function SCR_cc_project_floor(cp_c, cp_s) {\n' +
+    '    if ((cp_c.previous & 192) == 0 || cp_c.vy < 0) return;\n' +
+    '    var cp_solid = (cp_c.previous & 128) != 0;\n' +
+    '    // $6FBB: retained strip bit plus REQUESTED $14 bypasses any one-way support.\n' +
+    '    if (!cp_solid && (cp_c.special & 1) != 0 && cp_c.next == 20) { cp_c.bg &= ~2; SCR_cc_merge(cp_c); return; }\n' +
+    '    // $7010..$7055: previous bit6-only flags plus retained oil bit. Probe\n' +
+    '    // four pixels lower; no shallow-penetration clamp and no speed/state edit.\n' +
+    '    if (!cp_solid && (cp_c.special & 2) != 0) {\n' +
+    '        cp_c.bg &= ~2;\n' +
+    '        // $7010 increments D35A without looking up another block/profile.\n' +
+    '        var cp_total_sink = (cp_s.vertical + ((cp_s.ay+4) & 31)) & 255;\n' +
+    '        if (cp_total_sink >= 32) {\n' +
+    '            cp_c.yu = (cp_c.yu - (cp_total_sink-32)*256 + cp_c.surface_counter*256)&16777215;\n' +
+    '            cp_c.bg |= 2; cp_c.modifier = cp_s.modifier;\n' +
+    '        }\n' +
+    '        SCR_cc_merge(cp_c); return;\n' +
+    '    }\n' +
+    '    var cp_raw = cp_s.vertical;\n' +
+    '    var cp_mod = cp_s.modifier;\n' +
+    '    if ((cp_solid && (cp_raw & 63) == 32) || (!cp_solid && (cp_raw & 63) == 0)) {\n' +
+    '        if (cp_s.index >= (variable_global_exists("chaosMapWidth") ? global.chaosMapWidth : 128)) {\n' +
+    '            var cp_above = SCR_cc_lookup(cp_s.ax, cp_s.ay-32, cp_c.plane);\n' +
+    '            var cp_upper = cp_above.vertical & 63;\n' +
+    '            if ((cp_above.flags & 64) != 0) {\n' +
+    '                if ((cp_above.flags & 31) != 9 && cp_upper != 0) cp_raw = cp_upper + 32;\n' +
+    '            } else if ((cp_above.flags & 128) != 0) {\n' +
+    '                cp_mod = cp_above.modifier;\n' +
+    '                cp_c.yu = (cp_c.yu - cp_upper*256) & 16777215;\n' +
+    '            }\n' +
+    '        }\n' +
+    '    }\n' +
+    '    if (!cp_solid) cp_c.bg &= ~2;\n' +
+    '    var cp_value = cp_raw;\n' +
+    '    if (cp_solid) {\n' +
+    '        if ((cp_raw & 64) != 0 && (cp_c.previous & 31) == 28) cp_value = 32;\n' +
+    '        cp_value &= 63;\n' +
+    '    }\n' +
+    '    var cp_total = (cp_value + (cp_s.ay & 31)) & 255;\n' +
+    '    if (cp_total >= 32 && (cp_solid || cp_total-32 < (((cp_c.vy >> 8)+9) & 255))) {\n' +
+    '        cp_c.yu = (cp_c.yu - (cp_total-32)*256) & 16777215;\n' +
+    '        cp_c.bg |= 2;\n' +
+    '        cp_c.modifier = cp_mod;\n' +
+    '        SCR_cc_merge(cp_c);\n' +
+    '    }\n' +
+    '}\n' +
+    '// $753E final special probe: ceiling $3A/$3B dispatch precedes the existing SEZ/AQZ\n' +
+    '// booster adapter. Tile lookup and last terrain profile are separate ROM registers.\n' +
+    'function SCR_cc_terrain_probe(cp_c) {\n' +
+    '    var cp_states=[0,1,2,3,4,5,6,7,8,9,10,11,14,15,16,17,18,20,21,23,25,26,27,28,29,30];\n' +
+    '    var cp_eligible=false;for (var cp_i=0;cp_i<array_length(cp_states);cp_i++) if (cp_states[cp_i] == cp_c.state) cp_eligible=true;\n' +
+    '    if (!cp_eligible) return 0;\n' +
+    '    // $753E -> $749D: the tile is sampled at the counter-parity point, but\n' +
+    '    // D368 is the vertical profile left by the last $7666 terrain sample.\n' +
+    '    var cp_counter=cp_c.probe_counter;\n' +
+    '    if (cp_c.presentation_counter >= 0) cp_counter=cp_c.presentation_counter;\n' +
+    '    var cp_point=[floor(cp_c.xu/256),max(0,floor(cp_c.yu/256)+((cp_counter & 1) != 0 ? 2 : -8))];\n' +
+    '    var cp_s=SCR_cc_lookup(cp_point[0],cp_point[1],cp_c.plane);\n' +
+    '    if ((cp_s.tile & 254) == 58) {\n' +
+    '        cp_s.vertical=cp_c.terrain_vertical;\n' +
+    '        SCR_cc_ceiling_spring(cp_c,cp_s);\n' +
+    '    }\n' +
+    '    return (cp_c.zone == 2 || cp_c.zone == 4) ? chaos_sez_terrain_probe(cp_c) : 0;\n' +
+    '}\n' +
+    'function SCR_cc_stand(cp_c) {\n' +
+    '    cp_c.move &= ~3; cp_c.next = 1; cp_c.vx = 0; cp_c.maximum = 1024;\n' +
+    '}\n' +
+    'function SCR_cc_walk(cp_c) {\n' +
+    '    cp_c.move &= ~67; cp_c.next = 5; cp_c.maximum = 1024;\n' +
+    '}\n' +
+    'function SCR_cc_fall(cp_c) {\n' +
+    '    if (cp_c.state == 10) return;\n' +
+    '    cp_c.next = 14; cp_c.vy = 256; cp_c.move = (cp_c.move | 1) & ~2; cp_c.bg &= ~2;\n' +
+    '    cp_c.special &= ~1; cp_c.surface_counter = 0;\n' +
+    '}\n' +
+    'function SCR_cc_roll(cp_c) {\n' +
+    '    if (((cp_c.vx & 65535) >> 8) == 0) {\n' +
+    '        cp_c.vx = 0; cp_c.next = 4; cp_c.move &= ~66; return;\n' +
+    '    }\n' +
+    '    cp_c.next = 9; cp_c.maximum = 1536; '... 41281 more characters,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v25.2.1

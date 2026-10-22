@@ -1,0 +1,402 @@
+{
+  "format": 1,
+  "scope": "C2-R1 scoped register; does not promote or supersede unrelated historical findings",
+  "findings": [
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-EXT-21",
+      "status": "proven-gap",
+      "scope": "Sonic state $0F / type $21",
+      "canonical": {
+        "evidence": "$6595/$659A -> D52C=9; $6328; $B2AF; docs/collision-geometry-audit.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "scripts/SCR_chaos_attack/SCR_chaos_attack.gml:47 chaos_type21_resolve",
+      "comparison": "source-audit.json rows C2-EXT-21; both dx +/-20, dy0; ordinary state negative controls",
+      "gameplay_impact": "one-pixel enemy contact/defeat edge",
+      "proposed_group": "extent-consistency",
+      "acceptance_or_remaining_limitation": "Synthetic source boundary; natural charge-contact transition and Windows unverified"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-EXT-1B",
+      "status": "proven-gap",
+      "scope": "Sonic state $0F / moving spike",
+      "canonical": {
+        "evidence": "$6595/$659A -> D52C=9; $6328; bank $0C $ACFD",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "scripts/SCR_chaos_spike1b/SCR_chaos_spike1b.gml:21 chaos_spike1b_contact_bits",
+      "comparison": "source-audit.json rows C2-EXT-1B; dx +/-25 dy-24; vertical tie; ordinary state controls",
+      "gameplay_impact": "one-pixel top cone boundary can miss damage/bounce",
+      "proposed_group": "extent-consistency",
+      "acceptance_or_remaining_limitation": "No new ROM callback; active-state/cooldown reachability needs route"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-EXT-28",
+      "status": "proven-gap",
+      "scope": "Sonic state $0F / old platform $28 support",
+      "canonical": {
+        "evidence": "$6595/$659A; $6328; bank $1E $8814/$8866",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "scripts/SCR_chaos_platform/SCR_chaos_platform.gml:55 chaos_platform28_support",
+      "comparison": "source-audit.json rows C2-EXT-28; dx +/-25 dy-16; same owner/speed; ordinary state controls",
+      "gameplay_impact": "one-pixel support edge missed",
+      "proposed_group": "extent-consistency",
+      "acceptance_or_remaining_limitation": "Newer support_ex paths already choose extent; no blanket all-platform defect"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-HIST-SLOPE",
+      "status": "unresolved",
+      "scope": "historical slope contact/sticking",
+      "canonical": {
+        "evidence": "$6F61/$7056/$69B2/$459D; docs/movement.md and collision.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_chaos_core: SCR_cc_project_floor, SCR_cc_ramp, SCR_cc_input",
+      "comparison": "48 discovery sequences, searches in source-audit.json; cached ramp replay",
+      "gameplay_impact": "potential interruption of motion",
+      "proposed_group": "symptom-isolation",
+      "acceptance_or_remaining_limitation": "No reproduced natural current defect or matched ROM initial state"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-HIST-OSCILLATION",
+      "status": "unresolved",
+      "scope": "historical spring/Badnik then fall oscillation",
+      "canonical": {
+        "evidence": "$480C/$482D/$48BC/$B2AF; docs/player-attack-badnik-audit.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_cc_tick; chaos_spring26_launch; chaos_type21_resolve; chaos_contact_promote; adapter",
+      "comparison": "searches: 48 sequences, zero vx sign reversals; launch and attack suites",
+      "gameplay_impact": "potential severe movement instability if reproduced",
+      "proposed_group": "symptom-isolation",
+      "acceptance_or_remaining_limitation": "Discovery grid has no live Badnik or mapped spring; no natural route identified; facing flicker not excluded"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-STATIC-SPIKE",
+      "status": "proven-match",
+      "scope": "cached THZ static spike sample region",
+      "canonical": {
+        "evidence": "$6ACE/$7306/$7329/$74E7; docs/platform-spike-collision-audit.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_cc_floor / SCR_cc_sides / SCR_cc_ceiling_spike",
+      "comparison": "gate/verify_platform_spike.js.log; cached foot/side/ceiling/rising controls",
+      "gameplay_impact": "canonical rising passage must be preserved",
+      "proposed_group": "none",
+      "acceptance_or_remaining_limitation": "Match scoped to cached samples; historical diagonal symptom unresolved"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-TERRAIN-ORDINARY",
+      "status": "proven-match",
+      "scope": "cached ordinary terrain projection",
+      "canonical": {
+        "evidence": "$7666/$691A/$6F61/$7056/$715E/$73C9/$64CB; asm/recovered/terrain_update.asm",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_cc_lookup / SCR_cc_floor / SCR_cc_project_floor / SCR_cc_sides / SCR_cc_ceiling",
+      "comparison": "gate/verify_core.js.log and platform/spike battery",
+      "gameplay_impact": "retained surface, contact and probe ordering",
+      "proposed_group": "none",
+      "acceptance_or_remaining_limitation": "Special +$24 paths and whole maps not proven"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-MAP-CENSUS",
+      "status": "unresolved",
+      "scope": "six-zone terrain data vs interpretation",
+      "canonical": {
+        "evidence": "data/zone-collision-pointers.csv; docs/collision.md; zone foundation reports",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_chaos_*_data and chaos_level_install_layout",
+      "comparison": "source-audit.json coverage: 46 seeded sequences, 2 absent samples",
+      "gameplay_impact": "map correctness distinct from algorithm correctness",
+      "proposed_group": "terrain-coverage",
+      "acceptance_or_remaining_limitation": "No independent new layout extraction; no all-18-act assertion"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-LOOKUP-FALLBACK",
+      "status": "unresolved",
+      "scope": "out-of-map lookup modifier",
+      "canonical": {
+        "evidence": "$7666 fallback retains D100 per docs/collision.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_cc_lookup returns modifier0 outside address range",
+      "comparison": "source reading only",
+      "gameplay_impact": "potential retained modifier difference",
+      "proposed_group": "terrain-coverage",
+      "acceptance_or_remaining_limitation": "No reachable player consequence or paired trace established"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-SPRING-26",
+      "status": "proven-match",
+      "scope": "cached fixed/span spring and terrain spring gates",
+      "canonical": {
+        "evidence": "$82AF/$0383/$0386/$480C/$482D; docs/spring-interaction-audit.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_chaos_spring; SCR_cc_spring",
+      "comparison": "gate/verify_spring_interaction.js.log; source-audit launch rows",
+      "gameplay_impact": "correct launch posture, speed and deferred span launch",
+      "proposed_group": "none",
+      "acceptance_or_remaining_limitation": "Not all natural encounters or activation phases"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-LOOP-CONTACT",
+      "status": "adapter-difference",
+      "scope": "loop-owned spring/platform/spike contact",
+      "canonical": {
+        "evidence": "docs/spring-interaction-audit.md and platform-spike-collision-audit.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_chaos_adapter loop return; cp_free/cp_present gates",
+      "comparison": "accepted source comments and branches",
+      "gameplay_impact": "loop adapter bypasses contacts",
+      "proposed_group": "separate-loop-review",
+      "acceptance_or_remaining_limitation": "Documented accepted limit; no change authorised"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-MONITOR",
+      "status": "proven-match",
+      "scope": "cached monitor support/break conditions",
+      "canonical": {
+        "evidence": "$5FA0/$6328/$A16C/$A177; docs/collision-geometry-audit.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "objects/OBJ_chaos_object_10/Step_0.gml; SCR_chaos_box_contact",
+      "comparison": "gate/verify_monitor_support.js.log; 75805 checks",
+      "gameplay_impact": "solid push/break ordering",
+      "proposed_group": "none",
+      "acceptance_or_remaining_limitation": "All rewards, timers and natural scene interactions not audited anew"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-BADNIK-ORDINARY",
+      "status": "proven-match",
+      "scope": "cached posture/resolver/damage matrix",
+      "canonical": {
+        "evidence": "$48BC/$89AC/$89DF/$8A06; docs/player-attack-badnik-audit.md",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_chaos_attack; SCR_cc_damage_gate",
+      "comparison": "gate/verify_attack_posture.js.log; 95991 assertions",
+      "gameplay_impact": "airborne alone is not attack; delayed damage preserved",
+      "proposed_group": "none",
+      "acceptance_or_remaining_limitation": "Separate $21 extent finding; all zone enemies not proven"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-OBJECT-ORDER",
+      "status": "unresolved",
+      "scope": "simultaneous natural contacts and activation",
+      "canonical": {
+        "evidence": "$5DD1 player then slot-ordered objects; attack audit section4",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_chaos_objects_phase; adapter:156; legacy object Step events",
+      "comparison": "source ownership inventory; existing phase controls",
+      "gameplay_impact": "overlapping writes may choose different owner or reaction",
+      "proposed_group": "symptom-isolation",
+      "acceptance_or_remaining_limitation": "Grouped type phases are not full ROM scheduler; no natural conflicting pair reproduced"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-WIDE-ACTIVATION",
+      "status": "adapter-difference",
+      "scope": "348 visibility and activation",
+      "canonical": {
+        "evidence": "ROM 256 contracts; accepted viewport adapter documents",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_chaos_objects_phase camera band; chaos_vp_current; placement lifecycle",
+      "comparison": "source reading; pure boundary helpers repeated with width label",
+      "gameplay_impact": "earlier visibility can shift object phase",
+      "proposed_group": "terrain-coverage",
+      "acceptance_or_remaining_limitation": "No blanket activation parity at348; helper width labels alone do not test lifecycle"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-PLATFORM-REGRESSION",
+      "status": "proven-match",
+      "scope": "cached EEZ platform and MGHZ jump windows",
+      "canonical": {
+        "evidence": "verification/eez-p1/platform-oracle.json and MGHZ correction fixtures",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "chaos_eez_platform_callback; SCR_chaos_platform",
+      "comparison": "gate logs: EEZ275455 assertions; MGHZ768 assertions/90 windows",
+      "gameplay_impact": "retains accepted support/crush behavior",
+      "proposed_group": "none",
+      "acceptance_or_remaining_limitation": "Not all platforms/hazards; state0F old support gap separate"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-SHARDS",
+      "status": "unresolved",
+      "scope": "THZ2 destructible corridor and shared occupancy",
+      "canonical": {
+        "evidence": "$7857/$7898; data/rom-cache/visual1",
+        "confidence": "inherited source/cache; see limitation"
+      },
+      "poc_callsite": "SCR_cc_break13_*; SCR_chaos_shards; SCR_chaos_objects_phase",
+      "comparison": "verify_visual_p2_shards.js timed out at45s",
+      "gameplay_impact": "fragment/pool behavior must remain intact",
+      "proposed_group": "terrain-coverage",
+      "acceptance_or_remaining_limitation": "No final new verifier result; no changed collision or placement justified"
+    },
+    {
+      "widths": [
+        256,
+        348
+      ],
+      "poc_commit": "d1ef8fc42571fb01829d370671a96287d9ae6d93",
+      "research_parent": "637180aa3d658916b86af84b48b428ab2753f04a",
+      "new_rom_execution": false,
+      "windows_acceptance": false,
+      "id": "C2-REWARDS-FULL",
+      "status": "not-audited",
+      "scope": "all monitor reward timelines and world interactions",
+      "canonical": {
+        "evidence": "existing reward/shoe contracts only",
+        "confidence": "absent"
+      },
+      "poc_callsite": "SCR_chaos_type10_reward; SCR_chaos_footwear_phase",
+      "comparison": "support tests only; no full new reward matrix",
+      "gameplay_impact": "power-up state/owner transitions",
+      "proposed_group": "future-coverage",
+      "acceptance_or_remaining_limitation": "No new full category parity claim"
+    }
+  ]
+}
