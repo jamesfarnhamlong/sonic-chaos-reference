@@ -46,6 +46,23 @@ This is a **Git-tracked project handover**, not an automatic ChatGPT Memory stor
 
 **Prior campaign plan WITHDRAWN:** Manager provisionally approved a public B-confirm Tails 18-act run after D frontend smoke, but **subsequent drowning/ordinary AQZ crashes make D unsuitable**. Do not direct Chief into a long campaign or more elaborate logging until the Designer stability-preflight Package E is reviewed. Keep the frame5E event and AQZ palette/reverse-jump issues OPEN. No POC commit/push.
 
+## CURRENT CHECKPOINT — natural Tails campaign SUCCESS, fidelity NOT ACCEPTED (23-Oct)
+
+Chief completed the normal Tails campaign in private uncommitted **M2 Package E**, reporting all 18 acts and the character-specific ending/return to title. Supplied three screenshots: two gameplay frames showing persistent red `M2 FRAME 5E EVENT — FIDELITY OPEN`, plus `TAILS HAS PASSED` result with Tails continue icons. The human functional completion is significant but **NOT final M2 acceptance**. Source-host and native E drowning stability PASS remains valid.
+
+**Natural POC fidelity exception now OBSERVED**: state20/selected Tails frame94/hardcoded no-draw guard appears to have triggered. **First act/update and underlying contact conditions UNKNOWN until the updated append-only `m2-tails-fidelity.jsonl` is analysed**. Earlier logs had no such event but were older partial runs. Original SMS ROM *natural* trigger is still UNPROVEN; no replacement art or blind no-draw removal. Red banner visibly remains across more than one stage, so diagnostic UI lifetime must be assessed separately. Do not publish Chief's screenshots/personal file paths or raw private log in public Research commits without explicit authorisation.
+
+**New observations recorded as separate open fidelity candidates**:
+- Tails loop pose/animation incorrect; compare authentic type2 selector, surface/loop flags and sprite mappings to shipped GML.
+- Spring Shoes: verify full type2 authentic frame/counter/state coverage; apparently fail to break monitors—original monitor requires `D503.1` attacking, state-sensitive top-contact and often nonzero descending velocity (M2-R2), so gameplay rule must be paired before code changes.
+- 1-UP monitor icon uses **Sonic** during Tails game. Original M2-R2 proves Tails portrait when type2; candidate runtime regression, prioritise direct paired artwork/instance latch.
+- GPZ3 visible repeated horizontal texture lines/seams; characterize world/viewport layers, sprite/TM palette artifacts before fixes.
+- AQZ1 crumbling-block side-sticking, Chief states **Sonic also affected**; treat as shared terrain/collision owner and source-compare before broad changes.
+- Continues filled to high/max by EEZ2 despite one Continue being spent; original Tails raw-score 3000 continues threshold and cap may account for this. Check actual accumulation and display counts against ROM and no underflow/overflow.
+- Prior AQZ split palette uncertainty and high-speed water reverse+jump severity remain OPEN-WINDOWS, no speculative physics patch.
+
+**Next Manager-controlled task:** urgently request only the **latest unedited `m2-tails-fidelity.jsonl`** from completed engine session (previous two uploads were identical, mixed older short histories). Analyse event rows, first frame5E occurrence, stage/context and true public New Game route. Then commission Research M2-R5 original-vs-POC side-contact/animation selection audit, alongside Designer source audit of clearly reproducible POC issues. **No further long Chief campaign or manual movement videos; do not commit/push E yet.** Triage and batch source-backed fixes while preserving successful 18-act completion.
+
 ## Uploaded native Package E log review — 23 October 2026
 
 **Chief's native F5:** public New Game → Tails → THZ1 **PASS**; ordinary AQZ1 Tails drowning without prior fatal `FF04`/script-write error **PASS**. AQZ presentation/Shift+F6 palette trace remains **TODO**, not silently accepted. Screenshot verifies GameMaker showed **automatic Tails fidelity** logger session-created/read-back success and an absolute per-user save location. Actual path and private capture are deliberately **not** copied into public documentation.
