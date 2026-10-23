@@ -1,5 +1,7 @@
 # Sonic Chaos — AGENTS.md
 
+**Manager-san #5 retirement handover (23 Oct):** [full handover and next-manager assignments](docs/management/manager-san-5-handover-20261023.md) · [independent source-mapped Tails natural campaign review](docs/manager-m2-natural-tails-campaign-review-20261023.md). Current priority is proven POC-natural frame\`$5E\` fidelity triage, **not** replaying all 18 acts or committing the private E candidate.
+
 **Canonical coordination instructions | Manager-san #5 | 23 October 2026**
 **Authority:** this file on Research repository `main`, together with [MEMORY.md](MEMORY.md), [ROADMAP.md](ROADMAP.md), and the exact research/POC commits named below. This is a management-document migration, **not** a GameMaker release or promotion of topic-branch research into Research `main`.
 
