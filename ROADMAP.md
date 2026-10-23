@@ -1,6 +1,6 @@
 # Sonic Chaos — ROADMAP.md
 
-**Canonical project roadmap | 23 October 2026 | Manager-san #5**
+**Canonical project roadmap | 23 October 2026 | Manager-san #6**
 
 See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
 
@@ -9,6 +9,12 @@ See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the 
 **CLOSED for scoped Windows acceptance:** the 348×196 Sonic 18-act campaign, all five Special Stages, Emerald good ending/credits/title, authentic opening cinematic, campaign/death/Continue/score flow, Q2 and Q3 accepted world/camera/fragments.
 
 Accepted POC parent: [`poc/q3-p1-world-presentation@7476affc`](https://github.com/jamesfarnhamlong/SonicChaos_POC/commit/7476affc6ed7626dabf69b446cdab0c9c3d7492e). Any Tails implementation remains an **isolated, uncommitted** candidate until Chief's final acceptance.
+
+## Latest management gate — R5 reviewed (23 October 2026, Manager #6)
+
+**R5 complete/ACCEPTED as bounded Research:** [report](https://github.com/jamesfarnhamlong/sonic-chaos-reference/blob/bcd964e5c20efa3d9049e6de6587a3a755b78e51/docs/m2r5-natural-frame5e.md) at `research/m2r5-natural-frame5e@bcd964e5` proves original Z80 input-owned **arrival-assisted** Tails state32/frame94 at all four implicated sign routes in 12/20 phase controls; native POC produced 76 frame94 logs across four 19-reload episodes. Original entrance-to-goal natural traversal, independent hardware effects and precise 348-wide timing remain unverified. No speculative POC contact-flag correction is justified. **Retain exact no-draw adaptation + append-only event as an intentional deviation from original corrupt graphics; Chief's final exception/closure approval is still required.** Prior status lines below are historical gates superseded to this extent; R5 topic work is **not** merged into Research main.
+
+**Next sequence:** Designer source-only fidelity audit (Tails 1-UP portrait, loops, Spring Shoes/monitor attack, GPZ3 seams, AQZ1 crumble shared contact, Continue presentation, inherited AQZ observations) → reconcile ROM and shipped GameMaker evidence → **one private uncommitted corrections-only Package F** (including non-sticky diagnostic UI only with intact log/event gating) → source-host paired controls and short 348×196 Chief targeted F5 checks → Chief explicitly accepts fixes/deferrals and the exact frame94 safety exception → only then M2 direct-child commit/archive/sign-off. Preserve Sonic Q3, park M3 picker polish, do not require an 18-act campaign replay. M4/M5 audio follows stable M2.
 
 ## Workstream status and next gates
 

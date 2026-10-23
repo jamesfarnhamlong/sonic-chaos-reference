@@ -1,8 +1,14 @@
 # Sonic Chaos — MEMORY.md
 
-**Management handover | updated 23 October 2026 | Manager-san #5**
+**Management handover | updated 23 October 2026 | Manager-san #6**
 
 This is a **Git-tracked project handover**, not an automatic ChatGPT Memory store. Always read [AGENTS.md](AGENTS.md) for binding team rules, then [ROADMAP.md](ROADMAP.md) for milestones. Read this document from Research `main` even while working on an old isolated topic branch. Historical observations do not grant implementation authority.
+
+## Manager #6 — current R5 disposition and next handoff (23 October 2026)
+
+**M2-R5 reviewed and ACCEPTED as scoped Research evidence**, report [natural frame-$5E sign approaches](https://github.com/jamesfarnhamlong/sonic-chaos-reference/blob/bcd964e5c20efa3d9049e6de6587a3a755b78e51/docs/m2r5-natural-frame5e.md), commit `bcd964e5c20efa3d9049e6de6587a3a755b78e51` on separate `research/m2r5-natural-frame5e` branch (not merged). Original whole-game Z80 sign routes in GPZ1, GPZ2, MGHZ1 and EEZ1 reach Tails state32/frame94/contacts6 by ordinary contact ownership after seeded arrival and input, in 12/20 phase variations. No forced state/contact. Package E's shipped GML source-host reproduces right-edge floor+side contact; source/ZIP hashes match in five inspected owners. **Original local sign-path reachability is now established**; full input-only act traversal, independent hardware/cycle-exact corruption, exact Chief Windows timing and 19-repeat parity remain **unresolved**.
+
+**Decision:** retain the exact type2/state32/frame94 no-draw mapping safety guard as a deliberate original-game adaptation; never describe it as corruption/render parity, silently clear contacts, substitute Sonic art, or discard append-only logs. A transient developer-facing banner may replace the persistent red overlay only if events and release gate survive. Manager recommends Chief accept this explicit safety exception for eventual M2 closure; **Chief has not yet accepted it, so the fidelity closure gate remains OPEN**. E remains unstaged/uncommitted/unpushed, Sonic baseline `7476affc` frozen. Next: Designer source audit of 1-UP portrait, loop animation, Spring Shoes/monitors, GPZ3 lines, AQZ1 crumble, Continue presentation and inherited AQZ visuals/movement; then corrections-only private Package F and short targeted native retests. No new entire Tails campaign.
 
 ## Immediate situation
 

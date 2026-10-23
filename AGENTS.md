@@ -1,6 +1,6 @@
 # Sonic Chaos — AGENTS.md
 
-**Canonical coordination instructions | Manager-san #5 | 23 October 2026**
+**Canonical coordination instructions | Manager-san #6 | 23 October 2026**
 **Authority:** this file on Research repository `main`, together with [MEMORY.md](MEMORY.md), [ROADMAP.md](ROADMAP.md), and the exact research/POC commits named below. This is a management-document migration, **not** a GameMaker release or promotion of topic-branch research into Research `main`.
 
 ## Read first: authority and synchronization
@@ -11,6 +11,14 @@
 4. The 22-Oct uploaded Windows coordination file described itself as “CANDIDATE / NOT INSTALLED,” even though it was supplied as the user's then-current root copy. **That internal header was stale.** It is preserved separately as historical evidence, not installed here verbatim as active instructions.
 5. Cloud agents **do not have Chief's Windows E: drive**, ignored private ROM/art/audio, local worktrees or archives unless made available in their environment. Do not claim to have inspected inaccessible paths. GitHub source, public numeric evidence and uploaded private inputs have different authority.
 6. These documents may be updated by Manager with Chief's authorisation. Agents assigned runtime or research work must **not** independently rewrite canonical management files or promote topic branches. New accepted milestones should update root AGENTS/MEMORY/ROADMAP in a single documented management checkpoint.
+
+## CURRENT Manager #6 checkpoint — M2-R5 frame $5E (23 October 2026)
+
+**Manager-reviewed R5 Research: ACCEPTED within its stated boundaries** at `research/m2r5-natural-frame5e@bcd964e5c20efa3d9049e6de6587a3a755b78e51` ([report](https://github.com/jamesfarnhamlong/sonic-chaos-reference/blob/bcd964e5c20efa3d9049e6de6587a3a755b78e51/docs/m2r5-natural-frame5e.md)); the branch remains separate from Research `main`. The original Z80 sign/terrain/animation chain produced Tails state `$20` → selected frame `$5E` in all four relevant acts after controlled arrival with input-owned motion, without forcing state/contacts. Twelve of twenty phase controls selected `$5E`; ordinary original side projection can produce floor+side contacts `6`. Package E's shipped contact fixture source independently gives corresponding `6` at the mapped right-edge anchors. **This supersedes older claims that original arrival-assisted natural sign reachability is unknown**; it does NOT prove entrance-to-goal input-only reachability, independent hardware/cycle accuracy, or exact native Windows phase/reload frequency.
+
+**Manager direction:** original frame `$5E` has no authored Tails mapping (R1 resolves invalid resident pointer `$0785` and corrupt original tile/mapping reads). Preserve POC numeric frame/counter/callback and append-only fidelity event; retain exact type2/state `$20`/frame `$5E` no-draw/resource-read isolation as a **deliberate safety adaptation, not ROM rendering parity**. Do NOT clear contact side bits on sign entry, invent pose/art, borrow Sonic runoff or replace the authentic selector. The 76 POC natural event logs represent four 19-selection sign episodes, not 76 independent incidents. The permanently visible red banner is a distinct debug UI lifetime defect; make it transient only after confirming event persistence and release gate integrity.
+
+**Closure policy:** Manager recommends explicitly accepting the documented no-draw original-hazard exception, but **Chief's explicit fidelity acceptance has not yet been given**. Until then the frame-`$5E` closure gate remains OPEN. Package E is frozen/private/uncommitted; accepted Sonic Q3 unchanged. Designer's next task is independent ROM-backed audit of Tails loop poses, Tails 1-UP portrait, Spring Shoes monitor attack, GPZ3 lines, AQZ1 shared crumble and Continue display, plus unresolved AQZ symptoms; then one corrections-only private **Package F** with focused source/host, paired-character and short native 348×196 routes. Do not ask Chief for another 18-act campaign, promote Research topic branches, change physics speculatively or commit POC without approval.
 
 ## Mission and responsibilities
 
