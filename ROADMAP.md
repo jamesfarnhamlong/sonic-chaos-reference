@@ -16,6 +16,10 @@ Accepted POC parent: [`poc/q3-p1-world-presentation@7476affc`](https://github.co
 
 **Next sequence:** Designer source-only fidelity audit (Tails 1-UP portrait, loops, Spring Shoes/monitor attack, GPZ3 seams, AQZ1 crumble shared contact, Continue presentation, inherited AQZ observations) → reconcile ROM and shipped GameMaker evidence → **one private uncommitted corrections-only Package F** (including non-sticky diagnostic UI only with intact log/event gating) → source-host paired controls and short 348×196 Chief targeted F5 checks → Chief explicitly accepts fixes/deferrals and the exact frame94 safety exception → only then M2 direct-child commit/archive/sign-off. Preserve Sonic Q3, park M3 picker polish, do not require an 18-act campaign replay. M4/M5 audio follows stable M2.
 
+## Manager #6 — Designer-reported pre-Package F audit and conditional GO (23 October 2026)
+
+**Next action: Package F conditional GO** following Designer-reported private audit (5,483 focused assertions passed; E untouched, report file not independently opened by Manager). Only three reported confirmed defects enter F: ordinary Tails loop presentation, character-specific Tails 1-UP monitor portrait, and excessive persistence of visible frame-`$5E` warning. The underlying event/guard/timing and Chief's final fidelity gate **must not change**. Everything else stays authentic/unresolved/parked; no speculative AQZ/GPZ3/crumble/Spring Shoes/continue/physics work. Designer to present precise ROM/POC evidence and limited source edits, paired Sonic/Tails controls, inherited raw verifier failures, restoration and private source-only F ZIP/hash; stop for Manager review before short targeted 348×196 Chief F5. E remains uncommitted; M2 final commit/closure requires explicit Chief approval.
+
 ## Workstream status and next gates
 
 | Milestone | Status as at 23 Oct 2026 | Next action and acceptance |
