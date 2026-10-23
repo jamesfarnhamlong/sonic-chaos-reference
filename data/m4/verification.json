@@ -1,0 +1,46 @@
+{
+  "evidence": "new Windows Python controlled Z80 and ROM-free checks; no renderer binary/native Runner",
+  "python": "3.12.10",
+  "suites": [
+    {
+      "suite": "test_m4_audio.py",
+      "run": 9,
+      "passed": 9,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0,
+      "success": true
+    },
+    {
+      "suite": "test_audio1_psg.py",
+      "run": 14,
+      "passed": 14,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0,
+      "success": true
+    },
+    {
+      "suite": "test_audio_requests.py",
+      "run": 8,
+      "passed": 8,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0,
+      "success": true
+    },
+    {
+      "suite": "test_audio1b_render.py",
+      "run": 20,
+      "passed": 9,
+      "skipped": 11,
+      "errors": 0,
+      "failures": 0,
+      "success": true
+    }
+  ],
+  "initial_environment_errors": "Before workspace TEMP/TMP override, two inherited temporary-file tests failed with sandbox PermissionError; fixed by workspace-owned temporary directory, no test-source changes.",
+  "private_renderer": "not available; 11 dependent tests explicitly skipped",
+  "interruption": "120 inherited phases rerun; 48 title flag probes pass; raw any-write title predicate retains 21/48 FAIL",
+  "poc": "d6dd1eae96ec0f7496225e3f27438e1690f6aa2a read-only"
+}
