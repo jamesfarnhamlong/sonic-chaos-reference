@@ -21,6 +21,19 @@ This is a **Git-tracked project handover**, not an automatic ChatGPT Memory stor
 
 **M2-R3 Research ACCEPTED:** `research/m2r3-aqz-palette-hazards@33c4c13ebeadb54834c8cddd5bafedaae5e13015`, exact direct child of R1, remote 0/0; 12 Research files, 10 reported tests PASS. Source-level AQZ decoder defect confirmed against exact SHA-checked private B; original spear object motion/collision behaviour agrees with B controls but Chief's Windows noncontact report remains OPEN. [Detailed R3 contract](https://github.com/jamesfarnhamlong/sonic-chaos-reference/blob/33c4c13ebeadb54834c8cddd5bafedaae5e13015/docs/m2r3-aqz-palette-hazards.md). No Research main promotion or POC modifications.
 
+## Latest Windows report — M2 Package C (23 October 2026)
+
+**Candidate C:** Private source-only `SonicChaos_M2_20261023_C_PRIVATE.zip`, Designer-reported SHA-256 `321bcd86b2daa5539485f17107f037c843a7902267db514b16d22864ef556964`; 1,281 resources; 5,455 sprite files preserved, ZIP/recovery 535→0 PASS; paired gate **18 PASS / 3 inherited raw FAIL / 0 newly failing IDs**. Manager has not read the local ZIP bytes. Candidate C remains **unstaged, uncommitted and unpushed**.
+
+**Chief's native 348×196 F5:**
+- **PASS:** Tails AQZ1 colours/appearance; Sonic AQZ palette unchanged; AQZ1 first-pair moving spears; all previously approved B essentials. These are *scoped human passes*, not proof of every hue, contact phase or route.
+- **FAIL / further evidence:** combined “Tails AQZ2 and AQZ3” card. Chief reports no visible underwater palette switching (initially noticed AQZ2, then described as all tested water situations). Do not treat all stage palettes as incorrect: **AQZ3 has no original waterline controller** and should not switch. Capture/compare Tails above/split/deep camera conditions separately in AQZ1 and AQZ2; determine whether the sprite rows/CRAM actually differ.
+- **OPEN contact/movement:** while moving fast underwater, reverse direction and jump: player abruptly rockets backward/upward and rebounds near the water surface. Chief recalls this as a historical Sonic symptom as well; do not assume either authentic or newly introduced by C. Original `$4BC0` has a **repeated** skim impulse VY=-3.0 when submerged, descending/nonnegative VY, attack bit1, and absolute *signed X-speed high byte* ≥4. Source evidence alone does not explain the reported backward launch or preserve engine pacing.
+- Any prior spear **exact continuous-route** uncertainty can remain in the register for wider coverage, but Chief's targeted opening-pair Windows test is now PASS. No spear or shared collision edit justified.
+- **Natural Tails frame-$5E** remains UNVERIFIED without complete append-only campaign log.
+
+**Manager's next decision:** Research-only **M2-R4 AQZ water palette and reversal-launch trace** using original SMS routines, accepted POC, and the *actual* locally available C candidate when possible. First reproduce the precise rapid direction-change + fresh jump sequence, compare source per update (VX/VY/state/water/skim/camera/attack/facing/action, update scheduling), and test AQZ1/2 sprite palette selection at above/split/full conditions. No speculative velocity clamp, gravity/waterline adjustment, palette recolouring, or full Tails campaign. Await Research before requesting a single targeted Designer Package D if necessary.
+
 ## Project timeline / authority graph
 
 - M0/M1 combined Research: `research/m0-m1-roadmap-tails-frontend@5b7f5a10232f4f6511c3a7b9d9b4deaea5842182`. Authentic Tails mapping census, original character-choice screen, audio readiness. Root current Windows AGENTS had been read during M0; older planning drafts were later superseded by v0.2 on this branch.
@@ -28,7 +41,7 @@ This is a **Git-tracked project handover**, not an automatic ChatGPT Memory stor
 - M2-R2 Research: `research/m2r2-tails-interaction-audit@cd417c16b9e4ae614a3592f5b851a351af786afa`. Character-difference audit complete, topic branch not merged to Research `main`.
 - M2-R3 Research: `research/m2r3-aqz-palette-hazards@33c4c13ebeadb54834c8cddd5bafedaae5e13015`. Decoder fix justified; spear contact discrepancy unproven, branch not merged to Research main.
 - POC Package A: source ZIP SHA `75efdd127ea38f7b35d16c914859acc22e20e0fafa86e6f80b28581b37f2310b`. Initial THZ movement/flight/animation/death PASS, Shift+T faulty.
-- POC Package B: fixed competing room requests and progression index, Rocket monitor icon+reward. Six B focused Windows items PASS; R3 confirmed AQZ Tails decoder issue, while spear contacts require exact Windows repro. No B commit. Package C scoped correction/diagnostic now authorised, but not yet produced.
+- POC Package B: fixed competing room requests and progression index, Rocket monitor icon+reward. Six focused Windows items PASS. POC **Package C now produced and partially F5-tested**: AQZ1 Tails/Sonic palettes and spear checks PASS; combined AQZ2/3 colour check FAIL with no visible underwater change reported, and a high-speed reversal/jump launch is OPEN. No M2 commit.
 - Research `main` became the canonical coordination location at `5c95e9ec12ae4a328c8db628a15f1062fa31489c`. Management docs may advance main without merging Research topic branches. Both R2 and R3 remain separate Research branches; reference their exact SHAs.
 
 ## Cautions and outstanding verification
@@ -40,7 +53,7 @@ This is a **Git-tracked project handover**, not an automatic ChatGPT Memory stor
 - Historical raw failures: `verify_ss5_play.js` camera-X at256 up to2px; `verify_thz3_boss_clear.js:113` obsolete cap; M2 scoped gate adds `verify_u5a_player_presentation.js:149` inherited JSON equality mismatch. Older GPZ sprite-ID and MGHZ timeout retained; not globally green.
 - Other open issues include historical spring/Badnik large oscillation (not explained by tiny canonical 1/16px cycle), slope sticking, SS3 invincibility monitor embed, MGHZ3 staged pit/tree entrance, unidentified “SLZ1” priority, breakable fragments in remaining zones, goal pan constraints, state20 lag and atypical width spike phase.
 
-## Next execution: M2 Package C
+## Historical Package C scope (now delivered; refer to latest Windows report above)
 
 1. Designer reads [R3](https://github.com/jamesfarnhamlong/sonic-chaos-reference/blob/33c4c13ebeadb54834c8cddd5bafedaae5e13015/docs/m2r3-aqz-palette-hazards.md) and [R2](https://github.com/jamesfarnhamlong/sonic-chaos-reference/blob/cd417c16b9e4ae614a3592f5b851a351af786afa/docs/m2r2-character-interaction-matrix.md), edits **existing isolated B worktree only**: fix Tails RGB-index decoder routing; no other gameplay, sprite, or hazard mechanic changes.
 2. Add bounded non-intrusive F6 trace for AQZ1 first two `$3C` objects: act/placement, world position, object frame/state/phase/sleep/awake, contact-eligible flag, player position/size/state/attack/invulnerability, projected box, request/hurt and update. Preserve current frame5E append logger separately.
