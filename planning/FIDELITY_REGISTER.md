@@ -101,6 +101,18 @@ historical failure or acceptance status is closed by these findings.
 
 ## 5. Acceptance discipline and grouping
 
+### M2-R5 scoped update — 23 October 2026
+
+`M2-TAILS-ACTCLEAR-SIDE-MAPPING`: **OPEN-EXCEPTION / ORIGINAL ARRIVAL-REACHABLE**.
+Four native POC sign bursts are Manager-log-confirmed. Actual original Z80
+sign chains in GPZ1/2, MGHZ1 and EEZ1 select94 with organically generated
+bg/contact6 in12/20 approach-phase controls, without state/contact injection.
+Four base controls and eight phase negatives select normal frames instead.
+Full entrance-owned original routes and exact Windows phase remain unresolved.
+The no-draw continuation remains a deliberate difference from invalid original
+mapping/transfer reads; no closure or runtime modification authorised.
+See [M2-R5](../docs/m2r5-natural-frame5e.md) and `data/m2r5/summary.json`.
+
 - One group per causal family: **Tails movement + authentic animation**, **title+character selection**, **sound dispatch + lifecycle**, **remaining original presentation**, **contact/physics with a reproduced trace**, **other object scheduler + fragments**. Do not use this register as authorisation for single-bug ZIPs.
 - Record both human test and source comparator with exact width, route, date and SHA. 256×192 is the **ROM/source-model** target, **not** a mandatory Windows F5 mode. Windows test baseline is 348×196.
 - Remove/close an OPEN record only after concrete evidence. For original quirks and constrained widescreen rules, prefer `KNOWN-ADAPTER` or documented canon over speculative “fix”.
