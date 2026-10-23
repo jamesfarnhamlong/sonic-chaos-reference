@@ -34,6 +34,8 @@ This is a **Git-tracked project handover**, not an automatic ChatGPT Memory stor
 
 **Manager's next decision:** Research-only **M2-R4 AQZ water palette and reversal-launch trace** using original SMS routines, accepted POC, and the *actual* locally available C candidate when possible. First reproduce the precise rapid direction-change + fresh jump sequence, compare source per update (VX/VY/state/water/skim/camera/attack/facing/action, update scheduling), and test AQZ1/2 sprite palette selection at above/split/full conditions. No speculative velocity clamp, gravity/waterline adjustment, palette recolouring, or full Tails campaign. Await Research before requesting a single targeted Designer Package D if necessary.
 
+**Chief-approved acceptance-order change:** Before the complete natural 18-act Tails playthrough, integrate the authentic **public New Game → separate Sonic/Tails choice → THZ1** flow into the existing **uncommitted M2 candidate**. Validate a short normal-start and return flow for both characters, then run **one full Tails campaign through the actual public picker**, not Shift+T, preserving append-only frame5E logging. This supersedes the earlier ordering that held character selection until *after* M2 full-campaign acceptance, but does not certify Tails or permit a POC commit. Keep authentic original choice art/inputs/pacing source-backed, reuse accepted reset/Continue owner and existing title; complete original title visual overhaul and attract demos later. Read M1 `docs/m1-tails-frontend-contract.md` §D: Sonic default, left/right clamp, Button2 fresh confirm and no original Back branch. **Do not start parallel runtime edits while M2-R4 is unresolved.**
+
 ## Project timeline / authority graph
 
 - M0/M1 combined Research: `research/m0-m1-roadmap-tails-frontend@5b7f5a10232f4f6511c3a7b9d9b4deaea5842182`. Authentic Tails mapping census, original character-choice screen, audio readiness. Root current Windows AGENTS had been read during M0; older planning drafts were later superseded by v0.2 on this branch.
@@ -64,7 +66,7 @@ This is a **Git-tracked project handover**, not an automatic ChatGPT Memory stor
 
 ## Original-game completion sequence
 
-M2 Tails accepted → M3 original title and separate character choice → M4 live audio dispatcher pilot → M5 full authenticated original music/SFX → M6 remaining important original presentation/contact/attract → M7 optional PC QoL/production release → M8 extra modes/ports parked. This is a **plan, not automatic authorisation**. Original title is inherited and currently launches Sonic publicly; Sound Test's five preview files aren't live in-game music.
+M2-R4 evidence/AQZ disposition → authentic M3 character-choice **front-door slice inside the private M2 candidate** → short public Sonic/Tails route acceptance → one full Tails New Game 18-act campaign/ending and frame5E log review → commit/close M2 only after Chief approval → remaining original M3 title-art/attract scope → M4 live audio dispatcher pilot → M5 full original music/SFX → M6 remaining original fidelity → M7 optional PC QoL → M8 extras/ports parked. This is a **plan, not automatic authorisation**. Original title is inherited and currently launches Sonic publicly; Sound Test's five preview files aren't live in-game music.
 
 ## Document and archive authority
 
