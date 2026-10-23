@@ -1,0 +1,6889 @@
+{
+  "schema_version": 1,
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "baseline": "d6f2fafcda7903c0fc7082b2a9cbf4fed6e0bf98",
+  "source": {
+    "regions": [
+      {
+        "bank": 12,
+        "start": 41289,
+        "end": 41456,
+        "sha256": "21c8905ca3d75a20132b1b3321a88ddc5c2fb409dd3182d32767af8872309ee4",
+        "instructions": [
+          [
+            "0xA149",
+            "SET 7,(IX+3)"
+          ],
+          [
+            "0xA14D",
+            "LD (IX+2),1"
+          ],
+          [
+            "0xA151",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0xA154",
+            "DEC A"
+          ],
+          [
+            "0xA155",
+            "RET z"
+          ],
+          [
+            "0xA156",
+            "LD A,(IX+0x3f)"
+          ],
+          [
+            "0xA159",
+            "CP 4"
+          ],
+          [
+            "0xA15B",
+            "RET nz"
+          ],
+          [
+            "0xA15C",
+            "LD (IX+0x3f),1"
+          ],
+          [
+            "0xA160",
+            "RET"
+          ],
+          [
+            "0xA161",
+            "LD B,(IX+0x3f)"
+          ],
+          [
+            "0xA164",
+            "CALL 0xa1f9"
+          ],
+          [
+            "0xA167",
+            "LD (IX+2),2"
+          ],
+          [
+            "0xA16B",
+            "RET"
+          ],
+          [
+            "0xA16C",
+            "LD B,(IX+0x3f)"
+          ],
+          [
+            "0xA16F",
+            "CALL 0xa1f9"
+          ],
+          [
+            "0xA172",
+            "BIT 6,(IX+4)"
+          ],
+          [
+            "0xA176",
+            "RET nz"
+          ],
+          [
+            "0xA177",
+            "CALL 0x034d"
+          ],
+          [
+            "0xA17A",
+            "LD A,(0xd503)"
+          ],
+          [
+            "0xA17D",
+            "BIT 1,A"
+          ],
+          [
+            "0xA17F",
+            "RET z"
+          ],
+          [
+            "0xA180",
+            "LD A,(IX+0x21)"
+          ],
+          [
+            "0xA183",
+            "AND 15"
+          ],
+          [
+            "0xA185",
+            "RET z"
+          ],
+          [
+            "0xA186",
+            "CP 2"
+          ],
+          [
+            "0xA188",
+            "JR nz,0xa19e"
+          ],
+          [
+            "0xA18A",
+            "LD HL,0x200"
+          ],
+          [
+            "0xA18D",
+            "LD (0xd518),HL"
+          ],
+          [
+            "0xA190",
+            "LD HL,0xfe00"
+          ],
+          [
+            "0xA193",
+            "LD (IX+0x19),H"
+          ],
+          [
+            "0xA196",
+            "LD (IX+0x18),L"
+          ],
+          [
+            "0xA199",
+            "LD (IX+2),3"
+          ],
+          [
+            "0xA19D",
+            "RET"
+          ],
+          [
+            "0xA19E",
+            "CP 1"
+          ],
+          [
+            "0xA1A0",
+            "JR nz,0xa1b1"
+          ],
+          [
+            "0xA1A2",
+            "LD A,(0xd502)"
+          ],
+          [
+            "0xA1A5",
+            "CP 15"
+          ],
+          [
+            "0xA1A7",
+            "RET z"
+          ],
+          [
+            "0xA1A8",
+            "CP 0x10"
+          ],
+          [
+            "0xA1AA",
+            "RET z"
+          ],
+          [
+            "0xA1AB",
+            "CP 0x15"
+          ],
+          [
+            "0xA1AD",
+            "RET z"
+          ],
+          [
+            "0xA1AE",
+            "CP 0x1a"
+          ],
+          [
+            "0xA1B0",
+            "RET z"
+          ],
+          [
+            "0xA1B1",
+            "LD HL,(0xd518)"
+          ],
+          [
+            "0xA1B4",
+            "LD A,L"
+          ],
+          [
+            "0xA1B5",
+            "OR H"
+          ],
+          [
+            "0xA1B6",
+            "RET z"
+          ],
+          [
+            "0xA1B7",
+            "LD A,H"
+          ],
+          [
+            "0xA1B8",
+            "AND 0x80"
+          ],
+          [
+            "0xA1BA",
+            "RET nz"
+          ],
+          [
+            "0xA1BB",
+            "CALL 0xa1d3"
+          ],
+          [
+            "0xA1BE",
+            "LD (IX+0x3f),0x40"
+          ],
+          [
+            "0xA1C2",
+            "LD A,(0xd501)"
+          ],
+          [
+            "0xA1C5",
+            "CP 9"
+          ],
+          [
+            "0xA1C7",
+            "JP z,0x033e"
+          ],
+          [
+            "0xA1CA",
+            "LD HL,0xfc00"
+          ],
+          [
+            "0xA1CD",
+            "LD (0xd518),HL"
+          ],
+          [
+            "0xA1D0",
+            "JP 0x033e"
+          ],
+          [
+            "0xA1D3",
+            "LD A,(IX+0x3f)"
+          ],
+          [
+            "0xA1D6",
+            "CP 10"
+          ],
+          [
+            "0xA1D8",
+            "RET nc"
+          ],
+          [
+            "0xA1D9",
+            "LD E,A"
+          ],
+          [
+            "0xA1DA",
+            "LD D,0"
+          ],
+          [
+            "0xA1DC",
+            "LD HL,0xa1f0"
+          ],
+          [
+            "0xA1DF",
+            "ADD HL,DE"
+          ],
+          [
+            "0xA1E0",
+            "LD A,(0xd3a3)"
+          ],
+          [
+            "0xA1E3",
+            "OR (HL)"
+          ],
+          [
+            "0xA1E4",
+            "LD (0xd3a3),A"
+          ],
+          [
+            "0xA1E7",
+            "LD (IX+0x3f),0"
+          ],
+          [
+            "0xA1EB",
+            "SET 6,(IX+0x3f)"
+          ],
+          [
+            "0xA1EF",
+            "RET"
+          ]
+        ]
+      },
+      {
+        "bank": 12,
+        "start": 41465,
+        "end": 41517,
+        "sha256": "47336ddfbff390a34179e50852afbca2ea4cddee23dbffd9f0e9d6d9ce5c0687",
+        "instructions": [
+          [
+            "0xA1F9",
+            "LD C,(IX+0x26)"
+          ],
+          [
+            "0xA1FC",
+            "LD A,(IX+4)"
+          ],
+          [
+            "0xA1FF",
+            "LD (IX+0x26),A"
+          ],
+          [
+            "0xA202",
+            "BIT 6,A"
+          ],
+          [
+            "0xA204",
+            "RET nz"
+          ],
+          [
+            "0xA205",
+            "BIT 6,C"
+          ],
+          [
+            "0xA207",
+            "RET z"
+          ],
+          [
+            "0xA208",
+            "LD A,B"
+          ],
+          [
+            "0xA209",
+            "LD (0xd3b3),A"
+          ],
+          [
+            "0xA20C",
+            "RET"
+          ],
+          [
+            "0xA20D",
+            "CALL 0x0338"
+          ],
+          [
+            "0xA210",
+            "LD H,(IX+0x19)"
+          ],
+          [
+            "0xA213",
+            "LD L,(IX+0x18)"
+          ],
+          [
+            "0xA216",
+            "LD DE,0x40"
+          ],
+          [
+            "0xA219",
+            "ADD HL,DE"
+          ],
+          [
+            "0xA21A",
+            "LD (IX+0x19),H"
+          ],
+          [
+            "0xA21D",
+            "LD (IX+0x18),L"
+          ],
+          [
+            "0xA220",
+            "CALL 0x037a"
+          ],
+          [
+            "0xA223",
+            "OR A"
+          ],
+          [
+            "0xA224",
+            "RET nz"
+          ],
+          [
+            "0xA225",
+            "CALL 0x0320"
+          ],
+          [
+            "0xA228",
+            "LD (IX+2),2"
+          ],
+          [
+            "0xA22C",
+            "RET"
+          ]
+        ]
+      },
+      {
+        "bank": 0,
+        "start": 19060,
+        "end": 19270,
+        "sha256": "c0026f6e577fdd77b8ddc033bd09763cce4ebb98024632efa8206fa98e22be1e",
+        "instructions": [
+          [
+            "0x4A74",
+            "LD A,(0xd532)"
+          ],
+          [
+            "0x4A77",
+            "OR A"
+          ],
+          [
+            "0x4A78",
+            "JR z,0x4aa3"
+          ],
+          [
+            "0x4A7A",
+            "CP 3"
+          ],
+          [
+            "0x4A7C",
+            "JR nz,0x4a84"
+          ],
+          [
+            "0x4A7E",
+            "LD HL,0x600"
+          ],
+          [
+            "0x4A81",
+            "LD (0xd373),HL"
+          ],
+          [
+            "0x4A84",
+            "LD HL,(0xd44c)"
+          ],
+          [
+            "0x4A87",
+            "DEC HL"
+          ],
+          [
+            "0x4A88",
+            "LD (0xd44c),HL"
+          ],
+          [
+            "0x4A8B",
+            "LD A,H"
+          ],
+          [
+            "0x4A8C",
+            "OR L"
+          ],
+          [
+            "0x4A8D",
+            "JR nz,0x4aa3"
+          ],
+          [
+            "0x4A8F",
+            "LD A,(0xd532)"
+          ],
+          [
+            "0x4A92",
+            "CP 4"
+          ],
+          [
+            "0x4A94",
+            "JR z,0x4a9c"
+          ],
+          [
+            "0x4A96",
+            "CP 6"
+          ],
+          [
+            "0x4A98",
+            "JR z,0x4a9c"
+          ],
+          [
+            "0x4A9A",
+            "JR 0x4aa3"
+          ],
+          [
+            "0x4A9C",
+            "CALL 0x189b"
+          ],
+          [
+            "0x4A9F",
+            "XOR A"
+          ],
+          [
+            "0x4AA0",
+            "LD (0xd532),A"
+          ],
+          [
+            "0x4AA3",
+            "LD HL,0xd3a3"
+          ],
+          [
+            "0x4AA6",
+            "LD A,(HL)"
+          ],
+          [
+            "0x4AA7",
+            "BIT 0,A"
+          ],
+          [
+            "0x4AA9",
+            "JR nz,0x4ac0"
+          ],
+          [
+            "0x4AAB",
+            "BIT 1,A"
+          ],
+          [
+            "0x4AAD",
+            "JR nz,0x4ada"
+          ],
+          [
+            "0x4AAF",
+            "BIT 2,A"
+          ],
+          [
+            "0x4AB1",
+            "JR nz,0x4b0f"
+          ],
+          [
+            "0x4AB3",
+            "BIT 3,A"
+          ],
+          [
+            "0x4AB5",
+            "JR nz,0x4adf"
+          ],
+          [
+            "0x4AB7",
+            "BIT 4,A"
+          ],
+          [
+            "0x4AB9",
+            "JR nz,0x4b02"
+          ],
+          [
+            "0x4ABB",
+            "BIT 5,A"
+          ],
+          [
+            "0x4ABD",
+            "JR nz,0x4b1d"
+          ],
+          [
+            "0x4ABF",
+            "RET"
+          ],
+          [
+            "0x4AC0",
+            "RES 0,(HL)"
+          ],
+          [
+            "0x4AC2",
+            "LD A,(0xd29a)"
+          ],
+          [
+            "0x4AC5",
+            "ADD A,0x10"
+          ],
+          [
+            "0x4AC7",
+            "DAA"
+          ],
+          [
+            "0x4AC8",
+            "LD (0xd29a),A"
+          ],
+          [
+            "0x4ACB",
+            "CALL 0x314a"
+          ],
+          [
+            "0x4ACE",
+            "LD A,(0xd29a)"
+          ],
+          [
+            "0x4AD1",
+            "CP 0x10"
+          ],
+          [
+            "0x4AD3",
+            "RET nc"
+          ],
+          [
+            "0x4AD4",
+            "CALL 0x3104"
+          ],
+          [
+            "0x4AD7",
+            "JP 0x178f"
+          ],
+          [
+            "0x4ADA",
+            "RES 1,(HL)"
+          ],
+          [
+            "0x4ADC",
+            "JP 0x3104"
+          ],
+          [
+            "0x4ADF",
+            "RES 3,(HL)"
+          ],
+          [
+            "0x4AE1",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0x4AE4",
+            "DEC A"
+          ],
+          [
+            "0x4AE5",
+            "RET nz"
+          ],
+          [
+            "0x4AE6",
+            "LD A,4"
+          ],
+          [
+            "0x4AE8",
+            "LD (0xd532),A"
+          ],
+          [
+            "0x4AEB",
+            "LD HL,0x12c"
+          ],
+          [
+            "0x4AEE",
+            "LD A,(0xd297)"
+          ],
+          [
+            "0x4AF1",
+            "CP 8"
+          ],
+          [
+            "0x4AF3",
+            "JR nz,0x4af8"
+          ],
+          [
+            "0x4AF5",
+            "LD HL,0x1770"
+          ],
+          [
+            "0x4AF8",
+            "LD (0xd44c),HL"
+          ],
+          [
+            "0x4AFB",
+            "LD IX,0xd500"
+          ],
+          [
+            "0x4AFF",
+            "JP 0x4775"
+          ],
+          [
+            "0x4B02",
+            "RES 4,(HL)"
+          ],
+          [
+            "0x4B04",
+            "LD A,11"
+          ],
+          [
+            "0x4B06",
+            "LD (0xd3c4),A"
+          ],
+          [
+            "0x4B09",
+            "LD A,0xf8"
+          ],
+          [
+            "0x4B0B",
+            "LD (0xde04),A"
+          ],
+          [
+            "0x4B0E",
+            "RET"
+          ],
+          [
+            "0x4B0F",
+            "RES 2,(HL)"
+          ],
+          [
+            "0x4B11",
+            "LD A,3"
+          ],
+          [
+            "0x4B13",
+            "LD (0xd532),A"
+          ],
+          [
+            "0x4B16",
+            "LD HL,0x384"
+          ],
+          [
+            "0x4B19",
+            "LD (0xd44c),HL"
+          ],
+          [
+            "0x4B1C",
+            "RET"
+          ],
+          [
+            "0x4B1D",
+            "RES 5,(HL)"
+          ],
+          [
+            "0x4B1F",
+            "LD HL,0xd503"
+          ],
+          [
+            "0x4B22",
+            "SET 1,(HL)"
+          ],
+          [
+            "0x4B24",
+            "SET 7,(HL)"
+          ],
+          [
+            "0x4B26",
+            "LD A,0x84"
+          ],
+          [
+            "0x4B28",
+            "LD (0xde04),A"
+          ],
+          [
+            "0x4B2B",
+            "CALL 0x062d"
+          ],
+          [
+            "0x4B2E",
+            "LD HL,0x258"
+          ],
+          [
+            "0x4B31",
+            "LD (0xd44c),HL"
+          ],
+          [
+            "0x4B34",
+            "LD A,(0xd532)"
+          ],
+          [
+            "0x4B37",
+            "CP 6"
+          ],
+          [
+            "0x4B39",
+            "RET z"
+          ],
+          [
+            "0x4B3A",
+            "LD A,6"
+          ],
+          [
+            "0x4B3C",
+            "LD (0xd532),A"
+          ],
+          [
+            "0x4B3F",
+            "LD C,5"
+          ],
+          [
+            "0x4B41",
+            "LD H,0"
+          ],
+          [
+            "0x4B43",
+            "JP 0x5e9c"
+          ]
+        ]
+      },
+      {
+        "bank": 0,
+        "start": 31857,
+        "end": 31931,
+        "sha256": "3b55d9d95a5fcd0f81dcbc068eb06bc3de9190f78626d8f49825be428d6e559c",
+        "instructions": [
+          [
+            "0x7C71",
+            "DI"
+          ],
+          [
+            "0x7C72",
+            "LD A,14"
+          ],
+          [
+            "0x7C74",
+            "CALL 0x1c6f"
+          ],
+          [
+            "0x7C77",
+            "LD A,(0xd3b3)"
+          ],
+          [
+            "0x7C7A",
+            "ADD A,A"
+          ],
+          [
+            "0x7C7B",
+            "LD L,A"
+          ],
+          [
+            "0x7C7C",
+            "LD H,0"
+          ],
+          [
+            "0x7C7E",
+            "LD DE,0x7cbb"
+          ],
+          [
+            "0x7C81",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0x7C84",
+            "DEC A"
+          ],
+          [
+            "0x7C85",
+            "JR z,0x7c8a"
+          ],
+          [
+            "0x7C87",
+            "LD DE,0x7cc7"
+          ],
+          [
+            "0x7C8A",
+            "ADD HL,DE"
+          ],
+          [
+            "0x7C8B",
+            "LD E,(HL)"
+          ],
+          [
+            "0x7C8C",
+            "INC HL"
+          ],
+          [
+            "0x7C8D",
+            "LD D,(HL)"
+          ],
+          [
+            "0x7C8E",
+            "EX DE,HL"
+          ],
+          [
+            "0x7C8F",
+            "LD DE,0x980"
+          ],
+          [
+            "0x7C92",
+            "LD BC,0xc0"
+          ],
+          [
+            "0x7C95",
+            "CALL 0x1d9c"
+          ],
+          [
+            "0x7C98",
+            "LD A,(0xd3b3)"
+          ],
+          [
+            "0x7C9B",
+            "ADD A,A"
+          ],
+          [
+            "0x7C9C",
+            "LD L,A"
+          ],
+          [
+            "0x7C9D",
+            "LD H,0"
+          ],
+          [
+            "0x7C9F",
+            "LD DE,0x7cd3"
+          ],
+          [
+            "0x7CA2",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0x7CA5",
+            "DEC A"
+          ],
+          [
+            "0x7CA6",
+            "JR z,0x7cab"
+          ],
+          [
+            "0x7CA8",
+            "LD DE,0x7cdf"
+          ],
+          [
+            "0x7CAB",
+            "ADD HL,DE"
+          ],
+          [
+            "0x7CAC",
+            "LD E,(HL)"
+          ],
+          [
+            "0x7CAD",
+            "INC HL"
+          ],
+          [
+            "0x7CAE",
+            "LD D,(HL)"
+          ],
+          [
+            "0x7CAF",
+            "EX DE,HL"
+          ],
+          [
+            "0x7CB0",
+            "LD DE,0xbc0"
+          ],
+          [
+            "0x7CB3",
+            "LD BC,0x80"
+          ],
+          [
+            "0x7CB6",
+            "CALL 0x1d9c"
+          ],
+          [
+            "0x7CB9",
+            "EI"
+          ],
+          [
+            "0x7CBA",
+            "JP 0x7b92"
+          ]
+        ]
+      },
+      {
+        "bank": 30,
+        "start": 35684,
+        "end": 35809,
+        "sha256": "827c30a97f7939cc257e4c5b3224d5e5755d2cf15cc8de0e58a09f521b2a9b53",
+        "instructions": [
+          [
+            "0x8B64",
+            "BIT 6,(IX+4)"
+          ],
+          [
+            "0x8B68",
+            "RET nz"
+          ],
+          [
+            "0x8B69",
+            "LD A,(0xd519)"
+          ],
+          [
+            "0x8B6C",
+            "RLCA"
+          ],
+          [
+            "0x8B6D",
+            "RET c"
+          ],
+          [
+            "0x8B6E",
+            "LD A,(0xd501)"
+          ],
+          [
+            "0x8B71",
+            "CP 0x12"
+          ],
+          [
+            "0x8B73",
+            "RET z"
+          ],
+          [
+            "0x8B74",
+            "CALL 0x034d"
+          ],
+          [
+            "0x8B77",
+            "LD A,(IX+0x21)"
+          ],
+          [
+            "0x8B7A",
+            "AND 15"
+          ],
+          [
+            "0x8B7C",
+            "RET z"
+          ],
+          [
+            "0x8B7D",
+            "BIT 0,(IX+0x21)"
+          ],
+          [
+            "0x8B81",
+            "JR z,0x8b95"
+          ],
+          [
+            "0x8B83",
+            "LD (0xd3a4),IX"
+          ],
+          [
+            "0x8B87",
+            "LD A,0x12"
+          ],
+          [
+            "0x8B89",
+            "LD (0xd502),A"
+          ],
+          [
+            "0x8B8C",
+            "LD (IX+2),3"
+          ],
+          [
+            "0x8B90",
+            "LD (IX+0x1f),0xff"
+          ],
+          [
+            "0x8B94",
+            "RET"
+          ],
+          [
+            "0x8B95",
+            "LD A,(0xd522)"
+          ],
+          [
+            "0x8B98",
+            "BIT 1,A"
+          ],
+          [
+            "0x8B9A",
+            "RET z"
+          ],
+          [
+            "0x8B9B",
+            "LD A,(0xd503)"
+          ],
+          [
+            "0x8B9E",
+            "BIT 1,A"
+          ],
+          [
+            "0x8BA0",
+            "RET z"
+          ],
+          [
+            "0x8BA1",
+            "LD A,1"
+          ],
+          [
+            "0x8BA3",
+            "LD (0xd502),A"
+          ],
+          [
+            "0x8BA6",
+            "LD HL,0"
+          ],
+          [
+            "0x8BA9",
+            "LD (0xd516),HL"
+          ],
+          [
+            "0x8BAC",
+            "LD H,(IX+0x12)"
+          ],
+          [
+            "0x8BAF",
+            "LD L,(IX+0x11)"
+          ],
+          [
+            "0x8BB2",
+            "LD DE,0x10"
+          ],
+          [
+            "0x8BB5",
+            "BIT 2,(IX+0x21)"
+          ],
+          [
+            "0x8BB9",
+            "JR nz,0x8bbe"
+          ],
+          [
+            "0x8BBB",
+            "LD DE,0xfff0"
+          ],
+          [
+            "0x8BBE",
+            "ADD HL,DE"
+          ],
+          [
+            "0x8BBF",
+            "LD (0xd511),HL"
+          ],
+          [
+            "0x8BC2",
+            "RET"
+          ],
+          [
+            "0x8BC3",
+            "LD A,(0xd501)"
+          ],
+          [
+            "0x8BC6",
+            "CP 0x12"
+          ],
+          [
+            "0x8BC8",
+            "RET z"
+          ],
+          [
+            "0x8BC9",
+            "LD (IX+2),5"
+          ],
+          [
+            "0x8BCD",
+            "RET"
+          ],
+          [
+            "0x8BCE",
+            "LD (IX+0x19),1"
+          ],
+          [
+            "0x8BD2",
+            "LD (IX+0x18),0x80"
+          ],
+          [
+            "0x8BD6",
+            "RET"
+          ],
+          [
+            "0x8BD7",
+            "LD DE,0x80"
+          ],
+          [
+            "0x8BDA",
+            "CALL 0x0431"
+          ],
+          [
+            "0x8BDD",
+            "CALL 0x0338"
+          ],
+          [
+            "0x8BE0",
+            "RET"
+          ]
+        ]
+      },
+      {
+        "bank": 0,
+        "start": 6031,
+        "end": 6064,
+        "sha256": "e170ebaa71f3f5da008b9bb4d82e8d269ceefad74e8c27fe73efcca2a526f4d6",
+        "instructions": [
+          [
+            "0x178F",
+            "LD A,(0xd2c8)"
+          ],
+          [
+            "0x1792",
+            "DEC A"
+          ],
+          [
+            "0x1793",
+            "RET nz"
+          ],
+          [
+            "0x1794",
+            "LD A,(0xd297)"
+          ],
+          [
+            "0x1797",
+            "CP 6"
+          ],
+          [
+            "0x1799",
+            "RET nc"
+          ],
+          [
+            "0x179A",
+            "LD A,(0xd2cc)"
+          ],
+          [
+            "0x179D",
+            "AND 0x1f"
+          ],
+          [
+            "0x179F",
+            "CP 0x1f"
+          ],
+          [
+            "0x17A1",
+            "RET z"
+          ],
+          [
+            "0x17A2",
+            "CALL 0x1753"
+          ],
+          [
+            "0x17A5",
+            "LD A,0x88"
+          ],
+          [
+            "0x17A7",
+            "LD (0xd294),A"
+          ],
+          [
+            "0x17AA",
+            "LD A,1"
+          ],
+          [
+            "0x17AC",
+            "LD (0xd2cd),A"
+          ],
+          [
+            "0x17AF",
+            "RET"
+          ]
+        ]
+      },
+      {
+        "bank": 0,
+        "start": 24892,
+        "end": 24910,
+        "sha256": "e86a61bb5e6f991d3462ba114757c0cafd0190f5b8dd2bffcb1a628ba8334f6e",
+        "instructions": [
+          [
+            "0x613C",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0x613F",
+            "CP 1"
+          ],
+          [
+            "0x6141",
+            "RET z"
+          ],
+          [
+            "0x6142",
+            "LD A,(0xd502)"
+          ],
+          [
+            "0x6145",
+            "CP 0x18"
+          ],
+          [
+            "0x6147",
+            "RET nz"
+          ],
+          [
+            "0x6148",
+            "LD A,14"
+          ],
+          [
+            "0x614A",
+            "LD (0xd502),A"
+          ],
+          [
+            "0x614D",
+            "RET"
+          ]
+        ]
+      },
+      {
+        "bank": 12,
+        "start": 37176,
+        "end": 37219,
+        "sha256": "b3c5d88c457917b7d354ab5695fff18c6af9d2763f431b679e9e248a9b1ee891",
+        "instructions": [
+          [
+            "0x9138",
+            "LD DE,0x9163"
+          ],
+          [
+            "0x913B",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0x913E",
+            "DEC A"
+          ],
+          [
+            "0x913F",
+            "JR z,0x9144"
+          ],
+          [
+            "0x9141",
+            "LD DE,0x9167"
+          ],
+          [
+            "0x9144",
+            "LD A,(IX+0x1e)"
+          ],
+          [
+            "0x9147",
+            "BIT 7,(IX+0x17)"
+          ],
+          [
+            "0x914B",
+            "JR nz,0x9150"
+          ],
+          [
+            "0x914D",
+            "INC A"
+          ],
+          [
+            "0x914E",
+            "JR 0x9151"
+          ],
+          [
+            "0x9150",
+            "DEC A"
+          ],
+          [
+            "0x9151",
+            "AND 3"
+          ],
+          [
+            "0x9153",
+            "LD (IX+0x1e),A"
+          ],
+          [
+            "0x9156",
+            "LD L,A"
+          ],
+          [
+            "0x9157",
+            "LD H,0"
+          ],
+          [
+            "0x9159",
+            "ADD HL,DE"
+          ],
+          [
+            "0x915A",
+            "LD A,(HL)"
+          ],
+          [
+            "0x915B",
+            "LD (IX+6),A"
+          ],
+          [
+            "0x915E",
+            "LD (IX+7),3"
+          ],
+          [
+            "0x9162",
+            "RET"
+          ]
+        ]
+      },
+      {
+        "bank": 0,
+        "start": 29088,
+        "end": 29106,
+        "sha256": "c36e3720a49fac3d11fbd9a4d75a93419c97bc553ccb7998a36503df851d9c77",
+        "instructions": [
+          [
+            "0x71A0",
+            "LD A,(0xd2c8)"
+          ],
+          [
+            "0x71A3",
+            "DEC A"
+          ],
+          [
+            "0x71A4",
+            "JR z,0x71a8"
+          ],
+          [
+            "0x71A6",
+            "LD B,0x55"
+          ],
+          [
+            "0x71A8",
+            "LD A,(0xd506)"
+          ],
+          [
+            "0x71AB",
+            "CP B"
+          ],
+          [
+            "0x71AC",
+            "JR nz,0x71b2"
+          ],
+          [
+            "0x71AE",
+            "LD (IX+2),0x34"
+          ]
+        ]
+      },
+      {
+        "bank": 0,
+        "start": 29253,
+        "end": 29271,
+        "sha256": "c36e3720a49fac3d11fbd9a4d75a93419c97bc553ccb7998a36503df851d9c77",
+        "instructions": [
+          [
+            "0x7245",
+            "LD A,(0xd2c8)"
+          ],
+          [
+            "0x7248",
+            "DEC A"
+          ],
+          [
+            "0x7249",
+            "JR z,0x724d"
+          ],
+          [
+            "0x724B",
+            "LD B,0x55"
+          ],
+          [
+            "0x724D",
+            "LD A,(0xd506)"
+          ],
+          [
+            "0x7250",
+            "CP B"
+          ],
+          [
+            "0x7251",
+            "JR nz,0x7257"
+          ],
+          [
+            "0x7253",
+            "LD (IX+2),0x34"
+          ]
+        ]
+      },
+      {
+        "bank": 12,
+        "start": 43426,
+        "end": 43514,
+        "sha256": "3f4587527380c40541cd46fd07683ce0828c014152656173758d4459332ee8f6",
+        "instructions": [
+          [
+            "0xA9A2",
+            "LD A,(IX+0x34)"
+          ],
+          [
+            "0xA9A5",
+            "OR A"
+          ],
+          [
+            "0xA9A6",
+            "JR z,0xa9ec"
+          ],
+          [
+            "0xA9A8",
+            "DEC A"
+          ],
+          [
+            "0xA9A9",
+            "JR nz,0xa9bb"
+          ],
+          [
+            "0xA9AB",
+            "CALL 0x03f2"
+          ],
+          [
+            "0xA9AE",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0xA9B1",
+            "CP 1"
+          ],
+          [
+            "0xA9B3",
+            "LD A,0x1b"
+          ],
+          [
+            "0xA9B5",
+            "JR z,0xa9e8"
+          ],
+          [
+            "0xA9B7",
+            "LD A,0x1d"
+          ],
+          [
+            "0xA9B9",
+            "JR 0xa9e8"
+          ],
+          [
+            "0xA9BB",
+            "DEC A"
+          ],
+          [
+            "0xA9BC",
+            "JR nz,0xa9cc"
+          ],
+          [
+            "0xA9BE",
+            "LD A,(0xd29a)"
+          ],
+          [
+            "0xA9C1",
+            "LD B,0x10"
+          ],
+          [
+            "0xA9C3",
+            "ADD A,B"
+          ],
+          [
+            "0xA9C4",
+            "DAA"
+          ],
+          [
+            "0xA9C5",
+            "LD (0xd29a),A"
+          ],
+          [
+            "0xA9C8",
+            "LD A,0x1e"
+          ],
+          [
+            "0xA9CA",
+            "JR 0xa9e8"
+          ],
+          [
+            "0xA9CC",
+            "DEC A"
+          ],
+          [
+            "0xA9CD",
+            "JR nz,0xa9e6"
+          ],
+          [
+            "0xA9CF",
+            "LD A,(0xd2c3)"
+          ],
+          [
+            "0xA9D2",
+            "INC A"
+          ],
+          [
+            "0xA9D3",
+            "DAA"
+          ],
+          [
+            "0xA9D4",
+            "AND 0x7f"
+          ],
+          [
+            "0xA9D6",
+            "LD (0xd2c3),A"
+          ],
+          [
+            "0xA9D9",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0xA9DC",
+            "CP 1"
+          ],
+          [
+            "0xA9DE",
+            "LD A,0x1d"
+          ],
+          [
+            "0xA9E0",
+            "JR z,0xa9e8"
+          ],
+          [
+            "0xA9E2",
+            "LD A,0x1b"
+          ],
+          [
+            "0xA9E4",
+            "JR 0xa9e8"
+          ],
+          [
+            "0xA9E6",
+            "LD A,0x1f"
+          ],
+          [
+            "0xA9E8",
+            "LD (0xd3b3),A"
+          ],
+          [
+            "0xA9EB",
+            "RET"
+          ],
+          [
+            "0xA9EC",
+            "LD (IX+0x35),0xff"
+          ],
+          [
+            "0xA9F0",
+            "LD A,0x20"
+          ],
+          [
+            "0xA9F2",
+            "LD (0xd3b3),A"
+          ],
+          [
+            "0xA9F5",
+            "LD (IX+2),3"
+          ],
+          [
+            "0xA9F9",
+            "RET"
+          ]
+        ]
+      },
+      {
+        "bank": 30,
+        "start": 47898,
+        "end": 47917,
+        "sha256": "a4ade5e0cf783dee03b1d39bc02adacd18cab72e8f8028cd79d1552b796857d2",
+        "instructions": [
+          [
+            "0xBB1A",
+            "LD A,(0xd500)"
+          ],
+          [
+            "0xBB1D",
+            "CP 1"
+          ],
+          [
+            "0xBB1F",
+            "JR nz,0xbb28"
+          ],
+          [
+            "0xBB21",
+            "LD A,(0xd2cc)"
+          ],
+          [
+            "0xBB24",
+            "CP 0x1f"
+          ],
+          [
+            "0xBB26",
+            "JR z,0xbb2d"
+          ],
+          [
+            "0xBB28",
+            "LD A,0x50"
+          ],
+          [
+            "0xBB2A",
+            "LD (0xd293),A"
+          ]
+        ]
+      }
+    ],
+    "absolute_character_read_candidates": [
+      {
+        "rom_offset": 3372,
+        "bank": 0,
+        "cpu": 3372
+      },
+      {
+        "rom_offset": 5065,
+        "bank": 0,
+        "cpu": 5065
+      },
+      {
+        "rom_offset": 5122,
+        "bank": 0,
+        "cpu": 5122
+      },
+      {
+        "rom_offset": 6031,
+        "bank": 0,
+        "cpu": 6031
+      },
+      {
+        "rom_offset": 6381,
+        "bank": 0,
+        "cpu": 6381
+      },
+      {
+        "rom_offset": 6828,
+        "bank": 0,
+        "cpu": 6828
+      },
+      {
+        "rom_offset": 6982,
+        "bank": 0,
+        "cpu": 6982
+      },
+      {
+        "rom_offset": 9852,
+        "bank": 0,
+        "cpu": 9852
+      },
+      {
+        "rom_offset": 10577,
+        "bank": 0,
+        "cpu": 10577
+      },
+      {
+        "rom_offset": 12075,
+        "bank": 0,
+        "cpu": 12075
+      },
+      {
+        "rom_offset": 12437,
+        "bank": 0,
+        "cpu": 12437
+      },
+      {
+        "rom_offset": 13070,
+        "bank": 0,
+        "cpu": 13070
+      },
+      {
+        "rom_offset": 13165,
+        "bank": 0,
+        "cpu": 13165
+      },
+      {
+        "rom_offset": 13648,
+        "bank": 0,
+        "cpu": 13648
+      },
+      {
+        "rom_offset": 13686,
+        "bank": 0,
+        "cpu": 13686
+      },
+      {
+        "rom_offset": 13701,
+        "bank": 0,
+        "cpu": 13701
+      },
+      {
+        "rom_offset": 13717,
+        "bank": 0,
+        "cpu": 13717
+      },
+      {
+        "rom_offset": 13857,
+        "bank": 0,
+        "cpu": 13857
+      },
+      {
+        "rom_offset": 19169,
+        "bank": 1,
+        "cpu": 19169
+      },
+      {
+        "rom_offset": 24892,
+        "bank": 1,
+        "cpu": 24892
+      },
+      {
+        "rom_offset": 29088,
+        "bank": 1,
+        "cpu": 29088
+      },
+      {
+        "rom_offset": 29253,
+        "bank": 1,
+        "cpu": 29253
+      },
+      {
+        "rom_offset": 31873,
+        "bank": 1,
+        "cpu": 31873
+      },
+      {
+        "rom_offset": 31906,
+        "bank": 1,
+        "cpu": 31906
+      },
+      {
+        "rom_offset": 197741,
+        "bank": 12,
+        "cpu": 33901
+      },
+      {
+        "rom_offset": 201019,
+        "bank": 12,
+        "cpu": 37179
+      },
+      {
+        "rom_offset": 205137,
+        "bank": 12,
+        "cpu": 41297
+      },
+      {
+        "rom_offset": 207278,
+        "bank": 12,
+        "cpu": 43438
+      },
+      {
+        "rom_offset": 207321,
+        "bank": 12,
+        "cpu": 43481
+      },
+      {
+        "rom_offset": 208520,
+        "bank": 12,
+        "cpu": 44680
+      },
+      {
+        "rom_offset": 208541,
+        "bank": 12,
+        "cpu": 44701
+      },
+      {
+        "rom_offset": 208552,
+        "bank": 12,
+        "cpu": 44712
+      },
+      {
+        "rom_offset": 506650,
+        "bank": 30,
+        "cpu": 47898
+      }
+    ],
+    "scan_limit": "Opcode candidates, not an exhaustive control-flow proof; indirect IX/type and table dispatch also reviewed."
+  },
+  "placements": [
+    {
+      "zone": 0,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 656,
+      "y": 846,
+      "rom_offset": "0x705F6",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 1712,
+      "y": 494,
+      "rom_offset": "0x705FF",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 336,
+      "y": 270,
+      "rom_offset": "0x70608",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 1472,
+      "y": 110,
+      "rom_offset": "0x70611",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 0,
+      "type": 16,
+      "parameter": 2,
+      "x": 2688,
+      "y": 686,
+      "rom_offset": "0x7061A",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 1,
+      "type": 16,
+      "parameter": 6,
+      "x": 1088,
+      "y": 206,
+      "rom_offset": "0x707EF",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 1,
+      "type": 16,
+      "parameter": 3,
+      "x": 336,
+      "y": 302,
+      "rom_offset": "0x707F8",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 1,
+      "type": 16,
+      "parameter": 3,
+      "x": 2784,
+      "y": 270,
+      "rom_offset": "0x70801",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 1,
+      "type": 16,
+      "parameter": 4,
+      "x": 2544,
+      "y": 494,
+      "rom_offset": "0x7080A",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 1,
+      "type": 16,
+      "parameter": 2,
+      "x": 64,
+      "y": 718,
+      "rom_offset": "0x70813",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 0,
+      "act": 2,
+      "type": 16,
+      "parameter": 1,
+      "x": 1456,
+      "y": 366,
+      "rom_offset": "0x7092B",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 816,
+      "y": 462,
+      "rom_offset": "0x70986",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 2560,
+      "y": 142,
+      "rom_offset": "0x7098F",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 0,
+      "type": 16,
+      "parameter": 3,
+      "x": 1136,
+      "y": 206,
+      "rom_offset": "0x70998",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 0,
+      "type": 16,
+      "parameter": 2,
+      "x": 3888,
+      "y": 494,
+      "rom_offset": "0x709A1",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 1,
+      "x": 3344,
+      "y": 206,
+      "rom_offset": "0x70BD9",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 1,
+      "x": 3472,
+      "y": 878,
+      "rom_offset": "0x70BE2",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 6,
+      "x": 1296,
+      "y": 878,
+      "rom_offset": "0x70BEB",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 6,
+      "x": 1424,
+      "y": 366,
+      "rom_offset": "0x70BF4",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 3,
+      "x": 176,
+      "y": 878,
+      "rom_offset": "0x70BFD",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 3,
+      "x": 704,
+      "y": 110,
+      "rom_offset": "0x70C06",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 3,
+      "x": 704,
+      "y": 238,
+      "rom_offset": "0x70C0F",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 3,
+      "x": 1840,
+      "y": 622,
+      "rom_offset": "0x70C18",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 4,
+      "x": 2288,
+      "y": 430,
+      "rom_offset": "0x70C21",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 1,
+      "type": 16,
+      "parameter": 2,
+      "x": 48,
+      "y": 110,
+      "rom_offset": "0x70C2A",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 2,
+      "type": 16,
+      "parameter": 1,
+      "x": 48,
+      "y": 366,
+      "rom_offset": "0x70DB7",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 1,
+      "act": 2,
+      "type": 16,
+      "parameter": 6,
+      "x": 768,
+      "y": 14,
+      "rom_offset": "0x70DC0",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 16,
+      "parameter": 1,
+      "x": 3504,
+      "y": 206,
+      "rom_offset": "0x70E5A",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 16,
+      "parameter": 1,
+      "x": 3568,
+      "y": 366,
+      "rom_offset": "0x70E63",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 16,
+      "parameter": 2,
+      "x": 368,
+      "y": 238,
+      "rom_offset": "0x70E6C",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 2192,
+      "y": 878,
+      "rom_offset": "0x70E75",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 2752,
+      "y": 654,
+      "rom_offset": "0x70E7E",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 3472,
+      "y": 878,
+      "rom_offset": "0x70E87",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 224,
+      "y": 398,
+      "rom_offset": "0x70E90",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 784,
+      "y": 782,
+      "rom_offset": "0x70E99",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 1264,
+      "y": 302,
+      "rom_offset": "0x70EA2",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 1936,
+      "y": 686,
+      "rom_offset": "0x70EAB",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 2384,
+      "y": 750,
+      "rom_offset": "0x70EB4",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 2528,
+      "y": 718,
+      "rom_offset": "0x70EBD",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 2944,
+      "y": 558,
+      "rom_offset": "0x70EC6",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 3152,
+      "y": 878,
+      "rom_offset": "0x70ECF",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 16,
+      "parameter": 1,
+      "x": 1200,
+      "y": 910,
+      "rom_offset": "0x70FB1",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 16,
+      "parameter": 2,
+      "x": 688,
+      "y": 782,
+      "rom_offset": "0x70FBA",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 16,
+      "parameter": 4,
+      "x": 1584,
+      "y": 942,
+      "rom_offset": "0x70FC3",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 16,
+      "parameter": 6,
+      "x": 80,
+      "y": 398,
+      "rom_offset": "0x70FCC",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 16,
+      "parameter": 6,
+      "x": 2512,
+      "y": 782,
+      "rom_offset": "0x70FD5",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 47,
+      "parameter": 0,
+      "x": 432,
+      "y": 846,
+      "rom_offset": "0x70FDE",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 47,
+      "parameter": 0,
+      "x": 608,
+      "y": 718,
+      "rom_offset": "0x70FE7",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 47,
+      "parameter": 0,
+      "x": 848,
+      "y": 878,
+      "rom_offset": "0x70FF0",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 1,
+      "type": 47,
+      "parameter": 0,
+      "x": 3248,
+      "y": 846,
+      "rom_offset": "0x70FF9",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 2,
+      "type": 47,
+      "parameter": 0,
+      "x": 176,
+      "y": 814,
+      "rom_offset": "0x71093",
+      "aux0": "0x94",
+      "aux1": "0x94"
+    },
+    {
+      "zone": 2,
+      "act": 2,
+      "type": 16,
+      "parameter": 2,
+      "x": 1488,
+      "y": 878,
+      "rom_offset": "0x7109C",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 2,
+      "act": 2,
+      "type": 16,
+      "parameter": 6,
+      "x": 1904,
+      "y": 782,
+      "rom_offset": "0x710A5",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 1552,
+      "y": 238,
+      "rom_offset": "0x7111B",
+      "aux0": "0xAC",
+      "aux1": "0xAC"
+    },
+    {
+      "zone": 3,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 1312,
+      "y": 110,
+      "rom_offset": "0x71124",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 2464,
+      "y": 814,
+      "rom_offset": "0x7112D",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 0,
+      "type": 16,
+      "parameter": 2,
+      "x": 208,
+      "y": 686,
+      "rom_offset": "0x71136",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 0,
+      "type": 16,
+      "parameter": 1,
+      "x": 3568,
+      "y": 814,
+      "rom_offset": "0x7113F",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 1,
+      "type": 47,
+      "parameter": 0,
+      "x": 3760,
+      "y": 494,
+      "rom_offset": "0x711F4",
+      "aux0": "0xAC",
+      "aux1": "0xAC"
+    },
+    {
+      "zone": 3,
+      "act": 1,
+      "type": 47,
+      "parameter": 0,
+      "x": 2592,
+      "y": 174,
+      "rom_offset": "0x711FD",
+      "aux0": "0xAC",
+      "aux1": "0xAC"
+    },
+    {
+      "zone": 3,
+      "act": 1,
+      "type": 16,
+      "parameter": 1,
+      "x": 2672,
+      "y": 334,
+      "rom_offset": "0x712A8",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 1,
+      "type": 16,
+      "parameter": 6,
+      "x": 1824,
+      "y": 206,
+      "rom_offset": "0x712B1",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 1,
+      "type": 16,
+      "parameter": 4,
+      "x": 48,
+      "y": 878,
+      "rom_offset": "0x712BA",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 3,
+      "act": 1,
+      "type": 16,
+      "parameter": 2,
+      "x": 3424,
+      "y": 142,
+      "rom_offset": "0x712C3",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 624,
+      "y": 462,
+      "rom_offset": "0x713F7",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 1,
+      "x": 1168,
+      "y": 558,
+      "rom_offset": "0x71400",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 1,
+      "x": 5008,
+      "y": 654,
+      "rom_offset": "0x71409",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 4464,
+      "y": 494,
+      "rom_offset": "0x71412",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 2,
+      "x": 64,
+      "y": 686,
+      "rom_offset": "0x7141B",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 3,
+      "x": 560,
+      "y": 802,
+      "rom_offset": "0x71424",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 1664,
+      "y": 430,
+      "rom_offset": "0x7142D",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 3344,
+      "y": 174,
+      "rom_offset": "0x71436",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 1,
+      "type": 16,
+      "parameter": 1,
+      "x": 496,
+      "y": 430,
+      "rom_offset": "0x71533",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 1,
+      "type": 16,
+      "parameter": 1,
+      "x": 128,
+      "y": 782,
+      "rom_offset": "0x7153C",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 1,
+      "type": 16,
+      "parameter": 2,
+      "x": 2384,
+      "y": 494,
+      "rom_offset": "0x71545",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 1,
+      "type": 16,
+      "parameter": 1,
+      "x": 2096,
+      "y": 846,
+      "rom_offset": "0x7154E",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 2,
+      "type": 16,
+      "parameter": 1,
+      "x": 816,
+      "y": 366,
+      "rom_offset": "0x71639",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 4,
+      "act": 2,
+      "type": 16,
+      "parameter": 6,
+      "x": 1168,
+      "y": 110,
+      "rom_offset": "0x71642",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 5,
+      "act": 0,
+      "type": 16,
+      "parameter": 1,
+      "x": 3568,
+      "y": 942,
+      "rom_offset": "0x71679",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 5,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 1040,
+      "y": 942,
+      "rom_offset": "0x71682",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 5,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 2704,
+      "y": 494,
+      "rom_offset": "0x7168B",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 5,
+      "act": 0,
+      "type": 16,
+      "parameter": 3,
+      "x": 1360,
+      "y": 334,
+      "rom_offset": "0x71694",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 5,
+      "act": 1,
+      "type": 16,
+      "parameter": 6,
+      "x": 112,
+      "y": 910,
+      "rom_offset": "0x7172E",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 5,
+      "act": 1,
+      "type": 16,
+      "parameter": 4,
+      "x": 560,
+      "y": 878,
+      "rom_offset": "0x71737",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 5,
+      "act": 1,
+      "type": 16,
+      "parameter": 2,
+      "x": 2256,
+      "y": 910,
+      "rom_offset": "0x71740",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 8,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 112,
+      "y": 142,
+      "rom_offset": "0x71875",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 16,
+      "parameter": 5,
+      "x": 336,
+      "y": 558,
+      "rom_offset": "0x71888",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 496,
+      "y": 1742,
+      "rom_offset": "0x71891",
+      "aux0": "0x76",
+      "aux1": "0x76"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 656,
+      "y": 1518,
+      "rom_offset": "0x7189A",
+      "aux0": "0x76",
+      "aux1": "0x76"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 528,
+      "y": 1294,
+      "rom_offset": "0x718A3",
+      "aux0": "0x76",
+      "aux1": "0x76"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 656,
+      "y": 1070,
+      "rom_offset": "0x718AC",
+      "aux0": "0x76",
+      "aux1": "0x76"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 560,
+      "y": 846,
+      "rom_offset": "0x718B5",
+      "aux0": "0x76",
+      "aux1": "0x76"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 464,
+      "y": 622,
+      "rom_offset": "0x718BE",
+      "aux0": "0x76",
+      "aux1": "0x76"
+    },
+    {
+      "zone": 9,
+      "act": 0,
+      "type": 47,
+      "parameter": 0,
+      "x": 560,
+      "y": 398,
+      "rom_offset": "0x718C7",
+      "aux0": "0x76",
+      "aux1": "0x76"
+    },
+    {
+      "zone": 10,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 240,
+      "y": 622,
+      "rom_offset": "0x718DA",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 10,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 912,
+      "y": 622,
+      "rom_offset": "0x718E3",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 10,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 1584,
+      "y": 622,
+      "rom_offset": "0x718EC",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 10,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 2256,
+      "y": 622,
+      "rom_offset": "0x718F5",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 10,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 2928,
+      "y": 622,
+      "rom_offset": "0x718FE",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 10,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 3696,
+      "y": 622,
+      "rom_offset": "0x71907",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 10,
+      "act": 0,
+      "type": 16,
+      "parameter": 6,
+      "x": 2800,
+      "y": 366,
+      "rom_offset": "0x71910",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 11,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 304,
+      "y": 238,
+      "rom_offset": "0x71923",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 11,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 2032,
+      "y": 206,
+      "rom_offset": "0x7192C",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 11,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 3664,
+      "y": 174,
+      "rom_offset": "0x71935",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 11,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 5904,
+      "y": 334,
+      "rom_offset": "0x7193E",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 11,
+      "act": 0,
+      "type": 16,
+      "parameter": 4,
+      "x": 7008,
+      "y": 334,
+      "rom_offset": "0x71947",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 11,
+      "act": 0,
+      "type": 16,
+      "parameter": 5,
+      "x": 3136,
+      "y": 302,
+      "rom_offset": "0x71950",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 12,
+      "act": 0,
+      "type": 16,
+      "parameter": 5,
+      "x": 272,
+      "y": 622,
+      "rom_offset": "0x71990",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 12,
+      "act": 0,
+      "type": 16,
+      "parameter": 5,
+      "x": 80,
+      "y": 878,
+      "rom_offset": "0x71999",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    },
+    {
+      "zone": 12,
+      "act": 0,
+      "type": 16,
+      "parameter": 5,
+      "x": 560,
+      "y": 782,
+      "rom_offset": "0x719A2",
+      "aux0": "0x00",
+      "aux1": "0x00"
+    }
+  ],
+  "controls": {
+    "monitors": [
+      {
+        "character": 1,
+        "placement_parameter": 1,
+        "effective_parameter": 1,
+        "init": {
+          "parameter_before": "0x01",
+          "player_type_d500": "0x01",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x01"
+        },
+        "graphics_selector": 1,
+        "art_layers": [
+          {
+            "cpu": 39328,
+            "length": 192,
+            "sha256": "63250c665a4ad7720dfebc607b3e57dfee47ef21ce7b31f3183e3e4174769e0c"
+          },
+          {
+            "cpu": 40672,
+            "length": 128,
+            "sha256": "9b8d61e20249afd511490aa386c7dc78ff4c2bf0ee6e707eb4a77aff26da9794"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x01",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 1,
+        "reward": {
+          "rings": 48,
+          "lives": 3,
+          "selector": 0,
+          "timer": 0,
+          "requested": 5,
+          "flags": 2,
+          "clock": 0
+        }
+      },
+      {
+        "character": 1,
+        "placement_parameter": 2,
+        "effective_parameter": 2,
+        "init": {
+          "parameter_before": "0x02",
+          "player_type_d500": "0x01",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x02"
+        },
+        "graphics_selector": 2,
+        "art_layers": [
+          {
+            "cpu": 39520,
+            "length": 192,
+            "sha256": "f55ed4545fe648ba2c0365d55a2b3cd5593706437edcdea4ea48da2ced40d4a5"
+          },
+          {
+            "cpu": 40800,
+            "length": 128,
+            "sha256": "9110ea61003f6dc48b174905183b836e151e0bc3e18371de134d4f9bb6644fbf"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x02",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 2,
+        "reward": {
+          "rings": 32,
+          "lives": 4,
+          "selector": 0,
+          "timer": 0,
+          "requested": 5,
+          "flags": 2,
+          "clock": 0
+        }
+      },
+      {
+        "character": 1,
+        "placement_parameter": 3,
+        "effective_parameter": 3,
+        "init": {
+          "parameter_before": "0x03",
+          "player_type_d500": "0x01",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x03"
+        },
+        "graphics_selector": 3,
+        "art_layers": [
+          {
+            "cpu": 39712,
+            "length": 192,
+            "sha256": "6c606ae365290869e3d5a68ad110a370f5c38380851ec1a3105eb8fed736e498"
+          },
+          {
+            "cpu": 40928,
+            "length": 128,
+            "sha256": "f59e82d2786664cf645c933c19d4b72e27cdc349b07968e2506bed8a60df3d7f"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x04",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 4,
+        "reward": {
+          "rings": 32,
+          "lives": 3,
+          "selector": 3,
+          "timer": 900,
+          "requested": 5,
+          "flags": 2,
+          "clock": 0
+        }
+      },
+      {
+        "character": 1,
+        "placement_parameter": 4,
+        "effective_parameter": 4,
+        "init": {
+          "parameter_before": "0x04",
+          "player_type_d500": "0x01",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x04"
+        },
+        "graphics_selector": 4,
+        "art_layers": [
+          {
+            "cpu": 40288,
+            "length": 192,
+            "sha256": "0a90b35b41e64896bb4447f5a670fa92c2cc2f9acad67fa589e9890595a7c0f0"
+          },
+          {
+            "cpu": 41312,
+            "length": 128,
+            "sha256": "206beca018dc9a3c7ae3c4cf76bb906e48966e6e17ca00510ac61cbe16a09640"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x08",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 8,
+        "reward": {
+          "rings": 32,
+          "lives": 3,
+          "selector": 4,
+          "timer": 300,
+          "requested": 17,
+          "flags": 0,
+          "clock": 0
+        }
+      },
+      {
+        "character": 1,
+        "placement_parameter": 5,
+        "effective_parameter": 5,
+        "init": {
+          "parameter_before": "0x05",
+          "player_type_d500": "0x01",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x05"
+        },
+        "graphics_selector": 5,
+        "art_layers": [
+          {
+            "cpu": 40096,
+            "length": 192,
+            "sha256": "0fb444a04ac47fe3b1003a1e83006c4edb7fd12b7421699cc55e2222153c9b0f"
+          },
+          {
+            "cpu": 41184,
+            "length": 128,
+            "sha256": "ae97def5f88c14974b3a17197753a70e205c933a3fd1299805f047d0876f67ce"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x10",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 16,
+        "reward": {
+          "rings": 32,
+          "lives": 3,
+          "selector": 0,
+          "timer": 0,
+          "requested": 5,
+          "flags": 2,
+          "clock": 11
+        }
+      },
+      {
+        "character": 1,
+        "placement_parameter": 6,
+        "effective_parameter": 6,
+        "init": {
+          "parameter_before": "0x06",
+          "player_type_d500": "0x01",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x06"
+        },
+        "graphics_selector": 6,
+        "art_layers": [
+          {
+            "cpu": 39904,
+            "length": 192,
+            "sha256": "a523f7a53d4f35b7ba6101062b1fb0e4f6d8171a42ecdcb7f9fac19bde01411d"
+          },
+          {
+            "cpu": 41056,
+            "length": 128,
+            "sha256": "ab8072c07acc1b359ddcd78083a004f3b117242dc8f2d5b4351156486b42c000"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x20",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 32,
+        "reward": {
+          "rings": 32,
+          "lives": 3,
+          "selector": 6,
+          "timer": 600,
+          "requested": 5,
+          "flags": 130,
+          "clock": 0
+        }
+      },
+      {
+        "character": 2,
+        "placement_parameter": 1,
+        "effective_parameter": 1,
+        "init": {
+          "parameter_before": "0x01",
+          "player_type_d500": "0x02",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x01"
+        },
+        "graphics_selector": 1,
+        "art_layers": [
+          {
+            "cpu": 39328,
+            "length": 192,
+            "sha256": "63250c665a4ad7720dfebc607b3e57dfee47ef21ce7b31f3183e3e4174769e0c"
+          },
+          {
+            "cpu": 40672,
+            "length": 128,
+            "sha256": "9b8d61e20249afd511490aa386c7dc78ff4c2bf0ee6e707eb4a77aff26da9794"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x01",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 1,
+        "reward": {
+          "rings": 48,
+          "lives": 3,
+          "selector": 0,
+          "timer": 0,
+          "requested": 5,
+          "flags": 2,
+          "clock": 0
+        }
+      },
+      {
+        "character": 2,
+        "placement_parameter": 2,
+        "effective_parameter": 2,
+        "init": {
+          "parameter_before": "0x02",
+          "player_type_d500": "0x02",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x02"
+        },
+        "graphics_selector": 2,
+        "art_layers": [
+          {
+            "cpu": 41440,
+            "length": 192,
+            "sha256": "31e8b5a1827cecea8ed6e4b898b1f1c362ed3b57dd34b86138c34c22d02af0c9"
+          },
+          {
+            "cpu": 41760,
+            "length": 128,
+            "sha256": "112bc43ae6db2ee705aa18c834f59fee300093a38c18721a7e34ec8932542960"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x02",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 2,
+        "reward": {
+          "rings": 32,
+          "lives": 4,
+          "selector": 0,
+          "timer": 0,
+          "requested": 5,
+          "flags": 2,
+          "clock": 0
+        }
+      },
+      {
+        "character": 2,
+        "placement_parameter": 3,
+        "effective_parameter": 3,
+        "init": {
+          "parameter_before": "0x03",
+          "player_type_d500": "0x02",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x03"
+        },
+        "graphics_selector": 3,
+        "art_layers": [
+          {
+            "cpu": 39712,
+            "length": 192,
+            "sha256": "6c606ae365290869e3d5a68ad110a370f5c38380851ec1a3105eb8fed736e498"
+          },
+          {
+            "cpu": 40928,
+            "length": 128,
+            "sha256": "f59e82d2786664cf645c933c19d4b72e27cdc349b07968e2506bed8a60df3d7f"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x04",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 4,
+        "reward": {
+          "rings": 32,
+          "lives": 3,
+          "selector": 3,
+          "timer": 900,
+          "requested": 5,
+          "flags": 2,
+          "clock": 0
+        }
+      },
+      {
+        "character": 2,
+        "placement_parameter": 4,
+        "effective_parameter": 1,
+        "init": {
+          "parameter_before": "0x04",
+          "player_type_d500": "0x02",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x01"
+        },
+        "graphics_selector": 1,
+        "art_layers": [
+          {
+            "cpu": 39328,
+            "length": 192,
+            "sha256": "63250c665a4ad7720dfebc607b3e57dfee47ef21ce7b31f3183e3e4174769e0c"
+          },
+          {
+            "cpu": 40672,
+            "length": 128,
+            "sha256": "9b8d61e20249afd511490aa386c7dc78ff4c2bf0ee6e707eb4a77aff26da9794"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x01",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 1,
+        "reward": {
+          "rings": 48,
+          "lives": 3,
+          "selector": 0,
+          "timer": 0,
+          "requested": 5,
+          "flags": 2,
+          "clock": 0
+        }
+      },
+      {
+        "character": 2,
+        "placement_parameter": 5,
+        "effective_parameter": 5,
+        "init": {
+          "parameter_before": "0x05",
+          "player_type_d500": "0x02",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x05"
+        },
+        "graphics_selector": 5,
+        "art_layers": [
+          {
+            "cpu": 40096,
+            "length": 192,
+            "sha256": "0fb444a04ac47fe3b1003a1e83006c4edb7fd12b7421699cc55e2222153c9b0f"
+          },
+          {
+            "cpu": 41184,
+            "length": 128,
+            "sha256": "ae97def5f88c14974b3a17197753a70e205c933a3fd1299805f047d0876f67ce"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x10",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 16,
+        "reward": {
+          "rings": 32,
+          "lives": 3,
+          "selector": 0,
+          "timer": 0,
+          "requested": 5,
+          "flags": 2,
+          "clock": 11
+        }
+      },
+      {
+        "character": 2,
+        "placement_parameter": 6,
+        "effective_parameter": 6,
+        "init": {
+          "parameter_before": "0x06",
+          "player_type_d500": "0x02",
+          "requested_state": 1,
+          "object_flags_03": "0x81",
+          "object_flags_04": "0x40",
+          "parameter_after": "0x06"
+        },
+        "graphics_selector": 6,
+        "art_layers": [
+          {
+            "cpu": 39904,
+            "length": 192,
+            "sha256": "a523f7a53d4f35b7ba6101062b1fb0e4f6d8171a42ecdcb7f9fac19bde01411d"
+          },
+          {
+            "cpu": 41056,
+            "length": 128,
+            "sha256": "ab8072c07acc1b359ddcd78083a004f3b117242dc8f2d5b4351156486b42c000"
+          }
+        ],
+        "contact": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x0F",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -1024,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x20",
+          "parameter_after": "0x00",
+          "placement_token_after": 0,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "10 00 00"
+        },
+        "queued": 32,
+        "reward": {
+          "rings": 32,
+          "lives": 3,
+          "selector": 6,
+          "timer": 600,
+          "requested": 5,
+          "flags": 130,
+          "clock": 0
+        }
+      }
+    ],
+    "negative_contact": [
+      {
+        "character": 1,
+        "attack": 0,
+        "vy": 256,
+        "requested": 5,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 1,
+        "attack": 2,
+        "vy": -256,
+        "requested": 5,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -256,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 1,
+        "attack": 2,
+        "vy": 0,
+        "requested": 5,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 0,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 1,
+        "attack": 2,
+        "vy": 256,
+        "requested": 15,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 15,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 1,
+        "attack": 2,
+        "vy": 256,
+        "requested": 5,
+        "dy": 20,
+        "result": {
+          "contact_bits_21": "0x02",
+          "object_type_after": "0x10",
+          "requested_object_state": 3,
+          "object_y_velocity_8_8": -512,
+          "player_y_velocity_8_8": 512,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 2,
+        "attack": 0,
+        "vy": 256,
+        "requested": 5,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 2,
+        "attack": 2,
+        "vy": -256,
+        "requested": 5,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": -256,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 2,
+        "attack": 2,
+        "vy": 0,
+        "requested": 5,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 0,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 2,
+        "attack": 2,
+        "vy": 256,
+        "requested": 15,
+        "dy": -20,
+        "result": {
+          "contact_bits_21": "0x01",
+          "object_type_after": "0x10",
+          "requested_object_state": 0,
+          "object_y_velocity_8_8": 0,
+          "player_y_velocity_8_8": 256,
+          "requested_player_state": 15,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      },
+      {
+        "character": 2,
+        "attack": 2,
+        "vy": 256,
+        "requested": 5,
+        "dy": 20,
+        "result": {
+          "contact_bits_21": "0x02",
+          "object_type_after": "0x10",
+          "requested_object_state": 3,
+          "object_y_velocity_8_8": -512,
+          "player_y_velocity_8_8": 512,
+          "requested_player_state": 5,
+          "damage_request_d3b0": "0x00",
+          "reward_bits_d3a3": "0x00",
+          "parameter_after": "0x02",
+          "placement_token_after": 10,
+          "occupancy_value_after": "0x10",
+          "score_bytes_after": "00 00 00"
+        }
+      }
+    ],
+    "timer_edges": [
+      {
+        "character": 1,
+        "selector_before": 3,
+        "timer_before": 0,
+        "selector_after": 3,
+        "timer_after": 65535,
+        "maximum": 1536
+      },
+      {
+        "character": 1,
+        "selector_before": 3,
+        "timer_before": 1,
+        "selector_after": 3,
+        "timer_after": 0,
+        "maximum": 1536
+      },
+      {
+        "character": 1,
+        "selector_before": 3,
+        "timer_before": 2,
+        "selector_after": 3,
+        "timer_after": 1,
+        "maximum": 1536
+      },
+      {
+        "character": 1,
+        "selector_before": 4,
+        "timer_before": 0,
+        "selector_after": 4,
+        "timer_after": 65535,
+        "maximum": 1024
+      },
+      {
+        "character": 1,
+        "selector_before": 4,
+        "timer_before": 1,
+        "selector_after": 0,
+        "timer_after": 0,
+        "maximum": 1024
+      },
+      {
+        "character": 1,
+        "selector_before": 4,
+        "timer_before": 2,
+        "selector_after": 4,
+        "timer_after": 1,
+        "maximum": 1024
+      },
+      {
+        "character": 1,
+        "selector_before": 6,
+        "timer_before": 0,
+        "selector_after": 6,
+        "timer_after": 65535,
+        "maximum": 1024
+      },
+      {
+        "character": 1,
+        "selector_before": 6,
+        "timer_before": 1,
+        "selector_after": 0,
+        "timer_after": 0,
+        "maximum": 1024
+      },
+      {
+        "character": 1,
+        "selector_before": 6,
+        "timer_before": 2,
+        "selector_after": 6,
+        "timer_after": 1,
+        "maximum": 1024
+      },
+      {
+        "character": 2,
+        "selector_before": 3,
+        "timer_before": 0,
+        "selector_after": 3,
+        "timer_after": 65535,
+        "maximum": 1536
+      },
+      {
+        "character": 2,
+        "selector_before": 3,
+        "timer_before": 1,
+        "selector_after": 3,
+        "timer_after": 0,
+        "maximum": 1536
+      },
+      {
+        "character": 2,
+        "selector_before": 3,
+        "timer_before": 2,
+        "selector_after": 3,
+        "timer_after": 1,
+        "maximum": 1536
+      },
+      {
+        "character": 2,
+        "selector_before": 4,
+        "timer_before": 0,
+        "selector_after": 4,
+        "timer_after": 65535,
+        "maximum": 1024
+      },
+      {
+        "character": 2,
+        "selector_before": 4,
+        "timer_before": 1,
+        "selector_after": 0,
+        "timer_after": 0,
+        "maximum": 1024
+      },
+      {
+        "character": 2,
+        "selector_before": 4,
+        "timer_before": 2,
+        "selector_after": 4,
+        "timer_after": 1,
+        "maximum": 1024
+      },
+      {
+        "character": 2,
+        "selector_before": 6,
+        "timer_before": 0,
+        "selector_after": 6,
+        "timer_after": 65535,
+        "maximum": 1024
+      },
+      {
+        "character": 2,
+        "selector_before": 6,
+        "timer_before": 1,
+        "selector_after": 0,
+        "timer_after": 0,
+        "maximum": 1024
+      },
+      {
+        "character": 2,
+        "selector_before": 6,
+        "timer_before": 2,
+        "selector_after": 6,
+        "timer_after": 1,
+        "maximum": 1024
+      }
+    ],
+    "forced_rocket_reward": [
+      {
+        "character": 1,
+        "queue": 0,
+        "selector": 4,
+        "request": 17
+      },
+      {
+        "character": 2,
+        "queue": 0,
+        "selector": 0,
+        "request": 5
+      }
+    ],
+    "spring_attachment": [
+      {
+        "character": 1,
+        "dy": -16,
+        "requested": 18,
+        "owner": 55040,
+        "shoe_request": 3
+      },
+      {
+        "character": 1,
+        "dy": 80,
+        "requested": 14,
+        "owner": 0,
+        "shoe_request": 0
+      },
+      {
+        "character": 2,
+        "dy": -16,
+        "requested": 18,
+        "owner": 55040,
+        "shoe_request": 3
+      },
+      {
+        "character": 2,
+        "dy": 80,
+        "requested": 14,
+        "owner": 0,
+        "shoe_request": 0
+      }
+    ],
+    "sign_rewards": [
+      {
+        "character": 1,
+        "zone": 0,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 0,
+        "rings_before": 9,
+        "result": {
+          "cls": 2,
+          "art": 30,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 25,
+          "sound": 0,
+          "dc00": 9
+        }
+      },
+      {
+        "character": 1,
+        "zone": 0,
+        "rings_before": 21,
+        "result": {
+          "cls": 3,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 21
+        }
+      },
+      {
+        "character": 1,
+        "zone": 0,
+        "rings_before": 22,
+        "result": {
+          "cls": 0,
+          "art": 32,
+          "state": 3,
+          "retry": 255,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 22
+        }
+      },
+      {
+        "character": 1,
+        "zone": 0,
+        "rings_before": 36,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 0,
+        "rings_before": 85,
+        "result": {
+          "cls": 1,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 85,
+          "sound": 169,
+          "dc00": 85
+        }
+      },
+      {
+        "character": 1,
+        "zone": 0,
+        "rings_before": 153,
+        "result": {
+          "cls": 1,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 153,
+          "sound": 169,
+          "dc00": 153
+        }
+      },
+      {
+        "character": 1,
+        "zone": 1,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 1,
+        "rings_before": 9,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 9,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 1,
+        "rings_before": 21,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 1,
+        "rings_before": 22,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 1,
+        "rings_before": 36,
+        "result": {
+          "cls": 3,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 36
+        }
+      },
+      {
+        "character": 1,
+        "zone": 1,
+        "rings_before": 85,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 85,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 1,
+        "rings_before": 153,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 153,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 2,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 2,
+        "rings_before": 9,
+        "result": {
+          "cls": 2,
+          "art": 30,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 25,
+          "sound": 0,
+          "dc00": 9
+        }
+      },
+      {
+        "character": 1,
+        "zone": 2,
+        "rings_before": 21,
+        "result": {
+          "cls": 3,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 21
+        }
+      },
+      {
+        "character": 1,
+        "zone": 2,
+        "rings_before": 22,
+        "result": {
+          "cls": 0,
+          "art": 32,
+          "state": 3,
+          "retry": 255,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 22
+        }
+      },
+      {
+        "character": 1,
+        "zone": 2,
+        "rings_before": 36,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 2,
+        "rings_before": 85,
+        "result": {
+          "cls": 1,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 85,
+          "sound": 169,
+          "dc00": 85
+        }
+      },
+      {
+        "character": 1,
+        "zone": 2,
+        "rings_before": 153,
+        "result": {
+          "cls": 1,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 153,
+          "sound": 169,
+          "dc00": 153
+        }
+      },
+      {
+        "character": 1,
+        "zone": 3,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 3,
+        "rings_before": 9,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 9,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 3,
+        "rings_before": 21,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 3,
+        "rings_before": 22,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 3,
+        "rings_before": 36,
+        "result": {
+          "cls": 3,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 36
+        }
+      },
+      {
+        "character": 1,
+        "zone": 3,
+        "rings_before": 85,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 85,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 3,
+        "rings_before": 153,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 153,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 4,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 4,
+        "rings_before": 9,
+        "result": {
+          "cls": 2,
+          "art": 30,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 25,
+          "sound": 0,
+          "dc00": 9
+        }
+      },
+      {
+        "character": 1,
+        "zone": 4,
+        "rings_before": 21,
+        "result": {
+          "cls": 3,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 21
+        }
+      },
+      {
+        "character": 1,
+        "zone": 4,
+        "rings_before": 22,
+        "result": {
+          "cls": 0,
+          "art": 32,
+          "state": 3,
+          "retry": 255,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 22
+        }
+      },
+      {
+        "character": 1,
+        "zone": 4,
+        "rings_before": 36,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 4,
+        "rings_before": 85,
+        "result": {
+          "cls": 1,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 85,
+          "sound": 169,
+          "dc00": 85
+        }
+      },
+      {
+        "character": 1,
+        "zone": 4,
+        "rings_before": 153,
+        "result": {
+          "cls": 1,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 153,
+          "sound": 169,
+          "dc00": 153
+        }
+      },
+      {
+        "character": 1,
+        "zone": 5,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 5,
+        "rings_before": 9,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 9,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 5,
+        "rings_before": 21,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 5,
+        "rings_before": 22,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 5,
+        "rings_before": 36,
+        "result": {
+          "cls": 3,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 36
+        }
+      },
+      {
+        "character": 1,
+        "zone": 5,
+        "rings_before": 85,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 85,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 1,
+        "zone": 5,
+        "rings_before": 153,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 153,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 0,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 0,
+        "rings_before": 9,
+        "result": {
+          "cls": 2,
+          "art": 30,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 25,
+          "sound": 0,
+          "dc00": 9
+        }
+      },
+      {
+        "character": 2,
+        "zone": 0,
+        "rings_before": 21,
+        "result": {
+          "cls": 3,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 21
+        }
+      },
+      {
+        "character": 2,
+        "zone": 0,
+        "rings_before": 22,
+        "result": {
+          "cls": 0,
+          "art": 32,
+          "state": 3,
+          "retry": 255,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 22
+        }
+      },
+      {
+        "character": 2,
+        "zone": 0,
+        "rings_before": 36,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 0,
+        "rings_before": 85,
+        "result": {
+          "cls": 1,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 85,
+          "sound": 169,
+          "dc00": 85
+        }
+      },
+      {
+        "character": 2,
+        "zone": 0,
+        "rings_before": 153,
+        "result": {
+          "cls": 1,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 153,
+          "sound": 169,
+          "dc00": 153
+        }
+      },
+      {
+        "character": 2,
+        "zone": 1,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 1,
+        "rings_before": 9,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 9,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 1,
+        "rings_before": 21,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 1,
+        "rings_before": 22,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 1,
+        "rings_before": 36,
+        "result": {
+          "cls": 3,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 36
+        }
+      },
+      {
+        "character": 2,
+        "zone": 1,
+        "rings_before": 85,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 85,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 1,
+        "rings_before": 153,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 153,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 2,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 2,
+        "rings_before": 9,
+        "result": {
+          "cls": 2,
+          "art": 30,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 25,
+          "sound": 0,
+          "dc00": 9
+        }
+      },
+      {
+        "character": 2,
+        "zone": 2,
+        "rings_before": 21,
+        "result": {
+          "cls": 3,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 21
+        }
+      },
+      {
+        "character": 2,
+        "zone": 2,
+        "rings_before": 22,
+        "result": {
+          "cls": 0,
+          "art": 32,
+          "state": 3,
+          "retry": 255,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 22
+        }
+      },
+      {
+        "character": 2,
+        "zone": 2,
+        "rings_before": 36,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 2,
+        "rings_before": 85,
+        "result": {
+          "cls": 1,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 85,
+          "sound": 169,
+          "dc00": 85
+        }
+      },
+      {
+        "character": 2,
+        "zone": 2,
+        "rings_before": 153,
+        "result": {
+          "cls": 1,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 153,
+          "sound": 169,
+          "dc00": 153
+        }
+      },
+      {
+        "character": 2,
+        "zone": 3,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 3,
+        "rings_before": 9,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 9,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 3,
+        "rings_before": 21,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 3,
+        "rings_before": 22,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 3,
+        "rings_before": 36,
+        "result": {
+          "cls": 3,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 36
+        }
+      },
+      {
+        "character": 2,
+        "zone": 3,
+        "rings_before": 85,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 85,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 3,
+        "rings_before": 153,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 153,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 4,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 4,
+        "rings_before": 9,
+        "result": {
+          "cls": 2,
+          "art": 30,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 25,
+          "sound": 0,
+          "dc00": 9
+        }
+      },
+      {
+        "character": 2,
+        "zone": 4,
+        "rings_before": 21,
+        "result": {
+          "cls": 3,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 21
+        }
+      },
+      {
+        "character": 2,
+        "zone": 4,
+        "rings_before": 22,
+        "result": {
+          "cls": 0,
+          "art": 32,
+          "state": 3,
+          "retry": 255,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 22
+        }
+      },
+      {
+        "character": 2,
+        "zone": 4,
+        "rings_before": 36,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 4,
+        "rings_before": 85,
+        "result": {
+          "cls": 1,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 85,
+          "sound": 169,
+          "dc00": 85
+        }
+      },
+      {
+        "character": 2,
+        "zone": 4,
+        "rings_before": 153,
+        "result": {
+          "cls": 1,
+          "art": 29,
+          "state": 5,
+          "retry": 0,
+          "lives": 4,
+          "cont": 0,
+          "rings": 153,
+          "sound": 169,
+          "dc00": 153
+        }
+      },
+      {
+        "character": 2,
+        "zone": 5,
+        "rings_before": 1,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 1,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 5,
+        "rings_before": 9,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 9,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 5,
+        "rings_before": 21,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 21,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 5,
+        "rings_before": 22,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 22,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 5,
+        "rings_before": 36,
+        "result": {
+          "cls": 3,
+          "art": 27,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 1,
+          "rings": 36,
+          "sound": 0,
+          "dc00": 36
+        }
+      },
+      {
+        "character": 2,
+        "zone": 5,
+        "rings_before": 85,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 85,
+          "sound": 0,
+          "dc00": 238
+        }
+      },
+      {
+        "character": 2,
+        "zone": 5,
+        "rings_before": 153,
+        "result": {
+          "cls": 255,
+          "art": 31,
+          "state": 5,
+          "retry": 0,
+          "lives": 3,
+          "cont": 0,
+          "rings": 153,
+          "sound": 0,
+          "dc00": 238
+        }
+      }
+    ],
+    "life_cap": [
+      {
+        "character": 1,
+        "lives_before": 152,
+        "lives_after": 153
+      },
+      {
+        "character": 1,
+        "lives_before": 153,
+        "lives_after": 153
+      },
+      {
+        "character": 2,
+        "lives_before": 152,
+        "lives_after": 153
+      },
+      {
+        "character": 2,
+        "lives_before": 153,
+        "lives_after": 153
+      }
+    ],
+    "ring_wrap": [
+      {
+        "character": 1,
+        "rings": 5,
+        "lives": 4,
+        "mode": 136,
+        "card": 1
+      },
+      {
+        "character": 2,
+        "rings": 5,
+        "lives": 4,
+        "mode": 0,
+        "card": 0
+      }
+    ],
+    "equipment_animation": [
+      {
+        "character": 1,
+        "state": 17,
+        "frame": 56,
+        "callback": 962,
+        "requested": 17,
+        "extent": [
+          8,
+          24
+        ]
+      },
+      {
+        "character": 1,
+        "state": 18,
+        "frame": 11,
+        "callback": 944,
+        "requested": 18,
+        "extent": [
+          8,
+          24
+        ]
+      },
+      {
+        "character": 2,
+        "state": 17,
+        "frame": 10,
+        "callback": 917,
+        "requested": 18,
+        "extent": [
+          8,
+          24
+        ]
+      },
+      {
+        "character": 2,
+        "state": 18,
+        "frame": 10,
+        "callback": 944,
+        "requested": 18,
+        "extent": [
+          8,
+          24
+        ]
+      }
+    ],
+    "carrier_animation": [
+      {
+        "character": 1,
+        "vx": 256,
+        "frame": 96,
+        "duration": 3
+      },
+      {
+        "character": 1,
+        "vx": 65280,
+        "frame": 96,
+        "duration": 3
+      },
+      {
+        "character": 2,
+        "vx": 256,
+        "frame": 87,
+        "duration": 3
+      },
+      {
+        "character": 2,
+        "vx": 65280,
+        "frame": 87,
+        "duration": 3
+      }
+    ],
+    "flight_contact_cancel": [
+      {
+        "character": 1,
+        "requested_before": 5,
+        "requested_after": 5
+      },
+      {
+        "character": 1,
+        "requested_before": 24,
+        "requested_after": 24
+      },
+      {
+        "character": 2,
+        "requested_before": 5,
+        "requested_after": 5
+      },
+      {
+        "character": 2,
+        "requested_before": 24,
+        "requested_after": 14
+      }
+    ]
+  },
+  "gameplay": [
+    {
+      "character": 1,
+      "evidence": "unresolved input-only break",
+      "setup": "normal new game; input-only Right, Button1 while X 251..349; no RAM writes",
+      "elapsed": 500,
+      "events": [],
+      "end": {
+        "frame": 1456,
+        "menu": 0,
+        "flow": 66,
+        "mode": 0,
+        "started": 255,
+        "saved_zone": 0,
+        "zone": 0,
+        "act": 0,
+        "character": 1,
+        "lives": 2,
+        "continues": 0,
+        "emeralds": 0,
+        "card": 0,
+        "rings": 0,
+        "score": [
+          0,
+          0,
+          0
+        ],
+        "bonus": 0,
+        "timer": [
+          0,
+          3,
+          9
+        ],
+        "timer_run": 0,
+        "timeover": 0,
+        "powerup": 0,
+        "power_timer": 0,
+        "player": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "continue_ticks": 0,
+        "continue_digit": 0,
+        "sound": 0
+      }
+    },
+    {
+      "character": 1,
+      "evidence": "ROM gameplay proven (arrival-assisted, approximate SMS harness)",
+      "setup": "ARRIVAL camera (208,152), player (336,220), then Button1 taps at 60/150/240/330; no object/state/VDP/PC injection",
+      "elapsed": 182,
+      "events": [
+        {
+          "event": "init_before",
+          "frame": 960,
+          "slot": 55040,
+          "parameter": 4,
+          "x": 336,
+          "y": 224,
+          "state": 14,
+          "queue": 0,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "init_after",
+          "frame": 961,
+          "slot": 55040,
+          "parameter": 4,
+          "x": 336,
+          "y": 225,
+          "state": 14,
+          "queue": 0,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "art",
+          "frame": 962,
+          "slot": 55808,
+          "parameter": 0,
+          "x": 336,
+          "y": 227,
+          "state": 14,
+          "queue": 0,
+          "rings": 2,
+          "selector": 4,
+          "power": 0
+        },
+        {
+          "event": "break",
+          "frame": 1062,
+          "slot": 55040,
+          "parameter": 4,
+          "x": 336,
+          "y": 246,
+          "state": 10,
+          "queue": 0,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "reward",
+          "frame": 1063,
+          "slot": 54528,
+          "parameter": null,
+          "x": 336,
+          "y": 242,
+          "state": 10,
+          "queue": 8,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "rocket_setup",
+          "frame": 1063,
+          "slot": 54528,
+          "parameter": 0,
+          "x": 336,
+          "y": 242,
+          "state": 10,
+          "queue": 0,
+          "rings": 2,
+          "selector": 0,
+          "power": 4
+        }
+      ],
+      "end": {
+        "frame": 1138,
+        "menu": 0,
+        "flow": 64,
+        "mode": 0,
+        "started": 255,
+        "saved_zone": 0,
+        "zone": 0,
+        "act": 0,
+        "character": 1,
+        "lives": 3,
+        "continues": 0,
+        "emeralds": 0,
+        "card": 0,
+        "rings": 8,
+        "score": [
+          0,
+          0,
+          16
+        ],
+        "bonus": 0,
+        "timer": [
+          0,
+          3,
+          2
+        ],
+        "timer_run": 255,
+        "timeover": 0,
+        "powerup": 4,
+        "power_timer": 228,
+        "player": [
+          1,
+          17,
+          17,
+          517,
+          238
+        ],
+        "continue_ticks": 0,
+        "continue_digit": 0,
+        "sound": 0
+      }
+    },
+    {
+      "character": 2,
+      "evidence": "unresolved input-only break",
+      "setup": "normal new game; input-only Right, Button1 while X 251..349; no RAM writes",
+      "elapsed": 500,
+      "events": [],
+      "end": {
+        "frame": 1456,
+        "menu": 0,
+        "flow": 66,
+        "mode": 0,
+        "started": 255,
+        "saved_zone": 0,
+        "zone": 0,
+        "act": 0,
+        "character": 2,
+        "lives": 4,
+        "continues": 3,
+        "emeralds": 0,
+        "card": 0,
+        "rings": 0,
+        "score": [
+          0,
+          0,
+          0
+        ],
+        "bonus": 0,
+        "timer": [
+          0,
+          3,
+          10
+        ],
+        "timer_run": 0,
+        "timeover": 0,
+        "powerup": 0,
+        "power_timer": 0,
+        "player": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "continue_ticks": 0,
+        "continue_digit": 0,
+        "sound": 0
+      }
+    },
+    {
+      "character": 2,
+      "evidence": "ROM gameplay proven (arrival-assisted, approximate SMS harness)",
+      "setup": "ARRIVAL camera (208,152), player (336,220), then Button1 taps at 60/150/240/330; no object/state/VDP/PC injection",
+      "elapsed": 182,
+      "events": [
+        {
+          "event": "init_before",
+          "frame": 960,
+          "slot": 55040,
+          "parameter": 4,
+          "x": 336,
+          "y": 224,
+          "state": 14,
+          "queue": 0,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "init_after",
+          "frame": 962,
+          "slot": 55040,
+          "parameter": 1,
+          "x": 336,
+          "y": 225,
+          "state": 14,
+          "queue": 0,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "art",
+          "frame": 963,
+          "slot": 55808,
+          "parameter": 0,
+          "x": 336,
+          "y": 227,
+          "state": 14,
+          "queue": 0,
+          "rings": 2,
+          "selector": 1,
+          "power": 0
+        },
+        {
+          "event": "break",
+          "frame": 1062,
+          "slot": 55040,
+          "parameter": 1,
+          "x": 336,
+          "y": 246,
+          "state": 10,
+          "queue": 0,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "reward",
+          "frame": 1063,
+          "slot": 54528,
+          "parameter": null,
+          "x": 336,
+          "y": 242,
+          "state": 10,
+          "queue": 1,
+          "rings": 2,
+          "selector": 0,
+          "power": 0
+        },
+        {
+          "event": "ring_awarded",
+          "frame": 1063,
+          "slot": 54528,
+          "parameter": 0,
+          "x": 336,
+          "y": 242,
+          "state": 10,
+          "queue": 0,
+          "rings": 18,
+          "selector": 0,
+          "power": 0
+        }
+      ],
+      "end": {
+        "frame": 1138,
+        "menu": 0,
+        "flow": 64,
+        "mode": 0,
+        "started": 255,
+        "saved_zone": 0,
+        "zone": 0,
+        "act": 0,
+        "character": 2,
+        "lives": 5,
+        "continues": 3,
+        "emeralds": 0,
+        "card": 0,
+        "rings": 18,
+        "score": [
+          0,
+          0,
+          16
+        ],
+        "bonus": 0,
+        "timer": [
+          0,
+          3,
+          3
+        ],
+        "timer_run": 255,
+        "timeover": 0,
+        "powerup": 0,
+        "power_timer": 0,
+        "player": [
+          2,
+          2,
+          2,
+          336,
+          270
+        ],
+        "continue_ticks": 0,
+        "continue_digit": 0,
+        "sound": 0
+      }
+    }
+  ],
+  "spring_gameplay": [
+    {
+      "character": 1,
+      "evidence": "ROM gameplay proven (arrival-assisted, approximate SMS harness)",
+      "setup": "START_INDEX SEZ1; ARRIVAL camera(96,280),player(224,348); no object/state injection; Button1 at step180",
+      "rows": [
+        {
+          "step": 0,
+          "state": 0,
+          "requested": 0,
+          "frame": 0,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 0,
+          "extent": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 1,
+          "state": 0,
+          "requested": 14,
+          "frame": 11,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 256,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 2,
+          "state": 14,
+          "requested": 14,
+          "frame": 2,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 304,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 10,
+          "state": 14,
+          "requested": 14,
+          "frame": 3,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 688,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 16,
+          "state": 14,
+          "requested": 18,
+          "frame": 3,
+          "owner": 55168,
+          "shoe_state": 1,
+          "shoe_frame": 2,
+          "vy": 976,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 17,
+          "state": 18,
+          "requested": 18,
+          "frame": 11,
+          "owner": 55168,
+          "shoe_state": 3,
+          "shoe_frame": 3,
+          "vy": 63616,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 29,
+          "state": 18,
+          "requested": 18,
+          "frame": 11,
+          "owner": 55168,
+          "shoe_state": 4,
+          "shoe_frame": 4,
+          "vy": 64192,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 98,
+          "state": 18,
+          "requested": 18,
+          "frame": 11,
+          "owner": 55168,
+          "shoe_state": 3,
+          "shoe_frame": 3,
+          "vy": 63616,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 110,
+          "state": 18,
+          "requested": 18,
+          "frame": 11,
+          "owner": 55168,
+          "shoe_state": 4,
+          "shoe_frame": 4,
+          "vy": 64192,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 179,
+          "state": 18,
+          "requested": 18,
+          "frame": 11,
+          "owner": 55168,
+          "shoe_state": 3,
+          "shoe_frame": 3,
+          "vy": 63616,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 181,
+          "state": 18,
+          "requested": 10,
+          "frame": 11,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64448,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 182,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64496,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 185,
+          "state": 10,
+          "requested": 10,
+          "frame": 39,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64640,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 188,
+          "state": 10,
+          "requested": 10,
+          "frame": 40,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64784,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 191,
+          "state": 10,
+          "requested": 10,
+          "frame": 41,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64928,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 194,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65072,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 197,
+          "state": 10,
+          "requested": 10,
+          "frame": 39,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65216,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 200,
+          "state": 10,
+          "requested": 10,
+          "frame": 40,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65360,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 203,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65504,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 206,
+          "state": 10,
+          "requested": 10,
+          "frame": 41,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 112,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 207,
+          "state": 10,
+          "requested": 10,
+          "frame": 41,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 4,
+          "vy": 160,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 209,
+          "state": 10,
+          "requested": 10,
+          "frame": 39,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 256,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 212,
+          "state": 10,
+          "requested": 10,
+          "frame": 40,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 400,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 215,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 544,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 218,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 688,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 221,
+          "state": 10,
+          "requested": 10,
+          "frame": 41,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 832,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 224,
+          "state": 10,
+          "requested": 10,
+          "frame": 40,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 976,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 227,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1120,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 230,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1264,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 232,
+          "state": 10,
+          "requested": 5,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1360,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 233,
+          "state": 5,
+          "requested": 1,
+          "frame": 1,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1792,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 234,
+          "state": 1,
+          "requested": 1,
+          "frame": 11,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1792,
+          "extent": [
+            8,
+            24
+          ]
+        }
+      ],
+      "end": {
+        "frame": 1250,
+        "menu": 0,
+        "flow": 64,
+        "mode": 0,
+        "started": 255,
+        "saved_zone": 0,
+        "zone": 2,
+        "act": 0,
+        "character": 1,
+        "lives": 3,
+        "continues": 0,
+        "emeralds": 0,
+        "card": 0,
+        "rings": 0,
+        "score": [
+          0,
+          0,
+          0
+        ],
+        "bonus": 0,
+        "timer": [
+          0,
+          5,
+          1
+        ],
+        "timer_run": 255,
+        "timeover": 0,
+        "powerup": 0,
+        "power_timer": 0,
+        "player": [
+          1,
+          1,
+          1,
+          224,
+          398
+        ],
+        "continue_ticks": 0,
+        "continue_digit": 0,
+        "sound": 0
+      }
+    },
+    {
+      "character": 2,
+      "evidence": "ROM gameplay proven (arrival-assisted, approximate SMS harness)",
+      "setup": "START_INDEX SEZ1; ARRIVAL camera(96,280),player(224,348); no object/state injection; Button1 at step180",
+      "rows": [
+        {
+          "step": 0,
+          "state": 0,
+          "requested": 0,
+          "frame": 0,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 0,
+          "extent": [
+            0,
+            0
+          ]
+        },
+        {
+          "step": 1,
+          "state": 0,
+          "requested": 14,
+          "frame": 10,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 256,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 2,
+          "state": 14,
+          "requested": 14,
+          "frame": 2,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 304,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 10,
+          "state": 14,
+          "requested": 14,
+          "frame": 3,
+          "owner": 0,
+          "shoe_state": null,
+          "shoe_frame": null,
+          "vy": 688,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 16,
+          "state": 14,
+          "requested": 18,
+          "frame": 3,
+          "owner": 55168,
+          "shoe_state": 1,
+          "shoe_frame": 2,
+          "vy": 976,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 17,
+          "state": 18,
+          "requested": 18,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 3,
+          "shoe_frame": 3,
+          "vy": 63616,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 29,
+          "state": 18,
+          "requested": 18,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 4,
+          "shoe_frame": 4,
+          "vy": 64192,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 98,
+          "state": 18,
+          "requested": 18,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 3,
+          "shoe_frame": 3,
+          "vy": 63616,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 110,
+          "state": 18,
+          "requested": 18,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 4,
+          "shoe_frame": 4,
+          "vy": 64192,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 179,
+          "state": 18,
+          "requested": 18,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 3,
+          "shoe_frame": 3,
+          "vy": 63616,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 181,
+          "state": 18,
+          "requested": 10,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64448,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 182,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64496,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 185,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64640,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 188,
+          "state": 10,
+          "requested": 10,
+          "frame": 36,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64784,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 191,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 64928,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 194,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65072,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 197,
+          "state": 10,
+          "requested": 10,
+          "frame": 36,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65216,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 200,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65360,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 203,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 65504,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 206,
+          "state": 10,
+          "requested": 10,
+          "frame": 36,
+          "owner": 55168,
+          "shoe_state": 5,
+          "shoe_frame": 4,
+          "vy": 112,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 207,
+          "state": 10,
+          "requested": 10,
+          "frame": 36,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 4,
+          "vy": 160,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 209,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 256,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 212,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 400,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 215,
+          "state": 10,
+          "requested": 10,
+          "frame": 36,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 544,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 218,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 688,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 221,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 832,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 224,
+          "state": 10,
+          "requested": 10,
+          "frame": 36,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 976,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 227,
+          "state": 10,
+          "requested": 10,
+          "frame": 37,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1120,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 230,
+          "state": 10,
+          "requested": 10,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1264,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 232,
+          "state": 10,
+          "requested": 5,
+          "frame": 38,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1360,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 233,
+          "state": 1,
+          "requested": 1,
+          "frame": 1,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1792,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 234,
+          "state": 1,
+          "requested": 1,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1792,
+          "extent": [
+            8,
+            24
+          ]
+        },
+        {
+          "step": 241,
+          "state": 2,
+          "requested": 2,
+          "frame": 10,
+          "owner": 55168,
+          "shoe_state": 0,
+          "shoe_frame": 0,
+          "vy": 1792,
+          "extent": [
+            8,
+            24
+          ]
+        }
+      ],
+      "end": {
+        "frame": 1250,
+        "menu": 0,
+        "flow": 64,
+        "mode": 0,
+        "started": 255,
+        "saved_zone": 0,
+        "zone": 2,
+        "act": 0,
+        "character": 2,
+        "lives": 5,
+        "continues": 3,
+        "emeralds": 0,
+        "card": 0,
+        "rings": 0,
+        "score": [
+          0,
+          0,
+          0
+        ],
+        "bonus": 0,
+        "timer": [
+          0,
+          5,
+          1
+        ],
+        "timer_run": 255,
+        "timeover": 0,
+        "powerup": 0,
+        "power_timer": 0,
+        "player": [
+          2,
+          2,
+          2,
+          224,
+          398
+        ],
+        "continue_ticks": 0,
+        "continue_digit": 0,
+        "sound": 0
+      }
+    }
+  ]
+}

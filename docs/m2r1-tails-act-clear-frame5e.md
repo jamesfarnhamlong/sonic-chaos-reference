@@ -1,5 +1,9 @@
 # M2-R1 — Tails act-clear frame $5E
 
+**M2-R2 cross-check, 23 October:** the new monitor/Spring Shoes interaction audit
+does not resolve this frame's natural act-clear reachability. Retain the decision
+and evidence limits below; no replacement sprite or side-contact fix is implied.
+
 23 October 2026. Research branch `research/m2r1-tails-frame5e`, parent `5b7f5a10232f4f6511c3a7b9d9b4deaea5842182`. Accepted POC `7476affc6ed7626dabf69b446cdab0c9c3d7492e` read-only. Canonical SMS Europe v1.2 ROM hash `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607` verified before execution.
 
 ## Decision

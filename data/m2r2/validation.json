@@ -1,0 +1,17 @@
+{
+  "schema_version":1,
+  "date":"2026-10-23",
+  "scope":"Focused M2-R2 Research verification, not historical full-suite or Windows acceptance",
+  "original_routine_cases":148,
+  "case_groups":{"monitors":12,"negative_contact":10,"timer_edges":18,"forced_rocket_reward":2,"spring_attachment":4,"sign_rewards":84,"life_cap":4,"ring_wrap":2,"equipment_animation":4,"carrier_animation":4,"flight_contact_cancel":4},
+  "gameplay":{"mapped_rocket_arrival_assisted":2,"mapped_spring_arrival_assisted":2,"unsuccessful_input_only_monitor_attempts":2,"input_only_complete_route_claim":false},
+  "test_results":[
+    {"suite":"test_m2r2_interactions.py","passed":12,"failed":0,"skipped":0,"private_rom_supplied":true},
+    {"suite":"test_m1_contract.py","passed":9,"failed":0,"skipped":0},
+    {"suite":"test_m2r1_frame5e.py","passed":9,"failed":0,"skipped":0}
+  ],
+  "evidence_regeneration":"tools/m2r2_interactions.py PRIVATE_ROM --gameplay --check: PASS; source/controls and all6 scheduler sessions reproduce",
+  "public_payload":"Markdown, JSON metadata and Python source only; ignored private diagnostic image not staged",
+  "windows_acceptance":false,
+  "manager_review_required":true
+}

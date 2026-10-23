@@ -1,5 +1,11 @@
 # Spring Shoes presentation, act-clear and detach audit (type `$2F` / player state `$12`)
 
+**23 October character extension:** `m2r2-character-interaction-matrix.md` adds
+paired original SEZ1 scheduler attachment, repeated81-update bounces and manual
+jump detach for Tails, with player frame `$0A` rather than Sonic `$0B`. The
+natural sign-stall and other Tails detach routes remain unproven; the later
+mapped-spring correction in this document remains authoritative.
+
 Research only. ROM: Sonic Chaos (Europe) v1.2, SHA-256 `eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607` (verified; never committed). Branch `research/spring-shoes-presentation` from Research `main` @ `a779fde`. The POC and the root `AGENTS.md` were **not** modified; POC files were only read.
 Machine-readable facts: `data/rom-cache/spring-shoes-presentation.json`. Tool: `tools/spring_shoes_presentation.py` (`python tools/spring_shoes_presentation.py ROM [--check] [--static-only]`, ~35 s). Tests: `tests/test_spring_shoes_presentation.py` (27 tests, ~35 s). `tests/verify_cache.py` regenerates the cache.
 Builds on `docs/powerup-shoes-audit.md` (identity, bounce, placements); this audit adds the presentation fixtures, the act-clear interaction and re-tests the detach cases dynamically.

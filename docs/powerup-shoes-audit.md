@@ -1,5 +1,12 @@
 # Rocket Shoes and Spring Shoes audit
 
+**23 October character-scope addendum:** see `m2r2-character-interaction-matrix.md`.
+The eleven ordinary Rocket placements use the Sonic contract below; Tails's
+initializer converts them to Ring monitors, including art and +10 reward.
+Spring Shoes also attach to Tails (paired SEZ1 scheduler proof). Preserve the
+later `spring-shoes-presentation-audit.md` correction to section6's isolated
+mapped-spring result; a state12 wearer is not launched in the tested game ordering.
+
 This is the canonical Master System contract for the two footwear systems in
 Sonic Chaos (Europe) v1.2. It distinguishes ROM identity, player gameplay
 state, animation and the GameMaker adapter. Reproduce the machine results with:

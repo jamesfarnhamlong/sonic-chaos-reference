@@ -1,5 +1,11 @@
 # M1 — SMS Tails and original frontend contract
 
+**23 October corrective addendum:** `m2r2-character-interaction-matrix.md` closes
+the missing normal Rocket-monitor lifecycle: initialization converts parameter4
+to Ring1 for Tails before artwork selection, and breaking it grants +10 rings.
+The Rocket reward gate below remains correct but is not the whole pickup chain.
+M2-R2 also adds paired mapped Spring Shoes execution and life-monitor art selection.
+
 22 October 2026. Research-only, original **Master System Europe v1.2**. POC read-only `7476affc6ed7626dabf69b446cdab0c9c3d7492e`. New evidence: hash-gated static ROM tables/instructions, not new ROM execution. Existing G0/U4-B/U5-A/EEZ emulator observations are reused with their original limits. No Game Gear behaviour inferred.
 
 ## Evidence package and how to use it

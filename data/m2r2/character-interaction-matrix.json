@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "game": "Sonic Chaos SMS Europe v1.2",
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "research_parent": "d6f2fafcda7903c0fc7082b2a9cbf4fed6e0bf98",
+  "poc_read_only": "7476affc6ed7626dabf69b446cdab0c9c3d7492e",
+  "character_ids": {"sonic": 1, "tails": 2},
+  "evidence_file": "data/m2r2/evidence.json",
+  "classification_values": ["ROM gameplay proven", "controlled-only", "static source", "unresolved"],
+  "limits": ["Gameplay proof uses approximate SMS harness, arrival fixtures explicitly identified.", "No Windows or physical hardware acceptance.", "Rows classify only the named contract; additional lifecycle limits remain explicit.", "No claim of exhaustive indirect character-gate recovery or every natural route."],
+  "monitor_shared": {
+    "placement": "bank28 original lists -> $80EB slot creation -> parameter at slot+63",
+    "conversion": "$A149: player type !=1 and parameter4 -> parameter1, before state1 artwork latch",
+    "artwork": "$A1F9 visible transition -> D3B3 effective parameter; $7C71 uses character tables; mapping frames11/12, extents10x24",
+    "activation": "$A16C -> solid $5FA0 first; attack D503 bit1; nonzero descending VY; top excludes requests15,16,21,26; bottom hops without reward",
+    "destruction": "$A1D3 queues mask from converted parameter -> $5F54 type15 effect, +10 raw score, token0; consumed placement remains occupied",
+    "subsequent_effects": "effect frames7/8/9 then delete; consumed cannot recreate same act; untouched/bottom-hit can recreate after offrange cleanup",
+    "reward_dispatch": "$4AA3 lowest queued bit, once per call; queue is not the equipment owner",
+    "source_refs": ["asm/recovered/object_10_handlers.asm", "asm/recovered/object_10_tail_handlers.asm", "asm/recovered/object_reward_dispatch.asm", "tools/thz1_object_10.py"]
+  },
+  "entries": [
+    {
+      "id": "M2R2-MONITOR-RING", "classification": "controlled-only", "placement": {"type":16,"parameter":1,"ordinary_count":16},
+      "conversion": {"sonic":1,"tails":1}, "artwork": {"sonic":"Ring","tails":"Ring","identical_layers":true},
+      "activation":"monitor_shared", "reward":{"sonic":{"queue_mask":1,"rings_bcd_add":16},"tails":{"queue_mask":1,"rings_bcd_add":16}},
+      "effects":"BCD wrap adds one life to both, then character-gated SS entry; no equipment timer", "cancellation":"one-shot reward; consumed placement persists",
+      "controls":"controls.monitors parameter1; controls.ring_wrap", "source_refs":["$4AC0..$4AD9","$178F"], "unresolved":[]
+    },
+    {
+      "id":"M2R2-MONITOR-LIFE", "classification":"controlled-only", "placement":{"type":16,"parameter":2,"ordinary_count":12},
+      "conversion":{"sonic":2,"tails":2}, "artwork":{"sonic":"Sonic portrait","tails":"Tails portrait","identical_layers":false},
+      "activation":"monitor_shared", "reward":{"sonic":{"queue_mask":2,"lives_bcd_add":1},"tails":{"queue_mask":2,"lives_bcd_add":1}},
+      "effects":"life cap BCD99; sound169 even at cap; no movement state or timer", "cancellation":"one-shot",
+      "controls":"controls.monitors parameter2; controls.life_cap", "source_refs":["$7C71 tables","$4ADA","$3104"], "unresolved":["No new mapped life-monitor gameplay session"]
+    },
+    {
+      "id":"M2R2-MONITOR-SPEED", "classification":"controlled-only", "placement":{"type":16,"parameter":3,"ordinary_count":9},
+      "conversion":{"sonic":3,"tails":3}, "artwork":{"sonic":"speed shoe","tails":"speed shoe","identical_layers":true},
+      "activation":"monitor_shared", "reward":{"sonic":{"queue_mask":4,"selector":3,"timer":900},"tails":{"queue_mask":4,"selector":3,"timer":900}},
+      "effects":"maximum1536 in signed8.8; current player state retained; timer1->0 retains selector3, then0->65535",
+      "cancellation":"replacement/reset; no automatic selector clear at zero in $4A74", "controls":"controls.monitors parameter3; controls.timer_edges",
+      "source_refs":["$4B0F","$4A74"], "unresolved":["Every global reset/transition not re-executed"]
+    },
+    {
+      "id":"M2R2-ROCKET-SUBSTITUTION", "classification":"ROM gameplay proven", "placement":{"type":16,"parameter":4,"ordinary_count":11,"special_stage_count":6},
+      "conversion":{"sonic":4,"tails":1}, "artwork":{"sonic":"Rocket shoe","tails":"Ring","tails_equals_parameter1":true},
+      "activation":"monitor_shared; scheduler THZ1(336,270), arrival-assisted jump contact",
+      "reward":{"sonic":{"queue_mask":8,"selector":4,"timer":300,"requested_state":17},"tails":{"queue_mask":1,"rings_bcd_add":16,"rocket_activation":false}},
+      "effects":"Sonic $4775 clears attack and initializes Rocket movement; Tails ordinary Ring wrap/life/SS gate applies",
+      "cancellation":"Sonic expiry/damage/state replacement follow Rocket owners; Tails has no Rocket equipment to cancel",
+      "controls":"controls.monitors parameter4; controls.forced_rocket_reward; gameplay arrival cases", "source_refs":["$A149..$A160","$A1F9","$7C71","$4ADF","$4775"],
+      "unresolved":["Input-only entrance attempts did not reach monitor; arrival-assisted mapped chain proven", "All11 placements share source but not individually played"]
+    },
+    {
+      "id":"M2R2-MONITOR-CLOCK", "classification":"controlled-only", "placement":{"type":16,"parameter":5,"ordinary_count":0,"special_stage_count":5},
+      "conversion":{"sonic":5,"tails":5}, "artwork":{"sonic":"clock","tails":"clock in forced scene","identical_layers":true},
+      "activation":"monitor_shared; Tails forced-only because natural SS gate rejects character2",
+      "reward":{"sonic":{"queue_mask":16,"clock_pause_d3c4":11,"sound":248},"tails":{"queue_mask":16,"clock_pause_d3c4":11,"sound":248}},
+      "effects":"SS clock owner, not D44C or +10 ring reward", "cancellation":"SS clock pause counter / scene reset; inherited SS audit",
+      "controls":"controls.monitors parameter5", "source_refs":["$4B02","docs/special-stages-powerups-audit.md","tools/ss_powerups.py"], "unresolved":["No normal Tails SS reachability; forced outcome must not become public feature"]
+    },
+    {
+      "id":"M2R2-MONITOR-INVINCIBILITY", "classification":"controlled-only", "placement":{"type":16,"parameter":6,"ordinary_count":21,"special_stage_count":7},
+      "conversion":{"sonic":6,"tails":6}, "artwork":{"sonic":"stars","tails":"stars","identical_layers":true},
+      "activation":"monitor_shared", "reward":{"sonic":{"queue_mask":32,"selector":6,"timer":600,"set_flags":130},"tails":{"queue_mask":32,"selector":6,"timer":600,"set_flags":130}},
+      "effects":"sound132; type5 aura allocated unless selector already6; shared contact immunity and attack posture",
+      "cancellation":"timer1->0 clears selector6 via $189B; replacement overwrites shared selector/timer; aura follows own source owner",
+      "controls":"controls.monitors parameter6; controls.timer_edges", "source_refs":["$4B1D","$4A74","docs/player-attack-badnik-audit.md"], "unresolved":["All Tails aura/contact/cancellation schedules not newly executed"]
+    },
+    {
+      "id":"M2R2-SPRING-SHOES", "classification":"ROM gameplay proven", "placement":{"type":47,"parameter":0,"ordinary_count":16},
+      "conversion":"none; shared top-contact attachment for both", "artwork":{"sonic":{"player_frame":11},"tails":{"player_frame":10},"shoe_frames":[1,2,3,4]},
+      "activation":"$8B64 nonrising top projection -> ownerD3A4=slot, request18, shoe3; no attack requirement",
+      "reward":"attachment, not monitor queue; same player extents8x24; no selector or timer",
+      "effects":"shared callback944; floor VY=-1920; shoe3 for12 then4; observed81-update period both; follow X, Y+16 or11",
+      "cancellation":"manual jump -> request10, shoe5 observed both; other original state-replacement rules source-backed only for new Tails scope",
+      "controls":"controls.spring_attachment; controls.equipment_animation; spring_gameplay",
+      "source_refs":["$1E:$8B64","$3B4E","docs/spring-shoes-presentation-audit.md"], "unresolved":["Natural Tails sign-stall and every detach route"]
+    },
+    {
+      "id":"M2R2-EQUIPMENT-OVERLAP", "classification":"static source", "placement":"monitor and Spring Shoes owners above",
+      "conversion":"normal Tails Rocket parameter is converted before reward; no normal state11",
+      "artwork":"player state script, attached shoe and aura each own presentation",
+      "activation":"reward dispatch / Spring attach can replace separate state or selector owners",
+      "reward":"D3A3 queue, D532/D44C selector/timer, stateD501/D502 and shoeD3A4 must remain separate",
+      "effects":"Sonic Rocket current state can continue after speed/invincibility selector overwrite; Spring state12 can coexist with selector3/6",
+      "cancellation":"follow each original owner; no generic footwear enum/reset",
+      "controls":"inherited powerup-shoes coexistence fixtures; new forced reward/animation controls", "source_refs":["docs/powerup-shoes-audit.md","docs/spring-shoes-presentation-audit.md"],
+      "unresolved":["Every Tails overlap, simultaneous damage, death and scene-reset schedule"]
+    },
+    {
+      "id":"M2R2-SIGN-PRIZES", "classification":"ROM gameplay proven", "placement":"type24 signs, normal act1/2; inherited U3 arrival-assisted gameplay",
+      "conversion":"same zone-parity tables/class selection, character-dependent face choice only",
+      "artwork":{"sonic":{"life":27,"continue":29},"tails":{"life":29,"continue":27},"ring":30,"retry":32,"none":31},
+      "activation":"sign landing/retry class -> $A9A2 dispatch",
+      "reward":"class1 life+1 cap99; class2 BCD+10rings direct; class3 continue+1 DAA&127; class0 retry; other none",
+      "effects":"shared child/bonus chain; sign direct ring add is not monitor wrap/SS dispatcher",
+      "cancellation":"one prize per landing, retry may reroll; no character-specific new timer",
+      "controls":"controls.sign_rewards; inherited data/u3/sign-prize-observed.json", "source_refs":["docs/u3-sign-prize-presentation.md","$A919/$A962","$A9A2"],
+      "unresolved":["Not every Tails act-normal handoff individually observed", "Natural Tails state20 side-contact/frame94 remains unresolved M2-R1"]
+    },
+    {
+      "id":"M2R2-RING-SPECIAL-STAGE-GATE", "classification":"controlled-only", "placement":"Ring monitors, terrain and type9 rings",
+      "conversion":"pickup retained for both; post-wrap scene gate differs",
+      "artwork":"ordinary ring; no unavailable-ability substitution required",
+      "activation":"ring wrap life -> $178F tests D2C8==1, zone<6, incomplete Emerald mask",
+      "reward":{"sonic":"life and eligible SS entry","tails":"life, no SS entry"}, "effects":"Tails remains in ordinary campaign",
+      "cancellation":"SS unavailable to Tails through canonical gate; debug injection is separate",
+      "controls":"controls.ring_wrap", "source_refs":["$178F","docs/g0-campaign-contract.md","tools/ss_foundation.py"], "unresolved":[]
+    },
+    {
+      "id":"M2R2-SCORE-CONTINUE", "classification":"controlled-only", "placement":"shared score-producing destruction/sign rewards",
+      "conversion":"shared score addition; character threshold after addition",
+      "artwork":"shared numeric HUD, not life-monitor portrait selection", "activation":"$262F score writer",
+      "reward":{"sonic":"continue at5000 raw intervals","tails":"continue at3000 raw digit-sum thresholds; cycle wrap also awards"},
+      "effects":"same score can yield different continue counters; not extra lives", "cancellation":"once per crossing; inherited wrap rules",
+      "controls":"inherited G2-E full score sweep, not rerun M2R2", "source_refs":["docs/g2e-score-owner-hud.md","tools/g2e_score.py"], "unresolved":[]
+    },
+    {
+      "id":"M2R2-FLIGHT-CONTACT", "classification":"controlled-only", "placement":"player input path and shared object-contact callers",
+      "conversion":"Sonic Up-action Peel-Out; Tails Up-action flight when dry; not an item conversion",
+      "artwork":"character-specific state scripts; no inherited swim/super assumption",
+      "activation":"Tails flight clears attack; timer300; water causes fall; $613C helper cancels pending24 only for nonSonic",
+      "reward":"no pickup reward", "effects":"ordinary flying posture is nonattacking; monitor collision remains active",
+      "cancellation":"ground/contact/timer/water owners in M1; helper controls positive and negative",
+      "controls":"controls.flight_contact_cancel", "source_refs":["$371E","$473C","$3EFD","$613C","docs/m1-tails-frontend-contract.md"],
+      "unresolved":["Every flight-object interaction schedule not newly executed"]
+    },
+    {
+      "id":"M2R2-EEZ-CARRIER", "classification":"controlled-only", "placement":"type23 EEZ mapped carrier, five placements parameter2",
+      "conversion":"no character substitute in capture; player state22 then23",
+      "artwork":{"sonic":[95,96],"tails":[86,87]},
+      "activation":"top/side shared capture -> D3A6 owner, request22; carrier state follows parameter",
+      "reward":"transport, not inventory", "effects":"shared integer position/signed velocity copy and facing/attack owners; selector$9138 character table",
+      "cancellation":"original owner/bounce/hurt-tail lifecycle; inherited source scope",
+      "controls":"controls.carrier_animation", "source_refs":["$A741","$4C02","$4C56","$9138","docs/eez-carrier-audit.md"],
+      "unresolved":["No new natural Tails carrier route"]
+    },
+    {
+      "id":"M2R2-ZONE-VARIANTS", "classification":"static source", "placement":"SEZ/MGHZ Spring Shoes, SS1 Rocket and clock placements",
+      "conversion":"Spring no character gate; Tails normal Rocket converts to Ring; Tails cannot naturally enter SS",
+      "artwork":"same shoe tiles loaded at base148 SEZ or172 MGHZ; no new behavior variant",
+      "activation":"original shared handlers", "reward":"Sonic Rocket zone8 timer6000, ordinary/other SS300; clock D3C4=11",
+      "effects":"zone changes duration/VRAM base independently of character; no Tails SS campaign claim",
+      "cancellation":"original owner-specific rules", "controls":"placements and source.regions; inherited SS powerup cache",
+      "source_refs":["$4AEB..$4AFB","tools/ss_powerups.py","docs/powerup-shoes-audit.md"], "unresolved":["Forced Tails SS sessions not natural reachability"]
+    },
+    {
+      "id":"M2R2-FINAL-EEZ-GATE", "classification":"static source", "placement":"final EEZ encounter / terminal campaign selector",
+      "conversion":"$1E:$BB1A checks player1 and mask31; $18ED selects Tails ending separately",
+      "artwork":"character-specific ending scripts, not a monitor reward", "activation":"final encounter/terminal state",
+      "reward":{"sonic":"Emerald-dependent final route/ending","tails":"own ending independent of Sonic Emerald mask"},
+      "effects":"Tails not required to collect inaccessible SS Emeralds", "cancellation":"original credits/title chain",
+      "controls":"source.regions; inherited EEZ/G0/M1 evidence", "source_refs":["$1E:$BB1A","$18ED","docs/m1-tails-frontend-contract.md"],
+      "unresolved":["No new full Tails campaign execution"]
+    },
+    {
+      "id":"M2R2-OTHER-COMMON-INTERACTIONS", "classification":"static source", "placement":"mapped/terrain springs, loop/twist, water/oil, hazards and MGHZ24/2E",
+      "conversion":"no further item substitution established in inspected owners; character state/frame dispatch still applies",
+      "artwork":"own character frames; Tails side pushing frame85, carrier86/87, twist36..38; existing M1 table authority",
+      "activation":"shared geometry/posture/contact routines; flight can alter reachability and attack posture",
+      "reward":"original shared surface/object effect; no invented Tails immunity or tail hitbox", "effects":"do not interpret shared source as every-route parity",
+      "cancellation":"common state ownership; mapped spring/state18 interplay follows later Spring presentation correction",
+      "controls":"source character-read candidate census, existing per-object audits", "source_refs":["$71A0/$7245","docs/player-attack-badnik-audit.md","docs/mghz-object-24-2e-audit.md","docs/m1-tails-frontend-contract.md"],
+      "unresolved":["Indirect character tests not exhaustively proven absent", "Untested Tails object/terrain combinations"]
+    },
+    {
+      "id":"M2R2-OPEN-REACHABILITY", "classification":"unresolved", "placement":"already-awake sign with Spring Shoes; M2-R1 state20 side contact",
+      "conversion":"source branches known, natural Tails paths not established", "artwork":"state20 may select malformed frame94, not a legitimate exportable sprite",
+      "activation":"specific ordering/contact prerequisites", "reward":"possible conditional act-clear stall or malformed selection; no general correction justified",
+      "effects":"preserve limits and existing accepted tests", "cancellation":"manual jump closes seeded Spring stall for Sonic; natural Tails sequence remains open",
+      "controls":"inherited spring-shoes-presentation and m2r1 evidence", "source_refs":["docs/spring-shoes-presentation-audit.md","docs/m2r1-tails-act-clear-frame5e.md"],
+      "unresolved":["Natural Tails reachability of both sequences"]
+    }
+  ]
+}
