@@ -64,6 +64,20 @@ When source and user experience disagree, record **both**, not a synthetic unive
 
 ## 4. Inherited automated failure ledger — NEVER call these green
 
+M2-R4 Research amendment (23 October 2026; actual private Package C, no runtime acceptance):
+
+| ID | Status / owner | Evidence and next gate |
+|---|---|---|
+| `M2R4-AQZ-PALETTE-SWITCH` | **UNRESOLVED-WINDOWS / palette and GPU boundary** | C's ordinary row selection, RGB Tails/alpha Sonic routing and three palettes match scoped source controls.88 Tails frames have substantial lower-split colour differences; unchanged guaranteed crossings cannot be dismissed as identical colours. A conditional full-camera→split upper-base mismatch is isolated, but normal steady AQZ bounds exclude full camera. Exact conditional recommendation and shortest F6/F7+screenshot capture: [M2-R4](../docs/m2r4-aqz-water-reversal.md). AQZ3 has no controller; separate normal presentation only. |
+| `M2R4-AQZ-REVERSE-JUMP-LAUNCH` | **UNRESOLVED-WINDOWS / movement and contact ownership** | Original controlled arrivals reproduce retained momentum plus fresh jump and repeated skim, paired with actual C.54,120 movement-phase snapshots agree;156/192 continuous100-update source runs match selected fields.50 raw post-terrain differences and36 divergent continuous runs remain explicit, principally unsupported type30 sides and damage/lifecycle; no demonstrated cause of Chief's exact launch. No clamp/gravity/jump/skim/bounce correction. Need short native input/state/velocity-writer trace; [machine register](../data/m2r4/fidelity-register.json). |
+
+Chief's Package C AQZ1 appearance, Sonic palette, opening spear pair and B
+essential retests PASS remain scoped human reports. M2-R4 independently reads
+the exact C ZIP/source; it does not close full Tails campaign, natural frame5E
+log, every contact route or native GPU evidence. R3's B decoder finding is
+historical and corrected in C source; its original Windows lifecycle caveats
+are not erased by the opening-pair pass. No POC edits or main promotion.
+
 M2-R3 Research amendment (23 October 2026; no runtime acceptance):
 
 | ID | Status / owner | Evidence and next gate |

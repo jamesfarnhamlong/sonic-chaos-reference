@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-23",
+  "research_parent": "33c4c13ebeadb54834c8cddd5bafedaae5e13015",
+  "management_authority": "5e579728d302a422e515d605e06b1996f553962e",
+  "accepted_POC": "7476affc6ed7626dabf69b446cdab0c9c3d7492e",
+  "private_C_sha256": "321bcd86b2daa5539485f17107f037c843a7902267db514b16d22864ef556964",
+  "entries": [
+    {
+      "id": "M2R4-AQZ-PALETTE-SWITCH",
+      "status": "UNRESOLVED-WINDOWS",
+      "owner": "AQZ draw palette selection / native GPU boundary",
+      "proven": "C RGB Tails and alpha Sonic decoders, three source palettes, original IRQ/restore and ordinary row selection agree in scoped controls; all 88 Tails frames have substantial split RGB differences; AQZ3 has no water controller.",
+      "conditional_source_difference": "After completed full-camera48/49 base loading, original full-to-split retains full saved upper CRAM. C mode2 ignores its palette latch and chooses above RGB for upper rows. Original9DED execution plus palette-queue completion model and actual full saved-CRAM restore controls; native/natural full-to-split route not proven. Normal steady AQZ1/2 bounds exclude full-camera mode.",
+      "designer": "No Windows-targeted correction justified. Conditional-history correction only if separately selected: upload upper_submerged=cp_e.palette, choose submerged for full mode or split upper rows with that latch; keep fixed IRQ lower and existing above exit reset. No implementation performed.",
+      "missing": "One short native348 capture: F6 palette_draw + F7 draw resource/origin/position, same-pose above/below-cut lossless screenshots or visible straddle. GPU capture only if source uniforms/rows predict change but native RGB does not.",
+      "evidence": ["palette-original.json", "private-checks.json", "package-comparison.json", "../../docs/m2r4-aqz-water-reversal.md"]
+    },
+    {
+      "id": "M2R4-AQZ-REVERSE-JUMP-LAUNCH",
+      "status": "UNRESOLVED-WINDOWS",
+      "owner": "ordinary movement / water / terrain / staged contact ownership",
+      "proven": "Original controlled arrivals and C reproduce retained-momentum reverse-input jumps and repeated skim. 192 threshold controls and54120 movement-phase snapshots match. 156/192 continuous100-update source runs match selected trajectory/state fields; not natural campaign or native Windows proof.",
+      "retained_differences": "50 raw shared-return differences:42 explicit unsupported terrain-type30 side/projection/push-state cases and8 no-ring damage-field cases; no shared-return VX/VY mismatch.36 continuous runs diverge on wall/contact lifecycle. These are not established causes of Chief's launch.",
+      "not_proven": "Exact Chief run-up/location, violent-launch severity, native input/frame pacing and repeated surface rebound; seeded6px or original charge7px is not a natural fast-running route from entrance.",
+      "designer": "No gravity/clamp/jump/skim/bounce/facing correction. Preserve Q2 facing ownership. A separately authorized diagnostic may add start/end update+input/jump-counter/facing/contact/VY-writer records without gameplay writes.",
+      "missing": "One reproducing act/character/location at348:30 updates before reverse through90 after launch; start/end X/Y/VX/VY, held/fresh,jump count,state/next,move/facing,water/line,camera,contacts/support,queued hurt,VY writer plus synchronized short video. Existing F7 water/draw lacks inputs,jump count,facing.",
+      "evidence": ["original-game.json", "package-comparison.json", "summary.json", "../../docs/m2r4-aqz-water-reversal.md"]
+    }
+  ],
+  "inherited_gates": "Natural Tails frame5E log/campaign UNVERIFIED. Chief C AQZ1 appearance/Sonic/opening-spears/B-essential passes remain scoped. SS5/THZ3/U5-A inherited raw failures not rerun or relabelled. No POC/main/root change."
+}

@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-23",
+  "parent": "33c4c13ebeadb54834c8cddd5bafedaae5e13015",
+  "management_main": "5e579728d302a422e515d605e06b1996f553962e",
+  "tests": {
+    "m2r4": {
+      "pass": 11,
+      "fail": 0
+    },
+    "m2r3_cached": {
+      "pass": 10,
+      "fail": 0
+    }
+  },
+  "evidence": "actual private C source/archive; original Z80 software harness; source-host GML and shader equations; no native Windows/GPU claim",
+  "raw_exceptions": {
+    "shared_return_mismatches": 50,
+    "continuous_divergent_runs": 36,
+    "conditional_palette_history_differences": 2,
+    "inherited_SS5_THZ3_U5A": "not rerun; status retained"
+  },
+  "scope": "Research only; no POC or canonical management changes, no private payload publication, no main merge",
+  "files": [
+    {
+      "path": "data/m2r4/fidelity-register.json",
+      "bytes": 3788,
+      "sha256": "7b2fe144b2235aa3b89022a2fd0b16d48d662de0e121aed4c949dcd119a15873"
+    },
+    {
+      "path": "data/m2r4/original-game.json",
+      "bytes": 25399964,
+      "sha256": "14686a777a2b3ddfbfe44deabd2c7076ce4c0204ce2325fd81bb5bb762b5be8f"
+    },
+    {
+      "path": "data/m2r4/package-comparison.json",
+      "bytes": 12732732,
+      "sha256": "6b7f83d0459cabd8d389a75691c769f98edba996e2e91713cdc8f22c1c9c6c88"
+    },
+    {
+      "path": "data/m2r4/palette-original.json",
+      "bytes": 107664,
+      "sha256": "8dfdee768b679d7e81abc187312f784fa5b3512cea9f1b52ca1f159a3e25aa03"
+    },
+    {
+      "path": "data/m2r4/private-checks.json",
+      "bytes": 147077,
+      "sha256": "f9a684f2942a7b439c27586d69638893166a3b82c94db647f5b742f0f5a0b8d4"
+    },
+    {
+      "path": "data/m2r4/summary.json",
+      "bytes": 19095,
+      "sha256": "c069e536bbb9f9715c9c28f3bbf2becd8fd3db241bb91d1f29726567e27da6a7"
+    },
+    {
+      "path": "docs/m2r4-aqz-water-reversal.md",
+      "bytes": 19652,
+      "sha256": "1ec87b1d9e34e33b1768bda762f8c85015a7692978e94cab18e0206213cda2f1"
+    },
+    {
+      "path": "planning/FIDELITY_REGISTER.md",
+      "bytes": 18914,
+      "sha256": "2b3c1296f7660a92b3501d3b4e4e191d67390211aefa2083b47d2c70377b586a"
+    },
+    {
+      "path": "tests/test_m2r4_aqz.py",
+      "bytes": 4453,
+      "sha256": "3d46f97f1b8fd815b9fe4b2abc0d7fda4b31c1e21347304d551212d3cb5f754e"
+    },
+    {
+      "path": "tools/m2r4_aqz.py",
+      "bytes": 9704,
+      "sha256": "dfec3d73cb67459a88ef2b83d06f19e3e94cf7a108d3820b6d4c282de0c94956"
+    },
+    {
+      "path": "tools/m2r4_package.js",
+      "bytes": 9802,
+      "sha256": "1bed0cb638c0a3b198d053a697978ff398b12c163726daa54c03558c4e027a05"
+    },
+    {
+      "path": "tools/m2r4_private.py",
+      "bytes": 7321,
+      "sha256": "b1ad5820dad562c432f54c832b22cd12e9a878917fbc6a6d12029fc4c6b72a48"
+    },
+    {
+      "path": "tools/m2r4_summarize.py",
+      "bytes": 3942,
+      "sha256": "2844330e58c51ed3167d3ce1cf602c9429ff140119e7853ae86307bb65ed018c"
+    }
+  ]
+}

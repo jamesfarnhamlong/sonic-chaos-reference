@@ -1,0 +1,1016 @@
+{
+  "original_cases": 96,
+  "original_updates": 9600,
+  "source_summary": {
+    "palette_conditions": 80,
+    "shared_calls": 9020,
+    "shared_mismatches": 50,
+    "continuous_adapter_runs": 192,
+    "continuous_fully_matching": 156,
+    "skim_controls": 192
+  },
+  "actual_skim_impulses": 116,
+  "skim_later_overwritten": 64,
+  "phase_snapshot_pairs": 54120,
+  "phase_snapshot_differences": [],
+  "palette_history_differences": [
+    {
+      "character": 1,
+      "row": {
+        "delta": 1,
+        "enabled": 255,
+        "raster": 1,
+        "requests": [
+          0,
+          0
+        ],
+        "original_saved_base": "full",
+        "upper": "full",
+        "lower": "split",
+        "C_upper": "above",
+        "different": true,
+        "C_palette_latch": 1
+      }
+    },
+    {
+      "character": 2,
+      "row": {
+        "delta": 1,
+        "enabled": 255,
+        "raster": 1,
+        "requests": [
+          0,
+          0
+        ],
+        "original_saved_base": "full",
+        "upper": "full",
+        "lower": "split",
+        "C_upper": "above",
+        "different": true,
+        "C_palette_latch": 1
+      }
+    }
+  ],
+  "repeated_skim_cases": [
+    {
+      "id": "a1-c1-d-1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "id": "a1-c1-d1-air_attack-tap",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a1-c1-d1-air_attack-hold",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a1-c1-d1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "id": "a1-c2-d-1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "id": "a1-c2-d1-air_attack-tap",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a1-c2-d1-air_attack-hold",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a1-c2-d1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "id": "a2-c1-d-1-surface_attack-tap",
+      "updates": [
+        1,
+        38,
+        70
+      ]
+    },
+    {
+      "id": "a2-c1-d-1-surface_attack-hold",
+      "updates": [
+        1,
+        38,
+        70
+      ]
+    },
+    {
+      "id": "a2-c1-d-1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        57,
+        89
+      ]
+    },
+    {
+      "id": "a2-c1-d1-air_attack-tap",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a2-c1-d1-air_attack-hold",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a2-c1-d1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "id": "a2-c2-d-1-surface_attack-tap",
+      "updates": [
+        1,
+        38,
+        70
+      ]
+    },
+    {
+      "id": "a2-c2-d-1-surface_attack-hold",
+      "updates": [
+        1,
+        38,
+        70
+      ]
+    },
+    {
+      "id": "a2-c2-d-1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        57,
+        89
+      ]
+    },
+    {
+      "id": "a2-c2-d1-air_attack-tap",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a2-c2-d1-air_attack-hold",
+      "updates": [
+        1,
+        33
+      ]
+    },
+    {
+      "id": "a2-c2-d1-ground_charge-tap",
+      "updates": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    }
+  ],
+  "skim_examples": [
+    {
+      "id": "a1-c1-d1-air_attack-tap",
+      "u": 1,
+      "before_vx": 1536,
+      "before_vy": 0,
+      "after_gate_vy": -768,
+      "after_shared": {
+        "character": 1,
+        "state": 10,
+        "next": 10,
+        "move": 3,
+        "player_flags": 0,
+        "bg": 0,
+        "contacts": 0,
+        "objects": 0,
+        "support": 0,
+        "plane": 0,
+        "previous": 0,
+        "modifier": 0,
+        "water": 255,
+        "held": 0,
+        "pressed": 0,
+        "jump_ticks": 32,
+        "special": 0,
+        "surface_counter": 0,
+        "frame_counter": 6,
+        "probe_counter": 3,
+        "d448": 0,
+        "vx": 1520,
+        "vy": -744,
+        "maximum": 1792,
+        "input_delta": -16,
+        "surface_delta": 0,
+        "xu": 210416,
+        "yu": 160024,
+        "camera_x": 680,
+        "camera_y": 472,
+        "line": 568,
+        "zone": 4,
+        "camera_limits": [
+          0,
+          8,
+          5120,
+          528
+        ],
+        "damage_request": 0,
+        "contact": 0,
+        "contact_nib": 0,
+        "invuln": 0,
+        "rings": 0,
+        "foot_block": 254
+      }
+    },
+    {
+      "id": "a1-c1-d1-air_attack-tap",
+      "u": 33,
+      "before_vx": 1360,
+      "before_vy": 0,
+      "after_gate_vy": -768,
+      "after_shared": {
+        "character": 1,
+        "state": 10,
+        "next": 10,
+        "move": 3,
+        "player_flags": 16,
+        "bg": 0,
+        "contacts": 0,
+        "objects": 0,
+        "support": 0,
+        "plane": 0,
+        "previous": 0,
+        "modifier": 0,
+        "water": 255,
+        "held": 4,
+        "pressed": 0,
+        "jump_ticks": 32,
+        "special": 0,
+        "surface_counter": 0,
+        "frame_counter": 47,
+        "probe_counter": 1,
+        "d448": 0,
+        "vx": 1352,
+        "vy": -744,
+        "maximum": 1792,
+        "input_delta": -8,
+        "surface_delta": 0,
+        "xu": 257216,
+        "yu": 148120,
+        "camera_x": 863,
+        "camera_y": 501,
+        "line": 568,
+        "zone": 4,
+        "camera_limits": [
+          0,
+          8,
+          5120,
+          528
+        ],
+        "damage_request": 0,
+        "contact": 0,
+        "contact_nib": 0,
+        "invuln": 0,
+        "rings": 0,
+        "foot_block": 254
+      }
+    }
+  ],
+  "tails_changed_pixel_fraction_range": [
+    0.5573770491803278,
+    0.9661016949152542
+  ],
+  "shared_difference_signatures": {
+    "xu,bg,contacts": 10,
+    "bg,contacts": 30,
+    "next,bg,contacts": 2,
+    "move,bg,input_delta": 8
+  },
+  "continuous_first_differences": [
+    {
+      "id": "a1-c1-d-1-ground-tap",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground-tap",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground-hold",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground-hold",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground_forward-none",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187022,
+            186254
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground_forward-none",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187022,
+            186254
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground_reverse-none",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187102,
+            186334
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground_reverse-none",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187102,
+            186334
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground_charge-tap",
+      "width": 256,
+      "first_difference": {
+        "u": 21,
+        "fields": {
+          "xu": [
+            186990,
+            185966
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d-1-ground_charge-tap",
+      "width": 348,
+      "first_difference": {
+        "u": 21,
+        "fields": {
+          "xu": [
+            186990,
+            185966
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-air_plain-tap",
+      "width": 256,
+      "first_difference": {
+        "u": 55,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-air_plain-tap",
+      "width": 348,
+      "first_difference": {
+        "u": 55,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-air_plain-hold",
+      "width": 256,
+      "first_difference": {
+        "u": 55,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-air_plain-hold",
+      "width": 348,
+      "first_difference": {
+        "u": 55,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-ground_forward-none",
+      "width": 256,
+      "first_difference": {
+        "u": 48,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            5
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-ground_forward-none",
+      "width": 348,
+      "first_difference": {
+        "u": 48,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            5
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-ground_reverse-none",
+      "width": 256,
+      "first_difference": {
+        "u": 50,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c1-d1-ground_reverse-none",
+      "width": 348,
+      "first_difference": {
+        "u": 50,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground-tap",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground-tap",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground-hold",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground-hold",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187114,
+            186346
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground_forward-none",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187022,
+            186254
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground_forward-none",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187022,
+            186254
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground_reverse-none",
+      "width": 256,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187102,
+            186334
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground_reverse-none",
+      "width": 348,
+      "first_difference": {
+        "u": 15,
+        "fields": {
+          "xu": [
+            187102,
+            186334
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground_charge-tap",
+      "width": 256,
+      "first_difference": {
+        "u": 21,
+        "fields": {
+          "xu": [
+            186990,
+            185966
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d-1-ground_charge-tap",
+      "width": 348,
+      "first_difference": {
+        "u": 21,
+        "fields": {
+          "xu": [
+            186990,
+            185966
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-air_plain-tap",
+      "width": 256,
+      "first_difference": {
+        "u": 56,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-air_plain-tap",
+      "width": 348,
+      "first_difference": {
+        "u": 56,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-air_plain-hold",
+      "width": 256,
+      "first_difference": {
+        "u": 56,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-air_plain-hold",
+      "width": 348,
+      "first_difference": {
+        "u": 56,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-ground_forward-none",
+      "width": 256,
+      "first_difference": {
+        "u": 48,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            5
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-ground_forward-none",
+      "width": 348,
+      "first_difference": {
+        "u": 48,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            5
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-ground_reverse-none",
+      "width": 256,
+      "first_difference": {
+        "u": 50,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1-c2-d1-ground_reverse-none",
+      "width": 348,
+      "first_difference": {
+        "u": 50,
+        "fields": {
+          "vy": [
+            -1280,
+            1792
+          ],
+          "next": [
+            31,
+            7
+          ],
+          "move": [
+            1,
+            0
+          ]
+        }
+      }
+    }
+  ],
+  "width_sensitive_runs": [
+    {
+      "id": "a1-c1-d1-air_plain-tap",
+      "first": 94,
+      "updates": 7
+    },
+    {
+      "id": "a1-c1-d1-air_plain-hold",
+      "first": 94,
+      "updates": 7
+    },
+    {
+      "id": "a1-c1-d1-ground_forward-none",
+      "first": 69,
+      "updates": 32
+    },
+    {
+      "id": "a1-c1-d1-ground_reverse-none",
+      "first": 76,
+      "updates": 25
+    },
+    {
+      "id": "a1-c2-d1-air_plain-tap",
+      "first": 95,
+      "updates": 6
+    },
+    {
+      "id": "a1-c2-d1-air_plain-hold",
+      "first": 95,
+      "updates": 6
+    },
+    {
+      "id": "a1-c2-d1-ground_forward-none",
+      "first": 69,
+      "updates": 32
+    },
+    {
+      "id": "a1-c2-d1-ground_reverse-none",
+      "first": 76,
+      "updates": 25
+    }
+  ],
+  "classification": {
+    "palette": "UNRESOLVED-WINDOWS; ordinary selector/decoder/data match; conditional full-base-to-split upper selection mismatch in controlled history",
+    "reversal": "UNRESOLVED-WINDOWS; retained-momentum jump and repeated skim reproduced and paired; exact reported severity/location not established",
+    "shared_50": "42 type1E side-dispatch differences, including2 related requested-state differences;8 no-ring death-field differences. Not vertical skim divergence.",
+    "full_runs": "156/192 match all9 selected trajectory/state fields over100 updates;36 diverge at side-contact or object hurt lifecycle. Camera replay and initial state are controlled."
+  }
+}
