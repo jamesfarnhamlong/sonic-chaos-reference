@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-23",
+  "branch": "research/m2r3-aqz-palette-hazards",
+  "parent": "d6f2fafcda7903c0fc7082b2a9cbf4fed6e0bf98",
+  "canonical_management_read": "main@5c95e9e:AGENTS.md, MEMORY.md, ROADMAP.md",
+  "m2r2_read_only": "cd417c16b9e4ae614a3592f5b851a351af786afa",
+  "private_package_sha256_independently_checked": "3ee8ed903df63ceedd6de2298df936bd41ef357f1598311c5a48bd64cd5f68a3",
+  "results": {
+    "original_routine_contact_pairs": 22528,
+    "package_contact_mismatches": 0,
+    "original_package_motion_updates": 1980,
+    "original_package_terrain_approaches": 1152,
+    "terrain_mismatches": 0,
+    "private_tails_textures_redecoded_exactly": 176,
+    "palette_frames_tails": 88,
+    "palette_frames_sonic_controls": 7,
+    "original_irq_and_restore_cases": 8,
+    "decoder_equation_cases": 45,
+    "original_scheduler_routes": 4,
+    "original_scheduler_recorded_updates": 800,
+    "original_scheduler_independent_replay": "PASS",
+    "original_routine_asset_independent_replay": "PASS",
+    "focused_unittests": "10 PASS",
+    "diff_check": "PASS"
+  },
+  "observations": [
+    {
+      "source": "Chief supplied private AQZ silhouette screenshot",
+      "sha256": "50eb5bbe12198c7dc27fd683eccb15924555809fb518219253c1208a9e3a1ef7",
+      "payload_published": false
+    },
+    {
+      "source": "Chief supplied marked AQZ1 map; opening first spear set clarified in chat",
+      "sha256": "dba2fccdae7b5e6aa79345f4b56e0a92a051dd3b15ac63e104407e109d623ea5",
+      "payload_published": false
+    }
+  ],
+  "evidence_boundaries": [
+    "Routine controls seed RAM; original CPU code executes, not a rewritten physics oracle",
+    "Scheduler routes seed player, character and camera once after Sonic boot; subsequent movement uses held input; no relocated enemy or changed layout",
+    "Arrival-assisted routes are not act-entrance input-only runs or native Windows acceptance",
+    "Package B GML executes in its source host; engine and GPU boundaries are mocked",
+    "Shader diagnosis uses exact imported pixels, source routing and decoder equations, not live GPU instrumentation",
+    "Contact comparison controls clock and sleep; full native 348-wide lifecycle history remains unresolved",
+    "No full historical suite; inherited raw failures retain their existing classifications"
+  ],
+  "scope": {
+    "poc_edits": false,
+    "package_b_edits": false,
+    "root_coordination_edits": false,
+    "private_payload_publication": false,
+    "main_merge": false,
+    "next_action": "Manager review"
+  }
+}

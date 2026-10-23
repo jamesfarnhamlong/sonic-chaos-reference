@@ -64,6 +64,19 @@ When source and user experience disagree, record **both**, not a synthetic unive
 
 ## 4. Inherited automated failure ledger — NEVER call these green
 
+M2-R3 Research amendment (23 October 2026; no runtime acceptance):
+
+| ID | Status / owner | Evidence and next gate |
+|---|---|---|
+| `M2R3-AQZ-TAILS-INDEX-DECODER` | **CONFIRMED-SOURCE / Tails presentation** | Private B's correct RGB-indexed textures use alpha decoder, yielding invalid254 and exposing dark payload.176 textures regenerated; exact three-mode CRAM policy retained. Route Tails to RGB decoder, preserve Sonic proxies; Manager/Designer/Chief review required. [Report](../docs/m2r3-aqz-palette-hazards.md). |
+| `M2R3-AQZ-SPEAR-CONTACT` | **OPEN-WINDOWS-OBS / mapped object lifecycle** | Thin spears are type3C objects; first AQZ1 pair1104,686/1232,686.22,528 original/B contacts and1,980 motion updates match; original grounded Sonic/Tails routes hurt. Exact Chief Windows phase/approach unresolved. No generic hitbox/shared physics/THZ change justified. [Machine register](../data/m2r3/fidelity-register.json). |
+| `M2R3-AQZ-TERRAIN-NEGATIVE-CONTROL` | **BOUNDED-CANONICAL-MATCH** | Distinct terrain type5 blocks3C/3D:22 beds;1,152 paired approaches match. Cross masonry04/29 not inferred dangerous from artwork. Full placement/profile inventory in evidence. Not exhaustive state/natural route parity. |
+
+M2-R2 `cd417c1` was read independently, not merged. Existing M1 asset status
+above describes its historical checkpoint; M2-R3 additionally checks the actual
+private B imports and routing. No full Tails campaign, frame5E natural log gate,
+historical failure or acceptance status is closed by these findings.
+
 | ID | Classification | Known current state |
 |---|---|---|
 | `verify_ss5_play.js` | **TEST-EXCEPTION / raw FAIL** | SS5 clock scenario camera X at 256 differs from cached value by up to **2px**; 348 paired camera series unchanged at Q2; no 256 Windows acceptance required. Retain exact raw failure, investigate only if it affects future feature changes. |
