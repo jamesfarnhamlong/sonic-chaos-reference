@@ -1,0 +1,1606 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "renderer_sha256": "36821f4cfb6a1b6e386f1b468504245c21c6e24a2cbb0cba4b268703c96334a0",
+  "cases": {
+    "fixed-hold": {
+      "reused_reference": true,
+      "reused_composition": true,
+      "emission": "PASS",
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 29390,
+        "sample_error_rms_lsb": 3812.9140587436636,
+        "waveform_correlation": 0.8658063113332141,
+        "envelope_correlation": 0.9941367378194906,
+        "max_tick_rms_error_percent_peak": 5.107825005792903,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": false,
+            "waveform_correlation": 0.9999999581090526,
+            "envelope_correlation": 0.999999999999669,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": true,
+            "waveform_correlation": 1.0,
+            "envelope_correlation": 1.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": false,
+            "waveform_correlation": 0.8844206536082134,
+            "envelope_correlation": 0.9999999668798668,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.6804265229428541,
+            "envelope_correlation": 0.9999447098384706,
+            "noise_metrics_reference": {
+              "samples": 137448,
+              "rms_lsb": 4714.690828461117,
+              "zero_crossing_rate": 0.045923155834612615,
+              "spectral_flatness": 0.06149522170678987
+            },
+            "noise_metrics_composed": {
+              "samples": 138182,
+              "rms_lsb": 4702.709156782745,
+              "zero_crossing_rate": 0.045954219465773154,
+              "spectral_flatness": 0.061815791767110495
+            }
+          }
+        ],
+        "pitch": {
+          "windows": 48,
+          "median_abs_cents": 0.449,
+          "p95_abs_cents": 1.253,
+          "max_abs_cents": 1.287,
+          "windows_off_by_more_than_25_cents": 0,
+          "per_channel": {
+            "0": {
+              "windows": 17,
+              "off": 0,
+              "first_off_tick": null
+            },
+            "1": {
+              "windows": 29,
+              "off": 0,
+              "first_off_tick": null
+            },
+            "2": {
+              "windows": 2,
+              "off": 0,
+              "first_off_tick": null
+            }
+          }
+        }
+      },
+      "scope": "previous explicitly bounded correction retained; not reclassified as new generalized carrier success"
+    },
+    "coupled-steal-recover": {
+      "emission": "PASS",
+      "status": "HOLD exact oscillator-history continuity not represented",
+      "compatibility": {
+        "unsupported_sources": {
+          "count": 0,
+          "first_tick": null
+        },
+        "hidden_noise_clock_differences": {
+          "count": 28,
+          "first_tick": 6
+        },
+        "audible_clock_differences": {
+          "count": 0,
+          "first_tick": null
+        },
+        "source_lifetime_overruns": {
+          "count": 0,
+          "first_tick": null
+        },
+        "baked_silent_source_needed": {
+          "count": 0,
+          "first_tick": null
+        }
+      },
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 13004,
+        "sample_error_rms_lsb": 1373.2847270199884,
+        "waveform_correlation": 0.8266597163216775,
+        "envelope_correlation": 0.9996708049852693,
+        "max_tick_rms_error_percent_peak": 3.871092907497775,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": false,
+            "waveform_correlation": 0.8123047714747945,
+            "envelope_correlation": 0.9999999128602023,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.8409636324219066,
+            "envelope_correlation": 0.9992476328467879,
+            "noise_metrics_reference": {
+              "samples": 14700,
+              "rms_lsb": 3536.3177857920014,
+              "zero_crossing_rate": 0.0161235458194435,
+              "spectral_flatness": 0.01952260047225388
+            },
+            "noise_metrics_composed": {
+              "samples": 14700,
+              "rms_lsb": 3536.622030256832,
+              "zero_crossing_rate": 0.015307163752636233,
+              "spectral_flatness": 0.01714538535224194
+            }
+          }
+        ],
+        "phase_energy": {
+          "tick": 41,
+          "reference_mix_rms_lsb": 1708.7120827888666,
+          "composed_mix_rms_lsb": 2025.8320137710843,
+          "reference_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            1708.7120827888666
+          ],
+          "composed_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            2025.8320137710843
+          ],
+          "observed_energy_delta_lsb2": 1184298.36615114,
+          "self_energy_delta_lsb2": 1184298.36615114,
+          "cross_covariance_delta_lsb2": 0.0,
+          "residual_energy_accounting_lsb2": 0.0,
+          "cross_covariance_fraction": 0.0,
+          "qualification": "algebraic energy accounting; not a listening acceptance or proof that every phase error is harmless"
+        },
+        "reference_stem_reconstruction": {
+          "max_error_lsb": 0,
+          "nonzero_samples": 0,
+          "rms_lsb": 0.0,
+          "qualification": "independently rendered attenuation stems; rounding/resampling residual retained"
+        },
+        "pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "reference_pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "timing": [
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              30
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 20,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              6
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 20,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          }
+        ],
+        "reference_noise": {
+          "samples": 14700,
+          "rms_lsb": 3536.3177857920014,
+          "zero_crossing_rate": 0.0161235458194435,
+          "spectral_flatness": 0.01952260047225388
+        },
+        "candidate_noise": {
+          "samples": 14700,
+          "rms_lsb": 3536.622030256832,
+          "zero_crossing_rate": 0.015307163752636233,
+          "spectral_flatness": 0.01714538535224194
+        }
+      },
+      "entry": "matched source reset for A3; changes during interruption isolated from arbitrary initial music entry"
+    },
+    "clock-switch-with-live-tone2": {
+      "emission": "PASS",
+      "status": "BOUNDED APPROXIMATION; NOT NATIVE ACCEPTED",
+      "compatibility": {
+        "unsupported_sources": {
+          "count": 0,
+          "first_tick": null
+        },
+        "hidden_noise_clock_differences": {
+          "count": 0,
+          "first_tick": null
+        },
+        "audible_clock_differences": {
+          "count": 0,
+          "first_tick": null
+        },
+        "source_lifetime_overruns": {
+          "count": 0,
+          "first_tick": null
+        },
+        "baked_silent_source_needed": {
+          "count": 0,
+          "first_tick": null
+        }
+      },
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 16384,
+        "sample_error_rms_lsb": 4608.19575853988,
+        "waveform_correlation": 0.2857628479375945,
+        "envelope_correlation": 0.9997266194642443,
+        "max_tick_rms_error_percent_peak": 4.243303141362413,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": false,
+            "waveform_correlation": 0.9999997103807695,
+            "envelope_correlation": 0.9999996914277676,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.10175450722976381,
+            "envelope_correlation": 0.9996755164850815,
+            "noise_metrics_reference": {
+              "samples": 38956,
+              "rms_lsb": 4536.337155130102,
+              "zero_crossing_rate": 0.017456039019381336,
+              "spectral_flatness": 0.018222772608739408
+            },
+            "noise_metrics_composed": {
+              "samples": 38955,
+              "rms_lsb": 4535.910600422198,
+              "zero_crossing_rate": 0.017430815834060687,
+              "spectral_flatness": 0.018740225369607195
+            }
+          }
+        ],
+        "phase_energy": {
+          "tick": 28,
+          "reference_mix_rms_lsb": 5367.515010195239,
+          "composed_mix_rms_lsb": 5769.865014059223,
+          "reference_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            5367.515010195239
+          ],
+          "composed_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            5769.865014059223
+          ],
+          "observed_energy_delta_lsb2": 4481124.895793438,
+          "self_energy_delta_lsb2": 4481124.895793438,
+          "cross_covariance_delta_lsb2": 0.0,
+          "residual_energy_accounting_lsb2": 0.0,
+          "cross_covariance_fraction": 0.0,
+          "qualification": "algebraic energy accounting; not a listening acceptance or proof that every phase error is harmless"
+        },
+        "reference_stem_reconstruction": {
+          "max_error_lsb": 3,
+          "nonzero_samples": 741,
+          "rms_lsb": 0.21139138812173322,
+          "qualification": "independently rendered attenuation stems; rounding/resampling residual retained"
+        },
+        "pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "reference_pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "timing": [
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              8
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 7,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              8,
+              56
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 53,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          }
+        ],
+        "reference_noise": {
+          "samples": 38956,
+          "rms_lsb": 4536.337155130102,
+          "zero_crossing_rate": 0.017456039019381336,
+          "spectral_flatness": 0.018222772608739408
+        },
+        "candidate_noise": {
+          "samples": 38955,
+          "rms_lsb": 4535.910600422198,
+          "zero_crossing_rate": 0.017430815834060687,
+          "spectral_flatness": 0.018740225369607195
+        }
+      },
+      "entry": "seeded original-driver controlled case"
+    },
+    "periodic-retrigger": {
+      "emission": "PASS",
+      "status": "BOUNDED APPROXIMATION; NOT NATIVE ACCEPTED",
+      "compatibility": {
+        "unsupported_sources": {
+          "count": 0,
+          "first_tick": null
+        },
+        "hidden_noise_clock_differences": {
+          "count": 0,
+          "first_tick": null
+        },
+        "audible_clock_differences": {
+          "count": 0,
+          "first_tick": null
+        },
+        "source_lifetime_overruns": {
+          "count": 0,
+          "first_tick": null
+        },
+        "baked_silent_source_needed": {
+          "count": 0,
+          "first_tick": null
+        }
+      },
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 1088,
+        "sample_error_rms_lsb": 61.58971709385163,
+        "waveform_correlation": 0.9994424624707776,
+        "envelope_correlation": 0.9999997048438035,
+        "max_tick_rms_error_percent_peak": 0.062391819077933786,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": false,
+            "waveform_correlation": 0.9999968724782077,
+            "envelope_correlation": 0.9999968771509479,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.9992678331263938,
+            "envelope_correlation": 0.99999947041403,
+            "noise_metrics_reference": {
+              "samples": 4410,
+              "rms_lsb": 4785.940263226716,
+              "zero_crossing_rate": 0.05534134724427308,
+              "spectral_flatness": 0.017975810351823215
+            },
+            "noise_metrics_composed": {
+              "samples": 4410,
+              "rms_lsb": 4785.576938564527,
+              "zero_crossing_rate": 0.05534134724427308,
+              "spectral_flatness": 0.016020746056886734
+            }
+          }
+        ],
+        "phase_energy": {
+          "tick": 3,
+          "reference_mix_rms_lsb": 3507.4751739050394,
+          "composed_mix_rms_lsb": 3502.364036086175,
+          "reference_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            3507.4751739050394
+          ],
+          "composed_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            3502.364036086175
+          ],
+          "observed_energy_delta_lsb2": -35828.25429034419,
+          "self_energy_delta_lsb2": -35828.25429034419,
+          "cross_covariance_delta_lsb2": 0.0,
+          "residual_energy_accounting_lsb2": 0.0,
+          "cross_covariance_fraction": -0.0,
+          "qualification": "algebraic energy accounting; not a listening acceptance or proof that every phase error is harmless"
+        },
+        "reference_stem_reconstruction": {
+          "max_error_lsb": 1,
+          "nonzero_samples": 1,
+          "rms_lsb": 0.005216405309573011,
+          "qualification": "independently rendered attenuation stems; rounding/resampling residual retained"
+        },
+        "pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "reference_pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "timing": [
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              2
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 1,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              8
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 6,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          }
+        ],
+        "reference_noise": {
+          "samples": 4410,
+          "rms_lsb": 4785.940263226716,
+          "zero_crossing_rate": 0.05534134724427308,
+          "spectral_flatness": 0.017975810351823215
+        },
+        "candidate_noise": {
+          "samples": 4410,
+          "rms_lsb": 4785.576938564527,
+          "zero_crossing_rate": 0.05534134724427308,
+          "spectral_flatness": 0.016020746056886734
+        }
+      },
+      "entry": "seeded original-driver controlled case"
+    },
+    "music-context-B6": {
+      "reused_reference": true,
+      "reused_composition": true,
+      "emission": "PASS",
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 32768,
+        "sample_error_rms_lsb": 4405.511925315463,
+        "waveform_correlation": 0.7564797454381404,
+        "envelope_correlation": 0.9958664064716074,
+        "max_tick_rms_error_percent_peak": 3.6101327298027486,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": false,
+            "waveform_correlation": 0.9999999535273506,
+            "envelope_correlation": 0.9999999999996968,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": false,
+            "waveform_correlation": 0.4878556724024074,
+            "envelope_correlation": 0.9999977916269555,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": false,
+            "waveform_correlation": 0.875103340851206,
+            "envelope_correlation": 0.9999986665935413,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.8050347991556087,
+            "envelope_correlation": 0.9996071543134066,
+            "noise_metrics_reference": {
+              "samples": 74982,
+              "rms_lsb": 2580.4839660213097,
+              "zero_crossing_rate": 0.07187154079033355,
+              "spectral_flatness": 0.052103394737797584
+            },
+            "noise_metrics_composed": {
+              "samples": 74977,
+              "rms_lsb": 2583.278123113631,
+              "zero_crossing_rate": 0.07184965855740504,
+              "spectral_flatness": 0.05386018890121456
+            }
+          }
+        ],
+        "pitch": {
+          "windows": 58,
+          "median_abs_cents": 0.291,
+          "p95_abs_cents": 1.057,
+          "max_abs_cents": 1.287,
+          "windows_off_by_more_than_25_cents": 0,
+          "per_channel": {
+            "0": {
+              "windows": 15,
+              "off": 0,
+              "first_off_tick": null
+            },
+            "1": {
+              "windows": 22,
+              "off": 0,
+              "first_off_tick": null
+            },
+            "2": {
+              "windows": 21,
+              "off": 0,
+              "first_off_tick": null
+            }
+          }
+        }
+      },
+      "scope": "previous explicitly bounded correction retained; not reclassified as new generalized carrier success"
+    },
+    "music-context-BA": {
+      "reused_reference": true,
+      "reused_composition": true,
+      "emission": "PASS",
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 32770,
+        "sample_error_rms_lsb": 8994.982467677026,
+        "waveform_correlation": 0.23885325684179426,
+        "envelope_correlation": 0.9963826345560716,
+        "max_tick_rms_error_percent_peak": 4.070402483914229,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": false,
+            "waveform_correlation": 0.9999999535273506,
+            "envelope_correlation": 0.9999999999996968,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": false,
+            "waveform_correlation": -0.2963990300168664,
+            "envelope_correlation": 0.9999983536559074,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": false,
+            "waveform_correlation": 0.946309294119646,
+            "envelope_correlation": 0.9999989345133746,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.3068559206559485,
+            "envelope_correlation": 0.9999908372493869,
+            "noise_metrics_reference": {
+              "samples": 97026,
+              "rms_lsb": 2936.1934723769464,
+              "zero_crossing_rate": 0.10899252769904663,
+              "spectral_flatness": 0.15363542480440825
+            },
+            "noise_metrics_composed": {
+              "samples": 97022,
+              "rms_lsb": 2934.285281007251,
+              "zero_crossing_rate": 0.10903824945114975,
+              "spectral_flatness": 0.15280971815289618
+            }
+          }
+        ],
+        "pitch": {
+          "windows": 55,
+          "median_abs_cents": 0.341,
+          "p95_abs_cents": 1.25,
+          "max_abs_cents": 1.811,
+          "windows_off_by_more_than_25_cents": 0,
+          "per_channel": {
+            "0": {
+              "windows": 15,
+              "off": 0,
+              "first_off_tick": null
+            },
+            "1": {
+              "windows": 19,
+              "off": 0,
+              "first_off_tick": null
+            },
+            "2": {
+              "windows": 21,
+              "off": 0,
+              "first_off_tick": null
+            }
+          }
+        }
+      },
+      "scope": "previous explicitly bounded correction retained; not reclassified as new generalized carrier success"
+    },
+    "isolated-context-B6": {
+      "reused_reference": true,
+      "emission": "PASS",
+      "context": "saved DE11 zero and actual data latch, original solo behavior retained",
+      "solo_mix_sha256": "a4336251d55db860f5a7045c9729c47c3c0c494b6969728868b1278990fed917",
+      "gate_only_asset_context": true
+    },
+    "off-then-fresh": {
+      "emission": "PASS",
+      "status": "BOUNDED APPROXIMATION; NOT NATIVE ACCEPTED",
+      "compatibility": {
+        "unsupported_sources": {
+          "count": 0,
+          "first_tick": null
+        },
+        "hidden_noise_clock_differences": {
+          "count": 0,
+          "first_tick": null
+        },
+        "audible_clock_differences": {
+          "count": 0,
+          "first_tick": null
+        },
+        "source_lifetime_overruns": {
+          "count": 0,
+          "first_tick": null
+        },
+        "baked_silent_source_needed": {
+          "count": 0,
+          "first_tick": null
+        }
+      },
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 16384,
+        "sample_error_rms_lsb": 3636.024222223446,
+        "waveform_correlation": 0.4736726592331767,
+        "envelope_correlation": 0.9994890634425938,
+        "max_tick_rms_error_percent_peak": 5.597898801946166,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": true,
+            "waveform_correlation": 0.0,
+            "envelope_correlation": 0.0,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.4736726592331767,
+            "envelope_correlation": 0.9994890634425938,
+            "noise_metrics_reference": {
+              "samples": 36752,
+              "rms_lsb": 4815.814234341648,
+              "zero_crossing_rate": 0.016190035645288564,
+              "spectral_flatness": 0.018560228081963028
+            },
+            "noise_metrics_composed": {
+              "samples": 36750,
+              "rms_lsb": 4815.403756071384,
+              "zero_crossing_rate": 0.01619091675963972,
+              "spectral_flatness": 0.018731122145670808
+            }
+          }
+        ],
+        "phase_energy": {
+          "tick": 25,
+          "reference_mix_rms_lsb": 6228.444883914653,
+          "composed_mix_rms_lsb": 5769.865014059223,
+          "reference_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            6228.444883914653
+          ],
+          "composed_voice_rms_lsb": [
+            0.0,
+            0.0,
+            0.0,
+            5769.865014059223
+          ],
+          "observed_energy_delta_lsb2": -5502183.391497977,
+          "self_energy_delta_lsb2": -5502183.391497977,
+          "cross_covariance_delta_lsb2": 0.0,
+          "residual_energy_accounting_lsb2": 0.0,
+          "cross_covariance_fraction": -0.0,
+          "qualification": "algebraic energy accounting; not a listening acceptance or proof that every phase error is harmless"
+        },
+        "reference_stem_reconstruction": {
+          "max_error_lsb": 0,
+          "nonzero_samples": 0,
+          "rms_lsb": 0.0,
+          "qualification": "independently rendered attenuation stems; rounding/resampling residual retained"
+        },
+        "pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "reference_pitch": {
+          "windows": 0,
+          "valid_windows": 0,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 0.0,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 0,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "timing": [
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 0,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              3,
+              5,
+              53
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 50,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          }
+        ],
+        "reference_noise": {
+          "samples": 36752,
+          "rms_lsb": 4815.814234341648,
+          "zero_crossing_rate": 0.016190035645288564,
+          "spectral_flatness": 0.018560228081963028
+        },
+        "candidate_noise": {
+          "samples": 36750,
+          "rms_lsb": 4815.403756071384,
+          "zero_crossing_rate": 0.01619091675963972,
+          "spectral_flatness": 0.018731122145670808
+        }
+      },
+      "entry": "seeded original-driver controlled case"
+    },
+    "finite-fade": {
+      "emission": "PASS",
+      "status": "HOLD unsupported physical clock/source context",
+      "compatibility": {
+        "unsupported_sources": {
+          "count": 8,
+          "first_tick": 40
+        },
+        "hidden_noise_clock_differences": {
+          "count": 10,
+          "first_tick": 35
+        },
+        "audible_clock_differences": {
+          "count": 24,
+          "first_tick": 40
+        },
+        "source_lifetime_overruns": {
+          "count": 0,
+          "first_tick": null
+        },
+        "baked_silent_source_needed": {
+          "count": 0,
+          "first_tick": null
+        }
+      },
+      "metrics": {
+        "sample_equal": false,
+        "sample_max_error_lsb": 29388,
+        "sample_error_rms_lsb": 4745.84199048223,
+        "waveform_correlation": 0.3744401733268212,
+        "envelope_correlation": 0.9994854206171296,
+        "max_tick_rms_error_percent_peak": 4.669396439947071,
+        "per_voice": [
+          {
+            "channel": 0,
+            "sample_equal": false,
+            "waveform_correlation": 0.9999997207250847,
+            "envelope_correlation": 0.9999998735789418,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 1,
+            "sample_equal": false,
+            "waveform_correlation": 0.03911824642421888,
+            "envelope_correlation": 0.9998920389523184,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 2,
+            "sample_equal": false,
+            "waveform_correlation": 0.455441976155842,
+            "envelope_correlation": 0.9999528561880255,
+            "noise_metrics_reference": null,
+            "noise_metrics_composed": null
+          },
+          {
+            "channel": 3,
+            "sample_equal": false,
+            "waveform_correlation": 0.8519069247883212,
+            "envelope_correlation": 0.9159346926310792,
+            "noise_metrics_reference": {
+              "samples": 30876,
+              "rms_lsb": 2174.2333278871174,
+              "zero_crossing_rate": 0.06749797570850202,
+              "spectral_flatness": 0.036902927015021646
+            },
+            "noise_metrics_composed": {
+              "samples": 24987,
+              "rms_lsb": 2276.0351734579203,
+              "zero_crossing_rate": 0.07772352517409749,
+              "spectral_flatness": 0.036935062540215585
+            }
+          }
+        ],
+        "phase_energy": {
+          "tick": 41,
+          "reference_mix_rms_lsb": 7049.201077207122,
+          "composed_mix_rms_lsb": 6174.4363481474375,
+          "reference_voice_rms_lsb": [
+            3219.5623805974305,
+            3891.666000658365,
+            3970.15588233863,
+            2546.408522269371
+          ],
+          "composed_voice_rms_lsb": [
+            3219.561360183219,
+            4077.5698333727833,
+            4060.6933744339444,
+            0.0
+          ],
+          "observed_energy_delta_lsb2": -11567571.609573781,
+          "self_energy_delta_lsb2": -4275598.496404268,
+          "cross_covariance_delta_lsb2": -7291986.328448328,
+          "residual_energy_accounting_lsb2": 13.215278814546764,
+          "cross_covariance_fraction": 0.6303817754119794,
+          "qualification": "algebraic energy accounting; not a listening acceptance or proof that every phase error is harmless"
+        },
+        "reference_stem_reconstruction": {
+          "max_error_lsb": 5,
+          "nonzero_samples": 18564,
+          "rms_lsb": 1.1776964845944615,
+          "qualification": "independently rendered attenuation stems; rounding/resampling residual retained"
+        },
+        "pitch": {
+          "windows": 18,
+          "valid_windows": 18,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 7.815454006195068,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 2,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 8,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 8,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "reference_pitch": {
+          "windows": 18,
+          "valid_windows": 18,
+          "invalid_measurement_windows": 0,
+          "windows_off_by_more_than_25_cents": 0,
+          "max_abs_cents": 2.0491127967834473,
+          "per_voice": [
+            {
+              "voice": 0,
+              "valid": 2,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 1,
+              "valid": 8,
+              "invalid": 0,
+              "off": 0
+            },
+            {
+              "voice": 2,
+              "valid": 8,
+              "invalid": 0,
+              "off": 0
+            }
+          ],
+          "status": "measured; no acceptance threshold relaxed"
+        },
+        "timing": [
+          {
+            "missing_non_DC_ticks": [
+              30
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 55,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 58,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              30
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 49,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          },
+          {
+            "missing_non_DC_ticks": [
+              30,
+              35,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              62
+            ],
+            "extra_non_DC_ticks": [],
+            "original_logical_enabled_ticks": 42,
+            "candidate_nonzero_after_logical_off_samples": 0,
+            "qualification": "1LSB AC-RMS measurement proxy, not a PASS tolerance; original DC startup and one-sample resampler buckets kept separately"
+          }
+        ],
+        "reference_noise": {
+          "samples": 30876,
+          "rms_lsb": 2174.2333278871174,
+          "zero_crossing_rate": 0.06749797570850202,
+          "spectral_flatness": 0.036902927015021646
+        },
+        "candidate_noise": {
+          "samples": 24987,
+          "rms_lsb": 2276.0351734579203,
+          "zero_crossing_rate": 0.07772352517409749,
+          "spectral_flatness": 0.036935062540215585
+        }
+      },
+      "entry": "seeded original-driver controlled case"
+    }
+  },
+  "carrier_assets": {
+    "A3": {
+      "active_source_ticks": 48,
+      "total_ticks": 69,
+      "pcm_sha256": "ccfc4b46f40465e5a3bc886cf6155deea58daadce652cdc3c90e7300544ab946",
+      "determinism": "fresh-process byte equal",
+      "mode": "white tone2-derived",
+      "phase_cursor": "continuous own age; no restart on inhibition"
+    },
+    "B7": {
+      "active_source_ticks": 6,
+      "total_ticks": 27,
+      "pcm_sha256": "01740d381ebf44613771844e91a91bbce2fb34d0482ac148fb91758c1f4f5f62",
+      "determinism": "fresh-process byte equal",
+      "mode": "periodic tone2-derived",
+      "phase_cursor": "continuous own age; no restart on inhibition"
+    }
+  },
+  "process_calls": [
+    {
+      "label": "coupled-steal-recover-reference",
+      "ticks": 90,
+      "seconds": 0.03395810001529753,
+      "key": "9b2e30e612cd7cb3e7d5f1d5c58d810ff5a635cdf5120cb6abba054d433ab9ae",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "coupled-steal-recover-voice0",
+      "ticks": 90,
+      "seconds": 0.025809200014919043,
+      "key": "f829921c18160d6f80624769b89696fe902898340b3dc33388a82d131739968f",
+      "peak_lsb": 0
+    },
+    {
+      "label": "coupled-steal-recover-voice1",
+      "ticks": 90,
+      "seconds": 0.02510430000256747,
+      "key": "5dfbd4235841d2f01114d28adb8ed9e1ea9df6332e7ba65f97bd40e0c59940f9",
+      "peak_lsb": 0
+    },
+    {
+      "label": "coupled-steal-recover-voice2",
+      "ticks": 90,
+      "seconds": 0.0241188999498263,
+      "key": "b16d4d0fed6dd4dab4d95aa79adbed2794209ddad85a5a88f136adc534c57635",
+      "peak_lsb": 6502
+    },
+    {
+      "label": "coupled-steal-recover-voice3",
+      "ticks": 90,
+      "seconds": 0.025109100039117038,
+      "key": "e4d19b913a4ebb4f58c77036746f50fbc298d5b890c527994dece608ec0aca72",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "clock-switch-with-live-tone2-reference",
+      "ticks": 90,
+      "seconds": 0.02576489991042763,
+      "key": "3cdcab6acb62dc14e0753b919b10101f3813563c4ac2377b22d9922ed8b01036",
+      "peak_lsb": 9482
+    },
+    {
+      "label": "clock-switch-with-live-tone2-voice0",
+      "ticks": 90,
+      "seconds": 0.024911400047130883,
+      "key": "0e426d8b11cd022b8d42f7cf76e39471843825b8cea204ab6e591a4a2f38629c",
+      "peak_lsb": 0
+    },
+    {
+      "label": "clock-switch-with-live-tone2-voice1",
+      "ticks": 90,
+      "seconds": 0.027653299970552325,
+      "key": "4edfeed634859f55d5a2f6d9e82426c82b390fcc062900588a2b1b2e29ecb35d",
+      "peak_lsb": 0
+    },
+    {
+      "label": "clock-switch-with-live-tone2-voice2",
+      "ticks": 90,
+      "seconds": 0.026269600028172135,
+      "key": "3e3acb4b6d03c8a79cf835b6c5352a1ecc4579cbb6c113bef1f0be9cc1daf240",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "clock-switch-with-live-tone2-voice3",
+      "ticks": 90,
+      "seconds": 0.024977399967610836,
+      "key": "54415be3a6ee501b283319729846aa777fcff505e7c575c2a7c51a70fad1c8b1",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "periodic-retrigger-reference",
+      "ticks": 50,
+      "seconds": 0.02751159993931651,
+      "key": "72e46b7a761daab1d332628a0622e22f034562cc7305c77659a84cd851fd5ad2",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "periodic-retrigger-voice0",
+      "ticks": 50,
+      "seconds": 0.02353969996329397,
+      "key": "29ae304b93682f3dcdfc104c9bb47f9425d7b04e79d0b723c2263f0c5f3c4940",
+      "peak_lsb": 0
+    },
+    {
+      "label": "periodic-retrigger-voice1",
+      "ticks": 50,
+      "seconds": 0.023844500072300434,
+      "key": "b14e6465e5b37ca2810ac370af3282aee37fc7d8e513226cf11844a89d69e5d7",
+      "peak_lsb": 0
+    },
+    {
+      "label": "periodic-retrigger-voice2",
+      "ticks": 50,
+      "seconds": 0.022549199988134205,
+      "key": "b8f8d97f0fb9042c2784dc68f117da13bc2dba19615f7e19d448b47e3efa7030",
+      "peak_lsb": 6502
+    },
+    {
+      "label": "periodic-retrigger-voice3",
+      "ticks": 50,
+      "seconds": 0.023513599997386336,
+      "key": "5e3311977021c9e6be835e42ea88abd99701dd880fa3cfedbac6d009fb88dee5",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "off-then-fresh-reference",
+      "ticks": 90,
+      "seconds": 0.024439700064249337,
+      "key": "e0d0d2ded1a382d879a72a7c5404eb2dbcf192e4a978e1d16067aef134f1fc0a",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "off-then-fresh-voice0",
+      "ticks": 90,
+      "seconds": 0.024315100046806037,
+      "key": "6d3008e93a5aaa9efd0ab892baa0b2dfb7be2ef8cfd66dc6dc919c75eadd898b",
+      "peak_lsb": 0
+    },
+    {
+      "label": "off-then-fresh-voice1",
+      "ticks": 90,
+      "seconds": 0.024209699942730367,
+      "key": "3530148bd8f160f361f1136673a938f54683b48bfee6aea6a4aad308dcb84688",
+      "peak_lsb": 0
+    },
+    {
+      "label": "off-then-fresh-voice2",
+      "ticks": 90,
+      "seconds": 0.024191000033169985,
+      "key": "571daefb60d8ad070b4fe52dec9415164bc90aaaa2b15593309ac02747247a5b",
+      "peak_lsb": 0
+    },
+    {
+      "label": "off-then-fresh-voice3",
+      "ticks": 90,
+      "seconds": 0.026816300000064075,
+      "key": "a3f40fda3ce6610026c9bf35ddb7b61ef310d4c9d2ddb2214d7b2fa6db64ec98",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "finite-fade-reference",
+      "ticks": 90,
+      "seconds": 0.026728899916633964,
+      "key": "7c3d3425eed53758640241911f101ed6e0fcb1002d8b6173a986339abfc91ca3",
+      "peak_lsb": 18734
+    },
+    {
+      "label": "finite-fade-voice0",
+      "ticks": 90,
+      "seconds": 0.0248583999928087,
+      "key": "8f49d44085f326bf16788a129cfd158ac1470a0e6409f1f0037846ff63502535",
+      "peak_lsb": 5162
+    },
+    {
+      "label": "finite-fade-voice1",
+      "ticks": 90,
+      "seconds": 0.024210100062191486,
+      "key": "2f1c85028cf9f0e087b73807f1c53625072bb5bedae16b64e12090eb6ab740fd",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "finite-fade-voice2",
+      "ticks": 90,
+      "seconds": 0.025350000010803342,
+      "key": "52661a0918a96866b3313bc367723b066e999115dc4648ccc416b2c478a4bf14",
+      "peak_lsb": 6502
+    },
+    {
+      "label": "finite-fade-voice3",
+      "ticks": 90,
+      "seconds": 0.024140199995599687,
+      "key": "90d225b38ed6b7aeae4df6bc0a28d925f2d32ae94e3db34b53093614d73efee9",
+      "peak_lsb": 5162
+    },
+    {
+      "label": "coupled-reference-fresh-process",
+      "ticks": 90,
+      "seconds": 0.020383600029163063,
+      "key": "9b2e30e612cd7cb3e7d5f1d5c58d810ff5a635cdf5120cb6abba054d433ab9ae",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "A3-finite-carrier",
+      "ticks": 69,
+      "seconds": 0.027336200000718236,
+      "key": "e60496b65dbd161912d6f632e4658d35cb5aea74ee366183a1b0cc91a51ab8c7",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "A3-carrier-fresh-process",
+      "ticks": 69,
+      "seconds": 0.02120920002926141,
+      "key": "e60496b65dbd161912d6f632e4658d35cb5aea74ee366183a1b0cc91a51ab8c7",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "B7-finite-carrier",
+      "ticks": 27,
+      "seconds": 0.026445999974384904,
+      "key": "4878a5def42f1db85659a7267a47f950206ae7510c54e6a86e34b39187f97a8d",
+      "peak_lsb": 8192
+    },
+    {
+      "label": "B7-carrier-fresh-process",
+      "ticks": 27,
+      "seconds": 0.02265229995828122,
+      "key": "4878a5def42f1db85659a7267a47f950206ae7510c54e6a86e34b39187f97a8d",
+      "peak_lsb": 8192
+    }
+  ],
+  "new_process_count": 30,
+  "analysis_followup_new_processes": 0,
+  "all_targets_at_most_ticks": 90,
+  "blocking_cases": [
+    "coupled-steal-recover",
+    "finite-fade"
+  ],
+  "overall": "HOLD for architecture decision",
+  "preservation_before": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true
+  },
+  "preservation_after": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true
+  },
+  "new_synthesis": false,
+  "full_library_rendered": false,
+  "native_listening": "NOT PERFORMED"
+}

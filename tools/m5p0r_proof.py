@@ -23,9 +23,9 @@ class Dry(Trace):
             self.record('music-noise-control' if self.cpu.pc==0x46D4 else 'port',value if self.cpu.pc==0x46D4 else [value,self.cpu.ix in self.read_channels])
         super()._out(port,value)
 
-def export(rom):
-    bank=copy.deepcopy(json.loads((PRIOR/'dry-event-bank.json').read_text()))
-    ids=list(range(0xA0,0xC5))+[0x81,0x82,0x90,0x99]
+def export(rom,ids=None,initial_bank=None,output_path=None):
+    bank=copy.deepcopy(initial_bank if initial_bank is not None else json.loads((PRIOR/'dry-event-bank.json').read_text()))
+    ids=list(range(0xA0,0xC5))+[0x81,0x82,0x90,0x99] if ids is None else list(ids)
     for rid in ids:
         d=Dry(rom);h=T.header_facts(rom,rid);old=bank['programs'][str(rid)]
         addresses=list(T.MUSIC_CH) if rid<0xA0 else [{0xA0:0xDF00,0xC0:0xDF30,0xE0:0xDF60}[int(s['latch'],16)] for s in h['streams']]
@@ -69,8 +69,8 @@ def export(rom):
             inside.clear()
             if not d.active(T.MUSIC_CH if rid<0xA0 else T.SFX_CH):break
         old.update(events=events,coverage_ticks=d.update,envelope_sequences=sequences,initial_volumes=[s['volume'] for s in h.get('channels',h.get('streams',[]))])
-    bank['emission_coverage_ids']=ids
-    save(OUT/'dry-emission-bank.json',bank);return bank
+    bank['emission_coverage_ids']=sorted(set(bank.get('emission_coverage_ids',[]))|set(ids))
+    save(output_path or OUT/'dry-emission-bank.json',bank);return bank
 
 CASES={
  'B8-BC':{30:[('request',0xB8)],35:[('request',0xBC)]},

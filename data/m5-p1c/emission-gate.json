@@ -1,0 +1,67 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "cases": {
+    "fixed-hold": {
+      "ticks": 210,
+      "ordered_bytes": 1065,
+      "status": "PASS",
+      "failures": []
+    },
+    "coupled-steal-recover": {
+      "ticks": 90,
+      "ordered_bytes": 124,
+      "status": "PASS",
+      "failures": []
+    },
+    "clock-switch-with-live-tone2": {
+      "ticks": 90,
+      "ordered_bytes": 114,
+      "status": "PASS",
+      "failures": []
+    },
+    "periodic-retrigger": {
+      "ticks": 50,
+      "ordered_bytes": 28,
+      "status": "PASS",
+      "failures": []
+    },
+    "music-context-B6": {
+      "ticks": 180,
+      "ordered_bytes": 1166,
+      "status": "PASS",
+      "failures": []
+    },
+    "music-context-BA": {
+      "ticks": 180,
+      "ordered_bytes": 1254,
+      "status": "PASS",
+      "failures": []
+    },
+    "isolated-context-B6": {
+      "ticks": 47,
+      "ordered_bytes": 82,
+      "status": "PASS",
+      "failures": []
+    },
+    "off-then-fresh": {
+      "ticks": 90,
+      "ordered_bytes": 97,
+      "status": "PASS",
+      "failures": []
+    },
+    "finite-fade": {
+      "ticks": 90,
+      "ordered_bytes": 332,
+      "status": "PASS",
+      "failures": []
+    }
+  },
+  "saved_DE11_compared": true,
+  "full_registers_and_latch_compared": true,
+  "all_off_states_compared": true,
+  "status": "PASS",
+  "new_intrinsic_export_ids": [
+    136
+  ],
+  "new_matrix_pair_captures": 0
+}

@@ -1,0 +1,1111 @@
+{
+  "source": "accepted70-ID catalogue and existing complete solo F3 metadata; no new wholesale scan",
+  "total_catalogue": 70,
+  "sfx_count": 37,
+  "classes": {
+    "tone2-only": [
+      160,
+      161,
+      162,
+      164,
+      165,
+      166,
+      168,
+      169,
+      170,
+      171,
+      173,
+      174,
+      178,
+      179,
+      180,
+      181,
+      188,
+      189,
+      191,
+      192,
+      193,
+      194,
+      195
+    ],
+    "coupled-white-noise-single-F3": [
+      163,
+      167,
+      175,
+      177,
+      185,
+      187,
+      190,
+      196
+    ],
+    "tone1-plus-coupled-white-noise": [
+      172,
+      182,
+      186
+    ],
+    "coupled-white-noise-retrigger": [
+      176
+    ],
+    "tone2-periodic-noise-retrigger": [
+      183
+    ],
+    "fixed-white-noise": [
+      184
+    ]
+  },
+  "entries": [
+    {
+      "id": 160,
+      "label": "Character-choice / Continue confirmation feedback",
+      "class_id": "tone2-only",
+      "header_rom": 57046,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 120,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 46
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 161,
+      "label": "Unknown $A1",
+      "class_id": "tone2-only",
+      "header_rom": 57093,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 56,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 30
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 162,
+      "label": "Unknown $A2",
+      "class_id": "tone2-only",
+      "header_rom": 57115,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 56,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 35
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 163,
+      "label": "Break / crumble feedback",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 57154,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 88,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 49
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 164,
+      "label": "Player hurt with ring loss",
+      "class_id": "tone2-only",
+      "header_rom": 57197,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 112,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 82
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 165,
+      "label": "Unknown $A5",
+      "class_id": "tone2-only",
+      "header_rom": 57260,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 56,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 128
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 166,
+      "label": "Spring / rebound feedback",
+      "class_id": "tone2-only",
+      "header_rom": 57284,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 56,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 41
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 167,
+      "label": "Unknown $A7",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 57333,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 48,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 7
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 168,
+      "label": "Unknown $A8",
+      "class_id": "tone2-only",
+      "header_rom": 57355,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 120,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 46
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 169,
+      "label": "Extra life feedback",
+      "class_id": "tone2-only",
+      "header_rom": 57419,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 120,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 66
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 170,
+      "label": "Goal-sign spinning feedback",
+      "class_id": "tone2-only",
+      "header_rom": 57465,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 112,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 5
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 171,
+      "label": "Unknown $AB",
+      "class_id": "tone2-only",
+      "header_rom": 57484,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 112,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 9
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 172,
+      "label": "Unknown $AC",
+      "class_id": "tone1-plus-coupled-white-noise",
+      "header_rom": 57509,
+      "slots": [
+        "0xa0",
+        "0xe0"
+      ],
+      "priority": 80,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 49,
+        "DF00": 54
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 173,
+      "label": "Unknown $AD",
+      "class_id": "tone2-only",
+      "header_rom": 57556,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 56,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 65
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 174,
+      "label": "Unknown $AE",
+      "class_id": "tone2-only",
+      "header_rom": 57580,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 104,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 15
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 175,
+      "label": "Unknown $AF",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 57615,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 72,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 68
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 176,
+      "label": "Unknown $B0",
+      "class_id": "coupled-white-noise-retrigger",
+      "header_rom": 57650,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 64,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 2,
+      "release_ticks": {
+        "DF60": 7
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 177,
+      "label": "Unknown $B1",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 57680,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 72,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 22
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 178,
+      "label": "Unknown $B2",
+      "class_id": "tone2-only",
+      "header_rom": 57707,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 96,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 58
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 179,
+      "label": "Unknown $B3",
+      "class_id": "tone2-only",
+      "header_rom": 57747,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 104,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 77
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 180,
+      "label": "Results tally / continue countdown feedback",
+      "class_id": "tone2-only",
+      "header_rom": 57785,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 120,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 31
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 181,
+      "label": "Countdown numeral / frozen-clock tick feedback",
+      "class_id": "tone2-only",
+      "header_rom": 57825,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 104,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 19
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 182,
+      "label": "Boss attack-contact feedback (not always damage)",
+      "class_id": "tone1-plus-coupled-white-noise",
+      "header_rom": 57852,
+      "slots": [
+        "0xe0",
+        "0xa0"
+      ],
+      "priority": 104,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 16,
+        "DF00": 27
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 183,
+      "label": "Unknown $B7",
+      "class_id": "tone2-periodic-noise-retrigger",
+      "header_rom": 57902,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 72,
+      "noise_modes": [
+        3
+      ],
+      "F3_count": 2,
+      "release_ticks": {
+        "DF60": 7
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 184,
+      "label": "Unknown $B8",
+      "class_id": "fixed-white-noise",
+      "header_rom": 57932,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 72,
+      "noise_modes": [
+        5
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 139
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 185,
+      "label": "Unknown $B9",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 57959,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 72,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 31
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 186,
+      "label": "Unknown $BA",
+      "class_id": "tone1-plus-coupled-white-noise",
+      "header_rom": 58011,
+      "slots": [
+        "0xa0",
+        "0xe0"
+      ],
+      "priority": 72,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 5,
+        "DF00": 25
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 187,
+      "label": "Unknown $BB",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 58077,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 112,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 65
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 188,
+      "label": "Unknown $BC",
+      "class_id": "tone2-only",
+      "header_rom": 58125,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 96,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 29
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 189,
+      "label": "Booster-pad feedback",
+      "class_id": "tone2-only",
+      "header_rom": 58160,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 88,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 23
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 190,
+      "label": "Title lead-in / MGHZ projectile script feedback",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 58200,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 80,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 38
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 191,
+      "label": "Ring / Large Ring collection feedback",
+      "class_id": "tone2-only",
+      "header_rom": 58230,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 56,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 21
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 192,
+      "label": "Unknown $C0",
+      "class_id": "tone2-only",
+      "header_rom": 58257,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 64,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 29
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 193,
+      "label": "Unknown $C1",
+      "class_id": "tone2-only",
+      "header_rom": 58292,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 48,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 10
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 194,
+      "label": "Spring Shoes relaunch feedback",
+      "class_id": "tone2-only",
+      "header_rom": 58316,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 64,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 46
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 195,
+      "label": "Rocket Shoes damage-cancel feedback",
+      "class_id": "tone2-only",
+      "header_rom": 58380,
+      "slots": [
+        "0xc0"
+      ],
+      "priority": 112,
+      "noise_modes": [],
+      "F3_count": 0,
+      "release_ticks": {
+        "DF30": 46
+      },
+      "physical_tone2_clock_dependency": false,
+      "saved_DE11_dependency": false,
+      "data_latch_context": "no own noise F2; can inhibit/resume another noise slot",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    },
+    {
+      "id": 196,
+      "label": "Shared destruction / explosion feedback",
+      "class_id": "coupled-white-noise-single-F3",
+      "header_rom": 58420,
+      "slots": [
+        "0xe0"
+      ],
+      "priority": 96,
+      "noise_modes": [
+        7
+      ],
+      "F3_count": 1,
+      "release_ticks": {
+        "DF60": 65
+      },
+      "physical_tone2_clock_dependency": true,
+      "saved_DE11_dependency": true,
+      "data_latch_context": "F2 restore is an ordinary PSG byte; zero is data to the current latch",
+      "coexistence": "fixed noise allows tone2; coupled F3 suppresses/owns tone2; tone2 init may suppress coupled noise",
+      "held_or_off": "F2 own-off differs from target write inhibition; envelope off independent of stream end",
+      "baked_PCM": "context-scoped only; no universal sufficiency claim",
+      "carrier": "requires clock-history compatibility and authenticated finite source lifetime"
+    }
+  ],
+  "selected_cases": {
+    "fixed-hold": {
+      "initial": 129,
+      "events": {
+        "30": [
+          [
+            "request",
+            184
+          ]
+        ],
+        "35": [
+          [
+            "request",
+            188
+          ]
+        ]
+      },
+      "ticks": 210,
+      "reuse": "P0R B8 carrier and original P0/P1 continuous reference",
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "coupled-steal-recover": {
+      "initial": 163,
+      "events": {
+        "6": [
+          [
+            "request",
+            188
+          ]
+        ]
+      },
+      "ticks": 90,
+      "reuse": null,
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "clock-switch-with-live-tone2": {
+      "initial": 191,
+      "events": {
+        "3": [
+          [
+            "request",
+            184
+          ]
+        ],
+        "8": [
+          [
+            "request",
+            163
+          ]
+        ]
+      },
+      "ticks": 90,
+      "reuse": null,
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "periodic-retrigger": {
+      "initial": 191,
+      "events": {
+        "2": [
+          [
+            "request",
+            183
+          ]
+        ]
+      },
+      "ticks": 50,
+      "reuse": null,
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "music-context-B6": {
+      "initial": 129,
+      "events": {
+        "30": [
+          [
+            "request",
+            182
+          ]
+        ],
+        "35": [
+          [
+            "request",
+            160
+          ]
+        ]
+      },
+      "ticks": 180,
+      "reuse": "P0R B6 corrected context and prior reference",
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "music-context-BA": {
+      "initial": 129,
+      "events": {
+        "30": [
+          [
+            "request",
+            186
+          ]
+        ],
+        "36": [
+          [
+            "request",
+            172
+          ]
+        ]
+      },
+      "ticks": 180,
+      "reuse": "P0R BA corrected context and prior reference",
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "isolated-context-B6": {
+      "initial": 182,
+      "events": {},
+      "ticks": 47,
+      "reuse": "P0/P1 isolated B6 library",
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "off-then-fresh": {
+      "initial": 184,
+      "events": {
+        "3": [
+          [
+            "request",
+            248
+          ]
+        ],
+        "5": [
+          [
+            "request",
+            163
+          ]
+        ]
+      },
+      "ticks": 90,
+      "reuse": null,
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    },
+    "finite-fade": {
+      "initial": 136,
+      "events": {
+        "30": [
+          [
+            "request",
+            172
+          ]
+        ],
+        "35": [
+          [
+            "request",
+            160
+          ]
+        ],
+        "40": [
+          [
+            "fade",
+            [
+              12,
+              1,
+              2
+            ]
+          ]
+        ]
+      },
+      "ticks": 90,
+      "reuse": "P0/P1 existing finite88 stems; new short interaction only",
+      "natural_gameplay_observation": false,
+      "meaning": "seeded original-driver response; not a natural game route"
+    }
+  },
+  "budget": {
+    "free_bytes": 803058704384,
+    "max_scratch_bytes": 1073741824,
+    "max_archive_bytes": 134217728,
+    "max_target_ticks": 240,
+    "max_unique_new_targets": 30,
+    "rendering_started": false
+  },
+  "preservation": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true
+  }
+}

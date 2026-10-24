@@ -1,0 +1,59 @@
+{
+  "coupled_segments": {
+    "matched_entry": {
+      "first_tick": 1,
+      "last_tick": 5,
+      "samples": 3675,
+      "correlation": 0.9999988758778915,
+      "rms_reference": 6461.714491047212,
+      "rms_candidate": 6461.835822968052,
+      "max_error_lsb": 271.0,
+      "sign_disagreement_fraction": 0.0
+    },
+    "resumed_noise": {
+      "first_tick": 34,
+      "last_tick": 48,
+      "samples": 11025,
+      "correlation": 0.05547387869026299,
+      "rms_reference": 1660.1303411932952,
+      "rms_candidate": 1660.8691837507492,
+      "max_error_lsb": 6503.0,
+      "sign_disagreement_fraction": 0.48707482993197276
+    }
+  },
+  "hidden_clock_ticks": {
+    "count": 28,
+    "first_tick": 6
+  },
+  "finite_fade": {
+    "first_unsupported_tick": 40,
+    "unsupported_voice_ticks": 8,
+    "audible_clock_mismatches": 24,
+    "original_tick40_physical_registers": [
+      [
+        180,
+        34,
+        55
+      ],
+      7,
+      [
+        3,
+        3,
+        3,
+        4
+      ]
+    ],
+    "reason": "fade cancels source stream while physical noise continues; baked music tone period also differs"
+  },
+  "budget": {
+    "renderer_processes": 30,
+    "renderer_process_seconds": 0.7519214999629185,
+    "rendered_tick_sum": 2332,
+    "max_new_target_ticks": 90,
+    "scratch_bytes": 51072108,
+    "free_bytes": 802995658752,
+    "peak_working_memory": "NOT MEASURED: short-lived renderer processes were not sampled; no runtime memory acceptance"
+  },
+  "rendering_stopped": true,
+  "thresholds_relaxed": false
+}

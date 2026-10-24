@@ -1,0 +1,56 @@
+{
+  "parent": "210ca93d2672f82ce2dc9a1203b6637f6e1247bc",
+  "management": "0c495dbe47f0235276437480f847cd6bafd92770",
+  "tests": [
+    {
+      "command": "python -m unittest discover -s tests -p test_m5p1c.py",
+      "passed": 11,
+      "skipped": 0
+    },
+    {
+      "command": "SONIC_CHAOS_ROM=authenticated private path; python -m unittest discover -s tests -p test_m5p0r.py",
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_m5_audio_contract.py",
+      "passed": 7,
+      "skipped": 9,
+      "scope": "private optional extended catalogue controls not enabled; not claimed as executed"
+    },
+    {
+      "command": "python tools/m5p1c.py gate --rom PRIVATE_ROM",
+      "cases": 9,
+      "ticks": 1027,
+      "status": "PASS",
+      "rerun": "PASS without renderer"
+    }
+  ],
+  "new_render_processes": 30,
+  "analysis_followup_processes": 0,
+  "retained_production_verdict": "HOLD for architecture decision",
+  "poc_head": "11bff34356d5f5d979218896dc95fdc4bb265eae",
+  "poc_worktree": "clean",
+  "safe_inventory_excluding_this_receipt": {
+    "data/m5-p1c/coverage.json": "38cd1757cb66127daa08acd6004048ab277a8b944810835e30fe26a55fb8d044",
+    "data/m5-p1c/diagnostics.json": "505429a8555f32bd34f2522ceb3b24f85744070059351fec12ce2b5159df5d41",
+    "data/m5-p1c/emission-gate.json": "694f3f847c0ec5a7d7e4f4bcfe25742ac1b3be6d853ea7c22668b9a93154ceba",
+    "data/m5-p1c/pcm-feasibility.json": "a8c6caa1efe7558bf54e7f75b1ecf4900f9f86f7ce811ce087f7e15ead47feca",
+    "data/m5-p1c/private-package-receipt.json": "06a3c0cdb160d708d6d32acb8c9ad2d2769437a0538ca8b6b88c944087ea8c3a",
+    "docs/m5-p1c-coverage-emission.md": "899a76b66e48b61f5a34f33f97ece3b66b75f70a98eeb4ad225a1743069d73da",
+    "docs/m5-p1c-handover.md": "149cce95996d8e7f80a50057321a129d0443782fb1f59b588fadd284e6295afd",
+    "docs/m5-p1c-runtime-policy.md": "727e0321fc5e0dc2a84347953185b99e0f707a8161656a5022a0420b17b54fce",
+    "tests/test_m5p1c.py": "ecc2ee3a34e714b1e0ac66ba6bef315b12d0c72e18e66e535a15c9a41329784c",
+    "tools/m5p0r_proof.py": "7a4799d36bc1f7405d570231b4f4f46402704a1a6db26afc7cc6f238e71387c3",
+    "tools/m5p1c.py": "e5c3902e48165cd6b859042c2989aff78d3c99d3d9fe12b4a5a79295211ce44c",
+    "tools/m5p1c_finalize.py": "7c6b97f1f645ba6290cb1ad1bb34cac47962fcbcf13eedc2dca3f196f30c14d4",
+    "tools/m5p1c_pcm.py": "b0ca36d87665bcd9e007f7bb240d4e5238a8f7ca85fd311dff0f62794e7734a0"
+  },
+  "public_extensions": [
+    ".py",
+    ".md",
+    ".json"
+  ],
+  "private_archive": "see private-package-receipt.json",
+  "historical_evidence_overwritten": false
+}
