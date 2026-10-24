@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-24",
+  "parent": "7d700d0f2d51812d48d9743443e688bc1f9c5793",
+  "branch": "research/m5-p0-p1-proof",
+  "overall_gate": "HOLD",
+  "bounded_ownership_projection": "PASS",
+  "complete_output_model": "HOLD",
+  "composition_parity": "FAIL",
+  "tests": {
+    "proof": 13,
+    "inherited_m5_r1": 16,
+    "inherited_m4": 9,
+    "passed": 38,
+    "unit_failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "python_compile": "PASS",
+    "whitespace": "PASS",
+    "no_game_maker_changes": true,
+    "no_bulk_production": true,
+    "public_files": "source/tests/numeric text only",
+    "preserved_M4_files": 47
+  },
+  "inventory": [
+    {
+      "path": "data/m5-proof/budget-preflight.json",
+      "bytes": 415,
+      "sha256": "2f2bedd4367157f7a2fdcd224aedd974f1a46fba1ee04facf3f8b09479d5519e"
+    },
+    {
+      "path": "data/m5-proof/chunk-proof.json",
+      "bytes": 553,
+      "sha256": "61670fdbb945797520913e17cada2fa7b50af2710c35faac7a48df289301c062"
+    },
+    {
+      "path": "data/m5-proof/coupled-noise.json",
+      "bytes": 29887,
+      "sha256": "ea71fe08b43f0eba00ff3867416795a34aaa8487c8cb172de3032d4c77096f68"
+    },
+    {
+      "path": "data/m5-proof/diagnostics.json",
+      "bytes": 990,
+      "sha256": "8fd15fe4015072fcadb6226ccb5d66d243c17b9c3996539d5daf41665394fd84"
+    },
+    {
+      "path": "data/m5-proof/gate.json",
+      "bytes": 887,
+      "sha256": "1778370eab6bc8d56dba3e958481cfb9d8195665cd0c202d67f9a59f654595b2"
+    },
+    {
+      "path": "data/m5-proof/measured-budget.json",
+      "bytes": 24969,
+      "sha256": "5e3cf3c1b45c9cc3838dc46f017df2159334f97d4b2b9ed84ba9b0a354114e4a"
+    },
+    {
+      "path": "data/m5-proof/p0-result.json",
+      "bytes": 1390,
+      "sha256": "59ac4453c4ca73a593c0bb2a6966bf473dd3f31aa4cf15def7a6fa6f87bb0b48"
+    },
+    {
+      "path": "data/m5-proof/p1-library.json",
+      "bytes": 24364,
+      "sha256": "fe12e2927ea5151781e0c67f8375e661be5d7e2f795f8fa81aba4000b64bd067"
+    },
+    {
+      "path": "data/m5-proof/private-package-receipt.json",
+      "bytes": 341,
+      "sha256": "5ad1a35b04a6f17b70cd369ff313953ef4bc788801b8717258d6c1625df439a1"
+    },
+    {
+      "path": "docs/m5-proof-audio.md",
+      "bytes": 7344,
+      "sha256": "223dd137ad97d68e8921e2d8b103b7dccfce9ffacfbbc485e9ba4b135b646428"
+    },
+    {
+      "path": "docs/m5-proof-chunks-budget.md",
+      "bytes": 6725,
+      "sha256": "fbe368b643c866cfe0e0cd64c1d2a1e4422cae08391a18aa27010fb5d04716e6"
+    },
+    {
+      "path": "docs/m5-proof-driver.md",
+      "bytes": 6914,
+      "sha256": "c35e0b6e8f0c36e040a2f4f59d02a6babbb52dc5d653059600c441cf12f1809b"
+    },
+    {
+      "path": "docs/m5-proof-handover.md",
+      "bytes": 7234,
+      "sha256": "ef8158b74ca818105b145b6994fae1aac41cc1ad5c458c717d8024dd0f1ba346"
+    },
+    {
+      "path": "tests/test_m5_proof.py",
+      "bytes": 8475,
+      "sha256": "b94e54715e24783b8138a6c2a71ef0d63ac6cc708ec49845efc8ca0afb2dd4e9"
+    },
+    {
+      "path": "tools/m5_proof_review.py",
+      "bytes": 6513,
+      "sha256": "73c48bec5f83e13ba998bb545d18a0d463921b2a5329cab318e19bf8e0d14041"
+    },
+    {
+      "path": "tools/m5p0_model.py",
+      "bytes": 5244,
+      "sha256": "4497f64db255840d6a1b0ce46a260441e6191d4a38acf708b6cd69ad4a0361bd"
+    },
+    {
+      "path": "tools/m5p0_proof.py",
+      "bytes": 9814,
+      "sha256": "7aaa12cb0e9c509192624e903c68c52494251614caa58b617b2e836e4291c43a"
+    },
+    {
+      "path": "tools/m5p1_proof.py",
+      "bytes": 23797,
+      "sha256": "2147b2e64bcc3e944556b4d50bd1b26cd3930a8efe69bccfd6bf8439bea77f0d"
+    }
+  ],
+  "inventory_note": "18 companions hashed; this receipt is the19th new text file, not self-hashed"
+}

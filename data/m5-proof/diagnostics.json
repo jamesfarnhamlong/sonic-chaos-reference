@@ -1,0 +1,23 @@
+{
+  "fixed_rate_hold": {
+    "first_tick": 63,
+    "last_tick": 166,
+    "ticks": 104,
+    "noise_control": 5,
+    "held_attenuation": 2,
+    "active_noise_write_inhibited": true,
+    "explanation": "F2 tone2 completion emits tone2-off (DF), marks noise bit4 but does not emit noise-off; last PSG noise output persists. Envelope end emits noise-off at167."
+  },
+  "a3_duration_proxy": {
+    "raw_register_vs_AC_RMS_gate": "FAIL",
+    "mismatched_ticks": 1,
+    "first_tick_min_lsb": -4096,
+    "first_tick_max_lsb": -4096,
+    "first_tick_ac_rms_lsb": 0.0,
+    "interpretation": "constant DC in first735 samples despite non-off attenuation; register gate is not equivalent to oscillating/audible output. No PCM altered."
+  },
+  "b6_attenuation_projection_mismatches": 1,
+  "b6_status": "unresolved single-tick boundary; preserved, not waived",
+  "generic_fade": "retained approved approximation; not register/sample parity",
+  "hardware_listening": "NOT PERFORMED"
+}

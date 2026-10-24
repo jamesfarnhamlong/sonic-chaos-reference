@@ -1,0 +1,943 @@
+{
+  "88": {
+    "id": 136,
+    "diagnostic_only": false,
+    "ticks": 232,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 170520,
+    "header": {
+      "header_rom": 41125,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 128,
+      "kind": "music",
+      "channel_count": 4,
+      "duration_multiplier": 1,
+      "tempo_byte": 5,
+      "channels": [
+        {
+          "latch": "0x80",
+          "stream_cpu": 24763,
+          "transpose": 0,
+          "volume": 0
+        },
+        {
+          "latch": "0xa0",
+          "stream_cpu": 24805,
+          "transpose": -12,
+          "volume": 0
+        },
+        {
+          "latch": "0xc0",
+          "stream_cpu": 24849,
+          "transpose": -12,
+          "volume": 0
+        },
+        {
+          "latch": "0xe0",
+          "stream_cpu": 24890,
+          "transpose": 0,
+          "volume": 0
+        }
+      ]
+    },
+    "release_ticks": {
+      "DED0": 135,
+      "DE40": 210,
+      "DE70": 210,
+      "DEA0": 212
+    },
+    "sanity": {
+      "frames": 170520,
+      "stereo_channels_identical": true,
+      "peak": 19580,
+      "clipped_frames": 0,
+      "headroom_db": 4.47,
+      "rms": 0.1368,
+      "dc_offset": -0.009213,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 20580,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 92,
+      "median_abs_cents": 0.306,
+      "p95_abs_cents": 1.806,
+      "max_abs_cents": 1.887,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 10,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 42,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 40,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 192,
+        "measured_audible_ticks": 192,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice1": {
+        "expected_audible_ticks": 196,
+        "measured_audible_ticks": 196,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice2": {
+        "expected_audible_ticks": 196,
+        "measured_audible_ticks": 196,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice3": {
+        "expected_audible_ticks": 104,
+        "measured_audible_ticks": 104,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      }
+    },
+    "noise": {
+      "samples": 76444,
+      "rms_lsb": 2550.637763796756,
+      "zero_crossing_rate": 0.058592676896511126,
+      "spectral_flatness": 0.036902927015021646
+    },
+    "raw_reconstruction_max_lsb": 5,
+    "residual_rms_lsb": 1.4466244368592425,
+    "tone0_residual_when_original_tone0_silent": false,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "f0e79ca013a98db6dfddb56f712965ccb10d88f0215053ad06856588152ba75a",
+    "vgm_sha256": "877ef0441985d50a9457df5713fefae2df682d4ad6e4bf7a2631010a8bd05e57"
+  },
+  "A0": {
+    "id": 160,
+    "diagnostic_only": false,
+    "ticks": 66,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 48510,
+    "header": {
+      "header_rom": 57046,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 120,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 1,
+      "streams": [
+        {
+          "latch": "0xc0",
+          "stream_cpu": 40672,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 128
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF30": 46
+    },
+    "sanity": {
+      "frames": 48510,
+      "stereo_channels_identical": true,
+      "peak": 6502,
+      "clipped_frames": 0,
+      "headroom_db": 14.05,
+      "rms": 0.06425,
+      "dc_offset": 1.2e-05,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 15435,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 45,
+      "median_abs_cents": 1.981,
+      "p95_abs_cents": 4.353,
+      "max_abs_cents": 4.354,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 45,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice2": {
+        "expected_audible_ticks": 45,
+        "measured_audible_ticks": 45,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice3": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      }
+    },
+    "noise": {
+      "samples": 0,
+      "rms_lsb": 0,
+      "zero_crossing_rate": 0,
+      "spectral_flatness": null
+    },
+    "raw_reconstruction_max_lsb": 0,
+    "residual_rms_lsb": 0.0,
+    "tone0_residual_when_original_tone0_silent": false,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "ea3ce8c19e71e4ef42e515bacf06bb0a383192043d5144885671e70be6e5a465",
+    "vgm_sha256": "a9a5d696eceac80948cd0312ce34498c6b130c4a9d545f7ce149befa9580dfdd"
+  },
+  "A3": {
+    "id": 163,
+    "diagnostic_only": false,
+    "ticks": 69,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 50715,
+    "header": {
+      "header_rom": 57154,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 88,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 1,
+      "streams": [
+        {
+          "latch": "0xe0",
+          "stream_cpu": 40780,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 128
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF60": 49
+    },
+    "sanity": {
+      "frames": 50715,
+      "stereo_channels_identical": true,
+      "peak": 8192,
+      "clipped_frames": 0,
+      "headroom_db": 12.04,
+      "rms": 0.12508,
+      "dc_offset": -0.022389,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 15435,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 0,
+      "median_abs_cents": null,
+      "p95_abs_cents": null,
+      "max_abs_cents": null,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice2": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice3": {
+        "expected_audible_ticks": 48,
+        "measured_audible_ticks": 47,
+        "mismatched_ticks": 1,
+        "first_mismatch_ticks": [
+          1
+        ]
+      }
+    },
+    "noise": {
+      "samples": 35280,
+      "rms_lsb": 4913.910404648145,
+      "zero_crossing_rate": 0.015788429377249922,
+      "spectral_flatness": 0.01830078937758032
+    },
+    "raw_reconstruction_max_lsb": 0,
+    "residual_rms_lsb": 0.0,
+    "tone0_residual_when_original_tone0_silent": false,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "f88f9514b34718a53e632da4904f44a86a3cbd5c4936e3ccc701d76b85d8162f",
+    "vgm_sha256": "85ba2d359cdcd301972631233f86cf5c0556dd59802603ae9e5449217bb5c669"
+  },
+  "AC": {
+    "id": 172,
+    "diagnostic_only": false,
+    "ticks": 74,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 54390,
+    "header": {
+      "header_rom": 57509,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 80,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 2,
+      "streams": [
+        {
+          "latch": "0xa0",
+          "stream_cpu": 41141,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 128
+        },
+        {
+          "latch": "0xe0",
+          "stream_cpu": 41155,
+          "transpose": 0,
+          "volume": 3,
+          "initial_flags": 136
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF60": 49,
+      "DF00": 54
+    },
+    "sanity": {
+      "frames": 54390,
+      "stereo_channels_identical": true,
+      "peak": 12288,
+      "clipped_frames": 0,
+      "headroom_db": 8.52,
+      "rms": 0.21011,
+      "dc_offset": 0.000203,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 15434,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 22,
+      "median_abs_cents": 5.758,
+      "p95_abs_cents": 11.705,
+      "max_abs_cents": 12.238,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 22,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 53,
+        "measured_audible_ticks": 53,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice2": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice3": {
+        "expected_audible_ticks": 45,
+        "measured_audible_ticks": 45,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      }
+    },
+    "noise": {
+      "samples": 33072,
+      "rms_lsb": 3595.810350669425,
+      "zero_crossing_rate": 0.16364790904417767,
+      "spectral_flatness": 0.22155648508932274
+    },
+    "raw_reconstruction_max_lsb": 1,
+    "residual_rms_lsb": 0.09452759426920385,
+    "tone0_residual_when_original_tone0_silent": true,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "a6e78f1da2a69391722b9dc7050251bb4442d6615f49e1f71defa7cfcc1efc08",
+    "vgm_sha256": "cc8d651619dc372a6f35de9c2a064d2df0559bdbdaf1732cdaa318b5b575fa0b"
+  },
+  "B6": {
+    "id": 182,
+    "diagnostic_only": false,
+    "ticks": 47,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 34545,
+    "header": {
+      "header_rom": 57852,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 104,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 2,
+      "streams": [
+        {
+          "latch": "0xe0",
+          "stream_cpu": 41484,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 136
+        },
+        {
+          "latch": "0xa0",
+          "stream_cpu": 41501,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 128
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF60": 16,
+      "DF00": 27
+    },
+    "sanity": {
+      "frames": 34545,
+      "stereo_channels_identical": true,
+      "peak": 16384,
+      "clipped_frames": 0,
+      "headroom_db": 6.02,
+      "rms": 0.1454,
+      "dc_offset": -0.014812,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 15434,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 23,
+      "median_abs_cents": 3.298,
+      "p95_abs_cents": 3.683,
+      "max_abs_cents": 4.672,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 23,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 26,
+        "measured_audible_ticks": 26,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice2": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice3": {
+        "expected_audible_ticks": 15,
+        "measured_audible_ticks": 15,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      }
+    },
+    "noise": {
+      "samples": 11025,
+      "rms_lsb": 5960.833716733655,
+      "zero_crossing_rate": 0.07374818577648766,
+      "spectral_flatness": 0.018969867196942873
+    },
+    "raw_reconstruction_max_lsb": 3,
+    "residual_rms_lsb": 0.30129743086188376,
+    "tone0_residual_when_original_tone0_silent": true,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "a7498bd2fa0e9074aa04512468b9c5f6d0a12787d0dab05b512c5bb98ad83a92",
+    "vgm_sha256": "33c60768577ef702ddec264f62884e1f7a7bc0719e99626cf0d0e307e2e1db00"
+  },
+  "BA": {
+    "id": 186,
+    "diagnostic_only": false,
+    "ticks": 45,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 33075,
+    "header": {
+      "header_rom": 58011,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 72,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 2,
+      "streams": [
+        {
+          "latch": "0xa0",
+          "stream_cpu": 41643,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 128
+        },
+        {
+          "latch": "0xe0",
+          "stream_cpu": 41681,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 136
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF60": 5,
+      "DF00": 25
+    },
+    "sanity": {
+      "frames": 33075,
+      "stereo_channels_identical": true,
+      "peak": 16384,
+      "clipped_frames": 0,
+      "headroom_db": 6.02,
+      "rms": 0.10204,
+      "dc_offset": -0.002677,
+      "leading_silent_frames": 27,
+      "trailing_silent_frames": 16904,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 16,
+      "median_abs_cents": 0.454,
+      "p95_abs_cents": 2.03,
+      "max_abs_cents": 2.063,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 16,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 16,
+        "measured_audible_ticks": 16,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice2": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice3": {
+        "expected_audible_ticks": 4,
+        "measured_audible_ticks": 4,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      }
+    },
+    "noise": {
+      "samples": 2941,
+      "rms_lsb": 5539.54074760008,
+      "zero_crossing_rate": 0.2445578231292517,
+      "spectral_flatness": 0.2043666799658953
+    },
+    "raw_reconstruction_max_lsb": 3,
+    "residual_rms_lsb": 0.42206704392686356,
+    "tone0_residual_when_original_tone0_silent": true,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "df295e091a5465dcd84b3cd14ad8032872f48ee675faacdddd91ba88c9023f68",
+    "vgm_sha256": "bcf0448dcffe2d7464d6551f2d2dbe4c7c8b458a81ea3b808b6e8c024caf1ba7"
+  },
+  "BC": {
+    "id": 188,
+    "diagnostic_only": false,
+    "ticks": 49,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 36015,
+    "header": {
+      "header_rom": 58125,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 96,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 1,
+      "streams": [
+        {
+          "latch": "0xc0",
+          "stream_cpu": 41751,
+          "transpose": 0,
+          "volume": 1,
+          "initial_flags": 136
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF30": 29
+    },
+    "sanity": {
+      "frames": 36015,
+      "stereo_channels_identical": true,
+      "peak": 6502,
+      "clipped_frames": 0,
+      "headroom_db": 14.05,
+      "rms": 0.06826,
+      "dc_offset": 0.000194,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 18375,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 20,
+      "median_abs_cents": 1.27,
+      "p95_abs_cents": 1.643,
+      "max_abs_cents": 1.66,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 20,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice2": {
+        "expected_audible_ticks": 20,
+        "measured_audible_ticks": 20,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice3": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      }
+    },
+    "noise": {
+      "samples": 0,
+      "rms_lsb": 0,
+      "zero_crossing_rate": 0,
+      "spectral_flatness": null
+    },
+    "raw_reconstruction_max_lsb": 0,
+    "residual_rms_lsb": 0.0,
+    "tone0_residual_when_original_tone0_silent": false,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "b457145184af970476cc4299420b31894f10fd85fa3dd71a0bf077aa512c73d9",
+    "vgm_sha256": "c422d224633aee95dcaffc131db8ea782fd2f0af996a0087474be0c6e14193a1"
+  },
+  "C0": {
+    "id": 192,
+    "diagnostic_only": false,
+    "ticks": 49,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 36015,
+    "header": {
+      "header_rom": 58257,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 64,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 1,
+      "streams": [
+        {
+          "latch": "0xc0",
+          "stream_cpu": 41883,
+          "transpose": 0,
+          "volume": 1,
+          "initial_flags": 136
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF30": 29
+    },
+    "sanity": {
+      "frames": 36015,
+      "stereo_channels_identical": true,
+      "peak": 6502,
+      "clipped_frames": 0,
+      "headroom_db": 14.05,
+      "rms": 0.06826,
+      "dc_offset": 0.000194,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 18375,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 20,
+      "median_abs_cents": 1.27,
+      "p95_abs_cents": 1.643,
+      "max_abs_cents": 1.66,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 20,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice2": {
+        "expected_audible_ticks": 20,
+        "measured_audible_ticks": 20,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      },
+      "voice3": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      }
+    },
+    "noise": {
+      "samples": 0,
+      "rms_lsb": 0,
+      "zero_crossing_rate": 0,
+      "spectral_flatness": null
+    },
+    "raw_reconstruction_max_lsb": 0,
+    "residual_rms_lsb": 0.0,
+    "tone0_residual_when_original_tone0_silent": false,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "b457145184af970476cc4299420b31894f10fd85fa3dd71a0bf077aa512c73d9",
+    "vgm_sha256": "c422d224633aee95dcaffc131db8ea782fd2f0af996a0087474be0c6e14193a1"
+  },
+  "B8": {
+    "id": 184,
+    "diagnostic_only": true,
+    "ticks": 159,
+    "rate": 44100,
+    "bits": 16,
+    "channels": 1,
+    "samples": 116865,
+    "header": {
+      "header_rom": 57932,
+      "envelope_table_cpu": 18941,
+      "priority_byte": 72,
+      "kind": "sfx",
+      "duration_multiplier": 1,
+      "stream_count": 1,
+      "streams": [
+        {
+          "latch": "0xe0",
+          "stream_cpu": 41558,
+          "transpose": 0,
+          "volume": 0,
+          "initial_flags": 136
+        }
+      ]
+    },
+    "release_ticks": {
+      "DF60": 139
+    },
+    "sanity": {
+      "frames": 116865,
+      "stereo_channels_identical": true,
+      "peak": 8192,
+      "clipped_frames": 0,
+      "headroom_db": 12.04,
+      "rms": 0.0952,
+      "dc_offset": -0.00356,
+      "leading_silent_frames": 0,
+      "trailing_silent_frames": 22050,
+      "non_silent": true
+    },
+    "pitch": {
+      "windows": 0,
+      "median_abs_cents": null,
+      "p95_abs_cents": null,
+      "max_abs_cents": null,
+      "windows_off_by_more_than_25_cents": 0,
+      "per_channel": {
+        "0": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "1": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        },
+        "2": {
+          "windows": 0,
+          "off": 0,
+          "first_off_tick": null
+        }
+      }
+    },
+    "envelope": {
+      "voice0": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice1": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice2": {
+        "expected_audible_ticks": 0,
+        "measured_audible_ticks": 0
+      },
+      "voice3": {
+        "expected_audible_ticks": 129,
+        "measured_audible_ticks": 129,
+        "mismatched_ticks": 0,
+        "first_mismatch_ticks": []
+      }
+    },
+    "noise": {
+      "samples": 94814,
+      "rms_lsb": 3463.3518350391932,
+      "zero_crossing_rate": 0.039424973368630885,
+      "spectral_flatness": 0.032728319086974794
+    },
+    "raw_reconstruction_max_lsb": 0,
+    "residual_rms_lsb": 0.0,
+    "tone0_residual_when_original_tone0_silent": false,
+    "experimental_four_voice_reconstruction_max_lsb": 0,
+    "deterministic": true,
+    "mix_sha256": "649a98dee14dbe5274ec660d1884cb14852610951d52bb28e8f754b6dc31b6ee",
+    "vgm_sha256": "11eb2902988f985f93a17bc1fdf933e0035c8184f4ac48959683525c3f18ef1d"
+  }
+}
