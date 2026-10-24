@@ -16,7 +16,7 @@ This is a **Git-tracked project handover**, not an automatic ChatGPT Memory stor
 
 ## HISTORICAL — pre-release private asset migration plan (superseded)
 
-## CURRENT — Chief-directed complete private POC repository policy (24 October 2026)
+## Historical policy — planned POC privatization and asset migration (superseded 24 October 2026)
 
 Chief explicitly overrides prior ROM-art/audio Git exclusions: **future private `SonicChaos_POC` must version all actual GameMaker source, images, audio and files required to clone/build/play without scattered E: restore archives.** As of Manager 24-Oct verification, POC is **still public**; the user will make it private and then check agent/connector access. **No excluded asset may be pushed before private status and access are confirmed.** Research stays publicly usable and must never acquire private art/audio/ROM. Once private, audit all registered nested sprite PNGs, future private audio, resource and build dependencies; amend `.gitignore`; appropriately use regular Git or size-verified LFS; verify all outputs by hashes, a **fresh clean clone and independent build/run without restoration from Chief's existing folders**. Inventory external ROM/regeneration inputs and obtain explicit inclusion/security disposition instead of silently omitting them. M2 reports 587 assets excluded from public Git, M3 A reports 669 restore inputs; figures are version-specific and need manifest reconciliation, not simple addition. Do not delete/move any Chief local data until separately verified off-PC backup and remote clone, followed by explicit Chief clearance. This supersedes former rule excluding all derived assets permanently and precedes future M3/M4 closure; keep releases consolidated and costs down.
 

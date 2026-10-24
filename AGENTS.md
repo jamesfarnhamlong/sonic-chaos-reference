@@ -21,7 +21,7 @@
 
 **The block below records the former transition plan; its statements saying the POC is public or migration is on hold are SUPERSEDED by the current accepted private M4 release above.** Read it only for provenance.
 
-## CURRENT — Chief-directed complete private POC repository policy (24 October 2026)
+## Historical policy — planned POC privatization and asset migration (superseded 24 October 2026)
 
 **Binding user instruction, superseding prior automatic art/audio exclusion rules:** Chief explicitly wants the GameMaker `SonicChaos_POC` GitHub repository to become **private** and contain **all assets and source required to clone, compile, and play the accepted game**, including the actual sprite PNGs, sound files and their GameMaker metadata. The earlier persistent private-resource restoration model was **not chosen by Chief** and must no longer be treated as a mandatory project rule. **Research `sonic-chaos-reference` stays public**: documentation, numeric ROM evidence, safe scripts/metadata/hashes only; no ROM, artwork, audio or private captures.
 

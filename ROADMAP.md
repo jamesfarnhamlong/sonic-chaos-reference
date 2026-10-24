@@ -24,7 +24,7 @@ See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the 
 
 ## HISTORICAL — pre-release private asset migration plan (superseded)
 
-## CURRENT — Chief-directed complete private POC repository policy (24 October 2026)
+## Historical policy — planned POC privatization and asset migration (superseded 24 October 2026)
 
 **NEW enabling gate before any release containing private game assets:** Chief personally changes `jamesfarnhamlong/SonicChaos_POC` from **currently public** to **private**, then confirms permitted cloud/connector access. Do not add ROM-derived images/audio or ROM while POC is public. Public `sonic-chaos-reference` remains research-only (safe evidence/hashes/scripts, not copyrighted binaries).
 
