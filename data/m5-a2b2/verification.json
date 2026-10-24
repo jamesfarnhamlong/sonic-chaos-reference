@@ -1,0 +1,53 @@
+{
+  "parent": "ae294d202d3165d2026373f9164d518cb40e489f",
+  "management": "cb1266f77b802dc44978c1144efd67daf395edbe",
+  "branch": "research/m5-a2b2-remaining-finite",
+  "changed_files": [
+    "data/m5-a2b2/coverage.json",
+    "data/m5-a2b2/emission.json",
+    "data/m5-a2b2/facts.json",
+    "data/m5-a2b2/isolation.json",
+    "data/m5-a2b2/pcm.json",
+    "data/m5-a2b2/private-package.json",
+    "docs/m5-a2b2-handover.md",
+    "tests/test_m5a2b2.py",
+    "tools/m5a2b2/evidence.py",
+    "tools/m5a2b2/isolation.py",
+    "tools/m5a2b2/package.py",
+    "tools/m5a2b2/pcm.py",
+    "tools/m5a2b2/proof.py",
+    "data/m5-a2b2/verification.json"
+  ],
+  "all_files_added_public_safe_text": true,
+  "accepted_decoder_SCSP_A1L_unchanged": true,
+  "tests": {
+    "public_tests": 41,
+    "status": "PASS",
+    "fresh_exact_scenarios": 46,
+    "ticks": 24847,
+    "ordered_bytes": 117677,
+    "new_PCM_cases": 13,
+    "legacy_PCM_exact_cases": 33,
+    "isolated_finite_reloads": 6,
+    "source_compilation": "PASS",
+    "staged_whitespace": "PASS"
+  },
+  "archive_safe_source_matches": 30,
+  "source_sha256_LF": {
+    "data/m5-a2b2/coverage.json": "5449ecf0add7750270c9d84459e46fe9e5a3d9a8dce1c4700c1b9a1cc85cc3d4",
+    "data/m5-a2b2/emission.json": "6360c9ad356670d15b737732e69b6ce92a419dd70c0612de31dcfd46b7bf66a5",
+    "data/m5-a2b2/facts.json": "e7402f0b38bc9654316acf4526b3a8b3756d86e131e92ebacaf67c63ec225e56",
+    "data/m5-a2b2/isolation.json": "1aff88f44910097187e86d1f95075ee5210e983816d4052e26eb42a52c2fb232",
+    "data/m5-a2b2/pcm.json": "caa86f33b3a5934cdf3519ef2e7c71a54bae1098ca0835d93743bba84e2cbf24",
+    "data/m5-a2b2/private-package.json": "5fe9992e80de6b53228fd27e8b4ecd842d1544eb633edd146b11511f384b8171",
+    "docs/m5-a2b2-handover.md": "547407953e2af12e80909cd057bf8f6b4b88fe85ccf326c95915bc9aeb94bf7d",
+    "tests/test_m5a2b2.py": "12bd877c28750b35c11c2a1a4548f31d9f727c1385372cbba3639209b0c6e10b",
+    "tools/m5a2b2/evidence.py": "9e01db49cf5c0e53c3b3eeb1db39d0e2c406afb5e79cbf82e77a147b94787ebc",
+    "tools/m5a2b2/isolation.py": "41ce832f633786e00a786c7ac7e498695bdd1ba37c3ce94e6efc0a8e98a57062",
+    "tools/m5a2b2/package.py": "16f677244ebb1d0d8a7a38aaee7168a5d298cbd903fad3a3d548633bd80efee8",
+    "tools/m5a2b2/pcm.py": "63205016c1cd48499d554c89e854b7c576662dbaaf3e45fd47371c1e6a3ead57",
+    "tools/m5a2b2/proof.py": "13dadcb373fb4b6d1289e820a810621af9f693ceb1454aff7d8a3ec77dcd211f"
+  },
+  "private_archive_SHA256": "38a3a4f99c7733b2a114d9f3f7bbfb2a591ba03fde118767f0f3d0f2c9dd1c76",
+  "preservation": "eight earlier proof archives, standalone A2/B1 banks, 47 M4 payloads, clean accepted POC and A1P source/native/compiled VM verified read-only"
+}
