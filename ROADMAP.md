@@ -1,8 +1,28 @@
 # Sonic Chaos — ROADMAP.md
 
-**Canonical project roadmap | 23 October 2026 | Manager-san #6**
+**Canonical project roadmap | 24 October 2026 | Manager-san #6**
 
 See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
+
+## CURRENT MANAGER HANDOVER — M3-A + M4 RELEASED (24 October 2026)
+
+**M3-A / M4 released 24 October:** Windows-accepted private PC baseline is [`poc/m4-authentic-six-id-audio@11bff34356d5f5d979218896dc95fdc4bb265eae`](https://github.com/jamesfarnhamlong/SonicChaos_POC/commit/11bff34356d5f5d979218896dc95fdc4bb265eae), direct child of [`poc/m3a-original-frontend@6e9f3cabdd156b30bc2df42bbc663aaafc0c19c6`](https://github.com/jamesfarnhamlong/SonicChaos_POC/commit/6e9f3cabdd156b30bc2df42bbc663aaafc0c19c6), direct child of M2 `d6dd1eae`. Manager independently verified private repository access, branch SHAs, two-commit ancestry; Designer reports post-push fresh remote clone with asset hashes, native Windows VM compilation and launch/normal exit passing. Chief passed all 7/7 Package C tests, including F4 loops and finite99, F2 Sound Test, pause tempo, Sonic/Tails Motobug spring `A6`, clean shutdown; earlier M3 visual tests carried forward.
+
+**Milestone status (live):**
+- **M2 CLOSED**: both characters, 18 acts, five Emerald stages and respective endings.
+- **M3-A CLOSED**: original title, character-choice presentation, Xbox A confirmation as intentional PC deviation; authentic attract demos **NOT delivered**, optional M3-B future research/build once real recordings recovered.
+- **M4 CLOSED**: six-ID audio pilot `$90/$99/$82/$81/$BF/$A6` with complete opening phase bank, proper loop ranges and SFX arbitration, single-owner pause/shutdown correction, F4 fixture and working F2 menus. Scoped acceptance, **not** full original sound coverage.
+- **Private asset preservation CLOSED for current M4**: 669 reconciled formerly excluded art/WAV files, 11 runtime PCM +1 hash manifest now in Git; 1,312 resources/912 sprites/26 sound resources/2,344 composites+layers each. No LFS/restoration folder needed to run fresh clone. ROM and renderer/regeneration tooling remain external, inventoried. Public Research contains no audio/ROM/art.
+- **M5 NEXT (not yet commissioned)**: plan complete ~70-ID original music/SFX catalogue, authenticity/driver behavior across zones and boss/endings, fully populated developer Sound Test with verified names, ID and one-to-one audibility; preserve M4 accepted mix and lifetime. Separate *research/specification gate* before implementation, then one consolidated Windows listening session. No invented sound assets.
+- **M6 DEFERRED**: AQZ palette and reversal, GPZ3 horizontal lines, AQZ1 crumble side contact, physics/projection fidelity issues, frame-$5E safety exception, inherited raw verification differences.
+- **M7 OPTIONAL**: PC-specific QoL and release polish, if requested.
+- **M8 PARKED**: Vita port, reproducible ROM decomposition/disassembly and SMS/GG slowdown mitigation as separate research tasks; no automatic work.
+
+**Still required for long-term preservation:** chief-approved independent/off-PC backup of full private repo, ROM/regeneration inputs and accepted release ZIP/receipt; test restore before any cleaning of historical hundreds-GB E: folders. GitHub does not replace backup. `SonicChaosPC` rename suggested by Chief, **not yet authorised or performed**. Never auto-merge Research audio topic branches into `main` or publish ROM-derived art/audio to public Research. Repository must remain private absent Chief's explicit visibility change.
+
+**Relevant release docs:** [POC M3-A/M4 accepted release](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/11bff34356d5f5d979218896dc95fdc4bb265eae/docs/m3a-m4-release.md), [M4 C runtime root-cause](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/11bff34356d5f5d979218896dc95fdc4bb265eae/docs/m4c-runtime-stabilization.md). External detailed recovery report remains in Chief's Windows release directory, not independently opened.
+
+## HISTORICAL — pre-release private asset migration plan (superseded)
 
 ## CURRENT — Chief-directed complete private POC repository policy (24 October 2026)
 
@@ -12,13 +32,13 @@ See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the 
 
 **Backup condition:** preserve all existing local project files/archives; do not authorize deleting/moving them until an **independent off-PC copy**, SHA-verified clone and recovery test exist and Chief approves cleanup. GitHub is not the only backup. User requests economical consolidated testing and one release per substantial scope.
 
-## Current game baseline
+## Historical M2 game baseline (superseded by M4)
 
 **CLOSED for scoped Windows acceptance:** the 348×196 Sonic 18-act campaign, all five Special Stages, Emerald good ending/credits/title, authentic opening cinematic, campaign/death/Continue/score flow, Q2 and Q3 accepted world/camera/fragments.
 
 Current accepted POC: [`poc/m2-authentic-playable-tails@d6dd1eae`](https://github.com/jamesfarnhamlong/SonicChaos_POC/commit/d6dd1eae96ec0f7496225e3f27438e1690f6aa2a), a direct child of historical Q3 `7476affc`. M2 is committed and scoped-accepted; no outstanding private M2 candidate awaits release.
 
-## CURRENT ROADMAP CHECKPOINT — M2 CLOSED (23 October 2026)
+## HISTORICAL ROADMAP CHECKPOINT — M2 CLOSED (23 October 2026)
 
 **Accepted implementation baseline:** [`poc/m2-authentic-playable-tails@d6dd1eae96ec0f7496225e3f27438e1690f6aa2a`](https://github.com/jamesfarnhamlong/SonicChaos_POC/commit/d6dd1eae96ec0f7496225e3f27438e1690f6aa2a), independently verified branch head and one direct-child commit from Q3 `7476affc`. Both full campaigns/ending routes have Chief's scoped Windows acceptance; G startup success modal removal also Chief-tested. M2 source-only private FINAL ZIP is reportedly byte-identical to G, SHA-256 `3da9e239a4c9b117710cbfd0c4157c01340bbc836004bb1df20b45625b8c264a`; 1,305 resources and 587 private assets (excluded from Git) reported; fresh restoration 587→0. No further M2 campaign or native recompilation is required for closure.
 

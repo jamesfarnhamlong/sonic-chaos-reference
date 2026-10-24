@@ -1,7 +1,25 @@
 # Sonic Chaos — AGENTS.md
 
-**Canonical coordination instructions | Manager-san #6 | 23 October 2026**
+**Canonical coordination instructions | Manager-san #6 | 24 October 2026**
 **Authority:** this file on Research repository `main`, together with [MEMORY.md](MEMORY.md), [ROADMAP.md](ROADMAP.md), and the exact research/POC commits named below. This is a management-document migration, **not** a GameMaker release or promotion of topic-branch research into Research `main`.
+
+## CURRENT MANAGER HANDOVER — M3-A + M4 RELEASED (24 October 2026)
+
+**Latest accepted playable PC baseline (independently checked in GitHub):** private `jamesfarnhamlong/SonicChaos_POC` branch `poc/m4-authentic-six-id-audio` at **`11bff34356d5f5d979218896dc95fdc4bb265eae`**; direct parent **M3-A** `poc/m3a-original-frontend@6e9f3cabdd156b30bc2df42bbc663aaafc0c19c6`; direct M3-A parent **M2** `poc/m2-authentic-playable-tails@d6dd1eae96ec0f7496225e3f27438e1690f6aa2a`. Branch heads, parent SHAs and private visibility were verified by Manager in authenticated GitHub on 24 October. Research `main` remains **PUBLIC** and separate. Do not silently switch back to earlier M2 or the unrelated default POC `main`; M4 is currently the accepted implementation HEAD.
+
+**Windows acceptance:** Chief passed all 7/7 Package C focused tests for launch, stable pause/resume/room changes, Sonic/Tails Motobug spring SFX, F4 music loops, finite title99, F2 Level Select/Sound Test access and clean exit. Earlier M3-A original title/choice/start/opening tests and ordinary THZ/rings/springs passes carry forward. Candidate A failed compilation on `[$81,...]` lexical collision; B corrected that syntax but failed native runtime because pause duplicated a deactivated persistent audio owner and shutdown mishandled subsequent cleanup; C resolved the issues. Do not reinterpret superseded A/B candidates as accepted. Accepted immutable C source ZIP `SonicChaos_M3A_M4_20261024_C_PRIVATE.zip`, Designer-reported SHA-256 `e1e4fb39c9587599816963cdcf2cca1c3a489308da759b553ab27a607ace3603`.
+
+**Accepted features / scope:** M3-A authentic title art and animated character choice with intentionally adapted **Xbox A confirmation**, original opening and visual transitions; the title timeout currently returns to opening as a temporary fallback. M4 original audio six-ID pilot: `$90` opening, `$99` finite title, `$82` character choice, `$81` THZ music, `$BF` rings, `$A6` springs including Motobug top-bounce; original-driver-informed stem/mix, skip fades, loop cuts, effects arbitration, persistent single owner, pause and safe shutdown. **Full original attract demonstrations are NOT implemented**; M3-A accepted does not mean full M3. **M5 complete ~70-ID audio catalogue and fully populated Sound Test remain OPEN**, not bugs blocking M4 acceptance. Device-specific sound acceptance is Chief's observed results, not a claim of bit-identical original console output.
+
+**Private self-contained Git migration complete:** Chief changed POC GitHub repo private and Manager verified ongoing connector access. M3-A committed the reconciled **669 previously excluded private files** (587 M2 +82 M3, not additive to 669) and removed obsolete ignores. M4 adds **11 PCM payloads and one included manifest**, alongside authenticated GameMaker source. Published M4 release docs report **1,312 resources, 912 sprites, 2,344 composite PNGs, 2,344 nested-layer PNGs, 26 sound resources, 12 included files**, about 68.8 MB PCM, native Git, **no Git LFS requirement**. Designer reports independent post-push private fresh-clone/hash/native-VM-build/launch/exit verification, clean final worktrees. Manager directly checked Git refs/commit parents and public published text; Manager cannot read Chief's local `E:` final release report or reproduce its Windows run. Clone/open source directly from the private M4 ref, not from the user’s old E: restoration archive. No original ROM, renderer toolchain or private asset restoration required to compile/play; regeneration-only inputs remain separate and inventoried, not silently deleted. Never commit ROM, secrets or derived art/audio into PUBLIC Research.
+
+**No deletion/rename gate yet:** Preserve all Chief's local ZIPs, ROMs, worktrees and candidate archives until separately verified independent/off-PC backup and Chief's explicit permission. GitHub alone is not a backup. Possible future repository rename **`SonicChaosPC`** is a user suggestion, **not yet executed**; check/repair all remotes, agent instructions and links after any authorised rename. No further implementation commissioned by these management documents.
+
+**Next planning (not an automatic order):** M5 original full audio library and sound test; separately assess M3 attract demo recovery if original control/input trace is available; M6 deferred AQZ palette/reversal, GPZ3 lines, crumble contact/projection, frame-$5E safety deviation, inherited raw tester findings. M7 optional PC polish, M8 separate Vita/decomp/SMS/GG speed patch workstreams. Preserve economical targeted tests; no 18-act replay or large recompilation without a concrete reason.
+
+## HISTORICAL — Chief-directed asset policy before completion (24 October 2026)
+
+**The block below records the former transition plan; its statements saying the POC is public or migration is on hold are SUPERSEDED by the current accepted private M4 release above.** Read it only for provenance.
 
 ## CURRENT — Chief-directed complete private POC repository policy (24 October 2026)
 
@@ -16,13 +34,13 @@
 ## Read first: authority and synchronization
 
 1. Read `AGENTS.md`, `MEMORY.md`, `ROADMAP.md` **from this repository's `main` branch**, even when your own worktree predates their addition. Read the linked scoped Research contracts and accepted POC closure next.
-2. The accepted **GameMaker implementation baseline is `poc/m2-authentic-playable-tails@d6dd1eae96ec0f7496225e3f27438e1690f6aa2a`** (Q3 `7476affc` is its accepted direct parent). Historical Research `main` and topic branches are not changed/merged by editing management documents.
+2. The latest accepted **GameMaker implementation baseline is `poc/m4-authentic-six-id-audio@11bff34356d5f5d979218896dc95fdc4bb265eae`**, through exact parent M3-A `6e9f3cab` and M2 `d6dd1eae`. Historical Research `main` and topic branches are not changed/merged by editing management documents.
 3. When asked to check a hash, distinguish **SHA-256 of raw file bytes** from **Git commit SHA**, **Git blob SHA**, and a **historical candidate hash**. Renaming `AGENTS(...).md` to `AGENTS.md` alone changes none of its bytes; line endings, encoding or content updates do. Record source file, version, exact expected digest and bytes before alleging mismatch. Do not treat a historical archived SHA as the current expected SHA.
 4. The 22-Oct uploaded Windows coordination file described itself as “CANDIDATE / NOT INSTALLED,” even though it was supplied as the user's then-current root copy. **That internal header was stale.** It is preserved separately as historical evidence, not installed here verbatim as active instructions.
 5. Cloud agents **do not have Chief's Windows E: drive**, ignored private ROM/art/audio, local worktrees or archives unless made available in their environment. Do not claim to have inspected inaccessible paths. GitHub source, public numeric evidence and uploaded private inputs have different authority.
 6. These documents may be updated by Manager with Chief's authorisation. Agents assigned runtime or research work must **not** independently rewrite canonical management files or promote topic branches. New accepted milestones should update root AGENTS/MEMORY/ROADMAP in a single documented management checkpoint.
 
-## CURRENT ACCEPTED BASELINE — M2 CLOSED (23 October 2026)
+## HISTORICAL ACCEPTED BASELINE — M2 CLOSED (23 October 2026; superseded by M4)
 
 **M2 Authentic Playable Tails is CLOSED under Chief-delegated scoped acceptance.** Accepted POC branch `poc/m2-authentic-playable-tails` at [`d6dd1eae96ec0f7496225e3f27438e1690f6aa2a`](https://github.com/jamesfarnhamlong/SonicChaos_POC/commit/d6dd1eae96ec0f7496225e3f27438e1690f6aa2a), **one direct child of accepted Q3** `7476affc6ed7626dabf69b446cdab0c9c3d7492e`. Manager independently checked GitHub's parent and branch ref; Designer reports pushed remote 0/0/clean. **This M2 commit is now the implementation baseline for subsequent M3/M4/M5 work.** Do not continue building on Q3 or private Package E/F/G worktrees as if M2 were uncommitted.
 
