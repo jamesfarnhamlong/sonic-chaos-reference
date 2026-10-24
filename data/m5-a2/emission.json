@@ -1,0 +1,394 @@
+{
+  "cases": {
+    "finite-88": {
+      "ticks": 240,
+      "compared_ticks": 240,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 898,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 12,
+      "opcodes": {
+        "F2": 4,
+        "F5": 3
+      },
+      "decoder_median_ns": 5000,
+      "decoder_max_ns": 45600
+    },
+    "finite-99": {
+      "ticks": 1220,
+      "compared_ticks": 1220,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 6436,
+      "control_flow_transfers": 25,
+      "max_stream_ops_per_tick": 20,
+      "opcodes": {
+        "E0": 11,
+        "E6": 4,
+        "F0": 2,
+        "F2": 4,
+        "F5": 1,
+        "F7": 32,
+        "FB": 2
+      },
+      "decoder_median_ns": 6500,
+      "decoder_max_ns": 61200
+    },
+    "THZ-loop": {
+      "ticks": 4200,
+      "compared_ticks": 4200,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 26043,
+      "control_flow_transfers": 60,
+      "max_stream_ops_per_tick": 19,
+      "opcodes": {
+        "E0": 2,
+        "E7": 5,
+        "F0": 12,
+        "F5": 32,
+        "F6": 4,
+        "F7": 68
+      },
+      "decoder_median_ns": 5600,
+      "decoder_max_ns": 551600
+    },
+    "multi-slot": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 1166,
+      "control_flow_transfers": 1,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 3,
+        "E6": 5,
+        "F0": 3,
+        "F2": 3,
+        "F3": 1,
+        "F5": 5,
+        "F7": 2,
+        "FB": 2
+      },
+      "decoder_median_ns": 6100,
+      "decoder_max_ns": 65800
+    },
+    "AC-replacement": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 1237,
+      "control_flow_transfers": 1,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 3,
+        "E6": 5,
+        "F0": 4,
+        "F2": 3,
+        "F3": 1,
+        "F5": 5,
+        "F7": 2
+      },
+      "decoder_median_ns": 6300,
+      "decoder_max_ns": 297000
+    },
+    "A3-BC": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 1095,
+      "control_flow_transfers": 8,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 3,
+        "E6": 7,
+        "F0": 3,
+        "F2": 2,
+        "F3": 1,
+        "F5": 5,
+        "F7": 5,
+        "F8": 5,
+        "F9": 5
+      },
+      "decoder_median_ns": 5800,
+      "decoder_max_ns": 51600
+    },
+    "BC-A3-blocked": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 1128,
+      "control_flow_transfers": 1,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 3,
+        "E6": 2,
+        "F0": 3,
+        "F2": 1,
+        "F5": 4,
+        "F7": 2
+      },
+      "decoder_median_ns": 5700,
+      "decoder_max_ns": 44400
+    },
+    "finite-fade": {
+      "ticks": 100,
+      "compared_ticks": 100,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 368,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 2,
+        "F0": 3,
+        "F3": 1,
+        "F5": 2
+      },
+      "decoder_median_ns": 5400,
+      "decoder_max_ns": 49100
+    },
+    "fixed-hold": {
+      "ticks": 210,
+      "compared_ticks": 210,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 1065,
+      "control_flow_transfers": 2,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 4,
+        "E6": 2,
+        "F0": 4,
+        "F2": 2,
+        "F3": 1,
+        "F5": 4,
+        "F7": 3
+      },
+      "decoder_median_ns": 5400,
+      "decoder_max_ns": 204300
+    },
+    "finite88-fade-recovery": {
+      "ticks": 90,
+      "compared_ticks": 90,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 332,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 16,
+      "opcodes": {
+        "E0": 2,
+        "F0": 3,
+        "F3": 1,
+        "F5": 4
+      },
+      "decoder_median_ns": 5200,
+      "decoder_max_ns": 46100
+    },
+    "music-interruption": {
+      "ticks": 500,
+      "compared_ticks": 500,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 2390,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 2,
+        "F0": 2,
+        "F2": 4,
+        "F5": 11
+      },
+      "decoder_median_ns": 5300,
+      "decoder_max_ns": 298000
+    },
+    "reset-then-fresh": {
+      "ticks": 90,
+      "compared_ticks": 90,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 97,
+      "control_flow_transfers": 7,
+      "max_stream_ops_per_tick": 7,
+      "opcodes": {
+        "E0": 1,
+        "E6": 5,
+        "F0": 1,
+        "F2": 1,
+        "F3": 2,
+        "F5": 1,
+        "F7": 3,
+        "F8": 5,
+        "F9": 5
+      },
+      "decoder_median_ns": 1900,
+      "decoder_max_ns": 36700
+    },
+    "priority-blocked-reset": {
+      "ticks": 80,
+      "compared_ticks": 80,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 82,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 12,
+      "opcodes": {
+        "E0": 2,
+        "F0": 1,
+        "F2": 2,
+        "F3": 1,
+        "FB": 2
+      },
+      "decoder_median_ns": 700,
+      "decoder_max_ns": 42300
+    },
+    "three-mailboxes": {
+      "ticks": 100,
+      "compared_ticks": 100,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 580,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 13,
+      "opcodes": {
+        "E0": 3,
+        "F0": 2,
+        "F2": 2,
+        "F3": 1,
+        "F5": 4,
+        "FB": 2
+      },
+      "decoder_median_ns": 5800,
+      "decoder_max_ns": 46500
+    },
+    "solo-AC": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 308,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 12,
+      "opcodes": {
+        "E0": 2,
+        "F0": 2,
+        "F2": 2,
+        "F3": 1
+      },
+      "decoder_median_ns": 700,
+      "decoder_max_ns": 42100
+    },
+    "solo-B6": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 82,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 12,
+      "opcodes": {
+        "E0": 2,
+        "F0": 1,
+        "F2": 2,
+        "F3": 1,
+        "FB": 2
+      },
+      "decoder_median_ns": 700,
+      "decoder_max_ns": 38400
+    },
+    "solo-A3": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 84,
+      "control_flow_transfers": 7,
+      "max_stream_ops_per_tick": 7,
+      "opcodes": {
+        "E6": 5,
+        "F2": 1,
+        "F3": 1,
+        "F5": 1,
+        "F7": 3,
+        "F8": 5,
+        "F9": 5
+      },
+      "decoder_median_ns": 700,
+      "decoder_max_ns": 22800
+    },
+    "solo-BC": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 86,
+      "control_flow_transfers": 1,
+      "max_stream_ops_per_tick": 9,
+      "opcodes": {
+        "E0": 2,
+        "E6": 2,
+        "F0": 2,
+        "F2": 1,
+        "F7": 2
+      },
+      "decoder_median_ns": 800,
+      "decoder_max_ns": 29100
+    },
+    "solo-B8": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 141,
+      "control_flow_transfers": 0,
+      "max_stream_ops_per_tick": 7,
+      "opcodes": {
+        "E0": 1,
+        "F0": 1,
+        "F2": 1,
+        "F3": 1
+      },
+      "decoder_median_ns": 1500,
+      "decoder_max_ns": 314500
+    },
+    "solo-A0": {
+      "ticks": 180,
+      "compared_ticks": 180,
+      "failures": [],
+      "status": "PASS",
+      "ordered_bytes": 137,
+      "control_flow_transfers": 1,
+      "max_stream_ops_per_tick": 6,
+      "opcodes": {
+        "E6": 5,
+        "F0": 1,
+        "F2": 1,
+        "F5": 1,
+        "F7": 2
+      },
+      "decoder_median_ns": 700,
+      "decoder_max_ns": 27700
+    }
+  },
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "fixture_sha256": "5a982cb1906ab99ab0610339d850d68111600ce46eeaef2940cc0c8fbe051035",
+  "json_bytes": 31742,
+  "zlib_json_bytes": 9099,
+  "extracted_data_bytes": 2469,
+  "candidate_uses_oracle": false,
+  "packed_bytes": 4285,
+  "packed_sha256": "c0118830a4f7779b8d53d4b6cefd129487633689532e52500cddcd6f4dddfaf1",
+  "source_sha256": {
+    "decoder.py": "262d685eca4565540b43705762ff776e5c714fc9f363d03e75fec95237c137e6",
+    "bank.py": "3aa79233d1e11949bd11df3b0136d3d0901487dd897f885f4d20172ae5702619",
+    "proof.py": "7f10e30394d889aa00885b48f10d7b89d43f9e8faada81961f38b69f907dd0d8"
+  },
+  "source_hash_policy": "UTF-8 source, CRLF normalized to LF for Git checkout reproducibility",
+  "segment_count": 33,
+  "record_json_bytes": 12421
+}

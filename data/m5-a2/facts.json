@@ -1,0 +1,63 @@
+{
+  "loop": {
+    "first_tick": 1093,
+    "repeat_tick": 3781,
+    "period_ticks": 2688,
+    "full_channel_and_global_state_repeated": true,
+    "original_state_repeated": true,
+    "subsequent_continuation_ticks": 419,
+    "subsequent_emission_identical": true,
+    "original_control_flow_transfers_match": true
+  },
+  "finite_inactive_ticks": {
+    "88": 212,
+    "99": 1189,
+    "AC": 54,
+    "B6": 27,
+    "A3": 49,
+    "BC": 29,
+    "B8": 139,
+    "A0": 46
+  },
+  "priority_blocked_controls": [
+    "BC then A3",
+    "B6 then F8"
+  ],
+  "music_tone1_suppressed_ticks": 26,
+  "music_tone1_read_recovered_tick": 61,
+  "finite_fade_resumed_noise_ticks": [
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+  ],
+  "physical_inhibited_noise_hold_ticks": 104,
+  "physical_noise_hold_interval": [
+    63,
+    166
+  ],
+  "wrong_pitch_data_detected_tick": 1,
+  "missing_terminal_output_detected_tick": 135,
+  "performance": {
+    "measured_ticks": 12600,
+    "median_ns": 5400.0,
+    "p99_ns": 19800,
+    "max_ns": 85900,
+    "python_tracemalloc_current_bytes": 195131,
+    "python_tracemalloc_peak_bytes": 223481,
+    "channel_storage_bytes": 336,
+    "A1L_native_state_bytes": 296,
+    "bank_and_decoder_allocation_scope": "Python decoded sparse bank plus decoder state, bounded diagnostic transfer log; excludes PCM/trace arrays and interpreter base",
+    "GameMaker_decoder_performance": "NOT MEASURED"
+  },
+  "source": {
+    "parent": "ad6aa301a7cc37a75f36a3d15c4804bcaa37b02b",
+    "management": "ec0c979556404d000487dc1f7a44651cddcbf121",
+    "ROM": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+    "private_program_sha256": "c0118830a4f7779b8d53d4b6cefd129487633689532e52500cddcd6f4dddfaf1"
+  }
+}

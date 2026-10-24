@@ -1,0 +1,310 @@
+{
+  "cases": {
+    "finite-88": {
+      "ticks": 240,
+      "samples": 176400,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.17654404678015834,
+        "unequal_samples": 4813
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.009253399912267923,
+      "pcm_sha256": "b7764491f42fbb7d19509d0019341b72a1515f08c56bdad2cae132aae9431879",
+      "reference_pcm_sha256": "e4cefbc04d27717e48b6435572a42585ece7d1e32d71352ed38dab3931598cb6",
+      "within_previously_approved_5_lsb": true
+    },
+    "finite-99": {
+      "ticks": 1220,
+      "samples": 896700,
+      "versus_original_MAME": {
+        "max_lsb": 4,
+        "rms_lsb": 0.23430551505214703,
+        "unequal_samples": 43294
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.042183400015346706,
+      "pcm_sha256": "8f79f8a33a6d071469b476dcda51cdc27a90220b533c5f5c17843e1068a1b2b0",
+      "reference_pcm_sha256": "9017d17e2b180bb71b178be47cf2afdf28d3486088e85f1f3cc43f312721710f",
+      "within_previously_approved_5_lsb": true
+    },
+    "THZ-loop": {
+      "ticks": 4200,
+      "samples": 3087000,
+      "versus_original_MAME": {
+        "max_lsb": 4,
+        "rms_lsb": 0.23295193040377832,
+        "unequal_samples": 138666
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.149394900072366,
+      "pcm_sha256": "627fcfda6d148e8b637ddad21509cd06d8bceff3e9d3f7eb1162e1a09b2aa149",
+      "reference_pcm_sha256": "12bb9c75547254a564a3f10f048a6cbac56e31493ccda70bcf61e18f560288fd",
+      "within_previously_approved_5_lsb": true
+    },
+    "multi-slot": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.23950377018636784,
+        "unequal_samples": 6072
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.008177499985322356,
+      "pcm_sha256": "7ddcc597c0e90b607fa34188242d885fb76ae930301c6f2c588bbad0e9b9062d",
+      "reference_pcm_sha256": "2bb0b2ddb31d78c51001a874d1f1573745dabbee573f1cd16639c4218f4842ae",
+      "within_previously_approved_5_lsb": true
+    },
+    "AC-replacement": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 4,
+        "rms_lsb": 0.42350622284222955,
+        "unequal_samples": 11219
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.0069339999463409185,
+      "pcm_sha256": "6cedfb3126708e54050f16f2feb86200b85954de7f8e145b37f8642dabece3c5",
+      "reference_pcm_sha256": "9729646fafa23a24f74e2d549d571875becdfb836cfe02d0742d1e60207c7745",
+      "within_previously_approved_5_lsb": true
+    },
+    "A3-BC": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.19912886623137058,
+        "unequal_samples": 4335
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.007349699968472123,
+      "pcm_sha256": "701250cdbca4f3a85c2c648ec0337ca30757d94364fbd4677a567dcc1003b208",
+      "reference_pcm_sha256": "8ce39b62a1be819e90760fe5bc2e232790fe0f5058f63e6880d043bb7a69e9ad",
+      "within_previously_approved_5_lsb": true
+    },
+    "BC-A3-blocked": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 4,
+        "rms_lsb": 0.21525354629188354,
+        "unequal_samples": 4890
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.006756699993275106,
+      "pcm_sha256": "74dfbf7831cd134a34c973a543917f481486ec03c3c910f851e3e26cff7c2eff",
+      "reference_pcm_sha256": "632e33ab2bd8eee50983b451b563ea505d5fd532a507ed8d2c97a453ae5356d1",
+      "within_previously_approved_5_lsb": true
+    },
+    "finite-fade": {
+      "ticks": 100,
+      "samples": 73500,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.17846663591846634,
+        "unequal_samples": 1676
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.0036223999923095107,
+      "pcm_sha256": "5298aa6bb2bb9321f31bb1abb1320451dfbf4f16b217c0e32989540b0a46ef79",
+      "reference_pcm_sha256": "27ffe1fd6235b4537b549b420c30b05f401705d5dc2b26d68ca714bbac0c2fbb",
+      "within_previously_approved_5_lsb": true
+    },
+    "fixed-hold": {
+      "ticks": 210,
+      "samples": 154350,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.2491839613266522,
+        "unequal_samples": 6864
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.007568300003185868,
+      "pcm_sha256": "3b51d6d8bd753ec33dd2893cec7a7986f49c0c0ec1cc7d3d1842d6976c46ca90",
+      "reference_pcm_sha256": "c72f8bd930197a956d917b46c78562b25d910ad3befe319e23b2b00a8925ded6",
+      "within_previously_approved_5_lsb": true
+    },
+    "finite88-fade-recovery": {
+      "ticks": 90,
+      "samples": 66150,
+      "versus_original_MAME": {
+        "max_lsb": 4,
+        "rms_lsb": 0.25203630255979415,
+        "unequal_samples": 2636
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.0035878000780940056,
+      "pcm_sha256": "dd2bc8f2eb2b2a9564ea94f9df776086fb0f7524042d6c905e60a9f623c7cda6",
+      "reference_pcm_sha256": "a5109a26ddd1eadf520fde51be7382095dd578530df0852b7101dea8cb8ecce6",
+      "within_previously_approved_5_lsb": true
+    },
+    "music-interruption": {
+      "ticks": 500,
+      "samples": 367500,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.20072657139149525,
+        "unequal_samples": 12041
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.017589099938049912,
+      "pcm_sha256": "87df396ecea7c107f7b8c08b4df91c43c523823f419c6576a34678a049caec32",
+      "reference_pcm_sha256": "c452e23c38a574d9cfd545e5870c3a82978f02e9191ab95637cb1b366a0c06bd",
+      "within_previously_approved_5_lsb": true
+    },
+    "reset-then-fresh": {
+      "ticks": 90,
+      "samples": 66150,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.09610714605219431,
+        "unequal_samples": 326
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.0033231000415980816,
+      "pcm_sha256": "61d6b95020f56831a753d13f354cc7b2119e3fc98b2447a57769138b7fea1a8b",
+      "reference_pcm_sha256": "6068c7f05a74a0df60f2763e8f2b23e65dfb90d2ffb73003759ed049600de2b0",
+      "within_previously_approved_5_lsb": true
+    },
+    "priority-blocked-reset": {
+      "ticks": 80,
+      "samples": 58800,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.1741353762212052,
+        "unequal_samples": 1351
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.002876300015486777,
+      "pcm_sha256": "5ee63a242ce434d6e7b334ef204fd7e84c5ad4f85ca5c98a6c56e92dd73e1626",
+      "reference_pcm_sha256": "1e58a615844640ab07117c9f65c4bb095c300dd84499457b17067e03ad89d0a5",
+      "within_previously_approved_5_lsb": true
+    },
+    "three-mailboxes": {
+      "ticks": 100,
+      "samples": 73500,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.2665731128411039,
+        "unequal_samples": 3714
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.004511600011028349,
+      "pcm_sha256": "0520bb142cde22e27dc174469e16fe7865ce905cd6625a7f40666a572af97dcb",
+      "reference_pcm_sha256": "a125bd68a944a8b02b03414a85f91235bb0d359fcbc74292cf8d299e30ad6068",
+      "within_previously_approved_5_lsb": true
+    },
+    "solo-AC": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 4,
+        "rms_lsb": 0.38908967929467836,
+        "unequal_samples": 8872
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.005971900071017444,
+      "pcm_sha256": "bdb626908ed67a389c4dd65f14b490f6a1f16051b747c6f0f219fe07a1dbda14",
+      "reference_pcm_sha256": "63b177c2b56253aadb4ce00fd4c1c06fd54a90a4ff37b1d8f90f3cfa45e97691",
+      "within_previously_approved_5_lsb": true
+    },
+    "solo-B6": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.1160902508141368,
+        "unequal_samples": 1351
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.009055300033651292,
+      "pcm_sha256": "d6c33e4ea36798f81d6b55d8ed08aa662d5aeea307ef12b736e60deb32c2b7b1",
+      "reference_pcm_sha256": "a450257d5250ce297c31f23333116d62651f21765524b754ce3b3ee21c7eb56d",
+      "within_previously_approved_5_lsb": true
+    },
+    "solo-A3": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 2,
+        "rms_lsb": 0.06153737134914326,
+        "unequal_samples": 318
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.005410199984908104,
+      "pcm_sha256": "fabf6623baf76771a9d282dfc4fd83d4b396985259f316e4fda958867c208120",
+      "reference_pcm_sha256": "289b20737f669b7acc86771334cb8ef051bb043b533bda34f6053b90e7be9241",
+      "within_previously_approved_5_lsb": true
+    },
+    "solo-BC": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 2,
+        "rms_lsb": 0.03657688451366004,
+        "unequal_samples": 129
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.005665299948304892,
+      "pcm_sha256": "93bab7cfe982f98485f9d796e9dd12f0333ba66b6ab4010cd7954d89a1319b48",
+      "reference_pcm_sha256": "38aa5b3e79ddac45d8550324a1c88e803f7c2fd18146537b7c1fa301dfa2d7b6",
+      "within_previously_approved_5_lsb": true
+    },
+    "solo-B8": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 3,
+        "rms_lsb": 0.12371791482634838,
+        "unequal_samples": 1438
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.0053801999893039465,
+      "pcm_sha256": "767bfb01864fab221aaadd20861bb484ccef2e5e2cc2c4b6f89b70e3e595183b",
+      "reference_pcm_sha256": "84e34263a8602a78afabc879ad75d3338dc57b4ffe4d59180d84306add8c32c4",
+      "within_previously_approved_5_lsb": true
+    },
+    "solo-A0": {
+      "ticks": 180,
+      "samples": 132300,
+      "versus_original_MAME": {
+        "max_lsb": 2,
+        "rms_lsb": 0.09984871398296224,
+        "unequal_samples": 1055
+      },
+      "core_register_counter_lfsr_failures": [],
+      "partition_invariant": true,
+      "seconds_decoder_and_synthesis": 0.006424900027923286,
+      "pcm_sha256": "b39f322025e30186151aa37b743168dc69179fb82c1b78241a184694139a52d0",
+      "reference_pcm_sha256": "c087f198f76920f79d4b495132c8d48169a67df83ab33044e569cde7f785263b",
+      "within_previously_approved_5_lsb": true
+    }
+  },
+  "A1L_dll_sha256": "47e15c47e255900b819847e0ddefd7e3f0751dcc8f75dff3a1690f7e76adcf65",
+  "original_renderer_sha256": "36821f4cfb6a1b6e386f1b468504245c21c6e24a2cbb0cba4b268703c96334a0",
+  "A0_diagnostic_sha256": "3545872fd4454d81df5161357f49fb06e8508712fbd22f28f0db66df5fea0191",
+  "scope": "PAL 3546893 Hz / 44100 mono / 735 frames per driver tick; continuous state",
+  "listening": "NOT PERFORMED",
+  "threshold_changed": false
+}

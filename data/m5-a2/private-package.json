@@ -1,0 +1,66 @@
+{
+  "name": "SonicChaos_M5_A2_20261024_DECODER_FINAL_PRIVATE.zip",
+  "sha256": "b085b6b1d32d6453fa234c0f64365d7e9c6f39ce93920f333aae7df5208fe370",
+  "bytes": 6194121,
+  "members": 120,
+  "payload_bytes": 122773873,
+  "CRC_and_all_member_hashes": "PASS",
+  "program_data_sha256": "c0118830a4f7779b8d53d4b6cefd129487633689532e52500cddcd6f4dddfaf1",
+  "prior_preservation": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A0_20261024_STATEFUL_PRIVATE.zip",
+        "sha256": "580725052986dcf5b79718fd2dd1ebfe93f09ed5ba0b9db879cea53c8343f004",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A1L_20261024_HELPER_EXPERIMENT_PRIVATE.zip",
+        "sha256": "426c884c7e6d9b16437e5186386b0930cb3034cc356b6ac6c3ee81e0172178e2",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P1C_20261024_PROOF_PRIVATE.zip",
+        "sha256": "fbd5264b6c07ed9bb04d63350a7c9e8a0b854a19208012f92adc4d96f9a9984c",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true,
+    "accepted_POC_clean": true
+  },
+  "contains_DLL": false,
+  "contains_ROM": false,
+  "safe_source_inventory": [
+    "tools/m5a2/bank.py",
+    "tools/m5a2/decoder.py",
+    "tools/m5a2/evidence.py",
+    "tools/m5a2/isolation.py",
+    "tools/m5a2/package.py",
+    "tools/m5a2/pcm.py",
+    "tools/m5a2/proof.py",
+    "tools/m5a2/runtime.py",
+    "tests/test_m5a2.py",
+    "docs/m5-a2-driver-language.md",
+    "docs/m5-a2-handover.md",
+    "data/m5-a2/coverage.json",
+    "data/m5-a2/emission.json",
+    "data/m5-a2/facts.json",
+    "data/m5-a2/isolation.json",
+    "data/m5-a2/pcm.json"
+  ]
+}
