@@ -1,0 +1,530 @@
+{
+  "schema": 1,
+  "code_commit": "ad6aa301a7cc37a75f36a3d15c4804bcaa37b02b",
+  "accepted_audit_commit": "0bf89ade86bfa7a92f7d918fae5f05d77e79b948",
+  "status": "PROPOSAL ONLY; PROV-1 PENDING HUMAN APPROVAL; STOP for Manager review",
+  "policy": "Approved maximum 5 signed16 LSB for accepted controls unchanged",
+  "source_inputs": [
+    {
+      "path": "tools/m5a1l/adapter.c",
+      "git_lf": {
+        "sha256": "cf0c9e641bdde3d2298cfad924c11094ca0567301db44821f29e87acee01e26d",
+        "bytes": 2631,
+        "crlf_count": 0
+      },
+      "original": {
+        "sha256": "e3cb7f939d170e7a6e816be1fa9c4c37280b071c4bde0438247e1cef426da83d",
+        "bytes": 2632,
+        "crlf_count": 1
+      },
+      "audit_rebuild": {
+        "sha256": "080b4c9337de48949494867cbfb883365ff7ddecc0f1d823e97b0d943181e477",
+        "bytes": 2673,
+        "crlf_count": 42
+      }
+    },
+    {
+      "path": "tools/m5a1l/support.c",
+      "git_lf": {
+        "sha256": "d10b2b2eb35f2d4a8f1f22461d50f3512a441b0e523c567d6acada5ca0961c30",
+        "bytes": 1344,
+        "crlf_count": 0
+      },
+      "original": {
+        "sha256": "b6c6c4db409ad679d0c67e383896819861a24a3c9e86a14e16f81867e9543ca4",
+        "bytes": 1345,
+        "crlf_count": 1
+      },
+      "audit_rebuild": {
+        "sha256": "5bd97693fae81a357d37d70fcd2f3671c578d90b749b1ff74e4e06867caa51fa",
+        "bytes": 1368,
+        "crlf_count": 24
+      }
+    },
+    {
+      "path": "tools/m5a1l/support.h",
+      "git_lf": {
+        "sha256": "eac3f3138233e34790e59a97ccd7f60e09ec20e3ab103df1d549efc070441fc3",
+        "bytes": 1656,
+        "crlf_count": 0
+      },
+      "original": {
+        "sha256": "8ba87ccc48183dd5587706962b4d2f1acc722a0f83b1255382109d3ee52e171c",
+        "bytes": 1657,
+        "crlf_count": 1
+      },
+      "audit_rebuild": {
+        "sha256": "544375721a17683aa826dade3676fdbef85995e44dc49380ede046b7615447a6",
+        "bytes": 1692,
+        "crlf_count": 36
+      }
+    }
+  ],
+  "builds": {
+    "original": {
+      "artifacts": {
+        "adapter.obj": {
+          "sha256": "811f68d8c10ce806e73617c5ae08cc628debb604cc04be07e44ab089607d187f",
+          "bytes": 23730,
+          "crlf_count": 0
+        },
+        "support.obj": {
+          "sha256": "859e6a75f305c7bb7a38a92b2c21d064984d69115f4853638297ea73277141ed",
+          "bytes": 13162,
+          "crlf_count": 0
+        },
+        "psg-a1l.dll": {
+          "sha256": "47e15c47e255900b819847e0ddefd7e3f0751dcc8f75dff3a1690f7e76adcf65",
+          "bytes": 6656,
+          "crlf_count": 0
+        },
+        "psg-a1l.pdb": {
+          "sha256": "4d3c42ea25b5b3078a937f3b0ab1e769e5e915cfa76504ef3caa5da994fb3647",
+          "bytes": 102400,
+          "crlf_count": 1
+        },
+        "retained_psg.c": {
+          "sha256": "9d18a1f7aeecf5124ebd5da931668e75d595d3a448dc40384e2123ce941d9afc",
+          "bytes": 26250,
+          "crlf_count": 731
+        },
+        "link-trace.txt": {
+          "sha256": "5d0db736ac4c62e290543d947c358b244d413e444532e289371fcc21cdb22554",
+          "bytes": 927,
+          "crlf_count": 1
+        }
+      },
+      "dependencies": {
+        "adapter.obj": {
+          "sha256": "e356edce0910f60a758b09e7f316d53ffb650503f91e1994bdcdc580128c8b5e",
+          "inputs": [
+            "adapter.c",
+            "support.h",
+            "retained_psg.c"
+          ]
+        },
+        "support.obj": {
+          "sha256": "bfe50228c276b25102d03e6437fde5f3423b866dc277b994521e319e3f70c6b8",
+          "inputs": [
+            "support.c",
+            "support.h"
+          ]
+        }
+      },
+      "commands": [
+        [
+          "${ZIG_DIR}\\zig.exe",
+          "cc",
+          "-c",
+          "-O2",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-I",
+          "${BUILD_ROOT}\\build\\m5-a1l",
+          "-I",
+          "${BUILD_ROOT}\\tools\\m5a1l",
+          "-MD",
+          "-MF",
+          "${BUILD_ROOT}\\build\\m5-a1l\\adapter.d",
+          "${BUILD_ROOT}\\tools\\m5a1l\\adapter.c",
+          "-o",
+          "${BUILD_ROOT}\\build\\m5-a1l\\adapter.obj"
+        ],
+        [
+          "${ZIG_DIR}\\zig.exe",
+          "cc",
+          "-c",
+          "-O2",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-I",
+          "${BUILD_ROOT}\\build\\m5-a1l",
+          "-I",
+          "${BUILD_ROOT}\\tools\\m5a1l",
+          "-MD",
+          "-MF",
+          "${BUILD_ROOT}\\build\\m5-a1l\\support.d",
+          "${BUILD_ROOT}\\tools\\m5a1l\\support.c",
+          "-o",
+          "${BUILD_ROOT}\\build\\m5-a1l\\support.obj"
+        ],
+        [
+          "${ZIG_DIR}\\zig.exe",
+          "cc",
+          "-shared",
+          "-nostdlib",
+          "-Wl,--entry,a1_dll_entry",
+          "${BUILD_ROOT}\\build\\m5-a1l\\adapter.obj",
+          "${BUILD_ROOT}\\build\\m5-a1l\\support.obj",
+          "-lkernel32",
+          "-o",
+          "${BUILD_ROOT}\\build\\m5-a1l\\psg-a1l.dll",
+          "-v"
+        ]
+      ],
+      "imports": {
+        "KERNEL32.dll": [
+          "GetProcessHeap",
+          "HeapAlloc",
+          "HeapFree"
+        ]
+      },
+      "unresolved": [
+        "__imp_GetProcessHeap",
+        "__imp_HeapAlloc",
+        "__imp_HeapFree"
+      ],
+      "pdb_modules": [
+        "adapter.obj",
+        "support.obj",
+        "KERNEL32.dll",
+        "Import:KERNEL32.dll",
+        "* Linker *"
+      ],
+      "archives": {
+        "compiler_rt.lib": {
+          "sha256": "a75e32a2491729a6fcf1164b1404e0ebcb6404152632826b2b23da2f68d2703d",
+          "contribution": "available to linker; no contributing member in PDB, no unresolved runtime symbol"
+        },
+        "kernel32.lib": {
+          "sha256": "aee6eb7cb63c6fc9a4e64f3ab63399f440eeb8cdb81e2df30b032f4f4ded9080",
+          "contribution": "import descriptors/thunks only"
+        },
+        "c.lib": {
+          "sha256": "2e30ae3f2e25dc919122b8f1270573d19ecb01cfb7ab9948db7c894cf25723a2",
+          "contribution": "available to linker; no contributing member in PDB, no unresolved runtime symbol"
+        }
+      },
+      "text_sha256": {
+        "adapter.obj": "8f44fe5782b20f845e9c9a004c09bae0bf98374758c856774881c29df9cf1441",
+        "support.obj": "80aad8b112bbded7b325a79273cf1194d3a0a29600e7ad585a0ac813090b9112",
+        "psg-a1l.dll": "7500a2bc2b6ccc6610d2f28d7a12a60c508aa03d68040dca78c444e115d12779"
+      },
+      "build_receipt_sha256": "ee20d906a2aa1d9077a4c5e409d0237f7827fb791094845bbc234ab96e2e31de",
+      "cache_receipt_sha256": "3d3ed95072200a635e34568c1d8135a1446f49401c02a1b4ee8669d3b6a2dbe8"
+    },
+    "audit_rebuild": {
+      "artifacts": {
+        "adapter.obj": {
+          "sha256": "8d437b5a91d0b93d152d2232afff02f80461d22ab75a191feffebc520e4e704d",
+          "bytes": 23798,
+          "crlf_count": 0
+        },
+        "support.obj": {
+          "sha256": "b8adfe234a18979647238b5af3442f511b3b8322db632e81bc2a28fcd034e262",
+          "bytes": 13218,
+          "crlf_count": 0
+        },
+        "psg-a1l.dll": {
+          "sha256": "576f5a3854cdcd3de6dc74953aa24ac39188289a342eec904255807ac0760e23",
+          "bytes": 6656,
+          "crlf_count": 0
+        },
+        "psg-a1l.pdb": {
+          "sha256": "6abb15f1e2503cccbf9c57cb6faad3bea3e8227f18ef3c8872ce177a637e8074",
+          "bytes": 102400,
+          "crlf_count": 1
+        },
+        "retained_psg.c": {
+          "sha256": "9d18a1f7aeecf5124ebd5da931668e75d595d3a448dc40384e2123ce941d9afc",
+          "bytes": 26250,
+          "crlf_count": 731
+        },
+        "link-trace.txt": {
+          "sha256": "c49dd8f7762cdfc0c6cd6691993fb15f2ced2c82ef9f1e6f06e43c942ca1435c",
+          "bytes": 1499,
+          "crlf_count": 3
+        }
+      },
+      "dependencies": {
+        "adapter.obj": {
+          "sha256": "190a5670b00db98d7e3c9f4cda51cd0521d5df4bd1e92b329496e06ed42dea91",
+          "inputs": [
+            "adapter.c",
+            "support.h",
+            "retained_psg.c"
+          ]
+        },
+        "support.obj": {
+          "sha256": "ce33eb391e18b368473a844455e64c43005e2e19852690e51339ee7a430ebbc6",
+          "inputs": [
+            "support.c",
+            "support.h"
+          ]
+        }
+      },
+      "commands": [
+        [
+          "${ZIG_DIR}\\zig.exe",
+          "cc",
+          "-c",
+          "-O2",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-I",
+          "${BUILD_ROOT}\\build\\m5-a1l",
+          "-I",
+          "${BUILD_ROOT}\\tools\\m5a1l",
+          "-MD",
+          "-MF",
+          "${BUILD_ROOT}\\build\\m5-a1l\\adapter.d",
+          "${BUILD_ROOT}\\tools\\m5a1l\\adapter.c",
+          "-o",
+          "${BUILD_ROOT}\\build\\m5-a1l\\adapter.obj"
+        ],
+        [
+          "${ZIG_DIR}\\zig.exe",
+          "cc",
+          "-c",
+          "-O2",
+          "-ffreestanding",
+          "-fno-builtin",
+          "-fno-stack-protector",
+          "-I",
+          "${BUILD_ROOT}\\build\\m5-a1l",
+          "-I",
+          "${BUILD_ROOT}\\tools\\m5a1l",
+          "-MD",
+          "-MF",
+          "${BUILD_ROOT}\\build\\m5-a1l\\support.d",
+          "${BUILD_ROOT}\\tools\\m5a1l\\support.c",
+          "-o",
+          "${BUILD_ROOT}\\build\\m5-a1l\\support.obj"
+        ],
+        [
+          "${ZIG_DIR}\\zig.exe",
+          "cc",
+          "-shared",
+          "-nostdlib",
+          "-Wl,--entry,a1_dll_entry",
+          "${BUILD_ROOT}\\build\\m5-a1l\\adapter.obj",
+          "${BUILD_ROOT}\\build\\m5-a1l\\support.obj",
+          "-lkernel32",
+          "-o",
+          "${BUILD_ROOT}\\build\\m5-a1l\\psg-a1l.dll",
+          "-v"
+        ]
+      ],
+      "imports": {
+        "KERNEL32.dll": [
+          "GetProcessHeap",
+          "HeapAlloc",
+          "HeapFree"
+        ]
+      },
+      "unresolved": [
+        "__imp_GetProcessHeap",
+        "__imp_HeapAlloc",
+        "__imp_HeapFree"
+      ],
+      "pdb_modules": [
+        "adapter.obj",
+        "support.obj",
+        "KERNEL32.dll",
+        "Import:KERNEL32.dll",
+        "* Linker *"
+      ],
+      "archives": {
+        "compiler_rt.lib": {
+          "sha256": "6505db0bd7925eb167d1db0f4c212bd893ee80f4bd91adea48ee17a83622d217",
+          "contribution": "available to linker; no contributing member in PDB, no unresolved runtime symbol"
+        },
+        "kernel32.lib": {
+          "sha256": "aee6eb7cb63c6fc9a4e64f3ab63399f440eeb8cdb81e2df30b032f4f4ded9080",
+          "contribution": "import descriptors/thunks only"
+        },
+        "c.lib": {
+          "sha256": "f3237696622030a5fb5965966521cb98c8dd9d17bf2dd8697e1b733e4f4129a0",
+          "contribution": "available to linker; no contributing member in PDB, no unresolved runtime symbol"
+        }
+      },
+      "text_sha256": {
+        "adapter.obj": "8f44fe5782b20f845e9c9a004c09bae0bf98374758c856774881c29df9cf1441",
+        "support.obj": "80aad8b112bbded7b325a79273cf1194d3a0a29600e7ad585a0ac813090b9112",
+        "psg-a1l.dll": "7500a2bc2b6ccc6610d2f28d7a12a60c508aa03d68040dca78c444e115d12779"
+      },
+      "build_receipt_sha256": "fda86412a36b5022fbc195b7592cf66faf0957e57890f1cd107d3a88bcc30438",
+      "cache_receipt_sha256": "3d3ed95072200a635e34568c1d8135a1446f49401c02a1b4ee8669d3b6a2dbe8"
+    }
+  },
+  "import_generation_inputs": [
+    {
+      "path": "lib/libc/mingw/lib-common/kernel32.def.in",
+      "sha256": "2b956e88d266cf6c0371011764822faad003397b24a27caf04caa74a322c2d44",
+      "bytes": 36227,
+      "crlf_count": 0
+    },
+    {
+      "path": "lib/libc/mingw/def-include/func.def.in",
+      "sha256": "431d2f5dc67ddba5db340ea029b6380021e5c10115ddd2ccb8c626357a29f86a",
+      "bytes": 1285,
+      "crlf_count": 0
+    },
+    {
+      "path": "lib/libc/mingw/COPYING",
+      "sha256": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "bytes": 2326,
+      "crlf_count": 0
+    }
+  ],
+  "source_distribution": [
+    {
+      "path": "src/adapter.c",
+      "sha256": "e3cb7f939d170e7a6e816be1fa9c4c37280b071c4bde0438247e1cef426da83d",
+      "bytes": 2632,
+      "origin": "original build raw tools/m5a1l/adapter.c",
+      "role": "MIT proposal; PROV-1 pending"
+    },
+    {
+      "path": "src/support.c",
+      "sha256": "b6c6c4db409ad679d0c67e383896819861a24a3c9e86a14e16f81867e9543ca4",
+      "bytes": 1345,
+      "origin": "original build raw tools/m5a1l/support.c",
+      "role": "MIT proposal; PROV-1 pending"
+    },
+    {
+      "path": "src/support.h",
+      "sha256": "8ba87ccc48183dd5587706962b4d2f1acc722a0f83b1255382109d3ee52e171c",
+      "bytes": 1657,
+      "origin": "original build raw tools/m5a1l/support.h",
+      "role": "MIT proposal; PROV-1 pending"
+    },
+    {
+      "path": "generated/retained_psg.c",
+      "sha256": "9d18a1f7aeecf5124ebd5da931668e75d595d3a448dc40384e2123ce941d9afc",
+      "bytes": 26250,
+      "origin": "original build generated core",
+      "role": "BSD-3-Clause; full preamble retained"
+    },
+    {
+      "path": "notices/THIRD-PARTY-NOTICES.md",
+      "sha256": "fdeda67a9d7a94ff60d115acf62c203790b1f5f7ed75ea9ece2ec5790c5faf06",
+      "bytes": 7662,
+      "origin": "docs/m5-a1l-THIRD-PARTY-NOTICES.md",
+      "role": "complete BSD and integration notices"
+    },
+    {
+      "path": "notices/LICENSE-MIT.txt",
+      "sha256": "fa36dbd2c9ad11971837d73c281e58308a944bb925a8e0b56730352d91a6d42f",
+      "bytes": 1273,
+      "origin": "tools/m5a1l/LICENSE-MIT.txt",
+      "role": "MIT proposal; PROV-1 pending"
+    },
+    {
+      "path": "notices/mingw-w64-COPYING.txt",
+      "sha256": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "bytes": 2326,
+      "origin": "docs/notices/m5-a1l/mingw-w64-COPYING.txt",
+      "role": "complete bundled mingw-w64 notice"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a8cfa2d6896c59689376fab3e8e84636abd182f276719968b0624891b7ddf421",
+      "bytes": 3874,
+      "origin": "docs/m5-a1l-component-build.md",
+      "role": "build/provenance and pending-approval instructions"
+    }
+  ],
+  "binary_distribution": [
+    {
+      "path": "psg-a1l.dll",
+      "sha256": "47e15c47e255900b819847e0ddefd7e3f0751dcc8f75dff3a1690f7e76adcf65",
+      "bytes": 6656,
+      "origin": "original build; payload remains private",
+      "role": "binary proposal only"
+    },
+    {
+      "path": "notices/THIRD-PARTY-NOTICES.md",
+      "sha256": "fdeda67a9d7a94ff60d115acf62c203790b1f5f7ed75ea9ece2ec5790c5faf06",
+      "bytes": 7662,
+      "origin": "docs/m5-a1l-THIRD-PARTY-NOTICES.md",
+      "role": "complete BSD and integration notices"
+    },
+    {
+      "path": "notices/LICENSE-MIT.txt",
+      "sha256": "fa36dbd2c9ad11971837d73c281e58308a944bb925a8e0b56730352d91a6d42f",
+      "bytes": 1273,
+      "origin": "tools/m5a1l/LICENSE-MIT.txt",
+      "role": "MIT proposal; PROV-1 pending"
+    },
+    {
+      "path": "notices/mingw-w64-COPYING.txt",
+      "sha256": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "bytes": 2326,
+      "origin": "docs/notices/m5-a1l/mingw-w64-COPYING.txt",
+      "role": "complete bundled mingw-w64 notice"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a8cfa2d6896c59689376fab3e8e84636abd182f276719968b0624891b7ddf421",
+      "bytes": 3874,
+      "origin": "docs/m5-a1l-component-build.md",
+      "role": "build/provenance and pending-approval instructions"
+    }
+  ],
+  "upstream": {
+    "commit": "a6eed945ecf4e5a25cf82004779c6f7e4fd5c319",
+    "path": "emu/cores/sn76496.c",
+    "sha256": "91e6d92121bd94466c6971c6a3b52adb2016930cc29fa38caa2fdf9a49e98ab3",
+    "retained_body_lf_sha256": "fe45270980c6389ed337b0cbacde4211cb3a4069751e42dbc095173853158b25",
+    "generated_raw": {
+      "sha256": "9d18a1f7aeecf5124ebd5da931668e75d595d3a448dc40384e2123ce941d9afc",
+      "bytes": 26250,
+      "crlf_count": 731
+    },
+    "complete_preamble_and_extraction": "PASS"
+  },
+  "mingw_notice_basis": {
+    "default": "ZPL-2.1 with marked exceptions",
+    "attribution": "Copyright (c) 2009 - 2013 by the mingw-w64 project",
+    "file_specific_override_found": false,
+    "referenced_AUTHORS": "absent in examined Zig installation",
+    "treatment": "Carry complete bundled COPYING; Manager review pending"
+  },
+  "compiler": {
+    "name": "Zig",
+    "version": "0.13.0",
+    "host_target": "Windows x86_64",
+    "executable_sha256": "2e44af5bbf7a72ef8cbdae370284687c95d65a19affa469d2ad0364d905b8e84",
+    "license_sha256": "5c537d6853e005298a285d508cff9ac7192cea23576c840d485b2b586a7ff177",
+    "redistributed": false
+  },
+  "generated_definition": {
+    "original": {
+      "sha256": "9c179b02a3b18ad6727699c60396b4fc46bd5d22be3a26ea80243c82c1c16b4d",
+      "bytes": 36051,
+      "crlf_count": 0
+    },
+    "audit_rebuild": {
+      "sha256": "9c179b02a3b18ad6727699c60396b4fc46bd5d22be3a26ea80243c82c1c16b4d",
+      "bytes": 36051,
+      "crlf_count": 0
+    }
+  },
+  "whole_binary_identical": false,
+  "paired_text_sections_identical": true,
+  "inventory_rules": {
+    "source_inputs": "Original build raw bytes; Git LF comparison recorded separately",
+    "documentation": "LF except verbatim bundled COPYING",
+    "inventory": "External receipt; no self hash",
+    "no_payload_copied": true,
+    "no_compiler_or_DLL_executed": true,
+    "excluded": [
+      "ROM",
+      "WAV",
+      "state/event/music data",
+      "private proof ZIP",
+      "PDB",
+      "objects",
+      "import libraries",
+      "toolchain",
+      "Python runtime/utilities",
+      "A0 source",
+      "libvgm helpers",
+      "GameMaker/POC wrapper"
+    ]
+  }
+}

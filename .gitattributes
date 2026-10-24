@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve provenance receipt and verbatim bundled notice bytes across Windows checkouts.
+data/m5-a1l/provenance-closure.json text eol=lf
+docs/notices/m5-a1l/mingw-w64-COPYING.txt text eol=lf whitespace=-blank-at-eol
