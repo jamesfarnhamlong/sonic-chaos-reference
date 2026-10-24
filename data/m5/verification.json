@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "management_commit": "600951fde25ab27b3acf4bc6c6881f3f13654100",
+  "research_parent": "8df6e7e65ea93f7e49f0f975137eb55c0c5e5bf5",
+  "private_poc_commit": "11bff34356d5f5d979218896dc95fdc4bb265eae",
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "tests": {
+    "m5_rom_free": 7,
+    "m5_original_rom": 9,
+    "inherited_m4": 9,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "python_compile": "PASS",
+    "diff_whitespace": "PASS",
+    "new_audio_rendered": false,
+    "game_maker_modified": false,
+    "canonical_management_modified": false,
+    "public_payload_scan": "text metadata only; no audio, streams or private source payload"
+  },
+  "inventory_sha256": [
+    {
+      "path": "data/m5/catalogue.json",
+      "sha256": "9db280882bfe02417ed463dc6af1f5c3befa10ca11f980629804e066250a4f7a",
+      "bytes": 334362
+    },
+    {
+      "path": "data/m5/extensions.json",
+      "sha256": "59d831e0d75b39e6fec33c5c7584d22a8a7b75597dc3fd678c4623f234992567",
+      "bytes": 154678
+    },
+    {
+      "path": "data/m5/interactions.json",
+      "sha256": "efbf5b93e2b0c84a81d4d11c3f424831464d05fe1ed286f19874b920a41dbbac",
+      "bytes": 560412
+    },
+    {
+      "path": "data/m5/poc-preflight.json",
+      "sha256": "85c071b6ce620d3e1b998a6307e70edba55f86661cf143a6bde8f32622492e4d",
+      "bytes": 16777
+    },
+    {
+      "path": "data/m5/production-estimate.json",
+      "sha256": "8064182c4c24f5dfad26c7665c33ca418cc13494d03100ed00e0936b1e9e14b7",
+      "bytes": 407
+    },
+    {
+      "path": "docs/m5-audio-catalogue.md",
+      "sha256": "85ada1e9b93010f8cc0508fafc201da3dee0fef861530a36d617266d6f84fa9a",
+      "bytes": 8752
+    },
+    {
+      "path": "docs/m5-driver-integration-contract.md",
+      "sha256": "011bf250d9178a845391ab91c5104943b8324a4b08d652a0d04a029abd630927",
+      "bytes": 13729
+    },
+    {
+      "path": "docs/m5-manager-handover.md",
+      "sha256": "c4065417ce37e1661e535086c803780f290204b3a5ed3c04411a43c6a33b340c",
+      "bytes": 8333
+    },
+    {
+      "path": "docs/m5-production-plan.md",
+      "sha256": "39cd4e8f4b6ad86fbd94db9642756f606992c887e04b79d1a13a697c72ba63c8",
+      "bytes": 11511
+    },
+    {
+      "path": "docs/m5-sound-test-contract.md",
+      "sha256": "aef6690a1840f0e673c4a198ee0cea8fc644c9e5f54feb28c92b7391c41fc9e9",
+      "bytes": 5912
+    },
+    {
+      "path": "tests/test_m5_audio_contract.py",
+      "sha256": "c6d164043989db81f915d4ba7d00bd7cc41d982ca5ec71873296ec4003d40100",
+      "bytes": 7771
+    },
+    {
+      "path": "tools/m5_audio_contract.py",
+      "sha256": "c89c6003bd76266bc137404d78059c866cc0757b4056c1f9da88e76781141dd6",
+      "bytes": 21749
+    }
+  ],
+  "inventory_note": "12 companion files hashed; verification.json is the13th new file, intentionally not self-hashed"
+}

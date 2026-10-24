@@ -1,0 +1,6402 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "method": "controlled Z80 original-driver; numeric-only evidence",
+  "channel_loop_candidates": {
+    "8C": [
+      {
+        "first_tick": 497,
+        "period_ticks": 80640,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 497,
+        "period_ticks": 80640,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 497,
+        "period_ticks": 80640,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 497,
+        "period_ticks": 80640,
+        "next_period_registers_identical": true
+      }
+    ],
+    "90": [
+      {
+        "first_tick": 803,
+        "period_ticks": 19768,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 405,
+        "period_ticks": 19768,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 807,
+        "period_ticks": 19768,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 807,
+        "period_ticks": 19768,
+        "next_period_registers_identical": true
+      }
+    ],
+    "91": [
+      {
+        "first_tick": 395,
+        "period_ticks": 32256,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 7,
+        "period_ticks": 32256,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 7,
+        "period_ticks": 32256,
+        "next_period_registers_identical": true
+      },
+      {
+        "first_tick": 8,
+        "period_ticks": 32256,
+        "next_period_registers_identical": true
+      }
+    ]
+  },
+  "recovery": [
+    {
+      "id": 160,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 245,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 376,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 747,
+          "recovery_tick": 751,
+          "next_reader_tick": 751,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 229,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 360,
+          "recovery_tick": 361,
+          "next_reader_tick": 361,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 731,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 162,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 234,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 162,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 365,
+          "recovery_tick": 367,
+          "next_reader_tick": 367,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 162,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 736,
+          "recovery_tick": 737,
+          "next_reader_tick": 737,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 163,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 248,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 248,
+          "recovery_tick": 259,
+          "next_reader_tick": 259,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 163,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 379,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 379,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 163,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 750,
+          "recovery_tick": 751,
+          "next_reader_tick": 751,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 750,
+          "recovery_tick": 757,
+          "next_reader_tick": 757,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 281,
+          "recovery_tick": 289,
+          "next_reader_tick": 289,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 412,
+          "recovery_tick": 433,
+          "next_reader_tick": 433,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 783,
+          "recovery_tick": 787,
+          "next_reader_tick": 787,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 165,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 327,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 165,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 458,
+          "recovery_tick": 463,
+          "next_reader_tick": 463,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 165,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 829,
+          "recovery_tick": 841,
+          "next_reader_tick": 841,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 166,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 240,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 166,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 371,
+          "recovery_tick": 373,
+          "next_reader_tick": 373,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 166,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 742,
+          "recovery_tick": 745,
+          "next_reader_tick": 745,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 167,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 206,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 206,
+          "recovery_tick": 211,
+          "next_reader_tick": 211,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 167,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 337,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 337,
+          "recovery_tick": 343,
+          "next_reader_tick": 343,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 167,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 708,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 708,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 168,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 245,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 168,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 376,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 168,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 747,
+          "recovery_tick": 751,
+          "next_reader_tick": 751,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 169,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 265,
+          "recovery_tick": 271,
+          "next_reader_tick": 271,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 169,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 396,
+          "recovery_tick": 397,
+          "next_reader_tick": 397,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 169,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 767,
+          "recovery_tick": 769,
+          "next_reader_tick": 769,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 170,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 204,
+          "recovery_tick": 205,
+          "next_reader_tick": 205,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 170,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 335,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 170,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 706,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 171,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 208,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 171,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 339,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 171,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 710,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 172,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 200,
+          "release_tick": 253,
+          "recovery_tick": 265,
+          "next_reader_tick": 265,
+          "recovery_matches_reader": true,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 248,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 248,
+          "recovery_tick": 259,
+          "next_reader_tick": 259,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 172,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 331,
+          "release_tick": 384,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 379,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 379,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 172,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 702,
+          "release_tick": 755,
+          "recovery_tick": 757,
+          "next_reader_tick": 757,
+          "recovery_matches_reader": true,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 750,
+          "recovery_tick": 751,
+          "next_reader_tick": 751,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 750,
+          "recovery_tick": 757,
+          "next_reader_tick": 757,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 264,
+          "recovery_tick": 265,
+          "next_reader_tick": 265,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 395,
+          "recovery_tick": 397,
+          "next_reader_tick": 397,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 766,
+          "recovery_tick": 769,
+          "next_reader_tick": 769,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 214,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 345,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 716,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 267,
+          "recovery_tick": 271,
+          "next_reader_tick": 271,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 267,
+          "recovery_tick": 277,
+          "next_reader_tick": 277,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 398,
+          "recovery_tick": 403,
+          "next_reader_tick": 403,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 398,
+          "recovery_tick": 403,
+          "next_reader_tick": 403,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 769,
+          "recovery_tick": 787,
+          "next_reader_tick": 787,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 769,
+          "recovery_tick": 775,
+          "next_reader_tick": 775,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 176,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 206,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 206,
+          "recovery_tick": 211,
+          "next_reader_tick": 211,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 176,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 337,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 337,
+          "recovery_tick": 343,
+          "next_reader_tick": 343,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 176,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 708,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 708,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 221,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 221,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 352,
+          "recovery_tick": 353,
+          "next_reader_tick": 353,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 352,
+          "recovery_tick": 355,
+          "next_reader_tick": 355,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 723,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 723,
+          "recovery_tick": 727,
+          "next_reader_tick": 727,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 257,
+          "recovery_tick": 259,
+          "next_reader_tick": 259,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 388,
+          "recovery_tick": 397,
+          "next_reader_tick": 397,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 759,
+          "recovery_tick": 769,
+          "next_reader_tick": 769,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 179,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 276,
+          "recovery_tick": 277,
+          "next_reader_tick": 277,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 179,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 407,
+          "recovery_tick": 433,
+          "next_reader_tick": 433,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 179,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 778,
+          "recovery_tick": 787,
+          "next_reader_tick": 787,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 180,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 230,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 180,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 361,
+          "recovery_tick": 367,
+          "next_reader_tick": 367,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 180,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 732,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 181,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 218,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 181,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 349,
+          "recovery_tick": 353,
+          "next_reader_tick": 353,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 181,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 720,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 182,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 200,
+          "release_tick": 226,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 215,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 215,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 182,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 331,
+          "release_tick": 357,
+          "recovery_tick": 361,
+          "next_reader_tick": 361,
+          "recovery_matches_reader": true,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 346,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 346,
+          "recovery_tick": 355,
+          "next_reader_tick": 355,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 182,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 702,
+          "release_tick": 728,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 717,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 717,
+          "recovery_tick": 721,
+          "next_reader_tick": 721,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 183,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 206,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 206,
+          "recovery_tick": 211,
+          "next_reader_tick": 211,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 183,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 337,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 337,
+          "recovery_tick": 343,
+          "next_reader_tick": 343,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 183,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 708,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 708,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 184,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 338,
+          "recovery_tick": 343,
+          "next_reader_tick": 343,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 184,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 469,
+          "recovery_tick": 475,
+          "next_reader_tick": 475,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 184,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 840,
+          "recovery_tick": 841,
+          "next_reader_tick": 841,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 230,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 230,
+          "recovery_tick": 235,
+          "next_reader_tick": 235,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 361,
+          "recovery_tick": 367,
+          "next_reader_tick": 367,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 361,
+          "recovery_tick": 373,
+          "next_reader_tick": 373,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 732,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 732,
+          "recovery_tick": 739,
+          "next_reader_tick": 739,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 186,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 200,
+          "release_tick": 224,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 204,
+          "recovery_tick": 205,
+          "next_reader_tick": 205,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 204,
+          "recovery_tick": 205,
+          "next_reader_tick": 205,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 186,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 331,
+          "release_tick": 355,
+          "recovery_tick": 361,
+          "next_reader_tick": 361,
+          "recovery_matches_reader": true,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 335,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 335,
+          "recovery_tick": 337,
+          "next_reader_tick": 337,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 186,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": 702,
+          "release_tick": 726,
+          "recovery_tick": 727,
+          "next_reader_tick": 727,
+          "recovery_matches_reader": true,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 706,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 706,
+          "recovery_tick": 709,
+          "next_reader_tick": 709,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 264,
+          "recovery_tick": 265,
+          "next_reader_tick": 265,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 264,
+          "recovery_tick": 265,
+          "next_reader_tick": 265,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 395,
+          "recovery_tick": 397,
+          "next_reader_tick": 397,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 395,
+          "recovery_tick": 397,
+          "next_reader_tick": 397,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 766,
+          "recovery_tick": 769,
+          "next_reader_tick": 769,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 766,
+          "recovery_tick": 769,
+          "next_reader_tick": 769,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 188,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 228,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 188,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 359,
+          "recovery_tick": 361,
+          "next_reader_tick": 361,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 188,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 730,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 189,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 222,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 189,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 353,
+          "recovery_tick": 357,
+          "next_reader_tick": 357,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 189,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 724,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 190,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 237,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 237,
+          "recovery_tick": 241,
+          "next_reader_tick": 241,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 190,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 368,
+          "recovery_tick": 373,
+          "next_reader_tick": 373,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 368,
+          "recovery_tick": 373,
+          "next_reader_tick": 373,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 190,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 739,
+          "recovery_tick": 741,
+          "next_reader_tick": 741,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 739,
+          "recovery_tick": 745,
+          "next_reader_tick": 745,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 191,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 220,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 191,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 351,
+          "recovery_tick": 353,
+          "next_reader_tick": 353,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 191,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 722,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 192,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 228,
+          "recovery_tick": 229,
+          "next_reader_tick": 229,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 192,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 359,
+          "recovery_tick": 361,
+          "next_reader_tick": 361,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 192,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 730,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 209,
+          "recovery_tick": 217,
+          "next_reader_tick": 217,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 340,
+          "recovery_tick": 349,
+          "next_reader_tick": 349,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 711,
+          "recovery_tick": 733,
+          "next_reader_tick": 733,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 194,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 245,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 194,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 376,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 194,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 747,
+          "recovery_tick": 751,
+          "next_reader_tick": 751,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 195,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 245,
+          "recovery_tick": 253,
+          "next_reader_tick": 253,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 195,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 376,
+          "recovery_tick": 385,
+          "next_reader_tick": 385,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 195,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 747,
+          "recovery_tick": 751,
+          "next_reader_tick": 751,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 132
+        }
+      ]
+    },
+    {
+      "id": 196,
+      "request_tick": 200,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 47
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 45
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 200,
+          "release_tick": 264,
+          "recovery_tick": 265,
+          "next_reader_tick": 265,
+          "recovery_matches_reader": true,
+          "reader_calls": 47
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 200,
+          "release_tick": 264,
+          "recovery_tick": 265,
+          "next_reader_tick": 265,
+          "recovery_matches_reader": true,
+          "reader_calls": 64
+        }
+      ]
+    },
+    {
+      "id": 196,
+      "request_tick": 331,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 58
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 57
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 331,
+          "release_tick": 395,
+          "recovery_tick": 397,
+          "next_reader_tick": 397,
+          "recovery_matches_reader": true,
+          "reader_calls": 58
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 331,
+          "release_tick": 395,
+          "recovery_tick": 397,
+          "next_reader_tick": 397,
+          "recovery_matches_reader": true,
+          "reader_calls": 81
+        }
+      ]
+    },
+    {
+      "id": 196,
+      "request_tick": 702,
+      "channels": [
+        {
+          "channel": 0,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 95
+        },
+        {
+          "channel": 1,
+          "suppressed_tick": null,
+          "release_tick": null,
+          "recovery_tick": null,
+          "next_reader_tick": null,
+          "recovery_matches_reader": null,
+          "reader_calls": 90
+        },
+        {
+          "channel": 2,
+          "suppressed_tick": 702,
+          "release_tick": 766,
+          "recovery_tick": 769,
+          "next_reader_tick": 769,
+          "recovery_matches_reader": true,
+          "reader_calls": 95
+        },
+        {
+          "channel": 3,
+          "suppressed_tick": 702,
+          "release_tick": 766,
+          "recovery_tick": 769,
+          "next_reader_tick": 769,
+          "recovery_matches_reader": true,
+          "reader_calls": 132
+        }
+      ]
+    }
+  ],
+  "controls": {
+    "fade": [
+      {
+        "tick": 29,
+        "flags": [
+          128,
+          128,
+          128,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          4,
+          1,
+          15
+        ]
+      },
+      {
+        "tick": 30,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          128,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          0,
+          15,
+          0
+        ]
+      },
+      {
+        "tick": 31,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          128,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          2,
+          15,
+          2
+        ]
+      },
+      {
+        "tick": 32,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          128,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          2,
+          15,
+          2
+        ]
+      },
+      {
+        "tick": 33,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          144,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          5,
+          15,
+          15,
+          2
+        ]
+      },
+      {
+        "tick": 34,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          5,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 35,
+        "flags": [
+          128,
+          128,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 11,
+        "att": [
+          6,
+          5,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 36,
+        "flags": [
+          128,
+          128,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 11,
+        "att": [
+          6,
+          5,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 37,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 10,
+        "att": [
+          5,
+          4,
+          3,
+          15
+        ]
+      },
+      {
+        "tick": 38,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 10,
+        "att": [
+          5,
+          4,
+          3,
+          2
+        ]
+      },
+      {
+        "tick": 39,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 9,
+        "att": [
+          6,
+          6,
+          4,
+          3
+        ]
+      },
+      {
+        "tick": 40,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 9,
+        "att": [
+          6,
+          6,
+          4,
+          6
+        ]
+      },
+      {
+        "tick": 41,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 8,
+        "att": [
+          7,
+          7,
+          5,
+          8
+        ]
+      },
+      {
+        "tick": 42,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 8,
+        "att": [
+          7,
+          8,
+          5,
+          10
+        ]
+      },
+      {
+        "tick": 43,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 7,
+        "att": [
+          8,
+          9,
+          6,
+          12
+        ]
+      },
+      {
+        "tick": 44,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 7,
+        "att": [
+          8,
+          9,
+          6,
+          14
+        ]
+      },
+      {
+        "tick": 45,
+        "flags": [
+          128,
+          128,
+          128,
+          128,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 6,
+        "att": [
+          10,
+          10,
+          7,
+          15
+        ]
+      },
+      {
+        "tick": 46,
+        "flags": [
+          128,
+          128,
+          128,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 6,
+        "att": [
+          10,
+          10,
+          7,
+          15
+        ]
+      },
+      {
+        "tick": 47,
+        "flags": [
+          128,
+          128,
+          128,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 5,
+        "att": [
+          11,
+          11,
+          8,
+          15
+        ]
+      },
+      {
+        "tick": 48,
+        "flags": [
+          128,
+          128,
+          128,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 5,
+        "att": [
+          11,
+          11,
+          8,
+          15
+        ]
+      },
+      {
+        "tick": 49,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 4,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 50,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 4,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 51,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 3,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 52,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 3,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 53,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 2,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 54,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 2,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 55,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 1,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 56,
+        "flags": [
+          144,
+          144,
+          144,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 1,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 57,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 58,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 59,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 60,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 61,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 62,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 63,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 64,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 65,
+        "flags": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      }
+    ],
+    "pause": [
+      {
+        "tick": 29,
+        "flags": [
+          128,
+          128,
+          128,
+          144,
+          0,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          4,
+          1,
+          15
+        ]
+      },
+      {
+        "tick": 30,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          128,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          0,
+          15,
+          0
+        ]
+      },
+      {
+        "tick": 31,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          128,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          2,
+          15,
+          2
+        ]
+      },
+      {
+        "tick": 32,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          128,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          2,
+          15,
+          2
+        ]
+      },
+      {
+        "tick": 33,
+        "flags": [
+          128,
+          132,
+          132,
+          148,
+          144,
+          4,
+          136
+        ],
+        "priority": 72,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          5,
+          15,
+          15,
+          2
+        ]
+      },
+      {
+        "tick": 34,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          5,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 35,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 36,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 37,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 38,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 39,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 40,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 41,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 42,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 43,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 44,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 0,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 45,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 46,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 47,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 48,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 49,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 50,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 51,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 52,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 53,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 54,
+        "flags": [
+          128,
+          132,
+          144,
+          144,
+          144,
+          0,
+          0
+        ],
+        "priority": 0,
+        "mailbox": 191,
+        "pause": 127,
+        "fade": 0,
+        "att": [
+          15,
+          15,
+          15,
+          15
+        ]
+      },
+      {
+        "tick": 55,
+        "flags": [
+          128,
+          132,
+          148,
+          144,
+          144,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          5,
+          15,
+          1,
+          15
+        ]
+      },
+      {
+        "tick": 56,
+        "flags": [
+          128,
+          132,
+          148,
+          144,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          5,
+          0,
+          0,
+          15
+        ]
+      },
+      {
+        "tick": 57,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          1,
+          2,
+          15
+        ]
+      },
+      {
+        "tick": 58,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          1,
+          3,
+          2
+        ]
+      },
+      {
+        "tick": 59,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          2,
+          1,
+          3
+        ]
+      },
+      {
+        "tick": 60,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          144,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          15,
+          0,
+          6
+        ]
+      },
+      {
+        "tick": 61,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          144,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          15,
+          2,
+          8
+        ]
+      },
+      {
+        "tick": 62,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          5,
+          3,
+          10
+        ]
+      },
+      {
+        "tick": 63,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          6,
+          1,
+          12
+        ]
+      },
+      {
+        "tick": 64,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          3,
+          6,
+          0,
+          14
+        ]
+      },
+      {
+        "tick": 65,
+        "flags": [
+          128,
+          132,
+          132,
+          128,
+          128,
+          128,
+          4
+        ],
+        "priority": 56,
+        "mailbox": 0,
+        "pause": 0,
+        "fade": 0,
+        "att": [
+          4,
+          7,
+          2,
+          15
+        ]
+      }
+    ]
+  },
+  "code_spans": [
+    {
+      "cpu_start": 16384,
+      "cpu_end": 16511,
+      "sha256": "c668747621e22fd79dd17a1f0d8c3b6db62bca41b2d0c9da91edd9bf3a49daf4"
+    },
+    {
+      "cpu_start": 16511,
+      "cpu_end": 16665,
+      "sha256": "2c7311dd6bf47c2185c2c1968d921ef5fdebba48c4143db400215a2f2c138f85"
+    },
+    {
+      "cpu_start": 16807,
+      "cpu_end": 16939,
+      "sha256": "804f62ee8608db5d5eee8e01a903f15c8b4f99971b058f3e26dc56277751fd4f"
+    },
+    {
+      "cpu_start": 17217,
+      "cpu_end": 17231,
+      "sha256": "8a8457c553696b53f9212fca0d6c0dd0f3b5028f013682bdfbf12f4db4f8960d"
+    },
+    {
+      "cpu_start": 17994,
+      "cpu_end": 18036,
+      "sha256": "2973a2f257d43cec8d27799295c4fff96fcbcd0469e6e82822eb08fc1b227815"
+    },
+    {
+      "cpu_start": 18376,
+      "cpu_end": 18460,
+      "sha256": "ee0693cabce7fa81d822031384c78c59b312818179fce77647088ffed63ad72f"
+    }
+  ]
+}
