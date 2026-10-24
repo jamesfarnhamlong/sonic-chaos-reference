@@ -4,6 +4,12 @@
 
 See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
 
+## CURRENT A1L-PROV — audit published, mechanical closure local (24 October 2026)
+
+**Audit publication VERIFIED:** remote `research/m5-a1l-independent-provenance-review@0bf89ade86bfa7a92f7d918fae5f05d77e79b948`, single documentation-only child of A1L `ad6aa301`. Previous remote-unpublished entry below is now chronological history. **Closure candidate** local `research/m5-a1l-provenance-closure@4980f6d10a4fd7c311202757c47cda13b8bf9074`; unpushed, full report inaccessible to Manager on E:. Agent reports PROV2 LF/raw hash, PROV3 mingw import-definition and conservative missing AUTHORS notice, PROV4 proposed source/binary manifest and tamper testing. These are NOT independently reviewed; CONDITIONAL GO for safe docs-only push and subsequent GitHub Manager review, not distribution.
+
+**PROV1 rights grant stays UNSIGNED/PENDING.** Chief's project is personally originated, not commissioned, noncommercial and unlikely to be released; don't repeatedly require Chief to warrant AI-assisted C authorship he cannot verify. Licensing obligations still apply if anyone later distributes a component. No PSG/game binary release, upstream contact, or private POC modifications. M5-A2 event-decoder work remains authorised separately from the unresolved distribution gate.
+
 ## CURRENT M5-A1P and PROV — native real-PSG host accepted; distro conditions open (24 October 2026)
 
 **M5-A1P real PSG GameMaker host gate ACCEPTED (bounded / Designer-reported):** Isolated Windows x64 VM LTS2026.0.0.23, 160sec ROM-free PSG native audio. 6,309,975 samples and8,585 states matched offline **same A1L** exactly (A1L vs original MAME difference<=5LSB remains independently tracked). 735-frame synthesis p99 0.0446ms; total native generation/encoding/GML transfer/queue p50 0.070/p95 0.114/p99 0.136/max0.438ms. 105 lifecycle assertions PASS, 72/72 buffers retired, 97 safe transient refused refill, no observed underrun/callback error; 30/60 Hz scenes, pauses, repeated Stop, exits. Actual production driver events, loaded SonicChaos PC workload, YYC and Chief listening remain untested. Isolated candidate `E:\AI\Codex\Sonic Chaos\M5-A1P` is uncommitted/unarchived; accepted game remains private M4.
