@@ -16,8 +16,8 @@ from backend import PSG
 import numpy as np
 
 
-def render(bank, schedule, dll, split=False):
-    m = Decoder(bank)
+def render(bank, schedule, dll, split=False, decoder_class=Decoder):
+    m = decoder_class(bank)
     m.direct(schedule['initial'])
     blocks, states = [], []
     with PSG(dll) as chip:

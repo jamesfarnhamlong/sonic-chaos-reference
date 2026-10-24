@@ -1,0 +1,179 @@
+{
+  "termination": {
+    "84": {
+      "inactive_tick": 1088,
+      "post_completion_ticks": 32,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "final_tone_periods": [
+        180,
+        718,
+        181
+      ],
+      "all_slot_flags_inactive": true,
+      "PCM_samples": 823200,
+      "legitimate_terminal_output_exact": true
+    },
+    "85": {
+      "inactive_tick": 432,
+      "post_completion_ticks": 32,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "final_tone_periods": [
+        191,
+        761,
+        95
+      ],
+      "all_slot_flags_inactive": true,
+      "PCM_samples": 341040,
+      "legitimate_terminal_output_exact": true
+    },
+    "86": {
+      "inactive_tick": 300,
+      "post_completion_ticks": 32,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "final_tone_periods": [
+        79,
+        127,
+        214
+      ],
+      "all_slot_flags_inactive": true,
+      "PCM_samples": 244020,
+      "legitimate_terminal_output_exact": true
+    },
+    "87": {
+      "inactive_tick": 408,
+      "post_completion_ticks": 32,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "final_tone_periods": [
+        242,
+        309,
+        495
+      ],
+      "all_slot_flags_inactive": true,
+      "PCM_samples": 323400,
+      "legitimate_terminal_output_exact": true
+    },
+    "89": {
+      "inactive_tick": 242,
+      "post_completion_ticks": 32,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "final_tone_periods": [
+        111,
+        114,
+        113
+      ],
+      "all_slot_flags_inactive": true,
+      "PCM_samples": 201390,
+      "legitimate_terminal_output_exact": true
+    },
+    "8A": {
+      "inactive_tick": 179,
+      "post_completion_ticks": 32,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        0,
+        15
+      ],
+      "final_tone_periods": [
+        113,
+        114,
+        0
+      ],
+      "all_slot_flags_inactive": true,
+      "PCM_samples": 155085,
+      "legitimate_terminal_output_exact": true
+    }
+  },
+  "E1_previous_decoder_rejection": {
+    "tick": 1,
+    "reason": "unverified opcode e1 at 5dda"
+  },
+  "replaced_THZ_does_not_automatically_resume": true,
+  "wrong_pitch_data_detected_tick": 1,
+  "missing_terminal_writes_detected_tick": 939,
+  "inherited_SCSP_v1_loads": true,
+  "old_nine_headers_and_data_unchanged": true,
+  "original_8A_terminal": {
+    "restore_tick": 1,
+    "source_instruction_cpu": "47F3",
+    "saved_DE11": 0,
+    "prior_data_latch_register": 5,
+    "tone2_period": 0,
+    "post_completion_PCM": {
+      "candidate": {
+        "samples": 23520,
+        "constant_signed16": 8192,
+        "AC_standard_deviation": 0.0
+      },
+      "reference": {
+        "samples": 23520,
+        "constant_signed16": 8192,
+        "AC_standard_deviation": 0.0
+      }
+    },
+    "qualification": "authenticated held DC from zero-period tone2; no periodic AC; not silently forced off"
+  },
+  "interaction_rejections": {
+    "invincibility-SFX": {
+      "tick": 40,
+      "last_admitted_SFX": 188,
+      "priority": 96,
+      "lower_priority_rejected": true
+    },
+    "finite-three-mailboxes": {
+      "tick": 30,
+      "last_admitted_SFX": 182,
+      "priority": 104,
+      "lower_priority_rejected": true
+    }
+  },
+  "performance": {
+    "ticks": 8523,
+    "median_ns": 4300,
+    "p99_ns": 18100,
+    "max_ns": 75100,
+    "memory": {
+      "previous": {
+        "current_bytes": 197827,
+        "peak_bytes": 218867
+      },
+      "expanded": {
+        "current_bytes": 314299,
+        "peak_bytes": 355540
+      }
+    },
+    "allocation_scope": "decoded sparse bank plus decoder and bounded diagnostic transfer log; excludes PCM arrays/interpreter base",
+    "GameMaker_decoder": "NOT MEASURED"
+  }
+}

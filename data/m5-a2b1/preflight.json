@@ -1,0 +1,1520 @@
+{
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "rows": [
+    {
+      "request_id": 132,
+      "label": "Invincibility music",
+      "authorised_implementation": true,
+      "header": {
+        "header_rom": 40168,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 2,
+        "tempo_byte": 4,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 23806,
+            "transpose": -10,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 23917,
+            "transpose": -10,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 24026,
+            "transpose": -10,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 24145,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 1088,
+      "inherited_inactive_tick": 1088,
+      "reached_opcodes": {
+        "E0": 5,
+        "E1": 1,
+        "E6": 21,
+        "F2": 4,
+        "F7": 41
+      },
+      "static": {
+        "nodes": 286,
+        "potential_opcodes": [
+          "E0",
+          "E1",
+          "E6",
+          "F2",
+          "F7"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 11,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        29,
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "00": 37,
+        "10": 842,
+        "20": 2042,
+        "40": 220,
+        "80": 46
+      },
+      "E1_signed_operand_classes": {
+        "positive": 1
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 133,
+      "label": "Rocket Shoes music",
+      "authorised_implementation": true,
+      "header": {
+        "header_rom": 40626,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 2,
+        "tempo_byte": 4,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 24264,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 24298,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 24327,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 24394,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 432,
+      "inherited_inactive_tick": 432,
+      "reached_opcodes": {
+        "E0": 1,
+        "F0": 1,
+        "F2": 4,
+        "F5": 2,
+        "F7": 11
+      },
+      "static": {
+        "nodes": 134,
+        "potential_opcodes": [
+          "E0",
+          "F0",
+          "F2",
+          "F5",
+          "F7"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 4,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        4,
+        27,
+        29,
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 4,
+          "ordinary_steps_before_control": 52,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 27,
+          "ordinary_steps_before_control": 26,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "10": 81,
+        "20": 81,
+        "40": 269
+      },
+      "E1_signed_operand_classes": {},
+      "unverified_stream_opcodes": [],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": true,
+      "complexity": "low: existing reached command/pitch classes; full state still requires candidate gate",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 134,
+      "label": "Special Stage success results music",
+      "authorised_implementation": true,
+      "header": {
+        "header_rom": 40826,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 5,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 24464,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 24500,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 24531,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 24553,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 300,
+      "inherited_inactive_tick": 300,
+      "reached_opcodes": {
+        "E0": 5,
+        "E7": 3,
+        "F0": 1,
+        "F2": 4
+      },
+      "static": {
+        "nodes": 71,
+        "potential_opcodes": [
+          "E0",
+          "E7",
+          "F0",
+          "F2"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        29,
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "00": 71,
+        "10": 62,
+        "20": 422,
+        "40": 327
+      },
+      "E1_signed_operand_classes": {},
+      "unverified_stream_opcodes": [],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": true,
+      "complexity": "low: existing reached command/pitch classes; full state still requires candidate gate",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 135,
+      "label": "Game over music",
+      "authorised_implementation": true,
+      "header": {
+        "header_rom": 40965,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 3,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 24603,
+            "transpose": -15,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 24639,
+            "transpose": -15,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 24679,
+            "transpose": -15,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 24716,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 408,
+      "inherited_inactive_tick": 408,
+      "reached_opcodes": {
+        "E0": 6,
+        "E1": 1,
+        "E7": 3,
+        "F0": 3,
+        "F2": 4
+      },
+      "static": {
+        "nodes": 64,
+        "potential_opcodes": [
+          "E0",
+          "E1",
+          "E7",
+          "F0",
+          "F2"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        29,
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "10": 51,
+        "20": 539,
+        "40": 627,
+        "80": 3
+      },
+      "E1_signed_operand_classes": {
+        "positive": 1
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 137,
+      "label": "Ordinary act-clear music",
+      "authorised_implementation": true,
+      "header": {
+        "header_rom": 41298,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 5,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 24936,
+            "transpose": -9,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 24961,
+            "transpose": -9,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 24985,
+            "transpose": -9,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 25037,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 242,
+      "inherited_inactive_tick": 242,
+      "reached_opcodes": {
+        "E1": 1,
+        "E7": 2,
+        "F0": 1,
+        "F2": 4,
+        "F5": 3
+      },
+      "static": {
+        "nodes": 94,
+        "potential_opcodes": [
+          "E1",
+          "E7",
+          "F0",
+          "F2",
+          "F5"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        6,
+        7,
+        23,
+        29,
+        30,
+        39
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 6,
+          "ordinary_steps_before_control": 112,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 7,
+          "ordinary_steps_before_control": 45,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 23,
+          "ordinary_steps_before_control": 44,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {},
+      "E1_signed_operand_classes": {
+        "positive": 1
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 138,
+      "label": "Special Stage entry / success transition music",
+      "authorised_implementation": true,
+      "header": {
+        "header_rom": 41441,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 26,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 25079,
+            "transpose": -10,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 25111,
+            "transpose": -10,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 25147,
+            "transpose": -10,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 25148,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 179,
+      "inherited_inactive_tick": 179,
+      "reached_opcodes": {
+        "E0": 8,
+        "E1": 4,
+        "E6": 12,
+        "F2": 4,
+        "F7": 20,
+        "FB": 8
+      },
+      "static": {
+        "nodes": 34,
+        "potential_opcodes": [
+          "E0",
+          "E1",
+          "E6",
+          "F2",
+          "F7",
+          "FB"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 4,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        128
+      ],
+      "reached_pitch_selectors": [
+        0
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [],
+      "algorithmic_envelope_state_visits": {
+        "10": 168,
+        "20": 180,
+        "80": 4
+      },
+      "E1_signed_operand_classes": {
+        "positive": 4
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        0,
+        15
+      ]
+    },
+    {
+      "request_id": 142,
+      "label": "Unknown $8E",
+      "authorised_implementation": false,
+      "header": {
+        "header_rom": 46644,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 6,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 30282,
+            "transpose": -13,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 30326,
+            "transpose": -13,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 30367,
+            "transpose": -13,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 30387,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 188,
+      "inherited_inactive_tick": 188,
+      "reached_opcodes": {
+        "E0": 4,
+        "E1": 1,
+        "F0": 1,
+        "F2": 4,
+        "F5": 2
+      },
+      "static": {
+        "nodes": 82,
+        "potential_opcodes": [
+          "E0",
+          "E1",
+          "F0",
+          "F2",
+          "F5"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        0,
+        9,
+        21,
+        29,
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 9,
+          "ordinary_steps_before_control": 44,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 21,
+          "ordinary_steps_before_control": 25,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "10": 68,
+        "20": 110,
+        "40": 196
+      },
+      "E1_signed_operand_classes": {
+        "positive": 1
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 148,
+      "label": "Continue-screen music",
+      "authorised_implementation": false,
+      "header": {
+        "header_rom": 53213,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 0,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 36851,
+            "transpose": -13,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 37009,
+            "transpose": -13,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 37132,
+            "transpose": -13,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 37290,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 1081,
+      "inherited_inactive_tick": 1081,
+      "reached_opcodes": {
+        "E0": 3,
+        "F2": 4,
+        "F7": 6
+      },
+      "static": {
+        "nodes": 399,
+        "potential_opcodes": [
+          "E0",
+          "F2",
+          "F7"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 2,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        29,
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "00": 1,
+        "10": 534,
+        "20": 2202,
+        "40": 492,
+        "80": 11
+      },
+      "E1_signed_operand_classes": {},
+      "unverified_stream_opcodes": [],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": true,
+      "complexity": "low: existing reached command/pitch classes; full state still requires candidate gate",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 150,
+      "label": "Player death music",
+      "authorised_implementation": false,
+      "header": {
+        "header_rom": 55260,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 6,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 38898,
+            "transpose": -14,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 38952,
+            "transpose": -14,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 38987,
+            "transpose": -14,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 39022,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 340,
+      "inherited_inactive_tick": 340,
+      "reached_opcodes": {
+        "E0": 6,
+        "E7": 3,
+        "F0": 1,
+        "F2": 4,
+        "FB": 2
+      },
+      "static": {
+        "nodes": 89,
+        "potential_opcodes": [
+          "E0",
+          "E7",
+          "F0",
+          "F2",
+          "FB"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "00": 320,
+        "10": 78,
+        "20": 177,
+        "40": 417,
+        "80": 25
+      },
+      "E1_signed_operand_classes": {},
+      "unverified_stream_opcodes": [],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": true,
+      "complexity": "low: existing reached command/pitch classes; full state still requires candidate gate",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 151,
+      "label": "Act 3 clear music",
+      "authorised_implementation": false,
+      "header": {
+        "header_rom": 55425,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 6,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 39063,
+            "transpose": -12,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 39095,
+            "transpose": -12,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 39125,
+            "transpose": -12,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 39170,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 274,
+      "inherited_inactive_tick": 274,
+      "reached_opcodes": {
+        "E0": 4,
+        "E1": 1,
+        "F0": 2,
+        "F2": 4,
+        "FB": 1
+      },
+      "static": {
+        "nodes": 77,
+        "potential_opcodes": [
+          "E0",
+          "E1",
+          "F0",
+          "F2",
+          "FB"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        29,
+        30,
+        39,
+        40,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 40,
+          "ordinary_steps_before_control": 4,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "10": 84,
+        "20": 172,
+        "40": 543,
+        "80": 8
+      },
+      "E1_signed_operand_classes": {
+        "positive": 1
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 152,
+      "label": "TRY AGAIN ending-card music",
+      "authorised_implementation": false,
+      "header": {
+        "header_rom": 55580,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 3,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 39218,
+            "transpose": 0,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 39247,
+            "transpose": 0,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 39278,
+            "transpose": 0,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 39312,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 305,
+      "inherited_inactive_tick": 305,
+      "reached_opcodes": {
+        "E0": 4,
+        "E1": 1,
+        "E6": 14,
+        "F0": 1,
+        "F2": 4,
+        "F7": 14
+      },
+      "static": {
+        "nodes": 42,
+        "potential_opcodes": [
+          "E0",
+          "E1",
+          "E6",
+          "F0",
+          "F2",
+          "F7"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 2,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        128
+      ],
+      "reached_pitch_selectors": [
+        0,
+        128
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [],
+      "algorithmic_envelope_state_visits": {
+        "00": 108,
+        "10": 130,
+        "20": 235,
+        "40": 412,
+        "80": 13
+      },
+      "E1_signed_operand_classes": {
+        "positive": 1
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "request_id": 154,
+      "label": "Partial Sonic ending music",
+      "authorised_implementation": false,
+      "header": {
+        "header_rom": 56266,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 0,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 39904,
+            "transpose": -12,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 40088,
+            "transpose": -12,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 40276,
+            "transpose": -12,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 40442,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "original_inactive_tick": 1153,
+      "inherited_inactive_tick": 1153,
+      "reached_opcodes": {
+        "E0": 28,
+        "E1": 3,
+        "F2": 4,
+        "F7": 12
+      },
+      "static": {
+        "nodes": 402,
+        "potential_opcodes": [
+          "E0",
+          "E1",
+          "F2",
+          "F7"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 4,
+        "jump_sites": 0,
+        "termination_sites": 4,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "reached_envelope_selectors": [
+        0,
+        29,
+        30,
+        39,
+        128
+      ],
+      "reached_pitch_selectors": [
+        0
+      ],
+      "reached_ADSR_modes": [
+        0
+      ],
+      "table_envelope_preflight": [
+        {
+          "selector": 29,
+          "ordinary_steps_before_control": 11,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 30,
+          "ordinary_steps_before_control": 6,
+          "first_control": "82",
+          "known_control": true
+        },
+        {
+          "selector": 39,
+          "ordinary_steps_before_control": 8,
+          "first_control": "82",
+          "known_control": true
+        }
+      ],
+      "algorithmic_envelope_state_visits": {
+        "00": 48,
+        "10": 622,
+        "20": 2222,
+        "40": 382,
+        "80": 122
+      },
+      "E1_signed_operand_classes": {
+        "positive": 2,
+        "zero": 1
+      },
+      "unverified_stream_opcodes": [
+        "E1"
+      ],
+      "table_pitch_required": false,
+      "volume_envelope_class": "algorithmic and/or table; selectors listed, internal table control branches not yet independently verified",
+      "M5A2_stream_whitelist_sufficient": false,
+      "complexity": "focused original-language extension required",
+      "coverage_promotion": false,
+      "new_PCM_renders": 0,
+      "unverified_paths": [
+        "context-dependent interference",
+        "internal envelope table controls not yet candidate-checked",
+        "new opcode, pitch class or envelope base"
+      ],
+      "original_final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ]
+    }
+  ],
+  "static_algorithm": "bounded syntax/control-flow scan; both counted-loop outcomes; call/return contexts",
+  "execution": "unmodified original Z80 driver until all slots inactive; no PCM; no decoder expansion before this inventory",
+  "scope": "all twelve preflight only; exactly six authorised for implementation"
+}
