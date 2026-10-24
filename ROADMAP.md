@@ -4,6 +4,14 @@
 
 See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
 
+## CURRENT M5-P0R — bounded emission closure accepted; carrier/context proof only (24 October 2026)
+
+**M5-P0R emission correction — scoped ACCEPTED:** `research/m5-p0r-emission-closure@210ca93d2672f82ce2dc9a1203b6637f6e1247bc`, direct continuation of P0/P1 HOLD `e8494d5`, verified public GitHub commit with 14 safe additions. Exact original-port/write and full register/latch comparisons **12 controls / 11,250 bytes PASS**; fixed-rate B8+BC missing104-tick noise hold corrected, B6 saved-noise-byte/latch boundary corrected, BA false-audible solo output explained and removed in experimental composition. 37 tests PASS; historical failures preserved separately. No accepted GameMaker/audio asset changes. New private sidecar reported SHA-256 `89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826bdb9a29382f`.
+
+**Partial PCM advance, NOT full-library readiness:** a continuously timed159-tick fixed-rate noise carrier plus original emission attenuation recovers all held ticks; matched-entry waveform correlation>0.999999 with resampler-boundary error, and music-context PCM correlations improved, but arbitrary-phase and other noise-clock classes remain unvalidated. Unmodified static PCM stems remain structurally insufficient for the missed B8 blocks. A3 DC and M4 generic fades remain documented approximations. No human/native listening.
+
+**Next small proposed/authorised Research gate M5-P1C:** decide whether a bounded *carrier/context* representation works for multiple original F3 noise and restore/latch contexts without combinatorial banks. Require exact original-driver output oracle, a small provenance-pinned private renderer package, byte/sample and voice-gating checks, context selection/compatibility matrix, and risked/failed case STOP. No universal claims from one B8 case. **Full P2/P3 bulk songs, long boss/SEZ/EEZ loops, GameMaker work, Sound Test implementation and renderer/runtime architecture replacement remain HOLD.** After Manager reviews that proof, either commission measured finite asset production or explicitly choose a different engineering route. Accepted POC remains private M4 `11bff343`. Chief has no Windows tests now.
+
 ## CURRENT M5-P0/P1 HOLD — output-state correction required (24 October 2026)
 
 **M5-R1 — Research contract ACCEPTED:** `research/m5-full-audio-contract@7d700d0`: 70 indexed requests, 60 distinct nonempty solo command-output targets, multi-SFX/noise/tone2/shared-priority semantics, proposed full Sound Test and private production plan. Full audio remains unimplemented.
