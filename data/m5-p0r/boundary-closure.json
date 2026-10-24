@@ -1,0 +1,44 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "management": "293b5a32a7c8af25117c6c88d7e383d3bb36b161",
+  "held_noise": {
+    "first_tick": 63,
+    "last_tick": 166,
+    "ticks": 104,
+    "control": 5,
+    "attenuation": 2,
+    "ordinary_writes_inhibited": true,
+    "noise_stream_active_at167": true,
+    "terminal_off_tick167_attenuation": 15,
+    "stream_finished168": true
+  },
+  "B6": {
+    "original_tick44_attenuation": 3,
+    "original_tick45_attenuation": 4,
+    "corrected_tick45_attenuation": 4,
+    "prior_dry_projection_tick45": 0,
+    "authentic_solo_tick16_attenuation": 0,
+    "corrected_solo_tick16_attenuation": 0,
+    "root_cause": "context-dependent saved DE11 restore byte0 is data to last latched tone1 attenuation in solo capture; in music a valid noise latch E4 is restored",
+    "cpu_locations": {
+      "tone1_attenuation_out": "4543",
+      "restore_load": "47F0",
+      "restore_out": "47F3",
+      "own_off": "4810"
+    }
+  },
+  "BA": {
+    "original_tick34_attenuation": 15,
+    "corrected_tick34_attenuation": 15,
+    "prior_static_stem_attenuation": 0,
+    "root_cause": "same solo restore-byte/data-latch contamination; previous audible-only guard omitted false-audible cases"
+  },
+  "preservation": {
+    "parent_proof_sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+    "parent_proof_unchanged": true,
+    "M4_payloads_checked": 47,
+    "M4_payloads_unchanged": true
+  },
+  "recommendation": "CONDITIONAL GO only for a separately authorized small carrier/context-asset proof batch; full M5 and GameMaker remain HOLD",
+  "full_static_stem_architecture": "insufficient unchanged; zero carrier samples cannot be recovered by gain or gating; finite fixed-rate carrier extension demonstrated, not universal"
+}

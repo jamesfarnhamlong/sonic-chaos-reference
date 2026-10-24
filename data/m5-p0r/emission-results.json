@@ -1,0 +1,88 @@
+{
+  "rom_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "scope": "private dry intrinsic intents; independent combined emission/latch state; no PCM",
+  "cases": {
+    "B8-BC": {
+      "ticks": 210,
+      "ordered_port_bytes": 1065,
+      "failures": [],
+      "status": "PASS"
+    },
+    "BC-B8": {
+      "ticks": 210,
+      "ordered_port_bytes": 1320,
+      "failures": [],
+      "status": "PASS"
+    },
+    "B6-A0": {
+      "ticks": 210,
+      "ordered_port_bytes": 1358,
+      "failures": [],
+      "status": "PASS"
+    },
+    "BA-partial": {
+      "ticks": 210,
+      "ordered_port_bytes": 1446,
+      "failures": [],
+      "status": "PASS"
+    },
+    "BF-A3": {
+      "ticks": 210,
+      "ordered_port_bytes": 1269,
+      "failures": [],
+      "status": "PASS"
+    },
+    "A3-BF": {
+      "ticks": 210,
+      "ordered_port_bytes": 1247,
+      "failures": [],
+      "status": "PASS"
+    },
+    "AC-A0": {
+      "ticks": 210,
+      "ordered_port_bytes": 1429,
+      "failures": [],
+      "status": "PASS"
+    },
+    "B6-noise-release": {
+      "ticks": 210,
+      "ordered_port_bytes": 1280,
+      "failures": [],
+      "status": "PASS"
+    },
+    "explicit-F8": {
+      "ticks": 210,
+      "ordered_port_bytes": 243,
+      "failures": [],
+      "status": "PASS"
+    },
+    "fade-multiple": {
+      "ticks": 210,
+      "ordered_port_bytes": 389,
+      "failures": [],
+      "status": "PASS"
+    },
+    "B6-solo-context": {
+      "ticks": 70,
+      "ordered_port_bytes": 82,
+      "failures": [],
+      "status": "PASS"
+    },
+    "B8-matched-entry": {
+      "ticks": 159,
+      "ordered_port_bytes": 122,
+      "failures": [],
+      "status": "PASS"
+    }
+  },
+  "focused_original_cases": 12,
+  "cached_ownership_cases": 1480,
+  "cached_ownership_failures": [],
+  "new_full_matrix_pair_captures": 0,
+  "recovery_cases": 111,
+  "recovery_facts": 159,
+  "recovery_matches": 159,
+  "recovery_failures": [],
+  "status": "PASS",
+  "seconds": 7.0413766000419855
+}

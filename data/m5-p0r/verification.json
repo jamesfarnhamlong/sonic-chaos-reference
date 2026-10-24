@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-24",
+  "research_parent": "e8494d52ec30b9bc86d29f5c4f4824f4586e21e3",
+  "management": "293b5a32a7c8af25117c6c88d7e383d3bb36b161",
+  "branch": "research/m5-p0r-emission-closure",
+  "emission_gate": "PASS bounded exact port/register/latch state",
+  "full_M5_production": "HOLD",
+  "recommendation": "CONDITIONAL GO only for separately authorized small carrier/context proof",
+  "tests": {
+    "new_P0R": 12,
+    "inherited_M5R1": 16,
+    "inherited_M4": 9,
+    "passed": 37,
+    "failed": 0,
+    "skipped": 0,
+    "errors": 0
+  },
+  "checks": {
+    "python_compile": "PASS",
+    "whitespace": "PASS",
+    "GameMaker_changes": false,
+    "main_merge": false,
+    "bulk_rendering": false,
+    "parent_private_package_preserved": true,
+    "M4_payloads_preserved": 47
+  },
+  "inventory": [
+    {
+      "path": "data/m5-p0r/boundary-closure.json",
+      "bytes": 1855,
+      "sha256": "26abb1e44b9460af7fab8880a6e08ccd04246f3c2b02a3cf3f4cfe404edcff69"
+    },
+    {
+      "path": "data/m5-p0r/composition-feasibility.json",
+      "bytes": 24545,
+      "sha256": "f978be733e0d4d3482f8bd07715e7b3526565c09aa1b5dd0d7595f3a0233f03a"
+    },
+    {
+      "path": "data/m5-p0r/emission-results.json",
+      "bytes": 2080,
+      "sha256": "ca3e6395884c24d905c918d38cc4bf57644f4caa510954a27d5fb9ea7626ea0b"
+    },
+    {
+      "path": "data/m5-p0r/private-sidecar-receipt.json",
+      "bytes": 357,
+      "sha256": "1c8d697236e5c31f3f6644df0e0dbc2e59895851b12b4df0dabf614ef3574fec"
+    },
+    {
+      "path": "docs/m5-p0r-composition-feasibility.md",
+      "bytes": 7654,
+      "sha256": "a68f057a00ec5d1935987d15a94286922f8873e28294cecd9cc647b50b3e1fb1"
+    },
+    {
+      "path": "docs/m5-p0r-emission-correction.md",
+      "bytes": 7178,
+      "sha256": "d24f8c4d511dc0662dbc40edec317e57a44e4596e7920321996d033753bb7635"
+    },
+    {
+      "path": "docs/m5-p0r-handover.md",
+      "bytes": 6895,
+      "sha256": "14bd49a3e97277a4a90b317871369a93fe59995e4b8ef242e83cc5339d3fd3e6"
+    },
+    {
+      "path": "tests/test_m5p0r.py",
+      "bytes": 7003,
+      "sha256": "903486164a18082d0c7497c985e1074b54f15c76c60c4ad65f2b76c158d60186"
+    },
+    {
+      "path": "tools/m5p0r_emission.py",
+      "bytes": 6727,
+      "sha256": "6ec8465b8889fcf4b1849ab464624a7d7b09ad395f0a9df759f4ca1bcd79872d"
+    },
+    {
+      "path": "tools/m5p0r_pcm.py",
+      "bytes": 13100,
+      "sha256": "42c45c0cf58e85ad0309b6f5dcd1296f3ffc8c9f7a5f3918d32b60e869d22519"
+    },
+    {
+      "path": "tools/m5p0r_probe.py",
+      "bytes": 3351,
+      "sha256": "1f3d110a2a3f5d619b9637c21606d9b7e9e57b90a9eb2451734e2ed48057f261"
+    },
+    {
+      "path": "tools/m5p0r_proof.py",
+      "bytes": 9091,
+      "sha256": "d05e57d69cc15a08be98cb1c6f4a4bf0622f81113ca1844844ae53092d153a95"
+    },
+    {
+      "path": "tools/m5p0r_receipt.py",
+      "bytes": 5206,
+      "sha256": "d76189215db03a3c61220d9c59d56131343d9a4740f3ebb9c9c60ca470f13700"
+    }
+  ],
+  "inventory_note": "13 companions hashed; this receipt is the14th new file, not self-hashed"
+}

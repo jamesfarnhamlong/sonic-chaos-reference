@@ -1,0 +1,747 @@
+{
+  "register_gate": "PASS before PCM work",
+  "parent_proof_preserved": true,
+  "static_B8_zero_source_ticks_during_required_hold": [
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166
+  ],
+  "carrier_experiment": {
+    "production_approved": false,
+    "format": "44100Hz signed16 mono;159ticks",
+    "own_cursor_never_restarted_at_hold": true,
+    "deterministic": true,
+    "render": {
+      "ticks": 159,
+      "samples": 116865,
+      "seconds": null,
+      "pcm_sha256": "e37c254cfb4b1719ea9d4cdcdebb78e863e5c3a782079f1e472bf0c7b829dea4",
+      "vgm_sha256": "d298472696a75c768eb857e33798bcba85955b763dc1236fefa729f8b532ad07",
+      "cache_key": "8f934fbd7ad0462762c40ffdc0e4d3b9e0237bc09b7cbf95936e8f54da1d2f72",
+      "wav_sha256": "51670f44c4cc5f3c5727ea874d64366b98aa94b4dd3f185b1ec7a06d0483a164",
+      "cache_origin": "same-session successful pinned render; receipt recovered after metadata-stage NameError, no render repeated"
+    },
+    "repeat_render": {
+      "ticks": 159,
+      "samples": 116865,
+      "seconds": null,
+      "pcm_sha256": "e37c254cfb4b1719ea9d4cdcdebb78e863e5c3a782079f1e472bf0c7b829dea4",
+      "vgm_sha256": "d298472696a75c768eb857e33798bcba85955b763dc1236fefa729f8b532ad07",
+      "cache_key": "8f934fbd7ad0462762c40ffdc0e4d3b9e0237bc09b7cbf95936e8f54da1d2f72",
+      "wav_sha256": "51670f44c4cc5f3c5727ea874d64366b98aa94b4dd3f185b1ec7a06d0483a164",
+      "cache_origin": "same-session successful pinned render; receipt recovered after metadata-stage NameError, no render repeated"
+    },
+    "continuous_entry_phase": "original arbitrary music-entry phase not recreated by a standalone carrier",
+    "before": {
+      "sample_equal": false,
+      "sample_max_error_lsb": 29390,
+      "sample_error_rms_lsb": 4316.785852818387,
+      "waveform_correlation": 0.8126244845102305,
+      "envelope_correlation": 0.8067843298332897,
+      "max_tick_rms_error_percent_peak": 21.336414688564457,
+      "per_voice": [
+        {
+          "channel": 0,
+          "sample_equal": false,
+          "waveform_correlation": 0.9999999581090526,
+          "envelope_correlation": 0.999999999999669,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 1,
+          "sample_equal": true,
+          "waveform_correlation": 1.0,
+          "envelope_correlation": 1.0,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 2,
+          "sample_equal": false,
+          "waveform_correlation": 0.8844206536082134,
+          "envelope_correlation": 0.9999999668798668,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 3,
+          "sample_equal": false,
+          "waveform_correlation": 0.42541591218673325,
+          "envelope_correlation": 0.3746304285690774,
+          "noise_metrics_reference": {
+            "samples": 137448,
+            "rms_lsb": 4714.690828461117,
+            "zero_crossing_rate": 0.045923155834612615,
+            "spectral_flatness": 0.06149522170678987
+          },
+          "noise_metrics_composed": {
+            "samples": 61742,
+            "rms_lsb": 4170.066010742242,
+            "zero_crossing_rate": 0.05374062616413728,
+            "spectral_flatness": 0.06181031579486364
+          }
+        }
+      ],
+      "ticks": 210,
+      "state_model": "PASS",
+      "register_projection_mismatches": {
+        "audible_tone_periods": [
+          0,
+          0,
+          0
+        ],
+        "audible_attenuation": [
+          0,
+          0,
+          0,
+          104
+        ],
+        "audible_noise_controls": 104
+      },
+      "diagnostic_register_projection": "not a note/envelope driver port; failures retained",
+      "voice_pitch_reference": {
+        "windows": 48,
+        "median_abs_cents": 0.449,
+        "p95_abs_cents": 1.253,
+        "max_abs_cents": 1.287,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 17,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 29,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 2,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      },
+      "voice_pitch_composed": {
+        "windows": 48,
+        "median_abs_cents": 0.449,
+        "p95_abs_cents": 1.253,
+        "max_abs_cents": 1.287,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 17,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 29,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 2,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      },
+      "native_listening": "NOT PERFORMED",
+      "generic_fade_approximation": false
+    },
+    "after": {
+      "sample_equal": false,
+      "sample_max_error_lsb": 29390,
+      "sample_error_rms_lsb": 3812.9140587436636,
+      "waveform_correlation": 0.8658063113332141,
+      "envelope_correlation": 0.9941367378194906,
+      "max_tick_rms_error_percent_peak": 5.107825005792903,
+      "per_voice": [
+        {
+          "channel": 0,
+          "sample_equal": false,
+          "waveform_correlation": 0.9999999581090526,
+          "envelope_correlation": 0.999999999999669,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 1,
+          "sample_equal": true,
+          "waveform_correlation": 1.0,
+          "envelope_correlation": 1.0,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 2,
+          "sample_equal": false,
+          "waveform_correlation": 0.8844206536082134,
+          "envelope_correlation": 0.9999999668798668,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 3,
+          "sample_equal": false,
+          "waveform_correlation": 0.6804265229428541,
+          "envelope_correlation": 0.9999447098384706,
+          "noise_metrics_reference": {
+            "samples": 137448,
+            "rms_lsb": 4714.690828461117,
+            "zero_crossing_rate": 0.045923155834612615,
+            "spectral_flatness": 0.06149522170678987
+          },
+          "noise_metrics_composed": {
+            "samples": 138182,
+            "rms_lsb": 4702.709156782745,
+            "zero_crossing_rate": 0.045954219465773154,
+            "spectral_flatness": 0.061815791767110495
+          }
+        }
+      ],
+      "pitch": {
+        "windows": 48,
+        "median_abs_cents": 0.449,
+        "p95_abs_cents": 1.253,
+        "max_abs_cents": 1.287,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 17,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 29,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 2,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      }
+    },
+    "held_ticks_restored": 104,
+    "required_held_ticks": 104,
+    "held_tick_rms_correlation": 0.9909878842974295,
+    "held_noise_rms_mean_reference_lsb": 5036.931616320317,
+    "held_noise_rms_mean_candidate_lsb": 5037.027690767775,
+    "noise_reference": {
+      "samples": 137448,
+      "rms_lsb": 4714.690828461117,
+      "zero_crossing_rate": 0.045923155834612615,
+      "spectral_flatness": 0.06149522170678987
+    },
+    "noise_candidate": {
+      "samples": 138182,
+      "rms_lsb": 4702.709156782745,
+      "zero_crossing_rate": 0.045954219465773154,
+      "spectral_flatness": 0.061815791767110495
+    },
+    "matched_entry": {
+      "render": {
+        "ticks": 159,
+        "samples": 116865,
+        "seconds": null,
+        "pcm_sha256": "1dac166c3db6cc5e21a79c4ec90e79300dd337cc4ed20e484296725c67ed0111",
+        "vgm_sha256": "d7904db9ab9da630f3eb733d005a1d911cf34f1589ebabfba5e1044886db7c1b",
+        "cache_key": "a13a5d3cdf5a80bb510063bfff9b8880823ad450bf78f63e229fae2f813a5ba9",
+        "wav_sha256": "8d0d25c345e5a9a6f823362071b197a5a0a933ded73927191c04a70fd2c0b212",
+        "cache_origin": "same-session successful pinned render; receipt recovered after metadata-stage NameError, no render repeated"
+      },
+      "sample_max_error_lsb": 685,
+      "rms_error_lsb": 2.445344890415441,
+      "sample_equal": false,
+      "max_error_outside_first_sample_of_tick_lsb": 2,
+      "nonboundary_samples_over5_lsb": 0,
+      "waveform_correlation": 0.9999998887023042,
+      "envelope_correlation": 0.9999995481238968
+    }
+  },
+  "B6_context": {
+    "render": {
+      "ticks": 47,
+      "samples": 34545,
+      "seconds": null,
+      "pcm_sha256": "8220223cc0229ff215604420714a64be78c0a73f57c52bbfb52eef117d771db8",
+      "vgm_sha256": "dfff005dd42cf64c7dd4c15f9c12aa7821ed5c7e495789dcabd4e081eca0941b",
+      "cache_key": "a9ac803d9ef5747b7a6d9dc83f4feedf7c397cc3828fcf04945269588ee5ff30",
+      "wav_sha256": "9a3d87408b30d9235e106a3c5717f3c9246f55b9a70cbbb742bcfeffedb25124",
+      "cache_origin": "same-session successful pinned render; receipt recovered after metadata-stage NameError, no render repeated"
+    },
+    "changed_source_ticks": [
+      16,
+      17
+    ],
+    "correct_context_attenuation_tick16": 4,
+    "changed_samples_in_tick17": 1,
+    "original_solo_not_rewritten": true,
+    "before": {
+      "sample_equal": false,
+      "sample_max_error_lsb": 32768,
+      "sample_error_rms_lsb": 4451.027682226215,
+      "waveform_correlation": 0.7523410013997316,
+      "envelope_correlation": 0.9888538071268692,
+      "max_tick_rms_error_percent_peak": 18.314267989594306,
+      "per_voice": [
+        {
+          "channel": 0,
+          "sample_equal": false,
+          "waveform_correlation": 0.9999999535273506,
+          "envelope_correlation": 0.9999999999996968,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 1,
+          "sample_equal": false,
+          "waveform_correlation": 0.47979065968925316,
+          "envelope_correlation": 0.9817398320361271,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 2,
+          "sample_equal": false,
+          "waveform_correlation": 0.875103340851206,
+          "envelope_correlation": 0.9999986665935413,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 3,
+          "sample_equal": false,
+          "waveform_correlation": 0.8050347991556087,
+          "envelope_correlation": 0.9996071543134066,
+          "noise_metrics_reference": {
+            "samples": 74982,
+            "rms_lsb": 2580.4839660213097,
+            "zero_crossing_rate": 0.07187154079033355,
+            "spectral_flatness": 0.052103394737797584
+          },
+          "noise_metrics_composed": {
+            "samples": 74977,
+            "rms_lsb": 2583.278123113631,
+            "zero_crossing_rate": 0.07184965855740504,
+            "spectral_flatness": 0.05386018890121456
+          }
+        }
+      ],
+      "ticks": 180,
+      "state_model": "PASS",
+      "register_projection_mismatches": {
+        "audible_tone_periods": [
+          0,
+          0,
+          0
+        ],
+        "audible_attenuation": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "audible_noise_controls": 0
+      },
+      "diagnostic_register_projection": "not a note/envelope driver port; failures retained",
+      "voice_pitch_reference": {
+        "windows": 58,
+        "median_abs_cents": 0.306,
+        "p95_abs_cents": 1.057,
+        "max_abs_cents": 1.287,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 15,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 22,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 21,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      },
+      "voice_pitch_composed": {
+        "windows": 58,
+        "median_abs_cents": 0.291,
+        "p95_abs_cents": 1.057,
+        "max_abs_cents": 1.287,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 15,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 22,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 21,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      },
+      "native_listening": "NOT PERFORMED",
+      "generic_fade_approximation": false
+    },
+    "after": {
+      "sample_equal": false,
+      "sample_max_error_lsb": 32768,
+      "sample_error_rms_lsb": 4405.511925315463,
+      "waveform_correlation": 0.7564797454381404,
+      "envelope_correlation": 0.9958664064716074,
+      "max_tick_rms_error_percent_peak": 3.6101327298027486,
+      "per_voice": [
+        {
+          "channel": 0,
+          "sample_equal": false,
+          "waveform_correlation": 0.9999999535273506,
+          "envelope_correlation": 0.9999999999996968,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 1,
+          "sample_equal": false,
+          "waveform_correlation": 0.4878556724024074,
+          "envelope_correlation": 0.9999977916269555,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 2,
+          "sample_equal": false,
+          "waveform_correlation": 0.875103340851206,
+          "envelope_correlation": 0.9999986665935413,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 3,
+          "sample_equal": false,
+          "waveform_correlation": 0.8050347991556087,
+          "envelope_correlation": 0.9996071543134066,
+          "noise_metrics_reference": {
+            "samples": 74982,
+            "rms_lsb": 2580.4839660213097,
+            "zero_crossing_rate": 0.07187154079033355,
+            "spectral_flatness": 0.052103394737797584
+          },
+          "noise_metrics_composed": {
+            "samples": 74977,
+            "rms_lsb": 2583.278123113631,
+            "zero_crossing_rate": 0.07184965855740504,
+            "spectral_flatness": 0.05386018890121456
+          }
+        }
+      ],
+      "pitch": {
+        "windows": 58,
+        "median_abs_cents": 0.291,
+        "p95_abs_cents": 1.057,
+        "max_abs_cents": 1.287,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 15,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 22,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 21,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      }
+    }
+  },
+  "BA_energy": {
+    "tick": 34,
+    "reference_mix_rms_lsb": 2562.855733290476,
+    "composed_mix_rms_lsb": 8449.343035644388,
+    "reference_voice_rms_lsb": [
+      2562.855733290476,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "composed_voice_rms_lsb": [
+      2562.855733290476,
+      8142.054608441271,
+      0.0,
+      0.0
+    ],
+    "observed_energy_delta_lsb2": 64823168.22433246,
+    "self_energy_delta_lsb2": 66293053.246839724,
+    "cross_covariance_delta_lsb2": -1469885.0225072887,
+    "residual_energy_accounting_lsb2": 2.3515895009040833e-08,
+    "cross_covariance_fraction": -0.022675303641754782,
+    "qualification": "algebraic energy accounting; not a listening acceptance or proof that every phase error is harmless"
+  },
+  "BA_context": {
+    "render": {
+      "ticks": 45,
+      "samples": 33075,
+      "seconds": 0.02720799995586276,
+      "pcm_sha256": "0cc44e99591e8cda1d8fae56bd46962a830d0cadc5ce7fc8a1fd41d9a727e5c0",
+      "vgm_sha256": "755ce7f3df03fa0663aeb984c195bb8d7e973ee7ea036a93ea6f6d28000f6ad4",
+      "cache_key": "b082b37830ab4169128972842d25770e08af956e62003b12e75877fa3e90bc32",
+      "wav_sha256": "1c178ac7c7e82b61fd55995eb41f333f19dc9b54f502662e59be8846b1688a1a"
+    },
+    "changed_source_ticks": [
+      5,
+      6
+    ],
+    "correct_context_attenuation_source_tick5": 15,
+    "before": {
+      "sample_equal": false,
+      "sample_max_error_lsb": 32770,
+      "sample_error_rms_lsb": 9015.433344416202,
+      "waveform_correlation": 0.23797220896210663,
+      "envelope_correlation": 0.9788207026918083,
+      "max_tick_rms_error_percent_peak": 28.138084619282562,
+      "per_voice": [
+        {
+          "channel": 0,
+          "sample_equal": false,
+          "waveform_correlation": 0.9999999535273506,
+          "envelope_correlation": 0.9999999999996968,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 1,
+          "sample_equal": false,
+          "waveform_correlation": -0.29444634341790815,
+          "envelope_correlation": 0.9674285646758315,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 2,
+          "sample_equal": false,
+          "waveform_correlation": 0.946309294119646,
+          "envelope_correlation": 0.9999989345133746,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 3,
+          "sample_equal": false,
+          "waveform_correlation": 0.3068559206559485,
+          "envelope_correlation": 0.9999908372493869,
+          "noise_metrics_reference": {
+            "samples": 97026,
+            "rms_lsb": 2936.1934723769464,
+            "zero_crossing_rate": 0.10899252769904663,
+            "spectral_flatness": 0.15363542480440825
+          },
+          "noise_metrics_composed": {
+            "samples": 97022,
+            "rms_lsb": 2934.285281007251,
+            "zero_crossing_rate": 0.10903824945114975,
+            "spectral_flatness": 0.15280971815289618
+          }
+        }
+      ],
+      "ticks": 180,
+      "state_model": "PASS",
+      "register_projection_mismatches": {
+        "audible_tone_periods": [
+          0,
+          0,
+          0
+        ],
+        "audible_attenuation": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "audible_noise_controls": 0
+      },
+      "diagnostic_register_projection": "not a note/envelope driver port; failures retained",
+      "voice_pitch_reference": {
+        "windows": 55,
+        "median_abs_cents": 0.343,
+        "p95_abs_cents": 1.25,
+        "max_abs_cents": 1.797,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 15,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 19,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 21,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      },
+      "voice_pitch_composed": {
+        "windows": 55,
+        "median_abs_cents": 0.341,
+        "p95_abs_cents": 1.25,
+        "max_abs_cents": 1.811,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 15,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 19,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 21,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      },
+      "native_listening": "NOT PERFORMED",
+      "generic_fade_approximation": false
+    },
+    "after": {
+      "sample_equal": false,
+      "sample_max_error_lsb": 32770,
+      "sample_error_rms_lsb": 8994.982467677026,
+      "waveform_correlation": 0.23885325684179426,
+      "envelope_correlation": 0.9963826345560716,
+      "max_tick_rms_error_percent_peak": 4.070402483914229,
+      "per_voice": [
+        {
+          "channel": 0,
+          "sample_equal": false,
+          "waveform_correlation": 0.9999999535273506,
+          "envelope_correlation": 0.9999999999996968,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 1,
+          "sample_equal": false,
+          "waveform_correlation": -0.2963990300168664,
+          "envelope_correlation": 0.9999983536559074,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 2,
+          "sample_equal": false,
+          "waveform_correlation": 0.946309294119646,
+          "envelope_correlation": 0.9999989345133746,
+          "noise_metrics_reference": null,
+          "noise_metrics_composed": null
+        },
+        {
+          "channel": 3,
+          "sample_equal": false,
+          "waveform_correlation": 0.3068559206559485,
+          "envelope_correlation": 0.9999908372493869,
+          "noise_metrics_reference": {
+            "samples": 97026,
+            "rms_lsb": 2936.1934723769464,
+            "zero_crossing_rate": 0.10899252769904663,
+            "spectral_flatness": 0.15363542480440825
+          },
+          "noise_metrics_composed": {
+            "samples": 97022,
+            "rms_lsb": 2934.285281007251,
+            "zero_crossing_rate": 0.10903824945114975,
+            "spectral_flatness": 0.15280971815289618
+          }
+        }
+      ],
+      "pitch": {
+        "windows": 55,
+        "median_abs_cents": 0.341,
+        "p95_abs_cents": 1.25,
+        "max_abs_cents": 1.811,
+        "windows_off_by_more_than_25_cents": 0,
+        "per_channel": {
+          "0": {
+            "windows": 15,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "1": {
+            "windows": 19,
+            "off": 0,
+            "first_off_tick": null
+          },
+          "2": {
+            "windows": 21,
+            "off": 0,
+            "first_off_tick": null
+          }
+        }
+      }
+    },
+    "after_energy": {
+      "tick": 165,
+      "reference_mix_rms_lsb": 4883.436952432818,
+      "composed_mix_rms_lsb": 5734.965152067674,
+      "reference_voice_rms_lsb": [
+        2037.4310481397695,
+        4071.351371636884,
+        3238.250571683293,
+        1123.9653659498924
+      ],
+      "composed_voice_rms_lsb": [
+        2037.42989086285,
+        4061.1103111683624,
+        3236.1811002975255,
+        1127.4479199742016
+      ],
+      "observed_energy_delta_lsb2": 9041868.827044282,
+      "self_energy_delta_lsb2": -88847.73027904704,
+      "cross_covariance_delta_lsb2": 9130718.709941223,
+      "residual_energy_accounting_lsb2": -2.152617894113064,
+      "cross_covariance_fraction": 1.0098264954509393,
+      "qualification": "algebraic energy accounting; not a listening acceptance or proof that every phase error is harmless"
+    }
+  },
+  "render_count": 5,
+  "overall": "HOLD for full M5; bounded carrier extension not the existing static-stem representation",
+  "A3_constant_DC_qualification": "unchanged; original first735 samples constant -4096, AC RMS0",
+  "native_listening": "NOT PERFORMED"
+}
