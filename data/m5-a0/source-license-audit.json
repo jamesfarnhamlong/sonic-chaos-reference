@@ -1,0 +1,87 @@
+{
+  "pinned_commit": "a6eed945ecf4e5a25cf82004779c6f7e4fd5c319",
+  "files": [
+    {
+      "path": "_stdbool.h",
+      "sha256": "55bffdea2e434b4ddb10d425a82831c1bfa82309a4304c64ae39c8c3172593c6",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "common_def.h",
+      "sha256": "d868096ab0498ce9484beee0c2ee2b838f98fea6659e1c0219b553d8a3c0f25a",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/EmuCores.h",
+      "sha256": "a09e909436789317ffbafa257868b3c412547174f75ccdc3152ae50f8d2d0018",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/EmuHelper.h",
+      "sha256": "85eeb2ee31a0e0c21c38a12efac93e33789f3719761e49874aab5dd295181ee8",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/EmuStructs.h",
+      "sha256": "7cc593ab675dcaf83d9a7084e6368057f531d883937d51ae094ffe20fa789286",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/Resampler.c",
+      "sha256": "07d52979795b8e70b685e446ef9c9bccf2675abd965fc47b6b1bd552c0dbec66",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/Resampler.h",
+      "sha256": "bf83aa3a452b4aeacee9bb65eb104e9843b98290950fc57c612c78b2a7d635da",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/cores/sn76496.c",
+      "sha256": "91e6d92121bd94466c6971c6a3b52adb2016930cc29fa38caa2fdf9a49e98ab3",
+      "declared_license": "BSD-3-Clause"
+    },
+    {
+      "path": "emu/cores/sn76496.h",
+      "sha256": "cca6d9d387c7aa8979ec90aac34f3ddfe1c690e68fdb7a134add9c886dbf06b4",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/cores/sn764intf.h",
+      "sha256": "1f581e7c90a4af0af9637aeed708012bc1a2017842f8c3972d23fa3f6744e6be",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/logging.c",
+      "sha256": "52d01fbe371c027d41140509f764229aea419d34dc479d4b7a85ccf89a643589",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/logging.h",
+      "sha256": "2dd1419b8109573f4f2f7547518f5c2b37d698b1f84d03977c65b6028091b4ec",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "emu/snddef.h",
+      "sha256": "be8442f187d586b2c7afd7d51799cf483e4ae27b7da83e8b02e98e20748a01cc",
+      "declared_license": "not declared in file header"
+    },
+    {
+      "path": "stdtype.h",
+      "sha256": "581ed77399a7e0561651666e8186c7bea34b30f758bdc39a470161f49c842d61",
+      "declared_license": "not declared in file header"
+    }
+  ],
+  "needed_sources_clean": true,
+  "unrelated_existing_patch": [
+    "vgm2wav.cpp"
+  ],
+  "scope": "file-specific license declaration; no assumption that PSG license covers resampler, headers, whole libvgm or MAME",
+  "sources": [
+    "https://github.com/ValleyBell/libvgm/issues/129",
+    "https://github.com/ValleyBell/libvgm/issues/43",
+    "https://raw.githubusercontent.com/ValleyBell/libvgm/master/emu/cores/sn76496.c",
+    "https://opensource.org/license/bsd-3-clause"
+  ],
+  "redistribution": "CONDITIONAL: BSD core notices/conditions/disclaimer required; clarify or independently replace unlicensed helpers before a distributable extension"
+}

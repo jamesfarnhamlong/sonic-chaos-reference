@@ -23,7 +23,7 @@ class Dry(Trace):
             self.record('music-noise-control' if self.cpu.pc==0x46D4 else 'port',value if self.cpu.pc==0x46D4 else [value,self.cpu.ix in self.read_channels])
         super()._out(port,value)
 
-def export(rom,ids=None,initial_bank=None,output_path=None):
+def export(rom,ids=None,initial_bank=None,output_path=None,max_ticks=None):
     bank=copy.deepcopy(initial_bank if initial_bank is not None else json.loads((PRIOR/'dry-event-bank.json').read_text()))
     ids=list(range(0xA0,0xC5))+[0x81,0x82,0x90,0x99] if ids is None else list(ids)
     for rid in ids:
@@ -62,7 +62,7 @@ def export(rom,ids=None,initial_bank=None,output_path=None):
         d.hook(0x4366,lambda q:record('volume-absolute',q.mem[q.cpu.ix+6]))
         d.hook(0x4734,lambda q:record('volume-relative',q.cpu.a))
         d.hook(0x46C6,lambda q:record('volume-absolute',q.mem[q.cpu.ix+6]))
-        d.request(rid);limit=1400 if rid<0xA0 else 200
+        d.request(rid);limit=(1400 if rid<0xA0 else 200) if max_ticks is None else max_ticks
         for _ in range(limit):
             d.read_channels.clear()
             d.tick()

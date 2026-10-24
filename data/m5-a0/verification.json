@@ -1,0 +1,139 @@
+{
+  "parent": "ce0eb2df1a943386082c48e3b35ae00e0e622f76",
+  "management": "01af5a87a8c06cd198db94cdf300867013b4c2d1",
+  "tests": [
+    {
+      "command": "M5A0_NATIVE=1; python -m unittest discover -s tests -p test_m5a0.py",
+      "passed": 13,
+      "skipped": 0
+    },
+    {
+      "command": "SONIC_CHAOS_ROM=authenticated path; python -m unittest discover -s tests -p test_m5p0r.py",
+      "passed": 12,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest discover -s tests -p test_m5p1c.py",
+      "passed": 11,
+      "skipped": 0
+    }
+  ],
+  "original_gate": {
+    "cases": 12,
+    "ticks": 5587,
+    "ordered_bytes": 32512,
+    "status": "PASS",
+    "new_original_reference_render_processes": 0
+  },
+  "callback_aligned_PCM": {
+    "cases": 12,
+    "max_error_lsb": 0,
+    "source": "independently scheduled candidate, same pinned MAME core"
+  },
+  "queue_block_PCM": {
+    "frames": 735,
+    "worst_max_error_lsb": 3,
+    "classification": "measured resampler segmentation; not bit-identical"
+  },
+  "preservation": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P1C_20261024_PROOF_PRIVATE.zip",
+        "sha256": "fbd5264b6c07ed9bb04d63350a7c9e8a0b854a19208012f92adc4d96f9a9984c",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true
+  },
+  "private_package_integrity": "CRC and every member SHA256 PASS",
+  "private_package_sha256": "580725052986dcf5b79718fd2dd1ebfe93f09ed5ba0b9db879cea53c8343f004",
+  "accepted_private_POC": {
+    "head": "11bff34356d5f5d979218896dc95fdc4bb265eae",
+    "remote_verified": true,
+    "worktree": "clean",
+    "changed_files": 0
+  },
+  "safe_changed_file_count": 16,
+  "changed_inventory_excluding_this_receipt": {
+    "data/m5-a0/private-package.json": {
+      "status": "added",
+      "index_blob_sha256": "230a8e0b2e22613e2cdee8c6e74c3b360fee7f6b846e8280bdc4e642a0f58750"
+    },
+    "data/m5-a0/results.json": {
+      "status": "added",
+      "index_blob_sha256": "d3c7b3cd82613b44b2aeefd902c3913662efaf713b6c28ebff0d43612041474a"
+    },
+    "data/m5-a0/source-license-audit.json": {
+      "status": "added",
+      "index_blob_sha256": "7384a0f0f922b26812aedbe166b25ad4c35ce49190b9123d9799cc89c92eb524"
+    },
+    "docs/m5-a0-architecture.md": {
+      "status": "added",
+      "index_blob_sha256": "0c2571ec6df8d5fe1487ce38b956dd067debd63f31a1bcb98850c5cfbefec95b"
+    },
+    "docs/m5-a0-comparisons.md": {
+      "status": "added",
+      "index_blob_sha256": "bfa4c20706e5e15c94d33edf24bb398bee3e9846af1af2b7519345ea9137bbdd"
+    },
+    "docs/m5-a0-handover.md": {
+      "status": "added",
+      "index_blob_sha256": "60013f64f9e65b0974382c9762ff4e26101bfa225397edb135e4328fa7cf3574"
+    },
+    "docs/m5-a0-performance-licensing.md": {
+      "status": "added",
+      "index_blob_sha256": "c8939753c9731afa9797abaf5fb5808fe96afeba875a13ba12cd156ba099b750"
+    },
+    "tests/test_m5a0.py": {
+      "status": "added",
+      "index_blob_sha256": "622a778ad935d387e4d782c4affbab2f7edb4e2d409519b8b79971473c1e22c1"
+    },
+    "tools/m5a0/audit.py": {
+      "status": "added",
+      "index_blob_sha256": "49f71a8399c4c9ec4c7239228cbf1198a8c29ec7aa759c837256efe2493e5c34"
+    },
+    "tools/m5a0/backend.py": {
+      "status": "added",
+      "index_blob_sha256": "8a5d7086bdbe0573f9d9ec273b336a8af1f215d8d6fabed3215ffbc9615460ff"
+    },
+    "tools/m5a0/build.py": {
+      "status": "added",
+      "index_blob_sha256": "ed793e9e074775f386f02ffe7af1c1e45c6d476cbf727921e1cf7401f936fcb0"
+    },
+    "tools/m5a0/package.py": {
+      "status": "added",
+      "index_blob_sha256": "4ef755fb14d0ee110144089bdb5f3a686f12577a2a1cefb64a2709d5ea8e2b8d"
+    },
+    "tools/m5a0/proof.py": {
+      "status": "added",
+      "index_blob_sha256": "4c86be0080bb151207ecad63eddccb6e88e1eb804974f10df83d240090d67df5"
+    },
+    "tools/m5a0/psg_adapter.c": {
+      "status": "added",
+      "index_blob_sha256": "a33ba8df893e8eb5f2890c1589ac17e88b0fafa61af7ac902d1394d1a0db3d4e"
+    },
+    "tools/m5p0r_proof.py": {
+      "status": "modified",
+      "index_blob_sha256": "d125d0db4d01361861d2cbeefaeec3257b6bbf6fe6ada72191e66f5cd15bdfc2"
+    }
+  },
+  "native_GameMaker": "NOT RUN",
+  "full_audio_production": "NOT RUN",
+  "canonical_management": "UNCHANGED",
+  "verdict": "CONDITIONAL GO; STOP for Manager"
+}
