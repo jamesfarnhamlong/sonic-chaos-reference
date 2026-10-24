@@ -1,0 +1,148 @@
+{
+  "parent": "549de7543b6704cf9d219d5c87f5a03bf854ec9e",
+  "management": "6b72e7cd85fe29d938ce4672a7903e60d262732b",
+  "tests": [
+    {
+      "command": "M5A1L_NATIVE=1; unittest test_m5a1l.py",
+      "passed": 15,
+      "skipped": 0
+    },
+    {
+      "command": "M5A0_NATIVE=1; unittest test_m5a0.py (immutable A0 DLL)",
+      "passed": 13,
+      "skipped": 0
+    },
+    {
+      "command": "unittest test_m5p1c.py",
+      "passed": 11,
+      "skipped": 0
+    }
+  ],
+  "compared_original_controls": {
+    "cases": 12,
+    "ticks": 5587,
+    "reference": "accepted original-driver A0 captures; no new original execution or reference render",
+    "emission_and_core_state": "exact PASS",
+    "new_pcm": "HOLD; up to5 LSB versus MAME; up to4 LSB versus A0 735; matched callback byte identity lost"
+  },
+  "permission_evidence": {
+    "explicit_PSG_grant": "BSD-3-Clause",
+    "new_helper_sources": "scoped MIT",
+    "unclear_A0_files_excluded": 13,
+    "upstream_contacts": 0,
+    "legal_clearance_claimed": false
+  },
+  "runtime_archives": "compiler c.lib/RT offered but contribute no member; PDB and symbol closure checked",
+  "prior_preservation": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P1C_20261024_PROOF_PRIVATE.zip",
+        "sha256": "fbd5264b6c07ed9bb04d63350a7c9e8a0b854a19208012f92adc4d96f9a9984c",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A0_20261024_STATEFUL_PRIVATE.zip",
+        "sha256": "580725052986dcf5b79718fd2dd1ebfe93f09ed5ba0b9db879cea53c8343f004",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true
+  },
+  "private_package_sha256": "426c884c7e6d9b16437e5186386b0930cb3034cc356b6ac6c3ee81e0172178e2",
+  "private_package_integrity": "all member hashes and CRC PASS",
+  "private_POC": {
+    "head": "11bff34356d5f5d979218896dc95fdc4bb265eae",
+    "worktree": "clean",
+    "changed_files": 0
+  },
+  "changed_file_count": 18,
+  "inventory_excluding_this_receipt": {
+    "data/m5-a1l/comparisons.json": {
+      "status": "added",
+      "index_blob_sha256": "6eeefb139ee02315d75fe3be8590519dc7f3c732eabe1d8e488d67b98b1bd9dc"
+    },
+    "data/m5-a1l/dependency-manifest.json": {
+      "status": "added",
+      "index_blob_sha256": "20d194d5299cc6edfbb10d8c27848e1b15d39da8c6b4d78f8ed1b1bcf2e4727b"
+    },
+    "data/m5-a1l/license-matrix.json": {
+      "status": "added",
+      "index_blob_sha256": "51c46547a882ee9214b524e206494acae5193f633e77495230d9a459465a97d1"
+    },
+    "data/m5-a1l/private-package.json": {
+      "status": "added",
+      "index_blob_sha256": "5b3d6d6bfbd26220dc8d94309eb01843d595ed4ca6521f6eccbf5c2b5717a15d"
+    },
+    "docs/m5-a1l-THIRD-PARTY-NOTICES.md": {
+      "status": "added",
+      "index_blob_sha256": "54342f6e114769a100c13d8d013515f727095e5d7dc670b9c1695c6dbb3c09d9"
+    },
+    "docs/m5-a1l-licensing-report.md": {
+      "status": "added",
+      "index_blob_sha256": "7456f6fc1dfe7fb8bf2b0e28e0fd7004edabb1a337626eea260b2a79234c118c"
+    },
+    "docs/m5-a1l-upstream-request-DRAFT.md": {
+      "status": "added",
+      "index_blob_sha256": "f405798fd2dc17df04d1f7ebff6ae3248ac0947e3ce4432654936065d961af13"
+    },
+    "tests/test_m5a1l.py": {
+      "status": "added",
+      "index_blob_sha256": "77e730a195976841f143223127ecc76992b43ffeb35b9a3ed4247799ca3b5f8f"
+    },
+    "tools/m5a1l/LICENSE-MIT.txt": {
+      "status": "added",
+      "index_blob_sha256": "fa36dbd2c9ad11971837d73c281e58308a944bb925a8e0b56730352d91a6d42f"
+    },
+    "tools/m5a1l/adapter.c": {
+      "status": "added",
+      "index_blob_sha256": "cf0c9e641bdde3d2298cfad924c11094ca0567301db44821f29e87acee01e26d"
+    },
+    "tools/m5a1l/audit.py": {
+      "status": "added",
+      "index_blob_sha256": "eb05055f61f20a3910ebb2ef3ffc26d168150c3a423e785f14106ce6df7fd2c7"
+    },
+    "tools/m5a1l/build.py": {
+      "status": "added",
+      "index_blob_sha256": "e695fdda80d2b5e516f3f0333d08e80c88cee66bc97389fa7f6eae3b35c01602"
+    },
+    "tools/m5a1l/compare.py": {
+      "status": "added",
+      "index_blob_sha256": "5a26662aefcfc8a925e17b0adfb5252c34bf7d413c29aa4cd59d33f6a317a763"
+    },
+    "tools/m5a1l/package.py": {
+      "status": "added",
+      "index_blob_sha256": "4c63af0825028d2bb6d6fe2cfe2c3cd79a38e7ead66b025b76c69c1b36f16e2c"
+    },
+    "tools/m5a1l/pe.py": {
+      "status": "added",
+      "index_blob_sha256": "971b5f46f623e58f2376538b8c155824ceb337e4a436eb1cbd2aafd380b71903"
+    },
+    "tools/m5a1l/support.c": {
+      "status": "added",
+      "index_blob_sha256": "d10b2b2eb35f2d4a8f1f22461d50f3512a441b0e523c567d6acada5ca0961c30"
+    },
+    "tools/m5a1l/support.h": {
+      "status": "added",
+      "index_blob_sha256": "eac3f3138233e34790e59a97ccd7f60e09ec20e3ab103df1d549efc070441fc3"
+    }
+  },
+  "verdict": "HOLD for Manager fidelity/permission decision",
+  "GameMaker_implementation": "NOT RUN",
+  "canonical_management": "UNCHANGED"
+}

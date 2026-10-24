@@ -1,0 +1,196 @@
+{
+  "parent": "549de7543b6704cf9d219d5c87f5a03bf854ec9e",
+  "management": "6b72e7cd85fe29d938ce4672a7903e60d262732b",
+  "core_commit": "a6eed945ecf4e5a25cf82004779c6f7e4fd5c319",
+  "entries": [
+    {
+      "path": "_stdbool.h",
+      "sha256": "55bffdea2e434b4ddb10d425a82831c1bfa82309a4304c64ae39c8c3172593c6",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "0833b26bcda4fce9d870a22f2adb8e0cd525be22 rename stdbool substitute",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "not required; new component uses no bool compatibility layer",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "common_def.h",
+      "sha256": "d868096ab0498ce9484beee0c2ee2b838f98fea6659e1c0219b553d8a3c0f25a",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "0833b26bcda4fce9d870a22f2adb8e0cd525be22 rename stdbool substitute",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "own static-inline definition only",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/EmuCores.h",
+      "sha256": "a09e909436789317ffbafa257868b3c412547174f75ccdc3152ae50f8d2d0018",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "08471963604c29353501439c4d6f97b57bf8b07b add GameBoy core from SameBoy",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "registration metadata removed; no core ID tables needed",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/EmuHelper.h",
+      "sha256": "85eeb2ee31a0e0c21c38a12efac93e33789f3719761e49874aab5dd295181ee8",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "dd607a986cab56f4979079478eee2bdf297bc06e add PlayerBase::SetUserDevices()",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "new local initialization assignments; no helper source included",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/EmuStructs.h",
+      "sha256": "7cc593ab675dcaf83d9a7084e6368057f531d883937d51ae094ffe20fa789286",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "df8bccbc3d2be3a6d805ede58a8054176ca84728 GetSongDeviceInfo(): return linked devices",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "new component-private types; not the libvgm ABI/layout",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/Resampler.c",
+      "sha256": "07d52979795b8e70b685e446ef9c9bccf2675abd965fc47b6b1bd552c0dbec66",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "4f15d8db7fe6179de033f3103904b3f56ed5ef99 fix some GCC 14 warnings",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "new rational area-integration implementation; original quantization not reproduced",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/Resampler.h",
+      "sha256": "bf83aa3a452b4aeacee9bb65eb104e9843b98290950fc57c612c78b2a7d635da",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "77c34eb8cc96eaf44f8f4125a89356f6d5ffc76a make \"resampleMode\" option work [breaking change]",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "new adapter has no libvgm resampler API",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/cores/sn76496.c",
+      "sha256": "91e6d92121bd94466c6971c6a3b52adb2016930cc29fa38caa2fdf9a49e98ab3",
+      "explicit_file_grant": "BSD-3-Clause",
+      "evidence_class": "explicit file-specific declaration",
+      "inferred_provenance": "460e8949dd53221bd1d9d53fb906030948f495d7 port recent MAME sound core updates",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "retained BSD computations; includes/registry removed",
+      "replacement": null,
+      "if_retained_without_replacement": "apply BSD notice/conditions/disclaimer"
+    },
+    {
+      "path": "emu/cores/sn76496.h",
+      "sha256": "cca6d9d387c7aa8979ec90aac34f3ddfe1c690e68fdb7a134add9c886dbf06b4",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "83ffdea69c02315ba4f58dbcf11aaf06fce01009 refactor SN76496 interface file",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "unneeded registration extern removed",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/cores/sn764intf.h",
+      "sha256": "1f581e7c90a4af0af9637aeed708012bc1a2017842f8c3972d23fa3f6744e6be",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "798cb20034b4da1be2b1835ad9f47576a65de6c4 SoundEmu_Start: allow user-specific device lists",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "new private configuration fields with changed layout; functional identifiers for retained core",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/logging.c",
+      "sha256": "52d01fbe371c027d41140509f764229aea419d34dc479d4b7a85ccf89a643589",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "57713471eef1db49e84f39d4ee3ac83662f01316 fix compile errors",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "diagnostic logging disabled with newly authored no-op sink; no formatting implementation",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/logging.h",
+      "sha256": "2dd1419b8109573f4f2f7547518f5c2b37d698b1f84d03977c65b6028091b4ec",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "0f0b01a49fe0619bde0df1666dbf550d188df3aa player: add logging via callback, part 2",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "new local diagnostic placeholders; no external logging ABI",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "emu/snddef.h",
+      "sha256": "be8442f187d586b2c7afd7d51799cf483e4ae27b7da83e8b02e98e20748a01cc",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "1bc213bc429ce0f1287a7b5cb8ddaa70d2d447b3 move INIT_DEVINF into EmuHelper.h",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "own native signed sample typedef",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    },
+    {
+      "path": "stdtype.h",
+      "sha256": "581ed77399a7e0561651666e8186c7bea34b30f758bdc39a470161f49c842d61",
+      "explicit_file_grant": null,
+      "evidence_class": "provenance known; no applicable grant established in examined sources",
+      "inferred_provenance": "ca214173af9ee271fdff2d82407bfc09e12868db minor cosmetic changes",
+      "separate_license_search": "pinned tree/history license/copying filenames; local file notices; public maintainer issues43/129 via read-only connector; no governing grant found for helpers",
+      "absence_is_not_proof_of_no_license": true,
+      "experimental_use": "excluded completely",
+      "replacement": "own width-checked C integer typedefs",
+      "if_retained_without_replacement": "clarify applicable file-specific or separate license before distribution"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/ValleyBell/libvgm/issues/129#issuecomment-2781054175",
+      "meaning": "maintainer planned module licensing; intended future licensing is not a current grant"
+    },
+    {
+      "url": "https://github.com/ValleyBell/libvgm/issues/43#issuecomment-797782644",
+      "meaning": "maintainer discussed possible future licensing, not a completed grant"
+    },
+    {
+      "url": "https://www.mamedev.org/legal.html",
+      "meaning": "file-specific licences permitted; whole-project licence not inherited by isolated BSD file"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/mamedev/mame/master/src/devices/sound/sn76496.cpp",
+      "meaning": "upstream PSG BSD declaration corroborates provenance; pinned libvgm file remains actual input"
+    }
+  ],
+  "analysis": "file-specific evidence supports retaining core; unknown helper grants do not become permission by linking a GPL/BSD file",
+  "upstream_contact": false,
+  "formal_legal_clearance_claimed": false
+}

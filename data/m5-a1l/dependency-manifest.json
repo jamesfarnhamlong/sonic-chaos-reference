@@ -1,0 +1,328 @@
+{
+  "build": {
+    "core_source_sha256": "91e6d92121bd94466c6971c6a3b52adb2016930cc29fa38caa2fdf9a49e98ab3",
+    "retained_body_sha256": "fe45270980c6389ed337b0cbacde4211cb3a4069751e42dbc095173853158b25",
+    "retained_psg_sha256": "9d18a1f7aeecf5124ebd5da931668e75d595d3a448dc40384e2123ce941d9afc",
+    "removed": "includes and device-registration table only; retained body identical after LF normalization",
+    "inputs": {
+      "tools\\m5a1l\\adapter.c": "e3cb7f939d170e7a6e816be1fa9c4c37280b071c4bde0438247e1cef426da83d",
+      "tools\\m5a1l\\support.c": "b6c6c4db409ad679d0c67e383896819861a24a3c9e86a14e16f81867e9543ca4",
+      "tools\\m5a1l\\support.h": "8ba87ccc48183dd5587706962b4d2f1acc722a0f83b1255382109d3ee52e171c"
+    },
+    "commands": [
+      [
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m4\\build\\m4\\tooldeps\\ziglang\\zig.exe",
+        "cc",
+        "-c",
+        "-O2",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-I",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l",
+        "-I",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\tools\\m5a1l",
+        "-MD",
+        "-MF",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\adapter.d",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\tools\\m5a1l\\adapter.c",
+        "-o",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\adapter.obj"
+      ],
+      [
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m4\\build\\m4\\tooldeps\\ziglang\\zig.exe",
+        "cc",
+        "-c",
+        "-O2",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-fno-stack-protector",
+        "-I",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l",
+        "-I",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\tools\\m5a1l",
+        "-MD",
+        "-MF",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\support.d",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\tools\\m5a1l\\support.c",
+        "-o",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\support.obj"
+      ],
+      [
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m4\\build\\m4\\tooldeps\\ziglang\\zig.exe",
+        "cc",
+        "-shared",
+        "-nostdlib",
+        "-Wl,--entry,a1_dll_entry",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\adapter.obj",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\support.obj",
+        "-lkernel32",
+        "-o",
+        "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\psg-a1l.dll",
+        "-v"
+      ]
+    ],
+    "objects": {
+      "adapter.obj": "811f68d8c10ce806e73617c5ae08cc628debb604cc04be07e44ab089607d187f",
+      "support.obj": "859e6a75f305c7bb7a38a92b2c21d064984d69115f4853638297ea73277141ed"
+    },
+    "dependencies": {
+      "adapter": "E:\\AI\\Codex\\Sonic\\ Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\zig-local\\tmp\\42f7d65952c73ece-adapter.obj: \\\n  E:/AI/Codex/Sonic\\ Chaos/sonic-chaos-reference-m5-a1l/tools/m5a1l/adapter.c \\\n  E:/AI/Codex/Sonic\\ Chaos/sonic-chaos-reference-m5-a1l/tools/m5a1l/support.h \\\n  E:/AI/Codex/Sonic\\ Chaos/sonic-chaos-reference-m5-a1l/build/m5-a1l/retained_psg.c\n",
+      "support": "E:\\AI\\Codex\\Sonic\\ Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\zig-local\\tmp\\67b490408d7ee783-support.obj: \\\n  E:/AI/Codex/Sonic\\ Chaos/sonic-chaos-reference-m5-a1l/tools/m5a1l/support.c \\\n  E:/AI/Codex/Sonic\\ Chaos/sonic-chaos-reference-m5-a1l/tools/m5a1l/support.h\n"
+    },
+    "binary_sha256": "47e15c47e255900b819847e0ddefd7e3f0751dcc8f75dff3a1690f7e76adcf65",
+    "binary_bytes": 6656,
+    "link_trace_sha256": "5d0db736ac4c62e290543d947c358b244d413e444532e289371fcc21cdb22554",
+    "pdb_sha256": "4d3c42ea25b5b3078a937f3b0ab1e769e5e915cfa76504ef3caa5da994fb3647",
+    "compiler_version": "0.13.0"
+  },
+  "compiled_translation_units": [
+    "adapter.obj",
+    "support.obj"
+  ],
+  "compiled_source_closure": [
+    {
+      "path": "tools/m5a1l/adapter.c",
+      "sha256": "e3cb7f939d170e7a6e816be1fa9c4c37280b071c4bde0438247e1cef426da83d",
+      "license": "MIT"
+    },
+    {
+      "path": "tools/m5a1l/support.c",
+      "sha256": "b6c6c4db409ad679d0c67e383896819861a24a3c9e86a14e16f81867e9543ca4",
+      "license": "MIT"
+    },
+    {
+      "path": "tools/m5a1l/support.h",
+      "sha256": "8ba87ccc48183dd5587706962b4d2f1acc722a0f83b1255382109d3ee52e171c",
+      "license": "MIT"
+    },
+    {
+      "path": "generated/retained_psg.c",
+      "sha256": "9d18a1f7aeecf5124ebd5da931668e75d595d3a448dc40384e2123ce941d9afc",
+      "license": "BSD-3-Clause",
+      "input": "emu/cores/sn76496.c"
+    }
+  ],
+  "removed_A0_dependency_files": [
+    "_stdbool.h",
+    "common_def.h",
+    "emu/EmuCores.h",
+    "emu/EmuHelper.h",
+    "emu/EmuStructs.h",
+    "emu/Resampler.c",
+    "emu/Resampler.h",
+    "emu/cores/sn76496.h",
+    "emu/cores/sn764intf.h",
+    "emu/logging.c",
+    "emu/logging.h",
+    "emu/snddef.h",
+    "stdtype.h"
+  ],
+  "binary_imports": {
+    "KERNEL32.dll": [
+      "GetProcessHeap",
+      "HeapAlloc",
+      "HeapFree"
+    ]
+  },
+  "linked_C_runtime": false,
+  "full_libvgm_linked": false,
+  "full_MAME_linked": false,
+  "import_library": "kernel32 import thunks generated by Zig linker; only API imports, no bundled Windows DLL",
+  "object_external_symbols": {
+    "adapter.obj": [
+      {
+        "name": "a0_new",
+        "defined": true,
+        "section": 1,
+        "value": 0
+      },
+      {
+        "name": "a1_calloc",
+        "defined": false,
+        "section": 0,
+        "value": 0
+      },
+      {
+        "name": "a1_pow",
+        "defined": false,
+        "section": 0,
+        "value": 0
+      },
+      {
+        "name": "a1_free",
+        "defined": false,
+        "section": 0,
+        "value": 0
+      },
+      {
+        "name": "a0_free",
+        "defined": true,
+        "section": 1,
+        "value": 496
+      },
+      {
+        "name": "a0_write",
+        "defined": true,
+        "section": 1,
+        "value": 544
+      },
+      {
+        "name": "a0_render",
+        "defined": true,
+        "section": 1,
+        "value": 1120
+      },
+      {
+        "name": "a1_memset",
+        "defined": false,
+        "section": 0,
+        "value": 0
+      },
+      {
+        "name": "a0_state",
+        "defined": true,
+        "section": 1,
+        "value": 2656
+      },
+      {
+        "name": "a0_state_bytes",
+        "defined": true,
+        "section": 1,
+        "value": 2832
+      },
+      {
+        "name": "a0_buffer_bytes",
+        "defined": true,
+        "section": 1,
+        "value": 2848
+      },
+      {
+        "name": "a1_volumes",
+        "defined": true,
+        "section": 1,
+        "value": 2864
+      },
+      {
+        "name": "a0_bench",
+        "defined": true,
+        "section": 1,
+        "value": 2976
+      }
+    ],
+    "support.obj": [
+      {
+        "name": "a1_calloc",
+        "defined": true,
+        "section": 1,
+        "value": 0
+      },
+      {
+        "name": "__imp_GetProcessHeap",
+        "defined": false,
+        "section": 0,
+        "value": 0
+      },
+      {
+        "name": "__imp_HeapAlloc",
+        "defined": false,
+        "section": 0,
+        "value": 0
+      },
+      {
+        "name": "a1_free",
+        "defined": true,
+        "section": 1,
+        "value": 80
+      },
+      {
+        "name": "__imp_HeapFree",
+        "defined": false,
+        "section": 0,
+        "value": 0
+      },
+      {
+        "name": "a1_memset",
+        "defined": true,
+        "section": 1,
+        "value": 128
+      },
+      {
+        "name": "a1_pow",
+        "defined": true,
+        "section": 1,
+        "value": 240
+      },
+      {
+        "name": "a1_dll_entry",
+        "defined": true,
+        "section": 1,
+        "value": 448
+      },
+      {
+        "name": "_tls_index",
+        "defined": true,
+        "section": 3,
+        "value": 0
+      }
+    ]
+  },
+  "unresolved_object_symbols": [
+    "__imp_GetProcessHeap",
+    "__imp_HeapAlloc",
+    "__imp_HeapFree"
+  ],
+  "pdb_contributing_modules": [
+    {
+      "module": "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\adapter.obj",
+      "object": "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\adapter.obj"
+    },
+    {
+      "module": "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\support.obj",
+      "object": "E:\\AI\\Codex\\Sonic Chaos\\sonic-chaos-reference-m5-a1l\\build\\m5-a1l\\support.obj"
+    },
+    {
+      "module": "KERNEL32.dll",
+      "object": "E:/AI/Codex/Sonic Chaos/sonic-chaos-reference-m5-a1l/build/m5-a1l/zig-cache/o/7d1e9eb3606a918f30cfe50d1f30b9b9/kernel32.lib"
+    },
+    {
+      "module": "Import:KERNEL32.dll",
+      "object": "E:/AI/Codex/Sonic Chaos/sonic-chaos-reference-m5-a1l/build/m5-a1l/zig-cache/o/7d1e9eb3606a918f30cfe50d1f30b9b9/kernel32.lib"
+    },
+    {
+      "module": "* Linker *",
+      "object": ""
+    }
+  ],
+  "linker_archive_inputs": [
+    {
+      "name": "compiler_rt.lib",
+      "sha256": "a75e32a2491729a6fcf1164b1404e0ebcb6404152632826b2b23da2f68d2703d",
+      "contribution": "available to linker; no contributing member in PDB, no unresolved runtime symbol"
+    },
+    {
+      "name": "kernel32.lib",
+      "sha256": "aee6eb7cb63c6fc9a4e64f3ab63399f440eeb8cdb81e2df30b032f4f4ded9080",
+      "contribution": "import descriptors/thunks only"
+    },
+    {
+      "name": "c.lib",
+      "sha256": "2e30ae3f2e25dc919122b8f1270573d19ecb01cfb7ab9948db7c894cf25723a2",
+      "contribution": "available to linker; no contributing member in PDB, no unresolved runtime symbol"
+    }
+  ],
+  "compiler": {
+    "name": "Zig",
+    "version": "0.13.0",
+    "role": "build-only; no compiler executable redistributed",
+    "license": "MIT",
+    "notice_sha256": "5c537d6853e005298a285d508cff9ac7192cea23576c840d485b2b586a7ff177"
+  },
+  "notices": [
+    "tools/m5a1l/LICENSE-MIT.txt",
+    "docs/m5-a1l-THIRD-PARTY-NOTICES.md",
+    "original retained PSG preamble/comments"
+  ],
+  "permission_basis": "explicit BSD file declaration plus new MIT source; no unclear helper code compiled; not a universal legal warranty",
+  "release_fidelity_status": "HOLD: Manager must resolve changed resampler PCM or obtain exact-helper permission"
+}
