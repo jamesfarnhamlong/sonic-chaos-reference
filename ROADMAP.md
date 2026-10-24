@@ -4,6 +4,14 @@
 
 See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
 
+## CURRENT — Chief-directed complete private POC repository policy (24 October 2026)
+
+**NEW enabling gate before any release containing private game assets:** Chief personally changes `jamesfarnhamlong/SonicChaos_POC` from **currently public** to **private**, then confirms permitted cloud/connector access. Do not add ROM-derived images/audio or ROM while POC is public. Public `sonic-chaos-reference` remains research-only (safe evidence/hashes/scripts, not copyrighted binaries).
+
+**Next consolidated asset-preservation workstream:** audit and restore **every asset actually required** to compile/run a fresh POC clone (including deeply nested GameMaker layer PNGs and audio), reconcile M2's private 587 and M3 candidate A's 669 by exact file manifest, update project-side ignores, and commit required assets to the **private** POC with Git LFS only where appropriate and supported. Ensure M3 acceptance and M4 library development are coordinated with the migration, rather than issuing many tiny packages. Fresh-clone validation, fully materialized assets, no dependency on `E:\AI\Codex\Sonic Chaos` restoration folders, and one targeted native compile/run become the **migration acceptance gate**. Raw ROM/regeneration inputs require inventory and deliberate private handling; nothing goes to public Research.
+
+**Backup condition:** preserve all existing local project files/archives; do not authorize deleting/moving them until an **independent off-PC copy**, SHA-verified clone and recovery test exist and Chief approves cleanup. GitHub is not the only backup. User requests economical consolidated testing and one release per substantial scope.
+
 ## Current game baseline
 
 **CLOSED for scoped Windows acceptance:** the 348×196 Sonic 18-act campaign, all five Special Stages, Emerald good ending/credits/title, authentic opening cinematic, campaign/death/Continue/score flow, Q2 and Q3 accepted world/camera/fragments.
