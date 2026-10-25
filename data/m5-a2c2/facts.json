@@ -1,0 +1,158 @@
+{
+  "termination": {
+    "A1": {
+      "inactive_tick": 30,
+      "post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "post_writes": 0,
+      "PCM_samples": 45570
+    },
+    "A2": {
+      "inactive_tick": 35,
+      "post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "post_writes": 0,
+      "PCM_samples": 49245
+    },
+    "A7": {
+      "inactive_tick": 7,
+      "post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "post_writes": 0,
+      "PCM_samples": 28665
+    }
+  },
+  "actual_A2_FD_tick": 2,
+  "FD_release_clears_mode": true,
+  "FD_replacement_initial_flags_restored": true,
+  "A7_noise": {
+    "THZ-A7-early": {
+      "F3_mode": 7,
+      "F3_executions": 1,
+      "DE11_restore": {
+        "tick": 36,
+        "channel": 6,
+        "data_latch": 3,
+        "byte": 228
+      }
+    },
+    "THZ-A7-later": {
+      "F3_mode": 7,
+      "F3_executions": 1,
+      "DE11_restore": {
+        "tick": 79,
+        "channel": 6,
+        "data_latch": 3,
+        "byte": 228
+      }
+    }
+  },
+  "A7_solo_restore": {
+    "tick": 7,
+    "channel": 6,
+    "data_latch": 7,
+    "byte": 0
+  },
+  "music_recovery": {
+    "THZ-A7-early-music2": {
+      "suppression": [
+        30,
+        35
+      ],
+      "next_eligible_read_tick": 37
+    },
+    "THZ-A7-early-music3": {
+      "suppression": [
+        30,
+        35
+      ],
+      "next_eligible_read_tick": 37
+    },
+    "THZ-A7-later-music2": {
+      "suppression": [
+        73,
+        78
+      ],
+      "next_eligible_read_tick": 97
+    },
+    "THZ-A7-later-music3": {
+      "suppression": [
+        73,
+        78
+      ],
+      "next_eligible_read_tick": 85
+    }
+  },
+  "A7_retrigger_admissions": [
+    [
+      30,
+      167
+    ],
+    [
+      32,
+      167
+    ],
+    [
+      36,
+      167
+    ],
+    [
+      60,
+      167
+    ]
+  ],
+  "blocked_A7_by_A1_at32": true,
+  "blocked_A7_by_A3_at4": true,
+  "noise_native_state": {
+    "solo-A7": {
+      "LFSR_changes_in_observed_post_or_run_window": 31,
+      "noise_core_not_recreated_on_stream_off": true
+    },
+    "A7-retrigger": {
+      "LFSR_changes_in_observed_post_or_run_window": 159,
+      "noise_core_not_recreated_on_stream_off": true
+    }
+  },
+  "missing_program_rejected": true,
+  "missing_A7_terminal_detected_tick": 7,
+  "FD_noop_detected_tick": 2,
+  "performance": {
+    "ticks": 6720,
+    "median_ns": 800.0,
+    "p99_ns": 11300,
+    "max_ns": 59500,
+    "memory": {
+      "previous": {
+        "current_bytes": 516472,
+        "peak_bytes": 661035
+      },
+      "expanded": {
+        "current_bytes": 517487,
+        "peak_bytes": 665975
+      }
+    },
+    "active_ticks": 2880,
+    "active_median_ns": 3200.0,
+    "idle_post_ticks": 3840,
+    "idle_median_ns": 700.0,
+    "scope": "Python sparse bank/decoder, bounded log; excludes interpreter base and PCM; NOT GameMaker performance"
+  }
+}

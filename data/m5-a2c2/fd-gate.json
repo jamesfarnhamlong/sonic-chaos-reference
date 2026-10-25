@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "source_sha256": {
+    "tools/m5a2c2/fd_gate.py": "1832b52ca341a84c46d7d6d915e46ea1a5b2b18dff7f4f35e253242be1d77abc",
+    "tools/m5a2c2/decoder.py": "abab242a4d7558e3a53114dd921e0a16b8a7c79822bc0c2f29a70a634ce418e4"
+  },
+  "actual_A2": {
+    "status": "PASS",
+    "ticks": 67,
+    "FD_executions": 1,
+    "opcode_bytes_including_operand": 2,
+    "only_flag_bit3_changed": true,
+    "caller_consumption_exact": true,
+    "raw_reader_visits": 8,
+    "source_sha256": {
+      "47BA-47C8": "edae1dd19545c51965ee825b8ab19ad9bf29b1e6f803654b9b3527276e5bcce7",
+      "46D5-46ED": "c0086b0106959c27f7c8b0e85e424e7c0af2e642114b47aa39351e4d7b6f274d",
+      "43C7-43E5": "2d5ccce86d9945d3df7d4f4f346a2c95c3c218c85a7a48b5c3e50645266c4569",
+      "41F6-422B": "9fdf97212120000f97242a68103bfa49ea3d7c2710d833950612d3a5197ef8f4"
+    }
+  },
+  "direct_original_handler_edges": 16,
+  "seeded_transition_probes": {
+    "transpose-1-multiplier1": {
+      "status": "PASS",
+      "ticks": 24,
+      "FD_transitions": 2,
+      "provenance": "synthetic seeded stream; original driver code unchanged; not naturally reached game data"
+    },
+    "transpose-1-multiplier2": {
+      "status": "PASS",
+      "ticks": 24,
+      "FD_transitions": 2,
+      "provenance": "synthetic seeded stream; original driver code unchanged; not naturally reached game data"
+    },
+    "transpose0-multiplier1": {
+      "status": "PASS",
+      "ticks": 24,
+      "FD_transitions": 2,
+      "provenance": "synthetic seeded stream; original driver code unchanged; not naturally reached game data"
+    },
+    "transpose0-multiplier2": {
+      "status": "PASS",
+      "ticks": 24,
+      "FD_transitions": 2,
+      "provenance": "synthetic seeded stream; original driver code unchanged; not naturally reached game data"
+    },
+    "transpose1-multiplier1": {
+      "status": "PASS",
+      "ticks": 24,
+      "FD_transitions": 2,
+      "provenance": "synthetic seeded stream; original driver code unchanged; not naturally reached game data"
+    },
+    "transpose1-multiplier2": {
+      "status": "PASS",
+      "ticks": 24,
+      "FD_transitions": 2,
+      "provenance": "synthetic seeded stream; original driver code unchanged; not naturally reached game data"
+    }
+  },
+  "truncated_operand_rejected": true,
+  "invalid_next_pointer_rejected": true,
+  "unsupported_reader_rejected": true,
+  "gate_boundary": "FD enabled only for SFX tone2, selected actual A2 plus explicit synthetic transition controls; no catalogue promotion in this gate"
+}
