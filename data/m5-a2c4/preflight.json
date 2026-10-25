@@ -1,0 +1,412 @@
+{
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "rows": [
+    {
+      "request_id": 175,
+      "label": "Unknown $AF",
+      "implementation_authorised": true,
+      "header": {
+        "header_rom": 57615,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 72,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xe0",
+            "stream_cpu": 41241,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          128
+        ]
+      },
+      "syntax": {
+        "nodes": 8,
+        "potential_opcodes": [
+          "E0",
+          "F0",
+          "F2",
+          "F3",
+          "F5"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 1,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "original_inactive_tick": 68,
+      "post_completion_observed_ticks": 128,
+      "original_F3_native_diagnostics": [
+        {
+          "tick": 1,
+          "byte": 231,
+          "mode": 7,
+          "RNG_before": 32768,
+          "RNG_after": 32768,
+          "noise_counter_before": 0,
+          "noise_counter_after": 0,
+          "tone2_period": 0,
+          "noise_period": 0,
+          "qualification": "instant before/after actual original F3 OUT; no sample elapsed across the write"
+        }
+      ],
+      "diagnostic_backend": "accepted original-core adapter driven only by original writes; rendered output discarded, no candidate PCM",
+      "reached_opcodes": {
+        "E0": 1,
+        "F0": 2,
+        "F2": 1,
+        "F3": 1,
+        "F5": 1
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone2-clocked white noise",
+      "F3_control_modes": [
+        7
+      ],
+      "F3_executions": 1,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 67,
+      "SFX_slots_used": [
+        2
+      ],
+      "maximum_simultaneous_SFX_slots": 1,
+      "slot_release_ticks": {
+        "2": 68
+      },
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        4,
+        128
+      ],
+      "pitch_selectors": [
+        128
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [
+        {
+          "tick": 68,
+          "data_latch": 7,
+          "DE11": 0
+        }
+      ],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          17
+        ],
+        7,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2,
+          3
+        ],
+        "last_suppression_ticks": {
+          "2": 96,
+          "3": 96
+        },
+        "DE11_restores": [
+          {
+            "tick": 97,
+            "data_latch": 3,
+            "DE11": 228
+          }
+        ]
+      },
+      "priority": {
+        "table_byte": 72,
+        "stored": 72,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "741ae5ee0edaf03ba3553662367aca4d7471aed11a8dd459704b7c6fa0cbb622",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    },
+    {
+      "request_id": 177,
+      "label": "Unknown $B1",
+      "implementation_authorised": true,
+      "header": {
+        "header_rom": 57680,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 72,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xe0",
+            "stream_cpu": 41306,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          136
+        ]
+      },
+      "syntax": {
+        "qualification": "raw initial mode: dynamic original path below; generic music syntax scan not applied"
+      },
+      "original_inactive_tick": 22,
+      "post_completion_observed_ticks": 128,
+      "original_F3_native_diagnostics": [
+        {
+          "tick": 1,
+          "byte": 231,
+          "mode": 7,
+          "RNG_before": 32768,
+          "RNG_after": 32768,
+          "noise_counter_before": 0,
+          "noise_counter_after": 0,
+          "tone2_period": 0,
+          "noise_period": 0,
+          "qualification": "instant before/after actual original F3 OUT; no sample elapsed across the write"
+        }
+      ],
+      "diagnostic_backend": "accepted original-core adapter driven only by original writes; rendered output discarded, no candidate PCM",
+      "reached_opcodes": {
+        "E0": 1,
+        "F0": 1,
+        "F2": 1,
+        "F3": 1
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone2-clocked white noise",
+      "F3_control_modes": [
+        7
+      ],
+      "F3_executions": 1,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 21,
+      "SFX_slots_used": [
+        2
+      ],
+      "maximum_simultaneous_SFX_slots": 1,
+      "slot_release_ticks": {
+        "2": 22
+      },
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        128
+      ],
+      "pitch_selectors": [
+        128
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [
+        {
+          "tick": 22,
+          "data_latch": 7,
+          "DE11": 0
+        }
+      ],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          91
+        ],
+        7,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2,
+          3
+        ],
+        "last_suppression_ticks": {
+          "2": 50,
+          "3": 50
+        },
+        "DE11_restores": [
+          {
+            "tick": 51,
+            "data_latch": 0,
+            "DE11": 228
+          }
+        ]
+      },
+      "priority": {
+        "table_byte": 72,
+        "stored": 72,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "063404722addf1df7d01acd8e7a8a3855f4aa51eea862b14399d26945c3e5fbc",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    },
+    {
+      "request_id": 185,
+      "label": "Unknown $B9",
+      "implementation_authorised": true,
+      "header": {
+        "header_rom": 57959,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 72,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xe0",
+            "stream_cpu": 41585,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          128
+        ]
+      },
+      "syntax": {
+        "nodes": 33,
+        "potential_opcodes": [
+          "E6",
+          "F2",
+          "F3",
+          "F5",
+          "F7",
+          "F8",
+          "F9"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 5,
+        "counted_loop_sites": 2,
+        "jump_sites": 0,
+        "termination_sites": 1,
+        "max_call_depth": 1,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "original_inactive_tick": 31,
+      "post_completion_observed_ticks": 128,
+      "original_F3_native_diagnostics": [
+        {
+          "tick": 1,
+          "byte": 231,
+          "mode": 7,
+          "RNG_before": 32768,
+          "RNG_after": 32768,
+          "noise_counter_before": 0,
+          "noise_counter_after": 0,
+          "tone2_period": 0,
+          "noise_period": 0,
+          "qualification": "instant before/after actual original F3 OUT; no sample elapsed across the write"
+        }
+      ],
+      "diagnostic_backend": "accepted original-core adapter driven only by original writes; rendered output discarded, no candidate PCM",
+      "reached_opcodes": {
+        "E6": 8,
+        "F2": 1,
+        "F3": 1,
+        "F5": 1,
+        "F7": 5,
+        "F8": 6,
+        "F9": 6
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone2-clocked white noise",
+      "F3_control_modes": [
+        7
+      ],
+      "F3_executions": 1,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 28,
+      "SFX_slots_used": [
+        2
+      ],
+      "maximum_simultaneous_SFX_slots": 1,
+      "slot_release_ticks": {
+        "2": 31
+      },
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        4
+      ],
+      "pitch_selectors": [
+        0
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [
+        {
+          "tick": 31,
+          "data_latch": 7,
+          "DE11": 0
+        }
+      ],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          54
+        ],
+        7,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2,
+          3
+        ],
+        "last_suppression_ticks": {
+          "2": 59,
+          "3": 59
+        },
+        "DE11_restores": [
+          {
+            "tick": 60,
+            "data_latch": 0,
+            "DE11": 228
+          }
+        ]
+      },
+      "priority": {
+        "table_byte": 72,
+        "stored": 72,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "569652a8f0ae7a83a782d78435f6c83b98efe47b70663531f9dd8976655e4907",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    }
+  ],
+  "candidate_PCM_rendered": false,
+  "reference_state_diagnostic_only": true,
+  "candidate_promoted": false
+}
