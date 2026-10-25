@@ -1,0 +1,598 @@
+{
+  "cases": {
+    "solo-B4": {
+      "status": "PASS",
+      "command_operations": 7,
+      "pitch_operations": 30,
+      "reload_operations": 6,
+      "envelope_entries": 0,
+      "command_counts": {
+        "E6": 6,
+        "F0": 1
+      },
+      "operation_sha256": "f01070710b5ecbd32968c2528dfb60599e347d6740e4e3c31ab0f1c26ea8a3b1",
+      "reload_sources": {
+        "DE06": 6
+      },
+      "table_envelope_visits": {}
+    },
+    "solo-BD": {
+      "status": "PASS",
+      "command_operations": 14,
+      "pitch_operations": 22,
+      "reload_operations": 0,
+      "envelope_entries": 18,
+      "command_counts": {
+        "E6": 2,
+        "F0": 4,
+        "F5": 4,
+        "F8": 2,
+        "F9": 2
+      },
+      "operation_sha256": "85d86cafedfb6a457c930ca6f491cd02147aedaeeb4ebda15cdae9183c8d9a51",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "13": {
+          "visits": 18,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        }
+      }
+    },
+    "solo-C2": {
+      "status": "PASS",
+      "command_operations": 32,
+      "pitch_operations": 39,
+      "reload_operations": 0,
+      "envelope_entries": 39,
+      "command_counts": {
+        "E6": 12,
+        "F0": 1,
+        "F5": 1,
+        "F7": 9,
+        "FB": 9
+      },
+      "operation_sha256": "afe440cced2dcabc7ed6d8a3de9ab335351b2d2341df3b24ce3371b2857b90f5",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "2": {
+          "visits": 39,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    },
+    "THZ-B4": {
+      "status": "PASS",
+      "command_operations": 7,
+      "pitch_operations": 30,
+      "reload_operations": 6,
+      "envelope_entries": 0,
+      "command_counts": {
+        "E6": 6,
+        "F0": 1
+      },
+      "operation_sha256": "7e55619327970bf496ae1084adabee273a1b4e2d2b4f286a4b7b4215ebd36f20",
+      "reload_sources": {
+        "DE06": 6
+      },
+      "table_envelope_visits": {}
+    },
+    "THZ-BD": {
+      "status": "PASS",
+      "command_operations": 14,
+      "pitch_operations": 22,
+      "reload_operations": 0,
+      "envelope_entries": 18,
+      "command_counts": {
+        "E6": 2,
+        "F0": 4,
+        "F5": 4,
+        "F8": 2,
+        "F9": 2
+      },
+      "operation_sha256": "a8de0374d7688b1f520e76efa142099bf01f8ce78ff31160792fe4c44773e0be",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "13": {
+          "visits": 18,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        }
+      }
+    },
+    "THZ-C2": {
+      "status": "PASS",
+      "command_operations": 32,
+      "pitch_operations": 39,
+      "reload_operations": 0,
+      "envelope_entries": 39,
+      "command_counts": {
+        "E6": 12,
+        "F0": 1,
+        "F5": 1,
+        "F7": 9,
+        "FB": 9
+      },
+      "operation_sha256": "01c3540946a11187b7b849dbc71182b73375a231488dfe99cb62b3284952d673",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "2": {
+          "visits": 39,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    },
+    "B4-retrigger": {
+      "status": "PASS",
+      "command_operations": 19,
+      "pitch_operations": 80,
+      "reload_operations": 15,
+      "envelope_entries": 0,
+      "command_counts": {
+        "E6": 15,
+        "F0": 4
+      },
+      "operation_sha256": "fb54c9fc42e874ef3d02c27a6c81071089747a1507837d0e92baf961d5930931",
+      "reload_sources": {
+        "5183": 1,
+        "DE06": 14
+      },
+      "table_envelope_visits": {}
+    },
+    "BD-retrigger": {
+      "status": "PASS",
+      "command_operations": 38,
+      "pitch_operations": 57,
+      "reload_operations": 0,
+      "envelope_entries": 45,
+      "command_counts": {
+        "E6": 4,
+        "F0": 12,
+        "F5": 12,
+        "F8": 6,
+        "F9": 4
+      },
+      "operation_sha256": "66e0f60f548109acad1915229df75470b3e626ff56cffa4c85b9d146e631b412",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "13": {
+          "visits": 45,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        }
+      }
+    },
+    "C2-retrigger": {
+      "status": "PASS",
+      "command_operations": 71,
+      "pitch_operations": 107,
+      "reload_operations": 0,
+      "envelope_entries": 107,
+      "command_counts": {
+        "E6": 25,
+        "F0": 4,
+        "F5": 4,
+        "F7": 19,
+        "FB": 19
+      },
+      "operation_sha256": "d2a074c412c0792ae294b008e7c848dde4b649d4d5b170e770d97610b326cd74",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "2": {
+          "visits": 107,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    },
+    "tone2-priority-chain": {
+      "status": "PASS",
+      "command_operations": 44,
+      "pitch_operations": 81,
+      "reload_operations": 6,
+      "envelope_entries": 49,
+      "command_counts": {
+        "E6": 18,
+        "F0": 4,
+        "F5": 3,
+        "F7": 9,
+        "F8": 1,
+        "FB": 9
+      },
+      "operation_sha256": "1d24611213a88213ce65b7fff47157c24d1e491381e096471c459d4e6d0ad74a",
+      "reload_sources": {
+        "DE06": 6
+      },
+      "table_envelope_visits": {
+        "2": {
+          "visits": 49,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    },
+    "B4-block-lower": {
+      "status": "PASS",
+      "command_operations": 21,
+      "pitch_operations": 52,
+      "reload_operations": 6,
+      "envelope_entries": 18,
+      "command_counts": {
+        "E6": 8,
+        "F0": 5,
+        "F5": 4,
+        "F8": 2,
+        "F9": 2
+      },
+      "operation_sha256": "830e2fb6627abb2d481fc90fd3cd166da19e4d10265f7aad77a4c181fb6dd83d",
+      "reload_sources": {
+        "DE06": 6
+      },
+      "table_envelope_visits": {
+        "13": {
+          "visits": 18,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        }
+      }
+    },
+    "white-A3-to-B4": {
+      "status": "PASS",
+      "command_operations": 7,
+      "pitch_operations": 30,
+      "reload_operations": 6,
+      "envelope_entries": 0,
+      "command_counts": {
+        "E6": 6,
+        "F0": 1
+      },
+      "operation_sha256": "64d7e5fdb21dc9973179a109e26734d6af1d1159aa2e889e65b2d89092237378",
+      "reload_sources": {
+        "DE06": 6
+      },
+      "table_envelope_visits": {}
+    },
+    "periodic-B7-to-BD": {
+      "status": "PASS",
+      "command_operations": 14,
+      "pitch_operations": 2,
+      "reload_operations": 0,
+      "envelope_entries": 0,
+      "command_counts": {
+        "E6": 2,
+        "F0": 4,
+        "F5": 4,
+        "F8": 2,
+        "F9": 2
+      },
+      "operation_sha256": "e899d78c83d103a507acf6276ba3c3c31af28afe49d54544e305ba1e864e0799",
+      "reload_sources": {},
+      "table_envelope_visits": {}
+    },
+    "fixed-B8-with-B4": {
+      "status": "PASS",
+      "command_operations": 7,
+      "pitch_operations": 30,
+      "reload_operations": 6,
+      "envelope_entries": 0,
+      "command_counts": {
+        "E6": 6,
+        "F0": 1
+      },
+      "operation_sha256": "ab29cfd8a345fb904e673c66efd32b65ab4718b7e2d825c2feee932e0ab3630a",
+      "reload_sources": {
+        "DE06": 6
+      },
+      "table_envelope_visits": {}
+    },
+    "coupled-A7-to-C2": {
+      "status": "PASS",
+      "command_operations": 32,
+      "pitch_operations": 39,
+      "reload_operations": 0,
+      "envelope_entries": 39,
+      "command_counts": {
+        "E6": 12,
+        "F0": 1,
+        "F5": 1,
+        "F7": 9,
+        "FB": 9
+      },
+      "operation_sha256": "120386fec57641413698b0c67a1e5981e128fc08894182e146f612d1ae68e0ba",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "2": {
+          "visits": 39,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    },
+    "noise-B0-over-C2": {
+      "status": "PASS",
+      "command_operations": 32,
+      "pitch_operations": 28,
+      "reload_operations": 0,
+      "envelope_entries": 28,
+      "command_counts": {
+        "E6": 12,
+        "F0": 1,
+        "F5": 1,
+        "F7": 9,
+        "FB": 9
+      },
+      "operation_sha256": "54970bd313b50cd501bb19bf7a911e03e3cc87a7438d69e5088061f7c1538800",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "2": {
+          "visits": 28,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    },
+    "B4-BA-concurrent": {
+      "status": "PASS",
+      "command_operations": 7,
+      "pitch_operations": 30,
+      "reload_operations": 6,
+      "envelope_entries": 0,
+      "command_counts": {
+        "E6": 6,
+        "F0": 1
+      },
+      "operation_sha256": "c964b9dc742666bb443dd3627ed0217fd3c34bccae703f0805814fa3559539d7",
+      "reload_sources": {
+        "A2C4": 4,
+        "DE06": 2
+      },
+      "table_envelope_visits": {}
+    },
+    "fade-fresh-C2": {
+      "status": "PASS",
+      "command_operations": 34,
+      "pitch_operations": 49,
+      "reload_operations": 2,
+      "envelope_entries": 39,
+      "command_counts": {
+        "E6": 13,
+        "F0": 2,
+        "F5": 1,
+        "F7": 9,
+        "FB": 9
+      },
+      "operation_sha256": "8636437831d56abe16cc488bbf945564f86c695f2ec1304cfa36602ace0e04ed",
+      "reload_sources": {
+        "DE06": 2
+      },
+      "table_envelope_visits": {
+        "2": {
+          "visits": 39,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    },
+    "reset-fresh-BD": {
+      "status": "PASS",
+      "command_operations": 16,
+      "pitch_operations": 32,
+      "reload_operations": 0,
+      "envelope_entries": 28,
+      "command_counts": {
+        "E6": 2,
+        "F0": 5,
+        "F5": 5,
+        "F8": 2,
+        "F9": 2
+      },
+      "operation_sha256": "9b1c4903920699d15ebd158cd91dc68718b0e03bdcfc3d7db381fe80991b1558",
+      "reload_sources": {},
+      "table_envelope_visits": {
+        "2": {
+          "visits": 10,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        },
+        "13": {
+          "visits": 18,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        }
+      }
+    },
+    "B4-rejected-reset": {
+      "status": "PASS",
+      "command_operations": 39,
+      "pitch_operations": 69,
+      "reload_operations": 6,
+      "envelope_entries": 39,
+      "command_counts": {
+        "E6": 18,
+        "F0": 2,
+        "F5": 1,
+        "F7": 9,
+        "FB": 9
+      },
+      "operation_sha256": "2ef33a5ea30bf8352a5c6d9d5e98c3c9e798b3fb6220c75b67d7267758054613",
+      "reload_sources": {
+        "DE06": 6
+      },
+      "table_envelope_visits": {
+        "2": {
+          "visits": 39,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        }
+      }
+    }
+  },
+  "solo": {
+    "solo-B4": {
+      "reload_ticks": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "reload_values": [
+        0
+      ],
+      "F7_ticks": [],
+      "FB_ticks": [],
+      "F7_return_targets": {},
+      "counted_branches_taken": 0,
+      "counted_fallthroughs": 0,
+      "transpose_updates_exact": true,
+      "command_channel_before_after_exact": true,
+      "pitch_channel_before_after_exact": true,
+      "qualification": "complete detailed per-operation channel states and source values retained privately; summaries do not publish sound-program payload"
+    },
+    "solo-BD": {
+      "reload_ticks": [],
+      "reload_values": [],
+      "F7_ticks": [],
+      "FB_ticks": [],
+      "F7_return_targets": {},
+      "counted_branches_taken": 0,
+      "counted_fallthroughs": 0,
+      "transpose_updates_exact": true,
+      "command_channel_before_after_exact": true,
+      "pitch_channel_before_after_exact": true,
+      "qualification": "complete detailed per-operation channel states and source values retained privately; summaries do not publish sound-program payload"
+    },
+    "solo-C2": {
+      "reload_ticks": [],
+      "reload_values": [],
+      "F7_ticks": [
+        26,
+        30,
+        30,
+        34,
+        38,
+        38,
+        42,
+        46,
+        46
+      ],
+      "FB_ticks": [
+        26,
+        30,
+        30,
+        34,
+        38,
+        38,
+        42,
+        46,
+        46
+      ],
+      "F7_return_targets": {
+        "A3EF": 5,
+        "A400": 3,
+        "A40B": 1
+      },
+      "counted_branches_taken": 5,
+      "counted_fallthroughs": 4,
+      "transpose_updates_exact": true,
+      "command_channel_before_after_exact": true,
+      "pitch_channel_before_after_exact": true,
+      "qualification": "complete detailed per-operation channel states and source values retained privately; summaries do not publish sound-program payload"
+    }
+  },
+  "zero_tolerance": true,
+  "independent_candidate_first": true,
+  "decoder_semantics_changed": false,
+  "hooks": {
+    "command_entry": "46D9",
+    "after_handler_before_caller_increment": "46E9",
+    "pitch_entry": "42AF",
+    "pitch_return": "4502",
+    "shared_IY_reload": "42F6",
+    "volume_table_value": "4610"
+  },
+  "diagnostic_source_sha256": "351f1a7cfe35e82866aa0d178d9a06ef5e763918f61ad1428a8aaf119c43977c"
+}

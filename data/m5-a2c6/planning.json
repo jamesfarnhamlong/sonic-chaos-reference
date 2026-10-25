@@ -1,0 +1,129 @@
+{
+  "planning_only": true,
+  "implementation_started": false,
+  "recommendation": "B: separately authorised isolated actual-GameMaker decoder/SCSP/scheduler feasibility gate",
+  "rationale": "39 tested programs span independent reader, modulation, table-envelope, loop/call, ownership and noise classes; PC-style Python correctness is established, but original-stream decoding and validated SCSP loading inside GameMaker remain unmeasured.",
+  "A_further_catalogue": {
+    "remaining_tone2": [
+      "A8",
+      "AB",
+      "AD",
+      "AE",
+      "B2",
+      "B3",
+      "B5",
+      "C0",
+      "C1",
+      "C3"
+    ],
+    "parked_single_F3": [
+      "BB",
+      "BE",
+      "C4"
+    ],
+    "remaining_music": [
+      {
+        "request_id": 130,
+        "request_hex": "0x82",
+        "label": "Character-selection music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 131,
+        "request_hex": "0x83",
+        "label": "Gigalopolis Zone music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 139,
+        "request_hex": "0x8B",
+        "label": "EEZ first encounter entry music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 140,
+        "request_hex": "0x8C",
+        "label": "Ordinary boss music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 141,
+        "request_hex": "0x8D",
+        "label": "Full Sonic / Tails ending music",
+        "historical_lifecycle": "finite"
+      },
+      {
+        "request_id": 143,
+        "request_hex": "0x8F",
+        "label": "Special Stage music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 144,
+        "request_hex": "0x90",
+        "label": "Opening / Electric Egg Zone act 3 music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 145,
+        "request_hex": "0x91",
+        "label": "Sleeping Egg Zone music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 146,
+        "request_hex": "0x92",
+        "label": "Mecha Green Hill Zone music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 147,
+        "request_hex": "0x93",
+        "label": "Aqua Planet Zone music",
+        "historical_lifecycle": "repeating"
+      },
+      {
+        "request_id": 149,
+        "request_hex": "0x95",
+        "label": "Electric Egg Zone acts 1 / 2 music",
+        "historical_lifecycle": "repeating"
+      }
+    ],
+    "risks": [
+      "Historical classes do not prove command, envelope or raw-mode paths; fresh original-only preflight still required.",
+      "11 music requests include 10 repeating and one historically finite full ending; no new horizons or complete long periods authenticated here.",
+      "90/91/8C long-period renders remain prohibited; use bounded source/loop gates under new authorisation.",
+      "Table pitch, DE-relative envelope, alternate base, E2/E4/E5/E8/ED/F4/FA and broader FD scope remain separate evidence gates, not predicted operations of particular unexecuted IDs."
+    ]
+  },
+  "B_native_feasibility": {
+    "A1P_proved": "actual Windows GameMaker VM native PSG handoff using ROM-free register script, persistent chip and bounded host/audio lifecycle",
+    "A1P_did_not_prove": [
+      "original stream interpreter",
+      "SCSP loading and integrity validation",
+      "original command scheduling and shared channel state inside GameMaker"
+    ],
+    "private_A1P_summary_sha256": "a49af36e74323464ad49424505ea03cdff63095911061990adaaf0f40d84857f",
+    "required_gates": [
+      "new isolated project; accepted M4 and A1P read-only",
+      "SCSP v1 bounded decompression/source/record hashes and pointer validation",
+      "port existing decoder semantics with explicit 8/16-bit arithmetic and signed transpose; retain FD guard",
+      "fixed 60 Hz request/mailbox and reader scheduling independent of display frame variation",
+      "exact generated writes/full state against frozen Python and independent original fixtures, with no expected timeline as runtime input",
+      "B4 shared IY, BD actual table entries, C2 loops, 8A held DC, THZ true loop, B0/B7 repeated F3 and suppression/latch cases",
+      "unchanged A1L continuous handoff and 735/split parity; no native chip reset at request boundary",
+      "actual VM build/run capture; loading/allocation/per-tick decoder/host transfer timing and audio underrun/lifecycle/cleanup evidence",
+      "malformed data, unsupported opcode/scope, bounds, horizon and terminal negatives inside actual runtime"
+    ],
+    "implementation_choice": "Prefer an isolated GML decoder/scheduler over a copied PSG host for a direct runtime proof; choose any native decoding bridge only in a separately scoped design decision. No language/API capability or performance assumed from Python."
+  },
+  "not_authorised": [
+    "additional request IDs",
+    "new GameMaker project or decoder implementation in C6",
+    "M4 integration",
+    "Sound Test",
+    "long renders",
+    "DLL distribution",
+    "main merge"
+  ]
+}
