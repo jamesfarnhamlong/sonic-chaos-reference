@@ -1,0 +1,381 @@
+{
+  "termination": {
+    "B0": {
+      "inactive_tick": 7,
+      "candidate_post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "post_writes": 0,
+      "PCM_samples": 28665
+    },
+    "B7": {
+      "inactive_tick": 7,
+      "candidate_post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "post_writes": 0,
+      "PCM_samples": 28665
+    },
+    "BA": {
+      "inactive_tick": 25,
+      "candidate_post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "post_writes": 0,
+      "PCM_samples": 41895
+    }
+  },
+  "F3_reset_evidence": {
+    "B0": {
+      "F3_ticks": [
+        1,
+        4
+      ],
+      "modes": [
+        7,
+        7
+      ],
+      "original_and_decoded_instant_core_states_equal": true,
+      "second_write": {
+        "tick": 4,
+        "byte": 231,
+        "mode": 7,
+        "RNG_before": 8356,
+        "RNG_after": 32768,
+        "noise_counter_before": 21,
+        "noise_counter_after": 21,
+        "tone2_period": 32,
+        "noise_period": 64
+      }
+    },
+    "B7": {
+      "F3_ticks": [
+        1,
+        4
+      ],
+      "modes": [
+        3,
+        3
+      ],
+      "original_and_decoded_instant_core_states_equal": true,
+      "second_write": {
+        "tick": 4,
+        "byte": 227,
+        "mode": 3,
+        "RNG_before": 512,
+        "RNG_after": 32768,
+        "noise_counter_before": 21,
+        "noise_counter_after": 21,
+        "tone2_period": 32,
+        "noise_period": 64
+      }
+    },
+    "BA": {
+      "F3_ticks": [
+        1
+      ],
+      "modes": [
+        7
+      ],
+      "original_and_decoded_instant_core_states_equal": true
+    }
+  },
+  "duplicate_control_negative": {
+    "B0": {
+      "dropped_duplicate_noise_control": true,
+      "LFSR_mismatching_ticks": 36,
+      "max_signed16_error": 16384,
+      "verdict": "FAIL as intended; register control value alone would miss the reset"
+    },
+    "B7": {
+      "dropped_duplicate_noise_control": true,
+      "LFSR_mismatching_ticks": 36,
+      "max_signed16_error": 16384,
+      "verdict": "FAIL as intended; register control value alone would miss the reset"
+    }
+  },
+  "BA_simultaneous_solo_slots": 2,
+  "BA_noise_slot_release_tick": 5,
+  "BA_tone1_release_tick": 25,
+  "BA_with_hurt_simultaneous_slots": 3,
+  "admissions": {
+    "B0-retrigger": [
+      [
+        30,
+        176
+      ],
+      [
+        32,
+        176
+      ],
+      [
+        36,
+        176
+      ],
+      [
+        60,
+        176
+      ]
+    ],
+    "B7-retrigger": [
+      [
+        30,
+        183
+      ],
+      [
+        33,
+        183
+      ],
+      [
+        36,
+        183
+      ],
+      [
+        60,
+        183
+      ]
+    ],
+    "BA-retrigger": [
+      [
+        30,
+        186
+      ],
+      [
+        32,
+        186
+      ],
+      [
+        40,
+        186
+      ],
+      [
+        70,
+        186
+      ]
+    ],
+    "B7-block-ring": [
+      [
+        1,
+        183
+      ],
+      [
+        8,
+        191
+      ]
+    ],
+    "BA-priority-noise-replace": [
+      [
+        30,
+        186
+      ],
+      [
+        33,
+        183
+      ]
+    ]
+  },
+  "F3_counts": {
+    "B0-retrigger": 7,
+    "B7-retrigger": 6,
+    "BA-retrigger": 4,
+    "B7-block-ring": 2,
+    "BA-priority-noise-replace": 3
+  },
+  "music_recovery": {
+    "THZ-B0-music2": {
+      "suppression": [
+        30,
+        35
+      ],
+      "next_read": 37
+    },
+    "THZ-B0-music3": {
+      "suppression": [
+        30,
+        35
+      ],
+      "next_read": 37
+    },
+    "THZ-B7-music2": {
+      "suppression": [
+        30,
+        35
+      ],
+      "next_read": 37
+    },
+    "THZ-B7-music3": {
+      "suppression": [
+        30,
+        35
+      ],
+      "next_read": 37
+    },
+    "THZ-BA-music1": {
+      "suppression": [
+        30,
+        53
+      ],
+      "next_read": 61
+    },
+    "THZ-BA-music2": {
+      "suppression": [
+        30,
+        33
+      ],
+      "next_read": 37
+    },
+    "THZ-BA-music3": {
+      "suppression": [
+        30,
+        33
+      ],
+      "next_read": 37
+    }
+  },
+  "BA_missing_terminal_detected_tick": 5,
+  "native_interference": {
+    "B0-tone2-interrupt": {
+      "core_state_reference_exact": true,
+      "noise_modes": [
+        4,
+        6,
+        7
+      ],
+      "noise_counter_range": [
+        1,
+        117
+      ],
+      "tone2_period_values": 7,
+      "RNG_changes_across_muted_frame_pairs": 50
+    },
+    "BA-concurrent-hurt": {
+      "core_state_reference_exact": true,
+      "noise_modes": [
+        4,
+        6,
+        7
+      ],
+      "noise_counter_range": [
+        1,
+        115
+      ],
+      "tone2_period_values": 29,
+      "RNG_changes_across_muted_frame_pairs": 56
+    },
+    "BA-retrigger": {
+      "core_state_reference_exact": true,
+      "noise_modes": [
+        4,
+        6,
+        7
+      ],
+      "noise_counter_range": [
+        1,
+        117
+      ],
+      "tone2_period_values": 11,
+      "RNG_changes_across_muted_frame_pairs": 56
+    }
+  },
+  "DE11_restore_contexts": {
+    "solo-B0": [
+      {
+        "tick": 7,
+        "channel": 6,
+        "data_latch": 7,
+        "byte": 0
+      }
+    ],
+    "solo-B7": [
+      {
+        "tick": 7,
+        "channel": 6,
+        "data_latch": 7,
+        "byte": 0
+      }
+    ],
+    "solo-BA": [
+      {
+        "tick": 5,
+        "channel": 6,
+        "data_latch": 3,
+        "byte": 0
+      }
+    ],
+    "THZ-B0": [
+      {
+        "tick": 36,
+        "channel": 6,
+        "data_latch": 3,
+        "byte": 228
+      }
+    ],
+    "THZ-B7": [
+      {
+        "tick": 36,
+        "channel": 6,
+        "data_latch": 3,
+        "byte": 228
+      }
+    ],
+    "THZ-BA": [
+      {
+        "tick": 34,
+        "channel": 6,
+        "data_latch": 3,
+        "byte": 228
+      }
+    ]
+  },
+  "music_clock": {
+    "noise_mode": 3,
+    "music_tone2_periods": [
+      0,
+      81,
+      91,
+      107,
+      108,
+      120,
+      121
+    ],
+    "noise_muted": true,
+    "frames": 337,
+    "qualification": "actual post-B7 retained periodic control clocked by later music while muted; not audible noise under a simultaneous music owner"
+  },
+  "performance": {
+    "ticks": 6750,
+    "median_ns": 700.0,
+    "p99_ns": 10700,
+    "max_ns": 71100,
+    "active_ticks": 1950,
+    "active_median_ns": 3800.0,
+    "idle_ticks": 4800,
+    "idle_median_ns": 700.0,
+    "memory": {
+      "previous": {
+        "current_bytes": 521663,
+        "peak_bytes": 665975
+      },
+      "expanded": {
+        "current_bytes": 524644,
+        "peak_bytes": 670950
+      }
+    },
+    "scope": "Python sparse bank/decoder and bounded diagnostics, excludes interpreter base/PCM; NOT GameMaker performance"
+  }
+}

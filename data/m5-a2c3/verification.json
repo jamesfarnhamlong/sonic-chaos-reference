@@ -1,0 +1,132 @@
+{
+  "parent": "f3eeb6e66b44852d4d6245bec19db0ce3c820a1a",
+  "management": "79ef876b2ec72f06aeb2cb3f0dea2d5d8ed5eac9",
+  "branch": "research/m5-a2c3-noise-multislot-sfx",
+  "changed_files": [
+    "data/m5-a2c3/coverage.json",
+    "data/m5-a2c3/emission.json",
+    "data/m5-a2c3/facts.json",
+    "data/m5-a2c3/isolation.json",
+    "data/m5-a2c3/pcm.json",
+    "data/m5-a2c3/preflight.json",
+    "data/m5-a2c3/private-package.json",
+    "docs/m5-a2c3-handover.md",
+    "tests/test_m5a2c3.py",
+    "tools/m5a2c3/evidence.py",
+    "tools/m5a2c3/isolation.py",
+    "tools/m5a2c3/noise_diagnostic.py",
+    "tools/m5a2c3/original_noise.py",
+    "tools/m5a2c3/package.py",
+    "tools/m5a2c3/pcm.py",
+    "tools/m5a2c3/preflight.py",
+    "tools/m5a2c3/proof.py",
+    "data/m5-a2c3/verification.json"
+  ],
+  "all_files_added_public_safe_text": true,
+  "accepted_decoder_SCSP_A1L_unchanged": true,
+  "FD_scope_unchanged": true,
+  "tests": {
+    "public_tests": 78,
+    "status": "PASS",
+    "fresh_exact_scenarios": 99,
+    "ticks": 32531,
+    "ordered_bytes": 154221,
+    "new_PCM_cases": 18,
+    "legacy_PCM_exact_cases": 81,
+    "isolated_SFX_reloads": 3,
+    "source_compilation": "PASS",
+    "staged_whitespace": "PASS"
+  },
+  "archive_safe_source_matches": 56,
+  "source_sha256_LF": {
+    "data/m5-a2c3/coverage.json": "7f1a46531f489fcf6ea9d38b858e2581f547b302753ac62e76de5c355e78801a",
+    "data/m5-a2c3/emission.json": "b06875afae813a2b1cc2d6ed5e24b09fee25696f00f58abcb195ba276b2e6dc5",
+    "data/m5-a2c3/facts.json": "2d4bd27e3452612f40b1c76d343ad648dbb70f5ad961fc6b1c902e5fe6e9fc80",
+    "data/m5-a2c3/isolation.json": "6079faf3bee6a0a7e2ee9fcddd756951e3c7e599aa0735e493dd4f62c89b1f2b",
+    "data/m5-a2c3/pcm.json": "5a7934519a7b0087601afdcddb9191d5a2cee0460b83416e5ed2bf30cf2dc9c3",
+    "data/m5-a2c3/preflight.json": "6e384b4b8986e2a3fc723a6745e8a353ef4c6b8c209639f63cf6b3681cfee59e",
+    "data/m5-a2c3/private-package.json": "0b8fd4ab517f0fc67dcc05b279fbba9bd59ed831dd5a88a65799e8001523b4ca",
+    "docs/m5-a2c3-handover.md": "d0668d9f5e9d7677dfcb622dd72e80ca8b0780cbd8b8fd3c1ec3db715fb6ca90",
+    "tests/test_m5a2c3.py": "e96057e73f0c4989d9e09440402b6cb09009143c38cc808817053c67346013b3",
+    "tools/m5a2c3/evidence.py": "1527e43ed2d052fa14b61b74843e73443bced22fb4c73270791a784f77c5edcc",
+    "tools/m5a2c3/isolation.py": "0364699d0e2d95913179ea1aa313e9761edf487b00e0db98c25446cd1a9182be",
+    "tools/m5a2c3/noise_diagnostic.py": "af754de428eabefd832e92aac63ba1bf5d82462b970d5be979e7fb322f28f9f8",
+    "tools/m5a2c3/original_noise.py": "617ab2d2048968e65f1883fecf5f9026e1541c94b2ace2b987cdb1051153ce78",
+    "tools/m5a2c3/package.py": "c1b62ac7da2a8bcdaf96ac28e734165bdd1f0a737e739b4174698babd31f3b8a",
+    "tools/m5a2c3/pcm.py": "f4b44729c519058e7f7b447915bcfe72882af2ccb5032e6fe4a58ba434d4cff4",
+    "tools/m5a2c3/preflight.py": "3b57e058bf1c4d782e4ea881ba6091d12f6c020669fea9a678bd9362e8bbfe2a",
+    "tools/m5a2c3/proof.py": "217bf1e617a2a2b955ada39a5d896d66165e3b8b7da47d055b7f6ad2b28a7c6e"
+  },
+  "private_archive_SHA256": "230eee937e96b3418dfbdcd6332d030f09e864c9c2a37903e81dd92142421bb4",
+  "preservation": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A0_20261024_STATEFUL_PRIVATE.zip",
+        "sha256": "580725052986dcf5b79718fd2dd1ebfe93f09ed5ba0b9db879cea53c8343f004",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A1L_20261024_HELPER_EXPERIMENT_PRIVATE.zip",
+        "sha256": "426c884c7e6d9b16437e5186386b0930cb3034cc356b6ac6c3ee81e0172178e2",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P1C_20261024_PROOF_PRIVATE.zip",
+        "sha256": "fbd5264b6c07ed9bb04d63350a7c9e8a0b854a19208012f92adc4d96f9a9984c",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2_20261024_DECODER_FINAL_PRIVATE.zip",
+        "sha256": "b085b6b1d32d6453fa234c0f64365d7e9c6f39ce93920f333aae7df5208fe370",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2B1_20261025_FINITE_PRIVATE.zip",
+        "sha256": "1542d29671a0b9301565b80ae9fa76b8c71bfecd4dfe811e4ec9cc891eb440b5",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2B2_20261025_FINITE_PRIVATE.zip",
+        "sha256": "38a3a4f99c7733b2a114d9f3f7bbfb2a591ba03fde118767f0f3d0f2c9dd1c76",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2C1_20261025_COMMON_SFX_PRIVATE.zip",
+        "sha256": "9a0c2c34c72b6bb792d441211ea5c30562b681a51fac08de4af61923d8f6378e",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2C2_20261025_FD_NOISE_PRIVATE.zip",
+        "sha256": "a8f0306bf999d129baa7d36d662a815fbd4dcd0672693855aa48193852407091",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true,
+    "accepted_POC_clean": true,
+    "A1P": {
+      "source_files": 31,
+      "source_hashes_match": true,
+      "native_DLL_unchanged": true,
+      "compiled_VM_unchanged": true,
+      "source_manifest_sha256": "e7ae19e5087e75c87a4abe22725b5f315594a884653b2ea8e882e907068515d5"
+    }
+  },
+  "standalone_prior_banks_unchanged": 5,
+  "review_boundary": "STOP for Manager review; no next-batch execution"
+}
