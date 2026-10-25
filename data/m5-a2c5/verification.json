@@ -1,0 +1,165 @@
+{
+  "parent": "caf5fb567b80313aed2328635ae1149c6c719aa2",
+  "management": "86652cafbbbbb8c4e399f1e299184e70c878d0ad",
+  "branch": "research/m5-a2c5-tone2-variation",
+  "changed_files": [
+    "data/m5-a2c5/coverage.json",
+    "data/m5-a2c5/emission.json",
+    "data/m5-a2c5/facts.json",
+    "data/m5-a2c5/isolation.json",
+    "data/m5-a2c5/pcm.json",
+    "data/m5-a2c5/preflight.json",
+    "data/m5-a2c5/private-package.json",
+    "docs/m5-a2c5-handover.md",
+    "tests/test_m5a2c5.py",
+    "tools/m5a2c5/evidence.py",
+    "tools/m5a2c5/isolation.py",
+    "tools/m5a2c5/package.py",
+    "tools/m5a2c5/pcm.py",
+    "tools/m5a2c5/preflight.py",
+    "tools/m5a2c5/proof.py",
+    "data/m5-a2c5/verification.json"
+  ],
+  "all_files_added_public_safe_text": true,
+  "accepted_decoder_SCSP_A1L_unchanged": true,
+  "FD_scope_unchanged": true,
+  "preflight_ids": [
+    "A5",
+    "A9",
+    "AA",
+    "B4",
+    "BD",
+    "C2"
+  ],
+  "new_runtime_ids": [
+    "A5",
+    "A9",
+    "AA"
+  ],
+  "preflight_only_runtime_records_absent": [
+    "B4",
+    "BD",
+    "C2"
+  ],
+  "tests": {
+    "public_tests": 113,
+    "inherited_public_tests": 95,
+    "new_public_contracts": 18,
+    "status": "PASS",
+    "fresh_exact_scenarios": 138,
+    "ticks": 39319,
+    "ordered_bytes": 185185,
+    "new_scenarios": 20,
+    "new_ticks": 3615,
+    "new_ordered_bytes": 14984,
+    "new_PCM_cases": 20,
+    "legacy_PCM_exact_cases": 118,
+    "isolated_fresh_process_reloads": 20,
+    "C3_dedup_negative_fresh": "PASS;36 LFSR ticks /16384 signed16 LSB in each B0/B7",
+    "new_corrupt_missing_unknown_and_terminal_controls": "PASS",
+    "source_compilation": "PASS",
+    "staged_whitespace": "PASS"
+  },
+  "archive_safe_source_matches": 70,
+  "archive_member_hashes_verified": 492,
+  "source_sha256_LF": {
+    "data/m5-a2c5/coverage.json": "a1b72f6cf7b0941593d9bd0e9dd732262e099d10065262a1503ec8512b08ce88",
+    "data/m5-a2c5/emission.json": "f831c2376e5fd1ba85656a9180fd68b0bd4f8b03f29337210b3fadbd301c8709",
+    "data/m5-a2c5/facts.json": "ad8309f22e4f9650af7951ad6925d063915870d5669f2bbca8218d2e08e37f30",
+    "data/m5-a2c5/isolation.json": "ff1fc5175a6e7cef94d7783a6ca88adc6a75303aa9bd12bcee59eaf41f08c36f",
+    "data/m5-a2c5/pcm.json": "8ff65636ed31bfcc6ceaecd2aa59e1f02d21c571b42deee5fb09f81732d42249",
+    "data/m5-a2c5/preflight.json": "3bf1ee1b0d23c508e0d955c5c9cda4f116716b50ded27dd89d5a0c0d8ac0380f",
+    "data/m5-a2c5/private-package.json": "5eda2d5251fb66c4d6e7f4a1a0b0382a97e94fb8c2bb71309a12a85e9ef867fc",
+    "docs/m5-a2c5-handover.md": "1ba0f151c6dfd47d866c4e55ff9d812afc9b98bc70931198d8616fa4610eb2ca",
+    "tests/test_m5a2c5.py": "87fd5154ddfb0130077f804646efd1964ac6d76ffff18ecc9b60a45c18140452",
+    "tools/m5a2c5/evidence.py": "80033dbc60b1138e8037d009588c3e8035663d0cd236609caf8508a3ff694cf5",
+    "tools/m5a2c5/isolation.py": "6b54cea89e2fbcece2e77567d4ad5e031b8defbbe92796f12daf65b190c34ccc",
+    "tools/m5a2c5/package.py": "0539fe3db7d73770cebb547059b092f01991889df1cc0a71f0fde7733fdd61bc",
+    "tools/m5a2c5/pcm.py": "d6c2273619b52baa4c1fa100020749ea0f8f70536445a3b8e926f865e3f00b0d",
+    "tools/m5a2c5/preflight.py": "e7eb622e7d163b515edc567a0884cc38f110cdacf2fa0fe28dd9e5f43baa9166",
+    "tools/m5a2c5/proof.py": "9c26ba9136581aa95aa4ee3998387b989e134e9385854ee4121e75098ccb2908"
+  },
+  "private_archive_SHA256": "582daa10a3819bb9437a8c0cfeb3e2f905f4e01efea232f99d9fac9a72d23b1e",
+  "preservation": {
+    "private_archives": [
+      {
+        "name": "SonicChaos_M4_AUDIO_20261024_PRIVATE.zip",
+        "sha256": "a5a636ade42a48526b76cf85abb7783f0d9cf50e6817a39b37aec4cbba4a53b9",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0P1_20261024_PROOF_PRIVATE.zip",
+        "sha256": "3adf174848e83fc40644a7e12142dbd44062c25c5dff674d09df031fe4b9881f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P0R_20261024_DIAGNOSTIC_PRIVATE.zip",
+        "sha256": "89949f3720b396c2deea0e6883cb7007dbdb1457a5771679826b8dbb9a29382f",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A0_20261024_STATEFUL_PRIVATE.zip",
+        "sha256": "580725052986dcf5b79718fd2dd1ebfe93f09ed5ba0b9db879cea53c8343f004",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A1L_20261024_HELPER_EXPERIMENT_PRIVATE.zip",
+        "sha256": "426c884c7e6d9b16437e5186386b0930cb3034cc356b6ac6c3ee81e0172178e2",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_P1C_20261024_PROOF_PRIVATE.zip",
+        "sha256": "fbd5264b6c07ed9bb04d63350a7c9e8a0b854a19208012f92adc4d96f9a9984c",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2_20261024_DECODER_FINAL_PRIVATE.zip",
+        "sha256": "b085b6b1d32d6453fa234c0f64365d7e9c6f39ce93920f333aae7df5208fe370",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2B1_20261025_FINITE_PRIVATE.zip",
+        "sha256": "1542d29671a0b9301565b80ae9fa76b8c71bfecd4dfe811e4ec9cc891eb440b5",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2B2_20261025_FINITE_PRIVATE.zip",
+        "sha256": "38a3a4f99c7733b2a114d9f3f7bbfb2a591ba03fde118767f0f3d0f2c9dd1c76",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2C1_20261025_COMMON_SFX_PRIVATE.zip",
+        "sha256": "9a0c2c34c72b6bb792d441211ea5c30562b681a51fac08de4af61923d8f6378e",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2C2_20261025_FD_NOISE_PRIVATE.zip",
+        "sha256": "a8f0306bf999d129baa7d36d662a815fbd4dcd0672693855aa48193852407091",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2C3_20261025_NOISE_MULTISLOT_PRIVATE.zip",
+        "sha256": "230eee937e96b3418dfbdcd6332d030f09e864c9c2a37903e81dd92142421bb4",
+        "unchanged": true
+      },
+      {
+        "name": "SonicChaos_M5_A2C4_20261025_SINGLE_F3_PRIVATE.zip",
+        "sha256": "1f1ffe4345cddae11aee15d0d3a60794e939e4eb0339a6029c437dc04d7ca871",
+        "unchanged": true
+      }
+    ],
+    "M4_assets_checked": 47,
+    "M4_unchanged": true,
+    "accepted_POC_clean": true,
+    "A1P": {
+      "source_files": 31,
+      "source_hashes_match": true,
+      "native_DLL_unchanged": true,
+      "compiled_VM_unchanged": true,
+      "source_manifest_sha256": "e7ae19e5087e75c87a4abe22725b5f315594a884653b2ea8e882e907068515d5"
+    }
+  },
+  "standalone_prior_banks_unchanged": 7,
+  "original_ROM_hash_rechecked": true,
+  "review_boundary": "STOP after C5 for Manager review; B4/BD/C2 stay original-only; no additional IDs or next-batch execution"
+}
