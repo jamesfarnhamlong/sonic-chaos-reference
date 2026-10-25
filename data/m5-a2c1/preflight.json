@@ -1,0 +1,628 @@
+{
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "rows": [
+    {
+      "request_id": 164,
+      "label": "Player hurt with ring loss",
+      "implementation_authorised": true,
+      "header": {
+        "header_rom": 57197,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 112,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xc0",
+            "stream_cpu": 40823,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          128
+        ]
+      },
+      "syntax": {
+        "nodes": 30,
+        "potential_opcodes": [
+          "E6",
+          "F0",
+          "F2",
+          "F5",
+          "F7",
+          "F8",
+          "F9",
+          "FB"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 1,
+        "counted_loop_sites": 1,
+        "jump_sites": 0,
+        "termination_sites": 1,
+        "max_call_depth": 1,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "original_inactive_tick": 82,
+      "post_completion_observed_ticks": 128,
+      "reached_opcodes": {
+        "E6": 7,
+        "F0": 1,
+        "F2": 1,
+        "F5": 1,
+        "F7": 3,
+        "F8": 3,
+        "F9": 3,
+        "FB": 3
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone-only",
+      "F3_control_modes": [],
+      "F3_executions": 0,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 0,
+      "SFX_slots_used": [
+        1
+      ],
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        0
+      ],
+      "pitch_selectors": [
+        128
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          33
+        ],
+        0,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2
+        ],
+        "last_suppression_ticks": {
+          "2": 110
+        },
+        "DE11_restores": []
+      },
+      "priority": {
+        "table_byte": 112,
+        "stored": 112,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "f0964d84c94579f4cc09923db00e5c6360bb118d6b829aebaecb9f5f8af9d34c",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    },
+    {
+      "request_id": 166,
+      "label": "Spring / rebound feedback",
+      "implementation_authorised": true,
+      "header": {
+        "header_rom": 57284,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 56,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xc0",
+            "stream_cpu": 40910,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          128
+        ]
+      },
+      "syntax": {
+        "nodes": 51,
+        "potential_opcodes": [
+          "E6",
+          "F0",
+          "F2",
+          "F5",
+          "F8",
+          "F9"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 5,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 1,
+        "max_call_depth": 1,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "original_inactive_tick": 41,
+      "post_completion_observed_ticks": 128,
+      "reached_opcodes": {
+        "E6": 5,
+        "F0": 10,
+        "F2": 1,
+        "F5": 10,
+        "F8": 5,
+        "F9": 5
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone-only",
+      "F3_control_modes": [],
+      "F3_executions": 0,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 0,
+      "SFX_slots_used": [
+        1
+      ],
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        0,
+        8
+      ],
+      "pitch_selectors": [
+        128
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          210
+        ],
+        0,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2
+        ],
+        "last_suppression_ticks": {
+          "2": 69
+        },
+        "DE11_restores": []
+      },
+      "priority": {
+        "table_byte": 56,
+        "stored": 56,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "550efa7c5798448bcfa88e05369dbd5dc798dda0bdaac6ed9c3d409e0fbe9856",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    },
+    {
+      "request_id": 191,
+      "label": "Ring / Large Ring collection feedback",
+      "implementation_authorised": true,
+      "header": {
+        "header_rom": 58230,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 56,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xc0",
+            "stream_cpu": 41856,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          128
+        ]
+      },
+      "syntax": {
+        "nodes": 6,
+        "potential_opcodes": [
+          "E0",
+          "F0",
+          "F2"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 1,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "original_inactive_tick": 21,
+      "post_completion_observed_ticks": 128,
+      "reached_opcodes": {
+        "E0": 1,
+        "F0": 1,
+        "F2": 1
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone-only",
+      "F3_control_modes": [],
+      "F3_executions": 0,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 0,
+      "SFX_slots_used": [
+        1
+      ],
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        128
+      ],
+      "pitch_selectors": [
+        128
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          54
+        ],
+        0,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2
+        ],
+        "last_suppression_ticks": {
+          "2": 49
+        },
+        "DE11_restores": []
+      },
+      "priority": {
+        "table_byte": 56,
+        "stored": 56,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "13a24d163826d2cf89b5f41bf87a78776896443b2b17140419e05a57e7b71f6c",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    },
+    {
+      "request_id": 161,
+      "label": "Unknown $A1",
+      "implementation_authorised": false,
+      "header": {
+        "header_rom": 57093,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 56,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xc0",
+            "stream_cpu": 40719,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          128
+        ]
+      },
+      "syntax": {
+        "nodes": 5,
+        "potential_opcodes": [
+          "F0",
+          "F2"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 0,
+        "jump_sites": 0,
+        "termination_sites": 1,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "original_inactive_tick": 30,
+      "post_completion_observed_ticks": 128,
+      "reached_opcodes": {
+        "F0": 1,
+        "F2": 1
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone-only",
+      "F3_control_modes": [],
+      "F3_executions": 0,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 0,
+      "SFX_slots_used": [
+        1
+      ],
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        0
+      ],
+      "pitch_selectors": [
+        128
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          120
+        ],
+        0,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2
+        ],
+        "last_suppression_ticks": {
+          "2": 58
+        },
+        "DE11_restores": []
+      },
+      "priority": {
+        "table_byte": 56,
+        "stored": 56,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "7258a5d9ef7d80d078d218256defceb0f30142e46d3bba6d03fe4559f566494f",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    },
+    {
+      "request_id": 162,
+      "label": "Unknown $A2",
+      "implementation_authorised": false,
+      "header": {
+        "header_rom": 57115,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 56,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xc0",
+            "stream_cpu": 40741,
+            "transpose": 0,
+            "volume": 1
+          }
+        ],
+        "stream_initial_flags": [
+          128
+        ]
+      },
+      "syntax": {
+        "nodes": 10,
+        "potential_opcodes": [
+          "E6",
+          "E7",
+          "F0",
+          "F2",
+          "F7",
+          "FD"
+        ],
+        "unclassified_opcodes": [],
+        "call_sites": 0,
+        "counted_loop_sites": 1,
+        "jump_sites": 0,
+        "termination_sites": 1,
+        "max_call_depth": 0,
+        "qualification": "structural overapproximation of counted-loop branches with bounded call contexts; not arbitrary corrupt-data reachability"
+      },
+      "original_inactive_tick": 35,
+      "post_completion_observed_ticks": 128,
+      "reached_opcodes": {
+        "E6": 7,
+        "E7": 7,
+        "F0": 2,
+        "F2": 1,
+        "F7": 7,
+        "FD": 1
+      },
+      "unverified_opcodes": [
+        "FD"
+      ],
+      "output_class": "tone-only",
+      "F3_control_modes": [],
+      "F3_executions": 0,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 0,
+      "SFX_slots_used": [
+        1
+      ],
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        0
+      ],
+      "pitch_selectors": [
+        128
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          24
+        ],
+        0,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2
+        ],
+        "last_suppression_ticks": {
+          "2": 63
+        },
+        "DE11_restores": []
+      },
+      "priority": {
+        "table_byte": 56,
+        "stored": 56,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "d96d9ee31c345dc9661e6a97908f39bf9408773d5af00eabc42831bb9740ce03",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    },
+    {
+      "request_id": 167,
+      "label": "Unknown $A7",
+      "implementation_authorised": false,
+      "header": {
+        "header_rom": 57333,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 48,
+        "kind": "sfx",
+        "duration_multiplier": 1,
+        "stream_count": 1,
+        "streams": [
+          {
+            "latch": "0xe0",
+            "stream_cpu": 40959,
+            "transpose": 0,
+            "volume": 0
+          }
+        ],
+        "stream_initial_flags": [
+          136
+        ]
+      },
+      "syntax": {
+        "qualification": "raw initial mode: dynamic original path below; generic music syntax scan not applied"
+      },
+      "original_inactive_tick": 7,
+      "post_completion_observed_ticks": 128,
+      "reached_opcodes": {
+        "E0": 1,
+        "F2": 1,
+        "F3": 1
+      },
+      "unverified_opcodes": [],
+      "output_class": "tone2-clocked white noise",
+      "F3_control_modes": [
+        7
+      ],
+      "F3_executions": 1,
+      "repeated_F3": false,
+      "physical_noise_attenuation_enabled_ticks": 6,
+      "SFX_slots_used": [
+        2
+      ],
+      "initial_envelope_base": 18941,
+      "volume_envelope_selectors": [
+        128
+      ],
+      "pitch_selectors": [
+        0
+      ],
+      "table_pitch_required": false,
+      "solo_DE11_latch_restores": [
+        {
+          "tick": 7,
+          "data_latch": 7,
+          "DE11": 0
+        }
+      ],
+      "final_physical_registers": [
+        [
+          0,
+          0,
+          5
+        ],
+        7,
+        [
+          15,
+          15,
+          15,
+          15
+        ]
+      ],
+      "post_inactive_physically_enabled_ticks": 0,
+      "THZ_context": {
+        "suppressed_music_channels": [
+          2,
+          3
+        ],
+        "last_suppression_ticks": {
+          "2": 35,
+          "3": 35
+        },
+        "DE11_restores": [
+          {
+            "tick": 36,
+            "data_latch": 3,
+            "DE11": 228
+          }
+        ]
+      },
+      "priority": {
+        "table_byte": 48,
+        "stored": 48,
+        "admission": "raw table byte >= current global DE0F; equal admitted"
+      },
+      "source_header_sha256": "f340596416459275bd967148e567f5e237282fdde05adc09f99d7a595014a93f",
+      "classification_boundary": "fresh seeded original-only observations; no candidate/PCM promotion or arbitrary-pair guarantee",
+      "remaining_contexts": [
+        "replacement, retrigger and priority phases beyond this one context",
+        "eligible envelope control/held-output variants under interference"
+      ]
+    }
+  ],
+  "PCM_rendered": false,
+  "candidate_promoted": false
+}

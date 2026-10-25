@@ -1,0 +1,187 @@
+{
+  "termination": {
+    "A4": {
+      "inactive_tick": 82,
+      "candidate_post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "PCM_samples": 83790,
+      "original_output_class": "tone-only",
+      "F3_commands": 0,
+      "owns": "tone2",
+      "own_DE11_restore": false
+    },
+    "A6": {
+      "inactive_tick": 41,
+      "candidate_post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "PCM_samples": 53655,
+      "original_output_class": "tone-only",
+      "F3_commands": 0,
+      "owns": "tone2",
+      "own_DE11_restore": false
+    },
+    "BF": {
+      "inactive_tick": 21,
+      "candidate_post_ticks": 32,
+      "original_preflight_post_ticks": 128,
+      "post_completion_port_bytes": 0,
+      "final_attenuation": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "PCM_samples": 38955,
+      "original_output_class": "tone-only",
+      "F3_commands": 0,
+      "owns": "tone2",
+      "own_DE11_restore": false
+    }
+  },
+  "retrigger_admissions": {
+    "ring-repeats": {
+      "original_admissions": [
+        [
+          30,
+          191
+        ],
+        [
+          32,
+          191
+        ],
+        [
+          48,
+          191
+        ],
+        [
+          80,
+          191
+        ]
+      ],
+      "all_activations_admitted": true
+    },
+    "spring-repeats": {
+      "original_admissions": [
+        [
+          30,
+          166
+        ],
+        [
+          33,
+          166
+        ],
+        [
+          60,
+          166
+        ],
+        [
+          100,
+          166
+        ]
+      ],
+      "all_activations_admitted": true
+    }
+  },
+  "replacement_priority": {
+    "original_admitted": [
+      [
+        30,
+        166
+      ],
+      [
+        40,
+        164
+      ]
+    ],
+    "rejected_requests": [
+      [
+        45,
+        191
+      ],
+      [
+        50,
+        166
+      ],
+      [
+        55,
+        188
+      ]
+    ]
+  },
+  "music_recovery": {
+    "THZ-ring": {
+      "suppression_interval": [
+        30,
+        49
+      ],
+      "suppressed_ticks": 20,
+      "music_tone2_next_read_recovery_tick": 61
+    },
+    "THZ-spring": {
+      "suppression_interval": [
+        30,
+        69
+      ],
+      "suppressed_ticks": 40,
+      "music_tone2_next_read_recovery_tick": 73
+    }
+  },
+  "held_noise": {
+    "fixed-noise-spring": {
+      "held_noise_ticks": 104,
+      "interval": [
+        34,
+        137
+      ],
+      "terminal_off_tick": 138,
+      "stream_release_tick": 139,
+      "role": "previously verified noise partner; new target is tone-only"
+    },
+    "hurt-held-noise": {
+      "held_noise_ticks": 104,
+      "interval": [
+        63,
+        166
+      ],
+      "terminal_off_tick": 167,
+      "stream_release_tick": 168,
+      "role": "previously verified noise partner; new target is tone-only"
+    }
+  },
+  "concurrent_effect_slots": 3,
+  "coupled_ring_admitted": true,
+  "wrong_pitch_data_detected_tick": 1,
+  "missing_terminal_writes_detected_tick": 82,
+  "missing_program_rejected": true,
+  "performance": {
+    "measured_ticks": 7200,
+    "median_ns": 3000.0,
+    "p99_ns": 12300,
+    "max_ns": 61200,
+    "memory": {
+      "previous": {
+        "current_bytes": 404157,
+        "peak_bytes": 444685
+      },
+      "expanded": {
+        "current_bytes": 512152,
+        "peak_bytes": 661035
+      }
+    },
+    "scope": "Python decoder/sparse bank with bounded diagnostic flow log; excludes interpreter baseline and PCM; NOT GameMaker performance"
+  }
+}
