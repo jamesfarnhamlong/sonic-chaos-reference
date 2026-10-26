@@ -4,6 +4,10 @@
 
 See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
 
+## CURRENT M5-A4B — automated $88 bridge PASS, Chief F5/latency PENDING (26 October 2026)
+
+**M5-A4B automated complete, normal-Chief F5/latency acceptance MANDATORY:** Designer isolated direct A4-child afdd6a1e62e5e61234159266a05bcddab825faf9, source-scoped new original stage-card $88 now bridges $96 death and genuine restarted $81 THZ music on same persistent PSG owner/queue. Former M4 silent $88 fallback removed in selected THZ1 path. Gate A five cases10500 original-driver exact ticks/7717500 A1L PCM, Gate C actual Windows VM2026.0.0.23 real gameplay12189 ticks/8958915 PCM exact with first $88 full212+153 held and second card preempted185, original THZ long loop renewals retained, no changed scene waits/tempo. Full PSG state, 336channel+12 globals IY/DE11/priority/latch exact, 12189 callbacks and1 handle8 buffers clean. Native pipelined p99 243us, but **4885 full-buffer refusals**, recorded source-clock debt p95 862ms/p99 1031ms/MAX1120ms amid full diagnostic capture+hashing; cause and audible lag unknown. No final reliability acceptance until Chief runs unseeded F5 and specifically checks lag/synchronization/progressive drift, the real $96->$88->$81 chain, loop/pause/exit. If latency fails, next work is isolated normal-vs-instrumented queue/clock instrumentation, not adjusting PSG/driver speed. Source bank2949B hash 8de7850310339c72d38245537dd2b362cea279aece5bb4d3892d05e8971362bb; $C2 gameplay HOLD, accepted M4/N/A3V/A4 frozen. No M4 merge/no catalogue expansion/no Sound Test. Human evaluation next, no more agent source changes authorised.
+
 ## CURRENT M5-A4B — $88 stage-start native music restoration GO (26 October 2026)
 
 **NEXT GO M5-A4B, scoped title-card jingle ($88) only:** Chief approved further work after diagnosing absent # Sonic Chaos — ROADMAP.md
