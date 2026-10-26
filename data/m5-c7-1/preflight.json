@@ -1,0 +1,2530 @@
+{
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "original_only": true,
+  "candidate_executed": false,
+  "cases": {
+    "83-solo": {
+      "ticks": 4200,
+      "ordered_bytes": 17963,
+      "capture_sha256": "3a47bf030856a69502680da5918805e879fd4dec78d8edfa20076cc0751fe682",
+      "reached_opcodes": {
+        "E0": 1,
+        "E1": 3,
+        "F5": 9,
+        "F6": 4,
+        "F7": 29,
+        "FB": 5
+      },
+      "volume_selectors": [
+        0,
+        4,
+        19,
+        23,
+        29,
+        30,
+        39,
+        40,
+        128
+      ],
+      "pitch_selectors": [
+        0
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {
+        "00": 196,
+        "10": 995,
+        "20": 2485,
+        "40": 524
+      },
+      "table_reads": 11720,
+      "table_selectors": [
+        4,
+        19,
+        23,
+        29,
+        30,
+        39,
+        40
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "4": {
+          "reads": 4012,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "19": {
+          "reads": 4176,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "23": {
+          "reads": 158,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 508,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": []
+        },
+        "30": {
+          "reads": 1397,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "39": {
+          "reads": 1350,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "40": {
+          "reads": 119,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 23,
+      "transfer_sha256": "613198277918244322e890ade8377cbac627d6d28d7371fe13aeaf67832b11ab",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ],
+      "header": {
+        "header_rom": 38803,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 4,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 22441,
+            "transpose": -9,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 22979,
+            "transpose": -9,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 23211,
+            "transpose": -9,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 23546,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "header_sha256": "307b8461133deabd7649dceeb62547d785440e2f748bb9e5558731dd502b5272",
+      "recurrence": {
+        "first_tick": 522,
+        "repeat_tick": 3594,
+        "period_ticks": 3072,
+        "next_period_state_identical": true,
+        "next_period_writes_identical": true,
+        "writes_per_period": 13529,
+        "state_sha256": "29457e82c79a6596983c21dda185c0037f9ae81187afb715505b0fa687e72e78",
+        "original_proof_ticks": 6666,
+        "candidate_continuation_authorised": false,
+        "scope": "original driver recurrence; persistent chip phase is not a loop cut or reset permission"
+      },
+      "original_search_ticks": 6666
+    },
+    "83-steals": {
+      "ticks": 600,
+      "ordered_bytes": 2326,
+      "capture_sha256": "f5641a957b824ff2f16f057613a6ebcc7b4e47736823fc28b3554f9643cce3e4",
+      "reached_opcodes": {
+        "E0": 6,
+        "E1": 1,
+        "E6": 13,
+        "F0": 15,
+        "F2": 5,
+        "F3": 2,
+        "F5": 13,
+        "F7": 5,
+        "F8": 5,
+        "F9": 4,
+        "FB": 1
+      },
+      "volume_selectors": [
+        0,
+        4,
+        8,
+        19,
+        29,
+        30,
+        39,
+        40,
+        128
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {
+        "DE06": 6
+      },
+      "algorithmic_envelope_states": {
+        "00": 6,
+        "10": 165,
+        "20": 369,
+        "40": 217,
+        "80": 4
+      },
+      "table_reads": 1191,
+      "table_selectors": [
+        4,
+        8,
+        19,
+        29,
+        30,
+        39,
+        40
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "4": {
+          "reads": 890,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "8": {
+          "reads": 20,
+          "indices": [
+            0,
+            1
+          ],
+          "controls": []
+        },
+        "19": {
+          "reads": 88,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "29": {
+          "reads": 35,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": []
+        },
+        "30": {
+          "reads": 65,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "39": {
+          "reads": 88,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "40": {
+          "reads": 5,
+          "indices": [
+            0,
+            1
+          ],
+          "controls": []
+        }
+      },
+      "raw_reader_visits": 2,
+      "transfers": 8,
+      "transfer_sha256": "1888ef8998f29f18b20edad56ef0937c8c63dfd1797545562425606b7dd18bf8",
+      "SFX_admissions": [
+        [
+          30,
+          191
+        ],
+        [
+          60,
+          166
+        ],
+        [
+          90,
+          184
+        ],
+        [
+          100,
+          180
+        ],
+        [
+          250,
+          186
+        ]
+      ],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "suppressed_slots": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "priorities": [
+        0,
+        56,
+        72,
+        120
+      ]
+    },
+    "83-priority": {
+      "ticks": 300,
+      "ordered_bytes": 1110,
+      "capture_sha256": "579a3cea34c3bd46be0f3d631e82c17fa15dac84d585f3d4231d935856423177",
+      "reached_opcodes": {
+        "E0": 1,
+        "E6": 20,
+        "F0": 6,
+        "F2": 3,
+        "F5": 7,
+        "F7": 10,
+        "F8": 2,
+        "F9": 2,
+        "FB": 9
+      },
+      "volume_selectors": [
+        0,
+        2,
+        4,
+        13,
+        128
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {
+        "DE06": 6
+      },
+      "algorithmic_envelope_states": {
+        "10": 76,
+        "20": 188,
+        "40": 36
+      },
+      "table_reads": 554,
+      "table_selectors": [
+        2,
+        4,
+        13
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "2": {
+          "reads": 39,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        },
+        "4": {
+          "reads": 497,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "13": {
+          "reads": 18,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 8,
+      "transfer_sha256": "5954edf2ee757ae8e17775b232ba44eee9bf4832bfea8df5ab62b495748c3177",
+      "SFX_admissions": [
+        [
+          30,
+          180
+        ],
+        [
+          70,
+          189
+        ],
+        [
+          100,
+          194
+        ]
+      ],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "suppressed_slots": [
+        2,
+        6
+      ],
+      "priorities": [
+        0,
+        64,
+        88,
+        120
+      ]
+    },
+    "83-restart": {
+      "ticks": 600,
+      "ordered_bytes": 1837,
+      "capture_sha256": "cfc07ab5732ec98afd36492d1eca6038f31ab0bd265436a6dee9cdc74601e992",
+      "reached_opcodes": {
+        "E0": 3,
+        "F5": 6,
+        "F7": 1
+      },
+      "volume_selectors": [
+        0,
+        4,
+        128
+      ],
+      "pitch_selectors": [
+        0
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {
+        "10": 153,
+        "20": 376,
+        "40": 71
+      },
+      "table_reads": 1191,
+      "table_selectors": [
+        4
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "4": {
+          "reads": 1191,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 1,
+      "transfer_sha256": "8051c5120d9877ef1ee40db0a86dfe2f8d9a2aa2727cba5f1cab837bc440e93d",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ]
+    },
+    "83-bridge": {
+      "ticks": 700,
+      "ordered_bytes": 2486,
+      "capture_sha256": "93d87a931daa7116a1fec9a0e1e39decb1717008fd947c25eb32a725053c5702",
+      "reached_opcodes": {
+        "E0": 5,
+        "E7": 3,
+        "F2": 4,
+        "F5": 7,
+        "FB": 2
+      },
+      "volume_selectors": [
+        0,
+        4,
+        12,
+        17,
+        29,
+        30,
+        39,
+        128
+      ],
+      "pitch_selectors": [
+        0
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {
+        "10": 162,
+        "20": 372,
+        "40": 116
+      },
+      "table_reads": 1527,
+      "table_selectors": [
+        4,
+        12,
+        17,
+        29,
+        30,
+        39
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "4": {
+          "reads": 695,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "12": {
+          "reads": 209,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "controls": []
+        },
+        "17": {
+          "reads": 419,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 35,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "30": {
+          "reads": 45,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        },
+        "39": {
+          "reads": 124,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 0,
+      "transfer_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ]
+    },
+    "83-fade-reset": {
+      "ticks": 500,
+      "ordered_bytes": 1408,
+      "capture_sha256": "8bfeb81ef27183381c5ebb7f58e1c9fb857eb5f42120a7a7555b181987c0ea8b",
+      "reached_opcodes": {
+        "E0": 3,
+        "F5": 6,
+        "F7": 1
+      },
+      "volume_selectors": [
+        0,
+        4,
+        128
+      ],
+      "pitch_selectors": [
+        0
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {
+        "10": 116,
+        "20": 283,
+        "40": 53
+      },
+      "table_reads": 896,
+      "table_selectors": [
+        4
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "4": {
+          "reads": 896,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 1,
+      "transfer_sha256": "46f193c4af6cfa13a87b73996d738ede4d2a5527df4628dff317d1b78a0584df",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ]
+    },
+    "92-solo": {
+      "ticks": 4200,
+      "ordered_bytes": 27374,
+      "capture_sha256": "f97b175233b4ad32888d921e32618b4e65fa47c16cc18fa027396543e8a3cc22",
+      "reached_opcodes": {
+        "E1": 1,
+        "E6": 33,
+        "E7": 10,
+        "F0": 6,
+        "F5": 17,
+        "F6": 4,
+        "F7": 133,
+        "F8": 13,
+        "F9": 12,
+        "FB": 2
+      },
+      "volume_selectors": [
+        0,
+        7,
+        13,
+        18,
+        28,
+        29,
+        30,
+        39
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {
+        "8451": 33,
+        "845F": 136
+      },
+      "algorithmic_envelope_states": {},
+      "table_reads": 15987,
+      "table_selectors": [
+        7,
+        13,
+        18,
+        28,
+        29,
+        30,
+        39
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "7": {
+          "reads": 2639,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "13": {
+          "reads": 2880,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71
+          ],
+          "controls": []
+        },
+        "18": {
+          "reads": 4200,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "28": {
+          "reads": 2880,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 481,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "controls": []
+        },
+        "30": {
+          "reads": 1955,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "39": {
+          "reads": 952,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 106,
+      "transfer_sha256": "3136fdb195b732ff432bca471e8d9d168e080f8655d1199f542d83b29e6d4429",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ],
+      "header": {
+        "header_rom": 50141,
+        "envelope_table_cpu": 18941,
+        "priority_byte": 128,
+        "kind": "music",
+        "channel_count": 4,
+        "duration_multiplier": 1,
+        "tempo_byte": 0,
+        "channels": [
+          {
+            "latch": "0x80",
+            "stream_cpu": 33779,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xa0",
+            "stream_cpu": 34215,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xc0",
+            "stream_cpu": 34430,
+            "transpose": -8,
+            "volume": 0
+          },
+          {
+            "latch": "0xe0",
+            "stream_cpu": 34763,
+            "transpose": 0,
+            "volume": 0
+          }
+        ]
+      },
+      "header_sha256": "30a4d25c5450cb3126e22d170b27fd8e17ef315b06716eb052a6cf5b8896920f",
+      "recurrence": {
+        "first_tick": 511,
+        "repeat_tick": 4159,
+        "period_ticks": 3648,
+        "next_period_state_identical": true,
+        "next_period_writes_identical": true,
+        "writes_per_period": 23960,
+        "state_sha256": "cdeec0158fb93decdc7434d491c7db7139d8f3d3d03860db2272068642989d59",
+        "original_proof_ticks": 7807,
+        "candidate_continuation_authorised": false,
+        "scope": "original driver recurrence; persistent chip phase is not a loop cut or reset permission"
+      },
+      "original_search_ticks": 7807
+    },
+    "92-steals": {
+      "ticks": 600,
+      "ordered_bytes": 3775,
+      "capture_sha256": "e7264925bba37f9023e1380b3ea228f577c1e2a8144d5aad92bb33f5bcf28626",
+      "reached_opcodes": {
+        "E0": 5,
+        "E1": 1,
+        "E6": 19,
+        "F0": 18,
+        "F2": 5,
+        "F3": 2,
+        "F5": 15,
+        "F7": 18,
+        "F8": 9,
+        "F9": 7
+      },
+      "volume_selectors": [
+        0,
+        7,
+        8,
+        18,
+        29,
+        30,
+        39,
+        128
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {
+        "8451": 12,
+        "DE06": 6
+      },
+      "algorithmic_envelope_states": {
+        "00": 6,
+        "10": 20,
+        "20": 9,
+        "40": 147,
+        "80": 4
+      },
+      "table_reads": 1924,
+      "table_selectors": [
+        7,
+        8,
+        18,
+        29,
+        30,
+        39
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "7": {
+          "reads": 983,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "8": {
+          "reads": 20,
+          "indices": [
+            0,
+            1
+          ],
+          "controls": []
+        },
+        "18": {
+          "reads": 575,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 67,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "controls": []
+        },
+        "30": {
+          "reads": 166,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "39": {
+          "reads": 113,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 2,
+      "transfers": 21,
+      "transfer_sha256": "57598f6de82b8654bda2012525912974b9444eef1c8f4cfcf3b1fd4d425140b3",
+      "SFX_admissions": [
+        [
+          30,
+          191
+        ],
+        [
+          60,
+          166
+        ],
+        [
+          90,
+          184
+        ],
+        [
+          100,
+          180
+        ],
+        [
+          250,
+          186
+        ]
+      ],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "suppressed_slots": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "priorities": [
+        0,
+        56,
+        72,
+        120
+      ]
+    },
+    "92-priority": {
+      "ticks": 300,
+      "ordered_bytes": 1891,
+      "capture_sha256": "f8daa75ab8981b4d09879900eb613ae6d2f6cccddabeb430258f707b4ae69e55",
+      "reached_opcodes": {
+        "E1": 1,
+        "E6": 20,
+        "F0": 7,
+        "F2": 3,
+        "F5": 8,
+        "F7": 12,
+        "F8": 4,
+        "F9": 3,
+        "FB": 9
+      },
+      "volume_selectors": [
+        0,
+        2,
+        7,
+        13,
+        18,
+        29,
+        30,
+        39
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {
+        "DE06": 6
+      },
+      "algorithmic_envelope_states": {},
+      "table_reads": 951,
+      "table_selectors": [
+        2,
+        7,
+        13,
+        18,
+        29,
+        30,
+        39
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "2": {
+          "reads": 39,
+          "indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "controls": []
+        },
+        "7": {
+          "reads": 499,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "13": {
+          "reads": 18,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        },
+        "18": {
+          "reads": 300,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 37,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "controls": []
+        },
+        "30": {
+          "reads": 31,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "39": {
+          "reads": 27,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 12,
+      "transfer_sha256": "590ff069d1b9defcc0494782acc7931aac1424e29dea661c0d3b9cf58836845b",
+      "SFX_admissions": [
+        [
+          30,
+          180
+        ],
+        [
+          70,
+          189
+        ],
+        [
+          100,
+          194
+        ]
+      ],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "suppressed_slots": [
+        2,
+        6
+      ],
+      "priorities": [
+        0,
+        64,
+        88,
+        120
+      ]
+    },
+    "92-restart": {
+      "ticks": 600,
+      "ordered_bytes": 3395,
+      "capture_sha256": "2232300897ae05fd707659f808199b429e3a2c765bc6136ef4095284ad283e79",
+      "reached_opcodes": {
+        "E1": 3,
+        "F0": 3,
+        "F5": 9,
+        "F7": 6,
+        "F8": 5,
+        "F9": 2
+      },
+      "volume_selectors": [
+        0,
+        7,
+        18,
+        29,
+        30,
+        39
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {},
+      "table_reads": 1899,
+      "table_selectors": [
+        7,
+        18,
+        29,
+        30,
+        39
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "7": {
+          "reads": 1197,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "18": {
+          "reads": 600,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 44,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "controls": []
+        },
+        "30": {
+          "reads": 31,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "39": {
+          "reads": 27,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 11,
+      "transfer_sha256": "1021aa3a8873a8469e2ea4fb5ab17c1481074ce8aa49dca1b0c48f6c4faf8073",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ]
+    },
+    "92-bridge": {
+      "ticks": 700,
+      "ordered_bytes": 3366,
+      "capture_sha256": "a2fd0590958ad13e2e6101da46840fd472a73c34cbc035b95b9e134f35d1c4da",
+      "reached_opcodes": {
+        "E0": 3,
+        "E1": 2,
+        "E7": 3,
+        "F0": 2,
+        "F2": 4,
+        "F5": 9,
+        "F7": 3,
+        "F8": 3,
+        "F9": 1,
+        "FB": 2
+      },
+      "volume_selectors": [
+        0,
+        7,
+        12,
+        17,
+        18,
+        29,
+        30,
+        39,
+        128
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {
+        "10": 72,
+        "20": 153,
+        "40": 75
+      },
+      "table_reads": 1932,
+      "table_selectors": [
+        7,
+        12,
+        17,
+        18,
+        29,
+        30,
+        39
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "7": {
+          "reads": 698,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "12": {
+          "reads": 209,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "controls": []
+        },
+        "17": {
+          "reads": 419,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "controls": []
+        },
+        "18": {
+          "reads": 350,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 62,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "30": {
+          "reads": 55,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "controls": []
+        },
+        "39": {
+          "reads": 139,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 6,
+      "transfer_sha256": "967c807d27a4a3634e275e617bafad6e793f8470f4199ad5cd74d933433f1672",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ]
+    },
+    "92-fade-reset": {
+      "ticks": 500,
+      "ordered_bytes": 2590,
+      "capture_sha256": "b1d2ecc0b06cf088c062a510f623b0173fc570c471b7d460a399f50d49c0c4cf",
+      "reached_opcodes": {
+        "E1": 3,
+        "F0": 3,
+        "F5": 9,
+        "F7": 3,
+        "F8": 4,
+        "F9": 1
+      },
+      "volume_selectors": [
+        0,
+        7,
+        18,
+        29,
+        30,
+        39
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {},
+      "table_reads": 1432,
+      "table_selectors": [
+        7,
+        18,
+        29,
+        30,
+        39
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "7": {
+          "reads": 901,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "18": {
+          "reads": 452,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 27,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "controls": []
+        },
+        "30": {
+          "reads": 25,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "39": {
+          "reads": 27,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "controls": [
+            130
+          ]
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 7,
+      "transfer_sha256": "5eff66f5c39c4d6b38edd042b02b6ec5f9fd04a283d8ccb56f1fd908d4e25d33",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ]
+    },
+    "83-to-92": {
+      "ticks": 700,
+      "ordered_bytes": 2624,
+      "capture_sha256": "f26fd73d0e9a9775c24ecd9838d48fbdf4162a7271bb6e8ca867fe613ea85401",
+      "reached_opcodes": {
+        "E0": 2,
+        "E1": 1,
+        "F0": 1,
+        "F5": 7,
+        "F7": 4,
+        "F8": 2,
+        "F9": 1
+      },
+      "volume_selectors": [
+        0,
+        4,
+        7,
+        18,
+        29,
+        128
+      ],
+      "pitch_selectors": [
+        0,
+        128
+      ],
+      "shared_IY_reload_sources": {},
+      "algorithmic_envelope_states": {
+        "10": 126,
+        "20": 314,
+        "40": 60
+      },
+      "table_reads": 1599,
+      "table_selectors": [
+        4,
+        7,
+        18,
+        29
+      ],
+      "table_control_values": [
+        130
+      ],
+      "table_visits": {
+        "4": {
+          "reads": 993,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "controls": [
+            130
+          ]
+        },
+        "7": {
+          "reads": 399,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "18": {
+          "reads": 200,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "controls": []
+        },
+        "29": {
+          "reads": 7,
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "controls": []
+        }
+      },
+      "raw_reader_visits": 0,
+      "transfers": 6,
+      "transfer_sha256": "0d68fca99076effd6a805a1d650b0f161e8530433a2ba6d12ccd5b39c10cf884",
+      "SFX_admissions": [],
+      "active_slots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "suppressed_slots": [],
+      "priorities": [
+        0
+      ]
+    }
+  }
+}

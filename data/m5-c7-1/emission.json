@@ -1,0 +1,186 @@
+{
+  "cases": {
+    "83-solo": {
+      "status": "HOLD",
+      "ticks": 2783,
+      "requested_ticks": 4200,
+      "rejection": {
+        "tick": 2784,
+        "error": "DecodeError",
+        "message": "unvalidated data pointer 4634",
+        "extraction_failure": {
+          "error": "ValueError",
+          "message": "data read crosses executable region 4634"
+        }
+      },
+      "ordered_bytes": 11720,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 14,
+      "max_writes": 16
+    },
+    "83-steals": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "ordered_bytes": 2326,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 14,
+      "max_writes": 16
+    },
+    "83-priority": {
+      "status": "PASS",
+      "ticks": 300,
+      "requested_ticks": 300,
+      "rejection": null,
+      "ordered_bytes": 1110,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 16,
+      "max_writes": 16
+    },
+    "83-restart": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "ordered_bytes": 1837,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 11,
+      "max_writes": 16
+    },
+    "83-bridge": {
+      "status": "PASS",
+      "ticks": 700,
+      "requested_ticks": 700,
+      "rejection": null,
+      "ordered_bytes": 2486,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 15,
+      "max_writes": 20
+    },
+    "83-fade-reset": {
+      "status": "PASS",
+      "ticks": 500,
+      "requested_ticks": 500,
+      "rejection": null,
+      "ordered_bytes": 1408,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 11,
+      "max_writes": 16
+    },
+    "92-solo": {
+      "status": "HOLD",
+      "ticks": 3265,
+      "requested_ticks": 4200,
+      "rejection": {
+        "tick": 3266,
+        "error": "DecodeError",
+        "message": "loop index outside validated channel",
+        "extraction_failure": {
+          "error": "DecodeError",
+          "message": "loop index outside validated channel"
+        }
+      },
+      "ordered_bytes": 21242,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 17,
+      "max_writes": 18
+    },
+    "92-steals": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "ordered_bytes": 3775,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 16,
+      "max_writes": 18
+    },
+    "92-priority": {
+      "status": "PASS",
+      "ticks": 300,
+      "requested_ticks": 300,
+      "rejection": null,
+      "ordered_bytes": 1891,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 16,
+      "max_writes": 18
+    },
+    "92-restart": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "ordered_bytes": 3395,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 16,
+      "max_writes": 18
+    },
+    "92-bridge": {
+      "status": "PASS",
+      "ticks": 700,
+      "requested_ticks": 700,
+      "rejection": null,
+      "ordered_bytes": 3366,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 16,
+      "max_writes": 20
+    },
+    "92-fade-reset": {
+      "status": "PASS",
+      "ticks": 500,
+      "requested_ticks": 500,
+      "rejection": null,
+      "ordered_bytes": 2590,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 16,
+      "max_writes": 18
+    },
+    "83-to-92": {
+      "status": "PASS",
+      "ticks": 700,
+      "requested_ticks": 700,
+      "rejection": null,
+      "ordered_bytes": 2624,
+      "failures": [],
+      "failure_count": 0,
+      "max_stream_operations": 16,
+      "max_writes": 18
+    }
+  },
+  "per_ID": {
+    "83": {
+      "header_sha256": "307b8461133deabd7649dceeb62547d785440e2f748bb9e5558731dd502b5272",
+      "record_sha256": "ddfd5d80e61646f78d055e3988236bf7314aca0558c07ee4646c474a9628c107",
+      "source_bytes": 1156,
+      "extraction_error": "unvalidated data pointer 4634",
+      "complete_within_4200": false
+    },
+    "92": {
+      "header_sha256": "30a4d25c5450cb3126e22d170b27fd8e17ef315b06716eb052a6cf5b8896920f",
+      "record_sha256": "11f5820a1685cfaefc298352f0b35de56a65fee68a7bfcd322160e79b396e03b",
+      "source_bytes": 1451,
+      "extraction_error": "loop index outside validated channel",
+      "complete_within_4200": false
+    }
+  },
+  "SCSP_sha256": "a35cc1ccfe92fc6764643b4c7bcb722aa2f90e5b4b6e050c1c98111677919013",
+  "SCSP_bytes": 12084,
+  "horizon": 4200,
+  "decoder_modified": false,
+  "prior_bank_unchanged": true,
+  "prior_records_retained": true,
+  "original_oracles_frozen_before_candidate": true
+}

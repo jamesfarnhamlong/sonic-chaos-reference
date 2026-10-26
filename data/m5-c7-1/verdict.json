@@ -1,0 +1,142 @@
+{
+  "authority": {
+    "research_parent": "45b15a578285add733fa1def9a7e7174c0215c2d",
+    "management": "759cbd8a8077b75a8d5609de63281fc9aa2ced63"
+  },
+  "per_ID": {
+    "83": {
+      "verdict": "HOLD",
+      "full_song_GameMaker_eligible": false,
+      "original_lifecycle": "independently authenticated repeating driver state",
+      "original_loop": {
+        "first_tick": 522,
+        "repeat_tick": 3594,
+        "period_ticks": 3072,
+        "original_ticks": 6666,
+        "full_period_state_mismatching_ticks": 0,
+        "full_period_write_mismatching_ticks": 0,
+        "transfer_edges_identical": true,
+        "edges_per_period": 17,
+        "edge_sha256": "f49a0096fbe60481e4f3b8cd4ce7c4fcfc114302ea1e19248ed2e2f931d63b59",
+        "state_includes": "all400 driver RAM bytes DE00..DF8F + shared IY + logical PSG registers and data latch",
+        "physical_PSG_reset_allowed": false,
+        "candidate_horizon": 4200,
+        "candidate_renewal_eligible": false,
+        "bounded_contract": "Unmodified candidate must reject at4201; no safe candidate continuation until blocked source paths are separately authenticated and supported. Original deterministic recurrence alone authorises no runtime reset/renewal."
+      },
+      "rejected_tick": 2784,
+      "matched_solo_prefix_ticks": 2783,
+      "SCSP_receipt": {
+        "header_sha256": "307b8461133deabd7649dceeb62547d785440e2f748bb9e5558731dd502b5272",
+        "record_sha256": "ddfd5d80e61646f78d055e3988236bf7314aca0558c07ee4646c474a9628c107",
+        "source_bytes": 1156,
+        "extraction_error": "unvalidated data pointer 4634",
+        "complete_within_4200": false
+      },
+      "provenance": "ROM hash authenticated; candidate demand extraction; every saved segment checked against source; original data and partial SCSP private. Per-ID canonical header+address/value records are prefix-only, never a full-song authenticity receipt."
+    },
+    "92": {
+      "verdict": "HOLD",
+      "full_song_GameMaker_eligible": false,
+      "original_lifecycle": "independently authenticated repeating driver state",
+      "original_loop": {
+        "first_tick": 511,
+        "repeat_tick": 4159,
+        "period_ticks": 3648,
+        "original_ticks": 7807,
+        "full_period_state_mismatching_ticks": 0,
+        "full_period_write_mismatching_ticks": 0,
+        "transfer_edges_identical": true,
+        "edges_per_period": 95,
+        "edge_sha256": "951fa6ffe49efe4d994c188442e83e4723f35e73dd4401e6d0ef73dee7e4a336",
+        "state_includes": "all400 driver RAM bytes DE00..DF8F + shared IY + logical PSG registers and data latch",
+        "physical_PSG_reset_allowed": false,
+        "candidate_horizon": 4200,
+        "candidate_renewal_eligible": false,
+        "bounded_contract": "Unmodified candidate must reject at4201; no safe candidate continuation until blocked source paths are separately authenticated and supported. Original deterministic recurrence alone authorises no runtime reset/renewal."
+      },
+      "rejected_tick": 3266,
+      "matched_solo_prefix_ticks": 3265,
+      "SCSP_receipt": {
+        "header_sha256": "30a4d25c5450cb3126e22d170b27fd8e17ef315b06716eb052a6cf5b8896920f",
+        "record_sha256": "11f5820a1685cfaefc298352f0b35de56a65fee68a7bfcd322160e79b396e03b",
+        "source_bytes": 1451,
+        "extraction_error": "loop index outside validated channel",
+        "complete_within_4200": false
+      },
+      "provenance": "ROM hash authenticated; candidate demand extraction; every saved segment checked against source; original data and partial SCSP private. Per-ID canonical header+address/value records are prefix-only, never a full-song authenticity receipt."
+    }
+  },
+  "totals": {
+    "original_scenarios": 13,
+    "original_scenario_ticks": 14500,
+    "separate_original_boundary_loop_ticks": 14473,
+    "completed_candidate_scenarios": 11,
+    "guard_rejected_solo_scenarios": 2,
+    "matched_candidate_ticks": 12148,
+    "matched_ordered_PSG_bytes": 59770,
+    "state_emission_mismatches": 0,
+    "exact_A1L_PCM_samples": 8928780,
+    "PCM_mismatches": 0,
+    "native_state_mismatching_ticks": 0,
+    "negative_controls": 10,
+    "negative_controls_detected": 10
+  },
+  "negatives": {
+    "unknown-E2": {
+      "rejected": true,
+      "error": "unverified opcode e2 at b7ff"
+    },
+    "unvalidated-4634": {
+      "rejected": true,
+      "error": "unvalidated data pointer 4634"
+    },
+    "F7-index4": {
+      "rejected": true,
+      "error": "loop index outside validated channel"
+    },
+    "horizon4201-constructor": {
+      "rejected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "horizon4201-execution": {
+      "rejected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "SCSP-forged-executable-record": {
+      "rejected": true,
+      "error": "record crosses data region"
+    },
+    "SCSP-corrupt-checksum": {
+      "rejected": true,
+      "error": "bank checksum mismatch"
+    },
+    "SCSP-truncated": {
+      "rejected": true,
+      "error": "invalid SCSP header/length"
+    },
+    "83-wrong-pitch-detected": {
+      "rejected": true,
+      "first_ordered_write_difference_tick": 1
+    },
+    "92-wrong-pitch-detected": {
+      "rejected": true,
+      "first_ordered_write_difference_tick": 1
+    }
+  },
+  "horizon": 4200,
+  "decoder_semantics_changed": false,
+  "SCSP_format_changed": false,
+  "continuation": "Original full-loop certificates exist for both IDs. No candidate continuation or horizon renewal is eligible because both solo paths are rejected before their repeat boundary. Do not splice WAVs, skip the operation, reset driver/chip or renew coverage counters.",
+  "next_source_gates": {
+    "83": "Independently scope data-as-code pitch reads at4634/4635, schema/extractor least-privilege provenance and full-song exact state/PSG/A1L comparisons; do not globally permit executable-region records.",
+    "92": "Independently scope F7 index4 at channel+43, call-stack alias/stale byte lifecycle under restart and interference; do not globally enlarge loop-index bounds."
+  },
+  "limitations": [
+    "seeded IRQ-equivalent sound driver only, no natural game route or SMS hardware timing",
+    "no GameMaker changes, build or human listening",
+    "exact A1L identity is same-core original-versus-candidate; no new MAME or analogue waveform identity claim",
+    "no full candidate loop playback and no full-song promotion",
+    "context partners were already accepted C6 requests, no other new request authenticated"
+  ]
+}

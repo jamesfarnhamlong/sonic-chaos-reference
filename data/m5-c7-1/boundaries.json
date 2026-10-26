@@ -1,0 +1,108 @@
+{
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "candidate_decoder_imported": false,
+  "per_ID": {
+    "83": {
+      "loop": {
+        "first_tick": 522,
+        "repeat_tick": 3594,
+        "period_ticks": 3072,
+        "original_ticks": 6666,
+        "full_period_state_mismatching_ticks": 0,
+        "full_period_write_mismatching_ticks": 0,
+        "transfer_edges_identical": true,
+        "edges_per_period": 17,
+        "edge_sha256": "f49a0096fbe60481e4f3b8cd4ce7c4fcfc114302ea1e19248ed2e2f931d63b59",
+        "state_includes": "all400 driver RAM bytes DE00..DF8F + shared IY + logical PSG registers and data latch",
+        "physical_PSG_reset_allowed": false,
+        "candidate_horizon": 4200,
+        "candidate_renewal_eligible": false,
+        "bounded_contract": "Unmodified candidate must reject at4201; no safe candidate continuation until blocked source paths are separately authenticated and supported. Original deterministic recurrence alone authorises no runtime reset/renewal."
+      },
+      "out_of_validated_pitch_table_reads": 4,
+      "first_out_of_validated_pitch_read": {
+        "tick": 2784,
+        "slot": 1,
+        "IX": 56944,
+        "index": 255,
+        "address": 17972,
+        "transpose": 247
+      },
+      "unsupported_F7_indices": [],
+      "first_unsupported_F7": null,
+      "extended_F7_operations": 0,
+      "extended_F7_stack_cursors": [],
+      "original_F7_state_assertions": 46,
+      "original_F7_operations": 46,
+      "original_table_reads": 18798,
+      "original_shared_IY_reload_count": 0,
+      "reached_command_counts": {
+        "E0": 1,
+        "E1": 5,
+        "F5": 15,
+        "F6": 8,
+        "F7": 46,
+        "FB": 9
+      },
+      "private_operation_sha256": "c6a3ac9104d0ccc1c6b26f26c95012f713aed985672ff2e263d21c851eeb40e9",
+      "ROM_instruction_receipts": {
+        "4415-4426": "57a804f76c80e56add60e11d7bbfb614ecf3120e542757eac3579882fb9496fd",
+        "4849-485F": "2ccad337b2705166b06a1a2b1a8902b85b67bd28fcbb969f9c7256539d0bd6a9"
+      }
+    },
+    "92": {
+      "loop": {
+        "first_tick": 511,
+        "repeat_tick": 4159,
+        "period_ticks": 3648,
+        "original_ticks": 7807,
+        "full_period_state_mismatching_ticks": 0,
+        "full_period_write_mismatching_ticks": 0,
+        "transfer_edges_identical": true,
+        "edges_per_period": 95,
+        "edge_sha256": "951fa6ffe49efe4d994c188442e83e4723f35e73dd4401e6d0ef73dee7e4a336",
+        "state_includes": "all400 driver RAM bytes DE00..DF8F + shared IY + logical PSG registers and data latch",
+        "physical_PSG_reset_allowed": false,
+        "candidate_horizon": 4200,
+        "candidate_renewal_eligible": false,
+        "bounded_contract": "Unmodified candidate must reject at4201; no safe candidate continuation until blocked source paths are separately authenticated and supported. Original deterministic recurrence alone authorises no runtime reset/renewal."
+      },
+      "out_of_validated_pitch_table_reads": 0,
+      "first_out_of_validated_pitch_read": null,
+      "unsupported_F7_indices": [
+        4
+      ],
+      "first_unsupported_F7": {
+        "tick": 3266,
+        "slot": 2,
+        "index": 4,
+        "channel_offset": 43
+      },
+      "extended_F7_operations": 4,
+      "extended_F7_stack_cursors": [
+        48
+      ],
+      "original_F7_state_assertions": 253,
+      "original_F7_operations": 253,
+      "original_table_reads": 29855,
+      "original_shared_IY_reload_count": 320,
+      "reached_command_counts": {
+        "E1": 1,
+        "E6": 60,
+        "E7": 20,
+        "F0": 10,
+        "F5": 29,
+        "F6": 8,
+        "F7": 253,
+        "F8": 23,
+        "F9": 22,
+        "FB": 4
+      },
+      "private_operation_sha256": "b60346a491ab660e18620ef74a28785552b4856eb445372fc650cd5624f3b36f",
+      "ROM_instruction_receipts": {
+        "4415-4426": "57a804f76c80e56add60e11d7bbfb614ecf3120e542757eac3579882fb9496fd",
+        "4849-485F": "2ccad337b2705166b06a1a2b1a8902b85b67bd28fcbb969f9c7256539d0bd6a9"
+      }
+    }
+  }
+}
