@@ -4,6 +4,22 @@
 
 See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
 
+## CURRENT M5-A4B — $88 stage-start native music restoration GO (26 October 2026)
+
+**NEXT GO M5-A4B, scoped title-card jingle ($88) only:** Chief approved further work after diagnosing absent # Sonic Chaos — ROADMAP.md
+
+**Canonical project roadmap | 24 October 2026 | Manager-san #6**
+
+See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
+
+88` stage-start music following native $96 death; current A4 playback correctly begins authentic death but drops original # Sonic Chaos — ROADMAP.md
+
+**Canonical project roadmap | 24 October 2026 | Manager-san #6**
+
+See [AGENTS.md](AGENTS.md) for binding rules and [MEMORY.md](MEMORY.md) for the current handover. This roadmap is a manager-owned work sequence, not automatic permission to start a milestone. Research topic branches are **not merged** by updating these management docs.
+
+88` when switching from native to unsupported M4 fallback. Source title writer requests $88; original Z80 full independent finite $88 song inactive212 ticks with eight resumed-noise fade ticks40–47; music replacement to new THZ $81 is restart. Designer-san: isolate new A4B GameMaker worktree direct A4 `8ede2dc4f89dab73e8c659ebd5df69ee4960df21`, preflight real current death/results writer and independently replay Z80 source requests `81→96→88→81` with full state/ordered PSG and continuous A1L PCM. Then update pinned private SCSP/runtime allowlist with exactly new $88, preserve finite/held output/original fades, no fake $96 wait or tempo modification, maintain one PSG owner, queue and fallback semantics across real card/room handoff, THZ original 2688-tick loop renewals, no double playback, exact VM software checks/perf/negative hashes. Fresh experimental normal-F5 source ZIP, Chief short listening report as final checkpoint; STOP Designer for Manager and no M4 promotion. $C2 gameplay original proof retained but scene HOLD, no further native IDs or new zones/Sound Test. Emulator appears faster likely because PAL ROM 6:5 driver burst forced60 fps; not proven user setting, native60Hz accepted, region experiment not a blocker.
+
 ## CURRENT M5-A4 DIAGNOSIS — missing $88 card jingle; emulator PAL/NTSC speed hypothesis (26 October 2026)
 
 **A4 symptomatic audio root-cause narrowing:** Chief F5 passes4/5, death feels early but clarified missing **Act title-card/stage start request $88** between actual death music $96 and renewed THZ $81. Original game results title writer explicitly requests $88 in `chaos_results_title_init`, song fully authenticated finite tick212 from A2 (SMS Power $88 Stage Start four-second jingle). Experimental A4 bank/owner only81/96/A6/BF, so unsupported $88 closes native and old M4 fallback is silent. Rather than extend $96 or change death timer, propose small A4B original # Sonic Chaos — ROADMAP.md
