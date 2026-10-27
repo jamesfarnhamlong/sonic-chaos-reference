@@ -1,0 +1,220 @@
+{
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "original_only": true,
+  "cases": {
+    "solo": {
+      "ticks": 4200,
+      "capture_sha256": "e8cd3504b66f7a121b86766df5e0ab55addcc35961ab28ec5eb82380e290defe",
+      "ordered_bytes": 17963,
+      "pitch_pair_ticks": [
+        2784,
+        3040
+      ],
+      "pitch_pair_slots": [
+        1
+      ],
+      "actual_addresses": [
+        17972,
+        17973
+      ],
+      "opcodes": {
+        "E0": 1,
+        "E1": 3,
+        "F5": 9,
+        "F6": 4,
+        "F7": 29,
+        "FB": 5
+      }
+    },
+    "boundary-steals": {
+      "ticks": 4200,
+      "capture_sha256": "d58542238e5185c9e4f18d85a9c0dc3a730aabd449a0bf8021e7c8afb13151c2",
+      "ordered_bytes": 17698,
+      "pitch_pair_ticks": [
+        2784,
+        3040
+      ],
+      "pitch_pair_slots": [
+        1
+      ],
+      "actual_addresses": [
+        17972,
+        17973
+      ],
+      "opcodes": {
+        "E0": 6,
+        "E1": 3,
+        "E6": 14,
+        "F0": 15,
+        "F2": 5,
+        "F3": 2,
+        "F5": 19,
+        "F6": 4,
+        "F7": 32,
+        "F8": 5,
+        "F9": 5,
+        "FB": 5
+      }
+    },
+    "boundary-priority": {
+      "ticks": 4200,
+      "capture_sha256": "c498838d6563e8b9a4928a802a6739a195cdef4b901866f3857831662932360d",
+      "ordered_bytes": 18114,
+      "pitch_pair_ticks": [
+        2784,
+        3040
+      ],
+      "pitch_pair_slots": [
+        1
+      ],
+      "actual_addresses": [
+        17972,
+        17973
+      ],
+      "opcodes": {
+        "E0": 1,
+        "E1": 3,
+        "E6": 20,
+        "F0": 6,
+        "F2": 3,
+        "F5": 14,
+        "F6": 4,
+        "F7": 38,
+        "F8": 2,
+        "F9": 2,
+        "FB": 14
+      }
+    },
+    "boundary-retrigger": {
+      "ticks": 4200,
+      "capture_sha256": "c236deb699d581c291bedb0810848fc4ec7dcb9d5373be23851073110598c638",
+      "ordered_bytes": 16886,
+      "pitch_pair_ticks": [],
+      "pitch_pair_slots": [],
+      "actual_addresses": [],
+      "opcodes": {
+        "E0": 3,
+        "E1": 3,
+        "F5": 14,
+        "F7": 23,
+        "FB": 6
+      }
+    },
+    "boundary-fade-reset": {
+      "ticks": 4200,
+      "capture_sha256": "b045eca4d8f2e3a17d90654138035e34ef5eae792ba1992016a4a3f85038bfe0",
+      "ordered_bytes": 16756,
+      "pitch_pair_ticks": [
+        2784
+      ],
+      "pitch_pair_slots": [
+        1
+      ],
+      "actual_addresses": [
+        17972,
+        17973
+      ],
+      "opcodes": {
+        "E0": 3,
+        "E1": 2,
+        "F5": 13,
+        "F7": 22,
+        "FB": 5
+      }
+    },
+    "boundary-bridge": {
+      "ticks": 4200,
+      "capture_sha256": "6914e546136c507aba464099c527371beb7bbd5744209730e0f4e89c5c863bc1",
+      "ordered_bytes": 17269,
+      "pitch_pair_ticks": [],
+      "pitch_pair_slots": [],
+      "actual_addresses": [],
+      "opcodes": {
+        "E0": 5,
+        "E1": 2,
+        "E7": 3,
+        "F2": 4,
+        "F5": 14,
+        "F7": 25,
+        "FB": 7
+      }
+    },
+    "solo-long": {
+      "ticks": 13000,
+      "capture_sha256": "72a0148a1330bec55b2c16ebed935b6fea457510aa39eaa31e3f0314bc2c7e3a",
+      "ordered_bytes": 56716,
+      "pitch_pair_ticks": [
+        2784,
+        3040,
+        5856,
+        6112,
+        8928,
+        9184,
+        12000,
+        12256
+      ],
+      "pitch_pair_slots": [
+        1
+      ],
+      "actual_addresses": [
+        17972,
+        17973
+      ],
+      "opcodes": {
+        "E0": 1,
+        "E1": 9,
+        "F5": 27,
+        "F6": 16,
+        "F7": 90,
+        "FB": 17
+      }
+    }
+  },
+  "minimum_region": {
+    "address": 17972,
+    "length": 2,
+    "ROM_offset": 34356,
+    "sha256": "adcafa4fcf2eff3e3fe49e504aa73303b8b0ea5c89162703717a90cfaf0f1b2e"
+  },
+  "header": {
+    "header_rom": 38803,
+    "envelope_table_cpu": 18941,
+    "priority_byte": 128,
+    "kind": "music",
+    "channel_count": 4,
+    "duration_multiplier": 1,
+    "tempo_byte": 4,
+    "channels": [
+      {
+        "latch": "0x80",
+        "stream_cpu": 22441,
+        "transpose": -9,
+        "volume": 0
+      },
+      {
+        "latch": "0xa0",
+        "stream_cpu": 22979,
+        "transpose": -9,
+        "volume": 0
+      },
+      {
+        "latch": "0xc0",
+        "stream_cpu": 23211,
+        "transpose": -9,
+        "volume": 0
+      },
+      {
+        "latch": "0xe0",
+        "stream_cpu": 23546,
+        "transpose": 0,
+        "volume": 0
+      }
+    ]
+  },
+  "instruction_receipt": "57a804f76c80e56add60e11d7bbfb614ecf3120e542757eac3579882fb9496fd",
+  "parent_recurrence": {
+    "first_tick": 522,
+    "repeat_tick": 3594,
+    "period_ticks": 3072
+  }
+}

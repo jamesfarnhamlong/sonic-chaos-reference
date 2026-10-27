@@ -1,0 +1,126 @@
+{
+  "controls": {
+    "legacy-loader-still-rejects-pair": {
+      "detected": true,
+      "error": "record crosses data region"
+    },
+    "wrong-pair-byte-recomputed-container": {
+      "detected": true,
+      "error": "pitch DATA pair source authentication failed"
+    },
+    "forged-adjacent-region": {
+      "detected": true,
+      "error": "malformed SCSP83 contract"
+    },
+    "forged-executable-region": {
+      "detected": true,
+      "error": "malformed SCSP83 contract"
+    },
+    "forged-extended-pair-length": {
+      "detected": true,
+      "error": "pitch DATA pair source authentication failed"
+    },
+    "truncated-pair-record": {
+      "detected": true,
+      "error": "pitch DATA pair source authentication failed"
+    },
+    "wrong-pair-segment-hash": {
+      "detected": true,
+      "error": "pitch DATA pair source authentication failed"
+    },
+    "truncated-container": {
+      "detected": true,
+      "error": "invalid SCSP header/length"
+    },
+    "corrupt-container-hash": {
+      "detected": true,
+      "error": "invalid SCSP compressed length/checksum"
+    },
+    "pair-without83-owner": {
+      "detected": true,
+      "error": "two-byte pitch record requires exact authenticated83 header"
+    },
+    "forged83-header-stream": {
+      "detected": true,
+      "error": "two-byte pitch record requires exact authenticated83 header"
+    },
+    "forged83-source-header-hash": {
+      "detected": true,
+      "error": "two-byte pitch record requires exact authenticated83 header"
+    },
+    "direct-pair-byte": {
+      "detected": true,
+      "error": "pitch DATA pair is not stream-accessible"
+    },
+    "direct-pair-word": {
+      "detected": true,
+      "error": "pitch DATA pair outside authenticated83 note-reader scope"
+    },
+    "unaligned-pair-word": {
+      "detected": true,
+      "error": "pitch DATA pair is not stream-accessible"
+    },
+    "invalid-pointer": {
+      "detected": true,
+      "error": "unvalidated data pointer 4636"
+    },
+    "command-word-cannot-use-pair": {
+      "detected": true,
+      "error": "pitch DATA pair is not stream-accessible"
+    },
+    "wrong-reader": {
+      "detected": true,
+      "error": "pitch DATA pair outside authenticated83 note-reader scope"
+    },
+    "wrong-owner": {
+      "detected": true,
+      "error": "pitch DATA pair outside authenticated83 note-reader scope"
+    },
+    "unsupported-E2": {
+      "detected": true,
+      "error": "unverified opcode e2 at b7ff"
+    },
+    "unchanged-F7-index4-bound": {
+      "detected": true,
+      "error": "loop index outside validated channel"
+    },
+    "constructor-horizon4201": {
+      "detected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "SCSP-horizon4201": {
+      "detected": true,
+      "error": "malformed SCSP83 contract"
+    },
+    "bounded-execution4201": {
+      "detected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "SFX-revokes-renewal": {
+      "detected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "retrigger-revokes-renewal": {
+      "detected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "signature-mismatch-no-renewal": {
+      "detected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "SFX-after-first-renewal-still-expires": {
+      "detected": true,
+      "error": "unsupported coverage horizon"
+    },
+    "wrong-ordinary-source-byte-renewal-bank": {
+      "detected": true,
+      "error": "83 renewal bank not authenticated"
+    },
+    "wrong-ordinary-pitch-differential": {
+      "detected": true,
+      "first_difference_tick": 1
+    }
+  },
+  "total": 30,
+  "all_detected": true
+}

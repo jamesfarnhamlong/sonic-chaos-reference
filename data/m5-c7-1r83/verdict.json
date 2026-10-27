@@ -1,0 +1,80 @@
+{
+  "verdict": "GO within tested research scope; not GameMaker integration approval",
+  "request": "83",
+  "new92_support": false,
+  "authority": {
+    "parent": "7496725dd1a1cc1dda339e1334931b7a5a495198",
+    "management": "759cbd8a8077b75a8d5609de63281fc9aa2ced63",
+    "B0": "3d31a7c6a0f26bdaa22901f74db01fdb78aaa8df"
+  },
+  "previously_rejected_boundary": {
+    "tick": 2784,
+    "source_addresses": [
+      17972,
+      17973
+    ],
+    "outcome": "PASS using exact authenticated two-byte note-reader DATA contract"
+  },
+  "totals": {
+    "original_candidate_scenarios": 7,
+    "original_candidate_ticks": 38200,
+    "ordered_PSG_bytes": 161402,
+    "state_emission_failures": 0,
+    "exact_continuous_A1L_samples": 28077000,
+    "PCM_differences": 0,
+    "native_before_after_mismatching_ticks": 0,
+    "isolated_replays": 7,
+    "negative_controls": 30,
+    "negative_controls_detected": 30,
+    "public_tests_passed": 154,
+    "public_tests_failed": 0,
+    "inherited_C6_frozen_comparisons": 158,
+    "inherited_C6_frozen_ticks": 42075
+  },
+  "tests": {
+    "test_m5a2*.py": {
+      "passed": 136,
+      "failed": 0
+    },
+    "test_m5c71*.py": {
+      "passed": 18,
+      "failed": 0
+    }
+  },
+  "environment": {
+    "python": "3.13.7",
+    "z80": "1.2.0",
+    "numpy": "2.3.3"
+  },
+  "continuation": {
+    "eligible": "uninterrupted83 solo only; pinned bank + exact full relevant state; no original state or chip reset",
+    "period_ticks": 3072,
+    "renewal_ticks": [
+      3594,
+      6666,
+      9738,
+      12810
+    ],
+    "horizon": 4200,
+    "global_guard_unchanged": true,
+    "interrupted_gameplay_long_play": "HOLD outside this certificate; tested interactions verified only within4200; any new host request/fade revokes further renewals"
+  },
+  "minimum_region": {
+    "address": 17972,
+    "length": 2,
+    "ROM_offset": 34356,
+    "sha256": "adcafa4fcf2eff3e3fe49e504aa73303b8b0ea5c89162703717a90cfaf0f1b2e"
+  },
+  "header_sha256": "307b8461133deabd7649dceeb62547d785440e2f748bb9e5558731dd502b5272",
+  "complete83_record_sha256": "0582aa789fb17feb3be191487daa29907df12f297b50448027485f1a775a002b",
+  "private_bank_sha256": "3869da8a8121a0408728b022b41dc05c9795f094fe2e9972391142a521f2584f",
+  "private_bank_bytes": 11006,
+  "legacy_sources_and_proofs_unchanged": true,
+  "limitations": [
+    "seeded original sound-driver IRQ-equivalent entry, not natural game route or physical SMS timing",
+    "no GameMaker/A4B/A1L or management change, no other new request support",
+    "exact same-A1L PCM; no new analogue/MAME identity or listening claim",
+    "13000 original/candidate ticks sampled; longer solo continuation follows exact-state recurrence induction, not infinite measured execution",
+    "general gameplay/SFX long-play renewal not certified; no blanket integration or Sound Test approval"
+  ]
+}
