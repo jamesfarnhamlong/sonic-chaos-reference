@@ -1,6 +1,6 @@
 # Sonic Chaos — AGENTS.md
 
-**CURRENT MANAGEMENT AUTHORITY (28 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. **C9 Research published@713f7660c4881ac58f15c444e8e4e5e410b4d2ba; complete original catalogue Research 63/63 scoped GO. Actual Chief-accepted GameMaker F2 remains B2 39/63. NEXT is Designer staged 24-ID bulk F2 intake (already authorised C8 first16 + newly C9-qualified eight), with one combined Chief F5 candidate where practical. Do not restart in-flight C8 or repeat Research; real gameplay mapping follows F2. Earlier dated plans below remain provenance, not NEXT instructions.**
+**CURRENT MANAGEMENT AUTHORITY (28 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. C9 Research 63/63 scoped GO is complete; C8/C10 native F2 63/63 AUTOMATED candidate `poc/m5-c8-f2-bulk-16@1e67a6e2305ec3693ddf36e6591fb7e8329b5209` is delivered. **Chief F5 listening is PENDING**, so last Chief-accepted native F2 remains B2 39/63. No new agent work or source merge; next is five-item F5 review, then native gameplay routing after acceptance. Older 'NEXT' text below is historical.
 
 
 **Canonical coordination instructions | Manager-san #6 final handover | 26 October 2026**
