@@ -1,5 +1,8 @@
 # Sonic Chaos — MEMORY.md
 
+**CURRENT MANAGEMENT AUTHORITY (28 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. It supersedes the Manager #6 dated “NEXT/GO/CURRENT” snapshots below where those are stale. Chief accepted B2 F2 at `poc/m5-b2-f2-catalogue@335ef23cca1f0aecaf6d43375b392f3732e69130` (**39/63 native F2**); R83 research is solo-scoped GO; next Research $92 and separate Designer $83 source/F2 port, then combined next-music batch. M5 FULL ORIGINAL AUDIO remains OPEN. Historical text and evidence retained, not live instructions.
+
+
 **Management handover | final Manager-san #6 checkpoint | 26 October 2026**
 
 This is a **Git-tracked project handover**, not an automatic ChatGPT Memory store. Always read [AGENTS.md](AGENTS.md) for binding team rules, then [ROADMAP.md](ROADMAP.md) for milestones. Read this document from Research `main` even while working on an old isolated topic branch. Historical observations do not grant implementation authority.

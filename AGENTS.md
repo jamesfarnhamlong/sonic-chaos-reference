@@ -1,5 +1,8 @@
 # Sonic Chaos — AGENTS.md
 
+**CURRENT MANAGEMENT AUTHORITY (28 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. It supersedes the Manager #6 dated “NEXT/GO/CURRENT” snapshots below where those are stale. Chief accepted B2 F2 at `poc/m5-b2-f2-catalogue@335ef23cca1f0aecaf6d43375b392f3732e69130` (**39/63 native F2**); R83 research is solo-scoped GO; next Research $92 and separate Designer $83 source/F2 port, then combined next-music batch. M5 FULL ORIGINAL AUDIO remains OPEN. Historical text and evidence retained, not live instructions.
+
+
 **Canonical coordination instructions | Manager-san #6 final handover | 26 October 2026**
 **Authority:** this file on Research repository `main`, together with [MEMORY.md](MEMORY.md), [ROADMAP.md](ROADMAP.md), and the exact research/POC commits named below. This is a management-document migration, **not** a GameMaker release or promotion of topic-branch research into Research `main`.
 
