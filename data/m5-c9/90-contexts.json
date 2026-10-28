@@ -1,0 +1,64 @@
+{
+  "writer_cases": [
+    {
+      "context": "opening",
+      "zone": 7,
+      "act": 0,
+      "D4A3": 0,
+      "request_written": 144,
+      "writer": 6299,
+      "table_address": 6351
+    },
+    {
+      "context": "opening",
+      "zone": 7,
+      "act": 0,
+      "D4A3": 1,
+      "request_written": 0,
+      "writer": 6299,
+      "table_address": 6351
+    },
+    {
+      "context": "opening",
+      "zone": 7,
+      "act": 0,
+      "D4A3": 255,
+      "request_written": 0,
+      "writer": 6299,
+      "table_address": 6351
+    },
+    {
+      "context": "EEZ3",
+      "zone": 5,
+      "act": 2,
+      "D4A3": 0,
+      "request_written": 144,
+      "writer": 6299,
+      "table_address": 6347
+    },
+    {
+      "context": "EEZ3",
+      "zone": 5,
+      "act": 2,
+      "D4A3": 1,
+      "request_written": 0,
+      "writer": 6299,
+      "table_address": 6347
+    },
+    {
+      "context": "EEZ3",
+      "zone": 5,
+      "act": 2,
+      "D4A3": 255,
+      "request_written": 0,
+      "writer": 6299,
+      "table_address": 6347
+    }
+  ],
+  "writer_instruction_sha256": "27f755de384ab325e0c6887de7b43c4d462e4c0a470a4d38f6420556b613cebd",
+  "prior_source_crosswalk": "data/m5/catalogue.json:90; docs/m5-driver-integration-contract.md; tools/u5a_opening.py",
+  "opening": "controlled zone7/act0 writer plus inherited745 fade fixture and99 replacement; not full cinematic execution",
+  "EEZ3": "controlled zone5/act2 writer and same-ID retrigger; uninterrupted full composition independently certified",
+  "natural_scene_timing_qualified": false,
+  "short_M4_PCM_used": false
+}

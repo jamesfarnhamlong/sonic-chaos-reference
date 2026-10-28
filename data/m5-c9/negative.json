@@ -1,0 +1,658 @@
+{
+  "cases": {
+    "91-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "91-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "91-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "91-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "91-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "91-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "91-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "91-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "91-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "91-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "91-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "91-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 7f0b"
+    },
+    "91-legacy-loader-keeps-pitch-guard": {
+      "detected": true,
+      "message": "record crosses data region"
+    },
+    "91-pitch-direct-byte": {
+      "detected": true,
+      "message": "C9 pitch pair not stream-accessible"
+    },
+    "91-pitch-direct-word": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "91-pitch-owner": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "91-pitch-slot": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "91-pitch-transpose": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "91-pitch-raw-mode": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "91-pitch-command-reader": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "91-pitch-wrong-address": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "91-pitch-recomputed-container-hashes": {
+      "detected": true,
+      "message": "malformed C9 SCSP: pitch DATA pair not authenticated for programme"
+    },
+    "91-pitch-truncated-pair": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid pitch DATA segment"
+    },
+    "91-recurrence-state": {
+      "detected": true,
+      "message": "C9 recurrence state mismatch"
+    },
+    "93-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "93-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "93-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "93-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "93-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "93-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "93-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "93-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 88cb"
+    },
+    "93-legacy-loader-keeps-pitch-guard": {
+      "detected": true,
+      "message": "record crosses data region"
+    },
+    "93-pitch-direct-byte": {
+      "detected": true,
+      "message": "C9 pitch pair not stream-accessible"
+    },
+    "93-pitch-direct-word": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "93-pitch-owner": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "93-pitch-slot": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "93-pitch-transpose": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "93-pitch-raw-mode": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "93-pitch-command-reader": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "93-pitch-wrong-address": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "93-pitch-recomputed-container-hashes": {
+      "detected": true,
+      "message": "malformed C9 SCSP: pitch DATA pair not authenticated for programme"
+    },
+    "93-pitch-truncated-pair": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid pitch DATA segment"
+    },
+    "93-recurrence-state": {
+      "detected": true,
+      "message": "C9 recurrence state mismatch"
+    },
+    "95-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "95-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "95-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "95-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "95-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "95-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "95-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "95-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 921b"
+    },
+    "95-legacy-loader-keeps-pitch-guard": {
+      "detected": true,
+      "message": "record crosses data region"
+    },
+    "95-pitch-direct-byte": {
+      "detected": true,
+      "message": "C9 pitch pair not stream-accessible"
+    },
+    "95-pitch-direct-word": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "95-pitch-owner": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "95-pitch-slot": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "95-pitch-transpose": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "95-pitch-raw-mode": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "95-pitch-command-reader": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "95-pitch-wrong-address": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "95-pitch-recomputed-container-hashes": {
+      "detected": true,
+      "message": "malformed C9 SCSP: pitch DATA pair not authenticated for programme"
+    },
+    "95-pitch-truncated-pair": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid pitch DATA segment"
+    },
+    "95-recurrence-state": {
+      "detected": true,
+      "message": "C9 recurrence state mismatch"
+    },
+    "8B-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "8B-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "8B-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "8B-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "8B-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "8B-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "8B-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "8B-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 6252"
+    },
+    "8B-legacy-loader-keeps-pitch-guard": {
+      "detected": true,
+      "message": "record crosses data region"
+    },
+    "8B-pitch-direct-byte": {
+      "detected": true,
+      "message": "C9 pitch pair not stream-accessible"
+    },
+    "8B-pitch-direct-word": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8B-pitch-owner": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8B-pitch-slot": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8B-pitch-transpose": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8B-pitch-raw-mode": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8B-pitch-command-reader": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8B-pitch-wrong-address": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8B-pitch-recomputed-container-hashes": {
+      "detected": true,
+      "message": "malformed C9 SCSP: pitch DATA pair not authenticated for programme"
+    },
+    "8B-pitch-truncated-pair": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid pitch DATA segment"
+    },
+    "8B-recurrence-state": {
+      "detected": true,
+      "message": "C9 recurrence state mismatch"
+    },
+    "90-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "90-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "90-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "90-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "90-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "90-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "90-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "90-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 7900"
+    },
+    "90-legacy-loader-keeps-pitch-guard": {
+      "detected": true,
+      "message": "record crosses data region"
+    },
+    "90-pitch-direct-byte": {
+      "detected": true,
+      "message": "C9 pitch pair not stream-accessible"
+    },
+    "90-pitch-direct-word": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "90-pitch-owner": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "90-pitch-slot": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "90-pitch-transpose": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "90-pitch-raw-mode": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "90-pitch-command-reader": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "90-pitch-wrong-address": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "90-pitch-recomputed-container-hashes": {
+      "detected": true,
+      "message": "malformed C9 SCSP: pitch DATA pair not authenticated for programme"
+    },
+    "90-pitch-truncated-pair": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid pitch DATA segment"
+    },
+    "90-recurrence-state": {
+      "detected": true,
+      "message": "C9 recurrence state mismatch"
+    },
+    "82-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "82-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "82-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "82-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "82-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "82-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "82-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "82-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "82-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "82-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "82-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "82-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 5654"
+    },
+    "82-no-pitch-permission": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "82-recurrence-state": {
+      "detected": true,
+      "message": "C9 recurrence state mismatch"
+    },
+    "8C-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "8C-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "8C-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "8C-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "8C-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "8C-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "8C-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "8C-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 695d"
+    },
+    "8C-no-pitch-permission": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8C-recurrence-state": {
+      "detected": true,
+      "message": "C9 recurrence state mismatch"
+    },
+    "8D-truncated": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP header/length"
+    },
+    "8D-checksum": {
+      "detected": true,
+      "message": "malformed C9 SCSP: invalid SCSP compressed length/checksum"
+    },
+    "8D-header-metadata": {
+      "detected": true,
+      "message": "malformed C9 SCSP: C9 programme metadata not authenticated"
+    },
+    "8D-constructor4201": {
+      "detected": true,
+      "message": "C9 requires unchanged4200 engine window"
+    },
+    "8D-ordinary4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "8D-continuation-bank": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "8D-revoke-same-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8D-revoke-other-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8D-revoke-fade": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8D-checkpoint-state": {
+      "detected": true,
+      "message": "C9 coverage checkpoint state mismatch"
+    },
+    "8D-late-request": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8D-unknown-E2": {
+      "detected": true,
+      "message": "unverified opcode e2 at 6f7e"
+    },
+    "8D-no-pitch-permission": {
+      "detected": true,
+      "message": "C9 pitch pair outside exact owner/note-reader scope"
+    },
+    "8D-finite-completion-state": {
+      "detected": true,
+      "message": "C9 finite completion state mismatch"
+    },
+    "8D-finite-proof-exhausted": {
+      "detected": true,
+      "message": "C9 finite programme complete; idle proof window exhausted"
+    }
+  },
+  "count": 163,
+  "all_detected": true
+}
