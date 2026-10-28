@@ -1,0 +1,135 @@
+{
+  "ROM_sha256": "eabc8db59746714262d2f91a921d054823484349099a9fcd04fd6e84a1fee607",
+  "pitch_reads": {
+    "91": {
+      "out_of_region_reads": 6,
+      "first": {
+        "tick": 1732,
+        "slot": 1,
+        "index": 255,
+        "address": 17972,
+        "transpose": 246,
+        "source_sha256": "adcafa4fcf2eff3e3fe49e504aa73303b8b0ea5c89162703717a90cfaf0f1b2e"
+      },
+      "addresses": [
+        17968,
+        17972
+      ],
+      "private_reads_sha256": "bc89828ad01b65023dce6c17d5d23d328da2fdbf566994817ed45dba8c7c5b58"
+    },
+    "93": {
+      "out_of_region_reads": 20,
+      "first": {
+        "tick": 293,
+        "slot": 1,
+        "index": 255,
+        "address": 17972,
+        "transpose": 248,
+        "source_sha256": "adcafa4fcf2eff3e3fe49e504aa73303b8b0ea5c89162703717a90cfaf0f1b2e"
+      },
+      "addresses": [
+        17972
+      ],
+      "private_reads_sha256": "00064ee54eba26af0ae13e34175d2bffc40cff1519b14578d0c45990450d1b9a"
+    },
+    "95": {
+      "out_of_region_reads": 2,
+      "first": {
+        "tick": 4068,
+        "slot": 1,
+        "index": 253,
+        "address": 17968,
+        "transpose": 245,
+        "source_sha256": "2de2adc09e5d703319c5eb96dc6aab69ee561d6e75a7b86b35af8bee453a25c4"
+      },
+      "addresses": [
+        17968,
+        17972
+      ],
+      "private_reads_sha256": "feb50f29e67e76cc3957e711206e41ec1973b9f09eb6ad2db0c301ab07db8fe4"
+    },
+    "82": {
+      "out_of_region_reads": 0,
+      "first": null,
+      "addresses": [],
+      "private_reads_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "8B": {
+      "out_of_region_reads": 1,
+      "first": {
+        "tick": 121,
+        "slot": 2,
+        "index": 254,
+        "address": 17970,
+        "transpose": 243,
+        "source_sha256": "1d7bc350bacafe439fa83d00de29f111644e85ba2a3481e12b111370166aa1dd"
+      },
+      "addresses": [
+        17970
+      ],
+      "private_reads_sha256": "23373d65dffa30c1ef4c05590073ab0b7b5e62667c35086d6f9b93ab9212f4c4"
+    },
+    "8C": {
+      "out_of_region_reads": 0,
+      "first": null,
+      "addresses": [],
+      "private_reads_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "8D": {
+      "out_of_region_reads": 0,
+      "first": null,
+      "addresses": [],
+      "private_reads_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "8F": {
+      "out_of_region_reads": 0,
+      "first": null,
+      "addresses": [],
+      "private_reads_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "90": {
+      "out_of_region_reads": 3,
+      "first": {
+        "tick": 2471,
+        "slot": 1,
+        "index": 255,
+        "address": 17972,
+        "transpose": 243,
+        "source_sha256": "adcafa4fcf2eff3e3fe49e504aa73303b8b0ea5c89162703717a90cfaf0f1b2e"
+      },
+      "addresses": [
+        17972
+      ],
+      "private_reads_sha256": "7e27d406f7f9e997b6e731045ae326ebc0874ff1b40371eab79cba7858a5287a"
+    }
+  },
+  "alias92": {
+    "reused_original_loop": {
+      "first_tick": 511,
+      "repeat_tick": 4159,
+      "period_ticks": 3648,
+      "original_ticks": 7807,
+      "full_period_state_mismatching_ticks": 0,
+      "full_period_write_mismatching_ticks": 0,
+      "transfer_edges_identical": true,
+      "edges_per_period": 95,
+      "edge_sha256": "951fa6ffe49efe4d994c188442e83e4723f35e73dd4401e6d0ef73dee7e4a336",
+      "state_includes": "all400 driver RAM bytes DE00..DF8F + shared IY + logical PSG registers and data latch",
+      "physical_PSG_reset_allowed": false,
+      "candidate_horizon": 4200,
+      "candidate_renewal_eligible": false,
+      "bounded_contract": "Unmodified candidate must reject at4201; no safe candidate continuation until blocked source paths are separately authenticated and supported. Original deterministic recurrence alone authorises no runtime reset/renewal."
+    },
+    "stale_counter_cases_exact": 256,
+    "synthetic_stale_not_natural_reachability": true,
+    "original_alias_operations": 4,
+    "alias_cursors": [
+      48
+    ],
+    "original_call_return_operations": 45,
+    "tone2_offset43_stack_writes": 0,
+    "stack_operations_sha256": "3bc8b70eb21a294334cc0b5821d217df8068e5d47629bde6ecde41b01077a8e7",
+    "scope": "exact92 tone2 command87C1, cursor48 only; active call contexts remain denied",
+    "F7_instruction_sha256": "2ccad337b2705166b06a1a2b1a8902b85b67bd28fcbb969f9c7256539d0bd6a9"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "cases": {
+    "91-solo": {
+      "status": "HOLD",
+      "ticks": 1731,
+      "requested_ticks": 4200,
+      "rejection": {
+        "tick": 1732,
+        "error": "DecodeError",
+        "message": "unvalidated data pointer 4634"
+      },
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 10109
+    },
+    "91-steals": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2969
+    },
+    "91-priority": {
+      "status": "PASS",
+      "ticks": 300,
+      "requested_ticks": 300,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1470
+    },
+    "91-restart": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2677
+    },
+    "91-bridge": {
+      "status": "PASS",
+      "ticks": 700,
+      "requested_ticks": 700,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2943
+    },
+    "91-fade-reset": {
+      "status": "PASS",
+      "ticks": 500,
+      "requested_ticks": 500,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2031
+    },
+    "93-solo": {
+      "status": "HOLD",
+      "ticks": 292,
+      "requested_ticks": 4200,
+      "rejection": {
+        "tick": 293,
+        "error": "DecodeError",
+        "message": "unvalidated data pointer 4634"
+      },
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1195
+    },
+    "93-steals": {
+      "status": "HOLD",
+      "ticks": 292,
+      "requested_ticks": 600,
+      "rejection": {
+        "tick": 293,
+        "error": "DecodeError",
+        "message": "unvalidated data pointer 4634"
+      },
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1178
+    },
+    "93-priority": {
+      "status": "HOLD",
+      "ticks": 292,
+      "requested_ticks": 300,
+      "rejection": {
+        "tick": 293,
+        "error": "DecodeError",
+        "message": "unvalidated data pointer 4634"
+      },
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1347
+    },
+    "93-restart": {
+      "status": "HOLD",
+      "ticks": 591,
+      "requested_ticks": 600,
+      "rejection": {
+        "tick": 592,
+        "error": "DecodeError",
+        "message": "unvalidated data pointer 4634"
+      },
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2367
+    },
+    "93-bridge": {
+      "status": "PASS",
+      "ticks": 700,
+      "requested_ticks": 700,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2789
+    },
+    "93-fade-reset": {
+      "status": "PASS",
+      "ticks": 500,
+      "requested_ticks": 500,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1826
+    },
+    "95-solo": {
+      "status": "HOLD",
+      "ticks": 4067,
+      "requested_ticks": 4200,
+      "rejection": {
+        "tick": 4068,
+        "error": "DecodeError",
+        "message": "unvalidated data pointer 4630"
+      },
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 22865
+    },
+    "95-steals": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2476
+    },
+    "95-priority": {
+      "status": "PASS",
+      "ticks": 300,
+      "requested_ticks": 300,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1309
+    },
+    "95-restart": {
+      "status": "PASS",
+      "ticks": 600,
+      "requested_ticks": 600,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1990
+    },
+    "95-bridge": {
+      "status": "PASS",
+      "ticks": 700,
+      "requested_ticks": 700,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 2481
+    },
+    "95-fade-reset": {
+      "status": "PASS",
+      "ticks": 500,
+      "requested_ticks": 500,
+      "rejection": null,
+      "failure_count": 0,
+      "failures": [],
+      "ordered_bytes": 1342
+    }
+  },
+  "SCSP_sha256": "e05523d9296c9e7052c2a063fc1f895f63f1491ebf6f4182a63b5c3f5f284182",
+  "SCSP_bytes": 12430,
+  "bank": "91-93-95.scsp",
+  "prior_records_retained": true,
+  "horizon": 4200
+}

@@ -1,0 +1,38 @@
+{
+  "cases": {
+    "92-long": {
+      "status": "PASS",
+      "ticks": 13000,
+      "requested_ticks": 13000,
+      "failure_count": 0,
+      "renewal_ticks": [
+        4159,
+        7807,
+        11455
+      ],
+      "ordered_bytes": 85244
+    },
+    "8F-long": {
+      "status": "PASS",
+      "ticks": 13000,
+      "requested_ticks": 13000,
+      "failure_count": 0,
+      "renewal_ticks": [
+        1326,
+        2574,
+        3822,
+        5070,
+        6318,
+        7566,
+        8814,
+        10062,
+        11310,
+        12558
+      ],
+      "ordered_bytes": 60741
+    }
+  },
+  "original400_RAM_exact": true,
+  "driver_or_chip_resets_at_loop": 0,
+  "scope": "only pinned uninterrupted solos; any subsequent host request/fade revokes renewal"
+}
