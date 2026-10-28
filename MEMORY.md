@@ -1,6 +1,6 @@
 # Sonic Chaos — MEMORY.md
 
-**CURRENT MANAGEMENT AUTHORITY (28 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. It supersedes the Manager #6 dated “NEXT/GO/CURRENT” snapshots below where those are stale. Chief accepted B2 F2 at `poc/m5-b2-f2-catalogue@335ef23cca1f0aecaf6d43375b392f3732e69130` (**39/63 native F2**); R83 research is solo-scoped GO; NEXT bulk Research batches cover the remaining music/SFX and Designer adds authenticated IDs to F2 in consolidated candidates; map natural zone/events only AFTER catalogue coverage. M5 FULL ORIGINAL AUDIO remains OPEN. Historical text and evidence retained, not live instructions.
+**CURRENT MANAGEMENT AUTHORITY (28 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. **C7 Research batch is published** at `research/m5-c7-batch-catalogue@96ae9ea877abbdb7419647aff72807c456ffcc42`; 55/63 original-scoped Research programmes, native F2 still accepted 39/63. **NEXT:** Designer integrates 16 newly authenticated candidates in one F2 package; Research independently tackles eight music HOLDs. Sound Test first, full game event routing after. Old Manager #6 dated sections below remain historical, not active instructions.
 
 
 **Management handover | final Manager-san #6 checkpoint | 26 October 2026**
