@@ -1,6 +1,6 @@
 # Sonic Chaos — AGENTS.md
 
-**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. Research G1-R GO **BOUNDED ONLY** published `cf07885b5ccb719d5db9e3b09ebb79471ec09587`; unbounded post-interruption continuation HOLD. Designer G1 Package A is LOCAL UNCOMMITTED solo-entry-only candidate; Chief small smoke PENDING. **NO cross-chat agent messaging/delegation**: use pinned GitHub docs and Chief/Manager-san only. Research stands down; no new agent task until Package A review. Old plans below are historical.
+**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. **G1-A Chief ACCEPTED limited fresh-entry scope: tests1–4 PASS, test5 NOT ASSESSABLE/deferred** (new zone SFX intentionally stops solo music). Designer G1-A source still local/uncommitted; first save/public-audit + push isolated checkpoint, then G1-B bounded real-game audio integration. Research G1-R2 separately proves post-SFX long continuation; previously published G1-R `cf07885b5ccb719d5db9e3b09ebb79471ec09587` is bounded-only. NO cross-chat messages. Next Chief test only when common gameplay SFX no longer silences music. Prior dated instructions historical.
 
 
 **Canonical coordination instructions | Manager-san #6 final handover | 26 October 2026**
