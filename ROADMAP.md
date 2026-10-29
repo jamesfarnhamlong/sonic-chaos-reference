@@ -1,6 +1,6 @@
 # Sonic Chaos — ROADMAP.md
 
-**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. **G1-D local multi-zone Z80 native gameplay candidate AUTOMATED PASS (Designer report only), CHIEF F5 TEST PENDING; source UNCOMMITTED/UNPUSHED.** Reported 95,500 controlled GameMaker updates /70,192,500 exact PCM samples; 8 real scenes/45 rings/6 springs/9,764 updates; no queue stalls. G1-D needs explicit `datafiles/g1d_backend.txt` `DECODER_DEFAULT`→`Z80_OPT_IN`. Rocket Shoes restoration beyond THZ/SS HOLD. Accepted G1-A/B/C/F2 checkpoints protected. No new agent work, no default replacement/main merge, no cross-chat requests until Chief feedback. Older NEXT tasks historical.
+**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. **G1-D Chief supported 5/5 PASS (scoped)** but opening music startup delay, 2–3 s black after Sonic selection, unspecified missing real-game SFX and Rocket Shoes error/music stop remain OPEN. G1-D local source still uncommitted/unpushed; NEXT preserve exact tested source+private ZIP checksum then conduct 37-SFX natural-writer audit, startup/black timing instrumentation and audio-backend/source-asset dependency inventory (see `docs/m5-audio-lineage-cleanup-gate.md`). Open Sonic SMS gameplay engine remains core; legacy MP3, M4 PCM, A3V and Z80 paths require keep/exclude review. No source deletion or new emulator research without approval. No cross-chat messaging.
 
 
 **Canonical project roadmap | final Manager-san #6 checkpoint | 26 October 2026**
