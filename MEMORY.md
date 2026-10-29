@@ -1,6 +1,6 @@
 # Sonic Chaos — MEMORY.md
 
-**CURRENT MANAGEMENT AUTHORITY (28 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. C9 Research 63/63 scoped GO is complete; C8/C10 native F2 63/63 AUTOMATED candidate `poc/m5-c8-f2-bulk-16@1e67a6e2305ec3693ddf36e6591fb7e8329b5209` is delivered. **Chief F5 listening is PENDING**, so last Chief-accepted native F2 remains B2 39/63. No new agent work or source merge; next is five-item F5 review, then native gameplay routing after acceptance. Older 'NEXT' text below is historical.
+**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. Research G1-R GO **BOUNDED ONLY** published `cf07885b5ccb719d5db9e3b09ebb79471ec09587`; unbounded post-interruption continuation HOLD. Designer G1 Package A is LOCAL UNCOMMITTED solo-entry-only candidate; Chief small smoke PENDING. **NO cross-chat agent messaging/delegation**: use pinned GitHub docs and Chief/Manager-san only. Research stands down; no new agent task until Package A review. Old plans below are historical.
 
 
 **Management handover | final Manager-san #6 checkpoint | 26 October 2026**
