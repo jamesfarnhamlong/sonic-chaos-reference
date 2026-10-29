@@ -1,5 +1,10 @@
 # Sonic Chaos — CURRENT M5 manager control (28 October 2026)
 
+## MANAGER-SAN #7 FINAL HANDOVER → #8 (29 OCT 2026; CURRENT)
+
+**Manager-san #7 has finished the thread and stopped.** G1-E Chief supported 5/5 F5 tests PASS; Chief confirms old missing hurt/ring-loss `$A4` restored but reports additional unspecified missing effects. F2 `Unknown` labels are stale metadata, not missing F2 programmes: 68 rows=26 music+37 SFX+5 empty; 28 original Unknown=19 ROM-context-identifiable SFX+3 unknown-trigger SFX(A8/B2/C1)+$8E unknown-use music+5 empty music($9B–$9F). `docs/m5-f2-label-audit.md` documents safe fixes. Real-game 37 SFX still10 natural/23 wired partial/1 mapped B8 gap/3 unknown triggers. **Next proposed** Designer G1-F: F2 labels via presentation-only overlay + authentic remaining natural event routes; no new engine/catalogue/resource mass deletion/default switch. F8 raw CPU carry HOLD, opening acoustic lateness and two recording-buffer retries retained. Read **[docs/m5-manager7-final-handover-20261029.md](docs/m5-manager7-final-handover-20261029.md)** for branch SHAs, coverage, lessons, exact ready follow-on. This handover does NOT itself authorise an agent. No cross-chat messaging, no main POC merge. M5 OPEN.
+
+
 
 ## G1-E CHIEF PASS AND SOUND TEST LABEL REGISTER — 29 OCT 2026 (LATEST)
 
