@@ -1,6 +1,6 @@
 # Sonic Chaos — MEMORY.md
 
-**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. **G1-A Chief ACCEPTED limited fresh-entry scope: tests1–4 PASS, test5 NOT ASSESSABLE/deferred** (new zone SFX intentionally stops solo music). Designer G1-A source still local/uncommitted; first save/public-audit + push isolated checkpoint, then G1-B bounded real-game audio integration. Research G1-R2 separately proves post-SFX long continuation; previously published G1-R `cf07885b5ccb719d5db9e3b09ebb79471ec09587` is bounded-only. NO cross-chat messages. Next Chief test only when common gameplay SFX no longer silences music. Prior dated instructions historical.
+**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** [CURRENT_M5.md](CURRENT_M5.md) FIRST. G1-A Chief accepted and source published `SonicChaos_POC@1c4b802f46e4ff8665a06fe71136db44c10ca80d`. G1-B bounded internal 203-schedule original/Windows PASS, opt-in only, uncommitted; NEXT Designer audits/commits source checkpoint then STOPS without package. Research G1-R2 `a057504dacb09a9c994bc55991e14237497e2e6e` 25 EXACT histories GO but arbitrary phase/repeated rings HOLD; NEXT Research G1-R3 seeks compositional phase/state invariant or clear technical STOP; no more arbitrary fixed-history collections. No cross-chat agent contact, no default gameplay roll-out or Chief F5. Prior sections historical.
 
 
 **Management handover | final Manager-san #6 checkpoint | 26 October 2026**
