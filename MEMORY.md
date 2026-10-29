@@ -1,6 +1,6 @@
 # Sonic Chaos — MEMORY.md
 
-**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** [CURRENT_M5.md](CURRENT_M5.md) FIRST. G1-A Chief accepted and source published `SonicChaos_POC@1c4b802f46e4ff8665a06fe71136db44c10ca80d`. G1-B bounded internal 203-schedule original/Windows PASS, opt-in only, uncommitted; NEXT Designer audits/commits source checkpoint then STOPS without package. Research G1-R2 `a057504dacb09a9c994bc55991e14237497e2e6e` 25 EXACT histories GO but arbitrary phase/repeated rings HOLD; NEXT Research G1-R3 seeks compositional phase/state invariant or clear technical STOP; no more arbitrary fixed-history collections. No cross-chat agent contact, no default gameplay roll-out or Chief F5. Prior sections historical.
+**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** [CURRENT_M5.md](CURRENT_M5.md) FIRST. G1-B internal opt-in bounded checkpoint `SonicChaos_POC@aa9477deab5bd2fe3bc39bf68c9042b623c2be48` published/closed; G1-R3 `8e87f143bace930a43e1e60147ebd916abb94ee1` HOLD for arbitrary SFX phases/repeated BF, no broad playback authority. NEXT Designer **private opt-in original Z80 driver execution feasibility pilot only**, no production replacement; Research stands down. No cross-chat contact, user F5 build or main merge. G1 remains open; older 'NEXT' text below is historical.
 
 
 **Management handover | final Manager-san #6 checkpoint | 26 October 2026**
