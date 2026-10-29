@@ -1,6 +1,6 @@
 # Sonic Chaos — ROADMAP.md
 
-**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. G1-C original Z80 driver standalone feasibility GO/CLOSED `SonicChaos_POC@33a6b98cd32306a18524af4466c713765a519a66` (32,500 original/CPU/PSG ticks and23,887,500 A1L PCM samples exact, native CPU mean4–5us; GameMaker NOT YET integrated). **NEXT:** Designer G1-D ONE opt-in, protected GameMaker gameplay-audio runtime integration based on pilot, aim multi-zone ring/spring/music continuity with unchanged owner/PSG/clock/queue, one meaningful Chief candidate only after native+natural tests. No new Research campaign; no cross-chat contact; no main merge, no default decoder replacement. M5 gameplay OPEN. Other dated sections historical.
+**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. **G1-D local multi-zone Z80 native gameplay candidate AUTOMATED PASS (Designer report only), CHIEF F5 TEST PENDING; source UNCOMMITTED/UNPUSHED.** Reported 95,500 controlled GameMaker updates /70,192,500 exact PCM samples; 8 real scenes/45 rings/6 springs/9,764 updates; no queue stalls. G1-D needs explicit `datafiles/g1d_backend.txt` `DECODER_DEFAULT`→`Z80_OPT_IN`. Rocket Shoes restoration beyond THZ/SS HOLD. Accepted G1-A/B/C/F2 checkpoints protected. No new agent work, no default replacement/main merge, no cross-chat requests until Chief feedback. Older NEXT tasks historical.
 
 
 **Canonical project roadmap | final Manager-san #6 checkpoint | 26 October 2026**
