@@ -1,0 +1,178 @@
+{
+  "cases": 204,
+  "ticks": 130350,
+  "samples": 95807250,
+  "full400_shadow_ticks": 130350,
+  "full400_shadow_mismatches": 0,
+  "negative_controls": {
+    "91-repacked-no-solo-certificate": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "91-SFX-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "91-same-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "91-other-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "91-fade-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-repacked-no-solo-certificate": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "93-SFX-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-same-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-other-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "93-fade-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-repacked-no-solo-certificate": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "95-SFX-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-same-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-other-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "95-fade-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-repacked-no-solo-certificate": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "90-SFX-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-same-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-other-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "90-fade-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-repacked-no-solo-certificate": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "8B-SFX-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-same-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-other-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8B-fade-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-repacked-no-solo-certificate": {
+      "detected": true,
+      "message": "C9 continuation bank not authenticated"
+    },
+    "8C-SFX-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-same-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-other-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "8C-fade-4201": {
+      "detected": true,
+      "message": "C9 continuation revoked; ordinary4200 exhausted"
+    },
+    "83-SFX-4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "92-SFX-4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "8F-SFX-4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "full400-mutant-channel": {
+      "detected": true,
+      "message": "full state corruption detected"
+    },
+    "full400-mutant-priority": {
+      "detected": true,
+      "message": "full state corruption detected"
+    },
+    "full400-mutant-latch": {
+      "detected": true,
+      "message": "full state corruption detected"
+    },
+    "full400-mutant-IY": {
+      "detected": true,
+      "message": "full state corruption detected"
+    }
+  },
+  "groups": {
+    "SS-failure": 1,
+    "SS-success": 1,
+    "arbitration": 10,
+    "clear-replacement": 10,
+    "clock": 1,
+    "controlled-aux-mailboxes": 1,
+    "fade-boundary": 2,
+    "fade-reset": 10,
+    "mailbox": 2,
+    "original-writer-power": 5,
+    "power-restart": 10,
+    "replacement": 10,
+    "reset-priority": 1,
+    "same-restart": 10,
+    "steal-recover": 120,
+    "zone-replacement": 10
+  },
+  "native_GameMaker_tested": false,
+  "continuation_granted": false,
+  "source_schedules_sha256": "a4d4f12ec9b846a8039ccbe15d617e62ba6786b966736670e5236b7651ea1366"
+}
