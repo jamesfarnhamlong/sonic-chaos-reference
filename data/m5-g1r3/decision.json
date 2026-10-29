@@ -1,0 +1,31 @@
+{
+  "id": "M5G1R3-COMPOSITIONAL-CONTINUATION-GATE",
+  "management": "2794060c68d3d253472590c69c520b9e0a0bb107",
+  "parent": "a057504dacb09a9c994bc55991e14237497e2e6e",
+  "decision": "HOLD",
+  "scope": "83 music with arbitrary-time and repeated BF ring requests",
+  "fidelity_status": "unresolved",
+  "general_solution_proved": false,
+  "architectural_impossibility_proved": false,
+  "replacement_runtime_shown_necessary": false,
+  "continuation_permission": false,
+  "new_exact_history_certificates": 0,
+  "new_original_counterexample_searches": 2,
+  "new_original_ticks": 1024,
+  "new_PCM_samples": 752640,
+  "search_mismatches": 0,
+  "new_guard_negatives": 6,
+  "synthetic_sparse_pointer_negative": 1,
+  "new_native_GameMaker_tests": 0,
+  "old_execution_repeated": false,
+  "missing_obligations": [
+    "Original-backed input-closed well-formed reachable-state predicate",
+    "Original-to-decoder transition refinement for all states in that predicate",
+    "All-phase sparse DATA, exact reader, F7/stack and operation-budget safety",
+    "Suppression/envelope/pitch and repeated partial-initialization residue closure",
+    "Shared IY/global/noise/latch and ordered-write preservation",
+    "Pinned native decoder refinement of the established relation"
+  ],
+  "existing_caps_unchanged": true,
+  "stop_for_manager_review": true
+}

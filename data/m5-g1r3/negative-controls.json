@@ -1,0 +1,30 @@
+{
+  "cases": {
+    "raw-83-pitch-pair": {
+      "detected": true,
+      "message": "pitch DATA pair is not stream-accessible"
+    },
+    "83-pitch-pair-outside-reader": {
+      "detected": true,
+      "message": "pitch DATA pair outside authenticated83 note-reader scope"
+    },
+    "unverified-opcode": {
+      "detected": true,
+      "message": "unverified opcode ef at 4fff"
+    },
+    "F7-index3": {
+      "detected": true,
+      "message": "loop index outside validated channel"
+    },
+    "horizon4201": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    },
+    "ordinary-window-exhaustion": {
+      "detected": true,
+      "message": "unsupported coverage horizon"
+    }
+  },
+  "synthetic_guard_tests_only": true,
+  "continuation_permission": false
+}
