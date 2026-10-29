@@ -1,6 +1,6 @@
 # Sonic Chaos — MEMORY.md
 
-**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** [CURRENT_M5.md](CURRENT_M5.md) FIRST. G1-B internal opt-in bounded checkpoint `SonicChaos_POC@aa9477deab5bd2fe3bc39bf68c9042b623c2be48` published/closed; G1-R3 `8e87f143bace930a43e1e60147ebd916abb94ee1` HOLD for arbitrary SFX phases/repeated BF, no broad playback authority. NEXT Designer **private opt-in original Z80 driver execution feasibility pilot only**, no production replacement; Research stands down. No cross-chat contact, user F5 build or main merge. G1 remains open; older 'NEXT' text below is historical.
+**CURRENT MANAGEMENT AUTHORITY (29 October 2026):** Read [CURRENT_M5.md](CURRENT_M5.md) FIRST. G1-C original Z80 driver standalone feasibility GO/CLOSED `SonicChaos_POC@33a6b98cd32306a18524af4466c713765a519a66` (32,500 original/CPU/PSG ticks and23,887,500 A1L PCM samples exact, native CPU mean4–5us; GameMaker NOT YET integrated). **NEXT:** Designer G1-D ONE opt-in, protected GameMaker gameplay-audio runtime integration based on pilot, aim multi-zone ring/spring/music continuity with unchanged owner/PSG/clock/queue, one meaningful Chief candidate only after native+natural tests. No new Research campaign; no cross-chat contact; no main merge, no default decoder replacement. M5 gameplay OPEN. Other dated sections historical.
 
 
 **Management handover | final Manager-san #6 checkpoint | 26 October 2026**
