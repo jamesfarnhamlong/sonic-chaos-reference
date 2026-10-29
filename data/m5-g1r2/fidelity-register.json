@@ -1,0 +1,29 @@
+{
+  "findings": [
+    {
+      "id": "M5G1R2-EXACT-INTERACTION-CONTINUATION",
+      "scope": "83/93/8F; the 25 complete schedules in evidence.json only",
+      "status": "proven-match",
+      "confidence": "independent original Z80 plus final gated candidate; controlled driver context",
+      "original_evidence": "Per-case frozen full400 RAM/IY/logical PSG captures and recurrence hashes; original mailbox DE04, initialization/reset 43E5, SFX admission 41A7, release 47C8 and transfer 47B4/481C hooks",
+      "comparison": "All driver state, ordered PSG writes, transfer events, continuous accepted A1L PCM and 26 before/after native fields; independent isolated replay and partition check",
+      "research_implementation": "tools/m5g1r2.py Capability",
+      "GameMaker_code_path": "Existing native player; not edited or executed in this Research assignment",
+      "impact": "Qualifies indefinite no-further-event tails after exact supported interactions without music or physical-chip reset",
+      "remaining_limit": "No arbitrary phase/history, different-ID epoch, other programme or native acceptance",
+      "proposed_group": "Manager review of G1-R2; Designer integration needs separate native proof"
+    },
+    {
+      "id": "M5G1R2-ARBITRARY-INTERACTIVE-STATE-FAMILY",
+      "scope": "Arbitrary live SFX phase/history and music replacement contexts",
+      "status": "unresolved",
+      "confidence": "No universal continuation capability established",
+      "original_evidence": "Inherited G1-R bounded state and restart/convergence probes; 25 new exact contexts do not quantify all incoming states",
+      "comparison": "Exact schedules only; no exhaustive phase/state closure or compositional invariant",
+      "GameMaker_code_path": "G1 native continuation eligibility gate; preserve fail-closed behavior outside qualified context",
+      "impact": "Common rings/springs at unqualified times cannot yet receive unrestricted long-play permission",
+      "remaining_limit": "Need independent original-backed state/phase families closed under supported requests, or a proven compositional invariant; no pointer/F7/horizon relaxation",
+      "proposed_group": "Report dependency through Manager; no automatic next task"
+    }
+  ]
+}
