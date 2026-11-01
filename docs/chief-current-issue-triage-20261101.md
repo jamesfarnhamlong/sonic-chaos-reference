@@ -1,0 +1,45 @@
+# Chief's current Sonic Chaos issue triage — 1 November 2026
+
+**OWNER STATUS OVERRIDE for planning, not a rewrite of historical AUDIT-0/AUDIT-1 evidence.** After seven previous Manager threads, Chief reviewed a 21-ID subset of the historical issue ledger, **bolding and blanking 12 titles to mean "I believe we've fixed these"**; the remaining 9 lines were retained as potentially outstanding, though Chief explicitly said "I think." The original issue names, audit classifications, and source provenance remain unchanged in `docs/audit0/SonicChaos_AUDIT0_Full_Issue_Ledger.csv` and `SonicChaos_POC:audit/audit1-current-fidelity@ad01199ad131f66e5f4e54a5308b611e638703f5`. This is a newer *owner-priority overlay*; **don't re-open the twelve by default**, or blindly claim twenty-one live production defects. Specific source-backed clarifications below do not override Chief's visual experience.
+
+**Baseline:** Accepted playable M5-G2 `SonicChaos_POC@91fd74b56296bb9182768c3a9db78a186fa78f9e`. M6-A/B/C were no-production-code source/visual reviews. A single current confirmed production correction **OPENING-001** (foreground black-bar occlusion) has been authorized as M6-C2; completion and Chief acceptance of that new candidate NOT YET REPORTED.
+
+## Chief believes fixed — 12 IDs; INACTIVE unless concrete regression
+
+| ID | Original issue title (restored for long-term meaning) | Planning disposition and nuance |
+|---|---|---|
+| EARLY-011 | Spring green box / opaque background artifact | **Owner believes fixed / inactive.** Historical POC17.4 same spring persisted at that time, but G2 terrain-spring PNG transparency checks pass and Chief sees no current problem. Not certified same-instance pixel closure; no more hunting or tests. |
+| MGHZ-006 | Slope glitch + spring/jump/facing oscillation | **Owner believes fixed / inactive.** M6-B bounded original-vs-G2 contact and cached replay did not demonstrate noncanonical defect; historical precise visible seed unrecovered. No speculative physics. |
+| SEZ-001 | Spring Shoes fall-state terrain lock/no steering | **Owner believes fixed / inactive.** M6-B 8 seeded shoe routes did not reproduce a persistent lock; exact old crumble route unknown. |
+| SEZ-003 | Dynamic slot model yields extra crumble shards | **Owner believes fixed / inactive.** Source audit retained possible cosmetic scheduler/allocator difference under load, but not presently a Chief-visible issue; no cosmetic parity project. |
+| AQZ-002 | AQZ terrain-ring animation appears too fast | **Owner believes fixed / source cadence matches.** Original source-backed 4-frame/8-update animation matches accepted ring manager. |
+| PRES-002 | Zone title cards need 16:9 adjustment | **Owner believes fixed / prior widescreen presentation accepted.** Q2-P1 Chief F5 4/4 on22Oct accepted 348x196 title/results framing, M6-C 93,078 source checks for 18 ordinary zone cards; no current ordinary-card complaint. No repeated native check or edits. |
+| PLAYER-002 | Historical slope sticking/vibrating | **Owner believes fixed / inactive.** M6-B couldn't reproduce a new noncanonical event; canonical tiny fractional velocity cycles preserved. |
+| PLAYER-003 | Diagonal static-spike contact oddity | **Owner believes fixed / inactive.** Focused spike checks PASS, old exact contact pose not available; don't demand general regression. |
+| PLAYER-004 | Moving-spike width/activation-phase mismatch | **Owner believes fixed / inactive.** Historical width-source-host phase difference documented, original native lifecycle equivalence not established; no current G2 symptom. |
+| TAILS-006 | Spring Shoes / monitors interaction uncertain for Tails | **Owner believes fixed / inactive.** M6-B source tests and 670 scoped Tails shoe checks passed; old Tails-specific route unknown. |
+| AUDIO-001 | Authentic full in-game soundtrack/SFX incomplete | **Owner believes fixed / scope acceptance.** Chief-accepted G2 25/25 known-use MS music, 63/63 playable F2, native default; natural 37-SFX exhaustion and specific unvisited originals are separate documented limitations, not fresh blanket incomplete-soundtrack task. |
+| AUDIO-004 | Ring SFX feels slightly delayed | **Owner believes fixed / no current audible complaint.** Historical latency remained inconclusive; don't reopen without new audible reproduction. |
+
+## Chief retains as possibly remaining — 9 IDs; distinguish real active issue from optional or source gaps
+
+| ID | Original issue title | Current management interpretation / next action |
+|---|---|---|
+| MGHZ-007 | MGHZ3 tree/pit boss reveal too early/abrupt | **PLAYABLE / VISUALLY IMPERFECT, explicitly PARKED.** Chief says widescreen presentation still looks messy, hard to quantify. No M6-A code edits; reference original-vs-G2 clips and pan adapter (+4 wide vs +1 SMS) if revisited later. NOT called fully fixed. |
+| SEZ-002 | Spring Shoes inconsistently break reward/monitor boxes / wide hit | **Historical observation retained, not currently reproduced.** M6-B fresh 1,452 original ROM cases match 2,904 width checks; contact posture/vy/direction explain bounded outcomes. Reopen only with exact new same-box contact sequence. |
+| SS-001 | SS3 invincibility-monitor embedding | **Historical observation retained / likely improved, not proven fully closed.** M6-B 28 bounded routes did not reproduce embed; exact old route not recovered. No active release blocker absent new observation. |
+| PLAYER-001 | Rebound / kill / pass-through outcomes inconsistent | **Historical observation retained, source explains many cases.** No matched state/velocity/enemy second-contact showing noncanonical behavior; no speculative change. |
+| FRONTEND-002 | Attract/demo playback not implemented | **Actually missing optional original feature**, explicitly deferred M3-B, not a broken existing feature. Chief may choose as substantive later frontend project. |
+| FRONTEND-003 | F10 debug selector obsolete | **SOURCE-VERIFIED RESOLVED despite placement among retained nine:** normal F10 selector binding absent in accepted G2; Shift+F10 only within F3-gated developer death/Continue fixture. Only treat as open if Chief wants removal of that developer-only gesture, a new choice. |
+| AUDIO-006 | Opening onset / F8 carry edge cases | **SPLIT:** first-start audible onset delay still perceptible to Chief, one-time only, parked for final polish; F8 CPU carry raw mismatch remains engineering exception with RAM/PSG/PCM exact, not a demonstrated audio-playback failure. Do not package these as a missing track. |
+| RESULTS-001 | Original end-of-zone KPH/speed display/mechanic absent | **ORIGINAL-ROM SOURCE DOES NOT SUPPORT THE CLAIM AS AN ORIGINAL SMS FEATURE.** Audited original act-clear/results path draws ring/time bonus/score, no KPH/speed display; retain owner's recollection as an unverified provenance question or an *optional user-requested QoL feature*, not an authenticity regression. Don't invent a KPH results mechanic without a source and explicit Chief choice. |
+| OPENING-001 | Robotnik layers above black widescreen bar | **CONFIRMED CURRENT DEFECT by Chief; M6-C2 FIX AUTHORIZED.** Original machine should pass behind black opening foreground bars both on entry and departure; current `chaos_opening_draw()` draws actors after background without final bar foreground pass. Existing M6-C2 instruction `docs/m6c-chief-reconciliation-opening-layer-fix-20261101.md`. Next agent task is ONE targeted foreground occlusion fix + one final Chief F5 test. No further evidence video or other bug audit required. |
+
+## Decision and queue hygiene
+
+1. **Only immediate production task confirmed by Chief: OPENING-001.** The M6-C2 Designer prompt is already issued; wait for source-backed private candidate and one Chief F5 check. Leave **PRES-002 and EARLY-011 INACTIVE**; this owner update explicitly endorses their inactive status.
+2. **Do not treat the nine retained issues as nine confirmed bugs**. Four are historical/not reproduced, one MGHZ polish parked, one attract optional, one frontend keyboard already resolved, one audio split into audible startup polish + low-level technical exception, one KPH original-ROM unsupported, and one current confirmed draw-order defect (some categories overlap by description; the table above is authoritative).
+3. **No new broad AUDIT-2** or 93-row recheck. If no additional current user-visible defects emerge after OPENING-001, future work is explicit optional priorities (attract demos, first-start presentation delay, MGHZ widescreen polish) and acceptance/release readiness; leave engineering exceptions documented.
+4. M5-G2 soundtrack accepted; never claim 37/37 original SFX naturally exercised or `$8E` has a natural trigger. Do not edit the historical CSV/JSON in place; these are evidence snapshots.
+
+**Chief's exact intent:** bold blank entries = "I believe we've fixed" (not necessarily all independently frame-verified); unbolded titled entries = "the rest remain I think" (not all verified open defects). Preserve this distinction going forward.
