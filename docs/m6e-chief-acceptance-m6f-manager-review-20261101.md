@@ -1,0 +1,11 @@
+# M6-E acceptance and M6-F manager review
+
+1 November 2026. Chief reported that M6-E character-select widescreen is satisfactory in GameMaker F5. **M6-E Chief accepted** at POC commit `a4c26e13bc323a9f736c613c279b447dd6aedef5`; prior “native F5 pending” notices are obsolete. This commit is M6-F's authorized parent.
+
+M6-F `poc/m6f-offscreen-object-persistence@70cac5dea79e5e81fb88513effec367cb1af4d0c` verified in GitHub as one commit ahead, zero behind that accepted parent, with remote branch at the exact SHA. Ten production GML files implement bounded widescreen-only off-top recoverable-ring retention and already-awake ordinary-enemy continuity across THZ/GPZ/SEZ/AQZ/MGHZ/EEZ variants. Native 256x192 policy remains unchanged. All 1,314 registered resources and 38 IncludedFiles preserved in reported integrity tests; private ZIP content inaccessible to Manager.
+
+Source tests: 15,750 focused checks PASS, 15 PASS and one explicitly retained **raw FAIL** of legacy `verify_viewport_adapter.js`, whose assumption that flying enemy removal remains strict PLAYER_DIST384 at *every* width conflicts with the intentional widescreen QoL policy. Native-width PLAYER_DIST384 verified separately. Other historical raw camera/test exceptions not green. No native GameMaker frames have been produced by agent.
+
+**MANAGER GO for ONE combined Chief F5 acceptance** of the private `SonicChaos_M6F_20261101_A_PRIVATE.zip`: GPZ3 high boss hit with rings, observe some rising above view and later descending/recoverable; one nearby ground patrol or flying enemy offscreen departure/return with continuing AI path; ordinary death/restart and Pause->Level Select smoke. Returning 7 individual ring opportunities in controlled models does *not* guarantee 7 actual pickups in one natural run. Long departures/valid terminal reasons may still retire objects. No micro-builds or additional Chief tests. No main merge until Chief approval.
+
+Binding source evidence: POC `docs/m6f-offscreen-persistence.md`; reference `docs/m6e-review-m6f-offscreen-persistence-20261101.md`. Chief also parks attract demonstrations, save system, Tails underwater palette, MGHZ3 widescreen polish and initial startup lag. Do not reopen historical full-audio or broad-contact audits.
