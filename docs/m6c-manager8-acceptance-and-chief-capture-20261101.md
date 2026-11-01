@@ -1,0 +1,24 @@
+# M6-C — Manager-san #8 acceptance and Chief capture gate (1 November 2026)
+
+## Reviewed outcome — ACCEPTED SOURCE AUDIT, NATIVE PRESENTATION STILL OPEN
+
+Designer branch `jamesfarnhamlong/SonicChaos_POC:poc/m6c-bounded-presentation@ce87a582285fa552d141ce58e10c75d2510501d2` compared against accepted playable G2 `91fd74b56296bb9182768c3a9db78a186fa78f9e`: **one commit ahead, zero behind; 17 changed files, consisting of audit docs, verification tooling and verification-only modifications; zero production GameMaker files**. Remote branch tip verified at `ce87a582...`. Designer reports worktree clean (Manager cannot independently inspect local E: worktree).
+
+Primary [M6-C full findings](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/ce87a582285fa552d141ce58e10c75d2510501d2/docs/m6c-bounded-presentation.md). Original AUDIT-0/1 IDs and provenance must remain intact.
+
+- **OPENING-001 — NATIVE CAPTURE NEEDED.** Original 256x192 opening U5-A source, current G2 draw states and known 348 extension checked; **8,683 source-host assertions PASS** including all 738 opening replay updates. Original-emulator pixel comparison masked/excluded boundary areas and did not establish whether machine/Robotnik visibly intersects the black border during G2 current native rendering. Source bounds and sprite-bounds intersections are *not opaque pixel evidence*. No retiming, masking, layer reordering authorized without a real current defect.
+- **PRES-002 — NATIVE CAPTURE NEEDED; SOURCE CONTRACT MATCHES.** All 18 ordinary zone/act cards, 83 cached original states/card, native256x192 to348x196 origin (46,2) and 1:1 text/tiles geometry passed **93,078 assertions**; 3,366 G1-C ordinary results/transition assertions PASS. Prior native visual coverage did not include the exact ordinary intro-card G2 composition being questioned. No card art/position change authorized without visible defect.
+- **EARLY-011 — HISTORICAL INSTANCE UNIDENTIFIED.** Original thread refers to one of five imported red **terrain** springs `SPR_chaos_spring_48/49/51/54/56`, not automatically inherited `OBJ_spring_1/2`. Their PNG alpha/colorkey test passes: transparent edges truly RGBA(0,0,0,0), no green opaque rectangle in tested PNGs. This does *not* rule out an old specific instance or GPU sampling artifact; absent original location/attachment, issue remains inconclusive, not verified resolved. Do not send Chief searching spring maps.
+
+All 81 imported opening RGBA hashes verified; **1,313 production resource registrations unchanged**; no native GameMaker launch attempted, no Windows Runner recovery loop, no G2 audio retest, no candidate ZIP or main merge. Report four focused checks PASS; raw old SS5 width256 / THZ3 cap failures preserved, not reclassified.
+
+## ONE COMBINED Chief-side original G2 video request — evidence, NOT new build acceptance
+
+1. Chief uses **previously accepted G2 source package**, ordinary working GameMaker IDE **F5**, with no special editing, debug or audio toggles. Record a **single clip**, preferably 60fps but 30fps sufficient for visuals; start recording *before* normal launch when practical; include **entire game window and border**. Keep G2 **348x196 wide aspect** rather than reformatting it to 4:3.
+2. Allow the **opening cinematic to play unskipped**, especially Robotnik/machine entry and full exit, then title. Do not enter level select or skip ahead. Use ordinary **New Game -> Sonic**; continue through the **TURQUOISE HILL / ACT 1** ordinary zone introduction (full card hold/reveal) and initial gameplay. This is **not** a boss/results title card. One combined clip replaces multiple Chief mini-tests.
+3. **Optional** if easily recognized: add one screenshot showing the *specific* red spring historically affected and its location. If not known, leave EARLY-011 parked. The startup delay might be audible/visible incidentally: note only observations; no timing change/invented splash cards.
+4. Manager compares current native pixels/clip against source/original references. Then either **accept as current native presentation / park historical visual observations** with no code, or authorize **one cohesive, smallest supported real visual correction** (not a stream of trivial offset builds). No need for a fresh Designer prompt or another source archaeology pass before seeing video.
+
+## Management boundary
+
+**M6-C SOURCE AUDIT COMPLETE/ACCEPTED.** Presentation visual signoff for OPENING-001 and PRES-002 remains **PENDING one native capture**; EARLY-011 historical identity remains parked. MGHZ3 **WORKING BUT VISUALLY IMPERFECT/PARKED** per Chief; startup first-audible delay **PARKED**. G2 known-use soundtrack 25/25 is Chief accepted. M6-A/B were no-code review closures. **Do not claim the entire project "release ready" solely from source tests; first look at combined capture.**
