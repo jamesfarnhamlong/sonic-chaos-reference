@@ -1,0 +1,22 @@
+# Manager-san #8 — G2 source review and AUDIT-0 archive (1 November 2026)
+
+## G2 checkpoint / acceptance status
+
+Chief has received one consolidated private GameMaker source candidate for M5-G2 but has **not yet given the G2 Windows listening verdict**. Designer source: SonicChaos_POC `poc/m5-g2-complete-audio-default@91fd74b56296bb9182768c3a9db78a186fa78f9e`, direct one-commit child of Chief-accepted G1-F `89d56312d89f69d4cab2b481e6dff0f6a72d190c`. Manager inspected public-safe GitHub source metadata and G2 AUDIT / machine-readable coverage; **Manager GO for one focused Chief listening campaign, not final M5 closure**. Chief's local package `SonicChaos_M5_G2_20261101_A_PRIVATE.zip` and private hash manifest were Designer-reported; Manager cannot directly inspect that E: ZIP.
+
+Key G2 implementation: authentic original Z80 native music is the normal F5 backend without manually editing `datafiles/g1d_backend.txt`; development comparison via `--legacy-audio`, developer overlays via `--developer-audio`. Native path avoids normal M4 PCM loading and preserves single PSG/owner/queue at original 60Hz and 735 samples per tick. All **25 original music programmes with identified gameplay use** have native GameMaker delivery evidence; `$8E` remains a real playable, unidentified-use programme, `$9B..$9F` empty. Source-backed normal act clear `$89` and boss clear `$97`, authorized `$61D6` destruction requests, ending fades and suppression of normal yellow experimental labels implemented. All **1,313** registered resources retained. Designer reports **97,233 exact integrated native ticks /71,466,255 PCM samples** and a separate **187,257-tick** 25-programme original-driver lifecycle replay; independent original CPU/PSG/PCM verification is bounded to these fixtures, **not** a full natural campaign or measurement of speaker acoustic onset. Focused paired flow/ending/Tails regressions pass; three inherited host tests still fail on both candidate and parent and are not relabelled PASS.
+
+Open exceptions: `$B8` original player state34, unidentified original use `$8E` and `$A8/$B2/$C1`, unvisited source-wired SFX contexts, SS4 RLE automated native input-route discrepancy (source-host successful path remains, not a proved gameplay defect), inherited F8 raw CPU AF805C versus reference AF805D with matching RAM/PSG/PCM, opening music acoustic-onset uncertainty. No POC main merge. After Chief normal-play verdict, decide G2 scoped/full M5 closure separately, preserving explicit limitations.
+
+## AM-san historical issues: AUDIT-0 archive
+
+Assistant Manager-san supplied historical evidence reconciliation, **not a new code audit**, based on seven available Manager threads (88,359 lines /1,386 messages/3,782,434 characters), previous reference management and archived `FIDELITY_REGISTER.md`. **Manager #4 thread missing**; KPH end-of-zone and Robotnik-over-black-widescreen-bar history are SOURCE GAP rather than asserted solved. **93 unique records**: CLOSED55, CANONICAL/QoL14, OPEN7, RETEST7, DEFERRED3, ACTIVE M5 2, SOURCE GAP2, TEST EXCEPTION2, INFRASTRUCTURE1. The status of an AUDIT-0 row is a **historical classification only**, not verified current-code status or work approval.
+
+Permanent reference archive:
+- [AUDIT-0 original AM README](audit0/README.md).
+- [AUDIT-0 full 93-row, 17-column issue ledger CSV](audit0/SonicChaos_AUDIT0_Full_Issue_Ledger.csv) — all original issue fields and evidence.
+- [AUDIT-0 readable index and original provenance notes](audit0/SonicChaos_AUDIT0_Issue_Index.md).
+
+The Excel workbook supplied by Chief also has separate Summary, Open Queue, Canonical+QoL, Source Coverage, and Status Key views. This archive preserves the primary Issue Ledger tab as full-fidelity CSV and a readable index, **not the binary .xlsx formatting/views**. Original workbook remains in Chief's supplied file. If later archiving all tabs or the binary workbook, do not misrepresent the current CSV as a binary copy.
+
+When M5 acceptance is complete, AUDIT-1 should be a **no-code verification pass** across the open/retest/source-gap categories (frontend/results, contact/slope/rebound, zone presentation, canonical/QoL), followed by a specifically approved batched spot-fix milestone. Do not send Chief to recheck 55 historical CLOSED items or fix canonical ROM quirks without an explicit QoL decision. The current active priority remains G2 Chief acceptance and the M5 decision, not all 93 issues.
