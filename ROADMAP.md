@@ -65,7 +65,7 @@ Enhancement order is a **proposal** (60-FPS proof → scaler → palette/effects
 
 
 
-Chief reports ~**170 folders** across worktrees/archives. **No Janitor-san**. Use a combined Codex audit and Manager review when the base freeze is ready:
+The old ~**170-folder** estimate covers development worktree/package groups, **not** recursive folder totals: Chief's later 2 Nov Explorer screenshot shows at least **133 GB, 2,929,194 files and 1,268,255 folders** (previous 1.41 GB figure was partial). **No Janitor-san**. Protect the accepted M6-H ZIP/source immediately and perform read-only top-level storage inventory before choosing a whole-workspace backup method; avoid an unplanned million-file Robocopy. Use combined Codex audit and Manager review when base freeze is ready:
 1. Read-only inventory of full local paths, sizes, `git worktree list --porcelain`, branch/commit/dirty/untracked status, resource/private-asset manifests, final ZIP receipts.
 2. Classify **canonical current**, **historical reproducible**, **research evidence**, **generated and safely recreatable**, **unknown/keep**. Prefer a **small approved archive set** rather than 170 indistinguishable folders, but assume unknown local data is important.
 3. Verify separate reliable backup **and** restoration of accepted final source/required assets. Produce dry-run actions; Chief signs off each disposal class.
