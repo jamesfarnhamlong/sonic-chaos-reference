@@ -29,7 +29,7 @@ Repositories:
 
 **Last Chief-accepted playable source:** `SonicChaos_POC:poc/m6e-choice-widescreen@a4c26e13bc323a9f736c613c279b447dd6aedef5` (M6-E, Chief F5 pass).
 
-**Next candidate awaiting Chief F5:** `poc/m6f-offscreen-object-persistence@70cac5dea79e5e81fb88513effec367cb1af4d0c` (one commit after M6-E, remote SHA verified). **Manager GO; NOT Chief accepted as of 2 November.** Source evidence reports 15,750 focused checks, 15 integrated PASS and one preserved obsolete all-width-384 viewport raw FAIL. 1,314 resources and 38 IncludedFiles preserved. The approved one-session F5 covers GPZ3 upper-hit thrown-ring reentry, ordinary-enemy backtrack AI continuity, death/restart and Pause→Level Select. Await Chief's result **before** treating M6-F as the accepted production parent. No main merge authorised.
+**M6-F Chief result — SPLIT VERDICT (2 Nov 2026):** candidate `poc/m6f-offscreen-object-persistence@70cac5dea79e5e81fb88513effec367cb1af4d0c` received **RING RECOVERY PASS** (GPZ3 high-Y scattered rings descend normally) and **ENEMY PERSISTENCE FAIL** (THZ2 flying bee resets after falling between two columns/springing back or following below toward the right). **M6-F as a whole is NOT Chief accepted**; M6-E remains full accepted baseline. Keep M6-F ring source unchanged. New corrective branch **`poc/m6f-r1-bee-vertical-retention` from M6-F SHA**; prove original type `$27` post-trigger bit1 keep-alive and narrow Y-envelope problem, preserve continuous bee identity/state, source-test THZ2 and aliases, deliver one combined private Chief THZ2 check (no second ring human test). Detailed [Chief report and R1 directive](docs/m6f-chief-thz2-bee-failure-20261102.md).
 
 Previously Chief-accepted and **not to be routinely retested**: complete known-use native SMS music at default backend (M5-G2), playable F2 Sound Test catalogue, complete Sonic/Tails campaigns and five Special Stages in their accepted scope, original opening Robotnik foreground border (M6-C2), rolling goal km/h panel and **all developer keyboard shortcut removal** while preserving Pause→Level Select (M6-D), and widescreen character-choice background (M6-E).
 
@@ -37,7 +37,7 @@ The original speed-rating example **time 1:50 + 28 rings = 617 km/h** is proven;
 
 ## 4. Active work and parked scopes
 
-**Active right now:** M6-F Chief native F5 acceptance only; if it fails, investigate the precise reported experience and repair the combined patch rather than rebuild individual rings/enemies. Thereafter Chief plans **one full playthrough before enhancements**, and may report one or two additional base-game concerns. Review [current issue register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md) after new user findings; do not blindly revive historical rows.
+**Active right now:** M6-F-R1 **THZ2 bee vertical/offscreen persistence correction**, not repeat M6-F's completed ring investigation. Chief's THZ2 twin-column/spring-back and below-right chase are mandatory acceptance routes. Source evidence + integrated cheap tests first, one final private candidate/one Chief bee check. Last fully accepted production is M6-E; corrective work may build directly on partially accepted M6-F to retain the Chief-passed ring change. Thereafter Chief plans **one full playthrough before enhancements**; no historical batch audits.
 
 **Explicitly parked / not blockers unless Chief promotes them:** MGHZ3 boss approach works but wide camera presentation looks messy; first-start-only audio onset delay (do not add fake waiting cards without evidence); AQZ Tails underwater palette provisionally satisfactory; original attract/demo playback; optional save + emerald-progress unlock in Level Select; old contact/Spring Shoes/SS3 reports lacking a currently reproducible route. Older 93-ID AUDIT-0 and 21-ID Chief triage are history and priority evidence, **not an active 93-bug ticket queue**.
 
@@ -68,7 +68,7 @@ Chief reports roughly **170 working folders** again. Janitor-san is no longer as
 ## 7. Reference links and document ownership
 
 - [Live roadmap](ROADMAP.md), [short manager memory](MEMORY.md), [current base-game register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md).
-- [M6-F source report](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/70cac5dea79e5e81fb88513effec367cb1af4d0c/docs/m6f-offscreen-persistence.md), [M6-F acceptance gate](docs/m6e-chief-acceptance-m6f-manager-review-20261101.md).
+- [M6-F source report](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/70cac5dea79e5e81fb88513effec367cb1af4d0c/docs/m6f-offscreen-persistence.md), [Chief F5 split verdict + targeted THZ2 correction](docs/m6f-chief-thz2-bee-failure-20261102.md), [earlier Manager GO record](docs/m6e-chief-acceptance-m6f-manager-review-20261101.md).
 - [AUDIT-0 93-ID historical register](docs/audit0/README.md), [Chief's 21-ID triage](docs/chief-current-issue-triage-20261101.md), [pre-rewrite root history](docs/archive/management/MANAGER_PRE_REWRITE_20261102.md).
 
 **Manager controls this file.** After each Chief milestone result, **edit relevant statuses in place**, update ROADMAP/MEMORY and link a dated evidence receipt. Do not append another cascade of “CURRENT” blocks. Previous Managers' full notes remain accessible via Git history.
