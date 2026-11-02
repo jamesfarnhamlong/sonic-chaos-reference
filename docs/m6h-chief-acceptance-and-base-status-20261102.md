@@ -31,3 +31,8 @@ Chief's report after the **single normal 348×196 MGHZ3 F5 acceptance**:
 One-time startup/onset delay (unproven root cause), AQZ Tails underwater palette (provisionally accepted), historic SEZ/SS3/player contact quirks lacking a current reproduction, and original sound `$8E` with no known retail use. Separate technical holds include the F8 CPU-carry difference, historical SS5/THZ3/raw harness mismatches and partial natural SFX reachability. The 93-item AUDIT-0 archive is **not** an open bug queue.
 
 **No currently confirmed mandatory production fix remains after M6-H's Chief PASS.** This is a scoped completion assessment, not a claim that every possible natural gameplay route or emulated CPU bit has been proven.
+
+
+## Source publication confirmed (Manager #9, 2 Nov)
+
+**Verified Git update (2 Nov):** The exact M6-H production implementation is now committed on `poc/m6h-mghz3-spike-gated-reveal` at `c3e40a7a3d6c17be3e17d7c1eb729b2a705a3089` (parent M6-G `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`); two subsequent documentation/verification commits put the branch at `64a5a53ceebed43ed79e36a681a27b0d6a0c16aa`. Git comparison confirms three commits ahead of M6-G and none behind. This corrects the earlier uncommitted-source statement. Packaging Candidate B reportedly smoke-PASS, but its file inventory, clean project naming and local folder cleanup have not been demonstrated. Source `options_windows_executable_name` remains `SonicChaos_A4B_EXPERIMENTAL.exe`; project `name` remains experimental. Do not create further candidate worktrees until existing ones are accounted for.
