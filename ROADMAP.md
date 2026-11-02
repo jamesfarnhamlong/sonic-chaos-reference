@@ -30,7 +30,7 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 **M6-H source publication DONE:** Production commit `c3e40a7a3d6c17be3e17d7c1eb729b2a705a3089`, branch HEAD `64a5a53ceebed43ed79e36a681a27b0d6a0c16aa`. Chief-accepted M6-H private ZIP remains the playable control. Packaging/cleanup work must not alter the accepted gameplay or create more untracked candidate folders without necessity. Source naming and Windows metadata are not yet cleaned in this branch.
 
-**No other mandatory implementation defect is currently Chief-confirmed.** The agreed base-game feature set is in place within accepted scoped evidence. That does **not** claim an uninterrupted normal 18-act run has already been completed since the latest changes or prove every rare audio/ROM state.
+**New Chief-reported gameplay issue: `$A7` distant spike sound repeating; root cause unverified.** The agreed base-game feature set is in place within accepted scoped evidence. That does **not** claim an uninterrupted normal 18-act run has already been completed since the latest changes or prove every rare audio/ROM state.
 
 ### Next owner gate — one normal full playthrough
 
@@ -39,6 +39,10 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 3. **Chief decides private base freeze.** Establish one exact, reproducible `.yyp` + required private assets, committed source SHA, ZIP/manifest/SHA-256, clean source branch, independent backup and one restore/open proof. Document native256 parity controls versus bounded 348-wide QoL, raw test exceptions, natural SFX limits and deferred optional features. No automatic main merge or public distribution.
 
 **Current gate:** **Owner full playthrough and controlled final packaging/deletion inventory**, not another development milestone. Only after Chief base-freeze approval can optional enhancement pilots be authorized. The one-time startup audio onset delay, AQZ Tails palette, original attract demos and save/emerald upgrades remain explicitly parked.
+
+**Cleanup Batch 1 (Manager-reviewed, Chief exact-path approval pending):** Designer's read-only inventory identifies **seven exact E: paths totaling 2,179,106,838 logical bytes (~2.18 GB)**: three generated/extracted package directories and four clean, backed-up historical Git worktrees. The `build\export-b` nested directory is already inside its parent count; the additional H: `source-restore-check-b` is not in this batch. Active `SonicChaos_Production` packaging worktree and the E:/H: packaging receipts are KEEP. Larger 14.425 GB proposal remains unapproved. [Exact path manifest and guards](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md). **No deletions performed or authorized for execution until Chief approves these seven exact targets.**
+
+**Gameplay regression now open — `PROD-AUDIO-A7-REPEAT`:** Chief reports repeated spike SFX `$A7` on crossing spike X despite very large Y separation. Suspected persistence-policy link is unproven. Keep gameplay/audio investigation separate from Candidate B's accepted packaging smoke. **Do not declare private base freeze until assessed.**
 
 ## New owner instruction — production naming, distribution and permanent cleanup
 
