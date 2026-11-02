@@ -7,7 +7,7 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 **Chief-accepted base source:** `SonicChaos_POC:poc/m6g-all-enemy-persistence@6e2ffcc1f333c5cdaa0048ac696b55c4f6308905` (**M6-G Chief F5 PASS** on THZ ground patroller, GPZ ground patroller and SEZ `$20` hopper). R1 ring/bee acceptance preserved. [M6-G Chief receipt](m6g-chief-acceptance-20261102.md).
 
-**Current phase (2 Nov):** M6-G is **CHIEF ACCEPTED**, not pending. Seven regular enemy numeric types / 95 placements inventoried; five types received source changes, original flying aliases retained. Chief found all 3 natural F5 encounters behaved as expected, enemies feel more natural and reset less. Seeing two SEZ left-moving enemies simultaneously is not proof of duplicate occupancy: `$20` and `$23` travel left rather than patrol bidirectionally; original independent placements and finite long-distance recreation are legitimate possibilities. No new SEZ bug opened. 19 source checks PASS / **2 raw FAIL**, one inherited viewport384 and one newly superseded SEZ wide-Y delete; inherited `$21` falling-asleep adapter and GPZ below-map record remain documented technical exceptions. **Next: Chief complete base playthrough before enhancements.**
+**Current phase (2 Nov):** M6-G remains **CHIEF ACCEPTED**, with THZ/GPZ patrol/SEZ hopper F5 PASS. Chief has now reported and illustrated a **precise new MGHZ3 WIDE CAMERA BUG: MGHZ-007 REOPENED**. Existing approach limit shows central tree before boss reveals; original first camera right locks **between spike3/4** (tree unseen) before the camera unveils spike4–8/tree/boss. Accepted wide mode uses final boss target X2969 to constrain pre-reveal camera, displaying world through X3317, already past the original central tree near world3264. This is source-supported leading hypothesis, not yet tested as final patch. Branch M6-H from accepted M6-G, derive exact source camera/spike coordinates, produce one consolidated candidate and one owner MGHZ3 acceptance; then resume full playthrough. [Binding M6-H specification](m6h-mghz3-spike-gated-boss-reveal-20261102.md).
 
 Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik foreground opening; original rolling km/h results-panel graphics/scoring; removal of ALL developer keyboard shortcuts while preserving Pause→Level Select; widescreen title/results cards and character select; both characters, campaign, bosses, five Special Stages and endings in prior scoped tests. Do not reopen without a fresh specific regression.
 
@@ -15,7 +15,8 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 | Priority | Feature/issue | Acceptance or decision |
 | --- | --- | --- |
-| **1 — base-game playthrough** | **Chief tests normal end-to-end game on accepted M6-G source** | M6-G **CHIEF PASS**. Collect only newly observed concrete gameplay/progression problems in one punch list, then decide any final meaningful fixes and explicit private base freeze. No repeat ring/bee/patrol microtests. |
+| **1 — M6-H, MGHZ-007 ACTIVE** | **MGHZ3 boss pre-reveal right lock is too far forward in 348-wide**. Chief's canonical comparison: initial right edge **between spikes3/4**, no central tree shown; subsequent camera unlock/reveal exposes spikes4–8, tree and boss at original world anchor. | Authorized source-backed camera/staging fix on a new branch from M6-G. Original ROM/map must yield exact spike-world boundary, native256 pan and cameraY. Preserve boss spawn/trigger/HUD/combat/clear, authored assets/terrain and left backtrack constraint. ONE integrated candidate and ONE Chief MGHZ3 F5. [M6-H directive](m6h-mghz3-spike-gated-boss-reveal-20261102.md). |
+| **2 — full base playthrough** | **Chief resumes complete normal end-to-end game** after M6-H's one visual acceptance | Collect new issues into one punch list, then Chief decides private base freeze; no broad re-audit of accepted sound/rings/bees/patrols. |
 | **2 — full playthrough** | Chief will complete **one full game run before any FPS/graphics enhancements**. | Collect current substantial gameplay/presentation concerns, without another broad mandatory re-audit of 93 historical IDs. |
 | **3 — base decision** | Chief might report one or two further tweaks. | Fix any demonstrated base blocker in a meaningful batch; then Chief explicitly approves a private base checkpoint/source manifest. |
 
@@ -25,7 +26,7 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 | ID/topic | What remains documented | Disposition |
 | --- | --- | --- |
-| `MGHZ-007` | Boss approach works, but Chief considers the 348-wide pit/pole/boss framing aesthetically messy; widescreen camera pan differs from original 256 rhythm. | **Parked visual polish**, not declared fixed; owner decides if needed before base freeze. |
+| `MGHZ-007` | **PROMOTED TO ACTIVE M6-H** (see first row). Historical M6-A no-code-close was based on insufficiently precise scene framing comparison; Chief now specifies exact spike3/4 pre-lock and tree/boss reveal ordering. | **NOT PARKED**, never classified fixed; do not reintroduce here as an optional aesthetic concern. |
 | `AUDIO-006` startup | First launch/onset delay, seemingly not recurring after initialization; low-level F8 AF carry mismatch with exact audio output is distinct. | **Parked**; measure before adding splash/silent cards; F8 is technical exception. |
 | `SEZ-002`, `SS-001`, `PLAYER-001` | Historical monitor/Spring Shoes, SS3 embed and rebound/contact reports; original-source narrow runs did not reproduce precise old symptoms. | Preserve original issue IDs, activate only on new current reproduction. |
 | `AQZ` Tails palette | Underwater visual difference subtler than Sonic in original footage; previous tests passed. | Owner **provisionally satisfied**; no automatic palette changes. |
@@ -53,6 +54,6 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 ## Next update rule
 
-M6-F-R1 and M6-G are **fully Chief accepted**. The next owner action is a normal full base-game playthrough on `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`, after which any concrete issues can be triaged and Chief can explicitly approve base freeze. No active code/ZIP candidate awaits F5; enhancements remain deferred.
+M6-F-R1 and M6-G are **fully Chief accepted**. **Current development task is M6-H MGHZ3 camera reveal correction**, requested with precise screenshot and eight-spike timing by Chief; no accepted M6-H build exists yet. Keep accepted M6-G as production parent. Chief's full playthrough can resume after the single MGHZ3 F5 gate; then private base freeze and optional enhancements. Don't resurrect any of the already settled original audio/rings/enemy issues.
 
 After the planned **full playthrough**, add only the new owner-confirmed findings. Do not transplant the old 93-row issue ledger into the current backlog.
