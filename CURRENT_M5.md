@@ -1,7 +1,7 @@
 # Sonic Chaos — M5 Audio Milestone: CLOSED HISTORICAL SUMMARY
 **Updated 2 November 2026 · NOT a live task controller**
 
-**M5-G2 authentic known-use soundtrack was Chief accepted on 1 November 2026.** The GameMaker project has since advanced through Chief-accepted M6-C2, M6-D, M6-E and M6-F-R1 (GPZ3 recoverable rings and THZ2 bee continuity). New **M6-G** all-family enemy persistence is active, independent of closed M5 audio. For current instructions, use [AGENTS.md](AGENTS.md), [ROADMAP.md](ROADMAP.md), [MEMORY.md](MEMORY.md) and [current base-game register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). **All past M5 “NEXT,” “GO,” “HOLD,” “music missing” and “F5 pending” blocks are superseded.**
+**M5-G2 authentic known-use soundtrack was Chief accepted on 1 November 2026.** The GameMaker project has since advanced through Chief-accepted M6-C2, M6-D, M6-E and M6-F-R1 (GPZ3 recoverable rings and THZ2 bee continuity). **M6-G** all-family enemy persistence has also been Chief F5 accepted, independent of closed M5 audio; Chief's full base-game playthrough is next. For current instructions, use [AGENTS.md](AGENTS.md), [ROADMAP.md](ROADMAP.md), [MEMORY.md](MEMORY.md) and [current base-game register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). **All past M5 “NEXT,” “GO,” “HOLD,” “music missing” and “F5 pending” blocks are superseded.**
 
 ## Accepted historical milestone
 
@@ -21,6 +21,6 @@
 
 ## Preservation and evidence
 
-[Original sound request ledger](docs/audio-request-audit.md) and M5 technical milestones remain useful archived evidence. Current accepted implementation source after R1 is `636ed72be111bc3de4c297e5768c40c8f38a54e6` (**Chief F5 PASS** for GPZ3 rings and THZ2 bee). M6-G is the next separate regular-enemy persistence milestone, not a reopening of M5 audio.
+[Original sound request ledger](docs/audio-request-audit.md) and M5 technical milestones remain useful archived evidence. Current accepted implementation source is M6-G `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905` (**Chief F5 PASS** THZ/GPZ ground patrols and SEZ hopper, following accepted rings/bee). Next is Chief's full base-game playthrough; M5 remains closed.
 
 The long original `CURRENT_M5.md` with hundreds of contradictory dated banners is preserved through [immutable Git history](docs/archive/management/MANAGER_PRE_REWRITE_20261102.md). Don't append new updates here for M6 or future graphics/Vita work. **M5 is closed.**
