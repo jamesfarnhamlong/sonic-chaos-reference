@@ -1,5 +1,8 @@
 # Sonic Chaos SMS — engine reference
 
+> **Current GameMaker project coordination (2 November 2026):** This repository remains the **public-safe original-ROM research reference**; the research listings and early “Windows POC roadmap” links below are historical snapshots, **not the current GameMaker backlog**. Read [live AGENTS](AGENTS.md), [ROADMAP](ROADMAP.md), [manager handover](MEMORY.md) and [current base-game register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Chief accepted playable M6-E `SonicChaos_POC@a4c26e13bc323a9f736c613c279b447dd6aedef5`; M6-F offscreen ring/enemy persistence `70cac5dea79e5e81fb88513effec367cb1af4d0c` is **Manager-approved, Chief-native F5 pending**. Historical management documentation was archived in [Git history](docs/archive/management/MANAGER_PRE_REWRITE_20261102.md). No ROM or private build assets are distributed here.
+
+
 A research reference for the original Sonic Chaos Master System engine, developed while building a Windows proof of concept in GameMaker. It continues work begun with RF / Ravenfreak / Amber Davis's partial disassembly and the supplied SMS ROM.
 
 This first reference release documents collision, the first Turquoise Hill curve, movement parameters, spring states, loops, the twisting strip, placements, and sound pointers. **It is a reference package, not a new GameMaker build or a complete decompilation.**
