@@ -45,6 +45,8 @@ Original speed-rating evidence: time **1:50 + 28 rings = 617 km/h**; do not subs
 
 Only **after** the complete base playthrough and Chief's approval, consider AM-san's optional proposals on independent branches: 30→60 FPS *presentation* proof while retaining 30 gameplay Steps first (switching the Step rate outright changes timing/physics), sharp-bilinear/nearest pixel-friendly scaling, palette modes and high-res effects. True 60-Hz logic is a separate larger undertaking. Vita routes (modern YoYo Loader/native VitaSDK before GMS1.4 backport) are later feasibility, not active work.
 
+**Chief's new packaging/deletion directive (2 Nov):** Do **not** retain 133 GB of unnecessary experimental copies as a permanent archive. Rebrand the final source to `SonicChaos.yyp` and the Windows executable to `SonicChaos.exe` in a dedicated, reversible packaging-only branch after the exact M6-H source commit. Audit native `data.win`, DLLs, SCSP policy, streamed OGG, `m4/` and diagnostic JSON before deciding what is needed; do not manually strip valid runtime dependencies. Inventory the 133 GB / 2.93m files / 1.27m folders by actual Git/worktree identity, independently back up **only irreplaceable accepted source, private assets, Git history and unique research**, then present exact redundancies for Chief approval and **permanent deletion**, not archive. [Authoritative plan](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md). No bulk deletion has happened.
+
 ## 5. Research + Designer workflow and expensive-test discipline
 
 1. **Read** this file, `ROADMAP.md`, the current issue register, newest relevant accepted reports, then inspect *actual accepted commit and its parent*. Do not execute commands from historical dated “NEXT” banners.
@@ -55,17 +57,17 @@ Only **after** the complete base playthrough and Chief's approval, consider AM-s
 6. Existing Codex Windows sandbox sometimes fails to create `Runner.exe` with error623 on Windows build26300, while Chief's ordinary GameMaker IDE F5 works. **Do not spend another cycle diagnosing sandbox loader permissions or claiming a code failure from it**; use Chief's single bundled F5 gate for the final experience.
 7. No automatic POC main merge, public binary upload, cleanup, repo-visibility change or “release ready” declaration. Obtain Chief's explicit decision.
 
-## 6. Workspace safety and eventual archiving
+## 6. Workspace safety and permanent deletion plan
 
-**Operational archive plan:** [inventory-first workspace archiving](docs/WORKSPACE_ARCHIVE_STRATEGY.md). This is a future proposal, NOT deletion permission.
+**Operational deletion plan:** [permanent workspace cleanup](docs/WORKSPACE_ARCHIVE_STRATEGY.md). Chief prefers **DELETE verified redundant material**, not cold archives; explicit path-specific approval and verified irreplaceable backup are still required.
 
 
 
-The older estimate of ~**170 working folders** described development groups, **not** the recursive Windows Explorer count. Chief's later 2 Nov screenshot shows at least **133 GB, 2,929,194 files and 1,268,255 folders**; the earlier 1.41 GB screenshot was an incomplete count and must never guide a backup operation. Janitor-san is no longer assigned. **Do not delete, move, compress or deregister any local worktree yet.** A lightweight read-only storage inventory may begin immediately to plan safe independent backup; at base freeze commission a **classification-first archiving plan**, not an improvised cleanup:
+The older estimate of ~**170 working folders** described development groups, **not** the recursive Windows Explorer count. Chief's later 2 Nov screenshot shows at least **133 GB, 2,929,194 files and 1,268,255 folders**; the earlier 1.41 GB screenshot was an incomplete count and must never guide a backup operation. Janitor-san is no longer assigned. **Do not delete, move, compress or deregister any local worktree yet.** A lightweight read-only storage inventory may begin immediately to plan safe independent backup; at base freeze commission a **classification-first permanent-deletion plan**, not an improvised cleanup:
 
 - Inventory paths and sizes, `git worktree list --porcelain`, repository/branch/head, working-tree dirty/untracked states, included/excluded original assets, ZIP receipts and hashes. Identify named canonical candidate, research proof, useful unmerged edits, reproducible generated files, caches, and redundant copies.
-- Build a **dry-run classification manifest** with proposed keep/archive/regenerate/discard actions; retain a verified private final source checkpoint and independent backup (GitHub alone is not a backup), plus restore/open test.
-- Only after Chief approves the manifest and restore proof may an authorised local cleanup agent execute minimal safe worktree pruning/archiving. Avoid Windows Explorer moves of registered Git worktrees and blanket `git clean -fdx`; never remove unknown dirty folders or private assets.
+- Build a **dry-run classification manifest** with proposed keep/delete/regenerate/unknown actions; retain a verified private final source checkpoint and independent backup (GitHub alone is not a backup), plus restore/open test.
+- Only after Chief approves the manifest and restore proof may an authorised local cleanup agent execute minimal safe worktree retirement/permanent deletion. Avoid Windows Explorer moves of registered Git worktrees and blanket `git clean -fdx`; never remove unknown dirty folders or private assets.
 
 ## 7. Reference links and document ownership
 
