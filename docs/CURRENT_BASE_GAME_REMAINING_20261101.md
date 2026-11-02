@@ -1,71 +1,58 @@
 # Sonic Chaos — Current base-game finish register
+**Owner-led planning list · updated 2 November 2026**
 
-> **CURRENT MANAGEMENT — 1 NOV 2026: M6-E CHIEF ACCEPTED; M6-F MANAGER GO / CHIEF F5 PENDING.** Chief approved M6-E character-select wide F5; production parent `SonicChaos_POC@a4c26e13bc323a9f736c613c279b447dd6aedef5`. Verified M6-F candidate `poc/m6f-offscreen-object-persistence@70cac5dea79e5e81fb88513effec367cb1af4d0c` one direct commit ahead/0 behind, remote SHA exact, ten production GML files. 15,750 focused checks PASS; 15 integrated PASS/one deliberately superseded all-width384 raw viewport FAIL retained; all 1,314 resources/38 IncludedFiles preserved per source inventory. Ring recovery + regular-enemy offscreen continuation at widescreen, 256 unchanged; **native GameMaker F5 pending, NOT Chief accepted**. ONE combined Chief gameplay check GPZ3 upper-hit ring reentry, ordinary-enemy backtrack/AI, death/restart + Pause Level Select; no more tiny builds or repetitive audits. [M6-E acceptance and M6-F Manager decision](docs/m6e-chief-acceptance-m6f-manager-review-20261101.md). Attract/save, Tails AQZ palette, MGHZ3 aesthetics and initial startup delay remain parked; no main merge.
+For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../ROADMAP.md). This is a **small live/parked issue register**, not the entire original 93-ID AUDIT-0 archive. [Previous verbose version is preserved in Git history](archive/management/MANAGER_PRE_REWRITE_20261102.md). Historical source classifications are kept in [AUDIT-0](audit0/README.md), the [AUDIT-1 evidence branch](https://github.com/jamesfarnhamlong/SonicChaos_POC/tree/ad01199ad131f66e5f4e54a5308b611e638703f5/docs/audit1) and [Chief's 21-item triage](chief-current-issue-triage-20261101.md).
 
+## Current production truth
 
-> **OWNER PRIORITY REVISION — LATER 1 NOV 2026 (SUPERSEDES PARTS OF INITIAL REGISTER):** M6-E candidate `SonicChaos_POC:poc/m6e-choice-widescreen@a4c26e13bc323a9f736c613c279b447dd6aedef5` has **MANAGER GO; one brief Chief F5 pending**, not yet accepted. Chief's repeated natural play identifies **NEW HIGH-PRIORITY BASE BLOCKER: premature offscreen despawn/paused or reset enemy patrols and thrown rings lost above viewport**, with **GPZ3 high boss hit/ring recovery** as the main fairness case. Prior ROM-exact harnesses did not validate the Chief's current gameplay expectation; ROM-faithful culling that harms wide gameplay is eligible for **labelled bounded PC QoL**. Next substantive milestone **M6-F** follows M6-E F5 PASS; research can start read-only now. **AQZ Tails underwater palette concern PROVISIONALLY INACTIVE** by owner after reviewing original footage and prior automated tests; do not re-audit. **Attract demos and Sonic-3-style save/emerald unlock** explicitly **PARKED POST-BASE** at owner's direction. MGHZ3 widescreen roughness/first-start audio delay still parked. Full current [M6-E review + M6-F directive](m6e-review-m6f-offscreen-persistence-20261101.md). The earlier table below listing attract as the next base feature is superseded by this Chief decision; do not assign it ahead of culling.
+**Chief-accepted base source:** `SonicChaos_POC@a4c26e13bc323a9f736c613c279b447dd6aedef5` (M6-E widescreen character selection, F5 PASS).
 
-**Authoritative planning snapshot: 1 November 2026 · Manager-san #8 · after Chief M6-D acceptance**
+**Candidate awaiting Chief:** `SonicChaos_POC:poc/m6f-offscreen-object-persistence@70cac5dea79e5e81fb88513effec367cb1af4d0c`. Manager GO after verified 1 ahead/0 behind. **Native F5 pending**. Detailed [source evidence](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/70cac5dea79e5e81fb88513effec367cb1af4d0c/docs/m6f-offscreen-persistence.md) and [Manager gate](m6e-chief-acceptance-m6f-manager-review-20261101.md). The user will check it in one session, not per-ring/enemy builds.
 
-**This file is the CURRENT queue.** Older `AGENTS.md`, `ROADMAP.md`, `CURRENT_M5.md`, `MEMORY.md`, AUDIT-0 (93 rows) and AUDIT-1 reports preserve *historical* claims and milestone states, many superseded by later Chief acceptance; **they do not automatically authorize rework**. This register reconciles those archives, **Chief's own 21-item/12-believed-fixed shortlist**, current accepted POC, and still incomplete frontend work. Additional one or two owner observations are anticipated but **NOT YET PROVIDED**; do not guess them. Chief alone selects which optional polish items must precede a private “base complete” declaration.
+Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik foreground opening; original rolling km/h results-panel graphics/scoring; removal of ALL developer keyboard shortcuts while preserving Pause→Level Select; widescreen title/results cards and character select; both characters, campaign, bosses, five Special Stages and endings in prior scoped tests. Do not reopen without a fresh specific regression.
 
-## Baseline and what is already done
+## ACTIVE — only the real near-term gate
 
-**Last Chief-accepted PRIVATE GameMaker source:** `jamesfarnhamlong/SonicChaos_POC:poc/m6d-speed-display-cleanup@7acdd39f469a74d41362f2998c6783d815b719bf`. Source branch SHA confirmed by Manager on 1-Nov; acceptance: Chief **“Success! All good”**, with native screenshot showing km/h panel in goal sign sequence. Parent M6-C2 `3cf379240c6e1e06b52a4b57fcfd087fcd1fffa2` foreground Robotnik black-bar occlusion separately Chief-F5 accepted. **M6-D becomes the ONLY production parent for next work**; G2/M6-C2 are historical accepted ancestors. No automatic POC main merge.
+| Priority | Feature/issue | Acceptance or decision |
+| --- | --- | --- |
+| **1 — M6-F** | **GPZ3 high-hit ring recovery** in 348-width and **ordinary-enemy movement persistence** when player departs/returns. | Pending Chief's bundled F5; bounded QoL source models improve from 2 to up to 7 individually returning ring tokens in controlled high-hit geometry and retain GPZ patrol AI; native256 remains original. Tests ≠ native observed success. If fails, consolidate exact symptom into one correction batch. |
+| **2 — full playthrough** | Chief will complete **one full game run before any FPS/graphics enhancements**. | Collect current substantial gameplay/presentation concerns, without another broad mandatory re-audit of 93 historical IDs. |
+| **3 — base decision** | Chief might report one or two further tweaks. | Fix any demonstrated base blocker in a meaningful batch; then Chief explicitly approves a private base checkpoint/source manifest. |
 
-- Original known-use Master System soundtrack **25/25 Chief accepted**, native by default; original F2 catalog **63 playable programmes / 5 intentionally empty**. Never claim 37/37 original SFX natural-path exhaustion, or invent unused $8E usage.
-- Sonic and Tails playable, six-zone campaign, five Special Stages, boss transitions, endings; previous M2/Q3 acceptance means **no fresh all-acts replay** without a concrete regression. Source/data and human acceptance scopes kept distinct.
-- Original opening/title layers/animation and native music accepted; M6-C2 machine **passes behind black bars** in owner's F5.
-- Goal sign child $19 original rolling **km/h** display restored and Chief accepted in M6-D, existing scoring/tally untouched (reference ROM 1:50 + 28 rings => 617); **RESULTS-001 now closed** after earlier manager erroneously claimed feature nonexistent.
-- ALL developer-only keyboard shortcuts retired in M6-D while retaining normal input, Pause→Level Select and menu Sound Test. **FRONTEND-003 now closed**, even prior F3-gated exceptions. **AUDIO-001** full *known-use music* and **AUDIO-004** ring SFX no-current-complaint inactive; no further blanket audio rework.
-- Chief's previously accepted widescreen **title, zone/results cards**, boss, normal playable presentation remain frozen; do not reopen `PRES-002` without new current screenshot. All previous 1,313 registered resources preserved and one original glyph atlas added (1,314).
+**No other production bug is currently Chief-confirmed as a mandatory blocker.** Historical contact quirks remain as observations, not guaranteed permanent absence.
 
-## A. Known remaining or user-requested base/frontend work
+## PARKED (owner instruction; not to be auto-assigned)
 
-| Queue | ID / milestone | Current disposition | Source/decision | Gate |
-|---|---|---|---|---|
-| **NOW — already assigned** | **M6-E character select 348×196 widescreen** | Current screen draws two **256×192 original backgrounds** centered in 348×196, black ±46px side margins, 2px vertical. Chief specifically requests extending it as the **last known 4:3 frontend screen**. Must preserve original center native-size art and Sonic/Tails actor positions, animations, palette, $82/$B4/$A0 audio and campaign handoff. | `docs/m6d-chief-acceptance-m6e-choice-wide-20261101.md`; `SCR_chaos_choice.gml`, original BG resources. | One coherent private candidate and brief Chief F5 Sonic/Tails visual+launch acceptance. Branch `poc/m6e-choice-widescreen` directly from M6-D. |
-| **NEXT DECISION** | **FRONTEND-002 — original idle attract/demo sequences** | Genuine incomplete original frontend: title idle currently returns to opening, rather than replay authentic demonstrations. Research identified three original scenes (THZ1 Sonic / GPZ1 Tails / SEZ1 Sonic), but original held/fresh input consumption does **not** replay as a trivial one-pair-per-update stream. Deliberately deferred M3-B, not a current gameplay crash. If **complete source-original frontend** is Chief's base criterion, this is a meaningful remaining feature; if “playable base” only, may stay explicit documented exception. | `SonicChaos_POC:docs/m3-frontend-report.md`, `OBJ_menu_title/Step_0.gml` (no-input demo boundary goes to opening). | **Chief priority choice** after M6-E and owner's remaining 1–2 items. No fake recordings or broad physics changes. |
-| **OWNER INPUT PENDING** | Chief's “one or two things left” | Not yet specified. | Today's owner statement. | Capture exact symptoms/features before any new assignment; do not presume. |
+| ID/topic | What remains documented | Disposition |
+| --- | --- | --- |
+| `MGHZ-007` | Boss approach works, but Chief considers the 348-wide pit/pole/boss framing aesthetically messy; widescreen camera pan differs from original 256 rhythm. | **Parked visual polish**, not declared fixed; owner decides if needed before base freeze. |
+| `AUDIO-006` startup | First launch/onset delay, seemingly not recurring after initialization; low-level F8 AF carry mismatch with exact audio output is distinct. | **Parked**; measure before adding splash/silent cards; F8 is technical exception. |
+| `SEZ-002`, `SS-001`, `PLAYER-001` | Historical monitor/Spring Shoes, SS3 embed and rebound/contact reports; original-source narrow runs did not reproduce precise old symptoms. | Preserve original issue IDs, activate only on new current reproduction. |
+| `AQZ` Tails palette | Underwater visual difference subtler than Sonic in original footage; previous tests passed. | Owner **provisionally satisfied**; no automatic palette changes. |
+| `FRONTEND-002` attract demos | Original idle demonstrations missing, previous replay-input reconstruction complex. | **Explicitly post-base**. |
+| Optional save / emerald progression | Sonic 3-like persistent emerald progress and Level Select unlock. | **Explicitly post-base**; game short, not required now. |
+| Frame rate / graphics / Vita | AM-san proposals described in roadmap. | **Enhancements only after full base playthrough and owner approval**. |
+| Local workspace hygiene | Roughly **170 worktrees/packages/folders**. | Archive-plan-only until base freeze; no Janitor, no deletion without owner-approved dry-run+verified backups. |
 
-## B. Six IDs still retained from Chief's originally titled nine after later accepted M6-C2/D
+## Believed fixed, inactive — Chief's 12-item shortlist
 
-| ID | Current state | Action |
-|---|---|---|
-| **MGHZ-007** | Original boss approach **works**, but Chief dislikes messy/abrupt **348-pixel widescreen** composition. Original/G2 clips explain pit/pole, $56 boss vertical descent and a source-original1px vs widescreen4px pan adapter. No exact actionable drawing defect proved. | **Parked, explicitly NOT “fixed/perfect.”** Revisit as owner-guided aesthetic polish, not as mandatory speculative ROM parity correction. |
-| **SEZ-002** | Historical Spring Shoes + monitor break/wide contact complaint; M6-B fresh **1,452 original Z80 callback cases** match **2,904 GameMaker width checks**, but exact historic play route not recovered. | Retain as historical/monitor **only if a new current route occurs**. No generic hitbox tweak or retest. |
-| **SS-001** | Historical Special Stage 3 invincibility-monitor embedding; 28 bounded seeded routes did **not** reproduce reported persistent symptom. | Retain historical only; no active fix without exact occurrence. |
-| **PLAYER-001** | Rebound/kill/pass-through feels inconsistent in historic reports; source supports contact posture/timing variation, exact symptom not paired against ROM. | Retain historical only; not an active proved bug. |
-| **FRONTEND-002** | Actual original attract/demo feature absent. | Active **optional-vs-base requirement decision**, above. |
-| **AUDIO-006** | Split two independent issues: **first-launch perceptible audio/onset delay** confirmed by Chief (does not recur during later music); and F8 raw CPU AF/carry discrepancy in exact audio comparison, no demonstrated PCM mismatch. | First-launch delay **parked final presentation polish**; if addressed, instrument startup before choosing silent cards/blank waits. F8 low-level driver exception retained as **technical-only**, not a missing audible track. |
+`EARLY-011` spring opaque/green edge; `MGHZ-006` slope/spring oscillation; `SEZ-001` Spring Shoes temporary lock; `SEZ-003` crumble fragments; `AQZ-002` ring animation; `PRES-002` title/cards widescreen; `PLAYER-002` vibration; `PLAYER-003` diagonal spikes; `PLAYER-004` moving-spike phase; `TAILS-006` shoes/monitor uncertainty; `AUDIO-001` known-use audio coverage; `AUDIO-004` ring-SFX latency. “Believed fixed” is an owner-priority status, **not** a mathematically exhaustive route proof; do not ask Chief to check them again unless new actual symptoms arise.
 
-**Three additional entries from the nine are now CLOSED after Chief evidence / source correction:** **OPENING-001** foreground border M6-C2 F5 PASS, **RESULTS-001** original $19 km/h display M6-D F5 PASS, **FRONTEND-003** all dev-only keyboard shortcuts removed M6-D F5 PASS. Do not keep them in the active-issues count.
+## Subsequently resolved from Chief's originally retained nine
 
-## C. Chief's 12 bold/blank “believed fixed” entries — inactive by owner preference
+- `OPENING-001`: Robotnik passes **behind** foreground bars; M6-C2 Chief F5 accepted.
+- `RESULTS-001`: Authentic type$19 km/h panel, scoring formula + glyphs/timing; M6-D Chief F5 accepted. Earlier Manager's categorical assertion “no SMS km/h” was **wrong**.
+- `FRONTEND-003`: **All** developer-only keyboard shortcuts retired in M6-D, not merely F10; Pause→Level Select remains usable.
 
-`EARLY-011` red spring green/opaque rectangle; `MGHZ-006` slope/spring/facing oscillation; `SEZ-001` Spring Shoes fall-state lock; `SEZ-003` extra crumble shards; `AQZ-002` terrain-ring animation; `PRES-002` widescreen title/cards; `PLAYER-002` slope vibration; `PLAYER-003` static diagonal spike contact; `PLAYER-004` moving-spike width/activation; `TAILS-006` original Spring Shoes monitor uncertainty; `AUDIO-001` broad original audio coverage; `AUDIO-004` historical ring-SFX latency.
+## Technical holds / honest source boundaries
 
-**Owner wording = “I believe we've fixed”**, not proof every specific old natural route has been exhaustively disproved. Many have bounded source verification and/or later corrected art. **Inactive, no further batch audit or human testing** absent a new current problem.
+- M6-F integrated source tests: **15 PASS / one raw FAIL** from an obsolete assertion that the $27 flying family must retire at strict player384 in *all widths*. New widening is deliberately a PC QoL exception; native256 still tests original. Earlier SS5 256px camera, THZ3 old cap, and F8 carry exceptions remain separately documented.
+- Original M5 driver: 25/25 known-use music Chief accepted; 63/63 actual playable Sound Test programmes; 5 empty; unused$8E with no proven retail requester. Some SFX natural site coverage and Continue presentation remain historically unobserved, not a general missing-soundtrack failure.
+- No complete new input-only natural GPZ3 high-hit ROM-to-GameMaker trace internally; M6-F uses controlled original Z80 + shipped GML and awaits Chief real F5.
+- Private ROM/audio/art binaries and user videos do not belong in public reference repository; no automatic main merge, public distribution or executable package release.
 
-## D. Older AGENTS/ROADMAP and audit exceptions: archival, NOT additional active backlog
+## Next update rule
 
-- Historical pre-M5 docs still say original title/front choice, all audio, Rocket Shoes Tails conversion, Special Stages, results graphic and developer keyboard options were **planned**. These are now delivered/accepted in later source generations. Their old STOP/HOLD clauses and “only five Sound Test samples” text are **obsolete**. Read latest document links above before treating a dated milestone as current.
-- Earlier M2/R evidence lists AQZ palette/underwater reversal, GPZ3 line artifacts, AQZ1 crumble side-stick, spring/Badnik oscillation, unidentified “SLZ1” priority, fragment ownership in some zones, goal-sign centering and three-second frame-$5E diagnostics. These are **historical hypotheses, canonical oddities, accepted bounded exceptions or not specifically reverified in current M6-D**. Chief's own issue triage, later test evidence and absence of fresh observations **do not justify activating any as new defects today**. E.g. sign world-right framing and $5E no-draw safety adaptation are knowingly accepted. Retain exact source provenance in prior documentation; if Chief reports a specific current issue, check that original route, not a blanket audit.
-- Modern scoped technical exceptions: SS5 raw256 camera-X verifier up to2px; obsolete THZ3 raw camera-cap test; F8 AF carry with audio exact; opening first-audible onset observation; G2 original SFX natural trigger gaps ($B8 player state34, unidentified $A8/$B2/$C1 and unvisited natural cases). These **are not 100% green**, but neither evidence of a new currently audible/gameplay failure. Don't claim all original SFX naturally verified; do not demand massive new ROM replay in absence of a user-visible symptom.
-- Historical source-distribution/provenance/legal questions around private GameMaker/ROM-derived assets and native PSG bridge are unresolved for **public redistribution**. Chief's original purpose is **personal, noncommercial learning and preservation**, public `sonic-chaos-reference` contains safe research only; **a public release is not assumed or authorized**. This is a *separate distribution decision*, not an obstacle to a privately complete playable base. Local private final archive/restoration proof and optionally approved branch/merge/tagging may be worthwhile at base freeze; **no auto main merge**.
+When Chief reports the **M6-F F5 result**, update its status **in place** here and in the roadmap/agents/memory. If PASS, replace the accepted baseline SHA. If FAIL, record exactly what Chief experienced without asserting prior source verification proves the behaviour perfect.
 
-## E. Later optional programme — not base blockers
-
-- **M7 Windows quality-of-life / final private archive:** optional clean-build restoration smoke, input/display/audio preferences, save/resume and packaging; do not invent a commercial release obligation or promise public distribution.
-- **M8 / Assistant Manager side initiatives:** Vita port (investigate modern YoYo Loader route), full accessible ROM decomp/disassembly, Master System/Game Gear slowdown-reduction patch. These are separate/parked and **not prerequisites** to the playable GameMaker base.
-- Optional MGHZ widescreen aesthetic pass and startup onset masking are above, **owner-parked**. Do not automatically introduce silent cards or alter timing.
-
-## F. Practical finish order and explicit decision rule
-
-1. Complete **M6-E widescreen character choice** and Chief's one visual/launch acceptance, preserving M6-D.
-2. Hear **Chief's still-unspecified one or two remaining base requests**; record exact desired outcome and prioritize deliberately.
-3. Decide whether **authentic attract/demo playback** is a must for *Chief's personal base complete* or a documented original-fidelity exception for another day.
-4. If Chief wishes, address parked **MGHZ3 presentation** and/or measured one-time **startup delay** as polish, not involuntary blockers. No blanket resurrecting 93 AUDIT-0 issues.
-5. Once Chief confirms base definition satisfied, consider **one private canonical final checkpoint/manifest** (clean source, verify private assets restored, all accepted features available, known exceptions, branch/tag/merge choice); do not automatically publish private assets or merge main.
-
-**Owner decisions always outrank historical assistant assumptions.** If a newly reported defect contradicts a source-only pass, give the reported visual symptom priority and investigate the specific gap (the original km/h miss is the cautionary example). Do not treat absence of current complaint as a mathematical proof of perfect source parity.
+After the planned **full playthrough**, add only the new owner-confirmed findings. Do not transplant the old 93-row issue ledger into the current backlog.
