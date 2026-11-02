@@ -3,9 +3,17 @@
 
 ## Why this exists
 
-Chief reports approximately **170 folders** in the local Sonic Chaos working area. Earlier cleanup did not prevent continued worktree/candidate proliferation. Janitor-san is no longer assigned; Chief, Manager-san and the **combined Research/Designer Codex agent** will handle this carefully at base freeze. Nothing is to be deleted, moved or unregistered before that approval.
+Chief's Windows Explorer properties on 2 Nov report **1.41 GB, 50,963 files and 20,642 directories** under `E:\AI\Codex\Sonic Chaos`; prior folder-level estimates were ~170 project/worktree/package groups. This is a high small-file/worktree-count problem, not primarily a disk-capacity emergency. Earlier cleanup did not prevent continued worktree/candidate proliferation. Janitor-san is no longer assigned; Chief, Manager-san and the **combined Research/Designer Codex agent** will handle this carefully at base freeze. Nothing is to be deleted, moved or unregistered before that approval.
 
 This document is a **controlled archival design**, not an instruction to run automatic cleanup now. The full playable private GameMaker source and ignored/private assets may not all be represented by the public Git repositories.
+
+## Pre-cleanup backup gate (only after accepted source is committed)
+
+1. Preserve the **exact Chief-accepted M6-H private ZIP** and its SHA-256/manifest. Designer's 2 Nov closeout was temporarily blocked by the **local CRLF (36-byte) versus accepted ZIP LF (35-byte)** difference in an *unrelated* goal-draw script. The already accepted boss script matches byte-for-byte. Restore only the unrelated file to the exact accepted ZIP/HEAD LF bytes, verify source identity, then commit/push M6-H with a new full SHA and clean receipt **before** declaring Git history backed up.
+2. Before removing anything, make a **full read-only copy of the entire local workspace** to a separate physical disk or an isolated/snapshotted backup target. The same E: volume is only a staging location, **not** an independent backup. Verify at least critical packages/hashes. This copy protects private/ignored assets, untracked experiments and detached worktrees which Git commits and bundles do not preserve.
+3. Independently make `git bundle create <name>.bundle --all` backups for each **distinct repository root** (at least POC and reference). Check registered `git worktree list --porcelain`, dirty/untracked statuses and local-only refs before bundling. Verify using `git bundle verify` and a **scratch clone**/branch-list check. A Git bundle does not contain ignored/untracked private files, Git LFS payloads not in objects, or a worktree's dirty edits; they require the full workspace and private source ZIP copies.
+4. Keep a frozen standalone Windows **Package as Zip (VM, x64)** from Chief's accepted H project as an optional smoke artifact, not a replacement for the reproducible .yyp + private included files. Compare first-launch opening/audio onset versus IDE F5; do not change GameMaker target/physics or driver while evaluating the delay.
+5. Proceed to the read-only classification below after Chief's planned complete Sonic/Tails normal playthrough, unless the user explicitly authorizes earlier inventory. No deletion until Chief signs off the exact dry-run action list, backup location and restore result.
 
 ## A. Read-only inventory (run later, locally)
 
@@ -45,4 +53,4 @@ A Git commit records tracked source, **not untracked files and excluded private 
 
 **Forbidden without explicit Chief authorization:** `Remove-Item -Recurse` over unknown directory trees, `git clean -fdx`, `git reset --hard` on dirty branches, forced `git worktree prune`, deleting last private assets or ROM source, changing GitHub repo visibility, publishing ROM/art/audio/private packs, deleting source ZIPs simply because a newer build exists.
 
-**For now:** continue the accepted M6-F Chief F5 gate and full playthrough; this is a later archival milestone, not today's workload. Read [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../ROADMAP.md) for current project authority.
+**For now:** M6-H is Chief F5 accepted; finish its exact source commit, play both campaigns, preserve verified independent backups, then perform inventory and seek explicit cleanup approval. Nothing in this document grants deletion permission. Read [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../ROADMAP.md) for current authority.
