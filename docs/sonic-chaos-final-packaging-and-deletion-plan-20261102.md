@@ -39,6 +39,18 @@ Designer reports a read-only verified first deletion batch of **seven exact E: p
 
 **Separate gameplay issue:** `PROD-AUDIO-A7-REPEAT` is open. Chief reports repeated spike SFX `$A7` when player crosses spike X even at very large Y separation. Possible relationship to enemy persistence is unverified. Do not treat Candidate B packaging PASS as resolving it or change gameplay as part of cleanup.
 
+## Revised Chief direction — one substantial deletion pass
+
+Chief rejects microbatches of roughly 2 GB against a 133 GB workspace; the seven-path Batch 1 is a verified **subset**, not a separate end-goal. Chief has H: backup space available. Reuse the existing full scan and 14.425 GB proposed-deletion manifest **as a starting point**, not a ceiling. No new builds, GameMaker worktrees, packaging candidates or repeated entire-disk scans.
+
+**Priorities:** (1) inspect `E:\AI\Codex\Sonic Chaos\releases` (Chief estimates ~13 GB) by file types, ZIP/content hashes and duplicate extracted packages; **retain** exact accepted M6-H source, Candidate B source/Windows ZIP, private-only assets and unique receipts; **do not delete the releases directory wholesale**. (2) Classify the largest historic clones/worktrees `SonicChaos_POC_thz1_cleanup`, `SonicChaos_POC_m2`, `SonicChaos_POC_g2b`, `SonicChaos_POC_eez_p1` and others by Git status, ignored/untracked/unique data, recoverable sizes and directory counts. (3) Find reproducible generated/cache/output duplication across projects. Focus on reclaiming **tens of GB if substantiated**, not maximizing number of paperwork rounds.
+
+**Backups:** Use verified H: essential backup space for the current `SonicChaos_Production` dirty source + B ZIP, accepted M6-H private original/sidecar, required ignored/native game assets, unique research and verified Git bundles/restore. Verify physical independence, source checksums and a scratch restore. There is **no requirement to clone 133 GB of known recreatable junk**.
+
+**One consolidated deliverable:** ranked exact-path `DELETE / KEEP / INVESTIGATE` manifest for a large deletion wave with bytes/counts, content identity, Git worktree ownership, dirty/ignored/private data checks, backup/restore evidence, deletion method and stop conditions. Present before/after totals and the top remaining unknown data. Group clean worktrees and duplicate extracts, so Chief can approve one **substantial** path-enumerated batch rather than 70 smaller requests. The existing seven paths are carried into this bulk proposal; no double-count of nested `build\export-b`.
+
+**Execution:** Chief's request to be ruthless establishes the *goal*, not blanket authorization to erase unknown/dirty folders. Once Chief approves the substantial precise manifest, use normal `git worktree remove` for clean registered worktrees, exact-path removal for duplicate/generated items, and verify after batches. No unsafe glob/root deletion, force-removal or entire releases wipe. Do not delay even the read-only inventory for the ongoing Sonic/Tails playthrough.
+
 ## Work order — independently verifiable gates
 
 ### Gate 0 — preserve accepted M6-H source before cleanup
