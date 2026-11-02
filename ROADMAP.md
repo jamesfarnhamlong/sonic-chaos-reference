@@ -40,6 +40,12 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 **Current gate:** **Owner full playthrough and M6-H source publication**, not another development milestone. Only after Chief base-freeze approval can optional enhancement pilots be authorized. The one-time startup audio onset delay, AQZ Tails palette, original attract demos and save/emerald upgrades remain explicitly parked.
 
+## New owner instruction — production naming, distribution and permanent cleanup
+
+Chief confirms the final workspace size **133 GB, 2,929,194 files, 1,268,255 folders**, and requests **permanent deletion of proven redundancy**, not indiscriminate archiving. The accepted candidate EXE has `SonicChaos_A4B_EXPERIMENTAL.exe`; source options already display `Sonic Chaos` but configure that old EXE filename and placeholder Windows company/description metadata. Some sidecars (`data.win`, native audio DLL/driver, SCSP and OGG) are runtime requirements; others (`g1d/g1e_cases.json`, old `m4/` and G1B banks) merit actual dependency classification before trimming.
+
+**Authorized next packaging planning scope:** Exact M6-H source closeout first, one isolated `SonicChaos.yyp`/`SonicChaos.exe` naming + dependency-minimized Windows VM ZIP candidate, no gameplay changes and no automatic main merge. Then read-only workspace inventory, preservation of canonical private essentials + verified Git history, **specific DELETE/KEEP/UNKNOWN manifest**, and staged irreversible deletion only once Chief approves each path class. This is not optional new gameplay feature work; it is final presentation and source/backup hygiene. [Binding plan](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md).
+
 ## AFTER BASE — optional enhancement research, not yet implementation approval
 
 **AM-san** prepared a useful sequence; decide priorities after Chief's complete playthrough, and protect a reversible “Classic” baseline:
@@ -59,17 +65,17 @@ Enhancement order is a **proposal** (60-FPS proof → scaler → palette/effects
 - **Vita**: begin feasibility after the base is frozen, preferably after performance choices are understood. AM-san's earlier compatibility audit called modern GMS-to-Vita **amber-green**: first investigate latest YoYo Loader compatibility and constraints; if unsuitable, consider native VitaSDK/vitaGL adaptation. **GMS1.4/GayMaker backport is a high-maintenance fallback**, not default. Preserve native-resolution art and widescreen camera; benchmark performance honestly and never claim 60 FPS on Vita without measurements.
 - **Separate side projects**: complete accessible ROM disassembly/decomp, SMS/GG slowdown-reduction patch. These are not POC completion gates; request new owner authorization before work.
 
-## Workspace closure / archiving — new solution needed
+## Workspace closure / permanent deletion
 
-**Detailed dry-run/backup/restore protocol:** [WORKSPACE_ARCHIVE_STRATEGY](docs/WORKSPACE_ARCHIVE_STRATEGY.md). No local files are touched by documentation maintenance.
+**Detailed permanent-delete / backup / restore protocol:** [WORKSPACE_ARCHIVE_STRATEGY](docs/WORKSPACE_ARCHIVE_STRATEGY.md). No local files are touched by documentation maintenance.
 
 
 
 The old ~**170-folder** estimate covers development worktree/package groups, **not** recursive folder totals: Chief's later 2 Nov Explorer screenshot shows at least **133 GB, 2,929,194 files and 1,268,255 folders** (previous 1.41 GB figure was partial). **No Janitor-san**. Protect the accepted M6-H ZIP/source immediately and perform read-only top-level storage inventory before choosing a whole-workspace backup method; avoid an unplanned million-file Robocopy. Use combined Codex audit and Manager review when base freeze is ready:
 1. Read-only inventory of full local paths, sizes, `git worktree list --porcelain`, branch/commit/dirty/untracked status, resource/private-asset manifests, final ZIP receipts.
-2. Classify **canonical current**, **historical reproducible**, **research evidence**, **generated and safely recreatable**, **unknown/keep**. Prefer a **small approved archive set** rather than 170 indistinguishable folders, but assume unknown local data is important.
+2. Classify **canonical current**, **historical reproducible**, **research evidence**, **generated and safely recreatable**, **unknown/keep**. **Permanently delete only proven duplicate/generative outputs under an approved exact manifest**, retaining unique research in source history/essential independent backup; do not archive all 133 GB.
 3. Verify separate reliable backup **and** restoration of accepted final source/required assets. Produce dry-run actions; Chief signs off each disposal class.
-4. Only then remove registered worktrees safely with Git commands or archive old revisions; **never mass-delete, run blanket `git clean -fdx`, move registered worktrees in Explorer, or destroy private data**.
+4. Only then remove registered worktrees safely with Git commands or permanently delete proven redundant old revisions; **never mass-delete, run blanket `git clean -fdx`, move registered worktrees in Explorer, or destroy private data**.
 
 Public research repository keeps safe documentation. Private build payloads and copyrighted content remain outside public distribution; no automatic GitHub visibility or main-merge changes.
 
