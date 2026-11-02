@@ -61,7 +61,7 @@ Only **after** the complete base playthrough and Chief's approval, consider AM-s
 
 
 
-Chief reports roughly **170 working folders** again. Janitor-san is no longer assigned. **Do not delete, move, compress or deregister any local worktree yet.** At base freeze, commission one new **inventory-first archiving plan**, not an improvised cleanup:
+The older estimate of ~**170 working folders** described development groups, **not** the recursive Windows Explorer count. Chief's later 2 Nov screenshot shows at least **133 GB, 2,929,194 files and 1,268,255 folders**; the earlier 1.41 GB screenshot was an incomplete count and must never guide a backup operation. Janitor-san is no longer assigned. **Do not delete, move, compress or deregister any local worktree yet.** A lightweight read-only storage inventory may begin immediately to plan safe independent backup; at base freeze commission a **classification-first archiving plan**, not an improvised cleanup:
 
 - Inventory paths and sizes, `git worktree list --porcelain`, repository/branch/head, working-tree dirty/untracked states, included/excluded original assets, ZIP receipts and hashes. Identify named canonical candidate, research proof, useful unmerged edits, reproducible generated files, caches, and redundant copies.
 - Build a **dry-run classification manifest** with proposed keep/archive/regenerate/discard actions; retain a verified private final source checkpoint and independent backup (GitHub alone is not a backup), plus restore/open test.
