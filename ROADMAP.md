@@ -19,23 +19,19 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 | **M6-E character select widescreen** | **Chief accepted** `a4c26e13bc323a9f736c613c279b447dd6aedef5` | Original checker fills 348×196 without stretching; 256x192 art, animation and music unchanged. |
 | M6-A / M6-B / M6-C audits | **Reviewed, no further code justified for their respective historical scopes** | MGHZ3 wide visual roughness retained as parked owner concern; old contact/SEZ/SS3 and palette reports have no current reproducible blocker. |
 | **M6-F-R1 offscreen persistence** | **CHIEF ACCEPTED** `636ed72be111bc3de4c297e5768c40c8f38a54e6` | GPZ3 scattered-ring recovery and THZ2 triggered bee identity/patrol continuity both passed Chief F5; preserve current PC-widescreen bounded policy. |
+| **M6-G regular-enemy retention** | **CHIEF ACCEPTED** `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905` | THZ patrol vertical return, GPZ patrol backtracking and SEZ `$20` hopper return passed owner F5; five types received source changes, two flying aliases remain unchanged. |
 
-**Accepted POC production parent:** `636ed72be111bc3de4c297e5768c40c8f38a54e6` (M6-F-R1, Chief F5 accepted). All new production work branches from R1. No POC main merge permitted without Chief instruction.
+**Accepted POC production parent:** `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905` (M6-G, Chief F5 accepted all three planned checks). All future production work branches from accepted M6-G. No POC main merge permitted without Chief instruction.
 
-## NOW — M6-G: Manager GO; one Chief F5 pending
+## NOW — Chief's full normal base-game playthrough
 
-**One consolidated private source candidate is ready**: `SonicChaos_POC:poc/m6g-all-enemy-persistence@6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`, exact one commit beyond Chief-accepted **R1 `636ed72be111bc3de4c297e5768c40c8f38a54e6`**. Four production scripts changed, 1,314 resources and 38 IncludedFiles preserved per integrity evidence. **NOT yet Chief accepted**, no main merge. [Manager review](docs/m6g-manager-review-chief-f5-gate-20261102.md) and [original directive](docs/m6g-regular-enemy-persistence-chief-directive-20261102.md).
+**M6-G is CHIEF ACCEPTED.** Chief checked THZ patroller vertical return, GPZ patroller backtracking and SEZ `$20` hopper departure/return. All three behaved as expected, enemies are more natural and respawn less. [Acceptance receipt](docs/m6g-chief-acceptance-20261102.md). **No further M6-G build or human regression is pending.**
 
-The machine-readable census covers **95 placements across seven regular numeric types**; excludes slot-coupled hazards, emitters, bosses/projectiles and other non-regular actors. **Five types** have targeted source changes: THZ/MGHZ `$21`, GPZ `$25`, SEZ `$20/$23`, AQZ `$3D`; flying `$27/$2C` R1 behaviour remains unchanged. Wide `348×196` awakened patrols **sleep rather than reset** across camera-Y departure within a finite **±512px horizontal** envelope. GPZ `$25` separately restores original **no sleep gate** on callbacks at both widths, with an original blank initializer pass and bounded below-map retirement. Do not mislabel GPZ native256 fidelity correction as byte-identical to R1 or the new 348-only vertical policy as original SMS.
+**Accepted source:** `poc/m6g-all-enemy-persistence@6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`, one child of accepted R1. Ring/bee fixes remain accepted. Original moving SEZ `$20` hopper and `$23` leaper travel **left** without reversing or a bidirectional patrol. Chief saw two at once; separate placements and legitimate long-distance retirement are plausible, but no same-token duplicate/actual defect has been established. **Do not alter movement or launch a speculative respawn fix.**
 
-**Verification:** 19 PASS / **2 raw FAIL preserved**: the inherited all-width384 viewport assertion and the M6-G-superseded wide-Y SEZ deletion expectation; separate policy-aware checks PASS. 760 policy cases, 20 grounded terrain routes and original-Z80 comparisons were executed. Existing `$21` falling/asleep discrepancy and GPZ1 below-map token18 remain explicit historic limits, not silently resolved.
+**Next Chief action:** one complete normal campaign playthrough on this accepted baseline **before enhancements**. Chief can note any new concrete issues in a single consolidated report (act, character, approximate circumstances, expected vs observed, screenshot only if useful). This is a user-driven confidence review, **not** another mandatory source coverage sweep.
 
-**ONE Chief F5 of private `SonicChaos_M6G_20261102_A_PRIVATE.zip`:**
-1. **THZ patroller**: watch reversal, depart vertically, return; same encounter and direction/phase; asleep motion may genuinely pause.
-2. **GPZ `$25` patroller**: moderate backtrack then return, optionally vertical departure; movement should progress offscreen per original, without restarting.
-3. **SEZ `$20` hopper**: watch a hop, depart/return; same hop/patrol state, not origin reset; sleep may pause callbacks.
-
-No new build or per-enemy human test. Do **not** repeat previously Chief-accepted GPZ3 rings, THZ2 bee, audio/menus/km/h or full campaign. If all three PASS, promote M6-G SHA and proceed to Chief's full base playthrough **before enhancements**. If any FAIL, fix exact symptom in one focused integrated revision. No automatic POC main merge.
+**Known documentation limits retained:** original THZ `$21` falling callback can move during sleep whereas inherited GML global sleep gate pauses that falling state; GPZ1 below-authored-map `$25` record remains unproven reachable. M6-G source gate has 19 PASS and **two raw FAILs**: inherited all-width384 viewport assertion and a newly superseded SEZ wide-vertical-deletion expectation. Policy-aware verifiers passed. None should be silently green or treated as an observed gameplay bug without a real route.
 
 ## NEXT — base-finish phase, before enhancements
 
@@ -44,7 +40,7 @@ No new build or per-enemy human test. Do **not** repeat previously Chief-accepte
 3. **Single finish decision:** fix only reproduced substantial issues that emerge; decide which explicitly parked polish (MGHZ3 entrance wide roughness, one-time startup onset) matters to Chief. Old frontend attract demos and save/resume are **POST-BASE** by Chief's current decision. AQZ Tails palette provisionally satisfactory.
 4. **Base checkpoint:** Chief explicitly approves baseline; verify source+private assets, one reproducible GameMaker `.yyp`, clean branch/source SHA, manifest+SHA256, known original fidelity/QoL deviations, open technical exceptions, restoration/launch proof. Freeze without automatically merging main or publishing third-party material.
 
-The **current human gate** is a SINGLE Chief F5 on the Manager-approved M6-G candidate: THZ/GPZ ground patrol persistence and SEZ walker/hopper. M6-G is **not yet Chief accepted**; last fully accepted source remains R1. The planned full base-game playthrough follows Chief acceptance. New issues from the full playthrough can change the list.
+**Current gate:** no candidate is pending. M6-G is Chief accepted; the next step is Chief's **complete normal base-game playthrough**, followed by triage of any new concrete observations and an explicit base-freeze decision before enhancements. No automatic POC main merge. New issues from the full playthrough can change the list.
 
 ## AFTER BASE — optional enhancement research, not yet implementation approval
 
