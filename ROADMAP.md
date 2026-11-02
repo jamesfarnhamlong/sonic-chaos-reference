@@ -1,5 +1,5 @@
 # Sonic Chaos — ROADMAP
-**Live plan · 2 November 2026 · Owner: Chief / coordination: Manager-san #8**
+**Live plan · 2 November 2026 · Owner: Chief / coordination: Manager-san #9**
 
 This is the **current plan**, deliberately rewritten after seven prior Manager handovers. **No earlier “NEXT/GO/HOLD” instruction is active merely because it appears in an archived report.** Operating rules: [AGENTS.md](AGENTS.md). Short state: [MEMORY.md](MEMORY.md). Owner-led issues: [base completion register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). [Full pre-rewrite roadmap preserved at immutable revision](docs/archive/management/MANAGER_PRE_REWRITE_20261102.md).
 
@@ -20,29 +20,25 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 | M6-A / M6-B / M6-C audits | **Historical reviews** | M6-A's MGHZ3 no-code close is now superseded by a **new exact Chief spike/tree reveal defect**, assigned to M6-H; old contact/SEZ/SS3/palette reports still inactive without new evidence. |
 | **M6-F-R1 offscreen persistence** | **CHIEF ACCEPTED** `636ed72be111bc3de4c297e5768c40c8f38a54e6` | GPZ3 scattered-ring recovery and THZ2 triggered bee identity/patrol continuity both passed Chief F5; preserve current PC-widescreen bounded policy. |
 | **M6-G regular-enemy retention** | **CHIEF ACCEPTED** `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905` | THZ patrol vertical return, GPZ patrol backtracking and SEZ `$20` hopper return passed owner F5; five types received source changes, two flying aliases remain unchanged. |
+| **M6-H MGHZ3 boss spike-gated reveal** | **CHIEF F5 ACCEPTED 2 NOV** · private source commit pending | Initial camera boundary now between spike3/4, tree hidden; subsequent pan reveals tree, Robotnik and complete eight-spike trap; boss/AQZ1 accepted with no notes. [Owner receipt](docs/m6h-chief-acceptance-and-base-status-20261102.md). |
 
-**Accepted POC production parent:** `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905` (M6-G, Chief F5 accepted all three planned checks). All future production work branches from accepted M6-G. No POC main merge permitted without Chief instruction.
+**Accepted playable candidate:** M6-H private ZIP `SonicChaos_M6H_20261102_A_PRIVATE.zip`, Chief F5 PASS, source **uncommitted/unpushed** as reported. **Last immutable/published accepted Git source:** M6-G `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`. M6-H Designer must first commit/push the unchanged accepted source and supply a new exact SHA with private manifest concordance. No automatic POC main merge.
 
-## NOW — M6-H MGHZ3 spike-gated boss reveal correction
+## NOW — M6-H ACCEPTED; finish the base game
 
-**New Chief evidence (2 Nov): `MGHZ-007` is REOPENED as a concrete visual-sequencing defect.** Accepted M6-G pre-reveal camera locks too far right: its 348px view includes first four spikes **and the central striped tree**, so boss `$56` visibly pops beside a previously exposed tree. Chief's stretched original reference has the first right lock **between spikes #3/#4**, before the tree, then authentic HUD/camera pan reveals spikes4–8, tree and boss and sets the full arena. The **left** camera limit prevents backtracking; it is not the initial right framing mechanism. Original Y and boss vertical pose derive from ROM, not resized screenshot pixels.
+**M6-H / MGHZ-007: CHIEF F5 PASS, CLOSED (2 November 2026).** Chief's exact response: **"Yes, perfect! No notes, thats now working as intended."** The initial 348-wide camera stops between the body of spikes3/4 (right world edge3256, central tree not yet visible); the original boss at (3269,288) and full eight-spike arena are exposed through the original HUD/pan handoff. Final 348 cameraX2980 shows the authored second bank through world3328. The original256 camera and wide pan speed remain preserved. One production script changed; 1,314 resources retained. Source gate: 12 PASS / four documented raw FAIL due to historical framing, inherited M4 harness, obsolete G2 asset index. [M6-H acceptance, technical and publication notes](docs/m6h-chief-acceptance-and-base-status-20261102.md). **Do not reopen M6-H or commission another MGHZ3 correction.**
 
-**Source cause to verify:** accepted GML `chaos_56_camera_step()` in modes0/1 prematurely limits `camera_right` to `chaos_56_target_x(W)=3269-(W-48)`, i.e. camera X2969 at W348 / visible world RIGHT3317, already beyond static central tree near world3264. This is **final arena framing** reused for the **pre-reveal** lock. The proper earlier right edge must be found from actual eight spike WORLD tiles and original camera D174/D280/D282 state. ROM type `$56` stays at WORLD(3269,288), source pan 256→(3060,256) and 348 combat target2968, preserving original collision/music/trigger, camera Y and 11-hit combat. No guessed world-pixel constant from video.
+**Final source housekeeping (single operation):** Designer still has M6-H's accepted source in a local **uncommitted/unpushed worktree**. Commit/push the *identical* candidate on `poc/m6h-mghz3-spike-gated-reveal` directly from M6-G `6e2ffcc1...`, confirm clean worktree/remote and private package checksum versus committed production diff; report exact full SHA. Do not silently alter anything after Chief F5 or merge main. Until then, M6-G remains the last public Git SHA, despite the M6-H private package having passed the Chief's actual F5.
 
-**Authorized M6-H production branch:** `poc/m6h-mghz3-spike-gated-reveal` **from Chief-accepted M6-G** `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`. Combined Codex Research/Designer researches the canonical spike strip and original state0/1/2 camera trace, proves current GML pre-reveal discrepancy, then implements **a separate early right-edge camera cap** with authentic source-supported handoff to pan. Crucially, **boss must still be created and triggered offscreen** in its canonical outer spawn band before reveal. Preserve left-backtrack limit and pixel/tick source-256 control; do not move tree/spikes/boss or invent visibility masks/timers. Internal original-ROM and shipped-GML 256/348 scenario traces plus selected MGHZ boss/clear/AQZ1 and inherited regression/integrity once; **ONE private source ZIP and ONE Chief F5 only when coherent**. No Runner error623 investigation.
+**No other mandatory implementation defect is currently Chief-confirmed.** The agreed base-game feature set is in place within accepted scoped evidence. That does **not** claim an uninterrupted normal 18-act run has already been completed since the latest changes or prove every rare audio/ROM state.
 
-**Chief's final visual acceptance:** stand at first spike trap with tree fully hidden at lock between spikes3/4; as camera advances, remaining spikes and tree appear with boss already attached/moving on pole; full combat arena reveals through spike8, right/left constraints work, Sonic can fight and exit to AQZ1. A human can judge this in one normal Sonic MGHZ3 visit. No repeat M6-G enemies, GPZ3 rings, 63 sounds or other accepted features.
+### Next owner gate — one normal full playthrough
 
-[Full binding M6-H directive](docs/m6h-mghz3-spike-gated-boss-reveal-20261102.md). **Previous M6-A no-code closure is historical/superseded by this precise Chief reproduction**; do not treat it as STOP.
+1. **Chief resumes/completes the base game** under normal progression, watching generally for unfairness, progression issues, music breaks, camera presentation and stability. Capture only newly reproduced substantial issues in one short punch list, not a 93-row audit and not per-feature repeat checks.
+2. **If a new blocker emerges**, batch only concrete regressions; protect accepted audio, rings, enemies, opening/results and MGHZ3. If none, no further production work is needed before freeze.
+3. **Chief decides private base freeze.** Establish one exact, reproducible `.yyp` + required private assets, committed source SHA, ZIP/manifest/SHA-256, clean source branch, independent backup and one restore/open proof. Document native256 parity controls versus bounded 348-wide QoL, raw test exceptions, natural SFX limits and deferred optional features. No automatic main merge or public distribution.
 
-## NEXT — base-finish phase, before enhancements
-
-1. **Owner's remaining observations:** Chief may identify one or two more concrete base-game issues. Record them as current observations; no automatic 93-issue sweep.
-2. **One full normal playthrough by Chief** **BEFORE** enhancements. Exercise ordinary progression as preferred, watch for gameplay fairness, resource stability, music transitions and visible widescreen problems; collect a short consolidated punch list rather than stopping after every act. Do not require another six-stage technical test package solely to watch already-accepted systems.
-3. **Single finish decision:** after the focused M6-H MGHZ3 correction and Chief's resumed full playthrough, fix only newly reproduced substantial issues; the one-time startup audio delay remains optional parked polish. Original attract demos and save/resume are **POST-BASE** by Chief's choice. AQZ Tails palette provisionally satisfactory.
-4. **Base checkpoint:** Chief explicitly approves baseline; verify source+private assets, one reproducible GameMaker `.yyp`, clean branch/source SHA, manifest+SHA256, known original fidelity/QoL deviations, open technical exceptions, restoration/launch proof. Freeze without automatically merging main or publishing third-party material.
-
-**Current gate:** M6-H is an **authorized in-development** MGHZ3 widescreen camera-reveal correction, not yet packaged or Chief accepted. Last playable accepted source M6-G. When M6-H passes one normal MGHZ3 owner test, resume full playthrough, then private base freeze before enhancements. No automatic POC main merge.
+**Current gate:** **Owner full playthrough and M6-H source publication**, not another development milestone. Only after Chief base-freeze approval can optional enhancement pilots be authorized. The one-time startup audio onset delay, AQZ Tails palette, original attract demos and save/emerald upgrades remain explicitly parked.
 
 ## AFTER BASE — optional enhancement research, not yet implementation approval
 
@@ -79,6 +75,6 @@ Public research repository keeps safe documentation. Private build payloads and 
 
 ## Authority and change management
 
-**Team now:** Chief; Manager-san #8; AM-san; **one combined Research/Designer Codex agent**. Cloud-kun and Janitor-san departed; the separate Claude Research/Designer works elsewhere.
+**Team now:** Chief; Manager-san #9; AM-san; **one combined Research/Designer Codex agent**. Cloud-kun and Janitor-san departed; the separate Claude Research/Designer works elsewhere.
 
 **Docs policy:** Edit this roadmap **in place**; record accepted SHA and Chief approval once. Keep a concise [current issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md), [agent operating contract](AGENTS.md), and [short memory](MEMORY.md). Historical full-roadmap version at [immutable Git snapshot](docs/archive/management/MANAGER_PRE_REWRITE_20261102.md). Do not append old “CURRENT” reports forever.
