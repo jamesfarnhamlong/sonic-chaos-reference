@@ -7,7 +7,7 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 **Chief-accepted base source:** `SonicChaos_POC@a4c26e13bc323a9f736c613c279b447dd6aedef5` (M6-E widescreen character selection, F5 PASS).
 
-**Candidate awaiting Chief:** `SonicChaos_POC:poc/m6f-offscreen-object-persistence@70cac5dea79e5e81fb88513effec367cb1af4d0c`. Manager GO after verified 1 ahead/0 behind. **Native F5 pending**. Detailed [source evidence](https://github.com/jamesfarnhamlong/SonicChaos_POC/blob/70cac5dea79e5e81fb88513effec367cb1af4d0c/docs/m6f-offscreen-persistence.md) and [Manager gate](m6e-chief-acceptance-m6f-manager-review-20261101.md). The user will check it in one session, not per-ring/enemy builds.
+**M6-F Chief F5 (2 Nov): SPLIT VERDICT.** POC candidate `70cac5dea79e5e81fb88513effec367cb1af4d0c`: **GPZ3 high-Y off-top lost-ring recovery CHIEF PASS**; **enemy persistence CHIEF FAIL**. THZ2 triggered bee resets after player drops between two columns and springs back up, or follows it right while below and returns. Last fully Chief-accepted base remains M6-E. Continue from M6-F on dedicated corrective R1 branch, retaining accepted ring code. [New Chief verdict and source-level THZ2 mandate](m6f-chief-thz2-bee-failure-20261102.md).
 
 Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik foreground opening; original rolling km/h results-panel graphics/scoring; removal of ALL developer keyboard shortcuts while preserving Pause→Level Select; widescreen title/results cards and character select; both characters, campaign, bosses, five Special Stages and endings in prior scoped tests. Do not reopen without a fresh specific regression.
 
@@ -15,7 +15,7 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 | Priority | Feature/issue | Acceptance or decision |
 | --- | --- | --- |
-| **1 — M6-F** | **GPZ3 high-hit ring recovery** in 348-width and **ordinary-enemy movement persistence** when player departs/returns. | Pending Chief's bundled F5; bounded QoL source models improve from 2 to up to 7 individually returning ring tokens in controlled high-hit geometry and retain GPZ patrol AI; native256 remains original. Tests ≠ native observed success. If fails, consolidate exact symptom into one correction batch. |
+| **1 — M6-F-R1** | **Finish THZ2 bee state/identity persistence on vertical departure.** Ring recovery already PASS. | Trace original type$27 post-trigger bit1 keep-alive vs current 128px camera-Y wide cutoff; reproduce both specific twin-column fall/spring and rightward bee chase from below. Fix root cause, preserve native256 and passing GPZ3 rings. ONE integrated candidate and ONE Chief THZ2 F5 after internal tests. |
 | **2 — full playthrough** | Chief will complete **one full game run before any FPS/graphics enhancements**. | Collect current substantial gameplay/presentation concerns, without another broad mandatory re-audit of 93 historical IDs. |
 | **3 — base decision** | Chief might report one or two further tweaks. | Fix any demonstrated base blocker in a meaningful batch; then Chief explicitly approves a private base checkpoint/source manifest. |
 
@@ -48,11 +48,11 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 - M6-F integrated source tests: **15 PASS / one raw FAIL** from an obsolete assertion that the $27 flying family must retire at strict player384 in *all widths*. New widening is deliberately a PC QoL exception; native256 still tests original. Earlier SS5 256px camera, THZ3 old cap, and F8 carry exceptions remain separately documented.
 - Original M5 driver: 25/25 known-use music Chief accepted; 63/63 actual playable Sound Test programmes; 5 empty; unused$8E with no proven retail requester. Some SFX natural site coverage and Continue presentation remain historically unobserved, not a general missing-soundtrack failure.
-- No complete new input-only natural GPZ3 high-hit ROM-to-GameMaker trace internally; M6-F uses controlled original Z80 + shipped GML and awaits Chief real F5.
+- Controlled original-ROM tests did not establish the missing THZ2 twin-column vertical bee route; Chief's natural M6-F F5 **FAIL** overrides prior alias PASS. GPZ3 high-hit ring recovery has now been **Chief-native accepted in scope**; source tests should guard it during R1 but no further human ring trial required.
 - Private ROM/audio/art binaries and user videos do not belong in public reference repository; no automatic main merge, public distribution or executable package release.
 
 ## Next update rule
 
-When Chief reports the **M6-F F5 result**, update its status **in place** here and in the roadmap/agents/memory. If PASS, replace the accepted baseline SHA. If FAIL, record exactly what Chief experienced without asserting prior source verification proves the behaviour perfect.
+M6-F **has been tested**: ring PASS, enemy FAIL. Await **one M6-F-R1 THZ2 bee acceptance**. If PASS, promote the corrected integrated SHA to the fully accepted baseline; if FAIL, record exact symptom without resurrecting the ring work, and give Designer one focused correction.
 
 After the planned **full playthrough**, add only the new owner-confirmed findings. Do not transplant the old 93-row issue ledger into the current backlog.
