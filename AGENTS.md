@@ -55,6 +55,10 @@ After base playthrough, AM-san's suggested optional enhancements can be consider
 
 ## 6. Workspace safety and eventual archiving
 
+**Operational archive plan:** [inventory-first workspace archiving](docs/WORKSPACE_ARCHIVE_STRATEGY.md). This is a future proposal, NOT deletion permission.
+
+
+
 Chief reports roughly **170 working folders** again. Janitor-san is no longer assigned. **Do not delete, move, compress or deregister any local worktree yet.** At base freeze, commission one new **inventory-first archiving plan**, not an improvised cleanup:
 
 - Inventory paths and sizes, `git worktree list --porcelain`, repository/branch/head, working-tree dirty/untracked states, included/excluded original assets, ZIP receipts and hashes. Identify named canonical candidate, research proof, useful unmerged edits, reproducible generated files, caches, and redundant copies.
