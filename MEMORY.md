@@ -30,9 +30,17 @@ Read [AGENTS.md](AGENTS.md) for rules and roles, [ROADMAP.md](ROADMAP.md) for li
 - Agent Windows `Runner.exe` occasionally fails with loader error623; Chief's F5 runs. Do not repeat sandbox troubleshooting.
 - The 93 historic AUDIT-0 records are archival evidence, not current open defects; the current [owner-led register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md) is authoritative.
 
+## New Chief direction — presentable game and permanent cleanup (2 Nov)
+
+- **Final workspace counted:** 133 GB, 2,929,194 files and 1,268,255 folders; Chief confirms final count.
+- **DO NOT archive every old worktree.** Chief explicitly wants redundant working copies, old generated outputs and duplicate milestone ZIPs **permanently deleted** once a per-path inventory proves their redundancy and essential source/private dependencies are independently preserved.
+- **Rename branding** from `SonicChaos_A4B_EXPERIMENTAL` to clean `SonicChaos.yyp` and `SonicChaos.exe` through GameMaker safe workflow on isolated packaging branch. Windows source options already use display name `Sonic Chaos` but have stale executable filename and placeholder metadata.
+- **Standalone file caveat:** `data.win`, `options.ini`, native `g1d_z80.dll`/bank, `a3v_psg.dll`, `a3v_programs.scsp`, policy and OGGs are not assumed rubbish. `g1d_cases.json`, `g1e_cases.json`, `m4/` and earlier G1B SCSP require file-access/route audit before exclusion. Verification and experiments folders may contain untracked unique research/private assets.
+- Next agent work: close exact accepted M6-H source commit, audit/minimize clean Windows VM package, read-only count/size+Git topology inventory, show Chief path-specific DELETE/KEEP/UNKNOWN manifest. No file deletion until Chief approves and canonical restore is demonstrated. [Full plan](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md).
+
 ## Management and workflow decisions
 
-**Workspace cleanup protocol:** [WORKSPACE_ARCHIVE_STRATEGY](docs/WORKSPACE_ARCHIVE_STRATEGY.md), read-only inventory first; no deletion permission.
+**Workspace deletion protocol:** [WORKSPACE_ARCHIVE_STRATEGY](docs/WORKSPACE_ARCHIVE_STRATEGY.md), read-only inventory first; permanent deletion is Chief's desired outcome but exact paths are not yet authorised.
 
 
 
@@ -42,7 +50,7 @@ Read [AGENTS.md](AGENTS.md) for rules and roles, [ROADMAP.md](ROADMAP.md) for li
 
 **Post-base AM-san proposals:** compare 30-FPS Classic with interpolation to 60 rendered frames while maintaining 30 gameplay Step cadence, then optional time-normalized 60-Hz game-logic engineering; sharp bilinear/nearest pixel preservation and optional palette/effects without rewriting sprites; Vita feasibility later via current YoYo Loader versus native VitaSDK; GMS1.4 backport not preferred. *None yet authorised implementation*. Chief wants a full playthrough first.
 
-**Workspace archival problem:** the earlier ~170-folder count was a *top-level development-group estimate*, not a full Windows Properties result. The newer 2 Nov screenshot shows **133 GB, 2,929,194 files and 1,268,255 folders** (still not independently verified as stable); earlier 1.41 GB screenshot was a count-in-progress. No Janitor available. First preserve accepted M6-H private ZIP/manifest/source separately; run read-only high-level inventory to plan 133GB/million-file backup without blind full-tree Robocopy. At base freeze use read-only local inventory of `git worktree list --porcelain`, dirty/untracked states, hashes/archives/asset dependencies and independent backup+restore. Show Chief a dry-run keep/archive/delete proposal. Do **not** delete or move registered worktrees, untracked private assets or E: folders unilaterally.
+**Workspace archival problem:** the earlier ~170-folder count was a *top-level development-group estimate*, not a full Windows Properties result. The newer 2 Nov screenshot shows **133 GB, 2,929,194 files and 1,268,255 folders** (Chief confirms final); earlier 1.41 GB screenshot was a count-in-progress. No Janitor available. First preserve accepted M6-H private ZIP/manifest/source separately; run read-only high-level inventory to plan 133GB/million-file backup without blind full-tree Robocopy. At base freeze use read-only local inventory of `git worktree list --porcelain`, dirty/untracked states, hashes/archives/asset dependencies and independent backup+restore. Show Chief a dry-run keep/archive/delete proposal. Do **not** delete or move registered worktrees, untracked private assets or E: folders unilaterally.
 
 ## Key documents and historical source
 
