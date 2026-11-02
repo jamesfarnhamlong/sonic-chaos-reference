@@ -18,17 +18,21 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 | **M6-D original km/h / no dev shortcuts** | **Chief accepted** `7acdd39f…` | Rolling original $19 panel, time1:50/rings28→617 km/h, all developer keyboard shortcuts removed; Pause Level Select and menu Sound Test retained. |
 | **M6-E character select widescreen** | **Chief accepted** `a4c26e13bc323a9f736c613c279b447dd6aedef5` | Original checker fills 348×196 without stretching; 256x192 art, animation and music unchanged. |
 | M6-A / M6-B / M6-C audits | **Reviewed, no further code justified for their respective historical scopes** | MGHZ3 wide visual roughness retained as parked owner concern; old contact/SEZ/SS3 and palette reports have no current reproducible blocker. |
-| **M6-F-R1 offscreen persistence correction** | **MANAGER GO; Chief THZ2 F5 PENDING** `636ed72be111bc3de4c297e5768c40c8f38a54e6` | M6-F GPZ3 rings Chief PASS preserved. Corrected triggered THZ2 bee vertical identity/phase, source-host compared to original; actual THZ2 drop/spring and below-right follow still need one Chief F5. |
+| **M6-F-R1 offscreen persistence** | **CHIEF ACCEPTED** `636ed72be111bc3de4c297e5768c40c8f38a54e6` | GPZ3 scattered-ring recovery and THZ2 triggered bee identity/patrol continuity both passed Chief F5; preserve current PC-widescreen bounded policy. |
 
-**Accepted POC production parent:** `a4c26e13bc323a9f736c613c279b447dd6aedef5` until Chief accepts M6-F. No POC main merge permitted without Chief instruction.
+**Accepted POC production parent:** `636ed72be111bc3de4c297e5768c40c8f38a54e6` (M6-F-R1, Chief F5 accepted). All new production work branches from R1. No POC main merge permitted without Chief instruction.
 
-## NOW — M6-F-R1: Manager GO for one Chief THZ2 acceptance
+## NOW — M6-G: all-family enemy lifecycle and patrol consistency
 
-**Why this corrective candidate exists:** M6-F **GPZ3 off-top ring recovery CHIEF PASS**; ordinary-enemy continuity **CHIEF FAIL** in THZ2. R1 `SonicChaos_POC:poc/m6f-r1-bee-vertical-retention@636ed72be111bc3de4c297e5768c40c8f38a54e6` is one direct commit after partial M6-F, exact pushed SHA verified, with **one production file changed**. The GPZ3 ring code is byte-identical.
+**New Chief direction (2 Nov):** M6-F-R1's bee now “working canon”; roll out a comprehensive check of **ALL OTHER ORDINARY ENEMY FAMILIES**, especially ground patrols, so none retain the same unintended offscreen kill/recreate problem. Existing ring and THZ2 bee fixes are accepted and locked. Native256 original controls must remain distinct from deliberate bounded 348-wide PC QoL.
 
-**Source proof:** earlier bee placement31 THZ2 (X1152/Y640) was retired at controlled update185 and recreated197 when camera Y departed. Original type$27 keeps triggered bit1 identity across vertical offscreen sleep; state2/3 oscillator continues, state3 has X-only player384 native deletion. R1 returns sleep/hidden cell2 instead of deletion3 outside vertical band and preserves existing finite PC-widescreen **horizontal ±512** departure. Native256, pretrigger, other enemy types, boss/hazard/projectile/graphics unchanged. **197 focused /40,332 original-Z80** assertions, 9 PASS and one inherited all-width384 raw FAIL honestly retained; 15,750 M6-F and879,757 lost-ring internal regressions passed. Source-host, **not** native GameMaker proof. [Full Manager review](docs/m6fr1-manager-review-chief-gate-20261102.md).
+**Production branch:** `poc/m6g-all-enemy-persistence` from exact **Chief-accepted R1** `636ed72be111bc3de4c297e5768c40c8f38a54e6`.
 
-**Single Chief F5 in full private `SonicChaos_M6FR1_20261102_A_PRIVATE.zip`:** (A) THZ2 earlier bee above twin columns: activate, descend between columns, spring back, bee retains evolved identity/patrol rather than resetting; (B) follow bee right from below, depart/return, encounter remains progressed. **No repeat GPZ3 rings, soundtrack, frontend or full campaign**. If both PASS, mark R1 Chief accepted, promote SHA as production checkpoint and proceed with Chief's planned full playthrough. If FAIL, precise natural symptom only; repair narrowly in one integrated candidate. No main merge.
+**First priority: THZ `$21` and GPZ `$25` ground patrols.** Their source can retire/recreate an active placement, resetting origin, direction and patrol state. Compare actual mapped vertical descents and horizontal backtracking with original ROM before choosing per-type retention. Then systematically cover SEZ `$20/$23`, AQZ `$3D` (and classify `$3C` hazard), MGHZ `$24/$2E` slot owners and all THZ/GPZ/EEZ `$27/$2C` aliases; discover any other actual regular-enemy placements instead of assuming this list is exhaustive. **Not every original asleep callback moves**: preserving identity is required for comparable encounters, and uninterrupted offscreen simulation is an explicit, bounded QoL only where justified. Preserve defeated occupancy, AI phases and finite slots, and exclude bosses/projectiles/platforms/collectibles from generic changes.
+
+**One substantial integrated assignment**, not a code change per enemy or a pile of private ZIPs. Original ROM/GML stateful before/after traces + cheap focused verification during work; final cross-family risk-based tests and resource integrity once stable. **ONE private candidate and ONE concise Chief F5** focusing on ground patrol vertical departure and backtrack, plus one additional changed family if needed. Chief's full campaign playthrough follows M6-G and any resulting corrections.
+
+[Binding M6-G directive](docs/m6g-regular-enemy-persistence-chief-directive-20261102.md) · [M6-F-R1 historical Manager review](docs/m6fr1-manager-review-chief-gate-20261102.md).
 
 ## NEXT — base-finish phase, before enhancements
 
@@ -37,7 +41,7 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 3. **Single finish decision:** fix only reproduced substantial issues that emerge; decide which explicitly parked polish (MGHZ3 entrance wide roughness, one-time startup onset) matters to Chief. Old frontend attract demos and save/resume are **POST-BASE** by Chief's current decision. AQZ Tails palette provisionally satisfactory.
 4. **Base checkpoint:** Chief explicitly approves baseline; verify source+private assets, one reproducible GameMaker `.yyp`, clean branch/source SHA, manifest+SHA256, known original fidelity/QoL deviations, open technical exceptions, restoration/launch proof. Freeze without automatically merging main or publishing third-party material.
 
-The **only mandatory currently pending gate** is **M6-F-R1's two THZ2 bee scenarios in one Chief F5**. Source candidate Manager GO; rings already Chief PASS and protected. Full playthrough only after the integrated correction passes. New issues from the full playthrough can change the list.
+The **next development gate** is M6-G regular-enemy persistence across all families, **especially THZ/GPZ patrols**. R1 already Chief PASS; wait for the consolidated M6-G candidate, then one targeted Chief check. The planned full base-game playthrough follows M6-G. New issues from the full playthrough can change the list.
 
 ## AFTER BASE — optional enhancement research, not yet implementation approval
 
