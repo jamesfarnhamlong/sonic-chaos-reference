@@ -18,18 +18,19 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 | **M6-D original km/h / no dev shortcuts** | **Chief accepted** `7acdd39f…` | Rolling original $19 panel, time1:50/rings28→617 km/h, all developer keyboard shortcuts removed; Pause Level Select and menu Sound Test retained. |
 | **M6-E character select widescreen** | **Chief accepted** `a4c26e13bc323a9f736c613c279b447dd6aedef5` | Original checker fills 348×196 without stretching; 256x192 art, animation and music unchanged. |
 | M6-A / M6-B / M6-C audits | **Reviewed, no further code justified for their respective historical scopes** | MGHZ3 wide visual roughness retained as parked owner concern; old contact/SEZ/SS3 and palette reports have no current reproducible blocker. |
-| **M6-F offscreen ring/enemy retention** | **MANAGER GO; Chief F5 PENDING** `70cac5dea79e5e81fb88513effec367cb1af4d0c` | Widescreen-bounded lost-ring upper reentry and previously-awake regular-enemy movement continuity; native256 fidelity controls preserved. |
+| **M6-F offscreen persistence** | **SPLIT Chief F5: rings PASS / enemies FAIL** `70cac5dea79e5e81fb88513effec367cb1af4d0c` | GPZ3 high-Y recoverable rings now work; THZ2 bee resets upon vertical drop/spring-up or following its rightward path from below. M6-F overall HOLD. |
 
 **Accepted POC production parent:** `a4c26e13bc323a9f736c613c279b447dd6aedef5` until Chief accepts M6-F. No POC main merge permitted without Chief instruction.
 
-## NOW — M6-F acceptance and repair if necessary
+## NOW — M6-F-R1: finish enemy persistence without disturbing passing rings
 
-**One combined normal GameMaker F5 session** on private `SonicChaos_M6F_20261101_A_PRIVATE.zip`: 
-1. GPZ3 boss, hit high while carrying rings: some thrown rings should survive off-top travel, fall back and be recoverable where trajectories allow.
-2. GPZ/THZ ordinary moving enemy: step away/offscreen, then return; already-awake patrol/flying movement should have evolved instead of instantly restarting. Long separations beyond finite limits can still retire a placement.
-3. One death/restart and Pause→Level Select smoke.
+**Chief's 2 Nov F5:** high-Y GPZ3 lost-ring return **PASS**; enemy continuity **FAIL**, with two reproducible **THZ2 bee** cases: (a) triggered bee above twin columns resets after player falls between columns then springs back up; (b) following bee right while below then departing/returning also recreates it at origin. No repeat GPZ3 ring human test.
 
-**If PASS:** M6-F SHA becomes accepted base; mark the two gameplay/QoL requirements accepted, *not* perfect original ROM parity. **If FAIL:** collect precise act/position/player/observable symptom, authorize one focused integrated correction; don't issue a dozen diagnostic ZIPs. Designer's 15,750 source checks and 15 PASS / one knowingly superseded raw policy FAIL do not substitute for Chief's native experience. No full campaign retest yet.
+**Probable source cause:** M6-F introduced a 128px camera-Y retention cutoff for already-awake wide flying enemies. Original type$27 sets keep-alive bit1 after player proximity trigger; post-trigger generic offscreen check does not delete it, and later state3 removal uses **player-relative horizontal X separation >=384**, not vertical camera distance. Current wide type$27 post-update cell3 may retire even state2/3 after vertical camera departure. Prove first failing THZ2 update/identity against ROM before changing policy; preserve original sleep semantics and finite memory policy.
+
+**Corrective assignment:** branch `poc/m6f-r1-bee-vertical-retention` from **M6-F candidate** `70cac5dea79e5e81fb88513effec367cb1af4d0c` (not M6-E; keep Chief-passed ring code). One combined agent researches original THZ2 generated$27 route, corrects triggered bee identity/oscillator/state across Y movement, tests THZ1/THZ2 and GPZ/EEZ aliases, preserves native256 and all approved M6-E/M6-D/M6-C2/audio code. Cheap tests during development, one integrated final regression, **one private source ZIP/one short Chief THZ2 F5**. No Runner error623 loop or per-bee microbuilds.
+
+**Detailed source and owner verdict:** [M6-F Chief split result + R1 mandate](docs/m6f-chief-thz2-bee-failure-20261102.md).
 
 ## NEXT — base-finish phase, before enhancements
 
@@ -38,7 +39,7 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 3. **Single finish decision:** fix only reproduced substantial issues that emerge; decide which explicitly parked polish (MGHZ3 entrance wide roughness, one-time startup onset) matters to Chief. Old frontend attract demos and save/resume are **POST-BASE** by Chief's current decision. AQZ Tails palette provisionally satisfactory.
 4. **Base checkpoint:** Chief explicitly approves baseline; verify source+private assets, one reproducible GameMaker `.yyp`, clean branch/source SHA, manifest+SHA256, known original fidelity/QoL deviations, open technical exceptions, restoration/launch proof. Freeze without automatically merging main or publishing third-party material.
 
-The **only mandatory currently pending gate** is M6-F native acceptance. New issues from the full playthrough can change the list.
+The **only mandatory currently pending gate** is corrected M6-F-R1 **THZ2 bee persistence** Chief-native acceptance; M6-F rings already passed and must remain protected. New issues from the full playthrough can change the list.
 
 ## AFTER BASE — optional enhancement research, not yet implementation approval
 
