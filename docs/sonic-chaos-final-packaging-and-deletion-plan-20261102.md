@@ -15,6 +15,30 @@ Scope is **packaging and housekeeping**, not new gameplay features. Preserve M6-
 - Executable extracted contents include `data.win` (~16 MB), `options.ini`, native `g1d_z80.dll` and `g1d_driver.bin`, `a3v_psg.dll`, `a3v_programs.scsp`, `a3v_policy.json`, `a3v_c10_*.scsp`, `a3v_g1b_*.scsp`, `g1d_cases.json`, `g1e_cases.json`, `m4/`, and `SFX_*.ogg/SND_*.ogg`. All are bundled by the accepted package; mere visibility beside EXE is NOT proof a file is unnecessary.
 - Accepted GameMaker script references: `a3v_policy.json`, `a3v_programs.scsp`, `a3v_psg.dll`, `g1d_z80.dll`, `g1d_driver.bin` are explicitly opened or required; `g1d_cases.json` and `g1e_cases.json` appear in proof paths and are candidate test-only files **only after** confirming normal startup/menu/Sound Test/campaign never references them. The historical `m4` PCM backend, old G1B files and streamed OGGs require dependency checks before exclusion.
 
+## Cleanup Batch 1 — manager-reviewed; Chief deletion approval pending (2 Nov)
+
+Designer reports a read-only verified first deletion batch of **seven exact E: paths**, totaling **2,179,106,838 logical bytes (2.18 GB decimal)**: 426,370,449 bytes of generated/extracted E: folders and 1,752,736,389 bytes across four clean historical registered worktrees. Manager review: **GO in principle**, subject to Chief's explicit approval of exact paths, a last-minute status check, verified backup and restore proof. No deletion was performed.
+
+| Exact E: path | Reported size | Disposition |
+| --- | ---: | --- |
+| `E:\AI\Codex\Sonic Chaos\releases\SonicChaos_Windows_20261102_CANDIDATE_B` | ~28.48 MB | DELETE extracted duplicate of retained B ZIP |
+| `E:\AI\Codex\Sonic Chaos\management-audits\production-cleanup-20261102\build` | ~369.42 MB | DELETE generated outputs (includes `build\export-b` 97.68 MB; do not double-count) |
+| `E:\AI\Codex\Sonic Chaos\releases\SonicChaos_Windows_20261102_CANDIDATE` | 28,477,236 bytes | DELETE failed A extracted exact duplicate |
+| `E:\AI\Codex\Sonic Chaos\SonicChaos_POC_audit1` | 468,264,673 bytes | DELETE via `git worktree remove` after status check |
+| `E:\AI\Codex\Sonic Chaos\SonicChaos_POC_m5b0d` | 456,389,033 bytes | DELETE via `git worktree remove` after status check |
+| `E:\AI\Codex\Sonic Chaos\SonicChaos_POC_release_m4` | 451,873,620 bytes | DELETE via `git worktree remove` after status check |
+| `E:\AI\Codex\Sonic Chaos\SonicChaos_POC_release_m3a` | 376,209,063 bytes | DELETE via `git worktree remove` after status check |
+
+**Exclude from this E: batch:** `H:\codex_backup\SonicChaos_20261102_essential\source-restore-check-b` (~104.40 MB) is an additional proposed restored-copy deletion and must be separately authorised. **KEEP** active `E:\AI\Codex\Sonic Chaos\SonicChaos_Production` (496.32 MB registered worktree containing uncommitted source renaming/metadata/startup guard), and both `packaging-b` report directories at `E:\AI\Codex\Sonic Chaos\management-audits\production-cleanup-20261102\packaging-b` and `H:\codex_backup\SonicChaos_20261102_essential\cleanup-review\packaging-b`. Their records include one unique compiled-check report.
+
+**Candidate B smoke:** PASS as reported; new names `SonicChaos.yyp` and `SonicChaos.exe` exist locally but remain uncommitted on the packaging worktree. Native sound, C10 Sound Test banks and required DLLs retained. Tested omission of old `m4/`, eleven legacy G1B resources, `g1d_cases.json`, `g1e_cases.json` and `igor.output.manifest` for accepted normal standalone scope. OGG-by-file requirement and `options.ini` remain unresolved; keep them.
+
+**Seven-path deletion guards:** Obtain Chief approval of exact paths; stop if any path differs, is a junction/reparse point, or contains newly discovered private/untracked/ignored data. Revalidate clean git status, registered worktree topology, independent Git bundle/source ZIP backups and restoration before each removal. Use Git's ordinary worktree remove for four registered folders, exact-path deletion for the three non-worktrees, never force, glob or delete the parent audit/release directories. Log recovered sizes and remaining worktrees. Do not let generated packages or separate source-restore folder become incidental removals.
+
+**Unapproved 14.425 GB proposal:** Local `proposed-deletion-manifest.json` was not available for Manager verification in this chat. Its larger contents and unusually high-count directories remain UNKNOWN/NOT APPROVED until exact evidence is reviewed.
+
+**Separate gameplay issue:** `PROD-AUDIO-A7-REPEAT` is open. Chief reports repeated spike SFX `$A7` when player crosses spike X even at very large Y separation. Possible relationship to enemy persistence is unverified. Do not treat Candidate B packaging PASS as resolving it or change gameplay as part of cleanup.
+
 ## Work order — independently verifiable gates
 
 ### Gate 0 — preserve accepted M6-H source before cleanup
