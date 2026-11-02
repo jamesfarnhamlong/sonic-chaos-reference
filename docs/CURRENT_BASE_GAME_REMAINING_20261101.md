@@ -7,19 +7,20 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 **M6-H/MGHZ-007: CHIEF F5 ACCEPTED 2 NOV — RESOLVED.** Chief tested the single private `SonicChaos_M6H_20261102_A_PRIVATE.zip` and confirmed: **"Yes, perfect! No notes, thats now working as intended."** Initial 348-wide camera right edge between spike3/4 without tree; proper boss/pole reveal; all eight spikes, fight and transition accepted. [Chief acceptance receipt](m6h-chief-acceptance-and-base-status-20261102.md). **No mandatory MGHZ3 fix remains.**
 
-**Published source caveat:** At acceptance the M6-H branch `poc/m6h-mghz3-spike-gated-reveal` was **uncommitted/unpushed**. The last immutable, publicly committed *source* checkpoint remains **M6-G** `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`, while the **accepted playable candidate** is M6-H private ZIP. Designer must publish the exact accepted diff (no code changes) and provide SHA/manifest concordance. No automatic merge or new microtest.
+**M6-H published:** accepted production implementation `c3e40a7a3d6c17be3e17d7c1eb729b2a705a3089` with follow-up verification/docs branch HEAD `64a5a53ceebed43ed79e36a681a27b0d6a0c16aa`. Candidate B packaging smoke PASS is separately reported; renamed `SonicChaos.yyp` / `SonicChaos.exe` and startup guard remain uncommitted on `production/final-packaging-20261102`. No automatic main merge.
 
 Other accepted functionality: Sonic/Tails, five Special Stages, all known-use music via native default, Sound Test, goal km/h, Robotnik opening border, widescreen cards/choice, removed dev shortcuts, recoverable rings, bees and regular enemies in their scoped accepted tests. Avoid another global audit of previously accepted work.
 
-## ACTIVE — final base gate (no mandatory production bug currently confirmed)
+## ACTIVE — final base gate and newly reported spike-sound defect
 
 | Priority | Work | Required result |
 | --- | --- | --- |
-| **1 — closure administration** | Publish exact Chief-approved M6-H candidate on its source branch from M6-G; no gameplay modifications or extra F5. | Full commit SHA, clean local/remote, source-vs-private-ZIP/diff hash, no copyrighted/private asset publication, no main merge. |
+| **1 — M6-H source preservation** | Accepted production commit `c3e40a7...` published. | COMPLETE; keep baseline unchanged. |
+| **2 — `PROD-AUDIO-A7-REPEAT`** | Chief hears spike sound `$A7` repeated when crossing spike X at extreme Y separation. Possible culling-policy relationship unverified. | OPEN; compare authentic sound requester, 2D proximity/trigger and M6-F/G retention without changing packaging. Fix only if evidence supports it, before base freeze. |
 | **2 — Chief full base playthrough** | Complete one normal run of the current accepted game and note only genuinely new reproducible defects, if any. | Short consolidated punch list, not dozens of repeated feature acceptance tests. |
 | **3 — base freeze** | If no substantial new issue is observed, Chief approves a reproducible private baseline. | Exact source SHA + complete GameMaker project, private dependencies, manifest/SHA-256, independent backup and restore/open proof, source/native policy exceptions documented. |
 
-**Currently confirmed mandatory implementation defects: NONE.** This does not mean every rare route was exhaustively exercised by a complete natural campaign; it means the agreed current bug queue is closed pending the final normal run.
+**Current reported gameplay defect:** `PROD-AUDIO-A7-REPEAT` is OPEN and reproducible by Chief's description, but the exact requester and root cause are **unverified**. Candidate B packaging smoke PASS does not demonstrate a fix. No other previous mandatory defect has been reopened.
 
 ## PARKED (owner instruction; not to be auto-assigned)
 
@@ -53,6 +54,6 @@ Other accepted functionality: Sonic/Tails, five Special Stages, all known-use mu
 
 ## Next update rule
 
-**M6-H/MGHZ-007 is Chief-accepted and closed.** Publish the exact accepted M6-H source commit (without altering gameplay), record the new full SHA and manifest parity, then Chief completes the full base-game playthrough. If no new significant defect, prepare the private freeze checkpoint and get owner approval. Do not reopen accepted music, camera, enemy, ring or original scoring milestones without a fresh reproduction.
+**M6-H/MGHZ-007 is Chief-accepted, source committed and closed.** Chief's remaining full playthrough continues with a focused `$A7` spike sound investigation as a new issue, not an automatic conclusion that enemy culling is faulty. If no new significant defect, prepare the private freeze checkpoint and get owner approval. Do not reopen accepted music, camera, enemy, ring or original scoring milestones without a fresh reproduction.
 
 After the full playthrough, add only **new owner-confirmed** issues. Do not transplant the old 93-row issue ledger into the current backlog.
