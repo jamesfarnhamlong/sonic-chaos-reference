@@ -7,7 +7,7 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 **Chief-accepted base source:** `SonicChaos_POC@a4c26e13bc323a9f736c613c279b447dd6aedef5` (M6-E widescreen character selection, F5 PASS).
 
-**M6-F Chief F5 (2 Nov): SPLIT VERDICT.** POC candidate `70cac5dea79e5e81fb88513effec367cb1af4d0c`: **GPZ3 high-Y off-top lost-ring recovery CHIEF PASS**; **enemy persistence CHIEF FAIL**. THZ2 triggered bee resets after player drops between two columns and springs back up, or follows it right while below and returns. Last fully Chief-accepted base remains M6-E. Continue from M6-F on dedicated corrective R1 branch, retaining accepted ring code. [New Chief verdict and source-level THZ2 mandate](m6f-chief-thz2-bee-failure-20261102.md).
+**M6-F Chief split verdict + M6-F-R1 review (2 Nov):** GPZ3 high-Y off-top rings **CHIEF PASS**; triggered THZ2 bee persistence **FAIL in original M6-F**. Corrective M6-F-R1 `poc/m6f-r1-bee-vertical-retention@636ed72be111bc3de4c297e5768c40c8f38a54e6` is now **MANAGER GO, one Chief THZ2 F5 PENDING**. Original THZ2 controlled removal185/recreation197 replaced with triggered state/identity continuity; only placement helper modified, rings byte-identical. [Current R1 Manager gate](m6fr1-manager-review-chief-gate-20261102.md). M6-E remains last fully Chief-accepted source until R1 passes.
 
 Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik foreground opening; original rolling km/h results-panel graphics/scoring; removal of ALL developer keyboard shortcuts while preserving Pause→Level Select; widescreen title/results cards and character select; both characters, campaign, bosses, five Special Stages and endings in prior scoped tests. Do not reopen without a fresh specific regression.
 
@@ -15,7 +15,7 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 | Priority | Feature/issue | Acceptance or decision |
 | --- | --- | --- |
-| **1 — M6-F-R1** | **Finish THZ2 bee state/identity persistence on vertical departure.** Ring recovery already PASS. | Trace original type$27 post-trigger bit1 keep-alive vs current 128px camera-Y wide cutoff; reproduce both specific twin-column fall/spring and rightward bee chase from below. Fix root cause, preserve native256 and passing GPZ3 rings. ONE integrated candidate and ONE Chief THZ2 F5 after internal tests. |
+| **1 — M6-F-R1** | **THZ2 bee triggered offscreen identity/patrol correction**; GPZ3 rings already accepted. | Source/ROM proof PASS, commit `636ed72be…` Manager GO. Chief only needs (A) twin-column fall/spring and (B) follow from below/right in one F5. Protect passing ring fix; no broader builds/retests. |
 | **2 — full playthrough** | Chief will complete **one full game run before any FPS/graphics enhancements**. | Collect current substantial gameplay/presentation concerns, without another broad mandatory re-audit of 93 historical IDs. |
 | **3 — base decision** | Chief might report one or two further tweaks. | Fix any demonstrated base blocker in a meaningful batch; then Chief explicitly approves a private base checkpoint/source manifest. |
 
@@ -53,6 +53,6 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 ## Next update rule
 
-M6-F **has been tested**: ring PASS, enemy FAIL. Await **one M6-F-R1 THZ2 bee acceptance**. If PASS, promote the corrected integrated SHA to the fully accepted baseline; if FAIL, record exact symptom without resurrecting the ring work, and give Designer one focused correction.
+M6-F original received ring PASS/enemy FAIL. **Corrective R1 is now packaged and Manager GO**; awaiting only one THZ2 two-scenario Chief F5. On PASS, promote `636ed72be111bc3de4c297e5768c40c8f38a54e6` as fully accepted production baseline and start Chief full playthrough. On FAIL, record the specific scenario and avoid reopening accepted rings.
 
 After the planned **full playthrough**, add only the new owner-confirmed findings. Do not transplant the old 93-row issue ledger into the current backlog.
