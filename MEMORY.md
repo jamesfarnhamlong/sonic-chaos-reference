@@ -30,6 +30,10 @@ Read [AGENTS.md](AGENTS.md) for rules and roles, [ROADMAP.md](ROADMAP.md) for li
 
 ## Management and workflow decisions
 
+**Workspace cleanup protocol:** [WORKSPACE_ARCHIVE_STRATEGY](docs/WORKSPACE_ARCHIVE_STRATEGY.md), read-only inventory first; no deletion permission.
+
+
+
 **Team is Chief, Manager-san, AM-san, ONE combined Research/Designer Codex agent.** No Janitor, Cloud-kun or separate Claude agent assigned here. Combined agent handles ROM code plus GameMaker implementation, but does not approve its own Chief gates.
 
 **Builds and credits are expensive:** gather evidence/implement related tasks first, cheap targeted tests during coding, one integrated risk-based regression and one private source ZIP / Chief F5 once stable. Only repackage after an actual failure. Preserve source SHA, ZIP checksum/manifest, resource count, exact raw inherited failures; no automatic main merge or public publication of private ROM-derived assets.
