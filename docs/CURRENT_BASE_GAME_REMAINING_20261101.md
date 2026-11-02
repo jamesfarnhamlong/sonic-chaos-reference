@@ -7,7 +7,7 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 **Chief-accepted base source:** `SonicChaos_POC@636ed72be111bc3de4c297e5768c40c8f38a54e6` (**M6-F-R1 Chief PASS**: GPZ3 high-Y ring recovery + THZ2 bee encounter retention).
 
-**M6-F-R1 Chief verdict updated 2 Nov:** The previously pending R1 correction `636ed72be111bc3de4c297e5768c40c8f38a54e6` has now **PASSED Chief F5** for the THZ2 bee; previous GPZ3 lost-ring recovery also PASS. M6-F-R1 is **fully Chief accepted**, not Manager GO / Chief pending. Chief has now explicitly requested a **new comprehensive M6-G ordinary-enemy offscreen persistence rollout**, particularly THZ/GPZ ground patrols. [Current directive](m6g-regular-enemy-persistence-chief-directive-20261102.md).
+**Current milestone (2 Nov): M6-G has completed source implementation and is MANAGER GO / Chief F5 PENDING** at `SonicChaos_POC:poc/m6g-all-enemy-persistence@6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`, one commit after fully Chief-accepted R1. Five regular enemy types changed, two flying types unchanged; 95 placements mapped. Source gate **19 PASS / two raw FAIL** (one inherited viewport384 assertion, one newly superseded SEZ wide-Y removal rule); known THZ `$21` falling-asleep mismatch and GPZ1 below-world record retained. Single Chief check: THZ patroller vertical departure, GPZ patroller backtrack, SEZ hopper. No ring/bee human retests. [M6-G Manager review](m6g-manager-review-chief-f5-gate-20261102.md); [original directive](m6g-regular-enemy-persistence-chief-directive-20261102.md).
 
 Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik foreground opening; original rolling km/h results-panel graphics/scoring; removal of ALL developer keyboard shortcuts while preserving Pause→Level Select; widescreen title/results cards and character select; both characters, campaign, bosses, five Special Stages and endings in prior scoped tests. Do not reopen without a fresh specific regression.
 
@@ -15,7 +15,7 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 | Priority | Feature/issue | Acceptance or decision |
 | --- | --- | --- |
-| **1 — M6-G** | **All regular-enemy-family persistence/encounter consistency**, priority THZ `$21` and GPZ `$25` ground patrols. | Chief R1 bee PASSED. Agent researches every regular family and original sleep/retire semantics, corrects proven premature wide despawn/recreation while preserving bounded lifetime, original256 parity and passing bee/ring code. ONE integrated candidate / ONE Chief patrol test at end. |
+| **1 — M6-G** | **Five-family enemy persistence correction; existing `$27/$2C` flying acceptance preserved** | Integrated candidate `6e2ffcc1…` **Manager GO / Chief native F5 pending**. THZ patrol vertical return, GPZ patrol moderate backtrack, SEZ hopper depart/return in one session. Explicit native `$25` callback correction; two raw policy tests remain FAIL; no other Chief retests. |
 | **2 — full playthrough** | Chief will complete **one full game run before any FPS/graphics enhancements**. | Collect current substantial gameplay/presentation concerns, without another broad mandatory re-audit of 93 historical IDs. |
 | **3 — base decision** | Chief might report one or two further tweaks. | Fix any demonstrated base blocker in a meaningful batch; then Chief explicitly approves a private base checkpoint/source manifest. |
 
@@ -53,6 +53,6 @@ Previously Chief accepted: M5 native known-use music and Sound Test; Robotnik fo
 
 ## Next update rule
 
-M6-F-R1 corrected the earlier enemy FAIL and **Chief has now PASSED it**. Await **M6-G combined family rollout** and one later Chief patrol check; promote integrated M6-G only on Chief F5. The planned full base playthrough follows completion of this remaining enemy consistency milestone.
+M6-F-R1 remains **fully Chief accepted**. M6-G implementation is complete and **Manager GO, but NOT yet Chief accepted**. Await its one THZ/GPZ/SEZ F5 session; promote `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905` only if Chief passes. Then Chief's full normal playthrough precedes any enhancements.
 
 After the planned **full playthrough**, add only the new owner-confirmed findings. Do not transplant the old 93-row issue ledger into the current backlog.
