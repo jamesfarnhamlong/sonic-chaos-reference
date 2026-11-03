@@ -11,7 +11,13 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 Other accepted functionality: Sonic/Tails, five Special Stages, all known-use music via native default, Sound Test, goal km/h, Robotnik opening border, widescreen cards/choice, removed dev shortcuts, recoverable rings, bees and regular enemies in their scoped accepted tests. Avoid another global audit of previously accepted work.
 
-## ACTIVE — Chief Tails full campaign result (3 Nov 2026) — RELEASE HOLD
+## 3 Nov — Sonic full-campaign result, shared AQZ regressions confirmed
+
+**Chief has completed both Tails AND Sonic complete natural campaigns** on the *same unchanged* 3 Nov ZIP / local `8b3b435`. Sonic additionally exercised **part of** the emerald route (not a new complete Special Stage sweep) and reported **NO additional defects**. Shared repeat observations: AQZ1/2 television explosion palette + vertical offset, and AQZ boss `$8C` music replaced by zone `$93` when incoming invincibility wears off. Tails movement (dry and underwater), THZ3 missing spike SFX and other earlier Tails findings remain open; the dedicated Tails physics parity audit is **ongoing**. [Consolidated Chief-run issue ledger](tails-final-campaign-defect-triage-20261103.md).
+
+**Boss music canonical question UNRESOLVED:** Original timer restore `$189B` respects `$D4A3` music guard; `$D44E` marks AQZ boss activity separately. Need true ROM boss-invincibility overlapping timeline before claiming it is an original bug. If canon, ask Chief whether intentional PC improvement to keep boss track; if noncanon, fidelity correction. Do not infer original behavior from two GameMaker repeats. No extra full Sonic run requested; one grouped correction after final Tails/SFX/audio/TV verification.
+
+## PREVIOUS — Tails full campaign result (3 Nov 2026) — RELEASE HOLD
 
 Chief completed the Tails campaign in the exact final candidate `8b3b435`, identified **nine observations**. Sonic complete campaign of that same unchanged ZIP is now underway; **don't rebuild or alter it mid-test**. [Full final-campaign defect register](tails-final-campaign-defect-triage-20261103.md).
 
