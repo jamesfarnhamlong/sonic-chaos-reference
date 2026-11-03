@@ -39,6 +39,18 @@ Designer reports a read-only verified first deletion batch of **seven exact E: p
 
 **Separate gameplay issue:** `PROD-AUDIO-A7-REPEAT` is open. Chief reports repeated spike SFX `$A7` when player crosses spike X even at very large Y separation. Possible relationship to enemy persistence is unverified. Do not treat Candidate B packaging PASS as resolving it or change gameplay as part of cleanup.
 
+## Source package B — missing GameMaker Notes resources (3 Nov)
+
+**Chief packaging failure:** first private source package did not open in GameMaker until omitted `notes/` files were restored. Verified accepted M6-H `.yyp` `resources[]` explicitly registers two `GMNotes` resources:
+- `notes/notes/notes.yy` and associated `notes.txt`;
+- `notes/compatibility_report_190926_1658555855/compatibility_report_190926_1658555855.yy` and associated report `.txt`.
+
+These are **not standalone runtime requirements or gameplay sound assets**. However they **are GameMaker project-resource dependencies so long as the `.yyp` references them**. An incomplete source ZIP is a packaging **FAIL** regardless of a separately successful Windows EXE smoke. Do not describe historical notes as inherently load-bearing *game code*; they are **registered IDE resources**. If Chief chooses to remove old notes, remove their resource entries via GameMaker and re-save the project, preserving original history/attribution as appropriate. Otherwise include them in the source package.
+
+**Required packager fix, not another temporary package job:** Derive a complete required-resource closure from `.yyp` resource `id.path`, folder references, `IncludedFiles`, event scripts and dependent resource files; verify every declared path exists in the source ZIP **before delivery**. Validate extraction and successful IDE-open from an isolated folder, not an existing worktree with missing resources supplied elsewhere. This check must include notes and any future seldom-used GameMaker resource types. Do not blindly delete registered source resources in the name of housekeeping.
+
+**Version distinction:** Chief's 3 Nov distant-spike reproduction used `SonicChaos_Production_20261102_SOURCE_PRIVATE_B`, which predates the later local-only environmental-audio correction. Maintain separate labels: B source package openability, B compiled executable smoke PASS, and **environmental audio correction awaiting Chief F5 from `SonicChaos_Production\SonicChaos.yyp`**. No extra builds/worktrees needed for this check.
+
 ## Revised Chief direction — one substantial deletion pass
 
 Chief rejects microbatches of roughly 2 GB against a 133 GB workspace; the seven-path Batch 1 is a verified **subset**, not a separate end-goal. Chief has H: backup space available. Reuse the existing full scan and 14.425 GB proposed-deletion manifest **as a starting point**, not a ceiling. No new builds, GameMaker worktrees, packaging candidates or repeated entire-disk scans.
