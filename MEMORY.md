@@ -3,7 +3,11 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT — final owner test, not more development
+## CURRENT — Both full campaigns complete, corrections pending
+
+**3 Nov:** Sonic full natural playthrough COMPLETE on unchanged `8b3b435` Windows ZIP; no additional defects, partial emerald run also uneventful. Tails full campaign complete earlier with new physics/audio/presentation findings. Both Sonic/Tails repro AQZ TV explosion bad palette and raised animation, plus AQZ boss $8C replaced by zone $93 on invincibility expiration. **NOT YET FROZEN.** Tails full dry/underwater ROM input/velocity audit underway; THZ3 missing moving-spike SFX requires automated full SFX requester review. Canonical boss-music question unresolved: ROM $189B zone restore guard $D4A3 and boss-active $D44E are distinct. [New authoritative issue register](docs/tails-final-campaign-defect-triage-20261103.md). One consolidated correction package then limited targeted human acceptance; no routine third Sonic full run.
+
+## PREVIOUS — final owner test planning
 
 - **Final private candidate prepared by Designer; committed locally `8b3b435`, clean worktree.** `E:\AI\Codex\Sonic Chaos\releases\SonicChaos_Production_20261103_FINAL_CANDIDATE_SOURCE_PRIVATE.zip` (12.10 MB), `SonicChaos_Windows_20261103_FINAL_CANDIDATE_PRIVATE.zip` (5.93 MB), `SonicChaos_Production_20261103_FINAL_CANDIDATE_RECEIPT.json` (dependency manifest/checksums). GameMaker standard Windows output unmodified.
 - **One authentic gameplay Z80 sound engine now serves gameplay AND F2 Sound Test.** Driver matched 408,000 independent ROM-source ticks for all 68 IDs previously; new integrated native catalogue/UI, queue, startup and cross-zone checks PASS per Designer. All 63 playable and five intentionally empty entries remain; obsolete B1/C10/G1B/M4 production playback, all 26 sample/GMSound assets and obsolete Notes retired; all registered resource paths and source ZIP opening/Windows extraction/compilation checks PASS. **Five inherited raw verifier failures remain recorded.** This is an automated preflight pass; **Chief has not yet completed real natural full Sonic/Tails test or human listening.**
