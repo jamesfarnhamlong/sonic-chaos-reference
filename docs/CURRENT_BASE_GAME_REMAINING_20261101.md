@@ -11,7 +11,15 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 Other accepted functionality: Sonic/Tails, five Special Stages, all known-use music via native default, Sound Test, goal km/h, Robotnik opening border, widescreen cards/choice, removed dev shortcuts, recoverable rings, bees and regular enemies in their scoped accepted tests. Avoid another global audit of previously accepted work.
 
-## ACTIVE — final base gate and newly reported spike-sound defect
+## ACTIVE — Chief Tails full campaign result (3 Nov 2026) — RELEASE HOLD
+
+Chief completed the Tails campaign in the exact final candidate `8b3b435`, identified **nine observations**. Sonic complete campaign of that same unchanged ZIP is now underway; **don't rebuild or alter it mid-test**. [Full final-campaign defect register](tails-final-campaign-defect-triage-20261103.md).
+
+**P0: THZ3 moving spike missing $A7** (Chief requests all-SFX automated ROM-to-production audit, no manual 37-SFX checking); **P0: Tails ordinary ground roll/spin dash very excessive/slippery/abrupt speed**; **P0: boss AQZ invincibility expiry restores zone music over boss $8C**. **P1: AQZ1/2 destroyed monitor explosion wrong palette and raised position**; **P1: Tails underwater braking/momentum feels too strong**. These are potential release blockers to adjudicate with exact original-ROM traces and current GameMaker source. **P2 deferred:** pause during results (Chief retaining temporary debug), post-final-boss vertical Tails pursuit (ROM camera/input study).
+
+**Chief follow-up:** MGHZ falling hazard Spring Shoes ring loss and slow-to-trigger coconut proximity are **provisionally CLOSED as canonical $24 behaviour** based on ROM research; they are NOT active fix requests. Confirm exact object identity opportunistically. Tails **full dry+underwater movement audit** is top priority, including fixed-point/Step translation and same-input comparison with Sonic control; if ROM is genuinely this slippery, explain and don't blindly retune. Allow source/ROM investigation while Sonic playthrough continues, but one grouped correction candidate after full findings. 
+
+## PREVIOUS BASE GATE — historical state before Chief complete campaign
 
 | Priority | Work | Required result |
 | --- | --- | --- |
