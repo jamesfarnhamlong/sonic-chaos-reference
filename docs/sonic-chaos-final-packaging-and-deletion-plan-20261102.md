@@ -1,6 +1,14 @@
 # Sonic Chaos — final packaging, source hygiene and permanent workspace deletion
 **Manager-san #9 · 2 November 2026 · CHIEF DIRECTION**
 
+## 3 Nov 2026 — CURRENT RELEASE/WORKSPACE CLOSEOUT
+
+**Final technical production candidate is READY for Chief human acceptance, NOT base-frozen.** Designer reports local clean commit `8b3b435`; private source `SonicChaos_Production_20261103_FINAL_CANDIDATE_SOURCE_PRIVATE.zip` (12.10 MB), Windows ordinary GameMaker-exported `SonicChaos_Windows_20261103_FINAL_CANDIDATE_PRIVATE.zip` (5.93 MB), and receipt `SonicChaos_Production_20261103_FINAL_CANDIDATE_RECEIPT.json` in E: releases. Final native Sound Test routes through gameplay original Z80 driver with 68 entries retained; duplicate B1/C10/G1B/M4 runtime audio removed, 26 legacy GameMaker sounds/OGGs and obsolete Notes retired. Source loading, normal compilation/extraction, native audio programme/UI, queue/startup/cross-zone verification PASS **as reported**, with **five inherited raw verifier failures documented**. No Chief campaign/listening verdict yet. Don't touch exact ZIP content after Chief begins testing. Preserve source/package hashes and independently back up local-only `8b3b435` to H: before base freeze; ancestor `8e9d224` backup alone is not sufficient.
+
+**Workspace cleanup fully complete:** 112.53 GB bulk + 19.69 GB root housekeeping removed, 89+49 Git worktrees retired. Root is **12 folders and only one current AGENTS.md** (was 74 folders/11 loose files). Fifty-two historical management docs in one SHA-256-verified H: archive, four Git stores/accepted packages intact. Golden A1L PSG and separate M4 tooling remain documented **non-runtime** support exceptions, not shipped duplicate audio engines. Do not restart either cleanup task.
+
+*Below: historical decisions retained as provenance; stale "pending" instructions are superseded by the closeout above.*
+
 ## Chief's specific direction
 
 The final game must not be presented as `SonicChaos_A4B_EXPERIMENTAL`; its standalone ZIP and source root contain visible old/research artifacts. Chief explicitly wants **permanent deletion of unneeded content**, **not an ever-growing archive**. The fully counted Windows workspace properties show **133 GB / 2,929,194 files / 1,268,255 folders** at `E:\AI\Codex\Sonic Chaos`. Earlier 1.41 GB count was incomplete.
