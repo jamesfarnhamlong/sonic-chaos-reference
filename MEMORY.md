@@ -3,7 +3,13 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT — Both full campaigns complete, corrections pending
+## CURRENT FINDINGS — original ROM adjudication, 3 Nov
+
+Chief has completed **both full natural Sonic and Tails campaigns** on the unchanged 3 Nov `8b3b435` candidate. Dedicated Designer ROM audit of Tails reports acceleration/friction/caps/spin-dash release PASS for tested controls; alleged exceptional roll speed not reproduced, **no retuning**. **Confirmed original/production divergences:** Tails flight missing terrain-probe flags (first differing tick2) and AQZ surface `$1E` wall projection missing (first different tick61; following-tick velocity, both characters). **Original ROM also allows invincibility expiry to overwrite AQZ boss music with zone music; Chief explicitly requires preserving canonical behavior — FT-08 CLOSED, no fix.**
+
+Remaining action: compare/fix those two movement divergences, THZ3 moving-spike missing SFX + full SFX matrix, and AQZ monitor explosion palette/position. Other low-priority observations parked. Previous 408,000-tick audio parity and all 68 Sound Test entries protected. Current E: ROM audit reports `management-audits/tails-movement-20261103/REPORT.md` and `AQZ-MUSIC.md` were not uploaded into this chat; conclusions from Designer summary only. No production changes or new build in this audit. One grouped corrected candidate after monitor/SFX work; focused Chief check, no third full Sonic campaign.
+
+## PREVIOUS — Both full campaigns complete, corrections pending
 
 **3 Nov:** Sonic full natural playthrough COMPLETE on unchanged `8b3b435` Windows ZIP; no additional defects, partial emerald run also uneventful. Tails full campaign complete earlier with new physics/audio/presentation findings. Both Sonic/Tails repro AQZ TV explosion bad palette and raised animation, plus AQZ boss $8C replaced by zone $93 on invincibility expiration. **NOT YET FROZEN.** Tails full dry/underwater ROM input/velocity audit underway; THZ3 missing moving-spike SFX requires automated full SFX requester review. Canonical boss-music question unresolved: ROM $189B zone restore guard $D4A3 and boss-active $D44E are distinct. [New authoritative issue register](docs/tails-final-campaign-defect-triage-20261103.md). One consolidated correction package then limited targeted human acceptance; no routine third Sonic full run.
 
