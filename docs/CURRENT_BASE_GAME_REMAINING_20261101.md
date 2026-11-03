@@ -16,11 +16,11 @@ Other accepted functionality: Sonic/Tails, five Special Stages, all known-use mu
 | Priority | Work | Required result |
 | --- | --- | --- |
 | **1 — M6-H source preservation** | Accepted production commit `c3e40a7...` published. | COMPLETE; keep baseline unchanged. |
-| **2 — $A7 spike environmental audio** | Original sleep/callback lifecycle restored locally; Chief accepted corrected F5 on 3 Nov. | **CHIEF ACCEPTED; commit exact tested source, do not re-audit.** |
+| **2 — $A7 spike environmental audio** | Original sleep/callback lifecycle restored locally; Chief accepted corrected F5 on 3 Nov. | **CHIEF ACCEPTED; exact tested local commit `8e9d224...` recorded, not pushed.** |
 | **2 — Chief full base playthrough** | Complete one normal run of the current accepted game and note only genuinely new reproducible defects, if any. | Short consolidated punch list, not dozens of repeated feature acceptance tests. |
 | **3 — base freeze** | If no substantial new issue is observed, Chief approves a reproducible private baseline. | Exact source SHA + complete GameMaker project, private dependencies, manifest/SHA-256, independent backup and restore/open proof, source/native policy exceptions documented. |
 
-**Current gameplay position:** The known $A7 distant spike repetition is **Chief F5 ACCEPTED in observed scope**, while its exact corrected source remains local/uncommitted. No other mandatory defect is currently open; Chief's ongoing full Sonic/Tails playthrough may surface new issues.
+**Current gameplay position:** The known $A7 distant spike repetition is **Chief F5 ACCEPTED in observed scope**, and its exact corrected source is now committed locally as `8e9d22499dc910922bd788346bb35678b4a28494` (not yet pushed). No other mandatory defect is currently open; Chief's ongoing full Sonic/Tails playthrough may surface new issues.
 
 ## PROD-AUDIO-A7-REPEAT — CHIEF F5 ACCEPTED (3 Nov 2026)
 
@@ -28,7 +28,7 @@ Chief tested the **corrected live project** `E:\AI\Codex\Sonic Chaos\SonicChaos_
 
 ROM/oracle and GameMaker source evidence is in Designer's private `docs/production/environmental-audio-audit.md` / `verification/environment-audio/`: $1B moving-spike inactive/sleep and one-shot script-entry timing; 4,962 new focused checks PASS and adjacent environmental contract regressions. Three runtime scripts were changed locally: `SCR_chaos_spike1b`, `SCR_chaos_objects`, `SCR_chaos_adapter`; enemy/flying/ring retention code unchanged. Other environmental requester sites were reviewed; no other repeating-distance defect demonstrated, but not every rare natural audio route exhaustively tested.
 
-**Publication still pending:** The accepted audio change resides in the **uncommitted** local `SonicChaos_Production` source alongside earlier production naming/packaging changes. Designer should first preserve/commit the *exact Chief-tested source* with isolated diff and source-to-receipt concordance; verify that extra GameMaker generated changes were not mixed in, and protect `SonicChaos_Production` from cleanup deletion. No new builds/worktrees and no main merge. Keep the current clean `SonicChaos.yyp` source project and avoid unnecessary files in future source ZIP/EXE packages. Source ZIP must include **all registered GameMaker resources** (or remove unwanted note resources properly from the project before packaging); executable ZIP contains only demonstrated necessary runtime assets. Chief has additional major-cleanup results to review separately.
+**Source committed locally; independent recovery/push pending:** Designer reported exact Chief-tested runtime at `8e9d22499dc910922bd788346bb35678b4a28494`, with all 558 protected GML hashes unchanged and packaging/cleanup edits excluded. No push/build/package/new worktree. Before major workspace deletion, verify this exact commit is in a freshly validated H: Git bundle/scratch restore; preserve `SonicChaos_Production` and its earlier pending packaging changes. Do not imply it has been pushed. No new builds/worktrees and no main merge. Keep the current clean `SonicChaos.yyp` source project and avoid unnecessary files in future source ZIP/EXE packages. Source ZIP must include **all registered GameMaker resources** (or remove unwanted note resources properly from the project before packaging); executable ZIP contains only demonstrated necessary runtime assets. Chief has additional major-cleanup results to review separately.
 
 ## PARKED (owner instruction; not to be auto-assigned)
 
