@@ -11,7 +11,13 @@ For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../RO
 
 Other accepted functionality: Sonic/Tails, five Special Stages, all known-use music via native default, Sound Test, goal km/h, Robotnik opening border, widescreen cards/choice, removed dev shortcuts, recoverable rings, bees and regular enemies in their scoped accepted tests. Avoid another global audit of previously accepted work.
 
-## 3 Nov — Sonic full-campaign result, shared AQZ regressions confirmed
+## 3 Nov — ROM movement findings and AQZ music CANONICAL, no production edits
+
+Designer reports **bounded original-ROM parity PASS** for Tails acceleration, friction, speed caps and spin-dash release. Chief's abnormal roll-speed burst was **not reproduced**; do not adjust speeds from feel. **Two genuine GameMaker movement mismatches identified**: (1) missing terrain-probe flags, **Tails flight cancellation differs from tick 2**, and (2) missing surface `$1E` wall projection in AQZ, **differs at tick 61 with velocity divergence the next tick**, affecting **both characters**. Correct only verified divergences and protect authentic dry/water table values.
+
+**Boss music verdict: ROM CONFIRMED / CHIEF ACCEPTED CANON.** The AQZ invincibility timer can replace boss music with zone music in the original game; Chief requests preservation, **no boss-music override, FT-08 CLOSED**. Prior text calling it unresolved is historical. Full private ROM reports at local `management-audits/tails-movement-20261103/REPORT.md` and `AQZ-MUSIC.md`. `8b3b435` source and ZIPs unchanged; no new build. Remaining required investigation: FT-01 THZ3 SFX + all-SFX automated matrix; FT-05 AQZ monitor explosion palette/position; targeted corrections to two confirmed movement divergences. [Current grouped issue register](tails-final-campaign-defect-triage-20261103.md).
+
+## PREVIOUS — Sonic full-campaign result, shared AQZ observations
 
 **Chief has completed both Tails AND Sonic complete natural campaigns** on the *same unchanged* 3 Nov ZIP / local `8b3b435`. Sonic additionally exercised **part of** the emerald route (not a new complete Special Stage sweep) and reported **NO additional defects**. Shared repeat observations: AQZ1/2 television explosion palette + vertical offset, and AQZ boss `$8C` music replaced by zone `$93` when incoming invincibility wears off. Tails movement (dry and underwater), THZ3 missing spike SFX and other earlier Tails findings remain open; the dedicated Tails physics parity audit is **ongoing**. [Consolidated Chief-run issue ledger](tails-final-campaign-defect-triage-20261103.md).
 
