@@ -3,11 +3,15 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT FINDINGS — original ROM adjudication, 3 Nov
+## CURRENT — Corrective A prepared; owner three-topic check pending (3 Nov)
 
-Chief has completed **both full natural Sonic and Tails campaigns** on the unchanged 3 Nov `8b3b435` candidate. Dedicated Designer ROM audit of Tails reports acceleration/friction/caps/spin-dash release PASS for tested controls; alleged exceptional roll speed not reproduced, **no retuning**. **Confirmed original/production divergences:** Tails flight missing terrain-probe flags (first differing tick2) and AQZ surface `$1E` wall projection missing (first different tick61; following-tick velocity, both characters). **Original ROM also allows invincibility expiry to overwrite AQZ boss music with zone music; Chief explicitly requires preserving canonical behavior — FT-08 CLOSED, no fix.**
+**Original private base `8b3b435`** completed both natural Sonic/Tails campaigns. Sonic reported no new faults, Tails reported nine observations; original ROM proved THZ3 spike SFX jump-priority suppression and AQZ invincibility expiry boss theme overwrite canonical, Chief chose to preserve both. Falling MGHZ $24 damage/proximity also accepted provisionally, no rebalancing.
 
-Remaining action: compare/fix those two movement divergences, THZ3 moving-spike missing SFX + full SFX matrix, and AQZ monitor explosion palette/position. Other low-priority observations parked. Previous 408,000-tick audio parity and all 68 Sound Test entries protected. Current E: ROM audit reports `management-audits/tails-movement-20261103/REPORT.md` and `AQZ-MUSIC.md` were not uploaded into this chat; conclusions from Designer summary only. No production changes or new build in this audit. One grouped corrected candidate after monitor/SFX work; focused Chief check, no third full Sonic campaign.
+**Corrective A `fc19b3f` LOCAL** changes only four runtime files: (1) original Tails flight terrain-probe cancellation; (2) both-character AQZ surface $1E wall projection; (3) original AQZ monitor explosion indexed art, +18 draw anchor and 40-update animation. 6,880 paired AQZ updates, 37 SFX programme ROM/CPU/PSG/PCM, 68 F2 Sound Test, startup, packaging and adjacent focused checks PASS per Designer. FIVE inherited raw verifier failures remain. Natural coverage of all 109 SFX requester contexts was NOT claimed; $B8 hold and three unknown triggers remain explicit technical limits. Old baseline ZIP/source and new Corrective A source/Windows ZIP/receipts independently backed up H:.
+
+**ONLY mandatory next step:** Chief visually/physically checks AQZ poof palette/placement, Tails flight cancellation, and AQZ wall contacts on `SonicChaos_Windows_20261103_CORRECTIVE_A_PRIVATE.zip`. No further full Sonic campaign or all-SFX manual loop. If PASS, Chief may approve private base freeze. Until then technical candidate ≠ owner accepted.
+
+**Tracker:** [Complete 104-row current CSV](docs/tracking/SonicChaos_CURRENT_Issue_Tracker_20261103.csv), [scope/readme/watchlist](docs/tracking/README.md); original 93 rows untouched under `docs/audit0/`, parallel owner-facing Excel in project Library.
 
 ## PREVIOUS — Both full campaigns complete, corrections pending
 
