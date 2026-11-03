@@ -3,7 +3,13 @@
 
 For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../ROADMAP.md). This is a **small live/parked issue register**, not the entire original 93-ID AUDIT-0 archive. [Previous verbose version is preserved in Git history](archive/management/MANAGER_PRE_REWRITE_20261102.md). Historical source classifications are kept in [AUDIT-0](audit0/README.md), the [AUDIT-1 evidence branch](https://github.com/jamesfarnhamlong/SonicChaos_POC/tree/ad01199ad131f66e5f4e54a5308b611e638703f5/docs/audit1) and [Chief's 21-item triage](chief-current-issue-triage-20261101.md).
 
-## Current production truth
+## CURRENT — CORRECTIVE A READY; NO FURTHER CONFIRMED CODE FIX, CHIEF ACCEPTANCE PENDING
+
+**3 Nov `fc19b3f`:** source/Windows corrective package created by Designer, H: preservation verified, no new source edits after report. ROM-backed fixes for Tails flight cancellation, AQZ $1E wall projection for both characters, AQZ monitor poof indexed palette / +18 anchor / 40-update animation. Automated focused PASS: 6,880 paired AQZ updates, 37 SFX programmes, 68 F2 catalogue, native startup/Windows ordinary export; five inherited raw verifier failures unchanged. **Chief check outstanding only for three areas**: AQZ exploding monitors, Tails flight cancellation, AQZ wall movement. Boss-theme overwrite and THZ3 jump-overlap spike silence proven canonical, Chief explicitly preserves. MGHZ falling $24 hazard footwear/range provisionally accepted. Both Sonic/Tails complete campaigns were on `8b3b435`, which remains frozen as previous checkpoint.
+
+**Updated issues:** [104-row current spreadsheet-compatible CSV](tracking/SonicChaos_CURRENT_Issue_Tracker_20261103.csv) and [watchlist](tracking/README.md); AM-san's 93-entry AUDIT0 unchanged and historical counts are NOT active release bugs. Remaining non-blockers are optional attract demos and results Pause gating, first-start audio delay, unverified end-boss Tails vertical pursuit, unreproduced extreme Tails roll, SFX $B8/three requester evidence gaps, inherited raw verifier exceptions. No new mass audit or new gameplay fix instructed.
+
+## PREVIOUS — Current production truth
 
 **M6-H/MGHZ-007: CHIEF F5 ACCEPTED 2 NOV — RESOLVED.** Chief tested the single private `SonicChaos_M6H_20261102_A_PRIVATE.zip` and confirmed: **"Yes, perfect! No notes, thats now working as intended."** Initial 348-wide camera right edge between spike3/4 without tree; proper boss/pole reveal; all eight spikes, fight and transition accepted. [Chief acceptance receipt](m6h-chief-acceptance-and-base-status-20261102.md). **No mandatory MGHZ3 fix remains.**
 
