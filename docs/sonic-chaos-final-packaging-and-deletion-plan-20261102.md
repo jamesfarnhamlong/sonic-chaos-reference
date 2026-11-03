@@ -99,6 +99,14 @@ Dependency preflight also found **26 registered GMSound resources** and **zero m
 
 Chief approved execution of the existing 863-target E: cleanup manifest, SHA-256 `20ef7aecb92d04b5796df6b12b76a186835e0e570cc077de70ec087aed62f3ce`, projected savings 113.32 GB and 90 registered worktrees. The EEZ-P1 zero-byte exception and independent H: recovery of local commit `8e9d22499dc910922bd788346bb35678b4a28494` passed. Keep all protected production and backup assets. Any unexpected changes during live preflight require skipping the affected target. This authority is limited to the approved historical-workspace manifest; final audio/source packaging quality work remains separate. Designer executes locally and reports actual outcomes. No reapproval is needed for the unchanged approved target set.
 
+## 3 November EXECUTION CLOSEOUT — 112.53 GB RECOVERED; cleanup COMPLETE
+
+Designer reports approved 863-target cleanup actually removed **112,534,500,297 bytes (112.53 GB)**: **856 targets deleted, five skipped, two partially removed, 89 Git worktrees retired**. Remaining E: workspace snapshot: **453,501 files, 227,190 directories, 32.44 GB**. Scope execution receipt lives locally at `management-audits/production-cleanup-20261102/execution-20261103/FINAL_EXECUTION_REPORT.md`. Do **not** reopen another bulk cleanup for seven safe-skipped/partial paths or fabricate a new manifest unless a specific future issue justifies it. Protected accepted packages, ROM hashes, H: recovery of `8e9d224`, canonical 1,314 resources and 38 currently registered included files, Git integrity verified **per Designer report**.
+
+**Starting-state byte identity NOT certified:** `SonicChaos_Production` GML changed concurrently through separate audio-consolidation task, producing starting-state hash mismatch. The cleanup execution reports it did not touch production. Before next Git commit, independently record exact current production status/diff against `8e9d224` and isolate all edits from the cleanup job; do not overwrite or restore away uncommitted Sound Test work. No extra user test for historical cleanup.
+
+**Audio production status now:** Sound Test GML client has been rewired to **normal gameplay Z80 route**; **70 source-host checks PASS** covering 63 playable, five empty, context controls and accepted $A7 source unchanged. This is implementation-progress evidence, **not** proof of final runtime end-to-end parity or source cleanup. Retirement of B1/C10 (where redundant), G1B/M4, proof-only cases, all-26 `GMSound` asset reachability, correct `.yyp` resource removal, ordinary Windows exporter allowlist and integrated regressions remain **OPEN**. No Chief playthrough, final build or release authorized until these finish. Do not create unrelated development worktrees.
+
 ## Work order — independently verifiable gates
 
 ### Gate 0 — preserve accepted M6-H source before cleanup
