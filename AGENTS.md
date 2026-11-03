@@ -63,6 +63,8 @@ Only **after** the complete base playthrough and Chief's approval, consider AM-s
 
 **Chief explicit deletion GO (3 Nov):** Execute only the validated 863 E: target manifest with SHA-256 `20ef7aecb92d04b5796df6b12b76a186835e0e570cc077de70ec087aed62f3ce`, 113.32 GB and 90 worktree removals. Previous pending-Chief-GO status is superseded; no per-path reapproval necessary. Enforce live dirty/ignored/private/reparse/lock checks, normal Git worktree removal, skip unexpected paths and keep an exact deletion log. Protect canonical `SonicChaos_Production`, commit `8e9d224`, original assets, private accepted packages and H: unique backups. Do not extend this permission to runtime/source/audio asset cleanup. [Binding execution protocol](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md).
 
+**3 Nov Chief authorization:** Historical cleanup execution APPROVED for 863 exact E: paths in manifest SHA-256 `20ef7aecb92d04b5796df6b12b76a186835e0e570cc077de70ec087aed62f3ce`, projected 113.32 GB recovery. Maintain protection of `SonicChaos_Production`, accepted $A7 commit, originals and H: backups. Skip unexpected changed targets. This does not authorize additional production asset modifications. [Binding plan](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md).
+
 ## 6. Workspace safety and permanent deletion plan
 
 **Operational deletion plan:** [permanent workspace cleanup](docs/WORKSPACE_ARCHIVE_STRATEGY.md). Chief prefers **DELETE verified redundant material**, not cold archives; explicit path-specific approval and verified irreplaceable backup are still required.
