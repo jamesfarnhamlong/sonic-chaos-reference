@@ -39,6 +39,8 @@ Designer reports a read-only verified first deletion batch of **seven exact E: p
 
 **Separate gameplay issue:** `PROD-AUDIO-A7-REPEAT` is open. Chief reports repeated spike SFX `$A7` when player crosses spike X even at very large Y separation. Possible relationship to enemy persistence is unverified. Do not treat Candidate B packaging PASS as resolving it or change gameplay as part of cleanup.
 
+**3 Nov Chief production standard:** Keep the live `SonicChaos_Production/SonicChaos.yyp` project clean and correctly named. Chief's F5 from this live worktree **accepted the $A7 spike lifecycle correction**. The older `SonicChaos_Production_20261102_SOURCE_PRIVATE_B` source ZIP predates the correction and had the missing-Notes source package fault. No further source/EXE bundle should carry unnecessary development evidence, build outputs, legacy banks or generated test fixtures; source ZIP still needs every registered resource and EXE ZIP every genuine runtime dependency. Require a manifest built from the `.yyp` resource closure, plus a minimal runtime file list, *before* publishing a final package. Keep unresolved OGGs and `options.ini` until proved removable. **Avoid new production worktrees and disposable candidates**; preserve and commit the exact accepted live source first. Larger workspace-cleanup results are to be reviewed separately.
+
 ## Source package B — missing GameMaker Notes resources (3 Nov)
 
 **Chief packaging failure:** first private source package did not open in GameMaker until omitted `notes/` files were restored. Verified accepted M6-H `.yyp` `resources[]` explicitly registers two `GMNotes` resources:
