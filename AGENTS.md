@@ -61,6 +61,8 @@ Only **after** the complete base playthrough and Chief's approval, consider AM-s
 6. Existing Codex Windows sandbox sometimes fails to create `Runner.exe` with error623 on Windows build26300, while Chief's ordinary GameMaker IDE F5 works. **Do not spend another cycle diagnosing sandbox loader permissions or claiming a code failure from it**; use Chief's single bundled F5 gate for the final experience.
 7. No automatic POC main merge, public binary upload, cleanup, repo-visibility change or “release ready” declaration. Obtain Chief's explicit decision.
 
+**Chief explicit deletion GO (3 Nov):** Execute only the validated 863 E: target manifest with SHA-256 `20ef7aecb92d04b5796df6b12b76a186835e0e570cc077de70ec087aed62f3ce`, 113.32 GB and 90 worktree removals. Previous pending-Chief-GO status is superseded; no per-path reapproval necessary. Enforce live dirty/ignored/private/reparse/lock checks, normal Git worktree removal, skip unexpected paths and keep an exact deletion log. Protect canonical `SonicChaos_Production`, commit `8e9d224`, original assets, private accepted packages and H: unique backups. Do not extend this permission to runtime/source/audio asset cleanup. [Binding execution protocol](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md).
+
 ## 6. Workspace safety and permanent deletion plan
 
 **Operational deletion plan:** [permanent workspace cleanup](docs/WORKSPACE_ARCHIVE_STRATEGY.md). Chief prefers **DELETE verified redundant material**, not cold archives; explicit path-specific approval and verified irreplaceable backup are still required.
