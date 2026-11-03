@@ -87,6 +87,10 @@ Chief rejects microbatches of roughly 2 GB against a 133 GB workspace; the seven
 
 **Separate workspace deletion:** The 863-path, 113,323,964,332-byte manifest has completed the zero-byte Windows.zip exception and independent H: restore of Chief-tested local commit 8e9d22499dc910922bd788346bb35678b4a28494. Final manifest SHA-256: 20ef7aecb92d04b5796df6b12b76a186835e0e570cc077de70ec087aed62f3ce. Manager approval IN PRINCIPLE; explicit Chief approval of exact 863-path permanent deletion remains pending. Protected production/source/backups must remain untouched.
 
+## Chief authorization — 3 November 2026
+
+Chief approved execution of the existing 863-target E: cleanup manifest, SHA-256 `20ef7aecb92d04b5796df6b12b76a186835e0e570cc077de70ec087aed62f3ce`, projected savings 113.32 GB and 90 registered worktrees. The EEZ-P1 zero-byte exception and independent H: recovery of local commit `8e9d22499dc910922bd788346bb35678b4a28494` passed. Keep all protected production and backup assets. Any unexpected changes during live preflight require skipping the affected target. This authority is limited to the approved historical-workspace manifest; final audio/source packaging quality work remains separate. Designer executes locally and reports actual outcomes. No reapproval is needed for the unchanged approved target set.
+
 ## Work order — independently verifiable gates
 
 ### Gate 0 — preserve accepted M6-H source before cleanup
