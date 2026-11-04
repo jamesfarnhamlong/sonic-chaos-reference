@@ -24,7 +24,13 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 **Verified Git update (2 Nov):** The exact M6-H production implementation is now committed on `poc/m6h-mghz3-spike-gated-reveal` at `c3e40a7a3d6c17be3e17d7c1eb729b2a705a3089` (parent M6-G `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`); two subsequent documentation/verification commits put the branch at `64a5a53ceebed43ed79e36a681a27b0d6a0c16aa`. Git comparison confirms three commits ahead of M6-G and none behind. This corrects the earlier uncommitted-source statement. Packaging Candidate B reportedly smoke-PASS, but its file inventory, clean project naming and local folder cleanup have not been demonstrated. Source `options_windows_executable_name` remains `SonicChaos_A4B_EXPERIMENTAL.exe`; project `name` remains experimental. Do not create further candidate worktrees until existing ones are accounted for.
 
-## NOW — Corrective B technical PASS; Chief acceptance pending (4 Nov 2026)
+## Chief Corrective B first visual result — 4 Nov 2026
+
+**Chief reports "TV smoke problem is fixed" in the actual Corrective B Windows candidate** `0a2378cd1342d8f82963bdf3b01a5f964d43ec77`. This is **human PASS for the prior AQZ black/misaligned smoke symptom**, which failed Corrective A. Do not conflate this scoped visual success with acceptance of every poof frame/monitor variant or the remaining Tails flight, AQZ wall and other optional checks, which have not been reported completed.
+
+**Separate IDE diagnostic issue:** Chief's screenshots of the GameMaker Feather Messages panel show **1 GM1008 error** ("variable `id` is readonly and cannot be assigned") on `SCR_chaos_audio_a3v` approx. line403 col3, **428 warnings**, **9 suggestions**. Warnings include legacy `instance_change` and built-in `room_speed`/`score` deprecation; 9 suggestions are unreachable code. These are Feather **static-analysis diagnostics**, not yet a demonstrated failed compilation; the same Corrective B source was reported to produce a working standard Windows export. Request source review of exact current private script line403 and local IDE Compile Errors/Output, and compare against `fc19b3f` to distinguish new regression versus older lint/config state. The older published reference implementation's line403 is different, so no guessed one-line edit is justified. **Do not embark on a 428-warning legacy rewrite** in the release candidate; first isolate any genuine new/compile-blocking error and preserve normal audio routing.
+
+## PREVIOUS — Corrective B technical PASS; full owner acceptance still pending
 
 **Exact source commit:** 0a2378cd1342d8f82963bdf3b01a5f964d43ec77. Designer delivered one unmodified ordinary GameMaker Windows ZIP and private source ZIP, SHA-256 receipt and verified independent H: backup. Prior 8b3b435 and fc19b3f remain preserved. **Chief has NOT yet tested Corrective B, and private base freeze is NOT approved.**
 
