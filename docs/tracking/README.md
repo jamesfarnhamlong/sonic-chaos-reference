@@ -1,8 +1,8 @@
 # Sonic Chaos — current issue tracker (3 November 2026)
 
-**Live data:** [SonicChaos_CURRENT_Issue_Tracker_20261103.csv](SonicChaos_CURRENT_Issue_Tracker_20261103.csv) — **104 records, 25 columns**: all **93** original AUDIT-0 issues with their **17 source fields retained unchanged**, plus **8 current-review fields**, and **11 new FT-01…FT-11 entries** from Chief's final Sonic/Tails campaigns and the ROM-backed Corrective A work.
+**Live data:** [SonicChaos_CURRENT_Issue_Tracker_20261103.csv](SonicChaos_CURRENT_Issue_Tracker_20261103.csv) — **107 records, 25 columns**: all **93** original AUDIT-0 issues with their **17 source fields retained unchanged**, plus **8 current-review fields**, and **14 new FT-01…FT-14 entries** through Chief's 4 Nov Corrective A visual failure and SFX requester closure.
 
-**Historical source, frozen and unchanged:** [AUDIT-0 93-row ledger](../audit0/SonicChaos_AUDIT0_Full_Issue_Ledger.csv) and [historical index](../audit0/SonicChaos_AUDIT0_Issue_Index.md). The original **30 October** counts (55 closed, 14 canon/QoL, 7 open, 7 retest, 3 deferred, 2 active audio, 2 source gaps, 2 test exceptions, one infrastructure) **are historical categories, not an assertion of today's open bugs**. Original Excel workbook `SonicChaos_Issue_Ledger_AUDIT0_2026-10-30.xlsx` was preserved in Chief's project Library; a new owner-facing Excel `SonicChaos_Current_Issue_Tracker_20261103.xlsx` was placed alongside it. The new workbook contains Overview, Corrective A, AUDIT0 Reconciled and Watchlist views; the Github CSV provides the full original 17+8 column records.
+**Historical source, frozen and unchanged:** [AUDIT-0 93-row ledger](../audit0/SonicChaos_AUDIT0_Full_Issue_Ledger.csv) and [historical index](../audit0/SonicChaos_AUDIT0_Issue_Index.md). The original **30 October** counts (55 closed, 14 canon/QoL, 7 open, 7 retest, 3 deferred, 2 active audio, 2 source gaps, 2 test exceptions, one infrastructure) **are historical categories, not an assertion of today's open bugs**. Original Excel workbook `SonicChaos_Issue_Ledger_AUDIT0_2026-10-30.xlsx` was preserved in Chief's project Library; a new owner-facing Excel `SonicChaos_Current_Issue_Tracker_20261103.xlsx` was placed alongside it. The current 4 Nov workbook `SonicChaos_Current_Issue_Tracker_20261104.xlsx` in Chief's Project Library contains Overview, Corrective A, AUDIT0 Reconciled and Watchlist views (the older 3 Nov workbook is a historical snapshot); the Github CSV provides the full original 17+8 column records.
 
 ## 4 Nov 2026 — CHIEF CORRECTIVE A MONITOR FAIL; SFX GAMEPLAY OMISSIONS CONFIRMED
 
@@ -38,7 +38,7 @@
 | **Known widescreen QoL** | THZ-011 goal sign bias | Original adapter accepted; optional later polish. |
 | **Historical build environment** | INFRA-001 | Not a broken Windows release. |
 
-**No additional confirmed mandatory gameplay implementation defect is supported by the 3 November results beyond awaiting Chief's targeted Corrective A acceptance.** This is a scoped statement about reported evidence, not a proof that every original script route or future input cannot reveal a bug.
+**4 November supersedes this prior conclusion:** Chief's AQZ visual FAIL and original-ROM requester evidence establish additional mandatory fixes (shared monitor poof and six sound-request contexts); see the 4 Nov status at the top of this README. No private base freeze yet.
 
 ## Clarification — what 37/109/193 SFX coverage actually establishes
 
