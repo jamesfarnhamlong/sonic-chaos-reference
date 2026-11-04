@@ -9,7 +9,7 @@ Build a faithful, privately playable **GameMaker Sonic Chaos (Master System Euro
 
 Repositories:
 - Public-safe reference and management: `jamesfarnhamlong/sonic-chaos-reference` (this repo).
-- GameMaker POC: `jamesfarnhamlong/SonicChaos_POC`; current private production project `SonicChaos_Production/SonicChaos.yyp` (local-only exact Corrective A commit `fc19b3f`). **Check actual repository visibility/access before any binary upload**; do not assume private.
+- GameMaker POC: `jamesfarnhamlong/SonicChaos_POC`; current private production project `SonicChaos_Production/SonicChaos.yyp` (current owner-tested Corrective B commit `0a2378cd1342d8f82963bdf3b01a5f964d43ec77`; P0 runtime crash open). **Check actual repository visibility/access before any binary upload**; do not assume private.
 - ROM cache/source research may require Chief's local private assets; GitHub-only agents cannot access Chief's `E:\AI\Codex\Sonic Chaos` folders without a real local connection.
 
 **Do not publish** the copyrighted ROM, extracted sprite/PCM/banks, private GameMaker ZIPs, user-supplied videos, passwords or other private payload to the public reference repository. A private repo does not by itself settle redistribution rights. This is a personal, noncommercial project; public release has not been commissioned.
@@ -25,7 +25,15 @@ Repositories:
 
 **No active Janitor-san, Cloud-kun or separate Claude Research/Designer agent on this project.** Do not assign work to them or assume a cloud agent has local Windows/GameMaker access. The earlier Claude team now works on another project.
 
-## NOW — Corrective B technical PASS; Chief acceptance pending (4 Nov 2026)
+## 4 November — Chief Corrective B tests: four scoped PASS, AQZ runtime crash P0; Feather CLOSED
+
+**Chief checks on standard Corrective B Windows ZIP (local commit `0a2378cd1342d8f82963bdf3b01a5f964d43ec77`):** (1) AQZ black-smoke/monitor poof **PASS**, (2) another-zone monitor **PASS**, (3) Tails flight cancellation **PASS**, (5) sampled spin/Peel-Out SFX **PASS**. **(4) AQZ wall contact FAILED with native Windows crash.** Full GameMaker error: `draw_sprite_ext argument 1 invalid reference to (sprite), requested -1, max 913`, in `chaos_aqz_player_draw` line335 → `OBJ_player_char/Draw_0`. Screenshot shows Sonic beside a solid AQZ tile boundary; **the exact terrain surface ID is not proven by the image**. This is a **player sprite selection/palette draw failure**, not direct proof the original `$1E` wall physics are wrong; the ROM state/velocity traces passed in controlled fixtures. **FT-15 P0 new / FT-11 & FT-06 Chief check blocked**, no base freeze and no reason to replay the unchanged ZIP.
+
+**Possible mechanism to investigate, not asserted cause:** older public source `chaos_player_frame_sprite(frame,aqz)` returns **-1** for unsupported frame; `chaos_player_animation_present` can assign it to player `sprite_index`; AQZ palette mapper falls back to given source and eventually calls `draw_sprite_ext`. Corrective B added original naturally reachable side state `$34` (52 decimal) with original presentation scripts. Trace the **exact private B** pre-Draw `sprite_index`, `cp_base`, frame/state/next, `visual_anim` and transition ordering at first bad tick in a compiled Windows test with real player visible. Do not hide failure with `if sprite<0 then return` or generic fallback. Correct underlying mapped animation frame/selector from the original ROM; protect original movement and shaders. Test ordinary side contact for **both characters**, **256/348 widths**, above/below water conditions, and don't regress newly accepted monitor drawing. Only one targeted new corrective candidate if a genuine source fix is demonstrated.
+
+**Feather GM1008 is CLOSED AS INHERITED FALSE POSITIVE.** Designer inspected current `SCR_chaos_audio_a3v` line403: `s.b1.id` accesses a Sound Test **struct field**, not the built-in instance read-only `id`. Same functions in initial `8b3b435`, `fc19b3f` and B. Fresh Windows VM compile with installed LTS `2026.0.0.23` and Chief's IDE user profile **exit0 PASS**; no source code or warnings changed. `428` legacy Feather warnings and `9` suggestions are not newly established runtime/compile failures. Keep B package and SHA-256 immutable until actual crash fix. [Current issue tracker](docs/tracking/SonicChaos_CURRENT_Issue_Tracker_20261103.csv) now **108 records**, retaining 93 original AUDIT-0 rows plus FT-01…FT-15.
+
+## HISTORICAL — NOW — Corrective B technical PASS; Chief acceptance pending (4 Nov 2026) (superseded by Chief crash and Feather closeout)
 
 **Exact source commit:** 0a2378cd1342d8f82963bdf3b01a5f964d43ec77. Designer delivered one unmodified ordinary GameMaker Windows ZIP and private source ZIP, SHA-256 receipt and verified independent H: backup. Prior 8b3b435 and fc19b3f remain preserved. **Chief has NOT yet tested Corrective B, and private base freeze is NOT approved.**
 
