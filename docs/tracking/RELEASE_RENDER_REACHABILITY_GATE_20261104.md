@@ -1,0 +1,35 @@
+# Sonic Chaos — release-wide render/reachability gate after Corrective B native crash
+**Manager-san #9 · 4 November 2026 · mandatory evidence gate before base freeze**
+
+## Reason
+Chief's actual Corrective B Windows gameplay passed AQZ monitor smoke, another-zone sample, Tails flight and sampled new SFX, but on the AQZ wall test crashed inside `OBJ_player_char/Draw_0 → chaos_aqz_player_draw`: `draw_sprite_ext argument 1 invalid sprite -1` (line 335 reported in local private build). Corrective B monitor regression had 60 actual Windows render cases but **froze/hid the controlled player**, and the previous unregistered monitor Draw event passed source-host testing without running actual registered native GameMaker drawing. This exposes a **test-coverage gap**; do not fix a single AQZ sprite and declare all zone render paths safe.
+
+The older public POC revision `c3e40a7` contains `chaos_player_frame_sprite` returning `-1` for unrecognized frame numbers, `chaos_player_animation_present` assigning that result to `sprite_index`, and non-AQZ `draw_sprite_ext(cp_o.sprite_index,...)` versus AQZ `cp_base=chaos_aqz_player_source(cp_o.sprite_index); draw_sprite_ext(cp_base,...)`. These are **audit hypotheses from older published code**, NOT proof of the live `0a2378c` crash cause. The actual private Corrective B source must be inspected locally before remediation.
+
+## Mandatory gates in one corrective task
+
+### A. Isolate exact first invalid player sprite in live compiled build
+- Reproduce using **normal player input** and the Chief AQZ wall/terrain contact; record act, coordinates, character, dimensions, waterline mode and surface ID. Determine whether actual surface is `$1E`; screenshot alone does not establish it.
+- On *first* invalid frame, record current and previous original state/next/request, `visual_anim.state/ptr/frame/active/strip`, original frame lookup result, `sprite_index`, palette-base result, object/effective sprite owner, event registration, current Step/Draw phase and sprite asset existence.
+- Compare original retail ROM animation state/frame sequence and precise GML transition at first divergence. Correct **source-level animation mapping, resource registration or transition**, not physics values or cosmetic fallback. Do not mask `sprite=-1` with blank skips, exception catch, or last-frame substitution unless original source demonstrates that is the correct rendering behavior.
+
+### B. Global static integrity / event registration audit — entire *production project*
+- Enumerate **all production-reachable** `sprite_index` assignments, frame-to-sprite selectors, sprite source proxies, `draw_sprite*`/surface/shader call sites, resource paths and `.yy` object event registrations. This includes player, spin/flight, projectiles, enemies, monitors, bosses, cutscenes, HUD, special stages and water palettes.
+- Verify all reachable frame IDs (including branch/conditional/loop and state transition intermediate frames) map to existing correctly typed sprite resources, and that any intentionally invisible stage is handled by a proved original visibility condition.
+- **Build source-file versus registered-Draw/Step event census** to find additional orphan `.gml` event files or registered event refs without a real file; specifically audit other transient effects and all zones, not just `OBJ_chaos_object_0F_transient`.
+- Verify no invalid resource ID `-1`, missing asset/animation index, wrong resource type, illegal out-of-range subimage or unset shader/surface is sent to real native Draw calls. Distinguish intentional visibility/culling from invalid sprite selection.
+- Report all abnormalities with exact file, scene, reachable path, disposition; do not silently waive unique branches or replace resources globally.
+
+### C. Real compiled GameMaker render + gameplay coverage
+- Run **normal input-driven compiled VM gameplay with the player visible and the actual registered Draw events executing**. Cover BOTH Sonic/Tails, original256 and wide348, all six zones/18 acts, all five Special Stages, normal/roll/charge/Peel-Out/fly/jump/hurt/death/act-clear/boss clear/scene handoff, and AQZ dry/split/submerged. Use deterministic input and original known state/transition fixtures for rare but reachable states. Do not multiply full 18-act completion by every state unnecessarily; use audited state/frame coverage matrix with representative zone gates.
+- Inspect sprite ID validity **at draw time** (before native call) and fail tests with logged original/game state, not by changing release rendering to hide the issue. Include object spawn, destruction, registration and pooled-reuse lifecycle. Check diagnostic execution doesn't hide player/omit Draw, as in Corrective B monitor test.
+- For identified reachable original animation states, compare actual native draw image, registration/palette and timing with original ROM frame outputs (sample pixels or hash and frame timeline as appropriate). Include the exact AQZ wall route that crashed, plus comparable other-zone wall/terrain and post-powerup transitions. Use platform-original 256 and accepted 348 policies separately; no unsupported widescreen fidelity claim.
+- Continue existing CPU/RAM/PSG/PCM and source-host tests, but **do not count source-host sprite assignment or compiler success as actual native drawing parity**.
+- A third full Chief campaign or 37-effect listening sweep is NOT requested; all coverage must be automated locally on source/candidate, with Chief only verifying narrowly changed visible behavior.
+
+### D. Exit / honest confidence
+- Deliver one self-contained coverage matrix: all **reachable** animation/frame mappings and render event registrations inventoried; tested native transitions and screenshot/trace evidence; zero unexpected `sprite=-1`/resource errors in all covered compiled runs; original-ROM presentation comparisons for new/changed paths; no new failures in audio/terrain/monitor F5/m6-h results/SS; inherited raw failures listed unchanged.
+- State what remains unproved (unknown event reachability or input-dependent combinations) and their rationale. **Absolute bug-free assurance is impossible**; standard is no *known* naturally reachable invalid resource/draw path after exhaustive source-path inventory + representative compiled native state/frame execution, with owner acceptance of the fix.
+- Preserve B `0a2378cd1342d8f82963bdf3b01a5f964d43ec77` and ZIP/hash/H: records. Produce ONE new corrected release candidate only after root cause and full gate pass, not an intermediate loop of Chief builds. Do not rewrite legacy Feather warnings: GM1008 `s.b1.id` is inherited Feather false positive; native LTS compile exit0.
+
+**Status:** OPEN P0 FT-15 and root-level QA gate. Chief has *not* accepted Corrective B wall route; other B focused checks passed in reported scope.
