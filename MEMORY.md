@@ -3,7 +3,20 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT — Corrective A prepared; owner three-topic check pending (3 Nov)
+## NOW — Corrective B technical PASS; Chief acceptance pending (4 Nov 2026)
+
+**Exact source commit:** 0a2378cd1342d8f82963bdf3b01a5f964d43ec77. Designer delivered one unmodified ordinary GameMaker Windows ZIP and private source ZIP, SHA-256 receipt and verified independent H: backup. Prior 8b3b435 and fc19b3f remain preserved. **Chief has NOT yet tested Corrective B, and private base freeze is NOT approved.**
+
+**Corrected actual AQZ black-poof cause:** terrain-ring monitor type $47→$0F/$40 uses a palette-aware Draw GML script but the GameMaker .yy had not registered Draw, so normal compiled Windows fell back to automatic indexed drawing. Corrective B registers Draw; implements the separate authentic 39-update terrain-poof conversion/script and $AB update2 request. Mapped type $10 monitors in all zones now use original +18 registration and 40-update lifetime (visible through39/removal40). **60 actual Windows rendering scenarios, 258,720 pixel sample comparisons: zero differences** against controlled original sprites/palettes/foreground, including both characters and widths, dry/water split and all zones. Tests use real registered Draw/shader/raster in controlled scenes, not a complete natural campaign.
+
+**Six demonstrated original gameplay SFX requester sites fixed:** both characters spin-dash charge $AC/release $BE, Sonic long Peel-Out $BF, ordinary held-direction terrain state $34=decimal52 $BA/$B8 Sonic and $BA Tails. 10 compiled gameplay fixtures, 12,740 native audio ticks, 24 observed deliveries with exact original CPU/RAM/PSG/PCM; natural-input AQZ wall/side routes match original across characters and widths. No speed retune or music/driver change. Five inherited raw verifier FAILs remain unchanged.
+
+**Research limits after correction:** 98 of 109 requester contexts lack exact source-timing pairs (not 98 broken events). Two confirmed reachable retail secret-input acknowledgement $A9 requests are historical optional frontend omissions, not ordinary gameplay sound failures. GPZ types $52/$53 have four aliases of type $51 $B3 scripts, no normal placement but indirect creation not conclusively excluded. $A8/$B2/$C1 natural original triggers remain unknown and programme playback is preserved. No invented requests.
+
+**Only next owner action:** test the exact 4 Nov Corrective B Windows ZIP for AQZ monitor poof colour/position (particularly terrain-ring monitors), Tails flight cancellation and AQZ terrain wall contact; optionally one ordinary non-AQZ monitor and natural spin-dash/Peel-Out sounds. Do not ask for a third full campaign or 37 manual SFX checks. Then Chief decides private base-game freeze or a concise new defect list. Full issue register: docs/tracking/SonicChaos_CURRENT_Issue_Tracker_20261103.csv.
+
+
+## HISTORICAL — CURRENT — Corrective A prepared; owner three-topic check pending (3 Nov) (superseded by Corrective B)
 
 **Original private base `8b3b435`** completed both natural Sonic/Tails campaigns. Sonic reported no new faults, Tails reported nine observations; original ROM proved THZ3 spike SFX jump-priority suppression and AQZ invincibility expiry boss theme overwrite canonical, Chief chose to preserve both. Falling MGHZ $24 damage/proximity also accepted provisionally, no rebalancing.
 
