@@ -17,6 +17,9 @@ One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 s
 
 ## 1. Graphics and performance — front of queue
 
+**S1 protected-source exception approved (5 Nov):** Designer reported checkpoint `5786dacc1ebc73006a79a255d071000e93d6c479` without implementing W2 because native-grid presenter would deactivate in Pause/results/death. Manager independently inspected four original source sites and authorized **guarded Enhanced-only lifecycle hooks** in `SCR_screen.gml`, `OBJ_pause/Alarm_0.gml`, `SCR_chaos_results.gml` and `SCR_chaos_death.gml`, on the S1 successor branch only. These do not mutate the immutable Classic tag/source/archive. **S1 continues with an internal native lifecycle proof, then native-grid integer fit, conditional one-pass CRT, single combined Windows candidate and Chief acceptance at the end.** Small same-purpose presentation lifecycle guards are delegated, not another stop-per-file rule; unsafe fallback or gameplay/audio/camera changes still STOP. [Exact Manager authorization](S1_PROTECTED_RENDER_HOOK_AUTHORIZATION_20261105.md).
+
+
 **CHIEF PROCESS CHANGE — SPRINT BATCHING (5 Nov):** Stop one-toggle/one-build/one-Ch​ief-test cycles. S1 is a coherent Enhanced display sprint incorporating E2-P1 Sharp Pixels (already delivered/visual-reviewed, default OFF), a safe native-grid integer-fit presentation pipeline, and—conditional on robust lifecycle—a restrained one-pass CRT option. One isolated branch and consolidated private Windows candidate/visual A/B at the end, with focused internal checks. All new toggles OFF by default until combined Chief acceptance; E2-P1b and E2-P2 earlier per-feature HOLDs are superseded **only within the narrow S1 scope**; unsafe presenter/native-grid or need to edit frozen GML still requires STOP. Lola full multipass CRT remains parked. [Sprint S1 authority](ENHANCED_SPRINT_S1_DISPLAY_FOUNDATION_20261105.md).
 
 
