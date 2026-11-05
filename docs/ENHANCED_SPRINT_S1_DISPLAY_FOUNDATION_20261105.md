@@ -3,6 +3,8 @@
 
 ## S1 protected-file boundary — RESOLVED 5 NOV
 
+**S1 INTEGRATED TECHNICAL CANDIDATE DELIVERED (5 Nov; Chief acceptance pending):** Designer local SHA `56c767e8b4f0f73c41f2d8ec41ca471d7a90e746`, all three display options SHARP PIXELS / INTEGER FIT / CRT FILTER functional with default OFF, one final private Windows/source/comparisons/receipt. Reported 3,472 source-host checks, 60 native cells, 5,460 matching core state snapshots, 164 exact Classic/all-OFF RGB image pairs, integer-fit and CRT verified, safe presenter fallback across Pause/results/death/focus; H: copies verified. Remote SHA not independently accessible and private ZIP/receipt/screenshots not attached. One **combined Chief native visual/controller/motion/audio F5** next; no second build or default-ON change until Chief's report. [Manager's S1 acceptance gate](S1_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261105.md).
+
 **Designer stopped properly at checkpoint `5786dacc1ebc73006a79a255d071000e93d6c479` after identifying four frozen GML sites whose minimal guarded presentation hooks are needed. Manager reviewed the attached boundary report, checked the original four source files and explicitly APPROVED those four hooks on the isolated S1 successor branch. The permanent frozen Classic tag/source archive still must never be edited.** [Full binding four-hook authorization and native gate](S1_PROTECTED_RENDER_HOOK_AUTHORIZATION_20261105.md). This supersedes this charter's absolute stop at any previously frozen GML file: small **display-only, guarded, Classic-OFF-equivalent lifecycle edits** are allowed in the S1 branch, provided individually inventoried and native-tested. Broader physics/audio/camera semantics edits or unsafe renderer ownership still require STOP. Designer must complete W2, then conditional W3, and deliver one integrated Chief-facing candidate—not return after each hook.
 
 ## Why this sprint
@@ -60,4 +62,4 @@ Chief requests **fewer one-feature/micro-change tasks**, more substantial agent 
 ## Operating principle and next decision
 Within the above bounds Designer-san may complete, iterate, investigate and self-correct without asking Chief/Manager after each micro-step. Send progress at meaningful internal milestones, not every test command. Stop only at explicit protected boundaries or genuinely unresolved architecture. Chief will review **one integrated S1 candidate** and choose permanent Enhanced defaults. W3 is conditional and may be excluded if the presenter is unsafe; document why.
 
-**Current status: S1 RESUMED after four-site Enhanced-only rendering hook exception (Manager approved). W2 lifecycle compiled proof then native integer-fit; W3 single-pass CRT conditional; one final integrated candidate/Chief review.**
+**Current status: S1 INTEGRATED CANDIDATE DELIVERED; Designer technical PASS, Chief's combined F5 acceptance still pending. All three display features OFF by default; no next sprint commissioned.**
