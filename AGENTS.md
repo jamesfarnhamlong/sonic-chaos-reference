@@ -25,7 +25,11 @@ Repositories:
 
 **No active Janitor-san, Cloud-kun or separate Claude Research/Designer agent on this project.** Do not assign work to them or assume a cloud agent has local Windows/GameMaker access. The earlier Claude team now works on another project.
 
-## NOW — Corrective C/D Chief accepted (5 Nov 2026); private Classic freeze pending
+## NOW — Final Classic readiness GO; Chief freeze authorization pending (5 Nov 2026)
+
+**Manager final-readiness decision (5 Nov): GO for Chief's private Classic freeze authorization; NOT FROZEN YET.** Designer's evidence-only assessment classified the 29 previously uncounted Draw event files as 8 active/prior-verified, 1 active native-count gap (`OBJ_chaos_object_27` THZ flying enemy), 20 dormant/legacy; no demonstrated invalid sprite, crash or progression blocker. Original Tails state `$20` / frame `$5E` is a *reachable original corruption hazard*, for which the accepted source deliberately retains the exact-condition no-draw/safe-progression parity exception; no hardware-corruption parity asserted. The five raw verifier failures and D phase differences remain documented. D source ZIP's archive-only `SOURCE_MANIFEST.json` incorrectly labels B; external D SHA-256/receipt and exact production Git source identify the immutable accepted package. [Readiness decision](docs/classic-readiness-manager-review-20261105.md).
+
+**Documentation publication caveat:** Designer reports readiness-only branch `docs/final-classic-readiness-20261105` commit `fdb7b3ae468753edbf69c0ea2ae469e4c40c39dd`; this commit/branch was **not yet found on GitHub remote** at Manager's check. Publish and verify documentation separately at final archival closeout without changing accepted production D. No unauthorized freeze, main merge, release tag, new build or public package publication.
 
 **Chief PASS on Corrective D**: A Sonic AQZ1 return through both underwater hatches PASS; B Tails passage plus Pause → Level Select character selection PASS; C ring-sparkle rendering PASS (no noticeable visual defect). This simultaneously accepts the outstanding user-facing C changes. [Acceptance receipt](docs/corrective-cd-chief-acceptance-20261105.md).
 
