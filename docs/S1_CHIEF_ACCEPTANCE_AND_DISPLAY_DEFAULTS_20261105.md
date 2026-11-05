@@ -1,13 +1,13 @@
 # Sonic Chaos — S1 Integrated Enhanced Display: Chief Acceptance
-**5 November 2026 · Manager-san #10 · S1 CHIEF ACCEPTED · Permanent feature preference recorded (not yet applied to shipped binary)**
+**5 November 2026 · Manager-san #10 · S1 CHIEF ACCEPTED · FINAL DISPLAY DEFAULTS DEFERRED**
 
 ## Chief's actual acceptance and feedback
 Chief completed the requested **one combined Windows acceptance session** for the S1 private candidate, then reported **"All checked! Working as expected."** This closes S1 as **CHIEF ACCEPTED**, without requiring further individual feature builds or another whole-game playthrough.
 
 Chief's explicit observations:
-- **Sharp Pixels:** difference subtle/not apparent in ordinary live play, but strikingly visible in the supplied screenshots. **Chief elects Sharp Pixels ON by default for future Enhanced builds.**
+- **Sharp Pixels:** difference subtle/not apparent in ordinary live play, but strikingly visible in the supplied screenshots. Chief initially leaned toward Sharp Pixels ON, **then explicitly clarified that this is NOT a binding next-build or final default**: sampling preference depends on the full display pipeline and CRT compatibility.
 - **Integer Fit:** no obvious difference at Chief's existing window size, believed to have remained at **3× for roughly two months**. Function accepted as working, but its comparative benefit in larger/free-form/fullscreen clients is **not visually assessed by Chief**. Keep **OFF by default** pending shared PC fullscreen/resizing/window-size release polish.
-- **Current `CRT FILTER`:** Chief likes the effect, but judges it essentially **scanlines**, not a convincing complete CRT simulation. **OFF by default**, preserve optional feature; propose renaming the existing lightweight entry to **SCANLINES** in a future integrated build so the label is accurate. This is a planned label change, **not already implemented in S1**. A substantially more realistic/visually impressive CRT (e.g. feasibility work using Lola Retro's multi-pass approach) is a **separate later research/design sprint**, not a retroactive flaw or extra work added to S1.
+- **Current `CRT FILTER`:** Chief likes the effect, but judges it essentially **scanlines**, not a convincing complete CRT simulation. **currently OFF by default**, preserve optional feature; propose renaming the existing lightweight entry to **SCANLINES** in a future integrated build so the label is accurate. This is a planned label change, **not already implemented in S1**. A substantially more realistic/visually impressive CRT (e.g. feasibility work using Lola Retro's multi-pass approach) is a **separate later research/design sprint**, not a retroactive flaw or extra work added to S1.
 
 ## Accepted precise source/package
 - **Chief-accepted S1 private source branch:** `enhancement/s1-display-foundation-20261105`.
@@ -20,13 +20,13 @@ Chief's explicit observations:
 
 ## Delivered S1 feature defaults versus intended next defaults
 
-| Feature | What the **accepted S1 ZIP actually boots with** | Chief preference for the **next integrated Enhanced release** |
+| Feature | What the **accepted S1 ZIP actually boots with** | Final product default |
 |---|---|---|
-| `SHARP PIXELS` | **OFF** | **ON** (next integrated build; preserve Classic original) |
-| `INTEGER FIT` | **OFF** | **OFF**; useful later with flexible window/fullscreen presentation |
-| Existing `CRT FILTER` (light scanlines/mask) | **OFF** | **OFF**; propose rename `SCANLINES` later |
+| `SHARP PIXELS` | **OFF** | **UNDECIDED** — depends on final CRT/display configuration; potentially ON for sharp unfiltered display |
+| `INTEGER FIT` | **OFF** | **UNDECIDED** — likely appropriate for fullscreen, not revealing at the current 3× window |
+| Existing `CRT FILTER` (light scanlines/mask) | **OFF** | **UNDECIDED** — current lightweight effect is acceptable but a more ambitious CRT mode may supersede or coexist |
 
-**No immediate micro-build commissioned.** The accepted Windows ZIP stays byte-identical and OFF/OFF/OFF by default; a small future change to the session default cannot be described as already implemented. All three toggles remain independently selectable in S1.
+**Chief follow-up explicitly supersedes any provisional ON default:** "that's a decision to make at the end"; he notes **Integer Fit may be the right fullscreen default**, while **Sharp Pixels might not suit a sophisticated CRT shader**. **Do not set any new product default in the next integrated build solely from S1 feedback.** Evaluate the final combination, fullscreen/window behaviour and richer CRT choices before deciding per-mode defaults. The accepted S1 Windows ZIP remains byte-identical with all three features OFF and independently selectable. No immediate micro-build commissioned.
 
 ## Evidence and bounded conclusions
 - Previous Designer S1 integrated report: 3,472 source-host assertions, 60 native scenario cells, 5,460 unchanged core gameplay snapshots, 164 classic/all-OFF pixel-identical pairs, 104 exact integer outputs and 124 bounded integer+CRT samples, 180 native Z80 programme ticks per state, compiled Pause/results/death ownership and fallback, private package/H: verification. Manager already documented evidence limits separately in [S1 integrated technical review](S1_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261105.md).
@@ -36,7 +36,7 @@ Chief's explicit observations:
 
 ## Next development direction and scope protection
 - **S1 CLOSED — CHIEF ACCEPTED.** Use accepted local SHA `56c767e8...` as base for subsequent **substantial, separately scoped** Enhanced sprints. First verify local branch/clean checkpoint/receipt; do not automatically push or merge.
-- **Small future bundled polish changes:** set default `SHARP PIXELS=ON` only for committed Enhanced; leave `INTEGER FIT=OFF`; rename current effect `CRT FILTER` → `SCANLINES` if the label remains accurate; retain OFF. These changes may accompany the next coherent feature sprint or later release-polish batch, not get a standalone Chief package.
+- **Future bundled polish (NOT product-default decisions):** possibly rename the present lightweight `CRT FILTER` to `SCANLINES` to accurately describe it, but preserve its current controls and OFF default in the accepted S1 build. **Leave Sharp/Integer/CRT new-build defaults uncommitted** until final product visual review, considering fullscreen scaling and incompatibility/interaction with any richer CRT simulation. No standalone Chief build for a label or default.
 - **Future improved CRT:** research visually dramatic yet faithful CRT models separately (Lola Retro high-level reference: eight-pass Master System preset, major GameMaker conversion/resources/black-output/fallback risks). A future study can first compare reference imagery/technique versus current SCANLINES and agree a target/look before implementing. Default OFF unless Chief explicitly requests otherwise.
 - **Already parked endgame release UI:** Classic+Enhanced common window size/layout/fullscreen menu and hide release-facing developer Pause Level Select together, with Pause interval restrictions later if justified. Existing `settings.ini` retains window multiplier and Auto/Wide/Retro. Avoid interrupting a sprint for these. [Endgame tracker](tracking/ENDGAME_RELEASE_POLISH.md).
 - **Separate existing backlogs:** GPZ3 blue tube source-art seams (Classic post-freeze defect), richer optional Enhanced ring scatter; E1 true display-pacing proof remains inconclusive. Do not bundle unrelated gameplay/ROM issues into display polish without Chief authorization.
