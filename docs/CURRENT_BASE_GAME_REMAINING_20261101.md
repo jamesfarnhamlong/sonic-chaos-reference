@@ -3,7 +3,15 @@
 
 For active coordination consult [AGENTS.md](../AGENTS.md) and [ROADMAP.md](../ROADMAP.md). This is a **small live/parked issue register**, not the entire original 93-ID AUDIT-0 archive. [Previous verbose version is preserved in Git history](archive/management/MANAGER_PRE_REWRITE_20261102.md). Historical source classifications are kept in [AUDIT-0](audit0/README.md), the [AUDIT-1 evidence branch](https://github.com/jamesfarnhamlong/SonicChaos_POC/tree/ad01199ad131f66e5f4e54a5308b611e638703f5/docs/audit1) and [Chief's 21-item triage](chief-current-issue-triage-20261101.md).
 
-## NOW — Corrective B technical PASS; Chief acceptance pending (4 Nov 2026)
+## CURRENT 5 NOV — CORRECTIVE C `337480a0` TECHNICAL PASS; OWNER WALL/SPARKLE CHECK NEXT
+
+B's native AQZ wall crash was reproduced at held-Left update19, state`$34`/52 selecting previously unmapped Sonic frame`$19`, causing sprite -1. C restores authenticated normal/AQZ frames`$19..$1B` and corrects stale drawing facing, preserving original movement and audio. Additional audit detected `OBJ_ring_stars/Draw_0.gml` orphaned event; C registers and corrects original ring-sparkle art/timing with compiled native pixel proof.
+
+**Cross-zone rendered QA:** 179 authored player frame mappings, 438 GameMaker event registrations/files, 116 core compiled Windows cases across 18 acts, five SS, both characters/widths; 10,381,631 sprite calls with zero unexpected invalid references. Native wall/ring pixels and original wall frame/state traces match in controlled cases. No universal parity claim: principal matrices exercised **52/81 registered Draw files**, 29 not executed; inherited Tails`$20`/selected`$5E` unsupported original branch remains a reachability question. Late ending and boss variant combinations not exhausted; five historical raw verification FAILs unchanged.
+
+**Chief current task:** extract Corrective C Windows ZIP fresh, check AQZ1 wall route where B crashed plus Sonic facing, one or two ring pickups (AQZ/non-AQZ if convenient), and a brief Tails AQZ wall contact. Previous B monitor, flight and sampled SFX checks are scoped PASS; implementations preserved into C. Only after focused Chief test and disposition of 29 unexecuted Draw paths/Tails exception can Chief authorize private base freeze. [109-entry issue register](tracking/SonicChaos_CURRENT_Issue_Tracker_20261103.csv), [render audit record](tracking/RELEASE_RENDER_REACHABILITY_GATE_20261104.md).
+
+## HISTORICAL — NOW — Corrective B technical PASS; Chief acceptance pending (4 Nov 2026) (superseded by C)
 
 **Exact source commit:** 0a2378cd1342d8f82963bdf3b01a5f964d43ec77. Designer delivered one unmodified ordinary GameMaker Windows ZIP and private source ZIP, SHA-256 receipt and verified independent H: backup. Prior 8b3b435 and fc19b3f remain preserved. **Chief has NOT yet tested Corrective B, and private base freeze is NOT approved.**
 
