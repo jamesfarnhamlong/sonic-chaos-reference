@@ -2,6 +2,8 @@
 
 ## New post-freeze queues — 5 November 2026
 
+**E0 closed 5 Nov:** Chief accepted E0-R1 private Windows candidate `deccefc0acd822f74b6b26895ec278cdf67a7cee` (enhanced baseline) after corrected two-second SEGA / two-mode picker / direct Enhanced Options → Start Game. Exact source and Chief note: [E0 R1 acceptance](../E0_R1_CHIEF_ACCEPTANCE_20261105.md). Frozen Classic tag untouched. GPZ3 and enhanced ring scatter remain separate; E1 60 FPS research only.
+
 - **[Classic Post-Freeze Defects](POST_FREEZE_CLASSIC_DEFECTS.md):** FC-PF-001 GPZ3 cyan tube textures show periodic dark grid/seam lines in Chief's current Windows images against an original-ROM-on-Vita photographic comparison. Source/ROM cause unverified, tracked for later narrowly scoped Classic maintenance; not E0 and not an automatic frozen-core retag. Original screenshots are private user evidence; the public reference repo carries only descriptions.
 - **[Enhanced QoL Ideas](ENHANCED_QOL_IDEAS.md):** ENH-QOL-001 richer, more varied recoverable ring scattering inspired by 16-bit Sonic, **Enhanced-only optional toggle** once designed. The frozen ROM-derived formula already emits up to seven rings (`min(7,floor(rings/10)+1)`), so this is an intentional expansion, not a defect or universal 1–2 ring cap.
 - **Current E0:** private unified frontend successor branch `enhancement/e0-unified-frontend-20261105` at `69450848b1e06fcef7de63f19ae238ff346e479a` (remote SHA verified). Designer report gives scoped native/source-host PASS and H: package evidence, **Chief visual/physical controller acceptance pending**. Both new queues are deferred and must not be silently folded into E0.
