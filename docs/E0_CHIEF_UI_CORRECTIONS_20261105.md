@@ -1,5 +1,9 @@
 # Sonic Chaos E0 — Chief's First Build Review: UI Corrections
-**5 November 2026 · Manager-san #10 · Chief feedback on the first private E0 Windows candidate**
+**5 November 2026 · Manager-san #10 · Historical first E0 review; E0-R1 subsequently Chief accepted**
+
+## Chief acceptance — closure
+
+E0-R1 was subsequently approved by Chief ("yes thats fine") after the corrected five-point review. This is an **historical correction request**, not a currently open hold. [E0-R1 acceptance](E0_R1_CHIEF_ACCEPTANCE_20261105.md).
 
 ## E0-R1 candidate delivered (superseding pending correction assignment)
 
