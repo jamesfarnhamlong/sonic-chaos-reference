@@ -1,5 +1,5 @@
 # Sonic Chaos — S2 Enhanced Data Select: Chief Acceptance
-**5 November 2026 · Manager-san #10 · S2 CHIEF ACCEPTED (FUNCTIONAL); FIVE PRESENTATION NOTES PARKED**
+**5 November 2026 · Manager-san #10 · S2 CHIEF ACCEPTED (FUNCTIONAL); SIX PRESENTATION ITEMS PARKED**
 
 ## Accepted checkpoint
 - Private game branch: `enhancement/s2-data-select-20261105`.
@@ -19,13 +19,14 @@ Chief explicitly reported: **"Done! All checked"** and **"Functionally wise perf
 
 **Manager decision: S2 DATA SELECT FUNCTIONAL ACCEPTANCE — PASS / CLOSE.** Do not hold S2 completion over cosmetic notes. S2 supersedes S1 as the accepted **Enhanced development baseline** for future successor branches. Do not modify the accepted ZIP or retroactively claim cosmetic changes are already present. All S1 graphics feature defaults remain OFF in accepted package; Chief deferred permanent defaults to the end after fuller CRT/fullscreen design.
 
-## Five specific presentation observations — defer as a cohesive visual-polish batch
+## Presentation observations — defer as a cohesive visual-polish batch
 Chief supplied five screenshots of the actual S2 Data Select and comparisons with Sonic 3-style reference. Images remain **private**; do not import third-party reference art or screenshots into public research Git.
 1. **Tails' apparent yellow/orange hat:** the top/head silhouette appears like a flat horizontal orange strip in Chief's close-up. Possible sprite crop, anchor, draw/scissor order or chosen frame; **cause not established without S2 source/frame audit**. Review at native pixel precision before changing source graphics or palette. An original pixel-authentic Tails head should not inadvertently appear capped.
 2. **Animated television static for empty cards:** Chief likes the visually active Sonic 3-style noise/static idea. Current empty TV reads `NEW` on a static dark field. Evaluate subtle small-resolution motion (menu-only, no per-frame surface churn) while keeping empty/occupied/complete states distinguishable, legible and controller-friendly. No new sound is requested.
 3. **Zone TV previews too crunchy:** six current thumbnails are sampled from real compiled stage scenes, but their framing/pixel density and downsampling are unattractive to Chief. Recompose/capture more legible colour/landmark subjects at final TV dimensions, respecting actual zone identity, nearest scaling and palette; optional small animation if cheap. Do not simply enlarge/resample Sonic 3 copyrighted art or invent unrelated scenery.
 4. **Emeralds look flat/dull:** Chief cites vibrant, jewel/candy-like multicoloured Sonic 3 icons as aesthetic direction. Existing live S2 display appears subdued/small in screenshot. Review actual source palette, shader/filter ownership and UI sprite design; **do not assume Master System palette hardware is a GameMaker Enhanced frontend limitation**. A subtle highlight/border with distinct jewel colours can be custom Enhanced UI art without modifying canonical gameplay palettes, Emerald state or source-ROM assets.
 5. **Uneven Sonic/Tails scale/vertical placement and overlap:** Sonic running pose visually infringes the lower TV border while Tails appears shorter/lower, making card composition inconsistent. Tune anchor/pivot, common foot baseline, TV clearance, crop/stencil and/or carefully selected appropriate existing animation frames **without rescaling the original pixel art nonuniformly**. Preserve input/slot mapping, character identity and sprite pixels.
+- **Chief follow-up:** Sonic and Tails on the cards should be **running in actual looping motion**, as on the original character-selection screen, not frozen mid-stride. Use the authentic source frames/palette/timing, with consistent floor anchors and TV clearance; add as **S2-VIS-06**. Chief also recalled the earlier invalid named-colour Draw crash: the final report confirms **`c_magenta` → `c_fuchsia`**, but this does not establish the cause of the Tails hat or faded Emeralds. Diagnose source palette/crop and shader before guessing.
 - **Nice point retained:** Chief approves reuse of the original **Data Select music**. Don't alter audio just to adjust the presentation.
 - Register all under [Data Select visual polish backlog](tracking/S2_DATA_SELECT_VISUAL_POLISH.md), **not an immediate S2-R1 crash/fidelity corrective milestone**. Avoid microbuilds; group with future appropriate UI/presentation sprint.
 
