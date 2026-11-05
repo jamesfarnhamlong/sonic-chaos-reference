@@ -16,6 +16,14 @@ Chief supplied **five private illustrative screenshots** after acceptance. They 
 | S2-VIS-04 | Earned Emeralds **too dull/dead** | Examine current small UI gem sprite, per-frame colour/shader and placement. Propose bright jewel-like multi-hue gems with highlights/edges, aesthetically inspired by Sonic 3 but newly created for Enhanced and not constrained by the game-world SMS palette if not technically required. Show all 0–5 plus eligible sixth and ensure Tails none; **do not** change underlying bit ownership/reward logic. | High (prominent UI quality) |
 | S2-VIS-05 | **Sonic/Tails vertical/height discrepancy; Sonic overlaps TV box** | Calibrate both character anchors, size/animation frames and feet baseline. Preserve native sprite pixels (do not nonuniformly stretch). Avoid overlaps with yellow/white TV border, zone label, gem row and selection outline at 256/290/348 logical widths. | High (card composition) |
 
+### S2-VIS-06 — Animated Sonic/Tails running poses (Chief follow-up)
+
+**Chief request:** all characters shown on Data Select cards should actually **run in motion**, like the original character-selection screen, not remain stuck on one running sprite. Use the existing original character-choice six-frame Sonic/Tails sprite sequences and correct native palette shader/timing where suitable. Give the cards a lightweight continuous animation cycle (including unselected/empty character previews); preserve character identity, fixed feet baseline, TV frame clearance and layout at all accepted view widths. Avoid per-card mutable gameplay owners, unbounded surfaces, repeated sprite allocations or anything that changes game simulation/audio. If current preview has a deliberate idle/selected distinction, make its behavior clear and consistent. Review several cycles for head/ear clipping, partial sprites or TV overlap. **Do not copy new Sonic 3 artwork**.
+
+### Important colour-constant clarification
+
+Chief recalled that during S2 development an initially used colour caused a Draw crash. Designer's final S2 report confirms the concrete correction **`c_magenta` → `c_fuchsia`**. That explains the *invalid named constant* crash, **not an established cause** for the 'yellow hat' on Tails or dull Emerald colours. Inspect the original S2 shader, palette, sprite/crop and chosen frame at pixel level before assigning cause; don't falsely conclude a global palette limitation or change an otherwise correct named constant speculatively.
+
 ## Audio and functionality keepers
 - Chief complimented **reuse of original Data Select music**: retain exactly.
 - No redesign of left/right slot, up/down character/zone/act navigation, locked character, character-accurate Emerald ownership, save versioning, wipe confirmation or Classic choice.
@@ -23,10 +31,10 @@ Chief supplied **five private illustrative screenshots** after acceptance. They 
 - Existing accepted S1 Sharp/Integer/CRT effects remain optional; **final permanent graphics defaults undecided** until fullscreen/CRT product decisions.
 
 ## Efficient future handling
-- Address these together as a **single coherent UI-art/presentation sprint** or bundle with later endgame interface polish when Chief commissions it; do not stop Boss Rush/gameplay work to run five isolated cosmetic fixes.
-- During future source audit, first identify Tails hat/crop root cause and sprite/frame origin, then consolidate composition, TV static, preview curation and gem redesign.
+- Address these six items together as a **single coherent UI-art/presentation sprint** or bundle with later endgame interface polish when Chief commissions it; do not stop Boss Rush/gameplay work to run five isolated cosmetic fixes.
+- During future source audit, first identify Tails hat/crop root cause and sprite/frame origin, then implement actual continuous Sonic/Tails choice-screen running animation and consolidate composition, TV static, preview curation and gem redesign.
 - One private native candidate, source diff/receipts and single Chief side-by-side visual check, not separate packages per symptom.
-- Visual checks should include empty Sonic/Tails, occupied each of six zones, Emerald progression 0/1/3/5/6, completed/partial Sonic, complete Tails, changing card focus, original Classic menu, 256/290/348 widths, S1 filter combos and controller navigation.
+- Visual checks should include **multi-frame animated** empty and occupied Sonic/Tails (including unselected cards and head/ear bounds), occupied each of six zones, Emerald progression 0/1/3/5/6, completed/partial Sonic, complete Tails, changing card focus, original Classic menu, 256/290/348 widths, S1 filter combos and controller navigation.
 - Do not copy screenshots/reference art into public Git. Chief can retain private local image examples/references with management audit for future Designer.
 
 **Status: PARKED / DOCUMENTED.** S2 Chief functional acceptance remains valid.
