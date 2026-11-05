@@ -17,7 +17,11 @@ One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 s
 
 ## 1. Graphics and performance — front of queue
 
-**E1 status:** No improvement is presumed necessary. Measure current Windows presentation on unchanged E0-R1 first; if steady, close the frame-pacing proposal and proceed to scaling/CRT research. See [Manager's E1 review](E1_MANAGER_REVIEW_20261105.md).
+**E1-P0 final status (5 Nov): C — MEASUREMENT INCONCLUSIVE.** Accepted E0-R1 ZIP matched private SHA-256 `a087b6b1900a4160bfa3febc3abdf67fd54ce54d1f00f6c0ac13e0b124adaf6b`. Host desktop nominally 1920×1080 at 100 Hz, but no Sonic/Tails samples were collected: existing PresentMon returned 1/no CSV while target was not running, and non-elevated WPR failed profiling with `0xc5585011`. Actual displayed cadence remains unknown. **No E1-P1 implementation permission or '60 FPS solved' claim.** [Manager disposition](E1_P0_MEASUREMENT_DISPOSITION_20261105.md).
+
+**Next:** E2 **read-only scaling/CRT feasibility** (Chief-approved broad visual direction; no runtime work yet). Explore actual surface/window mapping, sharp integer/noninteger scaling, off-by-default CRT shader candidates and integration into the existing Enhanced Options framework while preserving original Classic. [E2 research brief](E2_PIXEL_SCALING_CRT_RESEARCH_BRIEF_20261105.md).
+
+**E1 status:** P0's attempt produced no timestamps. P1 HOLD until credible measurement can justify it; no timing code/feature. E2 scaling/CRT **research only** is the next separate workstream. See [Manager's E1 review](E1_MANAGER_REVIEW_20261105.md).
 | ID | Idea | Status / source | Preliminary gate |
 |---|---|---|---|
 | E-G1 | 60 FPS presentation | Prior ROADMAP E1; Chief renewed 5 Nov; Sonic 1/2 SMS Remakes support user-selectable 30/60 (outside precedent) | Research complete: normal simulation already targets 60 and pose holds are state-specific. **NEXT** external, non-mutating E1-P0 present/frame-interval measurement only; optional Windows VSync-timing compatibility P1 only if irregular present delivery demonstrated and separately approved. No default interpolation or clock changes. |
@@ -57,11 +61,12 @@ One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 s
 
 ## 6. Proposed sequencing and decision gates
 1. **DONE:** E0 unified mode picker / Enhanced Options shell, Chief accepted at `deccefc0...`; preserve exact SHA and Classic frozen tag.
-2. **E1 RESEARCH DONE; NEXT E1-P0 MEASUREMENT-ONLY:** record baseline Windows presentation cadence on accepted E0-R1 ZIP before proposing any pacing implementation (highest technical upside) and E-G2/E-G3 display pipeline including Lola Retro feasibility; no build required unless a demonstrable pilot warranted. Low-cost two-mode visual/performance comparison after research.
-3. Short graphics pilot: nearest/pixel-perfect vs native default, CRT off/on; evaluate Lola Retro adaptation feasibility separately. Then optional enhanced palette and selected background art.
-4. Save/emerald design **before** Super Sonic or new campaign modes; design save schema/rules, validate all emerald acquisition paths and Tails rules before code. Boss Rush can be designed independently and may be lower-risk than Super Sonic.
-5. Later authentic attract demos, enhanced QoL preferences and strict 4:3 original-mechanics mode. Keep maintenance Pause/debug separate from enhancements.
-6. Vita research after rendering/performance decisions; source decomp and SMS slowdown patch separate.
+2. **E1 RESEARCH/P0 DONE (C INCONCLUSIVE):** park Windows pacing changes pending new capture evidence; do not reinterpret as a 60 FPS proof.
+3. **NEXT E2 RESEARCH-ONLY:** map pixel-faithful scaling and CRT pipeline feasibility without modifying runtime. (highest technical upside) and E-G2/E-G3 display pipeline including Lola Retro feasibility; no build required unless a demonstrable pilot warranted. Low-cost two-mode visual/performance comparison after research.
+4. Short graphics pilot: nearest/pixel-perfect vs native default, CRT off/on; evaluate Lola Retro adaptation feasibility separately. Then optional enhanced palette and selected background art.
+5. Save/emerald design **before** Super Sonic or new campaign modes; design save schema/rules, validate all emerald acquisition paths and Tails rules before code. Boss Rush can be designed independently and may be lower-risk than Super Sonic.
+6. Later authentic attract demos, enhanced QoL preferences and strict 4:3 original-mechanics mode. Keep maintenance Pause/debug separate from enhancements.
+7. Vita research after rendering/performance decisions; source decomp and SMS slowdown patch separate.
 
 ## Decisions needing explicit Chief selection
 - Decide which enhanced feature begins first, if any. This record is inventory, not a job authorization.
