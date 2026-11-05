@@ -1,5 +1,5 @@
 # Sonic Chaos — Post-Classic Enhancement Backlog
-**Working planning inventory · 5 November 2026 · Chief/Manager-san #10 · E0 accepted; E1 pacing parked; S1 integrated Enhanced display sprint active**
+**Working planning inventory · 5 November 2026 · Chief/Manager-san #10 · E0 accepted; E1 pacing parked; S1 integrated display candidate delivered pending Chief**
 
 ## 0. Immutable starting point
 - Private Classic core tag: `classic-core-20261105` (annotated tag object `87f13ef24877519c820d4d2612b58279a43578e6`, peeled source `3a58912659b48573ac7f2c5c96a02a2211d5e4da`). Remote tag and freeze record verified 5 November 2026.
@@ -16,6 +16,8 @@ One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 s
 **E1 research PASS:** active ordinary GameMaker gameplay targets 60 updates/s and no universal 30 Hz gating was found; actual Windows displayed-frame cadence is still unmeasured. Next is **E1-P0 measurement of existing E0-R1 ZIP only** (no code/build), not an automatic 30-to-60 conversion or interpolator. [E1 Manager decision](E1_MANAGER_REVIEW_20261105.md). A `tm_countvsyncs_winalt` pilot remains HOLD unless baseline is uneven and Chief authorizes. GPZ3 bug and ring QoL remain separate.
 
 ## 1. Graphics and performance — front of queue
+
+**S1 INTEGRATED TECHNICAL CANDIDATE DELIVERED (5 Nov; Chief acceptance pending):** Designer local SHA `56c767e8b4f0f73c41f2d8ec41ca471d7a90e746`, all three display options SHARP PIXELS / INTEGER FIT / CRT FILTER functional with default OFF, one final private Windows/source/comparisons/receipt. Reported 3,472 source-host checks, 60 native cells, 5,460 matching core state snapshots, 164 exact Classic/all-OFF RGB image pairs, integer-fit and CRT verified, safe presenter fallback across Pause/results/death/focus; H: copies verified. Remote SHA not independently accessible and private ZIP/receipt/screenshots not attached. One **combined Chief native visual/controller/motion/audio F5** next; no second build or default-ON change until Chief's report. [Manager's S1 acceptance gate](S1_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261105.md).
 
 **S1 protected-source exception approved (5 Nov):** Designer reported checkpoint `5786dacc1ebc73006a79a255d071000e93d6c479` without implementing W2 because native-grid presenter would deactivate in Pause/results/death. Manager independently inspected four original source sites and authorized **guarded Enhanced-only lifecycle hooks** in `SCR_screen.gml`, `OBJ_pause/Alarm_0.gml`, `SCR_chaos_results.gml` and `SCR_chaos_death.gml`, on the S1 successor branch only. These do not mutate the immutable Classic tag/source/archive. **S1 continues with an internal native lifecycle proof, then native-grid integer fit, conditional one-pass CRT, single combined Windows candidate and Chief acceptance at the end.** Small same-purpose presentation lifecycle guards are delegated, not another stop-per-file rule; unsafe fallback or gameplay/audio/camera changes still STOP. [Exact Manager authorization](S1_PROTECTED_RENDER_HOOK_AUTHORIZATION_20261105.md).
 
