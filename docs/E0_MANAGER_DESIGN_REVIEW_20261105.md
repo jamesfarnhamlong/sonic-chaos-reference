@@ -1,5 +1,10 @@
 # Sonic Chaos Enhanced E0 — Manager Design Review
-**5 November 2026 · Manager-san #10 · Design GO in principle, Chief visual/UX sign-off pending · No implementation commissioned**
+**5 November 2026 · Manager-san #10 · Design GO, Chief visual/UX sign-off received · E0 implementation commissioned**
+
+## Chief approval (supersedes original pending language)
+
+**E0 CHIEF DESIGN APPROVED — IMPLEMENTATION AUTHORIZED (5 Nov):** Chief approved Manager's two refinements to Designer's source-backed design: use the final still from the inherited blue-and-white `SPR_opening_sega` (documented OpenSonicSMS-derived **PC addition**, not original-ROM splash) and make an indented Enhanced **Options** action directly focusable by **Up/Down**, not dependent on Right. All remaining E0 design decisions stand: short silent splash, binary Classic/Enhanced picker with Classic highlighted at fresh boot, no in-session switching, both modes enter unchanged original cinematic/game, empty Options page and empty effective-feature registry. **Designer to implement exactly one isolated E0 frontend shell on a new successor branch from D**, preserve frozen tag and all preexisting GML/sprites/audio, and deliver one focused private Windows candidate for Chief acceptance. No 60 FPS, scaling, CRT, savings, core changes or public release. [Formal Chief authorization](docs/E0_CHIEF_DESIGN_APPROVAL_20261105.md).
+
 
 ## Decision
 Designer provided `/E:/AI/Codex/Sonic Chaos/management-audits/e0-unified-frontend-20261105/E0_UNIFIED_FRONTEND_DESIGN_REPORT_20261105.md` (reviewed as user upload). Manager supports **one isolated nonpersistent shell room + controller + script, followed by original cinematic/title; no modified core GML**. The frozen private tag `classic-core-20261105` and peeled commit `3a58912659b48573ac7f2c5c96a02a2211d5e4da` remain authoritative. This record is a review, not an implementation or Chief approval of final artwork.
@@ -24,4 +29,4 @@ Designer provided `/E:/AI/Codex/Sonic Chaos/management-audits/e0-unified-fronten
 - Focused deterministic input-release and room-route cases, then single real Windows candidate covering two modes, Sonic/Tails and 256/348 controlled views, actual Retro290/218 preference smoke, clocks/audio requests, title timeout, Game Over, Continue and common return paths. Compare scene-relative gameplay against frozen D. Existing accepted source files should remain byte-identical; acknowledge that the *new executable* cannot be byte-identical because it adds a shell. No new full campaign or entire effect audit.
 - Chief F5 after Designer technical PASS should consist only of one fresh Classic route, one Enhanced route, look at splash/options and confirm mode persistence; no whole-game replay.
 
-**Current status: MANAGER DESIGN GO WITH TWO VISUAL/NAVIGATION CONDITIONS; CHIEF SIGN-OFF PENDING; IMPLEMENTATION NOT COMMISSIONED.**
+**Updated status: CHIEF SIGN-OFF RECEIVED; E0 SHELL IMPLEMENTATION AUTHORIZED; DELIVERY AND OWNER F5 ACCEPTANCE PENDING.**
