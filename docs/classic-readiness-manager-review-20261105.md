@@ -1,5 +1,12 @@
 # Sonic Chaos — Manager #10 Final Classic Readiness Review
-**5 November 2026 | GO recommendation | Chief private freeze authorization pending**
+**5 November 2026 | GO recommendation ACCEPTED by Chief | archive/tag verification pending**
+
+## Chief's decision after review
+
+**CHIEF APPROVAL — 5 NOV:** Chief explicitly authorized the **private Classic core freeze** at exact D `3a58912659b48573ac7f2c5c96a02a2211d5e4da`; archive/tag execution and verification **still pending**. See [freeze authorization and immutable-core policy](docs/classic-core-freeze-authorization-20261105.md). Approved private annotated tag `classic-core-20261105` must peel to D; no merge/main change, rebuild or public release. Designer's readiness-only documentation branch still needs remote publication.
+
+**Post-freeze rule from Chief:** future changes should wrap around the frozen Classic core; retain its exact SHA/tag permanently. The only currently anticipated core-adjacent maintenance is eventual removal/production hiding of **developer Level Select** and suppression of Pause during yet-to-be-specified **forbidden intervals**. Neither is part of this freeze; scope/approve separately, preserve original frozen tag and produce a distinct successor if true core modifications become necessary.
+
 
 ## Management disposition
 Designer-san completed an evidence-only review of Chief-accepted Corrective D `3a58912659b48573ac7f2c5c96a02a2211d5e4da` (private `SonicChaos_POC` branch `production/corrective-d-20261105`, parent C `337480a054999545535192a63b86dba9a9de2aea`). The full report was supplied to Chief and Manager as `FINAL_CLASSIC_READINESS.md`. Manager reviewed its 29-item disposition and original-ROM exception findings. **Manager GO for Chief's private Classic freeze decision; no remaining demonstrated blocker. This is not itself a freeze or a release.**
@@ -21,4 +28,4 @@ Designer-san completed an evidence-only review of Chief-accepted Corrective D `3
 - Canonical management repository records this assessment, not a change to the game source or binary.
 
 ## Next control point
-Await **Chief's explicit authorization** before private Classic base freeze, annotated release tag or final archive/index. After authorization, Designer can publish the report's docs-only branch, create a clearly defined private tag at exact accepted D SHA (only if asked), record SHA/provenance caveats in an external archive manifest, and verify tag, branch and recovery. No main merge, public binary release, gameplay rebuild or enhancements are implied.
+**Chief's explicit authorization was received 5 November 2026.** Proceed only with documentation branch publication, the private annotated tag pinned to D, and final archive/index verification. Tag/archive execution has not yet been confirmed. After authorization, Designer can publish the report's docs-only branch, create a clearly defined private tag at exact accepted D SHA (only if asked), record SHA/provenance caveats in an external archive manifest, and verify tag, branch and recovery. No main merge, public binary release, gameplay rebuild or enhancements are implied.
