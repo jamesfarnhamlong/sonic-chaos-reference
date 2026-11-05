@@ -1,5 +1,9 @@
 # Sonic Chaos E0-R1 — Manager Technical Review / Chief Acceptance Gate
-**5 November 2026 · Manager-san #10 · Technical PASS; Chief acceptance pending**
+**5 November 2026 · Manager-san #10 · Technical PASS; subsequently Chief accepted E0-R1**
+
+## Chief's subsequent acceptance
+
+Chief replied **"yes thats fine"** after the focused E0-R1 five-point checklist. This **closes E0** and establishes exact E0-R1 SHA as the next Enhanced baseline. The initial technical report retains its contemporary verification limits. [Chief acceptance receipt](E0_R1_CHIEF_ACCEPTANCE_20261105.md).
 
 ## Exact candidate
 - Private game repository `jamesfarnhamlong/SonicChaos_POC`, branch `enhancement/e0-r1-ui-20261105`, exact remote HEAD `deccefc0acd822f74b6b26895ec278cdf67a7cee`. Manager independently checked GitHub ref.
@@ -24,4 +28,4 @@ On the distinct private `SonicChaos_Windows_20261105_E0_R1_PRIVATE.zip`:
 4. Verify no double-press/held-confirm cascade skipping cinematic; observe original cinematic/title and brief Sonic or Tails gameplay/audio.
 5. Relaunch, Classic highlighted; confirm Classic directly enters original cinematic. Optional test splash fresh skip. No full campaign, broad audio sweep or GPZ3 texture work requested.
 
-**Manager disposition:** E0-R1 **TECHNICAL PASS — CHIEF ACCEPTANCE PENDING**, not merged into main and not frozen/retagged. E1 60 FPS should remain parked until E0 accepted. Historical E0 candidate/receipt remain immutable. Separate FC-PF-001 GPZ3 source-map texture bug and ENH-QOL-001 ring scatter stay on their respective backlogs.
+**Updated disposition:** E0-R1 **CHIEF ACCEPTED — E0 CLOSED**, not merged into main; original Classic tag unchanged. E1 60 FPS should remain parked until E0 accepted. Historical E0 candidate/receipt remain immutable. Separate FC-PF-001 GPZ3 source-map texture bug and ENH-QOL-001 ring scatter stay on their respective backlogs.
