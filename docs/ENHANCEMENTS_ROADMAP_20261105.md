@@ -1,5 +1,5 @@
 # Sonic Chaos — Post-Classic Enhancement Backlog
-**Working planning inventory · 5 November 2026 · Chief/Manager-san #10 · all features uncommissioned**
+**Working planning inventory · 5 November 2026 · Chief/Manager-san #10 · E0 shell commissioned; all other features uncommissioned**
 
 ## 0. Immutable starting point
 - Private Classic core tag: `classic-core-20261105` (annotated tag object `87f13ef24877519c820d4d2612b58279a43578e6`, peeled source `3a58912659b48573ac7f2c5c96a02a2211d5e4da`). Remote tag and freeze record verified 5 November 2026.
@@ -9,13 +9,15 @@
 
 ## E0 — Unified Classic / Enhanced frontend (first approved research priority)
 
+**E0 CHIEF DESIGN APPROVED — IMPLEMENTATION AUTHORIZED (5 Nov):** Chief approved Manager's two refinements to Designer's source-backed design: use the final still from the inherited blue-and-white `SPR_opening_sega` (documented OpenSonicSMS-derived **PC addition**, not original-ROM splash) and make an indented Enhanced **Options** action directly focusable by **Up/Down**, not dependent on Right. All remaining E0 design decisions stand: short silent splash, binary Classic/Enhanced picker with Classic highlighted at fresh boot, no in-session switching, both modes enter unchanged original cinematic/game, empty Options page and empty effective-feature registry. **Designer to implement exactly one isolated E0 frontend shell on a new successor branch from D**, preserve frozen tag and all preexisting GML/sprites/audio, and deliver one focused private Windows candidate for Chief acceptance. No 60 FPS, scaling, CRT, savings, core changes or public release. [Formal Chief authorization](docs/E0_CHIEF_DESIGN_APPROVAL_20261105.md).
+
 **Chief decision 5 Nov:** before implementing any other enhancements, investigate a **single executable** with a SEGA-branded PC opening splash → binary **Classic / Enhanced** mode picker → the existing original Sonic Chaos cinematic/title/character choice in both modes. Enhanced gets a clearly accessible **Options** subaction beneath its mode choice. Future independently implemented features appear there as on/off switches when applicable; 60 FPS presentation and pixel scaling may instead become Enhanced defaults only after proven safe. **Do not create two parallel gameplay cores, separate EXEs or developer-key mode toggles.**
 
 **Important provenance correction:** original retail SMS Sonic Chaos has **no standalone SEGA logo splash**. The private GameMaker source retains the former OpenSonicSMS animated `SPR_opening_sega` / `ROM_menu_opening` (currently unreachable). Investigate whether authentic original ROM *title* artwork supplies a suitable SEGA mark; otherwise a clearly identified PC-only inherited splash is acceptable for Chief review. Preserve the accepted ROM intro sequence unaltered. No newly claimed 'original ROM splash'.
 
 **Classic contract:** frozen tag stays untouched. After the new shared boot shell, Classic must route into the original game with unchanged mechanics/audio/assets. Enhanced initially runs the same original game with no enhancement switches implemented and displays an honest empty Options screen. Use a clean mode enum and future Enhanced feature registry; do not overload legacy `saveGame` or reintroduce F-key switches. Proposed default Classic on fresh start.
 
-**Status:** E0 **research/design authorized as first task; runtime implementation not yet commissioned**. Detailed source findings, state-flow proposal, provenance rules and a documentation-only Designer gate: [E0 unified frontend research brief](docs/E0_UNIFIED_FRONTEND_RESEARCH_BRIEF_20261105.md). E1 60 FPS research remains next after E0 shell is designed/approved.
+**Status:** E0 **Chief-approved for limited shell implementation and focused testing; candidate acceptance pending**. Detailed source findings, state-flow proposal, provenance rules and a documentation-only Designer gate: [E0 unified frontend research brief](docs/E0_UNIFIED_FRONTEND_RESEARCH_BRIEF_20261105.md). E1 60 FPS research remains next after E0 shell is designed/approved.
 ## 1. Graphics and performance — front of queue
 | ID | Idea | Status / source | Preliminary gate |
 |---|---|---|---|
