@@ -2,6 +2,8 @@
 
 ## New post-freeze queues — 5 November 2026
 
+**Endgame release UI polish (Chief note 5 Nov, PARKED):** The inherited OpenSonic options room still contains window multiplier 1×/2×/3× and Auto/Wide/Retro screen policies with `settings.ini` persistence, but is no longer reachable through authentic title flow; it never implemented actual fullscreen. Windows project currently disables fullscreen switching/resizing. Chief wants a **shared Classic+Enhanced** user-accessible Windows/fullscreen and size/view-behaviour UI **at final release polish**, possibly preboot or Pause (placement undecided), **alongside removing release-facing developer Pause → Level Select**; earlier Pause/results restrictions likewise remain parked. **Do not interrupt S1, add scope or create a separate build now.** [Endgame release polish ledger](docs/tracking/ENDGAME_RELEASE_POLISH.md).
+
 **E0 closed 5 Nov:** Chief accepted E0-R1 private Windows candidate `deccefc0acd822f74b6b26895ec278cdf67a7cee` (enhanced baseline) after corrected two-second SEGA / two-mode picker / direct Enhanced Options → Start Game. Exact source and Chief note: [E0 R1 acceptance](../E0_R1_CHIEF_ACCEPTANCE_20261105.md). Frozen Classic tag untouched. GPZ3 and enhanced ring scatter remain separate; E1 60 FPS research only.
 
 - **[Classic Post-Freeze Defects](POST_FREEZE_CLASSIC_DEFECTS.md):** FC-PF-001 GPZ3 cyan tube textures show periodic dark grid/seam lines in Chief's current Windows images against an original-ROM-on-Vita photographic comparison. Source/ROM cause unverified, tracked for later narrowly scoped Classic maintenance; not E0 and not an automatic frozen-core retag. Original screenshots are private user evidence; the public reference repo carries only descriptions.
