@@ -1,5 +1,13 @@
 # Sonic Chaos — current issue tracker (updated 5 November 2026)
 
+## New post-freeze queues — 5 November 2026
+
+- **[Classic Post-Freeze Defects](POST_FREEZE_CLASSIC_DEFECTS.md):** FC-PF-001 GPZ3 cyan tube textures show periodic dark grid/seam lines in Chief's current Windows images against an original-ROM-on-Vita photographic comparison. Source/ROM cause unverified, tracked for later narrowly scoped Classic maintenance; not E0 and not an automatic frozen-core retag. Original screenshots are private user evidence; the public reference repo carries only descriptions.
+- **[Enhanced QoL Ideas](ENHANCED_QOL_IDEAS.md):** ENH-QOL-001 richer, more varied recoverable ring scattering inspired by 16-bit Sonic, **Enhanced-only optional toggle** once designed. The frozen ROM-derived formula already emits up to seven rings (`min(7,floor(rings/10)+1)`), so this is an intentional expansion, not a defect or universal 1–2 ring cap.
+- **Current E0:** private unified frontend successor branch `enhancement/e0-unified-frontend-20261105` at `69450848b1e06fcef7de63f19ae238ff346e479a` (remote SHA verified). Designer report gives scoped native/source-host PASS and H: package evidence, **Chief visual/physical controller acceptance pending**. Both new queues are deferred and must not be silently folded into E0.
+
+
+
 **Detailed historical-and-current CSV snapshot (FT-15/FT-16 statuses lag the 5 Nov Chief acceptance receipt):** [SonicChaos_CURRENT_Issue_Tracker_20261103.csv](SonicChaos_CURRENT_Issue_Tracker_20261103.csv) — **109 records, 25 columns**: all **93** original AUDIT-0 issues with their **17 source fields retained unchanged**, plus **8 current-review fields**, and **16 new FT-01…FT-16 entries** through Chief's 4 Nov Corrective A visual failure and SFX requester closure.
 
 **Historical source, frozen and unchanged:** [AUDIT-0 93-row ledger](../audit0/SonicChaos_AUDIT0_Full_Issue_Ledger.csv) and [historical index](../audit0/SonicChaos_AUDIT0_Issue_Index.md). The original **30 October** counts (55 closed, 14 canon/QoL, 7 open, 7 retest, 3 deferred, 2 active audio, 2 source gaps, 2 test exceptions, one infrastructure) **are historical categories, not an assertion of today's open bugs**. Original Excel workbook `SonicChaos_Issue_Ledger_AUDIT0_2026-10-30.xlsx` was preserved in Chief's project Library; a new owner-facing Excel `SonicChaos_Current_Issue_Tracker_20261103.xlsx` was placed alongside it. The current 4 Nov workbook `SonicChaos_Current_Issue_Tracker_20261104.xlsx` in Chief's Project Library contains Overview, Corrective A, AUDIT0 Reconciled and Watchlist views (the older 3 Nov workbook is a historical snapshot); the Github CSV provides the full original 17+8 column records.
