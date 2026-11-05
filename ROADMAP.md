@@ -27,6 +27,8 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 ## NOW — S1 RESUMED; FOUR GUARDED RENDERING HOOKS APPROVED (5 NOV 2026)
 
+**Endgame release UI polish (Chief note 5 Nov, PARKED):** The inherited OpenSonic options room still contains window multiplier 1×/2×/3× and Auto/Wide/Retro screen policies with `settings.ini` persistence, but is no longer reachable through authentic title flow; it never implemented actual fullscreen. Windows project currently disables fullscreen switching/resizing. Chief wants a **shared Classic+Enhanced** user-accessible Windows/fullscreen and size/view-behaviour UI **at final release polish**, possibly preboot or Pause (placement undecided), **alongside removing release-facing developer Pause → Level Select**; earlier Pause/results restrictions likewise remain parked. **Do not interrupt S1, add scope or create a separate build now.** [Endgame release polish ledger](docs/tracking/ENDGAME_RELEASE_POLISH.md).
+
 **Chief directive:** one substantial Enhanced development sprint with internal focused verification and **one combined Windows candidate/Chief F5**, not one package per tiny feature. Immutable Classic tag `classic-core-20261105` → `3a58912659b48573ac7f2c5c96a02a2211d5e4da` and accepted Enhanced E0-R1 `deccefc0acd822f74b6b26895ec278cdf67a7cee` unchanged.
 
 **S1 Designer checkpoint:** `5786dacc1ebc73006a79a255d071000e93d6c479` on isolated `enhancement/s1-display-foundation-20261105`. Work stopped before protected-source changes after reporting native-grid presenter deactivation by Pause/results/death. Reported source-host tests 1,738 PASS, source/archive H: checks PASS; no S1 runtime edits or candidate yet.
