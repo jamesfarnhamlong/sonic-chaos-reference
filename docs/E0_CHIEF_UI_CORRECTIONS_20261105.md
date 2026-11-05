@@ -1,6 +1,11 @@
 # Sonic Chaos E0 — Chief's First Build Review: UI Corrections
 **5 November 2026 · Manager-san #10 · Chief feedback on the first private E0 Windows candidate**
 
+## E0-R1 candidate delivered (superseding pending correction assignment)
+
+**E0-R1 CANDIDATE DELIVERED — TECHNICAL PASS; CHIEF ACCEPTANCE PENDING (5 Nov):** Designer private branch `enhancement/e0-r1-ui-20261105` at `deccefc0acd822f74b6b26895ec278cdf67a7cee`, exactly one commit after E0 `69450848b1e06fcef7de63f19ae238ff346e479a`, 0 behind (remote independently checked). Only new frontend `SCR_chaos_frontend.gml` and `OBJ_chaos_frontend/Draw_0.gml` differ at runtime from E0; frozen Classic original files and tag unchanged. Corrected SEGA splash waits 2 seconds *after first Draw*, two-mode picker, Enhanced directly opens empty Options and `START GAME` alone at bottom, ESC/pad B Back. Designer 1,767 source-host tests, 1,440 matched core updates and standard Windows compile/smoke PASS; native interactive **foreground focus problem blocked measured real logo timing and keyboard walkthrough**, so Chief must check visible duration, actual controller/keyboard and original intro/audio once. [E0-R1 Manager review](docs/E0_R1_MANAGER_TECHNICAL_REVIEW_20261105.md). **Do not call E0 accepted until Chief reports; GPZ3 visual bug and Enhanced ring scatter remain separate deferred queues.**
+
+
 ## Status
 **FUNCTIONAL ACCEPTANCE IN PRINCIPLE — E0 NOT YET CHIEF-ACCEPTED. Two UI corrections explicitly requested.**
 
