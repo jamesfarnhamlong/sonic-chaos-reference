@@ -1,6 +1,10 @@
 # Sonic Chaos — S2 Enhanced Data Select & Zone Progression
 **5 November 2026 · Manager-san #10 · REVISED per Chief's explicit Sonic 3-style contract and two visual references · S2 GO**
 
+## Sprint delivery status — 5 November 2026
+
+**DESIGNER TECHNICAL PASS — CHIEF ACCEPTANCE PENDING.** S2 private integrated candidate delivered at local commit `0809ef9cbc9ea9c1fda3bc0ead45aa9aa749a5a7`. 2,908 source-host assertions, 339 compiled Windows file checks, 36 native gameplay endpoints and exact S1 comparisons reported PASS; original/Classic route retained, Draw `c_magenta` error corrected, independent H: recovery reported. S2 SHA and ZIPs are local-only from Manager perspective, not independently code/hashed through GitHub. The only next action is a **single short Chief Windows/pad acceptance**, not further development. [Manager candidate review and checklist](S2_MANAGER_CANDIDATE_REVIEW_20261105.md).
+
 ## Binding Chief design — supersedes the first S2 proposal
 **Chief's design is not a separate opt-in Saved Campaign mode.** In the unified frontend, after choosing **ENHANCED**, the existing `START GAME` entry leads through the accepted opening/title and then **directly to a Sonic 3-style five-slot DATA SELECT screen in place of the original Sonic/Tails character-choice screen**. **CLASSIC** keeps the original title → character selection and original campaign unchanged. There is **no Enhanced save-toggle/feature flag, no 'Saved Campaign' text row in Enhanced Options, no extra mode-choice screen, and no alternate parallel game executable**. Saved progression is an inherent part of Enhanced gameplay.
 
