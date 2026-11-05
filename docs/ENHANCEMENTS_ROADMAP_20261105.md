@@ -1,9 +1,9 @@
 # Sonic Chaos — Post-Classic Enhancement Backlog
-**Working planning inventory · 5 November 2026 · Chief/Manager-san #10 · E0 Chief accepted; E1 research next; other features uncommissioned**
+**Working planning inventory · 5 November 2026 · Chief/Manager-san #10 · E0 Chief accepted; E1 research PASS and measurement-only next; other features uncommissioned**
 
 ## 0. Immutable starting point
 - Private Classic core tag: `classic-core-20261105` (annotated tag object `87f13ef24877519c820d4d2612b58279a43578e6`, peeled source `3a58912659b48573ac7f2c5c96a02a2211d5e4da`). Remote tag and freeze record verified 5 November 2026.
-- Private project: `jamesfarnhamlong/SonicChaos_POC`. Main remains unchanged. Gameplay core, original 30 Hz simulation, 256×192 original reference, 348×196 PC widescreen, Z80 audio timing, Sonic/Tails, stages, results, existing QoL are protected. Source ZIP's stale B-only archive manifest is an accepted provenance caveat, not a reason to rebuild.
+- Private project: `jamesfarnhamlong/SonicChaos_POC`. Main remains unchanged. Gameplay core, existing 60-target ordinary simulation (sprite poses change at state-specific intervals), 256×192 original reference, 348×196 PC widescreen, Z80 audio timing, Sonic/Tails, stages, results, existing QoL are protected. Source ZIP's stale B-only archive manifest is an accepted provenance caveat, not a reason to rebuild.
 - All enhancements need a named opt-in mode or isolated presentation/adaptor layer, baseline-off comparison, separate implementation branch and Chief approval. Never mutate or force-move Classic tag. Future mandatory core deviations require separate evidenced successor checkpoint.
 - Chief's two anticipated future **maintenance**, not enhancements: remove/hide developer Pause Level Select from release-facing access; disallow Pause during specific results/transition intervals. Current Classic freeze retains both; neither implementation commissioned.
 
@@ -13,12 +13,14 @@ Chief **accepted E0-R1** on the standard private Windows candidate. **Exact Enha
 
 One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 seconds, 2-mode picker, Classic straight to cinematic, Enhanced directly to empty Options with **START GAME** last. `ESC`/pad B returns from Options, and no feature toggles are shown until actual implementation. New Enhanced features must be registered once and effectively off in Classic; no overlapping FX/dev switches. [Chief E0 acceptance](E0_R1_CHIEF_ACCEPTANCE_20261105.md) and [technical review](E0_R1_MANAGER_TECHNICAL_REVIEW_20261105.md).
 
-**Next active E1 assignment is research only**, not a 60 FPS implementation authorization: [E1 timing/presentation research brief](E1_FRAMERATE_PRESENTATION_RESEARCH_BRIEF_20261105.md). Real active GameMaker zone speed is set to 60; measure logical vs rendered cadence before selecting interpolation architecture. Keep GPZ3 bug and ring QoL separate.
+**E1 research PASS:** active ordinary GameMaker gameplay targets 60 updates/s and no universal 30 Hz gating was found; actual Windows displayed-frame cadence is still unmeasured. Next is **E1-P0 measurement of existing E0-R1 ZIP only** (no code/build), not an automatic 30-to-60 conversion or interpolator. [E1 Manager decision](E1_MANAGER_REVIEW_20261105.md). A `tm_countvsyncs_winalt` pilot remains HOLD unless baseline is uneven and Chief authorizes. GPZ3 bug and ring QoL remain separate.
 
 ## 1. Graphics and performance — front of queue
+
+**E1 status:** No improvement is presumed necessary. Measure current Windows presentation on unchanged E0-R1 first; if steady, close the frame-pacing proposal and proceed to scaling/CRT research. See [Manager's E1 review](E1_MANAGER_REVIEW_20261105.md).
 | ID | Idea | Status / source | Preliminary gate |
 |---|---|---|---|
-| E-G1 | 60 FPS presentation | Prior ROADMAP E1; Chief renewed 5 Nov; Sonic 1/2 SMS Remakes support user-selectable 30/60 (outside precedent) | First research GameMaker Step/Draw timing and separate original 30 Hz game + ~60 Hz visible interpolation without doubled clocks; render/camera pilot only; 30 mode unchanged. True 60 Hz simulation is separate/high risk. |
+| E-G1 | 60 FPS presentation | Prior ROADMAP E1; Chief renewed 5 Nov; Sonic 1/2 SMS Remakes support user-selectable 30/60 (outside precedent) | Research complete: normal simulation already targets 60 and pose holds are state-specific. **NEXT** external, non-mutating E1-P0 present/frame-interval measurement only; optional Windows VSync-timing compatibility P1 only if irregular present delivery demonstrated and separately approved. No default interpolation or clock changes. |
 | E-G2 | Pixel-preserving scaling | Prior ROADMAP E2; Chief wants native sprite charm | Nearest/integer/pixel alignment, aspect ratio and optional sharp-bilinear; don't reshape sprite art or collision; compare native256 and wide348. xBRZ/ScaleFX only opt-in later experiment, not assumed preferable. |
 | E-G3 | CRT post-process | Chief mentions prior recommended high-fidelity CRT; recovered 25 Oct Lola Retro recommendation in Soul Blade context; separate older RetroPie `tvout_smart` preference should NOT be mistaken for Sonic Chaos-specific choice | Evaluate `https://github.com/zoran123456/lola-retro`, Consumer TV/flat/low-resolution use; original implementation not GameMaker-native, so study licence, multi-pass surface translation, performance and visual test; off by default. |
 | E-G4 | Optional palette and effects presets | Prior ROADMAP E2, AM-san | Original palettes default; reversible enhanced colours/subtle ambient lighting/particles; no change to source pixels, waterline shader, hitboxes or timers. |
@@ -55,7 +57,7 @@ One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 s
 
 ## 6. Proposed sequencing and decision gates
 1. **DONE:** E0 unified mode picker / Enhanced Options shell, Chief accepted at `deccefc0...`; preserve exact SHA and Classic frozen tag.
-2. **NEXT RESEARCH-ONLY:** E-G1 actual timing/cadence and 60 FPS presentation feasibility (highest technical upside) and E-G2/E-G3 display pipeline including Lola Retro feasibility; no build required unless a demonstrable pilot warranted. Low-cost two-mode visual/performance comparison after research.
+2. **E1 RESEARCH DONE; NEXT E1-P0 MEASUREMENT-ONLY:** record baseline Windows presentation cadence on accepted E0-R1 ZIP before proposing any pacing implementation (highest technical upside) and E-G2/E-G3 display pipeline including Lola Retro feasibility; no build required unless a demonstrable pilot warranted. Low-cost two-mode visual/performance comparison after research.
 3. Short graphics pilot: nearest/pixel-perfect vs native default, CRT off/on; evaluate Lola Retro adaptation feasibility separately. Then optional enhanced palette and selected background art.
 4. Save/emerald design **before** Super Sonic or new campaign modes; design save schema/rules, validate all emerald acquisition paths and Tails rules before code. Boss Rush can be designed independently and may be lower-risk than Super Sonic.
 5. Later authentic attract demos, enhanced QoL preferences and strict 4:3 original-mechanics mode. Keep maintenance Pause/debug separate from enhancements.
