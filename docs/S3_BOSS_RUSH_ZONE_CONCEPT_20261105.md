@@ -2,6 +2,16 @@
 **5 November 2026 · Chief-approved S3 architecture · Manager-san #10 · Reuse existing boss arenas unchanged, build only connecting sections**
 
 ## Chief's design preference
+
+## Latest binding Chief decision — Manager-san #11 (5 November 2026)
+
+**The new zone's palette and background are Electric Egg Zone throughout**, including source terrain copied from THZ/GPZ/SEZ/MGHZ/AQZ and all interstitial passages. Retain recognisable original architectural silhouettes, reused collision and required boss combat cores; create challenge-only EEZ-coloured environmental render assets, never globally recolour ordinary stages or hide functional water/spike/projectile cues. The attached joined THZ→GPZ layout image is the intended horizontal architectural arrangement, NOT a request for the original mixed zone backgrounds.
+
+**Entry:** add `BOSS RUSH` as a visible item **immediately beneath START on Enhanced's existing main title menu**. It is not an Options toggle/submenu and is not part of the five-slot Data Select. Choosing it goes **straight to ordinary Sonic/Tails Character Select → Level 7 / Boss Rush Zone → the opening of the horizontal course**. START retains the accepted Data Select route; Classic menu untouched; no extra explanations or second menu. A single Level 7 card may introduce the challenge; no six visible level re-entry/title-card jumps.
+
+Binding details and consolidated checks: [S3 sprint charter](S3_BOSS_RUSH_ZONE_SPRINT_20261105.md).
+
+
 Rather than a plain boss select or menu-to-menu fight sequence, Chief described the SMS1 boss mode as **short chained stages with title cards/transitions**, three lives and available rings. Chief now **explicitly clarified**: **REUSE THE SIX EXISTING BOSS ARENAS AS-IS**, preserving their original **camera rules, transitions, spawn coordinates, collision geometry, triggers, boss routines, environment mechanics and timing**; visually recolour arena/background assets into an Electric Egg-inspired palette **without reconstructing the arenas**. New level-design work should concentrate on **short interstitial travel segments**, which themselves may be lifted/rearranged from the existing corresponding zones, plus the enclosing six-fight progression. Ring supply is limited, possibly **none newly offered between encounters 5 and 6**. This is **one cohesive custom Boss Rush Zone in player experience**, not a mandatory single GameMaker room nor six redesigned boss fights. Manager judges this significantly less risky than rebuilding every arena; source room-identity constraints still need a careful adapter/fallback proof.
 
 ## Chief's latest clarification — build a horizontally connected level (5 Nov)
