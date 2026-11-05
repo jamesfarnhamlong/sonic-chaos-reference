@@ -3,7 +3,12 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## NOW — Final Classic readiness GO; Chief freeze authorization pending (5 Nov 2026)
+## NOW — CHIEF AUTHORIZED PRIVATE CLASSIC CORE FREEZE (5 Nov 2026); TAG EXECUTION PENDING
+
+**CHIEF APPROVAL — 5 NOV:** Chief explicitly authorized the **private Classic core freeze** at exact D `3a58912659b48573ac7f2c5c96a02a2211d5e4da`; archive/tag execution and verification **still pending**. See [freeze authorization and immutable-core policy](docs/classic-core-freeze-authorization-20261105.md). Approved private annotated tag `classic-core-20261105` must peel to D; no merge/main change, rebuild or public release. Designer's readiness-only documentation branch still needs remote publication.
+
+**Post-freeze rule from Chief:** future changes should wrap around the frozen Classic core; retain its exact SHA/tag permanently. The only currently anticipated core-adjacent maintenance is eventual removal/production hiding of **developer Level Select** and suppression of Pause during yet-to-be-specified **forbidden intervals**. Neither is part of this freeze; scope/approve separately, preserve original frozen tag and produce a distinct successor if true core modifications become necessary.
+
 
 **Manager final-readiness decision (5 Nov): GO for Chief's private Classic freeze authorization; NOT FROZEN YET.** Designer's evidence-only assessment classified the 29 previously uncounted Draw event files as 8 active/prior-verified, 1 active native-count gap (`OBJ_chaos_object_27` THZ flying enemy), 20 dormant/legacy; no demonstrated invalid sprite, crash or progression blocker. Original Tails state `$20` / frame `$5E` is a *reachable original corruption hazard*, for which the accepted source deliberately retains the exact-condition no-draw/safe-progression parity exception; no hardware-corruption parity asserted. The five raw verifier failures and D phase differences remain documented. D source ZIP's archive-only `SOURCE_MANIFEST.json` incorrectly labels B; external D SHA-256/receipt and exact production Git source identify the immutable accepted package. [Readiness decision](docs/classic-readiness-manager-review-20261105.md).
 
