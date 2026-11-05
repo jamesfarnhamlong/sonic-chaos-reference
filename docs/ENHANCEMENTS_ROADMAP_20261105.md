@@ -39,9 +39,12 @@ One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 s
 | E-G5 | Higher-detail background/parallax tiles | Chief new explicit 5 Nov | Selective original-style background-only trial, preserve 8-bit foreground/character art, tile collision and occlusion; measure artistic consistency, no AI-restyled sprites. |
 
 ## 2. Gameplay modes
+
+**NEXT GAMEPLAY SPRINT — S2 SAVED CAMPAIGN (5 Nov):** integrated Enhanced-only saved campaign and Emerald Progression, per [S2 sprint charter](S2_ENHANCED_SAVE_EMERALD_SPRINT_20261105.md). Work includes discoverable slots/New/Continue/Delete; Sonic/Tails character-lock; 18-act unlock and replay; five Special Stage credit/claimed records, final-sixth award and completion flags; versioned corruption-tolerant persistence; shared Classic/core preservation; one end-of-sprint Windows candidate/Chief check. This is **a single substantive system**. Boss Rush and Super Sonic **not** part of S2. S1 was Chief accepted; all graphics defaults remain undecided until fullscreen/CRT combinations are assessed.
+
 | ID | Idea | Status / source | Preliminary gate |
 |---|---|---|---|
-| E-P1 | Sonic 3-style Save / Emerald Progression | Chief proposal, earlier ROADMAP E5 parked | Optional mode. Save character-lock, visited/unlocked zone/act, per-stage emerald rewards/claimed Special Stages, sixth emerald acquired only at final Robotnik completion, completion flag, resume/replay rules; prevent emerald duplication and repeated earned Special Stage; after completion allow replay from unlocked/all zones with earned emeralds. Classic New Game untouched. Crash-safe/versioned save data. |
+| E-P1 | Sonic 3-style Save / Emerald Progression | **S2 substantive sprint NEXT — commissioned 5 Nov** | Optional mode. Save character-lock, visited/unlocked zone/act, per-stage emerald rewards/claimed Special Stages, sixth emerald acquired only at final Robotnik completion, completion flag, resume/replay rules; prevent emerald duplication and repeated earned Special Stage; after completion allow replay from unlocked/all zones with earned emeralds. Classic New Game untouched. Crash-safe/versioned save data. |
 | E-P2 | Boss Rush | Chief explicit 5 Nov | Either contiguous boss challenge or specially designed scrolling arena/zone; reuse existing boss scripts and original attack balance first; separate scoring and progression/Continue/emerald logic; avoid changes to Classic bosses. |
 | E-P3 | Super Sonic | Chief explicit 5 Nov, feasibility only | Post-full-completion unlock because final Emerald belongs to Robotnik clear; dedicated original-style custom sprite and animation, energy economy, interactions and ending/continuity; do not retroactively insert transformation into canonical campaign. |
 | E-P4 | Optional Enhanced QoL | Chief and earlier tracker | Candidate only with side-by-side original/Enhanced comparison and precise trigger: Spring Shoes restriction at boss (Chief wrote `SLZ`; verify zone/act), MGHZ falling-coconut damage/activation, AQZ boss music interrupted after invincibility, THZ3 spike/jump SFX priority, limited collision/scene polish. Original/Classic remains unchanged. Ring/enemy offscreen persistence already accepted and MUST NOT be misclassified as unfinished. |
@@ -72,12 +75,12 @@ One executable, shared original Sonic Chaos core, PC-only silent SEGA still ~2 s
 2. **E1 RESEARCH/P0 DONE (C INCONCLUSIVE):** park Windows pacing changes pending new capture evidence; do not reinterpret as a 60 FPS proof.
 3. **E2 RESEARCH DONE; E2-P1 GO:** isolate nearest-only `SHARP PIXELS` OFF/ON visual pilot, Classic identical, one private candidate and Chief A/B. P1b integer-fit and P2 CRT hold until separately approved. (highest technical upside) and E-G2/E-G3 display pipeline including Lola Retro feasibility; no build required unless a demonstrable pilot warranted. Low-cost two-mode visual/performance comparison after research.
 4. Short graphics pilot: nearest/pixel-perfect vs native default, CRT off/on; evaluate Lola Retro adaptation feasibility separately. Then optional enhanced palette and selected background art.
-5. Save/emerald design **before** Super Sonic or new campaign modes; design save schema/rules, validate all emerald acquisition paths and Tails rules before code. Boss Rush can be designed independently and may be lower-risk than Super Sonic.
+5. **S2 NEXT:** Saved campaign and Emerald Progression as one integrated research, implementation and test sprint, before Boss Rush or Super Sonic. Map all emerald acquisition paths and Tails rules before binding save events. [S2 charter](S2_ENHANCED_SAVE_EMERALD_SPRINT_20261105.md). Boss Rush can be designed independently and may be lower-risk than Super Sonic.
 6. Later authentic attract demos, enhanced QoL preferences and strict 4:3 original-mechanics mode. Keep maintenance Pause/debug separate from enhancements.
 7. Vita research after rendering/performance decisions; source decomp and SMS slowdown patch separate.
 
 ## Decisions needing explicit Chief selection
-- Decide which enhanced feature begins first, if any. This record is inventory, not a job authorization.
+- S1 already delivered and Chief accepted; **S2 save/progression is now the next commission**. Later features still need separate substantive sprint selection.
 - Clarify the 'SLZ' boss/Spring Shoes reference before assigning exact original-vs-QoL tests.
 - Confirm graphics aesthetic by screenshots before commissioning any high-resolution artwork.
 - Decide whether desired 60 FPS means only visual smoothness or truly 60 Hz gameplay responsiveness; recommend the safer rendering-first research.
