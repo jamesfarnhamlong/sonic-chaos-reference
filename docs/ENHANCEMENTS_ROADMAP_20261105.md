@@ -7,6 +7,15 @@
 - All enhancements need a named opt-in mode or isolated presentation/adaptor layer, baseline-off comparison, separate implementation branch and Chief approval. Never mutate or force-move Classic tag. Future mandatory core deviations require separate evidenced successor checkpoint.
 - Chief's two anticipated future **maintenance**, not enhancements: remove/hide developer Pause Level Select from release-facing access; disallow Pause during specific results/transition intervals. Current Classic freeze retains both; neither implementation commissioned.
 
+## E0 — Unified Classic / Enhanced frontend (first approved research priority)
+
+**Chief decision 5 Nov:** before implementing any other enhancements, investigate a **single executable** with a SEGA-branded PC opening splash → binary **Classic / Enhanced** mode picker → the existing original Sonic Chaos cinematic/title/character choice in both modes. Enhanced gets a clearly accessible **Options** subaction beneath its mode choice. Future independently implemented features appear there as on/off switches when applicable; 60 FPS presentation and pixel scaling may instead become Enhanced defaults only after proven safe. **Do not create two parallel gameplay cores, separate EXEs or developer-key mode toggles.**
+
+**Important provenance correction:** original retail SMS Sonic Chaos has **no standalone SEGA logo splash**. The private GameMaker source retains the former OpenSonicSMS animated `SPR_opening_sega` / `ROM_menu_opening` (currently unreachable). Investigate whether authentic original ROM *title* artwork supplies a suitable SEGA mark; otherwise a clearly identified PC-only inherited splash is acceptable for Chief review. Preserve the accepted ROM intro sequence unaltered. No newly claimed 'original ROM splash'.
+
+**Classic contract:** frozen tag stays untouched. After the new shared boot shell, Classic must route into the original game with unchanged mechanics/audio/assets. Enhanced initially runs the same original game with no enhancement switches implemented and displays an honest empty Options screen. Use a clean mode enum and future Enhanced feature registry; do not overload legacy `saveGame` or reintroduce F-key switches. Proposed default Classic on fresh start.
+
+**Status:** E0 **research/design authorized as first task; runtime implementation not yet commissioned**. Detailed source findings, state-flow proposal, provenance rules and a documentation-only Designer gate: [E0 unified frontend research brief](docs/E0_UNIFIED_FRONTEND_RESEARCH_BRIEF_20261105.md). E1 60 FPS research remains next after E0 shell is designed/approved.
 ## 1. Graphics and performance — front of queue
 | ID | Idea | Status / source | Preliminary gate |
 |---|---|---|---|
@@ -46,11 +55,12 @@
 - **Compulsory sprite redraw/AI upscale**, permanent original-physics changes and universal '60Hz simulation' promises: prohibited without new Chief decision.
 
 ## 6. Proposed sequencing and decision gates
-1. Research-only E-G1 60 FPS architecture (highest technical upside) and E-G2/E-G3 display pipeline including Lola Retro feasibility; no build required unless a demonstrable pilot warranted. Low-cost two-mode visual/performance comparison after research.
-2. Short graphics pilot: nearest/pixel-perfect vs native default, CRT off/on; evaluate Lola Retro adaptation feasibility separately. Then optional enhanced palette and selected background art.
-3. Save/emerald design **before** Super Sonic or new campaign modes; design save schema/rules, validate all emerald acquisition paths and Tails rules before code. Boss Rush can be designed independently and may be lower-risk than Super Sonic.
-4. Later authentic attract demos, enhanced QoL preferences and strict 4:3 original-mechanics mode. Keep maintenance Pause/debug separate from enhancements.
-5. Vita research after rendering/performance decisions; source decomp and SMS slowdown patch separate.
+1. FIRST research E0 unified frontend/startup + mode/options shell without modifying the frozen game; Chief approve provenance and flow; then isolate an E0 implementation.
+2. Research-only E-G1 60 FPS architecture (highest technical upside) and E-G2/E-G3 display pipeline including Lola Retro feasibility; no build required unless a demonstrable pilot warranted. Low-cost two-mode visual/performance comparison after research.
+3. Short graphics pilot: nearest/pixel-perfect vs native default, CRT off/on; evaluate Lola Retro adaptation feasibility separately. Then optional enhanced palette and selected background art.
+4. Save/emerald design **before** Super Sonic or new campaign modes; design save schema/rules, validate all emerald acquisition paths and Tails rules before code. Boss Rush can be designed independently and may be lower-risk than Super Sonic.
+5. Later authentic attract demos, enhanced QoL preferences and strict 4:3 original-mechanics mode. Keep maintenance Pause/debug separate from enhancements.
+6. Vita research after rendering/performance decisions; source decomp and SMS slowdown patch separate.
 
 ## Decisions needing explicit Chief selection
 - Decide which enhanced feature begins first, if any. This record is inventory, not a job authorization.
