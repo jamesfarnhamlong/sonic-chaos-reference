@@ -2,6 +2,12 @@
 
 ## New Chief observations — 6 November 2026
 
+## S4 Chief acceptance / next S5 UI art — 6 NOV 2026
+
+**S4 functionally Chief accepted**, including 1080p output, borderless window, Integer Fit ON/OFF and all three post-S3 issues (Chief full Boss Rush Tails win). [Final S4 owner receipt](../S4_CHIEF_ACCEPTANCE_AND_S5_VISUAL_DIRECTIVE_20261106.md). The previous three-issue punchlist is **CLOSED on S4**, not still awaiting a human check. The interim new 1080p title/Data Select/Boss Rush CLEAR visuals are **technically functional but artistically rejected as final**: generic modern navy panels, clean sans-serif, verbose five-slot interface, original title START GAME visible behind new overlay, yellow-hat Tails. S5 future UI styling should reuse original pixel art and test conservative source-art 2x scalers rather than invent HD sprites; [S2+S5 visual queue](S2_DATA_SELECT_VISUAL_POLISH.md). No S5 implementation yet.
+
+
+
 **S3-R2 was Chief accepted 6 Nov, but THREE new post-acceptance issues are OPEN:** [S3-POST-01 camera jump at MGHZ→AQZ (P1), S3-POST-02 intermittent missing lives HUD at SEZ/SLZ and MGHZ Boss Rush (P2), UI-POST-03 Enhanced title early START skips visible START/BOSS RUSH menu (P2)](S3_POST_ACCEPTANCE_PUNCHLIST_20261106.md). No fixes or Designer task commissioned. The accepted baseline and [final S3 acceptance record](../S3_CHIEF_FINAL_ACCEPTANCE_20261106.md) remain preserved; this is a newly observed owner punchlist, **not** a retroactive failed acceptance. Plan a consolidated evidence-led follow-up after Chief agrees S4 scope, prioritizing camera discontinuity before pure cosmetic work.
 
 ## New post-freeze queues — 5 November 2026
