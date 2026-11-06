@@ -2,6 +2,10 @@
 **6 November 2026 · Manager-san #11 · ONE FOCUSED INTEGRATED DESIGNER CORRECTION · NOT YET CHIEF ACCEPTED**
 
 ## Chief evidence and precedence
+
+**DELIVERY STATUS — 6 November 2026, Manager #11:** Designer reports all authorized R1 corrections integrated in candidate `8b5086c` on `enhancement/s3-r1-map-polish-20261106`. 13,024px route, actual SEZ crumble `$AF` cells, original camera-relative pit death, intact MGHZ tread/tree/GPZ loop/EEZ lift, corrected AQZ spring colours, removed unwanted decorations/effects, HUD/time at all joins and tested real populated disposable-save isolation. Native checks and uninstrumented Windows export reported PASS. **This is technical delivery, not Chief final acceptance.** One Chief playtest is next; [Manager review](S3_R1_MANAGER_TECHNICAL_REVIEW_20261106.md). No extra fixes/builds automatically commissioned.
+
+
 Chief personally completed the initial S3 Boss Rush course: all six fights and the EEZ final/ending run progressed correctly; no observed boss-mechanics defects; normal Classic and Enhanced modes also worked. Treat this as a **functional/core gameplay PASS**, not S3 final acceptance. The next task is a **single R1 corrective-polish sprint** based on Chief's new complete map compositions and annotated pit diagram, supplied **directly and privately to Designer**. Do not publish the PNGs to public reference GitHub.
 
 Files Chief will attach to Designer:
