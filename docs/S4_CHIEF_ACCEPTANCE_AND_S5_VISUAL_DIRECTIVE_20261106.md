@@ -29,6 +29,10 @@ Chief confirms:
 
 ## S5 Chief art-direction pivot — ORIGINAL ART, COMPUTATIONAL 8→16-BIT-LIKE PRESENTATION
 
+**Chief later refined S5 into exactly SIX presentation upscaling targets:** Title, Save/Data Select, Zone Introduction, Zone End, Boss Rush Introduction and Boss Rush End. All use original assets, 5× clean output with optional art-specific edge processing; no created HD art or nonpixel modern overlays. Original title 256×192 packed indexed 41-frame source is `SPR_chaos_m3_title` and final frame40 palette3 needs shader decode. See [dedicated six-screen S5 scope](S5_ORIGINAL_ASSET_UPSCALING_SCOPE_20261106.md). This does NOT authorize S5 implementation.
+
+
+
 Chief explicitly says **“No creating new high res art! We should try to improve the original art using science!”** and wants the existing 8-bit source visuals **presented like a restrained 16-bit Sonic interface**, not redesigned from scratch in modern corporate/higher-resolution graphics. Sonic 3 and Sonic Mania images supplied privately **as layout/composition references only**, not licensed game assets to copy, upload, redistribute or trace.
 
 **What to preserve:** S4 1080p output and safe High-DPI/window/mode layer, original game-world art/logic/camera/audio, Classic strict presentation, all S1/S2/S3 functionality, S2 save semantics, S3 GG `$9B` music, BOSS RUSH CLEAR TIME/RINGS/LIVES and Tails/Sonic animation source. Distinguish source *content/texture size* from full 1080p *composition space*.
