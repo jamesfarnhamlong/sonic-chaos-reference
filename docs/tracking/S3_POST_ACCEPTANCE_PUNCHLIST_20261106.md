@@ -29,6 +29,12 @@ No reliable source diagnosis is available yet for the two HUD/title symptoms. No
 
 ## S4 ENGINEERING RESULT — DESIGNER-REPORTED FIX / CHIEF RETEST PENDING (6 NOV)
 
+## FINAL OWNER RETEST — 6 NOV: ALL THREE CLOSED
+
+Chief tested S4 private Windows in an actual complete Tails Boss Rush run and explicitly states “All tested and pass. Boss rush completed with tails, those fixes are great and all good now.” **S3-POST-01 MGHZ→AQZ camera snap, S3-POST-02 Boss Rush LIVES HUD, and UI-POST-03 early START bypass are now CHIEF PASS/CLOSED on S4**, superseding the earlier candidate-only status. S4 retained 1080p/window/Integer Fit ON/OFF functionality. Any future S5 title redesign must not reintroduce early-START bypass, and results art changes must not hide LIVES. [S4 Chief acceptance and S5 visual direction](../S4_CHIEF_ACCEPTANCE_AND_S5_VISUAL_DIRECTIVE_20261106.md).
+
+
+
 Designer delivered S4 private Windows/source candidate (local full SHA `977a41824f227f3bdfe6f45596e6845902459842`) and reports all three issues fixed with **75 native handoffs**, window/lifecycle checks and **184 exact Classic image comparisons**, with E:/H: recovery PASS. **These claims do NOT yet establish Chief in-motion acceptance.** Chief must check the exact MGHZ→AQZ join visually, Boss Rush LIVES in SEZ/MGHZ, and held/early START on the Enhanced title. **Issue status for all three: CANDIDATE FIX REPORTED / OWNER RETEST PENDING**, not CLOSED. No new request or separate corrective build. [Technical review and focused Chief test](../S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md).
 
 
