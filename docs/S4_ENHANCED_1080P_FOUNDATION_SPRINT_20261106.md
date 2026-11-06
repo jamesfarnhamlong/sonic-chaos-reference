@@ -5,6 +5,12 @@
 
 ## INTEGRATED DELIVERY UPDATE — 6 NOV 2026
 
+## CHIEF FINAL S4 FUNCTIONAL ACCEPTANCE — 6 NOV (SUPERSEDES DELIVERY-PENDING GATE)
+
+Chief tested the private S4 candidate: **borderless PASS, Integer Fit ON/OFF both PASS, full Boss Rush Tails clear PASS, all three post-S3 fixes PASS** (MGHZ→AQZ camera, SEZ/MGHZ LIVES HUD, early Enhanced START). The new high-resolution presentation compositor/window handling is **CHIEF ACCEPTED**. **The temporary high-res interface design is NOT approved as final**: oversized navy panels, clean sans-serif text, excessive Data Select instructions and overlay hiding the original title START GAME jar against Sonic Chaos. That is deferred to separate S5 work, under Chief's **original-source art, controlled 2× pixel-art improvement, no new HD artwork** direction. [Final S4 Chief acceptance + future S5 scope](S4_CHIEF_ACCEPTANCE_AND_S5_VISUAL_DIRECTIVE_20261106.md). Full S4 source still local-only by last Manager GitHub check, with ignored sprite/runtime files in E:/H: complete archive; no merge/tag/public release.
+
+
+
 **Designer S4 implementation technically DELIVERED, final Chief Windows acceptance PENDING.** Local source branch `enhancement/s4-1080p-foundation-20261106`, exact reported SHA `977a41824f227f3bdfe6f45596e6845902459842`. Complete private Windows/source/evidence/manifest/SHA-256 packages under E: releases; H: recovery PASS per Designer; full-source ZIP includes 4 ignored runtime files + 18 ignored original sprite PNGs. Reported true Enhanced 1080p UI, 348×196 integer 5×, 75 compiled joins, 184 matching Classic images, all three follow-up correction tests and window/lifecycle checks. **The private GitHub remote has no visible S4 branch/commit; Manager has not independently examined private archives.** Do not rerun sprint or claim Chief acceptance; next action is ONE integrated native visual/controller check. [Manager review](S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md). S5 art sprint still parked.
 
 
