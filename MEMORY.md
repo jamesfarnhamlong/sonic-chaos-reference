@@ -5,6 +5,10 @@ See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for liv
 
 ## NOW — S3 BOSS RUSH ZONE SPRINT GO; ORIGINAL ARENAS REUSED EXACTLY (5 NOV 2026)
 
+**TOP CURRENT — 6 Nov, Manager #11:** S3 Designer delivered complete integrated six-boss private candidate, abbreviated source `7a6a4b7` (full SHA/remote access not independently checked). Horizontal 9,632-pixel LEVEL 7; 5×192-pixel playable joins; EEZ background/environment throughout; retained original boss-local contexts, GPZ loop, isolated challenge progress/EEZ eligibility; START/Data Select untouched, BOSS RUSH just below START → Sonic/Tails select. Report: 684 controlled native matched states, 15 join tests, 11,307,008 terrain profiles, EEZ controlled full chain, H: recovery/Windows export smoke. **MANAGER GO — CHIEF full-course gameplay, visual, controller and audio acceptance PENDING.** Native on-disk save generations tested were empty/tombstones; populated save cases mocked. Markdown references standalone PNGs not delivered with it; visual assessment deferred to Chief. No new build/fix, merge, tag or release approved. [Manager review](docs/S3_MANAGER_DELIVERY_REVIEW_20261106.md). 
+
+
+
 **Chief's newest S3 directive — Manager #11, 5 Nov:** The stitched THZ→GPZ illustration is the target **horizontal route geometry**; **ALL terrain/environment palettes and backgrounds across the entire new Level 7 must be EEZ**, rather than preserving old THZ/GPZ/etc zone backgrounds. Use copied structure/arenas with challenge-only EEZ visual treatment while preserving readability of water/spikes/hazards, bosses and original mechanics. Add **BOSS RUSH immediately below START on the Enhanced main title menu ONLY**, not under Options or Data Select; on selection go directly **Sonic/Tails Character Select → Level 7**, no explanatory menu or six visible title/load hops. Existing START → Data Select and Classic unchanged. Full authority [S3 brief](docs/S3_BOSS_RUSH_ZONE_SPRINT_20261105.md). All other S3 rules (six bosses, continuous horizontal layout, three lives/no continues/checkpoints, no S2 save writes, one combined package) still apply.
 
 
