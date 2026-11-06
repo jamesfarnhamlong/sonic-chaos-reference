@@ -27,6 +27,10 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 ## NOW — S3 BOSS RUSH ZONE SPRINT GO; ORIGINAL ARENAS REUSED EXACTLY (5 NOV 2026)
 
+**6 Nov — second Chief full S3-R1 run confirms FUNCTIONAL PASS**: all mechanics/fights/EEZ ending, current ring/time HUD and AQZ→EEZ flow working. **S3-R2 one consolidated visual, results and audio corrective sprint GO; final S3 acceptance pending**. Visual: hidden opening MGHZ-style swirly platform, GPZ ring slope clipping and messy pipes, invisible active SEZ crumbling cells, green MGHZ boss pixels. Harmonized EEZ industrial look permits selective original source tile reuse. Finish panel must show frozen TIME/RINGS/LIVES remaining (no score/leaderboard yet). Music flagged for correction: verify Boss Rush request/handoff flow, restore only demonstrated technical issues; Chief's detailed auditory symptom and desired song selection not yet established. [Binding R2 brief](docs/S3_R2_VISUAL_AUDIO_RESULTS_CORRECTIONS_20261106.md). Core game/Classic/S2 saves protected.
+
+
+
 **6 Nov S3-R1 candidate DELIVERY:** One integrated R1 private Windows/source candidate, local reported commit `8b5086c`, based on accepted S3. Six-boss course now 13,024px; SEZ original collapsing-platform death pit and MGHZ special-strip death pit; original camera-relative terminal-Y rule used without midcourse global edits; extended final EEZ approach/lift. Unified EEZ/mechanical scenery, corrected AQZ spring palette, removed stray trees/floating water, boss tree retained, unwanted sparkle/jingle/puffs suppressed challenge-only; HUD/time continuous. Native 684 state comparisons/25 joins/24 pit tests and populated-save isolation PASS per Designer. **Technical GO for Chief F5; final S3 acceptance PENDING.** [Manager review](docs/S3_R1_MANAGER_TECHNICAL_REVIEW_20261106.md). No merge/retag/public release.
 
 
