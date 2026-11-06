@@ -2,6 +2,12 @@
 **Opened 5 November 2026 · Chief actual Windows review · PARKED — NOT A CURRENT DEVELOPMENT TASK**
 
 ## Baseline and scope
+
+## S5 updated Chief art direction — 6 NOV 2026
+
+**S4 display architecture is now Chief accepted, but its minimal higher-res Data Select UI is emphatically **not** accepted as final artistic presentation.** Chief wants a **Sonic Chaos original-pixel/8-bit look enhanced toward restrained 16-bit UI composition**, not a modern navy/white sans-serif five-card dashboard. No new rendered/AI/vector/HD character art. Use original sprites, authentic character-choice running frames, source tile thumbnails, pixel font and original-inspired graphic language. Reduce repetitive SLOT/NEW GAME/SELECT CHARACTER/CONTINUE labels and multi-line footer instructions while preserving discoverable navigation and safe delete confirmation. Yellow-hat Tails, feet alignment, TV previews, staticky empty slots, Emerald gem colours and running animation remain in the six-item S2-VIS backlog. Compare nearest/Scale2x/HQ2x/xBRZ 2× on original private UI art only; preserve original game-world art and careful palette/edge consistency. Consider title old START GAME compositing/overlaid navy menu and Boss Rush CLEAR mismatched modern typography as same **future S5 authentic interface styling** scope. [Chief acceptance/art directive](../S4_CHIEF_ACCEPTANCE_AND_S5_VISUAL_DIRECTIVE_20261106.md). S5 **not yet implemented/commissioned**.
+
+
 S2 five-slot Enhanced Data Select is **CHIEF FUNCTIONALLY ACCEPTED** at private local `0809ef9cbc9ea9c1fda3bc0ead45aa9aa749a5a7`, one Windows ZIP `SonicChaos_Windows_20261105_S2_DATA_SELECT_PRIVATE.zip`. Chief naturally played Sonic into GPZ1, earned 2 persisted Emeralds across process reloads, played Tails into SEZ2 and resumed at SEZ1, tested cards/controls/delete and original Classic; all PASS.
 
 Chief supplied **five private illustrative screenshots** after acceptance. They are not a license to redistribute Sonic 3 art nor sufficient to diagnose the exact GML render code. This is one **future bundled display-UI polish scope**, not justification for a new ZIP/build/management approval per item. Preserve baseline packages, Classic isolation, S1 options/defaults, the authentic source sound/music and data semantics.
