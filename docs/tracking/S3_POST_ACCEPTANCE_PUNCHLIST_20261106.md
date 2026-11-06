@@ -27,6 +27,12 @@ No reliable source diagnosis is available yet for the two HUD/title symptoms. No
 
 ## Assignment status — S4 COMMISSIONED 6 NOV (NOT FIXED YET)
 
+## S4 ENGINEERING RESULT — DESIGNER-REPORTED FIX / CHIEF RETEST PENDING (6 NOV)
+
+Designer delivered S4 private Windows/source candidate (local full SHA `977a41824f227f3bdfe6f45596e6845902459842`) and reports all three issues fixed with **75 native handoffs**, window/lifecycle checks and **184 exact Classic image comparisons**, with E:/H: recovery PASS. **These claims do NOT yet establish Chief in-motion acceptance.** Chief must check the exact MGHZ→AQZ join visually, Boss Rush LIVES in SEZ/MGHZ, and held/early START on the Enhanced title. **Issue status for all three: CANDIDATE FIX REPORTED / OWNER RETEST PENDING**, not CLOSED. No new request or separate corrective build. [Technical review and focused Chief test](../S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md).
+
+
+
 All **three OPEN** owner issues are now in the **same integrated S4 sprint** authorized by Manager #11 following Chief's "Excellent! So, next job?" question. P1 camera handoff diagnosis first, P2 lives HUD and early Enhanced title START with 1080p UI display work. [S4 authoritative implementation scope](../S4_ENHANCED_1080P_FOUNDATION_SPRINT_20261106.md). Do not mark any issue solved by assignment, source instrumentation, or scaling alone: require real compiled evidence and Chief's final Windows test. Accepted S3-R2 exact SHA/archive remains unchanged.
 
 
