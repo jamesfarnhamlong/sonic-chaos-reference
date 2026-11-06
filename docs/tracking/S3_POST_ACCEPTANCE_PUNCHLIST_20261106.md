@@ -1,5 +1,5 @@
 # Sonic Chaos — S3 Boss Rush Post-Acceptance Punchlist
-**6 November 2026 · Manager-san #11 · CHIEF NEW OBSERVATIONS · OPEN, NOT FIXED · NO DESIGNER SPRINT YET**
+**6 November 2026 · Manager-san #11 · HISTORICAL ISSUES NOW CHIEF CLOSED BY S4**
 
 ## Scope and status
 Chief explicitly accepted S3-R2 Boss Rush on 6 Nov after natural gameplay and the original Game Gear $9B music / clear statistics / visuals. **AFTER that acceptance**, Chief reported three further issues, reproduced at least once by Chief's own play (precise reproduction frequency not yet known). Preserve the accepted immutable source/package and historical acceptance receipt; track these as **new post-acceptance defects**, not as failures known during R2 acceptance. These are not cleared by earlier 684 controlled boss comparisons or 25 tested handoffs. The next S4 1080p Enhanced presentation architecture is **Chief-approved direction / not yet implementation-commissioned**.
@@ -48,4 +48,4 @@ All **three OPEN** owner issues are now in the **same integrated S4 sprint** aut
 - Only branch from recovered exact S3-R2 full source, including four ignored E:/H: runtime files; retain accepted build/hash as restoration anchor. Keep Classic/S1/S2, two death pits, boss cameras, native GG $9B, S2 save isolation, S3 HUD, results and gameplay sounds protected. One final integrated private candidate and one owner test if/when Chief approves.
 - If Chief can supply approximate screenshot or short clip at seam, useful but **not required before Designer can instrument/reproduce** using existing accepted source and scripted inputs; do not make user repeat entire game or send multiple manual tests.
 
-**Status: three OPEN post-acceptance observations, now assigned to S4 integrated sprint (6 Nov 2026). No fix/build/Chief PASS yet.**
+**Final status: all three CHIEF PASS / CLOSED on S4 after actual Tails Boss Rush completion (6 Nov 2026). The original reports and reproduction hypotheses above remain historical evidence.**
