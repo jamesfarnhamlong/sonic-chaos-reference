@@ -3,6 +3,12 @@
 
 ## Binding Chief design
 
+## S3-R1 superseding layout and polish clarification — 6 November 2026
+
+Chief completed full S3 candidate through all six bosses/EEZ ending and approved the **mechanical course** in ordinary play; **final presentation/layout acceptance is pending one cohesive R1 corrective sprint**. New private full maps supersede earlier short connectors. Red-marked pits appear **only twice in the first four regions**, below the original **SEZ collapsing-platform** strip (purple, collapse currently absent in S3 and must be restored) and under the **MGHZ special platform**. Preserve a consistent kill-Y where practical, keep most traversal horizontal, allow a modest final upward ascent. Correct 2→3 invisible collision and 4→5 missing spring graphics, lengthen 4→5→6, harmonize EEZ/mechanical scenery, remove challenge-only boss sparkle/jingle/GPZ smoke, retain rings/time HUD. Details and verification controls are in **[binding S3-R1 brief](S3_R1_CHIEF_MAP_AND_POLISH_CORRECTIONS_20261106.md)**; the actual marked image files will be delivered privately to Designer and are not part of this public repo. Prior S3 GO authorizations remain as historical base; one combined R1 Windows package and one new Chief acceptance gate.
+
+
+
 ## S3 FINAL CHIEF ADDENDUM — MANAGER-SAN #11 (5 NOVEMBER 2026)
 
 **This addendum is authoritative where earlier S3 wording differs.** Chief's joined THZ→GPZ reference image illustrates construction from original platform/terrain pieces into **one long, predominantly horizontal, playable Level 7**; it is a composition example, not a request to retain the different source-zone colours.
