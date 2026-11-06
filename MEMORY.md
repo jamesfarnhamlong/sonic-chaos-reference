@@ -1,5 +1,5 @@
 # Sonic Chaos — Manager handover / current facts
-**Updated 5 November 2026 · Manager-san #10**
+**Updated 6 November 2026 · Manager-san #11 · see live recovery handover**
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
