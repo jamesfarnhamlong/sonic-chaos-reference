@@ -24,10 +24,16 @@ Manager inspected accepted private S3-R2 `scripts/SCR_chaos_s3/SCR_chaos_s3.gml`
 No reliable source diagnosis is available yet for the two HUD/title symptoms. No source changes have been made.
 
 ## Manager proposed handling and restrictions
+
+## Assignment status — S4 COMMISSIONED 6 NOV (NOT FIXED YET)
+
+All **three OPEN** owner issues are now in the **same integrated S4 sprint** authorized by Manager #11 following Chief's "Excellent! So, next job?" question. P1 camera handoff diagnosis first, P2 lives HUD and early Enhanced title START with 1080p UI display work. [S4 authoritative implementation scope](../S4_ENHANCED_1080P_FOUNDATION_SPRINT_20261106.md). Do not mark any issue solved by assignment, source instrumentation, or scaling alone: require real compiled evidence and Chief's final Windows test. Accepted S3-R2 exact SHA/archive remains unchanged.
+
+
 - **Do not reclassify accepted S3-R2 as rejected or delete the acceptance receipt.** Mark accepted-with-post-acceptance-open-punchlist until a scoped follow-up candidate is Chief-tested. Do not claim the new issues fixed.
 - Prioritize **S3-POST-01** ahead of UI cosmetic tasks. Capture actual rendered frames; test whether it is challenge-only handoff/presenter versus original camera.
 - Because Chief prefers substantial consolidated sprints, **do not commission three microbuilds.** Discuss with Chief whether to commission one bounded Boss Rush/UI correction package now or include HUD/title with the proposed Enhanced 1080p S4 foundation; ensure camera issue is not lost. Avoid combining an unsafe camera behavioural fix with an unproven 1080p compositor by default.
 - Only branch from recovered exact S3-R2 full source, including four ignored E:/H: runtime files; retain accepted build/hash as restoration anchor. Keep Classic/S1/S2, two death pits, boss cameras, native GG $9B, S2 save isolation, S3 HUD, results and gameplay sounds protected. One final integrated private candidate and one owner test if/when Chief approves.
 - If Chief can supply approximate screenshot or short clip at seam, useful but **not required before Designer can instrument/reproduce** using existing accepted source and scripted inputs; do not make user repeat entire game or send multiple manual tests.
 
-**Status: three OPEN post-acceptance observations; logged 6 Nov 2026. No source fix, no new build and no new Designer task yet.**
+**Status: three OPEN post-acceptance observations, now assigned to S4 integrated sprint (6 Nov 2026). No fix/build/Chief PASS yet.**
