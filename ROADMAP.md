@@ -27,6 +27,10 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 ## NOW — S3 BOSS RUSH ZONE SPRINT GO; ORIGINAL ARENAS REUSED EXACTLY (5 NOV 2026)
 
+**6 Nov, Chief completed S3:** Entire six-boss course/EEZ ending mechanically PASS; normal Classic and Enhanced PASS. Final S3 acceptance **pending one R1 corrective polish sprint**. Chief supplied extended complete layouts and marked red two death pits: under SEZ collapsing platform bridge (purple; must restore collapse), and beneath MGHZ special platform; avoid dynamic mid-zone kill-Y changes, no extra speculative pits in first four stages; modest vertical ascent at end. R1 also fixes 2→3 invisible obstacle, 4→5 missing spring graphics, extends 4→5→6 links, homogenizes EEZ/MGHZ-compatible scenery, removes challenge defeat sparkle/jingle and Boss 2 puffs, retains rings/time HUD. **One Designer integrated R1 candidate, one Chief test; boss mechanics/S2 saves/Classic protected.** [Full authorization](docs/S3_R1_CHIEF_MAP_AND_POLISH_CORRECTIONS_20261106.md).
+
+
+
 **6 Nov update — S3 delivered for Chief review, NOT accepted:** One integrated six-boss Windows/source private package reported at abbreviated commit `7a6a4b7` from S2, 9,632-pixel horizontal Level 7; five 192-pixel joins; EEZ palette/background throughout; title BOSS RUSH below START; original boss-local room/context mechanics; three lives/no continues; no save writes in reported test. 684 controlled native state matches, 15 connector passes, 11,307,008 terrain-profile comparisons, completed controlled EEZ chain, Windows compile/short smoke and H: recovery reported. **Manager GO for one normal Chief full-course playtest.** Natural victory, live controller/audio and visual/pit fairness still pending; screenshots were not included with the uploaded Markdown and populated save I/O was source-mocked. [Review](docs/S3_MANAGER_DELIVERY_REVIEW_20261106.md). Do not commission a new build or call S3 Chief-accepted until actual owner feedback.
 
 
