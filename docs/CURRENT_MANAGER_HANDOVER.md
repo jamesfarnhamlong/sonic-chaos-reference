@@ -1,9 +1,17 @@
 # Sonic Chaos — LIVE MANAGER HANDOVER
 **Updated 6 November 2026 · Manager-san #11 · S3 final Chief acceptance / next sprint discussion**
 
-> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3 is Chief-accepted and the next task is milestone planning only**. Do not resurrect old work orders.
+> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3 is Chief-accepted, S4 technically delivered and awaiting the owner's single acceptance test**. Do not resurrect old work orders.
 
 ## Current decision, owner next action
+
+## TOP CURRENT — S4 PRIVATE CANDIDATE DELIVERED / CHIEF ACCEPTANCE PENDING (6 NOV)
+
+**Read [S4 integrated delivery review](S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md) first.** Designer has delivered ONE integrated Enhanced-only 1080p display foundation plus three post-S3 corrections. Private local branch `enhancement/s4-1080p-foundation-20261106`, reported exact SHA `977a41824f227f3bdfe6f45596e6845902459842`. Private E: releases: `SonicChaos_Windows_20261106_S4_1080P_CANDIDATE_PRIVATE.zip`, `SonicChaos_Production_20261106_S4_1080P_SOURCE_PRIVATE.zip`, `SonicChaos_20261106_S4_1080P_EVIDENCE_PRIVATE.zip`, `SonicChaos_20261106_S4_1080P_RECEIPT.json`, `SonicChaos_20261106_S4_1080P_SHA256.txt`. Reported true 1080p UI, native 348×196 5× game rendering, Enhanced Integer Fit default, proper window/lifecycle fallbacks, **184 pixel-identical Classic comparisons**, **75 native handoffs**, and P1 MGHZ→AQZ camera / P2 Boss Rush LIVES / P2 premature Enhanced START corrected. Four ignored runtime files **plus 18 ignored original sprite PNGs** are included in full-source E:/H: ZIP; Git tracked tree alone incomplete; H: recovery verified by Designer. Frozen Classic and accepted S3-R2 untouched.
+
+**MANAGER PROVISIONAL GO, NOT FINAL S4 CHIEF PASS.** Chief next uses the exact S4 Windows ZIP for ONE focused in-motion/physical-controller and display acceptance: true hi-res title/Data Select/clear vs unchanged pixelated game, integer 5× layout, bordered/borderless window plus focus/resize/relaunch, early START visible menu, LIVES displayed at all Boss Rush bosses, no MGHZ→AQZ camera jump, brief Classic sample. Full dual-character campaign repetition unnecessary. **Connected GitHub check: S4 branch and full SHA not on private remote as of review**; manager has not read local E:/H: package/receipt/evidence. Do not push/merge/tag or start S5 automatically. Preserve H: complete archive. [Chief gate](S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md).
+
+
 
 ## CRITICAL OPEN POST-ACCEPTANCE FINDINGS — 6 NOV 2026
 
