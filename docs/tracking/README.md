@@ -1,5 +1,9 @@
 # Sonic Chaos — current issue tracker (updated 5 November 2026)
 
+## New Chief observations — 6 November 2026
+
+**S3-R2 was Chief accepted 6 Nov, but THREE new post-acceptance issues are OPEN:** [S3-POST-01 camera jump at MGHZ→AQZ (P1), S3-POST-02 intermittent missing lives HUD at SEZ/SLZ and MGHZ Boss Rush (P2), UI-POST-03 Enhanced title early START skips visible START/BOSS RUSH menu (P2)](S3_POST_ACCEPTANCE_PUNCHLIST_20261106.md). No fixes or Designer task commissioned. The accepted baseline and [final S3 acceptance record](../S3_CHIEF_FINAL_ACCEPTANCE_20261106.md) remain preserved; this is a newly observed owner punchlist, **not** a retroactive failed acceptance. Plan a consolidated evidence-led follow-up after Chief agrees S4 scope, prioritizing camera discontinuity before pure cosmetic work.
+
 ## New post-freeze queues — 5 November 2026
 
 **S2 accepted and presentation deferred (5 Nov):** Chief successfully tested both saved campaigns, 2 Sonic Emeralds persisted, zone resume, controls/wipe and original Classic. Six cosmetic items (including authentic **running character animation**, Tails head/foot placement, TV static, TV thumbnails and richer Emerald colours) are logged together as [S2 Data Select Visual Polish](S2_DATA_SELECT_VISUAL_POLISH.md); no new ZIP or micro-task. [S2 Chief acceptance](../S2_CHIEF_ACCEPTANCE_20261105.md).
