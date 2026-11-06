@@ -2,6 +2,12 @@
 **6 November 2026 · Manager-san #11 · CHIEF-REQUESTED NEXT JOB · ONE INTEGRATED SPRINT GO**
 
 ## Decision and reference authorities
+
+## INTEGRATED DELIVERY UPDATE — 6 NOV 2026
+
+**Designer S4 implementation technically DELIVERED, final Chief Windows acceptance PENDING.** Local source branch `enhancement/s4-1080p-foundation-20261106`, exact reported SHA `977a41824f227f3bdfe6f45596e6845902459842`. Complete private Windows/source/evidence/manifest/SHA-256 packages under E: releases; H: recovery PASS per Designer; full-source ZIP includes 4 ignored runtime files + 18 ignored original sprite PNGs. Reported true Enhanced 1080p UI, 348×196 integer 5×, 75 compiled joins, 184 matching Classic images, all three follow-up correction tests and window/lifecycle checks. **The private GitHub remote has no visible S4 branch/commit; Manager has not independently examined private archives.** Do not rerun sprint or claim Chief acceptance; next action is ONE integrated native visual/controller check. [Manager review](S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md). S5 art sprint still parked.
+
+
 Chief asked "Excellent! So, next job?" after confirming the Enhanced Full HD design and reporting three post-S3 bugs. **Manager authorises one substantial S4 Designer sprint**: implement the **Enhanced-only 1080p presentation foundation**, safe window modes/preferences and correct the three precisely logged issues, with one integrated private Windows/source candidate and one Chief acceptance session. **S5** owns the six-item final Data Select visual/art overhaul; DO NOT redraw game-world artwork or fold that complete visual pack into S4.
 
 Read first:
