@@ -44,7 +44,7 @@ Designer reports:
 - Private ROM/audio/art binaries, exact screenshots and source ZIPs **must not be pushed to public reference**. No assumptions that external/cloud agents can read Chief's E:/H:.
 - One substantial integrated Designer sprint per approved feature, with internal deterministic tests and one Chief-facing Windows candidate / acceptance gate. Do not commission repeated tiny builds or ask Chief for redundant whole-character campaigns.
 - Old project caveats remain: historical raw verifier failures must be reported honestly; no public release/port/repo-visibility changes without explicit consent.
-- **When Chief accepts S3:** update this file, root `AGENTS.md`, `ROADMAP.md`, `MEMORY.md`, S3 acceptance log and archival hash/commit status. Future scoring/best-time records are deferred, not implicitly included.
+- **S3 IS CHIEF-ACCEPTED:** root `AGENTS.md`, `ROADMAP.md`, `MEMORY.md` and this live handover were updated; [final owner receipt](S3_CHIEF_FINAL_ACCEPTANCE_20261106.md) is committed. Full private R2 SHA/hash remains in local receipt, not independently inspected; future scoring/best-time records still deferred.
 
 ## Parked future work (not commissioned)
 - S2 Data Select **six-item visual batch:** Tails odd yellow head, looping authentic running Sonic/Tails with matching floor anchors, animated TV static, improved zone thumbnails, vibrant Emeralds, consistent sprite proportions/TV clearance. See `docs/tracking/S2_DATA_SELECT_VISUAL_POLISH.md`.
