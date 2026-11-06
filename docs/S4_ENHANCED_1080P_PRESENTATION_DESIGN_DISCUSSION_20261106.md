@@ -3,6 +3,12 @@
 
 ## 1. Chief's decision — THIS IS BINDING FOR FUTURE DESIGN
 
+## New related Chief issues — OPEN, NOT AN S4 IMPLEMENTATION ORDER
+
+Chief reported three residual post-S3 bugs after final Boss Rush acceptance: MGHZ→AQZ camera snap (P1, potentially but not proven linked to handoff/camera restoration), lives HUD inconsistently hidden in SEZ/SLZ and MGHZ Boss Rush (P2), and early START skipping the visible Enhanced title START/BOSS RUSH choices (P2). [Binding issue register](tracking/S3_POST_ACCEPTANCE_PUNCHLIST_20261106.md). The title issue may naturally fit future high-res frontend work, and the HUD issue may fit Enhanced composition, **but the camera warp is a separate functional/presentation seam requiring its own evidence-led trace**, not a generic scaling change. **Do not assert any of these fixed by higher output resolution; no S4 implementation or new S3 fix has yet been authorized.**
+
+
+
 Chief wants Enhanced mode built around a **1920×1080 (Full HD) presentation canvas** rather than squeezing 16-bit-inspired Data Select/title/results composition into GameMaker's tiny low-resolution view and multiplying it to a 3x window. The main reason is to give Enhanced-only *presentation elements* more room and more detail, while **never altering Sonic Chaos game-world assets**.
 
 Chief explicitly confirms:
