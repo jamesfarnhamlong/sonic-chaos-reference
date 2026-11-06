@@ -3,6 +3,12 @@
 
 ## Owner decision
 
+## Post-acceptance addendum — 6 November 2026: new defects OPEN
+
+**Historical Chief acceptance below remains authentic and unchanged.** After that PASS, Chief subsequently observed three newly identified problems: visible momentary MGHZ→AQZ backward-looking camera snap; inconsistent hidden LIVES display during some Boss Rush bosses (reported SEZ/SLZ and MGHZ); and early START on Enhanced title bypassing the START/BOSS RUSH menu. These are **OPEN / not fixed** and **do not mean the earlier acceptance covered them**. The current accepted code/package remains the baseline until a separately authorized fix is built and tested. [Live post-acceptance issue ledger](tracking/S3_POST_ACCEPTANCE_PUNCHLIST_20261106.md). No new Designer work was commissioned by this note.
+
+
+
 After playing through the original integrated S3 course and then S3-R1 to completion, Chief tested the delivered **S3-R2 private Windows candidate** and reported:
 
 > “Yes, thats all good - all passes. Nothing to add for now, all seems functional!”
