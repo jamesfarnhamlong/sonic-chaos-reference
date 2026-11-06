@@ -27,6 +27,10 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 ## NOW — S3 BOSS RUSH ZONE SPRINT GO; ORIGINAL ARENAS REUSED EXACTLY (5 NOV 2026)
 
+**6 Nov Chief S3-R2 soundtrack/ring direction now FROZEN:** Continuous Boss Rush **unused Game Gear theme `$9B`** (Chief private OGG reference); original boss themes/EEZ Robotnik theme supersede it during fights, and `$9B` returns in connectors; no between-fight victory jingle, no wrong zone music. This GG-exclusive song is absent from SMS track data: investigate authentic native Z80/PSG programme compatibility, avoid competing OGG player or alternate music choice without Chief. Remove invincibility monitors from challenge only (GPZ known), at least 3 collectable rings in four connectors 1→2 through 4→5, no new rings 5→6; audit existing counts first. Integrate with existing S3-R2 visuals and final TIME/RINGS/LIVES result screen in **one** candidate. [Authority](docs/S3_R2_VISUAL_AUDIO_RESULTS_CORRECTIONS_20261106.md).
+
+
+
 **6 Nov — second Chief full S3-R1 run confirms FUNCTIONAL PASS**: all mechanics/fights/EEZ ending, current ring/time HUD and AQZ→EEZ flow working. **S3-R2 one consolidated visual, results and audio corrective sprint GO; final S3 acceptance pending**. Visual: hidden opening MGHZ-style swirly platform, GPZ ring slope clipping and messy pipes, invisible active SEZ crumbling cells, green MGHZ boss pixels. Harmonized EEZ industrial look permits selective original source tile reuse. Finish panel must show frozen TIME/RINGS/LIVES remaining (no score/leaderboard yet). Music flagged for correction: verify Boss Rush request/handoff flow, restore only demonstrated technical issues; Chief's detailed auditory symptom and desired song selection not yet established. [Binding R2 brief](docs/S3_R2_VISUAL_AUDIO_RESULTS_CORRECTIONS_20261106.md). Core game/Classic/S2 saves protected.
 
 
