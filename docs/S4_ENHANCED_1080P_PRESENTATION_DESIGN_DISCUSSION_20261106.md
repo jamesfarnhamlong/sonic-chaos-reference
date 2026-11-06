@@ -3,6 +3,12 @@
 
 ## 1. Chief's decision — THIS IS BINDING FOR FUTURE DESIGN
 
+## IMPLEMENTATION DECISION — S4 GO 6 NOVEMBER 2026
+
+Chief requested "next job" after confirming the architecture and the three new bugs. Manager #11 authorized **one integrated S4 1080p Enhanced display foundation plus camera/HUD/title corrections**, keeping full Data Select visual-art polish for later S5. **[Binding S4 sprint / current instructions](S4_ENHANCED_1080P_FOUNDATION_SPRINT_20261106.md).** Former "discussion only" language below is historical and superseded. No Designer implementation results or Chief S4 acceptance yet.
+
+
+
 ## New related Chief issues — OPEN, NOT AN S4 IMPLEMENTATION ORDER
 
 Chief reported three residual post-S3 bugs after final Boss Rush acceptance: MGHZ→AQZ camera snap (P1, potentially but not proven linked to handoff/camera restoration), lives HUD inconsistently hidden in SEZ/SLZ and MGHZ Boss Rush (P2), and early START skipping the visible Enhanced title START/BOSS RUSH choices (P2). [Binding issue register](tracking/S3_POST_ACCEPTANCE_PUNCHLIST_20261106.md). The title issue may naturally fit future high-res frontend work, and the HUD issue may fit Enhanced composition, **but the camera warp is a separate functional/presentation seam requiring its own evidence-led trace**, not a generic scaling change. **Do not assert any of these fixed by higher output resolution; no S4 implementation or new S3 fix has yet been authorized.**
@@ -64,4 +70,4 @@ For 256×192 canonical native gameplay / 290×218 Retro / Auto use the same prin
 - UI CRT policy: game-only by default vs full UI, plus whether lightweight scanlines need stronger upgrade after 1080p. No automatic new multi-pass CRT or Sharp default.
 - Responsive layout targets for smaller windows/16:10/21:9, without losing authentic 16:9 gameplay or fitting low-resolution art as a stretched background.
 
-**Current management decision: DIRECTION CONFIRMED; S4 DESIGN DISCUSSION CONTINUES; NO DESIGNER TASK, BRANCH OR BUILD COMMISSIONED.**
+**Current management decision: S4 DESIGN CONFIRMED / DESIGNER IMPLEMENTATION GO via binding [S4 charter](S4_ENHANCED_1080P_FOUNDATION_SPRINT_20261106.md); no candidate or Chief S4 acceptance yet.**
