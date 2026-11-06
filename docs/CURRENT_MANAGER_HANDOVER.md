@@ -5,7 +5,7 @@
 
 ## Current decision, owner next action
 
-## TOP CURRENT — S4 PRIVATE CANDIDATE DELIVERED / CHIEF ACCEPTANCE PENDING (6 NOV)
+## PREVIOUS — S4 TECHNICAL DELIVERY AND ACCEPTANCE GATE (SUPERSEDED BY CHIEF PASS)
 
 ## TOP CURRENT — S4 CHIEF ACCEPTED; S5 ORIGINAL-ART UI NEXT DESIGN (6 NOV)
 
@@ -15,7 +15,7 @@
 
 
 
-**Read [S4 integrated delivery review](S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md) first.** Designer has delivered ONE integrated Enhanced-only 1080p display foundation plus three post-S3 corrections. Private local branch `enhancement/s4-1080p-foundation-20261106`, reported exact SHA `977a41824f227f3bdfe6f45596e6845902459842`. Private E: releases: `SonicChaos_Windows_20261106_S4_1080P_CANDIDATE_PRIVATE.zip`, `SonicChaos_Production_20261106_S4_1080P_SOURCE_PRIVATE.zip`, `SonicChaos_20261106_S4_1080P_EVIDENCE_PRIVATE.zip`, `SonicChaos_20261106_S4_1080P_RECEIPT.json`, `SonicChaos_20261106_S4_1080P_SHA256.txt`. Reported true 1080p UI, native 348×196 5× game rendering, Enhanced Integer Fit default, proper window/lifecycle fallbacks, **184 pixel-identical Classic comparisons**, **75 native handoffs**, and P1 MGHZ→AQZ camera / P2 Boss Rush LIVES / P2 premature Enhanced START corrected. Four ignored runtime files **plus 18 ignored original sprite PNGs** are included in full-source E:/H: ZIP; Git tracked tree alone incomplete; H: recovery verified by Designer. Frozen Classic and accepted S3-R2 untouched.
+**Historical pre-acceptance context; read [S4 Chief acceptance and S5 directive](S4_CHIEF_ACCEPTANCE_AND_S5_VISUAL_DIRECTIVE_20261106.md) first.** Designer has delivered ONE integrated Enhanced-only 1080p display foundation plus three post-S3 corrections. Private local branch `enhancement/s4-1080p-foundation-20261106`, reported exact SHA `977a41824f227f3bdfe6f45596e6845902459842`. Private E: releases: `SonicChaos_Windows_20261106_S4_1080P_CANDIDATE_PRIVATE.zip`, `SonicChaos_Production_20261106_S4_1080P_SOURCE_PRIVATE.zip`, `SonicChaos_20261106_S4_1080P_EVIDENCE_PRIVATE.zip`, `SonicChaos_20261106_S4_1080P_RECEIPT.json`, `SonicChaos_20261106_S4_1080P_SHA256.txt`. Reported true 1080p UI, native 348×196 5× game rendering, Enhanced Integer Fit default, proper window/lifecycle fallbacks, **184 pixel-identical Classic comparisons**, **75 native handoffs**, and P1 MGHZ→AQZ camera / P2 Boss Rush LIVES / P2 premature Enhanced START corrected. Four ignored runtime files **plus 18 ignored original sprite PNGs** are included in full-source E:/H: ZIP; Git tracked tree alone incomplete; H: recovery verified by Designer. Frozen Classic and accepted S3-R2 untouched.
 
 **HISTORICAL PRE-ACCEPTANCE TEST PLAN (NOW COMPLETE).** Chief has since accepted S4; this prior plan was: true hi-res title/Data Select/clear vs unchanged pixelated game, integer 5× layout, bordered/borderless window plus focus/resize/relaunch, early START visible menu, LIVES displayed at all Boss Rush bosses, no MGHZ→AQZ camera jump, brief Classic sample. Full dual-character campaign repetition unnecessary. **Connected GitHub check: S4 branch and full SHA not on private remote as of review**; manager has not read local E:/H: package/receipt/evidence. Do not push/merge/tag or start S5 automatically. Preserve H: complete archive. [Chief gate](S4_INTEGRATED_CANDIDATE_MANAGER_REVIEW_20261106.md).
 
@@ -23,9 +23,9 @@
 
 ## CRITICAL OPEN POST-ACCEPTANCE FINDINGS — 6 NOV 2026
 
-## CURRENT ACTIVE WORK — S4 ENHANCED 1080p FOUNDATION COMMISSIONED (6 NOV)
+## HISTORICAL S4 ACTIVE WORK (IMPLEMENTED AND CHIEF ACCEPTED)
 
-**Chief:** "Excellent! So, next job?" after approving 1080p display design and reporting three issues. **Manager #11 commissioned one consolidated Designer S4 job**, documented at [S4 IMPLEMENTATION AUTHORITY](S4_ENHANCED_1080P_FOUNDATION_SPRINT_20261106.md), not a new S3 revision. S4 uses accepted fully backed-up private S3-R2 full commit `29044caac612a0d2a23399e9fb7a58abda387740` (tree `69ef6d22e3fdd19c1351c612c752e81fc0c61362`), plus four ignored runtime files from accepted full-source E:/H: ZIP. New isolated branch. **No build/source change reported yet.**
+**Chief:** "Excellent! So, next job?" after approving 1080p display design and reporting three issues. **Manager #11 commissioned one consolidated Designer S4 job**, documented at [S4 IMPLEMENTATION AUTHORITY](S4_ENHANCED_1080P_FOUNDATION_SPRINT_20261106.md), not a new S3 revision. S4 uses accepted fully backed-up private S3-R2 full commit `29044caac612a0d2a23399e9fb7a58abda387740` (tree `69ef6d22e3fdd19c1351c612c752e81fc0c61362`), plus four ignored runtime files from accepted full-source E:/H: ZIP. New isolated branch. **Implementation subsequently delivered and Chief accepted; this line is historical.**
 
 **S4 deliverable:** real 1920×1080 Enhanced output/UI resolution, not upscaled low-res GUI; native Wide348×196 game image 5× to1740×980 centered 90/50, Enhanced Integer Fit default ON; Classic preserved 1x–3x; true high-res title/Data Select/clear UI, safe bordered resizable and borderless desktop window selection with `.ini` display preferences; extend proven S1 guarded presenter. **Also correct** camera jump at MGHZ→AQZ, Boss Rush LIVES HUD intermittently absent at SEZ/MGHZ, early START Enhanced title bypass. Original game-world art, physics, camera and SMS/GG Z80 audio preserved. Future S5 owns complete Data Select art animations/TV static/thumbnails/Emeralds and deeper CRT. One private candidate/source/H: receipt and one Chief integrated acceptance test; no auto merge/tag/release.
 
