@@ -3,6 +3,12 @@
 
 ## Delivery identity and evidence boundary
 
+## CHIEF ACCEPTANCE UPDATE — 6 NOVEMBER 2026
+
+Chief has now tested the actual S4 Windows and **passed the 1080p rendering/window and gameplay corrections**. The user personally completed an entire Boss Rush with Tails; MGHZ→AQZ camera, LIVES and early title START corrections all passed, borderless works, and Integer Fit ON/OFF are both liked as choices. **S4 accepted functionally and architecturally**, but the interim Enhanced UI art (modern white type/navy boxes, verbose Data Select, overlay hiding original START GAME, similarly alien results screen) is emphatically **not accepted as final visual styling**. S5 must use genuine original Sonic Chaos pixel art and appropriately enhanced original resources instead of new high-res artwork; compare Scale2x/HQ2x/xBRZ selectively and keep 8-bit→16-bit style. [Full receipt/direction](S4_CHIEF_ACCEPTANCE_AND_S5_VISUAL_DIRECTIVE_20261106.md). The previous acceptance-pending sections below are historical. No additional S4 functional acceptance work is authorized.
+
+
+
 Designer reports completing **one integrated S4 Enhanced 1080p foundation + three post-S3 corrections** on a private **local** branch `enhancement/s4-1080p-foundation-20261106`, commit **`977a41824f227f3bdfe6f45596e6845902459842`**.
 
 - Windows candidate: `E:\AI\Codex\Sonic Chaos\releases\SonicChaos_Windows_20261106_S4_1080P_CANDIDATE_PRIVATE.zip`
