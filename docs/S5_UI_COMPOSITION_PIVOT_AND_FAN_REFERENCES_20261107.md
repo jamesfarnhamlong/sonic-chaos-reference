@@ -2,6 +2,12 @@
 **7 November 2026 · Manager-san #11 · CHIEF ART-DIRECTION REVISION · NO S5 PRODUCTION GO**
 
 ## Executive decision
+
+## IMPLEMENTATION STATUS UPDATE — 7 NOV: ONE S5 SPRINT AUTHORISED
+
+Chief subsequently asked for the **next job** and Manager #11 authorised one **six-screen authentic native-pixel UI implementation sprint**. [Binding S5 charter](S5_AUTHENTIC_PIXEL_UI_INTEGRATED_SPRINT_20261107.md) supersedes 'no production GO' statements below. Designer will compare 384×216 5× vs 480×270 4× internally on original Title/Data Select, choose one coherent layout, then ship all six coordinated screens in one private Windows candidate. No S5 implementation or Chief acceptance yet.
+
+
 Chief has exported the authentic ROM title artwork from `SPR_chaos_m3_title` and experimented in Aseprite. **Bilinear and Rotpixels looked terrible**. HQx/xBRZ remain possible exploratory comparisons, but **pixel resampling is NOT the success criterion**. The real problem is that the new S4 1080p high-res UI looks unrelated to Sonic Chaos, whereas the earlier S2 Sonic 3-inspired save screen felt coherent but was cramped by its original low-res layout.
 
 **Design priority for S5:** Preserve authentic art and pixel font, arrange existing title/save/results content in a larger **logical pixel-art UI design canvas**, and upscale the completed composed presentation by a clean integer factor into accepted S4 1920x1080 output. Preserve original full-HD host compositor and native game-world camera/sprites, avoiding new character/HD artwork, modern sans-serif panels, screen-covering overlays, generic vector style or excessive instructions.
