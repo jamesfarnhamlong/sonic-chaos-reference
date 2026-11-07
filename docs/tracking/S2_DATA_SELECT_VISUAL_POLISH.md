@@ -3,6 +3,12 @@
 
 ## Baseline and scope
 
+## STATUS UPDATE — 7 NOV: S5 BUNDLED UI ART SPRINT COMMISSIONED
+
+Chief approved the S5 original-art/logical-UI pivot and asked for next job. Manager #11 commissioned **one integrated S5 authentic pixel UI sprint** covering the six presentation surfaces; the six S2 Data Select visual improvements are now part of this S5 scope, **not yet delivered**. Read [binding S5 task](../S5_AUTHENTIC_PIXEL_UI_INTEGRATED_SPRINT_20261107.md). Aim for original S2 card/TV aesthetic instead of S4 navy/sans-serif, more room from exact integer UI grid, source-running poses/Tails head/TV previews/gems, minimal words, S2 saves/erase untouched. Chief acceptance still pending.
+
+
+
 ## S5 updated Chief art direction — 6 NOV 2026
 
 **S4 display architecture is now Chief accepted, but its minimal higher-res Data Select UI is emphatically **not** accepted as final artistic presentation.** Chief wants a **Sonic Chaos original-pixel/8-bit look enhanced toward restrained 16-bit UI composition**, not a modern navy/white sans-serif five-card dashboard. No new rendered/AI/vector/HD character art. Use original sprites, authentic character-choice running frames, source tile thumbnails, pixel font and original-inspired graphic language. Reduce repetitive SLOT/NEW GAME/SELECT CHARACTER/CONTINUE labels and multi-line footer instructions while preserving discoverable navigation and safe delete confirmation. Yellow-hat Tails, feet alignment, TV previews, staticky empty slots, Emerald gem colours and running animation remain in the six-item S2-VIS backlog. Compare nearest/Scale2x/HQ2x/xBRZ 2× on original private UI art only; preserve original game-world art and careful palette/edge consistency. Consider title old START GAME compositing/overlaid navy menu and Boss Rush CLEAR mismatched modern typography as same **future S5 authentic interface styling** scope. [Chief acceptance/art directive](../S4_CHIEF_ACCEPTANCE_AND_S5_VISUAL_DIRECTIVE_20261106.md). S5 **not yet implemented/commissioned**.
