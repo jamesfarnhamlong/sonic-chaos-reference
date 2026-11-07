@@ -31,6 +31,10 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 ## CURRENT — S4 CHIEF ACCEPTED; S5 ORIGINAL-ART UI DESIGN NEXT (6 NOV 2026)
 
+**7 Nov S5 scope refinement:** User's exported original title and Aseprite **Bilinear/Rotpixels** trial both looked terrible. This confirms **S5 is primarily a UI-layout/native-pixel design problem, not upscale detail recovery**. Compare ***logical 480×270 4x*** and ***384×216 5x*** exact **1920×1080 16:9** output for title/save/zone start/zone end/Boss Rush start/Boss Rush end. Original title is 256×192, gameplay 348×196 unmodified. Keep source START GAME + add matching pixel-font BOSS RUSH without covering it; preserve earlier S2-style Data Select concept but use larger UI logical grid and much less text. Nearest integer baseline and optional selectively tested xBRZ/HQx; no global smoothing/new assets. [S5 design pivot and three fan-project references](docs/S5_UI_COMPOSITION_PIVOT_AND_FAN_REFERENCES_20261107.md). **S5 not implemented/commissioned.**
+
+
+
 **S5 CHIEF SIX-SCREEN PRIORITY (6 NOV, NO IMPLEMENTATION YET):** Original-art 5× presentation processing for **Title, Save/Data Select, Zone Introduction, Zone End, Boss Rush Introduction, Boss Rush End**, with exact 16:9 **1920×1080 output**, no stretching of original 256×192 title or 348×196 near-16:9 native Wide; keep game-world sprites/physics/audio untouched, retain S4 Integer Fit ON/OFF. Scientific pixel-edge handling only; no new HD assets, sans-serif/rectangular overlay visual language or long instructions. Original title FOUND as ROM-authentic `SPR_chaos_m3_title` 41 frames 256×192, final frame index 40, palette `SCR_chaos_title_data.gml`, shader `SHD_chaos_title.fsh`. Nearest5× baseline/direct xBRZ5× trial; HQx/Scale2x are 2–4× family and require careful treatment to avoid 2.5× fractional re-resize. [S5 six-screen/upscale/source charter](docs/S5_ORIGINAL_ASSET_UPSCALING_SCOPE_20261106.md). No Designer code work authorised by these notes.
 
 
