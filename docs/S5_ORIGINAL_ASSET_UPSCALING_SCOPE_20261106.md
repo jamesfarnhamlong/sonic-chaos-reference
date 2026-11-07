@@ -2,6 +2,12 @@
 **6 November 2026 · Manager-san #11 · CHIEF-DIRECTED SCOPE AGREED · S5 NOT YET COMMISSIONED**
 
 ## Chief's requested six target screens (all Enhanced-only)
+
+## 7 NOV IMPLEMENTATION AUTHORITY — S5 GO (latest)
+
+The six-screen requirements below remain binding, but Chief later rejected Bilinear/Rotpixels and prioritised a larger, coherent native-pixel UI **composition** over mandatory filtered upscaling. Manager #11 has now commissioned [single integrated S5 authentic pixel UI sprint](S5_AUTHENTIC_PIXEL_UI_INTEGRATED_SPRINT_20261107.md). Trial **384×216 integer5×** and **480×270 integer4×**, choose by authentic pixel look and card breathing room, native gameplay unchanged. Original source asset/scaler passages below are exploratory/historical, not a mandate to apply xBRZ/HQx or an image-upscaling effect to every screen. No S5 candidate delivered or accepted yet.
+
+
 1. **Title Screen** — original Sonic/Tails illustration and SONIC CHAOS logo, integrated START / BOSS RUSH, no large foreign rectangular overlay or second visible legacy START GAME. Keep the existing early-START S4 fix.
 2. **Save Screens** — five-card Data Select, erase confirmation and other relevant save views. Original source character runs, Tails silhouette fix, clear zone TV images, colourful Emeralds, subtle TV static, minimal readable copy, precise native-looking pixel text, no invented HD art, Sonic 3/Mania reference for compositional *economy only*.
 3. **Zone Introduction** — original act/zone title-card composition, not gameplay tiles or intro physics; render existing art/text with controlled upscale and preserve timing, reveal and audio.
