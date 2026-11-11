@@ -5,6 +5,12 @@
 
 ## 7 NOV IMPLEMENTATION AUTHORITY — S5 GO (latest)
 
+## 11 NOV — DELIVERED INTEGRATED S5 CANDIDATE, NOT YET OWNER-ACCEPTED
+
+S5 delivered at local source `11cefcece3c43e33db8a2f5967347c444b5a8fb4`, full Windows/source/evidence plus H: recovery per Designer. The selected 480×270@4× grid matches the Chief's native-pixel composition priority; original-derived thumbnails use a deliberate direct 2× physical output scale to retain stage detail. Source original/title/player/Classic/art and audio protected. All six screens reported functional. [Manager review](S5_INTEGRATED_DELIVERY_MANAGER_REVIEW_20261111.md). S5 Chief's final Windows/controller acceptance pending; no extra edit or work commissioned.
+
+
+
 The six-screen requirements below remain binding, but Chief later rejected Bilinear/Rotpixels and prioritised a larger, coherent native-pixel UI **composition** over mandatory filtered upscaling. Manager #11 has now commissioned [single integrated S5 authentic pixel UI sprint](S5_AUTHENTIC_PIXEL_UI_INTEGRATED_SPRINT_20261107.md). Trial **384×216 integer5×** and **480×270 integer4×**, choose by authentic pixel look and card breathing room, native gameplay unchanged. Original source asset/scaler passages below are exploratory/historical, not a mandate to apply xBRZ/HQx or an image-upscaling effect to every screen. No S5 candidate delivered or accepted yet.
 
 
