@@ -5,6 +5,12 @@
 
 ## STATUS UPDATE — 7 NOV: S5 BUNDLED UI ART SPRINT COMMISSIONED
 
+## 11 NOV S5 INTEGRATED TECHNICAL DELIVERY — OWNER ACCEPTANCE PENDING
+
+Designer implemented the original-TV five-slot Data Select refinements within the complete S5 six-screen pixel UI candidate, private local source `11cefcece3c43e33db8a2f5967347c444b5a8fb4`. Reported source Tails six-frame running, the yellow-hat cause (TV arrow overlapped head) fixed with existing arrow-free frame, original Emerald sprites, source-derived stage maps with centred TV images and balanced black bands (GPZ original pipe/blue bridge), deterministic static, complete five-slot save/erase controls unchanged. **This is technically delivered, not Chief-accepted until final physical Windows/controller review.** [Manager delivery/owner gate](../S5_INTEGRATED_DELIVERY_MANAGER_REVIEW_20261111.md). Preserve accepted S4 and earlier save data; do not commission a separate S2-only microbuild.
+
+
+
 Chief approved the S5 original-art/logical-UI pivot and asked for next job. Manager #11 commissioned **one integrated S5 authentic pixel UI sprint** covering the six presentation surfaces; the six S2 Data Select visual improvements are now part of this S5 scope, **not yet delivered**. Read [binding S5 task](../S5_AUTHENTIC_PIXEL_UI_INTEGRATED_SPRINT_20261107.md). Aim for original S2 card/TV aesthetic instead of S4 navy/sans-serif, more room from exact integer UI grid, source-running poses/Tails head/TV previews/gems, minimal words, S2 saves/erase untouched. Chief acceptance still pending.
 
 
