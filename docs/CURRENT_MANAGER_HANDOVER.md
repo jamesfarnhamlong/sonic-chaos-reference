@@ -1,9 +1,19 @@
 # Sonic Chaos — LIVE MANAGER HANDOVER
 **Updated 6 November 2026 · Manager-san #11 · S3 final Chief acceptance / next sprint discussion**
 
-> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3 is Chief-accepted, S4 technically delivered and awaiting the owner's single acceptance test**. Do not resurrect old work orders.
+> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3/S4 are Chief accepted, S5 is technically delivered and Chief visually happy, and S6 is the current authorised sprint with owner tests deliberately batched**. Do not resurrect old work orders.
 
-## Current decision, owner next action
+## Current decision, next job and acceptance cadence
+
+## MOST CURRENT — CHIEF BATCHED TESTING DECISION / S6 GO (11 NOVEMBER 2026)
+
+Chief watched S5 implementation, says the result **“all good!”**, and explicitly asks to **continue several development sprints before one focused Chief acceptance session**, rather than interrupting work with separate full Windows playthroughs after each sprint. **S5 Designer technical delivery remains complete; Chief progress/visual approval is recorded, but final physical-controller/end-to-end packaged S5 acceptance is deferred, not falsely claimed.** The previous heading “S5 candidate ready for immediate Chief test” below is **historical/superseded by this instruction**.
+
+**CURRENT DESIGNER JOB: [S6 Enhanced frontend/options pixel-UI cohesion](S6_ENHANCED_FRONTEND_UI_COHESION_SPRINT_20261111.md)**. Authored 11 Nov from accepted-for-continued-work S5 local branch `enhancement/s5-authentic-pixel-ui-20261111`, full `11cefcece3c43e33db8a2f5967347c444b5a8fb4` (parent original Chief-accepted S4 `977a41824f227f3bdfe6f45596e6845902459842`). S5 Windows `E:\AI\Codex\Sonic Chaos\releases\SonicChaos_Windows_20261111_S5_PIXEL_UI_CANDIDATE_PRIVATE.zip`; complete source ZIP `SonicChaos_Production_20261111_S5_PIXEL_UI_SOURCE_PRIVATE.zip` and evidence/receipt/hash H: copies; all four ignored runtime deps and eighteen original sprite PNGs remain protected. S6 is one substantial isolated branch, focused solely on remaining **Enhanced Options/display/prompt/auxiliary UI styling** still modern while S5 made six main screens authentic. S5 logical480x270@4×, original Sonic Chaos bitmap font/source art, S4 1080p/window/Integer preferences, Classic strict original 1x/2x/3x and all S2/S3 gameplay audio/save code preserved. No new CRT filter, gameplay feature, permanent score, sound driver, competing renderer or S5 source rewrite. S6 one private source/Windows/evidence/H: candidate **without an immediate Chief test**.
+
+**Next owner gate:** after S6 and possibly separately approved S7, hold a **single consolidated focused Chief Windows/controller round** for S5 visual/save navigation and S6 options/window/Classic + representative Zone/Boss Rush. No new full dual-character campaign test. No S6 delivery or Chief acceptance yet, and S7 is not commissioned. Local S4/S5 commits are not on connected private GitHub remote at last check; preserve complete E:/H: custody and don't push/merge/tag/release automatically.
+
+
 
 ## CURRENT — S5 PIXEL UI INTEGRATED CANDIDATE READY FOR CHIEF (11 NOV 2026)
 
