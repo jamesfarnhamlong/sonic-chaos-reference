@@ -1,7 +1,11 @@
 # SONIC CHAOS — S5 Authentic Pixel-UI Presentation
 **7 November 2026 · Manager-san #11 · NEXT INTEGRATED DESIGNER JOB AUTHORIZED · CHIEF ACCEPTANCE PENDING**
 
-## Current mandate
+## INTEGRATED IMPLEMENTATION COMPLETE — 11 NOV 2026 (CHIEF ACCEPTANCE PENDING)
+
+**Designer reports all six S5 screens implemented in one private candidate**, local `enhancement/s5-authentic-pixel-ui-20261111` source commit `11cefcece3c43e33db8a2f5967347c444b5a8fb4`; original S4 parent `977a41824f227f3bdfe6f45596e6845902459842`. Chosen UI design 480×270@4× FullHD, native game Wide348×196 independent 5×, intentionally detailed original 144×128 TV stage previews output at 2×. Chief watched progress, refinements centred previews and correct GPZ pipe crop / Level7 card incorporated. Designer reports 35 native checks, 14 Windows host configurations, 8 exact Classic+8 exact Enhanced app-raster matches, private full source and E:/H: recovery. S5 is **TECHNICAL DELIVERY / MANAGER GO FOR ONE CHIEF Windows/physical pad acceptance**, not final Chief PASS. [Manager technical review and focused Chief check](S5_INTEGRATED_DELIVERY_MANAGER_REVIEW_20261111.md). Prior implementation orders below are historical. Do not issue another Designer build before owner results or push/merge/tag/release automatically.
+
+
 Chief asked "OK! Sorry, we've been doing back and forth a bit — what's the next stage/job then?" after agreeing that source-image smoothing was not solving the UI mismatch. **S5 is now the next commissioned integrated design/implementation sprint.** No more broad conceptual reconsideration or multi-build owner calibration before delivering a meaningful candidate. Treat this document as the single latest binding S5 instruction; previous S5 "discussion only" statuses and upscale-algorithm-first directions are superseded.
 
 **Deliverable:** Authentic Sonic Chaos-style original-art presentation for **six Enhanced-only screens**:
