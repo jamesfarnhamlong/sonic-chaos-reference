@@ -3,7 +3,15 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT — S7 CRT AND C1 4:3 CLASSIC IN PARALLEL; QOL IDEA INTAKE FUTURE (12 NOV 2026)
+## CURRENT — S7 CRT NO-CHANGE CLOSED; S5–S7 OWNER GATE READY; C1 ORIGINAL CLASSIC SEPARATE (12 NOV 2026)
+
+**LATEST:** Designer S7 study finished **NO-CHANGE HOLD**. Experimental 6% RGB triad / beam falloff at 1080p/720p darkened THZ/AQZ and showed distracting grid; 30 matched Windows images (OFF/legacy/new), 9.1–9.6% luma reduction vs CRT OFF, compared to legacy 6.3%; no worthwhile gain. No production modification, no S7 executable. S7 experimental branch points unchanged at **S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304`**, tree `fef7a211894ba1a74227e74f0a6c850aa47d8ee4`; S4/S5/S6 source ZIPs, 4 runtime/18 original PNG ignored assets, saves/INI and H: recovery verified per Designer. [Manager review](docs/S7_NO_CHANGE_MANAGER_CLOSEOUT_20261112.md).
+
+**Deferred one Chief physical test** via Designer guide `E:\AI\Codex\Sonic Chaos\releases\S5_S6_S7_COMBINED_ACCEPTANCE_20261112.md`, use original **S6 Windows ZIP** `SonicChaos_Windows_20261112_S6_FRONTEND_UI_CANDIDATE_PRIVATE.zip`, SHA256 `8d41e2eac1761b376ecdaf9bb1f982f3c7e4077ef4be299cbcaf0fdaaa11b166`. S5 UI and S6 options technical PASS, Chief S5 visual observed positive, but no user final packaged/controller acceptance yet. S7 CRT OFF/ON is existing light filter only, no PHOSPHOR. No more Enhanced work until combined findings; C1 independent 256×192 ROM-faithful Classic agent authorization remains, separate integration/proof required; QoL future not commissioned.
+
+**CRT TV comparison available:** Chief Raspberry Pi **COMPOSITE** to real CRT, can choose 240 or 480 output. Can play original SMS ROM in RetroArch and Windows GameMaker remake over Steam Link from PC to Pi to same TV. Use verified 240p progressive if possible, 480-line composite often 480i, account original Europe/PAL refresh vs NTSC60, image scaling and Steam Link video compression/input lag. Real CRT is visual/feel reference for eventual C1, not exact frame/physics parity. Retain CRT effects OFF initially on real hardware.
+
+
 
 **LATEST CHIEF STRATEGY 12 NOV:** User wants **one separate agent concurrently audit and reverse widescreen-specific fixes for a genuinely ROM-faithful 256×192 (4:3) Classic mode** while S7's optional CRT Enhanced work proceeds. This is **C1 Classic fidelity** distinct from Enhanced gameplay QoL (Chief has a couple of not-yet-shared personal QoL ideas). C1 must not simply set existing `Retro` 290×218 or crop a 348-width simulation; restore canonical camera X leads/256 right bounds/goal sign/end and original object placement, culling, offscreen ring/enemy lifecycle for Classic only. Source code already distinguishes viewport World/Edge/Center/PlayerDist/LockedCamera; `SCR_chaos_camera` and `SCR_chaos_viewport` implement explicit widened adapters. **[C1 binding parallel development charter](docs/C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md)** and [historical Gameplay QoL intake](docs/NEXT_GAMEPLAY_QOL_INTAKE_20261112.md).
 
