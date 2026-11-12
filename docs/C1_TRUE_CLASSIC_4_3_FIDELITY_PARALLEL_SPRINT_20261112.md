@@ -3,6 +3,12 @@
 
 ## Chief's new decision
 
+## CURRENT C1-R3 DELIVERED / R4 VDP ORIGINAL-PIXEL POLICY NEXT (12 NOV 2026)
+
+R1 256×192 trial → R2 original five-pixel SS starting coordinate repair → **R3 actual original camera prepare-before-player/commit-after-objects correction**. Isolated R3 source `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`, 500/500 five-SS camera phase and 145/145 equivalent SS5 clock comparisons exact, S6 Enhanced 10,542 state/102 image samples preserved. No production source/Classic tag change, no merge/push/tag; raw SS4/SS5 historical harness FAIL records retained with explicit-mode/equivalent-state corrections documented in [Manager R3 report](C1_R3_CAMERA_PHASE_MANAGER_REVIEW_20261112.md). **Next authorised isolated R4** [native original palette-aware VDP left8 mask and sprite-line render-policy audit](C1_R4_ORIGINAL_VDP_RENDER_POLICY_SPRINT_20261112.md). Original shared16 object owner allocation, authentic demos, full 18-act natural routes and VDP hardware PAL/NTSC timing remain OPEN; no full-ROM Classic certification or replacement. Every original behaviour including quirks remains mandatory; **no QoL in Classic**, Enhanced S6 frozen wide control.
+
+
+
 ## R2 COMPLETE, C1-R3 SPECIAL STAGE ORIGINAL CAMERA PHASE NEXT (12 NOV)
 
 Chief delivered exact C1-R2 isolated source **`316125f6f280f24a7a8af507155d9dfe86954cea`**, one legitimate Classic-only SS2–SS5 first-update core registration repair in `objects/OBJ_chaos_zone/Create_0.gml` proven by original hundred-ring entry traces (fixes `−5px` first imported Y; SS1 negative control). **Classic is still NOT production-ready** because original loader state0 vs GM1, camera order and ±1 pixel SS1/SS3/SS5 discrepancies remain, SS4 look-down unresolved, inherited SS5 raw camera test FAIL retained. 382 coverage records/16 findings reconciled. Enhanced S6 unchanged in 10,542 state and 102 image comparisons; H: recovered source/assets per Designer. [R2 Manager review](C1_R2_ROM_WIDE_MANAGER_REVIEW_20261112.md). **NEXT C1-R3** [source-ordered Special Stage loader/camera phase sprint](C1_R3_SPECIAL_STAGE_CAMERA_PHASE_SPRINT_20261112.md), isolated branch from exact R2, strictly original-ROM evidence/no QoL. Source pool shared16 slots, original three demos and palette-based VDP left8 mask stay independent research gaps; no speculative allocator/movie/black-mask changes. All prior C1 trial/source/Chief Classic tag and S4-S6 immutable packages protected; no merge/push/tag/release/Chief new playtest.
