@@ -3,6 +3,12 @@
 
 ## Chief's new decision
 
+## C1 STATUS 12 NOV — R5 DEMO HOLD, R6 ORDINARY SOURCE PHASE NEXT
+
+C1 original true256×192 trial source last changed in R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`; R4 and R5 **both concluded correctly as no-change research holds**. R5 source-valid ROM demos THZ/Sonic, GPZ/Tails and SEZ/Sonic: 1,080 driver budgets / lightweight skip39/65/45 + cleanup1 = 1,042/1,016/1,036 player entries, two-byte input pairs, power-on rotation and button cancellation traced; detailed breakpoint probes perturb approximate reference cycles. GameMaker wrapper begins ordinary state1 instead of original state0 and ordinary cameras have first differences THZ ordinal14/GPZ12/SEZ29, so no attract playback enabled. [R5 manager review](C1_R5_ORIGINAL_ATTRACT_DEMOS_MANAGER_CLOSEOUT_20261112.md). **Next separate R6 isolated stage entry/driver/camera fidelity job** [authoritative specification](C1_R6_ORDINARY_LOADER_CAMERA_PHASE_SPRINT_20261112.md) from same exact R3 source. No new overall C1 production Classic, no merge, no QoL, original music/save/source and Enhanced Wide S6 exact remain protected. Remaining R4 VDP mask, shared first16 slot owner reuse, original loader/player0 and attract demo implementation remain explicitly OPEN.
+
+
+
 ## LATEST — R4 VDP NO-CHANGE RESEARCH, R5 ORIGINAL DEMOS GO (12 NOV)
 
 C1-R4 investigated true ROM scene-palette-aware leftmost8 VDP mask over **841 snapshots/31,549 emulated frames** and confirmed it is currently missing, but exact ROM visible-frame versus GameMaker fade/palette phase remains unaligned. **No source or executable changed; C1 exact R3 SHA `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`** stays the branch base. R2 stage entries/R3 camera and S6 Enhanced 10,542 state /102 images preserved, H: restore per Designer. [R4 Manager evidence-only closeout](C1_R4_VDP_NO_CHANGE_MANAGER_REVIEW_20261112.md); mask remains unclosed ROM fidelity gap. **Next isolated [C1-R5 original three idle demos](C1_R5_ORIGINAL_ATTRACT_DEMOS_SPRINT_20261112.md)** with original loader/player-engine timing and recorded input, not synthetic playback. Complete ROM-wide Classic parity and production integration still HOLD; no QoL. **Separately, Chief corrected Manager's UI-art assumption:** generic GameMaker Pause picture is shared on all stages, so **entire Pause redesign is PARKED**, no Robotnik/Boss Rush-only icon task; Chief personally generating six 144×128 Save TV zone pictures as only active art task, no code until supplied.
