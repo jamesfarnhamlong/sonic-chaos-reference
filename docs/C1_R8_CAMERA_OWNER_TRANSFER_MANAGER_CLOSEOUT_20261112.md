@@ -51,6 +51,10 @@ R8 reports fresh exact tests: **Enhanced S6 10,542 native state samples/102 imag
 - **Shared original first16 object slots/pending FE/FF owner reuse**, **palette-aware left8 VDP mask with unresolved visible-frame/fade phase**, three original **attract demos absent** (input/driver/rotation research completed), original IRQ/physical PAL timing and full original 18-act/5-SS route/ending/rare audio coverage remain OPEN.
 - Strict user mode contract: **true 256×192 Classic reproduces ROM quirks exactly, NO QoL**. Protected S6 348×196 Wide Enhanced with future optional gameplay QoL OFF must remain exactly unchanged. Chief's S5–S7 owner test 33 PASS/4 inaccessible UNOBSERVED; Chief will supply six144×128 Save TV art PNGs, generic GameMaker Pause redesign wholly parked.
 
+## CHIEF FOLLOW-UP: R9 ARCHITECTURE DESIGN-ONLY NOW AUTHORISED (12 NOV)
+
+Chief requested to continue after R8. Manager commissioned [C1-R9 ordinary camera integration architecture DESIGN sprint](C1_R9_ORDINARY_CAMERA_INTEGRATION_DESIGN_SPRINT_20261112.md), using unchanged original R3 C1 source. **This is NOT permission to ship an R9 camera patch, alter native camera output, merge Classic into production or implement attract playback.** Agent must map concrete GameMaker event ordering/owners, show deterministic original prepare-before-player/commit-after-objects protocol with original same-update owner transfer, and produce a bounded R10 guarded code plan and tests. If design remains unsafe, end HOLD and pivot away from camera audits. An R10 implementation would require **separate Manager GO following the R9 evidence**; no source modifications in R9.
+
 ## Manager disposition / suggested strategic next move
 **C1-R8 ROM rule established and research PASS; no-code hold ACCEPTED. C1 production Classic replacement / C1→S6 merge HOLD.**
 
