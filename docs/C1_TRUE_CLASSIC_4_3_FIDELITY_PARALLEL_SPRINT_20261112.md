@@ -3,6 +3,12 @@
 
 ## Chief's new decision
 
+## LATEST — R4 VDP NO-CHANGE RESEARCH, R5 ORIGINAL DEMOS GO (12 NOV)
+
+C1-R4 investigated true ROM scene-palette-aware leftmost8 VDP mask over **841 snapshots/31,549 emulated frames** and confirmed it is currently missing, but exact ROM visible-frame versus GameMaker fade/palette phase remains unaligned. **No source or executable changed; C1 exact R3 SHA `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`** stays the branch base. R2 stage entries/R3 camera and S6 Enhanced 10,542 state /102 images preserved, H: restore per Designer. [R4 Manager evidence-only closeout](C1_R4_VDP_NO_CHANGE_MANAGER_REVIEW_20261112.md); mask remains unclosed ROM fidelity gap. **Next isolated [C1-R5 original three idle demos](C1_R5_ORIGINAL_ATTRACT_DEMOS_SPRINT_20261112.md)** with original loader/player-engine timing and recorded input, not synthetic playback. Complete ROM-wide Classic parity and production integration still HOLD; no QoL. **Separately, Chief corrected Manager's UI-art assumption:** generic GameMaker Pause picture is shared on all stages, so **entire Pause redesign is PARKED**, no Robotnik/Boss Rush-only icon task; Chief personally generating six 144×128 Save TV zone pictures as only active art task, no code until supplied.
+
+
+
 ## CURRENT C1-R3 DELIVERED / R4 VDP ORIGINAL-PIXEL POLICY NEXT (12 NOV 2026)
 
 R1 256×192 trial → R2 original five-pixel SS starting coordinate repair → **R3 actual original camera prepare-before-player/commit-after-objects correction**. Isolated R3 source `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`, 500/500 five-SS camera phase and 145/145 equivalent SS5 clock comparisons exact, S6 Enhanced 10,542 state/102 image samples preserved. No production source/Classic tag change, no merge/push/tag; raw SS4/SS5 historical harness FAIL records retained with explicit-mode/equivalent-state corrections documented in [Manager R3 report](C1_R3_CAMERA_PHASE_MANAGER_REVIEW_20261112.md). **Next authorised isolated R4** [native original palette-aware VDP left8 mask and sprite-line render-policy audit](C1_R4_ORIGINAL_VDP_RENDER_POLICY_SPRINT_20261112.md). Original shared16 object owner allocation, authentic demos, full 18-act natural routes and VDP hardware PAL/NTSC timing remain OPEN; no full-ROM Classic certification or replacement. Every original behaviour including quirks remains mandatory; **no QoL in Classic**, Enhanced S6 frozen wide control.
