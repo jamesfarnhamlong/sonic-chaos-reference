@@ -3,6 +3,12 @@
 
 ## Chief's binding direction
 
+## 12 NOV STATUS — C1-R2 CANONICAL SS COORDINATE FIX, REMAINING ROM-WIDE GAPS
+
+Isolated C1-R2 local `316125f6f280f24a7a8af507155d9dfe86954cea` built from R1. Original ROM natural SS entry exposes **five-pixel first update Y corruption for SS2–SS5** caused by Special Stage constructor not publishing the already seeded core registration. New Classic-only registration fix makes first imported values exactly SS2=1838, SS3=622, SS4=366, SS5=878 (SS1=118 unchanged). One runtime source file changed. This is an authentic-source correction, **not QoL**. No Classic replacement. **Unresolved:** SS loader state/timing, SS1 original cameraY14/current15, SS3 original518/current519, SS4 look-down, SS5 update11 original cameraX31/current30 and inherited raw FAIL; shared first16 object pool with pending FE/FF owner reuse (no natural shortage shown in GPZ sample); original demo timing/playback; scene-aware VDP left8 mask and PAL/sprite-limit timing. [C1-R2 manager evidence review](C1_R2_ROM_WIDE_MANAGER_REVIEW_20261112.md), [C1-R3 isolated original Special Stage phase task](C1_R3_SPECIAL_STAGE_CAMERA_PHASE_SPRINT_20261112.md). The Chief's binding instruction **NO QOL / original ROM exact behaviours, anomalies included** still governs ALL subsequent C1 gates; Enhanced S6 widescreen must remain exact. No C1 integration into production or owner Classic acceptance claimed.
+
+
+
 ## R1 RESEARCH DELIVERY — 12 NOV 2026, C1 STILL NOT PRODUCTION CLASSIC
 
 C1 trial local full SHA `bc32e706691666b420c4daeff87338ec865190e5` reported by Chief. True original-size 256×192 at window 1×–3×, 10,542 state +102 image Enhanced S6 comparisons pass in Designer's claimed scope, but **382 audit coverage entries and 16 findings** remain open to scrutiny. Shared slots/attract demos/Special Stage alignment/timing/VDP unresolved. **R1 is an isolated research trial, not Classic replacement or 100% ROM fidelity certification.** Full report `E:\AI\Codex\Sonic Chaos\releases\C1_ROM_WIDE_FIDELITY_AUDIT_20261112.md` and receipt on Chief's local drive must be read by C1 agent; Manager has not reviewed exact 16 records. [Manager R1 verdict / R2 gate](C1_R1_ROM_WIDE_TRIAL_MANAGER_REVIEW_20261112.md). Continue original ROM-wide evidence matrix, proof-backed authentic-only fixes, explicit unresolved; no new gameplay-QoL in Classic, no C1→S6 integration until proven/approved. This update does not relax the full ROM-wide mandate below.
