@@ -1,6 +1,8 @@
 # Sonic Chaos — C1-R8 Same-Update Sign/Boss Camera Ownership Boundary
 **12 November 2026 · Manager-san #11 · ONE ISOLATED INSTRUMENT-ONLY FIDELITY EVIDENCE SPRINT GO · NO GAMEPLAY CODE/CLASSIC REPLACEMENT**
 
+**Later follow-up:** Chief requested continuation and [C1-R9 design-only native camera integration sprint](C1_R9_ORDINARY_CAMERA_INTEGRATION_DESIGN_SPRINT_20261112.md) is now authorised. **No R9 runtime implementation GO**; R8's source/proof limitations still binding. This R8 order remains complete/historical.
+
 ## FINAL R8 RESULT — ORIGINAL CAMERA OWNER PRECEDENCE PROVED, NO-CODE HOLD (12 NOV)
 
 Chief delivered R8 instrument-only study. Controlled original ROM CPU/RAM writes establish that **already prepared pre-player camera D284/D286 COMMIT unchanged at VBlank when sign or THZ boss ownership activates during objects**. New owner targets/bounds apply to NEXT preparation, including original THZ right-lock X1663 committed despite newly tightened right bound1659. Four semantic transitions, 20 bounded original updates, no object-phase pending write; no original camera precedence uncertainty remains in sampled windows. Compiled native sign Step instead activates before player and End Step pans immediately; native boss fixture's first player update gains+7Y, so **exact original/native activation-equivalent numeric simulation is not yet established**. This makes immediate source patch unsafe. **No runtime code changed, no R8 shipping trial/source commit**, C1 remains exact R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`; S6 Enhanced exact 10,542 state/102 image preservation and C1 138 captures, R2/R3 SS controls, H: recovery PASS per agent. [Manager R8 no-change research closeout](C1_R8_CAMERA_OWNER_TRANSFER_MANAGER_CLOSEOUT_20261112.md).
