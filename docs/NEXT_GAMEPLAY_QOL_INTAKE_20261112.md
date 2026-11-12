@@ -2,6 +2,10 @@
 **12 November 2026 · Manager-san #11 · CHIEF REQUESTED FUTURE SMALL ENHANCED QOL PASS · IDEAS PENDING · NO IMPLEMENTATION AUTHORITY**
 
 ## Owner sequencing
+
+**Additional Chief concurrency decision:** A different agent has been authorised to undertake [C1 true original 4:3 Classic fidelity](C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md) in parallel with S7 CRT, using isolated code and ROM/native verification. That task is **not** a Gameplay QoL sprint; this QoL intake remains read-only pending Chief's personal proposals.
+
+
 Chief plans small gameplay Quality-of-Life improvements after the running **S7 optional CRT sprint**, combined focused S5–S7 Owner acceptance and parallel **C1 original 256×192 Classic fidelity** research/build. Chief has **a couple of unshared personal gameplay QoL priorities**: **DO NOT** invent or prejudge them. Manager is mining historical issue ledgers, but Chief ideas take precedence when supplied. Development agents must not add QoL to C1 source: C1's goal is original 4:3 behaviour, not modernization. All selected QoL, if Chief later approves, must be Enhanced-only with original-mode untouched and attributable standalone tests.
 
 ## Evidence-backed historical candidates, not active fixes
