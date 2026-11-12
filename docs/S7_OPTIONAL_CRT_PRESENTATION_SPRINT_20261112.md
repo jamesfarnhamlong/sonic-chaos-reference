@@ -2,6 +2,12 @@
 **12 November 2026 · Manager-san #11 · SINGLE S7 DESIGNER SPRINT GO · ONE S5+S6+S7 CHIEF ACCEPTANCE GATE AFTER DELIVERY**
 
 ## Why S7 now
+
+## PARALLEL C1 CLASSIC FIDELITY WORKSTREAM — CHIEF AUTHORISED 12 NOV
+
+Chief has commissioned **one second independent agent** to research/implement [true original 256×192 Classic fidelity](C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md) while S7 CRT work continues unchanged. **S7 agent must NOT switch its current working branch to C1, edit C1's independent GameMaker checkout, integrate parallel changes, remove ignored source dependencies, alter Classic original 1–3× presentation, or add gameplay QoL.** Both agents may start from complete protected local S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304` in distinct worktrees/ZIP-restored folders; S7 owns CRT/display changes, C1 owns separately guarded 256×192 Classic camera/spawn/edge behaviour. S7 independently finishes its CRT evidence/candidate; Manager will coordinate a later separate combined integration branch so S7 is not silently overwritten. Chief's planned S5–S7 bundled Windows test remains; add C1 only after integration and proof if ready. This note does **not** authorise any untested automatic C1 merge or S8 gameplay QoL.
+
+
 - S4 FullHD Enhanced output, window/borderless/Integer Fit ON/OFF was Chief accepted.
 - S5 six-screen authentic 480×270 pixel-art UI is technically delivered and Chief liked work in progress. Formal end-user controller/in-motion acceptance deferred by Chief on 11 November.
 - S6 Enhanced Options frontend UI is technically delivered at local SHA **`47c501ecb994a4fcb1eeac1c29793f3f1142a304`**, verified by Designer with **60 exact Classic and 20 exact S5 raster comparisons**; again owner test deferred.
