@@ -3,6 +3,12 @@
 
 ## Chief's new decision
 
+## R7 NO-CODE RETAIL PHASE PROOF; R8 CAMERA OWNER HANDOFF BEFORE CODE (12 NOV)
+
+R7 isolated source same exact R3 commit `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`. Compiled Classic actual retail title→Sonic/Tails choice→THZ1 new-game 180 updates each: initial speeds/facing and raw positions match, state0 wrapper effects partly equivalent; **ordinary camera first update lead original120/native119, displayed update13 ROM530/native531**. Tails early animation counter8,8 vs native8,7 with same frame/positions is tracked separately. **No change approved** until original sign and THZ boss mid-object owner activates and original pending camera's final VBlank write/replace/discard are compared. [Manager R7 closeout](C1_R7_NATIVE_RETAIL_ENTRY_MANAGER_CLOSEOUT_20261112.md); **next one isolated [R8 instrument-only original owner handoff](C1_R8_SIGN_BOSS_CAMERA_OWNER_BOUNDARY_SPRINT_20261112.md)**. Do not implement ordinary camera patch or original attract replays yet. Strict original ROM-wide canon/no QoL. Protected historic Classic tag and S6 Enhanced remain untouched; no git merge/push/tag/release/owner playtest. 
+
+
+
 ## C1 STATUS 12 NOV — R5 DEMO HOLD, R6 ORDINARY SOURCE PHASE NEXT
 
 C1 original true256×192 trial source last changed in R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`; R4 and R5 **both concluded correctly as no-change research holds**. R5 source-valid ROM demos THZ/Sonic, GPZ/Tails and SEZ/Sonic: 1,080 driver budgets / lightweight skip39/65/45 + cleanup1 = 1,042/1,016/1,036 player entries, two-byte input pairs, power-on rotation and button cancellation traced; detailed breakpoint probes perturb approximate reference cycles. GameMaker wrapper begins ordinary state1 instead of original state0 and ordinary cameras have first differences THZ ordinal14/GPZ12/SEZ29, so no attract playback enabled. [R5 manager review](C1_R5_ORIGINAL_ATTRACT_DEMOS_MANAGER_CLOSEOUT_20261112.md). **Next separate R6 isolated stage entry/driver/camera fidelity job** [authoritative specification](C1_R6_ORDINARY_LOADER_CAMERA_PHASE_SPRINT_20261112.md) from same exact R3 source. No new overall C1 production Classic, no merge, no QoL, original music/save/source and Enhanced Wide S6 exact remain protected. Remaining R4 VDP mask, shared first16 slot owner reuse, original loader/player0 and attract demo implementation remain explicitly OPEN.
