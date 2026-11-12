@@ -1,9 +1,21 @@
 # Sonic Chaos — LIVE MANAGER HANDOVER
 **Updated 6 November 2026 · Manager-san #11 · S3 final Chief acceptance / next sprint discussion**
 
-> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3/S4 Chief accepted; S5/S6 technically delivered and owner test deferred; S7 active Enhanced plus C1 separate Classic 4:3 fidelity agent newly authorized; one combined owner gate after S7, potentially including C1 if integrated safely**. Do not resurrect old work orders.
+> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3/S4 Chief accepted; S5/S6 technically delivered and owner test deferred; S7 CRT no-change investigation complete, C1 original Classic 4:3 independently authorised; one combined owner gate after S7, potentially including C1 if integrated safely**. Do not resurrect old work orders.
 
 ## Current decision, next job and acceptance cadence
+
+## TOP CURRENT — S7 NO-CHANGE CLOSED / ONE S5–S7 OWNER GATE READY / C1 INDEPENDENT (12 NOVEMBER 2026)
+
+**S7 is completed as an authorised NO-CHANGE CRT investigation**, not a failed implementation: the stronger 6%-triad/beam trial visibly gridded the sky and HUD and darkened output without a clear visual benefit across 30 matched native 1080p/720p captures (Sonic/Tails THZ/AQZ and Zone Clear); no new style shipped, no new Settings/INI, no CRT prototype in production. Existing `CRT FILTER OFF/ON` means OFF or legacy S1 light scanlines. Final production exact S6 source **`47c501ecb994a4fcb1eeac1c29793f3f1142a304`**, tree **`fef7a211894ba1a74227e74f0a6c850aa47d8ee4`**; clean experimental `enhancement/s7-optional-crt-presentation-20261112` local branch points to that SAME source. No synthetic S7 commit or Windows ZIP. E:/H: hash and 22 ignored runtime/sprite source files verified unchanged per Designer. Chief uploaded private `S7_OPTIONAL_CRT_DECISION_20261112.md` and `S5_S6_S7_COMBINED_ACCEPTANCE_20261112.md`; [Manager S7 final closeout](S7_NO_CHANGE_MANAGER_CLOSEOUT_20261112.md) records evidence boundary.
+
+**ONE BUNDLED S5+S6+S7 Chief Windows test is prepared, not yet conducted**. Use exact unchanged S6 ZIP `E:\AI\Codex\Sonic Chaos\releases\SonicChaos_Windows_20261112_S6_FRONTEND_UI_CANDIDATE_PRIVATE.zip` SHA-256 `8d41e2eac1761b376ecdaf9bb1f982f3c7e4077ef4be299cbcaf0fdaaa11b166`. Focus authentic S5 title/Data Select/zone/Boss cards, S6 pixel Options/physical controller/persistent window settings, CRT OFF and legacy ON, brief Classic and representative original gameplay. S5 Chief visually happy watching development but **NOT yet formal physical ZIP acceptance**; S6 technically checked, also not formal Chief acceptance. S7 no-change needs no new filter playtest. Chief chooses timing; do not solicit separate immediate tests or automatically start S8.
+
+**C1 original-faithful Classic 4:3 agent** remains a **separate Chief-authorised** worktree from S6, 256×192 ROM camera/spawn/culling/edge and true original behavior, no automatic merge with S7/S6. No evidence that C1 has delivered a candidate; do not claim it has. If ROM-evidenced C1 integration is ready, discuss combined owner gate; otherwise allow S5-S7 acceptance to proceed. [C1 charter](C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md). Future Enhanced Gameplay QoL ideas still unshared; only historical [read-only intake](NEXT_GAMEPLAY_QOL_INTAKE_20261112.md) exists.
+
+**Chief's CRT research hardware:** Raspberry Pi attached to CRT through **composite**, user can select 240 or 480 lines, can play original SMS ROM in RetroArch or GameMaker remake via Steam Link from PC. This is valuable same-TV visual comparison for C1, **not direct original input/timing proof**, owing to stream compression/latency and display 50/60Hz uncertainty. Confirm 240p actual progressive and whether 480 is interlaced. Compare with both emulation and GameMaker CRT shaders OFF for baseline; then separate 480 mode and filters if wanted.
+
+
 
 ## TOP NEW OWNER DIRECTION — PARALLEL C1 256×192 CLASSIC FIDELITY (12 NOV)
 
