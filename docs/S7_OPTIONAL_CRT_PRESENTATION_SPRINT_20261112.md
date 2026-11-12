@@ -3,6 +3,12 @@
 
 ## Why S7 now
 
+## FINAL DELIVERY STATUS — 12 NOV 2026: NO-CHANGE DECISION, SPRINT CLOSED
+
+Designer performed Stage A's 30 matched Windows CRT ON/OFF/prototype A/B scene captures at 1080p and 720p, and concluded the additional output-pixel triad/gridded look plus darkening was **not a visual improvement** worth another mode. **The stronger prototype is REJECTED FOR SHIPMENT; Stages B/new-style C were not entered**, as the charter explicitly allowed. S7 feature branch has clean tree and points to unchanged S6 exact source SHA `47c501ecb994a4fcb1eeac1c29793f3f1142a304`, tree `fef7a211894ba1a74227e74f0a6c850aa47d8ee4`. No production shader, options preference or new binary; no new CRT style. All Windows/source/H: restoration remains S6. [Manager S7 no-change closeout](S7_NO_CHANGE_MANAGER_CLOSEOUT_20261112.md). One combined S5/S6/S7 Chief guide is available privately at `E:\AI\Codex\Sonic Chaos\releases\S5_S6_S7_COMBINED_ACCEPTANCE_20261112.md`, using S6 ZIP SHA `8d41e2eac1761b376ecdaf9bb1f982f3c7e4077ef4be299cbcaf0fdaaa11b166`. This is prepared, not yet performed. Parallel C1 256x192 Classic audit remains a separate agent/worktree, no automatic integration. The original authorization prose below is now *historical*, not a renewed CRT development order.
+
+
+
 ## PARALLEL C1 CLASSIC FIDELITY WORKSTREAM — CHIEF AUTHORISED 12 NOV
 
 Chief has commissioned **one second independent agent** to research/implement [true original 256×192 Classic fidelity](C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md) while S7 CRT work continues unchanged. **S7 agent must NOT switch its current working branch to C1, edit C1's independent GameMaker checkout, integrate parallel changes, remove ignored source dependencies, alter Classic original 1–3× presentation, or add gameplay QoL.** Both agents may start from complete protected local S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304` in distinct worktrees/ZIP-restored folders; S7 owns CRT/display changes, C1 owns separately guarded 256×192 Classic camera/spawn/edge behaviour. S7 independently finishes its CRT evidence/candidate; Manager will coordinate a later separate combined integration branch so S7 is not silently overwritten. Chief's planned S5–S7 bundled Windows test remains; add C1 only after integration and proof if ready. This note does **not** authorise any untested automatic C1 merge or S8 gameplay QoL.
