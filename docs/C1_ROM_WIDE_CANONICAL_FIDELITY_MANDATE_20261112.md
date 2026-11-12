@@ -1,6 +1,10 @@
 # Sonic Chaos — C1 ROM-WIDE Canonical Fidelity Mandate and Mode Contract
 **12 November 2026 · Manager-san #11 · Chief clarification to IN-PROGRESS C1 Classic agent · no QoL in Classic**
 
+## CURRENT CONTINUATION — R9 NATIVE CAMERA INTEGRATION DESIGN-ONLY (12 NOV)
+
+R8 has proven original ROM camera pending survives same-update sign/THZ owner activation unchanged and commits at VBlank; the newly set target/bounds influence next preparation, including original X1663 surviving new THZ right limit1659. Current GameMaker event owners/sign Step and boss +7Y seed prevent immediate phase-equivalent runtime fix. Chief requested continuation; Manager commissioned [C1-R9 source-level event owner architecture/design sprint](C1_R9_ORDINARY_CAMERA_INTEGRATION_DESIGN_SPRINT_20261112.md) from exact unchanged R3 source `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`. R9 produces only ownership graph, precise code-event proposal, safe fail-closed owner transitions, verification matrix and DESIGN READY for separate R10 versus HOLD/PIVOT. **NO source modifications, camera physics offsets, demo feature, speculative ownership or release are permitted in R9.** The Chief's strict ROM-warts-preserved/no-QoL Classic mandate remains binding; S6 Enhanced untouched.
+
 ## Chief's binding direction
 
 ## R7 RETAIL ENTRY PROVED / R8 SIGN-BOSS CAMERA OWNER EVIDENCE ONLY (12 NOV)
