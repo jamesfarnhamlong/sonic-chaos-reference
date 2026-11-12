@@ -1,9 +1,19 @@
 # Sonic Chaos — LIVE MANAGER HANDOVER
 **Updated 6 November 2026 · Manager-san #11 · S3 final Chief acceptance / next sprint discussion**
 
-> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3/S4 are Chief accepted, S5 and S6 are technically delivered with direct owner checks deferred, and S7 is now the active authorised sprint; one combined owner gate follows S7**. Do not resurrect old work orders.
+> **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S3/S4 Chief accepted; S5/S6 technically delivered and owner test deferred; S7 active Enhanced plus C1 separate Classic 4:3 fidelity agent newly authorized; one combined owner gate after S7, potentially including C1 if integrated safely**. Do not resurrect old work orders.
 
 ## Current decision, next job and acceptance cadence
+
+## TOP NEW OWNER DIRECTION — PARALLEL C1 256×192 CLASSIC FIDELITY (12 NOV)
+
+**Chief's latest:** “I'm thinking that at the same time we concentrate on the 4:3 mode for classic; we would undo all the widescreen fixes we implemented and audit for true game fidelity. One agent can work through that, then that becomes our Classic mode.” This is **authorization for one separate C1 agent in parallel with already running S7**, not approval to blindly revert canon fixes or immediately replace Classic in production. [C1 binding research/implementation charter](C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md). Original ROM Master System Europe v1.2 actual **256×192 4:3** and original gameplay camera X leads/limits, edge clamps, sign/end thresholds, object creation/awake/asleep/cull windows and hazards—not `Retro` 290×218, not a cropped widescreen view. Existing `docs/viewport-semantics-audit.md` supplies byte-tested original semantics; existing POC `SCR_chaos_camera` and `SCR_chaos_viewport` make many adapters explicit. Keep Enhanced Wide348×196 and all widescreen fairness/ring/enemy lifecycle fixes exactly as accepted; original correct gameplay fixes/ROM audio also stay.
+
+**ISOLATION:** S7 CRT agent continues current main production checkout and isolated S7 branch. C1 fidelity agent uses **another GameMaker worktree/clone on a new local branch from full S6** `47c501ecb994a4fcb1eeac1c29793f3f1142a304`, restoring 4 ignored runtime+18 original sprite PNGs from protected full E:/H: source. Separate compile output/settings, no shared writable project; Classic tag `classic-core-20261105` remains immutable and original currently playable Classic unchanged until C1 ROM/native proof, controlled integration atop delivered S7 and Chief acceptance. **Two agents are planned, not personally launched by Manager**; local Codex execution requires Chief starting the second work context. If C1 arrives before S7, hold it separately; if later, don't delay S5–S7 bundled test.
+
+**FUTURE Enhanced Gameplay QoL** is next program after presentation/fidelity and Chief will share 2+ new ideas; [research-only historical shortlist](NEXT_GAMEPLAY_QOL_INTAKE_20261112.md) includes ring scatter, canonical quirks and GPZ3 art issue with careful distinctions. **NO QoL code permission yet**. S7 still active, S5/S6 technical, S4 Chief accepted, planned bundled Chief S5–S7 acceptance after S7; C1 might join after separate integration approval. No new public/private Git pushes, merges or tags.
+
+
 
 ## TOP CURRENT — S6 DELIVERED; S7 OPTIONAL CRT GO; COMBINED CHIEF TEST NEXT (12 NOV 2026)
 
