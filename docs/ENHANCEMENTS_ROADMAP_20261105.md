@@ -2,6 +2,14 @@
 **Working planning inventory · 5 November 2026 · Chief/Manager-san #10 · S1/S2 Chief accepted; E1 pacing parked; final display defaults undecided**
 
 ## 0. Immutable starting point
+
+## UPDATE 12 NOV — Parallel C1 true ROM Classic approved; S7 running; future QoL only intake
+
+The historical E-C1 'strict 4:3 gameplay mode' below is **now an authorised second-agent development workstream**, not merely a parked idea. Chief wants original SMS **256×192 (4:3)** plus ROM-faithful camera, offscreen spawn/cull and collision/exit policy to **become Classic** after safe verification, while **Enhanced keeps 348×196 and its intentional widescreen fairness fixes**. [Binding isolated Classic audit + implementation sprint](C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md). Do not mistake the currently selectable `Retro290×218` for canonical256×192; no aspect crop alone proves original gameplay. C1 isolated checkout from complete local S6 and 22 ignored E:/H: assets, S7 separate CRT checkout; no automatic merge/tag, one later integrated owner test if ready, original frozen Classic tag preserved.
+
+Chief separately proposes **Gameplay QoL after S7**, has a couple of **not-yet-shared ideas**. [Read-only historical QoL intake](NEXT_GAMEPLAY_QOL_INTAKE_20261112.md) is for later selection; no QoL code authorised and never mix noncanonical QoL into C1.
+
+
 - Private Classic core tag: `classic-core-20261105` (annotated tag object `87f13ef24877519c820d4d2612b58279a43578e6`, peeled source `3a58912659b48573ac7f2c5c96a02a2211d5e4da`). Remote tag and freeze record verified 5 November 2026.
 - Private project: `jamesfarnhamlong/SonicChaos_POC`. Main remains unchanged. Gameplay core, existing 60-target ordinary simulation (sprite poses change at state-specific intervals), 256×192 original reference, 348×196 PC widescreen, Z80 audio timing, Sonic/Tails, stages, results, existing QoL are protected. Source ZIP's stale B-only archive manifest is an accepted provenance caveat, not a reason to rebuild.
 - All enhancements need a named opt-in mode or isolated presentation/adaptor layer, baseline-off comparison, separate implementation branch and Chief approval. Never mutate or force-move Classic tag. Future mandatory core deviations require separate evidenced successor checkpoint.
