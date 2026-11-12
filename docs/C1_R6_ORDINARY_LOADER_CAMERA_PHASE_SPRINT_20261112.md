@@ -2,6 +2,12 @@
 **12 November 2026 · Manager-san #11 · ONE ISOLATED CLASSIC ROM-ORACLE RESEARCH / PROVEN CORRECTION GO · CLASSIC REPLACEMENT HOLD**
 
 ## Strategic reason
+
+## FINAL C1-R6 DELIVERY — NO-CHANGE EVIDENCE HOLD; R7 RETAIL HANDOFF NEXT
+
+R6 observer now stable over 12,000 original frames and three hook profiles; original pre-player camera matched **2,160/2,160** model samples, while actual native GameMaker retail title→stage ownership remains unverified. **No source change/new Windows candidate**: exact C1-R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`. Enhanced S6 exact10,542 state/102 images, Classic138 native captures and R2/R3 controls retained. [R6 Manager closeout](C1_R6_ORDINARY_PHASE_MANAGER_CLOSEOUT_20261112.md). This R6 work order is complete/historical. **Next is [C1-R7 native real retail handoff proof](C1_R7_NATIVE_RETAIL_ENTRY_HANDOFF_SPRINT_20261112.md)**—a direct prerequisite for **original attract demo replay**, not a new unrelated general-gameplay project. Chief offered original ROM vs GM attract-demo side-by-side, but GM has no authentic demo playback yet, so no manual comparison currently requested.
+
+
 C1-R5 established original three attract-demo inputs/rotation and exact 1,080 **driver** updates but correctly did not ship playback: original entry uses state/next **0/0**, current native ordinary/debug entry **1/1**; original ordinary-stage driver processes camera **before player** whereas current GameMaker regular zone End Step follows player/objects. The earliest original-vs-native demo camera divergences occur at THZ engine ordinal14, GPZ12, SEZ29; THZ subsequently has a large missing native engine-call gap and SEZ later differs by 60/256 pixel. These observations cannot yet be causally blamed on physics because retail loader/cadence/interrupt state is not equivalent. R3 already corrected corresponding phase ordering for **Special Stages only**, and the Strict Chief mandate requires **original ROM semantics everywhere, including quirks; NO QoL**. Before replaying the original demos, close this shared ordinary-entry/driver-camera fidelity dependency. [R5 actual Manager closeout](C1_R5_ORIGINAL_ATTRACT_DEMOS_MANAGER_CLOSEOUT_20261112.md).
 
 C1-R4 VDP study also correctly held: original palette-dependent leftmost eight pixels missing, but ROM visible-frame vs native title/fade palette mapping unresolved. Do not add an approximation. **Only R2/R3 changed production-like C1 source; R4 and R5 are no-change research holds.**
