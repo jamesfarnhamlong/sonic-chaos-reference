@@ -3,7 +3,13 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT — S7 CRT NO-CHANGE CLOSED; S5–S7 OWNER GATE READY; C1 ORIGINAL CLASSIC SEPARATE (12 NOV 2026)
+## CURRENT — C1 FULL-ROM FIDELITY MANDATE; ENHANCED OFF AS FROZEN WIDE REFERENCE (12 NOV 2026)
+
+**CHIEF LATEST CANON DIRECTION:** C1 Classic **in progress** must be **a ROM-WIDE audit** for Master System Europe v1.2 **100% or as close as provably possible**, not merely 4:3 viewport/camera. **NO QoL whatsoever in Classic: original ROM behaviour even original bugs/awkwardness/audio/AI/pickups/culling/powerup quirks.** Original 256x192 logical/physics rules, all 18 ordinary acts, five SS, Sonic/Tails, objects/camera and cutscenes/results/menus/music/PSG, evidence and explicit coverage matrix. Canonical fixes only when proved POC diverges. [C1 ROM-wide mandate](docs/C1_ROM_WIDE_CANONICAL_FIDELITY_MANDATE_20261112.md) is binding addendum for running separate Classic agent. No C1 integration or Chief C1 acceptance yet.
+
+**ENHANCED control** = original accepted-for-work S6 widescreen **348x196**, exact `47c501ecb994a4fcb1eeac1c29793f3f1142a304`, with **all new *optional gameplay QoL* switches OFF**. Keeps accepted intentional Wide camera/offscreen ring/enemy fairness, S2 saves/Boss Rush/S4 1080p/S5 pixel art/S6 Options; do not default-disable existing Integer Fit ON visual policy without explicit Chief instruction. Later new noncanonical fixes individually gated to Enhanced ON only, Chief ideas not yet supplied. [S5+S6+S7 practical test checklist](docs/S5_S6_S7_COMBINED_CHIEF_TEST_CHECKLIST_20261112.md) for unchanged S6 `SonicChaos_Windows_20261112_S6_FRONTEND_UI_CANDIDATE_PRIVATE.zip`, sha `8d41e2ea...`, still Chief physical controller acceptance pending; S7 evidence-only no-change done. Never infer C1 ROM parity from this limited UI smoke.
+
+
 
 **LATEST:** Designer S7 study finished **NO-CHANGE HOLD**. Experimental 6% RGB triad / beam falloff at 1080p/720p darkened THZ/AQZ and showed distracting grid; 30 matched Windows images (OFF/legacy/new), 9.1–9.6% luma reduction vs CRT OFF, compared to legacy 6.3%; no worthwhile gain. No production modification, no S7 executable. S7 experimental branch points unchanged at **S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304`**, tree `fef7a211894ba1a74227e74f0a6c850aa47d8ee4`; S4/S5/S6 source ZIPs, 4 runtime/18 original PNG ignored assets, saves/INI and H: recovery verified per Designer. [Manager review](docs/S7_NO_CHANGE_MANAGER_CLOSEOUT_20261112.md).
 
