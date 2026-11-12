@@ -3,6 +3,12 @@
 
 ## Chief's new decision
 
+## R1 RESEARCH TRIAL DELIVERED — 12 NOV 2026; DO NOT INSTALL AS CLASSIC
+
+Chief reports isolated C1 local source `bc32e706691666b420c4daeff87338ec865190e5` and Windows trial, with **true 256×192 Classic at original 1×–3×**, **10,542 Enhanced S6 state samples and 102 image matches**, **382 audit coverage entries, 16 classified findings**. **Shared object slots, ROM attract demos, all Special Stage alignment and timing/VDP parity still contain important gaps.** The detailed audit is at `E:\AI\Codex\Sonic Chaos\releases\C1_ROM_WIDE_FIDELITY_AUDIT_20261112.md`, receipt `SonicChaos_20261112_C1_CLASSIC_FIDELITY_RECEIPT.json`, Windows research trial `SonicChaos_Windows_20261112_C1_CLASSIC_FIDELITY_TRIAL_PRIVATE.zip`; Manager has summary only, not actual 16 finding details. H: recovery reported verified, S7 remains unchanged, no push/merge. **Chief explicitly says not ready to replace current Classic.** [C1 R1 Manager technical review / R2 evidence-first continuation](C1_R1_ROM_WIDE_TRIAL_MANAGER_REVIEW_20261112.md). This supersedes below 'C1 not yet delivered' passages. The ROM-wide canon-only Chief addendum [C1_ROM_WIDE_CANONICAL_FIDELITY_MANDATE_20261112.md](C1_ROM_WIDE_CANONICAL_FIDELITY_MANDATE_20261112.md) remains binding: **NO QoL**. No C1 integration or Chief release acceptance. C1 agent may continue separate R2 research/verified canonical fixes, after reading its complete local report, preserving Enhanced S6 exactly.
+
+
+
 ## CURRENT PARALLEL STATUS UPDATE — S7 COMPLETED WITHOUT SOURCE CHANGE
 
 ## CHIEF C1 SCOPE EXPANSION — ROM-WIDE CANONICAL FIDELITY, NOT A VIEWPORT-ONLY TASK (12 NOV 2026)
