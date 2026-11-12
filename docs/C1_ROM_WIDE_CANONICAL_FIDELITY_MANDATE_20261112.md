@@ -3,6 +3,12 @@
 
 ## Chief's binding direction
 
+## LATEST 12 NOV — R5 DEMO SOURCE ACCOUNTED, ORIGINAL ENTRY/CAMERA STILL OPEN
+
+C1-R5 no-change research established the three original THZ/Sonic GPZ/Tails SEZ/Sonic demos and original uncompressed held/pressed pair stream/rotation/cancel, with 1,080 driver updates and lightweight-trace skipped players39/65/45 + cleanup1 → 1,042/1,016/1,036 original player calls. Detailed-hook approximate harness counts differ because timing instrumentation perturbs the scheduler; cannot hardcode these frames as ROM behavior. Compiled GameMaker original-input diagnostic remains **not-equivalent at ordinary entry state0/0 vs GM1/1, regular camera ordinal THZ14/GPZ12/SEZ29, THZ missed calls/SEZ position later**; no authentic demo port shipped. Exact C1-R3 SHA `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0` unchanged after R4/R5, no Classic production acceptance. [R5 review](C1_R5_ORIGINAL_ATTRACT_DEMOS_MANAGER_CLOSEOUT_20261112.md). **R6 authorised** [stable original driver timing + original ordinary entry/camera order](C1_R6_ORDINARY_LOADER_CAMERA_PHASE_SPRINT_20261112.md) with research no-change acceptable, minimum ROM-proven Classic-only fix if justified. Strict user contract stands: **what ROM does goes, NO QoL/guessed scripts in Classic; Enhanced S6 Wide control exact**. R4 VDP backdrop mask, first16 shared pool and natural routes remain separate open coverage.
+
+
+
 ## CURRENT R3 CAMERAS CORRECT / R4 VDP POLICY NEXT — 12 NOV
 
 C1-R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0` corrects original SS camera phase using source processing order (pending before player; commit after objects). 500/500 original SS camera samples and145/145 equivalent SS5 clock matched, Enhanced S6 10542 states/102 images preserved, original first SS anchors from R2 preserved. Historic raw SS4/SS5 harness FAILs left visible with timing/mode explanation; not converted to fabricated PASS. [C1-R3 Manager review](C1_R3_CAMERA_PHASE_MANAGER_REVIEW_20261112.md). **NEXT C1-R4** [original VDP palette-aware left8 column masking and sprite-line priority evidence](C1_R4_ORIGINAL_VDP_RENDER_POLICY_SPRINT_20261112.md). Strict original ROM-only Classic, no QoL, isolated R3 source branch, unchanged Enhanced reference. R4 must not invent a black stripe or assume NTSC approximate renderer is PAL hardware perfect. Original demos, first16 shared owner slots, state0/1 player wrapper and untested natural campaign paths still need ROM-backed follow-on gates. **No C1 production integration or final Chief acceptance yet.**
