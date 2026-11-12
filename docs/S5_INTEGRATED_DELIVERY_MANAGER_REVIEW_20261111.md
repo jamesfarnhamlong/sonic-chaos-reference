@@ -5,6 +5,12 @@
 
 ## NEW CHIEF TEST-CADENCE INSTRUCTION — 11 NOV 2026 (OVERRIDES IMMEDIATE TEST REQUEST)
 
+## 12 NOV PROGRESSION — S6 TECHNICAL PASS, S7 NEXT, HUMAN GATE STILL DEFERRED
+
+S5 source/Windows/evidence remain unchanged while S6 (local full `47c501ecb994a4fcb1eeac1c29793f3f1142a304`) delivered the remaining Enhanced-only Options pixel UI, retaining **20 exact S5 native/output raster comparisons** and all 35 native S5 functional checks. [S6 manager review](S6_MANAGER_TECHNICAL_CLOSEOUT_20261112.md). Manager commissioned [S7 optional CRT polish](S7_OPTIONAL_CRT_PRESENTATION_SPRINT_20261112.md), then ONE combined Chief S5/S6/S7 physical-controller/display test. **S5 original delivered source remains intact and final owner acceptance pending**; do not restart S5 iteration or call previous progress observation a separate approved release.
+
+
+
 After reviewing Designer's S5 development in progress, Chief said **“all good”** and explicitly chose to **continue a few substantial sprints and then conduct ONE focused owner check**. This is **positive visual feedback and permission to use the S5 local candidate as S6's parent**, but it does **not** claim a completed direct physical-controller S5 ZIP acceptance. The former recommendation below that Chief immediately test S5 is now superseded. S5 remains technical PASS/Chief-observed provisionally happy, final bundled user verification **DEFERRED**. **Current next task is S6 Enhanced Options/Frontend source-pixel UI cohesion**, [binding S6 sprint](S6_ENHANCED_FRONTEND_UI_COHESION_SPRINT_20261111.md), one private source+Windows build, no Chief microbuild; eventual combined **S5+S6 (and optional separately authorised later sprint)** check. S5 source/hash/E:/H: artifacts preserved unchanged.
 
 
