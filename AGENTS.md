@@ -25,7 +25,15 @@ Repositories:
 
 **No active Janitor-san, Cloud-kun or separate Claude Research/Designer agent on this project.** Do not assign work to them or assume a cloud agent has local Windows/GameMaker access. The earlier Claude team now works on another project.
 
-## CURRENT — C1-R11 THREE ORIGINAL ATTRACT DEMOS IMPLEMENTATION GO; R10 ISOLATED RETAINED (12 NOV 2026)
+## CURRENT — C1-R11 BLOCKER / C1-R12 EXPERIMENTAL DEMO CODE GO (12 NOV 2026)
+
+Chief is dissatisfied with repeated exhaustive tests and no shipped work. [R11 reviewed](docs/C1_R11_ATTRACT_DISPATCH_BLOCKER_MANAGER_CLOSEOUT_20261112.md): **no demo implemented/no code/no playable candidate**, exact R10 source `f5e77b061276a60dfa6dc72043113be4b19e42fe` remains. Real original input IRQ handshake `D44F/D136/D135/D15E` can skip reads/player updates while driver progresses; native one-pair-per-Step is not canonical. Do NOT rerun R11 research.
+
+**NOW ACTIVE:** [C1-R12 functional three-demo experimental vertical slice](docs/C1_R12_EXPERIMENTAL_ATTRACT_VERTICAL_SLICE_IMPLEMENTATION_20261112.md). Explicit manager-authorized narrow exception **only for isolated, noncanonical prototype**: use authentic original held/pressed streams with a simple documented provisional native player-callback consumer; deliver executable THZ Sonic moving FIRST, then GPZ Tails, SEZ Sonic, title rotation/exit/save isolation. No fake movie or trajectory, no claim original timing parity, no production Classic integration. Build/smoke/iterate before one final comprehensive preservation run; no 10542/138 matrix on a no-code branch. Any hard blocker should produce real attempted code + compiler evidence rather than another same research loop.
+
+Strict final Classic256×192 ROM quirks/no QoL remains unchanged. R9 camera implementation DESIGN HOLD, original input/IRQ parity OPEN, Enhanced S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304` protected, source R10 isolated; never merge or release this experimental scheduler. Chief six144×128 Save TV PNGs later; Pause redesign parked. Historical R11 job below is superseded.
+
+## HISTORICAL — C1-R11 THREE ORIGINAL ATTRACT DEMOS IMPLEMENTATION GO; R10 ISOLATED RETAINED (12 NOV 2026)
 
 Chief requests **substantial implementation** rather than repeated short camera/counter probes. **ACTIVE DESIGNER JOB:** [C1-R11 three authentic Classic attract demos: one integrated implementation/verification sprint](docs/C1_R11_ORIGINAL_ATTRACT_DEMOS_INTEGRATED_IMPLEMENTATION_SPRINT_20261112.md). Target original Classic title idle→THZ Sonic→GPZ Tails→SEZ Sonic, authentic original held/pressed input, demo rotation, timeout/cancel/return, full native preservation and one private C1 trial if source-safe. Reuse R5/R6 evidence; never fabricate video, input, ROM timing or hardcoded skip arrays. Exact camera/display parity remains open. [R10 Manager review](docs/C1_R10_TAILS_ANIMATION_MANAGER_DELIVERY_REVIEW_20261112.md) accepts R10 `f5e77b061276a60dfa6dc72043113be4b19e42fe` (tree `c24c48c201bced056428790eaad769c90c1d7904`) **as the isolated R11 development parent only**, not production; original animation0/0 startup corrects Tails update2 counter7→8. Reported native retail180 Tails+180 Sonic, 462 controlled animation,309 flight, Enhanced S610542/102, Classic138 preserved. Verify SHA/H: before new branch.
 

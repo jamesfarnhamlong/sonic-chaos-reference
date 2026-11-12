@@ -1,11 +1,17 @@
 # Sonic Chaos — LIVE MANAGER HANDOVER
-**Updated 12 November 2026 · Manager-san #12 · C1-R11 authentic attract demo implementation GO; R10 retained; R9 camera HOLD**
+**Updated 12 November 2026 · Manager-san #12 · C1-R12 isolated playable attract prototype GO; R11 no-code closeout; R9 camera HOLD**
 
 > **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S5/S6 Chief physical combined acceptance: 33 checks PASS, four save/result-dependent UNOBSERVED, no functional failures; S7 stronger CRT no-change closed; C1 original-ROM Classic remains isolated and NOT production-ready. R7 compiled retail entry research and R8 camera owner precedence were delivered; R9 has now produced a no-change DESIGN HOLD. Six Save TV PNGs are Chief-owned; entire Pause artwork redesign parked.** Do not resurrect old work orders.
 
 ## Current decision, next job and acceptance cadence
 
-## TOP LATEST — C1-R11 THREE AUTHENTIC CLASSIC ATTRACT DEMOS GO (12 NOV 2026)
+## TOP LATEST — CHIEF REQUESTS PRODUCTIVE CODE; R11 BLOCKER CLOSED / C1-R12 PROTOTYPE GO (12 NOV 2026)
+
+**Decisive process reset:** R11 [Manager closeout](C1_R11_ATTRACT_DISPATCH_BLOCKER_MANAGER_CLOSEOUT_20261112.md) = **NO implementation/no code/no playable native demo**. R11 report proved original IRQ `D44F`/wait `D135`/input `$24A8`/driver skip `D15E` relationship but not a source-perfect GameMaker adapter; R11 spent time rerunning full preservation and 227956 original events with unchanged R10 branch. Chief wants tangible features, not more microresearch. **NOW ACTIVE [C1-R12 three-demo functional isolated experimental prototype](C1_R12_EXPERIMENTAL_ATTRACT_VERTICAL_SLICE_IMPLEMENTATION_20261112.md)**; authorizes source-authentic held/pressed recorded input with **documented provisional per-native-player-update consumption** for research prototype only, even though it is not canonical ROM IRQ scheduling. First demonstrate compiled original title idle→THZ Sonic movement, then GPZ Tails and SEZ Sonic movement, rotation/cancel/return, no persistent saves. Build first, run lightweight functional smoke tests, run full regression **once** after code works; no repeating broad census or multi-hour regressions on no-code branch. Even partial working native code preferable to another no-change report. Original input-skip cadence/camera/VDP remains OPEN; prototype must never be called accepted/ROM-perfect.
+
+R12 new branch from unchanged R10 `f5e77b061276a60dfa6dc72043113be4b19e42fe`, tree `c24c48c201bced056428790eaad769c90c1d7904` (verify local/H:), Enhanced S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304` protected. Camera R9 DESIGN HOLD, actual production Classic256×192 strict ROM/no QoL, no Classic replacement/merge/tag/push/release/Chief acceptance request. Chief-owned six TV144×128 PNGs later; generic Pause redesign parked. Old R11 commission below historical.
+
+## HISTORICAL — C1-R11 THREE AUTHENTIC CLASSIC ATTRACT DEMOS GO (12 NOV 2026)
 
 **Chief requests long implementation sprints.** Manager has reviewed delivered R10 private report, [technical review/decision](C1_R10_TAILS_ANIMATION_MANAGER_DELIVERY_REVIEW_20261112.md): accept local candidate `f5e77b061276a60dfa6dc72043113be4b19e42fe`, tree `c24c48c201bced056428790eaad769c90c1d7904`, for *isolated C1 continuation only*; Manager did not run ROM/Windows/H: independently. C1-R10 Tails startup animation-owner0/request0 correctly reloads original counter8 on update2; first180 each Sonic/Tails and 462 controlled Tails animation/309 flight compiled samples match reported original, Enhanced S610542 states+102 images and Classic138 untouched. Original-vs-native displayed-frame phase is OPEN. R11 agent must verify exact local commit and H: 22 dependencies.
 
