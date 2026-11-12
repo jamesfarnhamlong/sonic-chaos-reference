@@ -3,6 +3,12 @@
 
 ## Owner sequencing
 
+## LATEST CHIEF MODE CONTRACT — 12 NOVEMBER 2026
+
+**No QoL in Classic**, even where the original ROM's code behaves in unusual, unfair or undesirable ways. C1 second agent is already working on a comprehensive ROM-WIDE original/camera/player/enemy/boss/SS/score/audio parity audit. **[ROM-wide canonical mandate](C1_ROM_WIDE_CANONICAL_FIDELITY_MANDATE_20261112.md)**. The existing protected **S6 Wide348×196** gameplay/source `47c501ecb994a4fcb1eeac1c29793f3f1142a304` is the future **Enhanced with all NEW optional gameplay QoL OFF** control. Chief has a couple of future gameplay improvements yet to be given; historical candidates below are **read-only**, none assigned to a sprint, and future changes will be Enhanced-only individually scoped switches, initially OFF. Existing accepted Wide fairness adapters and UI/save/Boss Rush core should remain unchanged and not be forcibly converted to original ROM 256-width logic. Existing display defaults such as S4 Integer Fit ON must not be silently altered by this new gameplay-QoL baseline label.
+
+
+
 **Additional Chief concurrency decision:** A different agent has been authorised to undertake [C1 true original 4:3 Classic fidelity](C1_TRUE_CLASSIC_4_3_FIDELITY_PARALLEL_SPRINT_20261112.md) in parallel with S7 CRT, using isolated code and ROM/native verification. That task is **not** a Gameplay QoL sprint; this QoL intake remains read-only pending Chief's personal proposals.
 
 
