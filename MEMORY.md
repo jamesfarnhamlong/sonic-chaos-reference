@@ -1,11 +1,15 @@
 # Sonic Chaos — Manager handover / current facts
-**Updated 6 November 2026 · Manager-san #11 · see live recovery handover**
+**Updated 12 November 2026 · Manager-san #12 · see live recovery handover**
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT — R9 GAME MAKER CAMERA OWNER DESIGN COMMISSIONED, CODE NOT YET APPROVED (12 NOV 2026)
+## CURRENT — MANAGER #12 TAKEOVER; C1-R9 DESIGN HOLD (12 NOV 2026)
 
-**CHIEF requests continue after R8**; one concrete C1-R9 design-only sprint [binding brief](docs/C1_R9_ORDINARY_CAMERA_INTEGRATION_DESIGN_SPRINT_20261112.md) authorised. Source **exact isolated R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0`**, tree `ffdfc37e23d1b18e866b8beae051234c443b9665`; R4–R8 produced research-only evidence and no newer GML SHA. R8 original pre-player pending camera survives object-phase sign/THZ boss takeover, commits unchanged at VBlank; new bounds/owner targets apply NEXT camera prep (including X1663 despite newly tightened right bound1659). Native sign Step currently triggers before player while original sign contact is later in objects, and controlled boss fixture gained7px Y; exact aligned native handoff/code patch unproven. R9 must read actual source/owner schedule and produce **precise native prepare/commit event plan**, safe fail-closed boss/goal/death exceptions, pseudocode/source diff plan, validation matrix, and DESIGN READY FOR LATER R10 vs HOLD/PIVOT. **No production/source code modification allowed in R9; R10 requires separate Manager approval.** No more redundant broad camera original traces. C1 original-ROM complete fidelity still HOLD, no QoL, original three demos not yet replayed, R4 left8 VDP mask, first16 slots, Tails counter and wider routes open. Enhanced S6 and E:/H: unchanged. Chief six TV PNGs pending, Pause design parked.
+**R9 private report reviewed after Manager #11 handover.** [Manager #12 R9 closeout](docs/C1_R9_CAMERA_INTEGRATION_DESIGN_MANAGER_CLOSEOUT_20261112.md): proposed ROM-faithful pending-camera transaction and 120 shadow permutations prove candidate custody *in a model*, not safe compiled GameMaker scheduling. No deterministic post-player sign `$18`/child `$19` once-only dispatch, child first-tick rule or separated state20 freeze/control phase; native boss fixture absolute Y alignment still unproven. **DESIGN HOLD; no R10 camera implementation, no repeated camera research, no new Classic release/merge.** C1 code exact R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0` tree `ffdfc37e23d1b18e866b8beae051234c443b9665`, R4–R9 no runtime commit. Enhanced S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304` protected. Strict true Classic256×192 ROM quirks, NO QoL. R9 reported H recovery; Manager did not rerun it.
+
+**Proposed next separate research task, not commissioned:** genuine retail THZ1 **Tails update2 counter** ROM `8,8` vs native `8,7`, pointers/positions/frames match. Only act on ROM-proven discrepancy; allow NO-CHANGE. Unimplemented attract demos, original first16 slots, left8 VDP masking, PAL and remaining routes still open. Enhanced S5/S6 owner test 33 PASS/4 UNOBSERVED, six new Save TV PNGs Chief-owned, generic Pause design parked, Enhanced QoL uncommissioned.
+
+**Earlier R9 commissioning and R8 historical entries below are superseded as active orders.**
 
 **Prior R8 research decision below is historical and still technically true; R9 is design-only, not a coding GO.**
 
