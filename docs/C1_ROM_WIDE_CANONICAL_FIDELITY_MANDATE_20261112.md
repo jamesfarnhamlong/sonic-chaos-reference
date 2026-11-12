@@ -3,6 +3,12 @@
 
 ## Chief's binding direction
 
+## CURRENT R3 CAMERAS CORRECT / R4 VDP POLICY NEXT — 12 NOV
+
+C1-R3 `b667cc5cebcd3c3e047d9f527cc78b76e1e027f0` corrects original SS camera phase using source processing order (pending before player; commit after objects). 500/500 original SS camera samples and145/145 equivalent SS5 clock matched, Enhanced S6 10542 states/102 images preserved, original first SS anchors from R2 preserved. Historic raw SS4/SS5 harness FAILs left visible with timing/mode explanation; not converted to fabricated PASS. [C1-R3 Manager review](C1_R3_CAMERA_PHASE_MANAGER_REVIEW_20261112.md). **NEXT C1-R4** [original VDP palette-aware left8 column masking and sprite-line priority evidence](C1_R4_ORIGINAL_VDP_RENDER_POLICY_SPRINT_20261112.md). Strict original ROM-only Classic, no QoL, isolated R3 source branch, unchanged Enhanced reference. R4 must not invent a black stripe or assume NTSC approximate renderer is PAL hardware perfect. Original demos, first16 shared owner slots, state0/1 player wrapper and untested natural campaign paths still need ROM-backed follow-on gates. **No C1 production integration or final Chief acceptance yet.**
+
+
+
 ## 12 NOV STATUS — C1-R2 CANONICAL SS COORDINATE FIX, REMAINING ROM-WIDE GAPS
 
 Isolated C1-R2 local `316125f6f280f24a7a8af507155d9dfe86954cea` built from R1. Original ROM natural SS entry exposes **five-pixel first update Y corruption for SS2–SS5** caused by Special Stage constructor not publishing the already seeded core registration. New Classic-only registration fix makes first imported values exactly SS2=1838, SS3=622, SS4=366, SS5=878 (SS1=118 unchanged). One runtime source file changed. This is an authentic-source correction, **not QoL**. No Classic replacement. **Unresolved:** SS loader state/timing, SS1 original cameraY14/current15, SS3 original518/current519, SS4 look-down, SS5 update11 original cameraX31/current30 and inherited raw FAIL; shared first16 object pool with pending FE/FF owner reuse (no natural shortage shown in GPZ sample); original demo timing/playback; scene-aware VDP left8 mask and PAL/sprite-limit timing. [C1-R2 manager evidence review](C1_R2_ROM_WIDE_MANAGER_REVIEW_20261112.md), [C1-R3 isolated original Special Stage phase task](C1_R3_SPECIAL_STAGE_CAMERA_PHASE_SPRINT_20261112.md). The Chief's binding instruction **NO QOL / original ROM exact behaviours, anomalies included** still governs ALL subsequent C1 gates; Enhanced S6 widescreen must remain exact. No C1 integration into production or owner Classic acceptance claimed.
