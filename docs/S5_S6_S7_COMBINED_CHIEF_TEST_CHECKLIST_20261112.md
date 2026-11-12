@@ -3,6 +3,10 @@
 
 Based on Designer's private source guide `E:\AI\Codex\Sonic Chaos\releases\S5_S6_S7_COMBINED_ACCEPTANCE_20261112.md`, uploaded by Chief on 12 Nov. Preserve user originals. Scope is **presentation/input/window parity**, not two complete playthroughs. Chief chooses test time.
 
+## CHIEF RESULTS — 12 NOVEMBER 2026
+
+Chief returned completed combined checklist with **33 PASS / 4 UNOBSERVED / 0 reported functional failures** on the existing S6 Windows candidate, actual physical gamepad. All S6 Options and window/display/settings persistence checks PASS, S5 authentic title and regular stage clear PASS, Boss Rush intro/representative play PASS, existing Classic preservation smoke PASS. Four unobserved because no appropriate saves/reached results: all five TV states, GPZ dedicated preview save state, earned Emerald/progress displays, final Boss Rush CLEAR TIME/RINGS/LIVES. These were **NOT marked FAIL** and no fictional PASS was recorded. Chief likes original 41-frame title source presentation (can't detect redesign beyond native-style menu). Two **art-only feedback items**: Boss Rush PAUSE card erroneously displays THZ palm-tree thumbnail (verified older source zone icon `SPR_data_zones` **36×36** inside `SPR_data_form_2` **40×40**) and the six Save TV zone pictures (S5 **144×128** native displayed **288×256** exact2×) need stronger curated art. [Full owner acceptance and proposed visual-only scope](S5_S7_CHIEF_ACCEPTANCE_AND_ART_POLISH_20261112.md). No extra Classic/canon, save, camera or gameplay change commissioned. Current S6 exact package remains unchanged; S7 no-change closed.
+
 ## Exact baseline
 - Extract **`E:\AI\Codex\Sonic Chaos\releases\SonicChaos_Windows_20261112_S6_FRONTEND_UI_CANDIDATE_PRIVATE.zip`** into a fresh folder; reported SHA256 `8d41e2eac1761b376ecdaf9bb1f982f3c7e4077ef4be299cbcaf0fdaaa11b166`.
 - Source exact `47c501ecb994a4fcb1eeac1c29793f3f1142a304`; S5 source ancestor `11cefcece3c43e33db8a2f5967347c444b5a8fb4`. S7 prototype rejected; **no S7 executable or PHOSPHOR setting**. `CRT FILTER ON` means existing S1 light scanlines.
