@@ -2,6 +2,12 @@
 **12 November 2026 · Manager-san #11 · Chief clarification to IN-PROGRESS C1 Classic agent · no QoL in Classic**
 
 ## Chief's binding direction
+
+## R1 RESEARCH DELIVERY — 12 NOV 2026, C1 STILL NOT PRODUCTION CLASSIC
+
+C1 trial local full SHA `bc32e706691666b420c4daeff87338ec865190e5` reported by Chief. True original-size 256×192 at window 1×–3×, 10,542 state +102 image Enhanced S6 comparisons pass in Designer's claimed scope, but **382 audit coverage entries and 16 findings** remain open to scrutiny. Shared slots/attract demos/Special Stage alignment/timing/VDP unresolved. **R1 is an isolated research trial, not Classic replacement or 100% ROM fidelity certification.** Full report `E:\AI\Codex\Sonic Chaos\releases\C1_ROM_WIDE_FIDELITY_AUDIT_20261112.md` and receipt on Chief's local drive must be read by C1 agent; Manager has not reviewed exact 16 records. [Manager R1 verdict / R2 gate](C1_R1_ROM_WIDE_TRIAL_MANAGER_REVIEW_20261112.md). Continue original ROM-wide evidence matrix, proof-backed authentic-only fixes, explicit unresolved; no new gameplay-QoL in Classic, no C1→S6 integration until proven/approved. This update does not relax the full ROM-wide mandate below.
+
+
 Chief clarified: **“Classic in progress, most important will be a rom wide audit to make sure we're 100% or as close as can be canon! No QoL or other fixes here, whatever the rom does goes. Then our frozen widescreen can be Enhanced-everything-off, and we have our toggles for the rest (including the following 'fixes').”**
 
 This **upgrades C1 from viewport-only proof to a ROM-WIDE original-behaviour audit.** Exact original Master System Europe v1.2 behaviour is the fidelity target *even when it appears buggy, restrictive, awkward or unattractive*. **No discretionary physics, boss, audio, camera, offscreen ring, enemy lifetime, power-up or UX “fix” in Classic**. Legitimate fidelity corrections are those shown by ROM traces to repair an implementation mismatch. Apparent improvements that contradict ROM move to independently selectable **Enhanced-only QoL**, with Chief permission. This includes historically Chief-accepted PC wide fairness ring/enemy retention: it belongs in Enhanced, not canonical Classic.
