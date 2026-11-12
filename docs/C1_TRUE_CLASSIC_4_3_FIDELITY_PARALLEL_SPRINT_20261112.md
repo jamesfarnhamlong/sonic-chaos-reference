@@ -2,6 +2,14 @@
 **12 November 2026 · Manager-san #11 · CHIEF AUTHORISED PARALLEL CLASSIC WORKSTREAM · ONE INDEPENDENT AGENT · CHIEF FINAL ACCEPTANCE LATER**
 
 ## Chief's new decision
+
+## CURRENT PARALLEL STATUS UPDATE — S7 COMPLETED WITHOUT SOURCE CHANGE
+
+S7's Enhanced CRT investigation finished with a **no-change hold**, leaving exact S6 source `47c501ecb994a4fcb1eeac1c29793f3f1142a304` as the integrated baseline. The **separate C1 Classic fidelity agent** may continue in its isolated worktree on that same original S6 ancestor without needing a CRT patch/cherry-pick. No evidence of a started/completed C1 build has been reported to Manager yet; **do not claim C1 delivered or automatically integrate Classic restoration**. S5/S6 owner acceptance remains deferred, with one bundled S5/S6/S7 check prepared using unchanged S6 ZIP. C1 can follow when ROM/native proof and safe merge audit are ready. [S7 no-change and current user gate](S7_NO_CHANGE_MANAGER_CLOSEOUT_20261112.md).
+
+Chief also identified a promising visual test rig: Raspberry Pi to CRT TV via **COMPOSITE**, 240/480-line outputs, RetroArch original Master System ROM compared to the Windows PC remake streamed via Steam Link on the same CRT. C1 can use it in **later qualitative original 4:3/256x192 Chief observations**, with CRT shaders OFF and output native 240p or PAL288p where physically verified. Composite 480-line output may be 480i; don't infer progressive from the name. Steam Link compression, latency and possible 50/60Hz output differences must be separated from the authoritative ROM/frame-by-frame camera/AI verification. No test result is claimed until Chief actually runs this comparison.
+
+
 Chief proposes that **in parallel with ongoing S7 Enhanced CRT work**, a dedicated second Designer/Research agent should restore **true original-SMS 4:3 behaviour for Classic**, auditing and reversing **widescreen-only gameplay adapters** so that once proven and Chief accepted, this becomes the **Classic mode** in the same unified Windows executable. Future optional **Enhanced gameplay QoL** is a **different workstream** to be scoped after Chief shares their own ideas; do not conflate authentic Classic with new gameplay features.
 
 **Commission one separate C1 Classic fidelity sprint NOW.** This is not just a future note, nor a command to change the existing production branch immediately. Existing frozen Classic tag remains immutable and an historical preservation point. C1 is an independently built *successor Classic implementation*; no replacement of current Classic behaviour, S7 source, or release until actual proof/integration/Chief approval. Never 'undo everything' indiscriminately: reverse only demonstrated widescreen/noncanonical adapters **for Classic mode**, keeping original bug fixes, ROM-accurate systems, intentional harmless PC shell safety and Enhanced widescreen QoL untouched.
