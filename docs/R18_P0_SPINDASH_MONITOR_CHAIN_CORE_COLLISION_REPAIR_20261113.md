@@ -1,4 +1,6 @@
 # Sonic Chaos — R18 P0: Restore Charged Spin Dash Through Consecutive TV Monitors in BOTH Modes
+
+> **IMPLEMENTATION DELIVERED 13 NOV 2026:** R18 local commit `050ee0d6e2d947ae068e443703eb7b40d2d052f1` removes obsolete THZ swept monitor override and two exclusion guards; four-TV collision and both modes compiled/original comparisons pass. [Manager R18 review](R18_SHARED_TERRAIN_MONITOR_MANAGER_REVIEW_20261113.md) accepts private Windows candidate for **Chief physical F5**, NOT production. The original active job details below are completed source work; no new agent coding until Chief reports. A [bounded legacy adapter risk register](POST_R18_LEGACY_GAME_MAKER_ADAPTER_RISK_REGISTER_20261113.md) is PARKED, not authorisation to remove old code.
 **13 November 2026 · Manager-san #12 · IMMEDIATE GAMEPLAY STOP-THE-LINE FIX · ONE COMPILED CORRECTION SPRINT · NO OTHER NEW FEATURES**
 
 ## Binding Chief observation and priority
