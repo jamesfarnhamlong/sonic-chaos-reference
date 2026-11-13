@@ -1,4 +1,7 @@
 # Sonic Chaos — Enhanced Quality-of-Life Ideas
+
+> **CHIEF SCOPE DECISION 13 NOV 2026 — SUPERSEDES INDIVIDUAL-TOGGLE BACKLOG:** The final Enhanced upgrade phase is **exactly FIVE owner-selected features** behind **ONE `Enhanced Features: OFF/ON` master switch under main Enhanced Options**, default OFF, persisted and Classic ignored. Approved: Sonic1 Mega Drive loss/scatter, boss face+pips HUD, boss music priority after invincibility, Spring Shoes top-hit boss (Chief called SLZ; verify runtime stage/boss), Speed Shoes music speedup. Full binding scope: [Chief five-feature decision](../CHIEF_ENHANCED_FEATURES_FINAL_SCOPE_AND_SUPER_SONIC_PARKING_20261113.md). Prior proposal to give ring loss its OWN standalone toggle, and old “2–3 features” limit, are historical and superseded. No implementation during R19. **Super Sonic desired but separate optional post-finish asset/mechanics work.** Other ideas below are PARKED, NOT additional approved flags.
+
 **Opened 5 November 2026 · Chief-originated optional enhancements · no source change authorized**
 
 ## Design rule
