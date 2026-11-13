@@ -8,6 +8,9 @@ This is a **living bug/visual-parity register for the accepted Classic implement
 
 ### FC-PF-001 — GPZ3 tube texture grid/seam artifacts
 
+**R21 OWNER FOLLOW-UP (13 NOV 2026): OPEN — CURRENT BUILD NOT REPRODUCED, NO RETROSPECTIVE FIX CONFIRMED.** Chief says he cannot presently see the GPZ3 grid/seams, but will look during full testing. Exact R20 source R21 diagnostics report 84,480 matched pipe pixels, complete imported-to-compiled static terrain map 1,310,720 identical, with only 4,382 source-to-import mismatch pixels in 28 reference-map hand-added-object cells (rings, monitors, actors, boss). No independent additional hidden bad GPZ3 motifs found. The visual source `SC_SMS_GPZ3_Objects_Map.png` is hand-annotated Aspect Edit / Rolken-script map; equality to imported PNG does NOT independently certify original-ROM frame/art parity. Original November 5 screenshot files were not recovered for a matched previous/current capture and present tests do not exhaust desktop compositor/display filter/dynamic scrolling. Earlier R19 scaling could be a plausible change in *visibility*, but **there is NO demonstrated stealth fix or code/asset cause**. Preserve `FC-PF-001` OPEN, currently not reproduced; user may note mode, resolution, Integer Fit/Sharp/CRT settings, world camera location and original screenshot if symptom recurs. No new patch authorised based solely on negative result. [R21 manager review](../R21_PRE_099_FIDELITY_MANAGER_DELIVERY_REVIEW_20261113.md).
+
+
 | Field | Entry |
 |---|---|
 | **Status** | **OPEN — Chief confirmed visual mismatch using existing high-resolution source-level map; cause unverified** |
