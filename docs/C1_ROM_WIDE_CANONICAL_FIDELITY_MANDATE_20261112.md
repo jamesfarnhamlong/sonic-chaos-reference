@@ -1,4 +1,6 @@
 # Sonic Chaos — C1 ROM-WIDE Canonical Fidelity Mandate and Mode Contract
+
+> **HISTORICAL RESEARCH/ROM EVIDENCE — NOT CURRENT PRODUCT ACCEPTANCE GATE (13 NOV 2026).** Chief's [new practical-fidelity product direction](CHIEF_PRODUCT_DIRECTION_CLASSIC_ENHANCED_20261113.md) explicitly supersedes prior instructions implying that 100% ROM cycle/IRQ/VDP fidelity is mandatory before playable Classic integration. This document remains a record of original behavior and valuable findings, **not** a binding no-merge mandate for tiny or rare discrepancies. Read the new product direction first.
 **12 November 2026 · Manager-san #11 · Chief clarification to IN-PROGRESS C1 Classic agent · no QoL in Classic**
 
 ## CURRENT CONTINUATION — R9 NATIVE CAMERA INTEGRATION DESIGN-ONLY (12 NOV)

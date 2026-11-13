@@ -1,5 +1,5 @@
 # Sonic Chaos — ROADMAP
-**Live plan · 12 November 2026 · Owner: Chief / coordination: Manager-san #12**
+**Live plan · 13 November 2026 · Owner: Chief / coordination: Manager-san #12 · practical-fidelity product direction**
 
 This is the **current plan**, deliberately rewritten after seven prior Manager handovers. **No earlier “NEXT/GO/HOLD” instruction is active merely because it appears in an archived report.** Operating rules: [AGENTS.md](AGENTS.md). Short state: [MEMORY.md](MEMORY.md). Owner-led issues: [base completion register](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). [Full pre-rewrite roadmap preserved at immutable revision](docs/archive/management/MANAGER_PRE_REWRITE_20261102.md).
 
@@ -29,7 +29,13 @@ A personally playable, original-faithful **Master System Sonic Chaos GameMaker r
 
 **Verified Git update (2 Nov):** The exact M6-H production implementation is now committed on `poc/m6h-mghz3-spike-gated-reveal` at `c3e40a7a3d6c17be3e17d7c1eb729b2a705a3089` (parent M6-G `6e2ffcc1f333c5cdaa0048ac696b55c4f6308905`); two subsequent documentation/verification commits put the branch at `64a5a53ceebed43ed79e36a681a27b0d6a0c16aa`. Git comparison confirms three commits ahead of M6-G and none behind. This corrects the earlier uncommitted-source statement. Packaging Candidate B reportedly smoke-PASS, but its file inventory, clean project naming and local folder cleanup have not been demonstrated. Source `options_windows_executable_name` remains `SonicChaos_A4B_EXPERIMENTAL.exe`; project `name` remains experimental. Do not create further candidate worktrees until existing ones are accounted for.
 
-## CURRENT — R14 ORIGINAL CAMERA TRANSACTION CODE-FIRST; R13 SAFE DISPATCH DONE (13 NOV 2026)
+## CURRENT — CHIEF PRODUCT REFOCUS: TRUE CLASSIC + ENHANCED, R15 PRACTICAL INTEGRATION GO (13 NOV 2026)
+
+**Highest authority:** [Chief product direction](docs/CHIEF_PRODUCT_DIRECTION_CLASSIC_ENHANCED_20261113.md) — personal GameMaker remake with **as-close-as-practical** ROM accuracy, no requirement for 100% cycle fidelity. **Classic** original-feeling256×1924:3, remove adaptations made for16:9, original freeze Pause (minimal quit affordance only if PC necessary), original attract demos after Chief evaluates R12. **Enhanced** preserve accepted348×196 widescreen as default, user-facing toggled options, replace dev Pause level select with usable mode-specific pause/options, prevent invalid pause, add pause level icons; Chief six Save TV144×128 art pending; add substantial toggleable QoL in one/two follow-on batches.
+
+R14 [Manager closed](docs/C1_R14_RELEASE_FREEZE_MANAGER_REVIEW_20261113.md) at `babd36e427b45925092b6c1134efb25ada147e9d` tree `63def213979b8d5769fb788256569b65a6f5f626`: source-only Classic once-only release and separate pan/freeze owners, compiled controls clean, camera pending transaction still not implemented, known 1px phase mismatch **parked audit item**. **ACTIVE [R15 dual-mode integration + two Pause behaviours in single code-first sprint](docs/C1_R15_DUAL_MODE_INTEGRATION_AND_PAUSE_IMPLEMENTATION_20261113.md)** from protected S6 and reviewed R14 corrections in isolated candidate, no experimental R12 merge before Chief smoke. Run meaningful GameMaker demos first, final broad preservation once after code; avoid 100%-parity gate/census. Chief F5 acceptance before final production branch; no automatic production merge/release/tag/push. Subsequent: R12 practical demo integration, later QoL batch(es), user Save TV artwork, final audit based on observable issues. Historic exact-ROM holds do not override this.
+
+## HISTORICAL — R14 ORIGINAL CAMERA TRANSACTION CODE-FIRST; R13 SAFE DISPATCH DONE (13 NOV 2026)
 
 **R13 [Manager reviewed](docs/C1_R13_CLASSIC_DISPATCH_MANAGER_DELIVERY_REVIEW_20261113.md)**: real compiled post-player sign/child owner at `ab79a892626ae16d1f2ddf53cd5db7e49158d19e`, tree `a9179a95bab77185c9fb7df75629da2bea003ca0`; true Classic256×192 and R2/R3/R10 preserved; Enhanced S6 10542 states102 images and Classic138/30 exact per Designer. Original camera NOT fixed (lead120/119, viewY530/531). Player End Step release and sign-pan state20 freeze remain specific blockers; full Classic production replacement still HOLD.
 

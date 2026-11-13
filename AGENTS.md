@@ -1,5 +1,5 @@
 # Sonic Chaos — AGENTS.md
-**Working instructions · revised 12 November 2026 · Manager-san #12**
+**Working instructions · revised 13 November 2026 · Manager-san #12 · Chief practical-fidelity clarification takes precedence**
 
 This is a **living operations document**, not an append-only milestone diary. Update the relevant section in place after meaningful decisions. See [ROADMAP.md](ROADMAP.md) for milestones, [MEMORY.md](MEMORY.md) for handover facts, and [current base-game issues](docs/CURRENT_BASE_GAME_REMAINING_20261101.md) for the owner-led queue. The entire pre-rewrite history is accessible at [the immutable archival revision](docs/archive/management/MANAGER_PRE_REWRITE_20261102.md).
 
@@ -25,7 +25,15 @@ Repositories:
 
 **No active Janitor-san, Cloud-kun or separate Claude Research/Designer agent on this project.** Do not assign work to them or assume a cloud agent has local Windows/GameMaker access. The earlier Claude team now works on another project.
 
-## CURRENT — C1-R13 SAFE POST-PLAYER DISPATCH RETAINED; R14 CAMERA IMPLEMENTATION GO (13 NOV 2026)
+## CURRENT — CHIEF RESETS PRODUCT GOAL, R14 CAMERA PARKED; R15 DUAL-MODE INTEGRATION & PAUSES GO (13 NOV 2026)
+
+**READ [Chief's CURRENT binding product direction](docs/CHIEF_PRODUCT_DIRECTION_CLASSIC_ENHANCED_20261113.md) FIRST.** Chief explicitly says this is a **personal GameMaker translation as close to the original as practical, NOT 100% cycle-exact/ROM-equivalent**. Former strict-C1/R9 'all obscure differences block production' rules are historical Manager overinterpretation and superseded. Preserve authentic original quirks where practical but do not spend credits on tiny/rare discrepancies without noticeable benefit. Tests should validate **new playable implementations**, not become the product.
+
+**Classic:** authentic original-facing **256×192 4:3**, remove widescreen gameplay correction, no discretionary fix/QoL, original-like frozen Pause (no menu; optional tiny PC Quit overlay only if necessary), authentic playable attract THZ Sonic→GPZ Tails→SEZ Sonic subject to Chief R12 smoke (imperfect IRQ mapping acceptable as documented practical adapter). **Enhanced:** protected accepted **348×196 16:9 gameplay baseline** with options/toggles, planned useful Pause replacing dev Level Select (pause safety and level icons), later Chief six TV thumbnails and one/two substantive gameplay QoL sprints. No fake completeness/perfection claims.
+
+**R14 [Manager review](docs/C1_R14_RELEASE_FREEZE_MANAGER_REVIEW_20261113.md)** safe source `babd36e427b45925092b6c1134efb25ada147e9d`, tree `63def213979b8d5769fb788256569b65a6f5f626`, retains R10/R13 and moves once-only release, separates pan XY and freeze; no camera transaction. Early camera original lead120/native119 and Y530/531 1px difference and one-update experimental freeze relocation (reverted) are **AUDIT BACKLOG** absent a material play issue, NOT reason for R15 camera research. **ACTIVE [C1-R15 implementation-first dual-mode integration + mode-specific Pause](docs/C1_R15_DUAL_MODE_INTEGRATION_AND_PAUSE_IMPLEMENTATION_20261113.md)**. Start protected S6 branch isolation and review R14 runtime diffs; preserve accepted S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304`, Chief-testing experimental R12 `bd53b9b9e3cb3b1525b2ff00cfc4595612693f73` and all production data. One combined post-code suite, no long no-change research. No automatic production merge/push/tag/release/Chief acceptance. Prior R14 orders below historical.
+
+## HISTORICAL — C1-R13 SAFE POST-PLAYER DISPATCH RETAINED; R14 CAMERA IMPLEMENTATION GO (13 NOV 2026)
 
 [R13 Manager closeout](docs/C1_R13_CLASSIC_DISPATCH_MANAGER_DELIVERY_REVIEW_20261113.md) accepts local **isolated** compiled sign `$18`/child `$19` post-player dispatcher at `ab79a892626ae16d1f2ddf53cd5db7e49158d19e`, tree `a9179a95bab77185c9fb7df75629da2bea003ca0`, as next C1 branch parent. Actual compiled once-only sign/child tests595 each Sonic/Tails, child age0 next tick, retouch/prize/footwear/state20→next act, true Classic256×192 and S6 Enhanced10542/102, Classic138/30 preserved per Designer. **Ordinary camera still original lead120/native119 at update1 and displayed Y530/531 update13.** Independent player End Step loop-release and fused `chaos_goal_pan_step` camera pan/state20 freeze remain unowned. R9 camera HOLD persists except for **new strictly conditional implementation authorization** in [C1-R14](docs/C1_R14_CLASSIC_CAMERA_RELEASE_FREEZE_TRANSACTION_SPRINT_20261113.md).
 
