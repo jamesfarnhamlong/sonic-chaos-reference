@@ -1,4 +1,7 @@
 # Sonic Chaos — Chief's Final Enhanced Features Scope and Super Sonic Parking
+
+> **CHIEF R20 IMPLEMENTATION GO (13 NOV 2026):** After all four R19 physical checks passed, Chief explicitly authorised ONE big sprint to implement all five exact Enhanced features under ONE main Enhanced Options master flag. [Binding R20 charter](R20_FIVE_ENHANCED_FEATURES_SINGLE_MASTER_FLAG_IMPLEMENTATION_20261113.md). Prior 'planning only/not commissioned' status is historical. Super Sonic still optional post-finish.
+
 **13 November 2026 · OWNER APPROVED PRODUCT DIRECTION · PLANNING / NOT YET AN IMPLEMENTATION SPRINT**
 
 ## Chief's binding UI and mode decision
