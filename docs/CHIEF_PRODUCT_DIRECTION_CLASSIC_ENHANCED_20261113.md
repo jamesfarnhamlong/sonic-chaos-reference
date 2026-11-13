@@ -1,4 +1,6 @@
 # Sonic Chaos — Chief's Product Direction: Classic vs Enhanced (13 November 2026)
+
+> **CURRENT IMPLEMENTATION UPDATE (13 NOV 2026).** R15 integrated 4:3 Classic/16:9 Enhanced + distinct Pauses and R16 corrected original ROM Family B attract demos are delivered separately and Manager-reviewed. [R17 combined private implementation](R17_R15_R16_DUAL_MODE_ATTRACT_INTEGRATION_20261113.md) is NOW ACTIVE, superseding the earlier 'NEXT R15' sentence below; no production merge or Chief final approval yet.
 **HIGHEST PRIORITY LIVE OWNER INSTRUCTION · supersedes the prior strict 100%-ROM-equivalence interpretation and contradictory older C1 holds**
 
 ## Why this exists

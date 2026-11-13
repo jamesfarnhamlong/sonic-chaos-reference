@@ -1,4 +1,6 @@
 # Sonic Chaos — C1-R16: Attract Demo Control-ACTION Alignment, not IRQ Emulation
+
+> **HISTORICAL JOB — COMPLETED 13 NOV 2026.** R16 actual original Family B attract candidate source `11e41afb8c02f7372ed0872421a2b5f29d420749` delivered after R15. See [Manager R16 delivery review](R16_ATTRACT_FAMILY_B_ACTIONS_MANAGER_DELIVERY_REVIEW_20261113.md). ACTIVE next is [R17 combined R15+R16 private candidate](R17_R15_R16_DUAL_MODE_ATTRACT_INTEGRATION_20261113.md). The queued status in the original R16 brief below is superseded.
 **13 November 2026 · Manager-san #12 · QUEUED AFTER ACTIVE R15 INTEGRATION, NOT YET COMMISSIONED AS CONCURRENT CODING**
 
 ## User acceptance boundary and why this sprint exists

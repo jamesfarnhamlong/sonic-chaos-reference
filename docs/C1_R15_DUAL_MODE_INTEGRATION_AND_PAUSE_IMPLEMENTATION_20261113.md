@@ -1,4 +1,6 @@
 # Sonic Chaos — C1-R15: Dual-Mode Product Integration and Separate Pause Behaviours
+
+> **HISTORICAL JOB — COMPLETED 13 NOV 2026.** R15 actual dual-mode/Pause candidate source `c7af4937358097063e19732773ef5bfdd3e4bc5b` delivered. See [Manager R15 delivery review](R15_DUAL_MODE_PAUSE_MANAGER_DELIVERY_REVIEW_20261113.md). ACTIVE next is [R17 combined R15+R16 private candidate](R17_R15_R16_DUAL_MODE_ATTRACT_INTEGRATION_20261113.md). The original R15 instructions below describe completed work, not an outstanding agent task.
 **13 November 2026 · Manager-san #12 · CHIEF PRODUCT GO · ONE SUBSTANTIAL IMPLEMENTATION-FIRST SPRINT · PRIVATE TRIAL/NO AUTOMATIC PRODUCTION REPLACEMENT**
 
 ## Read the NEW Chief product contract before any historical C1 charter
