@@ -21,7 +21,7 @@ Previous management authored repeated ROM-wide 'strict exact' gates; these were 
 - Preserve Chief-approved **348×196 16:9 gameplay** as the default old 'Classic' widescreen presentation, with accepted S6 frontend/options/saving/audio/Boss Rush and adjustments **unchanged unless specifically chosen for improvement**.
 - A modern useful Pause menu: **remove developer Level Select**, include accessible existing/initial relevant Options/toggles to see the effect in play, prohibit pause in inappropriate transitions/screens/results, add stage/level icons. Use existing original-derived art where possible; avoid requiring newly invented assets for first code pass. Never weaken existing save/Options/Boss Rush state.
 - Offer optional **enhancement/QoL gameplay features** through a coherent toggle system, default OFF for newly added discretionary gameplay changes unless Chief specifies otherwise. Plan one or two substantial later QoL implementation sprints after integration/pause foundation.
-- Chief is personally creating **six 144×128 Save TV thumbnails**, to be integrated later; do not recreate, guess or block on them. The earlier generic/shared Pause redesign is superseded by **two mode-specific pause behaviours**.
+- **Chief has now supplied six completed 144×128 Save TV preview pictures in a directory named `save_pictures_144x128`.** Integrate their verified zone mappings into Enhanced Save/Data Select under the [R17 addendum](R17_ADDENDUM_CHIEF_SAVE_TV_144X128_PREVIEWS_20261113.md), replacing only the older interim preview artwork. Do not recreate/guess the art or change the save-slot system; Classic remains unchanged. The earlier generic/shared Pause redesign is superseded by **two mode-specific pause behaviours**.
 
 ## Development/credit discipline
 
