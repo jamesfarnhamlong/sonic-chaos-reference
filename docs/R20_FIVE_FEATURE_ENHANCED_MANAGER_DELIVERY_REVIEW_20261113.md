@@ -1,4 +1,7 @@
 # Sonic Chaos — R20 Five Enhanced Features: Manager #12 Technical Delivery Review
+
+> **STATUS UPDATE 13 NOV — PRIVATE R20 SOURCE PUSH VERIFIED, R21 POLISH GO:** Remote PRIVATE source `SonicChaos_POC` now has exact R20 `afb1bf64124b88bb2facc51a463bfbf276b8a0ae` / tree `142fb9371983a2aed1c82a42f8c8514eb4adc3d8` on `enhanced/r20-five-feature-master-20261113`. Private ignored dependency recovery branch `recovery/r20-private-dependencies-20261113` SHA `f39a8e4cb86fd69529dcb397cdae30be278711da` also exists with hashed 22-file archive/tools; old assertions below of unpushed R20 were previously true but are NOW SUPERSEDED. Clean-clone GameMaker build not yet independently certified; main still protected Sep28. Chief authorised [R21 short blind graphics/attract/legacy polish](R21_PRE_099_BLIND_GRAPHICS_ATTRACT_AND_LEGACY_AUDIT_20261113.md) with [mandatory incremental private branch pushes](PRIVATE_GIT_INCREMENTAL_PUSH_POLICY_20261113.md), while completing R20 human checks; private v0.99 candidate afterward, not public release.
+
 **13 November 2026 · FIVE FEATURES SOURCE-DELIVERED / MANAGER TECHNICALLY REVIEWED · CHIEF PHYSICAL ACCEPTANCE PENDING · PRIVATE 0.99 CANDIDATE, NOT RELEASED**
 
 ## Provenance and immutable identity
