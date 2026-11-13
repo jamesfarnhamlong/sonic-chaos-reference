@@ -1,4 +1,6 @@
 # Sonic Chaos — R17 Combined Classic / Enhanced and Original Attract: Manager #12 Delivery Review
+
+> **CHIEF ACTUAL R17 F5 SUPERSEDES INITIAL 'READY' GATE (13 NOV):** Chief found a **P0 original-noncanonical charged spin-dash/TV collision that stops Sonic**, both Classic+Enhanced, already reported on 2 Oct 2026; **R17 production acceptance is HOLD** despite technical 10,542/138 passing. Also P1 Classic fullscreen maximize reposition-only, Enhanced Pause option live-state labels, requested Enhanced title Quit; P2 late/demo pace; all-six TV thumbnails unobserved by Chief. [Exact Chief owner register](R17_CHIEF_F5_FINDINGS_AND_SEVERITY_20261113.md); [R18 urgent core gameplay fix](R18_P0_SPINDASH_MONITOR_CHAIN_CORE_COLLISION_REPAIR_20261113.md). Prior technical report findings below remain valid as *technical delivery*, NOT final user acceptance.
 **13 November 2026 · PRIVATE CHIEF F5 TRIAL GO · MANAGER REPORT REVIEWED · NOT PRODUCTION ACCEPTED**
 
 ## Evidence and source custody
