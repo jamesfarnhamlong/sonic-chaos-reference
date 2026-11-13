@@ -1,0 +1,17 @@
+# Sonic Chaos — Private incremental Git policy (13 Nov 2026)
+**Chief requested; binding immediately for all further source development.**
+
+Earlier Manager wording "no push, merge, tag or release" bundled fundamentally different actions. It prevented normal safe off-production GitHub backups. This was a management oversight. **From now on private dev branch commits and pushes are mandatory; production merge, release and tags still need Chief signoff.**
+
+## Verified remote custody (13 Nov)
+- PRIVATE `jamesfarnhamlong/SonicChaos_POC` R20 branch `enhanced/r20-five-feature-master-20261113` at exact `afb1bf64124b88bb2facc51a463bfbf276b8a0ae`, tree `142fb9371983a2aed1c82a42f8c8514eb4adc3d8`. Manager verified both through GitHub API.
+- Separate PRIVATE `recovery/r20-private-dependencies-20261113` at `f39a8e4cb86fd69529dcb397cdae30be278711da` holds 22 previously ignored dependencies, audited archive, hashes, restore/recreation scripts and source-package inventory. It is **copyright-sensitive**, no public mirror. H: is separate backup. A GitHub-only clone+rebuild has instructions; actual clean GameMaker IDE-open/compile still requires a reported independent test.
+- PRIVATE production main is **not** R20; remains `03a6e7dfcaed519993a9422cc35b60753d5d3dbd` (Sep28) by deliberate choice, not evidence of lost committed R20 source. PUBLIC `sonic-chaos-reference` contains research/management docs ONLY.
+
+## Required workflow
+1. Verify worktree exact parent commit and tree, clean status, and `origin` points to PRIVATE SonicChaos_POC **before editing**. Create isolated named task branch. Push it immediately using normal non-force push. Do not push to PUBLIC reference repo.
+2. After every meaningful validated part or changed subsystem, **commit and push incrementally** to same private feature branch. Prefer small tested commits; log commit and `git ls-remote origin refs/heads/<branch>` and independently check remote SHA. On push conflict inspect/refetch; never --force or overwrite another agent.
+3. Source files ignored or untracked won't be pushed by Git. Before claiming complete recovery, inventory registered GameMaker .yyp resources, private native driver/DLL/PNG dependencies and datafiles, save profile exclusions. Privately archive new necessary ignored assets with SHA-256 manifest and safe restore method without accidentally exposing full ROM, personal data or licensed content. No public GitHub source derived-art/audio/ROM uploads.
+4. Maintain separate local H: bare Git/source and dependency backup; do not delete historical candidate/source archives or change protected production main automatically.
+5. At delivery report: PRIVATE branch URL, pushed HEAD/tree, parent, tracked source count, ignored-dep recovery ref/inventory, clean clone+GameMaker IDE-open/compile status (**actually tested YES/NO**), SHA receipt and H: recovery. Source-push failure is explicit OPEN blocker, not a normal successful delivery.
+6. Chief alone authorises protected main merges, version tags, public or private releases and user-profile migration. A push to a private work branch is ordinary data preservation, **not** promotion.
