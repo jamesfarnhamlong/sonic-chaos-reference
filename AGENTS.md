@@ -25,7 +25,13 @@ Repositories:
 
 **No active Janitor-san, Cloud-kun or separate Claude Research/Designer agent on this project.** Do not assign work to them or assume a cloud agent has local Windows/GameMaker access. The earlier Claude team now works on another project.
 
-## CURRENT — C1-R11 BLOCKER / C1-R12 EXPERIMENTAL DEMO CODE GO (12 NOV 2026)
+## CURRENT — R12 FUNCTIONAL EXPERIMENTAL THREE-DEMO CANDIDATE DELIVERED; CHIEF SMOKE NEXT (13 NOV 2026)
+
+**R12 report reviewed and [Manager technical closeout](docs/C1_R12_EXPERIMENTAL_ATTRACT_MANAGER_DELIVERY_REVIEW_20261113.md) committed.** Isolated C1 R12 `bd53b9b9e3cb3b1525b2ff00cfc4595612693f73`, tree `85d85f5407b6ff87734b0270cf7d5533c74efa5f` is a genuine playable **EXPERIMENTAL NONCANONICAL** three-demo implementation from R10, not a research-only result. Actual native THZ Sonic→GPZ Tails→SEZ Sonic→repeat, original recorded held/pressed bytes, cancel/timeout/title return/normal New Game and protected saves reported. Enhanced S6 10542 states/102 images and Classic138/30 source/output captures exact in one final batch. 16 source/resource files changed; ROM input banks remain private. **One original pair per native player update and 1080 native Begin Step timeout are provisional, NOT ROM IRQ/driver parity.** First input/position/camera phase divergences explicitly remain open.
+
+**NOW NEXT:** brief Chief practical Windows smoke of private R12 experimental ZIP; no new Codex job commissioned until owner notes. R9 camera integration DESIGN HOLD, Classic production replacement/merge/push/tag/release HOLD, strict actual Classic ROM256×192 no QoL. R10 preserved. Next *proposal* is a substantive one-sprint fidelity correction around working prototype if original dispatch can be modeled safely, or another independent Classic completion feature; not another full repeated broad census. Protected Enhanced S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304` untouched; Save TV images Chief-owned later, generic Pause redesign parked.
+
+## HISTORICAL — C1-R11 BLOCKER / C1-R12 EXPERIMENTAL DEMO CODE GO (12 NOV 2026)
 
 Chief is dissatisfied with repeated exhaustive tests and no shipped work. [R11 reviewed](docs/C1_R11_ATTRACT_DISPATCH_BLOCKER_MANAGER_CLOSEOUT_20261112.md): **no demo implemented/no code/no playable candidate**, exact R10 source `f5e77b061276a60dfa6dc72043113be4b19e42fe` remains. Real original input IRQ handshake `D44F/D136/D135/D15E` can skip reads/player updates while driver progresses; native one-pair-per-Step is not canonical. Do NOT rerun R11 research.
 
