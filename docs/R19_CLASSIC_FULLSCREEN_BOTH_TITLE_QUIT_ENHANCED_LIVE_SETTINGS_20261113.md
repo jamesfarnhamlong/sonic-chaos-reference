@@ -1,4 +1,6 @@
 # Sonic Chaos — R19: Classic Fullscreen + Both Title Quit + Enhanced Live Pause Settings
+
+> **DELIVERY STATUS (13 NOV 2026):** R19 source `f8b64af34089afd461d1349c21f02c78c56b01b3`, tree `6d3160525312d4d2ca030a893070e9dc8fd687c4`, has been delivered with private Windows and complete source/receipt. [Manager R19 review](R19_CLASSIC_FULLSCREEN_BOTH_TITLE_EXITS_LIVE_PAUSE_MANAGER_REVIEW_20261113.md) accepts technical implementation for **Chief F5**, not production or user acceptance. Classic borderless desktop fullscreen/actual maximize, both titles' Quit to Desktop, and truthful Enhanced Pause current display states were compiled tested. Original commission below is historical. **Chief provisionally passed R18 TV collision**, with final all-zone checks pending; R19 physical check still open.
 **13 November 2026 · Manager-san #12 · CHIEF-REQUESTED P1 PRODUCT INTERFACE IMPLEMENTATION GO · ONE PRIVATE WORKING CANDIDATE**
 
 ## Commission and scope
