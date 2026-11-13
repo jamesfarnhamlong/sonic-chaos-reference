@@ -1,4 +1,7 @@
 # Sonic Chaos — Chief's Post-R18 Priorities: Both-mode Quit, Display Settings, and Bounded Attract Tail Check
+
+> **LATEST CHIEF AUTHORIZATION (13 NOV 2026):** Chief wants R19 P1 implementation **NOW**, while he personally checks R18, ahead of his combined test round before the final Enhanced extras. [R19 binding charter](R19_CLASSIC_FULLSCREEN_BOTH_TITLE_QUIT_ENHANCED_LIVE_SETTINGS_20261113.md) supersedes this note's former “planning only/until R18 physical PASS” barrier for **coding**. The production acceptance hold remains: R18 original charged-dash TV fix still needs Chief physical PASS, and R19 title/fullscreen/live-option result needs user verification. No final QoL features in R19.
+
 **13 November 2026 · CHIEF FOLLOW-UP · PLANNING ONLY / R18 P0 STILL EXCLUSIVE ACTIVE CODE JOB**
 
 ## Chief's newest refinements

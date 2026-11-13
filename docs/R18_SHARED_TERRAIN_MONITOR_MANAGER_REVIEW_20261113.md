@@ -1,4 +1,7 @@
 # Sonic Chaos — R18 Shared Terrain-Monitor Collision Repair: Manager #12 Delivery Review
+
+> **NEXT STEP REVISED BY CHIEF (13 NOV 2026):** Manager has [commissioned R19 P1 source implementation](R19_CLASSIC_FULLSCREEN_BOTH_TITLE_QUIT_ENHANCED_LIVE_SETTINGS_20261113.md) in an isolated branch from this R18 source **while Chief physically tests R18**. This is permission for source work, **not a declaration that Chief physically passed R18** or authorisation to merge/release production. R19 must retain R18's shared THZ TV-chain correction.
+
 **13 November 2026 · P0 SOURCE CORRECTION DELIVERED · PRIVATE CHIEF PHYSICAL F5 GO · PRODUCTION HOLD UNTIL CHIEF PASS**
 
 ## Exact source, custody and evidence provenance
