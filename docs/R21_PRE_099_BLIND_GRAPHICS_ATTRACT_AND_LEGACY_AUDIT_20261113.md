@@ -1,4 +1,8 @@
 # R21 — Pre-0.99 fidelity polish: blind graphics survey, attract tails, vestigial risk
+
+> **R20 PRIVATE GITHUB-ONLY CLEAN BUILD NOW VERIFIED (13 NOV):** Private R20 source `afb1bf64124b88bb2facc51a463bfbf276b8a0ae`, tree `142fb9371983a2aed1c82a42f8c8514eb4adc3d8` is remotely present. Private recovery branch `recovery/r20-private-dependencies-20261113` has NEW HEAD `b6583c621dad585185d49b6754fe797b7847e3fe` (parent prior archive `f39a8e4cb86fd69529dcb397cdae30be278711da`). Designer's private `SYNC_RECEIPT.md` and `CLEAN_RECOVERY_VERIFICATION.json` now report a **fresh GitHub-only clone without local Git alternates, all22 ignored dependencies restored from private Git objects,9,654 file paths+contents exact,1,318 registered .yyp resources and sprite frames complete, installed GameMaker LTS2026.0.0.23 project compile/Windows PackageZip exit0 and R20SYNCTRIAL executable startup/shutdown PASS** with real saves unchanged. The Manager verified the REMOTE receipt/document presence and commit SHA, **not personally run that Windows build**. Actual interactive IDE UI and Chief gameplay acceptance remain UNOBSERVED; complete standalone R16 historical branch not in R20 ancestry, H: retained. Earlier statements that remote dependencies/source or fresh clean build are pending have now been **superseded**. R21 polish and mandatory private incremental pushes remain active; production main intentionally untouched.
+
+
 **13 November 2026 · Manager-san #12 · Chief-authorized limited investigation and evidence-backed corrections · R20 tests in parallel**
 
 ## Source and safety
