@@ -1,5 +1,8 @@
 # Sonic Chaos — R17: Combine R15 modes/Pauses with R16 corrected authentic attract
 
+> **DELIVERED / MANAGER REVIEWED 13 NOV 2026:** Complete integrated private R17 source `86d5414a7eedf47108149f742c8080d6271499e3` and Windows trial reported. [Manager R17 delivery review](R17_INTEGRATED_CLASSIC_ENHANCED_MANAGER_DELIVERY_REVIEW_20261113.md) approves limited **Chief F5 test**, not production merge. Original implementation order below is historical; no new Designer task active until Chief observations. Six Chief TV pictures and demo hooks embedded; no changed production source.
+
+
 > **CHIEF SAVE ART ADDENDUM (13 NOV 2026):** Designer MUST incorporate Chief's six completed 144×128 zone Save TV preview pictures from the local directory named `save_pictures_144x128` into the same R17 Enhanced Data Select trial. [Binding scoped addendum](R17_ADDENDUM_CHIEF_SAVE_TV_144X128_PREVIEWS_20261113.md). These replace only older interim preview resources, not save logic, slot count or Classic gameplay. Confirm actual folder path and image-zone mapping; no invented art. Update expected image-delta allowlist for the six new visuals and the two R15 intentional Pause redesigns. The original “six Save TV PNGs pending” language below is superseded.
 **13 November 2026 · MANAGER #12 · ONE SUBSTANTIAL PRIVATE IMPLEMENTATION SPRINT · NO AUTOMATIC PRODUCTION MERGE**
 

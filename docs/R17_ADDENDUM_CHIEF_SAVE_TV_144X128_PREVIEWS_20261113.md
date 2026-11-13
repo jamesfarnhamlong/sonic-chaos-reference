@@ -1,4 +1,7 @@
 # R17 Addendum — Chief's Finished 144×128 Save TV Preview Pictures
+
+> **IMPLEMENTED IN R17 / MANAGER REVIEWED 13 NOV 2026:** All six final owner-supplied 144×128 images verified and embedded in private integrated candidate; per compiled capture zone TV previews are 2× pixel exact and survive relaunch. AQZ initially165×128 was replaced with Chief's final144×128 image before delivery. See [Manager R17 review](R17_INTEGRATED_CLASSIC_ENHANCED_MANAGER_DELIVERY_REVIEW_20261113.md). This addendum is complete, not pending art.
+
 **13 November 2026 · CHIEF REQUESTED · BINDING ADDENDUM TO ACTIVE R17 IMPLEMENTATION**
 
 ## Owner-provided assets

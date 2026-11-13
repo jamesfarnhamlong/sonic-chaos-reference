@@ -1,5 +1,8 @@
 # Sonic Chaos — Chief's Product Direction: Classic vs Enhanced (13 November 2026)
 
+> **LATEST STATUS 13 NOV 2026:** R17 **integrated** Classic256×192 original demo+freeze and Enhanced348×196 Pause/Options with Chief six zone-specific Save TV 144×128 images as a single private Windows candidate, Manager reviewed. [R17 Manager delivery review](R17_INTEGRATED_CLASSIC_ENHANCED_MANAGER_DELIVERY_REVIEW_20261113.md) authorizes one concise Chief physical F5 test. **No production integration or final owner acceptance yet.** The earlier “R17 NOW ACTIVE” note below is historical, not a fresh commission; after F5, fix observed issues or authorize reviewed production integration, then Enhanced QoL.
+
+
 > **CURRENT IMPLEMENTATION UPDATE (13 NOV 2026).** R15 integrated 4:3 Classic/16:9 Enhanced + distinct Pauses and R16 corrected original ROM Family B attract demos are delivered separately and Manager-reviewed. [R17 combined private implementation](R17_R15_R16_DUAL_MODE_ATTRACT_INTEGRATION_20261113.md) is NOW ACTIVE, superseding the earlier 'NEXT R15' sentence below; no production merge or Chief final approval yet.
 **HIGHEST PRIORITY LIVE OWNER INSTRUCTION · supersedes the prior strict 100%-ROM-equivalence interpretation and contradictory older C1 holds**
 
