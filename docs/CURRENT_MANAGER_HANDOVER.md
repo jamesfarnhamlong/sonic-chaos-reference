@@ -1,11 +1,19 @@
 # Sonic Chaos — LIVE MANAGER HANDOVER
-**Updated 13 November 2026 · Manager-san #12 · C1-R13 4:3 integration sprint GO; Chief parallel R12 experimental smoke**
+**Updated 13 November 2026 · Manager-san #12 · R13 safe Classic dispatch delivered; R14 camera transaction implementation GO; Chief R12 testing parallel**
 
 > **START HERE if a management chat is lost.** This stable-path handover is intended for incoming Manager-san. Read this, then root `AGENTS.md` (rules), `ROADMAP.md` (milestones), `MEMORY.md` (context) and the linked milestone reports. Most dated historical "NOW/NEXT" paragraphs are superseded; **S5/S6 Chief physical combined acceptance: 33 checks PASS, four save/result-dependent UNOBSERVED, no functional failures; S7 stronger CRT no-change closed; C1 original-ROM Classic remains isolated and NOT production-ready. R7 compiled retail entry research and R8 camera owner precedence were delivered; R9 has now produced a no-change DESIGN HOLD. Six Save TV PNGs are Chief-owned; entire Pause artwork redesign parked.** Do not resurrect old work orders.
 
 ## Current decision, next job and acceptance cadence
 
-## TOP LATEST — CHIEF TESTS R12; C1-R13 4:3 CLASSIC INTEGRATION GO (13 NOV 2026)
+## TOP LATEST — R13 SAFE DISPATCH DELIVERED; R14 CAMERA OWNER IMPLEMENTATION GO (13 NOV 2026)
+
+**Chief continues testing R12 experimental three-demo Windows build in parallel.** R12 source `bd53b9b9e3cb3b1525b2ff00cfc4595612693f73` frozen, intentionally noncanonical one-pair-per-player input scheduler, never source base for genuine 4:3. New [R13 Manager review](C1_R13_CLASSIC_DISPATCH_MANAGER_DELIVERY_REVIEW_20261113.md) accepts **isolated local** R13 source `ab79a892626ae16d1f2ddf53cd5db7e49158d19e`, tree `a9179a95bab77185c9fb7df75629da2bea003ca0` after R10 for NEXT C1 branch; Manager did not independently run local binary/ROM/H recovery. R13 actual compiled Classic-only sign `$18`/child `$19` after player completion, once-only, child age0 until next update; reported 595 Sonic+595 Tails native checks incl prizes/retouch/footwear/state20/results/THZ2; 256×192 original-size Classic, Enhanced S6 10542 states/102 images and Classic138/30 preserved.
+
+**Camera remains HOLD:** R13 left original lead120/native119 (update1), displayed original (38,530)/native(38,531) (update13). Actual remaining independent player End Step loop-release vs zone End Step and fused `chaos_goal_pan_step` camera movement+state20 freeze/control. **ACTIVE [C1-R14 implementation charter](C1_R14_CLASSIC_CAMERA_RELEASE_FREEZE_TRANSACTION_SPRINT_20261113.md)** from exact R13: narrow Classic deterministic release/freeze callback ownership in real compiled GameMaker; ONLY if that proves safe, original camera prepare-before-player pending and commit unchanged after objects; new same-tick sign/boss mode/bound applies next prep. R8 original THZ prepared X1663 can commit despite new right bound1659. No speculative entire End Step move, frame/pixel shims, duplicate sign child. Real source code first, focused native windows, one final full preserve suite. Safe partial source diff allowed; no fake release for no change.
+
+Original S6 `47c501ecb994a4fcb1eeac1c29793f3f1142a304` untouched, R10/R13 source and 22 ignored deps H: protected, R12 Chief build frozen. **No production C1→S6 merge/Classic replacement, remote push, tag, release or R14 Chief testing request yet.** VDP mask/fade, shared first16 pool, PAL scheduling, canonical attract demo IRQ, natural campaigns/SS and historic raw fails open. Chief six Save TV144×128 thumbnails later, whole Pause redesign parked. Old R13 order below is historical.
+
+## HISTORICAL — CHIEF TESTS R12; C1-R13 4:3 CLASSIC INTEGRATION GO (13 NOV 2026)
 
 **Chief asked to keep Designer busy while he tests R12 three-demo experimental Windows candidate**, and reiterated that true original4:3 Classic was never fully integrated/accepted in production. R12 prototype `bd53b9b9e3cb3b1525b2ff00cfc4595612693f73`, tree `85d85f5407b6ff87734b0270cf7d5533c74efa5f` remains FROZEN for Chief smoke (ROM held/pressed original bytes but one-pair-per-native-player callback NONCANONICAL). Agent cannot modify R12 or shared saves/output.
 
