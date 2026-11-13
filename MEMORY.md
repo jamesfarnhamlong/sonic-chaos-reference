@@ -3,7 +3,15 @@
 
 See [AGENTS.md](AGENTS.md) for operating rules, [ROADMAP.md](ROADMAP.md) for live status, [production quality and cleanup receipts](docs/sonic-chaos-final-packaging-and-deletion-plan-20261102.md), and [owner issue ledger](docs/CURRENT_BASE_GAME_REMAINING_20261101.md). Older historical management content is recoverable in Git history/H:.
 
-## CURRENT — CHIEF OVERRIDES 100%-FIDELITY RULE; R15 MODES/PAUSE IMPLEMENTATION GO (13 NOV 2026)
+## CURRENT — R15 TWO MODES/PAUSES AND R16 FAMILY B ORIGINAL DEMO ACTIONS DELIVERED; R17 GO (13 NOV 2026)
+
+Chief uploaded full R15 and R16 technical reports; Manager read them (not actual local ZIP/binary or H:). [R15 reviewed](docs/R15_DUAL_MODE_PAUSE_MANAGER_DELIVERY_REVIEW_20261113.md) source `c7af4937358097063e19732773ef5bfdd3e4bc5b` tree `e36b790287fe01bb9342dd798a4baad0798a9af1`: Classic256×192 freeze/no menu minimal Q/X quit; Enhanced348×196 Pause six functional existing options (Resume/Integer Fit/Sharp Pixels/CRT/Borderless/Quit) and zone/SS/Boss Rush icons, 597 compiled assertions. S6 10542 game states, 102 images **100 identical+2 intentional new Pause**, Classic138/30 passed. Trial `R15TRIAL_` saves/settings and H: recovery; not production/Chief accepted.
+
+[R16 reviewed](docs/R16_ATTRACT_FAMILY_B_ACTIONS_MANAGER_DELIVERY_REVIEW_20261113.md) source `11e41afb8c02f7372ed0872421a2b5f29d420749` tree `67c34292a49848d482e8f74892e69551ab6b707c` from R12: original input Family A `$8000/$8A00/$9400` has no THZ Left; selects original Family B `$9E00/$A800/$B200` under original D12D nonzero, spin charge callback51/release73/Left272/reverse282/spring370, GPZ Tails flight49, SEZ charge123; THZ controlled original/native aligned through820 then spring821 diverges, GPZ through836, SEZ from194; no demo HUD; no physics/engine rewrite. Chief tested old R12 **mechanism** order/loop but has not seen new R16 Windows correction. Later IRQ cadence practical gap remains acceptable, not automatic HOLD.
+
+**NOW R17 [full R15+R16 feature integration](docs/R17_R15_R16_DUAL_MODE_ATTRACT_INTEGRATION_20261113.md)** from R15 isolated base, replay full R12 controller/event hooks plus corrected R16 arrays/Draw guards, ensure pause vs demo and real save/settings/trial isolation, Enhanced wide gameplay protected, all 22 ignored dependencies/H:. No autonomous production merge; Chief future one-trial smoke, then Enhanced QoL batches/Save TV art. Highest product goal as-close-as-practical, no endless ROM-wide trace research.
+
+## HISTORICAL — CHIEF OVERRIDES 100%-FIDELITY RULE; R15 MODES/PAUSE IMPLEMENTATION GO (13 NOV 2026)
 
 **CHIEF CLARIFICATION — R12 ATTRACT MECHANISM FUNCTIONALLY PASSED:** all three demos trigger correctly with correct character/stage and loop; videos started at different times. Important missing original action examples: **Fusion Sonic spin dash + reverses toward springs**, R12 Sonic does not. Raw input-byte equality/order is NOT equivalent native logical controls/state/action/timing. [Chief findings updated](docs/C1_R12_CHIEF_THZ_DEMO_SIDE_BY_SIDE_FINDINGS_20261113.md); [C1-R16 bounded action-level implementation queued AFTER active R15](docs/C1_R16_ATTRACT_DEMO_CONTROL_ACTION_ALIGNMENT_SPRINT_20261113.md). **Do not interrupt R15**, do not repeat large original IRQ census or attempt trajectory hacks. Mechanism = Chief functional PASS, demo motion = fidelity defect/OPEN.
 

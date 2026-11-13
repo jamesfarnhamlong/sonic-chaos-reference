@@ -25,7 +25,15 @@ Repositories:
 
 **No active Janitor-san, Cloud-kun or separate Claude Research/Designer agent on this project.** Do not assign work to them or assume a cloud agent has local Windows/GameMaker access. The earlier Claude team now works on another project.
 
-## CURRENT — CHIEF RESETS PRODUCT GOAL, R14 CAMERA PARKED; R15 DUAL-MODE INTEGRATION & PAUSES GO (13 NOV 2026)
+## CURRENT — R15 AND R16 DELIVERED; ACTIVE R17 ONE-BINARY DUAL-MODE + FAMILY B ATTRACT IMPLEMENTATION (13 NOV 2026)
+
+**Chief's [practical-fidelity product direction](docs/CHIEF_PRODUCT_DIRECTION_CLASSIC_ENHANCED_20261113.md) remains highest authority.** [R15 reviewed](docs/R15_DUAL_MODE_PAUSE_MANAGER_DELIVERY_REVIEW_20261113.md): private dual-mode Classic original256×192/no-menu freeze+minimal Quit, Enhanced348×196 six-entry Pause/Options/zone icons. R15 source `c7af4937358097063e19732773ef5bfdd3e4bc5b`, tree `e36b790287fe01bb9342dd798a4baad0798a9af1`; native597 functional assertions, Enhanced 10542 states exact with **100 of102 images exact, 2 deliberately redesigned Pause UI**, Classic138 gameplay/30 frontend exact, no Chief acceptance or production merge.
+
+[R16 reviewed](docs/R16_ATTRACT_FAMILY_B_ACTIONS_MANAGER_DELIVERY_REVIEW_20261113.md): R12 used authentic **Family A** `$8000/$8A00/$9400` but its THZ recording had **no Left**; R16 selects actual ROM **Family B** `$9E00/$A800/$B200` and corrects spin charge/release, backtrack, spring, Tails flight, SEZ charge; original/native THZ matches through player callback820 then spring contact divergence821. R16 `11e41afb8c02f7372ed0872421a2b5f29d420749`, tree `67c34292a49848d482e8f74892e69551ab6b707c`, is a standalone R12-derived trial, not yet in R15; new demo HUD hidden. **Chief personally passed R12 three-demo idle/order/loop mechanism, NOT yet visually accepted R16 revised movement.**
+
+**NOW ACTIVE [R17 combined private dual-mode + original Family B attract code-first integration](docs/R17_R15_R16_DUAL_MODE_ATTRACT_INTEGRATION_20261113.md)**: exact R15 source base, review/replay **all R12 original demo session resources/hooks PLUS R16 four-file correction**, no naive four-file-only patch; preserve Classic ordinary freeze vs demo pause block and Enhanced wide Pause, saves/settings and H:, no premature production merge. Build actual Windows first; ONE consolidated preservation suite after new code. No 100% IRQ/marginal camera research, no extra QoL yet; six Chief Save TV PNGs pending.
+
+## HISTORICAL — CHIEF RESETS PRODUCT GOAL, R14 CAMERA PARKED; R15 DUAL-MODE INTEGRATION & PAUSES GO (13 NOV 2026)
 
 **CHIEF CLARIFICATION — R12 ATTRACT MECHANISM FUNCTIONALLY PASSED:** all three demos trigger correctly with correct character/stage and loop; videos started at different times. Important missing original action examples: **Fusion Sonic spin dash + reverses toward springs**, R12 Sonic does not. Raw input-byte equality/order is NOT equivalent native logical controls/state/action/timing. [Chief findings updated](docs/C1_R12_CHIEF_THZ_DEMO_SIDE_BY_SIDE_FINDINGS_20261113.md); [C1-R16 bounded action-level implementation queued AFTER active R15](docs/C1_R16_ATTRACT_DEMO_CONTROL_ACTION_ALIGNMENT_SPRINT_20261113.md). **Do not interrupt R15**, do not repeat large original IRQ census or attempt trajectory hacks. Mechanism = Chief functional PASS, demo motion = fidelity defect/OPEN.
 
