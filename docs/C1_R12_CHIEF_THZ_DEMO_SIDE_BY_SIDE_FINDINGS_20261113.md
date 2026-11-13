@@ -1,0 +1,22 @@
+# Sonic Chaos — Chief's R12 THZ original-ROM / GameMaker side-by-side review
+**13 November 2026 · OWNER VISUAL FINDING · THZ ROUTE DIVERGENCE · NOT A NEW ROM PARITY CLAIM**
+
+Chief uploaded a private approx.20.5-second side-by-side MP4 of **Fusion 3.64 original Sonic Chaos (Europe) on the left** and the **R12 GameMaker original-input experimental attract build on the right**, and asked Manager to inspect. Manager reviewed timed stills across the recording. The recording/video **is private and must not be committed** to the public management repo.
+
+## What is directly visible
+- Both game windows show THZ Sonic activity and progress into the subsequent demo/scene in roughly the same captured period, but **Sonic's route, encountered terrain and pickups differ markedly**, not merely a one-pixel camera/view offset.
+- In the first few seconds Fusion Sonic follows lower ground/ledges while GameMaker Sonic is airborne in a different scene. Around recording seconds5–8 original window features pit/water/vertical terrain while native features palms/slopes/rings; around seconds9–15 original window shows a spring/checkerboard wall area while native shows a large loop/ring formations; later the terrain differs again. These are rough **wall-clock video** labels; the two sessions may not be exactly synchronized at captured start, nor are the window pixel scales equal. Do not declare the earliest divergent **engine update** from video alone.
+- GameMaker THZ attract displays the normal ring/time/lives HUD; Fusion ROM THZ attract does **not visibly show that HUD** in this recording. Treat as presentation mismatch for later correction, pending source check.
+- This recording provides **THZ Sonic visual evidence**, not a complete independent Chief verification of GPZ/Tails and SEZ/Sonic; do not promote full three-demo physical approval based on it.
+
+## Relation to R12 machine evidence
+The previous R12 report described authentic original held/pressed pair bytes being consumed **one pair per native GameMaker player callback**, with 1,079 native player callbacks per demo instead of exact original IRQ/driver admission. R12's diagnostic first THZ native/original **camera-output ordinal13, player-position ordinal616, cursor ordinal806, held/pressed pair ordinal1037** are reported under different comparison phases/ordinal semantics; **position differed before the first reported cursor disagreement**, so it is unsafe to attribute the whole visible trajectory discrepancy to input cursor timing alone. Startup/player state, collision physics, camera/view and phase alignment also require targeted investigation. Old original/native diagnostics aren't wall-time sync with Chief's video.
+
+## Manager classification and next action
+- **R12 implementation remains FUNCTIONAL EXPERIMENTAL** per compiled tests: three stage sessions, actual engine motion, rotation, cancellation/timeout and New Game after demos reportedly passed.
+- **R12 THZ original demo-ROUTE VISUAL FIDELITY: DOES NOT MATCH OWNER VIDEO; NOT CHIEF ACCEPTED FOR CLASSIC INTEGRATION.** Record a practical fidelity defect, not an abstract demand for cycle-exact 100% IRQ replay.
+- **Do not interrupt active R15 dual-mode+two-Pause sprint.** It already deliberately excludes R12 prototype. Preserve R12 ZIP/source and original footage privately.
+- **After R15 foundation**, commission a *bounded productive original-demo alignment* implementation batch (THZ first, then GPZ/SEZ) using actual original inputs. First synchronize comparable demo start/elapsed gameplay state and original x/y/speed/animation/action for a short initial window; align stream cursor to gameplay admission, stage constructor/physics/collision/input edges and track first true divergent player transition. Repair concrete implementation issues and make route observably close, not necessarily byte-/cycle-exact; do not hardcode frame skips/position trajectory. Add ROM-style no-HUD demo presentation if corroborated. Chief can supply short synchronized clips only if necessary; existing 20s recording is clear enough.
+- The existing 1px early ordinary camera discrepancy and the R14 camera HOLD are NOT by themselves evidence of this large gameplay-route mismatch. Do not conflate their priorities. No production merge, auto release or inflated certification.
+
+**Decision:** R12 THZ demonstration requires a focused practical alignment fix before its attract feature becomes Classic-accepted. Active R15 mode/Pause scope unchanged.

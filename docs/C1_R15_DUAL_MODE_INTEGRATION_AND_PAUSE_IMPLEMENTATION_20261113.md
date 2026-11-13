@@ -26,6 +26,10 @@
 11. Produce one **private runnable dual-mode Windows ZIP**, complete private source ZIP+all22 required dependencies, exact Git commit/tree, source integration inventory/rollback instructions, focused functional test results, any proposed equivalence compromises, hashes and independently verified H: recovery. Provide a **short Chief smoke checklist** to compare Classic freeze/4:3 vs Enhanced pause/16:9, save/music/controls. Do NOT replace production, merge into accepted branch, push/tag/release or present as already Chief accepted.
 12. If integration is blocked by a specific conflicting event/resource, deliver the **real partial source implementation and compilation/tests**, not another no-diff camera research report. Preserve protected S6/R14/R12. Report remaining issues by severity and *actual play impact* rather than demanding absolute proof.
 
+## Chief's R12 side-by-side note (received after R15 commission)
+
+Chief compared original-ROM Fusion THZ demo and R12 GameMaker side by side. **GameMaker Sonic follows a markedly different route**, with native normal HUD visible when the ROM does not show it. [Owner findings](C1_R12_CHIEF_THZ_DEMO_SIDE_BY_SIDE_FINDINGS_20261113.md) clarify **do NOT import R12 into this R15 integration** without a later dedicated practical-route correction; THZ is not Chief fidelity-accepted. Keep R15 focused on Classic/Enhanced mode and separate Pause implementation. Demo-route alignment becomes a subsequent bounded code-first job; do not add extra research/requirements to R15.
+
 ## Explicitly out of scope / parked
 - Original C1 camera lead one-pixel mismatch, VDP left8/palette/fade, first16 object-slot rare ownership, PAL/IRQ cycle parity, raw helper migration: **AUDIT BACKLOG, not automatic production blockers** unless practical visible failure occurs.
 - R12 three original attract demos: **Chief smoke pending**. Do not erase them; prepare to incorporate later into Classic on practical acceptance even if documented native one-pair scheduler remains noncanonical.
