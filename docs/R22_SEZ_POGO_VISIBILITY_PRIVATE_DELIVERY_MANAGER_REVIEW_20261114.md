@@ -1,4 +1,7 @@
 # Sonic Chaos — R22: SEZ Spring Shoes Offscreen Visibility Corrective, Manager Delivery Review
+
+> **CHIEF PHYSICAL ACCEPTANCE — PASS, 14 NOVEMBER 2026 (Manager #13):** Chief reports R22 corrective pogo boss tested in natural gameplay and **working fine**. All five Enhanced QoL features previously checked successfully; five-emerald Sonic save restored across R20/R22 trial namespaces. This supersedes historical **Chief F5 PENDING** in the original technical handover below. The exact R22 private runtime commit is unchanged. **R22 gameplay accepted; next is PRIVATE v0.99.0-rc1 packaging and week-long Chief playtest**. This is not an assertion every possible pogo/side boss path was separately re-recorded; Chief's actual report is concise. RC not yet built/published/tagged/merged. [Manager #13 charter](V099_RC1_PRIVATE_BUILD_CHARTER_AND_OWNER_WEEK_TEST_20261114.md).
+
 **14 November 2026 · R22 PRIVATE TRIAL TECHNICALLY ACCEPTED · CHIEF PHYSICAL F5 PENDING · NO RELEASE**
 
 ## Evidence and remote identities
