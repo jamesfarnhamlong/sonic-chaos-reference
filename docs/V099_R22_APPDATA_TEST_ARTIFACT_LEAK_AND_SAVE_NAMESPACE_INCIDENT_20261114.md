@@ -1,4 +1,7 @@
 # Sonic Chaos — R22 Test-Artifact Leakage Into Live AppData and Cross-Trial Save Continuity
+
+> **STATUS UPDATE — MANAGER #13 / 14 NOV 2026:** Chief confirmed FULL BACKUP of AppData and restoration of five-emerald R20 campaign save into R22 trial; save now works. Chief also physically retested R22 pogo boss and reports PASS. New count: **117** `R22FEATURETRIALTEST-*` files, **13.96MB**, with **5,464** other top-level files (5,581 at this later count). Chief explicitly authorised deleting accumulated test outputs with **no further inventory**. Owner-run cleanup should preserve all campaign-save generations and user INI/saveGame files; do not silently wipe those just because backup exists. **Cleanup execution remains pending report**. RC1 must prevent diagnostic writes to live AppData and implement deliberate stable-namespace save continuity. Current charter: [RC1](V099_RC1_PRIVATE_BUILD_CHARTER_AND_OWNER_WEEK_TEST_20261114.md). Historical investigation below remains evidence, not an instruction to delay authorised cleanup. 
+
 **14 November 2026 · USER-REPORTED 5,580 ITEMS · MANAGER INVESTIGATION · RELEASE-CANDIDATE HOUSEKEEPING GATE, NOT GAMEPLAY BUG PROOF**
 
 ## Chief report and direct screenshot
