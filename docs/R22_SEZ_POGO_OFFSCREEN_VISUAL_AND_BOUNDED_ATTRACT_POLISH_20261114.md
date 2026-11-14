@@ -1,4 +1,7 @@
 # Sonic Chaos — R22: SEZ Boss Spring Shoes Offscreen Visual Repair + Small Attract Fidelity Attempt
+
+> **R22 SOURCE DELIVERED, CHIEF F5 STILL PENDING (14 NOV 2026):** Private R22 Git commit `97b88d0754d41fb9b8fce637da309603d28d1693`, tree `60848c35430293924bb50441fc12b75b52ea5465`. [Manager technical source review](R22_SEZ_POGO_VISIBILITY_PRIVATE_DELIVERY_MANAGER_REVIEW_20261114.md) verifies just the genuinely worn Spring Shoes `OBJ_chaos_object_2F/Step_0.gml` lifecycle changed (+15/-2), compiled high boss launch/return works Sonic/Tails with visuals, Classic/OFF exact, 223 feature+boss checks; ATTRACT unchanged R21 measured HOLD. Chief personal natural SEZ3 pickup→large boss leap→return+detach still pending, then separate private v0.99.0-rc1 packaging. Earlier implementation GO below is historical. Trial release-directory copy blocked by automatic review; keep authorized audit package, do not bypass.
+
 **14 November 2026 · Manager-san #12 · CHIEF EXPLICIT GO TO FIX POGO AND, IF POSSIBLE, DEMO RUN · ONE PRIVATE CORRECTIVE CANDIDATE**
 
 ## Chief's exact acceptance evidence and authorization
