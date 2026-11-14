@@ -1,4 +1,7 @@
 # Sonic Chaos — R21 Pre-0.99 Source/Graphics/Attract/Legacy Manager Review
+
+> **CHIEF NEW VERDICT / R22 CORRECTIVE GO 14 NOV 2026:** R20 ring loss/Speed Shoes music/GPZ boss music and early boss HUD confirmed working by Chief; Sonic saved MGHZ/five emeralds repeatedly. **SEZ boss throws Sonic offscreen; shoes remain functional but draw invisibly on return.** [R22 exact active task](R22_SEZ_POGO_OFFSCREEN_VISUAL_AND_BOUNDED_ATTRACT_POLISH_20261114.md) fixes evidenced attached footwear lifetime and optionally attempts tiny general Classic attract input-admission improvement; R21 `d14fe...` has no gameplay changes, clean R20 remains base. **R20 owner acceptance is PARTIAL until R22 P1 footwear bug fixed and Chief F5**, then private v0.99.0-rc1 packaging. Historical earlier text that user R20 F5 pending in entirety is superseded. Protect real saves and private Git; no forced production merge/tag/release.
+
 **13 November 2026 · R21 RESEARCH DELIVERY ACCEPTED AS REPORT-ONLY · NO GAME RUNTIME CHANGE · R20 CHIEF F5 OPEN**
 
 ## Grounded sources and Git identity
