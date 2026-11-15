@@ -16,6 +16,8 @@ Chief finished two whole Enhanced playthroughs (Sonic all Chaos Emeralds, Tails)
 - If gameplay/physics/audio improvements alter the normal game, require cross-product validation: Sonic/Tails, Classic/Enhanced OFF/Enhanced ON, screen modes, normal save compatibility, five SS, all six bosses and Boss Rush, early/mid/late act music ownership.
 - Work on **separate private branches from accepted RC1 source**, preserving code freeze, H: and all release ZIPs. Push incremental commits with exact refs and dependency receipts. No release naming claim before delivery hashes and Chief check.
 
+> **SC-RC1-14 scope clarification (Chief, 15 Nov):** Classic's cheat must expose the authentic original ROM Level Select, not the internal GameMaker developer selector and not a redesigned menu. This is **F2 only**, not F1. See [living tracker](RC1_CHIEF_FULL_RUN_DEFECT_REGISTER_20261115.md).
+
 ## Sprint F1 — source/ROM mechanics + boss/camera + audio (priority)
 **Tickets:** SC-RC1-01,03,05,06,07,08,09,10,16,**20**.
 
@@ -33,7 +35,7 @@ Chief finished two whole Enhanced playthroughs (Sonic all Chaos Emeralds, Tails)
 1. AQZ speed item palette: object identification first, then original SMS palette compare. GPZ inverted black/white linger: compare with ROM and other goal transitions; if original or harmless, record no-change disposition.
 2. Make widescreen final-emerald EEZ white flash respect actual rendering viewport while leaving Classic 4:3 intact.
 3. Pause pictures: canonical art for each of six zones, no EEZ/Super Sonic substitution except actual transformed NG+ display. Pixel presentation only; art provenance/right checks. Complete/incomplete Save TV default focus rule, with 6-emerald NG+ entry **deferred until Super feature explicitly accepted**.
-4. Classic title: remove stray white text; reinstate original-ROM level-select code path. **Use ROM validation for exact SMS Up/Down/Left/Right order and buttons**; public cheat sources disagree on Left/Right ordering. Preexisting `SCR_chaos_debug_select` has Level Select/sound catalogue: prefer connect authentic entry over building a second screen. Preserve title idle demo and Classic controller inputs.
+4. Classic title: remove stray white text. **Restore the original ROM's own cheat-triggered Level Select, NOT the custom GameMaker developer selector and NOT an invented replacement.** Use ROM-disassembly/runtime evidence for exact cheat sequence, original level-select graphics/layout/input/audio, routes, cancel/return and character behavior. Find/port authentic ROM menu logic and assets as needed for native GameMaker; direct Z80 execution is not assumed. The developer `SCR_chaos_debug_select` can be inspected as a separate internal tool but must **not** be surfaced as the Classic ROM menu. If source assets/behavior cannot be authenticated, HOLD and report; no substitute. Preserve title idle demos and Classic inputs.
 5. One private F2 compiled trial and full combined regression; compare against fixed F1 and immutable RC1. Exact package identities, no appdata spill; Chief targeted acceptance across title, menu, GPZ ending, EEZ flash, AQZ, pause/screenshots and save resume. After owner PASS, nominate stable **RC2** for a new focused checking band. No default feature additions.
 
 ## Super Sonic — **NGP pilot**, not hidden inside F1/F2
