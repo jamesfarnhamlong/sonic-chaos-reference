@@ -1,4 +1,6 @@
 # Sonic Chaos — RC1 Corrective Sprints and Super Sonic NG+ Gate
+
+**Private implementation issues:** [F1 core fixes](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/1) · [F2 presentation/frontend](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/2) · [Super Sonic NG+ HOLD](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/3). Exact issue content is in PRIVATE source repo; public management contains no source binaries/screenshots.
 **15 Nov 2026 · Manager-san #13 · ACTIVE plan for Chief-approved full-run fixes**
 
 **Source of truth for all owner findings:** [RC1 Full-Run Defect Register](RC1_CHIEF_FULL_RUN_DEFECT_REGISTER_20261115.md), IDs SC-RC1-01…19. Do not reopen the obsolete 5-Nov issue tracker as active. Keep historical tracker/ROM research for source references only.
