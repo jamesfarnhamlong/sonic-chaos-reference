@@ -3,6 +3,8 @@
 **Private implementation issues:** [F1 core fixes](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/1) · [F2 presentation/frontend](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/2) · [Super Sonic NG+ HOLD](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/3). Exact issue content is in PRIVATE source repo; public management contains no source binaries/screenshots.
 **15 November 2026 · Manager-san #13 · new ACTIVE owner-led register for post-v0.99.0-rc1 corrections**
 
+> **LATER CHIEF ADDENDUM (same day):** SC-RC1-20 confirmed Classic TV/monitor-standing embedding, previously severe jitter, now stable but non-ROM overlap; included in F1. The register has **20 items** (17 current correction/polish, 3 research/watch). Original attached Chief screenshot retained only in the private conversation.
+
 ## Source, limits, decision
 Chief completed **two full Enhanced runs** (Sonic, all emeralds; Tails, full campaign), **Boss Rush**, and **Classic Sonic's first two zones**, then reported the observations below. These are Chief-observed symptoms and desired outcomes; a code-level root cause is **NOT** assumed unless explicitly supported by independent research. Photo supplied with the playtest remains user-private; do not publish image in the PUBLIC management repo. The pictured starfield/boss artwork and `Q X: TITLE` prompt alone are not reliable proof of any specific collision/camera root cause.
 
@@ -34,6 +36,8 @@ Severity: **P1** must be addressed or explicitly waived by Chief before 1.0; **P
 | **SC-RC1-18** | R | GPZ3 visuals | Previously reported pipe/grid seam | Historical P2 OPEN/not currently reproduced; observe natural run and reopen only with current RC1 reproducible screenshot/coords; no speculative texture overhaul | Historical watch | owner watch |
 | **SC-RC1-19** | R | Classic title demos | Attract demo tapers/ends early | Original reader/driver admission mismatch documented R21 measured HOLD. Not release blocking unless new Chief evidence; no blind timing or physics change | Known measured HOLD | owner watch |
 
+| **SC-RC1-20** | **P1** | **Classic confirmed**; Enhanced suspected; Sonic screenshot | Standing on intact TV/monitor now leaves Sonic visibly **partly embedded** in its top. Previously Sonic vibrated wildly on TV tops; Chief's ROM comparison says this stable overlap is also wrong | Determine genuine ROM foot/top collision and stable stand/contact timing; identify player collision projection vs sprite origin without assuming cause. Correct embedding **and** guard against former jitter. Check Sonic/Tails, intact/broken/various monitors, landing/stationary/jump-off, Classic 256×192 and Enhanced OFF/ON/wide; preserve R18 monitor repair and normal surfaces. Focused compiled per-frame Y trace and ROM screen comparison, bounded evidence. Private dedicated issue [#4](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/4). | Chief screenshot + ROM visual comparison; cause not independently established; Enhanced not tested | **F1** |
+
 ## Separate planned feature, NOT a defect
 **SC-NGP-01: Super Sonic NG+**: isolated branch `feature/super-sonic-r3-20261114` is visible PRIVATE; attached handover claims **local** R3d commits `6b4486e` and `21176dd` but connector did **not** resolve either abbreviated SHA remotely on 15 Nov. Agent must verify full SHA, push approved exact commits and provide clean comparison to RC1 before relying on them. Historical R3d report describes Super-only high-speed/loop and AQZ waterline fixes, custom gold high-speed animation, 100-ring NG+ special rules and normal Classic/Enhanced identity tests; **these remain reported trials, not Chief-approved integration**. No Super changes in F1/F2 bugfix branches. Consider only **after normal RC2 gameplay stabilized** in a separate opt-in NG+ enhancement test release. Save/6th-emerald semantics must be confirmed against original Sonic Chaos and existing save schema; no covert automatic 100-ring/NG+ rule changes to normal play.
 
@@ -46,17 +50,18 @@ Severity: **P1** must be addressed or explicitly waived by Chief before 1.0; **P
 - Evidence limit: small bounded captures/summary, avoid raw every-frame PNG dumps except focused failed scene; explicit quota and cleanup; quarantine after approval. No public ROM/image payload uploads.
 
 ## Sprint gates
-**F1 — Mechanics, audio, boss state, Classic boss camera and loop art**: SC-RC1-01,03,05,06,07,08,09,10,16. Individually committed fixes within one long private corrective branch, combine only after tests. Root-cause hold if ambiguous. One native Chief smoke candidate after engineering PASS.
+**F1 — Mechanics, audio, boss state, Classic boss camera, TV collision and loop art**: SC-RC1-01,03,05,06,07,08,09,10,16,20. Individually committed fixes within one long private corrective branch, combine only after tests. Root-cause hold if ambiguous. One native Chief smoke candidate after engineering PASS.
 
 **F2 — Presentation, frontend and release polish**: SC-RC1-02,04,11,12,13,14,15. Separate long batch based on accepted F1 and exact prior source; one private candidate with package/hash/recovery/preservation and Chief targeted check.
 
 **NGP — Super Sonic NG+ optional**: after F1/F2 and Chief confirmation of stable RC2, separately compare, validate and merge via isolated option gate; or postpone until after 1.0. **Do not slip experimental Super Sonic into normal Classic/Enhanced releases as “just one more fix.”**
 
-**Chief checking band**: Sonic full 6 emerald conclusion + Special Stages; Tails with pogo clear; Classic entire campaign with title cheat and six arena cameras; Boss Rush all; AQZ Sonic/Tails loops and pusher palette; audio priority cross-product and GPZ fade; saves and wide/fullscreen flash; plus all reported tickets. P1 closure by Chief, evidence-backed P2 dispositions, before any v1.0 decision.
+**Chief checking band**: stable ROM-authentic standing on TV monitors (no embedding **or** renewed jitter) in Classic and Enhanced, Sonic/Tails; Sonic full 6 emerald conclusion + Special Stages; Tails with pogo clear; Classic entire campaign with title cheat and six arena cameras; Boss Rush all; AQZ Sonic/Tails loops and pusher palette; audio priority cross-product and GPZ fade; saves and wide/fullscreen flash; plus all reported tickets. P1 closure by Chief, evidence-backed P2 dispositions, before any v1.0 decision.
 
 **Every entry initially OPEN and unverified as fixed.** Chief owns final priority/acceptance decisions; Manager updates tracker at each substantive delivered batch. Keep public reference management text separate from private POC code/ROM assets.
 
 ## Source references
+- Chief's 15-Nov screenshot of Classic Sonic standing on TV (kept private) and owner ROM comparison; SC-RC1-20 issue #4.
 - Chief's 15-Nov RC1 owner report in project conversation; image kept private.
 - Chief-supplied `Sonic Chaos — Classic Surface Fidelity Handover.txt` dated 15-Nov; ROM ledge and loop restrictions as cited above.
 - `docs/sez-surfaces-0c-13-1a-audit.md`, ROM surface/contract JSON and tests in public research repository.
