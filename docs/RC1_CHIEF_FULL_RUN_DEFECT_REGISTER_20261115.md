@@ -1,4 +1,6 @@
 # Sonic Chaos — RC1 Chief Full-Run Defect Register (living)
+
+**Private implementation issues:** [F1 core fixes](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/1) · [F2 presentation/frontend](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/2) · [Super Sonic NG+ HOLD](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/3). Exact issue content is in PRIVATE source repo; public management contains no source binaries/screenshots.
 **15 November 2026 · Manager-san #13 · new ACTIVE owner-led register for post-v0.99.0-rc1 corrections**
 
 ## Source, limits, decision
