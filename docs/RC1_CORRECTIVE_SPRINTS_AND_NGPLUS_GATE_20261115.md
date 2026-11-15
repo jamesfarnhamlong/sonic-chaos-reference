@@ -3,7 +3,7 @@
 **Private implementation issues:** [F1 core fixes](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/1) · [F2 presentation/frontend](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/2) · [Super Sonic NG+ HOLD](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/3). Exact issue content is in PRIVATE source repo; public management contains no source binaries/screenshots.
 **15 Nov 2026 · Manager-san #13 · ACTIVE plan for Chief-approved full-run fixes**
 
-**Source of truth for all owner findings:** [RC1 Full-Run Defect Register](RC1_CHIEF_FULL_RUN_DEFECT_REGISTER_20261115.md), IDs SC-RC1-01…19. Do not reopen the obsolete 5-Nov issue tracker as active. Keep historical tracker/ROM research for source references only.
+**Source of truth for all owner findings:** [RC1 Full-Run Defect Register](RC1_CHIEF_FULL_RUN_DEFECT_REGISTER_20261115.md), IDs SC-RC1-01…20. Do not reopen the obsolete 5-Nov issue tracker as active. Keep historical tracker/ROM research for source references only.
 
 ## What changed
 Chief finished two whole Enhanced playthroughs (Sonic all Chaos Emeralds, Tails), all Boss Rush, and first two Classic Sonic zones on PRIVATE RC1, then reported many meaningful bugs. This is strong exploratory coverage but **v1.0 acceptance HOLD**, not a failed packaging/recoverability certificate. RC1 `ad499c9b483776714cf18683ed9a23aa0ed1e668` remains immutable comparison oracle; no silent in-place overwrite or main merge.
@@ -17,14 +17,15 @@ Chief finished two whole Enhanced playthroughs (Sonic all Chaos Emeralds, Tails)
 - Work on **separate private branches from accepted RC1 source**, preserving code freeze, H: and all release ZIPs. Push incremental commits with exact refs and dependency receipts. No release naming claim before delivery hashes and Chief check.
 
 ## Sprint F1 — source/ROM mechanics + boss/camera + audio (priority)
-**Tickets:** SC-RC1-01,03,05,06,07,08,09,10,16.
+**Tickets:** SC-RC1-01,03,05,06,07,08,09,10,16,**20**.
 
-1. Establish a reproducer/scene matrix in the actual compiled RC1 for all nine; probe original ROM where behaviors are intended to be canonical. Root-cause reports not required for already ROM-proven crumble gate before source edit, but confirm port gate precisely.
+1. Establish a reproducer/scene matrix in the actual compiled RC1 for all ten; probe original ROM where behaviors are intended to be canonical. Root-cause reports not required for already ROM-proven crumble gate before source edit, but confirm port gate precisely.
 2. Correct ROM ledge `$AF` across **93 cells**: THZ1(1), THZ2(1), SEZ1–3(36), AQZ1(32), AQZ2(2), EEZ2(21). Restore 23 missing behavior; timing spawn T, hold16, `$B0` at T+17, A3/splinters at T+18; remembered-cell/pool/camera/restart.
 3. Sonic AQZ loop **sprite mapping** audit across every type of loop (Sonic and Tails controls, left/right, roll/slow/exit, Classic/Enhanced) without conflating this with speculative loop-motion speed research. Boss/level camera all six Classic arenas; fix GPZ floor cropping at authentic 4:3 boundary without sacrificing Enhanced wide fairness.
 4. Boss health final AQZ desperation hit, boss falling-pogo collision, Tails equipped victory state cleanup. Stage label typed “SLz3” must be resolved from actual room/repro (don't casually rewrite to SEZ3).
 5. Consolidate music state arbiter: GPZ1 invincibility→zone restore, invincibility > boss until effect expires, then boss/zone based on active state, and results > boss. Test both ordinary and Boost/SS transitions with native driver.
-6. One comprehensive **private F1 Windows trial**, exact version/manifest/22-dep source and native preservation report, focused Chief acceptance route (AQZ Sonic loop, THZ/EEZ crumble, GPZ music, 2 boss pogo cases, Classic GPZ camera). **No production RC1 replacement** and no automatic F2 work until F1 evidence reviewed. Do not promise perfect original equality if not measured.
+6. **Classic TV/monitor standing SC-RC1-20:** Chief has screenshot-confirmed Sonic now embeds into intact monitor top; previously it vibrated violently. Inspect ROM-authentic standing floor/contact projection and port sprite origin. Correct both displacement and prior oscillation, test continuous stationary frames, Sonic/Tails, monitor variants, collision/landing/break/jump-off, Classic/Enhanced OFF/ON, preserve R18 monitor repair and ordinary solid floors. No unexplained global offset hack. Dedicated private issue [#4](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/4); owner screenshot remains private.
+7. One comprehensive **private F1 Windows trial**, exact version/manifest/22-dep source and native preservation report, focused Chief acceptance route (AQZ Sonic loop, THZ/EEZ crumble, GPZ music, 2 boss pogo cases, Classic GPZ camera, and monitor standing without sink or jitter). **No production RC1 replacement** and no automatic F2 work until F1 evidence reviewed. Do not promise perfect original equality if not measured.
 
 ## Sprint F2 — presentation + Classic title/frontend + save UI
 **Tickets:** SC-RC1-02,04,11,12,13,14,15. Base on accepted F1 verified code, but preserve independent F1 and F2 SHA refs.
@@ -43,7 +44,7 @@ Feature branch `feature/super-sonic-r3-20261114` exists on private GitHub, but l
 ## Next owner checking band, once F2 candidate is ready
 - **Sonic:** six-zone full run, SS1–5, sixth emerald/ending, repeated saved-game resume, GPZ1 invincibility, AQZ loop art/item, AQZ final health hit, EEZ flash.
 - **Tails:** six-zone full run with boss finishes **wearing pogo** and save/slot isolation.
-- **Classic Sonic/Tails sampling:** actual 256×192 title/level-select, THZ/EEZ crumble, GPZ boss visible floor, six boss-camera arenas, no unwanted text, unchanged original music/graphics.
+- **Classic Sonic/Tails sampling:** verify stable correct-height Sonic/Tails stand on multiple intact monitors (not embedded or vibrating), land/jump-off/break; actual 256×192 title/level-select, THZ/EEZ crumble, GPZ boss visible floor, six boss-camera arenas, no unwanted text, unchanged original music/graphics.
 - **Boss Rush:** six bosses, boss HP final phases, end screens, tracks through results, no pogo levitation.
 - **Visual/audio:** GPZ inverted flash comparative, pause zone icons and complete file selection, fullscreen + 4:3/wide, Enhanced Features ON/OFF, timing/track ownership, no new AppData contamination.
 Use an explicit checkbox result per ticket. Any unresolved P1 is a new documented release hold.
