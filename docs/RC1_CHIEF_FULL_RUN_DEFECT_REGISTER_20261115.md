@@ -1,5 +1,8 @@
 # Sonic Chaos — RC1 Chief Full-Run Defect Register (living)
 
+> **16 NOV 2026 F1→F2 SCHEDULING/ACCEPTANCE:** All ten F1 corrective tickets (01,03,05,06,07,08,09,10,16,20) are **engineering PASS in native GameMaker checks at game source e82af5554a755f2708b9120809ca3bb17ddc1eb7**, but **Chief physical checks remain pending**. Chief opts to backload human testing until F2 engineering finishes, rather than block F2. F2's seven tickets (02,04,11,12,13,14,15) are **engineering GO conditionally** from exact F1 code SHA, with required full F1 re-tests; combined F1+F2 private candidate then Chief band. **No F1 owner PASS, F2 implementation PASS, RC2 nomination, Super Sonic merge or v1.0 approval is asserted.** [F1 Manager technical review and conditional F2 GO](RC1_F1_MANAGER_REVIEW_AND_F2_CONDITIONAL_GO_20261116.md).
+
+
 **Private implementation issues:** [F1 core fixes](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/1) · [F2 presentation/frontend](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/2) · [Super Sonic NG+ HOLD](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/3). Exact issue content is in PRIVATE source repo; public management contains no source binaries/screenshots.
 **15 November 2026 · Manager-san #13 · new ACTIVE owner-led register for post-v0.99.0-rc1 corrections**
 
