@@ -1,0 +1,47 @@
+# Sonic Chaos — F3 Manager Engineering Review and Chief Trial GO
+**17 November 2026 · Manager-San #13 · provisional engineering PASS / owner test GO; complete six-boss ROM parity remains partially HOLD**
+
+## Decision
+**GO for Chief's short targeted private v0.99.3-f3 Windows playtest.** F3 is a recoverable/private *engineering candidate*, NOT RC2; Chief has not accepted it. The previous 17 F1/F2 corrections remain Chief PASS within his tested scope. **Full Classic boss-camera parity remains PARTIAL/HOLD** for **EEZ3 moving chase stages 1–2**, not tested numerically against the original ROM. The GPZ3 internal camera one-pixel residual is separately documented, reported no observed mechanics consequence; retain watch rather than falsely claiming numerical equivalence. No production merge/tag or Super Sonic integration.
+
+## Inputs and remote verification
+Source: Chief-provided Designer-San F3 progress/final handover (17 Nov), plus independently fetched private GitHub `verification/f3/F3_RESULT_MATRIX.md`, `F3_CHIEF_ACCEPTANCE_GUIDE.md`, `F3_CHANGE_INVENTORY.md`, `RESEARCH_SC-RC1-25_SFX.md`, `RESEARCH_SC-RC1-26_CRUMBLE.md` and structured `pixel_compare_final.json` / `F3_VS_F2.json`. **F3_DELIVERY_REPORT.md was listed in Chief's local delivery folder but was NOT available under the remote verification/f3 path as of this review**; local E:/H: bundles and SHA256 files were not directly inspected, so packaging/H: restoration are **agent-reported**, not independently byte-checked by Manager.
+
+- Private F3 branch: `fix/f3-classic-rom-camera-fidelity-20261117`.
+- Exact immutable F2 gameplay parent `5d045ae0bba8dcbfa3f220c8e96d78baaa4fc22e`.
+- Frozen F3 **game** commit `407377d5d9eeb0748b6b1698f6e377108eb3bf5a`; its only later private commit `a7f92774227ee6e8034d3b01e60e34b94bec3dd1` changes **verification/f3 only** (GitHub compare: 36 files, no game code changes).
+- Reported v0.99.3-f3 private Windows ZIP SHA starts `fc454281`, source ZIP starts `38f5d5cc`; **full SHA-256 values unavailable in user handover**. Chief should verify exact final E: delivery ZIP against local `SHA256.txt` before extracting to a NEW folder. Source includes 22 private deps; independent H: backup `H:\codex_backup\SonicChaos_20261102_essential\v0993-f3-20261117` reportedly restores. Canonical `SonicChaos` save namespace unchanged; preserve original RC1/F1/F2 packages, Chief saves and backup. No fresh AppData wipe.
+
+## SC-RC1-23 Classic camera — technical assessment
+- Verified ROM principle: original SMS VScroll `R9=(cameraY+17) mod 224`, whereas the inherited D2-A GameMaker Classic presents world rows from canonical `cameraY`. Thus existing Classic boss drawings were 17 logical pixels too high except for earlier F1 GPZ arena correction. This is **not** proven Enhanced logic leakage; native Enhanced camera logs show exact F2-vs-F3 equality in 14 probe scenes.
+- F3 adds draw-only +17 presentation ramp (1 px per update) to THZ3/SEZ3/MGHZ3/AQZ3/EEZ3 boss chain while retaining the GPZ3 previous correction and canonical camera logic ownership. MGHZ3 also corrects exclusive lower limit pan (port 256 vs ROM 255) and post-defeat following (ROM holds 255); GPZ3 stops the mode-3 pan that continued erroneously.
+- **ROM/compiled native 256x192 camera comparisons for Sonic and Tails** at *settled sampled boss scenes*: THZ3/GPZ3/SEZ3/MGHZ3/AQZ3/EEZ3 each show **best vertical alignment shift 0**, whereas F2 needed 16–17 px of shift (GPZ F2 2). **Do not call all screenshots globally pixel-identical**: alignment agreement of the tested frame ranges roughly **82.36%–97.91%** (moving sprites, HUD and masked left column; MGHZ3 specific post-defeat sampled frame reports 100% agreement). The source matrix calls some camera positions parity; broader complete-scene art parity is not established.
+- MGHZ3 fight/forced defeat/walk-out: ROM camera Y=255, matched; post-defeat screenshot pixel agreement 1.0 at tested frame. GPZ3: original ROM logical `D176=97` with presented top=115; F3 port logical Y=98 and presented top=115. **1px internal mismatch retained**; agent says no current fight reader uses it. This has *not* been proven exact internal ROM camera parity; if any future camera reader depends, investigate.
+- **EEZ3 moving chase phases 1–2 not executed in original-ROM numeric comparison.** F3 applies the same draw-only offset, but stage-0/settled parity does not certify the moving stages. Retain explicit SC-RC1-23 subcase HOLD until a bounded ROM-vs-F3 moving-chase trace and Chief check; may be a research-only follow-up if no code divergence. Do not claim all six **entire fights** ROM-perfect.
+- Ordinary Classic acts retain the accepted global D2-A presentation offset. F3 only corrects boss arena presentation, as commissioned; this is NOT an audit of all non-boss Classic camera/viewport parity. Reopening D2-A globally would require a distinct Manager/Chief decision.
+
+## SC-RC1-24 Pause
+Classic white `Q/X: title` hint removed; six-zone rendered captures differed only in text box; Enhanced Pause images matched exactly. Resume/Quit behavior code unchanged. **Engineering PASS; Chief's menu input check pending.**
+
+## SC-RC1-25 SFX research
+- **Spring Shoes + spike simultaneous sound missing: ROM-authentic NO CHANGE.** ROM and shipped GML both deliver `$C2` when relaunch overwrites `$A4` in the tested same-update case; isolated spikes still use `$A4`.
+- **MGHZ spring-top Motobug `$21`** original driver may suppress its `$A6` (priority `$38`) when a higher-priority sound plays; port uses original driver priorities. **Concurrently colliding native robot scene was not executed/audibly captured**, only source call-site comparison; classify this subcase **provisionally authentic / evidence HOLD**, not completely closed.
+- Potential latent direct-versus-deferred request-class discrepancy: original `$A6/$C2` direct `$DE04`; port deferred-gameplay `$D4A4` requests. No mismatch measured in executed cases, but same-update event order could differ in a hypothetical concurrent case. **Do NOT approve suggested shared audio class rewrite now**: require a reproduced ROM/port differential and regression cost assessment first. Keep SC-RC1-22 `$A5` twist SFX distinct.
+
+## SC-RC1-26 crumble corner
+**Engineering research verdict ROM-authentic, NO CHANGE**: 120 matched ROM vs shipped-GML corner approaches, 120/120 same spawn decisions; 88/88 spawning cases same hold height, player feet 2px into cell top and held 16 updates. Fixture first-update X (1–2px) and recording-row timing convention residual documented; no behavioral divergence established. Preserve Chief-accepted F1 93-cell crumble fix. No new gameplay correction is warranted.
+
+## Regression and release safety
+- **10/10** native R22 preservation/feature runs exact vs F2 (7 preservation + 3 feature). Source-suite outcome unchanged at **75/178 PASS**, no formerly F2-passing test newly failing; never claim all 178 green.
+- F1/F2 native carry-forward first pass **15/17** exact, while repeat same-session F2-vs-F3 comparisons resolved two differences as run noise. Ending/goal sound deliveries differ by **1–5 updates** with same IDs in some runs. This is not necessarily a gameplay regression but is a measured limitation; do not claim all cases byte-identical on first pass.
+- F3 reports **68 SCTest native jobs**, all PASS and **zero observed Chief AppData FileSystemWatcher writes**. Source/tool output and actual E/H package hashes remain agent-reported. No sound/crumble game source changes, no appdata namespace migration, no Super Sonic code cherry-pick.
+
+## Chief targeted F3 check — short, not another full campaign
+1. **Classic MGHZ3** via authentic ROM Zone Select (title input Up Up Down Down Right Left Right Left, then Start) and natural boss arena approach. Confirm tree tops disappear from the too-high view, correct visible floor, boss lowest dive visible; defeat and walk out with camera not rising. Record a photo if it still differs from original.
+2. **Classic GPZ3** full boss fight: correct floor/framing and smooth fight/clear; note any apparent one-pixel or new camera jump.
+3. **Classic THZ3, SEZ3, AQZ3, EEZ3** spot-check entries and framing; in **EEZ3 deliberately exercise moving chase stages** and report any clipping/shifting. The numeric EEZ chase ROM audit remains separately outstanding irrespective of visual Chief PASS.
+4. **Classic Pause:** confirm white text gone, Resume / Quit to Title prompt still work. **Enhanced:** quickly inspect boss camera and Pause; normal Sonic/Tails saves still load.
+
+No need to replay Classic and Enhanced campaigns again. Report PASS/FAIL/UNTESTED per arena. A pass on these scenes allows a later **RC2 nomination review**, but **do not silently mark EEZ3 numeric chase complete**; obtain a short targeted ROM trace before unqualified six-arena parity closeout, or retain explicit documented residual HOLD pending owner release-risk waiver.
+
+**Next:** Chief may test private F3 immediately. Manager may separately commission bounded no-code EEZ3 chase ROM-vs-native comparison (and optionally native robot concurrency evidence) while Chief tests; these are not grounds for speculative mechanical edits. RC2/v1.0 remains HOLD until Chief acceptance and resolution/waiver of the EEZ3 chase parity gap. Super Sonic integration stays separate.
