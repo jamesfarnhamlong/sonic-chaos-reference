@@ -1,5 +1,5 @@
 # Sonic Chaos — F3 Classic Fidelity Audit & Corrective Gate
-**17 November 2026 · Manager-San #13 · PLANNED, not yet commissioned**
+**17 November 2026 · Manager-San #13 · CHIEF COMMISSIONED / ENGINEERING GO; Chief acceptance pending**
 
 ## Owner acceptance and current release status
 
@@ -7,7 +7,7 @@ Chief tested the combined private **v0.99.2-f2** game at source **`5d045ae0bba8d
 
 During the Classic campaign Chief saw a **new P1**: MGHZ3 boss arena camera framed **too high** compared with original ROM, despite F1's separately working GPZ3 +17 correction. He also requested removing white Classic Pause instructions, noticed intermittent missing spike and MGHZ Motobug sounds, and observed corner sticking/embedding into crumble blocks in SEZ/AQZ in Classic and Enhanced. These are **SC-RC1-23 through 26** in the [active register](RC1_CHIEF_FULL_RUN_DEFECT_REGISTER_20261115.md).
 
-**Do NOT nominate or promote RC2/v1.0 yet, or merge Super Sonic.** New Classic camera fidelity P1 must be investigated and corrected, preserving accepted F1/F2. This document defines an **audit-first F3 follow-up** to be commissioned with Chief GO, not an order to execute automatically.
+**Do NOT nominate or promote RC2/v1.0 yet, or merge Super Sonic.** New Classic camera fidelity P1 must be investigated and corrected, preserving accepted F1/F2. **Chief has now explicitly commissioned F3.** This is an audit-first engineering GO for the camera and Pause corrections, with SFX and crumble limited to the documented research-first decision gate.
 
 ## Goals and workstreams
 
@@ -41,5 +41,5 @@ During the Classic campaign Chief saw a **new P1**: MGHZ3 boss arena camera fram
 ## Protected open work and status
 - All 17 earlier F1/F2 items: **Chief PASS** within tested scope. Existing RC1/F1/F2 code/ZIP immutable; do not reopen completed items without demonstrated regression.
 - SC-RC1-21: MGHZ2 twist alleged freeze **closed ROM false positive**. SC-RC1-17 loop fall-off remains independent research. SC-RC1-22 A5 twist sound research still separate.
-- **F3 is PLANNED, no implementation authorised in this documentation alone.** User may request a formal paste-ready commission next.
+- **F3 ENGINEERING GO (Chief, 17 Nov).** [Authoritative paste-ready commission](RC1_F3_DESIGNER_COMMISSION_20261117.md). Source fixes authorized only for ROM-proven camera parity and non-ROM Classic Pause text; sound and crumble begin read-only with separate review required before any shared audio/collision redesign. No owner PASS of F3 until Chief tests.
 
