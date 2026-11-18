@@ -1,0 +1,45 @@
+# Sonic Chaos — RC2-C1 Manager Delivery Review and Focused Chief Test GO
+**18 November 2026 · Manager-San #13 · Candidate engineering PASS / Chief acceptance pending**
+
+## Discovery and decision
+Chief reported that Claude reached its credit limit while the last RC2-C1 build chain appeared to be compiling. **Private GitHub shows Claude actually completed and pushed the engineering/package delivery before the session ended.** Do not commission duplicate native work, treat compiled output as missing, or wait for a new Claude session just to test the candidate.
+
+Independently fetched/private GitHub verified:
+- Game repo `jamesfarnhamlong/SonicChaos_POC`, branch `fix/rc2-c1-tails-boss-camera-20261117` (source from **frozen original RC2 GAME `342050ee1b237d37e7e17a6f6ea83b16655d0e6b`**).
+- **New corrected game commit `115f166c41dd7236bce29345277872a39a5c0d2d`** (reported tree prefix `c9032efc`), identity **Sonic Chaos v0.99.5-rc2-c1** / Windows `0.99.5.3`; private later verification/package tip **`ca2650e38addffe6d61c1f16e2d3de84cb68f65e`**.
+- Independent code commits **EEZ3 `2c263d0`**, **GPZ3 `e16b15f`**, identity `115f166`; verification assertion correction `76db98f`. Runtime source diff vs original RC2 comprises **six files** (three scoped GPZ/EEZ camera/Draw paths; three version/README paths). RC2/F3 save logic, data, audio, physics, Enhanced, Boss Rush unchanged. Verification harness changes do not ship as runtime logic.
+- Retrieved private `verification/rc2c1/RC2C1_REPORT.md`, `RC2C1_CHANGE_INVENTORY.md`, `RC2C1_TAILS_TEST_GUIDE.md`, `evidence/C1_PARITY_SUMMARY.json`, `GPZ3_C1_COMPARE.json`, `C1_VS_RC2.json`, `aggregate-source-exit-codes.json`. Private [Claude delivery comment #13](https://github.com/jamesfarnhamlong/SonicChaos_POC/issues/13#issuecomment-6956179018). Source changes and reports confirmed on GitHub; **Manager has not byte-opened the local E:/H: ZIPs or independently executed the game**.
+
+**Manager verdict: GO for Chief's short private `v0.99.5-rc2-c1` Tails acceptance test**. Final RC2 signoff still pending Chief PASS; old `v0.99.4-rc2` hashes, branch, packages and H: recovery remain untouched. No production/main merge, final public release tag, Super R3d merge or v1.0 nomination yet.
+
+## Corrective ROM/native evidence
+### GPZ3 — confirmed defect corrected
+Original/accepted v0.99.4 Classic 256px **logic camera Y98** vs ROM **Y97**, though the boss-fight presentation was top115 in both. Codex's `ff44bcc` compiled diagnostic confirmed original Tails flight ceiling world Y120/121 vs F3/RC2 Y121/122. Claude's corrective **takes the final logical camera pan/commit to 97**, but **holds the last video scroll at 115 for the fight** by a frozen-only +1 draw latch atop the unchanged F1 +17 presentation adjustment; release returns displayed top114, matching the original ROM's latched R9 transition. No global offset.
+
+Compiled native GPZ3 after: camera97 / displayed fight top115 / post-release top114 / Tails ceiling120/121 = ROM. Over **337 flight trace rows**, original RC2 had **112** world-Y mismatches; C1 has **15** (documented as one isolated ROM 1px blip and later 1px post-flight free-fall rounding, **not claimed perfectly identical physics**). If any of those residuals are future fidelity candidates, do not conflate with the now-correct camera.
+
+### EEZ3 — confirmed high-Tails-flight chase defect corrected
+Original ROM stage 1 is **pan mode**, while **stage 2** follows Tails using working vertical lead `D28D`; look-up changes target, and the original camera respects exclusive lower-limit semantics. Old v0.99.4 uses a hardcoded vertical follow lead120: Tails is held at **screen row104** rather than original79, camera rises up to **25px too high**, min Y223 vs original247, after landing remains329 vs original333, and look-up does not reproduce the original Y nudge.
+
+Claude reproduced full native before/after with the ROM research rig: corrected 256px EEZ boss follow uses the shared slew/working lead and an exclusive pan bottom; camera min **247**, after landing **333**, look-up image vertical shift0. On **299 aligned chase rows**, **298/299** native `camera[k]` values equal original `camera[k+1]` (documented one-update commit pipeline, one row difference <=1px). Stage-1 non-follow pan and Enhanced 348px path preserved. Do not interpret a fixture-aligned camera match as full pixel identity at every possible natural input.
+
+## Preservation and delivery
+- **60 new C1 SCTest native runs ALL PASS**, zero observed Chief `%LOCALAPPDATA%\SonicChaos` writes; fresh inventory unchanged, reported by Claude, separate standard account.
+- **R22 preservation+features 10/10 exact** against old RC2; relevant **F1/F2/F3 native cases match** except deliberate GPZ3 Classic logical camera rows; Classic six arena picture vertical shift0 Sonic/Tails; **Enhanced zero differing native rows** in compared scenes; **saves 6/6**. No Chief full campaign represented by these fixtures.
+- Source suite **75/178 PASS**. Claude changed one **non-ROM expected Y334** in previously passing `verification/verify_eez_p4.js` to original ROM's **exclusive Y333** from above; explicitly review it as an evidence-based test expectation correction rather than claiming all previous RC2 source tests unchanged. No newly failing source suite at final candidate.
+- Claude-delivered private **Windows 8-file ZIP SHA256 `2b8b964c44e76c65fc65aa9cff709d413e1e55212c99251cb727c91d32d7b71e`**, complete private **source ZIP with all 22 authenticated deps SHA256 `91057f1486354e81b87751c1a3d2558c4fcb14ea25a0163015d6f262bbd5b44b`**, private bundle prefix `04973a3a`.
+- Independent H: recovery folder `v0995-rc2-c1-20261117`: Claude reported archive hash PASS, restored source from **H: copy**, 22 dependencies confirmed, recompiled (7/8 distribution files identical; `data.win` has only GEN8 build metadata differences), and booted on SCTest PASS. **Manager has not physically rehashed E:/H: locally**.
+- Prior RC2 `v0.99.4-rc2` and its accepted source/H: backup immutable; all 17 F1/F2 and 6 F3 owner accepted checks retain that history. New corrected game needs separate Chief approval.
+
+## Chief concise acceptance test
+1. Verify Windows ZIP hash against SHA256 above, extract to NEW folder, **do not delete or overwrite old install or save data**. Normal startup and identity **v0.99.5-rc2-c1**.
+2. In **Classic / Tails** via original Zone Select (Up Up Down Down Right Left Right Left at Classic title → Start), play **GPZ3 boss**: same floor/framing as F3, enter Up+Jump flight near top; camera/view should remain stationary during fight, post-defeat release lowers displayed view one pixel as ROM; ordinary fight/clear works.
+3. In **Classic / Tails / EEZ3**, experience first two encounters and final chase; in **stage 2** take off using **stand still, hold Up, then Jump** (Tails flight), observe that camera follows near the upper playfield only, **landing returns normal floor view**, and look-up while standing adjusts camera slightly. Stage-1 pan/initial reveals should work; no camera snag, bosses or player vanish.
+4. **Sonic Classic** quick GPZ3/EEZ3 boss glance and **MGHZ3** if convenient, ensure previous framing and boss defeat path remain correct. **Enhanced** one GPZ3/EEZ3 visit + Pause/save quick check; camera intentionally unaffected.
+5. Quit/restart and reload original save as appropriate. No whole-campaign repeat needed.
+6. Report **PASS/FAIL/UNTESTED** for: Tails GPZ3, Tails EEZ3 (stage 2 high flight and landing), Sonic Classic spot check, Enhanced regression, save/startup. On failure, screenshot, exact stage, conditions and frame/event; preserve candidate without unapproved in-place patch.
+
+## Manager next gates
+**If Chief passes:** mark scoped C1 Chief accepted, review final corrected RC2 freeze and release-risk residuals, decide separately whether/how to nominate v1.0 and integrate Super R3d. Do not infer a final public release from this acceptance alone.
+**If Chief fails:** capture route and exact delta; reserve separate corrective source commit and repack uniquely, do not replace old ZIP bytes.
+**No additional Claude/Codex work is needed merely to resume the finished build**; use delivered ZIP now. Until Chief tests, issue #13 remains OPEN / owner acceptance pending.
