@@ -1,0 +1,32 @@
+# Sonic Chaos — RC2-C1 Chief Feedback and Acceptance Correction
+**20 November 2026 · Manager-San #13 · Corrects overbroad test guide; Chief has not explicitly provided final RC2 release approval**
+
+## Why this record exists
+Chief reported that the proposed `v0.99.5-rc2-c1` manual checklist was vague, difficult to interpret and repeated stages already accepted in F1/F2/F3. This was valid criticism. The guide asked a player to visually detect a **1-pixel Tails flight ceiling change** and repeat regression checks already covered by deterministic compiled-native comparisons. Future Chief acceptance guides should specify an **observable symptom, specific action and expected visible result**, while leaving subpixel/ROM numeric parity to engineering evidence. Do not ask Chief to replay whole bosses merely to confirm expected unchanged code.
+
+## Actual Chief report (do not inflate)
+- **GPZ3 Tails:** "passed ? I think, instructions are pretty vague" — no visible failure reported, but **tentative user impression**, NOT a numerical acceptance witness or unqualified formal PASS.
+- **EEZ3:** "im not sure what im doing here, there isn't really any changes - perhaps this is not perceptible to a normal play?" — no visible failure reported, **not proof a sustained high-flight stage-2 route was reproduced**. In ordinary play the relevant vertical follow only diverges when Tails climbs high enough in the *final chase follow phase*; stage1 is fixed pan, ordinary Sonic jumping / early stage0 are not good visual witnesses.
+- **Sonic / Enhanced:** Chief rightly questions repeated testing of behavior previously verified. **No new C1 owner regression test claimed**. C1 game source changes only Classic 256px GPZ3/EEZ3 boss-camera paths, version metadata; native preservation already confirms unchanged Enhanced/other bosses/normal gameplay in exercised scenes.
+- **Saves:** "saves still exist and load" — **Chief PASS for ordinary continuity/readability**.
+- No complaint of new camera clipping, disappearance, broken boss flow or save loss was reported in the brief C1 trial.
+
+These comments mean **C1 owner smoke: no observed regression, GPZ3 tentative, EEZ3 witness unclear, saves PASS**; they do NOT mean four of four precision tests physically PASS.
+
+## What engineering already proved
+Private frozen corrected C1 GAME `115f166c41dd7236bce29345277872a39a5c0d2d`, package `ca2650e38addffe6d61c1f16e2d3de84cb68f65e`.
+- GPZ3 logical Y97 (old Y98), viewed fight top115 as ROM, release top114, **Tails ceiling worldY120/121** (old121/122). ROM/native traces establish this numerically; **not realistically detectable by human sight**.
+- EEZ3 final chase **stage2** camera uses original working Y lead, near-high-flight camera min247 (old223); landing resets to333 (old329); 298/299 after-phase source/ROM camera samples agree at 1-update offset; lookout picture matches. The correction is meaningful but only visible when Tails flies sufficiently high in stage2.
+- 60/60 native C1 jobs reported PASS, zero observed Chief AppData writes, R22 10/10 exact, Enhanced zero differing rows in checked scenes, saves 6/6; inherited source suite75/178, one previously passing EEZ verification assertion explicitly updated to ROM-exclusive 333 instead of non-ROM334. This **does not constitute a completed full human campaign**.
+
+## Revised manager recommendation
+**Do not require any further boss replay for RC2-C1 solely to establish these known numeric camera corrections.** The objective engineering tests already establish the GPZ3 and EEZ3 intended improvements. Chief's limited actual smoke shows no new visible concern, and saves load. Earlier **17/17 F1/F2** and **6/6 F3** owner acceptances remain scoped and are not subject to repetitive re-testing in a metadata/camera-only corrective candidate.
+
+**C1 engineering PASS; Chief smoke no observed regression; final Chief release authorisation has NOT explicitly been given.** Manager recommends owner signoff may be based on verified native parity plus this smoke without asking for another repeat visit. Any remaining final decision should be about **scope/release risk**, not an unstructured multi-boss checklist. If Chief later wants additional demonstration, prepare a short before/after **side-by-side camera trace/video or controlled fixture**, not a new manual stage run; do not commission unnecessary native work merely for visual confirmation.
+
+## If a visible check is ever needed (optional, single event)
+Only EEZ3 stage2 high Tails flight has enough difference to inspect by eye: **after** the first two encounters, during the final moving chase, have Tails stand still, hold Up, then press Jump to enter flight. Keep flying until he is in the upper part of the viewport, release/land. Expected: camera begins tracking near the upper part of the screen rather than ~25px too early, then returns to the normal floor view at landing. This is *optional* and **NOT** a request for Chief to repeat it. GPZ3 one-pixel ceiling cannot be meaningfully judged visually.
+
+## Documentation and release safety
+Treat the prior `verification/rc2c1/RC2C1_TAILS_TEST_GUIDE.md` as engineering-author's initial guide, **superseded for owner evaluation by this Manager clarification**. Do **not** edit or advance the frozen C1 game/package branch solely to rewrite its guide; retain byte-identical Windows/source ZIPs and H: verified archive. Update issue #13 and RC2 #11 for exact owner feedback, avoid treating the absence of perceptual distinction as evidence of a failed correction.
+No main merge, public tag, final v1.0 or Super R3d integration without separate Chief release/integration direction.
