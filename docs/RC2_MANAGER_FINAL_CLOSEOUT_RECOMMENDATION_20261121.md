@@ -26,7 +26,7 @@ Corrective C1 changes only the Classic 256px boss camera paths in GPZ3 and EEZ3 
 **No known critical gameplay or package defect remains.** Nevertheless keep the release risk register honest:
 - **SC-RC1-22 missing `$A5` twist-gate sound** is a **confirmed audible Classic ROM fidelity gap**. A one-line correction was proposed, **not applied**. It is not a gameplay blocker for private RC2 baseline acceptance; decide any correction in a **separate, Chief-authorised, post-RC2 Classic fidelity batch** so this immutable ZIP remains intact.
 - **SC-RC1-25 `$A6` spring-sound mailbox dispatch class difference** is a latent mismatch but no evidenced audible port defect; Spring Shoes spike sound `$A4` ROM-authentic suppression is closed.
-- **SC-RC1-17 loop, -18 GPZ3 cyan pipe seams, -19 attract demos early** remain watched; -19 numerically measured presentation HOLD, do not falsely call parity proven. `$A5` and $`A6`$ do not negate source/manifest pass.
+- **SC-RC1-17 loop, -18 GPZ3 cyan pipe seams, -19 attract demos early** remain watched; -19 numerically measured presentation HOLD, do not falsely call parity proven. `$A5` and `$A6` do not negate source/manifest pass.
 - GPZ3 post-flight 1px fall rounding, systemic one-update camera commit phase, source harness 75/178, GEN8-only build header difference are documented, not silently deemed pixel parity. Crumble corner and leftward twist freeze concerns were ROM-authentic/false positive respectively. Enhanced Alt+Enter overflow R-FS1 was SCTest-account-only, Chief-confirmed closed.
 - Current `v0.99.5-rc2-c1` remains **PRIVATE, unmerged, untagged, unpublished**, Super not included; no save schema migration. Preserve the SCTest account and current scratch/recovery until explicit later cleanup authorisation.
 
