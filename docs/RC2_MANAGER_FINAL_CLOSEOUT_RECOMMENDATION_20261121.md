@@ -1,0 +1,38 @@
+# Sonic Chaos — RC2 Final Manager Closeout Recommendation
+**21 November 2026 · Manager-San #13 · engineering GO / Chief baseline acceptance decision pending**
+
+## Decision recommended to Chief
+**Approve the complete, private `Sonic Chaos v0.99.5-rc2-c1` as the accepted RC2 normal-game baseline**, replacing `v0.99.4-rc2` for subsequent development and release planning; retain `v0.99.4-rc2` untouched as an archived fallback. The current package is sound; no new build, test campaign or repackage is justified merely to reach this gate. **This Manager recommendation is not itself Chief approval** and is not approval for a public GitHub release, production-main merge, final v1.0 tag, Super Sonic NG+ integration or unrelated fidelity patches.
+
+Chief's reported C1 smoke: **no newly observed visual regressions, prior saves readable (PASS)**; GPZ3 "passed? I think" was tentative and the one-pixel flight change is objectively too small to visually validate; EEZ3 stage-2 sustained high-flight was not a confirmed human witness and no problem was reported. Earlier F1/F2 (17/17), F3 (6/6) Chief-tested evidence stands; numerical GPZ3/EEZ3 fidelity is appropriately engineering-owned. Do **not** demand another broad replay or inflate the owner's limited smoke to "four precision checks PASS".
+
+## Verified identity
+- PRIVATE source repo `jamesfarnhamlong/SonicChaos_POC`, branch `fix/rc2-c1-tails-boss-camera-20261117`, game SHA **`115f166c41dd7236bce29345277872a39a5c0d2d`**, game tree `c9032efc7b0328dbf3e2674329e5f54c80e4a5a0`.
+- Later packaging/verification HEAD **`ca2650e38addffe6d61c1f16e2d3de84cb68f65e`**. Independent GitHub comparison confirms only `verification/` changes after the game SHA; **no new shipping game code** after frozen candidate. `v0.99.5-rc2-c1` Windows file version `0.99.5.3`.
+- Windows private eight-file ZIP SHA256 **`2b8b964c44e76c65fc65aa9cff709d413e1e55212c99251cb727c91d32d7b71e`**.
+- Complete private source ZIP plus all **22** authenticated private dependencies SHA256 **`91057f1486354e81b87751c1a3d2558c4fcb14ea25a0163015d6f262bbd5b44b`**.
+- Private git bundle SHA256 **`04973a3a2e5c264c65059134794f31ff2fd7cdb4a294e5d2c60c5d1dc95a83ef`**.
+- Claude's **21 November READ-ONLY** closeout checks (local reports `RC2_FINAL_RELEASE_NOTES_v0.99.5-rc2-c1.md`, `RC2_FINAL_CLOSEOUT_RECOMMENDATION.md`): GitHub identity/branch matches; clean worktree; **12/12** manifest hashes match on original E: delivery and independent H: copy, both private ZIPs H: byte-for-byte identical to E:, archived `v0.99.4-rc2` original/H: recovery **14/14** still matches; source restored from H: with 22 dependencies, recompiled and booted previously; no new rebuild/repackage. No new release tags or unauthorized Super merge. **Manager independently verified GitHub commits and content, not the local E:/H: bytes**; archive checks are agent-attested.
+- Original RC2 `v0.99.4-rc2`: frozen game `342050ee1b237d37e7e17a6f6ea83b16655d0e6b`, package `d064549cda914895c31ffbe62ff211c2d7eeb2b1`, preserved as fallback. Super R3d independent `21176dd03138b155412bef9256306437275414ca` preserved.
+
+## Accepted engineering scope
+Corrective C1 changes only the Classic 256px boss camera paths in GPZ3 and EEZ3 and version identity, six runtime file paths; no global camera, physics, save, Enhanced or audio source change:
+- **GPZ3:** actual frozen F3 source defect confirmed by Codex compiled flight trace: ROM canonical cameraY97 with VDP R9/picture top115, port old logical Y98; Tails flight ceiling ROM world Y120/121 vs old 121/122. C1 canonical Y97 and frozen-only render latch yields fight top115 and release114 like ROM. Flight ceiling 120/121. Final controlled 337-row comparison **15 remaining** world-Y differences, described as one trace blip and later post-flight rounding, not a claim of total physics parity.
+- **EEZ3:** high Tails flight in final boss chase stage2: old fixed Y lead120 caused 25px too-early vertical pan / camera min223 / landing329; ROM uses moving lead with look-up target, camera min247 / landing333. C1 corrected lead and exclusive bottom: original min247 and landing333 reproduced; **298/299** moving-stage camera rows match original under documented one-update commit-phase offset, remaining 1px. Stage1 is pan mode; Enhanced adapter untouched.
+- **Regression:** Claude reports **60/60 compiled native C1 SCTest PASS, zero observed writes** to Chief SonicChaos AppData, R22 10/10 exact, native F1/F2/F3 scenes identical except intended GPZ3 Classic logic rows, six-arena ROM image shift0, Enhanced zero differing rows in compared cases, saves6/6. Existing source runner **75/178** PASS, with one originally passing `verify_eez_p4` expectation **explicitly changed from non-ROM Y334 to ROM-exclusive Y333** in verification commit `76db98f`, no unreported source test regression claimed. GEN8 `data.win` rebuilt metadata differs, game content matches and other seven runtime files are byte-identical in reported H: restore test.
+- No complete new human campaign was played on C1; this is an explicit process limitation, mitigated by the narrow changes, previously accepted campaigns and controlled regression.
+
+## Documented non-blocking limitations / next gates
+**No known critical gameplay or package defect remains.** Nevertheless keep the release risk register honest:
+- **SC-RC1-22 missing `$A5` twist-gate sound** is a **confirmed audible Classic ROM fidelity gap**. A one-line correction was proposed, **not applied**. It is not a gameplay blocker for private RC2 baseline acceptance; decide any correction in a **separate, Chief-authorised, post-RC2 Classic fidelity batch** so this immutable ZIP remains intact.
+- **SC-RC1-25 `$A6` spring-sound mailbox dispatch class difference** is a latent mismatch but no evidenced audible port defect; Spring Shoes spike sound `$A4` ROM-authentic suppression is closed.
+- **SC-RC1-17 loop, -18 GPZ3 cyan pipe seams, -19 attract demos early** remain watched; -19 numerically measured presentation HOLD, do not falsely call parity proven. `$A5` and $`A6`$ do not negate source/manifest pass.
+- GPZ3 post-flight 1px fall rounding, systemic one-update camera commit phase, source harness 75/178, GEN8-only build header difference are documented, not silently deemed pixel parity. Crumble corner and leftward twist freeze concerns were ROM-authentic/false positive respectively. Enhanced Alt+Enter overflow R-FS1 was SCTest-account-only, Chief-confirmed closed.
+- Current `v0.99.5-rc2-c1` remains **PRIVATE, unmerged, untagged, unpublished**, Super not included; no save schema migration. Preserve the SCTest account and current scratch/recovery until explicit later cleanup authorisation.
+
+## Chief approval gate (one question, no more manual gameplay checklist)
+**Requested next decision:** “Approve `v0.99.5-rc2-c1` as the frozen **private RC2 normal-game baseline**, retaining `v0.99.4-rc2` as protected fallback and leaving all main merges, tags, public/v1.0 publishing, `$A5` patch, Super Sonic integration and environment cleanup for separately authorised steps?”
+
+Only once Chief expressly says YES should the Manager mark the baseline Chief-accepted, close PRIVATE RC2 #11 / C1 #13 as completed (preserving the issue history), and document exact game/source/package IDs. This alone **does not** execute any merge/tag/release or new build.
+
+**Manager recommendation: GO for accepting the private normal-game baseline. HOLD on any irreversible promotion until the separate Chief release decisions.**
