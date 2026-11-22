@@ -1,0 +1,40 @@
+# Sonic Chaos — V1 RC1 Manager Delivery Review and Chief Trial GO
+**22 November 2026 · Manager-San #13 · Private v1.0.0-rc1 engineering PASS / Chief acceptance pending**
+
+## Ruling
+Approve the delivered **private Windows v1.0.0-rc1 for Chief's focused trial**. No known blocker to that trial. Final v1.0.0 promotion, tag, private release publication and main-merge decision **not yet authorised**. The essential remaining physical acceptance gate is testing the actual previously crashing non-AVX-512 PC. No repeated normal-game campaign, boss camera or numerical parity tests.
+
+Independent Manager GitHub inspection: exact game and package commits, complete post-game diff (all verification/), issue #14 delivery receipt, integration inventory, A5 report, Super report, CPU compatibility report, test matrix, delivery report and Chief guide. Claude's E:/H: physical archive hashes and run results are agent-attested; Manager has not independently accessed those local bytes or executed the game.
+
+## Identity and protected recovery
+- Private branch `integration/v1-super-r3d-a5-20261121`, based on Chief-accepted RC2-C1 GAME `115f166c41dd7236bce29345277872a39a5c0d2d`.
+- Work A `4494210efd6e5a2d3f4aa8a330fcebf811b20b2f`; Work B `856baa13bbd17353dac1765607921ab7d281ae4c`; identity `c178a939394ae09a63e2a62a7de2b4bedeadff85`; portable backend C and **frozen GAME `7ae0bbe3852aa36c6d85b60ecdf6284e7df30412`**; **verification/package HEAD `b57bb3d05b0f72b10f6d130003badf7d42615879`**. Post-game diff verified entirely under verification/.
+- v1.0.0-rc1 / Windows 1.0.0.1, unchanged SonicChaos save namespace.
+- Windows ZIP SHA256 `323807fec25c9b05f379848ca3413a37465e1b47f118c336f834390b3ec22757`.
+- Optional isolated SuperDemo ZIP SHA256 `6e19c885e09244b7f0700d67113efa897b4649282b8f13cf6ce6367d561fa46b`.
+- Source ZIP (+22 private deps) SHA256 `f5b0d0e41c797769a8f812b4386861e9d1c0bac9ffc02501a28a1e4ad1e4aa01`.
+- Bundle SHA256 `02ae7ed9b6c18ac3543757bb825b96f0c5772030ca3bd57d327d5736bae35d09`.
+- Agent delivery E: management-audits/v1-20261121/delivery; independent H: v100-rc1-20261122, 17/17 hashes verified per issue #14. Restored source matches bundle content under Git line-ending rules; 22/22 dependencies; recompiled 7/8 runtime files byte-identical, data.win differs only 41 GEN8 header bytes. **H-restored executable boot not explicitly reported** in the provided final receipts; don't assert it. Include a restore-boot receipt in final personal release unless already available. This is not a new reason to delay RC1 Chief trial.
+- RC2-C1 remains accepted and immutable; earlier RC2 and R3d branch preserved per Claude's checks.
+
+## A: $A5 fidelity
+ROM-faithful trigger matches gate tile at $6E74/$6EF7 before direction/state/speed checks, repeated/rejected/airborne contacts included. Core decimal 165 uses existing direct $A5 route. 0 motion differences over 3,600 updates; non-A5 requests identical. **3/7 ROM request scenarios fully identical**, four differ where inherited motion differs. Native driver replay 1,708/1,709 PSG channel-2 updates match (music-less replay exception). Asynchronous delivery sampling and untraced same-update jump/gate order remain limitations. Authentic quiet hold then rising sweep, no forced separate audio playback or global audio rewrite. No new $A5 requests evidenced in non-twist regression cases. Do not claim all audio or all movement ROM-perfect. A6 latent difference remains separate.
+
+## B: Super Sonic
+R3d feature delta ported onto RC2-C1, not merged wholesale. 194/194 registered/regenerated Super sprite resources: 152 prior +42 gold RC2 AQZ loop companions. Enhanced natural full-ending Sonic slot unlock via actual ending commit in isolated fixture, 6 emeralds / 18-act selector, 50 rings fresh airborne Jump, transform art, 100-ring cap/one life, drain, time-over, targeted THZ1/THZ2 act-clear proof. 25 shared R3d native scene core trajectories match with disclosed AQZ art and Data Select presentation exceptions. Natural autoplay didn't complete THZ1 or THZ3 boss; targeted act-clear succeeds, boss approach/source-contact regression and prior R3d owner play support this scope, not a new full native boss victory. **Known GPZ3 tube blue spin for 85 updates (~1.4s)** inherited from R3d, qualify broad zero-blue statement accordingly. Retain as a visible known cosmetic issue for Chief disposition, not an automatic pre-trial corrective sprint. 100-ring results display 99 but tally counts 100; top-speed launcher overshoot pre-existing; no broad route rewrite.
+
+## C: Portable native PSG
+Second-PC crash 0xC000001D at a3v_psg.dll RVA 0x1DAF, AVX-512 instruction documented. Recovered source/build command from H: database, original .text reproduced. Explicit Zig 0.13.0 target x86_64-windows-gnu / -mcpu=x86_64, baseline SSE2, 17 exports and 5 imports preserved. Portable DLL SHA256 `511eb693c756c5842ae92f15164c0da8fee77657a1f9e2331e7d9831c50c537b`; source and licences tracked; 50,802 parity frames bit-exact (~37.3M PCM samples); 33,365/33,365 compared Super probe rows and sound requests identical after excluding added instrumentation field. g1d_z80's own objects baseline; CRT extension dispatch per agent audit. Not a universal minimum specification for the GameMaker runner/OS. **Actual second-PC run still required**, older frozen AVX-512-bearing packages not retroactively modified. Portable recipe code reproducible, debug/PE metadata may vary; do not claim entire DLL byte-reproducible across paths.
+
+## Native and source scope
+117 receipts, **116 PASS + one corrected missing harness case HOLD**, zero observed Chief AppData events. 17 R22 preservation/features exact (14 preservation across A/final +3 features); 70 F1/F2/F3/C1 cases across A/final gameplay and screenshots match with known asynchronous delivered-sound jitter; save6/6. Final portable build targeted 16/16 passes. Source 75/178 identical test-for-test inherited, not complete green. Manual fresh-profile shipping SCTest use not run; save suite and smoke support trial. Demo variant smoke passed, fixture reader validated separately, manual demo slot selection still useful.
+
+## Focused Chief trial (supersedes any overly broad checklist)
+Use exact rc1 ZIP extracted to a new folder. **1. On the previously crashing PC, select Classic and hear title music; restart, select Enhanced and hear audio; briefly enter an act if convenient. Report PASS/FAIL; if failure provide Event Viewer module, exception, offset.** This is the essential hardware witness.
+**2. On the normal account, start shipping rc1 and load an existing Enhanced save; check slots and content remain intact.** No wipe/import.
+**3. Super: use an existing full-ending Sonic file or the optional isolated demo. Copy only the two supplied demo fixtures to the distinct %LOCALAPPDATA%\\SonicChaosV1Demo folder (do not overwrite existing demo slots without backup); choose Enhanced slot1 / THZ1, collect 50+ rings, jump then fresh Jump in midair. Gold flash, gold Sonic, faster movement, ring drain and enemy immunity.** Optionally try twist or 100 rings naturally. No full campaign or exact frame counting.
+**Optional audio:** THZ1 pink/yellow S ribbon after two loops; listen for held tone/exit whoosh. No requirement to rerun if already satisfied. The gate requests, priority and motion evidence are engineering-owned.
+
+Return simple PASS/FAIL/NOT TRIED for crash PC, save, Super, optional sound, plus visible issues. No final release tag or public distribution until separate Chief approval. For a failed crash-PC test, investigate exact remaining failure before release. For a passing trial, seek final private v1.0.0 identity-only promotion and fresh final package/hash/recovery with independently booted restored shipping runtime; avoid repeating already completed regression campaigns without reason.
+
+Sources: private issue #14 delivery comment 7074348789; frozen package HEAD verification/v1-integrated/{V1_DELIVERY_REPORT.md,V1_TEST_MATRIX.md,V1_CHIEF_ACCEPTANCE_GUIDE.md,V1_A3V_PSG_CPU_COMPATIBILITY.md,V1_A5_ROM_NATIVE_AUDIO_PARITY.md,V1_SUPER_R3D_ON_RC2_REPORT.md,V1_INTEGRATION_CHANGE_INVENTORY.md}.
